@@ -17,15 +17,27 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     for managedObject in inRemovedSet.values {
-      managedObject.y_property.stopsBeingObserved (by: self.mObserversOf_y) // Stored property
-      managedObject.padDiameter_property.stopsBeingObserved (by: self.mObserversOf_padDiameter) // Stored property
-      managedObject.x_property.stopsBeingObserved (by: self.mObserversOf_x) // Stored property
+      if let relay = self.mObserversOf_y { // Stored property
+        managedObject.y_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_padDiameter { // Stored property
+        managedObject.padDiameter_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_x { // Stored property
+        managedObject.x_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
-      managedObject.y_property.startsToBeObserved (by: self.mObserversOf_y) // Stored property
-      managedObject.padDiameter_property.startsToBeObserved (by: self.mObserversOf_padDiameter) // Stored property
-      managedObject.x_property.startsToBeObserved (by: self.mObserversOf_x) // Stored property
+      if let relay = self.mObserversOf_y { // Stored property
+        managedObject.y_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_padDiameter { // Stored property
+        managedObject.padDiameter_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_x { // Stored property
+        managedObject.x_property.startsToBeObserved (by: relay)
+      }
     }
   }
 
@@ -33,220 +45,88 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   //   Observers of 'y' stored property
   //····················································································································
 
-  private final var mObserversOf_y = EBWeakObserverSetRelay ()
+  private final var mObserversOf_y : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_y_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_y.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.y_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_y {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.y_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_y = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_y_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_y.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.y_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_y?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_y_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
-    /* for managedObject in inSet.values {
-      managedObject.y_property.startsToBeObserved (by: self.mObserversOf_y)
-    }*/
-    /* if !self.mObserversOf_y.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_y.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.y_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_y.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
-    for managedObject in inSet.values {
-      managedObject.y_property.stopsBeingObserved (by: self.mObserversOf_y)
-    }
-    for entry in self.mObserversOf_y.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.y_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_y.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'padDiameter' stored property
   //····················································································································
 
-  private final var mObserversOf_padDiameter = EBWeakObserverSetRelay ()
+  private final var mObserversOf_padDiameter : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_padDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_padDiameter.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.padDiameter_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_padDiameter {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.padDiameter_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_padDiameter = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_padDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_padDiameter.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.padDiameter_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_padDiameter?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_padDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
-    /* for managedObject in inSet.values {
-      managedObject.padDiameter_property.startsToBeObserved (by: self.mObserversOf_padDiameter)
-    }*/
-    /* if !self.mObserversOf_padDiameter.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_padDiameter.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.padDiameter_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_padDiameter.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_padDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
-    for managedObject in inSet.values {
-      managedObject.padDiameter_property.stopsBeingObserved (by: self.mObserversOf_padDiameter)
-    }
-    for entry in self.mObserversOf_padDiameter.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.padDiameter_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_padDiameter.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
 
-  private final var mObserversOf_x = EBWeakObserverSetRelay ()
+  private final var mObserversOf_x : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_x_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_x.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_x {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.x_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_x = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_x_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_x.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_x?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_x_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
-    /* for managedObject in inSet.values {
-      managedObject.x_property.startsToBeObserved (by: self.mObserversOf_x)
-    }*/
-    /* if !self.mObserversOf_x.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_x.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.x_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_x.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
-    for managedObject in inSet.values {
-      managedObject.x_property.stopsBeingObserved (by: self.mObserversOf_x)
-    }
-    for entry in self.mObserversOf_x.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.x_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_x.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
 
@@ -422,7 +302,7 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
 
   //····················································································································
 
-  override final var propval : EBReferenceArray <BoardModelVia> { return self.mInternalArrayValue }
+  final override var propval : EBReferenceArray <BoardModelVia> { return self.mInternalArrayValue }
 
   //····················································································································
 

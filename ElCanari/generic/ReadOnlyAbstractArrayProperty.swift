@@ -52,7 +52,7 @@ class ReadOnlyAbstractArrayProperty <T : ObjectIndexProtocol> : ReadOnlyAbstract
 
   //····················································································································
 
-  var propval : EBReferenceArray <T> { return EBReferenceArray () } // Abstract method
+  var propval : EBReferenceArray <T> { return self.mInternalArrayValue }
 
   //····················································································································
 
@@ -64,7 +64,7 @@ class ReadOnlyAbstractArrayProperty <T : ObjectIndexProtocol> : ReadOnlyAbstract
 
   final var internalSetValue : EBReferenceSet <T> { return self.mInternalSetValue }
 
-  private final var mInternalSetValue = EBReferenceSet <T> () // Requires T to be hashable
+  private final var mInternalSetValue = EBReferenceSet <T> ()
 
   final var mInternalArrayValue = EBReferenceArray <T> () {
     didSet {

@@ -17,35 +17,87 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     for managedObject in inRemovedSet.values {
-      managedObject.mY_property.stopsBeingObserved (by: self.mObserversOf_mY) // Stored property
-      managedObject.mWidth_property.stopsBeingObserved (by: self.mObserversOf_mWidth) // Stored property
-      managedObject.mHeight_property.stopsBeingObserved (by: self.mObserversOf_mHeight) // Stored property
-      managedObject.mIsInFrontLayer_property.stopsBeingObserved (by: self.mObserversOf_mIsInFrontLayer) // Stored property
-      managedObject.mIsInBackLayer_property.stopsBeingObserved (by: self.mObserversOf_mIsInBackLayer) // Stored property
-      managedObject.mIsInInner1Layer_property.stopsBeingObserved (by: self.mObserversOf_mIsInInner1Layer) // Stored property
-      managedObject.mIsInInner2Layer_property.stopsBeingObserved (by: self.mObserversOf_mIsInInner2Layer) // Stored property
-      managedObject.mIsInInner3Layer_property.stopsBeingObserved (by: self.mObserversOf_mIsInInner3Layer) // Stored property
-      managedObject.mIsInInner4Layer_property.stopsBeingObserved (by: self.mObserversOf_mIsInInner4Layer) // Stored property
-      managedObject.mX_property.stopsBeingObserved (by: self.mObserversOf_mX) // Stored property
-      managedObject.objectDisplay_property.stopsBeingObserved (by: self.mObserversOf_objectDisplay) // Transient property
-      managedObject.selectionDisplay_property.stopsBeingObserved (by: self.mObserversOf_selectionDisplay) // Transient property
-      managedObject.signatureForERCChecking_property.stopsBeingObserved (by: self.mObserversOf_signatureForERCChecking) // Transient property
+      if let relay = self.mObserversOf_mY { // Stored property
+        managedObject.mY_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mWidth { // Stored property
+        managedObject.mWidth_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mHeight { // Stored property
+        managedObject.mHeight_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mIsInFrontLayer { // Stored property
+        managedObject.mIsInFrontLayer_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mIsInBackLayer { // Stored property
+        managedObject.mIsInBackLayer_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mIsInInner1Layer { // Stored property
+        managedObject.mIsInInner1Layer_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mIsInInner2Layer { // Stored property
+        managedObject.mIsInInner2Layer_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mIsInInner3Layer { // Stored property
+        managedObject.mIsInInner3Layer_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mIsInInner4Layer { // Stored property
+        managedObject.mIsInInner4Layer_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mX { // Stored property
+        managedObject.mX_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_objectDisplay { // Transient property
+        managedObject.objectDisplay_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_selectionDisplay { // Transient property
+        managedObject.selectionDisplay_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_signatureForERCChecking { // Transient property
+        managedObject.signatureForERCChecking_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
-      managedObject.mY_property.startsToBeObserved (by: self.mObserversOf_mY) // Stored property
-      managedObject.mWidth_property.startsToBeObserved (by: self.mObserversOf_mWidth) // Stored property
-      managedObject.mHeight_property.startsToBeObserved (by: self.mObserversOf_mHeight) // Stored property
-      managedObject.mIsInFrontLayer_property.startsToBeObserved (by: self.mObserversOf_mIsInFrontLayer) // Stored property
-      managedObject.mIsInBackLayer_property.startsToBeObserved (by: self.mObserversOf_mIsInBackLayer) // Stored property
-      managedObject.mIsInInner1Layer_property.startsToBeObserved (by: self.mObserversOf_mIsInInner1Layer) // Stored property
-      managedObject.mIsInInner2Layer_property.startsToBeObserved (by: self.mObserversOf_mIsInInner2Layer) // Stored property
-      managedObject.mIsInInner3Layer_property.startsToBeObserved (by: self.mObserversOf_mIsInInner3Layer) // Stored property
-      managedObject.mIsInInner4Layer_property.startsToBeObserved (by: self.mObserversOf_mIsInInner4Layer) // Stored property
-      managedObject.mX_property.startsToBeObserved (by: self.mObserversOf_mX) // Stored property
-      managedObject.objectDisplay_property.startsToBeObserved (by: self.mObserversOf_objectDisplay) // Transient property
-      managedObject.selectionDisplay_property.startsToBeObserved (by: self.mObserversOf_selectionDisplay) // Transient property
-      managedObject.signatureForERCChecking_property.startsToBeObserved (by: self.mObserversOf_signatureForERCChecking) // Transient property
+      if let relay = self.mObserversOf_mY { // Stored property
+        managedObject.mY_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mWidth { // Stored property
+        managedObject.mWidth_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mHeight { // Stored property
+        managedObject.mHeight_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mIsInFrontLayer { // Stored property
+        managedObject.mIsInFrontLayer_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mIsInBackLayer { // Stored property
+        managedObject.mIsInBackLayer_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mIsInInner1Layer { // Stored property
+        managedObject.mIsInInner1Layer_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mIsInInner2Layer { // Stored property
+        managedObject.mIsInInner2Layer_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mIsInInner3Layer { // Stored property
+        managedObject.mIsInInner3Layer_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mIsInInner4Layer { // Stored property
+        managedObject.mIsInInner4Layer_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mX { // Stored property
+        managedObject.mX_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_objectDisplay { // Transient property
+        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_selectionDisplay { // Transient property
+        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_signatureForERCChecking { // Transient property
+        managedObject.signatureForERCChecking_property.startsToBeObserved (by: relay)
+      }
     }
   }
 
@@ -53,923 +105,378 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private final var mObserversOf_mY = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mY : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mY_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mY.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mY_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mY {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mY_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mY = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mY.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mY_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mY?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mY_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    /* for managedObject in inSet.values {
-      managedObject.mY_property.startsToBeObserved (by: self.mObserversOf_mY)
-    }*/
-    /* if !self.mObserversOf_mY.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mY.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mY_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mY.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for managedObject in inSet.values {
-      managedObject.mY_property.stopsBeingObserved (by: self.mObserversOf_mY)
-    }
-    for entry in self.mObserversOf_mY.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mY_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mY.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mWidth' stored property
   //····················································································································
 
-  private final var mObserversOf_mWidth = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mWidth : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mWidth.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mWidth_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mWidth {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mWidth_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mWidth = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mWidth.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mWidth_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mWidth?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    /* for managedObject in inSet.values {
-      managedObject.mWidth_property.startsToBeObserved (by: self.mObserversOf_mWidth)
-    }*/
-    /* if !self.mObserversOf_mWidth.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mWidth.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mWidth_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mWidth.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for managedObject in inSet.values {
-      managedObject.mWidth_property.stopsBeingObserved (by: self.mObserversOf_mWidth)
-    }
-    for entry in self.mObserversOf_mWidth.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mWidth_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mWidth.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mHeight' stored property
   //····················································································································
 
-  private final var mObserversOf_mHeight = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mHeight : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mHeight_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mHeight.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mHeight_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mHeight {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mHeight_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mHeight = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mHeight_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mHeight.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mHeight_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mHeight?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mHeight_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    /* for managedObject in inSet.values {
-      managedObject.mHeight_property.startsToBeObserved (by: self.mObserversOf_mHeight)
-    }*/
-    /* if !self.mObserversOf_mHeight.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mHeight.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mHeight_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mHeight.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for managedObject in inSet.values {
-      managedObject.mHeight_property.stopsBeingObserved (by: self.mObserversOf_mHeight)
-    }
-    for entry in self.mObserversOf_mHeight.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mHeight_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mHeight.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mIsInFrontLayer' stored property
   //····················································································································
 
-  private final var mObserversOf_mIsInFrontLayer = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mIsInFrontLayer : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mIsInFrontLayer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mIsInFrontLayer.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mIsInFrontLayer_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mIsInFrontLayer {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mIsInFrontLayer_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mIsInFrontLayer = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mIsInFrontLayer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mIsInFrontLayer.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mIsInFrontLayer_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mIsInFrontLayer?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mIsInFrontLayer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    /* for managedObject in inSet.values {
-      managedObject.mIsInFrontLayer_property.startsToBeObserved (by: self.mObserversOf_mIsInFrontLayer)
-    }*/
-    /* if !self.mObserversOf_mIsInFrontLayer.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mIsInFrontLayer.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mIsInFrontLayer_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mIsInFrontLayer.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mIsInFrontLayer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for managedObject in inSet.values {
-      managedObject.mIsInFrontLayer_property.stopsBeingObserved (by: self.mObserversOf_mIsInFrontLayer)
-    }
-    for entry in self.mObserversOf_mIsInFrontLayer.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mIsInFrontLayer_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mIsInFrontLayer.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mIsInBackLayer' stored property
   //····················································································································
 
-  private final var mObserversOf_mIsInBackLayer = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mIsInBackLayer : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mIsInBackLayer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mIsInBackLayer.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mIsInBackLayer_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mIsInBackLayer {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mIsInBackLayer_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mIsInBackLayer = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mIsInBackLayer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mIsInBackLayer.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mIsInBackLayer_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mIsInBackLayer?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mIsInBackLayer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    /* for managedObject in inSet.values {
-      managedObject.mIsInBackLayer_property.startsToBeObserved (by: self.mObserversOf_mIsInBackLayer)
-    }*/
-    /* if !self.mObserversOf_mIsInBackLayer.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mIsInBackLayer.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mIsInBackLayer_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mIsInBackLayer.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mIsInBackLayer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for managedObject in inSet.values {
-      managedObject.mIsInBackLayer_property.stopsBeingObserved (by: self.mObserversOf_mIsInBackLayer)
-    }
-    for entry in self.mObserversOf_mIsInBackLayer.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mIsInBackLayer_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mIsInBackLayer.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mIsInInner1Layer' stored property
   //····················································································································
 
-  private final var mObserversOf_mIsInInner1Layer = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mIsInInner1Layer : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mIsInInner1Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mIsInInner1Layer.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mIsInInner1Layer_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mIsInInner1Layer {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mIsInInner1Layer_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mIsInInner1Layer = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mIsInInner1Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mIsInInner1Layer.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mIsInInner1Layer_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mIsInInner1Layer?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mIsInInner1Layer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    /* for managedObject in inSet.values {
-      managedObject.mIsInInner1Layer_property.startsToBeObserved (by: self.mObserversOf_mIsInInner1Layer)
-    }*/
-    /* if !self.mObserversOf_mIsInInner1Layer.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mIsInInner1Layer.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mIsInInner1Layer_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mIsInInner1Layer.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mIsInInner1Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for managedObject in inSet.values {
-      managedObject.mIsInInner1Layer_property.stopsBeingObserved (by: self.mObserversOf_mIsInInner1Layer)
-    }
-    for entry in self.mObserversOf_mIsInInner1Layer.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mIsInInner1Layer_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mIsInInner1Layer.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mIsInInner2Layer' stored property
   //····················································································································
 
-  private final var mObserversOf_mIsInInner2Layer = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mIsInInner2Layer : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mIsInInner2Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mIsInInner2Layer.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mIsInInner2Layer_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mIsInInner2Layer {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mIsInInner2Layer_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mIsInInner2Layer = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mIsInInner2Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mIsInInner2Layer.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mIsInInner2Layer_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mIsInInner2Layer?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mIsInInner2Layer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    /* for managedObject in inSet.values {
-      managedObject.mIsInInner2Layer_property.startsToBeObserved (by: self.mObserversOf_mIsInInner2Layer)
-    }*/
-    /* if !self.mObserversOf_mIsInInner2Layer.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mIsInInner2Layer.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mIsInInner2Layer_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mIsInInner2Layer.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mIsInInner2Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for managedObject in inSet.values {
-      managedObject.mIsInInner2Layer_property.stopsBeingObserved (by: self.mObserversOf_mIsInInner2Layer)
-    }
-    for entry in self.mObserversOf_mIsInInner2Layer.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mIsInInner2Layer_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mIsInInner2Layer.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mIsInInner3Layer' stored property
   //····················································································································
 
-  private final var mObserversOf_mIsInInner3Layer = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mIsInInner3Layer : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mIsInInner3Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mIsInInner3Layer.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mIsInInner3Layer_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mIsInInner3Layer {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mIsInInner3Layer_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mIsInInner3Layer = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mIsInInner3Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mIsInInner3Layer.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mIsInInner3Layer_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mIsInInner3Layer?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mIsInInner3Layer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    /* for managedObject in inSet.values {
-      managedObject.mIsInInner3Layer_property.startsToBeObserved (by: self.mObserversOf_mIsInInner3Layer)
-    }*/
-    /* if !self.mObserversOf_mIsInInner3Layer.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mIsInInner3Layer.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mIsInInner3Layer_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mIsInInner3Layer.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mIsInInner3Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for managedObject in inSet.values {
-      managedObject.mIsInInner3Layer_property.stopsBeingObserved (by: self.mObserversOf_mIsInInner3Layer)
-    }
-    for entry in self.mObserversOf_mIsInInner3Layer.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mIsInInner3Layer_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mIsInInner3Layer.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mIsInInner4Layer' stored property
   //····················································································································
 
-  private final var mObserversOf_mIsInInner4Layer = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mIsInInner4Layer : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mIsInInner4Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mIsInInner4Layer.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mIsInInner4Layer_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mIsInInner4Layer {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mIsInInner4Layer_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mIsInInner4Layer = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mIsInInner4Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mIsInInner4Layer.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mIsInInner4Layer_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mIsInInner4Layer?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mIsInInner4Layer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    /* for managedObject in inSet.values {
-      managedObject.mIsInInner4Layer_property.startsToBeObserved (by: self.mObserversOf_mIsInInner4Layer)
-    }*/
-    /* if !self.mObserversOf_mIsInInner4Layer.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mIsInInner4Layer.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mIsInInner4Layer_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mIsInInner4Layer.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mIsInInner4Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for managedObject in inSet.values {
-      managedObject.mIsInInner4Layer_property.stopsBeingObserved (by: self.mObserversOf_mIsInInner4Layer)
-    }
-    for entry in self.mObserversOf_mIsInInner4Layer.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mIsInInner4Layer_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mIsInInner4Layer.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private final var mObserversOf_mX = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mX : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mX_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mX.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mX_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mX {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mX_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mX = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mX.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mX_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mX?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mX_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    /* for managedObject in inSet.values {
-      managedObject.mX_property.startsToBeObserved (by: self.mObserversOf_mX)
-    }*/
-    /* if !self.mObserversOf_mX.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mX.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mX_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mX.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for managedObject in inSet.values {
-      managedObject.mX_property.stopsBeingObserved (by: self.mObserversOf_mX)
-    }
-    for entry in self.mObserversOf_mX.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mX_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mX.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay = EBWeakObserverSetRelay ()
+  private final var mObserversOf_objectDisplay : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_objectDisplay.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.objectDisplay_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_objectDisplay {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_objectDisplay = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_objectDisplay.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.objectDisplay_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_objectDisplay?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_objectDisplay.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.objectDisplay_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_objectDisplay.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_objectDisplay.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.objectDisplay_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_objectDisplay.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay = EBWeakObserverSetRelay ()
+  private final var mObserversOf_selectionDisplay : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_selectionDisplay.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.selectionDisplay_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_selectionDisplay {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_selectionDisplay = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_selectionDisplay.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.selectionDisplay_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_selectionDisplay?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_selectionDisplay.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.selectionDisplay_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_selectionDisplay.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_selectionDisplay.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.selectionDisplay_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_selectionDisplay.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private final var mObserversOf_signatureForERCChecking = EBWeakObserverSetRelay ()
+  private final var mObserversOf_signatureForERCChecking : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_signatureForERCChecking_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_signatureForERCChecking.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.signatureForERCChecking_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_signatureForERCChecking {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.signatureForERCChecking_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_signatureForERCChecking = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_signatureForERCChecking_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_signatureForERCChecking.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.signatureForERCChecking_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_signatureForERCChecking?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_signatureForERCChecking.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.signatureForERCChecking_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_signatureForERCChecking.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_signatureForERCChecking.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.signatureForERCChecking_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_signatureForERCChecking.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
 

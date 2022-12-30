@@ -17,49 +17,129 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     for managedObject in inRemovedSet.values {
-      managedObject.y1_property.stopsBeingObserved (by: self.mObserversOf_y1) // Stored property
-      managedObject.x2_property.stopsBeingObserved (by: self.mObserversOf_x2) // Stored property
-      managedObject.y2_property.stopsBeingObserved (by: self.mObserversOf_y2) // Stored property
-      managedObject.cpx1_property.stopsBeingObserved (by: self.mObserversOf_cpx1) // Stored property
-      managedObject.cpy1_property.stopsBeingObserved (by: self.mObserversOf_cpy1) // Stored property
-      managedObject.cpx2_property.stopsBeingObserved (by: self.mObserversOf_cpx2) // Stored property
-      managedObject.cpy2_property.stopsBeingObserved (by: self.mObserversOf_cpy2) // Stored property
-      managedObject.x1Unit_property.stopsBeingObserved (by: self.mObserversOf_x1Unit) // Stored property
-      managedObject.y1Unit_property.stopsBeingObserved (by: self.mObserversOf_y1Unit) // Stored property
-      managedObject.x2Unit_property.stopsBeingObserved (by: self.mObserversOf_x2Unit) // Stored property
-      managedObject.y2Unit_property.stopsBeingObserved (by: self.mObserversOf_y2Unit) // Stored property
-      managedObject.cpx1Unit_property.stopsBeingObserved (by: self.mObserversOf_cpx1Unit) // Stored property
-      managedObject.cpy1Unit_property.stopsBeingObserved (by: self.mObserversOf_cpy1Unit) // Stored property
-      managedObject.cpx2Unit_property.stopsBeingObserved (by: self.mObserversOf_cpx2Unit) // Stored property
-      managedObject.cpy2Unit_property.stopsBeingObserved (by: self.mObserversOf_cpy2Unit) // Stored property
-      managedObject.x1_property.stopsBeingObserved (by: self.mObserversOf_x1) // Stored property
-      managedObject.strokeBezierPath_property.stopsBeingObserved (by: self.mObserversOf_strokeBezierPath) // Transient property
-      managedObject.objectDisplay_property.stopsBeingObserved (by: self.mObserversOf_objectDisplay) // Transient property
-      managedObject.selectionDisplay_property.stopsBeingObserved (by: self.mObserversOf_selectionDisplay) // Transient property
-      managedObject.issues_property.stopsBeingObserved (by: self.mObserversOf_issues) // Transient property
+      if let relay = self.mObserversOf_y1 { // Stored property
+        managedObject.y1_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_x2 { // Stored property
+        managedObject.x2_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_y2 { // Stored property
+        managedObject.y2_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_cpx1 { // Stored property
+        managedObject.cpx1_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_cpy1 { // Stored property
+        managedObject.cpy1_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_cpx2 { // Stored property
+        managedObject.cpx2_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_cpy2 { // Stored property
+        managedObject.cpy2_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_x1Unit { // Stored property
+        managedObject.x1Unit_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_y1Unit { // Stored property
+        managedObject.y1Unit_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_x2Unit { // Stored property
+        managedObject.x2Unit_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_y2Unit { // Stored property
+        managedObject.y2Unit_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_cpx1Unit { // Stored property
+        managedObject.cpx1Unit_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_cpy1Unit { // Stored property
+        managedObject.cpy1Unit_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_cpx2Unit { // Stored property
+        managedObject.cpx2Unit_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_cpy2Unit { // Stored property
+        managedObject.cpy2Unit_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_x1 { // Stored property
+        managedObject.x1_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_strokeBezierPath { // Transient property
+        managedObject.strokeBezierPath_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_objectDisplay { // Transient property
+        managedObject.objectDisplay_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_selectionDisplay { // Transient property
+        managedObject.selectionDisplay_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_issues { // Transient property
+        managedObject.issues_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
-      managedObject.y1_property.startsToBeObserved (by: self.mObserversOf_y1) // Stored property
-      managedObject.x2_property.startsToBeObserved (by: self.mObserversOf_x2) // Stored property
-      managedObject.y2_property.startsToBeObserved (by: self.mObserversOf_y2) // Stored property
-      managedObject.cpx1_property.startsToBeObserved (by: self.mObserversOf_cpx1) // Stored property
-      managedObject.cpy1_property.startsToBeObserved (by: self.mObserversOf_cpy1) // Stored property
-      managedObject.cpx2_property.startsToBeObserved (by: self.mObserversOf_cpx2) // Stored property
-      managedObject.cpy2_property.startsToBeObserved (by: self.mObserversOf_cpy2) // Stored property
-      managedObject.x1Unit_property.startsToBeObserved (by: self.mObserversOf_x1Unit) // Stored property
-      managedObject.y1Unit_property.startsToBeObserved (by: self.mObserversOf_y1Unit) // Stored property
-      managedObject.x2Unit_property.startsToBeObserved (by: self.mObserversOf_x2Unit) // Stored property
-      managedObject.y2Unit_property.startsToBeObserved (by: self.mObserversOf_y2Unit) // Stored property
-      managedObject.cpx1Unit_property.startsToBeObserved (by: self.mObserversOf_cpx1Unit) // Stored property
-      managedObject.cpy1Unit_property.startsToBeObserved (by: self.mObserversOf_cpy1Unit) // Stored property
-      managedObject.cpx2Unit_property.startsToBeObserved (by: self.mObserversOf_cpx2Unit) // Stored property
-      managedObject.cpy2Unit_property.startsToBeObserved (by: self.mObserversOf_cpy2Unit) // Stored property
-      managedObject.x1_property.startsToBeObserved (by: self.mObserversOf_x1) // Stored property
-      managedObject.strokeBezierPath_property.startsToBeObserved (by: self.mObserversOf_strokeBezierPath) // Transient property
-      managedObject.objectDisplay_property.startsToBeObserved (by: self.mObserversOf_objectDisplay) // Transient property
-      managedObject.selectionDisplay_property.startsToBeObserved (by: self.mObserversOf_selectionDisplay) // Transient property
-      managedObject.issues_property.startsToBeObserved (by: self.mObserversOf_issues) // Transient property
+      if let relay = self.mObserversOf_y1 { // Stored property
+        managedObject.y1_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_x2 { // Stored property
+        managedObject.x2_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_y2 { // Stored property
+        managedObject.y2_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_cpx1 { // Stored property
+        managedObject.cpx1_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_cpy1 { // Stored property
+        managedObject.cpy1_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_cpx2 { // Stored property
+        managedObject.cpx2_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_cpy2 { // Stored property
+        managedObject.cpy2_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_x1Unit { // Stored property
+        managedObject.x1Unit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_y1Unit { // Stored property
+        managedObject.y1Unit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_x2Unit { // Stored property
+        managedObject.x2Unit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_y2Unit { // Stored property
+        managedObject.y2Unit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_cpx1Unit { // Stored property
+        managedObject.cpx1Unit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_cpy1Unit { // Stored property
+        managedObject.cpy1Unit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_cpx2Unit { // Stored property
+        managedObject.cpx2Unit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_cpy2Unit { // Stored property
+        managedObject.cpy2Unit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_x1 { // Stored property
+        managedObject.x1_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_strokeBezierPath { // Transient property
+        managedObject.strokeBezierPath_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_objectDisplay { // Transient property
+        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_selectionDisplay { // Transient property
+        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_issues { // Transient property
+        managedObject.issues_property.startsToBeObserved (by: relay)
+      }
     }
   }
 
@@ -67,1425 +147,581 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   //   Observers of 'y1' stored property
   //····················································································································
 
-  private final var mObserversOf_y1 = EBWeakObserverSetRelay ()
+  private final var mObserversOf_y1 : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_y1_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_y1.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.y1_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_y1 {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.y1_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_y1 = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_y1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_y1.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.y1_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_y1?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_y1_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    /* for managedObject in inSet.values {
-      managedObject.y1_property.startsToBeObserved (by: self.mObserversOf_y1)
-    }*/
-    /* if !self.mObserversOf_y1.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_y1.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.y1_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_y1.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      managedObject.y1_property.stopsBeingObserved (by: self.mObserversOf_y1)
-    }
-    for entry in self.mObserversOf_y1.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.y1_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_y1.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'x2' stored property
   //····················································································································
 
-  private final var mObserversOf_x2 = EBWeakObserverSetRelay ()
+  private final var mObserversOf_x2 : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_x2_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_x2.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x2_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_x2 {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.x2_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_x2 = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_x2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_x2.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x2_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_x2?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_x2_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    /* for managedObject in inSet.values {
-      managedObject.x2_property.startsToBeObserved (by: self.mObserversOf_x2)
-    }*/
-    /* if !self.mObserversOf_x2.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_x2.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.x2_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_x2.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      managedObject.x2_property.stopsBeingObserved (by: self.mObserversOf_x2)
-    }
-    for entry in self.mObserversOf_x2.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.x2_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_x2.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'y2' stored property
   //····················································································································
 
-  private final var mObserversOf_y2 = EBWeakObserverSetRelay ()
+  private final var mObserversOf_y2 : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_y2_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_y2.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.y2_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_y2 {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.y2_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_y2 = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_y2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_y2.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.y2_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_y2?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_y2_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    /* for managedObject in inSet.values {
-      managedObject.y2_property.startsToBeObserved (by: self.mObserversOf_y2)
-    }*/
-    /* if !self.mObserversOf_y2.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_y2.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.y2_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_y2.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      managedObject.y2_property.stopsBeingObserved (by: self.mObserversOf_y2)
-    }
-    for entry in self.mObserversOf_y2.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.y2_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_y2.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'cpx1' stored property
   //····················································································································
 
-  private final var mObserversOf_cpx1 = EBWeakObserverSetRelay ()
+  private final var mObserversOf_cpx1 : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_cpx1_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_cpx1.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.cpx1_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_cpx1 {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.cpx1_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_cpx1 = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_cpx1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_cpx1.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.cpx1_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_cpx1?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_cpx1_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    /* for managedObject in inSet.values {
-      managedObject.cpx1_property.startsToBeObserved (by: self.mObserversOf_cpx1)
-    }*/
-    /* if !self.mObserversOf_cpx1.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_cpx1.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.cpx1_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_cpx1.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_cpx1_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      managedObject.cpx1_property.stopsBeingObserved (by: self.mObserversOf_cpx1)
-    }
-    for entry in self.mObserversOf_cpx1.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.cpx1_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_cpx1.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'cpy1' stored property
   //····················································································································
 
-  private final var mObserversOf_cpy1 = EBWeakObserverSetRelay ()
+  private final var mObserversOf_cpy1 : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_cpy1_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_cpy1.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.cpy1_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_cpy1 {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.cpy1_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_cpy1 = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_cpy1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_cpy1.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.cpy1_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_cpy1?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_cpy1_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    /* for managedObject in inSet.values {
-      managedObject.cpy1_property.startsToBeObserved (by: self.mObserversOf_cpy1)
-    }*/
-    /* if !self.mObserversOf_cpy1.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_cpy1.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.cpy1_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_cpy1.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_cpy1_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      managedObject.cpy1_property.stopsBeingObserved (by: self.mObserversOf_cpy1)
-    }
-    for entry in self.mObserversOf_cpy1.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.cpy1_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_cpy1.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'cpx2' stored property
   //····················································································································
 
-  private final var mObserversOf_cpx2 = EBWeakObserverSetRelay ()
+  private final var mObserversOf_cpx2 : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_cpx2_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_cpx2.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.cpx2_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_cpx2 {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.cpx2_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_cpx2 = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_cpx2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_cpx2.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.cpx2_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_cpx2?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_cpx2_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    /* for managedObject in inSet.values {
-      managedObject.cpx2_property.startsToBeObserved (by: self.mObserversOf_cpx2)
-    }*/
-    /* if !self.mObserversOf_cpx2.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_cpx2.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.cpx2_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_cpx2.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_cpx2_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      managedObject.cpx2_property.stopsBeingObserved (by: self.mObserversOf_cpx2)
-    }
-    for entry in self.mObserversOf_cpx2.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.cpx2_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_cpx2.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'cpy2' stored property
   //····················································································································
 
-  private final var mObserversOf_cpy2 = EBWeakObserverSetRelay ()
+  private final var mObserversOf_cpy2 : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_cpy2_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_cpy2.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.cpy2_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_cpy2 {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.cpy2_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_cpy2 = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_cpy2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_cpy2.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.cpy2_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_cpy2?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_cpy2_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    /* for managedObject in inSet.values {
-      managedObject.cpy2_property.startsToBeObserved (by: self.mObserversOf_cpy2)
-    }*/
-    /* if !self.mObserversOf_cpy2.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_cpy2.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.cpy2_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_cpy2.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_cpy2_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      managedObject.cpy2_property.stopsBeingObserved (by: self.mObserversOf_cpy2)
-    }
-    for entry in self.mObserversOf_cpy2.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.cpy2_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_cpy2.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'x1Unit' stored property
   //····················································································································
 
-  private final var mObserversOf_x1Unit = EBWeakObserverSetRelay ()
+  private final var mObserversOf_x1Unit : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_x1Unit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_x1Unit.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x1Unit_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_x1Unit {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.x1Unit_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_x1Unit = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_x1Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_x1Unit.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x1Unit_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_x1Unit?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_x1Unit_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    /* for managedObject in inSet.values {
-      managedObject.x1Unit_property.startsToBeObserved (by: self.mObserversOf_x1Unit)
-    }*/
-    /* if !self.mObserversOf_x1Unit.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_x1Unit.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.x1Unit_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_x1Unit.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_x1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      managedObject.x1Unit_property.stopsBeingObserved (by: self.mObserversOf_x1Unit)
-    }
-    for entry in self.mObserversOf_x1Unit.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.x1Unit_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_x1Unit.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'y1Unit' stored property
   //····················································································································
 
-  private final var mObserversOf_y1Unit = EBWeakObserverSetRelay ()
+  private final var mObserversOf_y1Unit : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_y1Unit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_y1Unit.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.y1Unit_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_y1Unit {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.y1Unit_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_y1Unit = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_y1Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_y1Unit.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.y1Unit_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_y1Unit?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_y1Unit_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    /* for managedObject in inSet.values {
-      managedObject.y1Unit_property.startsToBeObserved (by: self.mObserversOf_y1Unit)
-    }*/
-    /* if !self.mObserversOf_y1Unit.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_y1Unit.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.y1Unit_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_y1Unit.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_y1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      managedObject.y1Unit_property.stopsBeingObserved (by: self.mObserversOf_y1Unit)
-    }
-    for entry in self.mObserversOf_y1Unit.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.y1Unit_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_y1Unit.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'x2Unit' stored property
   //····················································································································
 
-  private final var mObserversOf_x2Unit = EBWeakObserverSetRelay ()
+  private final var mObserversOf_x2Unit : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_x2Unit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_x2Unit.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x2Unit_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_x2Unit {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.x2Unit_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_x2Unit = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_x2Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_x2Unit.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x2Unit_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_x2Unit?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_x2Unit_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    /* for managedObject in inSet.values {
-      managedObject.x2Unit_property.startsToBeObserved (by: self.mObserversOf_x2Unit)
-    }*/
-    /* if !self.mObserversOf_x2Unit.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_x2Unit.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.x2Unit_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_x2Unit.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_x2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      managedObject.x2Unit_property.stopsBeingObserved (by: self.mObserversOf_x2Unit)
-    }
-    for entry in self.mObserversOf_x2Unit.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.x2Unit_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_x2Unit.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'y2Unit' stored property
   //····················································································································
 
-  private final var mObserversOf_y2Unit = EBWeakObserverSetRelay ()
+  private final var mObserversOf_y2Unit : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_y2Unit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_y2Unit.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.y2Unit_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_y2Unit {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.y2Unit_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_y2Unit = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_y2Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_y2Unit.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.y2Unit_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_y2Unit?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_y2Unit_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    /* for managedObject in inSet.values {
-      managedObject.y2Unit_property.startsToBeObserved (by: self.mObserversOf_y2Unit)
-    }*/
-    /* if !self.mObserversOf_y2Unit.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_y2Unit.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.y2Unit_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_y2Unit.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_y2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      managedObject.y2Unit_property.stopsBeingObserved (by: self.mObserversOf_y2Unit)
-    }
-    for entry in self.mObserversOf_y2Unit.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.y2Unit_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_y2Unit.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'cpx1Unit' stored property
   //····················································································································
 
-  private final var mObserversOf_cpx1Unit = EBWeakObserverSetRelay ()
+  private final var mObserversOf_cpx1Unit : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_cpx1Unit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_cpx1Unit.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.cpx1Unit_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_cpx1Unit {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.cpx1Unit_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_cpx1Unit = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_cpx1Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_cpx1Unit.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.cpx1Unit_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_cpx1Unit?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_cpx1Unit_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    /* for managedObject in inSet.values {
-      managedObject.cpx1Unit_property.startsToBeObserved (by: self.mObserversOf_cpx1Unit)
-    }*/
-    /* if !self.mObserversOf_cpx1Unit.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_cpx1Unit.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.cpx1Unit_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_cpx1Unit.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_cpx1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      managedObject.cpx1Unit_property.stopsBeingObserved (by: self.mObserversOf_cpx1Unit)
-    }
-    for entry in self.mObserversOf_cpx1Unit.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.cpx1Unit_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_cpx1Unit.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'cpy1Unit' stored property
   //····················································································································
 
-  private final var mObserversOf_cpy1Unit = EBWeakObserverSetRelay ()
+  private final var mObserversOf_cpy1Unit : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_cpy1Unit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_cpy1Unit.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.cpy1Unit_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_cpy1Unit {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.cpy1Unit_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_cpy1Unit = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_cpy1Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_cpy1Unit.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.cpy1Unit_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_cpy1Unit?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_cpy1Unit_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    /* for managedObject in inSet.values {
-      managedObject.cpy1Unit_property.startsToBeObserved (by: self.mObserversOf_cpy1Unit)
-    }*/
-    /* if !self.mObserversOf_cpy1Unit.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_cpy1Unit.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.cpy1Unit_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_cpy1Unit.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_cpy1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      managedObject.cpy1Unit_property.stopsBeingObserved (by: self.mObserversOf_cpy1Unit)
-    }
-    for entry in self.mObserversOf_cpy1Unit.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.cpy1Unit_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_cpy1Unit.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'cpx2Unit' stored property
   //····················································································································
 
-  private final var mObserversOf_cpx2Unit = EBWeakObserverSetRelay ()
+  private final var mObserversOf_cpx2Unit : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_cpx2Unit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_cpx2Unit.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.cpx2Unit_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_cpx2Unit {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.cpx2Unit_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_cpx2Unit = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_cpx2Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_cpx2Unit.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.cpx2Unit_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_cpx2Unit?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_cpx2Unit_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    /* for managedObject in inSet.values {
-      managedObject.cpx2Unit_property.startsToBeObserved (by: self.mObserversOf_cpx2Unit)
-    }*/
-    /* if !self.mObserversOf_cpx2Unit.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_cpx2Unit.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.cpx2Unit_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_cpx2Unit.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_cpx2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      managedObject.cpx2Unit_property.stopsBeingObserved (by: self.mObserversOf_cpx2Unit)
-    }
-    for entry in self.mObserversOf_cpx2Unit.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.cpx2Unit_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_cpx2Unit.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'cpy2Unit' stored property
   //····················································································································
 
-  private final var mObserversOf_cpy2Unit = EBWeakObserverSetRelay ()
+  private final var mObserversOf_cpy2Unit : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_cpy2Unit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_cpy2Unit.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.cpy2Unit_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_cpy2Unit {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.cpy2Unit_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_cpy2Unit = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_cpy2Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_cpy2Unit.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.cpy2Unit_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_cpy2Unit?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_cpy2Unit_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    /* for managedObject in inSet.values {
-      managedObject.cpy2Unit_property.startsToBeObserved (by: self.mObserversOf_cpy2Unit)
-    }*/
-    /* if !self.mObserversOf_cpy2Unit.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_cpy2Unit.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.cpy2Unit_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_cpy2Unit.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_cpy2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      managedObject.cpy2Unit_property.stopsBeingObserved (by: self.mObserversOf_cpy2Unit)
-    }
-    for entry in self.mObserversOf_cpy2Unit.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.cpy2Unit_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_cpy2Unit.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'x1' stored property
   //····················································································································
 
-  private final var mObserversOf_x1 = EBWeakObserverSetRelay ()
+  private final var mObserversOf_x1 : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_x1_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_x1.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x1_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_x1 {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.x1_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_x1 = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_x1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_x1.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x1_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_x1?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_x1_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    /* for managedObject in inSet.values {
-      managedObject.x1_property.startsToBeObserved (by: self.mObserversOf_x1)
-    }*/
-    /* if !self.mObserversOf_x1.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_x1.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.x1_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_x1.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      managedObject.x1_property.stopsBeingObserved (by: self.mObserversOf_x1)
-    }
-    for entry in self.mObserversOf_x1.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.x1_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_x1.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private final var mObserversOf_strokeBezierPath = EBWeakObserverSetRelay ()
+  private final var mObserversOf_strokeBezierPath : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_strokeBezierPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_strokeBezierPath.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.strokeBezierPath_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_strokeBezierPath {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.strokeBezierPath_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_strokeBezierPath = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_strokeBezierPath_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_strokeBezierPath.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.strokeBezierPath_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_strokeBezierPath?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_strokeBezierPath.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.strokeBezierPath_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_strokeBezierPath.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_strokeBezierPath.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.strokeBezierPath_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_strokeBezierPath.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay = EBWeakObserverSetRelay ()
+  private final var mObserversOf_objectDisplay : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_objectDisplay.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.objectDisplay_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_objectDisplay {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_objectDisplay = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_objectDisplay.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.objectDisplay_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_objectDisplay?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_objectDisplay.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.objectDisplay_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_objectDisplay.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_objectDisplay.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.objectDisplay_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_objectDisplay.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay = EBWeakObserverSetRelay ()
+  private final var mObserversOf_selectionDisplay : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_selectionDisplay.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.selectionDisplay_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_selectionDisplay {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_selectionDisplay = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_selectionDisplay.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.selectionDisplay_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_selectionDisplay?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_selectionDisplay.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.selectionDisplay_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_selectionDisplay.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_selectionDisplay.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.selectionDisplay_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_selectionDisplay.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var mObserversOf_issues = EBWeakObserverSetRelay ()
+  private final var mObserversOf_issues : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_issues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_issues.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.issues_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_issues {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.issues_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_issues = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_issues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_issues.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.issues_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_issues?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_issues.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.issues_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_issues.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_issues.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.issues_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_issues.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
 

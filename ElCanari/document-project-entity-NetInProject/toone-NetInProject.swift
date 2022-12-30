@@ -25,8 +25,12 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
       oldValue.wireColor_property.stopsBeingObserved (by: self.wireColor_property) // Transient property
       oldValue.netSchematicPointsInfo_property.stopsBeingObserved (by: self.netSchematicPointsInfo_property) // Transient property
       oldValue.trackCount_property.stopsBeingObserved (by: self.trackCount_property) // Transient property
-      oldValue.mPoints_property.stopsBeingObserved (by: self.mObserversOf_mPoints) // to Many
-      oldValue.mTracks_property.stopsBeingObserved (by: self.mObserversOf_mTracks) // to Many
+      if let relay = self.mObserversOf_mPoints { // to Many
+        oldValue.mPoints_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mTracks { // to Many
+        oldValue.mTracks_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -39,8 +43,12 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
       newValue.wireColor_property.startsToBeObserved (by: self.wireColor_property) // Transient property
       newValue.netSchematicPointsInfo_property.startsToBeObserved (by: self.netSchematicPointsInfo_property) // Transient property
       newValue.trackCount_property.startsToBeObserved (by: self.trackCount_property) // Transient property
-      newValue.mPoints_property.startsToBeObserved(by: self.mObserversOf_mPoints) // to Many
-      newValue.mTracks_property.startsToBeObserved(by: self.mObserversOf_mTracks) // to Many
+      if let relay = self.mObserversOf_mPoints { // to Many
+        newValue.mPoints_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mTracks { // to Many
+        newValue.mTracks_property.startsToBeObserved (by: relay)
+      }
     }
   }
 
@@ -102,48 +110,52 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observable toMany property: mPoints
   //····················································································································
 
-  private final var mObserversOf_mPoints = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mPoints : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mPoints_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mPoints.insert (inObserver)
-    /* if let object = self.propval {
-      object.mPoints_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mPoints {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.mPoints_property.startsToBeObserved (by: relay)
+      self.mObserversOf_mPoints = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mPoints_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mPoints.remove (inObserver)
-    /* if let object = self.propval {
-      object.mPoints_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_mPoints?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: mTracks
   //····················································································································
 
-  private final var mObserversOf_mTracks = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mTracks : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mTracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mTracks.insert (inObserver)
-    /* if let object = self.propval {
-      object.mTracks_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mTracks {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.mTracks_property.startsToBeObserved (by: relay)
+      self.mObserversOf_mTracks = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mTracks_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mTracks.remove (inObserver)
-    /* if let object = self.propval {
-      object.mTracks_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_mTracks?.remove (observer: inObserver)
   }
 
   //····················································································································

@@ -25,8 +25,12 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
       oldValue.instanceCount_property.stopsBeingObserved (by: self.instanceCount_property) // Transient property
       oldValue.documentSize_property.stopsBeingObserved (by: self.documentSize_property) // Transient property
       oldValue.pinNameShape_property.stopsBeingObserved (by: self.pinNameShape_property) // Transient property
-      oldValue.mInstances_property.stopsBeingObserved (by: self.mObserversOf_mInstances) // to Many
-      oldValue.mPinTypes_property.stopsBeingObserved (by: self.mObserversOf_mPinTypes) // to Many
+      if let relay = self.mObserversOf_mInstances { // to Many
+        oldValue.mInstances_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mPinTypes { // to Many
+        oldValue.mPinTypes_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -39,8 +43,12 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
       newValue.instanceCount_property.startsToBeObserved (by: self.instanceCount_property) // Transient property
       newValue.documentSize_property.startsToBeObserved (by: self.documentSize_property) // Transient property
       newValue.pinNameShape_property.startsToBeObserved (by: self.pinNameShape_property) // Transient property
-      newValue.mInstances_property.startsToBeObserved(by: self.mObserversOf_mInstances) // to Many
-      newValue.mPinTypes_property.startsToBeObserved(by: self.mObserversOf_mPinTypes) // to Many
+      if let relay = self.mObserversOf_mInstances { // to Many
+        newValue.mInstances_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mPinTypes { // to Many
+        newValue.mPinTypes_property.startsToBeObserved (by: relay)
+      }
     }
   }
 
@@ -102,48 +110,52 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observable toMany property: mInstances
   //····················································································································
 
-  private final var mObserversOf_mInstances = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mInstances : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mInstances.insert (inObserver)
-    /* if let object = self.propval {
-      object.mInstances_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mInstances {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.mInstances_property.startsToBeObserved (by: relay)
+      self.mObserversOf_mInstances = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mInstances_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mInstances.remove (inObserver)
-    /* if let object = self.propval {
-      object.mInstances_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_mInstances?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: mPinTypes
   //····················································································································
 
-  private final var mObserversOf_mPinTypes = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mPinTypes : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mPinTypes_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mPinTypes.insert (inObserver)
-    /* if let object = self.propval {
-      object.mPinTypes_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mPinTypes {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.mPinTypes_property.startsToBeObserved (by: relay)
+      self.mObserversOf_mPinTypes = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mPinTypes_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mPinTypes.remove (inObserver)
-    /* if let object = self.propval {
-      object.mPinTypes_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_mPinTypes?.remove (observer: inObserver)
   }
 
   //····················································································································

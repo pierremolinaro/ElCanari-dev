@@ -17,19 +17,39 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     for managedObject in inRemovedSet.values {
-      managedObject.pinName_property.stopsBeingObserved (by: self.mObserversOf_pinName) // Transient property
-      managedObject.symbolName_property.stopsBeingObserved (by: self.mObserversOf_symbolName) // Transient property
-      managedObject.pinQualifiedName_property.stopsBeingObserved (by: self.mObserversOf_pinQualifiedName) // Transient property
-      managedObject.isConnected_property.stopsBeingObserved (by: self.mObserversOf_isConnected) // Transient property
-      managedObject.numberShape_property.stopsBeingObserved (by: self.mObserversOf_numberShape) // Transient property
+      if let relay = self.mObserversOf_pinName { // Transient property
+        managedObject.pinName_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_symbolName { // Transient property
+        managedObject.symbolName_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_pinQualifiedName { // Transient property
+        managedObject.pinQualifiedName_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_isConnected { // Transient property
+        managedObject.isConnected_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_numberShape { // Transient property
+        managedObject.numberShape_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
-      managedObject.pinName_property.startsToBeObserved (by: self.mObserversOf_pinName) // Transient property
-      managedObject.symbolName_property.startsToBeObserved (by: self.mObserversOf_symbolName) // Transient property
-      managedObject.pinQualifiedName_property.startsToBeObserved (by: self.mObserversOf_pinQualifiedName) // Transient property
-      managedObject.isConnected_property.startsToBeObserved (by: self.mObserversOf_isConnected) // Transient property
-      managedObject.numberShape_property.startsToBeObserved (by: self.mObserversOf_numberShape) // Transient property
+      if let relay = self.mObserversOf_pinName { // Transient property
+        managedObject.pinName_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_symbolName { // Transient property
+        managedObject.symbolName_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_pinQualifiedName { // Transient property
+        managedObject.pinQualifiedName_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_isConnected { // Transient property
+        managedObject.isConnected_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_numberShape { // Transient property
+        managedObject.numberShape_property.startsToBeObserved (by: relay)
+      }
     }
   }
 
@@ -37,321 +57,146 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
   //   Observers of 'pinName' transient property
   //····················································································································
 
-  private final var mObserversOf_pinName = EBWeakObserverSetRelay ()
+  private final var mObserversOf_pinName : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_pinName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_pinName.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.pinName_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_pinName {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.pinName_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_pinName = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_pinName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_pinName.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.pinName_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_pinName?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_pinName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_pinName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.pinName_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_pinName.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_pinName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_pinName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.pinName_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_pinName.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'symbolName' transient property
   //····················································································································
 
-  private final var mObserversOf_symbolName = EBWeakObserverSetRelay ()
+  private final var mObserversOf_symbolName : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_symbolName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_symbolName.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.symbolName_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_symbolName {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.symbolName_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_symbolName = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_symbolName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_symbolName.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.symbolName_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_symbolName?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_symbolName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_symbolName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.symbolName_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_symbolName.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_symbolName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_symbolName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.symbolName_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_symbolName.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'pinQualifiedName' transient property
   //····················································································································
 
-  private final var mObserversOf_pinQualifiedName = EBWeakObserverSetRelay ()
+  private final var mObserversOf_pinQualifiedName : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_pinQualifiedName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_pinQualifiedName.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.pinQualifiedName_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_pinQualifiedName {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.pinQualifiedName_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_pinQualifiedName = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_pinQualifiedName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_pinQualifiedName.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.pinQualifiedName_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_pinQualifiedName?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_pinQualifiedName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_pinQualifiedName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.pinQualifiedName_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_pinQualifiedName.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_pinQualifiedName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_pinQualifiedName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.pinQualifiedName_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_pinQualifiedName.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'isConnected' transient property
   //····················································································································
 
-  private final var mObserversOf_isConnected = EBWeakObserverSetRelay ()
+  private final var mObserversOf_isConnected : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_isConnected_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_isConnected.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.isConnected_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_isConnected {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.isConnected_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_isConnected = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_isConnected_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_isConnected.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.isConnected_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_isConnected?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_isConnected.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.isConnected_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_isConnected.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_isConnected.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.isConnected_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_isConnected.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'numberShape' transient property
   //····················································································································
 
-  private final var mObserversOf_numberShape = EBWeakObserverSetRelay ()
+  private final var mObserversOf_numberShape : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_numberShape_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_numberShape.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.numberShape_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_numberShape {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.numberShape_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_numberShape = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_numberShape_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_numberShape.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.numberShape_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_numberShape?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_numberShape_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_numberShape.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.numberShape_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_numberShape.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_numberShape_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_numberShape.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.numberShape_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_numberShape.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
 
@@ -544,7 +389,7 @@ class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstan
 
   //····················································································································
 
-  override final var propval : EBReferenceArray <SymbolPinInstanceInDevice> { return self.mInternalArrayValue }
+  final override var propval : EBReferenceArray <SymbolPinInstanceInDevice> { return self.mInternalArrayValue }
 
   //····················································································································
 

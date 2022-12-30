@@ -50,8 +50,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       oldValue.hasInnerElements_property.stopsBeingObserved (by: self.hasInnerElements_property) // Transient property
       oldValue.hasSixLayers_property.stopsBeingObserved (by: self.hasSixLayers_property) // Transient property
       oldValue.boardOutlineRectDisplay_property.stopsBeingObserved (by: self.boardOutlineRectDisplay_property) // Transient property
-      oldValue.boardModels_property.stopsBeingObserved (by: self.mObserversOf_boardModels) // to Many
-      oldValue.boardInstances_property.stopsBeingObserved (by: self.mObserversOf_boardInstances) // to Many
+      if let relay = self.mObserversOf_boardModels { // to Many
+        oldValue.boardModels_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_boardInstances { // to Many
+        oldValue.boardInstances_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -89,8 +93,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       newValue.hasInnerElements_property.startsToBeObserved (by: self.hasInnerElements_property) // Transient property
       newValue.hasSixLayers_property.startsToBeObserved (by: self.hasSixLayers_property) // Transient property
       newValue.boardOutlineRectDisplay_property.startsToBeObserved (by: self.boardOutlineRectDisplay_property) // Transient property
-      newValue.boardModels_property.startsToBeObserved(by: self.mObserversOf_boardModels) // to Many
-      newValue.boardInstances_property.startsToBeObserved(by: self.mObserversOf_boardInstances) // to Many
+      if let relay = self.mObserversOf_boardModels { // to Many
+        newValue.boardModels_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_boardInstances { // to Many
+        newValue.boardInstances_property.startsToBeObserved (by: relay)
+      }
     }
   }
 
@@ -302,48 +310,52 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observable toMany property: boardModels
   //····················································································································
 
-  private final var mObserversOf_boardModels = EBWeakObserverSetRelay ()
+  private final var mObserversOf_boardModels : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_boardModels_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_boardModels.insert (inObserver)
-    /* if let object = self.propval {
-      object.boardModels_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_boardModels {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.boardModels_property.startsToBeObserved (by: relay)
+      self.mObserversOf_boardModels = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_boardModels_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_boardModels.remove (inObserver)
-    /* if let object = self.propval {
-      object.boardModels_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_boardModels?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: boardInstances
   //····················································································································
 
-  private final var mObserversOf_boardInstances = EBWeakObserverSetRelay ()
+  private final var mObserversOf_boardInstances : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_boardInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_boardInstances.insert (inObserver)
-    /* if let object = self.propval {
-      object.boardInstances_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_boardInstances {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.boardInstances_property.startsToBeObserved (by: relay)
+      self.mObserversOf_boardInstances = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_boardInstances_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_boardInstances.remove (inObserver)
-    /* if let object = self.propval {
-      object.boardInstances_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_boardInstances?.remove (observer: inObserver)
   }
 
   //····················································································································

@@ -17,19 +17,39 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     for managedObject in inRemovedSet.values {
-      managedObject.mSymbolInstanceName_property.stopsBeingObserved (by: self.mObserversOf_mSymbolInstanceName) // Stored property
-      managedObject.symbolAndTypeName_property.stopsBeingObserved (by: self.mObserversOf_symbolAndTypeName) // Transient property
-      managedObject.symbolTypeName_property.stopsBeingObserved (by: self.mObserversOf_symbolTypeName) // Transient property
-      managedObject.filledBezierPath_property.stopsBeingObserved (by: self.mObserversOf_filledBezierPath) // Transient property
-      managedObject.strokeBezierPath_property.stopsBeingObserved (by: self.mObserversOf_strokeBezierPath) // Transient property
+      if let relay = self.mObserversOf_mSymbolInstanceName { // Stored property
+        managedObject.mSymbolInstanceName_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_symbolAndTypeName { // Transient property
+        managedObject.symbolAndTypeName_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_symbolTypeName { // Transient property
+        managedObject.symbolTypeName_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_filledBezierPath { // Transient property
+        managedObject.filledBezierPath_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_strokeBezierPath { // Transient property
+        managedObject.strokeBezierPath_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
-      managedObject.mSymbolInstanceName_property.startsToBeObserved (by: self.mObserversOf_mSymbolInstanceName) // Stored property
-      managedObject.symbolAndTypeName_property.startsToBeObserved (by: self.mObserversOf_symbolAndTypeName) // Transient property
-      managedObject.symbolTypeName_property.startsToBeObserved (by: self.mObserversOf_symbolTypeName) // Transient property
-      managedObject.filledBezierPath_property.startsToBeObserved (by: self.mObserversOf_filledBezierPath) // Transient property
-      managedObject.strokeBezierPath_property.startsToBeObserved (by: self.mObserversOf_strokeBezierPath) // Transient property
+      if let relay = self.mObserversOf_mSymbolInstanceName { // Stored property
+        managedObject.mSymbolInstanceName_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_symbolAndTypeName { // Transient property
+        managedObject.symbolAndTypeName_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_symbolTypeName { // Transient property
+        managedObject.symbolTypeName_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_filledBezierPath { // Transient property
+        managedObject.filledBezierPath_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_strokeBezierPath { // Transient property
+        managedObject.strokeBezierPath_property.startsToBeObserved (by: relay)
+      }
     }
   }
 
@@ -37,330 +57,146 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
-  private final var mObserversOf_mSymbolInstanceName = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mSymbolInstanceName : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mSymbolInstanceName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mSymbolInstanceName.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mSymbolInstanceName_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mSymbolInstanceName {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mSymbolInstanceName_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mSymbolInstanceName = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mSymbolInstanceName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mSymbolInstanceName.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mSymbolInstanceName_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mSymbolInstanceName?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mSymbolInstanceName_toElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mSymbolInstanceName_property.startsToBeObserved (by: self.mObserversOf_mSymbolInstanceName)
-    }*/
-    /* if !self.mObserversOf_mSymbolInstanceName.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mSymbolInstanceName.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mSymbolInstanceName_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mSymbolInstanceName.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mSymbolInstanceName_property.stopsBeingObserved (by: self.mObserversOf_mSymbolInstanceName)
-    }
-    for entry in self.mObserversOf_mSymbolInstanceName.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mSymbolInstanceName_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mSymbolInstanceName.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'symbolAndTypeName' transient property
   //····················································································································
 
-  private final var mObserversOf_symbolAndTypeName = EBWeakObserverSetRelay ()
+  private final var mObserversOf_symbolAndTypeName : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_symbolAndTypeName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_symbolAndTypeName.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.symbolAndTypeName_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_symbolAndTypeName {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.symbolAndTypeName_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_symbolAndTypeName = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_symbolAndTypeName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_symbolAndTypeName.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.symbolAndTypeName_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_symbolAndTypeName?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_symbolAndTypeName_toElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_symbolAndTypeName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.symbolAndTypeName_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_symbolAndTypeName.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_symbolAndTypeName_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_symbolAndTypeName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.symbolAndTypeName_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_symbolAndTypeName.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'symbolTypeName' transient property
   //····················································································································
 
-  private final var mObserversOf_symbolTypeName = EBWeakObserverSetRelay ()
+  private final var mObserversOf_symbolTypeName : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_symbolTypeName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_symbolTypeName.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.symbolTypeName_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_symbolTypeName {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.symbolTypeName_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_symbolTypeName = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_symbolTypeName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_symbolTypeName.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.symbolTypeName_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_symbolTypeName?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_symbolTypeName_toElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_symbolTypeName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.symbolTypeName_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_symbolTypeName.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_symbolTypeName_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_symbolTypeName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.symbolTypeName_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_symbolTypeName.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'filledBezierPath' transient property
   //····················································································································
 
-  private final var mObserversOf_filledBezierPath = EBWeakObserverSetRelay ()
+  private final var mObserversOf_filledBezierPath : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_filledBezierPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_filledBezierPath.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.filledBezierPath_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_filledBezierPath {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.filledBezierPath_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_filledBezierPath = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_filledBezierPath_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_filledBezierPath.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.filledBezierPath_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_filledBezierPath?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_filledBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_filledBezierPath.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.filledBezierPath_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_filledBezierPath.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_filledBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_filledBezierPath.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.filledBezierPath_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_filledBezierPath.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private final var mObserversOf_strokeBezierPath = EBWeakObserverSetRelay ()
+  private final var mObserversOf_strokeBezierPath : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_strokeBezierPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_strokeBezierPath.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.strokeBezierPath_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_strokeBezierPath {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.strokeBezierPath_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_strokeBezierPath = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_strokeBezierPath_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_strokeBezierPath.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.strokeBezierPath_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_strokeBezierPath?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_strokeBezierPath.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.strokeBezierPath_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_strokeBezierPath.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_strokeBezierPath.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.strokeBezierPath_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_strokeBezierPath.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
 
@@ -536,7 +372,7 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
 
   //····················································································································
 
-  override final var propval : EBReferenceArray <DeviceSymbolInstanceInProject> { return self.mInternalArrayValue }
+  final override var propval : EBReferenceArray <DeviceSymbolInstanceInProject> { return self.mInternalArrayValue }
 
   //····················································································································
 

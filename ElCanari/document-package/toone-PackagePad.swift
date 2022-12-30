@@ -45,7 +45,9 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
       oldValue.slavePadCount_property.stopsBeingObserved (by: self.slavePadCount_property) // Transient property
       oldValue.masterPadObjectIndex_property.stopsBeingObserved (by: self.masterPadObjectIndex_property) // Transient property
       oldValue.padNumberDisplay_property.stopsBeingObserved (by: self.padNumberDisplay_property) // Transient property
-      oldValue.slaves_property.stopsBeingObserved (by: self.mObserversOf_slaves) // to Many
+      if let relay = self.mObserversOf_slaves { // to Many
+        oldValue.slaves_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -78,7 +80,9 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
       newValue.slavePadCount_property.startsToBeObserved (by: self.slavePadCount_property) // Transient property
       newValue.masterPadObjectIndex_property.startsToBeObserved (by: self.masterPadObjectIndex_property) // Transient property
       newValue.padNumberDisplay_property.startsToBeObserved (by: self.padNumberDisplay_property) // Transient property
-      newValue.slaves_property.startsToBeObserved(by: self.mObserversOf_slaves) // to Many
+      if let relay = self.mObserversOf_slaves { // to Many
+        newValue.slaves_property.startsToBeObserved (by: relay)
+      }
     }
   }
 
@@ -260,24 +264,26 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //   Observable toMany property: slaves
   //····················································································································
 
-  private final var mObserversOf_slaves = EBWeakObserverSetRelay ()
+  private final var mObserversOf_slaves : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_slaves_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_slaves.insert (inObserver)
-    /* if let object = self.propval {
-      object.slaves_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_slaves {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.slaves_property.startsToBeObserved (by: relay)
+      self.mObserversOf_slaves = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_slaves_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_slaves.remove (inObserver)
-    /* if let object = self.propval {
-      object.slaves_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_slaves?.remove (observer: inObserver)
   }
 
   //····················································································································

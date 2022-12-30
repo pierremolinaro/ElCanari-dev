@@ -17,19 +17,39 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     for managedObject in inRemovedSet.values {
-      managedObject.mPath_property.stopsBeingObserved (by: self.mObserversOf_mPath) // Stored property
-      managedObject.mUses_property.stopsBeingObserved (by: self.mObserversOf_mUses) // Stored property
-      managedObject.mLibraryRepositoryURL_property.stopsBeingObserved (by: self.mObserversOf_mLibraryRepositoryURL) // Stored property
-      managedObject.mUserAndPasswordTag_property.stopsBeingObserved (by: self.mObserversOf_mUserAndPasswordTag) // Stored property
-      managedObject.mStatusImage_property.stopsBeingObserved (by: self.mObserversOf_mStatusImage) // Transient property
+      if let relay = self.mObserversOf_mPath { // Stored property
+        managedObject.mPath_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mUses { // Stored property
+        managedObject.mUses_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mLibraryRepositoryURL { // Stored property
+        managedObject.mLibraryRepositoryURL_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mUserAndPasswordTag { // Stored property
+        managedObject.mUserAndPasswordTag_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mStatusImage { // Transient property
+        managedObject.mStatusImage_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
-      managedObject.mPath_property.startsToBeObserved (by: self.mObserversOf_mPath) // Stored property
-      managedObject.mUses_property.startsToBeObserved (by: self.mObserversOf_mUses) // Stored property
-      managedObject.mLibraryRepositoryURL_property.startsToBeObserved (by: self.mObserversOf_mLibraryRepositoryURL) // Stored property
-      managedObject.mUserAndPasswordTag_property.startsToBeObserved (by: self.mObserversOf_mUserAndPasswordTag) // Stored property
-      managedObject.mStatusImage_property.startsToBeObserved (by: self.mObserversOf_mStatusImage) // Transient property
+      if let relay = self.mObserversOf_mPath { // Stored property
+        managedObject.mPath_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mUses { // Stored property
+        managedObject.mUses_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mLibraryRepositoryURL { // Stored property
+        managedObject.mLibraryRepositoryURL_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mUserAndPasswordTag { // Stored property
+        managedObject.mUserAndPasswordTag_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mStatusImage { // Transient property
+        managedObject.mStatusImage_property.startsToBeObserved (by: relay)
+      }
     }
   }
 
@@ -37,357 +57,146 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //   Observers of 'mPath' stored property
   //····················································································································
 
-  private final var mObserversOf_mPath = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mPath : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mPath.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mPath_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mPath {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mPath_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mPath = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mPath_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mPath.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mPath_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mPath?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mPath_toElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
-    /* for managedObject in inSet.values {
-      managedObject.mPath_property.startsToBeObserved (by: self.mObserversOf_mPath)
-    }*/
-    /* if !self.mObserversOf_mPath.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mPath.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mPath_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mPath.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mPath_fromElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
-    for managedObject in inSet.values {
-      managedObject.mPath_property.stopsBeingObserved (by: self.mObserversOf_mPath)
-    }
-    for entry in self.mObserversOf_mPath.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mPath_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mPath.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mUses' stored property
   //····················································································································
 
-  private final var mObserversOf_mUses = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mUses : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mUses_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mUses.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mUses_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mUses {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mUses_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mUses = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mUses_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mUses.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mUses_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mUses?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mUses_toElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
-    /* for managedObject in inSet.values {
-      managedObject.mUses_property.startsToBeObserved (by: self.mObserversOf_mUses)
-    }*/
-    /* if !self.mObserversOf_mUses.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mUses.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mUses_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mUses.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mUses_fromElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
-    for managedObject in inSet.values {
-      managedObject.mUses_property.stopsBeingObserved (by: self.mObserversOf_mUses)
-    }
-    for entry in self.mObserversOf_mUses.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mUses_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mUses.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mLibraryRepositoryURL' stored property
   //····················································································································
 
-  private final var mObserversOf_mLibraryRepositoryURL = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mLibraryRepositoryURL : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mLibraryRepositoryURL_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mLibraryRepositoryURL.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mLibraryRepositoryURL_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mLibraryRepositoryURL {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mLibraryRepositoryURL_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mLibraryRepositoryURL = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mLibraryRepositoryURL_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mLibraryRepositoryURL.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mLibraryRepositoryURL_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mLibraryRepositoryURL?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
-    /* for managedObject in inSet.values {
-      managedObject.mLibraryRepositoryURL_property.startsToBeObserved (by: self.mObserversOf_mLibraryRepositoryURL)
-    }*/
-    /* if !self.mObserversOf_mLibraryRepositoryURL.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mLibraryRepositoryURL.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mLibraryRepositoryURL_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mLibraryRepositoryURL.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
-    for managedObject in inSet.values {
-      managedObject.mLibraryRepositoryURL_property.stopsBeingObserved (by: self.mObserversOf_mLibraryRepositoryURL)
-    }
-    for entry in self.mObserversOf_mLibraryRepositoryURL.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mLibraryRepositoryURL_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mLibraryRepositoryURL.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mUserAndPasswordTag' stored property
   //····················································································································
 
-  private final var mObserversOf_mUserAndPasswordTag = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mUserAndPasswordTag : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mUserAndPasswordTag_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mUserAndPasswordTag.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mUserAndPasswordTag_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mUserAndPasswordTag {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mUserAndPasswordTag_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mUserAndPasswordTag = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mUserAndPasswordTag_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mUserAndPasswordTag.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mUserAndPasswordTag_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mUserAndPasswordTag?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mUserAndPasswordTag_toElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
-    /* for managedObject in inSet.values {
-      managedObject.mUserAndPasswordTag_property.startsToBeObserved (by: self.mObserversOf_mUserAndPasswordTag)
-    }*/
-    /* if !self.mObserversOf_mUserAndPasswordTag.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mUserAndPasswordTag.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mUserAndPasswordTag_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mUserAndPasswordTag.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mUserAndPasswordTag_fromElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
-    for managedObject in inSet.values {
-      managedObject.mUserAndPasswordTag_property.stopsBeingObserved (by: self.mObserversOf_mUserAndPasswordTag)
-    }
-    for entry in self.mObserversOf_mUserAndPasswordTag.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mUserAndPasswordTag_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mUserAndPasswordTag.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mStatusImage' transient property
   //····················································································································
 
-  private final var mObserversOf_mStatusImage = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mStatusImage : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mStatusImage_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mStatusImage.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mStatusImage_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mStatusImage {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mStatusImage_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mStatusImage = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_mStatusImage_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mStatusImage.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mStatusImage_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mStatusImage?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_mStatusImage_toElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_mStatusImage.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.mStatusImage_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_mStatusImage.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_mStatusImage_fromElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_mStatusImage.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.mStatusImage_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_mStatusImage.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
 
@@ -504,7 +313,7 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue.values)
+      return .single (self.propval.values)
     case .multiple :
       return .multiple
     }
@@ -685,7 +494,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
 
   //····················································································································
 
-  override final var propval : EBReferenceArray <CanariLibraryEntry> { return self.mInternalArrayValue }
+  final override var propval : EBReferenceArray <CanariLibraryEntry> { return self.mInternalArrayValue }
 
   //····················································································································
 

@@ -43,7 +43,9 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       oldValue.netUsage_property.stopsBeingObserved (by: self.netUsage_property) // Transient property
       oldValue.netsDescription_property.stopsBeingObserved (by: self.netsDescription_property) // Transient property
       oldValue.netWarningCount_property.stopsBeingObserved (by: self.netWarningCount_property) // Transient property
-      oldValue.mNets_property.stopsBeingObserved (by: self.mObserversOf_mNets) // to Many
+      if let relay = self.mObserversOf_mNets { // to Many
+        oldValue.mNets_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -74,7 +76,9 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       newValue.netUsage_property.startsToBeObserved (by: self.netUsage_property) // Transient property
       newValue.netsDescription_property.startsToBeObserved (by: self.netsDescription_property) // Transient property
       newValue.netWarningCount_property.startsToBeObserved (by: self.netWarningCount_property) // Transient property
-      newValue.mNets_property.startsToBeObserved(by: self.mObserversOf_mNets) // to Many
+      if let relay = self.mObserversOf_mNets { // to Many
+        newValue.mNets_property.startsToBeObserved (by: relay)
+      }
     }
   }
 
@@ -244,24 +248,26 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observable toMany property: mNets
   //····················································································································
 
-  private final var mObserversOf_mNets = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mNets : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mNets_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mNets.insert (inObserver)
-    /* if let object = self.propval {
-      object.mNets_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mNets {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.mNets_property.startsToBeObserved (by: relay)
+      self.mObserversOf_mNets = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mNets_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mNets.remove (inObserver)
-    /* if let object = self.propval {
-      object.mNets_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_mNets?.remove (observer: inObserver)
   }
 
   //····················································································································

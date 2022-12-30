@@ -34,7 +34,9 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       oldValue.hasDataWarning_property.stopsBeingObserved (by: self.hasDataWarning_property) // Transient property
       oldValue.emptyDrillFileExtension_property.stopsBeingObserved (by: self.emptyDrillFileExtension_property) // Transient property
       oldValue.signatureForERCChecking_property.stopsBeingObserved (by: self.signatureForERCChecking_property) // Transient property
-      oldValue.fileGenerationParameterArray_property.stopsBeingObserved (by: self.mObserversOf_fileGenerationParameterArray) // to Many
+      if let relay = self.mObserversOf_fileGenerationParameterArray { // to Many
+        oldValue.fileGenerationParameterArray_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -56,7 +58,9 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       newValue.hasDataWarning_property.startsToBeObserved (by: self.hasDataWarning_property) // Transient property
       newValue.emptyDrillFileExtension_property.startsToBeObserved (by: self.emptyDrillFileExtension_property) // Transient property
       newValue.signatureForERCChecking_property.startsToBeObserved (by: self.signatureForERCChecking_property) // Transient property
-      newValue.fileGenerationParameterArray_property.startsToBeObserved(by: self.mObserversOf_fileGenerationParameterArray) // to Many
+      if let relay = self.mObserversOf_fileGenerationParameterArray { // to Many
+        newValue.fileGenerationParameterArray_property.startsToBeObserved (by: relay)
+      }
     }
   }
 
@@ -172,24 +176,26 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observable toMany property: fileGenerationParameterArray
   //····················································································································
 
-  private final var mObserversOf_fileGenerationParameterArray = EBWeakObserverSetRelay ()
+  private final var mObserversOf_fileGenerationParameterArray : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_fileGenerationParameterArray_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_fileGenerationParameterArray.insert (inObserver)
-    /* if let object = self.propval {
-      object.fileGenerationParameterArray_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_fileGenerationParameterArray {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.fileGenerationParameterArray_property.startsToBeObserved (by: relay)
+      self.mObserversOf_fileGenerationParameterArray = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_fileGenerationParameterArray_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_fileGenerationParameterArray.remove (inObserver)
-    /* if let object = self.propval {
-      object.fileGenerationParameterArray_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_fileGenerationParameterArray?.remove (observer: inObserver)
   }
 
   //····················································································································

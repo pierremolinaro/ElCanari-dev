@@ -17,11 +17,15 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     for managedObject in inRemovedSet.values {
-      managedObject.padNumber_property.stopsBeingObserved (by: self.mObserversOf_padNumber) // Stored property
+      if let relay = self.mObserversOf_padNumber { // Stored property
+        managedObject.padNumber_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
-      managedObject.padNumber_property.startsToBeObserved (by: self.mObserversOf_padNumber) // Stored property
+      if let relay = self.mObserversOf_padNumber { // Stored property
+        managedObject.padNumber_property.startsToBeObserved (by: relay)
+      }
     }
   }
 
@@ -29,74 +33,30 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
   //   Observers of 'padNumber' stored property
   //····················································································································
 
-  private final var mObserversOf_padNumber = EBWeakObserverSetRelay ()
+  private final var mObserversOf_padNumber : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_padNumber_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_padNumber.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.padNumber_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_padNumber {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.padNumber_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_padNumber = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_padNumber_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_padNumber.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.padNumber_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_padNumber?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_padNumber_toElementsOfSet (_ inSet : EBReferenceSet <ForbiddenPadNumber>) {
-    /* for managedObject in inSet.values {
-      managedObject.padNumber_property.startsToBeObserved (by: self.mObserversOf_padNumber)
-    }*/
-    /* if !self.mObserversOf_padNumber.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_padNumber.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.padNumber_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_padNumber.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_padNumber_fromElementsOfSet (_ inSet : EBReferenceSet <ForbiddenPadNumber>) {
-    for managedObject in inSet.values {
-      managedObject.padNumber_property.stopsBeingObserved (by: self.mObserversOf_padNumber)
-    }
-    for entry in self.mObserversOf_padNumber.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.padNumber_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_padNumber.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
 
@@ -272,7 +232,7 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
 
   //····················································································································
 
-  override final var propval : EBReferenceArray <ForbiddenPadNumber> { return self.mInternalArrayValue }
+  final override var propval : EBReferenceArray <ForbiddenPadNumber> { return self.mInternalArrayValue }
 
   //····················································································································
 

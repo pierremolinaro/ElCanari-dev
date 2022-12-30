@@ -58,8 +58,12 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
       oldValue.selectionDisplay_property.stopsBeingObserved (by: self.selectionDisplay_property) // Transient property
       oldValue.unplacedSymbols_property.stopsBeingObserved (by: self.unplacedSymbols_property) // Transient property
       oldValue.objectDisplay_property.stopsBeingObserved (by: self.objectDisplay_property) // Transient property
-      oldValue.mConnectors_property.stopsBeingObserved (by: self.mObserversOf_mConnectors) // to Many
-      oldValue.mSymbols_property.stopsBeingObserved (by: self.mObserversOf_mSymbols) // to Many
+      if let relay = self.mObserversOf_mConnectors { // to Many
+        oldValue.mConnectors_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mSymbols { // to Many
+        oldValue.mSymbols_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -105,8 +109,12 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
       newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
       newValue.unplacedSymbols_property.startsToBeObserved (by: self.unplacedSymbols_property) // Transient property
       newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
-      newValue.mConnectors_property.startsToBeObserved(by: self.mObserversOf_mConnectors) // to Many
-      newValue.mSymbols_property.startsToBeObserved(by: self.mObserversOf_mSymbols) // to Many
+      if let relay = self.mObserversOf_mConnectors { // to Many
+        newValue.mConnectors_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mSymbols { // to Many
+        newValue.mSymbols_property.startsToBeObserved (by: relay)
+      }
     }
   }
 
@@ -366,48 +374,52 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observable toMany property: mConnectors
   //····················································································································
 
-  private final var mObserversOf_mConnectors = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mConnectors : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mConnectors_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mConnectors.insert (inObserver)
-    /* if let object = self.propval {
-      object.mConnectors_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mConnectors {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.mConnectors_property.startsToBeObserved (by: relay)
+      self.mObserversOf_mConnectors = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mConnectors_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mConnectors.remove (inObserver)
-    /* if let object = self.propval {
-      object.mConnectors_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_mConnectors?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: mSymbols
   //····················································································································
 
-  private final var mObserversOf_mSymbols = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mSymbols : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mSymbols_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mSymbols.insert (inObserver)
-    /* if let object = self.propval {
-      object.mSymbols_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mSymbols {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.mSymbols_property.startsToBeObserved (by: relay)
+      self.mObserversOf_mSymbols = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mSymbols_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mSymbols.remove (inObserver)
-    /* if let object = self.propval {
-      object.mSymbols_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_mSymbols?.remove (observer: inObserver)
   }
 
   //····················································································································

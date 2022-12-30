@@ -17,95 +17,267 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     for managedObject in inRemovedSet.values {
-      managedObject.mSlavePadsShouldBeRouted_property.stopsBeingObserved (by: self.mObserversOf_mSlavePadsShouldBeRouted) // Stored property
-      managedObject.mX_property.stopsBeingObserved (by: self.mObserversOf_mX) // Stored property
-      managedObject.mY_property.stopsBeingObserved (by: self.mObserversOf_mY) // Stored property
-      managedObject.mRotation_property.stopsBeingObserved (by: self.mObserversOf_mRotation) // Stored property
-      managedObject.mSide_property.stopsBeingObserved (by: self.mObserversOf_mSide) // Stored property
-      managedObject.mDisplayLegend_property.stopsBeingObserved (by: self.mObserversOf_mDisplayLegend) // Stored property
-      managedObject.mNameIsVisibleInBoard_property.stopsBeingObserved (by: self.mObserversOf_mNameIsVisibleInBoard) // Stored property
-      managedObject.mXName_property.stopsBeingObserved (by: self.mObserversOf_mXName) // Stored property
-      managedObject.mYName_property.stopsBeingObserved (by: self.mObserversOf_mYName) // Stored property
-      managedObject.mNameFontSize_property.stopsBeingObserved (by: self.mObserversOf_mNameFontSize) // Stored property
-      managedObject.mNameRotation_property.stopsBeingObserved (by: self.mObserversOf_mNameRotation) // Stored property
-      managedObject.mValueIsVisibleInBoard_property.stopsBeingObserved (by: self.mObserversOf_mValueIsVisibleInBoard) // Stored property
-      managedObject.mXValue_property.stopsBeingObserved (by: self.mObserversOf_mXValue) // Stored property
-      managedObject.mYValue_property.stopsBeingObserved (by: self.mObserversOf_mYValue) // Stored property
-      managedObject.mValueFontSize_property.stopsBeingObserved (by: self.mObserversOf_mValueFontSize) // Stored property
-      managedObject.mValueRotation_property.stopsBeingObserved (by: self.mObserversOf_mValueRotation) // Stored property
-      managedObject.mComponentValue_property.stopsBeingObserved (by: self.mObserversOf_mComponentValue) // Stored property
-      managedObject.mNamePrefix_property.stopsBeingObserved (by: self.mObserversOf_mNamePrefix) // Stored property
-      managedObject.mNameIndex_property.stopsBeingObserved (by: self.mObserversOf_mNameIndex) // Stored property
-      managedObject.mXUnit_property.stopsBeingObserved (by: self.mObserversOf_mXUnit) // Stored property
-      managedObject.mYUnit_property.stopsBeingObserved (by: self.mObserversOf_mYUnit) // Stored property
-      managedObject.deviceName_property.stopsBeingObserved (by: self.mObserversOf_deviceName) // Transient property
-      managedObject.signatureForERCChecking_property.stopsBeingObserved (by: self.mObserversOf_signatureForERCChecking) // Transient property
-      managedObject.packagePadDictionary_property.stopsBeingObserved (by: self.mObserversOf_packagePadDictionary) // Transient property
-      managedObject.selectedPackageName_property.stopsBeingObserved (by: self.mObserversOf_selectedPackageName) // Transient property
-      managedObject.availablePackages_property.stopsBeingObserved (by: self.mObserversOf_availablePackages) // Transient property
-      managedObject.issues_property.stopsBeingObserved (by: self.mObserversOf_issues) // Transient property
-      managedObject.componentIsPlacedInBoard_property.stopsBeingObserved (by: self.mObserversOf_componentIsPlacedInBoard) // Transient property
-      managedObject.componentIsPlacedInBoardString_property.stopsBeingObserved (by: self.mObserversOf_componentIsPlacedInBoardString) // Transient property
-      managedObject.strokeBezierPath_property.stopsBeingObserved (by: self.mObserversOf_strokeBezierPath) // Transient property
-      managedObject.pinPadAssignments_property.stopsBeingObserved (by: self.mObserversOf_pinPadAssignments) // Transient property
-      managedObject.hasSlavePads_property.stopsBeingObserved (by: self.mObserversOf_hasSlavePads) // Transient property
-      managedObject.placementInSchematic_property.stopsBeingObserved (by: self.mObserversOf_placementInSchematic) // Transient property
-      managedObject.deviceSymbolDictionary_property.stopsBeingObserved (by: self.mObserversOf_deviceSymbolDictionary) // Transient property
-      managedObject.componentNameFontName_property.stopsBeingObserved (by: self.mObserversOf_componentNameFontName) // Transient property
-      managedObject.componentValueFontName_property.stopsBeingObserved (by: self.mObserversOf_componentValueFontName) // Transient property
-      managedObject.componentPadDictionary_property.stopsBeingObserved (by: self.mObserversOf_componentPadDictionary) // Transient property
-      managedObject.padNetDictionary_property.stopsBeingObserved (by: self.mObserversOf_padNetDictionary) // Transient property
-      managedObject.componentName_property.stopsBeingObserved (by: self.mObserversOf_componentName) // Transient property
-      managedObject.selectionDisplay_property.stopsBeingObserved (by: self.mObserversOf_selectionDisplay) // Transient property
-      managedObject.unplacedSymbols_property.stopsBeingObserved (by: self.mObserversOf_unplacedSymbols) // Transient property
-      managedObject.objectDisplay_property.stopsBeingObserved (by: self.mObserversOf_objectDisplay) // Transient property
-      managedObject.mPackages_property.stopsBeingObserved (by: self.mObserversOf_mPackages) // ToMany proxy
+      if let relay = self.mObserversOf_mSlavePadsShouldBeRouted { // Stored property
+        managedObject.mSlavePadsShouldBeRouted_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mX { // Stored property
+        managedObject.mX_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mY { // Stored property
+        managedObject.mY_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mRotation { // Stored property
+        managedObject.mRotation_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mSide { // Stored property
+        managedObject.mSide_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mDisplayLegend { // Stored property
+        managedObject.mDisplayLegend_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mNameIsVisibleInBoard { // Stored property
+        managedObject.mNameIsVisibleInBoard_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mXName { // Stored property
+        managedObject.mXName_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mYName { // Stored property
+        managedObject.mYName_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mNameFontSize { // Stored property
+        managedObject.mNameFontSize_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mNameRotation { // Stored property
+        managedObject.mNameRotation_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mValueIsVisibleInBoard { // Stored property
+        managedObject.mValueIsVisibleInBoard_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mXValue { // Stored property
+        managedObject.mXValue_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mYValue { // Stored property
+        managedObject.mYValue_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mValueFontSize { // Stored property
+        managedObject.mValueFontSize_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mValueRotation { // Stored property
+        managedObject.mValueRotation_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mComponentValue { // Stored property
+        managedObject.mComponentValue_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mNamePrefix { // Stored property
+        managedObject.mNamePrefix_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mNameIndex { // Stored property
+        managedObject.mNameIndex_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mXUnit { // Stored property
+        managedObject.mXUnit_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mYUnit { // Stored property
+        managedObject.mYUnit_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_deviceName { // Transient property
+        managedObject.deviceName_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_signatureForERCChecking { // Transient property
+        managedObject.signatureForERCChecking_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_packagePadDictionary { // Transient property
+        managedObject.packagePadDictionary_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_selectedPackageName { // Transient property
+        managedObject.selectedPackageName_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_availablePackages { // Transient property
+        managedObject.availablePackages_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_issues { // Transient property
+        managedObject.issues_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_componentIsPlacedInBoard { // Transient property
+        managedObject.componentIsPlacedInBoard_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_componentIsPlacedInBoardString { // Transient property
+        managedObject.componentIsPlacedInBoardString_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_strokeBezierPath { // Transient property
+        managedObject.strokeBezierPath_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_pinPadAssignments { // Transient property
+        managedObject.pinPadAssignments_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_hasSlavePads { // Transient property
+        managedObject.hasSlavePads_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_placementInSchematic { // Transient property
+        managedObject.placementInSchematic_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_deviceSymbolDictionary { // Transient property
+        managedObject.deviceSymbolDictionary_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_componentNameFontName { // Transient property
+        managedObject.componentNameFontName_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_componentValueFontName { // Transient property
+        managedObject.componentValueFontName_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_componentPadDictionary { // Transient property
+        managedObject.componentPadDictionary_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_padNetDictionary { // Transient property
+        managedObject.padNetDictionary_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_componentName { // Transient property
+        managedObject.componentName_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_selectionDisplay { // Transient property
+        managedObject.selectionDisplay_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_unplacedSymbols { // Transient property
+        managedObject.unplacedSymbols_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_objectDisplay { // Transient property
+        managedObject.objectDisplay_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mPackages { // Tomany proxy
+        managedObject.mPackages_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
-      managedObject.mSlavePadsShouldBeRouted_property.startsToBeObserved (by: self.mObserversOf_mSlavePadsShouldBeRouted) // Stored property
-      managedObject.mX_property.startsToBeObserved (by: self.mObserversOf_mX) // Stored property
-      managedObject.mY_property.startsToBeObserved (by: self.mObserversOf_mY) // Stored property
-      managedObject.mRotation_property.startsToBeObserved (by: self.mObserversOf_mRotation) // Stored property
-      managedObject.mSide_property.startsToBeObserved (by: self.mObserversOf_mSide) // Stored property
-      managedObject.mDisplayLegend_property.startsToBeObserved (by: self.mObserversOf_mDisplayLegend) // Stored property
-      managedObject.mNameIsVisibleInBoard_property.startsToBeObserved (by: self.mObserversOf_mNameIsVisibleInBoard) // Stored property
-      managedObject.mXName_property.startsToBeObserved (by: self.mObserversOf_mXName) // Stored property
-      managedObject.mYName_property.startsToBeObserved (by: self.mObserversOf_mYName) // Stored property
-      managedObject.mNameFontSize_property.startsToBeObserved (by: self.mObserversOf_mNameFontSize) // Stored property
-      managedObject.mNameRotation_property.startsToBeObserved (by: self.mObserversOf_mNameRotation) // Stored property
-      managedObject.mValueIsVisibleInBoard_property.startsToBeObserved (by: self.mObserversOf_mValueIsVisibleInBoard) // Stored property
-      managedObject.mXValue_property.startsToBeObserved (by: self.mObserversOf_mXValue) // Stored property
-      managedObject.mYValue_property.startsToBeObserved (by: self.mObserversOf_mYValue) // Stored property
-      managedObject.mValueFontSize_property.startsToBeObserved (by: self.mObserversOf_mValueFontSize) // Stored property
-      managedObject.mValueRotation_property.startsToBeObserved (by: self.mObserversOf_mValueRotation) // Stored property
-      managedObject.mComponentValue_property.startsToBeObserved (by: self.mObserversOf_mComponentValue) // Stored property
-      managedObject.mNamePrefix_property.startsToBeObserved (by: self.mObserversOf_mNamePrefix) // Stored property
-      managedObject.mNameIndex_property.startsToBeObserved (by: self.mObserversOf_mNameIndex) // Stored property
-      managedObject.mXUnit_property.startsToBeObserved (by: self.mObserversOf_mXUnit) // Stored property
-      managedObject.mYUnit_property.startsToBeObserved (by: self.mObserversOf_mYUnit) // Stored property
-      managedObject.deviceName_property.startsToBeObserved (by: self.mObserversOf_deviceName) // Transient property
-      managedObject.signatureForERCChecking_property.startsToBeObserved (by: self.mObserversOf_signatureForERCChecking) // Transient property
-      managedObject.packagePadDictionary_property.startsToBeObserved (by: self.mObserversOf_packagePadDictionary) // Transient property
-      managedObject.selectedPackageName_property.startsToBeObserved (by: self.mObserversOf_selectedPackageName) // Transient property
-      managedObject.availablePackages_property.startsToBeObserved (by: self.mObserversOf_availablePackages) // Transient property
-      managedObject.issues_property.startsToBeObserved (by: self.mObserversOf_issues) // Transient property
-      managedObject.componentIsPlacedInBoard_property.startsToBeObserved (by: self.mObserversOf_componentIsPlacedInBoard) // Transient property
-      managedObject.componentIsPlacedInBoardString_property.startsToBeObserved (by: self.mObserversOf_componentIsPlacedInBoardString) // Transient property
-      managedObject.strokeBezierPath_property.startsToBeObserved (by: self.mObserversOf_strokeBezierPath) // Transient property
-      managedObject.pinPadAssignments_property.startsToBeObserved (by: self.mObserversOf_pinPadAssignments) // Transient property
-      managedObject.hasSlavePads_property.startsToBeObserved (by: self.mObserversOf_hasSlavePads) // Transient property
-      managedObject.placementInSchematic_property.startsToBeObserved (by: self.mObserversOf_placementInSchematic) // Transient property
-      managedObject.deviceSymbolDictionary_property.startsToBeObserved (by: self.mObserversOf_deviceSymbolDictionary) // Transient property
-      managedObject.componentNameFontName_property.startsToBeObserved (by: self.mObserversOf_componentNameFontName) // Transient property
-      managedObject.componentValueFontName_property.startsToBeObserved (by: self.mObserversOf_componentValueFontName) // Transient property
-      managedObject.componentPadDictionary_property.startsToBeObserved (by: self.mObserversOf_componentPadDictionary) // Transient property
-      managedObject.padNetDictionary_property.startsToBeObserved (by: self.mObserversOf_padNetDictionary) // Transient property
-      managedObject.componentName_property.startsToBeObserved (by: self.mObserversOf_componentName) // Transient property
-      managedObject.selectionDisplay_property.startsToBeObserved (by: self.mObserversOf_selectionDisplay) // Transient property
-      managedObject.unplacedSymbols_property.startsToBeObserved (by: self.mObserversOf_unplacedSymbols) // Transient property
-      managedObject.objectDisplay_property.startsToBeObserved (by: self.mObserversOf_objectDisplay) // Transient property
-      managedObject.mPackages_property.startsToBeObserved (by: self.mObserversOf_mPackages) // ToMany proxy
+      if let relay = self.mObserversOf_mSlavePadsShouldBeRouted { // Stored property
+        managedObject.mSlavePadsShouldBeRouted_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mX { // Stored property
+        managedObject.mX_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mY { // Stored property
+        managedObject.mY_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mRotation { // Stored property
+        managedObject.mRotation_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mSide { // Stored property
+        managedObject.mSide_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mDisplayLegend { // Stored property
+        managedObject.mDisplayLegend_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mNameIsVisibleInBoard { // Stored property
+        managedObject.mNameIsVisibleInBoard_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mXName { // Stored property
+        managedObject.mXName_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mYName { // Stored property
+        managedObject.mYName_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mNameFontSize { // Stored property
+        managedObject.mNameFontSize_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mNameRotation { // Stored property
+        managedObject.mNameRotation_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mValueIsVisibleInBoard { // Stored property
+        managedObject.mValueIsVisibleInBoard_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mXValue { // Stored property
+        managedObject.mXValue_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mYValue { // Stored property
+        managedObject.mYValue_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mValueFontSize { // Stored property
+        managedObject.mValueFontSize_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mValueRotation { // Stored property
+        managedObject.mValueRotation_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mComponentValue { // Stored property
+        managedObject.mComponentValue_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mNamePrefix { // Stored property
+        managedObject.mNamePrefix_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mNameIndex { // Stored property
+        managedObject.mNameIndex_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mXUnit { // Stored property
+        managedObject.mXUnit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mYUnit { // Stored property
+        managedObject.mYUnit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_deviceName { // Transient property
+        managedObject.deviceName_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_signatureForERCChecking { // Transient property
+        managedObject.signatureForERCChecking_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_packagePadDictionary { // Transient property
+        managedObject.packagePadDictionary_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_selectedPackageName { // Transient property
+        managedObject.selectedPackageName_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_availablePackages { // Transient property
+        managedObject.availablePackages_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_issues { // Transient property
+        managedObject.issues_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_componentIsPlacedInBoard { // Transient property
+        managedObject.componentIsPlacedInBoard_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_componentIsPlacedInBoardString { // Transient property
+        managedObject.componentIsPlacedInBoardString_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_strokeBezierPath { // Transient property
+        managedObject.strokeBezierPath_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_pinPadAssignments { // Transient property
+        managedObject.pinPadAssignments_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_hasSlavePads { // Transient property
+        managedObject.hasSlavePads_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_placementInSchematic { // Transient property
+        managedObject.placementInSchematic_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_deviceSymbolDictionary { // Transient property
+        managedObject.deviceSymbolDictionary_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_componentNameFontName { // Transient property
+        managedObject.componentNameFontName_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_componentValueFontName { // Transient property
+        managedObject.componentValueFontName_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_componentPadDictionary { // Transient property
+        managedObject.componentPadDictionary_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_padNetDictionary { // Transient property
+        managedObject.padNetDictionary_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_componentName { // Transient property
+        managedObject.componentName_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_selectionDisplay { // Transient property
+        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_unplacedSymbols { // Transient property
+        managedObject.unplacedSymbols_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_objectDisplay { // Transient property
+        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mPackages { // Tomany proxy
+        managedObject.mPackages_property.startsToBeObserved (by: relay)
+      }
     }
   }
 
@@ -113,2943 +285,1248 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mSlavePadsShouldBeRouted' stored property
   //····················································································································
 
-  private final var mObserversOf_mSlavePadsShouldBeRouted = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mSlavePadsShouldBeRouted : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mSlavePadsShouldBeRouted_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mSlavePadsShouldBeRouted.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mSlavePadsShouldBeRouted_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mSlavePadsShouldBeRouted {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mSlavePadsShouldBeRouted_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mSlavePadsShouldBeRouted = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mSlavePadsShouldBeRouted_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mSlavePadsShouldBeRouted.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mSlavePadsShouldBeRouted_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mSlavePadsShouldBeRouted?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mSlavePadsShouldBeRouted_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mSlavePadsShouldBeRouted_property.startsToBeObserved (by: self.mObserversOf_mSlavePadsShouldBeRouted)
-    }*/
-    /* if !self.mObserversOf_mSlavePadsShouldBeRouted.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mSlavePadsShouldBeRouted.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mSlavePadsShouldBeRouted_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mSlavePadsShouldBeRouted.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mSlavePadsShouldBeRouted_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mSlavePadsShouldBeRouted_property.stopsBeingObserved (by: self.mObserversOf_mSlavePadsShouldBeRouted)
-    }
-    for entry in self.mObserversOf_mSlavePadsShouldBeRouted.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mSlavePadsShouldBeRouted_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mSlavePadsShouldBeRouted.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private final var mObserversOf_mX = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mX : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mX_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mX.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mX_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mX {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mX_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mX = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mX.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mX_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mX?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mX_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mX_property.startsToBeObserved (by: self.mObserversOf_mX)
-    }*/
-    /* if !self.mObserversOf_mX.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mX.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mX_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mX.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mX_property.stopsBeingObserved (by: self.mObserversOf_mX)
-    }
-    for entry in self.mObserversOf_mX.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mX_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mX.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private final var mObserversOf_mY = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mY : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mY_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mY.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mY_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mY {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mY_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mY = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mY.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mY_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mY?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mY_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mY_property.startsToBeObserved (by: self.mObserversOf_mY)
-    }*/
-    /* if !self.mObserversOf_mY.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mY.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mY_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mY.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mY_property.stopsBeingObserved (by: self.mObserversOf_mY)
-    }
-    for entry in self.mObserversOf_mY.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mY_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mY.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mRotation' stored property
   //····················································································································
 
-  private final var mObserversOf_mRotation = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mRotation : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mRotation_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mRotation.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mRotation_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mRotation {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mRotation_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mRotation = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mRotation_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mRotation.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mRotation_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mRotation?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mRotation_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mRotation_property.startsToBeObserved (by: self.mObserversOf_mRotation)
-    }*/
-    /* if !self.mObserversOf_mRotation.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mRotation.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mRotation_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mRotation.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mRotation_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mRotation_property.stopsBeingObserved (by: self.mObserversOf_mRotation)
-    }
-    for entry in self.mObserversOf_mRotation.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mRotation_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mRotation.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mSide' stored property
   //····················································································································
 
-  private final var mObserversOf_mSide = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mSide : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mSide.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mSide_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mSide {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mSide_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mSide = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mSide.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mSide_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mSide?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mSide_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mSide_property.startsToBeObserved (by: self.mObserversOf_mSide)
-    }*/
-    /* if !self.mObserversOf_mSide.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mSide.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mSide_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mSide.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mSide_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mSide_property.stopsBeingObserved (by: self.mObserversOf_mSide)
-    }
-    for entry in self.mObserversOf_mSide.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mSide_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mSide.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mDisplayLegend' stored property
   //····················································································································
 
-  private final var mObserversOf_mDisplayLegend = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mDisplayLegend : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mDisplayLegend_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mDisplayLegend.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mDisplayLegend_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mDisplayLegend {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mDisplayLegend_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mDisplayLegend = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mDisplayLegend_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mDisplayLegend.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mDisplayLegend_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mDisplayLegend?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mDisplayLegend_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mDisplayLegend_property.startsToBeObserved (by: self.mObserversOf_mDisplayLegend)
-    }*/
-    /* if !self.mObserversOf_mDisplayLegend.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mDisplayLegend.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mDisplayLegend_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mDisplayLegend.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mDisplayLegend_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mDisplayLegend_property.stopsBeingObserved (by: self.mObserversOf_mDisplayLegend)
-    }
-    for entry in self.mObserversOf_mDisplayLegend.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mDisplayLegend_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mDisplayLegend.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mNameIsVisibleInBoard' stored property
   //····················································································································
 
-  private final var mObserversOf_mNameIsVisibleInBoard = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mNameIsVisibleInBoard : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mNameIsVisibleInBoard_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mNameIsVisibleInBoard.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mNameIsVisibleInBoard_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mNameIsVisibleInBoard {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mNameIsVisibleInBoard_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mNameIsVisibleInBoard = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mNameIsVisibleInBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mNameIsVisibleInBoard.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mNameIsVisibleInBoard_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mNameIsVisibleInBoard?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mNameIsVisibleInBoard_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mNameIsVisibleInBoard_property.startsToBeObserved (by: self.mObserversOf_mNameIsVisibleInBoard)
-    }*/
-    /* if !self.mObserversOf_mNameIsVisibleInBoard.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mNameIsVisibleInBoard.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mNameIsVisibleInBoard_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mNameIsVisibleInBoard.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mNameIsVisibleInBoard_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mNameIsVisibleInBoard_property.stopsBeingObserved (by: self.mObserversOf_mNameIsVisibleInBoard)
-    }
-    for entry in self.mObserversOf_mNameIsVisibleInBoard.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mNameIsVisibleInBoard_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mNameIsVisibleInBoard.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mXName' stored property
   //····················································································································
 
-  private final var mObserversOf_mXName = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mXName : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mXName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mXName.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mXName_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mXName {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mXName_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mXName = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mXName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mXName.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mXName_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mXName?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mXName_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mXName_property.startsToBeObserved (by: self.mObserversOf_mXName)
-    }*/
-    /* if !self.mObserversOf_mXName.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mXName.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mXName_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mXName.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mXName_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mXName_property.stopsBeingObserved (by: self.mObserversOf_mXName)
-    }
-    for entry in self.mObserversOf_mXName.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mXName_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mXName.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mYName' stored property
   //····················································································································
 
-  private final var mObserversOf_mYName = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mYName : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mYName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mYName.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mYName_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mYName {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mYName_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mYName = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mYName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mYName.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mYName_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mYName?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mYName_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mYName_property.startsToBeObserved (by: self.mObserversOf_mYName)
-    }*/
-    /* if !self.mObserversOf_mYName.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mYName.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mYName_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mYName.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mYName_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mYName_property.stopsBeingObserved (by: self.mObserversOf_mYName)
-    }
-    for entry in self.mObserversOf_mYName.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mYName_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mYName.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mNameFontSize' stored property
   //····················································································································
 
-  private final var mObserversOf_mNameFontSize = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mNameFontSize : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mNameFontSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mNameFontSize.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mNameFontSize_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mNameFontSize {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mNameFontSize_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mNameFontSize = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mNameFontSize_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mNameFontSize.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mNameFontSize_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mNameFontSize?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mNameFontSize_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mNameFontSize_property.startsToBeObserved (by: self.mObserversOf_mNameFontSize)
-    }*/
-    /* if !self.mObserversOf_mNameFontSize.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mNameFontSize.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mNameFontSize_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mNameFontSize.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mNameFontSize_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mNameFontSize_property.stopsBeingObserved (by: self.mObserversOf_mNameFontSize)
-    }
-    for entry in self.mObserversOf_mNameFontSize.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mNameFontSize_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mNameFontSize.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mNameRotation' stored property
   //····················································································································
 
-  private final var mObserversOf_mNameRotation = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mNameRotation : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mNameRotation_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mNameRotation.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mNameRotation_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mNameRotation {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mNameRotation_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mNameRotation = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mNameRotation_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mNameRotation.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mNameRotation_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mNameRotation?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mNameRotation_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mNameRotation_property.startsToBeObserved (by: self.mObserversOf_mNameRotation)
-    }*/
-    /* if !self.mObserversOf_mNameRotation.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mNameRotation.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mNameRotation_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mNameRotation.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mNameRotation_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mNameRotation_property.stopsBeingObserved (by: self.mObserversOf_mNameRotation)
-    }
-    for entry in self.mObserversOf_mNameRotation.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mNameRotation_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mNameRotation.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mValueIsVisibleInBoard' stored property
   //····················································································································
 
-  private final var mObserversOf_mValueIsVisibleInBoard = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mValueIsVisibleInBoard : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mValueIsVisibleInBoard_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mValueIsVisibleInBoard.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mValueIsVisibleInBoard_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mValueIsVisibleInBoard {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mValueIsVisibleInBoard_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mValueIsVisibleInBoard = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mValueIsVisibleInBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mValueIsVisibleInBoard.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mValueIsVisibleInBoard_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mValueIsVisibleInBoard?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mValueIsVisibleInBoard_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mValueIsVisibleInBoard_property.startsToBeObserved (by: self.mObserversOf_mValueIsVisibleInBoard)
-    }*/
-    /* if !self.mObserversOf_mValueIsVisibleInBoard.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mValueIsVisibleInBoard.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mValueIsVisibleInBoard_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mValueIsVisibleInBoard.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mValueIsVisibleInBoard_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mValueIsVisibleInBoard_property.stopsBeingObserved (by: self.mObserversOf_mValueIsVisibleInBoard)
-    }
-    for entry in self.mObserversOf_mValueIsVisibleInBoard.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mValueIsVisibleInBoard_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mValueIsVisibleInBoard.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mXValue' stored property
   //····················································································································
 
-  private final var mObserversOf_mXValue = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mXValue : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mXValue_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mXValue.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mXValue_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mXValue {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mXValue_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mXValue = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mXValue_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mXValue.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mXValue_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mXValue?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mXValue_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mXValue_property.startsToBeObserved (by: self.mObserversOf_mXValue)
-    }*/
-    /* if !self.mObserversOf_mXValue.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mXValue.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mXValue_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mXValue.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mXValue_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mXValue_property.stopsBeingObserved (by: self.mObserversOf_mXValue)
-    }
-    for entry in self.mObserversOf_mXValue.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mXValue_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mXValue.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mYValue' stored property
   //····················································································································
 
-  private final var mObserversOf_mYValue = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mYValue : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mYValue_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mYValue.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mYValue_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mYValue {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mYValue_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mYValue = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mYValue_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mYValue.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mYValue_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mYValue?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mYValue_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mYValue_property.startsToBeObserved (by: self.mObserversOf_mYValue)
-    }*/
-    /* if !self.mObserversOf_mYValue.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mYValue.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mYValue_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mYValue.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mYValue_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mYValue_property.stopsBeingObserved (by: self.mObserversOf_mYValue)
-    }
-    for entry in self.mObserversOf_mYValue.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mYValue_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mYValue.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mValueFontSize' stored property
   //····················································································································
 
-  private final var mObserversOf_mValueFontSize = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mValueFontSize : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mValueFontSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mValueFontSize.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mValueFontSize_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mValueFontSize {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mValueFontSize_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mValueFontSize = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mValueFontSize_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mValueFontSize.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mValueFontSize_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mValueFontSize?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mValueFontSize_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mValueFontSize_property.startsToBeObserved (by: self.mObserversOf_mValueFontSize)
-    }*/
-    /* if !self.mObserversOf_mValueFontSize.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mValueFontSize.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mValueFontSize_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mValueFontSize.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mValueFontSize_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mValueFontSize_property.stopsBeingObserved (by: self.mObserversOf_mValueFontSize)
-    }
-    for entry in self.mObserversOf_mValueFontSize.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mValueFontSize_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mValueFontSize.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mValueRotation' stored property
   //····················································································································
 
-  private final var mObserversOf_mValueRotation = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mValueRotation : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mValueRotation_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mValueRotation.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mValueRotation_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mValueRotation {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mValueRotation_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mValueRotation = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mValueRotation_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mValueRotation.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mValueRotation_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mValueRotation?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mValueRotation_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mValueRotation_property.startsToBeObserved (by: self.mObserversOf_mValueRotation)
-    }*/
-    /* if !self.mObserversOf_mValueRotation.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mValueRotation.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mValueRotation_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mValueRotation.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mValueRotation_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mValueRotation_property.stopsBeingObserved (by: self.mObserversOf_mValueRotation)
-    }
-    for entry in self.mObserversOf_mValueRotation.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mValueRotation_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mValueRotation.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mComponentValue' stored property
   //····················································································································
 
-  private final var mObserversOf_mComponentValue = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mComponentValue : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mComponentValue_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mComponentValue.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mComponentValue_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mComponentValue {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mComponentValue_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mComponentValue = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mComponentValue_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mComponentValue.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mComponentValue_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mComponentValue?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mComponentValue_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mComponentValue_property.startsToBeObserved (by: self.mObserversOf_mComponentValue)
-    }*/
-    /* if !self.mObserversOf_mComponentValue.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mComponentValue.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mComponentValue_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mComponentValue.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mComponentValue_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mComponentValue_property.stopsBeingObserved (by: self.mObserversOf_mComponentValue)
-    }
-    for entry in self.mObserversOf_mComponentValue.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mComponentValue_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mComponentValue.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mNamePrefix' stored property
   //····················································································································
 
-  private final var mObserversOf_mNamePrefix = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mNamePrefix : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mNamePrefix_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mNamePrefix.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mNamePrefix_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mNamePrefix {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mNamePrefix_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mNamePrefix = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mNamePrefix_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mNamePrefix.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mNamePrefix_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mNamePrefix?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mNamePrefix_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mNamePrefix_property.startsToBeObserved (by: self.mObserversOf_mNamePrefix)
-    }*/
-    /* if !self.mObserversOf_mNamePrefix.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mNamePrefix.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mNamePrefix_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mNamePrefix.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mNamePrefix_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mNamePrefix_property.stopsBeingObserved (by: self.mObserversOf_mNamePrefix)
-    }
-    for entry in self.mObserversOf_mNamePrefix.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mNamePrefix_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mNamePrefix.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mNameIndex' stored property
   //····················································································································
 
-  private final var mObserversOf_mNameIndex = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mNameIndex : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mNameIndex_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mNameIndex.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mNameIndex_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mNameIndex {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mNameIndex_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mNameIndex = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mNameIndex_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mNameIndex.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mNameIndex_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mNameIndex?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mNameIndex_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mNameIndex_property.startsToBeObserved (by: self.mObserversOf_mNameIndex)
-    }*/
-    /* if !self.mObserversOf_mNameIndex.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mNameIndex.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mNameIndex_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mNameIndex.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mNameIndex_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mNameIndex_property.stopsBeingObserved (by: self.mObserversOf_mNameIndex)
-    }
-    for entry in self.mObserversOf_mNameIndex.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mNameIndex_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mNameIndex.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mXUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mXUnit = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mXUnit : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mXUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mXUnit.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mXUnit_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mXUnit {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mXUnit_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mXUnit = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mXUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mXUnit.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mXUnit_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mXUnit?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mXUnit_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mXUnit_property.startsToBeObserved (by: self.mObserversOf_mXUnit)
-    }*/
-    /* if !self.mObserversOf_mXUnit.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mXUnit.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mXUnit_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mXUnit.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mXUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mXUnit_property.stopsBeingObserved (by: self.mObserversOf_mXUnit)
-    }
-    for entry in self.mObserversOf_mXUnit.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mXUnit_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mXUnit.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mYUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mYUnit = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mYUnit : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mYUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mYUnit.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mYUnit_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mYUnit {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mYUnit_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mYUnit = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mYUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mYUnit.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mYUnit_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mYUnit?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
- // final private func addEBObserversOf_mYUnit_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    /* for managedObject in inSet.values {
-      managedObject.mYUnit_property.startsToBeObserved (by: self.mObserversOf_mYUnit)
-    }*/
-    /* if !self.mObserversOf_mYUnit.isEmpty {
-      for managedObject in inSet.values {
-        for entry in self.mObserversOf_mYUnit.values () {
-          if let observer = entry.possibleObserver {
-            managedObject.mYUnit_property.startsToBeObserved (by: observer)
-          }else{
-            self.mObserversOf_mYUnit.triggerPacking ()
-          }
-        }
-      }
-    } */
- // }
-
-  //····················································································································
-
-/*  final private func removeEBObserversOf_mYUnit_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      managedObject.mYUnit_property.stopsBeingObserved (by: self.mObserversOf_mYUnit)
-    }
-    for entry in self.mObserversOf_mYUnit.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mYUnit_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mYUnit.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'mPackages' toMany proxy
   //····················································································································
 
-  private final var mObserversOf_mPackages = EBWeakObserverSetRelay ()
+  private final var mObserversOf_mPackages : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_mPackages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_mPackages.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mPackages_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_mPackages {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mPackages_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_mPackages = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mPackages_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_mPackages.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mPackages_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_mPackages?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_mPackages_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_mPackages.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.mPackages_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_mPackages.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_mPackages_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for entry in self.mObserversOf_mPackages.values () {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-        for managedObject in inSet.values {
-          managedObject.mPackages_property.stopsBeingObserved (by: observer)
-        }
-      }else{
-        self.mObserversOf_mPackages.triggerPacking ()
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'deviceName' transient property
   //····················································································································
 
-  private final var mObserversOf_deviceName = EBWeakObserverSetRelay ()
+  private final var mObserversOf_deviceName : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_deviceName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_deviceName.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.deviceName_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_deviceName {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.deviceName_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_deviceName = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_deviceName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_deviceName.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.deviceName_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_deviceName?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_deviceName_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_deviceName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.deviceName_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_deviceName.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_deviceName_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_deviceName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.deviceName_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_deviceName.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private final var mObserversOf_signatureForERCChecking = EBWeakObserverSetRelay ()
+  private final var mObserversOf_signatureForERCChecking : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_signatureForERCChecking_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_signatureForERCChecking.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.signatureForERCChecking_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_signatureForERCChecking {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.signatureForERCChecking_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_signatureForERCChecking = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_signatureForERCChecking_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_signatureForERCChecking.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.signatureForERCChecking_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_signatureForERCChecking?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_signatureForERCChecking.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.signatureForERCChecking_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_signatureForERCChecking.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_signatureForERCChecking.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.signatureForERCChecking_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_signatureForERCChecking.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'packagePadDictionary' transient property
   //····················································································································
 
-  private final var mObserversOf_packagePadDictionary = EBWeakObserverSetRelay ()
+  private final var mObserversOf_packagePadDictionary : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_packagePadDictionary_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_packagePadDictionary.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.packagePadDictionary_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_packagePadDictionary {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.packagePadDictionary_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_packagePadDictionary = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_packagePadDictionary_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_packagePadDictionary.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.packagePadDictionary_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_packagePadDictionary?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_packagePadDictionary_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_packagePadDictionary.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.packagePadDictionary_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_packagePadDictionary.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_packagePadDictionary_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_packagePadDictionary.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.packagePadDictionary_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_packagePadDictionary.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'selectedPackageName' transient property
   //····················································································································
 
-  private final var mObserversOf_selectedPackageName = EBWeakObserverSetRelay ()
+  private final var mObserversOf_selectedPackageName : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_selectedPackageName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_selectedPackageName.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.selectedPackageName_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_selectedPackageName {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.selectedPackageName_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_selectedPackageName = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_selectedPackageName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_selectedPackageName.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.selectedPackageName_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_selectedPackageName?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_selectedPackageName_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_selectedPackageName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.selectedPackageName_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_selectedPackageName.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_selectedPackageName_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_selectedPackageName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.selectedPackageName_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_selectedPackageName.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'availablePackages' transient property
   //····················································································································
 
-  private final var mObserversOf_availablePackages = EBWeakObserverSetRelay ()
+  private final var mObserversOf_availablePackages : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_availablePackages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_availablePackages.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.availablePackages_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_availablePackages {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.availablePackages_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_availablePackages = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_availablePackages_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_availablePackages.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.availablePackages_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_availablePackages?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_availablePackages_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_availablePackages.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.availablePackages_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_availablePackages.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_availablePackages_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_availablePackages.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.availablePackages_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_availablePackages.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var mObserversOf_issues = EBWeakObserverSetRelay ()
+  private final var mObserversOf_issues : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_issues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_issues.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.issues_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_issues {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.issues_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_issues = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_issues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_issues.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.issues_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_issues?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_issues.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.issues_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_issues.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_issues.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.issues_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_issues.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'componentIsPlacedInBoard' transient property
   //····················································································································
 
-  private final var mObserversOf_componentIsPlacedInBoard = EBWeakObserverSetRelay ()
+  private final var mObserversOf_componentIsPlacedInBoard : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_componentIsPlacedInBoard_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_componentIsPlacedInBoard.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.componentIsPlacedInBoard_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_componentIsPlacedInBoard {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.componentIsPlacedInBoard_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_componentIsPlacedInBoard = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_componentIsPlacedInBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_componentIsPlacedInBoard.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.componentIsPlacedInBoard_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_componentIsPlacedInBoard?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_componentIsPlacedInBoard_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_componentIsPlacedInBoard.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.componentIsPlacedInBoard_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_componentIsPlacedInBoard.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_componentIsPlacedInBoard_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_componentIsPlacedInBoard.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.componentIsPlacedInBoard_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_componentIsPlacedInBoard.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'componentIsPlacedInBoardString' transient property
   //····················································································································
 
-  private final var mObserversOf_componentIsPlacedInBoardString = EBWeakObserverSetRelay ()
+  private final var mObserversOf_componentIsPlacedInBoardString : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_componentIsPlacedInBoardString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_componentIsPlacedInBoardString.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.componentIsPlacedInBoardString_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_componentIsPlacedInBoardString {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.componentIsPlacedInBoardString_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_componentIsPlacedInBoardString = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_componentIsPlacedInBoardString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_componentIsPlacedInBoardString.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.componentIsPlacedInBoardString_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_componentIsPlacedInBoardString?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_componentIsPlacedInBoardString_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_componentIsPlacedInBoardString.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.componentIsPlacedInBoardString_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_componentIsPlacedInBoardString.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_componentIsPlacedInBoardString_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_componentIsPlacedInBoardString.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.componentIsPlacedInBoardString_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_componentIsPlacedInBoardString.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private final var mObserversOf_strokeBezierPath = EBWeakObserverSetRelay ()
+  private final var mObserversOf_strokeBezierPath : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_strokeBezierPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_strokeBezierPath.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.strokeBezierPath_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_strokeBezierPath {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.strokeBezierPath_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_strokeBezierPath = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_strokeBezierPath_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_strokeBezierPath.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.strokeBezierPath_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_strokeBezierPath?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_strokeBezierPath.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.strokeBezierPath_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_strokeBezierPath.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_strokeBezierPath.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.strokeBezierPath_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_strokeBezierPath.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'pinPadAssignments' transient property
   //····················································································································
 
-  private final var mObserversOf_pinPadAssignments = EBWeakObserverSetRelay ()
+  private final var mObserversOf_pinPadAssignments : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_pinPadAssignments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_pinPadAssignments.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.pinPadAssignments_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_pinPadAssignments {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.pinPadAssignments_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_pinPadAssignments = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_pinPadAssignments_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_pinPadAssignments.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.pinPadAssignments_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_pinPadAssignments?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_pinPadAssignments_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_pinPadAssignments.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.pinPadAssignments_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_pinPadAssignments.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_pinPadAssignments_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_pinPadAssignments.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.pinPadAssignments_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_pinPadAssignments.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'hasSlavePads' transient property
   //····················································································································
 
-  private final var mObserversOf_hasSlavePads = EBWeakObserverSetRelay ()
+  private final var mObserversOf_hasSlavePads : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_hasSlavePads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_hasSlavePads.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.hasSlavePads_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_hasSlavePads {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.hasSlavePads_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_hasSlavePads = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_hasSlavePads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_hasSlavePads.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.hasSlavePads_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_hasSlavePads?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_hasSlavePads_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_hasSlavePads.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.hasSlavePads_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_hasSlavePads.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_hasSlavePads_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_hasSlavePads.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.hasSlavePads_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_hasSlavePads.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'placementInSchematic' transient property
   //····················································································································
 
-  private final var mObserversOf_placementInSchematic = EBWeakObserverSetRelay ()
+  private final var mObserversOf_placementInSchematic : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_placementInSchematic_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_placementInSchematic.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.placementInSchematic_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_placementInSchematic {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.placementInSchematic_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_placementInSchematic = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_placementInSchematic_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_placementInSchematic.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.placementInSchematic_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_placementInSchematic?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_placementInSchematic_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_placementInSchematic.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.placementInSchematic_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_placementInSchematic.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_placementInSchematic_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_placementInSchematic.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.placementInSchematic_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_placementInSchematic.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'deviceSymbolDictionary' transient property
   //····················································································································
 
-  private final var mObserversOf_deviceSymbolDictionary = EBWeakObserverSetRelay ()
+  private final var mObserversOf_deviceSymbolDictionary : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_deviceSymbolDictionary_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_deviceSymbolDictionary.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.deviceSymbolDictionary_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_deviceSymbolDictionary {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.deviceSymbolDictionary_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_deviceSymbolDictionary = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_deviceSymbolDictionary_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_deviceSymbolDictionary.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.deviceSymbolDictionary_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_deviceSymbolDictionary?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_deviceSymbolDictionary.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.deviceSymbolDictionary_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_deviceSymbolDictionary.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_deviceSymbolDictionary.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.deviceSymbolDictionary_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_deviceSymbolDictionary.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'componentNameFontName' transient property
   //····················································································································
 
-  private final var mObserversOf_componentNameFontName = EBWeakObserverSetRelay ()
+  private final var mObserversOf_componentNameFontName : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_componentNameFontName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_componentNameFontName.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.componentNameFontName_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_componentNameFontName {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.componentNameFontName_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_componentNameFontName = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_componentNameFontName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_componentNameFontName.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.componentNameFontName_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_componentNameFontName?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_componentNameFontName_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_componentNameFontName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.componentNameFontName_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_componentNameFontName.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_componentNameFontName_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_componentNameFontName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.componentNameFontName_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_componentNameFontName.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'componentValueFontName' transient property
   //····················································································································
 
-  private final var mObserversOf_componentValueFontName = EBWeakObserverSetRelay ()
+  private final var mObserversOf_componentValueFontName : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_componentValueFontName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_componentValueFontName.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.componentValueFontName_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_componentValueFontName {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.componentValueFontName_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_componentValueFontName = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_componentValueFontName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_componentValueFontName.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.componentValueFontName_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_componentValueFontName?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_componentValueFontName_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_componentValueFontName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.componentValueFontName_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_componentValueFontName.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_componentValueFontName_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_componentValueFontName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.componentValueFontName_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_componentValueFontName.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'componentPadDictionary' transient property
   //····················································································································
 
-  private final var mObserversOf_componentPadDictionary = EBWeakObserverSetRelay ()
+  private final var mObserversOf_componentPadDictionary : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_componentPadDictionary_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_componentPadDictionary.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.componentPadDictionary_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_componentPadDictionary {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.componentPadDictionary_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_componentPadDictionary = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_componentPadDictionary_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_componentPadDictionary.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.componentPadDictionary_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_componentPadDictionary?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_componentPadDictionary_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_componentPadDictionary.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.componentPadDictionary_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_componentPadDictionary.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_componentPadDictionary_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_componentPadDictionary.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.componentPadDictionary_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_componentPadDictionary.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'padNetDictionary' transient property
   //····················································································································
 
-  private final var mObserversOf_padNetDictionary = EBWeakObserverSetRelay ()
+  private final var mObserversOf_padNetDictionary : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_padNetDictionary_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_padNetDictionary.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.padNetDictionary_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_padNetDictionary {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.padNetDictionary_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_padNetDictionary = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_padNetDictionary_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_padNetDictionary.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.padNetDictionary_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_padNetDictionary?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_padNetDictionary_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_padNetDictionary.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.padNetDictionary_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_padNetDictionary.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_padNetDictionary_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_padNetDictionary.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.padNetDictionary_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_padNetDictionary.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'componentName' transient property
   //····················································································································
 
-  private final var mObserversOf_componentName = EBWeakObserverSetRelay ()
+  private final var mObserversOf_componentName : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_componentName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_componentName.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.componentName_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_componentName {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.componentName_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_componentName = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_componentName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_componentName.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.componentName_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_componentName?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_componentName_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_componentName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.componentName_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_componentName.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_componentName_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_componentName.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.componentName_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_componentName.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay = EBWeakObserverSetRelay ()
+  private final var mObserversOf_selectionDisplay : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_selectionDisplay.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.selectionDisplay_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_selectionDisplay {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_selectionDisplay = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_selectionDisplay.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.selectionDisplay_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_selectionDisplay?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_selectionDisplay.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.selectionDisplay_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_selectionDisplay.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_selectionDisplay.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.selectionDisplay_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_selectionDisplay.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'unplacedSymbols' transient property
   //····················································································································
 
-  private final var mObserversOf_unplacedSymbols = EBWeakObserverSetRelay ()
+  private final var mObserversOf_unplacedSymbols : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_unplacedSymbols_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_unplacedSymbols.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.unplacedSymbols_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_unplacedSymbols {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.unplacedSymbols_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_unplacedSymbols = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_unplacedSymbols_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_unplacedSymbols.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.unplacedSymbols_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_unplacedSymbols?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_unplacedSymbols_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_unplacedSymbols.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.unplacedSymbols_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_unplacedSymbols.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_unplacedSymbols_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_unplacedSymbols.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.unplacedSymbols_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_unplacedSymbols.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay = EBWeakObserverSetRelay ()
+  private final var mObserversOf_objectDisplay : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.startsToBeObserved (by: inObserver)
-    self.mObserversOf_objectDisplay.insert (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.objectDisplay_property.startsToBeObserved (by: inObserver)
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_objectDisplay {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
       }
-    } */
+      self.mObserversOf_objectDisplay = relay
+    }
+    relay.insert (observer:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.stopsBeingObserved (by: inObserver)
-    self.mObserversOf_objectDisplay.remove (inObserver)
-    /* switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.objectDisplay_property.stopsBeingObserved (by: inObserver)
-      }
-    } */
+    self.mObserversOf_objectDisplay?.remove (observer: inObserver)
   }
-
-  //····················································································································
-
-  /* final private func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_objectDisplay.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.objectDisplay_property.startsToBeObserved (by: observer)
-        }else{
-          self.mObserversOf_objectDisplay.triggerPacking ()
-        }
-      }
-    }
-  } */
-
-  //····················································································································
-
-  /* final private func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inSet.values {
-      for entry in self.mObserversOf_objectDisplay.values () {
-        if let observer = entry.possibleObserver {
-          managedObject.objectDisplay_property.stopsBeingObserved (by: observer)
-        }else{
-          self.mObserversOf_objectDisplay.triggerPacking ()
-        }
-      }
-    }
-  } */
 
   //····················································································································
 
@@ -3166,7 +1643,7 @@ final class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInPro
     case .empty :
       return .empty
     case .single :
-      return .single (self.mInternalArrayValue.values)
+      return .single (self.propval.values)
     case .multiple :
       return .multiple
     }
@@ -3455,7 +1932,7 @@ class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EB
 
   //····················································································································
 
-  override final var propval : EBReferenceArray <ComponentInProject> { return self.mInternalArrayValue }
+  final override var propval : EBReferenceArray <ComponentInProject> { return self.mInternalArrayValue }
 
   //····················································································································
 

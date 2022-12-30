@@ -79,31 +79,81 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       oldValue.frontLegendLinesBezierPaths_property.stopsBeingObserved (by: self.frontLegendLinesBezierPaths_property) // Transient property
       oldValue.imageForModel_property.stopsBeingObserved (by: self.imageForModel_property) // Transient property
       oldValue.imageForInstances_property.stopsBeingObserved (by: self.imageForInstances_property) // Transient property
-      oldValue.frontLegendLines_property.stopsBeingObserved (by: self.mObserversOf_frontLegendLines) // to Many
-      oldValue.backLegendLines_property.stopsBeingObserved (by: self.mObserversOf_backLegendLines) // to Many
-      oldValue.frontLegendTexts_property.stopsBeingObserved (by: self.mObserversOf_frontLegendTexts) // to Many
-      oldValue.frontLayoutTexts_property.stopsBeingObserved (by: self.mObserversOf_frontLayoutTexts) // to Many
-      oldValue.backLegendTexts_property.stopsBeingObserved (by: self.mObserversOf_backLegendTexts) // to Many
-      oldValue.backLayoutTexts_property.stopsBeingObserved (by: self.mObserversOf_backLayoutTexts) // to Many
-      oldValue.internalBoardsLimits_property.stopsBeingObserved (by: self.mObserversOf_internalBoardsLimits) // to Many
-      oldValue.drills_property.stopsBeingObserved (by: self.mObserversOf_drills) // to Many
-      oldValue.vias_property.stopsBeingObserved (by: self.mObserversOf_vias) // to Many
-      oldValue.frontPads_property.stopsBeingObserved (by: self.mObserversOf_frontPads) // to Many
-      oldValue.backPads_property.stopsBeingObserved (by: self.mObserversOf_backPads) // to Many
-      oldValue.traversingPads_property.stopsBeingObserved (by: self.mObserversOf_traversingPads) // to Many
-      oldValue.backComponentNames_property.stopsBeingObserved (by: self.mObserversOf_backComponentNames) // to Many
-      oldValue.frontComponentNames_property.stopsBeingObserved (by: self.mObserversOf_frontComponentNames) // to Many
-      oldValue.frontComponentValues_property.stopsBeingObserved (by: self.mObserversOf_frontComponentValues) // to Many
-      oldValue.backComponentValues_property.stopsBeingObserved (by: self.mObserversOf_backComponentValues) // to Many
-      oldValue.backTracks_property.stopsBeingObserved (by: self.mObserversOf_backTracks) // to Many
-      oldValue.frontTracks_property.stopsBeingObserved (by: self.mObserversOf_frontTracks) // to Many
-      oldValue.inner1Tracks_property.stopsBeingObserved (by: self.mObserversOf_inner1Tracks) // to Many
-      oldValue.inner2Tracks_property.stopsBeingObserved (by: self.mObserversOf_inner2Tracks) // to Many
-      oldValue.inner3Tracks_property.stopsBeingObserved (by: self.mObserversOf_inner3Tracks) // to Many
-      oldValue.inner4Tracks_property.stopsBeingObserved (by: self.mObserversOf_inner4Tracks) // to Many
-      oldValue.frontPackages_property.stopsBeingObserved (by: self.mObserversOf_frontPackages) // to Many
-      oldValue.backPackages_property.stopsBeingObserved (by: self.mObserversOf_backPackages) // to Many
-      oldValue.myInstances_property.stopsBeingObserved (by: self.mObserversOf_myInstances) // to Many
+      if let relay = self.mObserversOf_frontLegendLines { // to Many
+        oldValue.frontLegendLines_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backLegendLines { // to Many
+        oldValue.backLegendLines_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontLegendTexts { // to Many
+        oldValue.frontLegendTexts_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontLayoutTexts { // to Many
+        oldValue.frontLayoutTexts_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backLegendTexts { // to Many
+        oldValue.backLegendTexts_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backLayoutTexts { // to Many
+        oldValue.backLayoutTexts_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_internalBoardsLimits { // to Many
+        oldValue.internalBoardsLimits_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_drills { // to Many
+        oldValue.drills_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_vias { // to Many
+        oldValue.vias_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontPads { // to Many
+        oldValue.frontPads_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backPads { // to Many
+        oldValue.backPads_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_traversingPads { // to Many
+        oldValue.traversingPads_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backComponentNames { // to Many
+        oldValue.backComponentNames_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontComponentNames { // to Many
+        oldValue.frontComponentNames_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontComponentValues { // to Many
+        oldValue.frontComponentValues_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backComponentValues { // to Many
+        oldValue.backComponentValues_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backTracks { // to Many
+        oldValue.backTracks_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontTracks { // to Many
+        oldValue.frontTracks_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_inner1Tracks { // to Many
+        oldValue.inner1Tracks_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_inner2Tracks { // to Many
+        oldValue.inner2Tracks_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_inner3Tracks { // to Many
+        oldValue.inner3Tracks_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_inner4Tracks { // to Many
+        oldValue.inner4Tracks_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontPackages { // to Many
+        oldValue.frontPackages_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backPackages { // to Many
+        oldValue.backPackages_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_myInstances { // to Many
+        oldValue.myInstances_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -170,31 +220,81 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       newValue.frontLegendLinesBezierPaths_property.startsToBeObserved (by: self.frontLegendLinesBezierPaths_property) // Transient property
       newValue.imageForModel_property.startsToBeObserved (by: self.imageForModel_property) // Transient property
       newValue.imageForInstances_property.startsToBeObserved (by: self.imageForInstances_property) // Transient property
-      newValue.frontLegendLines_property.startsToBeObserved(by: self.mObserversOf_frontLegendLines) // to Many
-      newValue.backLegendLines_property.startsToBeObserved(by: self.mObserversOf_backLegendLines) // to Many
-      newValue.frontLegendTexts_property.startsToBeObserved(by: self.mObserversOf_frontLegendTexts) // to Many
-      newValue.frontLayoutTexts_property.startsToBeObserved(by: self.mObserversOf_frontLayoutTexts) // to Many
-      newValue.backLegendTexts_property.startsToBeObserved(by: self.mObserversOf_backLegendTexts) // to Many
-      newValue.backLayoutTexts_property.startsToBeObserved(by: self.mObserversOf_backLayoutTexts) // to Many
-      newValue.internalBoardsLimits_property.startsToBeObserved(by: self.mObserversOf_internalBoardsLimits) // to Many
-      newValue.drills_property.startsToBeObserved(by: self.mObserversOf_drills) // to Many
-      newValue.vias_property.startsToBeObserved(by: self.mObserversOf_vias) // to Many
-      newValue.frontPads_property.startsToBeObserved(by: self.mObserversOf_frontPads) // to Many
-      newValue.backPads_property.startsToBeObserved(by: self.mObserversOf_backPads) // to Many
-      newValue.traversingPads_property.startsToBeObserved(by: self.mObserversOf_traversingPads) // to Many
-      newValue.backComponentNames_property.startsToBeObserved(by: self.mObserversOf_backComponentNames) // to Many
-      newValue.frontComponentNames_property.startsToBeObserved(by: self.mObserversOf_frontComponentNames) // to Many
-      newValue.frontComponentValues_property.startsToBeObserved(by: self.mObserversOf_frontComponentValues) // to Many
-      newValue.backComponentValues_property.startsToBeObserved(by: self.mObserversOf_backComponentValues) // to Many
-      newValue.backTracks_property.startsToBeObserved(by: self.mObserversOf_backTracks) // to Many
-      newValue.frontTracks_property.startsToBeObserved(by: self.mObserversOf_frontTracks) // to Many
-      newValue.inner1Tracks_property.startsToBeObserved(by: self.mObserversOf_inner1Tracks) // to Many
-      newValue.inner2Tracks_property.startsToBeObserved(by: self.mObserversOf_inner2Tracks) // to Many
-      newValue.inner3Tracks_property.startsToBeObserved(by: self.mObserversOf_inner3Tracks) // to Many
-      newValue.inner4Tracks_property.startsToBeObserved(by: self.mObserversOf_inner4Tracks) // to Many
-      newValue.frontPackages_property.startsToBeObserved(by: self.mObserversOf_frontPackages) // to Many
-      newValue.backPackages_property.startsToBeObserved(by: self.mObserversOf_backPackages) // to Many
-      newValue.myInstances_property.startsToBeObserved(by: self.mObserversOf_myInstances) // to Many
+      if let relay = self.mObserversOf_frontLegendLines { // to Many
+        newValue.frontLegendLines_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backLegendLines { // to Many
+        newValue.backLegendLines_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontLegendTexts { // to Many
+        newValue.frontLegendTexts_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontLayoutTexts { // to Many
+        newValue.frontLayoutTexts_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backLegendTexts { // to Many
+        newValue.backLegendTexts_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backLayoutTexts { // to Many
+        newValue.backLayoutTexts_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_internalBoardsLimits { // to Many
+        newValue.internalBoardsLimits_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_drills { // to Many
+        newValue.drills_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_vias { // to Many
+        newValue.vias_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontPads { // to Many
+        newValue.frontPads_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backPads { // to Many
+        newValue.backPads_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_traversingPads { // to Many
+        newValue.traversingPads_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backComponentNames { // to Many
+        newValue.backComponentNames_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontComponentNames { // to Many
+        newValue.frontComponentNames_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontComponentValues { // to Many
+        newValue.frontComponentValues_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backComponentValues { // to Many
+        newValue.backComponentValues_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backTracks { // to Many
+        newValue.backTracks_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontTracks { // to Many
+        newValue.frontTracks_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_inner1Tracks { // to Many
+        newValue.inner1Tracks_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_inner2Tracks { // to Many
+        newValue.inner2Tracks_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_inner3Tracks { // to Many
+        newValue.inner3Tracks_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_inner4Tracks { // to Many
+        newValue.inner4Tracks_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontPackages { // to Many
+        newValue.frontPackages_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backPackages { // to Many
+        newValue.backPackages_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_myInstances { // to Many
+        newValue.myInstances_property.startsToBeObserved (by: relay)
+      }
     }
   }
 
@@ -580,600 +680,650 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: frontLegendLines
   //····················································································································
 
-  private final var mObserversOf_frontLegendLines = EBWeakObserverSetRelay ()
+  private final var mObserversOf_frontLegendLines : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_frontLegendLines_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_frontLegendLines.insert (inObserver)
-    /* if let object = self.propval {
-      object.frontLegendLines_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_frontLegendLines {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.frontLegendLines_property.startsToBeObserved (by: relay)
+      self.mObserversOf_frontLegendLines = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_frontLegendLines_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_frontLegendLines.remove (inObserver)
-    /* if let object = self.propval {
-      object.frontLegendLines_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_frontLegendLines?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: backLegendLines
   //····················································································································
 
-  private final var mObserversOf_backLegendLines = EBWeakObserverSetRelay ()
+  private final var mObserversOf_backLegendLines : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_backLegendLines_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_backLegendLines.insert (inObserver)
-    /* if let object = self.propval {
-      object.backLegendLines_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_backLegendLines {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.backLegendLines_property.startsToBeObserved (by: relay)
+      self.mObserversOf_backLegendLines = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_backLegendLines_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_backLegendLines.remove (inObserver)
-    /* if let object = self.propval {
-      object.backLegendLines_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_backLegendLines?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: frontLegendTexts
   //····················································································································
 
-  private final var mObserversOf_frontLegendTexts = EBWeakObserverSetRelay ()
+  private final var mObserversOf_frontLegendTexts : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_frontLegendTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_frontLegendTexts.insert (inObserver)
-    /* if let object = self.propval {
-      object.frontLegendTexts_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_frontLegendTexts {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.frontLegendTexts_property.startsToBeObserved (by: relay)
+      self.mObserversOf_frontLegendTexts = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_frontLegendTexts_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_frontLegendTexts.remove (inObserver)
-    /* if let object = self.propval {
-      object.frontLegendTexts_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_frontLegendTexts?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: frontLayoutTexts
   //····················································································································
 
-  private final var mObserversOf_frontLayoutTexts = EBWeakObserverSetRelay ()
+  private final var mObserversOf_frontLayoutTexts : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_frontLayoutTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_frontLayoutTexts.insert (inObserver)
-    /* if let object = self.propval {
-      object.frontLayoutTexts_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_frontLayoutTexts {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.frontLayoutTexts_property.startsToBeObserved (by: relay)
+      self.mObserversOf_frontLayoutTexts = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_frontLayoutTexts_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_frontLayoutTexts.remove (inObserver)
-    /* if let object = self.propval {
-      object.frontLayoutTexts_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_frontLayoutTexts?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: backLegendTexts
   //····················································································································
 
-  private final var mObserversOf_backLegendTexts = EBWeakObserverSetRelay ()
+  private final var mObserversOf_backLegendTexts : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_backLegendTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_backLegendTexts.insert (inObserver)
-    /* if let object = self.propval {
-      object.backLegendTexts_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_backLegendTexts {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.backLegendTexts_property.startsToBeObserved (by: relay)
+      self.mObserversOf_backLegendTexts = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_backLegendTexts_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_backLegendTexts.remove (inObserver)
-    /* if let object = self.propval {
-      object.backLegendTexts_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_backLegendTexts?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: backLayoutTexts
   //····················································································································
 
-  private final var mObserversOf_backLayoutTexts = EBWeakObserverSetRelay ()
+  private final var mObserversOf_backLayoutTexts : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_backLayoutTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_backLayoutTexts.insert (inObserver)
-    /* if let object = self.propval {
-      object.backLayoutTexts_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_backLayoutTexts {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.backLayoutTexts_property.startsToBeObserved (by: relay)
+      self.mObserversOf_backLayoutTexts = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_backLayoutTexts_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_backLayoutTexts.remove (inObserver)
-    /* if let object = self.propval {
-      object.backLayoutTexts_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_backLayoutTexts?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: internalBoardsLimits
   //····················································································································
 
-  private final var mObserversOf_internalBoardsLimits = EBWeakObserverSetRelay ()
+  private final var mObserversOf_internalBoardsLimits : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_internalBoardsLimits_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_internalBoardsLimits.insert (inObserver)
-    /* if let object = self.propval {
-      object.internalBoardsLimits_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_internalBoardsLimits {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.internalBoardsLimits_property.startsToBeObserved (by: relay)
+      self.mObserversOf_internalBoardsLimits = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_internalBoardsLimits_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_internalBoardsLimits.remove (inObserver)
-    /* if let object = self.propval {
-      object.internalBoardsLimits_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_internalBoardsLimits?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: drills
   //····················································································································
 
-  private final var mObserversOf_drills = EBWeakObserverSetRelay ()
+  private final var mObserversOf_drills : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_drills_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_drills.insert (inObserver)
-    /* if let object = self.propval {
-      object.drills_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_drills {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.drills_property.startsToBeObserved (by: relay)
+      self.mObserversOf_drills = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_drills_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_drills.remove (inObserver)
-    /* if let object = self.propval {
-      object.drills_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_drills?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: vias
   //····················································································································
 
-  private final var mObserversOf_vias = EBWeakObserverSetRelay ()
+  private final var mObserversOf_vias : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_vias_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_vias.insert (inObserver)
-    /* if let object = self.propval {
-      object.vias_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_vias {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.vias_property.startsToBeObserved (by: relay)
+      self.mObserversOf_vias = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_vias_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_vias.remove (inObserver)
-    /* if let object = self.propval {
-      object.vias_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_vias?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: frontPads
   //····················································································································
 
-  private final var mObserversOf_frontPads = EBWeakObserverSetRelay ()
+  private final var mObserversOf_frontPads : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_frontPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_frontPads.insert (inObserver)
-    /* if let object = self.propval {
-      object.frontPads_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_frontPads {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.frontPads_property.startsToBeObserved (by: relay)
+      self.mObserversOf_frontPads = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_frontPads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_frontPads.remove (inObserver)
-    /* if let object = self.propval {
-      object.frontPads_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_frontPads?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: backPads
   //····················································································································
 
-  private final var mObserversOf_backPads = EBWeakObserverSetRelay ()
+  private final var mObserversOf_backPads : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_backPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_backPads.insert (inObserver)
-    /* if let object = self.propval {
-      object.backPads_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_backPads {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.backPads_property.startsToBeObserved (by: relay)
+      self.mObserversOf_backPads = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_backPads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_backPads.remove (inObserver)
-    /* if let object = self.propval {
-      object.backPads_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_backPads?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: traversingPads
   //····················································································································
 
-  private final var mObserversOf_traversingPads = EBWeakObserverSetRelay ()
+  private final var mObserversOf_traversingPads : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_traversingPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_traversingPads.insert (inObserver)
-    /* if let object = self.propval {
-      object.traversingPads_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_traversingPads {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.traversingPads_property.startsToBeObserved (by: relay)
+      self.mObserversOf_traversingPads = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_traversingPads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_traversingPads.remove (inObserver)
-    /* if let object = self.propval {
-      object.traversingPads_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_traversingPads?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: backComponentNames
   //····················································································································
 
-  private final var mObserversOf_backComponentNames = EBWeakObserverSetRelay ()
+  private final var mObserversOf_backComponentNames : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_backComponentNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_backComponentNames.insert (inObserver)
-    /* if let object = self.propval {
-      object.backComponentNames_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_backComponentNames {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.backComponentNames_property.startsToBeObserved (by: relay)
+      self.mObserversOf_backComponentNames = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_backComponentNames_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_backComponentNames.remove (inObserver)
-    /* if let object = self.propval {
-      object.backComponentNames_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_backComponentNames?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: frontComponentNames
   //····················································································································
 
-  private final var mObserversOf_frontComponentNames = EBWeakObserverSetRelay ()
+  private final var mObserversOf_frontComponentNames : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_frontComponentNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_frontComponentNames.insert (inObserver)
-    /* if let object = self.propval {
-      object.frontComponentNames_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_frontComponentNames {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.frontComponentNames_property.startsToBeObserved (by: relay)
+      self.mObserversOf_frontComponentNames = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_frontComponentNames_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_frontComponentNames.remove (inObserver)
-    /* if let object = self.propval {
-      object.frontComponentNames_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_frontComponentNames?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: frontComponentValues
   //····················································································································
 
-  private final var mObserversOf_frontComponentValues = EBWeakObserverSetRelay ()
+  private final var mObserversOf_frontComponentValues : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_frontComponentValues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_frontComponentValues.insert (inObserver)
-    /* if let object = self.propval {
-      object.frontComponentValues_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_frontComponentValues {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.frontComponentValues_property.startsToBeObserved (by: relay)
+      self.mObserversOf_frontComponentValues = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_frontComponentValues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_frontComponentValues.remove (inObserver)
-    /* if let object = self.propval {
-      object.frontComponentValues_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_frontComponentValues?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: backComponentValues
   //····················································································································
 
-  private final var mObserversOf_backComponentValues = EBWeakObserverSetRelay ()
+  private final var mObserversOf_backComponentValues : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_backComponentValues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_backComponentValues.insert (inObserver)
-    /* if let object = self.propval {
-      object.backComponentValues_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_backComponentValues {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.backComponentValues_property.startsToBeObserved (by: relay)
+      self.mObserversOf_backComponentValues = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_backComponentValues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_backComponentValues.remove (inObserver)
-    /* if let object = self.propval {
-      object.backComponentValues_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_backComponentValues?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: backTracks
   //····················································································································
 
-  private final var mObserversOf_backTracks = EBWeakObserverSetRelay ()
+  private final var mObserversOf_backTracks : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_backTracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_backTracks.insert (inObserver)
-    /* if let object = self.propval {
-      object.backTracks_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_backTracks {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.backTracks_property.startsToBeObserved (by: relay)
+      self.mObserversOf_backTracks = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_backTracks_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_backTracks.remove (inObserver)
-    /* if let object = self.propval {
-      object.backTracks_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_backTracks?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: frontTracks
   //····················································································································
 
-  private final var mObserversOf_frontTracks = EBWeakObserverSetRelay ()
+  private final var mObserversOf_frontTracks : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_frontTracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_frontTracks.insert (inObserver)
-    /* if let object = self.propval {
-      object.frontTracks_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_frontTracks {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.frontTracks_property.startsToBeObserved (by: relay)
+      self.mObserversOf_frontTracks = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_frontTracks_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_frontTracks.remove (inObserver)
-    /* if let object = self.propval {
-      object.frontTracks_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_frontTracks?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: inner1Tracks
   //····················································································································
 
-  private final var mObserversOf_inner1Tracks = EBWeakObserverSetRelay ()
+  private final var mObserversOf_inner1Tracks : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_inner1Tracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_inner1Tracks.insert (inObserver)
-    /* if let object = self.propval {
-      object.inner1Tracks_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_inner1Tracks {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.inner1Tracks_property.startsToBeObserved (by: relay)
+      self.mObserversOf_inner1Tracks = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_inner1Tracks_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_inner1Tracks.remove (inObserver)
-    /* if let object = self.propval {
-      object.inner1Tracks_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_inner1Tracks?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: inner2Tracks
   //····················································································································
 
-  private final var mObserversOf_inner2Tracks = EBWeakObserverSetRelay ()
+  private final var mObserversOf_inner2Tracks : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_inner2Tracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_inner2Tracks.insert (inObserver)
-    /* if let object = self.propval {
-      object.inner2Tracks_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_inner2Tracks {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.inner2Tracks_property.startsToBeObserved (by: relay)
+      self.mObserversOf_inner2Tracks = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_inner2Tracks_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_inner2Tracks.remove (inObserver)
-    /* if let object = self.propval {
-      object.inner2Tracks_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_inner2Tracks?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: inner3Tracks
   //····················································································································
 
-  private final var mObserversOf_inner3Tracks = EBWeakObserverSetRelay ()
+  private final var mObserversOf_inner3Tracks : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_inner3Tracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_inner3Tracks.insert (inObserver)
-    /* if let object = self.propval {
-      object.inner3Tracks_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_inner3Tracks {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.inner3Tracks_property.startsToBeObserved (by: relay)
+      self.mObserversOf_inner3Tracks = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_inner3Tracks_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_inner3Tracks.remove (inObserver)
-    /* if let object = self.propval {
-      object.inner3Tracks_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_inner3Tracks?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: inner4Tracks
   //····················································································································
 
-  private final var mObserversOf_inner4Tracks = EBWeakObserverSetRelay ()
+  private final var mObserversOf_inner4Tracks : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_inner4Tracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_inner4Tracks.insert (inObserver)
-    /* if let object = self.propval {
-      object.inner4Tracks_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_inner4Tracks {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.inner4Tracks_property.startsToBeObserved (by: relay)
+      self.mObserversOf_inner4Tracks = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_inner4Tracks_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_inner4Tracks.remove (inObserver)
-    /* if let object = self.propval {
-      object.inner4Tracks_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_inner4Tracks?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: frontPackages
   //····················································································································
 
-  private final var mObserversOf_frontPackages = EBWeakObserverSetRelay ()
+  private final var mObserversOf_frontPackages : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_frontPackages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_frontPackages.insert (inObserver)
-    /* if let object = self.propval {
-      object.frontPackages_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_frontPackages {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.frontPackages_property.startsToBeObserved (by: relay)
+      self.mObserversOf_frontPackages = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_frontPackages_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_frontPackages.remove (inObserver)
-    /* if let object = self.propval {
-      object.frontPackages_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_frontPackages?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: backPackages
   //····················································································································
 
-  private final var mObserversOf_backPackages = EBWeakObserverSetRelay ()
+  private final var mObserversOf_backPackages : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_backPackages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_backPackages.insert (inObserver)
-    /* if let object = self.propval {
-      object.backPackages_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_backPackages {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.backPackages_property.startsToBeObserved (by: relay)
+      self.mObserversOf_backPackages = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_backPackages_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_backPackages.remove (inObserver)
-    /* if let object = self.propval {
-      object.backPackages_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_backPackages?.remove (observer: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: myInstances
   //····················································································································
 
-  private final var mObserversOf_myInstances = EBWeakObserverSetRelay ()
+  private final var mObserversOf_myInstances : EBWeakObserverSetRelay? = nil
 
   //····················································································································
 
   final func toMany_myInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_myInstances.insert (inObserver)
-    /* if let object = self.propval {
-      object.myInstances_property.startsToBeObserved (by: inObserver)
-    } */
+    let relay : EBWeakObserverSetRelay
+    if let r = self.mObserversOf_myInstances {
+      relay = r
+    }else{
+      relay = EBWeakObserverSetRelay ()
+      self.mWeakInternalValue?.myInstances_property.startsToBeObserved (by: relay)
+      self.mObserversOf_myInstances = relay
+    }
+    relay.insert (observer: inObserver)
   }
 
   //····················································································································
 
   final func toMany_myInstances_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_myInstances.remove (inObserver)
-    /* if let object = self.propval {
-      object.myInstances_property.stopsBeingObserved (by: inObserver)
-    } */
+    self.mObserversOf_myInstances?.remove (observer: inObserver)
   }
 
   //····················································································································
