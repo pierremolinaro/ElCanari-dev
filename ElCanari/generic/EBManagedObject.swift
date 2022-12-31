@@ -18,7 +18,7 @@ import AppKit
 //  Moins volumineux avec EBSwiftBaseObject, mais plus long à l'ouverture
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor class EBManagedObject : ObjectIndexProtocol, EBSignatureObserverProtocol {
+@MainActor class EBManagedObject : EBSignatureObserverProtocol {
 
   //····················································································································
 
@@ -55,7 +55,7 @@ import AppKit
 
   //····················································································································
 
-  final var objectIndex : Int { return Int (bitPattern: ObjectIdentifier (self)) }
+  final var objectIndex : Int { return objectIntIdentifier (self) }
 
   //····················································································································
   //  Getters

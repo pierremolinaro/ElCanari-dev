@@ -14,7 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ProjectRoot_unplacedPackages (
-       _ self_mComponents : [ObjectIndexProtocol],      
+       _ self_mComponents : [AnyObject],                
        _ self_mComponents_componentName : [ComponentInProject_componentName],
        _ self_mComponents_mComponentValue : [ComponentInProject_mComponentValue],
        _ self_mComponents_componentIsPlacedInBoard : [ComponentInProject_componentIsPlacedInBoard]
@@ -29,7 +29,7 @@ import AppKit
             if value != "" {
               title += " (" + value + ")"
             }
-            let tag = self_mComponents [idx].objectIndex
+            let tag = objectIntIdentifier (self_mComponents [idx])
             let st = StringTag (string: title, tag: tag)
             result.append (st)
           }

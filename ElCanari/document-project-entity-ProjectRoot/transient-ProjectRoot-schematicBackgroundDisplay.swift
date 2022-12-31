@@ -18,8 +18,8 @@ import AppKit
        _ self_mSchematicVersion : String,                         
        _ self_sheetGeometry : SchematicSheetGeometry,             
        _ self_mSelectedSheet_mSheetTitle : String?,               
-       _ self_mSheets : [ObjectIndexProtocol],                    
-       _ self_mSelectedSheet : ObjectIndexProtocol?,              
+       _ self_mSheets : [AnyObject],                              
+       _ self_mSelectedSheet : AnyObject?,                        
        _ self_mSchematicDate : Date,                              
        _ prefs_schematicBackColor : NSColor,                      
        _ prefs_schematicFrameColor : NSColor
@@ -127,10 +127,11 @@ import AppKit
         shape.add (text: dateFormatter.string (from: self_mSchematicDate), p, textAttributes, .center, .center)
      //--- Sheet index
         var s = "?"
-        if let selectedSheetIndex = self_mSelectedSheet?.objectIndex {
+        if let selectedSheet = self_mSelectedSheet {
+          let selectedSheetIndex = objectIntIdentifier (selectedSheet)
           var idx = 1
           for sheet in self_mSheets {
-            if sheet.objectIndex == selectedSheetIndex {
+            if objectIntIdentifier (sheet) == selectedSheetIndex {
               s = "\(idx)"
             }
             idx += 1

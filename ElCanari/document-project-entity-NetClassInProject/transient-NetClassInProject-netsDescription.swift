@@ -115,7 +115,7 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_NetClassInProject_netsDescription (
-       _ self_mNets : [ObjectIndexProtocol],                 
+       _ self_mNets : [AnyObject],                           
        _ self_mNets_trackCount : [NetInProject_trackCount],  
        _ self_mNets_mNetName : [NetInProject_mNetName],      
        _ self_mNets_netSchematicPointsInfo : [NetInProject_netSchematicPointsInfo],
@@ -140,7 +140,7 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
           }
           let (subnets, subnetsHaveWarning) = computeSubnets (warnsExactlyOneLabel, netPointInfo)
           let netInfo = NetInfo (
-            netIdentifier: self_mNets [idx].objectIndex, 
+            netIdentifier: objectIntIdentifier (self_mNets [idx]), 
             netName: netName,
             netClassName: self_mNetClassName,
             points: netPointInfo,

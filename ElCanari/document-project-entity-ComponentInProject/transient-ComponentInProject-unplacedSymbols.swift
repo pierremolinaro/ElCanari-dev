@@ -15,7 +15,7 @@ import AppKit
 
 @MainActor func transient_ComponentInProject_unplacedSymbols (
        _ self_componentName : String,                         
-       _ self_mSymbols : [ObjectIndexProtocol],               
+       _ self_mSymbols : [AnyObject],                         
        _ self_mSymbols_symbolInSchematic : [ComponentSymbolInProject_symbolInSchematic],
        _ self_mSymbols_mSymbolInstanceName : [ComponentSymbolInProject_mSymbolInstanceName],
        _ self_mSymbols_mSymbolTypeName : [ComponentSymbolInProject_mSymbolTypeName],
@@ -27,7 +27,7 @@ import AppKit
         while idx < self_mSymbols_mSymbolInstanceName.count {
           let inSchematics = self_mSymbols_symbolInSchematic [idx].symbolInSchematic!
           if !inSchematics {
-            let objectAddress = self_mSymbols [idx].objectIndex
+            let objectAddress = objectIntIdentifier (self_mSymbols [idx])
             let symbolInstanceName = self_mSymbols_mSymbolInstanceName [idx].mSymbolInstanceName
             let symbolTypeName = self_mSymbols_mSymbolTypeName [idx].mSymbolTypeName
             var name = self_componentName

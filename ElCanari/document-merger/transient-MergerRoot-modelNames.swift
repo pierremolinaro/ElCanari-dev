@@ -15,13 +15,13 @@ import AppKit
 
 @MainActor func transient_MergerRoot_modelNames (
        _ self_boardModels_name : [BoardModel_name],
-       _ self_boardModels : [ObjectIndexProtocol]
+       _ self_boardModels : [AnyObject]
 ) -> StringTagArray {
 //--- START OF USER ZONE 2
   var array = StringTagArray ()
   var idx = 0
   while idx < self_boardModels_name.count {
-    array.append (StringTag (string: self_boardModels_name [idx].name, tag: self_boardModels [idx].objectIndex))
+    array.append (StringTag (string: self_boardModels_name [idx].name, tag: objectIntIdentifier (self_boardModels [idx])))
     idx += 1
   }
   return array

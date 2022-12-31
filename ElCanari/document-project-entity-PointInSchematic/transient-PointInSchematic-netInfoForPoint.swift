@@ -19,8 +19,8 @@ import AppKit
        _ self_mSymbol_mSymbolInstanceName : String?,        
        _ self_mSymbolPinName : String,                      
        _ self_mSymbol_pinPadAssignments : ThreeStringArray?,
-       _ self_mWiresP1s : [ObjectIndexProtocol],            
-       _ self_mWiresP2s : [ObjectIndexProtocol],            
+       _ self_mWiresP1s : [AnyObject],                      
+       _ self_mWiresP2s : [AnyObject],                      
        _ self_location : CanariPoint,                       
        _ self_mSheet_sheetDescriptor : SchematicSheetDescriptor?
 ) -> NetInfoPoint {
@@ -28,10 +28,10 @@ import AppKit
       //--- Wires
         var wireIndexSet = Set <Int> ()
         for wire in self_mWiresP1s {
-          wireIndexSet.insert (wire.objectIndex)
+          wireIndexSet.insert (objectIntIdentifier (wire))
         }
         for wire in self_mWiresP2s {
-          wireIndexSet.insert (wire.objectIndex)
+          wireIndexSet.insert (objectIntIdentifier (wire))
         }
       //--- Location in sheet
         var locationInSheetString : String
