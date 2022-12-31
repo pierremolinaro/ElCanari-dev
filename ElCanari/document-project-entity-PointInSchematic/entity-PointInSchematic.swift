@@ -311,12 +311,6 @@ final class PointInSchematic : EBManagedObject,
 
   final var location : CanariPoint? {
     return self.location_property.optionalValue
-    /* switch self.location_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -329,12 +323,6 @@ final class PointInSchematic : EBManagedObject,
 
   final var netName : String? {
     return self.netName_property.optionalValue
-    /* switch self.netName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -347,12 +335,6 @@ final class PointInSchematic : EBManagedObject,
 
   final var netClassName : String? {
     return self.netClassName_property.optionalValue
-    /* switch self.netClassName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -365,12 +347,6 @@ final class PointInSchematic : EBManagedObject,
 
   final var hasNet : Bool? {
     return self.hasNet_property.optionalValue
-    /* switch self.hasNet_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -383,12 +359,6 @@ final class PointInSchematic : EBManagedObject,
 
   final var canMove : Bool? {
     return self.canMove_property.optionalValue
-    /* switch self.canMove_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -401,12 +371,6 @@ final class PointInSchematic : EBManagedObject,
 
   final var wireColor : NSColor? {
     return self.wireColor_property.optionalValue
-    /* switch self.wireColor_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -419,12 +383,6 @@ final class PointInSchematic : EBManagedObject,
 
   final var symbolRotation : QuadrantRotation? {
     return self.symbolRotation_property.optionalValue
-    /* switch self.symbolRotation_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -465,12 +423,6 @@ final class PointInSchematic : EBManagedObject,
 
   final var symbolNameNetName : TwoStrings? {
     return self.symbolNameNetName_property.optionalValue
-    /* switch self.symbolNameNetName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -483,12 +435,6 @@ final class PointInSchematic : EBManagedObject,
 
   final var isConnected : Bool? {
     return self.isConnected_property.optionalValue
-    /* switch self.isConnected_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -501,12 +447,6 @@ final class PointInSchematic : EBManagedObject,
 
   final var status : SchematicPointStatus? {
     return self.status_property.optionalValue
-    /* switch self.status_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -519,12 +459,6 @@ final class PointInSchematic : EBManagedObject,
 
   final var connectedPoints : CanariPointArray? {
     return self.connectedPoints_property.optionalValue
-    /* switch self.connectedPoints_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -537,12 +471,6 @@ final class PointInSchematic : EBManagedObject,
 
   final var netInfoForPoint : NetInfoPoint? {
     return self.netInfoForPoint_property.optionalValue
-    /* switch self.netInfoForPoint_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

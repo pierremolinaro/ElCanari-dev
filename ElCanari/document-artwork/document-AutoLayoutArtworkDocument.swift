@@ -30,12 +30,6 @@ import AppKit
 
   final var documentFileName : String? {
     return self.documentFileName_property.optionalValue
-    /* switch self.documentFileName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -48,12 +42,6 @@ import AppKit
 
   final var statusMessage : String? {
     return self.statusMessage_property.optionalValue
-    /* switch self.statusMessage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -66,12 +54,6 @@ import AppKit
 
   final var emptyDrillFileExtensionImage : NSImage? {
     return self.emptyDrillFileExtensionImage_property.optionalValue
-    /* switch self.emptyDrillFileExtensionImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -84,12 +66,6 @@ import AppKit
 
   final var generatedFileCountString : String? {
     return self.generatedFileCountString_property.optionalValue
-    /* switch self.generatedFileCountString_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -102,12 +78,6 @@ import AppKit
 
   final var segmentedControlDataIssueImage : NSImage? {
     return self.segmentedControlDataIssueImage_property.optionalValue
-    /* switch self.segmentedControlDataIssueImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -120,12 +90,6 @@ import AppKit
 
   final var statusImage : NSImage? {
     return self.statusImage_property.optionalValue
-    /* switch self.statusImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

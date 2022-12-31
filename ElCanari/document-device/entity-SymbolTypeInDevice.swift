@@ -208,12 +208,6 @@ final class SymbolTypeInDevice : EBManagedObject,
 
   final var versionString : String? {
     return self.versionString_property.optionalValue
-    /* switch self.versionString_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -226,12 +220,6 @@ final class SymbolTypeInDevice : EBManagedObject,
 
   final var instanceCount : Int? {
     return self.instanceCount_property.optionalValue
-    /* switch self.instanceCount_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -244,12 +232,6 @@ final class SymbolTypeInDevice : EBManagedObject,
 
   final var documentSize : Int? {
     return self.documentSize_property.optionalValue
-    /* switch self.documentSize_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -262,12 +244,6 @@ final class SymbolTypeInDevice : EBManagedObject,
 
   final var pinNameShape : EBShape? {
     return self.pinNameShape_property.optionalValue
-    /* switch self.pinNameShape_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

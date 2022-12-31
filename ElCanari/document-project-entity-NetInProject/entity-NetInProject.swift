@@ -179,12 +179,6 @@ final class NetInProject : EBManagedObject,
 
   final var netClassName : String? {
     return self.netClassName_property.optionalValue
-    /* switch self.netClassName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -197,12 +191,6 @@ final class NetInProject : EBManagedObject,
 
   final var netClassTrackWidth : Int? {
     return self.netClassTrackWidth_property.optionalValue
-    /* switch self.netClassTrackWidth_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -215,12 +203,6 @@ final class NetInProject : EBManagedObject,
 
   final var netClassViaHoleDiameter : Int? {
     return self.netClassViaHoleDiameter_property.optionalValue
-    /* switch self.netClassViaHoleDiameter_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -233,12 +215,6 @@ final class NetInProject : EBManagedObject,
 
   final var netClassViaPadDiameter : Int? {
     return self.netClassViaPadDiameter_property.optionalValue
-    /* switch self.netClassViaPadDiameter_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -251,12 +227,6 @@ final class NetInProject : EBManagedObject,
 
   final var wireColor : NSColor? {
     return self.wireColor_property.optionalValue
-    /* switch self.wireColor_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -269,12 +239,6 @@ final class NetInProject : EBManagedObject,
 
   final var netSchematicPointsInfo : NetInfoPointArray? {
     return self.netSchematicPointsInfo_property.optionalValue
-    /* switch self.netSchematicPointsInfo_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -287,12 +251,6 @@ final class NetInProject : EBManagedObject,
 
   final var trackCount : Int? {
     return self.trackCount_property.optionalValue
-    /* switch self.trackCount_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

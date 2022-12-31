@@ -36,12 +36,6 @@ import AppKit
 
   final var documentFileName : String? {
     return self.documentFileName_property.optionalValue
-    /* switch self.documentFileName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -54,12 +48,6 @@ import AppKit
 
   final var addSegmentButtonImage : NSImage? {
     return self.addSegmentButtonImage_property.optionalValue
-    /* switch self.addSegmentButtonImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -72,12 +60,6 @@ import AppKit
 
   final var addBezierButtonImage : NSImage? {
     return self.addBezierButtonImage_property.optionalValue
-    /* switch self.addBezierButtonImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -90,12 +72,6 @@ import AppKit
 
   final var addOvalButtonImage : NSImage? {
     return self.addOvalButtonImage_property.optionalValue
-    /* switch self.addOvalButtonImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -108,12 +84,6 @@ import AppKit
 
   final var addSolidOvalButtonImage : NSImage? {
     return self.addSolidOvalButtonImage_property.optionalValue
-    /* switch self.addSolidOvalButtonImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -126,12 +96,6 @@ import AppKit
 
   final var addSolidRectButtonImage : NSImage? {
     return self.addSolidRectButtonImage_property.optionalValue
-    /* switch self.addSolidRectButtonImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -144,12 +108,6 @@ import AppKit
 
   final var addTextButtonImage : NSImage? {
     return self.addTextButtonImage_property.optionalValue
-    /* switch self.addTextButtonImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -162,12 +120,6 @@ import AppKit
 
   final var addPinButtonImage : NSImage? {
     return self.addPinButtonImage_property.optionalValue
-    /* switch self.addPinButtonImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -180,12 +132,6 @@ import AppKit
 
   final var issues : CanariIssueArray? {
     return self.issues_property.optionalValue
-    /* switch self.issues_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -198,12 +144,6 @@ import AppKit
 
   final var statusImage : NSImage? {
     return self.statusImage_property.optionalValue
-    /* switch self.statusImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -216,12 +156,6 @@ import AppKit
 
   final var statusMessage : String? {
     return self.statusMessage_property.optionalValue
-    /* switch self.statusMessage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -234,12 +168,6 @@ import AppKit
 
   final var metadataStatus : MetadataStatus? {
     return self.metadataStatus_property.optionalValue
-    /* switch self.metadataStatus_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -252,12 +180,6 @@ import AppKit
 
   final var noIssue : Bool? {
     return self.noIssue_property.optionalValue
-    /* switch self.noIssue_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -270,12 +192,6 @@ import AppKit
 
   final var segmentedControlSegmentIssueImage : NSImage? {
     return self.segmentedControlSegmentIssueImage_property.optionalValue
-    /* switch self.segmentedControlSegmentIssueImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -288,12 +204,6 @@ import AppKit
 
   final var segmentedControlSegmentIssueString : String? {
     return self.segmentedControlSegmentIssueString_property.optionalValue
-    /* switch self.segmentedControlSegmentIssueString_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

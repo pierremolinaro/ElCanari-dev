@@ -111,12 +111,6 @@ final class WireInSchematic : SchematicObject,
 
   final var netName : String? {
     return self.netName_property.optionalValue
-    /* switch self.netName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -129,12 +123,6 @@ final class WireInSchematic : SchematicObject,
 
   final var netClassName : String? {
     return self.netClassName_property.optionalValue
-    /* switch self.netClassName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -147,12 +135,6 @@ final class WireInSchematic : SchematicObject,
 
   final var hasNet : Bool? {
     return self.hasNet_property.optionalValue
-    /* switch self.hasNet_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

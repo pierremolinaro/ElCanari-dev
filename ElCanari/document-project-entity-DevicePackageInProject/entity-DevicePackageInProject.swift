@@ -94,12 +94,6 @@ final class DevicePackageInProject : EBManagedObject,
 
   final var packagePadDictionary : PackageMasterPadDictionary? {
     return self.packagePadDictionary_property.optionalValue
-    /* switch self.packagePadDictionary_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

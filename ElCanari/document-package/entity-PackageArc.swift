@@ -386,12 +386,6 @@ final class PackageArc : PackageObject,
 
   final var strokeBezierPath : EBBezierPath? {
     return self.strokeBezierPath_property.optionalValue
-    /* switch self.strokeBezierPath_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

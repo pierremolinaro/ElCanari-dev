@@ -90,12 +90,6 @@ class SchematicObject : EBGraphicManagedObject,
 
   final var issues : CanariIssueArray? {
     return self.issues_property.optionalValue
-    /* switch self.issues_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -108,12 +102,6 @@ class SchematicObject : EBGraphicManagedObject,
 
   final var connectedPoints : CanariPointArray? {
     return self.connectedPoints_property.optionalValue
-    /* switch self.connectedPoints_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -126,12 +114,6 @@ class SchematicObject : EBGraphicManagedObject,
 
   final var sheetDescriptor : SchematicSheetDescriptor? {
     return self.sheetDescriptor_property.optionalValue
-    /* switch self.sheetDescriptor_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -144,12 +126,6 @@ class SchematicObject : EBGraphicManagedObject,
 
   final var isPlacedInSchematic : Bool? {
     return self.isPlacedInSchematic_property.optionalValue
-    /* switch self.isPlacedInSchematic_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

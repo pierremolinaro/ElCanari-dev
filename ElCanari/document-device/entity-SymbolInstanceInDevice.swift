@@ -211,12 +211,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   final var symbolQualifiedName : String? {
     return self.symbolQualifiedName_property.optionalValue
-    /* switch self.symbolQualifiedName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -229,12 +223,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   final var symbolTypeName : String? {
     return self.symbolTypeName_property.optionalValue
-    /* switch self.symbolTypeName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -247,12 +235,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   final var pinSymbolQualifiedNames : StringArray? {
     return self.pinSymbolQualifiedNames_property.optionalValue
-    /* switch self.pinSymbolQualifiedNames_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -265,12 +247,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   final var unconnectedPins : UnconnectedSymbolPinsInDevice? {
     return self.unconnectedPins_property.optionalValue
-    /* switch self.unconnectedPins_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

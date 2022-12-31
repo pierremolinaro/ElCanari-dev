@@ -218,12 +218,6 @@ final class FontInProject : EBManagedObject,
 
   final var versionString : String? {
     return self.versionString_property.optionalValue
-    /* switch self.versionString_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -236,12 +230,6 @@ final class FontInProject : EBManagedObject,
 
   final var sizeString : String? {
     return self.sizeString_property.optionalValue
-    /* switch self.sizeString_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -254,12 +242,6 @@ final class FontInProject : EBManagedObject,
 
   final var descriptor : BoardFontDescriptor? {
     return self.descriptor_property.optionalValue
-    /* switch self.descriptor_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -272,12 +254,6 @@ final class FontInProject : EBManagedObject,
 
   final var textCount : Int? {
     return self.textCount_property.optionalValue
-    /* switch self.textCount_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -290,12 +266,6 @@ final class FontInProject : EBManagedObject,
 
   final var canRemoveFont : Bool? {
     return self.canRemoveFont_property.optionalValue
-    /* switch self.canRemoveFont_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -308,12 +278,6 @@ final class FontInProject : EBManagedObject,
 
   final var componentNamesCount : Int? {
     return self.componentNamesCount_property.optionalValue
-    /* switch self.componentNamesCount_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -326,12 +290,6 @@ final class FontInProject : EBManagedObject,
 
   final var componentValuesCount : Int? {
     return self.componentValuesCount_property.optionalValue
-    /* switch self.componentValuesCount_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

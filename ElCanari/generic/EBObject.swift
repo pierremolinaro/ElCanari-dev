@@ -14,11 +14,11 @@ import AppKit
 //    EBObjcBaseObject class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor class EBObjcBaseObject : NSObject, ObjectIndexProtocol {
+@MainActor class EBObjcBaseObject : NSObject { // , ObjectIndexProtocol {
 
   //····················································································································
 
-  final var objectIndex : Int { return Int (bitPattern: ObjectIdentifier (self)) }
+//  final var objectIndex : Int { return Int (bitPattern: ObjectIdentifier (self)) }
 
   //····················································································································
 
@@ -45,7 +45,7 @@ import AppKit
 
   //····················································································································
 
-  final var objectIndex : Int { return Int (bitPattern: ObjectIdentifier(self)) }
+  final var objectIndex : Int { return Int (bitPattern: ObjectIdentifier (self)) }
 
   //····················································································································
 

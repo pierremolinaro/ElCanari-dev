@@ -251,12 +251,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var isPlacedInBoard : Bool? {
     return self.isPlacedInBoard_property.optionalValue
-    /* switch self.isPlacedInBoard_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -269,12 +263,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var issues : CanariIssueArray? {
     return self.issues_property.optionalValue
-    /* switch self.issues_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -287,12 +275,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var isVia : Bool? {
     return self.isVia_property.optionalValue
-    /* switch self.isVia_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -305,12 +287,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var trackLengthInCanariUnit : Double? {
     return self.trackLengthInCanariUnit_property.optionalValue
-    /* switch self.trackLengthInCanariUnit_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -323,12 +299,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var signatureForERCChecking : UInt32? {
     return self.signatureForERCChecking_property.optionalValue
-    /* switch self.signatureForERCChecking_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -341,12 +311,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var netNameAndPadLocation : RastnetInfoArray? {
     return self.netNameAndPadLocation_property.optionalValue
-    /* switch self.netNameAndPadLocation_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -359,12 +323,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var componentName : String? {
     return self.componentName_property.optionalValue
-    /* switch self.componentName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -377,12 +335,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayFrontLegendForBoard : Bool? {
     return self.displayFrontLegendForBoard_property.optionalValue
-    /* switch self.displayFrontLegendForBoard_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -395,12 +347,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayBackLegendForBoard : Bool? {
     return self.displayBackLegendForBoard_property.optionalValue
-    /* switch self.displayBackLegendForBoard_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -413,12 +359,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayFrontLayoutForBoard : Bool? {
     return self.displayFrontLayoutForBoard_property.optionalValue
-    /* switch self.displayFrontLayoutForBoard_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -431,12 +371,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayBackLayoutForBoard : Bool? {
     return self.displayBackLayoutForBoard_property.optionalValue
-    /* switch self.displayBackLayoutForBoard_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -449,12 +383,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayInner1LayoutForBoard : Bool? {
     return self.displayInner1LayoutForBoard_property.optionalValue
-    /* switch self.displayInner1LayoutForBoard_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -467,12 +395,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayInner2LayoutForBoard : Bool? {
     return self.displayInner2LayoutForBoard_property.optionalValue
-    /* switch self.displayInner2LayoutForBoard_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -485,12 +407,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayInner3LayoutForBoard : Bool? {
     return self.displayInner3LayoutForBoard_property.optionalValue
-    /* switch self.displayInner3LayoutForBoard_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -503,12 +419,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayInner4LayoutForBoard : Bool? {
     return self.displayInner4LayoutForBoard_property.optionalValue
-    /* switch self.displayInner4LayoutForBoard_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -521,12 +431,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayFrontPadsForBoard : Bool? {
     return self.displayFrontPadsForBoard_property.optionalValue
-    /* switch self.displayFrontPadsForBoard_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -539,12 +443,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayBackPadsForBoard : Bool? {
     return self.displayBackPadsForBoard_property.optionalValue
-    /* switch self.displayBackPadsForBoard_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -557,12 +455,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayPadNumbersForBoard : Bool? {
     return self.displayPadNumbersForBoard_property.optionalValue
-    /* switch self.displayPadNumbersForBoard_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -575,12 +467,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayFrontRestrictRectangles : Bool? {
     return self.displayFrontRestrictRectangles_property.optionalValue
-    /* switch self.displayFrontRestrictRectangles_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -593,12 +479,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayBackRestrictRectangles : Bool? {
     return self.displayBackRestrictRectangles_property.optionalValue
-    /* switch self.displayBackRestrictRectangles_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -611,12 +491,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayInner1RestrictRectangles : Bool? {
     return self.displayInner1RestrictRectangles_property.optionalValue
-    /* switch self.displayInner1RestrictRectangles_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -629,12 +503,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayInner2RestrictRectangles : Bool? {
     return self.displayInner2RestrictRectangles_property.optionalValue
-    /* switch self.displayInner2RestrictRectangles_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -647,12 +515,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayInner3RestrictRectangles : Bool? {
     return self.displayInner3RestrictRectangles_property.optionalValue
-    /* switch self.displayInner3RestrictRectangles_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -665,12 +527,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var displayInner4RestrictRectangles : Bool? {
     return self.displayInner4RestrictRectangles_property.optionalValue
-    /* switch self.displayInner4RestrictRectangles_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -683,12 +539,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var packageDrawingWidthMultpliedByTenForBoard : Int? {
     return self.packageDrawingWidthMultpliedByTenForBoard_property.optionalValue
-    /* switch self.packageDrawingWidthMultpliedByTenForBoard_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -701,12 +551,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var errorOrWarningIssueSize : Double? {
     return self.errorOrWarningIssueSize_property.optionalValue
-    /* switch self.errorOrWarningIssueSize_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -719,12 +563,6 @@ class BoardObject : EBGraphicManagedObject,
 
   final var trackSide : TrackSide? {
     return self.trackSide_property.optionalValue
-    /* switch self.trackSide_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

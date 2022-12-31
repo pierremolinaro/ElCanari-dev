@@ -131,12 +131,6 @@ final class CanariLibraryEntry : EBManagedObject,
 
   final var mStatusImage : NSImage? {
     return self.mStatusImage_property.optionalValue
-    /* switch self.mStatusImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

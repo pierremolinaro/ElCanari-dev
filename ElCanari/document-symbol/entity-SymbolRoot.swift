@@ -314,12 +314,6 @@ final class SymbolRoot : EBManagedObject,
 
   final var issues : CanariIssueArray? {
     return self.issues_property.optionalValue
-    /* switch self.issues_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

@@ -302,12 +302,6 @@ final class SymbolPinTypeInDevice : EBManagedObject,
 
   final var nameShape : EBShape? {
     return self.nameShape_property.optionalValue
-    /* switch self.nameShape_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

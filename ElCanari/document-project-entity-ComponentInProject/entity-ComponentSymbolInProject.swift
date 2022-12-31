@@ -378,12 +378,6 @@ final class ComponentSymbolInProject : SchematicObject,
   var componentValueProxy : String? {
     get {
       return self.componentValueProxy_property.optionalValue
-      /* switch self.componentValueProxy_property.selection {
-      case .empty, .multiple :
-        return nil
-      case .single (let v) :
-        return v
-      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -430,12 +424,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   final var componentName : String? {
     return self.componentName_property.optionalValue
-    /* switch self.componentName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -448,12 +436,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   final var deviceName : String? {
     return self.deviceName_property.optionalValue
-    /* switch self.deviceName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -466,12 +448,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   final var symbolInfo : ComponentSymbolInfo? {
     return self.symbolInfo_property.optionalValue
-    /* switch self.symbolInfo_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -484,12 +460,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   final var pinPadAssignments : ThreeStringArray? {
     return self.pinPadAssignments_property.optionalValue
-    /* switch self.pinPadAssignments_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -502,12 +472,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   final var symbolInSchematic : Bool? {
     return self.symbolInSchematic_property.optionalValue
-    /* switch self.symbolInSchematic_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

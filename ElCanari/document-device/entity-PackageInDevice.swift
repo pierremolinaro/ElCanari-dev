@@ -268,12 +268,6 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   final var versionString : String? {
     return self.versionString_property.optionalValue
-    /* switch self.versionString_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -286,12 +280,6 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   final var documentSize : Int? {
     return self.documentSize_property.optionalValue
-    /* switch self.documentSize_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -304,12 +292,6 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   final var frontSidePadFilledBezierPathArray : BezierPathArray? {
     return self.frontSidePadFilledBezierPathArray_property.optionalValue
-    /* switch self.frontSidePadFilledBezierPathArray_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -322,12 +304,6 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   final var backSidePadFilledBezierPathArray : BezierPathArray? {
     return self.backSidePadFilledBezierPathArray_property.optionalValue
-    /* switch self.backSidePadFilledBezierPathArray_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -340,12 +316,6 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   final var padNameSet : StringSet? {
     return self.padNameSet_property.optionalValue
-    /* switch self.padNameSet_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

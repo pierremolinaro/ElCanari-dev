@@ -139,12 +139,6 @@ final class SheetInProject : EBManagedObject,
 
   final var issues : CanariIssueArray? {
     return self.issues_property.optionalValue
-    /* switch self.issues_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -157,12 +151,6 @@ final class SheetInProject : EBManagedObject,
 
   final var connectedPoints : EBShape? {
     return self.connectedPoints_property.optionalValue
-    /* switch self.connectedPoints_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -175,12 +163,6 @@ final class SheetInProject : EBManagedObject,
 
   final var connexionWarnings : Int? {
     return self.connexionWarnings_property.optionalValue
-    /* switch self.connexionWarnings_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -193,12 +175,6 @@ final class SheetInProject : EBManagedObject,
 
   final var connexionErrors : Int? {
     return self.connexionErrors_property.optionalValue
-    /* switch self.connexionErrors_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -211,12 +187,6 @@ final class SheetInProject : EBManagedObject,
 
   final var sheetDescriptor : SchematicSheetDescriptor? {
     return self.sheetDescriptor_property.optionalValue
-    /* switch self.sheetDescriptor_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

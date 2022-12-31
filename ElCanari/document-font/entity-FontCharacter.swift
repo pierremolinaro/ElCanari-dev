@@ -167,12 +167,6 @@ final class FontCharacter : EBManagedObject,
 
   final var segmentArrayForDrawing : CharacterSegmentList? {
     return self.segmentArrayForDrawing_property.optionalValue
-    /* switch self.segmentArrayForDrawing_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -185,12 +179,6 @@ final class FontCharacter : EBManagedObject,
 
   final var gerberCode : CharacterGerberCode? {
     return self.gerberCode_property.optionalValue
-    /* switch self.gerberCode_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -203,12 +191,6 @@ final class FontCharacter : EBManagedObject,
 
   final var gerberCodeInstructionCountMessage : String? {
     return self.gerberCodeInstructionCountMessage_property.optionalValue
-    /* switch self.gerberCodeInstructionCountMessage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -221,12 +203,6 @@ final class FontCharacter : EBManagedObject,
 
   final var issues : CanariIssueArray? {
     return self.issues_property.optionalValue
-    /* switch self.issues_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

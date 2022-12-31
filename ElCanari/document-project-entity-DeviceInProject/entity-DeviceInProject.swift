@@ -247,12 +247,6 @@ final class DeviceInProject : EBManagedObject,
 
   final var versionString : String? {
     return self.versionString_property.optionalValue
-    /* switch self.versionString_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -265,12 +259,6 @@ final class DeviceInProject : EBManagedObject,
 
   final var sizeString : String? {
     return self.sizeString_property.optionalValue
-    /* switch self.sizeString_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -283,12 +271,6 @@ final class DeviceInProject : EBManagedObject,
 
   final var canExport : Bool? {
     return self.canExport_property.optionalValue
-    /* switch self.canExport_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -301,12 +283,6 @@ final class DeviceInProject : EBManagedObject,
 
   final var packageNames : StringArray? {
     return self.packageNames_property.optionalValue
-    /* switch self.packageNames_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -319,12 +295,6 @@ final class DeviceInProject : EBManagedObject,
 
   final var deviceComponentCountString : String? {
     return self.deviceComponentCountString_property.optionalValue
-    /* switch self.deviceComponentCountString_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -337,12 +307,6 @@ final class DeviceInProject : EBManagedObject,
 
   final var canRemove : Bool? {
     return self.canRemove_property.optionalValue
-    /* switch self.canRemove_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -355,12 +319,6 @@ final class DeviceInProject : EBManagedObject,
 
   final var symbolAndTypesNames : SymbolInProjectIdentifierArray? {
     return self.symbolAndTypesNames_property.optionalValue
-    /* switch self.symbolAndTypesNames_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -373,12 +331,6 @@ final class DeviceInProject : EBManagedObject,
 
   final var pinPadAssignments : ThreeStringArray? {
     return self.pinPadAssignments_property.optionalValue
-    /* switch self.pinPadAssignments_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -391,12 +343,6 @@ final class DeviceInProject : EBManagedObject,
 
   final var deviceSymbolDictionary : DeviceSymbolDictionary? {
     return self.deviceSymbolDictionary_property.optionalValue
-    /* switch self.deviceSymbolDictionary_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

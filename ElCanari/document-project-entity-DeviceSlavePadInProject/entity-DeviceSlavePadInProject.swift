@@ -235,12 +235,6 @@ final class DeviceSlavePadInProject : EBManagedObject,
 
   final var descriptor : SlavePadDescriptor? {
     return self.descriptor_property.optionalValue
-    /* switch self.descriptor_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

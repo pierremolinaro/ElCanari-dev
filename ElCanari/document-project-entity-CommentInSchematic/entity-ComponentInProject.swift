@@ -801,12 +801,6 @@ final class ComponentInProject : BoardObject,
 
   final var deviceName : String? {
     return self.deviceName_property.optionalValue
-    /* switch self.deviceName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -847,12 +841,6 @@ final class ComponentInProject : BoardObject,
 
   final var packagePadDictionary : PackageMasterPadDictionary? {
     return self.packagePadDictionary_property.optionalValue
-    /* switch self.packagePadDictionary_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -865,12 +853,6 @@ final class ComponentInProject : BoardObject,
 
   final var selectedPackageName : String? {
     return self.selectedPackageName_property.optionalValue
-    /* switch self.selectedPackageName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -883,12 +865,6 @@ final class ComponentInProject : BoardObject,
 
   final var availablePackages : StringArray? {
     return self.availablePackages_property.optionalValue
-    /* switch self.availablePackages_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -901,12 +877,6 @@ final class ComponentInProject : BoardObject,
 
   final var componentIsPlacedInBoard : Bool? {
     return self.componentIsPlacedInBoard_property.optionalValue
-    /* switch self.componentIsPlacedInBoard_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -919,12 +889,6 @@ final class ComponentInProject : BoardObject,
 
   final var componentIsPlacedInBoardString : String? {
     return self.componentIsPlacedInBoardString_property.optionalValue
-    /* switch self.componentIsPlacedInBoardString_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -937,12 +901,6 @@ final class ComponentInProject : BoardObject,
 
   final var strokeBezierPath : EBBezierPath? {
     return self.strokeBezierPath_property.optionalValue
-    /* switch self.strokeBezierPath_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -1011,12 +969,6 @@ final class ComponentInProject : BoardObject,
 
   final var pinPadAssignments : ThreeStringArray? {
     return self.pinPadAssignments_property.optionalValue
-    /* switch self.pinPadAssignments_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -1029,12 +981,6 @@ final class ComponentInProject : BoardObject,
 
   final var hasSlavePads : Bool? {
     return self.hasSlavePads_property.optionalValue
-    /* switch self.hasSlavePads_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -1047,12 +993,6 @@ final class ComponentInProject : BoardObject,
 
   final var placementInSchematic : String? {
     return self.placementInSchematic_property.optionalValue
-    /* switch self.placementInSchematic_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -1065,12 +1005,6 @@ final class ComponentInProject : BoardObject,
 
   final var deviceSymbolDictionary : DeviceSymbolDictionary? {
     return self.deviceSymbolDictionary_property.optionalValue
-    /* switch self.deviceSymbolDictionary_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -1083,12 +1017,6 @@ final class ComponentInProject : BoardObject,
 
   final var componentNameFontName : String? {
     return self.componentNameFontName_property.optionalValue
-    /* switch self.componentNameFontName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -1101,12 +1029,6 @@ final class ComponentInProject : BoardObject,
 
   final var componentValueFontName : String? {
     return self.componentValueFontName_property.optionalValue
-    /* switch self.componentValueFontName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -1119,12 +1041,6 @@ final class ComponentInProject : BoardObject,
 
   final var componentPadDictionary : ComponentPadDescriptorDictionary? {
     return self.componentPadDictionary_property.optionalValue
-    /* switch self.componentPadDictionary_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -1137,12 +1053,6 @@ final class ComponentInProject : BoardObject,
 
   final var padNetDictionary : PadNetDictionary? {
     return self.padNetDictionary_property.optionalValue
-    /* switch self.padNetDictionary_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -1155,12 +1065,6 @@ final class ComponentInProject : BoardObject,
 
   final var unplacedSymbols : StringTagArray? {
     return self.unplacedSymbols_property.optionalValue
-    /* switch self.unplacedSymbols_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

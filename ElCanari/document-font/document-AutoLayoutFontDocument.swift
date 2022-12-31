@@ -30,12 +30,6 @@ import AppKit
 
   final var documentFileName : String? {
     return self.documentFileName_property.optionalValue
-    /* switch self.documentFileName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -48,12 +42,6 @@ import AppKit
 
   final var statusImage : NSImage? {
     return self.statusImage_property.optionalValue
-    /* switch self.statusImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -66,12 +54,6 @@ import AppKit
 
   final var statusTitle : String? {
     return self.statusTitle_property.optionalValue
-    /* switch self.statusTitle_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -84,12 +66,6 @@ import AppKit
 
   final var statusMessage : String? {
     return self.statusMessage_property.optionalValue
-    /* switch self.statusMessage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -102,12 +78,6 @@ import AppKit
 
   final var metadataStatus : MetadataStatus? {
     return self.metadataStatus_property.optionalValue
-    /* switch self.metadataStatus_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -120,12 +90,6 @@ import AppKit
 
   final var canDeleteCurrentCharacter : Bool? {
     return self.canDeleteCurrentCharacter_property.optionalValue
-    /* switch self.canDeleteCurrentCharacter_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

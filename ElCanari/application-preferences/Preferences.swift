@@ -3095,12 +3095,6 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 
 @MainActor var preferences_mValueRevealInFinder_packages : StringArray? {
   return preferences_mValueRevealInFinder_packages_property.optionalValue
-  /* switch preferences_mValueRevealInFinder_packages_property.selection {
-  case .empty, .multiple :
-    return nil
-  case .single (let v) :
-    return v
-  } */
 }
 
 //····················································································································
@@ -3113,12 +3107,6 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 
 @MainActor var preferences_mValueRevealInFinder_devices : StringArray? {
   return preferences_mValueRevealInFinder_devices_property.optionalValue
-  /* switch preferences_mValueRevealInFinder_devices_property.selection {
-  case .empty, .multiple :
-    return nil
-  case .single (let v) :
-    return v
-  } */
 }
 
 //····················································································································
@@ -3131,12 +3119,6 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 
 @MainActor var preferences_mValueRevealInFinder_fonts : StringArray? {
   return preferences_mValueRevealInFinder_fonts_property.optionalValue
-  /* switch preferences_mValueRevealInFinder_fonts_property.selection {
-  case .empty, .multiple :
-    return nil
-  case .single (let v) :
-    return v
-  } */
 }
 
 //····················································································································
@@ -3149,12 +3131,6 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 
 @MainActor var preferences_mValueRevealInFinder_artworks : StringArray? {
   return preferences_mValueRevealInFinder_artworks_property.optionalValue
-  /* switch preferences_mValueRevealInFinder_artworks_property.selection {
-  case .empty, .multiple :
-    return nil
-  case .single (let v) :
-    return v
-  } */
 }
 
 //····················································································································
@@ -3167,12 +3143,6 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 
 @MainActor var preferences_mValueRevealInFinder_symbols : StringArray? {
   return preferences_mValueRevealInFinder_symbols_property.optionalValue
-  /* switch preferences_mValueRevealInFinder_symbols_property.selection {
-  case .empty, .multiple :
-    return nil
-  case .single (let v) :
-    return v
-  } */
 }
 
 

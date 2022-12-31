@@ -102,12 +102,6 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
 
   final var symbolAndTypeName : SymbolInProjectIdentifier? {
     return self.symbolAndTypeName_property.optionalValue
-    /* switch self.symbolAndTypeName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -120,12 +114,6 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
 
   final var symbolTypeName : String? {
     return self.symbolTypeName_property.optionalValue
-    /* switch self.symbolTypeName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -138,12 +126,6 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
 
   final var filledBezierPath : NSBezierPath? {
     return self.filledBezierPath_property.optionalValue
-    /* switch self.filledBezierPath_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -156,12 +138,6 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
 
   final var strokeBezierPath : NSBezierPath? {
     return self.strokeBezierPath_property.optionalValue
-    /* switch self.strokeBezierPath_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

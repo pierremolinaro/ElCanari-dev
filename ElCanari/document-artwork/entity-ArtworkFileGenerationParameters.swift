@@ -797,12 +797,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   final var hasNoData : Bool? {
     return self.hasNoData_property.optionalValue
-    /* switch self.hasNoData_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -815,12 +809,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   final var parameterStatusImage : NSImage? {
     return self.parameterStatusImage_property.optionalValue
-    /* switch self.parameterStatusImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -833,12 +821,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   final var emptyFileExtensionImage : NSImage? {
     return self.emptyFileExtensionImage_property.optionalValue
-    /* switch self.emptyFileExtensionImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

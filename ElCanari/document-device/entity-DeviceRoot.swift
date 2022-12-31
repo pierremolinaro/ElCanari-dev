@@ -555,12 +555,6 @@ final class DeviceRoot : EBManagedObject,
 
   final var imageIsValid : Bool? {
     return self.imageIsValid_property.optionalValue
-    /* switch self.imageIsValid_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -573,12 +567,6 @@ final class DeviceRoot : EBManagedObject,
 
   final var unconnectedPins : UnconnectedSymbolPinsInDevice? {
     return self.unconnectedPins_property.optionalValue
-    /* switch self.unconnectedPins_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -591,12 +579,6 @@ final class DeviceRoot : EBManagedObject,
 
   final var inconsistentPackagePadNameSetsMessage : String? {
     return self.inconsistentPackagePadNameSetsMessage_property.optionalValue
-    /* switch self.inconsistentPackagePadNameSetsMessage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -609,12 +591,6 @@ final class DeviceRoot : EBManagedObject,
 
   final var inconsistentSymbolNameSetMessage : String? {
     return self.inconsistentSymbolNameSetMessage_property.optionalValue
-    /* switch self.inconsistentSymbolNameSetMessage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -627,12 +603,6 @@ final class DeviceRoot : EBManagedObject,
 
   final var packagePadNameSetsAreConsistent : Bool? {
     return self.packagePadNameSetsAreConsistent_property.optionalValue
-    /* switch self.packagePadNameSetsAreConsistent_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -645,12 +615,6 @@ final class DeviceRoot : EBManagedObject,
 
   final var symbolNameAreConsistent : Bool? {
     return self.symbolNameAreConsistent_property.optionalValue
-    /* switch self.symbolNameAreConsistent_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -663,12 +627,6 @@ final class DeviceRoot : EBManagedObject,
 
   final var symbolTypeNames : StringArray? {
     return self.symbolTypeNames_property.optionalValue
-    /* switch self.symbolTypeNames_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -681,12 +639,6 @@ final class DeviceRoot : EBManagedObject,
 
   final var unconnectedPads : StringArray? {
     return self.unconnectedPads_property.optionalValue
-    /* switch self.unconnectedPads_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -699,12 +651,6 @@ final class DeviceRoot : EBManagedObject,
 
   final var assignedPadProxies : AssignedPadProxiesInDevice? {
     return self.assignedPadProxies_property.optionalValue
-    /* switch self.assignedPadProxies_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -717,12 +663,6 @@ final class DeviceRoot : EBManagedObject,
 
   final var issues : CanariIssueArray? {
     return self.issues_property.optionalValue
-    /* switch self.issues_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

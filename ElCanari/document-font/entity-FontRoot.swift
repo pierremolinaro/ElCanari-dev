@@ -214,12 +214,6 @@ final class FontRoot : EBManagedObject,
 
   final var currentCharacterCodePointString : String? {
     return self.currentCharacterCodePointString_property.optionalValue
-    /* switch self.currentCharacterCodePointString_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -232,12 +226,6 @@ final class FontRoot : EBManagedObject,
 
   final var sampleStringBezierPath : NSBezierPath? {
     return self.sampleStringBezierPath_property.optionalValue
-    /* switch self.sampleStringBezierPath_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -250,12 +238,6 @@ final class FontRoot : EBManagedObject,
 
   final var sampleStringBezierPathWidth : String? {
     return self.sampleStringBezierPathWidth_property.optionalValue
-    /* switch self.sampleStringBezierPathWidth_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -268,12 +250,6 @@ final class FontRoot : EBManagedObject,
 
   final var sampleStringBezierPathAscent : String? {
     return self.sampleStringBezierPathAscent_property.optionalValue
-    /* switch self.sampleStringBezierPathAscent_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -286,12 +262,6 @@ final class FontRoot : EBManagedObject,
 
   final var sampleStringBezierPathDescent : String? {
     return self.sampleStringBezierPathDescent_property.optionalValue
-    /* switch self.sampleStringBezierPathDescent_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -304,12 +274,6 @@ final class FontRoot : EBManagedObject,
 
   final var definedCharacters : DefinedCharactersInDevice? {
     return self.definedCharacters_property.optionalValue
-    /* switch self.definedCharacters_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -322,12 +286,6 @@ final class FontRoot : EBManagedObject,
 
   final var issues : CanariIssueArray? {
     return self.issues_property.optionalValue
-    /* switch self.issues_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

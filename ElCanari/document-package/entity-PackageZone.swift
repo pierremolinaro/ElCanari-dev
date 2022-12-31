@@ -493,12 +493,6 @@ final class PackageZone : PackageObject,
 
   final var rect : CanariRect? {
     return self.rect_property.optionalValue
-    /* switch self.rect_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -511,12 +505,6 @@ final class PackageZone : PackageObject,
 
   final var forbiddenPadArray : StringArray? {
     return self.forbiddenPadArray_property.optionalValue
-    /* switch self.forbiddenPadArray_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -529,12 +517,6 @@ final class PackageZone : PackageObject,
 
   final var emptyForbiddenPadArray : Bool? {
     return self.emptyForbiddenPadArray_property.optionalValue
-    /* switch self.emptyForbiddenPadArray_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

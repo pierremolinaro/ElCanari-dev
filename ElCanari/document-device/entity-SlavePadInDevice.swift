@@ -277,12 +277,6 @@ final class SlavePadInDevice : EBManagedObject,
 
   final var frontSideFilledBezierPath : EBBezierPath? {
     return self.frontSideFilledBezierPath_property.optionalValue
-    /* switch self.frontSideFilledBezierPath_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -295,12 +289,6 @@ final class SlavePadInDevice : EBManagedObject,
 
   final var backSideFilledBezierPath : EBBezierPath? {
     return self.backSideFilledBezierPath_property.optionalValue
-    /* switch self.backSideFilledBezierPath_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -313,12 +301,6 @@ final class SlavePadInDevice : EBManagedObject,
 
   final var padNumberDisplay : EBShape? {
     return self.padNumberDisplay_property.optionalValue
-    /* switch self.padNumberDisplay_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

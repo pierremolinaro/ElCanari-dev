@@ -289,12 +289,6 @@ final class PackageSegment : PackageObject,
 
   final var strokeBezierPath : NSBezierPath? {
     return self.strokeBezierPath_property.optionalValue
-    /* switch self.strokeBezierPath_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -307,12 +301,6 @@ final class PackageSegment : PackageObject,
 
   final var lengthInCanariUnit : Int? {
     return self.lengthInCanariUnit_property.optionalValue
-    /* switch self.lengthInCanariUnit_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

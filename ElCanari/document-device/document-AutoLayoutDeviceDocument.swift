@@ -60,12 +60,6 @@ import AppKit
 
   final var documentFileName : String? {
     return self.documentFileName_property.optionalValue
-    /* switch self.documentFileName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -78,12 +72,6 @@ import AppKit
 
   final var hasUnconnectedPin : Bool? {
     return self.hasUnconnectedPin_property.optionalValue
-    /* switch self.hasUnconnectedPin_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -96,12 +84,6 @@ import AppKit
 
   final var assignmentInhibitionMessage : String? {
     return self.assignmentInhibitionMessage_property.optionalValue
-    /* switch self.assignmentInhibitionMessage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -114,12 +96,6 @@ import AppKit
 
   final var hasUnconnectedPad : Bool? {
     return self.hasUnconnectedPad_property.optionalValue
-    /* switch self.hasUnconnectedPad_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -132,12 +108,6 @@ import AppKit
 
   final var hasAssignedPadProxies : Bool? {
     return self.hasAssignedPadProxies_property.optionalValue
-    /* switch self.hasAssignedPadProxies_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -150,12 +120,6 @@ import AppKit
 
   final var issues : CanariIssueArray? {
     return self.issues_property.optionalValue
-    /* switch self.issues_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -168,12 +132,6 @@ import AppKit
 
   final var mStatusImage : NSImage? {
     return self.mStatusImage_property.optionalValue
-    /* switch self.mStatusImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -186,12 +144,6 @@ import AppKit
 
   final var mStatusMessage : String? {
     return self.mStatusMessage_property.optionalValue
-    /* switch self.mStatusMessage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -204,12 +156,6 @@ import AppKit
 
   final var mMetadataStatus : MetadataStatus? {
     return self.mMetadataStatus_property.optionalValue
-    /* switch self.mMetadataStatus_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

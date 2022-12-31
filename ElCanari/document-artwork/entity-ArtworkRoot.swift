@@ -408,12 +408,6 @@ final class ArtworkRoot : EBManagedObject,
 
   final var hasInnerElements : Bool? {
     return self.hasInnerElements_property.optionalValue
-    /* switch self.hasInnerElements_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -426,12 +420,6 @@ final class ArtworkRoot : EBManagedObject,
 
   final var hasSixLayers : Bool? {
     return self.hasSixLayers_property.optionalValue
-    /* switch self.hasSixLayers_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -444,12 +432,6 @@ final class ArtworkRoot : EBManagedObject,
 
   final var hasDataWarning : Bool? {
     return self.hasDataWarning_property.optionalValue
-    /* switch self.hasDataWarning_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -462,12 +444,6 @@ final class ArtworkRoot : EBManagedObject,
 
   final var emptyDrillFileExtension : Bool? {
     return self.emptyDrillFileExtension_property.optionalValue
-    /* switch self.emptyDrillFileExtension_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -480,12 +456,6 @@ final class ArtworkRoot : EBManagedObject,
 
   final var signatureForERCChecking : UInt32? {
     return self.signatureForERCChecking_property.optionalValue
-    /* switch self.signatureForERCChecking_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································

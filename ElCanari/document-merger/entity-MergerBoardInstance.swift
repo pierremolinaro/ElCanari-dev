@@ -161,12 +161,6 @@ final class MergerBoardInstance : EBGraphicManagedObject,
 
   final var instanceRect : CanariRect? {
     return self.instanceRect_property.optionalValue
-    /* switch self.instanceRect_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -179,12 +173,6 @@ final class MergerBoardInstance : EBGraphicManagedObject,
 
   final var modelName : String? {
     return self.modelName_property.optionalValue
-    /* switch self.modelName_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
@@ -197,12 +185,6 @@ final class MergerBoardInstance : EBGraphicManagedObject,
 
   final var boardLimitWidth : Int? {
     return self.boardLimitWidth_property.optionalValue
-    /* switch self.boardLimitWidth_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    } */
   }
 
   //····················································································································
