@@ -466,7 +466,7 @@ final class TransientArrayOfSuperOf_PackageOval <SUPER : EBManagedObject> : Read
   private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-  private var mModelEvent = EBModelEvent ()
+  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
@@ -554,15 +554,7 @@ final class TransientArrayOfSuperOf_PackageOval <SUPER : EBManagedObject> : Read
 //    To many relationship read write: PackageOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
-
-  //····················································································································
-
-  func setProp (_ value :  EBReferenceArray <PackageOval>) { } // Abstract method
-
-  //····················································································································
-
-}
+// ReadWriteArrayOf_PackageOval is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Proxy: ProxyArrayOf_PackageOval

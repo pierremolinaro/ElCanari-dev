@@ -1061,7 +1061,7 @@ final class TransientArrayOfSuperOf_BoardConnector <SUPER : EBManagedObject> : R
   private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-  private var mModelEvent = EBModelEvent ()
+  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
@@ -1200,14 +1200,12 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
   //····················································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
-    if inRange.length > 0 {
-      var objectArray = EBReferenceArray <BoardConnector> ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
-      for idx in indexArray {
-        objectArray.append (inRawObjectArray [idx].object as! BoardConnector)
-      }
-      self.setProp (objectArray)
+    var objectArray = EBReferenceArray <BoardConnector> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! BoardConnector)
     }
+    self.setProp (objectArray)
   }
 
   //····················································································································

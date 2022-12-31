@@ -1544,7 +1544,7 @@ final class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInPro
 
   private var mIsOrderedBefore : Optional < (_ left : ComponentInProject, _ right : ComponentInProject) -> Bool > = nil
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelEvent = EBModelEvent ()
+  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
@@ -1673,7 +1673,7 @@ final class TransientArrayOfSuperOf_ComponentInProject <SUPER : EBManagedObject>
   private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-  private var mModelEvent = EBModelEvent ()
+  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
@@ -1812,14 +1812,12 @@ class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EB
   //····················································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
-    if inRange.length > 0 {
-      var objectArray = EBReferenceArray <ComponentInProject> ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
-      for idx in indexArray {
-        objectArray.append (inRawObjectArray [idx].object as! ComponentInProject)
-      }
-      self.setProp (objectArray)
+    var objectArray = EBReferenceArray <ComponentInProject> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! ComponentInProject)
     }
+    self.setProp (objectArray)
   }
 
   //····················································································································

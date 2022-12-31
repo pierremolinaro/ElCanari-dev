@@ -13,7 +13,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CanariLibraryEntryDelegate : EBSwiftBaseObject, EBObserverProtocol {
+final class CanariLibraryEntryDelegate : EBObserverProtocol {
   
   private weak var mObject : CanariLibraryEntry? // SHOULD BE WEAK
   private var mStream : FSEventStreamRef? = nil
@@ -22,13 +22,19 @@ final class CanariLibraryEntryDelegate : EBSwiftBaseObject, EBObserverProtocol {
 
   init (object inObject : CanariLibraryEntry) {
     self.mObject = inObject
-    super.init ()
     inObject.mPath_property.startsToBeObserved (by: self)
+    noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  final func observedObjectDidChange () {
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+  func observedObjectDidChange () {
     let possiblePath = self.mObject?.mPath
   //--- Remove previous monitoring (if any)
     removeFileSystemMonitoring ()

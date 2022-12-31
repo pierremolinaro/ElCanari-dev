@@ -324,6 +324,7 @@ fileprivate final class EBShapeObject {
     self.mElements = EBReferenceArray <EBShapeElement> ()
     self.mToolTips = [EBToolTip] ()
     self.mCachedBoundingBox = NSRect.null
+    noteObjectAllocation (self)
   }
 
   //····················································································································
@@ -332,6 +333,13 @@ fileprivate final class EBShapeObject {
     self.mElements = inSource.mElements
     self.mToolTips = inSource.mToolTips
     self.mCachedBoundingBox = inSource.mCachedBoundingBox
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

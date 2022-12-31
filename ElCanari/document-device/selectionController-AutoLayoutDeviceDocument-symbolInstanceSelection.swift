@@ -8,7 +8,19 @@ import AppKit
 //    Base Selection Controller AutoLayoutDeviceDocument symbolInstanceSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection : EBSwiftBaseObject {
+@MainActor final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection {
+
+  //····················································································································
+
+  init () {
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   //····················································································································
   //   Selection observable property: mDeviceRoot

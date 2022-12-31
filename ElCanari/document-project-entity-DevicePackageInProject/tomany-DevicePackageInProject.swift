@@ -268,14 +268,12 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
   //····················································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
-    if inRange.length > 0 {
-      var objectArray = EBReferenceArray <DevicePackageInProject> ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
-      for idx in indexArray {
-        objectArray.append (inRawObjectArray [idx].object as! DevicePackageInProject)
-      }
-      self.setProp (objectArray)
+    var objectArray = EBReferenceArray <DevicePackageInProject> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! DevicePackageInProject)
     }
+    self.setProp (objectArray)
   }
 
   //····················································································································

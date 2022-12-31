@@ -373,14 +373,12 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
   //····················································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
-    if inRange.length > 0 {
-      var objectArray = EBReferenceArray <SchematicObject> ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
-      for idx in indexArray {
-        objectArray.append (inRawObjectArray [idx].object as! SchematicObject)
-      }
-      self.setProp (objectArray)
+    var objectArray = EBReferenceArray <SchematicObject> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! SchematicObject)
     }
+    self.setProp (objectArray)
   }
 
   //····················································································································

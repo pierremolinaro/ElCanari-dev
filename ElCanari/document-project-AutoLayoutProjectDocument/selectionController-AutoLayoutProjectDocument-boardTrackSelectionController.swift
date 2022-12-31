@@ -8,7 +8,19 @@ import AppKit
 //    Derived selection controller AutoLayoutProjectDocument boardTrackSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionController : EBSwiftBaseObject {
+@MainActor final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionController {
+
+  //····················································································································
+
+  init () {
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   //····················································································································
   //   Selection observable property: mSide

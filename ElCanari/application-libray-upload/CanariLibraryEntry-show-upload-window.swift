@@ -6,7 +6,7 @@ import AppKit
 // https://developer.apple.com/documentation/security/certificate_key_and_trust_services/keys/storing_keys_in_the_keychain
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class LibraryUploadDialog : EBSwiftBaseObject {
+@MainActor final class LibraryUploadDialog {
 
   //····················································································································
   //  Properties
@@ -81,8 +81,13 @@ final class LibraryUploadDialog : EBSwiftBaseObject {
     _ = mainView.appendView (lastLine)
   //--- Set autolayout view to panel
     self.mLibraryUploadWindow.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: AutoLayoutWindowContentView (view: mainView))
-  //--- Super init
-    super.init ()
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

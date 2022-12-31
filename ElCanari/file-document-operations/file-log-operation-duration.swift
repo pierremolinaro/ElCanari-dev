@@ -46,7 +46,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor fileprivate final class LogFileOperation : EBObjcBaseObject { // SHOULD INHERIT FROM NSObject
+@MainActor fileprivate final class LogFileOperation : NSObject { // SHOULD INHERIT FROM NSObject
 
   //····················································································································
   //  Properties
@@ -82,7 +82,15 @@ import AppKit
     _ = vStack.appendView (button)
   //--- Assign main view to window
     self.mWindow.contentView = vStack
+    noteObjectAllocation (self)
   }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
 
   //····················································································································
 

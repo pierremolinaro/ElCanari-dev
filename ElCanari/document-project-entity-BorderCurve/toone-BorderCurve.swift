@@ -134,7 +134,8 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     super.init ()
   //--- Configure mX simple stored property
     self.mX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mX_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mX_property.selection {
         case .empty :
           return .empty
@@ -145,11 +146,12 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mY simple stored property
     self.mY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mY_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mY_property.selection {
         case .empty :
           return .empty
@@ -160,11 +162,12 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mCPX1 simple stored property
     self.mCPX1_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mCPX1_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mCPX1_property.selection {
         case .empty :
           return .empty
@@ -175,11 +178,12 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mCPY1 simple stored property
     self.mCPY1_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mCPY1_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mCPY1_property.selection {
         case .empty :
           return .empty
@@ -190,11 +194,12 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mCPX2 simple stored property
     self.mCPX2_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mCPX2_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mCPX2_property.selection {
         case .empty :
           return .empty
@@ -205,11 +210,12 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mCPY2 simple stored property
     self.mCPY2_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mCPY2_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mCPY2_property.selection {
         case .empty :
           return .empty
@@ -220,11 +226,12 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mShape simple stored property
     self.mShape_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mShape_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mShape_property.selection {
         case .empty :
           return .empty
@@ -235,11 +242,12 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure p2Xvalue transient property
     self.p2Xvalue_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.p2Xvalue_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.p2Xvalue_property.selection {
         case .empty :
           return .empty
@@ -250,11 +258,12 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure p2Yvalue transient property
     self.p2Yvalue_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.p2Yvalue_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.p2Yvalue_property.selection {
         case .empty :
           return .empty
@@ -265,11 +274,12 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure descriptor transient property
     self.descriptor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.descriptor_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.descriptor_property.selection {
         case .empty :
           return .empty
@@ -280,11 +290,12 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.objectDisplay_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.objectDisplay_property.selection {
         case .empty :
           return .empty
@@ -295,11 +306,12 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure isLine transient property
     self.isLine_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.isLine_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.isLine_property.selection {
         case .empty :
           return .empty
@@ -310,11 +322,12 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.selectionDisplay_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.selectionDisplay_property.selection {
         case .empty :
           return .empty
@@ -325,7 +338,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   }
 

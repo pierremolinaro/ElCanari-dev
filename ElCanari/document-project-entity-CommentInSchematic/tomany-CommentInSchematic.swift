@@ -361,7 +361,7 @@ final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject>
   private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-  private var mModelEvent = EBModelEvent ()
+  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
@@ -449,15 +449,7 @@ final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject>
 //    To many relationship read write: CommentInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_CommentInSchematic : ReadOnlyArrayOf_CommentInSchematic {
-
-  //····················································································································
-
-  func setProp (_ value :  EBReferenceArray <CommentInSchematic>) { } // Abstract method
-
-  //····················································································································
-
-}
+// ReadWriteArrayOf_CommentInSchematic is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Proxy: ProxyArrayOf_CommentInSchematic

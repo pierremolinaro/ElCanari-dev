@@ -142,7 +142,8 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     super.init ()
   //--- Configure mSheetTitle simple stored property
     self.mSheetTitle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mSheetTitle_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mSheetTitle_property.selection {
         case .empty :
           return .empty
@@ -153,11 +154,12 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.issues_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.issues_property.selection {
         case .empty :
           return .empty
@@ -168,11 +170,12 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure connectedPoints transient property
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.connectedPoints_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.connectedPoints_property.selection {
         case .empty :
           return .empty
@@ -183,11 +186,12 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure connexionWarnings transient property
     self.connexionWarnings_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.connexionWarnings_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.connexionWarnings_property.selection {
         case .empty :
           return .empty
@@ -198,11 +202,12 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure connexionErrors transient property
     self.connexionErrors_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.connexionErrors_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.connexionErrors_property.selection {
         case .empty :
           return .empty
@@ -213,11 +218,12 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure sheetDescriptor transient property
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.sheetDescriptor_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.sheetDescriptor_property.selection {
         case .empty :
           return .empty
@@ -228,7 +234,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   }
 

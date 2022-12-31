@@ -214,7 +214,7 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
 
   private var mIsOrderedBefore : Optional < (_ left : CanariLibraryEntry, _ right : CanariLibraryEntry) -> Bool > = nil
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelEvent = EBModelEvent ()
+  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
@@ -391,14 +391,12 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
   //····················································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
-    if inRange.length > 0 {
-      var objectArray = EBReferenceArray <CanariLibraryEntry> ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
-      for idx in indexArray {
-        objectArray.append (inRawObjectArray [idx].object as! CanariLibraryEntry)
-      }
-      self.setProp (objectArray)
+    var objectArray = EBReferenceArray <CanariLibraryEntry> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! CanariLibraryEntry)
     }
+    self.setProp (objectArray)
   }
 
   //····················································································································

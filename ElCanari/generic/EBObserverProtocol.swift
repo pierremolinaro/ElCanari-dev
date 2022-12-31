@@ -10,7 +10,7 @@ import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
- @MainActor protocol EBObserverProtocol : ObjectIndexProtocol {
+ @MainActor protocol EBObserverProtocol : AnyObject {
   func observedObjectDidChange ()
 }
 

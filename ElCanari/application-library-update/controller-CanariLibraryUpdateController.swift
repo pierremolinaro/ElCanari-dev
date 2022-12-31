@@ -14,7 +14,7 @@ private let parallelDownloadCount = 3
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CanariLibraryUpdateController : EBSwiftBaseObject {
+@MainActor final class CanariLibraryUpdateController {
 
   private var mCurrentActionArray : [LibraryOperationElement]
   private var mCurrentParallelActionCount = 0
@@ -82,8 +82,6 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
     _ = mainView.appendView (lastLine)
   //--- Set autolayout view to panel
     self.mLibraryUpdatePanel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: AutoLayoutWindowContentView (view: mainView))
-  //--- Super init
-    super.init ()
   //--- Configure tableview
     self.mTableView.configure (
       allowsEmptySelection: false,
@@ -119,6 +117,13 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
     self.mUpDateButton.action = #selector (Self.startLibraryUpdateAction (_:))
   //--- Show library update window
     self.mLibraryUpdatePanel.makeKeyAndOrderFront (nil)
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

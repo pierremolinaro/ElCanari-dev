@@ -8,7 +8,19 @@ import AppKit
 //    Derived selection controller AutoLayoutProjectDocument ncInSchematicSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutProjectDocument_ncInSchematicSelectionController : EBSwiftBaseObject {
+@MainActor final class SelectionController_AutoLayoutProjectDocument_ncInSchematicSelectionController {
+
+  //····················································································································
+
+  init () {
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   //····················································································································
   //   Selection observable property: mOrientation

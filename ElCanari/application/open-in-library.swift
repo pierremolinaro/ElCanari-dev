@@ -447,7 +447,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor fileprivate final class OpenInLibraryDialogFlatItem : EBSwiftBaseObject {
+@MainActor fileprivate final class OpenInLibraryDialogFlatItem {
 
   //····················································································································
 
@@ -471,6 +471,13 @@ import AppKit
     self.mIsDuplicated = inIsDuplicated
     self.mIsAlreadyLoaded = inIsAlreadyLoaded
     self.mBuildPreviewShapeFunction = inBuildPreviewShapeFunction
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -608,169 +615,5 @@ extension Array where Element == OpenInLibraryDialogFlatItem {
   //····················································································································
 
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//@MainActor fileprivate final class OpenInLibraryDialogHierarchicalItem : EBSwiftBaseObject {
-//
-//  //····················································································································
-//
-//  let mPartName : String
-//  let mIsDuplicated : Bool
-//  let mIsAlreadyLoaded : Bool
-//  let mFullPath : String
-//  private var mPartStatus : MetadataStatus? = nil
-//  private var mObjectImage : NSImage? = nil
-//  private let mBuildPreviewShapeFunction : (_ inRootObject : EBManagedObject?) -> NSImage?
-//
-//  //····················································································································
-//
-//  init (_ inPartName : String,
-//        _ inFullPath : String,
-//        _ inIsDuplicated : Bool,
-//        _ inIsAlreadyLoaded : Bool,
-//        _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
-//    self.mPartName = inPartName
-//    self.mFullPath = inFullPath
-//    self.mIsDuplicated = inIsDuplicated
-//    self.mIsAlreadyLoaded = inIsAlreadyLoaded
-//    self.mBuildPreviewShapeFunction = inBuildPreviewShapeFunction
-//  }
-//
-//  //····················································································································
-//
-//  func statusString () -> String {
-//    if self.mFullPath.isEmpty {
-//      return ""
-//    }else if self.mIsAlreadyLoaded {
-//      return "Already loaded"
-//    }else if self.mIsDuplicated {
-//      return "Duplicated"
-//    }else{
-//      do{
-//        switch try self.partStatus () {
-//        case .unknown :
-//          return "Unknown"
-//        case .ok :
-//          return "Ok"
-//        case .error :
-//          return "This part has error(s)"
-//        case .warning :
-//          return "This part has warning(s)"
-//        }
-//      }catch _ {
-//        return "This part cannot be read"
-//      }
-//    }
-//  }
-//
-//  //····················································································································
-//
-//  func statusImage () -> NSImage? {
-//    if self.mFullPath.isEmpty {
-//      return nil
-//    }else if self.mIsDuplicated || self.mIsAlreadyLoaded {
-//      return NSImage.statusError
-//    }else{
-//      do{
-//      switch try self.partStatus () {
-//        case .unknown :
-//          return NSImage.statusNone
-//        case .ok :
-//          return NSImage.statusSuccess
-//        case .error :
-//          return NSImage.statusError
-//        case .warning :
-//          return NSImage.statusWarning
-//        }
-//      }catch _ {
-//        return NSImage (named: NSImage.Name ("exclamation"))
-//      }
-//    }
-//  }
-//
-//  //····················································································································
-//
-//  func partStatus () throws -> MetadataStatus {
-//    if let s = self.mPartStatus {
-//      return s
-//    }else if self.mFullPath != "" {
-//      self.mPartStatus = .error
-//      let metadata = try getFileMetadata (atPath: self.mFullPath)
-//      self.mPartStatus = metadata.metadataStatus
-//      return metadata.metadataStatus
-//    }else{
-//      return .error
-//    }
-//  }
-//
-//  //····················································································································
-//
-//  func partStatusOk () -> Bool {
-//    if let s = try? self.partStatus () {
-//      return s == .ok
-//    }else{
-//      return false
-//    }
-//  }
-//
-// //····················································································································
-//
-//  var image : NSImage {
-//    if let image = self.mObjectImage {
-//      return image
-//    }else{
-//      let image = self.buildImage ()
-//      self.mObjectImage = image
-//      return image
-//    }
-//  }
-//
-//  //····················································································································
-//
-//  private func buildImage () -> NSImage {
-//    var image : NSImage? = nil
-//    let fm = FileManager ()
-//    if let data = fm.contents (atPath: self.mFullPath) {
-//      let documentReadData = loadEasyBindingFile (fromData: data, documentName: self.mFullPath.lastPathComponent, undoManager: nil)
-//      switch documentReadData {
-//      case .ok (let documentData) :
-//        image = self.mBuildPreviewShapeFunction (documentData.documentRootObject)
-//      case .readError (let error) :
-//        let alert = NSAlert (error: error)
-//        _ = alert.runModal ()
-//      }
-//    }
-//    return image ?? NSImage ()
-//  }
-//
-//  //····················································································································
-//
-//}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//extension Array where Element == OpenInLibraryDialogHierarchicalItem {
-//
-//  //····················································································································
-//
-//  @MainActor fileprivate mutating func enterPart (
-//         _ inPathAsArray : [String],
-//         _ inFullpath : String,
-//         _ inIsDuplicated : Bool,
-//         _ inIsAlreadyLoaded : Bool,
-//         _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
-//    if inPathAsArray.count == 1 {
-//      self.append (OpenInLibraryDialogHierarchicalItem (inPathAsArray [0], inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction))
-//    }else{
-//      var pathAsArray = inPathAsArray
-//      pathAsArray.remove (at: 0)
-//      self.enterPart (pathAsArray, inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction)
-//    }
-//  }
-//
-//  //····················································································································
-//
-//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

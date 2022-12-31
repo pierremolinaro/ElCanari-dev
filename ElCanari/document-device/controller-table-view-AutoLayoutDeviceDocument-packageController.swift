@@ -8,7 +8,7 @@ import AppKit
 //    Auto Layout Table View Controller AutoLayoutDeviceDocument packageController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutDeviceDocument_packageController : EBObjcBaseObject, AutoLayoutTableViewDelegate {
+final class Controller_AutoLayoutDeviceDocument_packageController : NSObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
   //    Constant properties
@@ -156,6 +156,13 @@ final class Controller_AutoLayoutDeviceDocument_packageController : EBObjcBaseOb
         tableView.sortAndReloadData ()
       }
     }
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

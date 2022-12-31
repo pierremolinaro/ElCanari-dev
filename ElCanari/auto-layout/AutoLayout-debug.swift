@@ -45,7 +45,7 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class DebugAutoLayout : EBSwiftBaseObject {
+@MainActor fileprivate final class DebugAutoLayout {
 
   //····················································································································
   //  Properties
@@ -73,10 +73,16 @@ fileprivate final class DebugAutoLayout : EBSwiftBaseObject {
   //  Init
   //····················································································································
 
-  override init () {
-    super.init ()
+  init () {
     self.menuItem.target = self
     self.responderKeyChainItem.target = self
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

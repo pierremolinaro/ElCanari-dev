@@ -151,7 +151,7 @@ final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : Re
   private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-  private var mModelEvent = EBModelEvent ()
+  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
@@ -239,15 +239,7 @@ final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : Re
 //    To many relationship read write: NCInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_NCInSchematic : ReadOnlyArrayOf_NCInSchematic {
-
-  //····················································································································
-
-  func setProp (_ value :  EBReferenceArray <NCInSchematic>) { } // Abstract method
-
-  //····················································································································
-
-}
+// ReadWriteArrayOf_NCInSchematic is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Proxy: ProxyArrayOf_NCInSchematic

@@ -676,7 +676,7 @@ final class TransientArrayOfSuperOf_PackageDimension <SUPER : EBManagedObject> :
   private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-  private var mModelEvent = EBModelEvent ()
+  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
@@ -764,15 +764,7 @@ final class TransientArrayOfSuperOf_PackageDimension <SUPER : EBManagedObject> :
 //    To many relationship read write: PackageDimension
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageDimension : ReadOnlyArrayOf_PackageDimension {
-
-  //····················································································································
-
-  func setProp (_ value :  EBReferenceArray <PackageDimension>) { } // Abstract method
-
-  //····················································································································
-
-}
+// ReadWriteArrayOf_PackageDimension is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Proxy: ProxyArrayOf_PackageDimension

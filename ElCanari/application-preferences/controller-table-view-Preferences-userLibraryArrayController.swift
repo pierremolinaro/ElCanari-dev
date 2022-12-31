@@ -8,7 +8,7 @@ import AppKit
 //    Auto Layout Table View Controller Preferences userLibraryArrayController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_Preferences_userLibraryArrayController : EBObjcBaseObject, AutoLayoutTableViewDelegate {
+final class Controller_Preferences_userLibraryArrayController : NSObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
   //    Constant properties
@@ -138,6 +138,13 @@ final class Controller_Preferences_userLibraryArrayController : EBObjcBaseObject
         tableView.sortAndReloadData ()
       }
     }
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

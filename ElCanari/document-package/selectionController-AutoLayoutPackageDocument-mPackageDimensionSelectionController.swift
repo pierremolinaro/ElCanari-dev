@@ -8,7 +8,19 @@ import AppKit
 //    Derived selection controller AutoLayoutPackageDocument mPackageDimensionSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelectionController : EBSwiftBaseObject {
+@MainActor final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelectionController {
+
+  //····················································································································
+
+  init () {
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   //····················································································································
   //   Selection observable property: y1

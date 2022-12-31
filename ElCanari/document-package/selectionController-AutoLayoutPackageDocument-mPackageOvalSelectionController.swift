@@ -8,7 +8,19 @@ import AppKit
 //    Derived selection controller AutoLayoutPackageDocument mPackageOvalSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionController : EBSwiftBaseObject {
+@MainActor final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionController {
+
+  //····················································································································
+
+  init () {
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   //····················································································································
   //   Selection observable property: y

@@ -60,7 +60,7 @@ extension AutoLayoutMergerDocument {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class OpenPanelDelegateForFilteringBoardModels : EBObjcBaseObject, NSOpenSavePanelDelegate {
+fileprivate final class OpenPanelDelegateForFilteringBoardModels : NSObject, NSOpenSavePanelDelegate {
 
   //····················································································································
   //   PROPERTIES
@@ -75,6 +75,13 @@ fileprivate final class OpenPanelDelegateForFilteringBoardModels : EBObjcBaseObj
   init (_ boardModelNames : [String]) {
     mBoardModelNames = boardModelNames
     super.init ()
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

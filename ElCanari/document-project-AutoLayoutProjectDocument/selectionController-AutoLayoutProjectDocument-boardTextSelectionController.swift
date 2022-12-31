@@ -8,7 +8,19 @@ import AppKit
 //    Derived selection controller AutoLayoutProjectDocument boardTextSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionController : EBSwiftBaseObject {
+@MainActor final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionController {
+
+  //····················································································································
+
+  init () {
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   //····················································································································
   //   Selection observable property: mX

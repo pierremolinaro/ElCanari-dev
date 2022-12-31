@@ -166,7 +166,8 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     super.init ()
   //--- Configure mNetName simple stored property
     self.mNetName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mNetName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mNetName_property.selection {
         case .empty :
           return .empty
@@ -177,11 +178,12 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mWarnsExactlyOneLabel simple stored property
     self.mWarnsExactlyOneLabel_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mWarnsExactlyOneLabel_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mWarnsExactlyOneLabel_property.selection {
         case .empty :
           return .empty
@@ -192,11 +194,12 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure netClassName transient property
     self.netClassName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.netClassName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.netClassName_property.selection {
         case .empty :
           return .empty
@@ -207,11 +210,12 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure netClassTrackWidth transient property
     self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.netClassTrackWidth_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.netClassTrackWidth_property.selection {
         case .empty :
           return .empty
@@ -222,11 +226,12 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure netClassViaHoleDiameter transient property
     self.netClassViaHoleDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.netClassViaHoleDiameter_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.netClassViaHoleDiameter_property.selection {
         case .empty :
           return .empty
@@ -237,11 +242,12 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure netClassViaPadDiameter transient property
     self.netClassViaPadDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.netClassViaPadDiameter_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.netClassViaPadDiameter_property.selection {
         case .empty :
           return .empty
@@ -252,11 +258,12 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure wireColor transient property
     self.wireColor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.wireColor_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.wireColor_property.selection {
         case .empty :
           return .empty
@@ -267,11 +274,12 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure netSchematicPointsInfo transient property
     self.netSchematicPointsInfo_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.netSchematicPointsInfo_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.netSchematicPointsInfo_property.selection {
         case .empty :
           return .empty
@@ -282,11 +290,12 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure trackCount transient property
     self.trackCount_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.trackCount_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.trackCount_property.selection {
         case .empty :
           return .empty
@@ -297,7 +306,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   }
 

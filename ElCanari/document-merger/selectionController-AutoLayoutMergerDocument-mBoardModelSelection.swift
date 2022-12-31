@@ -8,7 +8,19 @@ import AppKit
 //    Base Selection Controller AutoLayoutMergerDocument mBoardModelSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : EBSwiftBaseObject {
+@MainActor final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection {
+
+  //····················································································································
+
+  init () {
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   //····················································································································
   //   Selection observable property: artworkName

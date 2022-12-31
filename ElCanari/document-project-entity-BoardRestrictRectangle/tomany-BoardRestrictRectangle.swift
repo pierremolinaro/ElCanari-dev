@@ -501,7 +501,7 @@ final class TransientArrayOfSuperOf_BoardRestrictRectangle <SUPER : EBManagedObj
   private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-  private var mModelEvent = EBModelEvent ()
+  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
@@ -589,15 +589,7 @@ final class TransientArrayOfSuperOf_BoardRestrictRectangle <SUPER : EBManagedObj
 //    To many relationship read write: BoardRestrictRectangle
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_BoardRestrictRectangle : ReadOnlyArrayOf_BoardRestrictRectangle {
-
-  //····················································································································
-
-  func setProp (_ value :  EBReferenceArray <BoardRestrictRectangle>) { } // Abstract method
-
-  //····················································································································
-
-}
+// ReadWriteArrayOf_BoardRestrictRectangle is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Proxy: ProxyArrayOf_BoardRestrictRectangle

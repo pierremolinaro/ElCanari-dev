@@ -8,7 +8,19 @@ import AppKit
 //    Base Selection Controller AutoLayoutProjectDocument mDataSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwiftBaseObject {
+@MainActor final class SelectionController_AutoLayoutProjectDocument_mDataSelection {
+
+  //····················································································································
+
+  init () {
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   //····················································································································
   //   Selection observable property: drawBoardLimits

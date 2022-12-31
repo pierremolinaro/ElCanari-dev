@@ -8,7 +8,7 @@ import AppKit
 //    Auto Layout Table View Controller AutoLayoutFontDocument selectedCharacterController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutFontDocument_selectedCharacterController : EBObjcBaseObject, AutoLayoutTableViewDelegate {
+final class Controller_AutoLayoutFontDocument_selectedCharacterController : NSObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
   //    Constant properties
@@ -132,6 +132,13 @@ final class Controller_AutoLayoutFontDocument_selectedCharacterController : EBOb
         tableView.sortAndReloadData ()
       }
     }
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

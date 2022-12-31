@@ -70,7 +70,8 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
     super.init ()
   //--- Configure pinName transient property
     self.pinName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.pinName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.pinName_property.selection {
         case .empty :
           return .empty
@@ -81,11 +82,12 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure symbolName transient property
     self.symbolName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.symbolName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.symbolName_property.selection {
         case .empty :
           return .empty
@@ -96,11 +98,12 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure pinQualifiedName transient property
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.pinQualifiedName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.pinQualifiedName_property.selection {
         case .empty :
           return .empty
@@ -111,11 +114,12 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure isConnected transient property
     self.isConnected_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.isConnected_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.isConnected_property.selection {
         case .empty :
           return .empty
@@ -126,11 +130,12 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure numberShape transient property
     self.numberShape_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.numberShape_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.numberShape_property.selection {
         case .empty :
           return .empty
@@ -141,7 +146,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   }
 

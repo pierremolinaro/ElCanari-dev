@@ -614,7 +614,8 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     super.init ()
   //--- Configure selectedPageIndex simple stored property
     self.selectedPageIndex_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.selectedPageIndex_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.selectedPageIndex_property.selection {
         case .empty :
           return .empty
@@ -625,11 +626,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure selectedInspector simple stored property
     self.selectedInspector_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.selectedInspector_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.selectedInspector_property.selection {
         case .empty :
           return .empty
@@ -640,11 +642,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure comments simple stored property
     self.comments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.comments_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.comments_property.selection {
         case .empty :
           return .empty
@@ -655,11 +658,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure program simple stored property
     self.program_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.program_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.program_property.selection {
         case .empty :
           return .empty
@@ -670,11 +674,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure horizontalFlip simple stored property
     self.horizontalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.horizontalFlip_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.horizontalFlip_property.selection {
         case .empty :
           return .empty
@@ -685,11 +690,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure verticalFlip simple stored property
     self.verticalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.verticalFlip_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.verticalFlip_property.selection {
         case .empty :
           return .empty
@@ -700,11 +706,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure gridStyle simple stored property
     self.gridStyle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.gridStyle_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.gridStyle_property.selection {
         case .empty :
           return .empty
@@ -715,11 +722,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure gridStep simple stored property
     self.gridStep_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.gridStep_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.gridStep_property.selection {
         case .empty :
           return .empty
@@ -730,11 +738,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure gridStepUnit simple stored property
     self.gridStepUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.gridStepUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.gridStepUnit_property.selection {
         case .empty :
           return .empty
@@ -745,11 +754,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure gridDisplayFactor simple stored property
     self.gridDisplayFactor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.gridDisplayFactor_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.gridDisplayFactor_property.selection {
         case .empty :
           return .empty
@@ -760,11 +770,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure zoom simple stored property
     self.zoom_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.zoom_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.zoom_property.selection {
         case .empty :
           return .empty
@@ -775,11 +786,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImageOpacity simple stored property
     self.mModelImageOpacity_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImageOpacity_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImageOpacity_property.selection {
         case .empty :
           return .empty
@@ -790,11 +802,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImagePageHorizontalFlip simple stored property
     self.mModelImagePageHorizontalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImagePageHorizontalFlip_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageHorizontalFlip_property.selection {
         case .empty :
           return .empty
@@ -805,11 +818,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImagePageVerticalFlip simple stored property
     self.mModelImagePageVerticalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImagePageVerticalFlip_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageVerticalFlip_property.selection {
         case .empty :
           return .empty
@@ -820,11 +834,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImagePageGridStyle simple stored property
     self.mModelImagePageGridStyle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImagePageGridStyle_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageGridStyle_property.selection {
         case .empty :
           return .empty
@@ -835,11 +850,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImagePageGridStep simple stored property
     self.mModelImagePageGridStep_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImagePageGridStep_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageGridStep_property.selection {
         case .empty :
           return .empty
@@ -850,11 +866,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImagePageGridStepUnit simple stored property
     self.mModelImagePageGridStepUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImagePageGridStepUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageGridStepUnit_property.selection {
         case .empty :
           return .empty
@@ -865,11 +882,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImagePageGridDisplayFactor simple stored property
     self.mModelImagePageGridDisplayFactor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImagePageGridDisplayFactor_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageGridDisplayFactor_property.selection {
         case .empty :
           return .empty
@@ -880,11 +898,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImagePageZoom simple stored property
     self.mModelImagePageZoom_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImagePageZoom_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageZoom_property.selection {
         case .empty :
           return .empty
@@ -895,11 +914,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImagePageXPlacardUnit simple stored property
     self.mModelImagePageXPlacardUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImagePageXPlacardUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageXPlacardUnit_property.selection {
         case .empty :
           return .empty
@@ -910,11 +930,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImagePageYPlacardUnit simple stored property
     self.mModelImagePageYPlacardUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImagePageYPlacardUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageYPlacardUnit_property.selection {
         case .empty :
           return .empty
@@ -925,11 +946,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImageSecondPointXUnit simple stored property
     self.mModelImageSecondPointXUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImageSecondPointXUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImageSecondPointXUnit_property.selection {
         case .empty :
           return .empty
@@ -940,11 +962,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImageSecondPointYUnit simple stored property
     self.mModelImageSecondPointYUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImageSecondPointYUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImageSecondPointYUnit_property.selection {
         case .empty :
           return .empty
@@ -955,11 +978,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImageFirstPointXOnLock simple stored property
     self.mModelImageFirstPointXOnLock_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImageFirstPointXOnLock_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImageFirstPointXOnLock_property.selection {
         case .empty :
           return .empty
@@ -970,11 +994,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImageFirstPointYOnLock simple stored property
     self.mModelImageFirstPointYOnLock_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImageFirstPointYOnLock_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImageFirstPointYOnLock_property.selection {
         case .empty :
           return .empty
@@ -985,11 +1010,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImagePointsDxOnLock simple stored property
     self.mModelImagePointsDxOnLock_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImagePointsDxOnLock_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImagePointsDxOnLock_property.selection {
         case .empty :
           return .empty
@@ -1000,11 +1026,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImagePointsDyOnLock simple stored property
     self.mModelImagePointsDyOnLock_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImagePointsDyOnLock_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImagePointsDyOnLock_property.selection {
         case .empty :
           return .empty
@@ -1015,11 +1042,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImageScale simple stored property
     self.mModelImageScale_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImageScale_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImageScale_property.selection {
         case .empty :
           return .empty
@@ -1030,11 +1058,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImageRotationInRadians simple stored property
     self.mModelImageRotationInRadians_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImageRotationInRadians_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImageRotationInRadians_property.selection {
         case .empty :
           return .empty
@@ -1045,11 +1074,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mDimensionUnitFirstModelPointX simple stored property
     self.mDimensionUnitFirstModelPointX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mDimensionUnitFirstModelPointX_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mDimensionUnitFirstModelPointX_property.selection {
         case .empty :
           return .empty
@@ -1060,11 +1090,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mDimensionUnitFirstModelPointY simple stored property
     self.mDimensionUnitFirstModelPointY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mDimensionUnitFirstModelPointY_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mDimensionUnitFirstModelPointY_property.selection {
         case .empty :
           return .empty
@@ -1075,11 +1106,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mDimensionUnitSecondModelPointDx simple stored property
     self.mDimensionUnitSecondModelPointDx_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mDimensionUnitSecondModelPointDx_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mDimensionUnitSecondModelPointDx_property.selection {
         case .empty :
           return .empty
@@ -1090,11 +1122,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mDimensionUnitSecondModelPointDy simple stored property
     self.mDimensionUnitSecondModelPointDy_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mDimensionUnitSecondModelPointDy_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mDimensionUnitSecondModelPointDy_property.selection {
         case .empty :
           return .empty
@@ -1105,11 +1138,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelPointsCircleRadius simple stored property
     self.mModelPointsCircleRadius_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelPointsCircleRadius_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelPointsCircleRadius_property.selection {
         case .empty :
           return .empty
@@ -1120,11 +1154,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mPointsAreLocked simple stored property
     self.mPointsAreLocked_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mPointsAreLocked_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mPointsAreLocked_property.selection {
         case .empty :
           return .empty
@@ -1135,11 +1170,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure knobSizeMultpliedByTen simple stored property
     self.knobSizeMultpliedByTen_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.knobSizeMultpliedByTen_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.knobSizeMultpliedByTen_property.selection {
         case .empty :
           return .empty
@@ -1150,11 +1186,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure padNumbering simple stored property
     self.padNumbering_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.padNumbering_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.padNumbering_property.selection {
         case .empty :
           return .empty
@@ -1165,11 +1202,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure counterClockNumberingStartAngle simple stored property
     self.counterClockNumberingStartAngle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.counterClockNumberingStartAngle_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.counterClockNumberingStartAngle_property.selection {
         case .empty :
           return .empty
@@ -1180,11 +1218,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure xPlacardUnit simple stored property
     self.xPlacardUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.xPlacardUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.xPlacardUnit_property.selection {
         case .empty :
           return .empty
@@ -1195,11 +1234,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure yPlacardUnit simple stored property
     self.yPlacardUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.yPlacardUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.yPlacardUnit_property.selection {
         case .empty :
           return .empty
@@ -1210,11 +1250,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mModelImageData simple stored property
     self.mModelImageData_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mModelImageData_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mModelImageData_property.selection {
         case .empty :
           return .empty
@@ -1225,11 +1266,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure freePadNumbering transient property
     self.freePadNumbering_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.freePadNumbering_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.freePadNumbering_property.selection {
         case .empty :
           return .empty
@@ -1240,11 +1282,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure counterClockNumbering transient property
     self.counterClockNumbering_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.counterClockNumbering_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.counterClockNumbering_property.selection {
         case .empty :
           return .empty
@@ -1255,11 +1298,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure gridStepMultipliedByDisplayFactor transient property
     self.gridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.gridStepMultipliedByDisplayFactor_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.gridStepMultipliedByDisplayFactor_property.selection {
         case .empty :
           return .empty
@@ -1270,11 +1314,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure secondPointX transient property
     self.secondPointX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.secondPointX_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.secondPointX_property.selection {
         case .empty :
           return .empty
@@ -1285,11 +1330,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure secondPointY transient property
     self.secondPointY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.secondPointY_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.secondPointY_property.selection {
         case .empty :
           return .empty
@@ -1300,11 +1346,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure lockImageView transient property
     self.lockImageView_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.lockImageView_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.lockImageView_property.selection {
         case .empty :
           return .empty
@@ -1315,11 +1362,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure padNumberDisplay transient property
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.padNumberDisplay_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.padNumberDisplay_property.selection {
         case .empty :
           return .empty
@@ -1330,11 +1378,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure backgroundImagePageBackgroundDisplay transient property
     self.backgroundImagePageBackgroundDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.backgroundImagePageBackgroundDisplay_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.backgroundImagePageBackgroundDisplay_property.selection {
         case .empty :
           return .empty
@@ -1345,11 +1394,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure modelImageSizeString transient property
     self.modelImageSizeString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.modelImageSizeString_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.modelImageSizeString_property.selection {
         case .empty :
           return .empty
@@ -1360,11 +1410,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure hasModelImage transient property
     self.hasModelImage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.hasModelImage_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.hasModelImage_property.selection {
         case .empty :
           return .empty
@@ -1375,11 +1426,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure masterPadObjectIndexArray transient property
     self.masterPadObjectIndexArray_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.masterPadObjectIndexArray_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.masterPadObjectIndexArray_property.selection {
         case .empty :
           return .empty
@@ -1390,11 +1442,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.issues_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.issues_property.selection {
         case .empty :
           return .empty
@@ -1405,7 +1458,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   }
 

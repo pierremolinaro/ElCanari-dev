@@ -199,14 +199,12 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
   //····················································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
-    if inRange.length > 0 {
-      var objectArray = EBReferenceArray <DevicePadAssignmentInProject> ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
-      for idx in indexArray {
-        objectArray.append (inRawObjectArray [idx].object as! DevicePadAssignmentInProject)
-      }
-      self.setProp (objectArray)
+    var objectArray = EBReferenceArray <DevicePadAssignmentInProject> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! DevicePadAssignmentInProject)
     }
+    self.setProp (objectArray)
   }
 
   //····················································································································

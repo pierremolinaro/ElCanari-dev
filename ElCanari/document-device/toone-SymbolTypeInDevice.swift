@@ -166,7 +166,8 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
     super.init ()
   //--- Configure mTypeName simple stored property
     self.mTypeName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mTypeName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mTypeName_property.selection {
         case .empty :
           return .empty
@@ -177,11 +178,12 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mVersion simple stored property
     self.mVersion_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mVersion_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mVersion_property.selection {
         case .empty :
           return .empty
@@ -192,11 +194,12 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mFileData simple stored property
     self.mFileData_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mFileData_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mFileData_property.selection {
         case .empty :
           return .empty
@@ -207,11 +210,12 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mStrokeBezierPath simple stored property
     self.mStrokeBezierPath_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mStrokeBezierPath_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mStrokeBezierPath_property.selection {
         case .empty :
           return .empty
@@ -222,11 +226,12 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mFilledBezierPath simple stored property
     self.mFilledBezierPath_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mFilledBezierPath_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mFilledBezierPath_property.selection {
         case .empty :
           return .empty
@@ -237,11 +242,12 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure versionString transient property
     self.versionString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.versionString_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.versionString_property.selection {
         case .empty :
           return .empty
@@ -252,11 +258,12 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure instanceCount transient property
     self.instanceCount_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.instanceCount_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.instanceCount_property.selection {
         case .empty :
           return .empty
@@ -267,11 +274,12 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure documentSize transient property
     self.documentSize_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.documentSize_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.documentSize_property.selection {
         case .empty :
           return .empty
@@ -282,11 +290,12 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure pinNameShape transient property
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.pinNameShape_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.pinNameShape_property.selection {
         case .empty :
           return .empty
@@ -297,7 +306,7 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   }
 

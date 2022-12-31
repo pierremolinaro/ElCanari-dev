@@ -319,7 +319,7 @@ final class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
   private var mIsOrderedBefore : Optional < (_ left : FontCharacter, _ right : FontCharacter) -> Bool > = nil
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelEvent = EBModelEvent ()
+  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
@@ -496,14 +496,12 @@ class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureO
   //····················································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
-    if inRange.length > 0 {
-      var objectArray = EBReferenceArray <FontCharacter> ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
-      for idx in indexArray {
-        objectArray.append (inRawObjectArray [idx].object as! FontCharacter)
-      }
-      self.setProp (objectArray)
+    var objectArray = EBReferenceArray <FontCharacter> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! FontCharacter)
     }
+    self.setProp (objectArray)
   }
 
   //····················································································································

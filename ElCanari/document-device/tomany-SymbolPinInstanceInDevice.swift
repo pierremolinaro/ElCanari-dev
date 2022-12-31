@@ -269,14 +269,12 @@ class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstan
   //····················································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
-    if inRange.length > 0 {
-      var objectArray = EBReferenceArray <SymbolPinInstanceInDevice> ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
-      for idx in indexArray {
-        objectArray.append (inRawObjectArray [idx].object as! SymbolPinInstanceInDevice)
-      }
-      self.setProp (objectArray)
+    var objectArray = EBReferenceArray <SymbolPinInstanceInDevice> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! SymbolPinInstanceInDevice)
     }
+    self.setProp (objectArray)
   }
 
   //····················································································································

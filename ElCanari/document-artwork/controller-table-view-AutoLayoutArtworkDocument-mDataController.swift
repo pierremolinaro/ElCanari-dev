@@ -8,7 +8,7 @@ import AppKit
 //    Auto Layout Table View Controller AutoLayoutArtworkDocument mDataController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutArtworkDocument_mDataController : EBObjcBaseObject, AutoLayoutTableViewDelegate {
+final class Controller_AutoLayoutArtworkDocument_mDataController : NSObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
   //    Constant properties
@@ -150,6 +150,13 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : EBObjcBaseObj
         tableView.sortAndReloadData ()
       }
     }
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

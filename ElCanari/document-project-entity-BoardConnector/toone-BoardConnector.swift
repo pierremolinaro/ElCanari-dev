@@ -326,7 +326,8 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     super.init ()
   //--- Configure mComponentPadName simple stored property
     self.mComponentPadName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mComponentPadName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mComponentPadName_property.selection {
         case .empty :
           return .empty
@@ -337,11 +338,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mPadIndex simple stored property
     self.mPadIndex_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mPadIndex_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mPadIndex_property.selection {
         case .empty :
           return .empty
@@ -352,11 +354,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mX simple stored property
     self.mX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mX_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mX_property.selection {
         case .empty :
           return .empty
@@ -367,11 +370,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mY simple stored property
     self.mY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mY_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mY_property.selection {
         case .empty :
           return .empty
@@ -382,11 +386,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mDefaultHoleDiameterUnit simple stored property
     self.mDefaultHoleDiameterUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mDefaultHoleDiameterUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mDefaultHoleDiameterUnit_property.selection {
         case .empty :
           return .empty
@@ -397,11 +402,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mCustomHoleDiameter simple stored property
     self.mCustomHoleDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mCustomHoleDiameter_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mCustomHoleDiameter_property.selection {
         case .empty :
           return .empty
@@ -412,11 +418,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mCustomHoleDiameterUnit simple stored property
     self.mCustomHoleDiameterUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mCustomHoleDiameterUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mCustomHoleDiameterUnit_property.selection {
         case .empty :
           return .empty
@@ -427,11 +434,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mUsesCustomHoleDiameter simple stored property
     self.mUsesCustomHoleDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mUsesCustomHoleDiameter_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mUsesCustomHoleDiameter_property.selection {
         case .empty :
           return .empty
@@ -442,11 +450,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mDefaultPadDiameterUnit simple stored property
     self.mDefaultPadDiameterUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mDefaultPadDiameterUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mDefaultPadDiameterUnit_property.selection {
         case .empty :
           return .empty
@@ -457,11 +466,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mCustomPadDiameter simple stored property
     self.mCustomPadDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mCustomPadDiameter_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mCustomPadDiameter_property.selection {
         case .empty :
           return .empty
@@ -472,11 +482,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mCustomPadDiameterUnit simple stored property
     self.mCustomPadDiameterUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mCustomPadDiameterUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mCustomPadDiameterUnit_property.selection {
         case .empty :
           return .empty
@@ -487,11 +498,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mUsesCustomPadDiameter simple stored property
     self.mUsesCustomPadDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mUsesCustomPadDiameter_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mUsesCustomPadDiameter_property.selection {
         case .empty :
           return .empty
@@ -502,11 +514,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure isConnectedToSomePad transient property
     self.isConnectedToSomePad_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.isConnectedToSomePad_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.isConnectedToSomePad_property.selection {
         case .empty :
           return .empty
@@ -517,11 +530,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure location transient property
     self.location_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.location_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.location_property.selection {
         case .empty :
           return .empty
@@ -532,11 +546,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure netNameFromComponentPad transient property
     self.netNameFromComponentPad_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.netNameFromComponentPad_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.netNameFromComponentPad_property.selection {
         case .empty :
           return .empty
@@ -547,11 +562,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure netNameAndPadLocation transient property
     self.netNameAndPadLocation_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.netNameAndPadLocation_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.netNameAndPadLocation_property.selection {
         case .empty :
           return .empty
@@ -562,11 +578,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure side transient property
     self.side_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.side_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.side_property.selection {
         case .empty :
           return .empty
@@ -577,11 +594,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure isVia transient property
     self.isVia_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.isVia_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.isVia_property.selection {
         case .empty :
           return .empty
@@ -592,11 +610,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.issues_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.issues_property.selection {
         case .empty :
           return .empty
@@ -607,11 +626,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure viaDefaultHoleDiameter transient property
     self.viaDefaultHoleDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.viaDefaultHoleDiameter_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.viaDefaultHoleDiameter_property.selection {
         case .empty :
           return .empty
@@ -622,11 +642,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure viaDefaultPadDiameter transient property
     self.viaDefaultPadDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.viaDefaultPadDiameter_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.viaDefaultPadDiameter_property.selection {
         case .empty :
           return .empty
@@ -637,11 +658,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure netNameFromTracks transient property
     self.netNameFromTracks_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.netNameFromTracks_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.netNameFromTracks_property.selection {
         case .empty :
           return .empty
@@ -652,11 +674,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure netClassName transient property
     self.netClassName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.netClassName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.netClassName_property.selection {
         case .empty :
           return .empty
@@ -667,11 +690,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure connectedToComponent transient property
     self.connectedToComponent_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.connectedToComponent_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.connectedToComponent_property.selection {
         case .empty :
           return .empty
@@ -682,11 +706,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure actualHoleDiameter transient property
     self.actualHoleDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.actualHoleDiameter_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.actualHoleDiameter_property.selection {
         case .empty :
           return .empty
@@ -697,11 +722,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure actualPadDiameter transient property
     self.actualPadDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.actualPadDiameter_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.actualPadDiameter_property.selection {
         case .empty :
           return .empty
@@ -712,11 +738,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.objectDisplay_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.objectDisplay_property.selection {
         case .empty :
           return .empty
@@ -727,11 +754,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.selectionDisplay_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.selectionDisplay_property.selection {
         case .empty :
           return .empty
@@ -742,11 +770,12 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure signatureForERCChecking transient property
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.signatureForERCChecking_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.signatureForERCChecking_property.selection {
         case .empty :
           return .empty
@@ -757,7 +786,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   }
 

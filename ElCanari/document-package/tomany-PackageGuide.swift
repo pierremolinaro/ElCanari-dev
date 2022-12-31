@@ -431,7 +431,7 @@ final class TransientArrayOfSuperOf_PackageGuide <SUPER : EBManagedObject> : Rea
   private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-  private var mModelEvent = EBModelEvent ()
+  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
@@ -519,15 +519,7 @@ final class TransientArrayOfSuperOf_PackageGuide <SUPER : EBManagedObject> : Rea
 //    To many relationship read write: PackageGuide
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
-
-  //····················································································································
-
-  func setProp (_ value :  EBReferenceArray <PackageGuide>) { } // Abstract method
-
-  //····················································································································
-
-}
+// ReadWriteArrayOf_PackageGuide is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Proxy: ProxyArrayOf_PackageGuide

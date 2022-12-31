@@ -6,25 +6,41 @@ import AppKit
 //   EBObservedObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBObservedObject : EBSwiftBaseObject, EBObserverProtocol {
+@MainActor class EBObservedObject : EBObserverProtocol {
 
   //····················································································································
 
-  private final var mDictionary = [Int : EBWeakObserverSetElement] ()
+  init () {
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+  final var objectIndex : Int { return Int (bitPattern: ObjectIdentifier (self)) }
+
+  //····················································································································
+
+  private final var mDictionary = [ObjectIdentifier : EBWeakObserverSetElement] ()
 
   //····················································································································
 
   final func startsToBeObserved (by inObserver : EBObserverProtocol) {
-    let address = inObserver.objectIndex
-    self.mDictionary [address] = EBWeakObserverSetElement (observer: inObserver)
+    let key = ObjectIdentifier (inObserver)
+    self.mDictionary [key] = EBWeakObserverSetElement (observer: inObserver)
     inObserver.observedObjectDidChange ()
   }
 
   //····················································································································
 
   final func stopsBeingObserved (by inObserver : EBObserverProtocol) {
-    let address = inObserver.objectIndex
-    self.mDictionary [address] = nil
+    let key = ObjectIdentifier (inObserver)
+    self.mDictionary [key] = nil
     inObserver.observedObjectDidChange ()
   }
 

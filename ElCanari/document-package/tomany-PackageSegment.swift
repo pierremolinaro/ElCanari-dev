@@ -536,7 +536,7 @@ final class TransientArrayOfSuperOf_PackageSegment <SUPER : EBManagedObject> : R
   private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-  private var mModelEvent = EBModelEvent ()
+  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
@@ -624,15 +624,7 @@ final class TransientArrayOfSuperOf_PackageSegment <SUPER : EBManagedObject> : R
 //    To many relationship read write: PackageSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
-
-  //····················································································································
-
-  func setProp (_ value :  EBReferenceArray <PackageSegment>) { } // Abstract method
-
-  //····················································································································
-
-}
+// ReadWriteArrayOf_PackageSegment is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Proxy: ProxyArrayOf_PackageSegment

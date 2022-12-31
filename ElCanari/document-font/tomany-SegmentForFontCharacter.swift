@@ -304,14 +304,12 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
   //····················································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
-    if inRange.length > 0 {
-      var objectArray = EBReferenceArray <SegmentForFontCharacter> ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
-      for idx in indexArray {
-        objectArray.append (inRawObjectArray [idx].object as! SegmentForFontCharacter)
-      }
-      self.setProp (objectArray)
+    var objectArray = EBReferenceArray <SegmentForFontCharacter> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! SegmentForFontCharacter)
     }
+    self.setProp (objectArray)
   }
 
   //····················································································································

@@ -129,14 +129,12 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
   //····················································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
-    if inRange.length > 0 {
-      var objectArray = EBReferenceArray <ForbiddenPadNumber> ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
-      for idx in indexArray {
-        objectArray.append (inRawObjectArray [idx].object as! ForbiddenPadNumber)
-      }
-      self.setProp (objectArray)
+    var objectArray = EBReferenceArray <ForbiddenPadNumber> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! ForbiddenPadNumber)
     }
+    self.setProp (objectArray)
   }
 
   //····················································································································

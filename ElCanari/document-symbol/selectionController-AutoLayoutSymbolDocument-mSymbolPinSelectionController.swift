@@ -8,7 +8,19 @@ import AppKit
 //    Derived selection controller AutoLayoutSymbolDocument mSymbolPinSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionController : EBSwiftBaseObject {
+@MainActor final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionController {
+
+  //····················································································································
+
+  init () {
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   //····················································································································
   //   Selection observable property: yPin

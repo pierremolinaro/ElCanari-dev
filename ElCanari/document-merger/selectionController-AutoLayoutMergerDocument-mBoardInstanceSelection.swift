@@ -8,7 +8,19 @@ import AppKit
 //    Base Selection Controller AutoLayoutMergerDocument mBoardInstanceSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection : EBSwiftBaseObject {
+@MainActor final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection {
+
+  //····················································································································
+
+  init () {
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   //····················································································································
   //   Selection observable property: boardLimitWidth

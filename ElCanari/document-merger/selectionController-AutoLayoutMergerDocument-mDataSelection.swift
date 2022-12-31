@@ -8,7 +8,19 @@ import AppKit
 //    Base Selection Controller AutoLayoutMergerDocument mDataSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwiftBaseObject {
+@MainActor final class SelectionController_AutoLayoutMergerDocument_mDataSelection {
+
+  //····················································································································
+
+  init () {
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   //····················································································································
   //   Selection observable property: drawBoardLimits

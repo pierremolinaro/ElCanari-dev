@@ -8,7 +8,7 @@ import AppKit
 //    Auto Layout Table View Controller AutoLayoutMergerDocument mBoardModelController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutMergerDocument_mBoardModelController : EBObjcBaseObject, AutoLayoutTableViewDelegate {
+final class Controller_AutoLayoutMergerDocument_mBoardModelController : NSObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
   //    Constant properties
@@ -134,6 +134,13 @@ final class Controller_AutoLayoutMergerDocument_mBoardModelController : EBObjcBa
         tableView.sortAndReloadData ()
       }
     }
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

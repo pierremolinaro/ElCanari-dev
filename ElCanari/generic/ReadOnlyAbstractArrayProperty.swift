@@ -42,7 +42,7 @@ import AppKit
 //    ReadOnlyAbstractArrayProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyAbstractArrayProperty <T : ObjectIndexProtocol> : ReadOnlyAbstractGenericRelationshipProperty {
+class ReadOnlyAbstractArrayProperty <T : AnyObject> : ReadOnlyAbstractGenericRelationshipProperty {
 
   //····················································································································
   // Abstract methods
@@ -97,7 +97,7 @@ class ReadOnlyAbstractArrayProperty <T : ObjectIndexProtocol> : ReadOnlyAbstract
   //  count property
   //····················································································································
 
-  final var count_property = EBTransientProperty_Int ()
+  final let count_property = EBTransientProperty_Int ()
 
   //····················································································································
   //  init

@@ -134,7 +134,7 @@ private func iso8601StringToDate (_ inString : String?) -> Date? {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class LibraryRevisionDescriptor : EBSwiftBaseObject {
+@MainActor final class LibraryRevisionDescriptor {
 
   //····················································································································
   //   Properties
@@ -155,6 +155,13 @@ final class LibraryRevisionDescriptor : EBSwiftBaseObject {
     self.mDateString = formatter.string (from: inDate)
     self.mCommitIndex = commitIndex
     self.mMessage = message
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -163,7 +170,7 @@ final class LibraryRevisionDescriptor : EBSwiftBaseObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class LibraryCommitListController : EBSwiftBaseObject { // , AutoLayoutTableViewDelegate {
+@MainActor fileprivate final class LibraryCommitListController {
 
   //····················································································································
   //   Properties
@@ -179,7 +186,6 @@ fileprivate final class LibraryCommitListController : EBSwiftBaseObject { // , A
   init (_ inRevisions : [LibraryRevisionDescriptor]) {
     self.mRevisions = inRevisions
     self.mTableView = AutoLayoutTableView (size: .regular, addControlButtons: false)
-    super.init ()
   //--- Configure tableview
     self.mTableView.configure (
       allowsEmptySelection: false,
@@ -218,6 +224,13 @@ fileprivate final class LibraryCommitListController : EBSwiftBaseObject { // , A
       contentAlignment: .left
     )
     self.mTableView.sortAndReloadData ()
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

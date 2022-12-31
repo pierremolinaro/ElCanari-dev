@@ -34,6 +34,14 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
 
   //····················································································································
 
+  override func viewDidMoveToWindow () {
+    if self.window == nil { // Remove from window
+      self.removeXYHelperWindow ()
+    }
+  }
+
+  //····················································································································
+
   private func configureGraphicView () {
     self.postsFrameChangedNotifications = true
     NotificationCenter.default.addObserver (
@@ -46,7 +54,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
     self.addEndLiveMagnificationObserver ()
     self.setNeedsDisplayAndUpdateViewBounds ()
   //--- Track flags changed events, event if view is not first responder
-    self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) { [weak self] inEvent in
+    self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) { [weak self] (inEvent) in
       if let me = self {
         let unalignedLocationInView = me.convert (inEvent.locationInWindow, from: nil)
         if me.bounds.contains (unalignedLocationInView), let isKeyWindow = me.window?.isKeyWindow, isKeyWindow {

@@ -206,7 +206,8 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     super.init ()
   //--- Configure mCenterX simple stored property
     self.mCenterX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mCenterX_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mCenterX_property.selection {
         case .empty :
           return .empty
@@ -217,11 +218,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mCenterY simple stored property
     self.mCenterY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mCenterY_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mCenterY_property.selection {
         case .empty :
           return .empty
@@ -232,11 +234,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mRotation simple stored property
     self.mRotation_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mRotation_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mRotation_property.selection {
         case .empty :
           return .empty
@@ -247,11 +250,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mMirror simple stored property
     self.mMirror_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mMirror_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mMirror_property.selection {
         case .empty :
           return .empty
@@ -262,11 +266,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mSymbolInstanceName simple stored property
     self.mSymbolInstanceName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mSymbolInstanceName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mSymbolInstanceName_property.selection {
         case .empty :
           return .empty
@@ -277,11 +282,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mSymbolTypeName simple stored property
     self.mSymbolTypeName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mSymbolTypeName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mSymbolTypeName_property.selection {
         case .empty :
           return .empty
@@ -292,11 +298,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mDisplayComponentNameOffsetX simple stored property
     self.mDisplayComponentNameOffsetX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mDisplayComponentNameOffsetX_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mDisplayComponentNameOffsetX_property.selection {
         case .empty :
           return .empty
@@ -307,11 +314,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mDisplayComponentNameOffsetY simple stored property
     self.mDisplayComponentNameOffsetY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mDisplayComponentNameOffsetY_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mDisplayComponentNameOffsetY_property.selection {
         case .empty :
           return .empty
@@ -322,11 +330,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mDisplayComponentValue simple stored property
     self.mDisplayComponentValue_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mDisplayComponentValue_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mDisplayComponentValue_property.selection {
         case .empty :
           return .empty
@@ -337,11 +346,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mDisplayComponentValueOffsetX simple stored property
     self.mDisplayComponentValueOffsetX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mDisplayComponentValueOffsetX_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mDisplayComponentValueOffsetX_property.selection {
         case .empty :
           return .empty
@@ -352,11 +362,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mDisplayComponentValueOffsetY simple stored property
     self.mDisplayComponentValueOffsetY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mDisplayComponentValueOffsetY_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mDisplayComponentValueOffsetY_property.selection {
         case .empty :
           return .empty
@@ -367,11 +378,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure componentName transient property
     self.componentName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.componentName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.componentName_property.selection {
         case .empty :
           return .empty
@@ -382,11 +394,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure deviceName transient property
     self.deviceName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.deviceName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.deviceName_property.selection {
         case .empty :
           return .empty
@@ -397,11 +410,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure symbolInfo transient property
     self.symbolInfo_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.symbolInfo_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.symbolInfo_property.selection {
         case .empty :
           return .empty
@@ -412,11 +426,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure pinPadAssignments transient property
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.pinPadAssignments_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.pinPadAssignments_property.selection {
         case .empty :
           return .empty
@@ -427,11 +442,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.objectDisplay_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.objectDisplay_property.selection {
         case .empty :
           return .empty
@@ -442,11 +458,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.selectionDisplay_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.selectionDisplay_property.selection {
         case .empty :
           return .empty
@@ -457,11 +474,12 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure symbolInSchematic transient property
     self.symbolInSchematic_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.symbolInSchematic_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.symbolInSchematic_property.selection {
         case .empty :
           return .empty
@@ -472,7 +490,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   }
 

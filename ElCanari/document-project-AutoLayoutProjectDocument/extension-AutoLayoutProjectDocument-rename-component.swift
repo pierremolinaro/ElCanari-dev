@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class RenameContext : EBSwiftBaseObject {
+@MainActor fileprivate final class RenameContext {
 
   //····················································································································
 
@@ -35,8 +35,15 @@ fileprivate final class RenameContext : EBSwiftBaseObject {
     self.mComponentNewPrefix = inComponent.mNamePrefix
     self.mOkButton = AutoLayoutSheetDefaultOkButton (title: "Rename", size: .regular, sheet: inPanel)
     self.mDocument = inDocument
-    super.init ()
+    noteObjectAllocation (self)
   }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
 
   //····················································································································
 

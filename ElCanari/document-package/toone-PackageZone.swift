@@ -238,7 +238,8 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
     super.init ()
   //--- Configure x simple stored property
     self.x_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.x_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.x_property.selection {
         case .empty :
           return .empty
@@ -249,11 +250,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure y simple stored property
     self.y_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.y_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.y_property.selection {
         case .empty :
           return .empty
@@ -264,11 +266,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure width simple stored property
     self.width_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.width_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.width_property.selection {
         case .empty :
           return .empty
@@ -279,11 +282,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure height simple stored property
     self.height_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.height_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.height_property.selection {
         case .empty :
           return .empty
@@ -294,11 +298,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure xUnit simple stored property
     self.xUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.xUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.xUnit_property.selection {
         case .empty :
           return .empty
@@ -309,11 +314,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure yUnit simple stored property
     self.yUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.yUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.yUnit_property.selection {
         case .empty :
           return .empty
@@ -324,11 +330,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure widthUnit simple stored property
     self.widthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.widthUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.widthUnit_property.selection {
         case .empty :
           return .empty
@@ -339,11 +346,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure heightUnit simple stored property
     self.heightUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.heightUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.heightUnit_property.selection {
         case .empty :
           return .empty
@@ -354,11 +362,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure zoneName simple stored property
     self.zoneName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.zoneName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.zoneName_property.selection {
         case .empty :
           return .empty
@@ -369,11 +378,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure displayZoneName simple stored property
     self.displayZoneName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.displayZoneName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.displayZoneName_property.selection {
         case .empty :
           return .empty
@@ -384,11 +394,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure displayZoneNameWithPadNumbers simple stored property
     self.displayZoneNameWithPadNumbers_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.displayZoneNameWithPadNumbers_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.displayZoneNameWithPadNumbers_property.selection {
         case .empty :
           return .empty
@@ -399,11 +410,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure xName simple stored property
     self.xName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.xName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.xName_property.selection {
         case .empty :
           return .empty
@@ -414,11 +426,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure yName simple stored property
     self.yName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.yName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.yName_property.selection {
         case .empty :
           return .empty
@@ -429,11 +442,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure xNameUnit simple stored property
     self.xNameUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.xNameUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.xNameUnit_property.selection {
         case .empty :
           return .empty
@@ -444,11 +458,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure yNameUnit simple stored property
     self.yNameUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.yNameUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.yNameUnit_property.selection {
         case .empty :
           return .empty
@@ -459,11 +474,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure zoneNumbering simple stored property
     self.zoneNumbering_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.zoneNumbering_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.zoneNumbering_property.selection {
         case .empty :
           return .empty
@@ -474,11 +490,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.objectDisplay_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.objectDisplay_property.selection {
         case .empty :
           return .empty
@@ -489,11 +506,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.issues_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.issues_property.selection {
         case .empty :
           return .empty
@@ -504,11 +522,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure rect transient property
     self.rect_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.rect_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.rect_property.selection {
         case .empty :
           return .empty
@@ -519,11 +538,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.selectionDisplay_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.selectionDisplay_property.selection {
         case .empty :
           return .empty
@@ -534,11 +554,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure forbiddenPadArray transient property
     self.forbiddenPadArray_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.forbiddenPadArray_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.forbiddenPadArray_property.selection {
         case .empty :
           return .empty
@@ -549,11 +570,12 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure emptyForbiddenPadArray transient property
     self.emptyForbiddenPadArray_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.emptyForbiddenPadArray_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.emptyForbiddenPadArray_property.selection {
         case .empty :
           return .empty
@@ -564,7 +586,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   }
 

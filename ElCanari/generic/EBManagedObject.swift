@@ -18,7 +18,7 @@ import AppKit
 //  Moins volumineux avec EBSwiftBaseObject, mais plus long à l'ouverture
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBManagedObject : EBSwiftBaseObject, EBSignatureObserverProtocol {
+@MainActor class EBManagedObject : ObjectIndexProtocol, EBSignatureObserverProtocol {
 
   //····················································································································
 
@@ -44,8 +44,18 @@ class EBManagedObject : EBSwiftBaseObject, EBSignatureObserverProtocol {
 
   required init (_ inUndoManager : UndoManager?) {
     self.mUndoManager = inUndoManager
-    super.init ()
+    noteObjectAllocation (self)
   }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+  final var objectIndex : Int { return Int (bitPattern: ObjectIdentifier (self)) }
 
   //····················································································································
   //  Getters

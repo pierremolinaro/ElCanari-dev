@@ -8,7 +8,7 @@ import AppKit
 //    EBModelNotifierEvent
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBModelNotifierEvent : EBSwiftBaseObject, EBObserverProtocol {
+@MainActor final class EBModelNotifierEvent : EBObserverProtocol {
 
   //····················································································································
   //   Properties
@@ -26,8 +26,14 @@ final class EBModelNotifierEvent : EBSwiftBaseObject, EBObserverProtocol {
         removeSortObserversCallback inRemoveSortObserversCallback : @escaping (EBModelNotifierEvent) -> Void) {
     self.mClient = inClient
     self.mRemoveSortObserversCallback = inRemoveSortObserversCallback
-    super.init ()
     inAddSortObserversCallback (self)
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

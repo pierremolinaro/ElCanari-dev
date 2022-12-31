@@ -1124,7 +1124,7 @@ final class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_A
 
   private var mIsOrderedBefore : Optional < (_ left : ArtworkFileGenerationParameters, _ right : ArtworkFileGenerationParameters) -> Bool > = nil
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelEvent = EBModelEvent ()
+  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
@@ -1370,14 +1370,12 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
   //····················································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
-    if inRange.length > 0 {
-      var objectArray = EBReferenceArray <ArtworkFileGenerationParameters> ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
-      for idx in indexArray {
-        objectArray.append (inRawObjectArray [idx].object as! ArtworkFileGenerationParameters)
-      }
-      self.setProp (objectArray)
+    var objectArray = EBReferenceArray <ArtworkFileGenerationParameters> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! ArtworkFileGenerationParameters)
     }
+    self.setProp (objectArray)
   }
 
   //····················································································································

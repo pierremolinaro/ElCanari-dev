@@ -28,10 +28,6 @@ enum EBTextVerticalAlignment {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//fileprivate var gBezierPathIndex = 0
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // EBBezierPath
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -40,7 +36,6 @@ struct EBBezierPath : Hashable {
   //····················································································································
 
   private var mPath : NSBezierPath
-//  private let mBezierPathIndex : Int
 
   //····················································································································
 
@@ -58,8 +53,6 @@ struct EBBezierPath : Hashable {
 
   init () {
     self.mPath = NSBezierPath ()
-//    self.mBezierPathIndex = gBezierPathIndex
-//    gBezierPathIndex += 1
   }
 
   //····················································································································
@@ -67,8 +60,6 @@ struct EBBezierPath : Hashable {
   init (rect inRect : NSRect) {
     self.mPath = NSBezierPath ()
     self.mPath.appendRect (inRect)
-//    self.mBezierPathIndex = gBezierPathIndex
-//    gBezierPathIndex += 1
   }
 
   //····················································································································
@@ -76,8 +67,6 @@ struct EBBezierPath : Hashable {
   init (ovalIn inRect : NSRect) {
     self.mPath = NSBezierPath ()
     self.mPath.appendOval (in: inRect)
-//    self.mBezierPathIndex = gBezierPathIndex
-//    gBezierPathIndex += 1
   }
 
   //····················································································································
@@ -85,8 +74,6 @@ struct EBBezierPath : Hashable {
   init (roundedRect rect : NSRect, xRadius : CGFloat, yRadius : CGFloat) {
     self.mPath = NSBezierPath ()
     self.mPath.appendRoundedRect (rect, xRadius: xRadius, yRadius: yRadius)
-//    self.mBezierPathIndex = gBezierPathIndex
-//    gBezierPathIndex += 1
   }
 
   //····················································································································
@@ -97,8 +84,6 @@ struct EBBezierPath : Hashable {
     self.mPath.lineWidth = inBezierPath.lineWidth
     self.mPath.lineCapStyle = inBezierPath.lineCapStyle
     self.mPath.lineJoinStyle = inBezierPath.lineJoinStyle
-//    self.mBezierPathIndex = gBezierPathIndex
-//    gBezierPathIndex += 1
   }
 
   //····················································································································
@@ -109,8 +94,6 @@ struct EBBezierPath : Hashable {
         _ inVerticalAlignment : EBTextVerticalAlignment,
         withAttributes inTextAttributes : [NSAttributedString.Key : Any]) {
     self.mPath = NSBezierPath ()
-//    self.mBezierPathIndex = gBezierPathIndex
-//    gBezierPathIndex += 1
     if inString != "" {
     //--- Font
       let font : NSFont
@@ -167,7 +150,6 @@ struct EBBezierPath : Hashable {
   //····················································································································
 
   nonisolated static func == (lhs : EBBezierPath, rhs : EBBezierPath) -> Bool {
-   // return lhs.mPath === rhs.mPath
     return ObjectIdentifier (lhs.mPath) == ObjectIdentifier (rhs.mPath)
   }
 
@@ -639,6 +621,7 @@ extension NSBezierPath {
 
   //····················································································································
   // https://stackoverflow.com/questions/1815568/how-can-i-convert-nsbezierpath-to-cgpath
+  //····················································································································
 
   public var cgPath : CGPath {
     let path = CGMutablePath ()

@@ -26,7 +26,7 @@ enum LibraryOperation {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class LibraryOperationElement : EBSwiftBaseObject {
+@MainActor final class LibraryOperationElement {
 
   //····················································································································
   //   Properties
@@ -44,8 +44,8 @@ final class LibraryOperationElement : EBSwiftBaseObject {
 
   //····················································································································
 
-  @MainActor private var mOperation : LibraryOperation
-  @MainActor var operation : LibraryOperation { return self.mOperation }
+  private var mOperation : LibraryOperation
+  var operation : LibraryOperation { return self.mOperation }
 
   //····················································································································
 
@@ -63,7 +63,13 @@ final class LibraryOperationElement : EBSwiftBaseObject {
 //    self.mFileSHA = inFileSHA
     self.mLogTextView = inLogTextView
     self.mProxy = inProxy
-    super.init ()
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

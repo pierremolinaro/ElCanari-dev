@@ -984,7 +984,7 @@ final class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProje
 
   private var mIsOrderedBefore : Optional < (_ left : NetClassInProject, _ right : NetClassInProject) -> Bool > = nil
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelEvent = EBModelEvent ()
+  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
@@ -1161,14 +1161,12 @@ class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSi
   //····················································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
-    if inRange.length > 0 {
-      var objectArray = EBReferenceArray <NetClassInProject> ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
-      for idx in indexArray {
-        objectArray.append (inRawObjectArray [idx].object as! NetClassInProject)
-      }
-      self.setProp (objectArray)
+    var objectArray = EBReferenceArray <NetClassInProject> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! NetClassInProject)
     }
+    self.setProp (objectArray)
   }
 
   //····················································································································

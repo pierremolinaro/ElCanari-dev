@@ -66,30 +66,30 @@ struct EBWeakReferenceArray <Element : AnyObject> {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor struct EBWeakReferenceSet <T : ObjectIndexProtocol> {
+@MainActor struct EBWeakReferenceSet <T : AnyObject> {
 
   //····················································································································
 
-  private var mDictionary : [Int : EBWeakElement <T>]
+  private var mDictionary : [ObjectIdentifier : EBWeakElement <T>]
 
   //····················································································································
 
   init () {
-    self.mDictionary = [Int : EBWeakElement <T>] ()
+    self.mDictionary = [ObjectIdentifier : EBWeakElement <T>] ()
   }
 
   //····················································································································
 
   mutating func insert (_ inObject : T) {
-    let address = inObject.objectIndex
-    self.mDictionary [address] = EBWeakElement (inObject)
+    let key = ObjectIdentifier (inObject)
+    self.mDictionary [key] = EBWeakElement (inObject)
   }
 
   //····················································································································
 
   mutating func remove (_ inObject : T) {
-    let address = inObject.objectIndex
-    self.mDictionary [address] = nil
+    let key = ObjectIdentifier (inObject)
+    self.mDictionary [key] = nil
   }
 
   //····················································································································

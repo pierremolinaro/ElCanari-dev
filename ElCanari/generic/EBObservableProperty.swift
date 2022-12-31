@@ -27,6 +27,19 @@ class EBObservableProperty <T> : EBObservedObject, EBObservableObjectProtocol {
 
   //····················································································································
 
+  final var optionalSelection : EBSelection <T?> {
+    switch self.selection {
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
+    case .single (let v) :
+      return .single (v)
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

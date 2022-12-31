@@ -8,7 +8,19 @@ import AppKit
 //    Base Selection Controller AutoLayoutFontDocument characterSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSwiftBaseObject {
+@MainActor final class SelectionController_AutoLayoutFontDocument_characterSelection {
+
+  //····················································································································
+
+  init () {
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   //····················································································································
   //   Selection observable property: advance

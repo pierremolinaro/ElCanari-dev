@@ -366,7 +366,8 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     super.init ()
   //--- Configure selectedPageIndex simple stored property
     self.selectedPageIndex_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.selectedPageIndex_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.selectedPageIndex_property.selection {
         case .empty :
           return .empty
@@ -377,11 +378,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure zoom simple stored property
     self.zoom_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.zoom_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.zoom_property.selection {
         case .empty :
           return .empty
@@ -392,11 +394,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure showDisplaySettingView simple stored property
     self.showDisplaySettingView_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.showDisplaySettingView_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.showDisplaySettingView_property.selection {
         case .empty :
           return .empty
@@ -407,11 +410,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure modelInsertionRotation simple stored property
     self.modelInsertionRotation_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.modelInsertionRotation_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.modelInsertionRotation_property.selection {
         case .empty :
           return .empty
@@ -422,11 +426,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure automaticBoardSize simple stored property
     self.automaticBoardSize_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.automaticBoardSize_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.automaticBoardSize_property.selection {
         case .empty :
           return .empty
@@ -437,11 +442,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure boardManualWidth simple stored property
     self.boardManualWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.boardManualWidth_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.boardManualWidth_property.selection {
         case .empty :
           return .empty
@@ -452,11 +458,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure boardManualHeight simple stored property
     self.boardManualHeight_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.boardManualHeight_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.boardManualHeight_property.selection {
         case .empty :
           return .empty
@@ -467,11 +474,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure boardWidthUnit simple stored property
     self.boardWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.boardWidthUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.boardWidthUnit_property.selection {
         case .empty :
           return .empty
@@ -482,11 +490,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure boardHeightUnit simple stored property
     self.boardHeightUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.boardHeightUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.boardHeightUnit_property.selection {
         case .empty :
           return .empty
@@ -497,11 +506,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure overlapingArrangment simple stored property
     self.overlapingArrangment_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.overlapingArrangment_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.overlapingArrangment_property.selection {
         case .empty :
           return .empty
@@ -512,11 +522,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure selectedBoardXUnit simple stored property
     self.selectedBoardXUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.selectedBoardXUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.selectedBoardXUnit_property.selection {
         case .empty :
           return .empty
@@ -527,11 +538,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure selectedBoardYUnit simple stored property
     self.selectedBoardYUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.selectedBoardYUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.selectedBoardYUnit_property.selection {
         case .empty :
           return .empty
@@ -542,11 +554,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure boardLimitWidth simple stored property
     self.boardLimitWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.boardLimitWidth_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.boardLimitWidth_property.selection {
         case .empty :
           return .empty
@@ -557,11 +570,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure boardLimitWidthUnit simple stored property
     self.boardLimitWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.boardLimitWidthUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.boardLimitWidthUnit_property.selection {
         case .empty :
           return .empty
@@ -572,11 +586,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure arrowMagnitude simple stored property
     self.arrowMagnitude_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.arrowMagnitude_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.arrowMagnitude_property.selection {
         case .empty :
           return .empty
@@ -587,11 +602,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure arrowMagnitudeUnit simple stored property
     self.arrowMagnitudeUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.arrowMagnitudeUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.arrowMagnitudeUnit_property.selection {
         case .empty :
           return .empty
@@ -602,11 +618,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure shiftArrowMagnitude simple stored property
     self.shiftArrowMagnitude_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.shiftArrowMagnitude_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.shiftArrowMagnitude_property.selection {
         case .empty :
           return .empty
@@ -617,11 +634,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure shiftArrowMagnitudeUnit simple stored property
     self.shiftArrowMagnitudeUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.shiftArrowMagnitudeUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.shiftArrowMagnitudeUnit_property.selection {
         case .empty :
           return .empty
@@ -632,11 +650,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mPDFBoardBackgroundColor simple stored property
     self.mPDFBoardBackgroundColor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mPDFBoardBackgroundColor_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mPDFBoardBackgroundColor_property.selection {
         case .empty :
           return .empty
@@ -647,11 +666,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mArtworkName simple stored property
     self.mArtworkName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mArtworkName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mArtworkName_property.selection {
         case .empty :
           return .empty
@@ -662,11 +682,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mArtworkVersion simple stored property
     self.mArtworkVersion_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mArtworkVersion_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mArtworkVersion_property.selection {
         case .empty :
           return .empty
@@ -677,11 +698,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure modelNames transient property
     self.modelNames_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.modelNames_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.modelNames_property.selection {
         case .empty :
           return .empty
@@ -692,11 +714,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure boardRect transient property
     self.boardRect_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.boardRect_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.boardRect_property.selection {
         case .empty :
           return .empty
@@ -707,11 +730,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure boardLimitWidthErrorMessage transient property
     self.boardLimitWidthErrorMessage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.boardLimitWidthErrorMessage_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.boardLimitWidthErrorMessage_property.selection {
         case .empty :
           return .empty
@@ -722,11 +746,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure boardLimitWidthOk transient property
     self.boardLimitWidthOk_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.boardLimitWidthOk_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.boardLimitWidthOk_property.selection {
         case .empty :
           return .empty
@@ -737,11 +762,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure boardWidth transient property
     self.boardWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.boardWidth_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.boardWidth_property.selection {
         case .empty :
           return .empty
@@ -752,11 +778,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure boardHeight transient property
     self.boardHeight_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.boardHeight_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.boardHeight_property.selection {
         case .empty :
           return .empty
@@ -767,11 +794,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure comments transient property
     self.comments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.comments_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.comments_property.selection {
         case .empty :
           return .empty
@@ -782,11 +810,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure layoutLayerWarningMessage transient property
     self.layoutLayerWarningMessage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.layoutLayerWarningMessage_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.layoutLayerWarningMessage_property.selection {
         case .empty :
           return .empty
@@ -797,11 +826,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure layerConfigurationString transient property
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.layerConfigurationString_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.layerConfigurationString_property.selection {
         case .empty :
           return .empty
@@ -812,11 +842,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure emptyDrillFileExtension transient property
     self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.emptyDrillFileExtension_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.emptyDrillFileExtension_property.selection {
         case .empty :
           return .empty
@@ -827,11 +858,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure hasInnerElements transient property
     self.hasInnerElements_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.hasInnerElements_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.hasInnerElements_property.selection {
         case .empty :
           return .empty
@@ -842,11 +874,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure hasSixLayers transient property
     self.hasSixLayers_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.hasSixLayers_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.hasSixLayers_property.selection {
         case .empty :
           return .empty
@@ -857,11 +890,12 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure boardOutlineRectDisplay transient property
     self.boardOutlineRectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.boardOutlineRectDisplay_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.boardOutlineRectDisplay_property.selection {
         case .empty :
           return .empty
@@ -872,7 +906,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   }
 

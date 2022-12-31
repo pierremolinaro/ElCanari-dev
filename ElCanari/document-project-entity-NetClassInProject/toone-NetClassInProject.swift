@@ -278,7 +278,8 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     super.init ()
   //--- Configure mNetClassName simple stored property
     self.mNetClassName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mNetClassName_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mNetClassName_property.selection {
         case .empty :
           return .empty
@@ -289,11 +290,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mNetClassColor simple stored property
     self.mNetClassColor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mNetClassColor_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mNetClassColor_property.selection {
         case .empty :
           return .empty
@@ -304,11 +306,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mTrackWidth simple stored property
     self.mTrackWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mTrackWidth_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mTrackWidth_property.selection {
         case .empty :
           return .empty
@@ -319,11 +322,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mTrackWidthUnit simple stored property
     self.mTrackWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mTrackWidthUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mTrackWidthUnit_property.selection {
         case .empty :
           return .empty
@@ -334,11 +338,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mViaHoleDiameter simple stored property
     self.mViaHoleDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mViaHoleDiameter_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mViaHoleDiameter_property.selection {
         case .empty :
           return .empty
@@ -349,11 +354,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mViaHoleDiameterUnit simple stored property
     self.mViaHoleDiameterUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mViaHoleDiameterUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mViaHoleDiameterUnit_property.selection {
         case .empty :
           return .empty
@@ -364,11 +370,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mViaPadDiameter simple stored property
     self.mViaPadDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mViaPadDiameter_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mViaPadDiameter_property.selection {
         case .empty :
           return .empty
@@ -379,11 +386,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mViaPadDiameterUnit simple stored property
     self.mViaPadDiameterUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mViaPadDiameterUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mViaPadDiameterUnit_property.selection {
         case .empty :
           return .empty
@@ -394,11 +402,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mAllowTracksOnFrontSide simple stored property
     self.mAllowTracksOnFrontSide_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mAllowTracksOnFrontSide_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mAllowTracksOnFrontSide_property.selection {
         case .empty :
           return .empty
@@ -409,11 +418,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mAllowTracksOnBackSide simple stored property
     self.mAllowTracksOnBackSide_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mAllowTracksOnBackSide_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mAllowTracksOnBackSide_property.selection {
         case .empty :
           return .empty
@@ -424,11 +434,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mAllowTracksOnInner1Layer simple stored property
     self.mAllowTracksOnInner1Layer_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mAllowTracksOnInner1Layer_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mAllowTracksOnInner1Layer_property.selection {
         case .empty :
           return .empty
@@ -439,11 +450,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mAllowTracksOnInner2Layer simple stored property
     self.mAllowTracksOnInner2Layer_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mAllowTracksOnInner2Layer_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mAllowTracksOnInner2Layer_property.selection {
         case .empty :
           return .empty
@@ -454,11 +466,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mAllowTracksOnInner3Layer simple stored property
     self.mAllowTracksOnInner3Layer_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mAllowTracksOnInner3Layer_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mAllowTracksOnInner3Layer_property.selection {
         case .empty :
           return .empty
@@ -469,11 +482,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure mAllowTracksOnInner4Layer simple stored property
     self.mAllowTracksOnInner4Layer_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.mAllowTracksOnInner4Layer_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.mAllowTracksOnInner4Layer_property.selection {
         case .empty :
           return .empty
@@ -484,11 +498,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure trackWidthString transient property
     self.trackWidthString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.trackWidthString_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.trackWidthString_property.selection {
         case .empty :
           return .empty
@@ -499,11 +514,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure viaHoleDiameter transient property
     self.viaHoleDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.viaHoleDiameter_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.viaHoleDiameter_property.selection {
         case .empty :
           return .empty
@@ -514,11 +530,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure viaPadDiameter transient property
     self.viaPadDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.viaPadDiameter_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.viaPadDiameter_property.selection {
         case .empty :
           return .empty
@@ -529,11 +546,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure allowTracksOnFrontSideString transient property
     self.allowTracksOnFrontSideString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.allowTracksOnFrontSideString_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.allowTracksOnFrontSideString_property.selection {
         case .empty :
           return .empty
@@ -544,11 +562,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure allowTracksOnBackSideString transient property
     self.allowTracksOnBackSideString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.allowTracksOnBackSideString_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.allowTracksOnBackSideString_property.selection {
         case .empty :
           return .empty
@@ -559,11 +578,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure allowTracksOnInner1LayerString transient property
     self.allowTracksOnInner1LayerString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.allowTracksOnInner1LayerString_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.allowTracksOnInner1LayerString_property.selection {
         case .empty :
           return .empty
@@ -574,11 +594,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure allowTracksOnInner2LayerString transient property
     self.allowTracksOnInner2LayerString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.allowTracksOnInner2LayerString_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.allowTracksOnInner2LayerString_property.selection {
         case .empty :
           return .empty
@@ -589,11 +610,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure allowTracksOnInner3LayerString transient property
     self.allowTracksOnInner3LayerString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.allowTracksOnInner3LayerString_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.allowTracksOnInner3LayerString_property.selection {
         case .empty :
           return .empty
@@ -604,11 +626,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure allowTracksOnInner4LayerString transient property
     self.allowTracksOnInner4LayerString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.allowTracksOnInner4LayerString_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.allowTracksOnInner4LayerString_property.selection {
         case .empty :
           return .empty
@@ -619,11 +642,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure canRemove transient property
     self.canRemove_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.canRemove_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.canRemove_property.selection {
         case .empty :
           return .empty
@@ -634,11 +658,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure netUsage transient property
     self.netUsage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.netUsage_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.netUsage_property.selection {
         case .empty :
           return .empty
@@ -649,11 +674,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure netsDescription transient property
     self.netsDescription_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.netsDescription_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.netsDescription_property.selection {
         case .empty :
           return .empty
@@ -664,11 +690,12 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   //--- Configure netWarningCount transient property
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mWeakInternalValue {
+      return self?.mWeakInternalValue?.netWarningCount_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
         switch model.netWarningCount_property.selection {
         case .empty :
           return .empty
@@ -679,7 +706,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
         }
       }else{
         return .single (nil)
-      }
+      } */
     }
   }
 

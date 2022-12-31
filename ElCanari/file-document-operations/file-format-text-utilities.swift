@@ -368,7 +368,7 @@ extension Data {
         sign = 1
       }
       var r = 0
-      parseUnsigned (idx: &idx, result: &r)
+      self.parseUnsigned (idx: &idx, result: &r)
       return sign * r
     }
   }
@@ -409,23 +409,25 @@ extension Data {
 
   func base62EncodedIntArray (fromRange inRange : NSRange) -> [Int] {
     var result = [Int] ()
-    var idx = inRange.location
-    let end = inRange.location + inRange.length
-    var loop = true
-    while loop {
-      var value = 0
-      parseUnsigned (idx: &idx, result: &value)
-      result.append (value)
-      if (idx < end) && (self [idx] == ASCII.colon.rawValue) {
-        idx += 1
-        var factor = 0
-        parseUnsigned (idx: &idx, result: &factor)
-        for i in 1 ... factor {
-          result.append (value + i)
+    if inRange.length > 0 {
+      var idx = inRange.location
+      let end = inRange.location + inRange.length
+      var loop = true
+      while loop {
+        var value = 0
+        self.parseUnsigned (idx: &idx, result: &value)
+        result.append (value)
+        if (idx < end) && (self [idx] == ASCII.colon.rawValue) {
+          idx += 1
+          var factor = 0
+          self.parseUnsigned (idx: &idx, result: &factor)
+          for i in 1 ... factor {
+            result.append (value + i)
+          }
         }
+        loop = (idx < end) && (self [idx] == ASCII.space.rawValue)
+        idx += 1
       }
-      loop = (idx < end) && (self [idx] == ASCII.space.rawValue)
-      idx += 1
     }
     return result
   }

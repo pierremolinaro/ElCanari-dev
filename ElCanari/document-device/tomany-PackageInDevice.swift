@@ -494,7 +494,7 @@ final class TransientArrayOf_PackageInDevice : ReadOnlyArrayOf_PackageInDevice {
 
   private var mIsOrderedBefore : Optional < (_ left : PackageInDevice, _ right : PackageInDevice) -> Bool > = nil
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelEvent = EBModelEvent ()
+  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
@@ -671,14 +671,12 @@ class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EBSignat
   //····················································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
-    if inRange.length > 0 {
-      var objectArray = EBReferenceArray <PackageInDevice> ()
-      let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
-      for idx in indexArray {
-        objectArray.append (inRawObjectArray [idx].object as! PackageInDevice)
-      }
-      self.setProp (objectArray)
+    var objectArray = EBReferenceArray <PackageInDevice> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! PackageInDevice)
     }
+    self.setProp (objectArray)
   }
 
   //····················································································································
