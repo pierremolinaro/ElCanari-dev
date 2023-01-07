@@ -142,30 +142,30 @@ final class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_Fon
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func customStore_FontCharacter_characters (_ inCharacters : [FontCharacter]) -> String {
-  var s = ""
-  for char in inCharacters {
-    s += "|"
-    s += "\(char.codePoint):"
-    s += "\(char.advance):"
-    s += char.mWarnsWhenAdvanceIsZero ? "1:" : "0:"
-    s += char.mWarnsWhenNoSegment ? "1" : "0"
-    var x = Int.min
-    var y = Int.min
-    for segment in char.segments_property.propval.values {
-      if (segment.x1 == x) && (segment.y1 == y) {
-        s += ">\(segment.x2) \(segment.y2)"
-      }else if (segment.x1 == segment.x2) && (segment.y1 == segment.y2) {
-        s += ",\(segment.x1) \(segment.y1)"
-      }else{
-        s += ",\(segment.x1) \(segment.y1)>\(segment.x2) \(segment.y2)"
-      }
-      x = segment.x2
-      y = segment.y2
-    }
-  }
-  return s
-}
+//@MainActor func customStore_FontCharacter_characters (_ inCharacters : [FontCharacter]) -> String {
+//  var s = ""
+//  for char in inCharacters {
+//    s += "|"
+//    s += "\(char.codePoint):"
+//    s += "\(char.advance):"
+//    s += char.mWarnsWhenAdvanceIsZero ? "1:" : "0:"
+//    s += char.mWarnsWhenNoSegment ? "1" : "0"
+//    var x = Int.min
+//    var y = Int.min
+//    for segment in char.segments_property.propval.values {
+//      if (segment.x1 == x) && (segment.y1 == y) {
+//        s += ">\(segment.x2) \(segment.y2)"
+//      }else if (segment.x1 == segment.x2) && (segment.y1 == segment.y2) {
+//        s += ",\(segment.x1) \(segment.y1)"
+//      }else{
+//        s += ",\(segment.x1) \(segment.y1)>\(segment.x2) \(segment.y2)"
+//      }
+//      x = segment.x2
+//      y = segment.y2
+//    }
+//  }
+//  return s
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

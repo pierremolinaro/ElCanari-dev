@@ -8,6 +8,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
 
   //····················································································································
 
+//  private var mDocumentView : NSView
   private var mDocumentView : AutoLayoutBase_NSStackView
   private var mPages = [AutoLayoutBase_NSStackView] ()
 
@@ -22,6 +23,22 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     self.target = self
     self.action = #selector (Self.selectedSegmentDidChange (_:))
   }
+
+  //····················································································································
+
+//  init (documentView inDocumentView : NSView,
+//        equalWidth inEqualWidth : Bool,
+//        size inSize : EBControlSize) {
+//    self.mDocumentView = inDocumentView
+//    super.init (equalWidth: inEqualWidth, size: inSize)
+//
+//    self.mDocumentView.translatesAutoresizingMaskIntoConstraints = false
+//    self.mDocumentView.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+//    self.mDocumentView.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
+//
+//    self.target = self
+//    self.action = #selector (Self.selectedSegmentDidChange (_:))
+//  }
 
   //····················································································································
 
@@ -91,6 +108,30 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
 
   //····················································································································
   // SELECTED TAB DID CHANGE
+  //····················································································································
+
+  private var mConstraints = [NSLayoutConstraint] ()
+
+  //····················································································································
+
+//  @objc func selectedSegmentDidChange (_ inSender : Any?) {
+//    self.mDocumentView.removeConstraints (self.mConstraints)
+//    let newPage = self.mPages [self.selectedSegment]
+//    let allSubViews = self.mDocumentView.subviews
+//    for view in allSubViews {
+//      view.removeFromSuperview ()
+//    }
+//    self.mDocumentView.addSubview (newPage)
+//    let c1 = NSLayoutConstraint (item: self.mDocumentView, attribute: .top, relatedBy: .equal, toItem: newPage, attribute: .top, multiplier: 1.0, constant: 0.0)
+//    let c2 = NSLayoutConstraint (item: self.mDocumentView, attribute: .bottom, relatedBy: .equal, toItem: newPage, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+//    let c3 = NSLayoutConstraint (item: self.mDocumentView, attribute: .left, relatedBy: .equal, toItem: newPage, attribute: .left, multiplier: 1.0, constant: 0.0)
+//    let c4 = NSLayoutConstraint (item: self.mDocumentView, attribute: .right, relatedBy: .equal, toItem: newPage, attribute: .right, multiplier: 1.0, constant: 0.0)
+//    self.mConstraints = [c1, c2, c3, c4]
+//    self.mDocumentView.addConstraints (self.mConstraints)
+//    self.mSelectedTabIndexController?.updateModel (withValue: self.selectedSegment)
+//    self.mSelectedSegmentController?.updateModel (self)
+//  }
+
   //····················································································································
 
   @objc func selectedSegmentDidChange (_ inSender : Any?) {

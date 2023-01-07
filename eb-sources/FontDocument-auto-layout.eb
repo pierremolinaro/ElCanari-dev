@@ -65,9 +65,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainV
   //--- Sample string display
     hStack {
      TextField (minWidth: 200, size: .small) { expandableWidth () $value prefs.sampleString (sendContinously:yes) }
-//  property Double sampleStringSize default 24.0 ;
      DoubleField (width: 60, size: .small) { $value prefs.sampleStringSize (sendContinously:yes) }
-    
     }
     CanariSampleFontStringView { $bezierPath root.sampleStringBezierPath }
     hStack {

@@ -10,25 +10,19 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariSampleFontStringView : NSView {
+final class AutoLayoutCanariSampleFontStringView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  init () {
-    super.init (frame: .zero)
-    noteObjectAllocation (self)
+  override init () {
+    super.init ()
+    self.setContentHuggingPriority (.required, for: .vertical)
   }
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
+  required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //····················································································································
