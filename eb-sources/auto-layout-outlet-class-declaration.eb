@@ -96,7 +96,7 @@ extern autolayout class SegmentedControlWithPages (documentView: view, equalWidt
   $selectedSegment property enum
 }
 
-extern autolayout class TabView (equalWidth: Bool, size: EBControlSize) {
+extern autolayout class TabView (size: EBControlSize) {
   func addTab (title: String, tooltip: String, contentView: view)
   $selectedPage property Int
 }

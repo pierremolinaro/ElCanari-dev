@@ -2987,7 +2987,6 @@
 		CFA0B7822779B9FC006E9309 /* AutoLayoutCanariSelectionPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0B7812779B9FC006E9309 /* AutoLayoutCanariSelectionPopUpButton.swift */; };
 		CFA0B7842779BC9C006E9309 /* transient-AutoLayoutProjectDocument-rastnetDisplayComponentNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0B7832779BC9B006E9309 /* transient-AutoLayoutProjectDocument-rastnetDisplayComponentNet.swift */; };
 		CFA0B7882779D700006E9309 /* configurator-AutoLayoutProjectDocument-ercIssueTableViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0B7872779D6FF006E9309 /* configurator-AutoLayoutProjectDocument-ercIssueTableViewConfigurator.swift */; };
-		CFA0B8782779FA6F006E9309 /* AutoLayoutTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0B8772779FA6F006E9309 /* AutoLayoutTabView.swift */; };
 		CFA0B8792779FA6F006E9309 /* AutoLayoutTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0B8772779FA6F006E9309 /* AutoLayoutTabView.swift */; };
 		CFA0B87A2779FA6F006E9309 /* AutoLayoutTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0B8772779FA6F006E9309 /* AutoLayoutTabView.swift */; };
 		CFA0B96B28CBAF070037462C /* EBAllocationDebug-debug-with-actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D3DE428C354F30097D987 /* EBAllocationDebug-debug-with-actor.swift */; };
@@ -4126,6 +4125,7 @@
 		CFE6A6F727AAFF0000AD6782 /* extension-AutoLayoutProjectDocument-schematic-option-click.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE6A6F627AAFEFF00AD6782 /* extension-AutoLayoutProjectDocument-schematic-option-click.swift */; };
 		CFE6A6F827AAFF0000AD6782 /* extension-AutoLayoutProjectDocument-schematic-option-click.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE6A6F627AAFEFF00AD6782 /* extension-AutoLayoutProjectDocument-schematic-option-click.swift */; };
 		CFE6A6F927AAFF0000AD6782 /* extension-AutoLayoutProjectDocument-schematic-option-click.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE6A6F627AAFEFF00AD6782 /* extension-AutoLayoutProjectDocument-schematic-option-click.swift */; };
+		CFE7F145296A06C4003088BC /* AutoLayoutTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0B8772779FA6F006E9309 /* AutoLayoutTabView.swift */; };
 		CFE85A7121A5B37900991A66 /* entity-SymbolBezierCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE85A6D21A5B37900991A66 /* entity-SymbolBezierCurve.swift */; };
 		CFE85A7221A5B37900991A66 /* entity-SymbolBezierCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE85A6D21A5B37900991A66 /* entity-SymbolBezierCurve.swift */; };
 		CFE85A7321A5B37900991A66 /* transient-SymbolBezierCurve-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE85A6E21A5B37900991A66 /* transient-SymbolBezierCurve-selectionDisplay.swift */; };
@@ -8907,6 +8907,7 @@
 				CFB4C0872794668300C509A9 /* AutoLayoutLinearSlider.swift in Sources */,
 				CFB7D8D42683A61D007B9D3B /* action-AutoLayoutPackageDocument-setDimensionTextOriginAtMidXAction.swift in Sources */,
 				CF1441882755257D006C3E1F /* view-FontCharacterSelectView.swift in Sources */,
+				CFE7F145296A06C4003088BC /* AutoLayoutTabView.swift in Sources */,
 				CFA42F7D229AEACF000AA8C8 /* toone-MasterPadInDevice.swift in Sources */,
 				CF39CD14268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-editSelectedPackages.swift in Sources */,
 				CF711E36275E1CC600280069 /* extension-SymbolSolidRect.swift in Sources */,
@@ -10261,7 +10262,6 @@
 				CFF79DE62846174000C7BEE3 /* transient-BoardObject-displayInner1RestrictRectangles.swift in Sources */,
 				CF0777BE2352100F00F56EAB /* extension-Bool-EBPropertyProtocol.swift in Sources */,
 				CF711CB6275E1A3900280069 /* extension-BoardRestrictRectangle.swift in Sources */,
-				CFA0B8782779FA6F006E9309 /* AutoLayoutTabView.swift in Sources */,
 				CF711E3C275E1CC600280069 /* extension-SymbolBezierCurve.swift in Sources */,
 				CFFEC1DF280483F000E5E8DD /* toone-SymbolSolidOval.swift in Sources */,
 				CFB4C057279465E700C509A9 /* AutoLayoutMenuButton.swift in Sources */,
@@ -13758,7 +13758,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = YW8QY74J2A;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -13773,6 +13773,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_REFLECTION_METADATA_LEVEL = all;
 			};
 			name = Debug;
 		};

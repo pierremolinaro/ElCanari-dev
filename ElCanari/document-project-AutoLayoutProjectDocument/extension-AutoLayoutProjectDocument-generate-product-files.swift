@@ -71,7 +71,7 @@ extension AutoLayoutProjectDocument {
 
   private func performProductFilesGeneration () {
     self.mProductFileGenerationLogTextView?.clear ()
-    self.mProductPageSegmentedControl?.setSelectedSegment (atIndex: 4)
+    self.mProductPageSegmentedControl?.selectTab (atIndex: 4)
     do{
       try self.performProductFilesGeneration (atPath: self.fileURL!.path.deletingPathExtension, self.rootObject.mArtwork!)
     }catch let error {
@@ -91,7 +91,7 @@ extension AutoLayoutProjectDocument {
     try self.removeAndCreateDirectory (atPath: gerberDirPath)
   //--- Write gerber files
     try self.writeGerberDrillFile (atPath: generatedGerberFilePath + inArtwork.drillDataFileExtension, productData)
-    for productDescriptor in inArtwork.fileGenerationParameterArray .values{
+    for productDescriptor in inArtwork.fileGenerationParameterArray.values{
       try self.writeGerberProductFile (atPath: generatedGerberFilePath,
                                        productDescriptor,
                                        inArtwork.layerConfiguration,

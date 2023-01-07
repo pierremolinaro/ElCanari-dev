@@ -29,9 +29,12 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     self.mTableView = InternalAutoLayoutTableView (size: inSize)
     super.init ()
 
-    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
-    self.mTableView.setContentHuggingPriority (.defaultLow, for: .horizontal)
-    self.mTableView.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
+    self.setHuggingPriority (.required, for: .horizontal)
+    self.setContentHuggingPriority (.required, for: .horizontal)
+    self.setHuggingPriority (.required, for: .vertical)
+    self.setContentHuggingPriority (.required, for: .vertical)
+//    self.mTableView.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+//    self.mTableView.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
 
   //--- Configure table view
     self.mTableView.controlSize = inSize.cocoaControlSize
@@ -57,12 +60,12 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
       let addButton = AutoLayoutButton (title: "+", size: inSize)
         .bind_run (target: self, selector: #selector (Self.addEntryAction (_:)))
       self.mAddButton = addButton
-      _ = hStack.appendView (addButton)
       let removeButton = AutoLayoutButton (title: "-", size: inSize)
         .bind_run (target: self, selector: #selector (Self.removeSelectedEntriesAction (_:)))
       self.mRemoveButton = removeButton
-      _ = hStack.appendView (removeButton)
-      _ = hStack.appendFlexibleSpace ()
+      _ = hStack.appendView (addButton)
+        .appendView (removeButton)
+        .appendFlexibleSpace ()
       _ = self.appendView (hStack)
     }
   }

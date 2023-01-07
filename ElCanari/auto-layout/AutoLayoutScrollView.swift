@@ -19,8 +19,8 @@ final class AutoLayoutScrollView : NSScrollView {
     self.translatesAutoresizingMaskIntoConstraints = false
     noteObjectAllocation (self)
 
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
+    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    self.setContentHuggingPriority (.defaultLow, for: .vertical)
   }
 
   //····················································································································

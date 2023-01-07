@@ -22,6 +22,9 @@ final class AutoLayoutTextObserverView : NSScrollView {
     super.init (frame: NSRect (x: 0, y: 0, width: 100, height: 100))
     noteObjectAllocation (self)
 //    self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
+//    self.mTextView.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+//    self.mTextView.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
+//    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
 //    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
 
     self.mTextView.isEditable = false

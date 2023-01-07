@@ -201,7 +201,7 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : NSObjec
       },
       title: "Font Name",
       minWidth: 60,
-      maxWidth: 550,
+      maxWidth: 2000,
       headerAlignment: .left,
       contentAlignment: .left
     )

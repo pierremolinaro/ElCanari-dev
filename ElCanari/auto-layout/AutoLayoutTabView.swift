@@ -20,8 +20,7 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  init (equalWidth inEqualWidth : Bool,
-        size inSize : EBControlSize) {
+  init (size inSize : EBControlSize) {
     self.mPopUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: inSize)
     super.init ()
 
@@ -63,7 +62,7 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
     self.mPopUpButton.addItem (withTitle: inTitle)
     self.mPages.append (inPageView)
     if self.mPages.count == 1 {
-      self.setSelectedSegment (atIndex: 0)
+      self.selectTab (atIndex: 0)
     }
     return self
   }
@@ -75,7 +74,7 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  func setSelectedSegment (atIndex inIndex : Int) {
+  func selectTab (atIndex inIndex : Int) {
     if self.mPopUpButton.numberOfItems > 0 {
       if inIndex < 0 {
         self.mPopUpButton.select (self.mPopUpButton.item (at: 0))
@@ -115,7 +114,7 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
     if let controller = self.mSelectedTabIndexController {
       controller.updateModel (withValue: idx)
     }else{
-      self.setSelectedSegment (atIndex: idx)
+      self.selectTab (atIndex: idx)
     }
   }
 
@@ -142,7 +141,7 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
     case .empty :
       ()
     case .single (let v) :
-      self.setSelectedSegment (atIndex: v)
+      self.selectTab (atIndex: v)
     case .multiple :
       ()
     }

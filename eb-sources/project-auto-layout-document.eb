@@ -151,7 +151,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //---------------------- Library Tab
 
   stackView \libraryPage vStack set (margins: 8) {
-    newView libraryContentView = \LibraryContentView ()
+//    newView libraryContentView = \LibraryContentView ()
     newView devicesInLibraryPage = \DevicesInLibraryPage ()
     newView fontsInLibraryPage = \FontsInLibraryPage ()
     hStack {
@@ -172,18 +172,22 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
       space   
     }
-    hStack {
-      space
-      SegmentedControlWithPages (documentView: view libraryContentView, equalWidth: no, size : .regular) {
-        addPage (title: "Devices", tooltip: "", pageView: view devicesInLibraryPage)
-        addPage (title: "Fonts", tooltip: "", pageView: view fontsInLibraryPage)
-      }
-      space
+    TabView (size : .regular) {
+      addTab (title: "Devices", tooltip: "", contentView: view devicesInLibraryPage)
+      addTab (title: "Fonts", tooltip: "", contentView: view fontsInLibraryPage)
     }
-    view libraryContentView
+//    hStack {
+//      space
+//      SegmentedControlWithPages (documentView: view libraryContentView, equalWidth: no, size : .regular) {
+//        addPage (title: "Devices", tooltip: "", pageView: view devicesInLibraryPage)
+//        addPage (title: "Fonts", tooltip: "", pageView: view fontsInLibraryPage)
+//      }
+//      space
+//    }
+//    view libraryContentView
   }
   
-  stackView \LibraryContentView vStack { }
+//  stackView \LibraryContentView vStack { }
   
   stackView \DevicesInLibraryPage vStack set (margins: 8) expandableWidth () {
      hStack {
@@ -304,7 +308,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #projectDeviceController.selectedArray.all.symbolAndTypesNames ;
  
   tableViewController #projectFontController (allowsEmptySelection:no, allowsMultipleSelection:no) root.mFonts {
-     column mFontName (title: "Font Name", minWidth: 60, maxWidth: 550, headerAlignment: .left, contentAlignment: .left)
+     column mFontName (title: "Font Name", minWidth: 60, maxWidth: 2000, headerAlignment: .left, contentAlignment: .left)
        sortkey mFontName
      column versionString (title: "Version", minWidth: 60, maxWidth: 100, headerAlignment: .center, contentAlignment: .center)
        sortkey versionString
@@ -562,8 +566,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       space
       Button (title: "+▶︎", size: .regular) { $run appendNewSchematicDisplayInspectorAction }
     }
-    TabView (equalWidth: yes, size: .small) {
-      addTab (title: "Grid and Flip", tooltip: "Grid and Flip", contentView : 
+    TabView (size: .small) {
+      addTab (title: "Grid, Flip", tooltip: "Grid and Flip", contentView : 
         GridView2 {
           set (margins: 8)
           addFirstBaseLineAligned (
@@ -604,7 +608,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           )
         }
       )
-      addTab (title: "Colors and Font", tooltip: "Colors and Font", contentView:
+      addTab (title: "Colors, Font", tooltip: "Colors and Font", contentView:
         GridView2 {
           set (margins: 8)
           addFirstBaseLineAligned (
@@ -1556,7 +1560,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       add (single:
-        TabView (equalWidth: yes, size: .small) {
+        TabView (size: .small) {
           addTab (title: "Basic", tooltip: "Autorouter Basic Configuration", contentView :
             vStack set (margins: 12) {
               hStack {
@@ -2150,7 +2154,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   //············································································
 
   stackView \productPage vStack set (margins: 8) {
-    newView productMasterView = \ProductMasterView ()
+//    newView productMasterView = \ProductMasterView ()
     newView artworkDescriptionPage = \ArtworkDescriptionPage ()
     newView artworkMinimaPage = \ArtworkMinimaPage ()
     newView artworkDataPage = \ArtworkDataPage ()
@@ -2197,19 +2201,26 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       space
     }
     vStack $hidden root.mArtwork.none {
-      hStack {
-        space
-        SegmentedControlWithPages (documentView: view productMasterView, equalWidth: yes, size : .regular)
-          [outlet mProductPageSegmentedControl] { 
-          addPage (title: "Artwork Description", tooltip: "", pageView: view artworkDescriptionPage)
-          addPage (title: "Artwork Minima", tooltip: "", pageView: view artworkMinimaPage)
-          addPage (title: "Artwork Data", tooltip: "", pageView: view artworkDataPage)
-          addPage (title: "PDF Settings", tooltip: "", pageView: view pdfSettingsPage)
-          addPage (title: "Generation Log", tooltip: "", pageView: view generationLogPage)
-        }
-        space
+      TabView (size : .regular) [outlet mProductPageSegmentedControl] { 
+        addTab (title: "Artwork Description", tooltip: "", contentView: view artworkDescriptionPage)
+        addTab (title: "Artwork Minima", tooltip: "", contentView: view artworkMinimaPage)
+        addTab (title: "Artwork Data", tooltip: "", contentView: view artworkDataPage)
+        addTab (title: "PDF Settings", tooltip: "", contentView: view pdfSettingsPage)
+        addTab (title: "Generation Log", tooltip: "", contentView: view generationLogPage)
       }
-      view productMasterView
+//      hStack {
+//        space
+//        SegmentedControlWithPages (documentView: view productMasterView, equalWidth: yes, size : .regular)
+//          [outlet mProductPageSegmentedControl] { 
+//          addPage (title: "Artwork Description", tooltip: "", pageView: view artworkDescriptionPage)
+//          addPage (title: "Artwork Minima", tooltip: "", pageView: view artworkMinimaPage)
+//          addPage (title: "Artwork Data", tooltip: "", pageView: view artworkDataPage)
+//          addPage (title: "PDF Settings", tooltip: "", pageView: view pdfSettingsPage)
+//          addPage (title: "Generation Log", tooltip: "", pageView: view generationLogPage)
+//        }
+//        space
+//      }
+//      view productMasterView
     }
  }
 

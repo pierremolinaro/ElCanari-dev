@@ -492,7 +492,7 @@ import AppKit
   final var mExchangeSymbolSchematicHotKeyTextField = EBWeakReferenceArray <AutoLayoutStaticLabel> ()
   weak final var mNetInfoTableView : AutoLayoutCanariNetDescriptionTableView? = nil
   weak final var mProductFileGenerationLogTextView : AutoLayoutTextObserverView? = nil
-  weak final var mProductPageSegmentedControl : AutoLayoutSegmentedControlWithPages? = nil
+  weak final var mProductPageSegmentedControl : AutoLayoutTabView? = nil
   final var mRemoveWirePointSchematicHotKeyTextField = EBWeakReferenceArray <AutoLayoutStaticLabel> ()
   weak final var mSchematicsView : AutoLayoutGraphicView? = nil
   final var mShowHideSymbolValueSchematicHotKeyTextField = EBWeakReferenceArray <AutoLayoutStaticLabel> ()
@@ -757,7 +757,6 @@ import AppKit
   final func libraryPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
-    let libraryContentView = self.LibraryContentView ()
     let devicesInLibraryPage = self.DevicesInLibraryPage ()
     let fontsInLibraryPage = self.FontsInLibraryPage ()
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -790,29 +789,10 @@ import AppKit
       _ = view_0.appendView (view_0_3)
     }
     _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
-    do{
-      let view_1_0 = AutoLayoutFlexibleSpace ()
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutSegmentedControlWithPages (documentView: libraryContentView, equalWidth: false, size: .regular)
-        .addPage (title: "Devices", tooltip: "", pageView: devicesInLibraryPage)
-        .addPage (title: "Fonts", tooltip: "", pageView: fontsInLibraryPage)
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutFlexibleSpace ()
-      _ = view_1.appendView (view_1_2)
-    }
+    let view_1 = AutoLayoutTabView (size: .regular)
+      .addTab (title: "Devices", tooltip: "", contentView: devicesInLibraryPage)
+      .addTab (title: "Fonts", tooltip: "", contentView: fontsInLibraryPage)
     _ = vStackView.appendView (view_1)
-    let view_2 = libraryContentView
-    _ = vStackView.appendView (view_2)
-    return vStackView
-  }
-
-  //····················································································································
-  //    VIEW LibraryContentView
-  //····················································································································
-
-  final func LibraryContentView () -> AutoLayoutVerticalStackView {
-    let vStackView = AutoLayoutVerticalStackView ()
     return vStackView
   }
 
@@ -1313,9 +1293,9 @@ import AppKit
       _ = view_0.appendView (view_0_4)
     }
     _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTabView (equalWidth: true, size: .small)
-      .addTab (title: "Grid and Flip", tooltip: "Grid and Flip", contentView: self.computeImplicitView_14 ())
-      .addTab (title: "Colors and Font", tooltip: "Colors and Font", contentView: self.computeImplicitView_38 ())
+    let view_1 = AutoLayoutTabView (size: .small)
+      .addTab (title: "Grid, Flip", tooltip: "Grid and Flip", contentView: self.computeImplicitView_14 ())
+      .addTab (title: "Colors, Font", tooltip: "Colors and Font", contentView: self.computeImplicitView_38 ())
     _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_2)
@@ -2347,7 +2327,6 @@ import AppKit
   final func productPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
-    let productMasterView = self.ProductMasterView ()
     let artworkDescriptionPage = self.ArtworkDescriptionPage ()
     let artworkMinimaPage = self.ArtworkMinimaPage ()
     let artworkDataPage = self.ArtworkDataPage ()
@@ -2430,24 +2409,14 @@ import AppKit
     let view_2 = AutoLayoutVerticalStackView ()
       .bind_hidden (.prop (self.rootObject.mArtwork_none))
     do{
-      let view_2_0 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_2_0_0 = AutoLayoutFlexibleSpace ()
-        _ = view_2_0.appendView (view_2_0_0)
-        let view_2_0_1 = AutoLayoutSegmentedControlWithPages (documentView: productMasterView, equalWidth: true, size: .regular)
-          .addPage (title: "Artwork Description", tooltip: "", pageView: artworkDescriptionPage)
-          .addPage (title: "Artwork Minima", tooltip: "", pageView: artworkMinimaPage)
-          .addPage (title: "Artwork Data", tooltip: "", pageView: artworkDataPage)
-          .addPage (title: "PDF Settings", tooltip: "", pageView: pdfSettingsPage)
-          .addPage (title: "Generation Log", tooltip: "", pageView: generationLogPage)
-        self.mProductPageSegmentedControl = view_2_0_1 // Outlet
-        _ = view_2_0.appendView (view_2_0_1)
-        let view_2_0_2 = AutoLayoutFlexibleSpace ()
-        _ = view_2_0.appendView (view_2_0_2)
-      }
+      let view_2_0 = AutoLayoutTabView (size: .regular)
+        .addTab (title: "Artwork Description", tooltip: "", contentView: artworkDescriptionPage)
+        .addTab (title: "Artwork Minima", tooltip: "", contentView: artworkMinimaPage)
+        .addTab (title: "Artwork Data", tooltip: "", contentView: artworkDataPage)
+        .addTab (title: "PDF Settings", tooltip: "", contentView: pdfSettingsPage)
+        .addTab (title: "Generation Log", tooltip: "", contentView: generationLogPage)
+      self.mProductPageSegmentedControl = view_2_0 // Outlet
       _ = view_2.appendView (view_2_0)
-      let view_2_1 = productMasterView
-      _ = view_2.appendView (view_2_1)
     }
     _ = vStackView.appendView (view_2)
     return vStackView
@@ -5024,7 +4993,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_175 () -> NSView {
-    let view = AutoLayoutTabView (equalWidth: true, size: .small)
+    let view = AutoLayoutTabView (size: .small)
       .addTab (title: "Basic", tooltip: "Autorouter Basic Configuration", contentView: self.computeImplicitView_173 ())
       .addTab (title: "Advanced", tooltip: "Autorouter Advanced Configuration", contentView: self.computeImplicitView_174 ())
       .bind_selectedPage (self.rootObject.mAutorouterInterfaceMode_property)
