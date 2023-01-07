@@ -116,8 +116,8 @@ import AppKit
   //····················································································································
 
   final func saveIntoDictionary (_ ioDictionary : inout [String : Any]) {
-    ioDictionary [ENTITY_KEY] = self.className.pathExtension
-    // Swift.print ("Object of class \(self.className.pathExtension)")
+    ioDictionary [ENTITY_KEY] = self.className
+//    Swift.print ("Object of class \(self.className)")
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
       if let storedProperty = property.value as? DocumentStorablePropertyProtocol, storedProperty.key != nil {
