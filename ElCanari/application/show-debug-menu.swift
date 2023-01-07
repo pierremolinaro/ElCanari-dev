@@ -9,7 +9,7 @@ import AppKit
 //   Public function
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func instanciateDebugMenuVisibilityObjectOnDidFinishLaunchingNotification () {
+@MainActor func instanciateDebugMenuVisibilityObjectOnWillFinishLaunchingNotification () {
   gDebugMenuVisibility = DebugMenuVisibility ()
 }
 

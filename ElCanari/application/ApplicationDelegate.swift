@@ -172,15 +172,15 @@ enum DocumentFormat {
   //  DO NOT OPEN A NEW DOCUMENT ON LAUNCH
   //····················································································································
 
-  nonisolated func applicationShouldOpenUntitledFile (_ application : NSApplication) -> Bool {
+  nonisolated func applicationShouldOpenUntitledFile (_ inApplication : NSApplication) -> Bool {
     // NSLog (@"%s", __PRETTY_FUNCTION__) ;
     return false
   }
 
   //····················································································································
 
-  nonisolated func applicationDidFinishLaunching (_ notification : Notification) {
-    DispatchQueue.main.async { // @Sendable in
+  @MainActor func applicationWillFinishLaunching (_ inNotification : Notification) {
+ //   DispatchQueue.main.async {
       self.mOpenSymbolInLibraryMenuItem?.target = self.mOpenSymbolInLibrary
       self.mOpenSymbolInLibraryMenuItem?.action = #selector (OpenSymbolInLibrary.openSymbolInLibrary (_:))
       self.mOpenPackageInLibraryMenuItem?.target = self.mOpenPackageInLibrary
@@ -191,9 +191,9 @@ enum DocumentFormat {
       self.mOpenFontInLibraryMenuItem?.action = #selector (OpenFontInLibrary.openFontInLibrary (_:))
     //---
       self.checkForLibraryUpdateAtLaunch ()
-      instanciateDebugMenuVisibilityObjectOnDidFinishLaunchingNotification ()
+      instanciateDebugMenuVisibilityObjectOnWillFinishLaunchingNotification ()
       self.addAutoLayoutUserInterfaceStyleObserver ()
-    }
+//    }
   }
 
   //····················································································································
