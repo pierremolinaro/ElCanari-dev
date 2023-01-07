@@ -2208,19 +2208,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         addTab (title: "PDF Settings", tooltip: "", contentView: view pdfSettingsPage)
         addTab (title: "Generation Log", tooltip: "", contentView: view generationLogPage)
       }
-//      hStack {
-//        space
-//        SegmentedControlWithPages (documentView: view productMasterView, equalWidth: yes, size : .regular)
-//          [outlet mProductPageSegmentedControl] { 
-//          addPage (title: "Artwork Description", tooltip: "", pageView: view artworkDescriptionPage)
-//          addPage (title: "Artwork Minima", tooltip: "", pageView: view artworkMinimaPage)
-//          addPage (title: "Artwork Data", tooltip: "", pageView: view artworkDataPage)
-//          addPage (title: "PDF Settings", tooltip: "", pageView: view pdfSettingsPage)
-//          addPage (title: "Generation Log", tooltip: "", pageView: view generationLogPage)
-//        }
-//        space
-//      }
-//      view productMasterView
     }
  }
 

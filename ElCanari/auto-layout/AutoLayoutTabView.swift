@@ -2,7 +2,7 @@
 //  AutoLayoutTabView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 27/12/2021.
+//  Created by Pierre Molinaro on 7/1/2023.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -16,26 +16,26 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
 
   private var mDocumentView = MyTabDocumentView ()
   private var mPages = [NSView] ()
-  private var mPopUpButton : AutoLayoutBase_NSPopUpButton
+  private var mSegmentedControl : AutoLayoutBase_NSSegmentedControl
 
   //····················································································································
 
   init (size inSize : EBControlSize) {
-    self.mPopUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: inSize)
+    self.mSegmentedControl = AutoLayoutBase_NSSegmentedControl (equalWidth: false, size: inSize)
     super.init ()
 
     self.addSubview (self.mDocumentView)
-    self.addSubview (self.mPopUpButton)
+    self.addSubview (self.mSegmentedControl)
 
-    self.mPopUpButton.target = self
-    self.mPopUpButton.action = #selector (Self.selectedItemDidChange (_:))
+    self.mSegmentedControl.target = self
+    self.mSegmentedControl.action = #selector (Self.selectedItemDidChange (_:))
 
   //--- Permanent tab view constraints
-    var c = NSLayoutConstraint (item: self, attribute: .top, relatedBy: .equal, toItem: self.mPopUpButton, attribute: .top, multiplier: 1.0, constant: 0.0)
+    var c = NSLayoutConstraint (item: self, attribute: .top, relatedBy: .equal, toItem: self.mSegmentedControl, attribute: .top, multiplier: 1.0, constant: 0.0)
     var permanentConstraints = [c]
-    c = NSLayoutConstraint (item: self, attribute: .centerX, relatedBy: .equal, toItem: self.mPopUpButton, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+    c = NSLayoutConstraint (item: self, attribute: .centerX, relatedBy: .equal, toItem: self.mSegmentedControl, attribute: .centerX, multiplier: 1.0, constant: 0.0)
     permanentConstraints.append (c)
-    c = NSLayoutConstraint (item: self.mDocumentView, attribute: .top, relatedBy: .equal, toItem: self.mPopUpButton, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+    c = NSLayoutConstraint (item: self.mDocumentView, attribute: .top, relatedBy: .equal, toItem: self.mSegmentedControl, attribute: .centerY, multiplier: 1.0, constant: 0.0)
     permanentConstraints.append (c)
     c = NSLayoutConstraint (item: self.mDocumentView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0)
     permanentConstraints.append (c)
@@ -59,7 +59,9 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
   final func addTab (title inTitle : String,
                      tooltip inTooltipString : String,
                      contentView inPageView : NSView) -> Self {
-    self.mPopUpButton.addItem (withTitle: inTitle)
+    self.mSegmentedControl.segmentCount += 1
+    self.mSegmentedControl.setLabel (inTitle, forSegment: self.mSegmentedControl.segmentCount - 1)
+    self.mSegmentedControl.setToolTip (inTooltipString, forSegment: self.mSegmentedControl.segmentCount - 1)
     self.mPages.append (inPageView)
     if self.mPages.count == 1 {
       self.selectTab (atIndex: 0)
@@ -75,13 +77,13 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
   //····················································································································
 
   func selectTab (atIndex inIndex : Int) {
-    if self.mPopUpButton.numberOfItems > 0 {
+    if self.mSegmentedControl.segmentCount > 0 {
       if inIndex < 0 {
-        self.mPopUpButton.select (self.mPopUpButton.item (at: 0))
-      }else if inIndex >= self.mPopUpButton.numberOfItems {
-        self.mPopUpButton.select (self.mPopUpButton.item (at: self.mPopUpButton.numberOfItems - 1))
+        self.mSegmentedControl.selectedSegment = 0
+      }else if inIndex >= self.mSegmentedControl.segmentCount {
+        self.mSegmentedControl.selectedSegment = self.mSegmentedControl.segmentCount - 1
       }else{
-        self.mPopUpButton.select (self.mPopUpButton.item (at: inIndex))
+        self.mSegmentedControl.selectedSegment = inIndex
       }
     //---
       self.removeConstraints (self.mConstraints)
@@ -90,7 +92,7 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
         currentTabView.removeFromSuperview ()
         self.mCurrentTabView = nil
       }
-      let view = self.mPages [self.mPopUpButton.indexOfSelectedItem]
+      let view = self.mPages [self.mSegmentedControl.indexOfSelectedItem]
       self.mCurrentTabView = view
       self.addSubview (view)
       var c = NSLayoutConstraint (item: self, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
@@ -99,7 +101,7 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
       self.mConstraints.append (c)
       c = NSLayoutConstraint (item: self, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0.0)
       self.mConstraints.append (c)
-      c = NSLayoutConstraint (item: self.mPopUpButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0.0)
+      c = NSLayoutConstraint (item: self.mSegmentedControl, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0.0)
       self.mConstraints.append (c)
       self.addConstraints (self.mConstraints)
     }
@@ -110,7 +112,7 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
   //····················································································································
 
   @objc func selectedItemDidChange (_ inSender : Any?) {
-    let idx = self.mPopUpButton.indexOfSelectedItem
+    let idx = self.mSegmentedControl.selectedSegment
     if let controller = self.mSelectedTabIndexController {
       controller.updateModel (withValue: idx)
     }else{
@@ -159,7 +161,7 @@ fileprivate final class MyTabDocumentView : AutoLayoutBase_NSView {
 
   override func draw (_ inDirtyRect: NSRect) {
     NSColor.windowBackgroundColor.setFill ()
-    let bp = NSBezierPath (roundedRect: self.bounds, xRadius: 4.0, yRadius: 4.0)
+    let bp = NSBezierPath (roundedRect: self.bounds, xRadius: 8.0, yRadius: 8.0)
     bp.fill ()
   }
 
