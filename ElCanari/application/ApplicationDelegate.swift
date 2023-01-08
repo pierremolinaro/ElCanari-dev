@@ -90,6 +90,7 @@ enum DocumentFormat {
       )
       batchWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
       batchWindow.title = "Batch Operations"
+      batchWindow.setFrameAutosaveName ("BatchWindowFrame")
       batchWindow.hasShadow = true
     //--- Main view
       let mainView = AutoLayoutHorizontalStackView ().set (margins: 20)
