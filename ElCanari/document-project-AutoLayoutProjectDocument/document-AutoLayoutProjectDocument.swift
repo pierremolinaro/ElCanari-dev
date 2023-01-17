@@ -842,44 +842,53 @@ import AppKit
       _ = view_0.appendView (view_0_4)
     }
     _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalSplitView ()
+    let view_1 = AutoLayoutHorizontalStackView ()
+      .set (spacing: 0)
     do{
       let view_1_0 = AutoLayoutTableView (size: .regular, addControlButtons: false)
         .set (minimumWidth: 400)
       self.projectDeviceController.bind_tableView (view_1_0)
       _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutVerticalStackView ()
+      let view_1_1 = AutoLayoutHorizontalStackView.VerticalDivider ()
+      _ = view_1.appendView (view_1_1)
+      let view_1_2 = AutoLayoutVerticalStackView ()
       do{
-        let view_1_1_0 = AutoLayoutStaticLabel (title: "Selected Device", bold: false, size: .regular, alignment: .center)
-        _ = view_1_1.appendView (view_1_1_0)
-        let view_1_1_1 = AutoLayoutHorizontalSplitView ()
+        let view_1_2_0 = AutoLayoutStaticLabel (title: "Selected Device", bold: false, size: .regular, alignment: .center)
+        _ = view_1_2.appendView (view_1_2_0)
+        let view_1_2_1 = AutoLayoutHorizontalStackView ()
+          .set (spacing: 0)
         do{
-          let view_1_1_1_0 = AutoLayoutCanariProjectDeviceTableView (size: .regular)
+          let view_1_2_1_0 = AutoLayoutCanariProjectDeviceTableView (size: .regular)
             .set (minimumWidth: 150)
             .bind_array (self.selectedDeviceNames_property)
-          _ = view_1_1_1.appendView (view_1_1_1_0)
-          let view_1_1_1_1 = AutoLayoutVerticalSplitView ()
+          _ = view_1_2_1.appendView (view_1_2_1_0)
+          let view_1_2_1_1 = AutoLayoutHorizontalStackView.VerticalDivider ()
+          _ = view_1_2_1.appendView (view_1_2_1_1)
+          let view_1_2_1_2 = AutoLayoutVerticalStackView ()
+            .set (spacing: 0)
           do{
-            let view_1_1_1_1_0 = AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView (size: .regular)
+            let view_1_2_1_2_0 = AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView (size: .regular)
               .set (minimumWidth: 250)
-              .set (height: 200)
               .bind_array (self.selectedDeviceSymbolNames_property)
-            _ = view_1_1_1_1.appendView (view_1_1_1_1_0)
-            let view_1_1_1_1_1 = AutoLayoutCanariProjectDevicePackageTableView (size: .regular)
-              .set (height: 200)
+            _ = view_1_2_1_2.appendView (view_1_2_1_2_0)
+            let view_1_2_1_2_1 = AutoLayoutVerticalStackView.HorizontalDivider ()
+            _ = view_1_2_1_2.appendView (view_1_2_1_2_1)
+            let view_1_2_1_2_2 = AutoLayoutCanariProjectDevicePackageTableView (size: .regular)
               .expandableWidth ()
               .bind_array (self.selectedDevicePackageNames_property)
-            _ = view_1_1_1_1.appendView (view_1_1_1_1_1)
+            _ = view_1_2_1_2.appendView (view_1_2_1_2_2)
           }
-          _ = view_1_1_1.appendView (view_1_1_1_1)
-          let view_1_1_1_2 = AutoLayoutCanariProjectPinPadAssignmentTableView (size: .regular)
+          _ = view_1_2_1.appendView (view_1_2_1_2)
+          let view_1_2_1_3 = AutoLayoutHorizontalStackView.VerticalDivider ()
+          _ = view_1_2_1.appendView (view_1_2_1_3)
+          let view_1_2_1_4 = AutoLayoutCanariProjectPinPadAssignmentTableView (size: .regular)
             .set (minimumWidth: 200)
             .bind_array (self.pinPadAssignments_property)
-          _ = view_1_1_1.appendView (view_1_1_1_2)
+          _ = view_1_2_1.appendView (view_1_2_1_4)
         }
-        _ = view_1_1.appendView (view_1_1_1)
+        _ = view_1_2.appendView (view_1_2_1)
       }
-      _ = view_1.appendView (view_1_1)
+      _ = view_1.appendView (view_1_2)
     }
     _ = vStackView.appendView (view_1)
     return vStackView
@@ -1022,23 +1031,26 @@ import AppKit
       _ = view_0.appendView (view_0_5)
     }
     _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalSplitView ()
+    let view_1 = AutoLayoutHorizontalStackView ()
+      .set (spacing: 0)
     do{
       let view_1_0 = AutoLayoutCanariNetDescriptionTableView ()
         .bind_netInfo (self.rootObject.netsDescription_property)
       self.mNetInfoTableView = view_1_0 // Outlet
       self.configure_netDescriptionTableViewConfigurator (view_1_0) // Configurator
       _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutVerticalStackView ()
-      do{
-        let view_1_1_0 = AutoLayoutStaticLabel (title: "Pins of Selected Net", bold: false, size: .regular, alignment: .center)
-          .set (minWidth: 300)
-        _ = view_1_1.appendView (view_1_1_0)
-        let view_1_1_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
-        self.configure_pinsOfSelectedNetTableViewConfigurator (view_1_1_1) // Configurator
-        _ = view_1_1.appendView (view_1_1_1)
-      }
+      let view_1_1 = AutoLayoutHorizontalStackView.VerticalDivider ()
       _ = view_1.appendView (view_1_1)
+      let view_1_2 = AutoLayoutVerticalStackView ()
+      do{
+        let view_1_2_0 = AutoLayoutStaticLabel (title: "Pins of Selected Net", bold: false, size: .regular, alignment: .center)
+          .set (minWidth: 300)
+        _ = view_1_2.appendView (view_1_2_0)
+        let view_1_2_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
+        self.configure_pinsOfSelectedNetTableViewConfigurator (view_1_2_1) // Configurator
+        _ = view_1_2.appendView (view_1_2_1)
+      }
+      _ = view_1.appendView (view_1_2)
     }
     _ = vStackView.appendView (view_1)
     return vStackView
@@ -2119,15 +2131,18 @@ import AppKit
         selector: #selector (AutoLayoutProjectDocument.performERCCheckingAction (_:))
       )
     _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutVerticalSplitView ()
+    let view_3 = AutoLayoutVerticalStackView ()
+      .set (spacing: 0)
     do{
       let view_3_0 = AutoLayoutTextObserverView ()
       self.mERCLogTextViewArray.append (view_3_0) // Outlet Array
       _ = view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutCanariIssueTableView (hasHideIssueButton: true)
-      self.mERCIssueTableViewArray.append (view_3_1) // Outlet Array
-      self.configure_ercIssueTableViewConfigurator (view_3_1) // Configurator
+      let view_3_1 = AutoLayoutVerticalStackView.HorizontalDivider ()
       _ = view_3.appendView (view_3_1)
+      let view_3_2 = AutoLayoutCanariIssueTableView (hasHideIssueButton: true)
+      self.mERCIssueTableViewArray.append (view_3_2) // Outlet Array
+      self.configure_ercIssueTableViewConfigurator (view_3_2) // Configurator
+      _ = view_3.appendView (view_3_2)
     }
     _ = vStackView.appendView (view_3)
     return vStackView

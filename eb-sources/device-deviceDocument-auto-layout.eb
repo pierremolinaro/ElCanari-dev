@@ -64,8 +64,9 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
       set (alignment: .left)
       $value root.mTitle (sendContinously: yes)
     }
-    hSplit {
+    hStack set (spacing: 0) {
       CanariDeviceDroppableImageView (width: 240) { $imageData root.mImageData }
+      divider
       vStack {
         StaticLabel (title: "PDF Documentation", bold: no, size : .regular, alignment: .center)
         TableView (size : .regular, addControlButtons: no) [configurator documentationTableView] {
@@ -463,7 +464,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
 //······················································································································
 
   stackView \AssignmentsPage hStack set (margins: 8) {
-    hSplit $hidden !root.packagePadNameSetsAreConsistent | !root.symbolNameAreConsistent {
+    hStack set (spacing: 0) $hidden !root.packagePadNameSetsAreConsistent | !root.symbolNameAreConsistent {
       vStack set (minWidth: 100) {
         StaticLabel (title: "Unassigned Pads", bold: yes, size : .regular, alignment: .center)
         CanariUnconnectedSymbolPadsInDeviceTableView [outlet mUnconnectedPadsInDeviceTableView] {
@@ -471,6 +472,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
           $unconnectedPads root.unconnectedPads
         }
       }
+      divider
       vStack set (minWidth: 200) {
         StaticLabel (title: "Unassigned Pins", bold: yes, size : .regular, alignment: .center)
         CanariUnconnectedSymbolPinsInDeviceTableView [outlet mUnconnectedSymbolPinsInDeviceTableView] {
@@ -478,6 +480,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
           $unconnectedPins root.unconnectedPins
         }
       }
+      divider
       vStack {
         StaticLabel (title: " ", bold: yes, size : .regular, alignment: .center)
         space
@@ -504,6 +507,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
         }
         space
       }
+      divider
       vStack set (minWidth: 300) {
         StaticLabel (title: "Assignments", bold: yes, size : .regular, alignment: .center)
         CanariAssignedPadProxysInDeviceTableView [outlet mAssignedPadProxyTableView] {

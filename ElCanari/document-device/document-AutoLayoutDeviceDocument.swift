@@ -306,49 +306,52 @@ import AppKit
       .set (alignment: .left)
       .bind_value (self.rootObject.mTitle_property, sendContinously:true)
     _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalSplitView ()
+    let view_1 = AutoLayoutHorizontalStackView ()
+      .set (spacing: 0)
     do{
       let view_1_0 = AutoLayoutCanariDeviceDroppableImageView (width: 240)
         .bind_imageData (self.rootObject.mImageData_property)
       _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutVerticalStackView ()
+      let view_1_1 = AutoLayoutHorizontalStackView.VerticalDivider ()
+      _ = view_1.appendView (view_1_1)
+      let view_1_2 = AutoLayoutVerticalStackView ()
       do{
-        let view_1_1_0 = AutoLayoutStaticLabel (title: "PDF Documentation", bold: false, size: .regular, alignment: .center)
-        _ = view_1_1.appendView (view_1_1_0)
-        let view_1_1_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
+        let view_1_2_0 = AutoLayoutStaticLabel (title: "PDF Documentation", bold: false, size: .regular, alignment: .center)
+        _ = view_1_2.appendView (view_1_2_0)
+        let view_1_2_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
           .expandableWidth ()
-        self.documentationController.bind_tableView (view_1_1_1)
-        self.configure_documentationTableView (view_1_1_1) // Configurator
-        _ = view_1_1.appendView (view_1_1_1)
-        let view_1_1_2 = AutoLayoutHorizontalStackView ()
+        self.documentationController.bind_tableView (view_1_2_1)
+        self.configure_documentationTableView (view_1_2_1) // Configurator
+        _ = view_1_2.appendView (view_1_2_1)
+        let view_1_2_2 = AutoLayoutHorizontalStackView ()
         do{
-          let view_1_1_2_0 = AutoLayoutButton (title: "-", size: .small)
+          let view_1_2_2_0 = AutoLayoutButton (title: "-", size: .small)
             .bind_enabled (.intcmp (.prop (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
               selector: #selector (AutoLayoutDeviceDocument.removeDocumentationAction (_:))
             )
-          _ = view_1_1_2.appendView (view_1_1_2_0)
-          let view_1_1_2_1 = AutoLayoutButton (title: "Show Documentation", size: .small)
+          _ = view_1_2_2.appendView (view_1_2_2_0)
+          let view_1_2_2_1 = AutoLayoutButton (title: "Show Documentation", size: .small)
             .bind_enabled (.intcmp (.prop (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
               selector: #selector (AutoLayoutDeviceDocument.showDocAction (_:))
             )
-          _ = view_1_1_2.appendView (view_1_1_2_1)
-          let view_1_1_2_2 = AutoLayoutButton (title: "Save as…", size: .small)
+          _ = view_1_2_2.appendView (view_1_2_2_1)
+          let view_1_2_2_2 = AutoLayoutButton (title: "Save as…", size: .small)
             .bind_enabled (.intcmp (.prop (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
               selector: #selector (AutoLayoutDeviceDocument.saveDocAction (_:))
             )
-          _ = view_1_1_2.appendView (view_1_1_2_2)
-          let view_1_1_2_3 = AutoLayoutFlexibleSpace ()
-          _ = view_1_1_2.appendView (view_1_1_2_3)
+          _ = view_1_2_2.appendView (view_1_2_2_2)
+          let view_1_2_2_3 = AutoLayoutFlexibleSpace ()
+          _ = view_1_2_2.appendView (view_1_2_2_3)
         }
-        _ = view_1_1.appendView (view_1_1_2)
+        _ = view_1_2.appendView (view_1_2_2)
       }
-      _ = view_1.appendView (view_1_1)
+      _ = view_1.appendView (view_1_2)
     }
     _ = vStackView.appendView (view_1)
     return vStackView
@@ -735,7 +738,8 @@ import AppKit
   final func AssignmentsPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
       .set (margins: 8)
-    let view_0 = AutoLayoutHorizontalSplitView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+      .set (spacing: 0)
       .bind_hidden (.boolcmp (.not (.prop (self.rootObject.packagePadNameSetsAreConsistent_property)), .or, .not (.prop (self.rootObject.symbolNameAreConsistent_property))))
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
@@ -750,74 +754,80 @@ import AppKit
         _ = view_0_0.appendView (view_0_0_1)
       }
       _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutVerticalStackView ()
-        .set (minWidth: 200)
-      do{
-        let view_0_1_0 = AutoLayoutStaticLabel (title: "Unassigned Pins", bold: true, size: .regular, alignment: .center)
-        _ = view_0_1.appendView (view_0_1_0)
-        let view_0_1_1 = AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView ()
-          .expandableWidth ()
-          .bind_unconnectedPins (self.rootObject.unconnectedPins_property)
-        self.mUnconnectedSymbolPinsInDeviceTableView = view_0_1_1 // Outlet
-        _ = view_0_1.appendView (view_0_1_1)
-      }
+      let view_0_1 = AutoLayoutHorizontalStackView.VerticalDivider ()
       _ = view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutVerticalStackView ()
+        .set (minWidth: 200)
       do{
-        let view_0_2_0 = AutoLayoutStaticLabel (title: " ", bold: true, size: .regular, alignment: .center)
+        let view_0_2_0 = AutoLayoutStaticLabel (title: "Unassigned Pins", bold: true, size: .regular, alignment: .center)
         _ = view_0_2.appendView (view_0_2_0)
-        let view_0_2_1 = AutoLayoutFlexibleSpace ()
+        let view_0_2_1 = AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView ()
+          .expandableWidth ()
+          .bind_unconnectedPins (self.rootObject.unconnectedPins_property)
+        self.mUnconnectedSymbolPinsInDeviceTableView = view_0_2_1 // Outlet
         _ = view_0_2.appendView (view_0_2_1)
-        let view_0_2_2 = AutoLayoutButton (title: "- Bind →", size: .regular)
+      }
+      _ = view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutHorizontalStackView.VerticalDivider ()
+      _ = view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutVerticalStackView ()
+      do{
+        let view_0_4_0 = AutoLayoutStaticLabel (title: " ", bold: true, size: .regular, alignment: .center)
+        _ = view_0_4.appendView (view_0_4_0)
+        let view_0_4_1 = AutoLayoutFlexibleSpace ()
+        _ = view_0_4.appendView (view_0_4_1)
+        let view_0_4_2 = AutoLayoutButton (title: "- Bind →", size: .regular)
           .expandableWidth ()
           .bind_enabled (.boolcmp (.prop (self.hasUnconnectedPad_property), .and, .prop (self.hasUnconnectedPin_property)))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutDeviceDocument.performBindAction (_:))
           )
-        _ = view_0_2.appendView (view_0_2_2)
-        let view_0_2_3 = AutoLayoutButton (title: "- NC →", size: .regular)
+        _ = view_0_4.appendView (view_0_4_2)
+        let view_0_4_3 = AutoLayoutButton (title: "- NC →", size: .regular)
           .expandableWidth ()
           .bind_enabled (.prop (self.hasUnconnectedPad_property))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutDeviceDocument.performNCAction (_:))
           )
-        _ = view_0_2.appendView (view_0_2_3)
-        let view_0_2_4 = AutoLayoutFlexibleSpace ()
-        _ = view_0_2.appendView (view_0_2_4)
-        let view_0_2_5 = AutoLayoutButton (title: "← Unbind -", size: .regular)
+        _ = view_0_4.appendView (view_0_4_3)
+        let view_0_4_4 = AutoLayoutFlexibleSpace ()
+        _ = view_0_4.appendView (view_0_4_4)
+        let view_0_4_5 = AutoLayoutButton (title: "← Unbind -", size: .regular)
           .expandableWidth ()
           .bind_enabled (.prop (self.hasAssignedPadProxies_property))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutDeviceDocument.performUnbindAction (_:))
           )
-        _ = view_0_2.appendView (view_0_2_5)
-        let view_0_2_6 = AutoLayoutButton (title: "← Unbind All -", size: .regular)
+        _ = view_0_4.appendView (view_0_4_5)
+        let view_0_4_6 = AutoLayoutButton (title: "← Unbind All -", size: .regular)
           .expandableWidth ()
           .bind_enabled (.prop (self.hasAssignedPadProxies_property))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutDeviceDocument.performUnbindAllAction (_:))
           )
-        _ = view_0_2.appendView (view_0_2_6)
-        let view_0_2_7 = AutoLayoutFlexibleSpace ()
-        _ = view_0_2.appendView (view_0_2_7)
+        _ = view_0_4.appendView (view_0_4_6)
+        let view_0_4_7 = AutoLayoutFlexibleSpace ()
+        _ = view_0_4.appendView (view_0_4_7)
       }
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutVerticalStackView ()
+      _ = view_0.appendView (view_0_4)
+      let view_0_5 = AutoLayoutHorizontalStackView.VerticalDivider ()
+      _ = view_0.appendView (view_0_5)
+      let view_0_6 = AutoLayoutVerticalStackView ()
         .set (minWidth: 300)
       do{
-        let view_0_3_0 = AutoLayoutStaticLabel (title: "Assignments", bold: true, size: .regular, alignment: .center)
-        _ = view_0_3.appendView (view_0_3_0)
-        let view_0_3_1 = AutoLayoutCanariAssignedPadProxysInDeviceTableView ()
+        let view_0_6_0 = AutoLayoutStaticLabel (title: "Assignments", bold: true, size: .regular, alignment: .center)
+        _ = view_0_6.appendView (view_0_6_0)
+        let view_0_6_1 = AutoLayoutCanariAssignedPadProxysInDeviceTableView ()
           .expandableWidth ()
           .bind_assignedPadProxies (self.rootObject.assignedPadProxies_property)
-        self.mAssignedPadProxyTableView = view_0_3_1 // Outlet
-        _ = view_0_3.appendView (view_0_3_1)
+        self.mAssignedPadProxyTableView = view_0_6_1 // Outlet
+        _ = view_0_6.appendView (view_0_6_1)
       }
-      _ = view_0.appendView (view_0_3)
+      _ = view_0.appendView (view_0_6)
     }
     _ = hStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()

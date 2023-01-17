@@ -67,6 +67,13 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
   }
 
   //····················································································································
+
+//  final func appendVerticalDivider () -> Self {
+//    _ = self.appendView (VerticalDivider (self))
+//    return self
+//  }
+
+  //····················································································································
   //   Facilities
   //····················································································································
 
@@ -134,30 +141,6 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
   }
 
   //····················································································································
-  // VerticalSeparator internal class
-  //····················································································································
-
-   final class VerticalSeparator : NSBox {
-
-    init () {
-      let s = NSSize (width: 0, height: 10) // width == 0, height > 0 means vertical separator
-      super.init (frame: NSRect (origin: NSPoint (), size: s))
-      noteObjectAllocation (self)
-      self.translatesAutoresizingMaskIntoConstraints = false
-      self.boxType = .separator
-    }
-
-    required init? (coder inCoder: NSCoder) {
-      fatalError("init(coder:) has not been implemented")
-    }
-
-    deinit {
-      noteObjectDeallocation (self)
-    }
-
-  }
-
-  //····················································································································
 
   override func draw (_ inDirtyRect : NSRect) {
     super.draw (inDirtyRect)
@@ -176,6 +159,115 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
         }
       }
     }
+  }
+
+  //····················································································································
+  // VerticalSeparator internal class
+  //····················································································································
+
+  final class VerticalSeparator : NSBox {
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    init () {
+      let s = NSSize (width: 0, height: 10) // width == 0, height > 0 means vertical separator
+      super.init (frame: NSRect (origin: NSPoint (), size: s))
+      noteObjectAllocation (self)
+      self.translatesAutoresizingMaskIntoConstraints = false
+      self.boxType = .separator
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    required init? (coder inCoder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    deinit {
+      noteObjectDeallocation (self)
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+  }
+
+  //····················································································································
+  // VerticalDivider internal class
+  //····················································································································
+
+   final class VerticalDivider : AutoLayoutBase_NSView {
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    override init () {
+      super.init ()
+      self.setContentCompressionResistancePriority (.required, for: .horizontal)
+      self.setContentHuggingPriority (.required, for: .horizontal)
+      self.setContentCompressionResistancePriority (.defaultLow, for: .vertical)
+      self.setContentHuggingPriority (.defaultLow, for: .vertical)
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    required init? (coder inCoder : NSCoder) {
+      fatalError ("init(coder:) has not been implemented")
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    override var intrinsicContentSize: NSSize { return NSSize (width: 10.0, height: 0.0) }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    override func draw (_ inDirtyRect : NSRect) {
+      let s : CGFloat = 6.0
+      let r = NSRect (x: NSMidX (self.bounds) - s / 2.0, y: NSMidY (self.bounds) - s / 2.0, width: s, height: s)
+      NSColor.separatorColor.setFill ()
+      let bp = NSBezierPath (ovalIn: r)
+      bp.fill ()
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    //   Mouse
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    private var mDividerConstraint : NSLayoutConstraint? = nil
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    override func mouseDragged (with inEvent: NSEvent) {
+      if let hStack = self.superview as? AutoLayoutHorizontalStackView {
+        if let c = self.mDividerConstraint {
+          hStack.removeConstraint (c)
+        }
+        let p = hStack.convert (inEvent.locationInWindow, from: nil)
+        let c = NSLayoutConstraint (item: hStack, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: -p.x)
+        c.priority = NSLayoutConstraint.Priority.dragThatCannotResizeWindow
+        self.mDividerConstraint = c
+        hStack.addConstraint (c)
+        self.needsUpdateConstraints = true
+      }
+    }
+//    override func mouseDragged (with inEvent: NSEvent) {
+//      if let hStack = self.superview as? AutoLayoutHorizontalStackView {
+//        let mouseLocation = self.convert (inEvent.locationInWindow, from: nil)
+//        if let c = self.mDividerConstraint {
+//          hStack.removeConstraint (c)
+//        }
+//        let p = self.convert (NSPoint (), from: hStack)
+//        let w = mouseLocation.x - p.x
+//        let c = NSLayoutConstraint (item: hStack, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: -w)
+//        c.priority = NSLayoutConstraint.Priority.dragThatCannotResizeWindow
+//        self.mDividerConstraint = c
+//        hStack.addConstraint (c)
+//        self.needsUpdateConstraints = true
+//      }
+//    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
   }
 
   //····················································································································
