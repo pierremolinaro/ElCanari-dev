@@ -46,15 +46,6 @@ extension AutoLayoutProjectDocument {
     self.mouseExitInSchematic ()
     inOutlet.mGraphicView.setKeyDownCallback { [weak self] (mouseLocation, key) in self?.keyDownInSchematic (mouseLocation, key) }
 
-//    self.mSchematicsView?.mGraphicView.setMouseMovedOrFlagsChangedCallback { [weak self] (unalignedMouseLocation) in
-//      self?.mouseMovedOrFlagsChangedInSchematic (unalignedMouseLocation)
-//    }
-//    self.mSchematicsView?.mGraphicView.setMouseExitCallback { [weak self] in self?.mouseExitInSchematic () }
-//    self.mouseExitInSchematic ()
-//    self.mSchematicsView?.mGraphicView.setKeyDownCallback { [weak self] (mouseLocation, key) in self?.keyDownInSchematic (mouseLocation, key) }
-
-//    self.boardObjectsController.mAfterObjectRemovingCallback = { [weak self] in self?.updateBoardConnectors () }
-
 //--- END OF USER ZONE 2
   }
 }
