@@ -67,13 +67,6 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
   }
 
   //····················································································································
-
-//  final func appendVerticalDivider () -> Self {
-//    _ = self.appendView (VerticalDivider (self))
-//    return self
-//  }
-
-  //····················································································································
   //   Facilities
   //····················································································································
 
@@ -250,21 +243,6 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
         self.needsUpdateConstraints = true
       }
     }
-//    override func mouseDragged (with inEvent: NSEvent) {
-//      if let hStack = self.superview as? AutoLayoutHorizontalStackView {
-//        let mouseLocation = self.convert (inEvent.locationInWindow, from: nil)
-//        if let c = self.mDividerConstraint {
-//          hStack.removeConstraint (c)
-//        }
-//        let p = self.convert (NSPoint (), from: hStack)
-//        let w = mouseLocation.x - p.x
-//        let c = NSLayoutConstraint (item: hStack, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: -w)
-//        c.priority = NSLayoutConstraint.Priority.dragThatCannotResizeWindow
-//        self.mDividerConstraint = c
-//        hStack.addConstraint (c)
-//        self.needsUpdateConstraints = true
-//      }
-//    }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 

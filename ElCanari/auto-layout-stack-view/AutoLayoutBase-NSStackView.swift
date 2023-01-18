@@ -15,11 +15,6 @@ class AutoLayoutBase_NSStackView : NSStackView {
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-//    self.setHuggingPriority (.required, for: .horizontal)
-//    self.setHuggingPriority (.required, for: .vertical)
-//    self.setHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
-//    self.setHuggingPriority (.init (rawValue: 1.0), for: .vertical)
-
     self.orientation = inOrientation
     self.distribution = .fill
     self.edgeInsets.left   = 0.0

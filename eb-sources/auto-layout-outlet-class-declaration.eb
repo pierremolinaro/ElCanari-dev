@@ -405,25 +405,28 @@ extern autolayout class CanariDragSourceTableView {
 
 extern autolayout class CanariProjectPinPadAssignmentTableView (size: EBControlSize) {
   func set (minimumWidth: Int)
-  func set (height: Int)
+//  func set (height: Int)
+  func expandableWidth ()
   $array transient ThreeStringArray
 }
 
 extern autolayout class CanariProjectDeviceSymbolTypeAndNameTableView (size: EBControlSize) {
   func set (minimumWidth: Int)
-  func set (height: Int)
+//  func set (height: Int)
+  func expandableWidth ()
   $array transient TwoStringArray
 }
 
 extern autolayout class CanariProjectDevicePackageTableView (size: EBControlSize) {
   func expandableWidth ()
-  func set (height: Int)
+//  func set (height: Int)
   $array transient StringArray
 }
 
 extern autolayout class CanariProjectDeviceTableView (size: EBControlSize) {
   func set (minimumWidth: Int)
-  func set (height: Int)
+//  func set (height: Int)
+  func expandableWidth ()
   $array transient StringArray
 }
 

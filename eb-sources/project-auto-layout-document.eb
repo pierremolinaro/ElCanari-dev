@@ -220,6 +220,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     hStack set (spacing: 0) {
       TableView (size : .regular, addControlButtons: no) {
+        expandableWidth ()
         set (minimumWidth: 400)
         $tableValue #projectDeviceController
       }
@@ -228,26 +229,26 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         StaticLabel (title: "Selected Device", bold: no, size: .regular, alignment: .center)
         hStack set (spacing: 0) {
           CanariProjectDeviceTableView (size : .regular) {
+            expandableWidth ()
             set (minimumWidth: 150)
             $array self.selectedDeviceNames
           }
           divider
           vStack set (spacing: 0) {
             CanariProjectDeviceSymbolTypeAndNameTableView (size : .regular) {
-              set (minimumWidth: 250)
-//              set (height: 200)
+              expandableWidth ()
+              set (minimumWidth: 150)
               $array self.selectedDeviceSymbolNames
             }
             divider
             CanariProjectDevicePackageTableView (size : .regular) {
-//              set (height: 200)
               expandableWidth ()
               $array self.selectedDevicePackageNames
             }
           }
-          
           divider
           CanariProjectPinPadAssignmentTableView (size : .regular) {
+            expandableWidth ()
             set (minimumWidth: 200)
             $array self.pinPadAssignments
           }

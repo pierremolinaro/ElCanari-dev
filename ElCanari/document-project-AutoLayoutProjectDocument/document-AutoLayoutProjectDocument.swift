@@ -846,6 +846,7 @@ import AppKit
       .set (spacing: 0)
     do{
       let view_1_0 = AutoLayoutTableView (size: .regular, addControlButtons: false)
+        .expandableWidth ()
         .set (minimumWidth: 400)
       self.projectDeviceController.bind_tableView (view_1_0)
       _ = view_1.appendView (view_1_0)
@@ -859,6 +860,7 @@ import AppKit
           .set (spacing: 0)
         do{
           let view_1_2_1_0 = AutoLayoutCanariProjectDeviceTableView (size: .regular)
+            .expandableWidth ()
             .set (minimumWidth: 150)
             .bind_array (self.selectedDeviceNames_property)
           _ = view_1_2_1.appendView (view_1_2_1_0)
@@ -868,7 +870,8 @@ import AppKit
             .set (spacing: 0)
           do{
             let view_1_2_1_2_0 = AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView (size: .regular)
-              .set (minimumWidth: 250)
+              .expandableWidth ()
+              .set (minimumWidth: 150)
               .bind_array (self.selectedDeviceSymbolNames_property)
             _ = view_1_2_1_2.appendView (view_1_2_1_2_0)
             let view_1_2_1_2_1 = AutoLayoutVerticalStackView.HorizontalDivider ()
@@ -882,6 +885,7 @@ import AppKit
           let view_1_2_1_3 = AutoLayoutHorizontalStackView.VerticalDivider ()
           _ = view_1_2_1.appendView (view_1_2_1_3)
           let view_1_2_1_4 = AutoLayoutCanariProjectPinPadAssignmentTableView (size: .regular)
+            .expandableWidth ()
             .set (minimumWidth: 200)
             .bind_array (self.pinPadAssignments_property)
           _ = view_1_2_1.appendView (view_1_2_1_4)
