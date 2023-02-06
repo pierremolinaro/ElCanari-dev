@@ -246,6 +246,50 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
+    override func mouseUp (with inEvent: NSEvent) {
+      NSCursor.arrow.set ()
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // Mouse moved events, cursor display
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    var mTrackingArea : NSTrackingArea? = nil
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    final override func updateTrackingAreas () { // This is required for receiving mouse moved and mouseExited events
+    //--- Remove current tracking area
+      if let trackingArea = self.mTrackingArea {
+        self.removeTrackingArea (trackingArea)
+      }
+    //--- Add Updated tracking area
+      let trackingArea = NSTrackingArea (
+        rect: self.bounds,
+        options: [.mouseEnteredAndExited, .mouseMoved, .activeInKeyWindow],
+        owner: self,
+        userInfo: nil
+      )
+      self.addTrackingArea (trackingArea)
+      self.mTrackingArea = trackingArea
+    //---
+      super.updateTrackingAreas ()
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    override func mouseEntered (with inEvent : NSEvent) {
+      NSCursor.resizeLeftRight.set ()
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    override func mouseExited (with inEvent : NSEvent) {
+      NSCursor.arrow.set ()
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
   }
 
   //····················································································································
