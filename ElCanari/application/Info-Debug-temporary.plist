@@ -171,7 +171,7 @@
 			<key>UTTypeDescription</key>
 			<string>Package</string>
 			<key>UTTypeIconFile</key>
-			<string>elCanariPackage</string>
+			<string></string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconBadgeName</key>
@@ -195,7 +195,7 @@
 			<key>UTTypeDescription</key>
 			<string>Device</string>
 			<key>UTTypeIconFile</key>
-			<string>elCanariDevice</string>
+			<string></string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconBadgeName</key>
@@ -219,7 +219,7 @@
 			<key>UTTypeDescription</key>
 			<string>Symbol</string>
 			<key>UTTypeIconFile</key>
-			<string>elCanariSymbol</string>
+			<string></string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconBadgeName</key>
@@ -243,7 +243,7 @@
 			<key>UTTypeDescription</key>
 			<string>Merger</string>
 			<key>UTTypeIconFile</key>
-			<string>elCanariMerger</string>
+			<string></string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconBadgeName</key>
@@ -267,7 +267,7 @@
 			<key>UTTypeDescription</key>
 			<string>Artwork</string>
 			<key>UTTypeIconFile</key>
-			<string>elCanariArtwork</string>
+			<string></string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconBadgeName</key>
@@ -291,7 +291,7 @@
 			<key>UTTypeDescription</key>
 			<string>Font</string>
 			<key>UTTypeIconFile</key>
-			<string>elCanariFont</string>
+			<string></string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconBadgeName</key>
@@ -315,7 +315,7 @@
 			<key>UTTypeDescription</key>
 			<string>Project</string>
 			<key>UTTypeIconFile</key>
-			<string>elCanariProject</string>
+			<string></string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconBadgeName</key>
