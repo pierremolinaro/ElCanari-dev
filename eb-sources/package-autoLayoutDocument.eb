@@ -76,6 +76,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
             TaggedPopUpButton (size: .small) {
               add (title: "1 Step", withTag: 1)
               add (title: "2 Steps", withTag: 2)
+              add (title: "4 Steps", withTag: 4)
               add (title: "5 Steps", withTag: 5)
               add (title: "8 Steps", withTag: 8)
               add (title: "10 Steps", withTag: 10)
@@ -945,6 +946,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
         right:  TaggedPopUpButton (size: .small) {
           add (title: "1 Step", withTag: 1)
           add (title: "2 Steps", withTag: 2)
+          add (title: "4 Steps", withTag: 4)
           add (title: "5 Steps", withTag: 5)
           add (title: "8 Steps", withTag: 8)
           add (title: "10 Steps", withTag: 10)
