@@ -918,7 +918,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 //    StoredObject_MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_MergerRoot : ReadOnlyObject_MergerRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_MergerRoot : ReadOnlyObject_MergerRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

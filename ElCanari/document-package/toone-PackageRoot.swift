@@ -1470,7 +1470,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 //    StoredObject_PackageRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PackageRoot : ReadOnlyObject_PackageRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_PackageRoot : ReadOnlyObject_PackageRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

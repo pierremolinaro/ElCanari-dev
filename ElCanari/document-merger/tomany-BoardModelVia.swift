@@ -168,7 +168,7 @@ class ReadWriteArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 //    Stored Array: BoardModelVia
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

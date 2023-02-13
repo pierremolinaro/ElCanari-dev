@@ -1110,7 +1110,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 //    StoredObject_ComponentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_ComponentInProject : ReadOnlyObject_ComponentInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_ComponentInProject : ReadOnlyObject_ComponentInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

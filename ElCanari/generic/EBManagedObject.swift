@@ -77,7 +77,7 @@ import AppKit
                               managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorablePropertyProtocol, storedProperty.key != nil {
+      if let storedProperty = property.value as? DocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
         storedProperty.initialize (fromDictionary: inDictionary, managedObjectArray: inManagedObjectArray)
       }
     }
@@ -90,7 +90,7 @@ import AppKit
                                                 _ inData : Data) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorablePropertyProtocol,
+      if let storedProperty = property.value as? DocumentStorablePropertyAndRelationshipProtocol,
          let key = storedProperty.key,
          let range = inRangeDictionary [key] {
         storedProperty.initialize (fromRange: range, ofData: inData, inRawObjectArray)
@@ -105,7 +105,7 @@ import AppKit
   final func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorablePropertyProtocol, storedProperty.key != nil {
+      if let storedProperty = property.value as? DocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
         storedProperty.enterRelationshipObjects (intoArray: &ioObjectArray)
       }
     }
@@ -115,7 +115,21 @@ import AppKit
   //  Save
   //····················································································································
 
-  final func saveIntoDictionary (_ ioDictionary : inout [String : Any]) {
+  final func savePropertiesAndRelationshipsIntoDictionary (_ ioDictionary : inout [String : Any]) {
+    ioDictionary [ENTITY_KEY] = self.className
+//    Swift.print ("Object of class \(self.className)")
+    let mirror = Mirror (reflecting: self)
+    for property in mirror.children {
+      if let storedProperty = property.value as? DocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
+        storedProperty.store (inDictionary: &ioDictionary)
+        // Swift.print ("  \(key)")
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func savePropertiesIntoDictionary (_ ioDictionary : inout [String : Any]) {
     ioDictionary [ENTITY_KEY] = self.className
 //    Swift.print ("Object of class \(self.className)")
     let mirror = Mirror (reflecting: self)
@@ -134,7 +148,7 @@ import AppKit
   final func appendPropertyNamesTo (string ioString : inout String) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorablePropertyProtocol, let key = storedProperty.key {
+      if let storedProperty = property.value as? DocumentStorablePropertyAndRelationshipProtocol, let key = storedProperty.key {
         ioString += key + "\n"
       }
     }
@@ -147,7 +161,7 @@ import AppKit
   final func appendPropertyValuesTo (data ioData : inout Data) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorablePropertyProtocol, storedProperty.key != nil {
+      if let storedProperty = property.value as? DocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
         storedProperty.appendValueTo (data: &ioData)
         ioData.append (ascii: .lineFeed)
       }

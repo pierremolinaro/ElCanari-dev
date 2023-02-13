@@ -109,10 +109,10 @@ extension CommentInSchematic {
   //····················································································································
 
   func canMove_CommentInSchematic (knob inKnobIndex : Int,
-                proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                shift inShift : Bool) -> CanariPoint {
+                                   proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                                   proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                                   unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
+                                   shift inShift : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
   }
 

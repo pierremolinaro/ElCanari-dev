@@ -290,7 +290,7 @@ class ReadWriteArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumentation
 //    Stored Array: DeviceDocumentation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

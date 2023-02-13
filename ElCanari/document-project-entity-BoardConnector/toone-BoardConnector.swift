@@ -798,7 +798,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 //    StoredObject_BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_BoardConnector : ReadOnlyObject_BoardConnector, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_BoardConnector : ReadOnlyObject_BoardConnector, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

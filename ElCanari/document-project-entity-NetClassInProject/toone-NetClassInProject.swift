@@ -718,7 +718,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 //    StoredObject_NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_NetClassInProject : ReadOnlyObject_NetClassInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_NetClassInProject : ReadOnlyObject_NetClassInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

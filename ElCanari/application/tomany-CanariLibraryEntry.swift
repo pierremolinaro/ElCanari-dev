@@ -360,7 +360,7 @@ class ReadWriteArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 //    Stored Array: CanariLibraryEntry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 
@@ -603,7 +603,7 @@ final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryE
     var dictionaryArray = [[String  : Any]] ()
     for object in self.mInternalArrayValue.values {
       var d = [String  : Any] ()
-      object.saveIntoDictionary (&d)
+      object.savePropertiesAndRelationshipsIntoDictionary (&d)
       d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
       dictionaryArray.append (d)
     }

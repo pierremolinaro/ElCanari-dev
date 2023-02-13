@@ -378,7 +378,7 @@ class ReadWriteArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
 //    Stored Array: NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

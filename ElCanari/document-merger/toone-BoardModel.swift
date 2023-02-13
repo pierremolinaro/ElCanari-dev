@@ -2350,7 +2350,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 //    StoredObject_BoardModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_BoardModel : ReadOnlyObject_BoardModel, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_BoardModel : ReadOnlyObject_BoardModel, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol DocumentStorablePropertyProtocol : AnyObject {
+@MainActor protocol DocumentStorablePropertyAndRelationshipProtocol : AnyObject {
 
   var key : String? { get }
 
@@ -24,6 +24,11 @@ import AppKit
   func appendValueTo (data ioData : inout Data)
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject])
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DocumentStorablePropertyProtocol : DocumentStorablePropertyAndRelationshipProtocol {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

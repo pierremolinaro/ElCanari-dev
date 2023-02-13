@@ -502,7 +502,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
 //    StoredObject_ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

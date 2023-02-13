@@ -342,7 +342,7 @@ final class ProxyArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject {
 //    Stored Array: SchematicObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

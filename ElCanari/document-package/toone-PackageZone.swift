@@ -598,7 +598,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
 //    StoredObject_PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PackageZone : ReadOnlyObject_PackageZone, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_PackageZone : ReadOnlyObject_PackageZone, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

@@ -576,7 +576,7 @@ class ReadWriteArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
 //    Stored Array: BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

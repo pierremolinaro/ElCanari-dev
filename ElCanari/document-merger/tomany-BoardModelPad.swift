@@ -273,7 +273,7 @@ class ReadWriteArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
 //    Stored Array: BoardModelPad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

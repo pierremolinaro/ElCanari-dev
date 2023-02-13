@@ -640,7 +640,7 @@ class ReadWriteArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
 //    Stored Array: DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

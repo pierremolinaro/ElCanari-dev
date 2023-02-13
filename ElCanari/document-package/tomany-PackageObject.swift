@@ -203,7 +203,7 @@ class ReadWriteArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
 //    Stored Array: PackageObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

@@ -465,7 +465,7 @@ class ReadWriteArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 //    Stored Array: FontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

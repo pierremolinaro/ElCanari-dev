@@ -33,7 +33,7 @@ extension AutoLayoutProjectDocument {
     case .ok (let documentData) :
       if let version = documentData.documentMetadataDictionary [PMFontVersion] as? Int {
         var propertyDictionary = [String : Any] ()
-        documentData.documentRootObject.saveIntoDictionary (&propertyDictionary)
+        documentData.documentRootObject.savePropertiesAndRelationshipsIntoDictionary (&propertyDictionary)
         if let descriptiveString = propertyDictionary [KEY_FOR_FontCharacter_characters] as? String,
            let nominalSize = propertyDictionary ["nominalSize"] as? Int  {
           let addedFont = FontInProject (self.undoManager)
@@ -73,7 +73,7 @@ extension AutoLayoutProjectDocument {
           case .ok (let documentData) :
             if let version = documentData.documentMetadataDictionary [PMFontVersion] as? Int {
               var propertyDictionary = [String : Any] ()
-              documentData.documentRootObject.saveIntoDictionary (&propertyDictionary)
+              documentData.documentRootObject.savePropertiesAndRelationshipsIntoDictionary (&propertyDictionary)
               if let descriptiveString = propertyDictionary [KEY_FOR_FontCharacter_characters] as? String,
                 let nominalSize = propertyDictionary ["nominalSize"] as? Int {
                 ok = true

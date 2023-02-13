@@ -596,7 +596,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
       for idx in indexArray {
         let object = objects [idx]
         var dict = [String : Any] ()
-        object.saveIntoDictionary (&dict)
+        object.savePropertiesIntoDictionary (&dict)
         objectDictionaryArray.append (dict)
         var additionalDict = [String : Any] ()
         object.saveIntoAdditionalDictionary (&additionalDict)

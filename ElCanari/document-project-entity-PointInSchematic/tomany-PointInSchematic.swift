@@ -588,7 +588,7 @@ class ReadWriteArrayOf_PointInSchematic : ReadOnlyArrayOf_PointInSchematic {
 //    Stored Array: PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

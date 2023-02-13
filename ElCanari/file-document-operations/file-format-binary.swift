@@ -119,7 +119,7 @@ private func raiseInvalidDataFormatError (dataFormat : UInt8) throws {
   var saveDataArray : [[String : Any]] = []
   for object in reachableObjectArray {
     var d = [String : Any] ()
-    object.saveIntoDictionary (&d)
+    object.savePropertiesAndRelationshipsIntoDictionary (&d)
     saveDataArray.append (d)
   }
   let documentData = try PropertyListSerialization.data (fromPropertyList: saveDataArray, format: .binary, options: 0)

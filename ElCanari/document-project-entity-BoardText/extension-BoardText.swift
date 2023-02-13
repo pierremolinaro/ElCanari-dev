@@ -94,10 +94,10 @@ extension BoardText {
   //····················································································································
 
   func canMove_BoardText (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+                          proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
+                          shift inShift : Bool) -> CanariPoint {
     if inKnobIndex == BOARD_TEXT_ORIGIN_KNOB {
       return inProposedAlignedTranslation
     }else if inKnobIndex == BOARD_TEXT_ROTATION_KNOB {

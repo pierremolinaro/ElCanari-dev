@@ -2390,7 +2390,7 @@ class ReadWriteArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 //    Stored Array: BoardModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

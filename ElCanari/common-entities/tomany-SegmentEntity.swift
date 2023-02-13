@@ -238,7 +238,7 @@ class ReadWriteArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 //    Stored Array: SegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

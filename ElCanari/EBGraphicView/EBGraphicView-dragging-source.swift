@@ -55,7 +55,7 @@ extension EBGraphicView : NSDraggingSource {
       if draggedObjectSet.contains (object), let objectShape = object.objectDisplay {
         displayShape.add (objectShape)
         var dict = [String : Any] ()
-        object.saveIntoDictionary (&dict)
+        object.savePropertiesIntoDictionary (&dict)
         objectDictionaryArray.append (dict)
         var additionalDict = [String : Any] ()
         object.saveIntoAdditionalDictionary (&additionalDict)

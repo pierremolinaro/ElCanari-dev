@@ -924,7 +924,7 @@ class ReadWriteArrayOf_PackageZone : ReadOnlyArrayOf_PackageZone {
 //    Stored Array: PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

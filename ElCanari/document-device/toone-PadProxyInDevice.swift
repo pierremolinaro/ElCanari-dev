@@ -158,7 +158,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
 //    StoredObject_PadProxyInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

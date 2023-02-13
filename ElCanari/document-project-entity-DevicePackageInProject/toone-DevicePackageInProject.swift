@@ -142,7 +142,7 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
 //    StoredObject_DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_DevicePackageInProject : ReadOnlyObject_DevicePackageInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_DevicePackageInProject : ReadOnlyObject_DevicePackageInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

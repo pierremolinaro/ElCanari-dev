@@ -238,7 +238,7 @@ class ReadWriteArrayOf_SymbolPinInstanceInDevice : ReadOnlyArrayOf_SymbolPinInst
 //    Stored Array: SymbolPinInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstanceInDevice, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPinInstanceInDevice, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

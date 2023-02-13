@@ -273,7 +273,7 @@ class ReadWriteArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
 //    Stored Array: SegmentForFontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCharacter, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCharacter, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

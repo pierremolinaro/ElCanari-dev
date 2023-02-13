@@ -343,7 +343,7 @@ class ReadWriteArrayOf_PackageModelImageDoublePoint : ReadOnlyArrayOf_PackageMod
 //    Stored Array: PackageModelImageDoublePoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModelImageDoublePoint, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
+class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModelImageDoublePoint, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 
