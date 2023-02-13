@@ -26,7 +26,7 @@ class AutoLayoutBase_NSPopUpButton : NSPopUpButton {
 
     self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
-    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+    self.bezelStyle = .rounded
 
     self.setContentCompressionResistancePriority (.required, for: .vertical)
     self.setContentHuggingPriority (.required, for: .vertical)
@@ -48,10 +48,10 @@ class AutoLayoutBase_NSPopUpButton : NSPopUpButton {
 
   //····················································································································
 
-  override final func updateAutoLayoutUserInterfaceStyle () {
-    super.updateAutoLayoutUserInterfaceStyle ()
-    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-  }
+//  override final func updateAutoLayoutUserInterfaceStyle () {
+//    super.updateAutoLayoutUserInterfaceStyle ()
+//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+//  }
 
   //····················································································································
 

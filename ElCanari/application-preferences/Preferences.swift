@@ -151,7 +151,6 @@ import AppKit
       .addFirstBaseLineAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_6 (), right: self.computeImplicitView_7 ())
     _ = vStackView.appendView (view_1)
     return vStackView
   }
@@ -329,7 +328,7 @@ import AppKit
   //····················································································································
 
   fileprivate final func computeImplicitView_4 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "User Interface Style", bold: false, size: .regular, alignment: .right)
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -338,26 +337,6 @@ import AppKit
   //····················································································································
 
   fileprivate final func computeImplicitView_5 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: AutoLayoutUserInterfaceStyle.popupTitles (), size: .regular)
-      .notExpandableWidth ()
-      .bind_selectedIndex (preferences_mAutoLayoutStyle_property)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 6
-  //····················································································································
-
-  fileprivate final func computeImplicitView_6 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 7
-  //····················································································································
-
-  fileprivate final func computeImplicitView_7 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Show Debug Menu", size: .regular)
       .bind_value (preferences_showDebugMenu_property)
     return view
@@ -558,7 +537,6 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor let Preferences_mAutoLayoutStyle = "Preferences:mAutoLayoutStyle"
 @MainActor let Preferences_hiliteWidthMultipliedByTen = "Preferences:hiliteWidthMultipliedByTen"
 @MainActor let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
 @MainActor let Preferences_symbolColor = "Preferences:symbolColor"
@@ -738,19 +716,6 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let Preferences_mFreeRouterGuiDefaultFileContents = "Preferences:mFreeRouterGuiDefaultFileContents"
 @MainActor let Preferences_sampleStringSize = "Preferences:sampleStringSize"
 @MainActor let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryCheckTime"
-
-//····················································································································
-//   Atomic property: mAutoLayoutStyle
-//····················································································································
-
-@MainActor let preferences_mAutoLayoutStyle_property = EBPreferencesProperty_AutoLayoutUserInterfaceStyle (defaultValue: AutoLayoutUserInterfaceStyle.roundedBezel, prefKey: Preferences_mAutoLayoutStyle)
-
-//····················································································································
-
-@MainActor var preferences_mAutoLayoutStyle : AutoLayoutUserInterfaceStyle {
-  get { return preferences_mAutoLayoutStyle_property.propval }
-  set { preferences_mAutoLayoutStyle_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: hiliteWidthMultipliedByTen

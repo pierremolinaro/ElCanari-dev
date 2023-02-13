@@ -17,9 +17,7 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : AutoLayoutBase_N
   init (size inSize : EBControlSize) {
     super.init (pullsDown: true,size: inSize)
 
-//    self.controlSize = inSize.cocoaControlSize
-//    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
-    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+    self.bezelStyle = .rounded
     if let cell = self.cell as? NSPopUpButtonCell {
       cell.arrowPosition = .arrowAtBottom
     }

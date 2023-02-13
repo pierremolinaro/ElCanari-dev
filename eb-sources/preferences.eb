@@ -31,7 +31,7 @@ prefs {
 
 prefs {
   property Bool showDebugMenu default no ;
-  property AutoLayoutUserInterfaceStyle mAutoLayoutStyle default roundedBezel ;
+//  property AutoLayoutUserInterfaceStyle mAutoLayoutStyle default roundedBezel ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————
@@ -88,13 +88,13 @@ prefs {
           $selectedTag prefs.hiliteWidthMultipliedByTen
         }
       )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "User Interface Style", bold: no, size: .regular, alignment: .right),
-        right: EnumPopUpButton (titles: enum AutoLayoutUserInterfaceStyle.popupTitles, size: .regular) {
-          notExpandableWidth ()
-          $selectedIndex prefs.mAutoLayoutStyle
-        }
-      )
+//      addFirstBaseLineAligned (
+//        left: StaticLabel (title: "User Interface Style", bold: no, size: .regular, alignment: .right),
+//        right: EnumPopUpButton (titles: enum AutoLayoutUserInterfaceStyle.popupTitles, size: .regular) {
+//          notExpandableWidth ()
+//          $selectedIndex prefs.mAutoLayoutStyle
+//        }
+//      )
       addFirstBaseLineAligned (
         left: space,
         right: Checkbox (title: "Show Debug Menu", size: .regular) { $value prefs.showDebugMenu }

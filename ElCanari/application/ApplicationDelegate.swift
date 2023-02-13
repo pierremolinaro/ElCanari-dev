@@ -181,20 +181,18 @@ enum DocumentFormat {
   //····················································································································
 
   @MainActor func applicationWillFinishLaunching (_ inNotification : Notification) {
- //   DispatchQueue.main.async {
-      self.mOpenSymbolInLibraryMenuItem?.target = self.mOpenSymbolInLibrary
-      self.mOpenSymbolInLibraryMenuItem?.action = #selector (OpenSymbolInLibrary.openSymbolInLibrary (_:))
-      self.mOpenPackageInLibraryMenuItem?.target = self.mOpenPackageInLibrary
-      self.mOpenPackageInLibraryMenuItem?.action = #selector (OpenPackageInLibrary.openPackageInLibrary (_:))
-      self.mOpenDeviceInLibraryMenuItem?.target = self.mOpenDeviceInLibrary
-      self.mOpenDeviceInLibraryMenuItem?.action = #selector (OpenDeviceInLibrary.openDeviceInLibrary (_:))
-      self.mOpenFontInLibraryMenuItem?.target = self.mOpenFontInLibrary
-      self.mOpenFontInLibraryMenuItem?.action = #selector (OpenFontInLibrary.openFontInLibrary (_:))
-    //---
-      self.checkForLibraryUpdateAtLaunch ()
-      instanciateDebugMenuVisibilityObjectOnWillFinishLaunchingNotification ()
-      self.addAutoLayoutUserInterfaceStyleObserver ()
-//    }
+    self.mOpenSymbolInLibraryMenuItem?.target = self.mOpenSymbolInLibrary
+    self.mOpenSymbolInLibraryMenuItem?.action = #selector (OpenSymbolInLibrary.openSymbolInLibrary (_:))
+    self.mOpenPackageInLibraryMenuItem?.target = self.mOpenPackageInLibrary
+    self.mOpenPackageInLibraryMenuItem?.action = #selector (OpenPackageInLibrary.openPackageInLibrary (_:))
+    self.mOpenDeviceInLibraryMenuItem?.target = self.mOpenDeviceInLibrary
+    self.mOpenDeviceInLibraryMenuItem?.action = #selector (OpenDeviceInLibrary.openDeviceInLibrary (_:))
+    self.mOpenFontInLibraryMenuItem?.target = self.mOpenFontInLibrary
+    self.mOpenFontInLibraryMenuItem?.action = #selector (OpenFontInLibrary.openFontInLibrary (_:))
+  //---
+    self.checkForLibraryUpdateAtLaunch ()
+    instanciateDebugMenuVisibilityObjectOnWillFinishLaunchingNotification ()
+//    self.addAutoLayoutUserInterfaceStyleObserver ()
   }
 
   //····················································································································
@@ -263,18 +261,18 @@ enum DocumentFormat {
   //   AutoLayout user interface style
   //····················································································································
 
-  fileprivate var mUserInterfaceStyleObserver : EBObservablePropertyController? = nil
+//  fileprivate var mUserInterfaceStyleObserver : EBObservablePropertyController? = nil
 
   //····················································································································
 
-  @MainActor fileprivate func addAutoLayoutUserInterfaceStyleObserver () {
-    self.mUserInterfaceStyleObserver = EBObservablePropertyController (
-      observedObjects: [preferences_mAutoLayoutStyle_property],
-      callBack: {
-         changeAutoLayoutUserInterfaceStyle (to: preferences_mAutoLayoutStyle)
-      }
-    )
-  }
+//  @MainActor fileprivate func addAutoLayoutUserInterfaceStyleObserver () {
+//    self.mUserInterfaceStyleObserver = EBObservablePropertyController (
+//      observedObjects: [preferences_mAutoLayoutStyle_property],
+//      callBack: {
+//         changeAutoLayoutUserInterfaceStyle (to: preferences_mAutoLayoutStyle)
+//      }
+//    )
+//  }
 
   //····················································································································
 

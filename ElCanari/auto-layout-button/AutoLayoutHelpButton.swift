@@ -28,8 +28,8 @@ final class AutoLayoutHelpButton : AutoLayoutBase_NSButton {
 
   //····················································································································
 
-  override final func updateAutoLayoutUserInterfaceStyle () {
-  }
+//  override final func updateAutoLayoutUserInterfaceStyle () {
+//  }
 
   //····················································································································
 

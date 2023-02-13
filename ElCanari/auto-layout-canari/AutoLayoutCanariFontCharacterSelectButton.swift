@@ -22,7 +22,7 @@ final class AutoLayoutCanariFontCharacterSelectButton : AutoLayoutBase_NSButton 
 
 //    self.controlSize = .small
 //    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+    self.bezelStyle = .rounded
   }
 
   //····················································································································

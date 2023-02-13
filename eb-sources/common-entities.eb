@@ -1,16 +1,16 @@
 //——————————————————————————————————————————————————————————————————————————————
 
-enum AutoLayoutUserInterfaceStyle {
-  roundedBezel, roundRect, texturedRounded, texturedSquare, shadowlessSquare
-}
+//enum AutoLayoutUserInterfaceStyle {
+//  roundedBezel, roundRect, texturedRounded, texturedSquare, shadowlessSquare
+//}
 
-func enum AutoLayoutUserInterfaceStyle.popupTitles {
-  roundedBezel : "Rounded Bezel" ;
-  roundRect : "Round Rect" ;
-  texturedRounded : "Textured Rounded" ;
-  texturedSquare : "Textured Square" ;
-  shadowlessSquare : "Shadowless Square" ;
-}
+//func enum AutoLayoutUserInterfaceStyle.popupTitles {
+//  roundedBezel : "Rounded Bezel" ;
+//  roundRect : "Round Rect" ;
+//  texturedRounded : "Textured Rounded" ;
+//  texturedSquare : "Textured Square" ;
+//  shadowlessSquare : "Shadowless Square" ;
+//}
 
 enum TextAlignment {
   left, right, center

@@ -26,7 +26,7 @@ class AutoLayoutBase_NSButton : NSButton {
     self.title = inTitle
     self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
-    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+    self.bezelStyle = .rounded
 
     self.lineBreakMode = .byTruncatingTail
 
@@ -50,10 +50,10 @@ class AutoLayoutBase_NSButton : NSButton {
 
   //····················································································································
 
-  override func updateAutoLayoutUserInterfaceStyle () {
-    super.updateAutoLayoutUserInterfaceStyle ()
-    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-  }
+//  override func updateAutoLayoutUserInterfaceStyle () {
+//    super.updateAutoLayoutUserInterfaceStyle ()
+//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+//  }
 
   //····················································································································
   //  Closure action

@@ -19,7 +19,7 @@ class AutoLayoutBase_NSSegmentedControl : NSSegmentedControl {
     noteObjectAllocation (self)
 
     self.translatesAutoresizingMaskIntoConstraints = false
-    self.segmentStyle = autoLayoutCurrentStyle ().segmentedControlStyle
+    self.segmentStyle = .rounded
 
     self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
@@ -47,10 +47,10 @@ class AutoLayoutBase_NSSegmentedControl : NSSegmentedControl {
 
   //····················································································································
 
-  override final func updateAutoLayoutUserInterfaceStyle () {
-    super.updateAutoLayoutUserInterfaceStyle ()
-    self.segmentStyle = autoLayoutCurrentStyle ().segmentedControlStyle
-  }
+//  override final func updateAutoLayoutUserInterfaceStyle () {
+//    super.updateAutoLayoutUserInterfaceStyle ()
+//    self.segmentStyle = autoLayoutCurrentStyle ().segmentedControlStyle
+//  }
 
   //····················································································································
   //  $enabled binding
