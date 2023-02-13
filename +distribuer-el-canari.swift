@@ -33,9 +33,10 @@ let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Le copier/coller d'un texte dans un circuit provoquait un plantage"
 ]
 let CHANGES : [String] = [
-  "Utilisation de Sparkle 2.3.1"
+  "Utilisation de Sparkle 2.3.2"
 ]
 let NEWS : [String] = [
 ]
