@@ -210,7 +210,7 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
         //--- Associated data
           let dataDictionary : [String : Any] = [
             OBJECT_DICTIONARY_KEY : [[String : Any]] (),
-            OBJECT_ADDITIONAL_DICTIONARY_KEY : [], // [additionalDict],
+            OBJECT_ADDITIONAL_DICTIONARY_KEY : [[String : Any]] (),
             X_KEY : 0,
             Y_KEY : 0
           ]
