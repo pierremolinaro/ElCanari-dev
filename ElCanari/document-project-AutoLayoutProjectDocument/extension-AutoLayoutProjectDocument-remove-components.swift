@@ -76,6 +76,12 @@ extension AutoLayoutProjectDocument {
         self.performNormalizeComponentNames ()
       }
     }
+  //--- Remove unused components models from embedded library
+    for device in self.rootObject.mDevices.values {
+      if device.mComponents.count == 0 {
+        self.rootObject.mDevices_property.remove (device)
+      }
+    }
   }
 
   //····················································································································
