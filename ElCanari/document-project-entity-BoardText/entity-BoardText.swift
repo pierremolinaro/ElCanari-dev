@@ -12,8 +12,20 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol BoardText_mXUnit : AnyObject {
+  var mXUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol BoardText_mY : AnyObject {
   var mY : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardText_mYUnit : AnyObject {
+  var mYUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -94,7 +106,9 @@ import AppKit
 
 final class BoardText : BoardObject,
          BoardText_mX,
+         BoardText_mXUnit,
          BoardText_mY,
+         BoardText_mYUnit,
          BoardText_mFontSize,
          BoardText_mLayer,
          BoardText_mText,
@@ -128,6 +142,25 @@ final class BoardText : BoardObject,
   }
 
   //····················································································································
+  //   Atomic property: mXUnit
+  //····················································································································
+
+  final let mXUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mXUnit_toDefaultValue () {
+    self.mXUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mXUnit : Int {
+    get { return self.mXUnit_property.propval }
+    set { self.mXUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Atomic property: mY
   //····················································································································
 
@@ -144,6 +177,25 @@ final class BoardText : BoardObject,
   final var mY : Int {
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mYUnit
+  //····················································································································
+
+  final let mYUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mYUnit_toDefaultValue () {
+    self.mYUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mYUnit : Int {
+    get { return self.mYUnit_property.propval }
+    set { self.mYUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -344,7 +396,9 @@ final class BoardText : BoardObject,
 
   required init (_ inUndoManager : UndoManager?) {
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
+    self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mXUnit")
     self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
+    self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYUnit")
     self.mFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: inUndoManager, key: "mFontSize")
     self.mLayer_property = EBStoredProperty_BoardTextLayer (defaultValue: BoardTextLayer.legendFront, undoManager: inUndoManager, key: "mLayer")
     self.mText_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mText")

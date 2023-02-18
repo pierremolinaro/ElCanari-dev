@@ -1980,6 +1980,19 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addSeparator ()
       addFirstBaseLineAligned (
+        left: StaticLabels (left: "Origin", right:"X", bold: no, size: .small),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardTextSelectionController.mX, #boardTextSelectionController.mXUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardTextSelectionController.mY, #boardTextSelectionController.mYUnit
+        }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
         left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .right),
         right: CanariBoardFontPopUpButton {
           $currentFontName #boardTextSelectionController.fontName

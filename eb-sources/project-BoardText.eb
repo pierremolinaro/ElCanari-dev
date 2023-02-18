@@ -8,7 +8,9 @@ graphic handlingOpposite entity BoardText : BoardObject {
   toOne @weak FontInProject mFont inverse toMany mTexts ;
 
   property Int mX default 0 ;
+  property Int mXUnit default 2_286 ; // mil
   property Int mY default 0 ;
+  property Int mYUnit default 2_286 ; // mil
   property Double mFontSize default 4.0 ;
   property BoardTextLayer mLayer default legendFront ;
   property String mText default "" ;

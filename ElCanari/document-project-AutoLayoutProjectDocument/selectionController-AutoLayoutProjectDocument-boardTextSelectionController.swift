@@ -29,10 +29,22 @@ import AppKit
   final let mX_property = EBComputedProperty_Int ()
 
   //····················································································································
+  //   Selection observable property: mXUnit
+  //····················································································································
+
+  final let mXUnit_property = EBComputedProperty_Int ()
+
+  //····················································································································
   //   Selection observable property: mY
   //····················································································································
 
   final let mY_property = EBComputedProperty_Int ()
+
+  //····················································································································
+  //   Selection observable property: mYUnit
+  //····················································································································
+
+  final let mYUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mFontSize
@@ -123,7 +135,9 @@ import AppKit
   final func bind_selection (model : ReadOnlyArrayOf_BoardObject) {
     self.selectedArray_property.setDataProvider (model)
     self.bind_property_mX ()
+    self.bind_property_mXUnit ()
     self.bind_property_mY ()
+    self.bind_property_mYUnit ()
     self.bind_property_mFontSize ()
     self.bind_property_mLayer ()
     self.bind_property_mText ()
@@ -148,10 +162,18 @@ import AppKit
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_mX_StopsBeingObserved (by: self.mX_property)
+  //--- mXUnit
+    self.mXUnit_property.mReadModelFunction = nil 
+    self.mXUnit_property.mWriteModelFunction = nil 
+    self.selectedArray_property.toMany_mXUnit_StopsBeingObserved (by: self.mXUnit_property)
   //--- mY
     self.mY_property.mReadModelFunction = nil 
     self.mY_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_mY_StopsBeingObserved (by: self.mY_property)
+  //--- mYUnit
+    self.mYUnit_property.mReadModelFunction = nil 
+    self.mYUnit_property.mWriteModelFunction = nil 
+    self.selectedArray_property.toMany_mYUnit_StopsBeingObserved (by: self.mYUnit_property)
   //--- mFontSize
     self.mFontSize_property.mReadModelFunction = nil 
     self.mFontSize_property.mWriteModelFunction = nil 
@@ -251,6 +273,57 @@ import AppKit
   }
   //····················································································································
 
+  private final func bind_property_mXUnit () {
+    self.selectedArray_property.toMany_mXUnit_StartsToBeObserved (by: self.mXUnit_property)
+    self.mXUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mXUnit_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mXUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mXUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+  //····················································································································
+
   private final func bind_property_mY () {
     self.selectedArray_property.toMany_mY_StartsToBeObserved (by: self.mY_property)
     self.mY_property.mReadModelFunction = { [weak self] in
@@ -295,6 +368,57 @@ import AppKit
         case .single (let v) :
           for object in v {
             object.mY_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mYUnit () {
+    self.selectedArray_property.toMany_mYUnit_StartsToBeObserved (by: self.mYUnit_property)
+    self.mYUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mYUnit_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mYUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mYUnit_property.setProp (inValue)
           }
         }
       }
