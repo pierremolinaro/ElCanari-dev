@@ -28,17 +28,17 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.7.1"
+let VERSION_CANARI = "1.7.2"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Le copier/coller d'un texte dans un circuit provoquait un plantage"
 ]
 let CHANGES : [String] = [
-  "Utilisation de Sparkle 2.3.2"
+  "Dans un projet, un device qui ne désigne aucun composant est automatiquement enlevé"
 ]
 let NEWS : [String] = [
+  "Ajout d'un inspecteur X et Y pour les textes d'un circuit"
 ]
 
 //--------------------------------------------------------------------------------------------------
@@ -148,16 +148,16 @@ fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 //-------------------- Importer ElCanari
 let CANARI_DIR = "ElCanari-dev"
 runCommand ("/bin/rm", ["-fr", CANARI_DIR])
-runCommand ("/usr/local/bin/git", ["clone", "--depth=1", "https://github.com/pierremolinaro/ElCanari-dev.git"])
+runCommand ("/usr/bin/git", ["clone", "--depth=1", "https://github.com/pierremolinaro/ElCanari-dev.git"])
 fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/" + CANARI_DIR)
 //-------------------- Obtenir l'année
 let ANNEE = Calendar.current.component (.year, from: Date ())
 print ("ANNÉE : \(ANNEE)")
 do{
 //-------------------- Obtenir le SHA du dernier commit
-  var sha = runHiddenCommand ("/usr/local/bin/git", ["rev-parse", "--short", "HEAD"])
+  var sha = runHiddenCommand ("/usr/bin/git", ["rev-parse", "--short", "HEAD"])
   _ = sha.removeLast () // Remove trailing LF
-//  let sha = runHiddenCommand ("/usr/local/bin/git", ["log", "-n1", "--format=format:\"%H\""])
+//  let sha = runHiddenCommand ("/usr/bin/git", ["log", "-n1", "--format=format:\"%H\""])
 //  Swift.print ("sha \(sha)")
 //-------------------- Écrire le SHA
   let fileRelativePath = "ElCanari/resources/Credits.rtf"
