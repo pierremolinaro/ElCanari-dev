@@ -5248,7 +5248,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_196 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Net Name", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Net Name", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -5269,7 +5269,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_198 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Net Class Name", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Net Class Name", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -5290,7 +5290,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_200 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Side", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Side", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -5359,7 +5359,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_207 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Custom", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Custom Width", bold: false, size: .small, alignment: .left)
       .bind_hidden (.not (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)))
     return view
   }
@@ -5394,7 +5394,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_210 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "On Knob Dragging", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "On Knob Dragging", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -5413,7 +5413,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_212 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Track Angle", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Track Angle", bold: false, size: .small, alignment: .left)
     return view
   }
 

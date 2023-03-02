@@ -1736,7 +1736,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     StaticLabel (title: "Board Track", bold: yes, size: .small, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Net Name", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Net Name", bold: no, size: .small, alignment: .left),
         right: Label (bold: yes, size: .small) {
           set (alignment: .left)
           expandableWidth ()
@@ -1744,7 +1744,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Net Class Name", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Net Class Name", bold: no, size: .small, alignment: .left),
         right: Label (bold: yes, size: .small) {
           set (alignment: .left)
           expandableWidth ()
@@ -1752,7 +1752,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Side", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Side", bold: no, size: .small, alignment: .left),
         right: EnumPopUpButton (titles: enum TrackSide.popupTitles, size: .small) {
           $selectedIndex #boardTrackSelectionController.mSide
         }
@@ -1773,7 +1773,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Custom", bold: no, size: .small, alignment: .center) { $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth },
+        left: StaticLabel (title: "Custom Width", bold: no, size: .small, alignment: .left) { $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth },
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTrackSelectionController.mCustomTrackWidth, #boardTrackSelectionController.mCustomTrackWidthUnit
           $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth
@@ -1790,13 +1790,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "On Knob Dragging", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "On Knob Dragging", bold: no, size: .small, alignment: .left),
         right: EnumPopUpButton (titles: enum TrackLockDirection.popupTitles, size: .small) {
           $selectedIndex #boardTrackSelectionController.mDirectionLockOnKnobDragging
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Track Angle", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Track Angle", bold: no, size: .small, alignment: .left),
         right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
           $angle #boardTrackSelectionController.trackDirectionInDegrees
           $enabled #boardTrackSelectionController.trackCanRotate
