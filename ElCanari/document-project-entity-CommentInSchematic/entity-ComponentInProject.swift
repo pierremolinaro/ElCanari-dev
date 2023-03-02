@@ -132,6 +132,30 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol ComponentInProject_mXNameUnit : AnyObject {
+  var mXNameUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol ComponentInProject_mYNameUnit : AnyObject {
+  var mYNameUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol ComponentInProject_mXValueUnit : AnyObject {
+  var mXValueUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol ComponentInProject_mYValueUnit : AnyObject {
+  var mYValueUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol ComponentInProject_deviceName : AnyObject {
   var deviceName : String? { get }
 }
@@ -282,6 +306,10 @@ final class ComponentInProject : BoardObject,
          ComponentInProject_mNameIndex,
          ComponentInProject_mXUnit,
          ComponentInProject_mYUnit,
+         ComponentInProject_mXNameUnit,
+         ComponentInProject_mYNameUnit,
+         ComponentInProject_mXValueUnit,
+         ComponentInProject_mYValueUnit,
          ComponentInProject_deviceName,
          ComponentInProject_signatureForERCChecking,
          ComponentInProject_packagePadDictionary,
@@ -734,6 +762,82 @@ final class ComponentInProject : BoardObject,
   }
 
   //····················································································································
+  //   Atomic property: mXNameUnit
+  //····················································································································
+
+  final let mXNameUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mXNameUnit_toDefaultValue () {
+    self.mXNameUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mXNameUnit : Int {
+    get { return self.mXNameUnit_property.propval }
+    set { self.mXNameUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mYNameUnit
+  //····················································································································
+
+  final let mYNameUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mYNameUnit_toDefaultValue () {
+    self.mYNameUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mYNameUnit : Int {
+    get { return self.mYNameUnit_property.propval }
+    set { self.mYNameUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mXValueUnit
+  //····················································································································
+
+  final let mXValueUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mXValueUnit_toDefaultValue () {
+    self.mXValueUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mXValueUnit : Int {
+    get { return self.mXValueUnit_property.propval }
+    set { self.mXValueUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mYValueUnit
+  //····················································································································
+
+  final let mYValueUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mYValueUnit_toDefaultValue () {
+    self.mYValueUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mYValueUnit : Int {
+    get { return self.mYValueUnit_property.propval }
+    set { self.mYValueUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Array controller: componentAvailablePackagesController
   //····················································································································
 
@@ -1093,6 +1197,10 @@ final class ComponentInProject : BoardObject,
     self.mNameIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mNameIndex")
     self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mXUnit")
     self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYUnit")
+    self.mXNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mXNameUnit")
+    self.mYNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYNameUnit")
+    self.mXValueUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mXValueUnit")
+    self.mYValueUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYValueUnit")
     super.init (inUndoManager)
     self.mDevice_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {

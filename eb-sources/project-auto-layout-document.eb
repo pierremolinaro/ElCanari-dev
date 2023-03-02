@@ -2050,14 +2050,65 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView \ComponentInBoardInspectorView vStack {
     StaticLabel (title: "Component Inspector", bold: yes, size: .small, alignment: .center)
+    Checkbox (title: "Display Name", size: .small) {
+      expandableWidth ()
+      $value #componentInBoardSelectionController.mNameIsVisibleInBoard
+    }
+    Checkbox (title: "Display Value", size: .small) {
+      expandableWidth ()
+      $value #componentInBoardSelectionController.mValueIsVisibleInBoard
+    }
+    Checkbox (title: "Draw Component Legend", size: .small) {
+      expandableWidth ()
+      $value #componentInBoardSelectionController.mDisplayLegend
+    }
+    Checkbox (title: "Show Rotation Knob", size: .small) {
+      expandableWidth ()
+      set (toolTip: "Common to all packages, stored in Preferences")
+      $value prefs.mShowComponentRotationKnobInBoard
+    }
+    separator
     GridView2 {
+      add (single: StaticLabel (title: "Package", bold: yes, size: .small, alignment: .left))
+      addFirstBaseLineAligned (
+        left: StaticLabels (left: "Center", right:"X", bold: no, size: .small),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #componentInBoardSelectionController.mX, #componentInBoardSelectionController.mXUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #componentInBoardSelectionController.mY, #componentInBoardSelectionController.mYUnit
+        }
+      )
+      add (single: CanariBoardComponentPackagePopUpButton [configurator componentPackagePopUpButtonConfigurator])
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
+        right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mRotation }
+      )
+      addFirstBaseLineAligned (
+        left: space,
+        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+          $angle #componentInBoardSelectionController.mRotation
+        }
+      )
+      addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Name", bold: yes, size: .small, alignment: .left),
         right: Label (bold: yes, size: .small) { set (alignment: .left) $title #componentInBoardSelectionController.componentName }
       )
       addFirstBaseLineAligned (
-        left: space,
-        right: Checkbox (title: "Display Name", size: .small) { $value #componentInBoardSelectionController.mNameIsVisibleInBoard }
+        left: StaticLabels (left: "Center", right:"∆X", bold: no, size: .small),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #componentInBoardSelectionController.mXName, #componentInBoardSelectionController.mXNameUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #componentInBoardSelectionController.mYName, #componentInBoardSelectionController.mYNameUnit
+        }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
@@ -2086,37 +2137,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addSeparator ()
-      add (single: Checkbox (title: "Draw Component Legend", size: .small) { $value #componentInBoardSelectionController.mDisplayLegend })
-      addSeparator ()
-      add (single: StaticLabel (title: "Package", bold: yes, size: .small, alignment: .left))
-      add (single: CanariBoardComponentPackagePopUpButton [configurator componentPackagePopUpButtonConfigurator])
-      add (single: Checkbox (title: "Show Rotation Knob", size: .small) {
-        set (toolTip: "Common to all packages, stored in Preferences")
-        $value prefs.mShowComponentRotationKnobInBoard
-      })
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
-        right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mRotation }
-      )
-      addFirstBaseLineAligned (
-        left: space,
-        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
-          $angle #componentInBoardSelectionController.mRotation
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabels (left: "Center", right:"X", bold: no, size: .small),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #componentInBoardSelectionController.mX, #componentInBoardSelectionController.mXUnit
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #componentInBoardSelectionController.mY, #componentInBoardSelectionController.mYUnit
-        }
-      )
-      addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Value", bold: yes, size: .small, alignment: .left),
         right: TextField (minWidth: 150, size: .small) {
@@ -2126,8 +2146,23 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addFirstBaseLineAligned (
-        left: space,
-        right: Checkbox (title: "Display Value", size: .small) { $value #componentInBoardSelectionController.mValueIsVisibleInBoard }
+        left: StaticLabels (left: "Center", right:"∆X", bold: no, size: .small),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #componentInBoardSelectionController.mXValue, #componentInBoardSelectionController.mXValueUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #componentInBoardSelectionController.mYValue, #componentInBoardSelectionController.mYValueUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
+        right: DoubleField (width: 64, size: .small) {
+          $value #componentInBoardSelectionController.mNameFontSize (sendContinously : no)
+          // $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
+        }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),

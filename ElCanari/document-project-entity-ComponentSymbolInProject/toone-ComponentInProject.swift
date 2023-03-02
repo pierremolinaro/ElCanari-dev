@@ -37,6 +37,10 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
       oldValue.mNameIndex_property.stopsBeingObserved (by: self.mNameIndex_property) // Stored property
       oldValue.mXUnit_property.stopsBeingObserved (by: self.mXUnit_property) // Stored property
       oldValue.mYUnit_property.stopsBeingObserved (by: self.mYUnit_property) // Stored property
+      oldValue.mXNameUnit_property.stopsBeingObserved (by: self.mXNameUnit_property) // Stored property
+      oldValue.mYNameUnit_property.stopsBeingObserved (by: self.mYNameUnit_property) // Stored property
+      oldValue.mXValueUnit_property.stopsBeingObserved (by: self.mXValueUnit_property) // Stored property
+      oldValue.mYValueUnit_property.stopsBeingObserved (by: self.mYValueUnit_property) // Stored property
       oldValue.deviceName_property.stopsBeingObserved (by: self.deviceName_property) // Transient property
       oldValue.signatureForERCChecking_property.stopsBeingObserved (by: self.signatureForERCChecking_property) // Transient property
       oldValue.packagePadDictionary_property.stopsBeingObserved (by: self.packagePadDictionary_property) // Transient property
@@ -88,6 +92,10 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
       newValue.mNameIndex_property.startsToBeObserved (by: self.mNameIndex_property) // Stored property
       newValue.mXUnit_property.startsToBeObserved (by: self.mXUnit_property) // Stored property
       newValue.mYUnit_property.startsToBeObserved (by: self.mYUnit_property) // Stored property
+      newValue.mXNameUnit_property.startsToBeObserved (by: self.mXNameUnit_property) // Stored property
+      newValue.mYNameUnit_property.startsToBeObserved (by: self.mYNameUnit_property) // Stored property
+      newValue.mXValueUnit_property.startsToBeObserved (by: self.mXValueUnit_property) // Stored property
+      newValue.mYValueUnit_property.startsToBeObserved (by: self.mYValueUnit_property) // Stored property
       newValue.deviceName_property.startsToBeObserved (by: self.deviceName_property) // Transient property
       newValue.signatureForERCChecking_property.startsToBeObserved (by: self.signatureForERCChecking_property) // Transient property
       newValue.packagePadDictionary_property.startsToBeObserved (by: self.packagePadDictionary_property) // Transient property
@@ -243,6 +251,30 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let mYUnit_property = EBGenericTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'mXNameUnit' stored property
+  //····················································································································
+
+  final let mXNameUnit_property = EBGenericTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'mYNameUnit' stored property
+  //····················································································································
+
+  final let mYNameUnit_property = EBGenericTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'mXValueUnit' stored property
+  //····················································································································
+
+  final let mXValueUnit_property = EBGenericTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'mYValueUnit' stored property
+  //····················································································································
+
+  final let mYValueUnit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'deviceName' transient property
@@ -753,6 +785,70 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
       return self?.mWeakInternalValue?.mYUnit_property.optionalSelection ?? .single (nil)
       /* if let model = self?.mWeakInternalValue {
         switch model.mYUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      } */
+    }
+  //--- Configure mXNameUnit simple stored property
+    self.mXNameUnit_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mXNameUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
+        switch model.mXNameUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      } */
+    }
+  //--- Configure mYNameUnit simple stored property
+    self.mYNameUnit_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mYNameUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
+        switch model.mYNameUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      } */
+    }
+  //--- Configure mXValueUnit simple stored property
+    self.mXValueUnit_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mXValueUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
+        switch model.mXValueUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      } */
+    }
+  //--- Configure mYValueUnit simple stored property
+    self.mYValueUnit_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mYValueUnit_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
+        switch model.mYValueUnit_property.selection {
         case .empty :
           return .empty
         case .multiple :

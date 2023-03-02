@@ -80,6 +80,18 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
       if let relay = self.mObserversOf_mYUnit { // Stored property
         managedObject.mYUnit_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mXNameUnit { // Stored property
+        managedObject.mXNameUnit_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mYNameUnit { // Stored property
+        managedObject.mYNameUnit_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mXValueUnit { // Stored property
+        managedObject.mXValueUnit_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mYValueUnit { // Stored property
+        managedObject.mYValueUnit_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_deviceName { // Transient property
         managedObject.deviceName_property.stopsBeingObserved (by: relay)
       }
@@ -211,6 +223,18 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
       }
       if let relay = self.mObserversOf_mYUnit { // Stored property
         managedObject.mYUnit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mXNameUnit { // Stored property
+        managedObject.mXNameUnit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mYNameUnit { // Stored property
+        managedObject.mYNameUnit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mXValueUnit { // Stored property
+        managedObject.mXValueUnit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mYValueUnit { // Stored property
+        managedObject.mYValueUnit_property.startsToBeObserved (by: relay)
       }
       if let relay = self.mObserversOf_deviceName { // Transient property
         managedObject.deviceName_property.startsToBeObserved (by: relay)
@@ -888,6 +912,122 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   final func toMany_mYUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mYUnit?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'mXNameUnit' stored property
+  //····················································································································
+
+  private final var mObserversOf_mXNameUnit : EBObservedObject? = nil
+
+  //····················································································································
+
+  final func toMany_mXNameUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObject
+    if let r = self.mObserversOf_mXNameUnit {
+      relay = r
+    }else{
+      relay = EBObservedObject ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mXNameUnit_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_mXNameUnit = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mXNameUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mXNameUnit?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'mYNameUnit' stored property
+  //····················································································································
+
+  private final var mObserversOf_mYNameUnit : EBObservedObject? = nil
+
+  //····················································································································
+
+  final func toMany_mYNameUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObject
+    if let r = self.mObserversOf_mYNameUnit {
+      relay = r
+    }else{
+      relay = EBObservedObject ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mYNameUnit_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_mYNameUnit = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mYNameUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mYNameUnit?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'mXValueUnit' stored property
+  //····················································································································
+
+  private final var mObserversOf_mXValueUnit : EBObservedObject? = nil
+
+  //····················································································································
+
+  final func toMany_mXValueUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObject
+    if let r = self.mObserversOf_mXValueUnit {
+      relay = r
+    }else{
+      relay = EBObservedObject ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mXValueUnit_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_mXValueUnit = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mXValueUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mXValueUnit?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'mYValueUnit' stored property
+  //····················································································································
+
+  private final var mObserversOf_mYValueUnit : EBObservedObject? = nil
+
+  //····················································································································
+
+  final func toMany_mYValueUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObject
+    if let r = self.mObserversOf_mYValueUnit {
+      relay = r
+    }else{
+      relay = EBObservedObject ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mYValueUnit_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_mYValueUnit = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mYValueUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mYValueUnit?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
