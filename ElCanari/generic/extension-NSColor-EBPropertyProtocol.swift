@@ -31,7 +31,12 @@ extension NSColor : EBStoredPropertyProtocol {
       return Self.unarchiveFromString (string: string) as! Self
     }else{ // Old color save
       let data = inObject as! Data
-      return (try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData (data)) as! Self
+      // return (try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData (data)) as! Self // unarchiveTopLevelObjectWithData' was deprecated in macOS 10.14
+      if let color = try? NSKeyedUnarchiver.unarchivedObject (ofClass: NSColor.self, from: data) {
+        return color as! Self
+      }else{
+         return NSColor.black as! Self
+      }
     }
   }
 
