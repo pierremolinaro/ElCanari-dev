@@ -163,6 +163,18 @@ extension ComponentInProject {
     if isAligned {
       isAligned = self.mY.isAlignedOnGrid (inGrid)
     }
+    if isAligned {
+      isAligned = self.mXName.isAlignedOnGrid (inGrid)
+    }
+    if isAligned {
+      isAligned = self.mYName.isAlignedOnGrid (inGrid)
+    }
+    if isAligned {
+      isAligned = self.mXValue.isAlignedOnGrid (inGrid)
+    }
+    if isAligned {
+      isAligned = self.mYValue.isAlignedOnGrid (inGrid)
+    }
     return !isAligned
   }
 
@@ -171,6 +183,10 @@ extension ComponentInProject {
   func snapToGrid_ComponentInProject (_ inGrid : Int) {
     self.mX.align (onGrid: inGrid)
     self.mY.align (onGrid: inGrid)
+    self.mXName.align (onGrid: inGrid)
+    self.mYName.align (onGrid: inGrid)
+    self.mXValue.align (onGrid: inGrid)
+    self.mYValue.align (onGrid: inGrid)
   }
 
   //····················································································································
