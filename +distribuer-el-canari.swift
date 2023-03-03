@@ -38,7 +38,9 @@ let CHANGES : [String] = [
   "Dans un projet, un device qui ne désigne aucun composant est automatiquement enlevé"
 ]
 let NEWS : [String] = [
-  "Ajout d'un inspecteur X et Y pour les textes d'un circuit"
+  "Ajout d'un inspecteur X et Y pour les textes d'un circuit",
+  "Réorganisation de l'inspecteur des composants d'un circuit",
+  "Réorganisation de l'inspecteur des pistes d'un circuit"
 ]
 
 //--------------------------------------------------------------------------------------------------
