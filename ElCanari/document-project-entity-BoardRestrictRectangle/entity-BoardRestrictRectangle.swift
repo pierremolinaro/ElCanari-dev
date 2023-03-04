@@ -6,8 +6,20 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol BoardRestrictRectangle_mXUnit : AnyObject {
+  var mXUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol BoardRestrictRectangle_mY : AnyObject {
   var mY : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardRestrictRectangle_mYUnit : AnyObject {
+  var mYUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -18,8 +30,20 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol BoardRestrictRectangle_mWidthUnit : AnyObject {
+  var mWidthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol BoardRestrictRectangle_mHeight : AnyObject {
   var mHeight : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardRestrictRectangle_mHeightUnit : AnyObject {
+  var mHeightUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -87,9 +111,13 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class BoardRestrictRectangle : BoardObject,
+         BoardRestrictRectangle_mXUnit,
          BoardRestrictRectangle_mY,
+         BoardRestrictRectangle_mYUnit,
          BoardRestrictRectangle_mWidth,
+         BoardRestrictRectangle_mWidthUnit,
          BoardRestrictRectangle_mHeight,
+         BoardRestrictRectangle_mHeightUnit,
          BoardRestrictRectangle_mIsInFrontLayer,
          BoardRestrictRectangle_mIsInBackLayer,
          BoardRestrictRectangle_mIsInInner1Layer,
@@ -100,6 +128,25 @@ final class BoardRestrictRectangle : BoardObject,
          BoardRestrictRectangle_objectDisplay,
          BoardRestrictRectangle_selectionDisplay,
          BoardRestrictRectangle_signatureForERCChecking {
+
+  //····················································································································
+  //   Atomic property: mXUnit
+  //····················································································································
+
+  final let mXUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mXUnit_toDefaultValue () {
+    self.mXUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mXUnit : Int {
+    get { return self.mXUnit_property.propval }
+    set { self.mXUnit_property.setProp (newValue) }
+  }
 
   //····················································································································
   //   Atomic property: mY
@@ -118,6 +165,25 @@ final class BoardRestrictRectangle : BoardObject,
   final var mY : Int {
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mYUnit
+  //····················································································································
+
+  final let mYUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mYUnit_toDefaultValue () {
+    self.mYUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mYUnit : Int {
+    get { return self.mYUnit_property.propval }
+    set { self.mYUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -140,6 +206,25 @@ final class BoardRestrictRectangle : BoardObject,
   }
 
   //····················································································································
+  //   Atomic property: mWidthUnit
+  //····················································································································
+
+  final let mWidthUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mWidthUnit_toDefaultValue () {
+    self.mWidthUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mWidthUnit : Int {
+    get { return self.mWidthUnit_property.propval }
+    set { self.mWidthUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Atomic property: mHeight
   //····················································································································
 
@@ -156,6 +241,25 @@ final class BoardRestrictRectangle : BoardObject,
   final var mHeight : Int {
     get { return self.mHeight_property.propval }
     set { self.mHeight_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mHeightUnit
+  //····················································································································
+
+  final let mHeightUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mHeightUnit_toDefaultValue () {
+    self.mHeightUnit = 2286
+  }
+
+  //····················································································································
+
+  final var mHeightUnit : Int {
+    get { return self.mHeightUnit_property.propval }
+    set { self.mHeightUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -296,9 +400,13 @@ final class BoardRestrictRectangle : BoardObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
+    self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mXUnit")
     self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
+    self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYUnit")
     self.mWidth_property = EBStoredProperty_Int (defaultValue: 2286000, undoManager: inUndoManager, key: "mWidth")
+    self.mWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mWidthUnit")
     self.mHeight_property = EBStoredProperty_Int (defaultValue: 2286000, undoManager: inUndoManager, key: "mHeight")
+    self.mHeightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mHeightUnit")
     self.mIsInFrontLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mIsInFrontLayer")
     self.mIsInBackLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mIsInBackLayer")
     self.mIsInInner1Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mIsInInner1Layer")

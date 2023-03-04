@@ -1761,25 +1761,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         single: Checkbox (title: "Is Preserved by Auto Router", size : .small) { $value #boardTrackSelectionController.mIsPreservedByAutoRouter }
       )
       addSeparator ()
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Track Width", bold: no, size: .small, alignment: .left),
-        right: Checkbox (title: "Use Custom", size: .small) { $value #boardTrackSelectionController.mUsesCustomTrackWidth }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .center) { $hidden #boardTrackSelectionController.mUsesCustomTrackWidth } ,
-        right: CanariObservedDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardTrackSelectionController.netClassTrackWidth, #boardTrackSelectionController.mDefaultTrackWidthUnit
-          $hidden #boardTrackSelectionController.mUsesCustomTrackWidth
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Custom Width", bold: no, size: .small, alignment: .left) { $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth },
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardTrackSelectionController.mCustomTrackWidth, #boardTrackSelectionController.mCustomTrackWidthUnit
-          $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth
-        }
-      )
-      addSeparator ()
       add (single:
         CanariTrackLockView {
           $angle #boardTrackSelectionController.trackDirectionInDegrees
@@ -1800,6 +1781,33 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
           $angle #boardTrackSelectionController.trackDirectionInDegrees
           $enabled #boardTrackSelectionController.trackCanRotate
+        }
+      )
+      addSeparator ()
+      add (
+        single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter6
+          #boardTrackSelectionController.mP1XUnit, #boardTrackSelectionController.mP1YUnit,
+          #boardTrackSelectionController.mP2XUnit, #boardTrackSelectionController.mP2YUnit,
+          #boardTrackSelectionController.mDefaultTrackWidthUnit, #boardTrackSelectionController.mCustomTrackWidthUnit
+        }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Track Width", bold: no, size: .small, alignment: .left),
+        right: Checkbox (title: "Use Custom", size: .small) { $value #boardTrackSelectionController.mUsesCustomTrackWidth }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .center) { $hidden #boardTrackSelectionController.mUsesCustomTrackWidth } ,
+        right: CanariObservedDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardTrackSelectionController.netClassTrackWidth, #boardTrackSelectionController.mDefaultTrackWidthUnit
+          $hidden #boardTrackSelectionController.mUsesCustomTrackWidth
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Custom Width", bold: no, size: .small, alignment: .left) { $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth },
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardTrackSelectionController.mCustomTrackWidth, #boardTrackSelectionController.mCustomTrackWidthUnit
+          $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth
         }
       )
       addSeparator ()
@@ -1947,19 +1955,49 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }
 
 //--- Restrict rectangle inspector
-  selectionController BoardRestrictRectangle #restrictRectangleSelectionController :
+  selectionController BoardRestrictRectangle #restrictRectSelController :
     #boardObjectsController.selectedArray
   ;
 
   stackView \RestrictRectangleInspectorView vStack {
     StaticLabel (title: "Restrict Rectangle Inspector", bold: yes, size: .small, alignment: .center)
     CanariRestrictRectangleView {
-      $front #restrictRectangleSelectionController.mIsInFrontLayer
-      $back #restrictRectangleSelectionController.mIsInBackLayer
-      $inner1 #restrictRectangleSelectionController.mIsInInner1Layer
-      $inner2 #restrictRectangleSelectionController.mIsInInner2Layer
-      $inner3 #restrictRectangleSelectionController.mIsInInner3Layer
-      $inner4 #restrictRectangleSelectionController.mIsInInner4Layer
+      $front #restrictRectSelController.mIsInFrontLayer
+      $back #restrictRectSelController.mIsInBackLayer
+      $inner1 #restrictRectSelController.mIsInInner1Layer
+      $inner2 #restrictRectSelController.mIsInInner2Layer
+      $inner3 #restrictRectSelController.mIsInInner3Layer
+      $inner4 #restrictRectSelController.mIsInInner4Layer
+    }
+    CanariDimensionUnitSetterPullDownButton (size : .small) { $setter4
+      #restrictRectSelController.mXUnit, #restrictRectSelController.mYUnit,
+      #restrictRectSelController.mWidthUnit, #restrictRectSelController.mHeightUnit
+    }
+    GridView2 {
+     addFirstBaseLineAligned (
+        left: StaticLabel (title: "Left", bold: no, size: .small, alignment: .left),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #restrictRectSelController.mX, #restrictRectSelController.mXUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Bottom", bold: no, size: .small, alignment: .left),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #restrictRectSelController.mY, #restrictRectSelController.mYUnit
+        }
+      )
+     addFirstBaseLineAligned (
+        left: StaticLabel (title: "Width", bold: no, size: .small, alignment: .left),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #restrictRectSelController.mWidth, #restrictRectSelController.mWidthUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Height", bold: no, size: .small, alignment: .left),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #restrictRectSelController.mHeight, #restrictRectSelController.mHeightUnit
+        }
+      )
     }
   }
 
@@ -2066,6 +2104,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       expandableWidth ()
       set (toolTip: "Common to all packages, stored in Preferences")
       $value prefs.mShowComponentRotationKnobInBoard
+    }
+    CanariDimensionUnitSetterPullDownButton (size : .small) { $setter6
+      #componentInBoardSelectionController.mXUnit, #componentInBoardSelectionController.mYUnit,
+      #componentInBoardSelectionController.mXNameUnit, #componentInBoardSelectionController.mYNameUnit,
+      #componentInBoardSelectionController.mXValueUnit, #componentInBoardSelectionController.mYValueUnit
     }
     separator
     GridView2 {
@@ -2214,7 +2257,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   //············································································
 
   stackView \productPage vStack set (margins: 8) {
-//    newView productMasterView = \ProductMasterView ()
     newView artworkDescriptionPage = \ArtworkDescriptionPage ()
     newView artworkMinimaPage = \ArtworkMinimaPage ()
     newView artworkDataPage = \ArtworkDataPage ()
