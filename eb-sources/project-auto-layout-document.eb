@@ -1526,148 +1526,149 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       Button (title: "◀︎+", size: .regular) { $run prependNewBoardSettingsInspectorAction }
       space
-      StaticLabel (title: "Board Settings", bold: yes, size: .small, alignment: .center)
+      StaticLabel (title: "Autorouter Settings", bold: yes, size: .small, alignment: .center)
       space
       Button (title: "+▶︎", size: .regular) { $run appendNewBoardSettingsInspectorAction }
     }
-    GridView2 {
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Layers", bold: no, size: .small, alignment: .right),
-        right: EnumPopUpButton (titles: enum LayerConfiguration.popupTitles, size: .small) {
-          $selectedIndex root.mLayerConfiguration
-          $run changeLayerConfigurationAction
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Clearance", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit }
-      )
-      add (
-        single: StaticLabel (title: "Autorouter Settings", bold: yes, size: .small, alignment: .center)
-      )
-      add (
-        single: EnumPopUpButton (titles: enum AutorouterPreferredDirections.popupTitles, size: .small) {
-          $selectedIndex root.mAutoRouterPreferredDirections
-        }
-      )
-      add (
-        single: EnumPopUpButton (titles: enum AutorouterSnapAngle.popupTitles, size: .small) {
-          $selectedIndex root.mAutorouterSnapAngle
-        }
-      )
-      add (
-        single: hStack {
-          StaticLabel (title: "Route", bold: no, size: .small, alignment: .center)
-          space
-          EnumPopUpButton (titles: enum RouteDirection.popupTitles, size: .small) {
-            $selectedIndex root.mRouteDirection
+    VerticalScrollView (content:
+      GridView2 {
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Layers", bold: no, size: .small, alignment: .right),
+          right: EnumPopUpButton (titles: enum LayerConfiguration.popupTitles, size: .small) {
+            $selectedIndex root.mLayerConfiguration
+            $run changeLayerConfigurationAction
           }
-          space
-          EnumPopUpButton (titles: enum RouteOrigin.popupTitles, size: .small) {
-            $selectedIndex root.mRouteOrigin
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Clearance", bold: no, size: .small, alignment: .right),
+          right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit }
+        )
+  //      add (
+  //        single: StaticLabel (title: "Autorouter Settings", bold: yes, size: .small, alignment: .center)
+  //      )
+        add (
+          single: EnumPopUpButton (titles: enum AutorouterPreferredDirections.popupTitles, size: .small) {
+            $selectedIndex root.mAutoRouterPreferredDirections
           }
-        }
-      )
-      add (single:
-        TabView (size: .small) {
-          addTab (title: "Basic", tooltip: "Autorouter Basic Configuration", contentView :
-            vStack set (margins: 12) {
-              hStack {
-                space
-                Checkbox (title: "Export Tracks and Vias", size: .small) { $value root.mExportExistingTracksAndVias }
-                space
-              }
-              hStack {
-                space
-                ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 48, height: 48) {
-                  $run launchFreeRouterWithRouterDocument
-                }
-                space
-              }
-              hStack {
-                space
-                Button (title: "Import SES File", size: .small) { $run importSESFromBasicTabAction }
-                space
-              }
+        )
+        add (
+          single: EnumPopUpButton (titles: enum AutorouterSnapAngle.popupTitles, size: .small) {
+            $selectedIndex root.mAutorouterSnapAngle
+          }
+        )
+        add (
+          single: hStack {
+            StaticLabel (title: "Route", bold: no, size: .small, alignment: .center)
+            space
+            EnumPopUpButton (titles: enum RouteDirection.popupTitles, size: .small) {
+              $selectedIndex root.mRouteDirection
             }
-          )
-          addTab (title: "Advanced", tooltip: "Autorouter Advanced Configuration", contentView :
-            vStack set (margins: 12) {
-              hStack {
-                space
-                Checkbox (title: "Export Tracks and Vias", size: .small) { $value root.mExportExistingTracksAndVias2 }
-                space
-              }
-              hStack {
-                space
-                Button (title: "Export DSN File…", size: .small) { $run exportDSNFileAction }
-                space
-              }
-              hStack {
-                space
-                ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 48, height: 48) {
-                  $run launchFreeRouterWithoutAnyDocument
-                }
-                space
-              }
-              hStack {
-                space
-                Button (title: "Import SES File…", size: .small) { $run importSESFromExtendedTabAction }
-                space
-              }
+            space
+            EnumPopUpButton (titles: enum RouteOrigin.popupTitles, size: .small) {
+              $selectedIndex root.mRouteOrigin
             }
-          )
-          $selectedPage root.mAutorouterInterfaceMode
-        }
-      )
-      add (
-        single: StaticLabel (title: "Tracks", bold: yes, size: .small, alignment: .left)
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Top Layer Tracks", bold: no, size: .small, alignment: .right),
-        right: Label (bold: yes, size : .small) { $title root.topSideTrackCountString }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Inner 1 Layer Tracks", bold: no, size: .small, alignment: .right),
-        right: Label (bold: yes, size : .small) { $title root.inner1LayerTrackCountString }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Inner 2 Layer Tracks", bold: no, size: .small, alignment: .right),
-        right: Label (bold: yes, size : .small) { $title root.inner2LayerTrackCountString }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Inner 3 Layer Tracks", bold: no, size: .small, alignment: .right),
-        right: Label (bold: yes, size : .small) { $title root.inner3LayerTrackCountString }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Inner 4 Layer Tracks", bold: no, size: .small, alignment: .right),
-        right: Label (bold: yes, size : .small) { $title root.inner4LayerTrackCountString }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Back Layer Tracks", bold: no, size: .small, alignment: .right),
-        right: Label (bold: yes, size : .small) { $title root.backSideTrackCountString }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Total", bold: no, size: .small, alignment: .right),
-        right: Label (bold: yes, size : .small) { $title root.trackCountString }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Trace Length", bold: no, size: .small, alignment: .right),
-        right: hStack {
-          Label (bold: yes, size : .small) { $title root.trackLengthString }
-          CanariUnitPopUpButton (size : .small) { $unit root.mTrackLengthUnit }
-          space
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Via Count", bold: no, size: .small, alignment: .right),
-        right: Label (bold: yes, size : .small) { $title root.viaCountString }
-      )
-      add (
-        single: Button (title: "Design Rule Check", size: .small) { $run performERCCheckingAction }
-      )
-    }
-    space
+          }
+        )
+        add (single:
+          TabView (size: .small) {
+            addTab (title: "Basic", tooltip: "Autorouter Basic Configuration", contentView :
+              vStack set (margins: 12) {
+                hStack {
+                  space
+                  Checkbox (title: "Export Tracks and Vias", size: .small) { $value root.mExportExistingTracksAndVias }
+                  space
+                }
+                hStack {
+                  space
+                  ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 48, height: 48) {
+                    $run launchFreeRouterWithRouterDocument
+                  }
+                  space
+                }
+                hStack {
+                  space
+                  Button (title: "Import SES File", size: .small) { $run importSESFromBasicTabAction }
+                  space
+                }
+              }
+            )
+            addTab (title: "Advanced", tooltip: "Autorouter Advanced Configuration", contentView :
+              vStack set (margins: 12) {
+                hStack {
+                  space
+                  Checkbox (title: "Export Tracks and Vias", size: .small) { $value root.mExportExistingTracksAndVias2 }
+                  space
+                }
+                hStack {
+                  space
+                  Button (title: "Export DSN File…", size: .small) { $run exportDSNFileAction }
+                  space
+                }
+                hStack {
+                  space
+                  ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 48, height: 48) {
+                    $run launchFreeRouterWithoutAnyDocument
+                  }
+                  space
+                }
+                hStack {
+                  space
+                  Button (title: "Import SES File…", size: .small) { $run importSESFromExtendedTabAction }
+                  space
+                }
+              }
+            )
+            $selectedPage root.mAutorouterInterfaceMode
+          }
+        )
+        add (
+          single: StaticLabel (title: "Tracks", bold: yes, size: .small, alignment: .left)
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Top Layer Tracks", bold: no, size: .small, alignment: .right),
+          right: Label (bold: yes, size : .small) { $title root.topSideTrackCountString }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Inner 1 Layer Tracks", bold: no, size: .small, alignment: .right),
+          right: Label (bold: yes, size : .small) { $title root.inner1LayerTrackCountString }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Inner 2 Layer Tracks", bold: no, size: .small, alignment: .right),
+          right: Label (bold: yes, size : .small) { $title root.inner2LayerTrackCountString }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Inner 3 Layer Tracks", bold: no, size: .small, alignment: .right),
+          right: Label (bold: yes, size : .small) { $title root.inner3LayerTrackCountString }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Inner 4 Layer Tracks", bold: no, size: .small, alignment: .right),
+          right: Label (bold: yes, size : .small) { $title root.inner4LayerTrackCountString }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Back Layer Tracks", bold: no, size: .small, alignment: .right),
+          right: Label (bold: yes, size : .small) { $title root.backSideTrackCountString }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Total", bold: no, size: .small, alignment: .right),
+          right: Label (bold: yes, size : .small) { $title root.trackCountString }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Trace Length", bold: no, size: .small, alignment: .right),
+          right: hStack {
+            Label (bold: yes, size : .small) { $title root.trackLengthString }
+            CanariUnitPopUpButton (size : .small) { $unit root.mTrackLengthUnit }
+            space
+          }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Via Count", bold: no, size: .small, alignment: .right),
+          right: Label (bold: yes, size : .small) { $title root.viaCountString }
+        )
+        add (
+          single: Button (title: "Design Rule Check", size: .small) { $run performERCCheckingAction }
+        )
+      }
+    )
   }
   
   action changeLayerConfigurationAction ;
@@ -1724,7 +1725,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       addObjectInspector (forEntity: entity ComponentInProject, inspectorView: view componentInBoardInspectorView)
       $graphicController #boardObjectsController
     }
-    space
+//    space
   }
 
 //--- Board track
@@ -1906,6 +1907,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )     
     }
+    space
   }
 
 //--- Board line inspector
@@ -1952,6 +1954,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
     }
+    space
   }
 
 //--- Restrict rectangle inspector
@@ -1997,6 +2000,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
     }
+    space
   }
 
 //--- Text inspector
@@ -2075,6 +2079,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         $value prefs.mShowTextRotationKnobInBoard }
       )
     }
+    space
   }
 
   action setBoardTextFontAction ;
@@ -2109,142 +2114,144 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       #componentInBoardSelectionController.mXValueUnit, #componentInBoardSelectionController.mYValueUnit
     }
     separator
-    GridView2 {
-      add (single: StaticLabel (title: "Package", bold: yes, size: .small, alignment: .left))
-      addFirstBaseLineAligned (
-        left: StaticLabels (left: "Center", right:"X", bold: no, size: .small),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #componentInBoardSelectionController.mX, #componentInBoardSelectionController.mXUnit
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #componentInBoardSelectionController.mY, #componentInBoardSelectionController.mYUnit
-        }
-      )
-      add (single: CanariBoardComponentPackagePopUpButton [configurator componentPackagePopUpButtonConfigurator])
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
-        right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mRotation }
-      )
-      addFirstBaseLineAligned (
-        left: space,
-        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
-          $angle #componentInBoardSelectionController.mRotation
-        }
-      )
-      addSeparator ()
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Name", bold: yes, size: .small, alignment: .left),
-        right: Label (bold: yes, size: .small) { set (alignment: .left) $title #componentInBoardSelectionController.componentName }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabels (left: "Center", right:"∆X", bold: no, size: .small),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #componentInBoardSelectionController.mXName, #componentInBoardSelectionController.mXNameUnit
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #componentInBoardSelectionController.mYName, #componentInBoardSelectionController.mYNameUnit
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
-        right: DoubleField (width: 64, size: .small) {
-          $value #componentInBoardSelectionController.mNameFontSize (sendContinously : no)
-          // $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .right),
-        right: CanariBoardFontPopUpButton {
-          $currentFontName #componentInBoardSelectionController.componentNameFontName
-          $fontNames root.fontNameArray
-          $run setComponentNameFontAction
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
-        right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mNameRotation }
-      )
-      addFirstBaseLineAligned (
-        left: space,
-        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
-          $angle #componentInBoardSelectionController.mNameRotation
-          $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
-        }
-      )
-      addSeparator ()
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Value", bold: yes, size: .small, alignment: .left),
-        right: TextField (minWidth: 150, size: .small) {
-          automaticallyAdjustHeight (maxWidth: 150)
-          $value #componentInBoardSelectionController.mComponentValue (sendContinously : yes)
-    //    $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabels (left: "Center", right:"∆X", bold: no, size: .small),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #componentInBoardSelectionController.mXValue, #componentInBoardSelectionController.mXValueUnit
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #componentInBoardSelectionController.mYValue, #componentInBoardSelectionController.mYValueUnit
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
-        right: DoubleField (width: 64, size: .small) {
-          $value #componentInBoardSelectionController.mNameFontSize (sendContinously : no)
-          // $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
-        right: DoubleField (width: 64, size: .small) {
-          $value #componentInBoardSelectionController.mValueFontSize (sendContinously : no)
-         // $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .right),
-        right: CanariBoardFontPopUpButton {
-          $currentFontName #componentInBoardSelectionController.componentValueFontName
-          $fontNames root.fontNameArray
-          $run setComponentValueFontAction
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
-        right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mValueRotation }
-      )
-      addFirstBaseLineAligned (
-        left: space,
-        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
-          $angle #componentInBoardSelectionController.mValueRotation
-          $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
-        }
-      )
-      addSeparator ()
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Slave Pads", bold: yes, size: .small, alignment: .left),
-        right: BoolPopUpButton (title0: "should be insulated", title1: "should be routed") {
-          $value #componentInBoardSelectionController.mSlavePadsShouldBeRouted
-          $enabled #componentInBoardSelectionController.hasSlavePads
-        }
-      )
-      addSeparator ()
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Side", bold: yes, size: .small, alignment: .left),
-        right: EnumPopUpButton (titles: enum ComponentSide.popupTitles, size: .small) { $selectedIndex #componentInBoardSelectionController.mSide }
-      )
-    }
+    VerticalScrollView (content:
+      GridView2 {
+        add (single: StaticLabel (title: "Package", bold: yes, size: .small, alignment: .left))
+        addFirstBaseLineAligned (
+          left: StaticLabels (left: "Center", right:"X", bold: no, size: .small),
+          right: CanariDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit #componentInBoardSelectionController.mX, #componentInBoardSelectionController.mXUnit
+          }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
+          right: CanariDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit #componentInBoardSelectionController.mY, #componentInBoardSelectionController.mYUnit
+          }
+        )
+        add (single: CanariBoardComponentPackagePopUpButton [configurator componentPackagePopUpButtonConfigurator])
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
+          right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mRotation }
+        )
+        addFirstBaseLineAligned (
+          left: space,
+          right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+            $angle #componentInBoardSelectionController.mRotation
+          }
+        )
+        addSeparator ()
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Name", bold: yes, size: .small, alignment: .left),
+          right: Label (bold: yes, size: .small) { set (alignment: .left) $title #componentInBoardSelectionController.componentName }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabels (left: "Center", right:"∆X", bold: no, size: .small),
+          right: CanariDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit #componentInBoardSelectionController.mXName, #componentInBoardSelectionController.mXNameUnit
+          }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right),
+          right: CanariDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit #componentInBoardSelectionController.mYName, #componentInBoardSelectionController.mYNameUnit
+          }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
+          right: DoubleField (width: 64, size: .small) {
+            $value #componentInBoardSelectionController.mNameFontSize (sendContinously : no)
+            // $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
+          }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .right),
+          right: CanariBoardFontPopUpButton {
+            $currentFontName #componentInBoardSelectionController.componentNameFontName
+            $fontNames root.fontNameArray
+            $run setComponentNameFontAction
+          }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
+          right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mNameRotation }
+        )
+        addFirstBaseLineAligned (
+          left: space,
+          right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+            $angle #componentInBoardSelectionController.mNameRotation
+            $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
+          }
+        )
+        addSeparator ()
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Value", bold: yes, size: .small, alignment: .left),
+          right: TextField (minWidth: 150, size: .small) {
+            automaticallyAdjustHeight (maxWidth: 150)
+            $value #componentInBoardSelectionController.mComponentValue (sendContinously : yes)
+      //    $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
+          }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabels (left: "Center", right:"∆X", bold: no, size: .small),
+          right: CanariDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit #componentInBoardSelectionController.mXValue, #componentInBoardSelectionController.mXValueUnit
+          }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right),
+          right: CanariDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit #componentInBoardSelectionController.mYValue, #componentInBoardSelectionController.mYValueUnit
+          }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
+          right: DoubleField (width: 64, size: .small) {
+            $value #componentInBoardSelectionController.mNameFontSize (sendContinously : no)
+            // $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
+          }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
+          right: DoubleField (width: 64, size: .small) {
+            $value #componentInBoardSelectionController.mValueFontSize (sendContinously : no)
+           // $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
+          }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .right),
+          right: CanariBoardFontPopUpButton {
+            $currentFontName #componentInBoardSelectionController.componentValueFontName
+            $fontNames root.fontNameArray
+            $run setComponentValueFontAction
+          }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
+          right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mValueRotation }
+        )
+        addFirstBaseLineAligned (
+          left: space,
+          right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+            $angle #componentInBoardSelectionController.mValueRotation
+            $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
+          }
+        )
+        addSeparator ()
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Slave Pads", bold: yes, size: .small, alignment: .left),
+          right: BoolPopUpButton (title0: "should be insulated", title1: "should be routed") {
+            $value #componentInBoardSelectionController.mSlavePadsShouldBeRouted
+            $enabled #componentInBoardSelectionController.hasSlavePads
+          }
+        )
+        addSeparator ()
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Side", bold: yes, size: .small, alignment: .left),
+          right: EnumPopUpButton (titles: enum ComponentSide.popupTitles, size: .small) { $selectedIndex #componentInBoardSelectionController.mSide }
+        )
+      }
+    )
   }
 
   action setComponentNameFontAction ;

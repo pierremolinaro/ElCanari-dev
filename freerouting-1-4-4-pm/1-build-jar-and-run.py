@@ -40,7 +40,7 @@ def runCommand (command) :
 #   MAIN
 #------------------------------------------------------------------------------
 
-FREEROUTING_DIR = "/Volumes/dev-svn/freerouting"
+FREEROUTING_DIR = "/Volumes/dev-git/freerouting"
 APP_VERSION = "1.4.4-pm"
 #--- Get script absolute path
 scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))

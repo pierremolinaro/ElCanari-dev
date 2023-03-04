@@ -22,13 +22,12 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
 
   override init () {
   //--- Define default View
-    _ = self.mDefaultInspectorView.appendView (self.mDefaultLabel)
-    _ = self.mDefaultInspectorView.appendView (AutoLayoutFlexibleSpace ())
+    _ = self.mDefaultInspectorView.appendView (self.mDefaultLabel).appendFlexibleSpace ()
   //---
     super.init ()
   //--- By Default, no selected object
     _ = self.mDefaultLabel.stringValue = "No Selected Object"
-    _ = self.appendView (self.mDefaultLabel)
+    _ = self.appendView (self.mDefaultInspectorView)
   //---
     self.mObserver.mEventCallBack = { [weak self] in self?.selectionDidChange () }
   }
@@ -88,24 +87,24 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
       }
       if selectedObjectsInspectorViewSet.count > 1 {
         self.mDefaultLabel.stringValue = "Multiple Selection"
-        _ = self.appendView (self.mDefaultLabel)
+        _ = self.appendView (self.mDefaultInspectorView)
       }else if let view = selectedObjectsInspectorViewSet.first {
         if someSelectedObjectsHasNoInspector {
           self.mDefaultLabel.stringValue = "No Inspector"
-          _ = self.appendView (self.mDefaultLabel)
+          _ = self.appendView (self.mDefaultInspectorView)
         }else{
           _ = self.appendView (view)
         }
       }else if someSelectedObjectsHasNoInspector {
         self.mDefaultLabel.stringValue = "No Inspector"
-        _ = self.appendView (self.mDefaultLabel)
+        _ = self.appendView (self.mDefaultInspectorView)
       }else{
         self.mDefaultLabel.stringValue = "No Selected Object"
-        _ = self.appendView (self.mDefaultLabel)
+        _ = self.appendView (self.mDefaultInspectorView)
       }
     }else{
       self.mDefaultLabel.stringValue = "No Controller"
-      _ = self.appendView (self.mDefaultLabel)
+      _ = self.appendView (self.mDefaultInspectorView)
     }
   }
 
