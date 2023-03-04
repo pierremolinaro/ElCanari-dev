@@ -20,6 +20,7 @@ final class AutoLayoutCanariRestrictRectangleView : AutoLayoutVerticalStackView 
   private let mInner2LayerCheckBox = AutoLayoutCheckbox (title: "Inner2 Layer", size: .small)
   private let mInner3LayerCheckBox = AutoLayoutCheckbox (title: "Inner3 Layer", size: .small)
   private let mInner4LayerCheckBox = AutoLayoutCheckbox (title: "Inner4 Layer", size: .small)
+  private var mModelObserver : EBObservablePropertyController? = nil
 
   //····················································································································
 
@@ -41,55 +42,53 @@ final class AutoLayoutCanariRestrictRectangleView : AutoLayoutVerticalStackView 
 
   //····················································································································
 
-  func bind_front (_ inModel : EBReadWriteProperty_Bool) -> Self {
-    _ = self.mFrontLayerCheckBox.bind_value (inModel)
-      .bind_run (target: self, selector: #selector (Self.checkBoxAction (_:)))
+  func bind_frontBackInner1Inner2Inner3Inner4 (_ inFrontModel : EBReadWriteProperty_Bool,
+                                               _ inBackModel : EBReadWriteProperty_Bool,
+                                               _ inInner1Model : EBReadWriteProperty_Bool,
+                                               _ inInner2Model : EBReadWriteProperty_Bool,
+                                               _ inInner3Model : EBReadWriteProperty_Bool,
+                                               _ inInner4Model : EBReadWriteProperty_Bool) -> Self {
+    self.mModelObserver = EBObservablePropertyController (
+      observedObjects: [inFrontModel, inBackModel, inInner1Model, inInner2Model, inInner3Model, inInner4Model],
+      callBack: { self.deferredUpdateCheckboxes (nil) }
+    )
+
+    _ = self.mFrontLayerCheckBox.bind_value (inFrontModel)
+      .bind_run (target: self, selector: #selector (Self.deferredUpdateCheckboxes (_:)))
+
+    _ = self.mBackLayerCheckBox.bind_value (inBackModel)
+      .bind_run (target: self, selector: #selector (Self.deferredUpdateCheckboxes (_:)))
+
+    _ = self.mInner1LayerCheckBox.bind_value (inInner1Model)
+      .bind_run (target: self, selector: #selector (Self.deferredUpdateCheckboxes (_:)))
+
+    _ = self.mInner2LayerCheckBox.bind_value (inInner2Model)
+      .bind_run (target: self, selector: #selector (Self.deferredUpdateCheckboxes (_:)))
+
+    _ = self.mInner3LayerCheckBox.bind_value (inInner3Model)
+      .bind_run (target: self, selector: #selector (Self.deferredUpdateCheckboxes (_:)))
+
+    _ = self.mInner4LayerCheckBox.bind_value (inInner4Model)
+      .bind_run (target: self, selector: #selector (Self.deferredUpdateCheckboxes (_:)))
+
     return self
   }
 
   //····················································································································
 
-  func bind_back (_ inModel : EBReadWriteProperty_Bool) -> Self {
-    _ = self.mBackLayerCheckBox.bind_value (inModel)
-      .bind_run (target: self, selector: #selector (Self.checkBoxAction (_:)))
-    return self
+  private var mRegistered = false
+
+  @objc private func deferredUpdateCheckboxes (_ inUnusedSender : Any?) {
+    if !self.mRegistered {
+      self.mRegistered = true
+      DispatchQueue.main.async { self.updateCheckboxes () }
+    }
   }
 
   //····················································································································
 
-  func bind_inner1 (_ inModel : EBReadWriteProperty_Bool) -> Self {
-    _ = self.mInner1LayerCheckBox.bind_value (inModel)
-      .bind_run (target: self, selector: #selector (Self.checkBoxAction (_:)))
-    return self
-  }
-
-  //····················································································································
-
-  func bind_inner2 (_ inModel : EBReadWriteProperty_Bool) -> Self {
-    _ = self.mInner2LayerCheckBox.bind_value (inModel)
-      .bind_run (target: self, selector: #selector (Self.checkBoxAction (_:)))
-    return self
-  }
-
-  //····················································································································
-
-  func bind_inner3 (_ inModel : EBReadWriteProperty_Bool) -> Self {
-    _ = self.mInner3LayerCheckBox.bind_value (inModel)
-      .bind_run (target: self, selector: #selector (Self.checkBoxAction (_:)))
-    return self
-  }
-
-  //····················································································································
-
-  func bind_inner4 (_ inModel : EBReadWriteProperty_Bool) -> Self {
-    _ = self.mInner4LayerCheckBox.bind_value (inModel)
-      .bind_run (target: self, selector: #selector (Self.checkBoxAction (_:)))
-    return self
-  }
-
-  //····················································································································
-
-  @objc private func checkBoxAction (_ inSender : Any?) {
+  private func updateCheckboxes () {
+    self.mRegistered = false
     let front  = self.mFrontLayerCheckBox.state == .on
     let back   = self.mBackLayerCheckBox.state == .on
     let inner1 = self.mInner1LayerCheckBox.state == .on

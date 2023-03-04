@@ -464,12 +464,10 @@ extern autolayout class CanariTrackLockView {
 }
 
 extern autolayout class CanariRestrictRectangleView {
-  $front property Bool
-  $back property Bool
-  $inner1 property Bool
-  $inner2 property Bool
-  $inner3 property Bool
-  $inner4 property Bool
+  $frontBackInner1Inner2Inner3Inner4
+    property Bool, property Bool,
+    property Bool, property Bool,
+    property Bool, property Bool
 }
 
 extern autolayout class CanariBoardFontPopUpButton $run {

@@ -1962,12 +1962,10 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   stackView \RestrictRectangleInspectorView vStack {
     StaticLabel (title: "Restrict Rectangle Inspector", bold: yes, size: .small, alignment: .center)
     CanariRestrictRectangleView {
-      $front #restrictRectSelController.mIsInFrontLayer
-      $back #restrictRectSelController.mIsInBackLayer
-      $inner1 #restrictRectSelController.mIsInInner1Layer
-      $inner2 #restrictRectSelController.mIsInInner2Layer
-      $inner3 #restrictRectSelController.mIsInInner3Layer
-      $inner4 #restrictRectSelController.mIsInInner4Layer
+      $frontBackInner1Inner2Inner3Inner4 
+        #restrictRectSelController.mIsInFrontLayer, #restrictRectSelController.mIsInBackLayer,
+        #restrictRectSelController.mIsInInner1Layer, #restrictRectSelController.mIsInInner2Layer,
+        #restrictRectSelController.mIsInInner3Layer, #restrictRectSelController.mIsInInner4Layer
     }
     CanariDimensionUnitSetterPullDownButton (size : .small) { $setter4
       #restrictRectSelController.mXUnit, #restrictRectSelController.mYUnit,
