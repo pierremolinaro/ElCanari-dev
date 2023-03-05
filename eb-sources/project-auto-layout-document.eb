@@ -990,17 +990,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
 //----------------- Board limits tab
   stackView \boardOutlinePage hStack {
-    newView boardOutlineBaseView = \BoardOutlineBaseView ()
     newView boardOutlineInspectorView = \BoardOutlineInspectorView ()
     newView boardOutlineGridAndFlipView = \BoardOutlineGridAndFlipView ()
     vStack set (width: 250) set (margins: 8) {
-      SegmentedControlWithPages (documentView: view boardOutlineBaseView, equalWidth: yes, size : .small)
-        [configurator boardOutlineBaseConfigurator]  {
-        addPage (title: "", tooltip: "", pageView: view boardOutlineInspectorView)
-        addPage (title: "", tooltip: "", pageView: view boardOutlineGridAndFlipView)
-        $selectedPage root.mBoardLimitsSelectedInspector
-      }
-      view boardOutlineBaseView
+      view boardOutlineInspectorView
+      separator
+      view boardOutlineGridAndFlipView
+      space
     }
     separator
     GraphicView (minZoom: 10, maxZoom: 20_000) [configurator boardOutlineView]{
@@ -1027,10 +1023,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   selectionController BorderCurve #boardCurveSelectionController :
     #boardCurveObjectsController.selectedArray
   ;
-
-  stackView \BoardOutlineBaseView vStack {
-    space
-  }
 
   stackView \BoardOutlineGridAndFlipView vStack {
     StaticLabel (title: "Grid and Flip Inspector", bold: yes, size: .small, alignment: .center)
@@ -1115,7 +1107,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       $selectedSegment root.mBoardShape
     }
     view boardShapeBaseView
-    space
   }
 
   stackView \BoardShapeBaseView vStack {

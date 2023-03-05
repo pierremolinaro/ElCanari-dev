@@ -1709,21 +1709,20 @@ import AppKit
 
   final func boardOutlinePage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-    let boardOutlineBaseView = self.BoardOutlineBaseView ()
     let boardOutlineInspectorView = self.BoardOutlineInspectorView ()
     let boardOutlineGridAndFlipView = self.BoardOutlineGridAndFlipView ()
     let view_0 = AutoLayoutVerticalStackView ()
       .set (width: 250)
       .set (margins: 8)
     do{
-      let view_0_0 = AutoLayoutSegmentedControlWithPages (documentView: boardOutlineBaseView, equalWidth: true, size: .small)
-        .addPage (title: "", tooltip: "", pageView: boardOutlineInspectorView)
-        .addPage (title: "", tooltip: "", pageView: boardOutlineGridAndFlipView)
-        .bind_selectedPage (self.rootObject.mBoardLimitsSelectedInspector_property)
-      self.configure_boardOutlineBaseConfigurator (view_0_0) // Configurator
+      let view_0_0 = boardOutlineInspectorView
       _ = view_0.appendView (view_0_0)
-      let view_0_1 = boardOutlineBaseView
+      let view_0_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
       _ = view_0.appendView (view_0_1)
+      let view_0_2 = boardOutlineGridAndFlipView
+      _ = view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutFlexibleSpace ()
+      _ = view_0.appendView (view_0_3)
     }
     _ = hStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
@@ -1748,17 +1747,6 @@ import AppKit
     self.configure_boardOutlineView (view_2) // Configurator
     _ = hStackView.appendView (view_2)
     return hStackView
-  }
-
-  //····················································································································
-  //    VIEW BoardOutlineBaseView
-  //····················································································································
-
-  final func BoardOutlineBaseView () -> AutoLayoutVerticalStackView {
-    let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_0)
-    return vStackView
   }
 
   //····················································································································
@@ -1829,8 +1817,6 @@ import AppKit
     _ = vStackView.appendView (view_10)
     let view_11 = boardShapeBaseView
     _ = vStackView.appendView (view_11)
-    let view_12 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_12)
     return vStackView
   }
 
