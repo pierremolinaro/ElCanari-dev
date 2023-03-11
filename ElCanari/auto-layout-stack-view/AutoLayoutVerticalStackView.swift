@@ -13,11 +13,8 @@ class AutoLayoutVerticalStackView : AutoLayoutBase_NSStackView {
   init () {
     super.init (orientation: .vertical)
     self.alignment = .width
-//    self.distribution = .fill
 
     self.setHuggingPriority (.required, for: .horizontal)
-//    self.setHuggingPriority (.required, for: .vertical)
-//    self.setHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
     self.setHuggingPriority (.defaultLow, for: .vertical)
   }
 
@@ -263,7 +260,7 @@ class AutoLayoutVerticalStackView : AutoLayoutBase_NSStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-    override var intrinsicContentSize: NSSize { return NSSize (width: 0.0, height: 10.0) }
+    override var intrinsicContentSize : NSSize { return NSSize (width: 0.0, height: 10.0) }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 

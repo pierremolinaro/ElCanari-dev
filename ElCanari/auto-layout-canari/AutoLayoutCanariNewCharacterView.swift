@@ -90,7 +90,8 @@ private class InternalNewCharacterView : NSView {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+    // self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
 
     let width = ADDRESS_COLUMN_WIDTH + 16.0 * PLACEMENT_GRID
     let height = PLACEMENT_GRID * CGFloat (LINE_COUNT)

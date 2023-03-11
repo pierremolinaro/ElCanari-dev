@@ -65,40 +65,36 @@ prefs {
 
 //——————————————————————————————————————————————————————————————————————————————
 
-//! User Interface
 prefs {
   property NSColor selectionHiliteColor default cyan;
   property Int hiliteWidthMultipliedByTen default 15 ; // 1,5 pt
   
   stackView \PrefsUserInterfacePage vStack set (margins: 12) {
     StaticLabel (title: "User Interface", bold: yes, size: .regular, alignment: .center)
-    GridView2 {
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Selection Hilite Color", bold: no, size: .regular, alignment: .right),
-        right: hStack { ColorWell { $color prefs.selectionHiliteColor (sendContinously: yes) } space }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Selection Width", bold: no, size: .regular, alignment: .right),
-        right: TaggedPopUpButton (size: .regular) {
-          add (title: "0.5 Point", withTag:  5)
-          add (title: "1.0 Point", withTag: 10)
-          add (title: "1.5 Point", withTag: 15)
-          add (title: "2.0 Points", withTag: 20)
-          add (title: "2.5 Points", withTag: 25)
-          $selectedTag prefs.hiliteWidthMultipliedByTen
-        }
-      )
-//      addFirstBaseLineAligned (
-//        left: StaticLabel (title: "User Interface Style", bold: no, size: .regular, alignment: .right),
-//        right: EnumPopUpButton (titles: enum AutoLayoutUserInterfaceStyle.popupTitles, size: .regular) {
-//          notExpandableWidth ()
-//          $selectedIndex prefs.mAutoLayoutStyle
-//        }
-//      )
-      addFirstBaseLineAligned (
-        left: space,
-        right: Checkbox (title: "Show Debug Menu", size: .regular) { $value prefs.showDebugMenu }
-      )
+    hStack {
+      space
+      GridView2 {
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Selection Hilite Color", bold: no, size: .regular, alignment: .right),
+          right: hStack { ColorWell { $color prefs.selectionHiliteColor (sendContinously: yes) } space }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Selection Width", bold: no, size: .regular, alignment: .right),
+          right: TaggedPopUpButton (size: .regular) {
+            add (title: "0.5 Point", withTag:  5)
+            add (title: "1.0 Point", withTag: 10)
+            add (title: "1.5 Point", withTag: 15)
+            add (title: "2.0 Points", withTag: 20)
+            add (title: "2.5 Points", withTag: 25)
+            $selectedTag prefs.hiliteWidthMultipliedByTen
+          }
+        )
+        addFirstBaseLineAligned (
+          left: space,
+          right: Checkbox (title: "Show Debug Menu", size: .regular) { $value prefs.showDebugMenu }
+        )
+      }
+      space
     }
   }
 

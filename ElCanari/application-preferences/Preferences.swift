@@ -147,10 +147,18 @@ import AppKit
       .set (margins: 12)
     let view_0 = AutoLayoutStaticLabel (title: "User Interface", bold: true, size: .regular, alignment: .center)
     _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
+    let view_1 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_1_0 = AutoLayoutFlexibleSpace ()
+      _ = view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutGridView2 ()
+        .addFirstBaseLineAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
+      _ = view_1.appendView (view_1_1)
+      let view_1_2 = AutoLayoutFlexibleSpace ()
+      _ = view_1.appendView (view_1_2)
+    }
     _ = vStackView.appendView (view_1)
     return vStackView
   }

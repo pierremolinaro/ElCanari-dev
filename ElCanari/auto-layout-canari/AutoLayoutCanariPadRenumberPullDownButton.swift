@@ -19,7 +19,8 @@ final class AutoLayoutCanariPadRenumberPullDownButton : AutoLayoutBase_NSPopUpBu
   init () {
     super.init (pullsDown: true, size: .small)
 
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+//    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
   }
 
   //····················································································································
