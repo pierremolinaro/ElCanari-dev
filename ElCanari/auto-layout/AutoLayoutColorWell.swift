@@ -46,7 +46,6 @@ final class AutoLayoutColorWell : NSColorWell {
     self.mColorController?.updateModel (withValue: self.color)
   }
 
-
   //····················································································································
 
   override var intrinsicContentSize : NSSize {

@@ -49,13 +49,6 @@ class AutoLayoutBase_NSButton : NSButton {
   }
 
   //····················································································································
-
-//  override func updateAutoLayoutUserInterfaceStyle () {
-//    super.updateAutoLayoutUserInterfaceStyle ()
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-//  }
-
-  //····················································································································
   //  Closure action
   //····················································································································
 

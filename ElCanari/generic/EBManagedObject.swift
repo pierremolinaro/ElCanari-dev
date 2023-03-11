@@ -14,9 +14,6 @@ import AppKit
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//  EBManagedObject: hérite de EBObjcBaseObject
-//  Moins volumineux avec EBSwiftBaseObject, mais plus long à l'ouverture
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor class EBManagedObject : EBSignatureObserverProtocol {
 

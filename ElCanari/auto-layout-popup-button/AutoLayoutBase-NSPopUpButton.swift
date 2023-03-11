@@ -48,13 +48,6 @@ class AutoLayoutBase_NSPopUpButton : NSPopUpButton {
 
   //····················································································································
 
-//  override final func updateAutoLayoutUserInterfaceStyle () {
-//    super.updateAutoLayoutUserInterfaceStyle ()
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-//  }
-
-  //····················································································································
-
   final func set (width inWidth : Int) -> Self {
     let c = NSLayoutConstraint (
       item: self,

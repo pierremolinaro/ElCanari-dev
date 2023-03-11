@@ -39,13 +39,6 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton {
   }
 
   //····················································································································
-
-//  override func updateAutoLayoutUserInterfaceStyle () {
-//    super.updateAutoLayoutUserInterfaceStyle ()
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-//  }
-
-  //····················································································································
   // MARK: -
   //····················································································································
 

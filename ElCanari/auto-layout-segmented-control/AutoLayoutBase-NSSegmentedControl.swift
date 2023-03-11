@@ -46,13 +46,6 @@ class AutoLayoutBase_NSSegmentedControl : NSSegmentedControl {
   }
 
   //····················································································································
-
-//  override final func updateAutoLayoutUserInterfaceStyle () {
-//    super.updateAutoLayoutUserInterfaceStyle ()
-//    self.segmentStyle = autoLayoutCurrentStyle ().segmentedControlStyle
-//  }
-
-  //····················································································································
   //  $enabled binding
   //····················································································································
 
