@@ -33,6 +33,24 @@ extension Double : EBStoredPropertyProtocol {
 
   //····················································································································
 
+  func appendPropertyValueTo (_ ioData : inout Data) {
+    let s = String (self.bitPattern, radix: 16)
+    ioData.append (s.data (using: .utf8)!)
+  }
+
+  //····················································································································
+
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Double? {
+    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
+    var result : Double? = nil
+    if let s = String (data: dataSlice, encoding: .utf8), let v = UInt64 (s, radix: 16) {
+      result = Double (bitPattern: v)
+    }
+    return result
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

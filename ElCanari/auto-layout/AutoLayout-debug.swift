@@ -15,6 +15,7 @@ let DEBUG_HORIZONTAL_SEPARATOR_FILL_COLOR = NSColor.systemPurple.withAlphaCompon
 let DEBUG_VERTICAL_SEPARATOR_FILL_COLOR   = NSColor.systemPink.withAlphaComponent (0.25)
 let DEBUG_KEY_CHAIN_STROKE_COLOR          = NSColor.systemBrown
 let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
+let DEBUG_FILL_COLOR                      = NSColor.systemGray.withAlphaComponent (0.07)
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Public functions

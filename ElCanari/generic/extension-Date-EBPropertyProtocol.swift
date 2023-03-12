@@ -33,6 +33,22 @@ extension Date : EBStoredPropertyProtocol {
 
   //····················································································································
 
+  func appendPropertyValueTo (_ ioData : inout Data) {
+    self.timeIntervalSince1970.appendPropertyValueTo (&ioData)
+  }
+
+  //····················································································································
+
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Date? {
+    var result : Date? = nil
+    if let timeIntervalSince1970 = Double.unarchiveFromDataRange (inData, inRange) {
+      result = Date (timeIntervalSince1970: timeIntervalSince1970)
+    }
+    return result
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

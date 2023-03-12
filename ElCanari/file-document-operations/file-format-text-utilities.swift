@@ -5,176 +5,6 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// unarchiveFromDataRange
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension Bool {
-
-  //····················································································································
-
-  func appendPropertyValueTo (_ ioData : inout Data) {
-    ioData.append (ascii: self ? .T : .F)
-  }
-
-  //····················································································································
-
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Bool? {
-    if inRange.length == 1 {
-      let c = inData [inRange.location]
-      if c == ASCII.T.rawValue {
-        return true
-      }else if c == ASCII.F.rawValue {
-        return false
-      }else{
-        return nil
-      }
-    }else{
-      return nil
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension Int {
-
-  //····················································································································
-
-  func appendPropertyValueTo (_ ioData : inout Data) {
-    ioData.append (base62Encoded: self)
-  }
-
-  //····················································································································
-
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Int? {
-    return inData.base62EncodedInt (range: inRange)
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension UInt32 {
-
-  //····················································································································
-
-   func appendPropertyValueTo (_ ioData : inout Data) {
-    ioData.append (base62Encoded: Int (self))
-  }
-
-  //····················································································································
-
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> UInt32? {
-    return inData.base62EncodedUInt32 (range: inRange)
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension Double {
-
-  //····················································································································
-
-  func appendPropertyValueTo (_ ioData : inout Data) {
-    let s = String (self.bitPattern, radix: 16)
-    ioData.append (s.data (using: .utf8)!)
-  }
-
-  //····················································································································
-
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Double? {
-    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
-    var result : Double? = nil
-    if let s = String (data: dataSlice, encoding: .utf8), let v = UInt64 (s, radix: 16) {
-      result = Double (bitPattern: v)
-    }
-    return result
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension String {
-
-  //····················································································································
-
-  func appendPropertyValueTo (_ ioData : inout Data) {
-    let escapedString = self.replacingOccurrences(of: "\n", with: "\\n")
-    ioData.append (escapedString.data (using: .utf8)!)
-  }
-
-  //····················································································································
-
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> String? {
-    var result : String? = nil
-    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
-    if let s = String (bytes: dataSlice, encoding: .utf8) {
-      result = s.replacingOccurrences(of: "\\n", with: "\n")
-    }
-    return result
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension Date {
-
-  //····················································································································
-
-  func appendPropertyValueTo (_ ioData : inout Data) {
-    self.timeIntervalSince1970.appendPropertyValueTo (&ioData)
-  }
-
-  //····················································································································
-
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Date? {
-    var result : Date? = nil
-    if let timeIntervalSince1970 = Double.unarchiveFromDataRange (inData, inRange) {
-      result = Date (timeIntervalSince1970: timeIntervalSince1970)
-    }
-    return result
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension Data {
-
-  //····················································································································
-
-  func appendPropertyValueTo (_ ioData : inout Data) {
-    ioData.append (self.base64EncodedData ())
-  }
-
-  //····················································································································
-
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Data? {
-    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
-    return Data (base64Encoded: dataSlice)
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private let base62EncodedChars : [ASCII] = [
   .zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine,
@@ -208,6 +38,12 @@ extension Data {
     }else{
       self.append (base62EncodedChars [0].rawValue)
     }
+  }
+
+  //····················································································································
+
+  mutating func append (ascii inValue : ASCII) {
+    self.append (inValue.rawValue)
   }
 
   //····················································································································

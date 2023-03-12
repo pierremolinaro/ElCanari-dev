@@ -34,76 +34,15 @@ extension Data : EBStoredPropertyProtocol {
 
   //····················································································································
 
-  func appendPropertyValueTo_EX_unused (_ ioData : inout Data) {
-  //--- Base 85
-    let BASE : UInt32 = 85
-    for i in 0 ..< self.count / 4 {
-      var v : UInt32 = UInt32 (self [4 * i])
-      v <<= 8
-      v |= UInt32 (self [4 * i + 1])
-      v <<= 8
-      v |= UInt32 (self [4 * i + 2])
-      v <<= 8
-      v |= UInt32 (self [4 * i + 3])
-      let d4 = ASCII.ampersand.rawValue + UInt8 (v % BASE)
-      v /= BASE
-      let d3 = ASCII.ampersand.rawValue + UInt8 (v % BASE)
-      v /= BASE
-      let d2 = ASCII.ampersand.rawValue + UInt8 (v % BASE)
-      v /= BASE
-      let d1 = ASCII.ampersand.rawValue + UInt8 (v % BASE)
-      v /= BASE
-      let d0 = ASCII.ampersand.rawValue + UInt8 (v)
-      ioData.append (d0)
-      ioData.append (d1)
-      ioData.append (d2)
-      ioData.append (d3)
-      ioData.append (d4)
-    }
-  //--- Last bytes
-    switch self.count % 4 {
-    case 1 :
-      var v = UInt32 (self [self.count - 1])
-      let d1 = ASCII.ampersand.rawValue + UInt8 (v % BASE)
-      v /= BASE
-      let d0 = ASCII.ampersand.rawValue + UInt8 (v)
-      ioData.append (d0)
-      ioData.append (d1)
-      ioData.append (ascii: .pound)
-    case 2 :
-      var v = UInt32 (self [self.count - 2])
-      v <<= 8
-      v |= UInt32 (self [self.count - 1])
-      let d2 = ASCII.ampersand.rawValue + UInt8 (v % BASE)
-      v /= BASE
-      let d1 = ASCII.ampersand.rawValue + UInt8 (v % BASE)
-      v /= BASE
-      let d0 = ASCII.ampersand.rawValue + UInt8 (v)
-      ioData.append (d0)
-      ioData.append (d1)
-      ioData.append (d2)
-      ioData.append (ascii: .dollar)
-    case 3 :
-      var v = UInt32 (self [self.count - 3])
-      v <<= 8
-      v |= UInt32 (self [self.count - 2])
-      v <<= 8
-      v |= UInt32 (self [self.count - 1])
-      let d3 = ASCII.ampersand.rawValue + UInt8 (v % BASE)
-      v /= BASE
-      let d2 = ASCII.ampersand.rawValue + UInt8 (v % BASE)
-      v /= BASE
-      let d1 = ASCII.ampersand.rawValue + UInt8 (v % BASE)
-      v /= BASE
-      let d0 = ASCII.ampersand.rawValue + UInt8 (v)
-      ioData.append (d0)
-      ioData.append (d1)
-      ioData.append (d2)
-      ioData.append (d3)
-      ioData.append (ascii: .perCent)
-    default :
-      ()
-    }
+  func appendPropertyValueTo (_ ioData : inout Data) {
+    ioData.append (self.base64EncodedData ())
+  }
+
+  //····················································································································
+
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Data? {
+    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
+    return Data (base64Encoded: dataSlice)
   }
 
   //····················································································································

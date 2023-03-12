@@ -258,23 +258,6 @@ enum DocumentFormat {
   }
 
   //····················································································································
-  //   AutoLayout user interface style
-  //····················································································································
-
-//  fileprivate var mUserInterfaceStyleObserver : EBObservablePropertyController? = nil
-
-  //····················································································································
-
-//  @MainActor fileprivate func addAutoLayoutUserInterfaceStyleObserver () {
-//    self.mUserInterfaceStyleObserver = EBObservablePropertyController (
-//      observedObjects: [preferences_mAutoLayoutStyle_property],
-//      callBack: {
-//         changeAutoLayoutUserInterfaceStyle (to: preferences_mAutoLayoutStyle)
-//      }
-//    )
-//  }
-
-  //····················································································································
 
 }
 

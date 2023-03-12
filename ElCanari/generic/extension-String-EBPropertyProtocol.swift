@@ -35,6 +35,24 @@ extension String : EBStoredPropertyProtocol {
 
   //····················································································································
 
+  func appendPropertyValueTo (_ ioData : inout Data) {
+    let escapedString = self.replacingOccurrences(of: "\n", with: "\\n")
+    ioData.append (escapedString.data (using: .utf8)!)
+  }
+
+  //····················································································································
+
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> String? {
+    var result : String? = nil
+    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
+    if let s = String (bytes: dataSlice, encoding: .utf8) {
+      result = s.replacingOccurrences(of: "\\n", with: "\n")
+    }
+    return result
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

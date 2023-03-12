@@ -5,7 +5,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct RawObject {
-//  let index : Int
   let object : EBManagedObject
   let propertyDictionary : [String : NSRange]
 }

@@ -5,71 +5,58 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    extension Bool : EBStoredPropertyProtocol
+//   Scalar property String
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension Bool : EBStoredPropertyProtocol {
+typealias EBReadOnlyProperty_String    = EBObservableProperty <String>
+typealias EBTransientProperty_String   = EBGenericTransientProperty <String>
+typealias EBReadWriteProperty_String   = EBObservableMutableProperty <String>
+typealias EBComputedProperty_String    = EBGenericComputedProperty <String>
+typealias EBStoredProperty_String      = EBGenericStoredProperty <String>
+typealias EBPreferencesProperty_String = EBGenericPreferenceProperty <String>
 
-  //····················································································································
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-  func ebHashValue () -> UInt32 {
-    var crc : UInt32 = 0
-    crc.accumulate (u8: self ? 1 : 0)
-    return crc
-  }
+func values_String_are_ordered (_ inLeft : String,
+                                _ inAscending : Bool,
+                                _ inRight : String) -> Bool {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
+  return left.localizedStandardCompare (right) == .orderedAscending
+}
 
-  //····················································································································
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-  func convertToNSObject () -> NSObject {
-    return NSNumber (value: self)
-  }
-
-  //····················································································································
-
-  static func convertFromNSObject (object : NSObject) -> Bool {
-    let number = object as! NSNumber
-    return number.boolValue
-  }
-
-  //····················································································································
-
-  func appendPropertyValueTo (_ ioData : inout Data) {
-    let v : ASCII = self ? .T : .F
-    ioData.append (v.rawValue)
-//    ioData.append (ascii: self ? .T : .F)
-  }
-
-  //····················································································································
-
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Bool? {
-    if inRange.length == 1 {
-      let c = inData [inRange.location]
-      if c == ASCII.T.rawValue {
-        return true
-      }else if c == ASCII.F.rawValue {
-        return false
-      }else{
-        return nil
-      }
-    }else{
-      return nil
+@MainActor func compare_String_properties (_ inLeft : EBReadOnlyProperty_String,
+                                           _ inAscending : Bool,
+                                           _ inRight : EBReadOnlyProperty_String) -> ComparisonResult {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
+  switch left.selection {
+  case .empty :
+    switch right.selection {
+    case .empty :
+      return .orderedSame
+    default:
+      return .orderedAscending
+    }
+  case .multiple :
+    switch right.selection {
+    case .empty :
+      return .orderedDescending
+    case .multiple :
+      return .orderedSame
+   case .single (_) :
+      return .orderedAscending
+   }
+ case .single (let currentValue) :
+    switch right.selection {
+    case .empty, .multiple :
+      return .orderedDescending
+    case .single (let otherValue) :
+      return currentValue.localizedStandardCompare (otherValue)
     }
   }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-public func < (left : Bool, right : Bool) -> Bool {
-  return !left && right
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-public func > (left : Bool, right : Bool) -> Bool {
-  return left && !right
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

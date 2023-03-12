@@ -33,16 +33,14 @@ extension Int : EBStoredPropertyProtocol {
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension Data {
+  func appendPropertyValueTo (_ ioData : inout Data) {
+    ioData.append (base62Encoded: self)
+  }
 
   //····················································································································
 
-  mutating func append (ascii inValue : ASCII) {
-    self.append (inValue.rawValue)
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Int? {
+    return inData.base62EncodedInt (range: inRange)
   }
 
   //····················································································································
