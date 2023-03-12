@@ -6,78 +6,12 @@ import AppKit
 //   EBObservedObserver
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor class EBObservedObserver : EBObserverProtocol {
-
-  //····················································································································
-
-  init () {
-    noteObjectAllocation (self)
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
-  final var objectIndex : Int { return Int (bitPattern: ObjectIdentifier (self)) }
-
-  //····················································································································
-
-  private final var mDictionary = [ObjectIdentifier : EBWeakObserverSetElement] ()
-
-  //····················································································································
-
-  final func startsToBeObserved (by inObserver : EBObserverProtocol) {
-    let key = ObjectIdentifier (inObserver)
-    self.mDictionary [key] = EBWeakObserverSetElement (observer: inObserver)
-    inObserver.observedObjectDidChange ()
-  }
-
-  //····················································································································
-
-  final func stopsBeingObserved (by inObserver : EBObserverProtocol) {
-    let key = ObjectIdentifier (inObserver)
-    self.mDictionary [key] = nil
-    inObserver.observedObjectDidChange ()
-  }
+@MainActor class EBObservedObserver : EBObservedObject, EBObserverProtocol {
 
   //····················································································································
 
   func observedObjectDidChange () {
-    for (key, entry) in self.mDictionary {
-      if let observer = entry.possibleObserver {
-        observer.observedObjectDidChange ()
-      }else{
-        self.mDictionary [key] = nil
-      }
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBWeakObserverSetElement
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-struct EBWeakObserverSetElement {
-
-  //····················································································································
-
-  private weak var mObserver : EBObserverProtocol? = nil // SOULD BE WEAK
-
-  //····················································································································
-
-  var possibleObserver : EBObserverProtocol? { return self.mObserver }
-
-  //····················································································································
-
-  init (observer inObserver : EBObserverProtocol) {
-    self.mObserver = inObserver
+    self.currentObjectDidChange ()
   }
 
   //····················································································································

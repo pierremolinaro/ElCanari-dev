@@ -8,7 +8,7 @@ import AppKit
 //   EBObservableProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBObservableProperty <T> : EBObservedObserver, EBObservableObjectProtocol {
+class EBObservableProperty <T> : EBObservedObserver {
 
   //····················································································································
 

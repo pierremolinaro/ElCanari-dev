@@ -13,7 +13,7 @@ class EBGenericTransientProperty <T : Equatable> : EBObservableProperty <T> {
   //····················································································································
 
   private final var mValueCache : EBSelection <T>? = nil
-  final var mReadModelFunction : Optional<() -> EBSelection <T> > = nil
+  final var mReadModelFunction : Optional <() -> EBSelection <T> > = nil
 
   //····················································································································
 
