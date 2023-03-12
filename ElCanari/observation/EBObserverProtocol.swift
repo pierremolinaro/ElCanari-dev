@@ -11,7 +11,7 @@ import Foundation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
  @MainActor protocol EBObserverProtocol : AnyObject {
-  func observedObjectDidChange ()
+   func observedObjectDidChange ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
