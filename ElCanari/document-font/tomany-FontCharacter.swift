@@ -75,16 +75,16 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //   Observers of 'codePoint' stored property
   //····················································································································
 
-  private final var mObserversOf_codePoint : EBObservedObject? = nil
+  private final var mObserversOf_codePoint : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_codePoint_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_codePoint {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.codePoint_property.startsToBeObserved (by: relay)
@@ -104,16 +104,16 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //   Observers of 'advance' stored property
   //····················································································································
 
-  private final var mObserversOf_advance : EBObservedObject? = nil
+  private final var mObserversOf_advance : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_advance_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_advance {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.advance_property.startsToBeObserved (by: relay)
@@ -133,16 +133,16 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //   Observers of 'mWarnsWhenNoSegment' stored property
   //····················································································································
 
-  private final var mObserversOf_mWarnsWhenNoSegment : EBObservedObject? = nil
+  private final var mObserversOf_mWarnsWhenNoSegment : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mWarnsWhenNoSegment_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mWarnsWhenNoSegment {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mWarnsWhenNoSegment_property.startsToBeObserved (by: relay)
@@ -162,16 +162,16 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //   Observers of 'mWarnsWhenAdvanceIsZero' stored property
   //····················································································································
 
-  private final var mObserversOf_mWarnsWhenAdvanceIsZero : EBObservedObject? = nil
+  private final var mObserversOf_mWarnsWhenAdvanceIsZero : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mWarnsWhenAdvanceIsZero_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mWarnsWhenAdvanceIsZero {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mWarnsWhenAdvanceIsZero_property.startsToBeObserved (by: relay)
@@ -191,16 +191,16 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //   Observers of 'segmentArrayForDrawing' transient property
   //····················································································································
 
-  private final var mObserversOf_segmentArrayForDrawing : EBObservedObject? = nil
+  private final var mObserversOf_segmentArrayForDrawing : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_segmentArrayForDrawing_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_segmentArrayForDrawing {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.segmentArrayForDrawing_property.startsToBeObserved (by: relay)
@@ -220,16 +220,16 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //   Observers of 'gerberCode' transient property
   //····················································································································
 
-  private final var mObserversOf_gerberCode : EBObservedObject? = nil
+  private final var mObserversOf_gerberCode : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_gerberCode_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_gerberCode {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.gerberCode_property.startsToBeObserved (by: relay)
@@ -249,16 +249,16 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //   Observers of 'gerberCodeInstructionCountMessage' transient property
   //····················································································································
 
-  private final var mObserversOf_gerberCodeInstructionCountMessage : EBObservedObject? = nil
+  private final var mObserversOf_gerberCodeInstructionCountMessage : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_gerberCodeInstructionCountMessage_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_gerberCodeInstructionCountMessage {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.gerberCodeInstructionCountMessage_property.startsToBeObserved (by: relay)
@@ -278,16 +278,16 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var mObserversOf_issues : EBObservedObject? = nil
+  private final var mObserversOf_issues : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_issues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_issues {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.issues_property.startsToBeObserved (by: relay)

@@ -51,16 +51,16 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var mObserversOf_issues : EBObservedObject? = nil
+  private final var mObserversOf_issues : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_issues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_issues {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.issues_property.startsToBeObserved (by: relay)
@@ -80,16 +80,16 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay : EBObservedObject? = nil
+  private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
@@ -109,16 +109,16 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay : EBObservedObject? = nil
+  private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.objectDisplay_property.startsToBeObserved (by: relay)
@@ -138,16 +138,16 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
   //   Observers of 'knobSize' transient property
   //····················································································································
 
-  private final var mObserversOf_knobSize : EBObservedObject? = nil
+  private final var mObserversOf_knobSize : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_knobSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_knobSize {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.knobSize_property.startsToBeObserved (by: relay)

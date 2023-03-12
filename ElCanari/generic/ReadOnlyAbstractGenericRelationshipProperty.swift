@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyAbstractGenericRelationshipProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyAbstractGenericRelationshipProperty : EBObservedObject {
+class ReadOnlyAbstractGenericRelationshipProperty : EBObservedObserver {
 
   //····················································································································
   //  Data clients

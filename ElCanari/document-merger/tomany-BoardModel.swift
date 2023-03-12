@@ -405,16 +405,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'name' stored property
   //····················································································································
 
-  private final var mObserversOf_name : EBObservedObject? = nil
+  private final var mObserversOf_name : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_name_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_name {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.name_property.startsToBeObserved (by: relay)
@@ -434,16 +434,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'modelWidth' stored property
   //····················································································································
 
-  private final var mObserversOf_modelWidth : EBObservedObject? = nil
+  private final var mObserversOf_modelWidth : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_modelWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_modelWidth {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.modelWidth_property.startsToBeObserved (by: relay)
@@ -463,16 +463,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'modelWidthUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_modelWidthUnit : EBObservedObject? = nil
+  private final var mObserversOf_modelWidthUnit : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_modelWidthUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_modelWidthUnit {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.modelWidthUnit_property.startsToBeObserved (by: relay)
@@ -492,16 +492,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'modelHeight' stored property
   //····················································································································
 
-  private final var mObserversOf_modelHeight : EBObservedObject? = nil
+  private final var mObserversOf_modelHeight : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_modelHeight_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_modelHeight {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.modelHeight_property.startsToBeObserved (by: relay)
@@ -521,16 +521,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'modelHeightUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_modelHeightUnit : EBObservedObject? = nil
+  private final var mObserversOf_modelHeightUnit : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_modelHeightUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_modelHeightUnit {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.modelHeightUnit_property.startsToBeObserved (by: relay)
@@ -550,16 +550,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'zoom' stored property
   //····················································································································
 
-  private final var mObserversOf_zoom : EBObservedObject? = nil
+  private final var mObserversOf_zoom : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_zoom_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_zoom {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.zoom_property.startsToBeObserved (by: relay)
@@ -579,16 +579,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'layerConfiguration' stored property
   //····················································································································
 
-  private final var mObserversOf_layerConfiguration : EBObservedObject? = nil
+  private final var mObserversOf_layerConfiguration : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_layerConfiguration_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_layerConfiguration {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.layerConfiguration_property.startsToBeObserved (by: relay)
@@ -608,16 +608,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'modelLimitWidth' stored property
   //····················································································································
 
-  private final var mObserversOf_modelLimitWidth : EBObservedObject? = nil
+  private final var mObserversOf_modelLimitWidth : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_modelLimitWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_modelLimitWidth {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.modelLimitWidth_property.startsToBeObserved (by: relay)
@@ -637,16 +637,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'modelLimitWidthUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_modelLimitWidthUnit : EBObservedObject? = nil
+  private final var mObserversOf_modelLimitWidthUnit : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_modelLimitWidthUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_modelLimitWidthUnit {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.modelLimitWidthUnit_property.startsToBeObserved (by: relay)
@@ -666,16 +666,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'artworkName' stored property
   //····················································································································
 
-  private final var mObserversOf_artworkName : EBObservedObject? = nil
+  private final var mObserversOf_artworkName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_artworkName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_artworkName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.artworkName_property.startsToBeObserved (by: relay)
@@ -695,16 +695,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'layerConfigurationString' transient property
   //····················································································································
 
-  private final var mObserversOf_layerConfigurationString : EBObservedObject? = nil
+  private final var mObserversOf_layerConfigurationString : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_layerConfigurationString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_layerConfigurationString {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.layerConfigurationString_property.startsToBeObserved (by: relay)
@@ -724,16 +724,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontLegendLinesSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_frontLegendLinesSegments : EBObservedObject? = nil
+  private final var mObserversOf_frontLegendLinesSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontLegendLinesSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontLegendLinesSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontLegendLinesSegments_property.startsToBeObserved (by: relay)
@@ -753,16 +753,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backLegendLinesSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_backLegendLinesSegments : EBObservedObject? = nil
+  private final var mObserversOf_backLegendLinesSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backLegendLinesSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backLegendLinesSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backLegendLinesSegments_property.startsToBeObserved (by: relay)
@@ -782,16 +782,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backLegendLinesBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_backLegendLinesBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_backLegendLinesBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backLegendLinesBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backLegendLinesBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backLegendLinesBezierPaths_property.startsToBeObserved (by: relay)
@@ -811,16 +811,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontLegendTextsSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_frontLegendTextsSegments : EBObservedObject? = nil
+  private final var mObserversOf_frontLegendTextsSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontLegendTextsSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontLegendTextsSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontLegendTextsSegments_property.startsToBeObserved (by: relay)
@@ -840,16 +840,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontLegendTextsBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_frontLegendTextsBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_frontLegendTextsBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontLegendTextsBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontLegendTextsBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontLegendTextsBezierPaths_property.startsToBeObserved (by: relay)
@@ -869,16 +869,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontLayoutTextsSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_frontLayoutTextsSegments : EBObservedObject? = nil
+  private final var mObserversOf_frontLayoutTextsSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontLayoutTextsSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontLayoutTextsSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontLayoutTextsSegments_property.startsToBeObserved (by: relay)
@@ -898,16 +898,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontLayoutTextsBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_frontLayoutTextsBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_frontLayoutTextsBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontLayoutTextsBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontLayoutTextsBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontLayoutTextsBezierPaths_property.startsToBeObserved (by: relay)
@@ -927,16 +927,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backLegendTextsSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_backLegendTextsSegments : EBObservedObject? = nil
+  private final var mObserversOf_backLegendTextsSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backLegendTextsSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backLegendTextsSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backLegendTextsSegments_property.startsToBeObserved (by: relay)
@@ -956,16 +956,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backLegendTextsBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_backLegendTextsBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_backLegendTextsBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backLegendTextsBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backLegendTextsBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backLegendTextsBezierPaths_property.startsToBeObserved (by: relay)
@@ -985,16 +985,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backLayoutTextsSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_backLayoutTextsSegments : EBObservedObject? = nil
+  private final var mObserversOf_backLayoutTextsSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backLayoutTextsSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backLayoutTextsSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backLayoutTextsSegments_property.startsToBeObserved (by: relay)
@@ -1014,16 +1014,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backLayoutTextsBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_backLayoutTextsBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_backLayoutTextsBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backLayoutTextsBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backLayoutTextsBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backLayoutTextsBezierPaths_property.startsToBeObserved (by: relay)
@@ -1043,16 +1043,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'internalBoardsLimitsSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_internalBoardsLimitsSegments : EBObservedObject? = nil
+  private final var mObserversOf_internalBoardsLimitsSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_internalBoardsLimitsSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_internalBoardsLimitsSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.internalBoardsLimitsSegments_property.startsToBeObserved (by: relay)
@@ -1072,16 +1072,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'internalBoardsLimitsBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_internalBoardsLimitsBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_internalBoardsLimitsBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_internalBoardsLimitsBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_internalBoardsLimitsBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.internalBoardsLimitsBezierPaths_property.startsToBeObserved (by: relay)
@@ -1101,16 +1101,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'drillSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_drillSegments : EBObservedObject? = nil
+  private final var mObserversOf_drillSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drillSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drillSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drillSegments_property.startsToBeObserved (by: relay)
@@ -1130,16 +1130,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'holesBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_holesBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_holesBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_holesBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_holesBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.holesBezierPaths_property.startsToBeObserved (by: relay)
@@ -1159,16 +1159,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'viaShapes' transient property
   //····················································································································
 
-  private final var mObserversOf_viaShapes : EBObservedObject? = nil
+  private final var mObserversOf_viaShapes : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_viaShapes_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_viaShapes {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.viaShapes_property.startsToBeObserved (by: relay)
@@ -1188,16 +1188,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'viasBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_viasBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_viasBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_viasBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_viasBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.viasBezierPaths_property.startsToBeObserved (by: relay)
@@ -1217,16 +1217,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontPadArray' transient property
   //····················································································································
 
-  private final var mObserversOf_frontPadArray : EBObservedObject? = nil
+  private final var mObserversOf_frontPadArray : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontPadArray_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontPadArray {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontPadArray_property.startsToBeObserved (by: relay)
@@ -1246,16 +1246,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontPadsBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_frontPadsBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_frontPadsBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontPadsBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontPadsBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontPadsBezierPaths_property.startsToBeObserved (by: relay)
@@ -1275,16 +1275,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backPadArray' transient property
   //····················································································································
 
-  private final var mObserversOf_backPadArray : EBObservedObject? = nil
+  private final var mObserversOf_backPadArray : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backPadArray_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backPadArray {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backPadArray_property.startsToBeObserved (by: relay)
@@ -1304,16 +1304,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backPadsBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_backPadsBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_backPadsBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backPadsBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backPadsBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backPadsBezierPaths_property.startsToBeObserved (by: relay)
@@ -1333,16 +1333,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'traversingPadArray' transient property
   //····················································································································
 
-  private final var mObserversOf_traversingPadArray : EBObservedObject? = nil
+  private final var mObserversOf_traversingPadArray : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_traversingPadArray_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_traversingPadArray {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.traversingPadArray_property.startsToBeObserved (by: relay)
@@ -1362,16 +1362,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'traversingPadsBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_traversingPadsBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_traversingPadsBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_traversingPadsBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_traversingPadsBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.traversingPadsBezierPaths_property.startsToBeObserved (by: relay)
@@ -1391,16 +1391,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'boardLimitsBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_boardLimitsBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_boardLimitsBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_boardLimitsBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_boardLimitsBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.boardLimitsBezierPaths_property.startsToBeObserved (by: relay)
@@ -1420,16 +1420,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backComponentNameSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_backComponentNameSegments : EBObservedObject? = nil
+  private final var mObserversOf_backComponentNameSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backComponentNameSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backComponentNameSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backComponentNameSegments_property.startsToBeObserved (by: relay)
@@ -1449,16 +1449,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backComponentNamesBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_backComponentNamesBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_backComponentNamesBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backComponentNamesBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backComponentNamesBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backComponentNamesBezierPaths_property.startsToBeObserved (by: relay)
@@ -1478,16 +1478,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontComponentNameSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_frontComponentNameSegments : EBObservedObject? = nil
+  private final var mObserversOf_frontComponentNameSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontComponentNameSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontComponentNameSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontComponentNameSegments_property.startsToBeObserved (by: relay)
@@ -1507,16 +1507,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontComponentNamesBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_frontComponentNamesBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_frontComponentNamesBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontComponentNamesBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontComponentNamesBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontComponentNamesBezierPaths_property.startsToBeObserved (by: relay)
@@ -1536,16 +1536,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontComponentValueSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_frontComponentValueSegments : EBObservedObject? = nil
+  private final var mObserversOf_frontComponentValueSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontComponentValueSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontComponentValueSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontComponentValueSegments_property.startsToBeObserved (by: relay)
@@ -1565,16 +1565,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontComponentValuesBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_frontComponentValuesBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_frontComponentValuesBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontComponentValuesBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontComponentValuesBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontComponentValuesBezierPaths_property.startsToBeObserved (by: relay)
@@ -1594,16 +1594,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backComponentValueSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_backComponentValueSegments : EBObservedObject? = nil
+  private final var mObserversOf_backComponentValueSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backComponentValueSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backComponentValueSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backComponentValueSegments_property.startsToBeObserved (by: relay)
@@ -1623,16 +1623,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backComponentValuesBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_backComponentValuesBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_backComponentValuesBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backComponentValuesBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backComponentValuesBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backComponentValuesBezierPaths_property.startsToBeObserved (by: relay)
@@ -1652,16 +1652,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backTrackSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_backTrackSegments : EBObservedObject? = nil
+  private final var mObserversOf_backTrackSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backTrackSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backTrackSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backTrackSegments_property.startsToBeObserved (by: relay)
@@ -1681,16 +1681,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backTracksBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_backTracksBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_backTracksBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backTracksBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backTracksBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backTracksBezierPaths_property.startsToBeObserved (by: relay)
@@ -1710,16 +1710,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontTrackSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_frontTrackSegments : EBObservedObject? = nil
+  private final var mObserversOf_frontTrackSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontTrackSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontTrackSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontTrackSegments_property.startsToBeObserved (by: relay)
@@ -1739,16 +1739,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontTracksBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_frontTracksBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_frontTracksBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontTracksBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontTracksBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontTracksBezierPaths_property.startsToBeObserved (by: relay)
@@ -1768,16 +1768,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'inner1TracksSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_inner1TracksSegments : EBObservedObject? = nil
+  private final var mObserversOf_inner1TracksSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_inner1TracksSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_inner1TracksSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.inner1TracksSegments_property.startsToBeObserved (by: relay)
@@ -1797,16 +1797,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'inner1TracksBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_inner1TracksBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_inner1TracksBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_inner1TracksBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_inner1TracksBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.inner1TracksBezierPaths_property.startsToBeObserved (by: relay)
@@ -1826,16 +1826,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'inner2TracksSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_inner2TracksSegments : EBObservedObject? = nil
+  private final var mObserversOf_inner2TracksSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_inner2TracksSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_inner2TracksSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.inner2TracksSegments_property.startsToBeObserved (by: relay)
@@ -1855,16 +1855,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'inner2TracksBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_inner2TracksBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_inner2TracksBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_inner2TracksBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_inner2TracksBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.inner2TracksBezierPaths_property.startsToBeObserved (by: relay)
@@ -1884,16 +1884,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'inner3TracksSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_inner3TracksSegments : EBObservedObject? = nil
+  private final var mObserversOf_inner3TracksSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_inner3TracksSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_inner3TracksSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.inner3TracksSegments_property.startsToBeObserved (by: relay)
@@ -1913,16 +1913,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'inner3TracksBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_inner3TracksBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_inner3TracksBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_inner3TracksBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_inner3TracksBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.inner3TracksBezierPaths_property.startsToBeObserved (by: relay)
@@ -1942,16 +1942,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'inner4TracksSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_inner4TracksSegments : EBObservedObject? = nil
+  private final var mObserversOf_inner4TracksSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_inner4TracksSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_inner4TracksSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.inner4TracksSegments_property.startsToBeObserved (by: relay)
@@ -1971,16 +1971,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'inner4TracksBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_inner4TracksBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_inner4TracksBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_inner4TracksBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_inner4TracksBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.inner4TracksBezierPaths_property.startsToBeObserved (by: relay)
@@ -2000,16 +2000,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontPackagesSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_frontPackagesSegments : EBObservedObject? = nil
+  private final var mObserversOf_frontPackagesSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontPackagesSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontPackagesSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontPackagesSegments_property.startsToBeObserved (by: relay)
@@ -2029,16 +2029,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontPackagesBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_frontPackagesBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_frontPackagesBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontPackagesBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontPackagesBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontPackagesBezierPaths_property.startsToBeObserved (by: relay)
@@ -2058,16 +2058,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backPackagesSegments' transient property
   //····················································································································
 
-  private final var mObserversOf_backPackagesSegments : EBObservedObject? = nil
+  private final var mObserversOf_backPackagesSegments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backPackagesSegments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backPackagesSegments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backPackagesSegments_property.startsToBeObserved (by: relay)
@@ -2087,16 +2087,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backPackagesBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_backPackagesBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_backPackagesBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backPackagesBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backPackagesBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backPackagesBezierPaths_property.startsToBeObserved (by: relay)
@@ -2116,16 +2116,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'instanceCount' transient property
   //····················································································································
 
-  private final var mObserversOf_instanceCount : EBObservedObject? = nil
+  private final var mObserversOf_instanceCount : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_instanceCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_instanceCount {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.instanceCount_property.startsToBeObserved (by: relay)
@@ -2145,16 +2145,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontLegendLinesBezierPaths' transient property
   //····················································································································
 
-  private final var mObserversOf_frontLegendLinesBezierPaths : EBObservedObject? = nil
+  private final var mObserversOf_frontLegendLinesBezierPaths : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontLegendLinesBezierPaths_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontLegendLinesBezierPaths {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontLegendLinesBezierPaths_property.startsToBeObserved (by: relay)
@@ -2174,16 +2174,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'imageForModel' transient property
   //····················································································································
 
-  private final var mObserversOf_imageForModel : EBObservedObject? = nil
+  private final var mObserversOf_imageForModel : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_imageForModel_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_imageForModel {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.imageForModel_property.startsToBeObserved (by: relay)
@@ -2203,16 +2203,16 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'imageForInstances' transient property
   //····················································································································
 
-  private final var mObserversOf_imageForInstances : EBObservedObject? = nil
+  private final var mObserversOf_imageForInstances : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_imageForInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_imageForInstances {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.imageForInstances_property.startsToBeObserved (by: relay)

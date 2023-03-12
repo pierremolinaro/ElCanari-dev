@@ -57,16 +57,16 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   //   Observers of 'mPinInstanceName' stored property
   //····················································································································
 
-  private final var mObserversOf_mPinInstanceName : EBObservedObject? = nil
+  private final var mObserversOf_mPinInstanceName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mPinInstanceName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mPinInstanceName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mPinInstanceName_property.startsToBeObserved (by: relay)
@@ -86,16 +86,16 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   //   Observers of 'mPadName' stored property
   //····················································································································
 
-  private final var mObserversOf_mPadName : EBObservedObject? = nil
+  private final var mObserversOf_mPadName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mPadName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mPadName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mPadName_property.startsToBeObserved (by: relay)
@@ -115,16 +115,16 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   //   Observers of 'mIsNC' stored property
   //····················································································································
 
-  private final var mObserversOf_mIsNC : EBObservedObject? = nil
+  private final var mObserversOf_mIsNC : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mIsNC_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mIsNC {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mIsNC_property.startsToBeObserved (by: relay)
@@ -144,16 +144,16 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   //   Observers of 'isConnected' transient property
   //····················································································································
 
-  private final var mObserversOf_isConnected : EBObservedObject? = nil
+  private final var mObserversOf_isConnected : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_isConnected_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_isConnected {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.isConnected_property.startsToBeObserved (by: relay)
@@ -173,16 +173,16 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   //   Observers of 'symbolName' transient property
   //····················································································································
 
-  private final var mObserversOf_symbolName : EBObservedObject? = nil
+  private final var mObserversOf_symbolName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_symbolName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_symbolName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.symbolName_property.startsToBeObserved (by: relay)

@@ -25,7 +25,7 @@ import AppKit
 
   func computeSelectionShape ()
 
-  var selectedArrayDidChange_property : EBObservedObject { get }
+  var selectedArrayDidChange_property : EBObservedObserver { get }
 
   var selectedGraphicObjectSet : EBReferenceSet <EBGraphicManagedObject> { get }
 

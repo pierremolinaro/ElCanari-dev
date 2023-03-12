@@ -99,13 +99,6 @@ final class AutoLayoutCanariFontCharacterGerberCodeTableView : AutoLayoutVertica
 
   //····················································································································
 
-//  final func unbind_characterGerberCode () {
-//    self.mValueController?.unregister ()
-//    self.mValueController = nil
-//  }
-
-  //····················································································································
-
   private var mModel = CharacterGerberCode (code: [])
 
   //····················································································································

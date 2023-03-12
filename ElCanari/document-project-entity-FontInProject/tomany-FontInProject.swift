@@ -93,16 +93,16 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'mNominalSize' stored property
   //····················································································································
 
-  private final var mObserversOf_mNominalSize : EBObservedObject? = nil
+  private final var mObserversOf_mNominalSize : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mNominalSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mNominalSize {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mNominalSize_property.startsToBeObserved (by: relay)
@@ -122,16 +122,16 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'mFontName' stored property
   //····················································································································
 
-  private final var mObserversOf_mFontName : EBObservedObject? = nil
+  private final var mObserversOf_mFontName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mFontName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mFontName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mFontName_property.startsToBeObserved (by: relay)
@@ -151,16 +151,16 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'mFontVersion' stored property
   //····················································································································
 
-  private final var mObserversOf_mFontVersion : EBObservedObject? = nil
+  private final var mObserversOf_mFontVersion : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mFontVersion_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mFontVersion {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mFontVersion_property.startsToBeObserved (by: relay)
@@ -180,16 +180,16 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'mDescriptiveString' stored property
   //····················································································································
 
-  private final var mObserversOf_mDescriptiveString : EBObservedObject? = nil
+  private final var mObserversOf_mDescriptiveString : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mDescriptiveString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mDescriptiveString {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mDescriptiveString_property.startsToBeObserved (by: relay)
@@ -209,16 +209,16 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'versionString' transient property
   //····················································································································
 
-  private final var mObserversOf_versionString : EBObservedObject? = nil
+  private final var mObserversOf_versionString : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_versionString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_versionString {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.versionString_property.startsToBeObserved (by: relay)
@@ -238,16 +238,16 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'sizeString' transient property
   //····················································································································
 
-  private final var mObserversOf_sizeString : EBObservedObject? = nil
+  private final var mObserversOf_sizeString : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_sizeString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_sizeString {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.sizeString_property.startsToBeObserved (by: relay)
@@ -267,16 +267,16 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  private final var mObserversOf_descriptor : EBObservedObject? = nil
+  private final var mObserversOf_descriptor : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_descriptor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_descriptor {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.descriptor_property.startsToBeObserved (by: relay)
@@ -296,16 +296,16 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'textCount' transient property
   //····················································································································
 
-  private final var mObserversOf_textCount : EBObservedObject? = nil
+  private final var mObserversOf_textCount : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_textCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_textCount {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.textCount_property.startsToBeObserved (by: relay)
@@ -325,16 +325,16 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'canRemoveFont' transient property
   //····················································································································
 
-  private final var mObserversOf_canRemoveFont : EBObservedObject? = nil
+  private final var mObserversOf_canRemoveFont : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_canRemoveFont_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_canRemoveFont {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.canRemoveFont_property.startsToBeObserved (by: relay)
@@ -354,16 +354,16 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'componentNamesCount' transient property
   //····················································································································
 
-  private final var mObserversOf_componentNamesCount : EBObservedObject? = nil
+  private final var mObserversOf_componentNamesCount : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_componentNamesCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_componentNamesCount {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.componentNamesCount_property.startsToBeObserved (by: relay)
@@ -383,16 +383,16 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'componentValuesCount' transient property
   //····················································································································
 
-  private final var mObserversOf_componentValuesCount : EBObservedObject? = nil
+  private final var mObserversOf_componentValuesCount : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_componentValuesCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_componentValuesCount {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.componentValuesCount_property.startsToBeObserved (by: relay)

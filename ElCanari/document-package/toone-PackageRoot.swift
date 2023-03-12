@@ -480,16 +480,16 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observable toMany property: mModelImageObjects
   //····················································································································
 
-  private final var mObserversOf_mModelImageObjects : EBObservedObject? = nil
+  private final var mObserversOf_mModelImageObjects : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mModelImageObjects_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mModelImageObjects {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mModelImageObjects_property.startsToBeObserved (by: relay)
       self.mObserversOf_mModelImageObjects = relay
     }
@@ -506,16 +506,16 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observable toMany property: packageObjects
   //····················································································································
 
-  private final var mObserversOf_packageObjects : EBObservedObject? = nil
+  private final var mObserversOf_packageObjects : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_packageObjects_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_packageObjects {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.packageObjects_property.startsToBeObserved (by: relay)
       self.mObserversOf_packageObjects = relay
     }
@@ -532,16 +532,16 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observable toMany property: packagePads
   //····················································································································
 
-  private final var mObserversOf_packagePads : EBObservedObject? = nil
+  private final var mObserversOf_packagePads : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_packagePads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_packagePads {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.packagePads_property.startsToBeObserved (by: relay)
       self.mObserversOf_packagePads = relay
     }
@@ -558,16 +558,16 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observable toMany property: packageSlavePads
   //····················································································································
 
-  private final var mObserversOf_packageSlavePads : EBObservedObject? = nil
+  private final var mObserversOf_packageSlavePads : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_packageSlavePads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_packageSlavePads {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.packageSlavePads_property.startsToBeObserved (by: relay)
       self.mObserversOf_packageSlavePads = relay
     }
@@ -584,16 +584,16 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observable toMany property: packageZones
   //····················································································································
 
-  private final var mObserversOf_packageZones : EBObservedObject? = nil
+  private final var mObserversOf_packageZones : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_packageZones_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_packageZones {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.packageZones_property.startsToBeObserved (by: relay)
       self.mObserversOf_packageZones = relay
     }

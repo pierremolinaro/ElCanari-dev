@@ -264,16 +264,16 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //   Observable toMany property: slaves
   //····················································································································
 
-  private final var mObserversOf_slaves : EBObservedObject? = nil
+  private final var mObserversOf_slaves : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_slaves_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_slaves {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.slaves_property.startsToBeObserved (by: relay)
       self.mObserversOf_slaves = relay
     }

@@ -57,16 +57,16 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
-  private final var mObserversOf_mSymbolInstanceName : EBObservedObject? = nil
+  private final var mObserversOf_mSymbolInstanceName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mSymbolInstanceName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mSymbolInstanceName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mSymbolInstanceName_property.startsToBeObserved (by: relay)
@@ -86,16 +86,16 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   //   Observers of 'symbolAndTypeName' transient property
   //····················································································································
 
-  private final var mObserversOf_symbolAndTypeName : EBObservedObject? = nil
+  private final var mObserversOf_symbolAndTypeName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_symbolAndTypeName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_symbolAndTypeName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.symbolAndTypeName_property.startsToBeObserved (by: relay)
@@ -115,16 +115,16 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   //   Observers of 'symbolTypeName' transient property
   //····················································································································
 
-  private final var mObserversOf_symbolTypeName : EBObservedObject? = nil
+  private final var mObserversOf_symbolTypeName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_symbolTypeName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_symbolTypeName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.symbolTypeName_property.startsToBeObserved (by: relay)
@@ -144,16 +144,16 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   //   Observers of 'filledBezierPath' transient property
   //····················································································································
 
-  private final var mObserversOf_filledBezierPath : EBObservedObject? = nil
+  private final var mObserversOf_filledBezierPath : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_filledBezierPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_filledBezierPath {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.filledBezierPath_property.startsToBeObserved (by: relay)
@@ -173,16 +173,16 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private final var mObserversOf_strokeBezierPath : EBObservedObject? = nil
+  private final var mObserversOf_strokeBezierPath : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_strokeBezierPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_strokeBezierPath {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.strokeBezierPath_property.startsToBeObserved (by: relay)

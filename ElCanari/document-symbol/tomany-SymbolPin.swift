@@ -117,16 +117,16 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'yPin' stored property
   //····················································································································
 
-  private final var mObserversOf_yPin : EBObservedObject? = nil
+  private final var mObserversOf_yPin : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_yPin_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_yPin {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.yPin_property.startsToBeObserved (by: relay)
@@ -146,16 +146,16 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'xName' stored property
   //····················································································································
 
-  private final var mObserversOf_xName : EBObservedObject? = nil
+  private final var mObserversOf_xName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_xName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_xName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.xName_property.startsToBeObserved (by: relay)
@@ -175,16 +175,16 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'yName' stored property
   //····················································································································
 
-  private final var mObserversOf_yName : EBObservedObject? = nil
+  private final var mObserversOf_yName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_yName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_yName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.yName_property.startsToBeObserved (by: relay)
@@ -204,16 +204,16 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'xNumber' stored property
   //····················································································································
 
-  private final var mObserversOf_xNumber : EBObservedObject? = nil
+  private final var mObserversOf_xNumber : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_xNumber_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_xNumber {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.xNumber_property.startsToBeObserved (by: relay)
@@ -233,16 +233,16 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'yNumber' stored property
   //····················································································································
 
-  private final var mObserversOf_yNumber : EBObservedObject? = nil
+  private final var mObserversOf_yNumber : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_yNumber_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_yNumber {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.yNumber_property.startsToBeObserved (by: relay)
@@ -262,16 +262,16 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'name' stored property
   //····················································································································
 
-  private final var mObserversOf_name : EBObservedObject? = nil
+  private final var mObserversOf_name : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_name_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_name {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.name_property.startsToBeObserved (by: relay)
@@ -291,16 +291,16 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'nameHorizontalAlignment' stored property
   //····················································································································
 
-  private final var mObserversOf_nameHorizontalAlignment : EBObservedObject? = nil
+  private final var mObserversOf_nameHorizontalAlignment : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_nameHorizontalAlignment_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_nameHorizontalAlignment {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.nameHorizontalAlignment_property.startsToBeObserved (by: relay)
@@ -320,16 +320,16 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'numberHorizontalAlignment' stored property
   //····················································································································
 
-  private final var mObserversOf_numberHorizontalAlignment : EBObservedObject? = nil
+  private final var mObserversOf_numberHorizontalAlignment : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_numberHorizontalAlignment_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_numberHorizontalAlignment {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.numberHorizontalAlignment_property.startsToBeObserved (by: relay)
@@ -349,16 +349,16 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'pinNameIsDisplayedInSchematics' stored property
   //····················································································································
 
-  private final var mObserversOf_pinNameIsDisplayedInSchematics : EBObservedObject? = nil
+  private final var mObserversOf_pinNameIsDisplayedInSchematics : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_pinNameIsDisplayedInSchematics_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_pinNameIsDisplayedInSchematics {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.pinNameIsDisplayedInSchematics_property.startsToBeObserved (by: relay)
@@ -378,16 +378,16 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'xPin' stored property
   //····················································································································
 
-  private final var mObserversOf_xPin : EBObservedObject? = nil
+  private final var mObserversOf_xPin : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_xPin_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_xPin {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.xPin_property.startsToBeObserved (by: relay)
@@ -407,16 +407,16 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'filledBezierPath' transient property
   //····················································································································
 
-  private final var mObserversOf_filledBezierPath : EBObservedObject? = nil
+  private final var mObserversOf_filledBezierPath : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_filledBezierPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_filledBezierPath {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.filledBezierPath_property.startsToBeObserved (by: relay)
@@ -436,16 +436,16 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay : EBObservedObject? = nil
+  private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.objectDisplay_property.startsToBeObserved (by: relay)
@@ -465,16 +465,16 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay : EBObservedObject? = nil
+  private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
@@ -494,16 +494,16 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var mObserversOf_issues : EBObservedObject? = nil
+  private final var mObserversOf_issues : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_issues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_issues {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.issues_property.startsToBeObserved (by: relay)
@@ -523,16 +523,16 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'nameRect' transient property
   //····················································································································
 
-  private final var mObserversOf_nameRect : EBObservedObject? = nil
+  private final var mObserversOf_nameRect : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_nameRect_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_nameRect {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.nameRect_property.startsToBeObserved (by: relay)

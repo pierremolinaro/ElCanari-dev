@@ -75,16 +75,16 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   //   Observers of 'mFirstX' stored property
   //····················································································································
 
-  private final var mObserversOf_mFirstX : EBObservedObject? = nil
+  private final var mObserversOf_mFirstX : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mFirstX_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mFirstX {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mFirstX_property.startsToBeObserved (by: relay)
@@ -104,16 +104,16 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   //   Observers of 'mFirstY' stored property
   //····················································································································
 
-  private final var mObserversOf_mFirstY : EBObservedObject? = nil
+  private final var mObserversOf_mFirstY : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mFirstY_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mFirstY {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mFirstY_property.startsToBeObserved (by: relay)
@@ -133,16 +133,16 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   //   Observers of 'mFirstColor' stored property
   //····················································································································
 
-  private final var mObserversOf_mFirstColor : EBObservedObject? = nil
+  private final var mObserversOf_mFirstColor : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mFirstColor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mFirstColor {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mFirstColor_property.startsToBeObserved (by: relay)
@@ -162,16 +162,16 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   //   Observers of 'mSecondDx' stored property
   //····················································································································
 
-  private final var mObserversOf_mSecondDx : EBObservedObject? = nil
+  private final var mObserversOf_mSecondDx : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mSecondDx_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mSecondDx {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mSecondDx_property.startsToBeObserved (by: relay)
@@ -191,16 +191,16 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   //   Observers of 'mSecondDy' stored property
   //····················································································································
 
-  private final var mObserversOf_mSecondDy : EBObservedObject? = nil
+  private final var mObserversOf_mSecondDy : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mSecondDy_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mSecondDy {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mSecondDy_property.startsToBeObserved (by: relay)
@@ -220,16 +220,16 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   //   Observers of 'mSecondColor' stored property
   //····················································································································
 
-  private final var mObserversOf_mSecondColor : EBObservedObject? = nil
+  private final var mObserversOf_mSecondColor : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mSecondColor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mSecondColor {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mSecondColor_property.startsToBeObserved (by: relay)
@@ -249,16 +249,16 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay : EBObservedObject? = nil
+  private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.objectDisplay_property.startsToBeObserved (by: relay)
@@ -278,16 +278,16 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay : EBObservedObject? = nil
+  private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.selectionDisplay_property.startsToBeObserved (by: relay)

@@ -164,16 +164,16 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observable toMany property: mLabels
   //····················································································································
 
-  private final var mObserversOf_mLabels : EBObservedObject? = nil
+  private final var mObserversOf_mLabels : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mLabels_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mLabels {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mLabels_property.startsToBeObserved (by: relay)
       self.mObserversOf_mLabels = relay
     }
@@ -190,16 +190,16 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observable toMany property: mWiresP2s
   //····················································································································
 
-  private final var mObserversOf_mWiresP2s : EBObservedObject? = nil
+  private final var mObserversOf_mWiresP2s : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mWiresP2s_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mWiresP2s {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mWiresP2s_property.startsToBeObserved (by: relay)
       self.mObserversOf_mWiresP2s = relay
     }
@@ -216,16 +216,16 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observable toMany property: mWiresP1s
   //····················································································································
 
-  private final var mObserversOf_mWiresP1s : EBObservedObject? = nil
+  private final var mObserversOf_mWiresP1s : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mWiresP1s_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mWiresP1s {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mWiresP1s_property.startsToBeObserved (by: relay)
       self.mObserversOf_mWiresP1s = relay
     }

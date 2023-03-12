@@ -310,16 +310,16 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observable toMany property: boardModels
   //····················································································································
 
-  private final var mObserversOf_boardModels : EBObservedObject? = nil
+  private final var mObserversOf_boardModels : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_boardModels_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_boardModels {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.boardModels_property.startsToBeObserved (by: relay)
       self.mObserversOf_boardModels = relay
     }
@@ -336,16 +336,16 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observable toMany property: boardInstances
   //····················································································································
 
-  private final var mObserversOf_boardInstances : EBObservedObject? = nil
+  private final var mObserversOf_boardInstances : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_boardInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_boardInstances {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.boardInstances_property.startsToBeObserved (by: relay)
       self.mObserversOf_boardInstances = relay
     }

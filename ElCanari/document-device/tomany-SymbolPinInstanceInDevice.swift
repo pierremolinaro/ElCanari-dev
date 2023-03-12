@@ -57,16 +57,16 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
   //   Observers of 'pinName' transient property
   //····················································································································
 
-  private final var mObserversOf_pinName : EBObservedObject? = nil
+  private final var mObserversOf_pinName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_pinName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_pinName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.pinName_property.startsToBeObserved (by: relay)
@@ -86,16 +86,16 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
   //   Observers of 'symbolName' transient property
   //····················································································································
 
-  private final var mObserversOf_symbolName : EBObservedObject? = nil
+  private final var mObserversOf_symbolName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_symbolName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_symbolName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.symbolName_property.startsToBeObserved (by: relay)
@@ -115,16 +115,16 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
   //   Observers of 'pinQualifiedName' transient property
   //····················································································································
 
-  private final var mObserversOf_pinQualifiedName : EBObservedObject? = nil
+  private final var mObserversOf_pinQualifiedName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_pinQualifiedName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_pinQualifiedName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.pinQualifiedName_property.startsToBeObserved (by: relay)
@@ -144,16 +144,16 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
   //   Observers of 'isConnected' transient property
   //····················································································································
 
-  private final var mObserversOf_isConnected : EBObservedObject? = nil
+  private final var mObserversOf_isConnected : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_isConnected_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_isConnected {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.isConnected_property.startsToBeObserved (by: relay)
@@ -173,16 +173,16 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
   //   Observers of 'numberShape' transient property
   //····················································································································
 
-  private final var mObserversOf_numberShape : EBObservedObject? = nil
+  private final var mObserversOf_numberShape : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_numberShape_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_numberShape {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.numberShape_property.startsToBeObserved (by: relay)

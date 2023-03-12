@@ -231,16 +231,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mSide' stored property
   //····················································································································
 
-  private final var mObserversOf_mSide : EBObservedObject? = nil
+  private final var mObserversOf_mSide : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mSide {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mSide_property.startsToBeObserved (by: relay)
@@ -260,16 +260,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mDefaultTrackWidthUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mDefaultTrackWidthUnit : EBObservedObject? = nil
+  private final var mObserversOf_mDefaultTrackWidthUnit : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mDefaultTrackWidthUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mDefaultTrackWidthUnit {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mDefaultTrackWidthUnit_property.startsToBeObserved (by: relay)
@@ -289,16 +289,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mCustomTrackWidth' stored property
   //····················································································································
 
-  private final var mObserversOf_mCustomTrackWidth : EBObservedObject? = nil
+  private final var mObserversOf_mCustomTrackWidth : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mCustomTrackWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mCustomTrackWidth {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mCustomTrackWidth_property.startsToBeObserved (by: relay)
@@ -318,16 +318,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mCustomTrackWidthUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mCustomTrackWidthUnit : EBObservedObject? = nil
+  private final var mObserversOf_mCustomTrackWidthUnit : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mCustomTrackWidthUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mCustomTrackWidthUnit {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mCustomTrackWidthUnit_property.startsToBeObserved (by: relay)
@@ -347,16 +347,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mUsesCustomTrackWidth' stored property
   //····················································································································
 
-  private final var mObserversOf_mUsesCustomTrackWidth : EBObservedObject? = nil
+  private final var mObserversOf_mUsesCustomTrackWidth : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mUsesCustomTrackWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mUsesCustomTrackWidth {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mUsesCustomTrackWidth_property.startsToBeObserved (by: relay)
@@ -376,16 +376,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mIsPreservedByAutoRouter' stored property
   //····················································································································
 
-  private final var mObserversOf_mIsPreservedByAutoRouter : EBObservedObject? = nil
+  private final var mObserversOf_mIsPreservedByAutoRouter : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mIsPreservedByAutoRouter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mIsPreservedByAutoRouter {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mIsPreservedByAutoRouter_property.startsToBeObserved (by: relay)
@@ -405,16 +405,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mP1XUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mP1XUnit : EBObservedObject? = nil
+  private final var mObserversOf_mP1XUnit : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mP1XUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mP1XUnit {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mP1XUnit_property.startsToBeObserved (by: relay)
@@ -434,16 +434,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mP1YUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mP1YUnit : EBObservedObject? = nil
+  private final var mObserversOf_mP1YUnit : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mP1YUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mP1YUnit {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mP1YUnit_property.startsToBeObserved (by: relay)
@@ -463,16 +463,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mP2XUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mP2XUnit : EBObservedObject? = nil
+  private final var mObserversOf_mP2XUnit : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mP2XUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mP2XUnit {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mP2XUnit_property.startsToBeObserved (by: relay)
@@ -492,16 +492,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mP2YUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mP2YUnit : EBObservedObject? = nil
+  private final var mObserversOf_mP2YUnit : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mP2YUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mP2YUnit {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mP2YUnit_property.startsToBeObserved (by: relay)
@@ -521,16 +521,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mManualLockP1' stored property
   //····················································································································
 
-  private final var mObserversOf_mManualLockP1 : EBObservedObject? = nil
+  private final var mObserversOf_mManualLockP1 : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mManualLockP1_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mManualLockP1 {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mManualLockP1_property.startsToBeObserved (by: relay)
@@ -550,16 +550,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mManualLockP2' stored property
   //····················································································································
 
-  private final var mObserversOf_mManualLockP2 : EBObservedObject? = nil
+  private final var mObserversOf_mManualLockP2 : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mManualLockP2_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mManualLockP2 {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mManualLockP2_property.startsToBeObserved (by: relay)
@@ -579,16 +579,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mDirectionLockOnKnobDragging' stored property
   //····················································································································
 
-  private final var mObserversOf_mDirectionLockOnKnobDragging : EBObservedObject? = nil
+  private final var mObserversOf_mDirectionLockOnKnobDragging : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mDirectionLockOnKnobDragging_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mDirectionLockOnKnobDragging {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mDirectionLockOnKnobDragging_property.startsToBeObserved (by: relay)
@@ -608,16 +608,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'actualTrackWidth' transient property
   //····················································································································
 
-  private final var mObserversOf_actualTrackWidth : EBObservedObject? = nil
+  private final var mObserversOf_actualTrackWidth : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_actualTrackWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_actualTrackWidth {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.actualTrackWidth_property.startsToBeObserved (by: relay)
@@ -637,16 +637,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'netName' transient property
   //····················································································································
 
-  private final var mObserversOf_netName : EBObservedObject? = nil
+  private final var mObserversOf_netName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_netName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_netName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.netName_property.startsToBeObserved (by: relay)
@@ -666,16 +666,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private final var mObserversOf_netClassName : EBObservedObject? = nil
+  private final var mObserversOf_netClassName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_netClassName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.netClassName_property.startsToBeObserved (by: relay)
@@ -695,16 +695,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'netClassTrackWidth' transient property
   //····················································································································
 
-  private final var mObserversOf_netClassTrackWidth : EBObservedObject? = nil
+  private final var mObserversOf_netClassTrackWidth : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_netClassTrackWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassTrackWidth {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.netClassTrackWidth_property.startsToBeObserved (by: relay)
@@ -724,16 +724,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'netClassViaHoleDiameter' transient property
   //····················································································································
 
-  private final var mObserversOf_netClassViaHoleDiameter : EBObservedObject? = nil
+  private final var mObserversOf_netClassViaHoleDiameter : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_netClassViaHoleDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassViaHoleDiameter {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.netClassViaHoleDiameter_property.startsToBeObserved (by: relay)
@@ -753,16 +753,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'netClassViaPadDiameter' transient property
   //····················································································································
 
-  private final var mObserversOf_netClassViaPadDiameter : EBObservedObject? = nil
+  private final var mObserversOf_netClassViaPadDiameter : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_netClassViaPadDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassViaPadDiameter {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.netClassViaPadDiameter_property.startsToBeObserved (by: relay)
@@ -782,16 +782,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'trackLengthInCanariUnit' transient property
   //····················································································································
 
-  private final var mObserversOf_trackLengthInCanariUnit : EBObservedObject? = nil
+  private final var mObserversOf_trackLengthInCanariUnit : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_trackLengthInCanariUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_trackLengthInCanariUnit {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.trackLengthInCanariUnit_property.startsToBeObserved (by: relay)
@@ -811,16 +811,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'trackSide' transient property
   //····················································································································
 
-  private final var mObserversOf_trackSide : EBObservedObject? = nil
+  private final var mObserversOf_trackSide : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_trackSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_trackSide {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.trackSide_property.startsToBeObserved (by: relay)
@@ -840,16 +840,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private final var mObserversOf_signatureForERCChecking : EBObservedObject? = nil
+  private final var mObserversOf_signatureForERCChecking : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_signatureForERCChecking_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_signatureForERCChecking {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.signatureForERCChecking_property.startsToBeObserved (by: relay)
@@ -869,16 +869,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'p1ConnectedToSomePad' transient property
   //····················································································································
 
-  private final var mObserversOf_p1ConnectedToSomePad : EBObservedObject? = nil
+  private final var mObserversOf_p1ConnectedToSomePad : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_p1ConnectedToSomePad_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_p1ConnectedToSomePad {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.p1ConnectedToSomePad_property.startsToBeObserved (by: relay)
@@ -898,16 +898,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'p2ConnectedToSomePad' transient property
   //····················································································································
 
-  private final var mObserversOf_p2ConnectedToSomePad : EBObservedObject? = nil
+  private final var mObserversOf_p2ConnectedToSomePad : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_p2ConnectedToSomePad_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_p2ConnectedToSomePad {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.p2ConnectedToSomePad_property.startsToBeObserved (by: relay)
@@ -927,16 +927,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay : EBObservedObject? = nil
+  private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.objectDisplay_property.startsToBeObserved (by: relay)
@@ -956,16 +956,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'p1CanMove' transient property
   //····················································································································
 
-  private final var mObserversOf_p1CanMove : EBObservedObject? = nil
+  private final var mObserversOf_p1CanMove : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_p1CanMove_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_p1CanMove {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.p1CanMove_property.startsToBeObserved (by: relay)
@@ -985,16 +985,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'p2CanMove' transient property
   //····················································································································
 
-  private final var mObserversOf_p2CanMove : EBObservedObject? = nil
+  private final var mObserversOf_p2CanMove : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_p2CanMove_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_p2CanMove {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.p2CanMove_property.startsToBeObserved (by: relay)
@@ -1014,16 +1014,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'trackCanRotate' transient property
   //····················································································································
 
-  private final var mObserversOf_trackCanRotate : EBObservedObject? = nil
+  private final var mObserversOf_trackCanRotate : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_trackCanRotate_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_trackCanRotate {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.trackCanRotate_property.startsToBeObserved (by: relay)
@@ -1043,16 +1043,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay : EBObservedObject? = nil
+  private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
@@ -1072,16 +1072,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'trackDirectionInDegrees' computed property
   //····················································································································
 
-  private final var mObserversOf_trackDirectionInDegrees : EBObservedObject? = nil
+  private final var mObserversOf_trackDirectionInDegrees : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_trackDirectionInDegrees_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_trackDirectionInDegrees {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.trackDirectionInDegrees_property.startsToBeObserved (by: relay)
@@ -1101,16 +1101,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'computedP1X' computed property
   //····················································································································
 
-  private final var mObserversOf_computedP1X : EBObservedObject? = nil
+  private final var mObserversOf_computedP1X : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_computedP1X_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_computedP1X {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.computedP1X_property.startsToBeObserved (by: relay)
@@ -1130,16 +1130,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'computedP1Y' computed property
   //····················································································································
 
-  private final var mObserversOf_computedP1Y : EBObservedObject? = nil
+  private final var mObserversOf_computedP1Y : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_computedP1Y_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_computedP1Y {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.computedP1Y_property.startsToBeObserved (by: relay)
@@ -1159,16 +1159,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'computedP2X' computed property
   //····················································································································
 
-  private final var mObserversOf_computedP2X : EBObservedObject? = nil
+  private final var mObserversOf_computedP2X : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_computedP2X_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_computedP2X {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.computedP2X_property.startsToBeObserved (by: relay)
@@ -1188,16 +1188,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'computedP2Y' computed property
   //····················································································································
 
-  private final var mObserversOf_computedP2Y : EBObservedObject? = nil
+  private final var mObserversOf_computedP2Y : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_computedP2Y_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_computedP2Y {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.computedP2Y_property.startsToBeObserved (by: relay)

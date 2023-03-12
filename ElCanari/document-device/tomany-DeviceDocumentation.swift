@@ -45,16 +45,16 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   //   Observers of 'mFileName' stored property
   //····················································································································
 
-  private final var mObserversOf_mFileName : EBObservedObject? = nil
+  private final var mObserversOf_mFileName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mFileName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mFileName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mFileName_property.startsToBeObserved (by: relay)
@@ -74,16 +74,16 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   //   Observers of 'mFileData' stored property
   //····················································································································
 
-  private final var mObserversOf_mFileData : EBObservedObject? = nil
+  private final var mObserversOf_mFileData : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mFileData_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mFileData {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mFileData_property.startsToBeObserved (by: relay)
@@ -103,16 +103,16 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   //   Observers of 'fileSize' transient property
   //····················································································································
 
-  private final var mObserversOf_fileSize : EBObservedObject? = nil
+  private final var mObserversOf_fileSize : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_fileSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_fileSize {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.fileSize_property.startsToBeObserved (by: relay)

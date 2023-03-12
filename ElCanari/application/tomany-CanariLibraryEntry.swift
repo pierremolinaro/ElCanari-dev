@@ -57,16 +57,16 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //   Observers of 'mPath' stored property
   //····················································································································
 
-  private final var mObserversOf_mPath : EBObservedObject? = nil
+  private final var mObserversOf_mPath : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mPath {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mPath_property.startsToBeObserved (by: relay)
@@ -86,16 +86,16 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //   Observers of 'mUses' stored property
   //····················································································································
 
-  private final var mObserversOf_mUses : EBObservedObject? = nil
+  private final var mObserversOf_mUses : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mUses_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mUses {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mUses_property.startsToBeObserved (by: relay)
@@ -115,16 +115,16 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //   Observers of 'mLibraryRepositoryURL' stored property
   //····················································································································
 
-  private final var mObserversOf_mLibraryRepositoryURL : EBObservedObject? = nil
+  private final var mObserversOf_mLibraryRepositoryURL : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mLibraryRepositoryURL_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mLibraryRepositoryURL {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mLibraryRepositoryURL_property.startsToBeObserved (by: relay)
@@ -144,16 +144,16 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //   Observers of 'mUserAndPasswordTag' stored property
   //····················································································································
 
-  private final var mObserversOf_mUserAndPasswordTag : EBObservedObject? = nil
+  private final var mObserversOf_mUserAndPasswordTag : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mUserAndPasswordTag_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mUserAndPasswordTag {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mUserAndPasswordTag_property.startsToBeObserved (by: relay)
@@ -173,16 +173,16 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //   Observers of 'mStatusImage' transient property
   //····················································································································
 
-  private final var mObserversOf_mStatusImage : EBObservedObject? = nil
+  private final var mObserversOf_mStatusImage : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mStatusImage_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mStatusImage {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mStatusImage_property.startsToBeObserved (by: relay)

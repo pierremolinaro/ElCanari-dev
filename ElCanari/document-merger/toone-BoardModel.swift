@@ -680,16 +680,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: frontLegendLines
   //····················································································································
 
-  private final var mObserversOf_frontLegendLines : EBObservedObject? = nil
+  private final var mObserversOf_frontLegendLines : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontLegendLines_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontLegendLines {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.frontLegendLines_property.startsToBeObserved (by: relay)
       self.mObserversOf_frontLegendLines = relay
     }
@@ -706,16 +706,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: backLegendLines
   //····················································································································
 
-  private final var mObserversOf_backLegendLines : EBObservedObject? = nil
+  private final var mObserversOf_backLegendLines : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backLegendLines_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backLegendLines {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.backLegendLines_property.startsToBeObserved (by: relay)
       self.mObserversOf_backLegendLines = relay
     }
@@ -732,16 +732,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: frontLegendTexts
   //····················································································································
 
-  private final var mObserversOf_frontLegendTexts : EBObservedObject? = nil
+  private final var mObserversOf_frontLegendTexts : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontLegendTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontLegendTexts {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.frontLegendTexts_property.startsToBeObserved (by: relay)
       self.mObserversOf_frontLegendTexts = relay
     }
@@ -758,16 +758,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: frontLayoutTexts
   //····················································································································
 
-  private final var mObserversOf_frontLayoutTexts : EBObservedObject? = nil
+  private final var mObserversOf_frontLayoutTexts : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontLayoutTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontLayoutTexts {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.frontLayoutTexts_property.startsToBeObserved (by: relay)
       self.mObserversOf_frontLayoutTexts = relay
     }
@@ -784,16 +784,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: backLegendTexts
   //····················································································································
 
-  private final var mObserversOf_backLegendTexts : EBObservedObject? = nil
+  private final var mObserversOf_backLegendTexts : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backLegendTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backLegendTexts {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.backLegendTexts_property.startsToBeObserved (by: relay)
       self.mObserversOf_backLegendTexts = relay
     }
@@ -810,16 +810,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: backLayoutTexts
   //····················································································································
 
-  private final var mObserversOf_backLayoutTexts : EBObservedObject? = nil
+  private final var mObserversOf_backLayoutTexts : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backLayoutTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backLayoutTexts {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.backLayoutTexts_property.startsToBeObserved (by: relay)
       self.mObserversOf_backLayoutTexts = relay
     }
@@ -836,16 +836,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: internalBoardsLimits
   //····················································································································
 
-  private final var mObserversOf_internalBoardsLimits : EBObservedObject? = nil
+  private final var mObserversOf_internalBoardsLimits : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_internalBoardsLimits_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_internalBoardsLimits {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.internalBoardsLimits_property.startsToBeObserved (by: relay)
       self.mObserversOf_internalBoardsLimits = relay
     }
@@ -862,16 +862,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: drills
   //····················································································································
 
-  private final var mObserversOf_drills : EBObservedObject? = nil
+  private final var mObserversOf_drills : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drills_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drills {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.drills_property.startsToBeObserved (by: relay)
       self.mObserversOf_drills = relay
     }
@@ -888,16 +888,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: vias
   //····················································································································
 
-  private final var mObserversOf_vias : EBObservedObject? = nil
+  private final var mObserversOf_vias : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_vias_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_vias {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.vias_property.startsToBeObserved (by: relay)
       self.mObserversOf_vias = relay
     }
@@ -914,16 +914,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: frontPads
   //····················································································································
 
-  private final var mObserversOf_frontPads : EBObservedObject? = nil
+  private final var mObserversOf_frontPads : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontPads {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.frontPads_property.startsToBeObserved (by: relay)
       self.mObserversOf_frontPads = relay
     }
@@ -940,16 +940,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: backPads
   //····················································································································
 
-  private final var mObserversOf_backPads : EBObservedObject? = nil
+  private final var mObserversOf_backPads : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backPads {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.backPads_property.startsToBeObserved (by: relay)
       self.mObserversOf_backPads = relay
     }
@@ -966,16 +966,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: traversingPads
   //····················································································································
 
-  private final var mObserversOf_traversingPads : EBObservedObject? = nil
+  private final var mObserversOf_traversingPads : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_traversingPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_traversingPads {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.traversingPads_property.startsToBeObserved (by: relay)
       self.mObserversOf_traversingPads = relay
     }
@@ -992,16 +992,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: backComponentNames
   //····················································································································
 
-  private final var mObserversOf_backComponentNames : EBObservedObject? = nil
+  private final var mObserversOf_backComponentNames : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backComponentNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backComponentNames {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.backComponentNames_property.startsToBeObserved (by: relay)
       self.mObserversOf_backComponentNames = relay
     }
@@ -1018,16 +1018,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: frontComponentNames
   //····················································································································
 
-  private final var mObserversOf_frontComponentNames : EBObservedObject? = nil
+  private final var mObserversOf_frontComponentNames : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontComponentNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontComponentNames {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.frontComponentNames_property.startsToBeObserved (by: relay)
       self.mObserversOf_frontComponentNames = relay
     }
@@ -1044,16 +1044,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: frontComponentValues
   //····················································································································
 
-  private final var mObserversOf_frontComponentValues : EBObservedObject? = nil
+  private final var mObserversOf_frontComponentValues : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontComponentValues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontComponentValues {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.frontComponentValues_property.startsToBeObserved (by: relay)
       self.mObserversOf_frontComponentValues = relay
     }
@@ -1070,16 +1070,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: backComponentValues
   //····················································································································
 
-  private final var mObserversOf_backComponentValues : EBObservedObject? = nil
+  private final var mObserversOf_backComponentValues : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backComponentValues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backComponentValues {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.backComponentValues_property.startsToBeObserved (by: relay)
       self.mObserversOf_backComponentValues = relay
     }
@@ -1096,16 +1096,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: backTracks
   //····················································································································
 
-  private final var mObserversOf_backTracks : EBObservedObject? = nil
+  private final var mObserversOf_backTracks : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backTracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backTracks {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.backTracks_property.startsToBeObserved (by: relay)
       self.mObserversOf_backTracks = relay
     }
@@ -1122,16 +1122,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: frontTracks
   //····················································································································
 
-  private final var mObserversOf_frontTracks : EBObservedObject? = nil
+  private final var mObserversOf_frontTracks : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontTracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontTracks {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.frontTracks_property.startsToBeObserved (by: relay)
       self.mObserversOf_frontTracks = relay
     }
@@ -1148,16 +1148,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: inner1Tracks
   //····················································································································
 
-  private final var mObserversOf_inner1Tracks : EBObservedObject? = nil
+  private final var mObserversOf_inner1Tracks : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_inner1Tracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_inner1Tracks {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.inner1Tracks_property.startsToBeObserved (by: relay)
       self.mObserversOf_inner1Tracks = relay
     }
@@ -1174,16 +1174,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: inner2Tracks
   //····················································································································
 
-  private final var mObserversOf_inner2Tracks : EBObservedObject? = nil
+  private final var mObserversOf_inner2Tracks : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_inner2Tracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_inner2Tracks {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.inner2Tracks_property.startsToBeObserved (by: relay)
       self.mObserversOf_inner2Tracks = relay
     }
@@ -1200,16 +1200,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: inner3Tracks
   //····················································································································
 
-  private final var mObserversOf_inner3Tracks : EBObservedObject? = nil
+  private final var mObserversOf_inner3Tracks : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_inner3Tracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_inner3Tracks {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.inner3Tracks_property.startsToBeObserved (by: relay)
       self.mObserversOf_inner3Tracks = relay
     }
@@ -1226,16 +1226,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: inner4Tracks
   //····················································································································
 
-  private final var mObserversOf_inner4Tracks : EBObservedObject? = nil
+  private final var mObserversOf_inner4Tracks : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_inner4Tracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_inner4Tracks {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.inner4Tracks_property.startsToBeObserved (by: relay)
       self.mObserversOf_inner4Tracks = relay
     }
@@ -1252,16 +1252,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: frontPackages
   //····················································································································
 
-  private final var mObserversOf_frontPackages : EBObservedObject? = nil
+  private final var mObserversOf_frontPackages : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontPackages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontPackages {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.frontPackages_property.startsToBeObserved (by: relay)
       self.mObserversOf_frontPackages = relay
     }
@@ -1278,16 +1278,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: backPackages
   //····················································································································
 
-  private final var mObserversOf_backPackages : EBObservedObject? = nil
+  private final var mObserversOf_backPackages : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backPackages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backPackages {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.backPackages_property.startsToBeObserved (by: relay)
       self.mObserversOf_backPackages = relay
     }
@@ -1304,16 +1304,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observable toMany property: myInstances
   //····················································································································
 
-  private final var mObserversOf_myInstances : EBObservedObject? = nil
+  private final var mObserversOf_myInstances : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_myInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_myInstances {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.myInstances_property.startsToBeObserved (by: relay)
       self.mObserversOf_myInstances = relay
     }

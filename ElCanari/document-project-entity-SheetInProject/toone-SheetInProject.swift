@@ -86,16 +86,16 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observable toMany property: mObjects
   //····················································································································
 
-  private final var mObserversOf_mObjects : EBObservedObject? = nil
+  private final var mObserversOf_mObjects : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mObjects_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mObjects {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mObjects_property.startsToBeObserved (by: relay)
       self.mObserversOf_mObjects = relay
     }
@@ -112,16 +112,16 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observable toMany property: mPoints
   //····················································································································
 
-  private final var mObserversOf_mPoints : EBObservedObject? = nil
+  private final var mObserversOf_mPoints : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mPoints_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mPoints {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mPoints_property.startsToBeObserved (by: relay)
       self.mObserversOf_mPoints = relay
     }

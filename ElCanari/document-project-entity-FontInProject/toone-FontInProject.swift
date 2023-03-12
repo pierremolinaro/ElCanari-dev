@@ -132,16 +132,16 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observable toMany property: mTexts
   //····················································································································
 
-  private final var mObserversOf_mTexts : EBObservedObject? = nil
+  private final var mObserversOf_mTexts : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mTexts {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mTexts_property.startsToBeObserved (by: relay)
       self.mObserversOf_mTexts = relay
     }
@@ -158,16 +158,16 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observable toMany property: mComponentNames
   //····················································································································
 
-  private final var mObserversOf_mComponentNames : EBObservedObject? = nil
+  private final var mObserversOf_mComponentNames : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mComponentNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mComponentNames {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mComponentNames_property.startsToBeObserved (by: relay)
       self.mObserversOf_mComponentNames = relay
     }
@@ -184,16 +184,16 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observable toMany property: mComponentValues
   //····················································································································
 
-  private final var mObserversOf_mComponentValues : EBObservedObject? = nil
+  private final var mObserversOf_mComponentValues : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mComponentValues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mComponentValues {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mComponentValues_property.startsToBeObserved (by: relay)
       self.mObserversOf_mComponentValues = relay
     }

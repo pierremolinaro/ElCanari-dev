@@ -120,16 +120,16 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //   Observable toMany property: mInstances
   //····················································································································
 
-  private final var mObserversOf_mInstances : EBObservedObject? = nil
+  private final var mObserversOf_mInstances : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mInstances {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mInstances_property.startsToBeObserved (by: relay)
       self.mObserversOf_mInstances = relay
     }

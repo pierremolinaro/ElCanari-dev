@@ -117,16 +117,16 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'mSymbolPinName' stored property
   //····················································································································
 
-  private final var mObserversOf_mSymbolPinName : EBObservedObject? = nil
+  private final var mObserversOf_mSymbolPinName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mSymbolPinName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mSymbolPinName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mSymbolPinName_property.startsToBeObserved (by: relay)
@@ -146,16 +146,16 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private final var mObserversOf_mX : EBObservedObject? = nil
+  private final var mObserversOf_mX : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mX_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mX {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mX_property.startsToBeObserved (by: relay)
@@ -175,16 +175,16 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private final var mObserversOf_mY : EBObservedObject? = nil
+  private final var mObserversOf_mY : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mY_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mY {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mY_property.startsToBeObserved (by: relay)
@@ -204,16 +204,16 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'location' transient property
   //····················································································································
 
-  private final var mObserversOf_location : EBObservedObject? = nil
+  private final var mObserversOf_location : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_location_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_location {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.location_property.startsToBeObserved (by: relay)
@@ -233,16 +233,16 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'netName' transient property
   //····················································································································
 
-  private final var mObserversOf_netName : EBObservedObject? = nil
+  private final var mObserversOf_netName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_netName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_netName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.netName_property.startsToBeObserved (by: relay)
@@ -262,16 +262,16 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private final var mObserversOf_netClassName : EBObservedObject? = nil
+  private final var mObserversOf_netClassName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_netClassName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.netClassName_property.startsToBeObserved (by: relay)
@@ -291,16 +291,16 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'hasNet' transient property
   //····················································································································
 
-  private final var mObserversOf_hasNet : EBObservedObject? = nil
+  private final var mObserversOf_hasNet : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_hasNet_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_hasNet {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.hasNet_property.startsToBeObserved (by: relay)
@@ -320,16 +320,16 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'canMove' transient property
   //····················································································································
 
-  private final var mObserversOf_canMove : EBObservedObject? = nil
+  private final var mObserversOf_canMove : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_canMove_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_canMove {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.canMove_property.startsToBeObserved (by: relay)
@@ -349,16 +349,16 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'wireColor' transient property
   //····················································································································
 
-  private final var mObserversOf_wireColor : EBObservedObject? = nil
+  private final var mObserversOf_wireColor : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_wireColor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_wireColor {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.wireColor_property.startsToBeObserved (by: relay)
@@ -378,16 +378,16 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'symbolRotation' transient property
   //····················································································································
 
-  private final var mObserversOf_symbolRotation : EBObservedObject? = nil
+  private final var mObserversOf_symbolRotation : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_symbolRotation_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_symbolRotation {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.symbolRotation_property.startsToBeObserved (by: relay)
@@ -407,16 +407,16 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'symbolNameNetName' transient property
   //····················································································································
 
-  private final var mObserversOf_symbolNameNetName : EBObservedObject? = nil
+  private final var mObserversOf_symbolNameNetName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_symbolNameNetName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_symbolNameNetName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.symbolNameNetName_property.startsToBeObserved (by: relay)
@@ -436,16 +436,16 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'isConnected' transient property
   //····················································································································
 
-  private final var mObserversOf_isConnected : EBObservedObject? = nil
+  private final var mObserversOf_isConnected : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_isConnected_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_isConnected {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.isConnected_property.startsToBeObserved (by: relay)
@@ -465,16 +465,16 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'status' transient property
   //····················································································································
 
-  private final var mObserversOf_status : EBObservedObject? = nil
+  private final var mObserversOf_status : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_status_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_status {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.status_property.startsToBeObserved (by: relay)
@@ -494,16 +494,16 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
-  private final var mObserversOf_connectedPoints : EBObservedObject? = nil
+  private final var mObserversOf_connectedPoints : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_connectedPoints_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_connectedPoints {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.connectedPoints_property.startsToBeObserved (by: relay)
@@ -523,16 +523,16 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'netInfoForPoint' transient property
   //····················································································································
 
-  private final var mObserversOf_netInfoForPoint : EBObservedObject? = nil
+  private final var mObserversOf_netInfoForPoint : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_netInfoForPoint_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_netInfoForPoint {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.netInfoForPoint_property.startsToBeObserved (by: relay)

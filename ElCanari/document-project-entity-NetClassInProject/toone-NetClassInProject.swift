@@ -248,16 +248,16 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observable toMany property: mNets
   //····················································································································
 
-  private final var mObserversOf_mNets : EBObservedObject? = nil
+  private final var mObserversOf_mNets : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mNets_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mNets {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mNets_property.startsToBeObserved (by: relay)
       self.mObserversOf_mNets = relay
     }

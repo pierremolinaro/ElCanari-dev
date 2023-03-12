@@ -110,16 +110,16 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observable toMany property: mPoints
   //····················································································································
 
-  private final var mObserversOf_mPoints : EBObservedObject? = nil
+  private final var mObserversOf_mPoints : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mPoints_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mPoints {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mPoints_property.startsToBeObserved (by: relay)
       self.mObserversOf_mPoints = relay
     }
@@ -136,16 +136,16 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observable toMany property: mTracks
   //····················································································································
 
-  private final var mObserversOf_mTracks : EBObservedObject? = nil
+  private final var mObserversOf_mTracks : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mTracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mTracks {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mTracks_property.startsToBeObserved (by: relay)
       self.mObserversOf_mTracks = relay
     }

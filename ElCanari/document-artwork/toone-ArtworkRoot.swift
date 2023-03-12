@@ -176,16 +176,16 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observable toMany property: fileGenerationParameterArray
   //····················································································································
 
-  private final var mObserversOf_fileGenerationParameterArray : EBObservedObject? = nil
+  private final var mObserversOf_fileGenerationParameterArray : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_fileGenerationParameterArray_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_fileGenerationParameterArray {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.fileGenerationParameterArray_property.startsToBeObserved (by: relay)
       self.mObserversOf_fileGenerationParameterArray = relay
     }

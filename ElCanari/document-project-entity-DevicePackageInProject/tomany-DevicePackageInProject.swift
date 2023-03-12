@@ -45,16 +45,16 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
   //   Observers of 'mPackageName' stored property
   //····················································································································
 
-  private final var mObserversOf_mPackageName : EBObservedObject? = nil
+  private final var mObserversOf_mPackageName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mPackageName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mPackageName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mPackageName_property.startsToBeObserved (by: relay)
@@ -74,16 +74,16 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
-  private final var mObserversOf_mStrokeBezierPath : EBObservedObject? = nil
+  private final var mObserversOf_mStrokeBezierPath : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mStrokeBezierPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mStrokeBezierPath {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mStrokeBezierPath_property.startsToBeObserved (by: relay)
@@ -103,16 +103,16 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
   //   Observers of 'packagePadDictionary' transient property
   //····················································································································
 
-  private final var mObserversOf_packagePadDictionary : EBObservedObject? = nil
+  private final var mObserversOf_packagePadDictionary : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_packagePadDictionary_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_packagePadDictionary {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.packagePadDictionary_property.startsToBeObserved (by: relay)

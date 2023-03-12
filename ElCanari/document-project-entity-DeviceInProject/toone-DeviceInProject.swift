@@ -154,16 +154,16 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observable toMany property: mPackages
   //····················································································································
 
-  private final var mObserversOf_mPackages : EBObservedObject? = nil
+  private final var mObserversOf_mPackages : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mPackages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mPackages {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mPackages_property.startsToBeObserved (by: relay)
       self.mObserversOf_mPackages = relay
     }
@@ -180,16 +180,16 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observable toMany property: mSymbols
   //····················································································································
 
-  private final var mObserversOf_mSymbols : EBObservedObject? = nil
+  private final var mObserversOf_mSymbols : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mSymbols_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mSymbols {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mSymbols_property.startsToBeObserved (by: relay)
       self.mObserversOf_mSymbols = relay
     }
@@ -206,16 +206,16 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observable toMany property: mComponents
   //····················································································································
 
-  private final var mObserversOf_mComponents : EBObservedObject? = nil
+  private final var mObserversOf_mComponents : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mComponents_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mComponents {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mComponents_property.startsToBeObserved (by: relay)
       self.mObserversOf_mComponents = relay
     }
@@ -232,16 +232,16 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observable toMany property: mPadAssignments
   //····················································································································
 
-  private final var mObserversOf_mPadAssignments : EBObservedObject? = nil
+  private final var mObserversOf_mPadAssignments : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mPadAssignments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mPadAssignments {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mPadAssignments_property.startsToBeObserved (by: relay)
       self.mObserversOf_mPadAssignments = relay
     }

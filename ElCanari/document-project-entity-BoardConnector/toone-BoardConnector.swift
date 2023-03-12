@@ -270,16 +270,16 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observable toMany property: mTracksP2
   //····················································································································
 
-  private final var mObserversOf_mTracksP2 : EBObservedObject? = nil
+  private final var mObserversOf_mTracksP2 : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mTracksP2_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mTracksP2 {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mTracksP2_property.startsToBeObserved (by: relay)
       self.mObserversOf_mTracksP2 = relay
     }
@@ -296,16 +296,16 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observable toMany property: mTracksP1
   //····················································································································
 
-  private final var mObserversOf_mTracksP1 : EBObservedObject? = nil
+  private final var mObserversOf_mTracksP1 : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mTracksP1_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mTracksP1 {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mTracksP1_property.startsToBeObserved (by: relay)
       self.mObserversOf_mTracksP1 = relay
     }

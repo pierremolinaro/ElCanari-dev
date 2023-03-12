@@ -74,7 +74,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
 
   //····················································································································
 
-  var selectedArrayDidChange_property : EBObservedObject { return self.mInternalSelectedArrayProperty } // EBGraphicViewControllerProtocol
+  var selectedArrayDidChange_property : EBObservedObserver { return self.mInternalSelectedArrayProperty } // EBGraphicViewControllerProtocol
   var selectedArray_property : ReadOnlyArrayOf_PackageInDevice { return self.mInternalSelectedArrayProperty }
 
   //····················································································································

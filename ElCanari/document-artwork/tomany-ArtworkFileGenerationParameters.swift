@@ -213,16 +213,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawBoardLimits' stored property
   //····················································································································
 
-  private final var mObserversOf_drawBoardLimits : EBObservedObject? = nil
+  private final var mObserversOf_drawBoardLimits : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawBoardLimits_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawBoardLimits {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawBoardLimits_property.startsToBeObserved (by: relay)
@@ -242,16 +242,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawInternalBoardLimits' stored property
   //····················································································································
 
-  private final var mObserversOf_drawInternalBoardLimits : EBObservedObject? = nil
+  private final var mObserversOf_drawInternalBoardLimits : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawInternalBoardLimits_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawInternalBoardLimits {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawInternalBoardLimits_property.startsToBeObserved (by: relay)
@@ -271,16 +271,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawComponentNamesTopSide' stored property
   //····················································································································
 
-  private final var mObserversOf_drawComponentNamesTopSide : EBObservedObject? = nil
+  private final var mObserversOf_drawComponentNamesTopSide : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawComponentNamesTopSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawComponentNamesTopSide {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawComponentNamesTopSide_property.startsToBeObserved (by: relay)
@@ -300,16 +300,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawComponentNamesBottomSide' stored property
   //····················································································································
 
-  private final var mObserversOf_drawComponentNamesBottomSide : EBObservedObject? = nil
+  private final var mObserversOf_drawComponentNamesBottomSide : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawComponentNamesBottomSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawComponentNamesBottomSide {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawComponentNamesBottomSide_property.startsToBeObserved (by: relay)
@@ -329,16 +329,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawComponentValuesTopSide' stored property
   //····················································································································
 
-  private final var mObserversOf_drawComponentValuesTopSide : EBObservedObject? = nil
+  private final var mObserversOf_drawComponentValuesTopSide : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawComponentValuesTopSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawComponentValuesTopSide {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawComponentValuesTopSide_property.startsToBeObserved (by: relay)
@@ -358,16 +358,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawComponentValuesBottomSide' stored property
   //····················································································································
 
-  private final var mObserversOf_drawComponentValuesBottomSide : EBObservedObject? = nil
+  private final var mObserversOf_drawComponentValuesBottomSide : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawComponentValuesBottomSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawComponentValuesBottomSide {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawComponentValuesBottomSide_property.startsToBeObserved (by: relay)
@@ -387,16 +387,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawPackageLegendTopSide' stored property
   //····················································································································
 
-  private final var mObserversOf_drawPackageLegendTopSide : EBObservedObject? = nil
+  private final var mObserversOf_drawPackageLegendTopSide : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawPackageLegendTopSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawPackageLegendTopSide {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawPackageLegendTopSide_property.startsToBeObserved (by: relay)
@@ -416,16 +416,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawPackageLegendBottomSide' stored property
   //····················································································································
 
-  private final var mObserversOf_drawPackageLegendBottomSide : EBObservedObject? = nil
+  private final var mObserversOf_drawPackageLegendBottomSide : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawPackageLegendBottomSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawPackageLegendBottomSide {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawPackageLegendBottomSide_property.startsToBeObserved (by: relay)
@@ -445,16 +445,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawPadHolesInPDF' stored property
   //····················································································································
 
-  private final var mObserversOf_drawPadHolesInPDF : EBObservedObject? = nil
+  private final var mObserversOf_drawPadHolesInPDF : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawPadHolesInPDF_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawPadHolesInPDF {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawPadHolesInPDF_property.startsToBeObserved (by: relay)
@@ -474,16 +474,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawPadsTopSide' stored property
   //····················································································································
 
-  private final var mObserversOf_drawPadsTopSide : EBObservedObject? = nil
+  private final var mObserversOf_drawPadsTopSide : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawPadsTopSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawPadsTopSide {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawPadsTopSide_property.startsToBeObserved (by: relay)
@@ -503,16 +503,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawPadsBottomSide' stored property
   //····················································································································
 
-  private final var mObserversOf_drawPadsBottomSide : EBObservedObject? = nil
+  private final var mObserversOf_drawPadsBottomSide : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawPadsBottomSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawPadsBottomSide {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawPadsBottomSide_property.startsToBeObserved (by: relay)
@@ -532,16 +532,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTextsLayoutTopSide' stored property
   //····················································································································
 
-  private final var mObserversOf_drawTextsLayoutTopSide : EBObservedObject? = nil
+  private final var mObserversOf_drawTextsLayoutTopSide : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawTextsLayoutTopSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTextsLayoutTopSide {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawTextsLayoutTopSide_property.startsToBeObserved (by: relay)
@@ -561,16 +561,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTextsLayoutBottomSide' stored property
   //····················································································································
 
-  private final var mObserversOf_drawTextsLayoutBottomSide : EBObservedObject? = nil
+  private final var mObserversOf_drawTextsLayoutBottomSide : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawTextsLayoutBottomSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTextsLayoutBottomSide {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawTextsLayoutBottomSide_property.startsToBeObserved (by: relay)
@@ -590,16 +590,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTextsLegendTopSide' stored property
   //····················································································································
 
-  private final var mObserversOf_drawTextsLegendTopSide : EBObservedObject? = nil
+  private final var mObserversOf_drawTextsLegendTopSide : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawTextsLegendTopSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTextsLegendTopSide {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawTextsLegendTopSide_property.startsToBeObserved (by: relay)
@@ -619,16 +619,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTextsLegendBottomSide' stored property
   //····················································································································
 
-  private final var mObserversOf_drawTextsLegendBottomSide : EBObservedObject? = nil
+  private final var mObserversOf_drawTextsLegendBottomSide : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawTextsLegendBottomSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTextsLegendBottomSide {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawTextsLegendBottomSide_property.startsToBeObserved (by: relay)
@@ -648,16 +648,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTracksTopSide' stored property
   //····················································································································
 
-  private final var mObserversOf_drawTracksTopSide : EBObservedObject? = nil
+  private final var mObserversOf_drawTracksTopSide : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawTracksTopSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTracksTopSide {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawTracksTopSide_property.startsToBeObserved (by: relay)
@@ -677,16 +677,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTracksInner1Layer' stored property
   //····················································································································
 
-  private final var mObserversOf_drawTracksInner1Layer : EBObservedObject? = nil
+  private final var mObserversOf_drawTracksInner1Layer : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawTracksInner1Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTracksInner1Layer {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawTracksInner1Layer_property.startsToBeObserved (by: relay)
@@ -706,16 +706,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTracksInner2Layer' stored property
   //····················································································································
 
-  private final var mObserversOf_drawTracksInner2Layer : EBObservedObject? = nil
+  private final var mObserversOf_drawTracksInner2Layer : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawTracksInner2Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTracksInner2Layer {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawTracksInner2Layer_property.startsToBeObserved (by: relay)
@@ -735,16 +735,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTracksInner3Layer' stored property
   //····················································································································
 
-  private final var mObserversOf_drawTracksInner3Layer : EBObservedObject? = nil
+  private final var mObserversOf_drawTracksInner3Layer : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawTracksInner3Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTracksInner3Layer {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawTracksInner3Layer_property.startsToBeObserved (by: relay)
@@ -764,16 +764,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTracksInner4Layer' stored property
   //····················································································································
 
-  private final var mObserversOf_drawTracksInner4Layer : EBObservedObject? = nil
+  private final var mObserversOf_drawTracksInner4Layer : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawTracksInner4Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTracksInner4Layer {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawTracksInner4Layer_property.startsToBeObserved (by: relay)
@@ -793,16 +793,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTracksBottomSide' stored property
   //····················································································································
 
-  private final var mObserversOf_drawTracksBottomSide : EBObservedObject? = nil
+  private final var mObserversOf_drawTracksBottomSide : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawTracksBottomSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTracksBottomSide {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawTracksBottomSide_property.startsToBeObserved (by: relay)
@@ -822,16 +822,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTraversingPads' stored property
   //····················································································································
 
-  private final var mObserversOf_drawTraversingPads : EBObservedObject? = nil
+  private final var mObserversOf_drawTraversingPads : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawTraversingPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTraversingPads {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawTraversingPads_property.startsToBeObserved (by: relay)
@@ -851,16 +851,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawVias' stored property
   //····················································································································
 
-  private final var mObserversOf_drawVias : EBObservedObject? = nil
+  private final var mObserversOf_drawVias : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_drawVias_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_drawVias {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.drawVias_property.startsToBeObserved (by: relay)
@@ -880,16 +880,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'fileExtension' stored property
   //····················································································································
 
-  private final var mObserversOf_fileExtension : EBObservedObject? = nil
+  private final var mObserversOf_fileExtension : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_fileExtension_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_fileExtension {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.fileExtension_property.startsToBeObserved (by: relay)
@@ -909,16 +909,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'horizontalMirror' stored property
   //····················································································································
 
-  private final var mObserversOf_horizontalMirror : EBObservedObject? = nil
+  private final var mObserversOf_horizontalMirror : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_horizontalMirror_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_horizontalMirror {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.horizontalMirror_property.startsToBeObserved (by: relay)
@@ -938,16 +938,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'name' stored property
   //····················································································································
 
-  private final var mObserversOf_name : EBObservedObject? = nil
+  private final var mObserversOf_name : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_name_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_name {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.name_property.startsToBeObserved (by: relay)
@@ -967,16 +967,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'measurementUnitForPadHoleInPDF' stored property
   //····················································································································
 
-  private final var mObserversOf_measurementUnitForPadHoleInPDF : EBObservedObject? = nil
+  private final var mObserversOf_measurementUnitForPadHoleInPDF : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_measurementUnitForPadHoleInPDF_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_measurementUnitForPadHoleInPDF {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.measurementUnitForPadHoleInPDF_property.startsToBeObserved (by: relay)
@@ -996,16 +996,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'padHoleDiameterInPDF' stored property
   //····················································································································
 
-  private final var mObserversOf_padHoleDiameterInPDF : EBObservedObject? = nil
+  private final var mObserversOf_padHoleDiameterInPDF : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_padHoleDiameterInPDF_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_padHoleDiameterInPDF {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.padHoleDiameterInPDF_property.startsToBeObserved (by: relay)
@@ -1025,16 +1025,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'hasNoData' transient property
   //····················································································································
 
-  private final var mObserversOf_hasNoData : EBObservedObject? = nil
+  private final var mObserversOf_hasNoData : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_hasNoData_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_hasNoData {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.hasNoData_property.startsToBeObserved (by: relay)
@@ -1054,16 +1054,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'parameterStatusImage' transient property
   //····················································································································
 
-  private final var mObserversOf_parameterStatusImage : EBObservedObject? = nil
+  private final var mObserversOf_parameterStatusImage : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_parameterStatusImage_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_parameterStatusImage {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.parameterStatusImage_property.startsToBeObserved (by: relay)
@@ -1083,16 +1083,16 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'emptyFileExtensionImage' transient property
   //····················································································································
 
-  private final var mObserversOf_emptyFileExtensionImage : EBObservedObject? = nil
+  private final var mObserversOf_emptyFileExtensionImage : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_emptyFileExtensionImage_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_emptyFileExtensionImage {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.emptyFileExtensionImage_property.startsToBeObserved (by: relay)

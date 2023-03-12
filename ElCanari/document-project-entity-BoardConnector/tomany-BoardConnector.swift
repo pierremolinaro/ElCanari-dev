@@ -201,16 +201,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mComponentPadName' stored property
   //····················································································································
 
-  private final var mObserversOf_mComponentPadName : EBObservedObject? = nil
+  private final var mObserversOf_mComponentPadName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mComponentPadName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mComponentPadName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mComponentPadName_property.startsToBeObserved (by: relay)
@@ -230,16 +230,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mPadIndex' stored property
   //····················································································································
 
-  private final var mObserversOf_mPadIndex : EBObservedObject? = nil
+  private final var mObserversOf_mPadIndex : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mPadIndex_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mPadIndex {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mPadIndex_property.startsToBeObserved (by: relay)
@@ -259,16 +259,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private final var mObserversOf_mX : EBObservedObject? = nil
+  private final var mObserversOf_mX : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mX_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mX {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mX_property.startsToBeObserved (by: relay)
@@ -288,16 +288,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private final var mObserversOf_mY : EBObservedObject? = nil
+  private final var mObserversOf_mY : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mY_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mY {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mY_property.startsToBeObserved (by: relay)
@@ -317,16 +317,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mDefaultHoleDiameterUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mDefaultHoleDiameterUnit : EBObservedObject? = nil
+  private final var mObserversOf_mDefaultHoleDiameterUnit : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mDefaultHoleDiameterUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mDefaultHoleDiameterUnit {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mDefaultHoleDiameterUnit_property.startsToBeObserved (by: relay)
@@ -346,16 +346,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mCustomHoleDiameter' stored property
   //····················································································································
 
-  private final var mObserversOf_mCustomHoleDiameter : EBObservedObject? = nil
+  private final var mObserversOf_mCustomHoleDiameter : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mCustomHoleDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mCustomHoleDiameter {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mCustomHoleDiameter_property.startsToBeObserved (by: relay)
@@ -375,16 +375,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mCustomHoleDiameterUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mCustomHoleDiameterUnit : EBObservedObject? = nil
+  private final var mObserversOf_mCustomHoleDiameterUnit : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mCustomHoleDiameterUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mCustomHoleDiameterUnit {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mCustomHoleDiameterUnit_property.startsToBeObserved (by: relay)
@@ -404,16 +404,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mUsesCustomHoleDiameter' stored property
   //····················································································································
 
-  private final var mObserversOf_mUsesCustomHoleDiameter : EBObservedObject? = nil
+  private final var mObserversOf_mUsesCustomHoleDiameter : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mUsesCustomHoleDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mUsesCustomHoleDiameter {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mUsesCustomHoleDiameter_property.startsToBeObserved (by: relay)
@@ -433,16 +433,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mDefaultPadDiameterUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mDefaultPadDiameterUnit : EBObservedObject? = nil
+  private final var mObserversOf_mDefaultPadDiameterUnit : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mDefaultPadDiameterUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mDefaultPadDiameterUnit {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mDefaultPadDiameterUnit_property.startsToBeObserved (by: relay)
@@ -462,16 +462,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mCustomPadDiameter' stored property
   //····················································································································
 
-  private final var mObserversOf_mCustomPadDiameter : EBObservedObject? = nil
+  private final var mObserversOf_mCustomPadDiameter : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mCustomPadDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mCustomPadDiameter {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mCustomPadDiameter_property.startsToBeObserved (by: relay)
@@ -491,16 +491,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mCustomPadDiameterUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mCustomPadDiameterUnit : EBObservedObject? = nil
+  private final var mObserversOf_mCustomPadDiameterUnit : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mCustomPadDiameterUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mCustomPadDiameterUnit {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mCustomPadDiameterUnit_property.startsToBeObserved (by: relay)
@@ -520,16 +520,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mUsesCustomPadDiameter' stored property
   //····················································································································
 
-  private final var mObserversOf_mUsesCustomPadDiameter : EBObservedObject? = nil
+  private final var mObserversOf_mUsesCustomPadDiameter : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mUsesCustomPadDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mUsesCustomPadDiameter {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mUsesCustomPadDiameter_property.startsToBeObserved (by: relay)
@@ -549,16 +549,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'isConnectedToSomePad' transient property
   //····················································································································
 
-  private final var mObserversOf_isConnectedToSomePad : EBObservedObject? = nil
+  private final var mObserversOf_isConnectedToSomePad : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_isConnectedToSomePad_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_isConnectedToSomePad {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.isConnectedToSomePad_property.startsToBeObserved (by: relay)
@@ -578,16 +578,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'location' transient property
   //····················································································································
 
-  private final var mObserversOf_location : EBObservedObject? = nil
+  private final var mObserversOf_location : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_location_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_location {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.location_property.startsToBeObserved (by: relay)
@@ -607,16 +607,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'netNameFromComponentPad' transient property
   //····················································································································
 
-  private final var mObserversOf_netNameFromComponentPad : EBObservedObject? = nil
+  private final var mObserversOf_netNameFromComponentPad : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_netNameFromComponentPad_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_netNameFromComponentPad {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.netNameFromComponentPad_property.startsToBeObserved (by: relay)
@@ -636,16 +636,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'netNameAndPadLocation' transient property
   //····················································································································
 
-  private final var mObserversOf_netNameAndPadLocation : EBObservedObject? = nil
+  private final var mObserversOf_netNameAndPadLocation : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_netNameAndPadLocation_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_netNameAndPadLocation {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.netNameAndPadLocation_property.startsToBeObserved (by: relay)
@@ -665,16 +665,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'side' transient property
   //····················································································································
 
-  private final var mObserversOf_side : EBObservedObject? = nil
+  private final var mObserversOf_side : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_side_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_side {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.side_property.startsToBeObserved (by: relay)
@@ -694,16 +694,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'isVia' transient property
   //····················································································································
 
-  private final var mObserversOf_isVia : EBObservedObject? = nil
+  private final var mObserversOf_isVia : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_isVia_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_isVia {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.isVia_property.startsToBeObserved (by: relay)
@@ -723,16 +723,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var mObserversOf_issues : EBObservedObject? = nil
+  private final var mObserversOf_issues : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_issues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_issues {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.issues_property.startsToBeObserved (by: relay)
@@ -752,16 +752,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'viaDefaultHoleDiameter' transient property
   //····················································································································
 
-  private final var mObserversOf_viaDefaultHoleDiameter : EBObservedObject? = nil
+  private final var mObserversOf_viaDefaultHoleDiameter : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_viaDefaultHoleDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_viaDefaultHoleDiameter {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.viaDefaultHoleDiameter_property.startsToBeObserved (by: relay)
@@ -781,16 +781,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'viaDefaultPadDiameter' transient property
   //····················································································································
 
-  private final var mObserversOf_viaDefaultPadDiameter : EBObservedObject? = nil
+  private final var mObserversOf_viaDefaultPadDiameter : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_viaDefaultPadDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_viaDefaultPadDiameter {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.viaDefaultPadDiameter_property.startsToBeObserved (by: relay)
@@ -810,16 +810,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'netNameFromTracks' transient property
   //····················································································································
 
-  private final var mObserversOf_netNameFromTracks : EBObservedObject? = nil
+  private final var mObserversOf_netNameFromTracks : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_netNameFromTracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_netNameFromTracks {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.netNameFromTracks_property.startsToBeObserved (by: relay)
@@ -839,16 +839,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private final var mObserversOf_netClassName : EBObservedObject? = nil
+  private final var mObserversOf_netClassName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_netClassName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.netClassName_property.startsToBeObserved (by: relay)
@@ -868,16 +868,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'connectedToComponent' transient property
   //····················································································································
 
-  private final var mObserversOf_connectedToComponent : EBObservedObject? = nil
+  private final var mObserversOf_connectedToComponent : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_connectedToComponent_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_connectedToComponent {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.connectedToComponent_property.startsToBeObserved (by: relay)
@@ -897,16 +897,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'actualHoleDiameter' transient property
   //····················································································································
 
-  private final var mObserversOf_actualHoleDiameter : EBObservedObject? = nil
+  private final var mObserversOf_actualHoleDiameter : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_actualHoleDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_actualHoleDiameter {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.actualHoleDiameter_property.startsToBeObserved (by: relay)
@@ -926,16 +926,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'actualPadDiameter' transient property
   //····················································································································
 
-  private final var mObserversOf_actualPadDiameter : EBObservedObject? = nil
+  private final var mObserversOf_actualPadDiameter : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_actualPadDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_actualPadDiameter {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.actualPadDiameter_property.startsToBeObserved (by: relay)
@@ -955,16 +955,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay : EBObservedObject? = nil
+  private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.objectDisplay_property.startsToBeObserved (by: relay)
@@ -984,16 +984,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay : EBObservedObject? = nil
+  private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
@@ -1013,16 +1013,16 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private final var mObserversOf_signatureForERCChecking : EBObservedObject? = nil
+  private final var mObserversOf_signatureForERCChecking : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_signatureForERCChecking_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_signatureForERCChecking {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.signatureForERCChecking_property.startsToBeObserved (by: relay)

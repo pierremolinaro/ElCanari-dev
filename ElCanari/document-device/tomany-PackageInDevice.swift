@@ -105,16 +105,16 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
   //   Observers of 'mFileData' stored property
   //····················································································································
 
-  private final var mObserversOf_mFileData : EBObservedObject? = nil
+  private final var mObserversOf_mFileData : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mFileData_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mFileData {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mFileData_property.startsToBeObserved (by: relay)
@@ -134,16 +134,16 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
   //   Observers of 'mName' stored property
   //····················································································································
 
-  private final var mObserversOf_mName : EBObservedObject? = nil
+  private final var mObserversOf_mName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mName_property.startsToBeObserved (by: relay)
@@ -163,16 +163,16 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
   //   Observers of 'mVersion' stored property
   //····················································································································
 
-  private final var mObserversOf_mVersion : EBObservedObject? = nil
+  private final var mObserversOf_mVersion : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mVersion_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mVersion {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mVersion_property.startsToBeObserved (by: relay)
@@ -192,16 +192,16 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
-  private final var mObserversOf_mStrokeBezierPath : EBObservedObject? = nil
+  private final var mObserversOf_mStrokeBezierPath : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mStrokeBezierPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mStrokeBezierPath {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mStrokeBezierPath_property.startsToBeObserved (by: relay)
@@ -221,16 +221,16 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private final var mObserversOf_mX : EBObservedObject? = nil
+  private final var mObserversOf_mX : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mX_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mX {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mX_property.startsToBeObserved (by: relay)
@@ -250,16 +250,16 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private final var mObserversOf_mY : EBObservedObject? = nil
+  private final var mObserversOf_mY : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mY_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mY {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mY_property.startsToBeObserved (by: relay)
@@ -279,16 +279,16 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
   //   Observers of 'versionString' transient property
   //····················································································································
 
-  private final var mObserversOf_versionString : EBObservedObject? = nil
+  private final var mObserversOf_versionString : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_versionString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_versionString {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.versionString_property.startsToBeObserved (by: relay)
@@ -308,16 +308,16 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
   //   Observers of 'documentSize' transient property
   //····················································································································
 
-  private final var mObserversOf_documentSize : EBObservedObject? = nil
+  private final var mObserversOf_documentSize : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_documentSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_documentSize {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.documentSize_property.startsToBeObserved (by: relay)
@@ -337,16 +337,16 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
   //   Observers of 'frontSidePadFilledBezierPathArray' transient property
   //····················································································································
 
-  private final var mObserversOf_frontSidePadFilledBezierPathArray : EBObservedObject? = nil
+  private final var mObserversOf_frontSidePadFilledBezierPathArray : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_frontSidePadFilledBezierPathArray_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_frontSidePadFilledBezierPathArray {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.frontSidePadFilledBezierPathArray_property.startsToBeObserved (by: relay)
@@ -366,16 +366,16 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
   //   Observers of 'backSidePadFilledBezierPathArray' transient property
   //····················································································································
 
-  private final var mObserversOf_backSidePadFilledBezierPathArray : EBObservedObject? = nil
+  private final var mObserversOf_backSidePadFilledBezierPathArray : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_backSidePadFilledBezierPathArray_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_backSidePadFilledBezierPathArray {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.backSidePadFilledBezierPathArray_property.startsToBeObserved (by: relay)
@@ -395,16 +395,16 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay : EBObservedObject? = nil
+  private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.objectDisplay_property.startsToBeObserved (by: relay)
@@ -424,16 +424,16 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay : EBObservedObject? = nil
+  private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
@@ -453,16 +453,16 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
   //   Observers of 'padNameSet' transient property
   //····················································································································
 
-  private final var mObserversOf_padNameSet : EBObservedObject? = nil
+  private final var mObserversOf_padNameSet : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_padNameSet_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_padNameSet {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.padNameSet_property.startsToBeObserved (by: relay)

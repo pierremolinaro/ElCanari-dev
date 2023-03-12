@@ -74,7 +74,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
 
   //····················································································································
 
-  var selectedArrayDidChange_property : EBObservedObject { return self.mInternalSelectedArrayProperty } // EBGraphicViewControllerProtocol
+  var selectedArrayDidChange_property : EBObservedObserver { return self.mInternalSelectedArrayProperty } // EBGraphicViewControllerProtocol
   var selectedArray_property : ReadOnlyArrayOf_PackageObject { return self.mInternalSelectedArrayProperty }
 
   //····················································································································

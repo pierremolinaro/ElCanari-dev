@@ -208,16 +208,16 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observable toMany property: forbiddenPadNumbers
   //····················································································································
 
-  private final var mObserversOf_forbiddenPadNumbers : EBObservedObject? = nil
+  private final var mObserversOf_forbiddenPadNumbers : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_forbiddenPadNumbers_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_forbiddenPadNumbers {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.forbiddenPadNumbers_property.startsToBeObserved (by: relay)
       self.mObserversOf_forbiddenPadNumbers = relay
     }

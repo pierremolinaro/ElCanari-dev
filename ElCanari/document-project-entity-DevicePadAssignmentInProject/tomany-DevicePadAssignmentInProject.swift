@@ -45,16 +45,16 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   //   Observers of 'mPadName' stored property
   //····················································································································
 
-  private final var mObserversOf_mPadName : EBObservedObject? = nil
+  private final var mObserversOf_mPadName : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mPadName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mPadName {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mPadName_property.startsToBeObserved (by: relay)
@@ -74,16 +74,16 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   //   Observers of 'pinPadAssignment' transient property
   //····················································································································
 
-  private final var mObserversOf_pinPadAssignment : EBObservedObject? = nil
+  private final var mObserversOf_pinPadAssignment : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_pinPadAssignment_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_pinPadAssignment {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.pinPadAssignment_property.startsToBeObserved (by: relay)
@@ -103,16 +103,16 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  private final var mObserversOf_descriptor : EBObservedObject? = nil
+  private final var mObserversOf_descriptor : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_descriptor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_descriptor {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.descriptor_property.startsToBeObserved (by: relay)

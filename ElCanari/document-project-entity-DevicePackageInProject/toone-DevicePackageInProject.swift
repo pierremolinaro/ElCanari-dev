@@ -56,16 +56,16 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //   Observable toMany property: mMasterPads
   //····················································································································
 
-  private final var mObserversOf_mMasterPads : EBObservedObject? = nil
+  private final var mObserversOf_mMasterPads : EBObservedObserver? = nil
 
   //····················································································································
 
   final func toMany_mMasterPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObject
+    let relay : EBObservedObserver
     if let r = self.mObserversOf_mMasterPads {
       relay = r
     }else{
-      relay = EBObservedObject ()
+      relay = EBObservedObserver ()
       self.mWeakInternalValue?.mMasterPads_property.startsToBeObserved (by: relay)
       self.mObserversOf_mMasterPads = relay
     }
