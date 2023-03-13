@@ -54,67 +54,67 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //   Observers of 'mPinX' stored property
   //····················································································································
 
-  final let mPinX_property = EBGenericTransientProperty <Int?> ()
+  final let mPinX_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mPinY' stored property
   //····················································································································
 
-  final let mPinY_property = EBGenericTransientProperty <Int?> ()
+  final let mPinY_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mXName' stored property
   //····················································································································
 
-  final let mXName_property = EBGenericTransientProperty <Int?> ()
+  final let mXName_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mYName' stored property
   //····················································································································
 
-  final let mYName_property = EBGenericTransientProperty <Int?> ()
+  final let mYName_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mName' stored property
   //····················································································································
 
-  final let mName_property = EBGenericTransientProperty <String?> ()
+  final let mName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mNameHorizontalAlignment' stored property
   //····················································································································
 
-  final let mNameHorizontalAlignment_property = EBGenericTransientProperty <HorizontalAlignment?> ()
+  final let mNameHorizontalAlignment_property = EBTransientProperty <HorizontalAlignment?> ()
 
   //····················································································································
   //   Observers of 'mPinNameIsDisplayedInSchematics' stored property
   //····················································································································
 
-  final let mPinNameIsDisplayedInSchematics_property = EBGenericTransientProperty <Bool?> ()
+  final let mPinNameIsDisplayedInSchematics_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mXNumber' stored property
   //····················································································································
 
-  final let mXNumber_property = EBGenericTransientProperty <Int?> ()
+  final let mXNumber_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mYNumber' stored property
   //····················································································································
 
-  final let mYNumber_property = EBGenericTransientProperty <Int?> ()
+  final let mYNumber_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mNumberHorizontalAlignment' stored property
   //····················································································································
 
-  final let mNumberHorizontalAlignment_property = EBGenericTransientProperty <HorizontalAlignment?> ()
+  final let mNumberHorizontalAlignment_property = EBTransientProperty <HorizontalAlignment?> ()
 
   //····················································································································
   //   Observers of 'nameShape' transient property
   //····················································································································
 
-  final let nameShape_property = EBGenericTransientProperty <EBShape?> ()
+  final let nameShape_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observable toMany property: mInstances

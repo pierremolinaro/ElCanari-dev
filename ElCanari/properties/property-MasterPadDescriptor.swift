@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_MasterPadDescriptor    = EBObservableProperty <MasterPadDescriptor>
-typealias EBTransientProperty_MasterPadDescriptor   = EBGenericTransientProperty <MasterPadDescriptor>
+typealias EBTransientProperty_MasterPadDescriptor   = EBTransientProperty <MasterPadDescriptor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

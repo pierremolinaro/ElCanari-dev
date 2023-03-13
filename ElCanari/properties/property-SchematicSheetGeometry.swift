@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_SchematicSheetGeometry    = EBObservableProperty <SchematicSheetGeometry>
-typealias EBTransientProperty_SchematicSheetGeometry   = EBGenericTransientProperty <SchematicSheetGeometry>
+typealias EBTransientProperty_SchematicSheetGeometry   = EBTransientProperty <SchematicSheetGeometry>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

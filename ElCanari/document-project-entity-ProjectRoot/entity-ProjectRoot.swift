@@ -3323,7 +3323,7 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final let mArtwork_none = EBGenericTransientProperty <Bool> ()
+  final let mArtwork_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: hasInnerElements
@@ -3411,7 +3411,7 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final let mSelectedSheet_none = EBGenericTransientProperty <Bool> ()
+  final let mSelectedSheet_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: selectedSheetIssues

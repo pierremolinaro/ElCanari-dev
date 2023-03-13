@@ -167,7 +167,7 @@ final class NetInProject : EBManagedObject,
 
   //····················································································································
 
-  final let mNetClass_none = EBGenericTransientProperty <Bool> ()
+  final let mNetClass_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: netClassName

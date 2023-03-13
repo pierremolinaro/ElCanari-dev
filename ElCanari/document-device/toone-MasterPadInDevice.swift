@@ -56,73 +56,73 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
   //   Observers of 'mCenterX' stored property
   //····················································································································
 
-  final let mCenterX_property = EBGenericTransientProperty <Int?> ()
+  final let mCenterX_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mCenterY' stored property
   //····················································································································
 
-  final let mCenterY_property = EBGenericTransientProperty <Int?> ()
+  final let mCenterY_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mWidth' stored property
   //····················································································································
 
-  final let mWidth_property = EBGenericTransientProperty <Int?> ()
+  final let mWidth_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mHeight' stored property
   //····················································································································
 
-  final let mHeight_property = EBGenericTransientProperty <Int?> ()
+  final let mHeight_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mHoleWidth' stored property
   //····················································································································
 
-  final let mHoleWidth_property = EBGenericTransientProperty <Int?> ()
+  final let mHoleWidth_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mHoleHeight' stored property
   //····················································································································
 
-  final let mHoleHeight_property = EBGenericTransientProperty <Int?> ()
+  final let mHoleHeight_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mShape' stored property
   //····················································································································
 
-  final let mShape_property = EBGenericTransientProperty <PadShape?> ()
+  final let mShape_property = EBTransientProperty <PadShape?> ()
 
   //····················································································································
   //   Observers of 'mStyle' stored property
   //····················································································································
 
-  final let mStyle_property = EBGenericTransientProperty <PadStyle?> ()
+  final let mStyle_property = EBTransientProperty <PadStyle?> ()
 
   //····················································································································
   //   Observers of 'mName' stored property
   //····················································································································
 
-  final let mName_property = EBGenericTransientProperty <String?> ()
+  final let mName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'padNumberDisplay' transient property
   //····················································································································
 
-  final let padNumberDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let padNumberDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observers of 'frontSideFilledBezierPathArray' transient property
   //····················································································································
 
-  final let frontSideFilledBezierPathArray_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let frontSideFilledBezierPathArray_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'backSideFilledBezierPathArray' transient property
   //····················································································································
 
-  final let backSideFilledBezierPathArray_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let backSideFilledBezierPathArray_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observable toMany property: mSlavePads

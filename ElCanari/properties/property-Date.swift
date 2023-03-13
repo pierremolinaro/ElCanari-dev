@@ -9,11 +9,11 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_Date    = EBObservableProperty <Date>
-typealias EBTransientProperty_Date   = EBGenericTransientProperty <Date>
+typealias EBTransientProperty_Date   = EBTransientProperty <Date>
 typealias EBReadWriteProperty_Date   = EBObservableMutableProperty <Date>
-typealias EBComputedProperty_Date    = EBGenericComputedProperty <Date>
-typealias EBStoredProperty_Date      = EBGenericStoredProperty <Date>
-typealias EBPreferencesProperty_Date = EBGenericPreferenceProperty <Date>
+typealias EBComputedProperty_Date    = EBComputedProperty <Date>
+typealias EBStoredProperty_Date      = EBStoredProperty <Date>
+typealias EBPreferencesProperty_Date = EBPreferenceProperty <Date>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

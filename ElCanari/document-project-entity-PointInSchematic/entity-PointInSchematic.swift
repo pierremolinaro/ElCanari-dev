@@ -243,7 +243,7 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final let mSymbol_none = EBGenericTransientProperty <Bool> ()
+  final let mSymbol_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mNet
@@ -271,7 +271,7 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final let mNet_none = EBGenericTransientProperty <Bool> ()
+  final let mNet_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mNC
@@ -299,7 +299,7 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final let mNC_none = EBGenericTransientProperty <Bool> ()
+  final let mNC_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: location
@@ -411,7 +411,7 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final let mSheet_none = EBGenericTransientProperty <Bool> ()
+  final let mSheet_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: symbolNameNetName

@@ -5,31 +5,36 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBGenericTransientProperty <T>
+//   EBComputedProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBGenericTransientProperty <T : Equatable> : EBObservableProperty <T> {
+final class EBComputedProperty <T> : EBObservableMutableProperty <T> {
 
   //····················································································································
 
-  private final var mValueCache : EBSelection <T>? = nil
-  final var mReadModelFunction : Optional <() -> EBSelection <T> > = nil
+  private var mValueCache : EBSelection <T>? = nil
+  var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
+  var mWriteModelFunction : Optional < (_ inValue : T) -> Void > = nil
 
   //····················································································································
 
-  override final var selection : EBSelection <T> {
-    if self.mValueCache == nil {
+  override var selection : EBSelection <T> {
+    if let value = self.mValueCache {
+      return value
+    }else{
       self.mValueCache = self.mReadModelFunction? ()
-      if self.mValueCache == nil {
+      if let value = self.mValueCache {
+        return value
+      }else{
         self.mValueCache = .empty
+        return .empty
       }
     }
-    return self.mValueCache!
   }
 
   //····················································································································
 
-  override final func observedObjectDidChange () {
+  override func observedObjectDidChange () {
     if self.mValueCache != nil {
       self.mValueCache = nil
       if logEvents () {
@@ -39,6 +44,12 @@ class EBGenericTransientProperty <T : Equatable> : EBObservableProperty <T> {
     }else if logEvents () {
       appendMessageString ("Transient #\(self.objectIndex) nil\n")
     }
+  }
+
+  //····················································································································
+
+  override func setProp (_ inValue : T) {
+    self.mWriteModelFunction? (inValue)
   }
 
   //····················································································································

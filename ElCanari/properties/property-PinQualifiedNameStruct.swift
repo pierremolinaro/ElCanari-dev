@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_PinQualifiedNameStruct    = EBObservableProperty <PinQualifiedNameStruct>
-typealias EBTransientProperty_PinQualifiedNameStruct   = EBGenericTransientProperty <PinQualifiedNameStruct>
+typealias EBTransientProperty_PinQualifiedNameStruct   = EBTransientProperty <PinQualifiedNameStruct>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

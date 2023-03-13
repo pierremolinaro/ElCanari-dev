@@ -312,7 +312,7 @@ final class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mRoot_none = EBGenericTransientProperty <Bool> ()
+  final let mRoot_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mNext
@@ -340,7 +340,7 @@ final class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mNext_none = EBGenericTransientProperty <Bool> ()
+  final let mNext_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mPrevious
@@ -368,7 +368,7 @@ final class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mPrevious_none = EBGenericTransientProperty <Bool> ()
+  final let mPrevious_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: p2Xvalue

@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_PinInProjectDescriptor    = EBObservableProperty <PinInProjectDescriptor>
-typealias EBTransientProperty_PinInProjectDescriptor   = EBGenericTransientProperty <PinInProjectDescriptor>
+typealias EBTransientProperty_PinInProjectDescriptor   = EBTransientProperty <PinInProjectDescriptor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

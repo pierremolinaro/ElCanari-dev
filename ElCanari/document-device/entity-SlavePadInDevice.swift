@@ -265,7 +265,7 @@ final class SlavePadInDevice : EBManagedObject,
 
   //····················································································································
 
-  final let mMasterPad_none = EBGenericTransientProperty <Bool> ()
+  final let mMasterPad_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: frontSideFilledBezierPath

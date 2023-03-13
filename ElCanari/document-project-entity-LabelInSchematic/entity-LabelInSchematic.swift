@@ -97,7 +97,7 @@ final class LabelInSchematic : SchematicObject,
 
   //····················································································································
 
-  final let mPoint_none = EBGenericTransientProperty <Bool> ()
+  final let mPoint_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: location

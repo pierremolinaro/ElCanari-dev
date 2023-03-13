@@ -66,67 +66,67 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observers of 'mNominalSize' stored property
   //····················································································································
 
-  final let mNominalSize_property = EBGenericTransientProperty <Int?> ()
+  final let mNominalSize_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mFontName' stored property
   //····················································································································
 
-  final let mFontName_property = EBGenericTransientProperty <String?> ()
+  final let mFontName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mFontVersion' stored property
   //····················································································································
 
-  final let mFontVersion_property = EBGenericTransientProperty <Int?> ()
+  final let mFontVersion_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mDescriptiveString' stored property
   //····················································································································
 
-  final let mDescriptiveString_property = EBGenericTransientProperty <String?> ()
+  final let mDescriptiveString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'versionString' transient property
   //····················································································································
 
-  final let versionString_property = EBGenericTransientProperty <String?> ()
+  final let versionString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'sizeString' transient property
   //····················································································································
 
-  final let sizeString_property = EBGenericTransientProperty <String?> ()
+  final let sizeString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  final let descriptor_property = EBGenericTransientProperty <BoardFontDescriptor?> ()
+  final let descriptor_property = EBTransientProperty <BoardFontDescriptor?> ()
 
   //····················································································································
   //   Observers of 'textCount' transient property
   //····················································································································
 
-  final let textCount_property = EBGenericTransientProperty <Int?> ()
+  final let textCount_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'canRemoveFont' transient property
   //····················································································································
 
-  final let canRemoveFont_property = EBGenericTransientProperty <Bool?> ()
+  final let canRemoveFont_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'componentNamesCount' transient property
   //····················································································································
 
-  final let componentNamesCount_property = EBGenericTransientProperty <Int?> ()
+  final let componentNamesCount_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'componentValuesCount' transient property
   //····················································································································
 
-  final let componentValuesCount_property = EBGenericTransientProperty <Int?> ()
+  final let componentValuesCount_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observable toMany property: mTexts

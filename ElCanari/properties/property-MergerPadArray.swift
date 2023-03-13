@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_MergerPadArray    = EBObservableProperty <MergerPadArray>
-typealias EBTransientProperty_MergerPadArray   = EBGenericTransientProperty <MergerPadArray>
+typealias EBTransientProperty_MergerPadArray   = EBTransientProperty <MergerPadArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

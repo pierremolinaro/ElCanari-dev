@@ -785,7 +785,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final let mArtwork_none = EBGenericTransientProperty <Bool> ()
+  final let mArtwork_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: hasNoData

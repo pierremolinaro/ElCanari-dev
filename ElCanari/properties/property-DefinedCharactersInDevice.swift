@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_DefinedCharactersInDevice    = EBObservableProperty <DefinedCharactersInDevice>
-typealias EBTransientProperty_DefinedCharactersInDevice   = EBGenericTransientProperty <DefinedCharactersInDevice>
+typealias EBTransientProperty_DefinedCharactersInDevice   = EBTransientProperty <DefinedCharactersInDevice>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

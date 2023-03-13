@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_NSRect    = EBObservableProperty <NSRect>
-typealias EBTransientProperty_NSRect   = EBGenericTransientProperty <NSRect>
+typealias EBTransientProperty_NSRect   = EBTransientProperty <NSRect>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

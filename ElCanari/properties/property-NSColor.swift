@@ -9,11 +9,11 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_NSColor    = EBObservableProperty <NSColor>
-typealias EBTransientProperty_NSColor   = EBGenericTransientProperty <NSColor>
+typealias EBTransientProperty_NSColor   = EBTransientProperty <NSColor>
 typealias EBReadWriteProperty_NSColor   = EBObservableMutableProperty <NSColor>
-typealias EBComputedProperty_NSColor    = EBGenericComputedProperty <NSColor>
-typealias EBStoredProperty_NSColor      = EBGenericStoredProperty <NSColor>
-typealias EBPreferencesProperty_NSColor = EBGenericPreferenceProperty <NSColor>
+typealias EBComputedProperty_NSColor    = EBComputedProperty <NSColor>
+typealias EBStoredProperty_NSColor      = EBStoredProperty <NSColor>
+typealias EBPreferencesProperty_NSColor = EBPreferenceProperty <NSColor>
 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

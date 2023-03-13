@@ -206,7 +206,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mRoot_none = EBGenericTransientProperty <Bool> ()
+  final let mRoot_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //    init

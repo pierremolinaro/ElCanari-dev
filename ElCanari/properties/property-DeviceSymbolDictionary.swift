@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_DeviceSymbolDictionary    = EBObservableProperty <DeviceSymbolDictionary>
-typealias EBTransientProperty_DeviceSymbolDictionary   = EBGenericTransientProperty <DeviceSymbolDictionary>
+typealias EBTransientProperty_DeviceSymbolDictionary   = EBTransientProperty <DeviceSymbolDictionary>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

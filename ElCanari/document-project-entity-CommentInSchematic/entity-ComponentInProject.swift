@@ -893,7 +893,7 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final let mDevice_none = EBGenericTransientProperty <Bool> ()
+  final let mDevice_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: deviceName
@@ -933,7 +933,7 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final let mSelectedPackage_none = EBGenericTransientProperty <Bool> ()
+  final let mSelectedPackage_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: packagePadDictionary
@@ -1033,7 +1033,7 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final let mNameFont_none = EBGenericTransientProperty <Bool> ()
+  final let mNameFont_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mValueFont
@@ -1061,7 +1061,7 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final let mValueFont_none = EBGenericTransientProperty <Bool> ()
+  final let mValueFont_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: pinPadAssignments

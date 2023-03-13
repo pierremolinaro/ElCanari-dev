@@ -78,7 +78,7 @@ class SchematicObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mSheet_none = EBGenericTransientProperty <Bool> ()
+  final let mSheet_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: issues

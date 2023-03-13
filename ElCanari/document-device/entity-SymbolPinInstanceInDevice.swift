@@ -71,7 +71,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  final let mSymbolInstance_none = EBGenericTransientProperty <Bool> ()
+  final let mSymbolInstance_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mType
@@ -99,7 +99,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  final let mType_none = EBGenericTransientProperty <Bool> ()
+  final let mType_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mPadProxy
@@ -127,7 +127,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  final let mPadProxy_none = EBGenericTransientProperty <Bool> ()
+  final let mPadProxy_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: pinName

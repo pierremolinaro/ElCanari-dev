@@ -54,85 +54,85 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mPinName' stored property
   //····················································································································
 
-  final let mPinName_property = EBGenericTransientProperty <String?> ()
+  final let mPinName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
-  final let mSymbolInstanceName_property = EBGenericTransientProperty <String?> ()
+  final let mSymbolInstanceName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mSymbolTypeName' stored property
   //····················································································································
 
-  final let mSymbolTypeName_property = EBGenericTransientProperty <String?> ()
+  final let mSymbolTypeName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mPinX' stored property
   //····················································································································
 
-  final let mPinX_property = EBGenericTransientProperty <Int?> ()
+  final let mPinX_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mPinY' stored property
   //····················································································································
 
-  final let mPinY_property = EBGenericTransientProperty <Int?> ()
+  final let mPinY_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mXName' stored property
   //····················································································································
 
-  final let mXName_property = EBGenericTransientProperty <Int?> ()
+  final let mXName_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mYName' stored property
   //····················································································································
 
-  final let mYName_property = EBGenericTransientProperty <Int?> ()
+  final let mYName_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mNameHorizontalAlignment' stored property
   //····················································································································
 
-  final let mNameHorizontalAlignment_property = EBGenericTransientProperty <HorizontalAlignment?> ()
+  final let mNameHorizontalAlignment_property = EBTransientProperty <HorizontalAlignment?> ()
 
   //····················································································································
   //   Observers of 'mPinNameIsDisplayedInSchematic' stored property
   //····················································································································
 
-  final let mPinNameIsDisplayedInSchematic_property = EBGenericTransientProperty <Bool?> ()
+  final let mPinNameIsDisplayedInSchematic_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mXNumber' stored property
   //····················································································································
 
-  final let mXNumber_property = EBGenericTransientProperty <Int?> ()
+  final let mXNumber_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mYNumber' stored property
   //····················································································································
 
-  final let mYNumber_property = EBGenericTransientProperty <Int?> ()
+  final let mYNumber_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mNumberHorizontalAlignment' stored property
   //····················································································································
 
-  final let mNumberHorizontalAlignment_property = EBGenericTransientProperty <HorizontalAlignment?> ()
+  final let mNumberHorizontalAlignment_property = EBTransientProperty <HorizontalAlignment?> ()
 
   //····················································································································
   //   Observers of 'pinQualifiedName' transient property
   //····················································································································
 
-  final let pinQualifiedName_property = EBGenericTransientProperty <PinQualifiedNameStruct?> ()
+  final let pinQualifiedName_property = EBTransientProperty <PinQualifiedNameStruct?> ()
 
   //····················································································································
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  final let descriptor_property = EBGenericTransientProperty <PinInProjectDescriptor?> ()
+  final let descriptor_property = EBTransientProperty <PinInProjectDescriptor?> ()
 
   //····················································································································
   //   INIT

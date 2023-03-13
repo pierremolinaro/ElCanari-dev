@@ -114,7 +114,7 @@ final class AutoLayoutCanariBoardOperationPullDownButton : AutoLayoutBase_NSPopU
 
   //····················································································································
 
-  private func bind_componentsPlacedInBoardArray (_ inModel : EBGenericTransientProperty <StringTagArray>) {
+  private func bind_componentsPlacedInBoardArray (_ inModel : EBTransientProperty <StringTagArray>) {
     self.mSelectComponentController = EBObservablePropertyController (
       observedObjects : [inModel],
       callBack: { [weak self] in self?.updateComponentsPlacedInBoard (inModel) }
@@ -123,7 +123,7 @@ final class AutoLayoutCanariBoardOperationPullDownButton : AutoLayoutBase_NSPopU
   
   //····················································································································
 
-  private func updateComponentsPlacedInBoard (_ inModel : EBGenericTransientProperty <StringTagArray>) {
+  private func updateComponentsPlacedInBoard (_ inModel : EBTransientProperty <StringTagArray>) {
     self.mSelectComponentSubMenu.removeAllItems ()
     switch inModel.selection {
     case .empty, .multiple :
@@ -161,7 +161,7 @@ final class AutoLayoutCanariBoardOperationPullDownButton : AutoLayoutBase_NSPopU
 
   //····················································································································
 
-  private func bind_netNamesArray (_ inModel : EBGenericTransientProperty <StringArray>) {
+  private func bind_netNamesArray (_ inModel : EBTransientProperty <StringArray>) {
     self.mUpdateNetNamesArrayController = EBObservablePropertyController (
       observedObjects : [inModel],
       callBack: { [weak self] in self?.updateNetNamesArray (inModel) }
@@ -170,7 +170,7 @@ final class AutoLayoutCanariBoardOperationPullDownButton : AutoLayoutBase_NSPopU
 
   //····················································································································
 
-  private func updateNetNamesArray (_ inModel : EBGenericTransientProperty <StringArray>) {
+  private func updateNetNamesArray (_ inModel : EBTransientProperty <StringArray>) {
     self.mSelectNetTrackSubMenu.removeAllItems ()
     switch inModel.selection {
     case .empty, .multiple :

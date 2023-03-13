@@ -106,151 +106,151 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mSelectedPageIndex' stored property
   //····················································································································
 
-  final let mSelectedPageIndex_property = EBGenericTransientProperty <Int?> ()
+  final let mSelectedPageIndex_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mSelectedSymbolInspectorIndex' stored property
   //····················································································································
 
-  final let mSelectedSymbolInspectorIndex_property = EBGenericTransientProperty <Int?> ()
+  final let mSelectedSymbolInspectorIndex_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mSelectedPackageInspectorIndex' stored property
   //····················································································································
 
-  final let mSelectedPackageInspectorIndex_property = EBGenericTransientProperty <Int?> ()
+  final let mSelectedPackageInspectorIndex_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mTitle' stored property
   //····················································································································
 
-  final let mTitle_property = EBGenericTransientProperty <String?> ()
+  final let mTitle_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mImageData' stored property
   //····················································································································
 
-  final let mImageData_property = EBGenericTransientProperty <Data?> ()
+  final let mImageData_property = EBTransientProperty <Data?> ()
 
   //····················································································································
   //   Observers of 'mPrefix' stored property
   //····················································································································
 
-  final let mPrefix_property = EBGenericTransientProperty <String?> ()
+  final let mPrefix_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mComments' stored property
   //····················································································································
 
-  final let mComments_property = EBGenericTransientProperty <String?> ()
+  final let mComments_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mPackageDisplayZoom' stored property
   //····················································································································
 
-  final let mPackageDisplayZoom_property = EBGenericTransientProperty <Int?> ()
+  final let mPackageDisplayZoom_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mPackageDisplayHorizontalFlip' stored property
   //····················································································································
 
-  final let mPackageDisplayHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
+  final let mPackageDisplayHorizontalFlip_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mPackageDisplayVerticalFlip' stored property
   //····················································································································
 
-  final let mPackageDisplayVerticalFlip_property = EBGenericTransientProperty <Bool?> ()
+  final let mPackageDisplayVerticalFlip_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mShowPackages' stored property
   //····················································································································
 
-  final let mShowPackages_property = EBGenericTransientProperty <Bool?> ()
+  final let mShowPackages_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mShowPackagePadNumbers' stored property
   //····················································································································
 
-  final let mShowPackagePadNumbers_property = EBGenericTransientProperty <Bool?> ()
+  final let mShowPackagePadNumbers_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mShowPackageFrontPads' stored property
   //····················································································································
 
-  final let mShowPackageFrontPads_property = EBGenericTransientProperty <Bool?> ()
+  final let mShowPackageFrontPads_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mShowPackageBackPads' stored property
   //····················································································································
 
-  final let mShowPackageBackPads_property = EBGenericTransientProperty <Bool?> ()
+  final let mShowPackageBackPads_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mSymbolDisplayZoom' stored property
   //····················································································································
 
-  final let mSymbolDisplayZoom_property = EBGenericTransientProperty <Int?> ()
+  final let mSymbolDisplayZoom_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'imageIsValid' transient property
   //····················································································································
 
-  final let imageIsValid_property = EBGenericTransientProperty <Bool?> ()
+  final let imageIsValid_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'unconnectedPins' transient property
   //····················································································································
 
-  final let unconnectedPins_property = EBGenericTransientProperty <UnconnectedSymbolPinsInDevice?> ()
+  final let unconnectedPins_property = EBTransientProperty <UnconnectedSymbolPinsInDevice?> ()
 
   //····················································································································
   //   Observers of 'inconsistentPackagePadNameSetsMessage' transient property
   //····················································································································
 
-  final let inconsistentPackagePadNameSetsMessage_property = EBGenericTransientProperty <String?> ()
+  final let inconsistentPackagePadNameSetsMessage_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'inconsistentSymbolNameSetMessage' transient property
   //····················································································································
 
-  final let inconsistentSymbolNameSetMessage_property = EBGenericTransientProperty <String?> ()
+  final let inconsistentSymbolNameSetMessage_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'packagePadNameSetsAreConsistent' transient property
   //····················································································································
 
-  final let packagePadNameSetsAreConsistent_property = EBGenericTransientProperty <Bool?> ()
+  final let packagePadNameSetsAreConsistent_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'symbolNameAreConsistent' transient property
   //····················································································································
 
-  final let symbolNameAreConsistent_property = EBGenericTransientProperty <Bool?> ()
+  final let symbolNameAreConsistent_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'symbolTypeNames' transient property
   //····················································································································
 
-  final let symbolTypeNames_property = EBGenericTransientProperty <StringArray?> ()
+  final let symbolTypeNames_property = EBTransientProperty <StringArray?> ()
 
   //····················································································································
   //   Observers of 'unconnectedPads' transient property
   //····················································································································
 
-  final let unconnectedPads_property = EBGenericTransientProperty <StringArray?> ()
+  final let unconnectedPads_property = EBTransientProperty <StringArray?> ()
 
   //····················································································································
   //   Observers of 'assignedPadProxies' transient property
   //····················································································································
 
-  final let assignedPadProxies_property = EBGenericTransientProperty <AssignedPadProxiesInDevice?> ()
+  final let assignedPadProxies_property = EBTransientProperty <AssignedPadProxiesInDevice?> ()
 
   //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
-  final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+  final let issues_property = EBTransientProperty <CanariIssueArray?> ()
 
   //····················································································································
   //   Observable toMany property: mDocs

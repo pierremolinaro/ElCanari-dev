@@ -5,10 +5,10 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBGenericStoredProperty <T>
+//   EBStoredProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutableProperty <T>, DocumentStorablePropertyProtocol {
+final class EBStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutableProperty <T>, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

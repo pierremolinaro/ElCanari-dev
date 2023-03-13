@@ -171,7 +171,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mDeviceRoot_none = EBGenericTransientProperty <Bool> ()
+  final let mDeviceRoot_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mType
@@ -199,7 +199,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mType_none = EBGenericTransientProperty <Bool> ()
+  final let mType_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: symbolQualifiedName

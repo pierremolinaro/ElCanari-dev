@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_RastnetInfoArray    = EBObservableProperty <RastnetInfoArray>
-typealias EBTransientProperty_RastnetInfoArray   = EBGenericTransientProperty <RastnetInfoArray>
+typealias EBTransientProperty_RastnetInfoArray   = EBTransientProperty <RastnetInfoArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

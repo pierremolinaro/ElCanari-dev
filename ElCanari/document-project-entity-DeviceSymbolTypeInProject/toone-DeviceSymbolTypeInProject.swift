@@ -32,19 +32,19 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
   //   Observers of 'mSymbolTypeName' stored property
   //····················································································································
 
-  final let mSymbolTypeName_property = EBGenericTransientProperty <String?> ()
+  final let mSymbolTypeName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
-  final let mStrokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
+  final let mStrokeBezierPath_property = EBTransientProperty <NSBezierPath?> ()
 
   //····················································································································
   //   Observers of 'mFilledBezierPath' stored property
   //····················································································································
 
-  final let mFilledBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
+  final let mFilledBezierPath_property = EBTransientProperty <NSBezierPath?> ()
 
   //····················································································································
   //   INIT

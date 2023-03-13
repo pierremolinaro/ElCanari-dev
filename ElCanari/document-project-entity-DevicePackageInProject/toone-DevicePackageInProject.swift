@@ -38,19 +38,19 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //   Observers of 'mPackageName' stored property
   //····················································································································
 
-  final let mPackageName_property = EBGenericTransientProperty <String?> ()
+  final let mPackageName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
-  final let mStrokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
+  final let mStrokeBezierPath_property = EBTransientProperty <NSBezierPath?> ()
 
   //····················································································································
   //   Observers of 'packagePadDictionary' transient property
   //····················································································································
 
-  final let packagePadDictionary_property = EBGenericTransientProperty <PackageMasterPadDictionary?> ()
+  final let packagePadDictionary_property = EBTransientProperty <PackageMasterPadDictionary?> ()
 
   //····················································································································
   //   Observable toMany property: mMasterPads

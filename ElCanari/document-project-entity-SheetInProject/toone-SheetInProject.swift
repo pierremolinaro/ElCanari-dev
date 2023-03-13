@@ -50,37 +50,37 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observers of 'mSheetTitle' stored property
   //····················································································································
 
-  final let mSheetTitle_property = EBGenericTransientProperty <String?> ()
+  final let mSheetTitle_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
-  final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+  final let issues_property = EBTransientProperty <CanariIssueArray?> ()
 
   //····················································································································
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
-  final let connectedPoints_property = EBGenericTransientProperty <EBShape?> ()
+  final let connectedPoints_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observers of 'connexionWarnings' transient property
   //····················································································································
 
-  final let connexionWarnings_property = EBGenericTransientProperty <Int?> ()
+  final let connexionWarnings_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'connexionErrors' transient property
   //····················································································································
 
-  final let connexionErrors_property = EBGenericTransientProperty <Int?> ()
+  final let connexionErrors_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'sheetDescriptor' transient property
   //····················································································································
 
-  final let sheetDescriptor_property = EBGenericTransientProperty <SchematicSheetDescriptor?> ()
+  final let sheetDescriptor_property = EBTransientProperty <SchematicSheetDescriptor?> ()
 
   //····················································································································
   //   Observable toMany property: mObjects

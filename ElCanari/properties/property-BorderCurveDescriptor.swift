@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_BorderCurveDescriptor    = EBObservableProperty <BorderCurveDescriptor>
-typealias EBTransientProperty_BorderCurveDescriptor   = EBGenericTransientProperty <BorderCurveDescriptor>
+typealias EBTransientProperty_BorderCurveDescriptor   = EBTransientProperty <BorderCurveDescriptor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

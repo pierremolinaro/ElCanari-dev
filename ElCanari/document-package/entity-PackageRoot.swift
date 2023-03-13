@@ -1428,7 +1428,7 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  final let mModelImageDoublePoint_none = EBGenericTransientProperty <Bool> ()
+  final let mModelImageDoublePoint_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: padNumberDisplay

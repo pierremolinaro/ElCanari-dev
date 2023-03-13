@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_ThreeStrings    = EBObservableProperty <ThreeStrings>
-typealias EBTransientProperty_ThreeStrings   = EBGenericTransientProperty <ThreeStrings>
+typealias EBTransientProperty_ThreeStrings   = EBTransientProperty <ThreeStrings>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -558,7 +558,7 @@ final class PackagePad : PackageObject,
 
   //····················································································································
 
-  final let zone_none = EBGenericTransientProperty <Bool> ()
+  final let zone_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: padNameForDisplay

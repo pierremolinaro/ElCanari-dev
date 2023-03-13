@@ -486,7 +486,7 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final let mConnectorP1_none = EBGenericTransientProperty <Bool> ()
+  final let mConnectorP1_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mConnectorP2
@@ -514,7 +514,7 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final let mConnectorP2_none = EBGenericTransientProperty <Bool> ()
+  final let mConnectorP2_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mNet
@@ -542,7 +542,7 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final let mNet_none = EBGenericTransientProperty <Bool> ()
+  final let mNet_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: actualTrackWidth

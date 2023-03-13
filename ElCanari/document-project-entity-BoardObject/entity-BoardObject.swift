@@ -239,7 +239,7 @@ class BoardObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mRoot_none = EBGenericTransientProperty <Bool> ()
+  final let mRoot_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: isPlacedInBoard

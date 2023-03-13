@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_AssignedPadProxiesInDevice    = EBObservableProperty <AssignedPadProxiesInDevice>
-typealias EBTransientProperty_AssignedPadProxiesInDevice   = EBGenericTransientProperty <AssignedPadProxiesInDevice>
+typealias EBTransientProperty_AssignedPadProxiesInDevice   = EBTransientProperty <AssignedPadProxiesInDevice>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

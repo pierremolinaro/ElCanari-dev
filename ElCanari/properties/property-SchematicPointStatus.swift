@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_SchematicPointStatus    = EBObservableProperty <SchematicPointStatus>
-typealias EBTransientProperty_SchematicPointStatus   = EBGenericTransientProperty <SchematicPointStatus>
+typealias EBTransientProperty_SchematicPointStatus   = EBTransientProperty <SchematicPointStatus>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

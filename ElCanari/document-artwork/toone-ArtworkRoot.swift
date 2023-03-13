@@ -68,109 +68,109 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'layerConfiguration' stored property
   //····················································································································
 
-  final let layerConfiguration_property = EBGenericTransientProperty <LayerConfiguration?> ()
+  final let layerConfiguration_property = EBTransientProperty <LayerConfiguration?> ()
 
   //····················································································································
   //   Observers of 'selectedTab' stored property
   //····················································································································
 
-  final let selectedTab_property = EBGenericTransientProperty <Int?> ()
+  final let selectedTab_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'comments' stored property
   //····················································································································
 
-  final let comments_property = EBGenericTransientProperty <String?> ()
+  final let comments_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'minPPTPTTTWdisplayUnit' stored property
   //····················································································································
 
-  final let minPPTPTTTWdisplayUnit_property = EBGenericTransientProperty <Int?> ()
+  final let minPPTPTTTWdisplayUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'minPPTPTTTW' stored property
   //····················································································································
 
-  final let minPPTPTTTW_property = EBGenericTransientProperty <Int?> ()
+  final let minPPTPTTTW_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'minValueForOARdisplayUnit' stored property
   //····················································································································
 
-  final let minValueForOARdisplayUnit_property = EBGenericTransientProperty <Int?> ()
+  final let minValueForOARdisplayUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'minValueForOARinEBUnit' stored property
   //····················································································································
 
-  final let minValueForOARinEBUnit_property = EBGenericTransientProperty <Int?> ()
+  final let minValueForOARinEBUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'minValueForPHDdisplayUnit' stored property
   //····················································································································
 
-  final let minValueForPHDdisplayUnit_property = EBGenericTransientProperty <Int?> ()
+  final let minValueForPHDdisplayUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'minValueForPHDinEBUnit' stored property
   //····················································································································
 
-  final let minValueForPHDinEBUnit_property = EBGenericTransientProperty <Int?> ()
+  final let minValueForPHDinEBUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'minValueForBoardLimitWidthDisplayUnit' stored property
   //····················································································································
 
-  final let minValueForBoardLimitWidthDisplayUnit_property = EBGenericTransientProperty <Int?> ()
+  final let minValueForBoardLimitWidthDisplayUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'minValueForBoardLimitWidth' stored property
   //····················································································································
 
-  final let minValueForBoardLimitWidth_property = EBGenericTransientProperty <Int?> ()
+  final let minValueForBoardLimitWidth_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'title' stored property
   //····················································································································
 
-  final let title_property = EBGenericTransientProperty <String?> ()
+  final let title_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'drillDataFileExtension' stored property
   //····················································································································
 
-  final let drillDataFileExtension_property = EBGenericTransientProperty <String?> ()
+  final let drillDataFileExtension_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'hasInnerElements' transient property
   //····················································································································
 
-  final let hasInnerElements_property = EBGenericTransientProperty <Bool?> ()
+  final let hasInnerElements_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'hasSixLayers' transient property
   //····················································································································
 
-  final let hasSixLayers_property = EBGenericTransientProperty <Bool?> ()
+  final let hasSixLayers_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'hasDataWarning' transient property
   //····················································································································
 
-  final let hasDataWarning_property = EBGenericTransientProperty <Bool?> ()
+  final let hasDataWarning_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'emptyDrillFileExtension' transient property
   //····················································································································
 
-  final let emptyDrillFileExtension_property = EBGenericTransientProperty <Bool?> ()
+  final let emptyDrillFileExtension_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  final let signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
+  final let signatureForERCChecking_property = EBTransientProperty <UInt32?> ()
 
   //····················································································································
   //   Observable toMany property: fileGenerationParameterArray

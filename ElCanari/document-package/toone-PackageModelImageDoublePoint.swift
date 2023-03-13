@@ -42,49 +42,49 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'mFirstX' stored property
   //····················································································································
 
-  final let mFirstX_property = EBGenericTransientProperty <Int?> ()
+  final let mFirstX_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mFirstY' stored property
   //····················································································································
 
-  final let mFirstY_property = EBGenericTransientProperty <Int?> ()
+  final let mFirstY_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mFirstColor' stored property
   //····················································································································
 
-  final let mFirstColor_property = EBGenericTransientProperty <NSColor?> ()
+  final let mFirstColor_property = EBTransientProperty <NSColor?> ()
 
   //····················································································································
   //   Observers of 'mSecondDx' stored property
   //····················································································································
 
-  final let mSecondDx_property = EBGenericTransientProperty <Int?> ()
+  final let mSecondDx_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mSecondDy' stored property
   //····················································································································
 
-  final let mSecondDy_property = EBGenericTransientProperty <Int?> ()
+  final let mSecondDy_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mSecondColor' stored property
   //····················································································································
 
-  final let mSecondColor_property = EBGenericTransientProperty <NSColor?> ()
+  final let mSecondColor_property = EBTransientProperty <NSColor?> ()
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let objectDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let selectionDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   INIT

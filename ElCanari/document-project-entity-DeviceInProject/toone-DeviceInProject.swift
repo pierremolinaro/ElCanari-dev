@@ -76,79 +76,79 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observers of 'mDeviceName' stored property
   //····················································································································
 
-  final let mDeviceName_property = EBGenericTransientProperty <String?> ()
+  final let mDeviceName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mPrefix' stored property
   //····················································································································
 
-  final let mPrefix_property = EBGenericTransientProperty <String?> ()
+  final let mPrefix_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mDeviceVersion' stored property
   //····················································································································
 
-  final let mDeviceVersion_property = EBGenericTransientProperty <Int?> ()
+  final let mDeviceVersion_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mDeviceFileData' stored property
   //····················································································································
 
-  final let mDeviceFileData_property = EBGenericTransientProperty <Data?> ()
+  final let mDeviceFileData_property = EBTransientProperty <Data?> ()
 
   //····················································································································
   //   Observers of 'versionString' transient property
   //····················································································································
 
-  final let versionString_property = EBGenericTransientProperty <String?> ()
+  final let versionString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'sizeString' transient property
   //····················································································································
 
-  final let sizeString_property = EBGenericTransientProperty <String?> ()
+  final let sizeString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'canExport' transient property
   //····················································································································
 
-  final let canExport_property = EBGenericTransientProperty <Bool?> ()
+  final let canExport_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'packageNames' transient property
   //····················································································································
 
-  final let packageNames_property = EBGenericTransientProperty <StringArray?> ()
+  final let packageNames_property = EBTransientProperty <StringArray?> ()
 
   //····················································································································
   //   Observers of 'deviceComponentCountString' transient property
   //····················································································································
 
-  final let deviceComponentCountString_property = EBGenericTransientProperty <String?> ()
+  final let deviceComponentCountString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'canRemove' transient property
   //····················································································································
 
-  final let canRemove_property = EBGenericTransientProperty <Bool?> ()
+  final let canRemove_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'symbolAndTypesNames' transient property
   //····················································································································
 
-  final let symbolAndTypesNames_property = EBGenericTransientProperty <SymbolInProjectIdentifierArray?> ()
+  final let symbolAndTypesNames_property = EBTransientProperty <SymbolInProjectIdentifierArray?> ()
 
   //····················································································································
   //   Observers of 'pinPadAssignments' transient property
   //····················································································································
 
-  final let pinPadAssignments_property = EBGenericTransientProperty <ThreeStringArray?> ()
+  final let pinPadAssignments_property = EBTransientProperty <ThreeStringArray?> ()
 
   //····················································································································
   //   Observers of 'deviceSymbolDictionary' transient property
   //····················································································································
 
-  final let deviceSymbolDictionary_property = EBGenericTransientProperty <DeviceSymbolDictionary?> ()
+  final let deviceSymbolDictionary_property = EBTransientProperty <DeviceSymbolDictionary?> ()
 
   //····················································································································
   //   Observable toMany property: mPackages

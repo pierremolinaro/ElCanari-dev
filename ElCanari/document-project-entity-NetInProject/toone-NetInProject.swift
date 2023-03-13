@@ -56,55 +56,55 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'mNetName' stored property
   //····················································································································
 
-  final let mNetName_property = EBGenericTransientProperty <String?> ()
+  final let mNetName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mWarnsExactlyOneLabel' stored property
   //····················································································································
 
-  final let mWarnsExactlyOneLabel_property = EBGenericTransientProperty <Bool?> ()
+  final let mWarnsExactlyOneLabel_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  final let netClassName_property = EBGenericTransientProperty <String?> ()
+  final let netClassName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'netClassTrackWidth' transient property
   //····················································································································
 
-  final let netClassTrackWidth_property = EBGenericTransientProperty <Int?> ()
+  final let netClassTrackWidth_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'netClassViaHoleDiameter' transient property
   //····················································································································
 
-  final let netClassViaHoleDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let netClassViaHoleDiameter_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'netClassViaPadDiameter' transient property
   //····················································································································
 
-  final let netClassViaPadDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let netClassViaPadDiameter_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'wireColor' transient property
   //····················································································································
 
-  final let wireColor_property = EBGenericTransientProperty <NSColor?> ()
+  final let wireColor_property = EBTransientProperty <NSColor?> ()
 
   //····················································································································
   //   Observers of 'netSchematicPointsInfo' transient property
   //····················································································································
 
-  final let netSchematicPointsInfo_property = EBGenericTransientProperty <NetInfoPointArray?> ()
+  final let netSchematicPointsInfo_property = EBTransientProperty <NetInfoPointArray?> ()
 
   //····················································································································
   //   Observers of 'trackCount' transient property
   //····················································································································
 
-  final let trackCount_property = EBGenericTransientProperty <Int?> ()
+  final let trackCount_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observable toMany property: mPoints

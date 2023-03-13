@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_CanariIssueArray    = EBObservableProperty <CanariIssueArray>
-typealias EBTransientProperty_CanariIssueArray   = EBGenericTransientProperty <CanariIssueArray>
+typealias EBTransientProperty_CanariIssueArray   = EBTransientProperty <CanariIssueArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

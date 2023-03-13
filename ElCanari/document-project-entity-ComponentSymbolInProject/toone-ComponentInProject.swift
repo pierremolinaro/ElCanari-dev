@@ -130,277 +130,277 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mSlavePadsShouldBeRouted' stored property
   //····················································································································
 
-  final let mSlavePadsShouldBeRouted_property = EBGenericTransientProperty <Bool?> ()
+  final let mSlavePadsShouldBeRouted_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mX' stored property
   //····················································································································
 
-  final let mX_property = EBGenericTransientProperty <Int?> ()
+  final let mX_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
 
-  final let mY_property = EBGenericTransientProperty <Int?> ()
+  final let mY_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mRotation' stored property
   //····················································································································
 
-  final let mRotation_property = EBGenericTransientProperty <Int?> ()
+  final let mRotation_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mSide' stored property
   //····················································································································
 
-  final let mSide_property = EBGenericTransientProperty <ComponentSide?> ()
+  final let mSide_property = EBTransientProperty <ComponentSide?> ()
 
   //····················································································································
   //   Observers of 'mDisplayLegend' stored property
   //····················································································································
 
-  final let mDisplayLegend_property = EBGenericTransientProperty <Bool?> ()
+  final let mDisplayLegend_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mNameIsVisibleInBoard' stored property
   //····················································································································
 
-  final let mNameIsVisibleInBoard_property = EBGenericTransientProperty <Bool?> ()
+  final let mNameIsVisibleInBoard_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mXName' stored property
   //····················································································································
 
-  final let mXName_property = EBGenericTransientProperty <Int?> ()
+  final let mXName_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mYName' stored property
   //····················································································································
 
-  final let mYName_property = EBGenericTransientProperty <Int?> ()
+  final let mYName_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mNameFontSize' stored property
   //····················································································································
 
-  final let mNameFontSize_property = EBGenericTransientProperty <Double?> ()
+  final let mNameFontSize_property = EBTransientProperty <Double?> ()
 
   //····················································································································
   //   Observers of 'mNameRotation' stored property
   //····················································································································
 
-  final let mNameRotation_property = EBGenericTransientProperty <Int?> ()
+  final let mNameRotation_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mValueIsVisibleInBoard' stored property
   //····················································································································
 
-  final let mValueIsVisibleInBoard_property = EBGenericTransientProperty <Bool?> ()
+  final let mValueIsVisibleInBoard_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mXValue' stored property
   //····················································································································
 
-  final let mXValue_property = EBGenericTransientProperty <Int?> ()
+  final let mXValue_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mYValue' stored property
   //····················································································································
 
-  final let mYValue_property = EBGenericTransientProperty <Int?> ()
+  final let mYValue_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mValueFontSize' stored property
   //····················································································································
 
-  final let mValueFontSize_property = EBGenericTransientProperty <Double?> ()
+  final let mValueFontSize_property = EBTransientProperty <Double?> ()
 
   //····················································································································
   //   Observers of 'mValueRotation' stored property
   //····················································································································
 
-  final let mValueRotation_property = EBGenericTransientProperty <Int?> ()
+  final let mValueRotation_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mComponentValue' stored property
   //····················································································································
 
-  final let mComponentValue_property = EBGenericTransientProperty <String?> ()
+  final let mComponentValue_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mNamePrefix' stored property
   //····················································································································
 
-  final let mNamePrefix_property = EBGenericTransientProperty <String?> ()
+  final let mNamePrefix_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mNameIndex' stored property
   //····················································································································
 
-  final let mNameIndex_property = EBGenericTransientProperty <Int?> ()
+  final let mNameIndex_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mXUnit' stored property
   //····················································································································
 
-  final let mXUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mXUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mYUnit' stored property
   //····················································································································
 
-  final let mYUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mYUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mXNameUnit' stored property
   //····················································································································
 
-  final let mXNameUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mXNameUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mYNameUnit' stored property
   //····················································································································
 
-  final let mYNameUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mYNameUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mXValueUnit' stored property
   //····················································································································
 
-  final let mXValueUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mXValueUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mYValueUnit' stored property
   //····················································································································
 
-  final let mYValueUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mYValueUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'deviceName' transient property
   //····················································································································
 
-  final let deviceName_property = EBGenericTransientProperty <String?> ()
+  final let deviceName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  final let signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
+  final let signatureForERCChecking_property = EBTransientProperty <UInt32?> ()
 
   //····················································································································
   //   Observers of 'packagePadDictionary' transient property
   //····················································································································
 
-  final let packagePadDictionary_property = EBGenericTransientProperty <PackageMasterPadDictionary?> ()
+  final let packagePadDictionary_property = EBTransientProperty <PackageMasterPadDictionary?> ()
 
   //····················································································································
   //   Observers of 'selectedPackageName' transient property
   //····················································································································
 
-  final let selectedPackageName_property = EBGenericTransientProperty <String?> ()
+  final let selectedPackageName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'availablePackages' transient property
   //····················································································································
 
-  final let availablePackages_property = EBGenericTransientProperty <StringArray?> ()
+  final let availablePackages_property = EBTransientProperty <StringArray?> ()
 
   //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
-  final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+  final let issues_property = EBTransientProperty <CanariIssueArray?> ()
 
   //····················································································································
   //   Observers of 'componentIsPlacedInBoard' transient property
   //····················································································································
 
-  final let componentIsPlacedInBoard_property = EBGenericTransientProperty <Bool?> ()
+  final let componentIsPlacedInBoard_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'componentIsPlacedInBoardString' transient property
   //····················································································································
 
-  final let componentIsPlacedInBoardString_property = EBGenericTransientProperty <String?> ()
+  final let componentIsPlacedInBoardString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  final let strokeBezierPath_property = EBGenericTransientProperty <EBBezierPath?> ()
+  final let strokeBezierPath_property = EBTransientProperty <EBBezierPath?> ()
 
   //····················································································································
   //   Observers of 'pinPadAssignments' transient property
   //····················································································································
 
-  final let pinPadAssignments_property = EBGenericTransientProperty <ThreeStringArray?> ()
+  final let pinPadAssignments_property = EBTransientProperty <ThreeStringArray?> ()
 
   //····················································································································
   //   Observers of 'hasSlavePads' transient property
   //····················································································································
 
-  final let hasSlavePads_property = EBGenericTransientProperty <Bool?> ()
+  final let hasSlavePads_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'placementInSchematic' transient property
   //····················································································································
 
-  final let placementInSchematic_property = EBGenericTransientProperty <String?> ()
+  final let placementInSchematic_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'deviceSymbolDictionary' transient property
   //····················································································································
 
-  final let deviceSymbolDictionary_property = EBGenericTransientProperty <DeviceSymbolDictionary?> ()
+  final let deviceSymbolDictionary_property = EBTransientProperty <DeviceSymbolDictionary?> ()
 
   //····················································································································
   //   Observers of 'componentNameFontName' transient property
   //····················································································································
 
-  final let componentNameFontName_property = EBGenericTransientProperty <String?> ()
+  final let componentNameFontName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'componentValueFontName' transient property
   //····················································································································
 
-  final let componentValueFontName_property = EBGenericTransientProperty <String?> ()
+  final let componentValueFontName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'componentPadDictionary' transient property
   //····················································································································
 
-  final let componentPadDictionary_property = EBGenericTransientProperty <ComponentPadDescriptorDictionary?> ()
+  final let componentPadDictionary_property = EBTransientProperty <ComponentPadDescriptorDictionary?> ()
 
   //····················································································································
   //   Observers of 'padNetDictionary' transient property
   //····················································································································
 
-  final let padNetDictionary_property = EBGenericTransientProperty <PadNetDictionary?> ()
+  final let padNetDictionary_property = EBTransientProperty <PadNetDictionary?> ()
 
   //····················································································································
   //   Observers of 'componentName' transient property
   //····················································································································
 
-  final let componentName_property = EBGenericTransientProperty <String?> ()
+  final let componentName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let selectionDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observers of 'unplacedSymbols' transient property
   //····················································································································
 
-  final let unplacedSymbols_property = EBGenericTransientProperty <StringTagArray?> ()
+  final let unplacedSymbols_property = EBTransientProperty <StringTagArray?> ()
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let objectDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observable toMany property: mConnectors

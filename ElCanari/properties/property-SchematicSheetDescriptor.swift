@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_SchematicSheetDescriptor    = EBObservableProperty <SchematicSheetDescriptor>
-typealias EBTransientProperty_SchematicSheetDescriptor   = EBGenericTransientProperty <SchematicSheetDescriptor>
+typealias EBTransientProperty_SchematicSheetDescriptor   = EBTransientProperty <SchematicSheetDescriptor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_SlavePadDescriptor    = EBObservableProperty <SlavePadDescriptor>
-typealias EBTransientProperty_SlavePadDescriptor   = EBGenericTransientProperty <SlavePadDescriptor>
+typealias EBTransientProperty_SlavePadDescriptor   = EBTransientProperty <SlavePadDescriptor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

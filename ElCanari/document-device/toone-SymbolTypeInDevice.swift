@@ -56,55 +56,55 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'mTypeName' stored property
   //····················································································································
 
-  final let mTypeName_property = EBGenericTransientProperty <String?> ()
+  final let mTypeName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mVersion' stored property
   //····················································································································
 
-  final let mVersion_property = EBGenericTransientProperty <Int?> ()
+  final let mVersion_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mFileData' stored property
   //····················································································································
 
-  final let mFileData_property = EBGenericTransientProperty <Data?> ()
+  final let mFileData_property = EBTransientProperty <Data?> ()
 
   //····················································································································
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
-  final let mStrokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
+  final let mStrokeBezierPath_property = EBTransientProperty <NSBezierPath?> ()
 
   //····················································································································
   //   Observers of 'mFilledBezierPath' stored property
   //····················································································································
 
-  final let mFilledBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
+  final let mFilledBezierPath_property = EBTransientProperty <NSBezierPath?> ()
 
   //····················································································································
   //   Observers of 'versionString' transient property
   //····················································································································
 
-  final let versionString_property = EBGenericTransientProperty <String?> ()
+  final let versionString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'instanceCount' transient property
   //····················································································································
 
-  final let instanceCount_property = EBGenericTransientProperty <Int?> ()
+  final let instanceCount_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'documentSize' transient property
   //····················································································································
 
-  final let documentSize_property = EBGenericTransientProperty <Int?> ()
+  final let documentSize_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'pinNameShape' transient property
   //····················································································································
 
-  final let pinNameShape_property = EBGenericTransientProperty <EBShape?> ()
+  final let pinNameShape_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observable toMany property: mInstances

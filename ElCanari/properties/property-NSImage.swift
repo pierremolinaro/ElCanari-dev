@@ -9,9 +9,9 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_NSImage       = EBObservableProperty <NSImage>
-typealias EBTransientProperty_NSImage      = EBGenericTransientProperty <NSImage>
+typealias EBTransientProperty_NSImage      = EBTransientProperty <NSImage>
 typealias EBReadOnlyPropertyArray_NSImage  = EBObservableProperty <[NSImage]>
-typealias EBTransientPropertyArray_NSImage = EBGenericTransientProperty <[NSImage]>
+typealias EBTransientPropertyArray_NSImage = EBTransientProperty <[NSImage]>
 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

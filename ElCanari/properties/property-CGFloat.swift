@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_CGFloat    = EBObservableProperty <CGFloat>
-typealias EBTransientProperty_CGFloat   = EBGenericTransientProperty <CGFloat>
+typealias EBTransientProperty_CGFloat   = EBTransientProperty <CGFloat>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

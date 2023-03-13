@@ -149,7 +149,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let myModel_none = EBGenericTransientProperty <Bool> ()
+  final let myModel_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: instanceRect
@@ -213,7 +213,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let myRoot_none = EBGenericTransientProperty <Bool> ()
+  final let myRoot_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //    init

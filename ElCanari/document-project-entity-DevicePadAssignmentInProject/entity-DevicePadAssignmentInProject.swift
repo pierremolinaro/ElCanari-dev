@@ -76,7 +76,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
 
   //····················································································································
 
-  final let mPin_none = EBGenericTransientProperty <Bool> ()
+  final let mPin_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: pinPadAssignment

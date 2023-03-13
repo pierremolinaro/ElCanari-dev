@@ -74,91 +74,91 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'mSymbolPinName' stored property
   //····················································································································
 
-  final let mSymbolPinName_property = EBGenericTransientProperty <String?> ()
+  final let mSymbolPinName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mX' stored property
   //····················································································································
 
-  final let mX_property = EBGenericTransientProperty <Int?> ()
+  final let mX_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
 
-  final let mY_property = EBGenericTransientProperty <Int?> ()
+  final let mY_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'location' transient property
   //····················································································································
 
-  final let location_property = EBGenericTransientProperty <CanariPoint?> ()
+  final let location_property = EBTransientProperty <CanariPoint?> ()
 
   //····················································································································
   //   Observers of 'netName' transient property
   //····················································································································
 
-  final let netName_property = EBGenericTransientProperty <String?> ()
+  final let netName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  final let netClassName_property = EBGenericTransientProperty <String?> ()
+  final let netClassName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'hasNet' transient property
   //····················································································································
 
-  final let hasNet_property = EBGenericTransientProperty <Bool?> ()
+  final let hasNet_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'canMove' transient property
   //····················································································································
 
-  final let canMove_property = EBGenericTransientProperty <Bool?> ()
+  final let canMove_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'wireColor' transient property
   //····················································································································
 
-  final let wireColor_property = EBGenericTransientProperty <NSColor?> ()
+  final let wireColor_property = EBTransientProperty <NSColor?> ()
 
   //····················································································································
   //   Observers of 'symbolRotation' transient property
   //····················································································································
 
-  final let symbolRotation_property = EBGenericTransientProperty <QuadrantRotation?> ()
+  final let symbolRotation_property = EBTransientProperty <QuadrantRotation?> ()
 
   //····················································································································
   //   Observers of 'symbolNameNetName' transient property
   //····················································································································
 
-  final let symbolNameNetName_property = EBGenericTransientProperty <TwoStrings?> ()
+  final let symbolNameNetName_property = EBTransientProperty <TwoStrings?> ()
 
   //····················································································································
   //   Observers of 'isConnected' transient property
   //····················································································································
 
-  final let isConnected_property = EBGenericTransientProperty <Bool?> ()
+  final let isConnected_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'status' transient property
   //····················································································································
 
-  final let status_property = EBGenericTransientProperty <SchematicPointStatus?> ()
+  final let status_property = EBTransientProperty <SchematicPointStatus?> ()
 
   //····················································································································
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
-  final let connectedPoints_property = EBGenericTransientProperty <CanariPointArray?> ()
+  final let connectedPoints_property = EBTransientProperty <CanariPointArray?> ()
 
   //····················································································································
   //   Observers of 'netInfoForPoint' transient property
   //····················································································································
 
-  final let netInfoForPoint_property = EBGenericTransientProperty <NetInfoPoint?> ()
+  final let netInfoForPoint_property = EBTransientProperty <NetInfoPoint?> ()
 
   //····················································································································
   //   Observable toMany property: mLabels

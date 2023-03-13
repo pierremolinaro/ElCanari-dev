@@ -76,133 +76,133 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'x' stored property
   //····················································································································
 
-  final let x_property = EBGenericTransientProperty <Int?> ()
+  final let x_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'y' stored property
   //····················································································································
 
-  final let y_property = EBGenericTransientProperty <Int?> ()
+  final let y_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'width' stored property
   //····················································································································
 
-  final let width_property = EBGenericTransientProperty <Int?> ()
+  final let width_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'height' stored property
   //····················································································································
 
-  final let height_property = EBGenericTransientProperty <Int?> ()
+  final let height_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'xUnit' stored property
   //····················································································································
 
-  final let xUnit_property = EBGenericTransientProperty <Int?> ()
+  final let xUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'yUnit' stored property
   //····················································································································
 
-  final let yUnit_property = EBGenericTransientProperty <Int?> ()
+  final let yUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'widthUnit' stored property
   //····················································································································
 
-  final let widthUnit_property = EBGenericTransientProperty <Int?> ()
+  final let widthUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'heightUnit' stored property
   //····················································································································
 
-  final let heightUnit_property = EBGenericTransientProperty <Int?> ()
+  final let heightUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'zoneName' stored property
   //····················································································································
 
-  final let zoneName_property = EBGenericTransientProperty <String?> ()
+  final let zoneName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'displayZoneName' stored property
   //····················································································································
 
-  final let displayZoneName_property = EBGenericTransientProperty <Bool?> ()
+  final let displayZoneName_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'displayZoneNameWithPadNumbers' stored property
   //····················································································································
 
-  final let displayZoneNameWithPadNumbers_property = EBGenericTransientProperty <Bool?> ()
+  final let displayZoneNameWithPadNumbers_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'xName' stored property
   //····················································································································
 
-  final let xName_property = EBGenericTransientProperty <Int?> ()
+  final let xName_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'yName' stored property
   //····················································································································
 
-  final let yName_property = EBGenericTransientProperty <Int?> ()
+  final let yName_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'xNameUnit' stored property
   //····················································································································
 
-  final let xNameUnit_property = EBGenericTransientProperty <Int?> ()
+  final let xNameUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'yNameUnit' stored property
   //····················································································································
 
-  final let yNameUnit_property = EBGenericTransientProperty <Int?> ()
+  final let yNameUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'zoneNumbering' stored property
   //····················································································································
 
-  final let zoneNumbering_property = EBGenericTransientProperty <PadNumbering?> ()
+  final let zoneNumbering_property = EBTransientProperty <PadNumbering?> ()
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let objectDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
-  final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+  final let issues_property = EBTransientProperty <CanariIssueArray?> ()
 
   //····················································································································
   //   Observers of 'rect' transient property
   //····················································································································
 
-  final let rect_property = EBGenericTransientProperty <CanariRect?> ()
+  final let rect_property = EBTransientProperty <CanariRect?> ()
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let selectionDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observers of 'forbiddenPadArray' transient property
   //····················································································································
 
-  final let forbiddenPadArray_property = EBGenericTransientProperty <StringArray?> ()
+  final let forbiddenPadArray_property = EBTransientProperty <StringArray?> ()
 
   //····················································································································
   //   Observers of 'emptyForbiddenPadArray' transient property
   //····················································································································
 
-  final let emptyForbiddenPadArray_property = EBGenericTransientProperty <Bool?> ()
+  final let emptyForbiddenPadArray_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observable toMany property: forbiddenPadNumbers

@@ -376,7 +376,7 @@ final class BoardText : BoardObject,
 
   //····················································································································
 
-  final let mFont_none = EBGenericTransientProperty <Bool> ()
+  final let mFont_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: fontName

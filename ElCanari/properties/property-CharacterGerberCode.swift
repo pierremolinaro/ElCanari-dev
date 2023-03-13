@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_CharacterGerberCode    = EBObservableProperty <CharacterGerberCode>
-typealias EBTransientProperty_CharacterGerberCode   = EBGenericTransientProperty <CharacterGerberCode>
+typealias EBTransientProperty_CharacterGerberCode   = EBTransientProperty <CharacterGerberCode>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

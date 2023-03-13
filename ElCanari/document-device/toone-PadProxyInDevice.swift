@@ -36,31 +36,31 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'mPinInstanceName' stored property
   //····················································································································
 
-  final let mPinInstanceName_property = EBGenericTransientProperty <String?> ()
+  final let mPinInstanceName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mPadName' stored property
   //····················································································································
 
-  final let mPadName_property = EBGenericTransientProperty <String?> ()
+  final let mPadName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mIsNC' stored property
   //····················································································································
 
-  final let mIsNC_property = EBGenericTransientProperty <Bool?> ()
+  final let mIsNC_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'isConnected' transient property
   //····················································································································
 
-  final let isConnected_property = EBGenericTransientProperty <Bool?> ()
+  final let isConnected_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'symbolName' transient property
   //····················································································································
 
-  final let symbolName_property = EBGenericTransientProperty <String?> ()
+  final let symbolName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   INIT

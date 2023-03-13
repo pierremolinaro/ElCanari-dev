@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_CanariPoint    = EBObservableProperty <CanariPoint>
-typealias EBTransientProperty_CanariPoint   = EBGenericTransientProperty <CanariPoint>
+typealias EBTransientProperty_CanariPoint   = EBTransientProperty <CanariPoint>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_MergerSegmentArray    = EBObservableProperty <MergerSegmentArray>
-typealias EBTransientProperty_MergerSegmentArray   = EBGenericTransientProperty <MergerSegmentArray>
+typealias EBTransientProperty_MergerSegmentArray   = EBTransientProperty <MergerSegmentArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

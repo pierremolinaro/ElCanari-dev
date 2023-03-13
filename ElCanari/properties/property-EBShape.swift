@@ -9,9 +9,9 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_EBShape       = EBObservableProperty <EBShape>
-typealias EBTransientProperty_EBShape      = EBGenericTransientProperty <EBShape>
+typealias EBTransientProperty_EBShape      = EBTransientProperty <EBShape>
 typealias EBReadOnlyPropertyArray_EBShape  = EBObservableProperty <[EBShape]>
-typealias EBTransientPropertyArray_EBShape = EBGenericTransientProperty <[EBShape]>
+typealias EBTransientPropertyArray_EBShape = EBTransientProperty <[EBShape]>
 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

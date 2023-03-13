@@ -162,319 +162,319 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
 
-  final let selectedPageIndex_property = EBGenericTransientProperty <Int?> ()
+  final let selectedPageIndex_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'selectedInspector' stored property
   //····················································································································
 
-  final let selectedInspector_property = EBGenericTransientProperty <Int?> ()
+  final let selectedInspector_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'comments' stored property
   //····················································································································
 
-  final let comments_property = EBGenericTransientProperty <String?> ()
+  final let comments_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'program' stored property
   //····················································································································
 
-  final let program_property = EBGenericTransientProperty <String?> ()
+  final let program_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'horizontalFlip' stored property
   //····················································································································
 
-  final let horizontalFlip_property = EBGenericTransientProperty <Bool?> ()
+  final let horizontalFlip_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'verticalFlip' stored property
   //····················································································································
 
-  final let verticalFlip_property = EBGenericTransientProperty <Bool?> ()
+  final let verticalFlip_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'gridStyle' stored property
   //····················································································································
 
-  final let gridStyle_property = EBGenericTransientProperty <GridStyle?> ()
+  final let gridStyle_property = EBTransientProperty <GridStyle?> ()
 
   //····················································································································
   //   Observers of 'gridStep' stored property
   //····················································································································
 
-  final let gridStep_property = EBGenericTransientProperty <Int?> ()
+  final let gridStep_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'gridStepUnit' stored property
   //····················································································································
 
-  final let gridStepUnit_property = EBGenericTransientProperty <Int?> ()
+  final let gridStepUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'gridDisplayFactor' stored property
   //····················································································································
 
-  final let gridDisplayFactor_property = EBGenericTransientProperty <Int?> ()
+  final let gridDisplayFactor_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'zoom' stored property
   //····················································································································
 
-  final let zoom_property = EBGenericTransientProperty <Int?> ()
+  final let zoom_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mModelImageOpacity' stored property
   //····················································································································
 
-  final let mModelImageOpacity_property = EBGenericTransientProperty <Double?> ()
+  final let mModelImageOpacity_property = EBTransientProperty <Double?> ()
 
   //····················································································································
   //   Observers of 'mModelImagePageHorizontalFlip' stored property
   //····················································································································
 
-  final let mModelImagePageHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
+  final let mModelImagePageHorizontalFlip_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mModelImagePageVerticalFlip' stored property
   //····················································································································
 
-  final let mModelImagePageVerticalFlip_property = EBGenericTransientProperty <Bool?> ()
+  final let mModelImagePageVerticalFlip_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mModelImagePageGridStyle' stored property
   //····················································································································
 
-  final let mModelImagePageGridStyle_property = EBGenericTransientProperty <GridStyle?> ()
+  final let mModelImagePageGridStyle_property = EBTransientProperty <GridStyle?> ()
 
   //····················································································································
   //   Observers of 'mModelImagePageGridStep' stored property
   //····················································································································
 
-  final let mModelImagePageGridStep_property = EBGenericTransientProperty <Int?> ()
+  final let mModelImagePageGridStep_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mModelImagePageGridStepUnit' stored property
   //····················································································································
 
-  final let mModelImagePageGridStepUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mModelImagePageGridStepUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mModelImagePageGridDisplayFactor' stored property
   //····················································································································
 
-  final let mModelImagePageGridDisplayFactor_property = EBGenericTransientProperty <Int?> ()
+  final let mModelImagePageGridDisplayFactor_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mModelImagePageZoom' stored property
   //····················································································································
 
-  final let mModelImagePageZoom_property = EBGenericTransientProperty <Int?> ()
+  final let mModelImagePageZoom_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mModelImagePageXPlacardUnit' stored property
   //····················································································································
 
-  final let mModelImagePageXPlacardUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mModelImagePageXPlacardUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mModelImagePageYPlacardUnit' stored property
   //····················································································································
 
-  final let mModelImagePageYPlacardUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mModelImagePageYPlacardUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mModelImageSecondPointXUnit' stored property
   //····················································································································
 
-  final let mModelImageSecondPointXUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mModelImageSecondPointXUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mModelImageSecondPointYUnit' stored property
   //····················································································································
 
-  final let mModelImageSecondPointYUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mModelImageSecondPointYUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mModelImageFirstPointXOnLock' stored property
   //····················································································································
 
-  final let mModelImageFirstPointXOnLock_property = EBGenericTransientProperty <Int?> ()
+  final let mModelImageFirstPointXOnLock_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mModelImageFirstPointYOnLock' stored property
   //····················································································································
 
-  final let mModelImageFirstPointYOnLock_property = EBGenericTransientProperty <Int?> ()
+  final let mModelImageFirstPointYOnLock_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mModelImagePointsDxOnLock' stored property
   //····················································································································
 
-  final let mModelImagePointsDxOnLock_property = EBGenericTransientProperty <Int?> ()
+  final let mModelImagePointsDxOnLock_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mModelImagePointsDyOnLock' stored property
   //····················································································································
 
-  final let mModelImagePointsDyOnLock_property = EBGenericTransientProperty <Int?> ()
+  final let mModelImagePointsDyOnLock_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mModelImageScale' stored property
   //····················································································································
 
-  final let mModelImageScale_property = EBGenericTransientProperty <Double?> ()
+  final let mModelImageScale_property = EBTransientProperty <Double?> ()
 
   //····················································································································
   //   Observers of 'mModelImageRotationInRadians' stored property
   //····················································································································
 
-  final let mModelImageRotationInRadians_property = EBGenericTransientProperty <Double?> ()
+  final let mModelImageRotationInRadians_property = EBTransientProperty <Double?> ()
 
   //····················································································································
   //   Observers of 'mDimensionUnitFirstModelPointX' stored property
   //····················································································································
 
-  final let mDimensionUnitFirstModelPointX_property = EBGenericTransientProperty <Int?> ()
+  final let mDimensionUnitFirstModelPointX_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mDimensionUnitFirstModelPointY' stored property
   //····················································································································
 
-  final let mDimensionUnitFirstModelPointY_property = EBGenericTransientProperty <Int?> ()
+  final let mDimensionUnitFirstModelPointY_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mDimensionUnitSecondModelPointDx' stored property
   //····················································································································
 
-  final let mDimensionUnitSecondModelPointDx_property = EBGenericTransientProperty <Int?> ()
+  final let mDimensionUnitSecondModelPointDx_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mDimensionUnitSecondModelPointDy' stored property
   //····················································································································
 
-  final let mDimensionUnitSecondModelPointDy_property = EBGenericTransientProperty <Int?> ()
+  final let mDimensionUnitSecondModelPointDy_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mModelPointsCircleRadius' stored property
   //····················································································································
 
-  final let mModelPointsCircleRadius_property = EBGenericTransientProperty <Int?> ()
+  final let mModelPointsCircleRadius_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mPointsAreLocked' stored property
   //····················································································································
 
-  final let mPointsAreLocked_property = EBGenericTransientProperty <Bool?> ()
+  final let mPointsAreLocked_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'knobSizeMultpliedByTen' stored property
   //····················································································································
 
-  final let knobSizeMultpliedByTen_property = EBGenericTransientProperty <Int?> ()
+  final let knobSizeMultpliedByTen_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'padNumbering' stored property
   //····················································································································
 
-  final let padNumbering_property = EBGenericTransientProperty <PadNumbering?> ()
+  final let padNumbering_property = EBTransientProperty <PadNumbering?> ()
 
   //····················································································································
   //   Observers of 'counterClockNumberingStartAngle' stored property
   //····················································································································
 
-  final let counterClockNumberingStartAngle_property = EBGenericTransientProperty <Int?> ()
+  final let counterClockNumberingStartAngle_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'xPlacardUnit' stored property
   //····················································································································
 
-  final let xPlacardUnit_property = EBGenericTransientProperty <Int?> ()
+  final let xPlacardUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'yPlacardUnit' stored property
   //····················································································································
 
-  final let yPlacardUnit_property = EBGenericTransientProperty <Int?> ()
+  final let yPlacardUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mModelImageData' stored property
   //····················································································································
 
-  final let mModelImageData_property = EBGenericTransientProperty <Data?> ()
+  final let mModelImageData_property = EBTransientProperty <Data?> ()
 
   //····················································································································
   //   Observers of 'freePadNumbering' transient property
   //····················································································································
 
-  final let freePadNumbering_property = EBGenericTransientProperty <Bool?> ()
+  final let freePadNumbering_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'counterClockNumbering' transient property
   //····················································································································
 
-  final let counterClockNumbering_property = EBGenericTransientProperty <Bool?> ()
+  final let counterClockNumbering_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'gridStepMultipliedByDisplayFactor' transient property
   //····················································································································
 
-  final let gridStepMultipliedByDisplayFactor_property = EBGenericTransientProperty <Int?> ()
+  final let gridStepMultipliedByDisplayFactor_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'secondPointX' transient property
   //····················································································································
 
-  final let secondPointX_property = EBGenericTransientProperty <Int?> ()
+  final let secondPointX_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'secondPointY' transient property
   //····················································································································
 
-  final let secondPointY_property = EBGenericTransientProperty <Int?> ()
+  final let secondPointY_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'lockImageView' transient property
   //····················································································································
 
-  final let lockImageView_property = EBGenericTransientProperty <NSImage?> ()
+  final let lockImageView_property = EBTransientProperty <NSImage?> ()
 
   //····················································································································
   //   Observers of 'padNumberDisplay' transient property
   //····················································································································
 
-  final let padNumberDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let padNumberDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observers of 'backgroundImagePageBackgroundDisplay' transient property
   //····················································································································
 
-  final let backgroundImagePageBackgroundDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let backgroundImagePageBackgroundDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observers of 'modelImageSizeString' transient property
   //····················································································································
 
-  final let modelImageSizeString_property = EBGenericTransientProperty <String?> ()
+  final let modelImageSizeString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'hasModelImage' transient property
   //····················································································································
 
-  final let hasModelImage_property = EBGenericTransientProperty <Bool?> ()
+  final let hasModelImage_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'masterPadObjectIndexArray' transient property
   //····················································································································
 
-  final let masterPadObjectIndexArray_property = EBGenericTransientProperty <IntArray?> ()
+  final let masterPadObjectIndexArray_property = EBTransientProperty <IntArray?> ()
 
   //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
-  final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+  final let issues_property = EBTransientProperty <CanariIssueArray?> ()
 
   //····················································································································
   //   Observable toMany property: mModelImageObjects

@@ -412,7 +412,7 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final let mComponent_none = EBGenericTransientProperty <Bool> ()
+  final let mComponent_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: componentName

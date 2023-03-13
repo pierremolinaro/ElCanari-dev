@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_PadNetDictionary    = EBObservableProperty <PadNetDictionary>
-typealias EBTransientProperty_PadNetDictionary   = EBGenericTransientProperty <PadNetDictionary>
+typealias EBTransientProperty_PadNetDictionary   = EBTransientProperty <PadNetDictionary>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

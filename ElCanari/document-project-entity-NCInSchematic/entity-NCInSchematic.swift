@@ -76,7 +76,7 @@ final class NCInSchematic : SchematicObject,
 
   //····················································································································
 
-  final let mPoint_none = EBGenericTransientProperty <Bool> ()
+  final let mPoint_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //    init

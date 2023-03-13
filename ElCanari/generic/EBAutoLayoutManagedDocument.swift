@@ -429,7 +429,7 @@ class EBAutoLayoutManagedDocument : NSDocument {
 //  EBVersionShouldChangeObserver
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBVersionShouldChangeObserver : EBGenericTransientProperty <Bool>, EBSignatureObserverProtocol {
+final class EBVersionShouldChangeObserver : EBTransientProperty <Bool>, EBSignatureObserverProtocol {
 
   //····················································································································
 
@@ -510,7 +510,7 @@ final class EBVersionShouldChangeObserver : EBGenericTransientProperty <Bool>, E
 //  EBSignatureObserverEvent
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBSignatureObserverEvent : EBGenericTransientProperty <UInt32>, EBSignatureObserverProtocol {
+final class EBSignatureObserverEvent : EBTransientProperty <UInt32>, EBSignatureObserverProtocol {
 
   //····················································································································
 

@@ -106,205 +106,205 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
 
-  final let selectedPageIndex_property = EBGenericTransientProperty <Int?> ()
+  final let selectedPageIndex_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'zoom' stored property
   //····················································································································
 
-  final let zoom_property = EBGenericTransientProperty <Int?> ()
+  final let zoom_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'showDisplaySettingView' stored property
   //····················································································································
 
-  final let showDisplaySettingView_property = EBGenericTransientProperty <Bool?> ()
+  final let showDisplaySettingView_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'modelInsertionRotation' stored property
   //····················································································································
 
-  final let modelInsertionRotation_property = EBGenericTransientProperty <QuadrantRotation?> ()
+  final let modelInsertionRotation_property = EBTransientProperty <QuadrantRotation?> ()
 
   //····················································································································
   //   Observers of 'automaticBoardSize' stored property
   //····················································································································
 
-  final let automaticBoardSize_property = EBGenericTransientProperty <Bool?> ()
+  final let automaticBoardSize_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'boardManualWidth' stored property
   //····················································································································
 
-  final let boardManualWidth_property = EBGenericTransientProperty <Int?> ()
+  final let boardManualWidth_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'boardManualHeight' stored property
   //····················································································································
 
-  final let boardManualHeight_property = EBGenericTransientProperty <Int?> ()
+  final let boardManualHeight_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'boardWidthUnit' stored property
   //····················································································································
 
-  final let boardWidthUnit_property = EBGenericTransientProperty <Int?> ()
+  final let boardWidthUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'boardHeightUnit' stored property
   //····················································································································
 
-  final let boardHeightUnit_property = EBGenericTransientProperty <Int?> ()
+  final let boardHeightUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'overlapingArrangment' stored property
   //····················································································································
 
-  final let overlapingArrangment_property = EBGenericTransientProperty <Bool?> ()
+  final let overlapingArrangment_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'selectedBoardXUnit' stored property
   //····················································································································
 
-  final let selectedBoardXUnit_property = EBGenericTransientProperty <Int?> ()
+  final let selectedBoardXUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'selectedBoardYUnit' stored property
   //····················································································································
 
-  final let selectedBoardYUnit_property = EBGenericTransientProperty <Int?> ()
+  final let selectedBoardYUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'boardLimitWidth' stored property
   //····················································································································
 
-  final let boardLimitWidth_property = EBGenericTransientProperty <Int?> ()
+  final let boardLimitWidth_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'boardLimitWidthUnit' stored property
   //····················································································································
 
-  final let boardLimitWidthUnit_property = EBGenericTransientProperty <Int?> ()
+  final let boardLimitWidthUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'arrowMagnitude' stored property
   //····················································································································
 
-  final let arrowMagnitude_property = EBGenericTransientProperty <Int?> ()
+  final let arrowMagnitude_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'arrowMagnitudeUnit' stored property
   //····················································································································
 
-  final let arrowMagnitudeUnit_property = EBGenericTransientProperty <Int?> ()
+  final let arrowMagnitudeUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'shiftArrowMagnitude' stored property
   //····················································································································
 
-  final let shiftArrowMagnitude_property = EBGenericTransientProperty <Int?> ()
+  final let shiftArrowMagnitude_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'shiftArrowMagnitudeUnit' stored property
   //····················································································································
 
-  final let shiftArrowMagnitudeUnit_property = EBGenericTransientProperty <Int?> ()
+  final let shiftArrowMagnitudeUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mPDFBoardBackgroundColor' stored property
   //····················································································································
 
-  final let mPDFBoardBackgroundColor_property = EBGenericTransientProperty <NSColor?> ()
+  final let mPDFBoardBackgroundColor_property = EBTransientProperty <NSColor?> ()
 
   //····················································································································
   //   Observers of 'mArtworkName' stored property
   //····················································································································
 
-  final let mArtworkName_property = EBGenericTransientProperty <String?> ()
+  final let mArtworkName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mArtworkVersion' stored property
   //····················································································································
 
-  final let mArtworkVersion_property = EBGenericTransientProperty <Int?> ()
+  final let mArtworkVersion_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'modelNames' transient property
   //····················································································································
 
-  final let modelNames_property = EBGenericTransientProperty <StringTagArray?> ()
+  final let modelNames_property = EBTransientProperty <StringTagArray?> ()
 
   //····················································································································
   //   Observers of 'boardRect' transient property
   //····················································································································
 
-  final let boardRect_property = EBGenericTransientProperty <CanariRect?> ()
+  final let boardRect_property = EBTransientProperty <CanariRect?> ()
 
   //····················································································································
   //   Observers of 'boardLimitWidthErrorMessage' transient property
   //····················································································································
 
-  final let boardLimitWidthErrorMessage_property = EBGenericTransientProperty <String?> ()
+  final let boardLimitWidthErrorMessage_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'boardLimitWidthOk' transient property
   //····················································································································
 
-  final let boardLimitWidthOk_property = EBGenericTransientProperty <Bool?> ()
+  final let boardLimitWidthOk_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'boardWidth' transient property
   //····················································································································
 
-  final let boardWidth_property = EBGenericTransientProperty <Int?> ()
+  final let boardWidth_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'boardHeight' transient property
   //····················································································································
 
-  final let boardHeight_property = EBGenericTransientProperty <Int?> ()
+  final let boardHeight_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'comments' transient property
   //····················································································································
 
-  final let comments_property = EBGenericTransientProperty <String?> ()
+  final let comments_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'layoutLayerWarningMessage' transient property
   //····················································································································
 
-  final let layoutLayerWarningMessage_property = EBGenericTransientProperty <String?> ()
+  final let layoutLayerWarningMessage_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'layerConfigurationString' transient property
   //····················································································································
 
-  final let layerConfigurationString_property = EBGenericTransientProperty <String?> ()
+  final let layerConfigurationString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'emptyDrillFileExtension' transient property
   //····················································································································
 
-  final let emptyDrillFileExtension_property = EBGenericTransientProperty <Bool?> ()
+  final let emptyDrillFileExtension_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'hasInnerElements' transient property
   //····················································································································
 
-  final let hasInnerElements_property = EBGenericTransientProperty <Bool?> ()
+  final let hasInnerElements_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'hasSixLayers' transient property
   //····················································································································
 
-  final let hasSixLayers_property = EBGenericTransientProperty <Bool?> ()
+  final let hasSixLayers_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'boardOutlineRectDisplay' transient property
   //····················································································································
 
-  final let boardOutlineRectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let boardOutlineRectDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observable toMany property: boardModels

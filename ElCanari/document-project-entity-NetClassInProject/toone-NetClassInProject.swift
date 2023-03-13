@@ -86,163 +86,163 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mNetClassName' stored property
   //····················································································································
 
-  final let mNetClassName_property = EBGenericTransientProperty <String?> ()
+  final let mNetClassName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mNetClassColor' stored property
   //····················································································································
 
-  final let mNetClassColor_property = EBGenericTransientProperty <NSColor?> ()
+  final let mNetClassColor_property = EBTransientProperty <NSColor?> ()
 
   //····················································································································
   //   Observers of 'mTrackWidth' stored property
   //····················································································································
 
-  final let mTrackWidth_property = EBGenericTransientProperty <Int?> ()
+  final let mTrackWidth_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mTrackWidthUnit' stored property
   //····················································································································
 
-  final let mTrackWidthUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mTrackWidthUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mViaHoleDiameter' stored property
   //····················································································································
 
-  final let mViaHoleDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let mViaHoleDiameter_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mViaHoleDiameterUnit' stored property
   //····················································································································
 
-  final let mViaHoleDiameterUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mViaHoleDiameterUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mViaPadDiameter' stored property
   //····················································································································
 
-  final let mViaPadDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let mViaPadDiameter_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mViaPadDiameterUnit' stored property
   //····················································································································
 
-  final let mViaPadDiameterUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mViaPadDiameterUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mAllowTracksOnFrontSide' stored property
   //····················································································································
 
-  final let mAllowTracksOnFrontSide_property = EBGenericTransientProperty <Bool?> ()
+  final let mAllowTracksOnFrontSide_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mAllowTracksOnBackSide' stored property
   //····················································································································
 
-  final let mAllowTracksOnBackSide_property = EBGenericTransientProperty <Bool?> ()
+  final let mAllowTracksOnBackSide_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mAllowTracksOnInner1Layer' stored property
   //····················································································································
 
-  final let mAllowTracksOnInner1Layer_property = EBGenericTransientProperty <Bool?> ()
+  final let mAllowTracksOnInner1Layer_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mAllowTracksOnInner2Layer' stored property
   //····················································································································
 
-  final let mAllowTracksOnInner2Layer_property = EBGenericTransientProperty <Bool?> ()
+  final let mAllowTracksOnInner2Layer_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mAllowTracksOnInner3Layer' stored property
   //····················································································································
 
-  final let mAllowTracksOnInner3Layer_property = EBGenericTransientProperty <Bool?> ()
+  final let mAllowTracksOnInner3Layer_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mAllowTracksOnInner4Layer' stored property
   //····················································································································
 
-  final let mAllowTracksOnInner4Layer_property = EBGenericTransientProperty <Bool?> ()
+  final let mAllowTracksOnInner4Layer_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'trackWidthString' transient property
   //····················································································································
 
-  final let trackWidthString_property = EBGenericTransientProperty <String?> ()
+  final let trackWidthString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'viaHoleDiameter' transient property
   //····················································································································
 
-  final let viaHoleDiameter_property = EBGenericTransientProperty <String?> ()
+  final let viaHoleDiameter_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'viaPadDiameter' transient property
   //····················································································································
 
-  final let viaPadDiameter_property = EBGenericTransientProperty <String?> ()
+  final let viaPadDiameter_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'allowTracksOnFrontSideString' transient property
   //····················································································································
 
-  final let allowTracksOnFrontSideString_property = EBGenericTransientProperty <String?> ()
+  final let allowTracksOnFrontSideString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'allowTracksOnBackSideString' transient property
   //····················································································································
 
-  final let allowTracksOnBackSideString_property = EBGenericTransientProperty <String?> ()
+  final let allowTracksOnBackSideString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'allowTracksOnInner1LayerString' transient property
   //····················································································································
 
-  final let allowTracksOnInner1LayerString_property = EBGenericTransientProperty <String?> ()
+  final let allowTracksOnInner1LayerString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'allowTracksOnInner2LayerString' transient property
   //····················································································································
 
-  final let allowTracksOnInner2LayerString_property = EBGenericTransientProperty <String?> ()
+  final let allowTracksOnInner2LayerString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'allowTracksOnInner3LayerString' transient property
   //····················································································································
 
-  final let allowTracksOnInner3LayerString_property = EBGenericTransientProperty <String?> ()
+  final let allowTracksOnInner3LayerString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'allowTracksOnInner4LayerString' transient property
   //····················································································································
 
-  final let allowTracksOnInner4LayerString_property = EBGenericTransientProperty <String?> ()
+  final let allowTracksOnInner4LayerString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'canRemove' transient property
   //····················································································································
 
-  final let canRemove_property = EBGenericTransientProperty <Bool?> ()
+  final let canRemove_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'netUsage' transient property
   //····················································································································
 
-  final let netUsage_property = EBGenericTransientProperty <String?> ()
+  final let netUsage_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'netsDescription' transient property
   //····················································································································
 
-  final let netsDescription_property = EBGenericTransientProperty <NetInfoArray?> ()
+  final let netsDescription_property = EBTransientProperty <NetInfoArray?> ()
 
   //····················································································································
   //   Observers of 'netWarningCount' transient property
   //····················································································································
 
-  final let netWarningCount_property = EBGenericTransientProperty <Int?> ()
+  final let netWarningCount_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observable toMany property: mNets

@@ -128,7 +128,7 @@ final class PadProxyInDevice : EBManagedObject,
 
   //····················································································································
 
-  final let mPinInstance_none = EBGenericTransientProperty <Bool> ()
+  final let mPinInstance_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: isConnected

@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_PinPadAssignmentInProject    = EBObservableProperty <PinPadAssignmentInProject>
-typealias EBTransientProperty_PinPadAssignmentInProject   = EBGenericTransientProperty <PinPadAssignmentInProject>
+typealias EBTransientProperty_PinPadAssignmentInProject   = EBTransientProperty <PinPadAssignmentInProject>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

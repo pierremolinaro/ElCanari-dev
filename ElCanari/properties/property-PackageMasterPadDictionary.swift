@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_PackageMasterPadDictionary    = EBObservableProperty <PackageMasterPadDictionary>
-typealias EBTransientProperty_PackageMasterPadDictionary   = EBGenericTransientProperty <PackageMasterPadDictionary>
+typealias EBTransientProperty_PackageMasterPadDictionary   = EBTransientProperty <PackageMasterPadDictionary>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

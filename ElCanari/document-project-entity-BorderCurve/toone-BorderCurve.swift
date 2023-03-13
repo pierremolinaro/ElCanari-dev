@@ -52,79 +52,79 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mX' stored property
   //····················································································································
 
-  final let mX_property = EBGenericTransientProperty <Int?> ()
+  final let mX_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
 
-  final let mY_property = EBGenericTransientProperty <Int?> ()
+  final let mY_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mCPX1' stored property
   //····················································································································
 
-  final let mCPX1_property = EBGenericTransientProperty <Int?> ()
+  final let mCPX1_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mCPY1' stored property
   //····················································································································
 
-  final let mCPY1_property = EBGenericTransientProperty <Int?> ()
+  final let mCPY1_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mCPX2' stored property
   //····················································································································
 
-  final let mCPX2_property = EBGenericTransientProperty <Int?> ()
+  final let mCPX2_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mCPY2' stored property
   //····················································································································
 
-  final let mCPY2_property = EBGenericTransientProperty <Int?> ()
+  final let mCPY2_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mShape' stored property
   //····················································································································
 
-  final let mShape_property = EBGenericTransientProperty <BorderCurveShape?> ()
+  final let mShape_property = EBTransientProperty <BorderCurveShape?> ()
 
   //····················································································································
   //   Observers of 'p2Xvalue' transient property
   //····················································································································
 
-  final let p2Xvalue_property = EBGenericTransientProperty <Double?> ()
+  final let p2Xvalue_property = EBTransientProperty <Double?> ()
 
   //····················································································································
   //   Observers of 'p2Yvalue' transient property
   //····················································································································
 
-  final let p2Yvalue_property = EBGenericTransientProperty <Double?> ()
+  final let p2Yvalue_property = EBTransientProperty <Double?> ()
 
   //····················································································································
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  final let descriptor_property = EBGenericTransientProperty <BorderCurveDescriptor?> ()
+  final let descriptor_property = EBTransientProperty <BorderCurveDescriptor?> ()
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let objectDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observers of 'isLine' transient property
   //····················································································································
 
-  final let isLine_property = EBGenericTransientProperty <Bool?> ()
+  final let isLine_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let selectionDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   INIT

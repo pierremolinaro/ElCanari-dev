@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_ComponentPadDescriptorDictionary    = EBObservableProperty <ComponentPadDescriptorDictionary>
-typealias EBTransientProperty_ComponentPadDescriptorDictionary   = EBGenericTransientProperty <ComponentPadDescriptorDictionary>
+typealias EBTransientProperty_ComponentPadDescriptorDictionary   = EBTransientProperty <ComponentPadDescriptorDictionary>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_MergerViaShapeArray    = EBObservableProperty <MergerViaShapeArray>
-typealias EBTransientProperty_MergerViaShapeArray   = EBGenericTransientProperty <MergerViaShapeArray>
+typealias EBTransientProperty_MergerViaShapeArray   = EBTransientProperty <MergerViaShapeArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

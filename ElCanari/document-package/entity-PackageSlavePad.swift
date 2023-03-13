@@ -489,7 +489,7 @@ final class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  final let master_none = EBGenericTransientProperty <Bool> ()
+  final let master_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: padIsTraversing

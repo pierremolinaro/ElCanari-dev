@@ -50,55 +50,55 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
   //   Observers of 'mInstanceName' stored property
   //····················································································································
 
-  final let mInstanceName_property = EBGenericTransientProperty <String?> ()
+  final let mInstanceName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mX' stored property
   //····················································································································
 
-  final let mX_property = EBGenericTransientProperty <Int?> ()
+  final let mX_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
 
-  final let mY_property = EBGenericTransientProperty <Int?> ()
+  final let mY_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'symbolQualifiedName' transient property
   //····················································································································
 
-  final let symbolQualifiedName_property = EBGenericTransientProperty <String?> ()
+  final let symbolQualifiedName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'symbolTypeName' transient property
   //····················································································································
 
-  final let symbolTypeName_property = EBGenericTransientProperty <String?> ()
+  final let symbolTypeName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'pinSymbolQualifiedNames' transient property
   //····················································································································
 
-  final let pinSymbolQualifiedNames_property = EBGenericTransientProperty <StringArray?> ()
+  final let pinSymbolQualifiedNames_property = EBTransientProperty <StringArray?> ()
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let selectionDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observers of 'unconnectedPins' transient property
   //····················································································································
 
-  final let unconnectedPins_property = EBGenericTransientProperty <UnconnectedSymbolPinsInDevice?> ()
+  final let unconnectedPins_property = EBTransientProperty <UnconnectedSymbolPinsInDevice?> ()
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let objectDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observable toMany property: mPinInstances

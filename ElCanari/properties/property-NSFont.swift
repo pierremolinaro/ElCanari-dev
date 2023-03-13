@@ -9,11 +9,11 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_NSFont    = EBObservableProperty <NSFont>
-typealias EBTransientProperty_NSFont   = EBGenericTransientProperty <NSFont>
+typealias EBTransientProperty_NSFont   = EBTransientProperty <NSFont>
 typealias EBReadWriteProperty_NSFont   = EBObservableMutableProperty <NSFont>
-typealias EBComputedProperty_NSFont    = EBGenericComputedProperty <NSFont>
-typealias EBStoredProperty_NSFont      = EBGenericStoredProperty <NSFont>
-typealias EBPreferencesProperty_NSFont = EBGenericPreferenceProperty <NSFont>
+typealias EBComputedProperty_NSFont    = EBComputedProperty <NSFont>
+typealias EBStoredProperty_NSFont      = EBStoredProperty <NSFont>
+typealias EBPreferencesProperty_NSFont = EBPreferenceProperty <NSFont>
 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

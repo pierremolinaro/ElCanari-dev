@@ -9,11 +9,11 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_BezierPathArray    = EBObservableProperty <BezierPathArray>
-typealias EBTransientProperty_BezierPathArray   = EBGenericTransientProperty <BezierPathArray>
+typealias EBTransientProperty_BezierPathArray   = EBTransientProperty <BezierPathArray>
 typealias EBReadWriteProperty_BezierPathArray   = EBObservableMutableProperty <BezierPathArray>
-typealias EBComputedProperty_BezierPathArray    = EBGenericComputedProperty <BezierPathArray>
-typealias EBStoredProperty_BezierPathArray      = EBGenericStoredProperty <BezierPathArray>
-typealias EBPreferencesProperty_BezierPathArray = EBGenericPreferenceProperty <BezierPathArray>
+typealias EBComputedProperty_BezierPathArray    = EBComputedProperty <BezierPathArray>
+typealias EBStoredProperty_BezierPathArray      = EBStoredProperty <BezierPathArray>
+typealias EBPreferencesProperty_BezierPathArray = EBPreferenceProperty <BezierPathArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

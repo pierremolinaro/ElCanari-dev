@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_NetInfo    = EBObservableProperty <NetInfo>
-typealias EBTransientProperty_NetInfo   = EBGenericTransientProperty <NetInfo>
+typealias EBTransientProperty_NetInfo   = EBTransientProperty <NetInfo>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

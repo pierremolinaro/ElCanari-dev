@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_BoardFontDescriptor    = EBObservableProperty <BoardFontDescriptor>
-typealias EBTransientProperty_BoardFontDescriptor   = EBGenericTransientProperty <BoardFontDescriptor>
+typealias EBTransientProperty_BoardFontDescriptor   = EBTransientProperty <BoardFontDescriptor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

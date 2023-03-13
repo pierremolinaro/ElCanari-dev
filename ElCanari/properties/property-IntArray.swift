@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_IntArray    = EBObservableProperty <IntArray>
-typealias EBTransientProperty_IntArray   = EBGenericTransientProperty <IntArray>
+typealias EBTransientProperty_IntArray   = EBTransientProperty <IntArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

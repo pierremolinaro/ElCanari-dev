@@ -5,10 +5,10 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBGenericPreferenceProperty <T>
+//   EBPreferenceProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBGenericPreferenceProperty <T : EBStoredPropertyProtocol> : EBObservableMutableProperty <T> {
+final class EBPreferenceProperty <T : EBStoredPropertyProtocol> : EBObservableMutableProperty <T> {
 
   //····················································································································
 

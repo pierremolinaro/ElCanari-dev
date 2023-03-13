@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_UnconnectedSymbolPinsInDevice    = EBObservableProperty <UnconnectedSymbolPinsInDevice>
-typealias EBTransientProperty_UnconnectedSymbolPinsInDevice   = EBGenericTransientProperty <UnconnectedSymbolPinsInDevice>
+typealias EBTransientProperty_UnconnectedSymbolPinsInDevice   = EBTransientProperty <UnconnectedSymbolPinsInDevice>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

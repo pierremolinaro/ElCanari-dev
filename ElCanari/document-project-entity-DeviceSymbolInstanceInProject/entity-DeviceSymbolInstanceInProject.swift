@@ -90,7 +90,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
 
   //····················································································································
 
-  final let mSymbolType_none = EBGenericTransientProperty <Bool> ()
+  final let mSymbolType_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: symbolAndTypeName

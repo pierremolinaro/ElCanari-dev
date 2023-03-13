@@ -9,11 +9,11 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_Bool    = EBObservableProperty <Bool>
-typealias EBTransientProperty_Bool   = EBGenericTransientProperty <Bool>
+typealias EBTransientProperty_Bool   = EBTransientProperty <Bool>
 typealias EBReadWriteProperty_Bool   = EBObservableMutableProperty <Bool>
-typealias EBComputedProperty_Bool    = EBGenericComputedProperty <Bool>
-typealias EBStoredProperty_Bool      = EBGenericStoredProperty <Bool>
-typealias EBPreferencesProperty_Bool = EBGenericPreferenceProperty <Bool>
+typealias EBComputedProperty_Bool    = EBComputedProperty <Bool>
+typealias EBStoredProperty_Bool      = EBStoredProperty <Bool>
+typealias EBPreferencesProperty_Bool = EBPreferenceProperty <Bool>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

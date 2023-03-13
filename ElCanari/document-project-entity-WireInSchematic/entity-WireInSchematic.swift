@@ -71,7 +71,7 @@ final class WireInSchematic : SchematicObject,
 
   //····················································································································
 
-  final let mP1_none = EBGenericTransientProperty <Bool> ()
+  final let mP1_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mP2
@@ -99,7 +99,7 @@ final class WireInSchematic : SchematicObject,
 
   //····················································································································
 
-  final let mP2_none = EBGenericTransientProperty <Bool> ()
+  final let mP2_none = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: netName

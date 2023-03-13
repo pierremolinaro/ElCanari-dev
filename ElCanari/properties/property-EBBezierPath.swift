@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_EBBezierPath    = EBObservableProperty <EBBezierPath>
-typealias EBTransientProperty_EBBezierPath   = EBGenericTransientProperty <EBBezierPath>
+typealias EBTransientProperty_EBBezierPath   = EBTransientProperty <EBBezierPath>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

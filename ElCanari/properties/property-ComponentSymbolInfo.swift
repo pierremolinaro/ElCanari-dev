@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_ComponentSymbolInfo    = EBObservableProperty <ComponentSymbolInfo>
-typealias EBTransientProperty_ComponentSymbolInfo   = EBGenericTransientProperty <ComponentSymbolInfo>
+typealias EBTransientProperty_ComponentSymbolInfo   = EBTransientProperty <ComponentSymbolInfo>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

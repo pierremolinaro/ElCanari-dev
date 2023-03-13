@@ -9,6 +9,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_CharacterSegmentList    = EBObservableProperty <CharacterSegmentList>
-typealias EBTransientProperty_CharacterSegmentList   = EBGenericTransientProperty <CharacterSegmentList>
+typealias EBTransientProperty_CharacterSegmentList   = EBTransientProperty <CharacterSegmentList>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

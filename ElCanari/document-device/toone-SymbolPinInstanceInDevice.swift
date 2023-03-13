@@ -36,31 +36,31 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   //   Observers of 'pinName' transient property
   //····················································································································
 
-  final let pinName_property = EBGenericTransientProperty <String?> ()
+  final let pinName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'symbolName' transient property
   //····················································································································
 
-  final let symbolName_property = EBGenericTransientProperty <String?> ()
+  final let symbolName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'pinQualifiedName' transient property
   //····················································································································
 
-  final let pinQualifiedName_property = EBGenericTransientProperty <PinQualifiedNameStruct?> ()
+  final let pinQualifiedName_property = EBTransientProperty <PinQualifiedNameStruct?> ()
 
   //····················································································································
   //   Observers of 'isConnected' transient property
   //····················································································································
 
-  final let isConnected_property = EBGenericTransientProperty <Bool?> ()
+  final let isConnected_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'numberShape' transient property
   //····················································································································
 
-  final let numberShape_property = EBGenericTransientProperty <EBShape?> ()
+  final let numberShape_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   INIT

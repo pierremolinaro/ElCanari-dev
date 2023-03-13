@@ -96,175 +96,175 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mComponentPadName' stored property
   //····················································································································
 
-  final let mComponentPadName_property = EBGenericTransientProperty <String?> ()
+  final let mComponentPadName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'mPadIndex' stored property
   //····················································································································
 
-  final let mPadIndex_property = EBGenericTransientProperty <Int?> ()
+  final let mPadIndex_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mX' stored property
   //····················································································································
 
-  final let mX_property = EBGenericTransientProperty <Int?> ()
+  final let mX_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
 
-  final let mY_property = EBGenericTransientProperty <Int?> ()
+  final let mY_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mDefaultHoleDiameterUnit' stored property
   //····················································································································
 
-  final let mDefaultHoleDiameterUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mDefaultHoleDiameterUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mCustomHoleDiameter' stored property
   //····················································································································
 
-  final let mCustomHoleDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let mCustomHoleDiameter_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mCustomHoleDiameterUnit' stored property
   //····················································································································
 
-  final let mCustomHoleDiameterUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mCustomHoleDiameterUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mUsesCustomHoleDiameter' stored property
   //····················································································································
 
-  final let mUsesCustomHoleDiameter_property = EBGenericTransientProperty <Bool?> ()
+  final let mUsesCustomHoleDiameter_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mDefaultPadDiameterUnit' stored property
   //····················································································································
 
-  final let mDefaultPadDiameterUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mDefaultPadDiameterUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mCustomPadDiameter' stored property
   //····················································································································
 
-  final let mCustomPadDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let mCustomPadDiameter_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mCustomPadDiameterUnit' stored property
   //····················································································································
 
-  final let mCustomPadDiameterUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mCustomPadDiameterUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mUsesCustomPadDiameter' stored property
   //····················································································································
 
-  final let mUsesCustomPadDiameter_property = EBGenericTransientProperty <Bool?> ()
+  final let mUsesCustomPadDiameter_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'isConnectedToSomePad' transient property
   //····················································································································
 
-  final let isConnectedToSomePad_property = EBGenericTransientProperty <Bool?> ()
+  final let isConnectedToSomePad_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'location' transient property
   //····················································································································
 
-  final let location_property = EBGenericTransientProperty <CanariPoint?> ()
+  final let location_property = EBTransientProperty <CanariPoint?> ()
 
   //····················································································································
   //   Observers of 'netNameFromComponentPad' transient property
   //····················································································································
 
-  final let netNameFromComponentPad_property = EBGenericTransientProperty <String?> ()
+  final let netNameFromComponentPad_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'netNameAndPadLocation' transient property
   //····················································································································
 
-  final let netNameAndPadLocation_property = EBGenericTransientProperty <RastnetInfoArray?> ()
+  final let netNameAndPadLocation_property = EBTransientProperty <RastnetInfoArray?> ()
 
   //····················································································································
   //   Observers of 'side' transient property
   //····················································································································
 
-  final let side_property = EBGenericTransientProperty <ConnectorSide?> ()
+  final let side_property = EBTransientProperty <ConnectorSide?> ()
 
   //····················································································································
   //   Observers of 'isVia' transient property
   //····················································································································
 
-  final let isVia_property = EBGenericTransientProperty <Bool?> ()
+  final let isVia_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
-  final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+  final let issues_property = EBTransientProperty <CanariIssueArray?> ()
 
   //····················································································································
   //   Observers of 'viaDefaultHoleDiameter' transient property
   //····················································································································
 
-  final let viaDefaultHoleDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let viaDefaultHoleDiameter_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'viaDefaultPadDiameter' transient property
   //····················································································································
 
-  final let viaDefaultPadDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let viaDefaultPadDiameter_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'netNameFromTracks' transient property
   //····················································································································
 
-  final let netNameFromTracks_property = EBGenericTransientProperty <String?> ()
+  final let netNameFromTracks_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  final let netClassName_property = EBGenericTransientProperty <String?> ()
+  final let netClassName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'connectedToComponent' transient property
   //····················································································································
 
-  final let connectedToComponent_property = EBGenericTransientProperty <Bool?> ()
+  final let connectedToComponent_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'actualHoleDiameter' transient property
   //····················································································································
 
-  final let actualHoleDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let actualHoleDiameter_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'actualPadDiameter' transient property
   //····················································································································
 
-  final let actualPadDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let actualPadDiameter_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let objectDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let selectionDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  final let signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
+  final let signatureForERCChecking_property = EBTransientProperty <UInt32?> ()
 
   //····················································································································
   //   Observable toMany property: mTracksP2

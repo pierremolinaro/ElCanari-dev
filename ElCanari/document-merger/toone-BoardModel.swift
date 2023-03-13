@@ -302,379 +302,379 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observers of 'name' stored property
   //····················································································································
 
-  final let name_property = EBGenericTransientProperty <String?> ()
+  final let name_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'modelWidth' stored property
   //····················································································································
 
-  final let modelWidth_property = EBGenericTransientProperty <Int?> ()
+  final let modelWidth_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'modelWidthUnit' stored property
   //····················································································································
 
-  final let modelWidthUnit_property = EBGenericTransientProperty <Int?> ()
+  final let modelWidthUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'modelHeight' stored property
   //····················································································································
 
-  final let modelHeight_property = EBGenericTransientProperty <Int?> ()
+  final let modelHeight_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'modelHeightUnit' stored property
   //····················································································································
 
-  final let modelHeightUnit_property = EBGenericTransientProperty <Int?> ()
+  final let modelHeightUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'zoom' stored property
   //····················································································································
 
-  final let zoom_property = EBGenericTransientProperty <Int?> ()
+  final let zoom_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'layerConfiguration' stored property
   //····················································································································
 
-  final let layerConfiguration_property = EBGenericTransientProperty <LayerConfiguration?> ()
+  final let layerConfiguration_property = EBTransientProperty <LayerConfiguration?> ()
 
   //····················································································································
   //   Observers of 'modelLimitWidth' stored property
   //····················································································································
 
-  final let modelLimitWidth_property = EBGenericTransientProperty <Int?> ()
+  final let modelLimitWidth_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'modelLimitWidthUnit' stored property
   //····················································································································
 
-  final let modelLimitWidthUnit_property = EBGenericTransientProperty <Int?> ()
+  final let modelLimitWidthUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'artworkName' stored property
   //····················································································································
 
-  final let artworkName_property = EBGenericTransientProperty <String?> ()
+  final let artworkName_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'layerConfigurationString' transient property
   //····················································································································
 
-  final let layerConfigurationString_property = EBGenericTransientProperty <String?> ()
+  final let layerConfigurationString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'frontLegendLinesSegments' transient property
   //····················································································································
 
-  final let frontLegendLinesSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let frontLegendLinesSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'backLegendLinesSegments' transient property
   //····················································································································
 
-  final let backLegendLinesSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let backLegendLinesSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'backLegendLinesBezierPaths' transient property
   //····················································································································
 
-  final let backLegendLinesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let backLegendLinesBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'frontLegendTextsSegments' transient property
   //····················································································································
 
-  final let frontLegendTextsSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let frontLegendTextsSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'frontLegendTextsBezierPaths' transient property
   //····················································································································
 
-  final let frontLegendTextsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let frontLegendTextsBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'frontLayoutTextsSegments' transient property
   //····················································································································
 
-  final let frontLayoutTextsSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let frontLayoutTextsSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'frontLayoutTextsBezierPaths' transient property
   //····················································································································
 
-  final let frontLayoutTextsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let frontLayoutTextsBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'backLegendTextsSegments' transient property
   //····················································································································
 
-  final let backLegendTextsSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let backLegendTextsSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'backLegendTextsBezierPaths' transient property
   //····················································································································
 
-  final let backLegendTextsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let backLegendTextsBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'backLayoutTextsSegments' transient property
   //····················································································································
 
-  final let backLayoutTextsSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let backLayoutTextsSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'backLayoutTextsBezierPaths' transient property
   //····················································································································
 
-  final let backLayoutTextsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let backLayoutTextsBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'internalBoardsLimitsSegments' transient property
   //····················································································································
 
-  final let internalBoardsLimitsSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let internalBoardsLimitsSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'internalBoardsLimitsBezierPaths' transient property
   //····················································································································
 
-  final let internalBoardsLimitsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let internalBoardsLimitsBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'drillSegments' transient property
   //····················································································································
 
-  final let drillSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let drillSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'holesBezierPaths' transient property
   //····················································································································
 
-  final let holesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let holesBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'viaShapes' transient property
   //····················································································································
 
-  final let viaShapes_property = EBGenericTransientProperty <MergerViaShapeArray?> ()
+  final let viaShapes_property = EBTransientProperty <MergerViaShapeArray?> ()
 
   //····················································································································
   //   Observers of 'viasBezierPaths' transient property
   //····················································································································
 
-  final let viasBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let viasBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'frontPadArray' transient property
   //····················································································································
 
-  final let frontPadArray_property = EBGenericTransientProperty <MergerPadArray?> ()
+  final let frontPadArray_property = EBTransientProperty <MergerPadArray?> ()
 
   //····················································································································
   //   Observers of 'frontPadsBezierPaths' transient property
   //····················································································································
 
-  final let frontPadsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let frontPadsBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'backPadArray' transient property
   //····················································································································
 
-  final let backPadArray_property = EBGenericTransientProperty <MergerPadArray?> ()
+  final let backPadArray_property = EBTransientProperty <MergerPadArray?> ()
 
   //····················································································································
   //   Observers of 'backPadsBezierPaths' transient property
   //····················································································································
 
-  final let backPadsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let backPadsBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'traversingPadArray' transient property
   //····················································································································
 
-  final let traversingPadArray_property = EBGenericTransientProperty <MergerPadArray?> ()
+  final let traversingPadArray_property = EBTransientProperty <MergerPadArray?> ()
 
   //····················································································································
   //   Observers of 'traversingPadsBezierPaths' transient property
   //····················································································································
 
-  final let traversingPadsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let traversingPadsBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'boardLimitsBezierPaths' transient property
   //····················································································································
 
-  final let boardLimitsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let boardLimitsBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'backComponentNameSegments' transient property
   //····················································································································
 
-  final let backComponentNameSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let backComponentNameSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'backComponentNamesBezierPaths' transient property
   //····················································································································
 
-  final let backComponentNamesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let backComponentNamesBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'frontComponentNameSegments' transient property
   //····················································································································
 
-  final let frontComponentNameSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let frontComponentNameSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'frontComponentNamesBezierPaths' transient property
   //····················································································································
 
-  final let frontComponentNamesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let frontComponentNamesBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'frontComponentValueSegments' transient property
   //····················································································································
 
-  final let frontComponentValueSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let frontComponentValueSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'frontComponentValuesBezierPaths' transient property
   //····················································································································
 
-  final let frontComponentValuesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let frontComponentValuesBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'backComponentValueSegments' transient property
   //····················································································································
 
-  final let backComponentValueSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let backComponentValueSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'backComponentValuesBezierPaths' transient property
   //····················································································································
 
-  final let backComponentValuesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let backComponentValuesBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'backTrackSegments' transient property
   //····················································································································
 
-  final let backTrackSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let backTrackSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'backTracksBezierPaths' transient property
   //····················································································································
 
-  final let backTracksBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let backTracksBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'frontTrackSegments' transient property
   //····················································································································
 
-  final let frontTrackSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let frontTrackSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'frontTracksBezierPaths' transient property
   //····················································································································
 
-  final let frontTracksBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let frontTracksBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'inner1TracksSegments' transient property
   //····················································································································
 
-  final let inner1TracksSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let inner1TracksSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'inner1TracksBezierPaths' transient property
   //····················································································································
 
-  final let inner1TracksBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let inner1TracksBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'inner2TracksSegments' transient property
   //····················································································································
 
-  final let inner2TracksSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let inner2TracksSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'inner2TracksBezierPaths' transient property
   //····················································································································
 
-  final let inner2TracksBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let inner2TracksBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'inner3TracksSegments' transient property
   //····················································································································
 
-  final let inner3TracksSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let inner3TracksSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'inner3TracksBezierPaths' transient property
   //····················································································································
 
-  final let inner3TracksBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let inner3TracksBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'inner4TracksSegments' transient property
   //····················································································································
 
-  final let inner4TracksSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let inner4TracksSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'inner4TracksBezierPaths' transient property
   //····················································································································
 
-  final let inner4TracksBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let inner4TracksBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'frontPackagesSegments' transient property
   //····················································································································
 
-  final let frontPackagesSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let frontPackagesSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'frontPackagesBezierPaths' transient property
   //····················································································································
 
-  final let frontPackagesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let frontPackagesBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'backPackagesSegments' transient property
   //····················································································································
 
-  final let backPackagesSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
+  final let backPackagesSegments_property = EBTransientProperty <MergerSegmentArray?> ()
 
   //····················································································································
   //   Observers of 'backPackagesBezierPaths' transient property
   //····················································································································
 
-  final let backPackagesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let backPackagesBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'instanceCount' transient property
   //····················································································································
 
-  final let instanceCount_property = EBGenericTransientProperty <Int?> ()
+  final let instanceCount_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'frontLegendLinesBezierPaths' transient property
   //····················································································································
 
-  final let frontLegendLinesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let frontLegendLinesBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'imageForModel' transient property
   //····················································································································
 
-  final let imageForModel_property = EBGenericTransientProperty <EBShape?> ()
+  final let imageForModel_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observers of 'imageForInstances' transient property
   //····················································································································
 
-  final let imageForInstances_property = EBGenericTransientProperty <EBShape?> ()
+  final let imageForInstances_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observable toMany property: frontLegendLines
