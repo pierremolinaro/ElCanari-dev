@@ -245,6 +245,18 @@ struct EBShape : Hashable {
   }
 
   //····················································································································
+  //  Opacity blending
+  //····················································································································
+
+  func alpha (withFraction inFraction : CGFloat, of inColor : NSColor) -> EBShape {
+    var result = EBShape ()
+    if let sharedObject = self.mSharedObject {
+      result.mSharedObject = sharedObject.alpha (withFraction: inFraction, of: inColor)
+    }
+    return result
+  }
+
+  //····················································································································
   //  Accessors
   //····················································································································
 
@@ -673,6 +685,21 @@ fileprivate final class EBShapeObject {
    }
 
   //····················································································································
+  //  Opacity
+  //····················································································································
+
+   func alpha (withFraction inFraction : CGFloat, of inColor : NSColor) -> EBShapeObject {
+    let result = EBShapeObject ()
+    for element in self.mElements.values {
+      let newElement = element.alpha (withFraction: inFraction, of: inColor)
+      result.mElements.append (newElement)
+    }
+    result.mCachedBoundingBox = self.mCachedBoundingBox
+    result.mToolTips = self.mToolTips
+    return result
+   }
+
+  //····················································································································
 
 }
 
@@ -904,6 +931,18 @@ fileprivate final class EBShapeElement {
   func blended (withFraction inFraction : CGFloat, of inColor : NSColor) -> EBShapeElement {
     if let color = self.mColor, let newColor = color.blended (withFraction: inFraction, of: inColor) {
       return EBShapeElement (self.mPathes, self.mKind, newColor, self.mKnobIndex, self.mClipRule)
+    }else{
+      return self
+    }
+  }
+
+  //····················································································································
+  //  Alpha color
+  //····················································································································
+
+  func alpha (withFraction inFraction : CGFloat, of inColor : NSColor) -> EBShapeElement {
+    if let color = self.mColor {
+      return EBShapeElement (self.mPathes, self.mKind, color.withAlphaComponent (inFraction), self.mKnobIndex, self.mClipRule)
     }else{
       return self
     }

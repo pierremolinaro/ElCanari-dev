@@ -55,7 +55,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainV
      (allowsEmptySelection: no, allowsMultipleSelection: no) root.characters ;
   selectionController FontCharacter #characterSelection : #selectedCharacterController.selectedArray ;
 
-  stackView \FontPageInspectorMasterView : vStack ;
+  stackView \FontPageInspectorMasterView vStack {}
 
   stackView \FontPage vStack set (margins: 8) {
     newView fontPageInspectorMasterView = \FontPageInspectorMasterView ()

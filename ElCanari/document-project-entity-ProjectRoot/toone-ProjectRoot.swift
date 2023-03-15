@@ -67,6 +67,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.mBoardSelectedCurveDisplayUnit_property.stopsBeingObserved (by: self.mBoardSelectedCurveDisplayUnit_property) // Stored property
       oldValue.mBoardLimitControlPointsDisplayUnit_property.stopsBeingObserved (by: self.mBoardLimitControlPointsDisplayUnit_property) // Stored property
       oldValue.mBoardShape_property.stopsBeingObserved (by: self.mBoardShape_property) // Stored property
+      oldValue.mContentOpacityInBoardOutline_property.stopsBeingObserved (by: self.mContentOpacityInBoardOutline_property) // Stored property
       oldValue.mRectangularBoardWidth_property.stopsBeingObserved (by: self.mRectangularBoardWidth_property) // Stored property
       oldValue.mRectangularBoardWidthUnit_property.stopsBeingObserved (by: self.mRectangularBoardWidthUnit_property) // Stored property
       oldValue.mRectangularBoardHeight_property.stopsBeingObserved (by: self.mRectangularBoardHeight_property) // Stored property
@@ -238,6 +239,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.mBoardSelectedCurveDisplayUnit_property.startsToBeObserved (by: self.mBoardSelectedCurveDisplayUnit_property) // Stored property
       newValue.mBoardLimitControlPointsDisplayUnit_property.startsToBeObserved (by: self.mBoardLimitControlPointsDisplayUnit_property) // Stored property
       newValue.mBoardShape_property.startsToBeObserved (by: self.mBoardShape_property) // Stored property
+      newValue.mContentOpacityInBoardOutline_property.startsToBeObserved (by: self.mContentOpacityInBoardOutline_property) // Stored property
       newValue.mRectangularBoardWidth_property.startsToBeObserved (by: self.mRectangularBoardWidth_property) // Stored property
       newValue.mRectangularBoardWidthUnit_property.startsToBeObserved (by: self.mRectangularBoardWidthUnit_property) // Stored property
       newValue.mRectangularBoardHeight_property.startsToBeObserved (by: self.mRectangularBoardHeight_property) // Stored property
@@ -663,6 +665,12 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardShape_property = EBTransientProperty <BoardShape?> ()
+
+  //····················································································································
+  //   Observers of 'mContentOpacityInBoardOutline' stored property
+  //····················································································································
+
+  final let mContentOpacityInBoardOutline_property = EBTransientProperty <Double?> ()
 
   //····················································································································
   //   Observers of 'mRectangularBoardWidth' stored property
@@ -2233,6 +2241,22 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       return self?.mWeakInternalValue?.mBoardShape_property.optionalSelection ?? .single (nil)
       /* if let model = self?.mWeakInternalValue {
         switch model.mBoardShape_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      } */
+    }
+  //--- Configure mContentOpacityInBoardOutline simple stored property
+    self.mContentOpacityInBoardOutline_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mContentOpacityInBoardOutline_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
+        switch model.mContentOpacityInBoardOutline_property.selection {
         case .empty :
           return .empty
         case .multiple :

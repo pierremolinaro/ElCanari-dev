@@ -62,7 +62,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
   transient NSImage addTextButtonImage dependsFrom prefs.symbolColor ;
   transient NSImage addPinButtonImage dependsFrom prefs.symbolColor ;
 
-  stackView \SymbolPageInspectorMasterView : vStack ;
+  stackView \SymbolPageInspectorMasterView vStack {}
 
   stackView \SymbolPage hStack set (margins: 0) set (spacing: 0) {
     newView symbolPageInspectorMasterView = \SymbolPageInspectorMasterView ()

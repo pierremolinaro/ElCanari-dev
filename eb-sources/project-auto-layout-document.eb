@@ -988,18 +988,100 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   action renameComponentFromSelectedSymbolAction ;
 
-//----------------- Board limits tab
-  stackView \boardOutlinePage hStack {
-    newView boardOutlineInspectorView = \BoardOutlineInspectorView ()
-    newView boardOutlineGridAndFlipView = \BoardOutlineGridAndFlipView ()
-    vStack set (width: 250) set (margins: 8) {
-      view boardOutlineInspectorView
-      separator
-      view boardOutlineGridAndFlipView
-      space
-    }
+//----------------- Board outline tab
+  stackView \boardOutlinePage hStack set (spacing: 0) {
+    VerticalScrollView (content:
+      vStack set (margins: 8) set (width: 250) {
+        newView boardShapeBaseView = \BoardShapeBaseView ()
+        newView boardRectangularOutlineView = \BoardRectangularOutlineView ()
+        newView boardBezierPathOutlineView = \BoardBezierPathOutlineView ()
+        StaticLabel (title: "Board Shape", bold: yes, size : .small, alignment: .center)
+        SegmentedControlWithPages (documentView: view boardShapeBaseView, equalWidth: no, size : .small) {
+          addPage (title: "Rectangular", tooltip: "", pageView: view boardRectangularOutlineView)
+          addPage (title: "Bezier Pathes", tooltip: "", pageView: view boardBezierPathOutlineView)
+          $selectedSegment root.mBoardShape
+        }
+        view boardShapeBaseView
+        separator
+        StaticLabel (title: "Outlines", bold: yes, size : .small, alignment: .center)
+        GridView2 {
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Board Limit Width", bold: no, size : .small, alignment: .right),
+            right: CanariDimensionAndPopUp (size : .small) {
+              $dimensionAndUnit root.mBoardLimitsWidth, root.mBoardLimitsWidthUnit
+            }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .right),
+            right: CanariDimensionAndPopUp (size : .small) {
+              $dimensionAndUnit root.mBoardClearance, root.mBoardClearanceUnit
+            }
+          )
+        }
+        separator
+        StaticLabel (title: "Interior Bounding Box", bold: yes, size : .small, alignment: .center)
+        CanariBoardRectangleView {
+          $top root.boardInteriorTop
+          $bottom root.boardInteriorBottom 
+          $left root.boardInteriorLeft
+          $right root.boardInteriorRight
+          $unit root.mBoardPointsBoundingBoxUnit
+        }
+        separator
+        StaticLabel (title: "Board Bounding Box", bold: yes, size : .small, alignment: .center)
+        CanariBoardRectangleView {
+          $top root.boardLimitBorderTop
+          $bottom root.boardLimitBorderBottom 
+          $left root.boardLimitBorderLeft
+          $right root.boardLimitBorderRight
+          $unit root.mBoardLimitsBoundingBoxUnit
+        }
+        separator
+        StaticLabel (title: "Grid and Flip Inspector", bold: yes, size: .small, alignment: .center)
+        GridView2 {
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right),
+            right: CanariDimensionAndPopUp (size : .small) {
+              $dimensionAndUnit root.mBoardLimitsGridStep, root.mBoardLimitsGridStepUnit
+            }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Display Grid", bold: no, size : .small, alignment: .right),
+            right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) {
+              expandableWidth ()
+              $selectedIndex root.mBoardLimitsGridStyle
+            }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Grid Display", bold: no, size : .small, alignment: .right),
+            right: TaggedPopUpButton (size: .small) {
+              expandableWidth ()
+              add (title: "1 Step",   withTag:  1)
+              add (title: "2 Steps",  withTag:  2)
+              add (title: "4 Steps",  withTag:  4)
+              add (title: "5 Steps",  withTag:  5)
+              add (title: "8 Steps",  withTag:  8)
+              add (title: "10 Steps", withTag: 10)
+              $selectedTag root.mBoardLimitsGridDisplayFactor
+            }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Flip", bold: no, size : .small, alignment: .right),
+            right: Checkbox (title: "Horizontal", size : .small) { expandableWidth () $value root.mBoardLimitsHorizontalFlip }
+          )
+          addFirstBaseLineAligned (
+            left: FlexibleSpace,
+            right: Checkbox (title: "Vertical", size : .small) { expandableWidth () $value root.mBoardLimitsVerticalFlip }
+          )
+        }
+        separator
+        StaticLabel (title: "Board Contents Opacity", bold: yes, size: .small, alignment: .center)
+        LinearSlider (min: 0, max: 1, ticks: 11) { $doubleValue root.mContentOpacityInBoardOutline (sendContinously : yes) }      
+        StaticLabels (left: "Transparent", right: "Opaque", bold: no, size: .mini)
+      }   
+    )
     separator
-    GraphicView (minZoom: 10, maxZoom: 20_000) [configurator boardOutlineView]{
+    GraphicView (minZoom: 10, maxZoom: 20_000) [configurator boardOutlineView] {
       $underObjectsDisplay root.borderViewBackground
       $horizontalFlip root.mBoardLimitsHorizontalFlip
       $verticalFlip root.mBoardLimitsVerticalFlip
@@ -1024,104 +1106,18 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #boardCurveObjectsController.selectedArray
   ;
 
-  stackView \BoardOutlineGridAndFlipView vStack {
-    StaticLabel (title: "Grid and Flip Inspector", bold: yes, size: .small, alignment: .center)
-    GridView2 {
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .center),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit root.mBoardLimitsGridStep, root.mBoardLimitsGridStepUnit
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Display Grid", bold: no, size : .small, alignment: .center),
-        right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { expandableWidth () $selectedIndex root.mBoardLimitsGridStyle }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Grid Display", bold: no, size : .small, alignment: .center),
-        right: TaggedPopUpButton (size: .small) {
-          expandableWidth ()
-          add (title: "1 Step",   withTag:  1)
-          add (title: "2 Steps",  withTag:  2)
-          add (title: "4 Steps",  withTag:  4)
-          add (title: "5 Steps",  withTag:  5)
-          add (title: "8 Steps",  withTag:  8)
-          add (title: "10 Steps", withTag: 10)
-          $selectedTag root.mBoardLimitsGridDisplayFactor
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Flip", bold: no, size : .small, alignment: .center),
-        right: Checkbox (title: "Horizontal", size : .small) { expandableWidth () $value root.mBoardLimitsHorizontalFlip }
-      )
-      addFirstBaseLineAligned (
-        left: FlexibleSpace,
-        right: Checkbox (title: "Vertical", size : .small) { expandableWidth () $value root.mBoardLimitsVerticalFlip }
-      )
-    }
-    space
-  }
-
-  stackView \BoardOutlineInspectorView vStack {
-    newView boardShapeBaseView = \BoardShapeBaseView ()
-    newView boardRectangularOutlineView = \BoardRectangularOutlineView ()
-    newView boardBezierPathOutlineView = \BoardBezierPathOutlineView ()
-    StaticLabel (title: "Outlines", bold: yes, size : .small, alignment: .center)
-    GridView2 {
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Board Limit Width", bold: no, size : .small, alignment: .center),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit root.mBoardLimitsWidth, root.mBoardLimitsWidthUnit
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .center),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit root.mBoardClearance, root.mBoardClearanceUnit
-        }
-      )
-    }
-    separator
-    StaticLabel (title: "Interior Bounding Box", bold: yes, size : .small, alignment: .center)
-    CanariBoardRectangleView {
-      $top root.boardInteriorTop
-      $bottom root.boardInteriorBottom 
-      $left root.boardInteriorLeft
-      $right root.boardInteriorRight
-      $unit root.mBoardPointsBoundingBoxUnit
-    }
-    separator
-    StaticLabel (title: "Board Bounding Box", bold: yes, size : .small, alignment: .center)
-    CanariBoardRectangleView {
-      $top root.boardLimitBorderTop
-      $bottom root.boardLimitBorderBottom 
-      $left root.boardLimitBorderLeft
-      $right root.boardLimitBorderRight
-      $unit root.mBoardLimitsBoundingBoxUnit
-    }
-    separator
-    StaticLabel (title: "Board Shape", bold: yes, size : .small, alignment: .center)
-    SegmentedControlWithPages (documentView: view boardShapeBaseView, equalWidth: yes, size : .small) {
-      addPage (title: "Rectangular", tooltip: "", pageView: view boardRectangularOutlineView)
-      addPage (title: "Bezier Pathes", tooltip: "", pageView: view boardBezierPathOutlineView)
-      $selectedSegment root.mBoardShape
-    }
-    view boardShapeBaseView
-  }
-
-  stackView \BoardShapeBaseView vStack {
-  }
+  stackView \BoardShapeBaseView vStack {}
   
   stackView \BoardRectangularOutlineView vStack {
     GridView2 {
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Board Width", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Board Width", bold: no, size : .small, alignment: .right),
         right: CanariDimensionAndPopUp (size : .small) {
           $dimensionAndUnit root.mRectangularBoardWidth, root.mRectangularBoardWidthUnit
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Board Height", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Board Height", bold: no, size : .small, alignment: .right),
         right: CanariDimensionAndPopUp (size : .small) {
           $dimensionAndUnit root.mRectangularBoardHeight, root.mRectangularBoardHeightUnit
         }
@@ -1153,13 +1149,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: hStack setFirstBaselineAlignment () {
-          StaticLabel (title: "X", bold: no, size : .small, alignment: .left)
+          StaticLabel (title: "X", bold: no, size : .small, alignment: .right)
           CanariDimensionField (size: .small) {
             $dimensionAndUnit #boardCurveSelectionController.mX, root.mBoardSelectedCurveDisplayUnit
           }
         },
         right: hStack setFirstBaselineAlignment () {
-          StaticLabel (title: "Y", bold: no, size : .small, alignment: .left)
+          StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
           CanariDimensionField (size: .small) {
             $dimensionAndUnit #boardCurveSelectionController.mY, root.mBoardSelectedCurveDisplayUnit
           }
@@ -1167,13 +1163,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: hStack setFirstBaselineAlignment () {
-          StaticLabel (title: "X", bold: no, size : .small, alignment: .left)
+          StaticLabel (title: "X", bold: no, size : .small, alignment: .right)
           DoubleObserverField (width: 72, bold: yes, size: .small) {
             $observedValue #boardCurveSelectionController.p2Xvalue
           }
         },
         right: hStack setFirstBaselineAlignment () {
-          StaticLabel (title: "Y", bold: no, size : .small, alignment: .left)
+          StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
           DoubleObserverField (width: 72, bold: yes, size: .small) {
             $observedValue #boardCurveSelectionController.p2Yvalue
           }
@@ -1190,7 +1186,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: hStack setFirstBaselineAlignment () {
-          StaticLabel (title: "X", bold: no, size : .small, alignment: .left) {
+          space
+          StaticLabel (title: "X", bold: no, size : .small, alignment: .right) {
             $hidden #boardCurveSelectionController.isLine
           }
           CanariDimensionField (size: .small) {
@@ -1199,7 +1196,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           }
         },
         right: hStack setFirstBaselineAlignment () {
-          StaticLabel (title: "Y", bold: no, size : .small, alignment: .left) {
+          space
+          StaticLabel (title: "Y", bold: no, size : .small, alignment: .right) {
             $hidden #boardCurveSelectionController.isLine
           }
           CanariDimensionField (size: .small) {
@@ -1210,7 +1208,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: hStack setFirstBaselineAlignment () {
-          StaticLabel (title: "X", bold: no, size : .small, alignment: .left) {
+          space
+          StaticLabel (title: "X", bold: no, size : .small, alignment: .right) {
             $hidden #boardCurveSelectionController.isLine
           }
           CanariDimensionField (size: .small) {
@@ -1219,7 +1218,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           }
         },
         right: hStack setFirstBaselineAlignment () {
-          StaticLabel (title: "Y", bold: no, size : .small, alignment: .left) {
+          space
+          StaticLabel (title: "Y", bold: no, size : .small, alignment: .right) {
             $hidden #boardCurveSelectionController.isLine
           }
           CanariDimensionField (size: .small) {
@@ -1305,7 +1305,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
   }
 
-  stackView \BoardInspectorView : vStack ;
+  stackView \BoardInspectorView vStack {}
 
   action appendNewInsertComponentInBoardInspectorAction ;
   action prependNewInsertComponentInBoardInspectorAction ;
@@ -1534,9 +1534,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           left: StaticLabel (title: "Clearance", bold: no, size: .small, alignment: .right),
           right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit }
         )
-  //      add (
-  //        single: StaticLabel (title: "Autorouter Settings", bold: yes, size: .small, alignment: .center)
-  //      )
         add (
           single: EnumPopUpButton (titles: enum AutorouterPreferredDirections.popupTitles, size: .small) {
             $selectedIndex root.mAutoRouterPreferredDirections

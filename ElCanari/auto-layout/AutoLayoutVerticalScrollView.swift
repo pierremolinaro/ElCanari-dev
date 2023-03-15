@@ -30,6 +30,20 @@ class AutoLayoutVerticalScrollView : NSScrollView {
     self.hasHorizontalScroller = false
     self.hasVerticalScroller = true
     self.automaticallyAdjustsContentInsets = true
+
+  //  Swift.print ("Vertical Scroller \(self.verticalScroller)")
+    if let verticalScroller = self.verticalScroller {
+      let c = NSLayoutConstraint (
+        item: self,
+        attribute: .width,
+        relatedBy: .equal,
+        toItem: inDocumentView,
+        attribute: .width,
+        multiplier: 1.0,
+        constant: verticalScroller.frame.size.width
+      )
+      self.addConstraint (c)
+    }
   }
 
   //····················································································································

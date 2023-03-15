@@ -16,13 +16,24 @@ import AppKit
 @MainActor func transient_ProjectRoot_borderViewBackground (
        _ prefs_boardBackgroundColorForBoard : NSColor,      
        _ self_borderOutlineBackground : EBShape,            
-       _ self_mBoardObjects_objectDisplay : [BoardObject_objectDisplay]
+       _ self_mBoardObjects_objectDisplay : [BoardObject_objectDisplay],
+       _ self_boardBoundBox : CanariRect,                   
+       _ prefs_boardLimitsColorForBoard : NSColor,          
+       _ self_mContentOpacityInBoardOutline : Double
 ) -> EBShape {
 //--- START OF USER ZONE 2
        var shape = EBShape ()
-       for object in self_mBoardObjects_objectDisplay {
-         if let s = object.objectDisplay {
-           shape.add (s.blended (withFraction: 0.5, of: prefs_boardBackgroundColorForBoard))
+       if self_mBoardObjects_objectDisplay.isEmpty {
+         let textAttributes : [NSAttributedString.Key : Any] = [
+           NSAttributedString.Key.font : NSFont.systemFont (ofSize: 9.0),
+           NSAttributedString.Key.foregroundColor : prefs_boardLimitsColorForBoard.withAlphaComponent (self_mContentOpacityInBoardOutline)
+         ]
+         shape.add (text: "(Empty Board Content)", self_boardBoundBox.center.cocoaPoint, textAttributes, .center, .center)
+       }else{
+         for object in self_mBoardObjects_objectDisplay {
+           if let s = object.objectDisplay {
+             shape.add (s.alpha (withFraction: self_mContentOpacityInBoardOutline, of: prefs_boardBackgroundColorForBoard))
+           }
          }
        }
        shape.add (self_borderOutlineBackground)

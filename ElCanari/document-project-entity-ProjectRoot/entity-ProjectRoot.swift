@@ -312,6 +312,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol ProjectRoot_mContentOpacityInBoardOutline : AnyObject {
+  var mContentOpacityInBoardOutline : Double { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol ProjectRoot_mRectangularBoardWidth : AnyObject {
   var mRectangularBoardWidth : Int { get }
 }
@@ -1020,6 +1026,7 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_mBoardSelectedCurveDisplayUnit,
          ProjectRoot_mBoardLimitControlPointsDisplayUnit,
          ProjectRoot_mBoardShape,
+         ProjectRoot_mContentOpacityInBoardOutline,
          ProjectRoot_mRectangularBoardWidth,
          ProjectRoot_mRectangularBoardWidthUnit,
          ProjectRoot_mRectangularBoardHeight,
@@ -2097,6 +2104,25 @@ final class ProjectRoot : EBManagedObject,
   final var mBoardShape : BoardShape {
     get { return self.mBoardShape_property.propval }
     set { self.mBoardShape_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mContentOpacityInBoardOutline
+  //····················································································································
+
+  final let mContentOpacityInBoardOutline_property : EBStoredProperty_Double
+
+  //····················································································································
+
+  final func reset_mContentOpacityInBoardOutline_toDefaultValue () {
+    self.mContentOpacityInBoardOutline = 0.5
+  }
+
+  //····················································································································
+
+  final var mContentOpacityInBoardOutline : Double {
+    get { return self.mContentOpacityInBoardOutline_property.propval }
+    set { self.mContentOpacityInBoardOutline_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -4057,6 +4083,7 @@ final class ProjectRoot : EBManagedObject,
     self.mBoardSelectedCurveDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardSelectedCurveDisplayUnit")
     self.mBoardLimitControlPointsDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardLimitControlPointsDisplayUnit")
     self.mBoardShape_property = EBStoredProperty_BoardShape (defaultValue: BoardShape.rectangular, undoManager: inUndoManager, key: "mBoardShape")
+    self.mContentOpacityInBoardOutline_property = EBStoredProperty_Double (defaultValue: 0.5, undoManager: inUndoManager, key: "mContentOpacityInBoardOutline")
     self.mRectangularBoardWidth_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: inUndoManager, key: "mRectangularBoardWidth")
     self.mRectangularBoardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mRectangularBoardWidthUnit")
     self.mRectangularBoardHeight_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: inUndoManager, key: "mRectangularBoardHeight")
@@ -5231,12 +5258,21 @@ final class ProjectRoot : EBManagedObject,
         let s0 = preferences_boardBackgroundColorForBoard_property.selection
         let s1 = unwSelf.borderOutlineBackground_property.selection
         let s2 = unwSelf.mBoardObjects_property.selection
-        switch (s0, s1, s2) {
+        let s3 = unwSelf.boardBoundBox_property.selection
+        let s4 = preferences_boardLimitsColorForBoard_property.selection
+        let s5 = unwSelf.mContentOpacityInBoardOutline_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
-              .single (let v2)) :
-          return .single (transient_ProjectRoot_borderViewBackground (v0, v1, v2))
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5)) :
+          return .single (transient_ProjectRoot_borderViewBackground (v0, v1, v2, v3, v4, v5))
         case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
               .multiple,
               .multiple) :
           return .multiple
@@ -5250,6 +5286,9 @@ final class ProjectRoot : EBManagedObject,
     preferences_boardBackgroundColorForBoard_property.startsToBeObserved (by: self.borderViewBackground_property)
     self.borderOutlineBackground_property.startsToBeObserved (by: self.borderViewBackground_property)
     self.mBoardObjects_property.toMany_objectDisplay_StartsToBeObserved (by: self.borderViewBackground_property)
+    self.boardBoundBox_property.startsToBeObserved (by: self.borderViewBackground_property)
+    preferences_boardLimitsColorForBoard_property.startsToBeObserved (by: self.borderViewBackground_property)
+    self.mContentOpacityInBoardOutline_property.startsToBeObserved (by: self.borderViewBackground_property)
   //--- Atomic property: fontNameArray
     self.fontNameArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

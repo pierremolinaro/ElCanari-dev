@@ -223,7 +223,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
   transient NSImage addDimensionButtonImage dependsFrom prefs.packageDimensionColor ;
   transient NSImage addZoneButtonImage dependsFrom prefs.padZoneColor ;
 
-  stackView \PackagePageInspectorMasterView : vStack ;
+  stackView \PackagePageInspectorMasterView vStack { }
   
   stackView \PackagePage hStack set (margins: 0) set (spacing: 0) {
     newView packagePageInspectorMasterView = \PackagePageInspectorMasterView ()

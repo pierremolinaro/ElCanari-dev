@@ -853,7 +853,7 @@ import AppKit
   //····················································································································
 
   override func ebBuildUserInterface () {
-    //--------------------------- Read documentFileName model
+  //--------------------------- Read documentFileName model
     self.documentFileName_property.mReadModelFunction = { [weak self] in
       if let r = self?.displayName {
         return .single (r)

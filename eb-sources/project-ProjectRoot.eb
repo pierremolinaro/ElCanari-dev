@@ -150,6 +150,7 @@ handlingOpposite entity ProjectRoot {
   ;
 
   property BoardShape mBoardShape default rectangular ;
+  property Double mContentOpacityInBoardOutline default 0.5 ;
   
   property Int mRectangularBoardWidth default 90_000_00 ; // 100 mm
   property Int mRectangularBoardWidthUnit default 90_000 ; // mm
@@ -192,7 +193,10 @@ handlingOpposite entity ProjectRoot {
   transient EBShape borderViewBackground dependsFrom
     prefs.boardBackgroundColorForBoard,
     self.borderOutlineBackground,
-    self.mBoardObjects.all.objectDisplay
+    self.mBoardObjects.all.objectDisplay,
+    self.boardBoundBox,
+    prefs.boardLimitsColorForBoard,
+    self.mContentOpacityInBoardOutline
   ;
 
 //--- Schematic
