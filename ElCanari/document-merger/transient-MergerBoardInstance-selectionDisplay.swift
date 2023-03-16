@@ -17,14 +17,16 @@ import AppKit
        _ self_instanceRect : CanariRect
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let r : NSRect = self_instanceRect.cocoaRect
-  var bp = EBBezierPath (rect: r)
-  bp.lineWidth = 0.0
-  bp.lineJoinStyle = .round
-  var shapes = EBShape ()
-  shapes.add (filled: [bp], NSColor.cyan.withAlphaComponent (0.15))
-  shapes.add (stroke: [bp], NSColor.cyan)
-  return shapes
+      let frameWidth : CGFloat = 0.5
+      let r : NSRect = self_instanceRect.cocoaRect
+//      Swift.print ("R \(self_instanceRect.origin.x) \(self_instanceRect.origin.y) \(self_instanceRect.size.width) \(self_instanceRect.size.height)")
+      var shapes = EBShape ()
+      shapes.add (filled: [EBBezierPath (rect: r)], NSColor.cyan.withAlphaComponent (0.15))
+      var bp = EBBezierPath (rect: r.insetBy (dx: frameWidth / 2.0, dy: frameWidth / 2.0))
+      bp.lineWidth = frameWidth
+      bp.lineJoinStyle = .round
+      shapes.add (stroke: [bp], NSColor.cyan)
+      return shapes
 //--- END OF USER ZONE 2
 }
 

@@ -21,17 +21,16 @@ import AppKit
        _ self_internalBoardsLimits_width : [SegmentEntity_width]
 ) -> MergerSegmentArray {
 //--- START OF USER ZONE 2
-  var segmentArray = [CanariSegment] ()
-  for idx in 0 ..< self_internalBoardsLimits_x1.count {
-    let x1 = self_internalBoardsLimits_x1 [idx].x1
-    let y1 = self_internalBoardsLimits_y1 [idx].y1
-    let x2 = self_internalBoardsLimits_x2 [idx].x2
-    let y2 = self_internalBoardsLimits_y2 [idx].y2
-    let width = self_internalBoardsLimits_width [idx].width
-    segmentArray.append (CanariSegment (x1: x1, y1: y1, x2: x2, y2: y2, width: width))
-  }
-//  NSLog ("self_internalBoardsLimits_x1.count \(self_internalBoardsLimits_x1.count)")
-  return MergerSegmentArray (segmentArray)
+        var segmentArray = [CanariSegment] ()
+        for idx in 0 ..< self_internalBoardsLimits_x1.count {
+          let x1 = self_internalBoardsLimits_x1 [idx].x1
+          let y1 = self_internalBoardsLimits_y1 [idx].y1
+          let x2 = self_internalBoardsLimits_x2 [idx].x2
+          let y2 = self_internalBoardsLimits_y2 [idx].y2
+          let width = self_internalBoardsLimits_width [idx].width
+          segmentArray.append (CanariSegment (x1: x1, y1: y1, x2: x2, y2: y2, width: width))
+        }
+        return MergerSegmentArray (segmentArray)
 //--- END OF USER ZONE 2
 }
 

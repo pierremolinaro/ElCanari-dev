@@ -53,6 +53,14 @@ final class AutoLayoutCheckbox : AutoLayoutBase_NSButton {
 
   //····················································································································
 
+  func set (enabled inEnabled : Bool, checked inChecked : Bool) -> Self {
+    self.isEnabled = inEnabled
+    self.state = inChecked ? .on : .off
+    return self
+  }
+
+  //····················································································································
+
   override var intrinsicContentSize : NSSize {
     var s = super.intrinsicContentSize
     if let w = self.mWidth {

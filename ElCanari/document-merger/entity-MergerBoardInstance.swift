@@ -340,15 +340,18 @@ final class MergerBoardInstance : EBGraphicManagedObject,
         let s3 = unwSelf.myModel_property.modelHeight_property.selection
         let s4 = unwSelf.instanceRotation_property.selection
         let s5 = unwSelf.myModel_property.imageForInstances_property.selection
-        switch (s0, s1, s2, s3, s4, s5) {
+        let s6 = unwSelf.instanceRect_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
               .single (let v4),
-              .single (let v5)) :
-          return .single (transient_MergerBoardInstance_objectDisplay (v0, v1, v2, v3, v4, v5))
+              .single (let v5),
+              .single (let v6)) :
+          return .single (transient_MergerBoardInstance_objectDisplay (v0, v1, v2, v3, v4, v5, v6))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -368,6 +371,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
     self.myModel_property.modelHeight_property.startsToBeObserved (by: self.objectDisplay_property)
     self.instanceRotation_property.startsToBeObserved (by: self.objectDisplay_property)
     self.myModel_property.imageForInstances_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.instanceRect_property.startsToBeObserved (by: self.objectDisplay_property)
   //--- To one property: myRoot (has opposite to many relationship: boardInstances)
     self.myRoot_property.undoManager = inUndoManager
     self.myRoot_property.setOppositeRelationShipFunctions (

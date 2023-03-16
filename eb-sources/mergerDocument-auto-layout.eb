@@ -356,12 +356,6 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Clearance", bold: no, size : .small, alignment: .right),
-          right: CanariObservedDimensionAndPopUp (size: .small) {
-            $dimensionAndUnit #mBoardModelSelection.modelLimitWidth, #mBoardModelSelection.modelLimitWidthUnit
-          }
-        )
-        addFirstBaseLineAligned (
           left: StaticLabel (title: "Board Count", bold: no, size : .small, alignment: .right),
           right: IntObserverField (bold: yes, size: .small) {
             set (alignment: .right)
@@ -449,7 +443,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           addCenterYAligned (
             left: StaticLabel (title: "Board Limits", bold: no, size: .small, alignment: .right),
             right: hStack setCenterYAlignment () {
-              space
+              Checkbox (title: "", size: .small) { expandableHeight () set (enabled : no, checked : yes) }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBoardLimits (sendContinously: no) }
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayBoardLimits }
             }
@@ -465,9 +459,9 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           addCenterYAligned (
             left: StaticLabel (title: "Background", bold: no, size: .small, alignment: .right),
             right: hStack setCenterYAlignment () {
-              space
+              Checkbox (title: "", size: .small) { expandableHeight () set (enabled : no, checked : yes) }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackground (sendContinously: no) }
-              space
+              Checkbox (title: "", size: .small) { expandableHeight () set (enabled : no, checked : yes) }
             }
           )
           addCenterYAligned (
