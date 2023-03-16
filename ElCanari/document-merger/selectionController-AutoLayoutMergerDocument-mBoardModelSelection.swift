@@ -173,6 +173,18 @@ import AppKit
   //····················································································································
 
   //····················································································································
+  //   Selection observable property: errorArchiveVersionMessage
+  //····················································································································
+
+  var errorArchiveVersionMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+  //   Selection observable property: errorArchiveVersionMessageIsHidden
+  //····················································································································
+
+  var errorArchiveVersionMessageIsHidden_property = EBTransientProperty_Bool ()
+
+  //····················································································································
   //   Selection observable property: frontComponentNameSegments
   //····················································································································
 
@@ -305,6 +317,12 @@ import AppKit
   //····················································································································
 
   var holesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+  //   Selection observable property: ignoreModelVersionError
+  //····················································································································
+
+  var ignoreModelVersionError_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: imageForInstances
@@ -441,6 +459,12 @@ import AppKit
   var modelLimitWidthUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
+  //   Selection observable property: modelVersion
+  //····················································································································
+
+  var modelVersion_property = EBComputedProperty_Int ()
+
+  //····················································································································
   //   Selection observable property: modelWidth
   //····················································································································
 
@@ -529,6 +553,8 @@ import AppKit
     self.bind_property_backTracksBezierPaths (model: model)
     self.bind_property_boardLimitsBezierPaths (model: model)
     self.bind_property_drillSegments (model: model)
+    self.bind_property_errorArchiveVersionMessage (model: model)
+    self.bind_property_errorArchiveVersionMessageIsHidden (model: model)
     self.bind_property_frontComponentNameSegments (model: model)
     self.bind_property_frontComponentNamesBezierPaths (model: model)
     self.bind_property_frontComponentValueSegments (model: model)
@@ -546,6 +572,7 @@ import AppKit
     self.bind_property_frontTrackSegments (model: model)
     self.bind_property_frontTracksBezierPaths (model: model)
     self.bind_property_holesBezierPaths (model: model)
+    self.bind_property_ignoreModelVersionError (model: model)
     self.bind_property_imageForInstances (model: model)
     self.bind_property_imageForModel (model: model)
     self.bind_property_inner1TracksBezierPaths (model: model)
@@ -565,6 +592,7 @@ import AppKit
     self.bind_property_modelHeightUnit (model: model)
     self.bind_property_modelLimitWidth (model: model)
     self.bind_property_modelLimitWidthUnit (model: model)
+    self.bind_property_modelVersion (model: model)
     self.bind_property_modelWidth (model: model)
     self.bind_property_modelWidthUnit (model: model)
     self.bind_property_name (model: model)
@@ -638,6 +666,12 @@ import AppKit
   //--- drillSegments
     self.drillSegments_property.mReadModelFunction = nil 
     self.mModel?.toMany_drillSegments_StopsBeingObserved (by: self.drillSegments_property)
+  //--- errorArchiveVersionMessage
+    self.errorArchiveVersionMessage_property.mReadModelFunction = nil 
+    self.mModel?.toMany_errorArchiveVersionMessage_StopsBeingObserved (by: self.errorArchiveVersionMessage_property)
+  //--- errorArchiveVersionMessageIsHidden
+    self.errorArchiveVersionMessageIsHidden_property.mReadModelFunction = nil 
+    self.mModel?.toMany_errorArchiveVersionMessageIsHidden_StopsBeingObserved (by: self.errorArchiveVersionMessageIsHidden_property)
   //--- frontComponentNameSegments
     self.frontComponentNameSegments_property.mReadModelFunction = nil 
     self.mModel?.toMany_frontComponentNameSegments_StopsBeingObserved (by: self.frontComponentNameSegments_property)
@@ -689,6 +723,10 @@ import AppKit
   //--- holesBezierPaths
     self.holesBezierPaths_property.mReadModelFunction = nil 
     self.mModel?.toMany_holesBezierPaths_StopsBeingObserved (by: self.holesBezierPaths_property)
+  //--- ignoreModelVersionError
+    self.ignoreModelVersionError_property.mReadModelFunction = nil 
+    self.ignoreModelVersionError_property.mWriteModelFunction = nil 
+    self.mModel?.toMany_ignoreModelVersionError_StopsBeingObserved (by: self.ignoreModelVersionError_property)
   //--- imageForInstances
     self.imageForInstances_property.mReadModelFunction = nil 
     self.mModel?.toMany_imageForInstances_StopsBeingObserved (by: self.imageForInstances_property)
@@ -751,6 +789,10 @@ import AppKit
     self.modelLimitWidthUnit_property.mReadModelFunction = nil 
     self.modelLimitWidthUnit_property.mWriteModelFunction = nil 
     self.mModel?.toMany_modelLimitWidthUnit_StopsBeingObserved (by: self.modelLimitWidthUnit_property)
+  //--- modelVersion
+    self.modelVersion_property.mReadModelFunction = nil 
+    self.modelVersion_property.mWriteModelFunction = nil 
+    self.mModel?.toMany_modelVersion_StopsBeingObserved (by: self.modelVersion_property)
   //--- modelWidth
     self.modelWidth_property.mReadModelFunction = nil 
     self.modelWidth_property.mWriteModelFunction = nil 
@@ -1557,6 +1599,86 @@ import AppKit
 
   //···················································································································*
 
+  private final func bind_property_errorArchiveVersionMessage (model : ReadOnlyArrayOf_BoardModel) {
+    model.toMany_errorArchiveVersionMessage_StartsToBeObserved (by: self.errorArchiveVersionMessage_property)
+    self.errorArchiveVersionMessage_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.errorArchiveVersionMessage_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_errorArchiveVersionMessageIsHidden (model : ReadOnlyArrayOf_BoardModel) {
+    model.toMany_errorArchiveVersionMessageIsHidden_StartsToBeObserved (by: self.errorArchiveVersionMessageIsHidden_property)
+    self.errorArchiveVersionMessageIsHidden_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.errorArchiveVersionMessageIsHidden_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_frontComponentNameSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontComponentNameSegments_StartsToBeObserved (by: self.frontComponentNameSegments_property)
     self.frontComponentNameSegments_property.mReadModelFunction = { [weak self] in
@@ -2231,6 +2353,58 @@ import AppKit
         }
       }else{
         return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_ignoreModelVersionError (model : ReadOnlyArrayOf_BoardModel) {
+    model.toMany_ignoreModelVersionError_StartsToBeObserved (by: self.ignoreModelVersionError_property)
+    self.ignoreModelVersionError_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.ignoreModelVersionError_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.ignoreModelVersionError_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.ignoreModelVersionError_property.setProp (inValue)
+          }
+        }
       }
     }
   }
@@ -3049,6 +3223,58 @@ import AppKit
         case .single (let v) :
           for object in v {
             object.modelLimitWidthUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_modelVersion (model : ReadOnlyArrayOf_BoardModel) {
+    model.toMany_modelVersion_StartsToBeObserved (by: self.modelVersion_property)
+    self.modelVersion_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.modelVersion_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.modelVersion_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.modelVersion_property.setProp (inValue)
           }
         }
       }

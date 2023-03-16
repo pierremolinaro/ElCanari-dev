@@ -42,6 +42,18 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol BoardModel_modelVersion : AnyObject {
+  var modelVersion : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardModel_ignoreModelVersionError : AnyObject {
+  var ignoreModelVersionError : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol BoardModel_layerConfiguration : AnyObject {
   var layerConfiguration : LayerConfiguration { get }
 }
@@ -62,6 +74,18 @@ import AppKit
 
 @MainActor protocol BoardModel_artworkName : AnyObject {
   var artworkName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardModel_errorArchiveVersionMessage : AnyObject {
+  var errorArchiveVersionMessage : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardModel_errorArchiveVersionMessageIsHidden : AnyObject {
+  var errorArchiveVersionMessageIsHidden : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -393,10 +417,14 @@ final class BoardModel : EBManagedObject,
          BoardModel_modelHeight,
          BoardModel_modelHeightUnit,
          BoardModel_zoom,
+         BoardModel_modelVersion,
+         BoardModel_ignoreModelVersionError,
          BoardModel_layerConfiguration,
          BoardModel_modelLimitWidth,
          BoardModel_modelLimitWidthUnit,
          BoardModel_artworkName,
+         BoardModel_errorArchiveVersionMessage,
+         BoardModel_errorArchiveVersionMessageIsHidden,
          BoardModel_layerConfigurationString,
          BoardModel_frontLegendLinesSegments,
          BoardModel_backLegendLinesSegments,
@@ -563,6 +591,44 @@ final class BoardModel : EBManagedObject,
   final var zoom : Int {
     get { return self.zoom_property.propval }
     set { self.zoom_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: modelVersion
+  //····················································································································
+
+  final let modelVersion_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_modelVersion_toDefaultValue () {
+    self.modelVersion = 0
+  }
+
+  //····················································································································
+
+  final var modelVersion : Int {
+    get { return self.modelVersion_property.propval }
+    set { self.modelVersion_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: ignoreModelVersionError
+  //····················································································································
+
+  final let ignoreModelVersionError_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_ignoreModelVersionError_toDefaultValue () {
+    self.ignoreModelVersionError = false
+  }
+
+  //····················································································································
+
+  final var ignoreModelVersionError : Bool {
+    get { return self.ignoreModelVersionError_property.propval }
+    set { self.ignoreModelVersionError_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -1014,6 +1080,30 @@ final class BoardModel : EBManagedObject,
   final var myInstances : EBReferenceArray <MergerBoardInstance> {
     get { return self.myInstances_property.propval }
     set { self.myInstances_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Transient property: errorArchiveVersionMessage
+  //····················································································································
+
+  final let errorArchiveVersionMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var errorArchiveVersionMessage : String? {
+    return self.errorArchiveVersionMessage_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: errorArchiveVersionMessageIsHidden
+  //····················································································································
+
+  final let errorArchiveVersionMessageIsHidden_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var errorArchiveVersionMessageIsHidden : Bool? {
+    return self.errorArchiveVersionMessageIsHidden_property.optionalValue
   }
 
   //····················································································································
@@ -1663,6 +1753,8 @@ final class BoardModel : EBManagedObject,
     self.modelHeight_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelHeight")
     self.modelHeightUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelHeightUnit")
     self.zoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "zoom")
+    self.modelVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelVersion")
+    self.ignoreModelVersionError_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "ignoreModelVersionError")
     self.layerConfiguration_property = EBStoredProperty_LayerConfiguration (defaultValue: LayerConfiguration.twoLayers, undoManager: inUndoManager, key: "layerConfiguration")
     self.modelLimitWidth_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelLimitWidth")
     self.modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelLimitWidthUnit")
@@ -1723,6 +1815,40 @@ final class BoardModel : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.myModel_property.setProp (me) } },
       resetter: { inObject in inObject.myModel_property.setProp (nil) }
     )
+  //--- Atomic property: errorArchiveVersionMessage
+    self.errorArchiveVersionMessage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.modelVersion_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_BoardModel_errorArchiveVersionMessage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.modelVersion_property.startsToBeObserved (by: self.errorArchiveVersionMessage_property)
+  //--- Atomic property: errorArchiveVersionMessageIsHidden
+    self.errorArchiveVersionMessageIsHidden_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.modelVersion_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_BoardModel_errorArchiveVersionMessageIsHidden (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.modelVersion_property.startsToBeObserved (by: self.errorArchiveVersionMessageIsHidden_property)
   //--- Atomic property: layerConfigurationString
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

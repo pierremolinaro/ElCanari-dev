@@ -38,12 +38,23 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
     view pageMasterView
   }
 
-  transient NSImage statusImage dependsFrom self.issues, root.boardLimitWidthOk ;
+  transient String modelVersionErrorMessage dependsFrom 
+    root.boardModels.all.name,
+    root.boardModels.all.modelVersion,
+    root.boardModels.all.ignoreModelVersionError
+  ;
+
+  transient NSImage statusImage dependsFrom self.issues, root.boardLimitWidthOk, self.modelVersionErrorMessage ;
+
   transient NSImage boardLimitWidthStatusImage dependsFrom root.boardLimitWidthOk ;
-  transient String statusMessage dependsFrom self.issues, root.boardLimitWidthErrorMessage ;
+
+  transient String statusMessage dependsFrom self.issues, root.boardLimitWidthErrorMessage, self.modelVersionErrorMessage ;
+
+
   transient String boardDispositionStatusTitle dependsFrom self.issues ;
+
   transient CanariIssueArray issues dependsFrom
-    root.overlapingArrangment, root.boardRect, root.boardLimitWidth, // root.boardDisplayRect,
+    root.overlapingArrangment, root.boardRect, root.boardLimitWidth,
     root.boardInstances.all.instanceRect, root.boardInstances.all.boardLimitWidth
   ;
   action showPrefsForSettingMergerDisplayAction ;
@@ -57,7 +68,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
   //     Model Page
   //············································································
 
-  stackView \ModelPage hStack {
+  stackView \ModelPage hStack set (spacing: 0)  {
     vStack set (bottomMargin: 8) set (width: 250) $hidden !root.showDisplaySettingView {
       VerticalScrollView (content: 
         GridView2 {
@@ -337,6 +348,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           left: StaticLabel (title: "Layout", bold: no, size : .small, alignment: .right),
           right: Label (bold: yes, size: .small) { set (alignment: .right) $title #mBoardModelSelection.layerConfigurationString }
         )
+        addSeparator ()
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Model Width", bold: no, size : .small, alignment: .right),
           right: CanariObservedDimensionAndPopUp (size: .small) {
@@ -355,13 +367,32 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
             $dimensionAndUnit #mBoardModelSelection.modelLimitWidth, #mBoardModelSelection.modelLimitWidthUnit
           }
         )
+        addSeparator ()
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Board Count", bold: no, size : .small, alignment: .right),
           right: IntObserverField (bold: yes, size: .small) {
-            set (alignment: .right)
+            set (alignment: .left)
             $observedValue #mBoardModelSelection.instanceCount
           }
         )
+        addSeparator ()
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Archive Version", bold: no, size : .small, alignment: .right),
+          right: IntObserverField (bold: yes, size: .small) {
+            set (alignment: .left)
+            $observedValue #mBoardModelSelection.modelVersion
+          }
+        )
+      }
+      Label (bold: yes, size : .small) {
+        setRedTextColor ()
+        $title #mBoardModelSelection.errorArchiveVersionMessage
+        $hidden #mBoardModelSelection.errorArchiveVersionMessageIsHidden
+      }
+      Checkbox (title: "Ignore Board Archive Error", size : .small) {
+        expandableWidth ()
+        $value #mBoardModelSelection.ignoreModelVersionError
+        $hidden #mBoardModelSelection.errorArchiveVersionMessageIsHidden
       }
       space
     }

@@ -15,32 +15,33 @@ import AppKit
 
 @MainActor func transient_AutoLayoutMergerDocument_statusMessage (
        _ self_issues : CanariIssueArray,                          
-       _ root_boardLimitWidthErrorMessage : String
+       _ root_boardLimitWidthErrorMessage : String,               
+       _ self_modelVersionErrorMessage : String
 ) -> String {
 //--- START OF USER ZONE 2
-        var s = "No error, no warning"
+        var s = ""
         if !root_boardLimitWidthErrorMessage.isEmpty {
-          s = root_boardLimitWidthErrorMessage + "\n"
+          s += root_boardLimitWidthErrorMessage + "\n"
+        }
+        if !self_modelVersionErrorMessage.isEmpty {
+          s += self_modelVersionErrorMessage
         }
         if self_issues.count > 0 {
           let errorCount = self_issues.errorCount
           let warningCount = self_issues.warningCount
-          if errorCount == 0 {
-            s = "No board disposition error"
-          }else if errorCount == 1 {
-            s = "1 board disposition error"
-          }else {
-            s = "\(errorCount) board disposition errors"
+          if errorCount == 1 {
+            s += "1 board disposition error\n"
+          }else if errorCount > 1 {
+            s = "\(errorCount) board disposition errors\n"
           }
-          s += ", "
-          if warningCount == 0 {
-            s += "no board disposition warning"
-          }else if warningCount == 1 {
-            s += "1 board disposition warning"
-          }else {
-            s += "\(warningCount) board disposition warnings"
+          if warningCount == 1 {
+            s += "1 board disposition warning\n"
+          }else if warningCount > 1 {
+            s += "\(warningCount) board disposition warnings\n"
           }
-          s += "."
+        }
+        if s.isEmpty {
+          s = "No error, no warning\n"
         }
         return s
 //--- END OF USER ZONE 2

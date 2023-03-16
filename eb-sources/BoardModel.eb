@@ -10,6 +10,14 @@ handlingOpposite entity BoardModel {
 
   property Int zoom default 0 ; // 0 means "fit to window"
 
+//--- Model version
+  property Int modelVersion default 0 ;
+  property Bool ignoreModelVersionError default no ;
+
+  transient String errorArchiveVersionMessage dependsFrom self.modelVersion ;
+
+  transient Bool errorArchiveVersionMessageIsHidden dependsFrom self.modelVersion ;
+
 //--- Layer configuration
   property LayerConfiguration layerConfiguration default twoLayers ;
   

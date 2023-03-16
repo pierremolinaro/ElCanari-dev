@@ -10,6 +10,10 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+let MERGER_ARCHIVE_VERSION = 2
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 extension AutoLayoutProjectDocument {
 
   //····················································································································
@@ -19,6 +23,8 @@ extension AutoLayoutProjectDocument {
     var boardArchive = [String : Any] ()
   //--- Add artwork name
     boardArchive ["ARTWORK"] = self.rootObject.mArtworkName
+  //--- Add version
+    boardArchive ["ARCHIVE-VERSION"] = MERGER_ARCHIVE_VERSION
   //--- Add Board limits
     let af = self.addBoardLimits (&boardArchive, inProductData)
     addBoardLimitPathToArchive (&boardArchive, inProductData.boardLimitPath, self.rootObject.mBoardLimitsWidth, af)

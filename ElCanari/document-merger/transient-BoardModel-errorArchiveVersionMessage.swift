@@ -13,19 +13,11 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_AutoLayoutMergerDocument_statusImage (
-       _ self_issues : CanariIssueArray,                        
-       _ root_boardLimitWidthOk : Bool,                         
-       _ self_modelVersionErrorMessage : String
-) -> NSImage {
+@MainActor func transient_BoardModel_errorArchiveVersionMessage (
+       _ self_modelVersion : Int
+) -> String {
 //--- START OF USER ZONE 2
-          if (self_issues.count == 0) && root_boardLimitWidthOk && self_modelVersionErrorMessage.isEmpty {
-            return NSImage (named: okStatusImageName)!
-          }else if (self_issues.errorCount != 0) || !root_boardLimitWidthOk || !self_modelVersionErrorMessage.isEmpty {
-            return NSImage (named: errorStatusImageName)!
-          }else{
-            return NSImage (named: warningStatusImageName)!
-          }
+        return "Error : merger requires an archive version #\(MERGER_ARCHIVE_VERSION)"
 //--- END OF USER ZONE 2
 }
 

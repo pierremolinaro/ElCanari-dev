@@ -15,6 +15,13 @@ extension AutoLayoutMergerDocument {
 
   //····················································································································
 
+//  private func registerBoardModelCallBack (_ inBoardModel : BoardModel) {
+//    self.rootObject.boardModels_property.add (inBoardModel)
+//    self.mBoardModelController.select (object: inBoardModel)
+//  }
+
+  //····················································································································
+
   func loadBoardModel_ELCanariArchive (filePath inFilePath : String, windowForSheet inWindow : NSWindow) {
   //--- Load file, as plist
     let optionalFileData : Data? = FileManager ().contents (atPath: inFilePath)
@@ -44,7 +51,7 @@ extension AutoLayoutMergerDocument {
         format: nil
       )
       if let boardArchiveDict = optionalBoardArchiveDictionary as? [String : Any] {
-        boardModel = internal_parseBoardModel_ELCanariArchive (boardArchiveDict, named: inName)
+        boardModel = internal_check_ELCanariArchive_version (boardArchiveDict, named: inName)
       }
     }catch let error {
       let alert = NSAlert ()
@@ -57,10 +64,37 @@ extension AutoLayoutMergerDocument {
 
   //····················································································································
 
-  fileprivate func internal_parseBoardModel_ELCanariArchive (_ inBoardArchiveDict : [String : Any], named inName : String) -> BoardModel? {
+  fileprivate func internal_check_ELCanariArchive_version (_ inBoardArchiveDict : [String : Any], named inName : String) -> BoardModel? {
+    var boardModel : BoardModel? = nil
+    let version : Int = (inBoardArchiveDict ["ARCHIVE-VERSION"] as? Int) ?? 0
+    if version != MERGER_ARCHIVE_VERSION {
+      let alert = NSAlert ()
+      _ = alert.addButton (withTitle: "Ignore Version Error and Continue")
+      _ = alert.addButton (withTitle: "Cancel")
+      alert.messageText = "Cannot Analyse file contents, archive version is #\(version)."
+      alert.informativeText = "Merger requires archive version #\(MERGER_ARCHIVE_VERSION) ; update your archive by generating the production files again."
+      alert.beginSheetModal (for: self.windowForSheet!) { (inResponse : NSApplication.ModalResponse) in
+        if inResponse == .alertFirstButtonReturn {
+          boardModel = self.internal_parseBoardModel_ELCanariArchive (inBoardArchiveDict, version: version, ignoreVersionError: true, named: inName)
+        }
+      }
+    }else{
+      boardModel = self.internal_parseBoardModel_ELCanariArchive (inBoardArchiveDict, version: version, ignoreVersionError: false, named: inName)
+    }
+    return boardModel
+  }
+
+  //····················································································································
+
+  fileprivate func internal_parseBoardModel_ELCanariArchive (_ inBoardArchiveDict : [String : Any],
+                                                             version inVersion : Int,
+                                                             ignoreVersionError inIgnoreVersionError : Bool,
+                                                             named inName : String) -> BoardModel? {
     let boardModel = BoardModel (self.undoManager)
   //--- Populate board model from dictionary (accumulate error messages in errorArray variable)
     var errorArray = [String] ()
+    boardModel.modelVersion = inVersion
+    boardModel.ignoreModelVersionError = inIgnoreVersionError
     boardModel.name = inName
     boardModel.artworkName = string (fromDict: inBoardArchiveDict, key: "ARTWORK", &errorArray)
     boardModel.modelWidth = int (fromDict: inBoardArchiveDict, key: "BOARD-WIDTH", &errorArray)

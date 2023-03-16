@@ -22,10 +22,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       oldValue.modelHeight_property.stopsBeingObserved (by: self.modelHeight_property) // Stored property
       oldValue.modelHeightUnit_property.stopsBeingObserved (by: self.modelHeightUnit_property) // Stored property
       oldValue.zoom_property.stopsBeingObserved (by: self.zoom_property) // Stored property
+      oldValue.modelVersion_property.stopsBeingObserved (by: self.modelVersion_property) // Stored property
+      oldValue.ignoreModelVersionError_property.stopsBeingObserved (by: self.ignoreModelVersionError_property) // Stored property
       oldValue.layerConfiguration_property.stopsBeingObserved (by: self.layerConfiguration_property) // Stored property
       oldValue.modelLimitWidth_property.stopsBeingObserved (by: self.modelLimitWidth_property) // Stored property
       oldValue.modelLimitWidthUnit_property.stopsBeingObserved (by: self.modelLimitWidthUnit_property) // Stored property
       oldValue.artworkName_property.stopsBeingObserved (by: self.artworkName_property) // Stored property
+      oldValue.errorArchiveVersionMessage_property.stopsBeingObserved (by: self.errorArchiveVersionMessage_property) // Transient property
+      oldValue.errorArchiveVersionMessageIsHidden_property.stopsBeingObserved (by: self.errorArchiveVersionMessageIsHidden_property) // Transient property
       oldValue.layerConfigurationString_property.stopsBeingObserved (by: self.layerConfigurationString_property) // Transient property
       oldValue.frontLegendLinesSegments_property.stopsBeingObserved (by: self.frontLegendLinesSegments_property) // Transient property
       oldValue.backLegendLinesSegments_property.stopsBeingObserved (by: self.backLegendLinesSegments_property) // Transient property
@@ -163,10 +167,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       newValue.modelHeight_property.startsToBeObserved (by: self.modelHeight_property) // Stored property
       newValue.modelHeightUnit_property.startsToBeObserved (by: self.modelHeightUnit_property) // Stored property
       newValue.zoom_property.startsToBeObserved (by: self.zoom_property) // Stored property
+      newValue.modelVersion_property.startsToBeObserved (by: self.modelVersion_property) // Stored property
+      newValue.ignoreModelVersionError_property.startsToBeObserved (by: self.ignoreModelVersionError_property) // Stored property
       newValue.layerConfiguration_property.startsToBeObserved (by: self.layerConfiguration_property) // Stored property
       newValue.modelLimitWidth_property.startsToBeObserved (by: self.modelLimitWidth_property) // Stored property
       newValue.modelLimitWidthUnit_property.startsToBeObserved (by: self.modelLimitWidthUnit_property) // Stored property
       newValue.artworkName_property.startsToBeObserved (by: self.artworkName_property) // Stored property
+      newValue.errorArchiveVersionMessage_property.startsToBeObserved (by: self.errorArchiveVersionMessage_property) // Transient property
+      newValue.errorArchiveVersionMessageIsHidden_property.startsToBeObserved (by: self.errorArchiveVersionMessageIsHidden_property) // Transient property
       newValue.layerConfigurationString_property.startsToBeObserved (by: self.layerConfigurationString_property) // Transient property
       newValue.frontLegendLinesSegments_property.startsToBeObserved (by: self.frontLegendLinesSegments_property) // Transient property
       newValue.backLegendLinesSegments_property.startsToBeObserved (by: self.backLegendLinesSegments_property) // Transient property
@@ -335,6 +343,18 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   final let zoom_property = EBTransientProperty <Int?> ()
 
   //····················································································································
+  //   Observers of 'modelVersion' stored property
+  //····················································································································
+
+  final let modelVersion_property = EBTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'ignoreModelVersionError' stored property
+  //····················································································································
+
+  final let ignoreModelVersionError_property = EBTransientProperty <Bool?> ()
+
+  //····················································································································
   //   Observers of 'layerConfiguration' stored property
   //····················································································································
 
@@ -357,6 +377,18 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let artworkName_property = EBTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'errorArchiveVersionMessage' transient property
+  //····················································································································
+
+  final let errorArchiveVersionMessage_property = EBTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'errorArchiveVersionMessageIsHidden' transient property
+  //····················································································································
+
+  final let errorArchiveVersionMessageIsHidden_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'layerConfigurationString' transient property
@@ -1428,6 +1460,38 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
         return .single (nil)
       } */
     }
+  //--- Configure modelVersion simple stored property
+    self.modelVersion_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.modelVersion_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
+        switch model.modelVersion_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      } */
+    }
+  //--- Configure ignoreModelVersionError simple stored property
+    self.ignoreModelVersionError_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.ignoreModelVersionError_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
+        switch model.ignoreModelVersionError_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      } */
+    }
   //--- Configure layerConfiguration simple stored property
     self.layerConfiguration_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.layerConfiguration_property.optionalSelection ?? .single (nil)
@@ -1481,6 +1545,38 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       return self?.mWeakInternalValue?.artworkName_property.optionalSelection ?? .single (nil)
       /* if let model = self?.mWeakInternalValue {
         switch model.artworkName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      } */
+    }
+  //--- Configure errorArchiveVersionMessage transient property
+    self.errorArchiveVersionMessage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.errorArchiveVersionMessage_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
+        switch model.errorArchiveVersionMessage_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      } */
+    }
+  //--- Configure errorArchiveVersionMessageIsHidden transient property
+    self.errorArchiveVersionMessageIsHidden_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.errorArchiveVersionMessageIsHidden_property.optionalSelection ?? .single (nil)
+      /* if let model = self?.mWeakInternalValue {
+        switch model.errorArchiveVersionMessageIsHidden_property.selection {
         case .empty :
           return .empty
         case .multiple :

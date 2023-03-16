@@ -13,19 +13,25 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_AutoLayoutMergerDocument_statusImage (
-       _ self_issues : CanariIssueArray,                        
-       _ root_boardLimitWidthOk : Bool,                         
-       _ self_modelVersionErrorMessage : String
-) -> NSImage {
+@MainActor func transient_AutoLayoutMergerDocument_modelVersionErrorMessage (
+       _ root_boardModels_name : [BoardModel_name],                          
+       _ root_boardModels_modelVersion : [BoardModel_modelVersion],          
+       _ root_boardModels_ignoreModelVersionError : [BoardModel_ignoreModelVersionError]
+) -> String {
 //--- START OF USER ZONE 2
-          if (self_issues.count == 0) && root_boardLimitWidthOk && self_modelVersionErrorMessage.isEmpty {
-            return NSImage (named: okStatusImageName)!
-          }else if (self_issues.errorCount != 0) || !root_boardLimitWidthOk || !self_modelVersionErrorMessage.isEmpty {
-            return NSImage (named: errorStatusImageName)!
-          }else{
-            return NSImage (named: warningStatusImageName)!
-          }
+      var s = ""
+    //-------------------- Check for model version
+      var idx = 0
+      while idx < root_boardModels_modelVersion.count {
+        let ignoreVersionError : Bool = root_boardModels_ignoreModelVersionError [idx].ignoreModelVersionError
+        let modelVersion : Int = root_boardModels_modelVersion [idx].modelVersion
+        let modelName : String = root_boardModels_name [idx].name
+        if (modelVersion != MERGER_ARCHIVE_VERSION) && !ignoreVersionError {
+          s += "Model '\(modelName)' has archive version #\(modelVersion)\n"
+        }
+        idx += 1
+      }
+      return s
 //--- END OF USER ZONE 2
 }
 

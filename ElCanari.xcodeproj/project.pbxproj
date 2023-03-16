@@ -874,6 +874,15 @@
 		CF3817A3225CA79400E75A96 /* transient-SymbolPinInstanceInDevice-pinQualifiedName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3817A1225CA79300E75A96 /* transient-SymbolPinInstanceInDevice-pinQualifiedName.swift */; };
 		CF3817A5225CAD9200E75A96 /* struct-PinQualifiedNameStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3817A4225CAD9200E75A96 /* struct-PinQualifiedNameStruct.swift */; };
 		CF3817A6225CAD9200E75A96 /* struct-PinQualifiedNameStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3817A4225CAD9200E75A96 /* struct-PinQualifiedNameStruct.swift */; };
+		CF3926F529C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3926F329C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessage.swift */; };
+		CF3926F629C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3926F329C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessage.swift */; };
+		CF3926F729C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3926F329C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessage.swift */; };
+		CF3926F829C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessageIsHidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3926F429C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessageIsHidden.swift */; };
+		CF3926F929C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessageIsHidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3926F429C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessageIsHidden.swift */; };
+		CF3926FA29C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessageIsHidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3926F429C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessageIsHidden.swift */; };
+		CF3926FC29C3280500B2E471 /* transient-AutoLayoutMergerDocument-modelVersionErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3926FB29C3280400B2E471 /* transient-AutoLayoutMergerDocument-modelVersionErrorMessage.swift */; };
+		CF3926FD29C3280500B2E471 /* transient-AutoLayoutMergerDocument-modelVersionErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3926FB29C3280400B2E471 /* transient-AutoLayoutMergerDocument-modelVersionErrorMessage.swift */; };
+		CF3926FE29C3280500B2E471 /* transient-AutoLayoutMergerDocument-modelVersionErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3926FB29C3280400B2E471 /* transient-AutoLayoutMergerDocument-modelVersionErrorMessage.swift */; };
 		CF39CCA8268CC0B3004971F9 /* action-AutoLayoutDeviceDocument-resetSelectedPackageVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39CC7F268CC0AE004971F9 /* action-AutoLayoutDeviceDocument-resetSelectedPackageVersion.swift */; };
 		CF39CCA9268CC0B3004971F9 /* action-AutoLayoutDeviceDocument-resetSelectedPackageVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39CC7F268CC0AE004971F9 /* action-AutoLayoutDeviceDocument-resetSelectedPackageVersion.swift */; };
 		CF39CCAA268CC0B3004971F9 /* action-AutoLayoutDeviceDocument-resetSelectedPackageVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39CC7F268CC0AE004971F9 /* action-AutoLayoutDeviceDocument-resetSelectedPackageVersion.swift */; };
@@ -5182,6 +5191,9 @@
 		CF37916B269CBDBE00FA083F /* transient-AutoLayoutDeviceDocument-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutDeviceDocument-issues.swift"; sourceTree = "<group>"; };
 		CF3817A1225CA79300E75A96 /* transient-SymbolPinInstanceInDevice-pinQualifiedName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolPinInstanceInDevice-pinQualifiedName.swift"; sourceTree = "<group>"; };
 		CF3817A4225CAD9200E75A96 /* struct-PinQualifiedNameStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "struct-PinQualifiedNameStruct.swift"; sourceTree = "<group>"; };
+		CF3926F329C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-errorArchiveVersionMessage.swift"; sourceTree = "<group>"; };
+		CF3926F429C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessageIsHidden.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-errorArchiveVersionMessageIsHidden.swift"; sourceTree = "<group>"; };
+		CF3926FB29C3280400B2E471 /* transient-AutoLayoutMergerDocument-modelVersionErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutMergerDocument-modelVersionErrorMessage.swift"; sourceTree = "<group>"; };
 		CF39CC7F268CC0AE004971F9 /* action-AutoLayoutDeviceDocument-resetSelectedPackageVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutDeviceDocument-resetSelectedPackageVersion.swift"; sourceTree = "<group>"; };
 		CF39CC80268CC0AE004971F9 /* controller-table-view-AutoLayoutDeviceDocument-packageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-table-view-AutoLayoutDeviceDocument-packageController.swift"; sourceTree = "<group>"; };
 		CF39CC81268CC0AE004971F9 /* controller-table-view-AutoLayoutDeviceDocument-symbolTypeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-table-view-AutoLayoutDeviceDocument-symbolTypeController.swift"; sourceTree = "<group>"; };
@@ -6657,6 +6669,9 @@
 		CF22F0D1275A6A72009C6FAC /* document — merger */ = {
 			isa = PBXGroup;
 			children = (
+				CF3926FB29C3280400B2E471 /* transient-AutoLayoutMergerDocument-modelVersionErrorMessage.swift */,
+				CF3926F329C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessage.swift */,
+				CF3926F429C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessageIsHidden.swift */,
 				CF22F2AE275A899E009C6FAC /* action-AutoLayoutMergerDocument-addBoardModelAction.swift */,
 				CF841E31275C03860000EA26 /* action-AutoLayoutMergerDocument-detachArtworkAction.swift */,
 				CF36A52E275AA3E4004C52E1 /* action-AutoLayoutMergerDocument-dismissDisplaySettingView.swift */,
@@ -9115,6 +9130,7 @@
 				CF61916226F7791E003B75FF /* transient-ArtworkFileGenerationParameters-emptyFileExtensionImage.swift in Sources */,
 				CF59C3E329BE36AB004CA404 /* property-MasterPadDescriptor.swift in Sources */,
 				CF355A22279D9F3E000BFC9B /* configurator-AutoLayoutProjectDocument-ercIssueTableViewConfigurator.swift in Sources */,
+				CF3926F829C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessageIsHidden.swift in Sources */,
 				CF83868A2423B90C007F1D21 /* transient-PackageRoot-backgroundImagePageBackgroundDisplay.swift in Sources */,
 				CF42D111275CF1A600B83712 /* action-AutoLayoutMergerDocument-showBoardHelpAction.swift in Sources */,
 				CFFEC1C2280482C600E5E8DD /* toone-PackageSlavePad.swift in Sources */,
@@ -9143,6 +9159,7 @@
 				CFB82C0C276B89BE00BAD56E /* AutoLayoutTableView.swift in Sources */,
 				CF29563522324C4C004100D6 /* transient-DeviceRoot-inconsistentSymbolNameSetMessage.swift in Sources */,
 				CFEB7B4E233A25EC0060A97A /* transient-ComponentInProject-componentIsPlacedInBoardString.swift in Sources */,
+				CF3926FC29C3280500B2E471 /* transient-AutoLayoutMergerDocument-modelVersionErrorMessage.swift in Sources */,
 				CF22F252275A73EE009C6FAC /* transient-BoardModel-inner1TracksBezierPaths.swift in Sources */,
 				CF4EA9E826F6517800F01746 /* transient-ProjectRoot-backSideTrackCountString.swift in Sources */,
 				CFEB7CFE233A2A030060A97A /* transient-SheetInProject-sheetDescriptor.swift in Sources */,
@@ -10252,6 +10269,7 @@
 				CFEB7BE6233A28130060A97A /* transient-NetClassInProject-viaPadDiameter.swift in Sources */,
 				CF3559F3279D9F3E000BFC9B /* configurator-AutoLayoutProjectDocument-boardOperationPullDownButtonConfigurator.swift in Sources */,
 				CF001F7921F8B2780091518E /* prefs-get-and-store.swift in Sources */,
+				CF3926F529C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessage.swift in Sources */,
 				CF59C42529BE36AB004CA404 /* property-EBBezierPath.swift in Sources */,
 				CF711DF0275E1C2400280069 /* toone-DeviceSymbolTypeInProject.swift in Sources */,
 				CF78DE91222D65CA00E89DCA /* transient-SlavePadInDevice-backSideFilledBezierPath.swift in Sources */,
@@ -10708,6 +10726,7 @@
 				CF35597E279D9F3B000BFC9B /* configurator-AutoLayoutProjectDocument-ercIssueTableViewConfigurator.swift in Sources */,
 				CF83868B2423B90C007F1D21 /* transient-PackageRoot-backgroundImagePageBackgroundDisplay.swift in Sources */,
 				CFEB7B3F233A25EC0060A97A /* transient-ComponentInProject-deviceName.swift in Sources */,
+				CF3926F929C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessageIsHidden.swift in Sources */,
 				CFB7D77D26839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-addSymbolSolidRect.swift in Sources */,
 				CFCE57B32343CEC900D96E40 /* transient-ProjectRoot-allClassNames.swift in Sources */,
 				CF42D139275CF1A800B83712 /* action-AutoLayoutMergerDocument-showBoardHelpAction.swift in Sources */,
@@ -10736,6 +10755,7 @@
 				CF8A8A87275A44A700825DF9 /* SegmentForFontCharacter.swift in Sources */,
 				CFEB7B4F233A25EC0060A97A /* transient-ComponentInProject-componentIsPlacedInBoardString.swift in Sources */,
 				CFB82C0D276B89BE00BAD56E /* AutoLayoutTableView.swift in Sources */,
+				CF3926FD29C3280500B2E471 /* transient-AutoLayoutMergerDocument-modelVersionErrorMessage.swift in Sources */,
 				CF711E2E275E1CC600280069 /* extension-SymbolSegment.swift in Sources */,
 				CF22F253275A73EE009C6FAC /* transient-BoardModel-inner1TracksBezierPaths.swift in Sources */,
 				CF4EA9E926F6517800F01746 /* transient-ProjectRoot-backSideTrackCountString.swift in Sources */,
@@ -11845,6 +11865,7 @@
 				CF711DBF275E1B6600280069 /* entity-ProjectRoot.swift in Sources */,
 				CF8560F62677A34C00B62608 /* AutoLayoutSpinningProgressIndicator.swift in Sources */,
 				CFFC7ADA23EA00F700EBADD9 /* transient-PackagePad-displayedPadName.swift in Sources */,
+				CF3926F629C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessage.swift in Sources */,
 				CF35594F279D9F3B000BFC9B /* configurator-AutoLayoutProjectDocument-boardOperationPullDownButtonConfigurator.swift in Sources */,
 				CF59C44729BE36AB004CA404 /* property-NetInfoPointArray.swift in Sources */,
 				CFB7D8752683A61C007B9D3B /* configurator-AutoLayoutPackageDocument-addPackageArc.swift in Sources */,
@@ -12301,6 +12322,7 @@
 				CF9FCCBA27541A1E00345A34 /* transient-AutoLayoutFontDocument-statusImage.swift in Sources */,
 				CF6CC7A327789D8C007BA775 /* configurator-AutoLayoutProjectDocument-addLineButton.swift in Sources */,
 				CF9C60C725CABE5C00A00D5C /* transient-PackagePad-zoneName.swift in Sources */,
+				CF3926FA29C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessageIsHidden.swift in Sources */,
 				CF72E5AE276A38190019E180 /* AutoLayoutWarningImageView.swift in Sources */,
 				CF4EAA0426F6836800F01746 /* transient-ArtworkRoot-hasInnerElements.swift in Sources */,
 				CF9C60C825CABE5C00A00D5C /* func-sha1.swift in Sources */,
@@ -12329,6 +12351,7 @@
 				CF61915026F76839003B75FF /* transient-ArtworkRoot-hasDataWarning.swift in Sources */,
 				CF48F99C2778F93400CEE944 /* configurator-AutoLayoutProjectDocument-packageDragSourceTableViewConfigurator.swift in Sources */,
 				CF49C13925D13A030082271E /* transient-SymbolSolidOval-selectionDisplay.swift in Sources */,
+				CF3926FE29C3280500B2E471 /* transient-AutoLayoutMergerDocument-modelVersionErrorMessage.swift in Sources */,
 				CFB7D8B52683A61D007B9D3B /* controller-array-AutoLayoutPackageDocument-mModelImageObjectsController.swift in Sources */,
 				CF9C60D925CABE5C00A00D5C /* toone-ForbiddenPadNumber.swift in Sources */,
 				CF22F20F275A73EE009C6FAC /* entity-MergerRoot.swift in Sources */,
@@ -13438,6 +13461,7 @@
 				CFF858A32687C201001B868C /* selectionController-AutoLayoutArtworkDocument-mDataSelection.swift in Sources */,
 				CF5220A727A2EC38004FEEB2 /* action-Preferences-checkSystemLibraryUpdateAction.swift in Sources */,
 				CF39CCE0268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-removeDocumentationAction.swift in Sources */,
+				CF3926F729C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessage.swift in Sources */,
 				CF22F254275A73EE009C6FAC /* transient-BoardModel-inner1TracksBezierPaths.swift in Sources */,
 				CF59C44829BE36AB004CA404 /* property-NetInfoPointArray.swift in Sources */,
 				CF22F28A275A73EF009C6FAC /* toone-BoardModelPad.swift in Sources */,
