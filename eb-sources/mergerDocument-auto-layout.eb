@@ -342,11 +342,11 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
       GridView2 {
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Artwork Name", bold: no, size : .small, alignment: .right),
-          right: Label (bold: yes, size: .small) { set (alignment: .right) $title #mBoardModelSelection.artworkName  }
+          right: Label (bold: yes, size: .small) { set (alignment: .left) $title #mBoardModelSelection.artworkName  }
         )
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Layout", bold: no, size : .small, alignment: .right),
-          right: Label (bold: yes, size: .small) { set (alignment: .right) $title #mBoardModelSelection.layerConfigurationString }
+          right: Label (bold: yes, size: .small) { set (alignment: .left) $title #mBoardModelSelection.layerConfigurationString }
         )
         addSeparator ()
         addFirstBaseLineAligned (
@@ -727,6 +727,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         [outlet mModelDragSourceTableView configurator boardModelDragSourceTableView]
         { $models root.modelNames }
     }
+    separator
     StaticLabel (title: "Board", bold: yes, size : .small, alignment: .left)
     hStack {
       Checkbox (title: "Automatic Size", size: .small) { $value root.automaticBoardSize }
@@ -776,6 +777,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           $hidden root.boardLimitWidthOk
         }
       )      
+      addSeparator ()
       add (single: StaticLabel (title: "Arrow Key Magnitude", bold: yes, size : .small, alignment: .left)
       )
       addFirstBaseLineAligned (
@@ -790,6 +792,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           $dimensionAndUnit root.shiftArrowMagnitude, root.shiftArrowMagnitudeUnit
         }
       )
+      addSeparator ()
       add (single: StaticLabel (title: "Selected Element", bold: yes, size : .small, alignment: .left)
       )
       addFirstBaseLineAligned (
@@ -815,6 +818,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         }
       )
     }
+    separator
     hStack set (margins: 0) equalWidth () {
       vStack set (margins: 0) {
         StaticLabel (title: "Move Selection", bold: yes, size : .small, alignment: .center)
@@ -887,6 +891,10 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         }
       }
     }
+    Button (title: "Explode Selection", size : .small) {
+      $enabled #mBoardInstanceController.selectedArray.count > 0
+      $run explodeSelectionAction 
+    }
     space
   }
 
@@ -898,6 +906,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
   action stackSelectionLeftAction ;
   action stackSelectionUpAction ;
   action stackSelectionDownAction ;
+  action explodeSelectionAction ;
   action showBoardHelpAction ;
 
   //············································································

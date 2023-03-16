@@ -21,9 +21,11 @@ extension AutoLayoutMergerDocument {
     let boardLimitWidth = self.rootObject.boardLimitWidth
   //--- Non selected set
     let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
+  //--- Sort objects
+    let ySortedArray = inMoveObjectSet.values.sorted { return $0.y < $1.y }
   //---
     var deltaY = -boardHeight
-    for selectedInstance in inMoveObjectSet.values {
+    for selectedInstance in ySortedArray {
       let instanceRect = selectedInstance.instanceRect!
       let instanceLimit = selectedInstance.boardLimitWidth!
       var acceptableNewRect = CanariRect (
@@ -63,9 +65,11 @@ extension AutoLayoutMergerDocument {
     let boardHeight = self.rootObject.boardHeight!
   //--- Non selected set
     let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
+  //--- Sort objects
+    let ySortedArray = inMoveObjectSet.values.sorted { return $0.y > $1.y }
   //---
     var deltaY = boardHeight
-    for selectedInstance in inMoveObjectSet.values {
+    for selectedInstance in ySortedArray {
       let instanceRect = selectedInstance.instanceRect!
       let instanceLimit = selectedInstance.boardLimitWidth!
       var acceptableNewRect = CanariRect (
@@ -73,7 +77,6 @@ extension AutoLayoutMergerDocument {
         bottom: instanceRect.bottom,
         width: instanceRect.width,
         height: boardHeight - instanceRect.bottom
-    //    height: boardHeight + instanceLimit - instanceRect.bottom
       )
       for otherInstance in otherObjectSet.values {
         let inset = inOverlap ? min (instanceLimit, otherInstance.boardLimitWidth!) : 0
@@ -106,15 +109,16 @@ extension AutoLayoutMergerDocument {
     let boardWidth = self.rootObject.boardWidth!
   //--- Non selected set
     let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
+  //--- Sort objects
+    let xSortedArray = inMoveObjectSet.values.sorted { return $0.x > $1.x }
   //---
     var deltaX = boardWidth
-    for selectedInstance in inMoveObjectSet.values {
+    for selectedInstance in xSortedArray {
       let instanceRect = selectedInstance.instanceRect!
       let instanceLimit = selectedInstance.boardLimitWidth!
       var acceptableNewRect = CanariRect (
         left: instanceRect.left,
         bottom: instanceRect.bottom,
-//        width: boardWidth + instanceLimit - instanceRect.left,
         width: boardWidth - instanceRect.left,
         height: instanceRect.height
       )
@@ -150,9 +154,11 @@ extension AutoLayoutMergerDocument {
     let boardLimitWidth = self.rootObject.boardLimitWidth
   //--- Non selected set
     let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
+  //--- Sort objects
+    let xSortedArray = inMoveObjectSet.values.sorted { return $0.x < $1.x }
   //---
-   var deltaX = -boardWidth
-    for selectedInstance in inMoveObjectSet.values {
+    var deltaX = -boardWidth
+    for selectedInstance in xSortedArray {
       let instanceRect = selectedInstance.instanceRect!
       let instanceLimit = selectedInstance.boardLimitWidth!
       var acceptableNewRect = CanariRect (
@@ -219,6 +225,28 @@ extension AutoLayoutMergerDocument {
     let sortedArray = inMoveObjectSet.values.sorted (by: { return $0.x > $1.x })
     for object in sortedArray {
       moveRight (overlap: inOverlap, objectSet: EBReferenceSet (object))
+    }
+  }
+
+  //····················································································································
+
+  func explodeSelection (objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
+    let translation = self.rootObject.boardLimitWidth * (self.rootObject.overlapingArrangment ? 2 : 1)
+    let xSortedArray = inMoveObjectSet.values.sorted {
+      return ($0.x < $1.x) || (($0.x == $1.x) && ($0.y < $1.y))
+    }
+    var idx = 0
+    for object in xSortedArray {
+      object.x += idx * translation
+      idx += 1
+    }
+    let ySortedArray = inMoveObjectSet.values.sorted {
+      return ($0.y < $1.y) || (($0.y == $1.y) && ($0.x < $1.x))
+    }
+    idx = 0
+    for object in ySortedArray {
+      object.y += idx * translation
+      idx += 1
     }
   }
 

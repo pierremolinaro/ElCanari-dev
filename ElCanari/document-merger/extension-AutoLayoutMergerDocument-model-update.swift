@@ -37,118 +37,120 @@ extension AutoLayoutMergerDocument {
           let optionalFileData : Data? = FileManager ().contents (atPath: filePath)
           if let fileData = optionalFileData {
             let s = filePath.lastPathComponent.deletingPathExtension
-            var possibleBoardModel : BoardModel? = nil
+//            var possibleBoardModel : BoardModel? = nil
             if filePath.pathExtension == EL_CANARI_MERGER_ARCHIVE {
-              possibleBoardModel = self.parseBoardModel_ELCanariArchive (fromData: fileData, named: s)
+              self.parseBoardModel_ELCanariArchive (fromData: fileData, named: s, callBack: { self.performUpdateModel (updatedBoardModel, with: $0) })
+//              possibleBoardModel = self.parseBoardModel_ELCanariArchive (fromData: fileData, named: s)
             }else if filePath.pathExtension == KICAD_PCB {
-              possibleBoardModel = self.parseBoardModel_kicad (fromData: fileData, named: s)
+              let possibleBoardModel = self.parseBoardModel_kicad (fromData: fileData, named: s)
+              if let newTemporaryBoardModel = possibleBoardModel {
+                self.performUpdateModel (updatedBoardModel, with: newTemporaryBoardModel)
+              }
             }
-            if let newTemporaryBoardModel = possibleBoardModel {
-              updatedBoardModel.artworkName = newTemporaryBoardModel.artworkName
-              updatedBoardModel.modelWidth = newTemporaryBoardModel.modelWidth
-     //         updatedBoardModel.modelWidthUnit = newTemporaryBoardModel.modelWidthUnit
-              updatedBoardModel.modelHeight = newTemporaryBoardModel.modelHeight
-   //           updatedBoardModel.modelHeightUnit = newTemporaryBoardModel.modelHeightUnit
-              updatedBoardModel.modelLimitWidth = newTemporaryBoardModel.modelLimitWidth
-      //        updatedBoardModel.modelLimitWidthUnit = newTemporaryBoardModel.modelLimitWidthUnit
-      //        updatedBoardModel.zoom = newTemporaryBoardModel.zoom
-
-              var newArray = newTemporaryBoardModel.backPackages
-              newTemporaryBoardModel.backPackages = EBReferenceArray ()
-              updatedBoardModel.backPackages = newArray
-
-              newArray = newTemporaryBoardModel.frontPackages
-              newTemporaryBoardModel.frontPackages = EBReferenceArray ()
-              updatedBoardModel.frontPackages = newArray
-
-              newArray = newTemporaryBoardModel.frontTracks
-              newTemporaryBoardModel.frontTracks = EBReferenceArray ()
-              updatedBoardModel.frontTracks = newArray
-
-              newArray = newTemporaryBoardModel.inner1Tracks
-              newTemporaryBoardModel.inner1Tracks = EBReferenceArray ()
-              updatedBoardModel.inner1Tracks = newArray
-
-              newArray = newTemporaryBoardModel.inner2Tracks
-              newTemporaryBoardModel.inner2Tracks = EBReferenceArray ()
-              updatedBoardModel.inner2Tracks = newArray
-
-              newArray = newTemporaryBoardModel.inner3Tracks
-              newTemporaryBoardModel.inner3Tracks = EBReferenceArray ()
-              updatedBoardModel.inner3Tracks = newArray
-
-              newArray = newTemporaryBoardModel.inner4Tracks
-              newTemporaryBoardModel.inner4Tracks = EBReferenceArray ()
-              updatedBoardModel.inner4Tracks = newArray
-
-              newArray = newTemporaryBoardModel.backTracks
-              newTemporaryBoardModel.backTracks = EBReferenceArray ()
-              updatedBoardModel.backTracks = newArray
-
-              newArray = newTemporaryBoardModel.backComponentValues
-              newTemporaryBoardModel.backComponentValues = EBReferenceArray ()
-              updatedBoardModel.backComponentValues = newArray
-
-              newArray = newTemporaryBoardModel.frontComponentValues
-              newTemporaryBoardModel.frontComponentValues = EBReferenceArray ()
-              updatedBoardModel.frontComponentValues = newArray
-
-              newArray = newTemporaryBoardModel.frontComponentNames
-              newTemporaryBoardModel.frontComponentNames = EBReferenceArray ()
-              updatedBoardModel.frontComponentNames = newArray
-
-              newArray = newTemporaryBoardModel.backComponentNames
-              newTemporaryBoardModel.backComponentNames = EBReferenceArray ()
-              updatedBoardModel.backComponentNames = newArray
-
-              let newBackPadArray = newTemporaryBoardModel.backPads
-              newTemporaryBoardModel.backPads = EBReferenceArray ()
-              updatedBoardModel.backPads = newBackPadArray
-
-              let newTraversingPadArray = newTemporaryBoardModel.traversingPads
-              newTemporaryBoardModel.traversingPads = EBReferenceArray ()
-              updatedBoardModel.traversingPads = newTraversingPadArray
-
-              let newFrontPadArray = newTemporaryBoardModel.frontPads
-              newTemporaryBoardModel.frontPads = EBReferenceArray ()
-              updatedBoardModel.frontPads = newFrontPadArray
-
-              let newViaArray = newTemporaryBoardModel.vias
-              newTemporaryBoardModel.vias = EBReferenceArray ()
-              updatedBoardModel.vias = newViaArray
-
-              let newDrillArray = newTemporaryBoardModel.drills
-              newTemporaryBoardModel.drills = EBReferenceArray ()
-              updatedBoardModel.drills = newDrillArray
-
-              newArray = newTemporaryBoardModel.backLayoutTexts
-              newTemporaryBoardModel.backLayoutTexts = EBReferenceArray ()
-              updatedBoardModel.backLayoutTexts = newArray
-
-              newArray = newTemporaryBoardModel.backLegendTexts
-              newTemporaryBoardModel.backLegendTexts = EBReferenceArray ()
-              updatedBoardModel.backLegendTexts = newArray
-
-              newArray = newTemporaryBoardModel.frontLayoutTexts
-              newTemporaryBoardModel.frontLayoutTexts = EBReferenceArray ()
-              updatedBoardModel.frontLayoutTexts = newArray
-
-              newArray = newTemporaryBoardModel.frontLegendTexts
-              newTemporaryBoardModel.frontLegendTexts = EBReferenceArray ()
-              updatedBoardModel.frontLegendTexts = newArray
-
-              newArray = newTemporaryBoardModel.backLegendLines
-              newTemporaryBoardModel.backLegendLines = EBReferenceArray ()
-              updatedBoardModel.backLegendLines = newArray
-
-              newArray = newTemporaryBoardModel.frontLegendLines
-              newTemporaryBoardModel.frontLegendLines = EBReferenceArray ()
-              updatedBoardModel.frontLegendLines = newArray
-
-              newArray = newTemporaryBoardModel.internalBoardsLimits
-              newTemporaryBoardModel.internalBoardsLimits = EBReferenceArray ()
-              updatedBoardModel.internalBoardsLimits = newArray
-            }
+//            if let newTemporaryBoardModel = possibleBoardModel {
+//              updatedBoardModel.artworkName = newTemporaryBoardModel.artworkName
+//              updatedBoardModel.modelWidth = newTemporaryBoardModel.modelWidth
+//              updatedBoardModel.modelHeight = newTemporaryBoardModel.modelHeight
+//              updatedBoardModel.modelLimitWidth = newTemporaryBoardModel.modelLimitWidth
+//              updatedBoardModel.modelVersion = newTemporaryBoardModel.modelVersion
+//              updatedBoardModel.ignoreModelVersionError = newTemporaryBoardModel.ignoreModelVersionError
+//
+//              var newArray = newTemporaryBoardModel.backPackages
+//              newTemporaryBoardModel.backPackages = EBReferenceArray ()
+//              updatedBoardModel.backPackages = newArray
+//
+//              newArray = newTemporaryBoardModel.frontPackages
+//              newTemporaryBoardModel.frontPackages = EBReferenceArray ()
+//              updatedBoardModel.frontPackages = newArray
+//
+//              newArray = newTemporaryBoardModel.frontTracks
+//              newTemporaryBoardModel.frontTracks = EBReferenceArray ()
+//              updatedBoardModel.frontTracks = newArray
+//
+//              newArray = newTemporaryBoardModel.inner1Tracks
+//              newTemporaryBoardModel.inner1Tracks = EBReferenceArray ()
+//              updatedBoardModel.inner1Tracks = newArray
+//
+//              newArray = newTemporaryBoardModel.inner2Tracks
+//              newTemporaryBoardModel.inner2Tracks = EBReferenceArray ()
+//              updatedBoardModel.inner2Tracks = newArray
+//
+//              newArray = newTemporaryBoardModel.inner3Tracks
+//              newTemporaryBoardModel.inner3Tracks = EBReferenceArray ()
+//              updatedBoardModel.inner3Tracks = newArray
+//
+//              newArray = newTemporaryBoardModel.inner4Tracks
+//              newTemporaryBoardModel.inner4Tracks = EBReferenceArray ()
+//              updatedBoardModel.inner4Tracks = newArray
+//
+//              newArray = newTemporaryBoardModel.backTracks
+//              newTemporaryBoardModel.backTracks = EBReferenceArray ()
+//              updatedBoardModel.backTracks = newArray
+//
+//              newArray = newTemporaryBoardModel.backComponentValues
+//              newTemporaryBoardModel.backComponentValues = EBReferenceArray ()
+//              updatedBoardModel.backComponentValues = newArray
+//
+//              newArray = newTemporaryBoardModel.frontComponentValues
+//              newTemporaryBoardModel.frontComponentValues = EBReferenceArray ()
+//              updatedBoardModel.frontComponentValues = newArray
+//
+//              newArray = newTemporaryBoardModel.frontComponentNames
+//              newTemporaryBoardModel.frontComponentNames = EBReferenceArray ()
+//              updatedBoardModel.frontComponentNames = newArray
+//
+//              newArray = newTemporaryBoardModel.backComponentNames
+//              newTemporaryBoardModel.backComponentNames = EBReferenceArray ()
+//              updatedBoardModel.backComponentNames = newArray
+//
+//              let newBackPadArray = newTemporaryBoardModel.backPads
+//              newTemporaryBoardModel.backPads = EBReferenceArray ()
+//              updatedBoardModel.backPads = newBackPadArray
+//
+//              let newTraversingPadArray = newTemporaryBoardModel.traversingPads
+//              newTemporaryBoardModel.traversingPads = EBReferenceArray ()
+//              updatedBoardModel.traversingPads = newTraversingPadArray
+//
+//              let newFrontPadArray = newTemporaryBoardModel.frontPads
+//              newTemporaryBoardModel.frontPads = EBReferenceArray ()
+//              updatedBoardModel.frontPads = newFrontPadArray
+//
+//              let newViaArray = newTemporaryBoardModel.vias
+//              newTemporaryBoardModel.vias = EBReferenceArray ()
+//              updatedBoardModel.vias = newViaArray
+//
+//              let newDrillArray = newTemporaryBoardModel.drills
+//              newTemporaryBoardModel.drills = EBReferenceArray ()
+//              updatedBoardModel.drills = newDrillArray
+//
+//              newArray = newTemporaryBoardModel.backLayoutTexts
+//              newTemporaryBoardModel.backLayoutTexts = EBReferenceArray ()
+//              updatedBoardModel.backLayoutTexts = newArray
+//
+//              newArray = newTemporaryBoardModel.backLegendTexts
+//              newTemporaryBoardModel.backLegendTexts = EBReferenceArray ()
+//              updatedBoardModel.backLegendTexts = newArray
+//
+//              newArray = newTemporaryBoardModel.frontLayoutTexts
+//              newTemporaryBoardModel.frontLayoutTexts = EBReferenceArray ()
+//              updatedBoardModel.frontLayoutTexts = newArray
+//
+//              newArray = newTemporaryBoardModel.frontLegendTexts
+//              newTemporaryBoardModel.frontLegendTexts = EBReferenceArray ()
+//              updatedBoardModel.frontLegendTexts = newArray
+//
+//              newArray = newTemporaryBoardModel.backLegendLines
+//              newTemporaryBoardModel.backLegendLines = EBReferenceArray ()
+//              updatedBoardModel.backLegendLines = newArray
+//
+//              newArray = newTemporaryBoardModel.frontLegendLines
+//              newTemporaryBoardModel.frontLegendLines = EBReferenceArray ()
+//              updatedBoardModel.frontLegendLines = newArray
+//
+//              newArray = newTemporaryBoardModel.internalBoardsLimits
+//              newTemporaryBoardModel.internalBoardsLimits = EBReferenceArray ()
+//              updatedBoardModel.internalBoardsLimits = newArray
+//            }
           }else{ // Cannot read file
             let alert = NSAlert ()
             alert.messageText = "Cannot read file"
@@ -158,6 +160,113 @@ extension AutoLayoutMergerDocument {
         }
       }
     }
+  }
+
+  //····················································································································
+
+  private func performUpdateModel (_ inModelToUpdate : BoardModel, with inLoadedModel : BoardModel) {
+    inModelToUpdate.artworkName = inLoadedModel.artworkName
+    inModelToUpdate.modelWidth = inLoadedModel.modelWidth
+    inModelToUpdate.modelHeight = inLoadedModel.modelHeight
+    inModelToUpdate.modelLimitWidth = inLoadedModel.modelLimitWidth
+    inModelToUpdate.modelVersion = inLoadedModel.modelVersion
+    inModelToUpdate.ignoreModelVersionError = inLoadedModel.ignoreModelVersionError
+
+    var newArray = inLoadedModel.backPackages
+    inLoadedModel.backPackages = EBReferenceArray ()
+    inModelToUpdate.backPackages = newArray
+
+    newArray = inLoadedModel.frontPackages
+    inLoadedModel.frontPackages = EBReferenceArray ()
+    inModelToUpdate.frontPackages = newArray
+
+    newArray = inLoadedModel.frontTracks
+    inLoadedModel.frontTracks = EBReferenceArray ()
+    inModelToUpdate.frontTracks = newArray
+
+    newArray = inLoadedModel.inner1Tracks
+    inLoadedModel.inner1Tracks = EBReferenceArray ()
+    inModelToUpdate.inner1Tracks = newArray
+
+    newArray = inLoadedModel.inner2Tracks
+    inLoadedModel.inner2Tracks = EBReferenceArray ()
+    inModelToUpdate.inner2Tracks = newArray
+
+    newArray = inLoadedModel.inner3Tracks
+    inLoadedModel.inner3Tracks = EBReferenceArray ()
+    inModelToUpdate.inner3Tracks = newArray
+
+    newArray = inLoadedModel.inner4Tracks
+    inLoadedModel.inner4Tracks = EBReferenceArray ()
+    inModelToUpdate.inner4Tracks = newArray
+
+    newArray = inLoadedModel.backTracks
+    inLoadedModel.backTracks = EBReferenceArray ()
+    inModelToUpdate.backTracks = newArray
+
+    newArray = inLoadedModel.backComponentValues
+    inLoadedModel.backComponentValues = EBReferenceArray ()
+    inModelToUpdate.backComponentValues = newArray
+
+    newArray = inLoadedModel.frontComponentValues
+    inLoadedModel.frontComponentValues = EBReferenceArray ()
+    inModelToUpdate.frontComponentValues = newArray
+
+    newArray = inLoadedModel.frontComponentNames
+    inLoadedModel.frontComponentNames = EBReferenceArray ()
+    inModelToUpdate.frontComponentNames = newArray
+
+    newArray = inLoadedModel.backComponentNames
+    inLoadedModel.backComponentNames = EBReferenceArray ()
+    inModelToUpdate.backComponentNames = newArray
+
+    let newBackPadArray = inLoadedModel.backPads
+    inLoadedModel.backPads = EBReferenceArray ()
+    inModelToUpdate.backPads = newBackPadArray
+
+    let newTraversingPadArray = inLoadedModel.traversingPads
+    inLoadedModel.traversingPads = EBReferenceArray ()
+    inModelToUpdate.traversingPads = newTraversingPadArray
+
+    let newFrontPadArray = inLoadedModel.frontPads
+    inLoadedModel.frontPads = EBReferenceArray ()
+    inModelToUpdate.frontPads = newFrontPadArray
+
+    let newViaArray = inLoadedModel.vias
+    inLoadedModel.vias = EBReferenceArray ()
+    inModelToUpdate.vias = newViaArray
+
+    let newDrillArray = inLoadedModel.drills
+    inLoadedModel.drills = EBReferenceArray ()
+    inModelToUpdate.drills = newDrillArray
+
+    newArray = inLoadedModel.backLayoutTexts
+    inLoadedModel.backLayoutTexts = EBReferenceArray ()
+    inModelToUpdate.backLayoutTexts = newArray
+
+    newArray = inLoadedModel.backLegendTexts
+    inLoadedModel.backLegendTexts = EBReferenceArray ()
+    inModelToUpdate.backLegendTexts = newArray
+
+    newArray = inLoadedModel.frontLayoutTexts
+    inLoadedModel.frontLayoutTexts = EBReferenceArray ()
+    inModelToUpdate.frontLayoutTexts = newArray
+
+    newArray = inLoadedModel.frontLegendTexts
+    inLoadedModel.frontLegendTexts = EBReferenceArray ()
+    inModelToUpdate.frontLegendTexts = newArray
+
+    newArray = inLoadedModel.backLegendLines
+    inLoadedModel.backLegendLines = EBReferenceArray ()
+    inModelToUpdate.backLegendLines = newArray
+
+    newArray = inLoadedModel.frontLegendLines
+    inLoadedModel.frontLegendLines = EBReferenceArray ()
+    inModelToUpdate.frontLegendLines = newArray
+
+    newArray = inLoadedModel.internalBoardsLimits
+    inLoadedModel.internalBoardsLimits = EBReferenceArray ()
+    inModelToUpdate.internalBoardsLimits = newArray
   }
 
   //····················································································································

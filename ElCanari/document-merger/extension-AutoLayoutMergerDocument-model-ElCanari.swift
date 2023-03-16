@@ -15,10 +15,10 @@ extension AutoLayoutMergerDocument {
 
   //····················································································································
 
-//  private func registerBoardModelCallBack (_ inBoardModel : BoardModel) {
-//    self.rootObject.boardModels_property.add (inBoardModel)
-//    self.mBoardModelController.select (object: inBoardModel)
-//  }
+  private func registerBoardModelCallBack (_ inBoardModel : BoardModel) {
+    self.rootObject.boardModels_property.add (inBoardModel)
+    self.mBoardModelController.select (object: inBoardModel)
+  }
 
   //····················································································································
 
@@ -27,11 +27,12 @@ extension AutoLayoutMergerDocument {
     let optionalFileData : Data? = FileManager ().contents (atPath: inFilePath)
     if let fileData = optionalFileData {
       let s = inFilePath.lastPathComponent.deletingPathExtension
-      let possibleBoardModel = self.parseBoardModel_ELCanariArchive (fromData: fileData, named : s)
-      if let boardModel = possibleBoardModel {
-        self.rootObject.boardModels_property.add (boardModel)
-        self.mBoardModelController.select (object:boardModel)
-      }
+      self.parseBoardModel_ELCanariArchive (fromData: fileData, named : s, callBack: { self.registerBoardModelCallBack ($0) } )
+//      let possibleBoardModel = self.parseBoardModel_ELCanariArchive (fromData: fileData, named : s)
+//      if let boardModel = possibleBoardModel {
+//        self.rootObject.boardModels_property.add (boardModel)
+//        self.mBoardModelController.select (object:boardModel)
+//      }
     }else{ // Cannot read file
       let alert = NSAlert ()
       alert.messageText = "Cannot read file"
@@ -42,8 +43,9 @@ extension AutoLayoutMergerDocument {
 
   //····················································································································
 
-  func parseBoardModel_ELCanariArchive (fromData inData : Data, named inName : String) -> BoardModel? {
-    var boardModel : BoardModel? = nil
+  func parseBoardModel_ELCanariArchive (fromData inData : Data,
+                                        named inName : String,
+                                        callBack inCallBack : @escaping (BoardModel) -> Void) {
     do{
       let optionalBoardArchiveDictionary = try PropertyListSerialization.propertyList (
         from: inData,
@@ -51,7 +53,7 @@ extension AutoLayoutMergerDocument {
         format: nil
       )
       if let boardArchiveDict = optionalBoardArchiveDictionary as? [String : Any] {
-        boardModel = internal_check_ELCanariArchive_version (boardArchiveDict, named: inName)
+        self.internal_check_ELCanariArchive_version (boardArchiveDict, named: inName, callBack: inCallBack)
       }
     }catch let error {
       let alert = NSAlert ()
@@ -59,13 +61,13 @@ extension AutoLayoutMergerDocument {
       alert.informativeText = "\(error)"
       alert.beginSheetModal (for: self.windowForSheet!) {(NSModalResponse) in}
     }
-    return boardModel
   }
 
   //····················································································································
 
-  fileprivate func internal_check_ELCanariArchive_version (_ inBoardArchiveDict : [String : Any], named inName : String) -> BoardModel? {
-    var boardModel : BoardModel? = nil
+  fileprivate func internal_check_ELCanariArchive_version (_ inBoardArchiveDict : [String : Any],
+                                                           named inName : String,
+                                                           callBack inCallBack : @escaping (BoardModel) -> Void) {
     let version : Int = (inBoardArchiveDict ["ARCHIVE-VERSION"] as? Int) ?? 0
     if version != MERGER_ARCHIVE_VERSION {
       let alert = NSAlert ()
@@ -75,13 +77,12 @@ extension AutoLayoutMergerDocument {
       alert.informativeText = "Merger requires archive version #\(MERGER_ARCHIVE_VERSION) ; update your archive by generating the production files again."
       alert.beginSheetModal (for: self.windowForSheet!) { (inResponse : NSApplication.ModalResponse) in
         if inResponse == .alertFirstButtonReturn {
-          boardModel = self.internal_parseBoardModel_ELCanariArchive (inBoardArchiveDict, version: version, ignoreVersionError: true, named: inName)
+          self.internal_parseBoardModel_ELCanariArchive (inBoardArchiveDict, version: version, ignoreVersionError: true, named: inName, callBack: inCallBack)
         }
       }
     }else{
-      boardModel = self.internal_parseBoardModel_ELCanariArchive (inBoardArchiveDict, version: version, ignoreVersionError: false, named: inName)
+      self.internal_parseBoardModel_ELCanariArchive (inBoardArchiveDict, version: version, ignoreVersionError: false, named: inName, callBack: inCallBack)
     }
-    return boardModel
   }
 
   //····················································································································
@@ -89,7 +90,8 @@ extension AutoLayoutMergerDocument {
   fileprivate func internal_parseBoardModel_ELCanariArchive (_ inBoardArchiveDict : [String : Any],
                                                              version inVersion : Int,
                                                              ignoreVersionError inIgnoreVersionError : Bool,
-                                                             named inName : String) -> BoardModel? {
+                                                             named inName : String,
+                                                             callBack inCallBack : @escaping (BoardModel) -> Void) {
     let boardModel = BoardModel (self.undoManager)
   //--- Populate board model from dictionary (accumulate error messages in errorArray variable)
     var errorArray = [String] ()
@@ -578,8 +580,11 @@ extension AutoLayoutMergerDocument {
       alert.informativeText = s
       alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
     }
-  //--- Return 
-    return errorArray.isEmpty ? boardModel : nil
+  //--- Return
+    if errorArray.isEmpty {
+      inCallBack (boardModel)
+    }
+//    return errorArray.isEmpty ? boardModel : nil
   }
 
   //····················································································································
