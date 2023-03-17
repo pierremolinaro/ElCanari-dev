@@ -87,50 +87,14 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //--- Configure mPackageName simple stored property
     self.mPackageName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mPackageName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mPackageName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mStrokeBezierPath simple stored property
     self.mStrokeBezierPath_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mStrokeBezierPath_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mStrokeBezierPath_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure packagePadDictionary transient property
     self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.packagePadDictionary_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.packagePadDictionary_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   }
 

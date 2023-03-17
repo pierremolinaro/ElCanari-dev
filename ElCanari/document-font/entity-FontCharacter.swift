@@ -215,7 +215,6 @@ final class FontCharacter : EBManagedObject,
     self.mWarnsWhenNoSegment_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mWarnsWhenNoSegment")
     self.mWarnsWhenAdvanceIsZero_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mWarnsWhenAdvanceIsZero")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- To many property: segments (no option)
     self.segments_property.undoManager = inUndoManager
   //--- Atomic property: segmentArrayForDrawing
@@ -314,7 +313,6 @@ final class FontCharacter : EBManagedObject,
     self.mWarnsWhenNoSegment_property.startsToBeObserved (by: self.issues_property)
     self.mWarnsWhenAdvanceIsZero_property.startsToBeObserved (by: self.issues_property)
     self.segments_property.startsToBeObserved (by: self.issues_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.advance_property.setSignatureObserver (observer: self)

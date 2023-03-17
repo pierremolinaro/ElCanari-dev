@@ -228,7 +228,6 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.startsToBeObserved (by: self.mRoot_none)
-//    gInitSemaphore.wait ()
   //--- To one property: mRoot (has opposite to many relationship: mModelImageObjects)
     self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -313,7 +312,6 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
     self.mSecondDx_property.startsToBeObserved (by: self.selectionDisplay_property)
     self.mSecondDy_property.startsToBeObserved (by: self.selectionDisplay_property)
     self.mRoot_property.mModelPointsCircleRadius_property.startsToBeObserved (by: self.selectionDisplay_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

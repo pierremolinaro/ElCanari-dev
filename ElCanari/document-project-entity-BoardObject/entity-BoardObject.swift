@@ -579,7 +579,6 @@ class BoardObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.startsToBeObserved (by: self.mRoot_none)
-//    gInitSemaphore.wait ()
   //--- To one property: mRoot (has opposite to many relationship: mBoardObjects)
     self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -926,7 +925,6 @@ class BoardObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.mErrorOrWarningIssueSize_property.startsToBeObserved (by: self.errorOrWarningIssueSize_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

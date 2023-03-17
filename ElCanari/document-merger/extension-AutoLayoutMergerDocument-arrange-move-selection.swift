@@ -195,7 +195,7 @@ extension AutoLayoutMergerDocument {
   //····················································································································
 
   func stackDown (overlap inOverlap : Bool, objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
-    let sortedArray = inObjectArray.values.sorted (by: { $0.y < $1.y })
+    let sortedArray = inObjectArray.values.sorted { $0.y < $1.y }
     for object in sortedArray {
       moveDown (overlap: inOverlap, objectSet: EBReferenceSet (object))
     }
@@ -204,7 +204,7 @@ extension AutoLayoutMergerDocument {
   //····················································································································
 
   func stackLeft (overlap inOverlap : Bool, objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
-    let sortedArray = inObjectArray.values.sorted (by: { $0.x < $1.x })
+    let sortedArray = inObjectArray.values.sorted { $0.x < $1.x }
     for object in sortedArray {
       moveLeft (overlap: inOverlap, objectSet: EBReferenceSet (object))
     }
@@ -213,7 +213,7 @@ extension AutoLayoutMergerDocument {
   //····················································································································
 
   func stackUp (overlap inOverlap : Bool, objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
-    let sortedArray = inObjectArray.values.sorted (by: { $0.y > $1.y })
+    let sortedArray = inObjectArray.values.sorted { $0.y > $1.y }
     for object in sortedArray {
       moveUp (overlap: inOverlap, objectSet: EBReferenceSet (object))
     }
@@ -222,7 +222,7 @@ extension AutoLayoutMergerDocument {
   //····················································································································
 
   func stackRight (overlap inOverlap : Bool, objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
-    let sortedArray = inObjectArray.values.sorted (by: { $0.x > $1.x })
+    let sortedArray = inObjectArray.values.sorted { $0.x > $1.x }
     for object in sortedArray {
       moveRight (overlap: inOverlap, objectSet: EBReferenceSet (object))
     }

@@ -1557,7 +1557,6 @@ final class PackageRoot : EBManagedObject,
       }
     }
     self.mModelImageDoublePoint_property.startsToBeObserved (by: self.mModelImageDoublePoint_none)
-//    gInitSemaphore.wait ()
   //--- To many property: mModelImageObjects (has opposite relationship)
     self.mModelImageObjects_property.undoManager = inUndoManager
     self.mModelImageObjects_property.setOppositeRelationShipFunctions (
@@ -1912,7 +1911,6 @@ final class PackageRoot : EBManagedObject,
     self.packageZones_property.toMany_xName_StartsToBeObserved (by: self.issues_property)
     self.packageZones_property.toMany_yName_StartsToBeObserved (by: self.issues_property)
     preferences_padZoneFont_property.startsToBeObserved (by: self.issues_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mModelImageObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },

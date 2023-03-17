@@ -151,178 +151,46 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //--- Configure mPinX simple stored property
     self.mPinX_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mPinX_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mPinX_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mPinY simple stored property
     self.mPinY_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mPinY_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mPinY_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mXName simple stored property
     self.mXName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mXName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mXName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mYName simple stored property
     self.mYName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mYName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mYName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mName simple stored property
     self.mName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mNameHorizontalAlignment simple stored property
     self.mNameHorizontalAlignment_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mNameHorizontalAlignment_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mNameHorizontalAlignment_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mPinNameIsDisplayedInSchematics simple stored property
     self.mPinNameIsDisplayedInSchematics_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mPinNameIsDisplayedInSchematics_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mPinNameIsDisplayedInSchematics_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mXNumber simple stored property
     self.mXNumber_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mXNumber_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mXNumber_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mYNumber simple stored property
     self.mYNumber_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mYNumber_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mYNumber_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mNumberHorizontalAlignment simple stored property
     self.mNumberHorizontalAlignment_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mNumberHorizontalAlignment_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mNumberHorizontalAlignment_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure nameShape transient property
     self.nameShape_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.nameShape_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.nameShape_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   }
 

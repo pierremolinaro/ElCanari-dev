@@ -415,7 +415,6 @@ final class BoardRestrictRectangle : BoardObject,
     self.mIsInInner4Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mIsInInner4Layer")
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -639,7 +638,6 @@ final class BoardRestrictRectangle : BoardObject,
     self.mIsInInner2Layer_property.startsToBeObserved (by: self.signatureForERCChecking_property)
     self.mIsInInner3Layer_property.startsToBeObserved (by: self.signatureForERCChecking_property)
     self.mIsInInner4Layer_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

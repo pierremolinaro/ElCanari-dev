@@ -263,210 +263,54 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //--- Configure mDeviceName simple stored property
     self.mDeviceName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mDeviceName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mDeviceName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mPrefix simple stored property
     self.mPrefix_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mPrefix_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mPrefix_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mDeviceVersion simple stored property
     self.mDeviceVersion_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mDeviceVersion_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mDeviceVersion_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mDeviceFileData simple stored property
     self.mDeviceFileData_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mDeviceFileData_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mDeviceFileData_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure versionString transient property
     self.versionString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.versionString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.versionString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure sizeString transient property
     self.sizeString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.sizeString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.sizeString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure canExport transient property
     self.canExport_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.canExport_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.canExport_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure packageNames transient property
     self.packageNames_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.packageNames_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.packageNames_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure deviceComponentCountString transient property
     self.deviceComponentCountString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.deviceComponentCountString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.deviceComponentCountString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure canRemove transient property
     self.canRemove_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.canRemove_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.canRemove_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure symbolAndTypesNames transient property
     self.symbolAndTypesNames_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.symbolAndTypesNames_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.symbolAndTypesNames_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure pinPadAssignments transient property
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.pinPadAssignments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.pinPadAssignments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure deviceSymbolDictionary transient property
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.deviceSymbolDictionary_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.deviceSymbolDictionary_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   }
 

@@ -135,146 +135,38 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
   //--- Configure mInstanceName simple stored property
     self.mInstanceName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mInstanceName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mInstanceName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mX simple stored property
     self.mX_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mX_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mX_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mY simple stored property
     self.mY_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mY_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mY_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure symbolQualifiedName transient property
     self.symbolQualifiedName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.symbolQualifiedName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.symbolQualifiedName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure symbolTypeName transient property
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.symbolTypeName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.symbolTypeName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure pinSymbolQualifiedNames transient property
     self.pinSymbolQualifiedNames_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.pinSymbolQualifiedNames_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.pinSymbolQualifiedNames_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.selectionDisplay_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.selectionDisplay_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure unconnectedPins transient property
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.unconnectedPins_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.unconnectedPins_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.objectDisplay_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.objectDisplay_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   }
 

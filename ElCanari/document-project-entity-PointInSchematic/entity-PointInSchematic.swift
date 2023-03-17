@@ -514,7 +514,6 @@ final class PointInSchematic : EBManagedObject,
       }
     }
     self.mSheet_property.startsToBeObserved (by: self.mSheet_none)
-//    gInitSemaphore.wait ()
   //--- To many property: mLabels (has opposite relationship)
     self.mLabels_property.undoManager = inUndoManager
     self.mLabels_property.setOppositeRelationShipFunctions (
@@ -841,7 +840,6 @@ final class PointInSchematic : EBManagedObject,
     self.mWiresP2s_property.startsToBeObserved (by: self.netInfoForPoint_property)
     self.location_property.startsToBeObserved (by: self.netInfoForPoint_property)
     self.mSheet_property.sheetDescriptor_property.startsToBeObserved (by: self.netInfoForPoint_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mLabels_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },

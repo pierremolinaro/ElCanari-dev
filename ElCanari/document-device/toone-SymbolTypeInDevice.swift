@@ -167,146 +167,38 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //--- Configure mTypeName simple stored property
     self.mTypeName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mTypeName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mTypeName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mVersion simple stored property
     self.mVersion_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mVersion_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mVersion_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mFileData simple stored property
     self.mFileData_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mFileData_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mFileData_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mStrokeBezierPath simple stored property
     self.mStrokeBezierPath_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mStrokeBezierPath_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mStrokeBezierPath_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mFilledBezierPath simple stored property
     self.mFilledBezierPath_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mFilledBezierPath_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mFilledBezierPath_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure versionString transient property
     self.versionString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.versionString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.versionString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure instanceCount transient property
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.instanceCount_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.instanceCount_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure documentSize transient property
     self.documentSize_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.documentSize_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.documentSize_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure pinNameShape transient property
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.pinNameShape_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.pinNameShape_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   }
 

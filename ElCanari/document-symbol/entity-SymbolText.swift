@@ -145,7 +145,6 @@ final class SymbolText : SymbolObject,
     self.horizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "horizontalAlignment")
     self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -241,7 +240,6 @@ final class SymbolText : SymbolObject,
     self.x_property.startsToBeObserved (by: self.issues_property)
     self.y_property.startsToBeObserved (by: self.issues_property)
     self.text_property.startsToBeObserved (by: self.issues_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.horizontalAlignment_property.setSignatureObserver (observer: self)

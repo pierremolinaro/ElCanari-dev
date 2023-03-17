@@ -299,7 +299,6 @@ final class FontRoot : EBManagedObject,
     self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "selectedInspector")
     self.currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32, undoManager: inUndoManager, key: "currentCharacterCodePoint")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- To many property: characters (no option)
     self.characters_property.undoManager = inUndoManager
   //--- Atomic property: currentCharacterCodePointString
@@ -437,7 +436,6 @@ final class FontRoot : EBManagedObject,
       }
     }
     self.characters_property.toMany_issues_StartsToBeObserved (by: self.issues_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.characters_property.setSignatureObserver (observer: self)

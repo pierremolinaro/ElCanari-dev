@@ -150,7 +150,6 @@ final class LabelInSchematic : SchematicObject,
       }
     }
     self.mPoint_property.startsToBeObserved (by: self.mPoint_none)
-//    gInitSemaphore.wait ()
   //--- To one property: mPoint (has opposite to many relationship: mLabels)
     self.mPoint_property.undoManager = inUndoManager
     self.mPoint_property.setOppositeRelationShipFunctions (
@@ -278,7 +277,6 @@ final class LabelInSchematic : SchematicObject,
     self.netName_property.startsToBeObserved (by: self.objectDisplay_property)
     preferences_pinNameFont_property.startsToBeObserved (by: self.objectDisplay_property)
     self.mOrientation_property.startsToBeObserved (by: self.objectDisplay_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

@@ -378,7 +378,6 @@ final class DevicePinInProject : EBManagedObject,
     self.mYNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mYNumber")
     self.mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "mNumberHorizontalAlignment")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- Atomic property: pinQualifiedName
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -461,7 +460,6 @@ final class DevicePinInProject : EBManagedObject,
     self.mXNumber_property.startsToBeObserved (by: self.descriptor_property)
     self.mYNumber_property.startsToBeObserved (by: self.descriptor_property)
     self.mNumberHorizontalAlignment_property.startsToBeObserved (by: self.descriptor_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

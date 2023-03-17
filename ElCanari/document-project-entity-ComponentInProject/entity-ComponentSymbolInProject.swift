@@ -499,7 +499,6 @@ final class ComponentSymbolInProject : SchematicObject,
       }
     }
     self.mComponent_property.startsToBeObserved (by: self.mComponent_none)
-//    gInitSemaphore.wait ()
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.undoManager = inUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (
@@ -790,7 +789,6 @@ final class ComponentSymbolInProject : SchematicObject,
       }
     }
     self.isPlacedInSchematic_property.startsToBeObserved (by: self.symbolInSchematic_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbol_property.setProp (me) } },

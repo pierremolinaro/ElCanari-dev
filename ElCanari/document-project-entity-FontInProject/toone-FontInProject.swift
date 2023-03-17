@@ -215,178 +215,46 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //--- Configure mNominalSize simple stored property
     self.mNominalSize_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mNominalSize_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mNominalSize_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mFontName simple stored property
     self.mFontName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mFontName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mFontName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mFontVersion simple stored property
     self.mFontVersion_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mFontVersion_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mFontVersion_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mDescriptiveString simple stored property
     self.mDescriptiveString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mDescriptiveString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mDescriptiveString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure versionString transient property
     self.versionString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.versionString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.versionString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure sizeString transient property
     self.sizeString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.sizeString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.sizeString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure descriptor transient property
     self.descriptor_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.descriptor_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.descriptor_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure textCount transient property
     self.textCount_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.textCount_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.textCount_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure canRemoveFont transient property
     self.canRemoveFont_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.canRemoveFont_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.canRemoveFont_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure componentNamesCount transient property
     self.componentNamesCount_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.componentNamesCount_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.componentNamesCount_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure componentValuesCount transient property
     self.componentValuesCount_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.componentValuesCount_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.componentValuesCount_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   }
 

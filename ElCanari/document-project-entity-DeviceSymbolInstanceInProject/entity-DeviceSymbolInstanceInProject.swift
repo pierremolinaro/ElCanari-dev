@@ -155,7 +155,6 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
       }
     }
     self.mSymbolType_property.startsToBeObserved (by: self.mSymbolType_none)
-//    gInitSemaphore.wait ()
   //--- To one property: mSymbolType
     self.mSymbolType_property.undoManager = inUndoManager
   //--- Atomic property: symbolAndTypeName
@@ -234,7 +233,6 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
     }
     self.mSymbolType_property.mStrokeBezierPath_property.startsToBeObserved (by: self.strokeBezierPath_property)
     preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.startsToBeObserved (by: self.strokeBezierPath_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

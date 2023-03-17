@@ -865,7 +865,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       }
     }
     self.mArtwork_property.startsToBeObserved (by: self.mArtwork_none)
-//    gInitSemaphore.wait ()
   //--- To one property: mArtwork (has opposite to many relationship: fileGenerationParameterArray)
     self.mArtwork_property.undoManager = inUndoManager
     self.mArtwork_property.setOppositeRelationShipFunctions (
@@ -1023,7 +1022,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       }
     }
     self.fileExtension_property.startsToBeObserved (by: self.emptyFileExtensionImage_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.drawBoardLimits_property.setSignatureObserver (observer: self)

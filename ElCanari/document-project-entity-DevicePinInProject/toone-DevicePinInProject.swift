@@ -143,226 +143,58 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //--- Configure mPinName simple stored property
     self.mPinName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mPinName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mPinName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSymbolInstanceName simple stored property
     self.mSymbolInstanceName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSymbolInstanceName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSymbolInstanceName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSymbolTypeName simple stored property
     self.mSymbolTypeName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSymbolTypeName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSymbolTypeName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mPinX simple stored property
     self.mPinX_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mPinX_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mPinX_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mPinY simple stored property
     self.mPinY_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mPinY_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mPinY_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mXName simple stored property
     self.mXName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mXName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mXName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mYName simple stored property
     self.mYName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mYName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mYName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mNameHorizontalAlignment simple stored property
     self.mNameHorizontalAlignment_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mNameHorizontalAlignment_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mNameHorizontalAlignment_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mPinNameIsDisplayedInSchematic simple stored property
     self.mPinNameIsDisplayedInSchematic_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mPinNameIsDisplayedInSchematic_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mPinNameIsDisplayedInSchematic_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mXNumber simple stored property
     self.mXNumber_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mXNumber_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mXNumber_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mYNumber simple stored property
     self.mYNumber_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mYNumber_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mYNumber_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mNumberHorizontalAlignment simple stored property
     self.mNumberHorizontalAlignment_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mNumberHorizontalAlignment_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mNumberHorizontalAlignment_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure pinQualifiedName transient property
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.pinQualifiedName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.pinQualifiedName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure descriptor transient property
     self.descriptor_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.descriptor_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.descriptor_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   }
 

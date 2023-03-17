@@ -455,7 +455,6 @@ final class BorderCurve : EBGraphicManagedObject,
       }
     }
     self.mPrevious_property.startsToBeObserved (by: self.mPrevious_none)
-//    gInitSemaphore.wait ()
   //--- Atomic proxy property: mNextX
     self.mNextX_property.mReadModelFunction = { [weak self] in
       if let object = self?.mNext_property {
@@ -742,7 +741,6 @@ final class BorderCurve : EBGraphicManagedObject,
     self.mCPY2_property.startsToBeObserved (by: self.selectionDisplay_property)
     self.mShape_property.startsToBeObserved (by: self.selectionDisplay_property)
     self.mRoot_property.mBoardShape_property.startsToBeObserved (by: self.selectionDisplay_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

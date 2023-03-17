@@ -1439,2370 +1439,594 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //--- Configure mArtworkName simple stored property
     self.mArtworkName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mArtworkName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mArtworkName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mArtworkVersion simple stored property
     self.mArtworkVersion_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mArtworkVersion_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mArtworkVersion_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mPDFBoardBackgroundColor simple stored property
     self.mPDFBoardBackgroundColor_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mPDFBoardBackgroundColor_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mPDFBoardBackgroundColor_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mCheckClearanceBetweenPadsOfSameNet simple stored property
     self.mCheckClearanceBetweenPadsOfSameNet_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mCheckClearanceBetweenPadsOfSameNet_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mCheckClearanceBetweenPadsOfSameNet_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mLastERCCheckingIsSuccess simple stored property
     self.mLastERCCheckingIsSuccess_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mLastERCCheckingIsSuccess_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mLastERCCheckingIsSuccess_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mLastERCCheckingSignature simple stored property
     self.mLastERCCheckingSignature_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mLastERCCheckingSignature_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mLastERCCheckingSignature_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mLayerConfiguration simple stored property
     self.mLayerConfiguration_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mLayerConfiguration_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mLayerConfiguration_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardSideForNewTrack simple stored property
     self.mBoardSideForNewTrack_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardSideForNewTrack_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardSideForNewTrack_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mDirectionForNewTrack simple stored property
     self.mDirectionForNewTrack_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mDirectionForNewTrack_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mDirectionForNewTrack_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardLayerForNewText simple stored property
     self.mBoardLayerForNewText_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardLayerForNewText_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardLayerForNewText_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardLayerForNewLine simple stored property
     self.mBoardLayerForNewLine_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardLayerForNewLine_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardLayerForNewLine_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardSideForNewRestrictRectangle simple stored property
     self.mBoardSideForNewRestrictRectangle_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardSideForNewRestrictRectangle_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardSideForNewRestrictRectangle_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mNewRestrictRectangleLayers simple stored property
     self.mNewRestrictRectangleLayers_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mNewRestrictRectangleLayers_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mNewRestrictRectangleLayers_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mAutoRouterPreferredDirections simple stored property
     self.mAutoRouterPreferredDirections_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mAutoRouterPreferredDirections_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mAutoRouterPreferredDirections_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mAutorouterSnapAngle simple stored property
     self.mAutorouterSnapAngle_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mAutorouterSnapAngle_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mAutorouterSnapAngle_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mRouteDirection simple stored property
     self.mRouteDirection_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mRouteDirection_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mRouteDirection_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mRouteOrigin simple stored property
     self.mRouteOrigin_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mRouteOrigin_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mRouteOrigin_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mAutorouterInterfaceMode simple stored property
     self.mAutorouterInterfaceMode_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mAutorouterInterfaceMode_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mAutorouterInterfaceMode_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mExportExistingTracksAndVias simple stored property
     self.mExportExistingTracksAndVias_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mExportExistingTracksAndVias_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mExportExistingTracksAndVias_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mExportExistingTracksAndVias2 simple stored property
     self.mExportExistingTracksAndVias2_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mExportExistingTracksAndVias2_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mExportExistingTracksAndVias2_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mTrackLengthUnit simple stored property
     self.mTrackLengthUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mTrackLengthUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mTrackLengthUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mLayoutClearance simple stored property
     self.mLayoutClearance_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mLayoutClearance_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mLayoutClearance_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mLayoutClearanceUnit simple stored property
     self.mLayoutClearanceUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mLayoutClearanceUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mLayoutClearanceUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardSelectedInspector simple stored property
     self.mBoardSelectedInspector_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardSelectedInspector_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardSelectedInspector_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardHorizontalFlip simple stored property
     self.mBoardHorizontalFlip_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardHorizontalFlip_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardHorizontalFlip_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardVerticalFlip simple stored property
     self.mBoardVerticalFlip_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardVerticalFlip_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardVerticalFlip_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardGridStyle simple stored property
     self.mBoardGridStyle_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardGridStyle_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardGridStyle_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardGridDisplayFactor simple stored property
     self.mBoardGridDisplayFactor_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardGridDisplayFactor_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardGridDisplayFactor_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardZoom simple stored property
     self.mBoardZoom_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardZoom_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardZoom_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardGridStep simple stored property
     self.mBoardGridStep_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardGridStep_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardGridStep_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardGridStepUnit simple stored property
     self.mBoardGridStepUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardGridStepUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardGridStepUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mErrorOrWarningIssueSize simple stored property
     self.mErrorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mErrorOrWarningIssueSize_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mErrorOrWarningIssueSize_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mControlKeyHiliteDiameter simple stored property
     self.mControlKeyHiliteDiameter_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mControlKeyHiliteDiameter_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mControlKeyHiliteDiameter_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mDSNFileProposedName simple stored property
     self.mDSNFileProposedName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mDSNFileProposedName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mDSNFileProposedName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardLimitsWidth simple stored property
     self.mBoardLimitsWidth_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardLimitsWidth_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardLimitsWidth_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardLimitsWidthUnit simple stored property
     self.mBoardLimitsWidthUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardLimitsWidthUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardLimitsWidthUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardClearance simple stored property
     self.mBoardClearance_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardClearance_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardClearance_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardClearanceUnit simple stored property
     self.mBoardClearanceUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardClearanceUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardClearanceUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardLimitsSelectedInspector simple stored property
     self.mBoardLimitsSelectedInspector_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardLimitsSelectedInspector_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardLimitsSelectedInspector_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardLimitsHorizontalFlip simple stored property
     self.mBoardLimitsHorizontalFlip_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardLimitsHorizontalFlip_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardLimitsHorizontalFlip_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardLimitsVerticalFlip simple stored property
     self.mBoardLimitsVerticalFlip_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardLimitsVerticalFlip_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardLimitsVerticalFlip_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardLimitsGridStyle simple stored property
     self.mBoardLimitsGridStyle_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardLimitsGridStyle_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardLimitsGridStyle_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardLimitsGridDisplayFactor simple stored property
     self.mBoardLimitsGridDisplayFactor_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardLimitsGridDisplayFactor_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardLimitsGridDisplayFactor_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardLimitsZoom simple stored property
     self.mBoardLimitsZoom_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardLimitsZoom_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardLimitsZoom_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardLimitsGridStep simple stored property
     self.mBoardLimitsGridStep_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardLimitsGridStep_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardLimitsGridStep_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardLimitsGridStepUnit simple stored property
     self.mBoardLimitsGridStepUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardLimitsGridStepUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardLimitsGridStepUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardLimitsBoundingBoxUnit simple stored property
     self.mBoardLimitsBoundingBoxUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardLimitsBoundingBoxUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardLimitsBoundingBoxUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardPointsBoundingBoxUnit simple stored property
     self.mBoardPointsBoundingBoxUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardPointsBoundingBoxUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardPointsBoundingBoxUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardSelectedCurveDisplayUnit simple stored property
     self.mBoardSelectedCurveDisplayUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardSelectedCurveDisplayUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardSelectedCurveDisplayUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardLimitControlPointsDisplayUnit simple stored property
     self.mBoardLimitControlPointsDisplayUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardLimitControlPointsDisplayUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardLimitControlPointsDisplayUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mBoardShape simple stored property
     self.mBoardShape_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardShape_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mBoardShape_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mContentOpacityInBoardOutline simple stored property
     self.mContentOpacityInBoardOutline_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mContentOpacityInBoardOutline_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mContentOpacityInBoardOutline_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mRectangularBoardWidth simple stored property
     self.mRectangularBoardWidth_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mRectangularBoardWidth_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mRectangularBoardWidth_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mRectangularBoardWidthUnit simple stored property
     self.mRectangularBoardWidthUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mRectangularBoardWidthUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mRectangularBoardWidthUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mRectangularBoardHeight simple stored property
     self.mRectangularBoardHeight_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mRectangularBoardHeight_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mRectangularBoardHeight_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mRectangularBoardHeightUnit simple stored property
     self.mRectangularBoardHeightUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mRectangularBoardHeightUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mRectangularBoardHeightUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mDefaultNetClassName simple stored property
     self.mDefaultNetClassName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mDefaultNetClassName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mDefaultNetClassName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSelectedPageIndex simple stored property
     self.mSelectedPageIndex_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSelectedPageIndex_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSelectedPageIndex_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSelectedSchematicInspector simple stored property
     self.mSelectedSchematicInspector_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSelectedSchematicInspector_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSelectedSchematicInspector_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSchematicTitle simple stored property
     self.mSchematicTitle_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSchematicTitle_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSchematicTitle_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSchematicVersion simple stored property
     self.mSchematicVersion_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSchematicVersion_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSchematicVersion_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSchematicDate simple stored property
     self.mSchematicDate_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSchematicDate_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSchematicDate_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSchematicHorizontalFlip simple stored property
     self.mSchematicHorizontalFlip_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSchematicHorizontalFlip_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSchematicHorizontalFlip_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSchematicVerticalFlip simple stored property
     self.mSchematicVerticalFlip_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSchematicVerticalFlip_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSchematicVerticalFlip_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSchematicZoom simple stored property
     self.mSchematicZoom_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSchematicZoom_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSchematicZoom_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSchematicGridStyle simple stored property
     self.mSchematicGridStyle_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSchematicGridStyle_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSchematicGridStyle_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSchematicGridDisplayFactor simple stored property
     self.mSchematicGridDisplayFactor_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSchematicGridDisplayFactor_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSchematicGridDisplayFactor_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSchematicCustomWidth simple stored property
     self.mSchematicCustomWidth_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSchematicCustomWidth_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSchematicCustomWidth_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSchematicCustomWidthUnit simple stored property
     self.mSchematicCustomWidthUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSchematicCustomWidthUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSchematicCustomWidthUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSchematicCustomHeight simple stored property
     self.mSchematicCustomHeight_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSchematicCustomHeight_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSchematicCustomHeight_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSchematicCustomHeightUnit simple stored property
     self.mSchematicCustomHeightUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSchematicCustomHeightUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSchematicCustomHeightUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure drawErrorBackgroundForBoard simple stored property
     self.drawErrorBackgroundForBoard_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.drawErrorBackgroundForBoard_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.drawErrorBackgroundForBoard_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayFrontRestrictRectangles simple stored property
     self.displayFrontRestrictRectangles_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayFrontRestrictRectangles_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayFrontRestrictRectangles_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayBackRestrictRectangles simple stored property
     self.displayBackRestrictRectangles_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayBackRestrictRectangles_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayBackRestrictRectangles_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayInner1RestrictRectangles simple stored property
     self.displayInner1RestrictRectangles_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayInner1RestrictRectangles_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayInner1RestrictRectangles_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayInner2RestrictRectangles simple stored property
     self.displayInner2RestrictRectangles_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayInner2RestrictRectangles_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayInner2RestrictRectangles_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayInner3RestrictRectangles simple stored property
     self.displayInner3RestrictRectangles_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayInner3RestrictRectangles_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayInner3RestrictRectangles_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayInner4RestrictRectangles simple stored property
     self.displayInner4RestrictRectangles_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayInner4RestrictRectangles_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayInner4RestrictRectangles_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayFrontLegendForBoard simple stored property
     self.displayFrontLegendForBoard_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayFrontLegendForBoard_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayFrontLegendForBoard_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayFrontLayoutForBoard simple stored property
     self.displayFrontLayoutForBoard_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayFrontLayoutForBoard_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayFrontLayoutForBoard_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayBackLayoutForBoard simple stored property
     self.displayBackLayoutForBoard_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayBackLayoutForBoard_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayBackLayoutForBoard_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayInner1LayoutForBoard simple stored property
     self.displayInner1LayoutForBoard_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayInner1LayoutForBoard_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayInner1LayoutForBoard_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayInner2LayoutForBoard simple stored property
     self.displayInner2LayoutForBoard_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayInner2LayoutForBoard_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayInner2LayoutForBoard_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayInner3LayoutForBoard simple stored property
     self.displayInner3LayoutForBoard_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayInner3LayoutForBoard_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayInner3LayoutForBoard_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayInner4LayoutForBoard simple stored property
     self.displayInner4LayoutForBoard_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayInner4LayoutForBoard_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayInner4LayoutForBoard_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayBackLegendForBoard simple stored property
     self.displayBackLegendForBoard_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayBackLegendForBoard_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayBackLegendForBoard_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayFrontPadsForBoard simple stored property
     self.displayFrontPadsForBoard_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayFrontPadsForBoard_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayFrontPadsForBoard_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayBackPadsForBoard simple stored property
     self.displayBackPadsForBoard_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayBackPadsForBoard_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayBackPadsForBoard_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure displayPadNumbersForBoard simple stored property
     self.displayPadNumbersForBoard_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.displayPadNumbersForBoard_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.displayPadNumbersForBoard_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure packageDrawingWidthMultpliedByTenForBoard simple stored property
     self.packageDrawingWidthMultpliedByTenForBoard_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.packageDrawingWidthMultpliedByTenForBoard_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.packageDrawingWidthMultpliedByTenForBoard_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mSchematicSheetOrientation simple stored property
     self.mSchematicSheetOrientation_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSchematicSheetOrientation_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mSchematicSheetOrientation_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mRastnetDisplay simple stored property
     self.mRastnetDisplay_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mRastnetDisplay_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mRastnetDisplay_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mRastnetDisplayedNetName simple stored property
     self.mRastnetDisplayedNetName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mRastnetDisplayedNetName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mRastnetDisplayedNetName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure mRastnetDisplayedComponentName simple stored property
     self.mRastnetDisplayedComponentName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mRastnetDisplayedComponentName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.mRastnetDisplayedComponentName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure hasInnerElements transient property
     self.hasInnerElements_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.hasInnerElements_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.hasInnerElements_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure layerConfigurationString transient property
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.layerConfigurationString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.layerConfigurationString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure boardGridStepMultipliedByDisplayFactor transient property
     self.boardGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardGridStepMultipliedByDisplayFactor_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.boardGridStepMultipliedByDisplayFactor_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure boardLimitsGridStepMultipliedByDisplayFactor transient property
     self.boardLimitsGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardLimitsGridStepMultipliedByDisplayFactor_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.boardLimitsGridStepMultipliedByDisplayFactor_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure boardShapeIsRectangular transient property
     self.boardShapeIsRectangular_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardShapeIsRectangular_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.boardShapeIsRectangular_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure selectedSheetIssues transient property
     self.selectedSheetIssues_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.selectedSheetIssues_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.selectedSheetIssues_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure schematicOverDisplay transient property
     self.schematicOverDisplay_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.schematicOverDisplay_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.schematicOverDisplay_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure connexionWarningString transient property
     self.connexionWarningString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.connexionWarningString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.connexionWarningString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure connexionErrorString transient property
     self.connexionErrorString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.connexionErrorString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.connexionErrorString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure sheetIndexes transient property
     self.sheetIndexes_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.sheetIndexes_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.sheetIndexes_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure netsDescription transient property
     self.netsDescription_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.netsDescription_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.netsDescription_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure boardIssues transient property
     self.boardIssues_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardIssues_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.boardIssues_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure hasSixLayers transient property
     self.hasSixLayers_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.hasSixLayers_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.hasSixLayers_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure signatureForERCChecking transient property
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.signatureForERCChecking_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.signatureForERCChecking_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure ercStatusImage transient property
     self.ercStatusImage_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.ercStatusImage_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.ercStatusImage_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure ercStatusMessage transient property
     self.ercStatusMessage_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.ercStatusMessage_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.ercStatusMessage_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure viaCountString transient property
     self.viaCountString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.viaCountString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.viaCountString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure topSideTrackCountString transient property
     self.topSideTrackCountString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.topSideTrackCountString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.topSideTrackCountString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backSideTrackCountString transient property
     self.backSideTrackCountString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backSideTrackCountString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backSideTrackCountString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure inner1LayerTrackCountString transient property
     self.inner1LayerTrackCountString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.inner1LayerTrackCountString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.inner1LayerTrackCountString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure inner2LayerTrackCountString transient property
     self.inner2LayerTrackCountString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.inner2LayerTrackCountString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.inner2LayerTrackCountString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure inner3LayerTrackCountString transient property
     self.inner3LayerTrackCountString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.inner3LayerTrackCountString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.inner3LayerTrackCountString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure inner4LayerTrackCountString transient property
     self.inner4LayerTrackCountString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.inner4LayerTrackCountString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.inner4LayerTrackCountString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure trackCountString transient property
     self.trackCountString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.trackCountString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.trackCountString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure trackLengthString transient property
     self.trackLengthString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.trackLengthString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.trackLengthString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure interiorBoundBox transient property
     self.interiorBoundBox_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.interiorBoundBox_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.interiorBoundBox_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure boardBoundBox transient property
     self.boardBoundBox_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardBoundBox_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.boardBoundBox_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure boardInteriorTop transient property
     self.boardInteriorTop_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardInteriorTop_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.boardInteriorTop_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure boardInteriorBottom transient property
     self.boardInteriorBottom_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardInteriorBottom_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.boardInteriorBottom_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure boardInteriorLeft transient property
     self.boardInteriorLeft_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardInteriorLeft_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.boardInteriorLeft_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure boardInteriorRight transient property
     self.boardInteriorRight_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardInteriorRight_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.boardInteriorRight_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure boardLimitBorderTop transient property
     self.boardLimitBorderTop_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardLimitBorderTop_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.boardLimitBorderTop_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure boardLimitBorderBottom transient property
     self.boardLimitBorderBottom_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardLimitBorderBottom_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.boardLimitBorderBottom_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure boardLimitBorderLeft transient property
     self.boardLimitBorderLeft_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardLimitBorderLeft_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.boardLimitBorderLeft_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure boardLimitBorderRight transient property
     self.boardLimitBorderRight_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardLimitBorderRight_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.boardLimitBorderRight_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure borderElementCountString transient property
     self.borderElementCountString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.borderElementCountString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.borderElementCountString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure borderOutlineBackground transient property
     self.borderOutlineBackground_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.borderOutlineBackground_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.borderOutlineBackground_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure borderViewBackground transient property
     self.borderViewBackground_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.borderViewBackground_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.borderViewBackground_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure fontNameArray transient property
     self.fontNameArray_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.fontNameArray_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.fontNameArray_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure deviceNames transient property
     self.deviceNames_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.deviceNames_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.deviceNames_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure allClassNames transient property
     self.allClassNames_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.allClassNames_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.allClassNames_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure sheetGeometry transient property
     self.sheetGeometry_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.sheetGeometry_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.sheetGeometry_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure schematicBackgroundDisplay transient property
     self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.schematicBackgroundDisplay_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.schematicBackgroundDisplay_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure netWarningCount transient property
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.netWarningCount_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.netWarningCount_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure netNamesArray transient property
     self.netNamesArray_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.netNamesArray_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.netNamesArray_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure unplacedSymbols transient property
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.unplacedSymbols_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.unplacedSymbols_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure unplacedPackages transient property
     self.unplacedPackages_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.unplacedPackages_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.unplacedPackages_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure componentsPlacedInBoard transient property
     self.componentsPlacedInBoard_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.componentsPlacedInBoard_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.componentsPlacedInBoard_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure boardStatusImage transient property
     self.boardStatusImage_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardStatusImage_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.boardStatusImage_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure boardStatusMessage transient property
     self.boardStatusMessage_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardStatusMessage_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.boardStatusMessage_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure placedComponentNameArray transient property
     self.placedComponentNameArray_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.placedComponentNameArray_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.placedComponentNameArray_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure schematicHasErrorOrWarning transient property
     self.schematicHasErrorOrWarning_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.schematicHasErrorOrWarning_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.schematicHasErrorOrWarning_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure schematicStatusMessage transient property
     self.schematicStatusMessage_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.schematicStatusMessage_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.schematicStatusMessage_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure schematicStatusImage transient property
     self.schematicStatusImage_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.schematicStatusImage_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.schematicStatusImage_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   }
 

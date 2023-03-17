@@ -164,7 +164,6 @@ final class SymbolSolidOval : SymbolObject,
     self.height_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "height")
     self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- Atomic property: filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -285,7 +284,6 @@ final class SymbolSolidOval : SymbolObject,
     self.y_property.startsToBeObserved (by: self.issues_property)
     self.width_property.startsToBeObserved (by: self.issues_property)
     self.height_property.startsToBeObserved (by: self.issues_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.height_property.setSignatureObserver (observer: self)

@@ -302,7 +302,6 @@ final class FontInProject : EBManagedObject,
     self.mFontVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mFontVersion")
     self.mDescriptiveString_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mDescriptiveString")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- To many property: mTexts (has opposite relationship)
     self.mTexts_property.undoManager = inUndoManager
     self.mTexts_property.setOppositeRelationShipFunctions (
@@ -448,7 +447,6 @@ final class FontInProject : EBManagedObject,
       }
     }
     self.mComponentValues_property.startsToBeObserved (by: self.componentValuesCount_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mTexts_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mFont_property.setProp (me) } },

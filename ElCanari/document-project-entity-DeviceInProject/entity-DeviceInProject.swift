@@ -355,7 +355,6 @@ final class DeviceInProject : EBManagedObject,
     self.mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mDeviceVersion")
     self.mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mDeviceFileData")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- To many property: mPackages (no option)
     self.mPackages_property.undoManager = inUndoManager
   //--- To many property: mSymbols (no option)
@@ -533,7 +532,6 @@ final class DeviceInProject : EBManagedObject,
     self.mSymbols_property.toMany_symbolAndTypeName_StartsToBeObserved (by: self.deviceSymbolDictionary_property)
     self.mSymbols_property.toMany_filledBezierPath_StartsToBeObserved (by: self.deviceSymbolDictionary_property)
     self.mSymbols_property.toMany_strokeBezierPath_StartsToBeObserved (by: self.deviceSymbolDictionary_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mComponents_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mDevice_property.setProp (me) } },

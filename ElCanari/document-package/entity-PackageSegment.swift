@@ -318,7 +318,6 @@ final class PackageSegment : PackageObject,
     self.lengthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "lengthUnit")
     self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x1")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -464,7 +463,6 @@ final class PackageSegment : PackageObject,
     self.y1_property.startsToBeObserved (by: self.lengthInCanariUnit_property)
     self.x2_property.startsToBeObserved (by: self.lengthInCanariUnit_property)
     self.y2_property.startsToBeObserved (by: self.lengthInCanariUnit_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.lengthUnit_property.setSignatureObserver (observer: self)

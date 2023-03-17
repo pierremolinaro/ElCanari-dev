@@ -657,7 +657,6 @@ final class BoardConnector : BoardObject,
       }
     }
     self.mComponent_property.startsToBeObserved (by: self.mComponent_none)
-//    gInitSemaphore.wait ()
   //--- To many property: mTracksP2 (has opposite relationship)
     self.mTracksP2_property.undoManager = inUndoManager
     self.mTracksP2_property.setOppositeRelationShipFunctions (
@@ -1113,7 +1112,6 @@ final class BoardConnector : BoardObject,
     self.location_property.startsToBeObserved (by: self.signatureForERCChecking_property)
     self.isVia_property.startsToBeObserved (by: self.signatureForERCChecking_property)
     self.actualPadDiameter_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mTracksP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mConnectorP2_property.setProp (me) } },

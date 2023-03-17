@@ -138,7 +138,6 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
     self.x2_property = EBStoredProperty_Int (defaultValue: 9, undoManager: inUndoManager, key: "x2")
     self.y2_property = EBStoredProperty_Int (defaultValue: 8, undoManager: inUndoManager, key: "y2")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -197,7 +196,6 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
     self.y1_property.startsToBeObserved (by: self.objectDisplay_property)
     self.x2_property.startsToBeObserved (by: self.objectDisplay_property)
     self.y2_property.startsToBeObserved (by: self.objectDisplay_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.x1_property.setSignatureObserver (observer: self)

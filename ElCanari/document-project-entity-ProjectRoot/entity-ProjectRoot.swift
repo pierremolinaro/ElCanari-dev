@@ -4143,7 +4143,6 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mSelectedSheet_property.startsToBeObserved (by: self.mSelectedSheet_none)
-//    gInitSemaphore.wait ()
   //--- To many property: mSheets (has opposite relationship)
     self.mSheets_property.undoManager = inUndoManager
     self.mSheets_property.setOppositeRelationShipFunctions (
@@ -5669,7 +5668,6 @@ final class ProjectRoot : EBManagedObject,
     self.netWarningCount_property.startsToBeObserved (by: self.schematicStatusImage_property)
     self.mSheets_property.toMany_connexionWarnings_StartsToBeObserved (by: self.schematicStatusImage_property)
     self.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self.schematicStatusImage_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mSheets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },

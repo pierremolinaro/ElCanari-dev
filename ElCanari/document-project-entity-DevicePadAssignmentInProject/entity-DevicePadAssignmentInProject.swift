@@ -117,7 +117,6 @@ final class DevicePadAssignmentInProject : EBManagedObject,
       }
     }
     self.mPin_property.startsToBeObserved (by: self.mPin_none)
-//    gInitSemaphore.wait ()
   //--- To one property: mPin
     self.mPin_property.undoManager = inUndoManager
   //--- Atomic property: pinPadAssignment
@@ -166,7 +165,6 @@ final class DevicePadAssignmentInProject : EBManagedObject,
     }
     self.mPadName_property.startsToBeObserved (by: self.descriptor_property)
     self.mPin_property.descriptor_property.startsToBeObserved (by: self.descriptor_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

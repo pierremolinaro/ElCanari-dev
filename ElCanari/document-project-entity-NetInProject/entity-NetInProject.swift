@@ -269,7 +269,6 @@ final class NetInProject : EBManagedObject,
       }
     }
     self.mNetClass_property.startsToBeObserved (by: self.mNetClass_none)
-//    gInitSemaphore.wait ()
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.undoManager = inUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (
@@ -407,7 +406,6 @@ final class NetInProject : EBManagedObject,
       }
     }
     self.mTracks_property.startsToBeObserved (by: self.trackCount_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },

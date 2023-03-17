@@ -592,7 +592,6 @@ final class PackageSlavePad : PackageObject,
       }
     }
     self.master_property.startsToBeObserved (by: self.master_none)
-//    gInitSemaphore.wait ()
   //--- To one property: master (has opposite to many relationship: slaves)
     self.master_property.undoManager = inUndoManager
     self.master_property.setOppositeRelationShipFunctions (
@@ -860,7 +859,6 @@ final class PackageSlavePad : PackageObject,
     preferences_padNumberFont_property.startsToBeObserved (by: self.padNumberDisplay_property)
     preferences_padNumberColor_property.startsToBeObserved (by: self.padNumberDisplay_property)
     self.padNameForDisplay_property.startsToBeObserved (by: self.padNumberDisplay_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.annularRingUnit_property.setSignatureObserver (observer: self)

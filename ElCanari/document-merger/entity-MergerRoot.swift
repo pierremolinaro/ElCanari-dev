@@ -1154,7 +1154,6 @@ final class MergerRoot : EBManagedObject,
       }
     }
     self.mArtwork_property.startsToBeObserved (by: self.mArtwork_none)
-//    gInitSemaphore.wait ()
   //--- To many property: boardModels (no option)
     self.boardModels_property.undoManager = inUndoManager
   //--- To many property: boardInstances (has opposite relationship)
@@ -1650,7 +1649,6 @@ final class MergerRoot : EBManagedObject,
     self.boardLimitWidth_property.startsToBeObserved (by: self.boardOutlineRectDisplay_property)
     preferences_mergerBoardViewDisplayBoardLimits_property.startsToBeObserved (by: self.boardOutlineRectDisplay_property)
     preferences_mergerColorBoardLimits_property.startsToBeObserved (by: self.boardOutlineRectDisplay_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.boardInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myRoot_property.setProp (me) } },

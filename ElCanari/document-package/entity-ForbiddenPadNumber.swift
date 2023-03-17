@@ -43,8 +43,6 @@ final class ForbiddenPadNumber : EBManagedObject,
   required init (_ inUndoManager : UndoManager?) {
     self.padNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "padNumber")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.padNumber_property.setSignatureObserver (observer: self)

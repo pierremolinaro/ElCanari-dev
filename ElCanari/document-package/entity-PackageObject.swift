@@ -104,7 +104,6 @@ class PackageObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.startsToBeObserved (by: self.mRoot_none)
-//    gInitSemaphore.wait ()
   //--- To one property: mRoot (has opposite to many relationship: packageObjects)
     self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -128,7 +127,6 @@ class PackageObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.knobSizeMultpliedByTen_property.startsToBeObserved (by: self.knobSize_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

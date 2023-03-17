@@ -151,8 +151,6 @@ final class SegmentEntity : EBManagedObject,
     self.width_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "width")
     self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x1")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

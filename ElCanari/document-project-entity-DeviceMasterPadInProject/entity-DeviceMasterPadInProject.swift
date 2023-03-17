@@ -293,7 +293,6 @@ final class DeviceMasterPadInProject : EBManagedObject,
     self.mStyle_property = EBStoredProperty_PadStyle (defaultValue: PadStyle.traversing, undoManager: inUndoManager, key: "mStyle")
     self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mName")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- To many property: mSlavePads (no option)
     self.mSlavePads_property.undoManager = inUndoManager
   //--- Atomic property: descriptor
@@ -349,7 +348,6 @@ final class DeviceMasterPadInProject : EBManagedObject,
     self.mShape_property.startsToBeObserved (by: self.descriptor_property)
     self.mStyle_property.startsToBeObserved (by: self.descriptor_property)
     self.mSlavePads_property.toMany_descriptor_StartsToBeObserved (by: self.descriptor_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

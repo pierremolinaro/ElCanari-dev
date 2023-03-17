@@ -274,7 +274,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       }
     }
     self.mType_property.startsToBeObserved (by: self.mType_none)
-//    gInitSemaphore.wait ()
   //--- To many property: mPinInstances (has opposite relationship)
     self.mPinInstances_property.undoManager = inUndoManager
     self.mPinInstances_property.setOppositeRelationShipFunctions (
@@ -471,7 +470,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mY_property.startsToBeObserved (by: self.objectDisplay_property)
     preferences_symbolDrawingWidthMultipliedByTen_property.startsToBeObserved (by: self.objectDisplay_property)
     preferences_symbolColor_property.startsToBeObserved (by: self.objectDisplay_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPinInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbolInstance_property.setProp (me) } },

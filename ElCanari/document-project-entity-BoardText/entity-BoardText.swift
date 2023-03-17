@@ -416,7 +416,6 @@ final class BoardText : BoardObject,
       }
     }
     self.mFont_property.startsToBeObserved (by: self.mFont_none)
-//    gInitSemaphore.wait ()
   //--- To one property: mFont (has opposite to many relationship: mTexts)
     self.mFont_property.undoManager = inUndoManager
     self.mFont_property.setOppositeRelationShipFunctions (
@@ -691,7 +690,6 @@ final class BoardText : BoardObject,
     self.mRotation_property.startsToBeObserved (by: self.signatureForERCChecking_property)
     self.mWeight_property.startsToBeObserved (by: self.signatureForERCChecking_property)
     self.mOblique_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

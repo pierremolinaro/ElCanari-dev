@@ -240,7 +240,6 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       }
     }
     self.myRoot_property.startsToBeObserved (by: self.myRoot_none)
-//    gInitSemaphore.wait ()
   //--- To one property: myModel (has opposite to many relationship: myInstances)
     self.myModel_property.undoManager = inUndoManager
     self.myModel_property.setOppositeRelationShipFunctions (
@@ -378,7 +377,6 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.remove (me) } }
     )
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

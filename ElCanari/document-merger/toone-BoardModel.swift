@@ -1367,1074 +1367,270 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //--- Configure name simple stored property
     self.name_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.name_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.name_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure modelWidth simple stored property
     self.modelWidth_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.modelWidth_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.modelWidth_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure modelWidthUnit simple stored property
     self.modelWidthUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.modelWidthUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.modelWidthUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure modelHeight simple stored property
     self.modelHeight_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.modelHeight_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.modelHeight_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure modelHeightUnit simple stored property
     self.modelHeightUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.modelHeightUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.modelHeightUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure zoom simple stored property
     self.zoom_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.zoom_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.zoom_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure modelVersion simple stored property
     self.modelVersion_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.modelVersion_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.modelVersion_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure ignoreModelVersionError simple stored property
     self.ignoreModelVersionError_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.ignoreModelVersionError_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.ignoreModelVersionError_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure layerConfiguration simple stored property
     self.layerConfiguration_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.layerConfiguration_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.layerConfiguration_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure modelLimitWidth simple stored property
     self.modelLimitWidth_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.modelLimitWidth_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.modelLimitWidth_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure modelLimitWidthUnit simple stored property
     self.modelLimitWidthUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.modelLimitWidthUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.modelLimitWidthUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure artworkName simple stored property
     self.artworkName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.artworkName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.artworkName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure errorArchiveVersionMessage transient property
     self.errorArchiveVersionMessage_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.errorArchiveVersionMessage_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.errorArchiveVersionMessage_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure errorArchiveVersionMessageIsHidden transient property
     self.errorArchiveVersionMessageIsHidden_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.errorArchiveVersionMessageIsHidden_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.errorArchiveVersionMessageIsHidden_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure layerConfigurationString transient property
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.layerConfigurationString_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.layerConfigurationString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure frontLegendLinesSegments transient property
     self.frontLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.frontLegendLinesSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.frontLegendLinesSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backLegendLinesSegments transient property
     self.backLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backLegendLinesSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backLegendLinesSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backLegendLinesBezierPaths transient property
     self.backLegendLinesBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backLegendLinesBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backLegendLinesBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure frontLegendTextsSegments transient property
     self.frontLegendTextsSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.frontLegendTextsSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.frontLegendTextsSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure frontLegendTextsBezierPaths transient property
     self.frontLegendTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.frontLegendTextsBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.frontLegendTextsBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure frontLayoutTextsSegments transient property
     self.frontLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.frontLayoutTextsSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.frontLayoutTextsSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure frontLayoutTextsBezierPaths transient property
     self.frontLayoutTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.frontLayoutTextsBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.frontLayoutTextsBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backLegendTextsSegments transient property
     self.backLegendTextsSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backLegendTextsSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backLegendTextsSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backLegendTextsBezierPaths transient property
     self.backLegendTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backLegendTextsBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backLegendTextsBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backLayoutTextsSegments transient property
     self.backLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backLayoutTextsSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backLayoutTextsSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backLayoutTextsBezierPaths transient property
     self.backLayoutTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backLayoutTextsBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backLayoutTextsBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure internalBoardsLimitsSegments transient property
     self.internalBoardsLimitsSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.internalBoardsLimitsSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.internalBoardsLimitsSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure internalBoardsLimitsBezierPaths transient property
     self.internalBoardsLimitsBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.internalBoardsLimitsBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.internalBoardsLimitsBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure drillSegments transient property
     self.drillSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.drillSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.drillSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure holesBezierPaths transient property
     self.holesBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.holesBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.holesBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure viaShapes transient property
     self.viaShapes_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.viaShapes_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.viaShapes_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure viasBezierPaths transient property
     self.viasBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.viasBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.viasBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure frontPadArray transient property
     self.frontPadArray_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.frontPadArray_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.frontPadArray_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure frontPadsBezierPaths transient property
     self.frontPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.frontPadsBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.frontPadsBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backPadArray transient property
     self.backPadArray_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backPadArray_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backPadArray_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backPadsBezierPaths transient property
     self.backPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backPadsBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backPadsBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure traversingPadArray transient property
     self.traversingPadArray_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.traversingPadArray_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.traversingPadArray_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure traversingPadsBezierPaths transient property
     self.traversingPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.traversingPadsBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.traversingPadsBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure boardLimitsBezierPaths transient property
     self.boardLimitsBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardLimitsBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.boardLimitsBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backComponentNameSegments transient property
     self.backComponentNameSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backComponentNameSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backComponentNameSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backComponentNamesBezierPaths transient property
     self.backComponentNamesBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backComponentNamesBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backComponentNamesBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure frontComponentNameSegments transient property
     self.frontComponentNameSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.frontComponentNameSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.frontComponentNameSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure frontComponentNamesBezierPaths transient property
     self.frontComponentNamesBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.frontComponentNamesBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.frontComponentNamesBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure frontComponentValueSegments transient property
     self.frontComponentValueSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.frontComponentValueSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.frontComponentValueSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure frontComponentValuesBezierPaths transient property
     self.frontComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.frontComponentValuesBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.frontComponentValuesBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backComponentValueSegments transient property
     self.backComponentValueSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backComponentValueSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backComponentValueSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backComponentValuesBezierPaths transient property
     self.backComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backComponentValuesBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backComponentValuesBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backTrackSegments transient property
     self.backTrackSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backTrackSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backTrackSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backTracksBezierPaths transient property
     self.backTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backTracksBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backTracksBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure frontTrackSegments transient property
     self.frontTrackSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.frontTrackSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.frontTrackSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure frontTracksBezierPaths transient property
     self.frontTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.frontTracksBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.frontTracksBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure inner1TracksSegments transient property
     self.inner1TracksSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.inner1TracksSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.inner1TracksSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure inner1TracksBezierPaths transient property
     self.inner1TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.inner1TracksBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.inner1TracksBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure inner2TracksSegments transient property
     self.inner2TracksSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.inner2TracksSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.inner2TracksSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure inner2TracksBezierPaths transient property
     self.inner2TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.inner2TracksBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.inner2TracksBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure inner3TracksSegments transient property
     self.inner3TracksSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.inner3TracksSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.inner3TracksSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure inner3TracksBezierPaths transient property
     self.inner3TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.inner3TracksBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.inner3TracksBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure inner4TracksSegments transient property
     self.inner4TracksSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.inner4TracksSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.inner4TracksSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure inner4TracksBezierPaths transient property
     self.inner4TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.inner4TracksBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.inner4TracksBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure frontPackagesSegments transient property
     self.frontPackagesSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.frontPackagesSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.frontPackagesSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure frontPackagesBezierPaths transient property
     self.frontPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.frontPackagesBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.frontPackagesBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backPackagesSegments transient property
     self.backPackagesSegments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backPackagesSegments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backPackagesSegments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure backPackagesBezierPaths transient property
     self.backPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backPackagesBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.backPackagesBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure instanceCount transient property
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.instanceCount_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.instanceCount_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure frontLegendLinesBezierPaths transient property
     self.frontLegendLinesBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.frontLegendLinesBezierPaths_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.frontLegendLinesBezierPaths_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure imageForModel transient property
     self.imageForModel_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.imageForModel_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.imageForModel_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure imageForInstances transient property
     self.imageForInstances_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.imageForInstances_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.imageForInstances_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   }
 

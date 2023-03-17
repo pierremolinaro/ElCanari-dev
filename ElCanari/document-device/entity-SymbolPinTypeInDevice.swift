@@ -320,7 +320,6 @@ final class SymbolPinTypeInDevice : EBManagedObject,
     self.mYNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mYNumber")
     self.mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "mNumberHorizontalAlignment")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- To many property: mInstances (has opposite relationship)
     self.mInstances_property.undoManager = inUndoManager
     self.mInstances_property.setOppositeRelationShipFunctions (
@@ -364,7 +363,6 @@ final class SymbolPinTypeInDevice : EBManagedObject,
     self.mNameHorizontalAlignment_property.startsToBeObserved (by: self.nameShape_property)
     self.mPinNameIsDisplayedInSchematics_property.startsToBeObserved (by: self.nameShape_property)
     preferences_pinNameFont_property.startsToBeObserved (by: self.nameShape_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },

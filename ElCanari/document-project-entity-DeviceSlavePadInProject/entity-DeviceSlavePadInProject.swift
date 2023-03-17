@@ -251,7 +251,6 @@ final class DeviceSlavePadInProject : EBManagedObject,
     self.mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: inUndoManager, key: "mShape")
     self.mStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing, undoManager: inUndoManager, key: "mStyle")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -297,7 +296,6 @@ final class DeviceSlavePadInProject : EBManagedObject,
     self.mHoleHeight_property.startsToBeObserved (by: self.descriptor_property)
     self.mShape_property.startsToBeObserved (by: self.descriptor_property)
     self.mStyle_property.startsToBeObserved (by: self.descriptor_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

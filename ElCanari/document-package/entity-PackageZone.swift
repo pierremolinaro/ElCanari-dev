@@ -541,7 +541,6 @@ final class PackageZone : PackageObject,
     self.yNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "yNameUnit")
     self.zoneNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering, undoManager: inUndoManager, key: "zoneNumbering")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- To many property: forbiddenPadNumbers (no option)
     self.forbiddenPadNumbers_property.undoManager = inUndoManager
   //--- Atomic property: objectDisplay
@@ -762,7 +761,6 @@ final class PackageZone : PackageObject,
       }
     }
     self.forbiddenPadNumbers_property.startsToBeObserved (by: self.emptyForbiddenPadArray_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.forbiddenPadNumbers_property.setSignatureObserver (observer: self)

@@ -97,8 +97,6 @@ final class BoardModelVia : EBManagedObject,
     self.padDiameter_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "padDiameter")
     self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

@@ -325,7 +325,6 @@ final class SlavePadInDevice : EBManagedObject,
       }
     }
     self.mMasterPad_property.startsToBeObserved (by: self.mMasterPad_none)
-//    gInitSemaphore.wait ()
   //--- To one property: mMasterPad (has opposite to many relationship: mSlavePads)
     self.mMasterPad_property.undoManager = inUndoManager
     self.mMasterPad_property.setOppositeRelationShipFunctions (
@@ -455,7 +454,6 @@ final class SlavePadInDevice : EBManagedObject,
     preferences_padNumberFont_property.startsToBeObserved (by: self.padNumberDisplay_property)
     preferences_padNumberColor_property.startsToBeObserved (by: self.padNumberDisplay_property)
     self.mMasterPad_property.mName_property.startsToBeObserved (by: self.padNumberDisplay_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mCenterX_property.setSignatureObserver (observer: self)

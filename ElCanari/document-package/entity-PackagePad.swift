@@ -710,7 +710,6 @@ final class PackagePad : PackageObject,
       }
     }
     self.zone_property.startsToBeObserved (by: self.zone_none)
-//    gInitSemaphore.wait ()
   //--- To many property: slaves (has opposite relationship)
     self.slaves_property.undoManager = inUndoManager
     self.slaves_property.setOppositeRelationShipFunctions (
@@ -1059,7 +1058,6 @@ final class PackagePad : PackageObject,
     preferences_padNumberFont_property.startsToBeObserved (by: self.padNumberDisplay_property)
     preferences_padNumberColor_property.startsToBeObserved (by: self.padNumberDisplay_property)
     self.padNameForDisplay_property.startsToBeObserved (by: self.padNumberDisplay_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.slaves_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.master_property.setProp (me) } },

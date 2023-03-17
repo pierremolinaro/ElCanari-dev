@@ -207,290 +207,74 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //--- Configure layerConfiguration simple stored property
     self.layerConfiguration_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.layerConfiguration_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.layerConfiguration_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure selectedTab simple stored property
     self.selectedTab_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.selectedTab_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.selectedTab_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure comments simple stored property
     self.comments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.comments_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.comments_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure minPPTPTTTWdisplayUnit simple stored property
     self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.minPPTPTTTWdisplayUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.minPPTPTTTWdisplayUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure minPPTPTTTW simple stored property
     self.minPPTPTTTW_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.minPPTPTTTW_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.minPPTPTTTW_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure minValueForOARdisplayUnit simple stored property
     self.minValueForOARdisplayUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.minValueForOARdisplayUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.minValueForOARdisplayUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure minValueForOARinEBUnit simple stored property
     self.minValueForOARinEBUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.minValueForOARinEBUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.minValueForOARinEBUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure minValueForPHDdisplayUnit simple stored property
     self.minValueForPHDdisplayUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.minValueForPHDdisplayUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.minValueForPHDdisplayUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure minValueForPHDinEBUnit simple stored property
     self.minValueForPHDinEBUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.minValueForPHDinEBUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.minValueForPHDinEBUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure minValueForBoardLimitWidthDisplayUnit simple stored property
     self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.minValueForBoardLimitWidthDisplayUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.minValueForBoardLimitWidthDisplayUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure minValueForBoardLimitWidth simple stored property
     self.minValueForBoardLimitWidth_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.minValueForBoardLimitWidth_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.minValueForBoardLimitWidth_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure title simple stored property
     self.title_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.title_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.title_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure drillDataFileExtension simple stored property
     self.drillDataFileExtension_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.drillDataFileExtension_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.drillDataFileExtension_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure hasInnerElements transient property
     self.hasInnerElements_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.hasInnerElements_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.hasInnerElements_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure hasSixLayers transient property
     self.hasSixLayers_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.hasSixLayers_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.hasSixLayers_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure hasDataWarning transient property
     self.hasDataWarning_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.hasDataWarning_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.hasDataWarning_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure emptyDrillFileExtension transient property
     self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.emptyDrillFileExtension_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.emptyDrillFileExtension_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure signatureForERCChecking transient property
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.signatureForERCChecking_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.signatureForERCChecking_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   }
 

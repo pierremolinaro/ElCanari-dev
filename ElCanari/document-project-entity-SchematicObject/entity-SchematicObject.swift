@@ -142,7 +142,6 @@ class SchematicObject : EBGraphicManagedObject,
       }
     }
     self.mSheet_property.startsToBeObserved (by: self.mSheet_none)
-//    gInitSemaphore.wait ()
   //--- To one property: mSheet (has opposite to many relationship: mObjects)
     self.mSheet_property.undoManager = inUndoManager
     self.mSheet_property.setOppositeRelationShipFunctions (
@@ -183,7 +182,6 @@ class SchematicObject : EBGraphicManagedObject,
       }
     }
     self.mSheet_property.startsToBeObserved (by: self.isPlacedInSchematic_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

@@ -97,8 +97,6 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
     self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager, key: "mStrokeBezierPath")
     self.mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager, key: "mFilledBezierPath")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

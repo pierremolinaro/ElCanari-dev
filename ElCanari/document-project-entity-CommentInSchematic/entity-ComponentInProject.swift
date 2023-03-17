@@ -1234,7 +1234,6 @@ final class ComponentInProject : BoardObject,
       }
     }
     self.mValueFont_property.startsToBeObserved (by: self.mValueFont_none)
-//    gInitSemaphore.wait ()
   //--- To many property: mConnectors (has opposite relationship)
     self.mConnectors_property.undoManager = inUndoManager
     self.mConnectors_property.setOppositeRelationShipFunctions (
@@ -1951,7 +1950,6 @@ final class ComponentInProject : BoardObject,
     self.mValueRotation_property.startsToBeObserved (by: self.objectDisplay_property)
     self.mComponentValue_property.startsToBeObserved (by: self.objectDisplay_property)
     self.mDevice_property.pinPadAssignments_property.startsToBeObserved (by: self.objectDisplay_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mConnectors_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },

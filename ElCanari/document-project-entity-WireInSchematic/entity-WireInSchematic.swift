@@ -159,7 +159,6 @@ final class WireInSchematic : SchematicObject,
       }
     }
     self.mP2_property.startsToBeObserved (by: self.mP2_none)
-//    gInitSemaphore.wait ()
   //--- To one property: mP1 (has opposite to many relationship: mWiresP1s)
     self.mP1_property.undoManager = inUndoManager
     self.mP1_property.setOppositeRelationShipFunctions (
@@ -285,7 +284,6 @@ final class WireInSchematic : SchematicObject,
       }
     }
     self.mP1_property.hasNet_property.startsToBeObserved (by: self.hasNet_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

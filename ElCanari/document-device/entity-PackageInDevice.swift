@@ -338,7 +338,6 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.startsToBeObserved (by: self.mRoot_none)
-//    gInitSemaphore.wait ()
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.undoManager = inUndoManager
   //--- To one property: mRoot (has opposite to many relationship: mPackages)
@@ -566,7 +565,6 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     }
     self.mMasterPads_property.toMany_mName_StartsToBeObserved (by: self.padNameSet_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)

@@ -779,7 +779,6 @@ final class BoardTrack : BoardObject,
       }
     }
     self.mNet_property.startsToBeObserved (by: self.mNet_none)
-//    gInitSemaphore.wait ()
   //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
     self.mConnectorP1_property.undoManager = inUndoManager
     self.mConnectorP1_property.setOppositeRelationShipFunctions (
@@ -1332,7 +1331,6 @@ final class BoardTrack : BoardObject,
     preferences_backSideLayoutColorForBoard_property.startsToBeObserved (by: self.selectionDisplay_property)
     self.mSide_property.startsToBeObserved (by: self.selectionDisplay_property)
     self.actualTrackWidth_property.startsToBeObserved (by: self.selectionDisplay_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

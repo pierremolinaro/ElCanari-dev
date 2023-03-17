@@ -104,7 +104,6 @@ final class DevicePackageInProject : EBManagedObject,
     self.mPackageName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mPackageName")
     self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager, key: "mStrokeBezierPath")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.undoManager = inUndoManager
   //--- Atomic property: packagePadDictionary
@@ -124,7 +123,6 @@ final class DevicePackageInProject : EBManagedObject,
       }
     }
     self.mMasterPads_property.toMany_descriptor_StartsToBeObserved (by: self.packagePadDictionary_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

@@ -488,7 +488,6 @@ final class PackageBezier : PackageObject,
     self.cpy2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "cpy2Unit")
     self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x1")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -653,7 +652,6 @@ final class PackageBezier : PackageObject,
     self.cpy1_property.startsToBeObserved (by: self.issues_property)
     self.cpx2_property.startsToBeObserved (by: self.issues_property)
     self.cpy2_property.startsToBeObserved (by: self.issues_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.cpx1_property.setSignatureObserver (observer: self)

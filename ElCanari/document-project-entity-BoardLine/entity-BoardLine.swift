@@ -327,7 +327,6 @@ final class BoardLine : BoardObject,
     self.mLayer_property = EBStoredProperty_BoardLineLayer (defaultValue: BoardLineLayer.legendFront, undoManager: inUndoManager, key: "mLayer")
     self.mWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager, key: "mWidth")
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -414,7 +413,6 @@ final class BoardLine : BoardObject,
     self.mWidth_property.startsToBeObserved (by: self.selectionDisplay_property)
     self.mLayer_property.startsToBeObserved (by: self.selectionDisplay_property)
     preferences_hiliteWidthMultipliedByTen_property.startsToBeObserved (by: self.selectionDisplay_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

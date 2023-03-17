@@ -219,7 +219,6 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       }
     }
     self.mPadProxy_property.startsToBeObserved (by: self.mPadProxy_none)
-//    gInitSemaphore.wait ()
   //--- To one property: mSymbolInstance (has opposite to many relationship: mPinInstances)
     self.mSymbolInstance_property.undoManager = inUndoManager
     self.mSymbolInstance_property.setOppositeRelationShipFunctions (
@@ -343,7 +342,6 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
     self.mType_property.mNumberHorizontalAlignment_property.startsToBeObserved (by: self.numberShape_property)
     self.mPadProxy_property.mPadName_property.startsToBeObserved (by: self.numberShape_property)
     preferences_pinNameFont_property.startsToBeObserved (by: self.numberShape_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

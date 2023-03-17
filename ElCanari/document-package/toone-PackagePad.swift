@@ -295,466 +295,118 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //--- Configure xCenter simple stored property
     self.xCenter_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.xCenter_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.xCenter_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure yCenter simple stored property
     self.yCenter_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.yCenter_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.yCenter_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure width simple stored property
     self.width_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.width_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.width_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure height simple stored property
     self.height_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.height_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.height_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure holeWidth simple stored property
     self.holeWidth_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.holeWidth_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.holeWidth_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure holeHeight simple stored property
     self.holeHeight_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.holeHeight_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.holeHeight_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure padShape simple stored property
     self.padShape_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.padShape_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.padShape_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure padStyle simple stored property
     self.padStyle_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.padStyle_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.padStyle_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure padNumber simple stored property
     self.padNumber_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.padNumber_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.padNumber_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure xCenterUnit simple stored property
     self.xCenterUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.xCenterUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.xCenterUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure yCenterUnit simple stored property
     self.yCenterUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.yCenterUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.yCenterUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure widthUnit simple stored property
     self.widthUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.widthUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.widthUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure heightUnit simple stored property
     self.heightUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.heightUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.heightUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure holeWidthUnit simple stored property
     self.holeWidthUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.holeWidthUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.holeWidthUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure holeHeightUnit simple stored property
     self.holeHeightUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.holeHeightUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.holeHeightUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure annularRingUnit simple stored property
     self.annularRingUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.annularRingUnit_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.annularRingUnit_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.objectDisplay_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.objectDisplay_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.selectionDisplay_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.selectionDisplay_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure padNameForDisplay transient property
     self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.padNameForDisplay_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.padNameForDisplay_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.issues_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.issues_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure padIsTraversing transient property
     self.padIsTraversing_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.padIsTraversing_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.padIsTraversing_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure annularRing transient property
     self.annularRing_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.annularRing_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.annularRing_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure padNameWithZoneName transient property
     self.padNameWithZoneName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.padNameWithZoneName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.padNameWithZoneName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure zoneName transient property
     self.zoneName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.zoneName_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.zoneName_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure noZone transient property
     self.noZone_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.noZone_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.noZone_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure zoneAllowsManualRenumbering transient property
     self.zoneAllowsManualRenumbering_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.zoneAllowsManualRenumbering_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.zoneAllowsManualRenumbering_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure slavePadCount transient property
     self.slavePadCount_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.slavePadCount_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.slavePadCount_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure masterPadObjectIndex transient property
     self.masterPadObjectIndex_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.masterPadObjectIndex_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.masterPadObjectIndex_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   //--- Configure padNumberDisplay transient property
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.padNumberDisplay_property.optionalSelection ?? .single (nil)
-      /* if let model = self?.mWeakInternalValue {
-        switch model.padNumberDisplay_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      } */
     }
   }
 

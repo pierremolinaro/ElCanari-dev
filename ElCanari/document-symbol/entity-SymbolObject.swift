@@ -49,8 +49,6 @@ class SymbolObject : EBGraphicManagedObject,
 
   required init (_ inUndoManager : UndoManager?) {
     super.init (inUndoManager)
-//    gInitSemaphore.wait ()
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

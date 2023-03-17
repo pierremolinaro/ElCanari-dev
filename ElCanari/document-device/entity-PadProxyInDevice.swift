@@ -171,7 +171,6 @@ final class PadProxyInDevice : EBManagedObject,
       }
     }
     self.mPinInstance_property.startsToBeObserved (by: self.mPinInstance_none)
-//    gInitSemaphore.wait ()
   //--- To one property: mPinInstance (has opposite to one relationship: mPadProxy)
     self.mPinInstance_property.undoManager = inUndoManager
     self.mPinInstance_property.setOppositeRelationShipFunctions (
@@ -216,7 +215,6 @@ final class PadProxyInDevice : EBManagedObject,
       }
     }
     self.mPinInstance_property.symbolName_property.startsToBeObserved (by: self.symbolName_property)
-//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mIsNC_property.setSignatureObserver (observer: self)
