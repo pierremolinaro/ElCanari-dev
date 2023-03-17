@@ -28,19 +28,18 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.7.2"
+let VERSION_CANARI = "1.7.3"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Dans un merger, correction de l'affichage de la carte et des fonctions d'alignement"
 ]
 let CHANGES : [String] = [
-  "Dans un projet, un device qui ne désigne aucun composant est automatiquement enlevé"
+  "Dans un projet, la génération d'une archive pour le merger contient un numéro de version",
+  "Ce numéro de version est vérifié par le merger"
 ]
 let NEWS : [String] = [
-  "Ajout d'un inspecteur X et Y pour les textes d'un circuit",
-  "Réorganisation de l'inspecteur des composants d'un circuit",
-  "Réorganisation de l'inspecteur des pistes d'un circuit"
 ]
 
 //--------------------------------------------------------------------------------------------------

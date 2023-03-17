@@ -22,7 +22,7 @@ extension AutoLayoutMergerDocument {
   //--- Non selected set
     let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
   //--- Sort objects
-    let ySortedArray = inMoveObjectSet.values.sorted { return $0.y < $1.y }
+    let ySortedArray = inMoveObjectSet.values.sorted { $0.y < $1.y }
   //---
     var deltaY = -boardHeight
     for selectedInstance in ySortedArray {
@@ -66,7 +66,7 @@ extension AutoLayoutMergerDocument {
   //--- Non selected set
     let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
   //--- Sort objects
-    let ySortedArray = inMoveObjectSet.values.sorted { return $0.y > $1.y }
+    let ySortedArray = inMoveObjectSet.values.sorted { $0.y > $1.y }
   //---
     var deltaY = boardHeight
     for selectedInstance in ySortedArray {
@@ -110,7 +110,7 @@ extension AutoLayoutMergerDocument {
   //--- Non selected set
     let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
   //--- Sort objects
-    let xSortedArray = inMoveObjectSet.values.sorted { return $0.x > $1.x }
+    let xSortedArray = inMoveObjectSet.values.sorted { $0.x > $1.x }
   //---
     var deltaX = boardWidth
     for selectedInstance in xSortedArray {
@@ -155,7 +155,7 @@ extension AutoLayoutMergerDocument {
   //--- Non selected set
     let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
   //--- Sort objects
-    let xSortedArray = inMoveObjectSet.values.sorted { return $0.x < $1.x }
+    let xSortedArray = inMoveObjectSet.values.sorted { $0.x < $1.x }
   //---
     var deltaX = -boardWidth
     for selectedInstance in xSortedArray {
@@ -195,7 +195,7 @@ extension AutoLayoutMergerDocument {
   //····················································································································
 
   func stackDown (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
-    let sortedArray = inMoveObjectSet.values.sorted (by: { return $0.y < $1.y })
+    let sortedArray = inMoveObjectSet.values.sorted (by: { $0.y < $1.y })
     for object in sortedArray {
       moveDown (overlap: inOverlap, objectSet: EBReferenceSet (object))
     }
@@ -204,7 +204,7 @@ extension AutoLayoutMergerDocument {
   //····················································································································
 
   func stackLeft (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
-    let sortedArray = inMoveObjectSet.values.sorted (by: { return $0.x < $1.x })
+    let sortedArray = inMoveObjectSet.values.sorted (by: { $0.x < $1.x })
     for object in sortedArray {
       moveLeft (overlap: inOverlap, objectSet: EBReferenceSet (object))
     }
@@ -213,7 +213,7 @@ extension AutoLayoutMergerDocument {
   //····················································································································
 
   func stackUp (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
-    let sortedArray = inMoveObjectSet.values.sorted (by: { return $0.y > $1.y })
+    let sortedArray = inMoveObjectSet.values.sorted (by: { $0.y > $1.y })
     for object in sortedArray {
       moveUp (overlap: inOverlap, objectSet: EBReferenceSet (object))
     }
@@ -222,7 +222,7 @@ extension AutoLayoutMergerDocument {
   //····················································································································
 
   func stackRight (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
-    let sortedArray = inMoveObjectSet.values.sorted (by: { return $0.x > $1.x })
+    let sortedArray = inMoveObjectSet.values.sorted (by: { $0.x > $1.x })
     for object in sortedArray {
       moveRight (overlap: inOverlap, objectSet: EBReferenceSet (object))
     }
@@ -233,7 +233,7 @@ extension AutoLayoutMergerDocument {
   func explodeSelection (objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
     let translation = self.rootObject.boardLimitWidth * (self.rootObject.overlapingArrangment ? 2 : 1)
     let xSortedArray = inMoveObjectSet.values.sorted {
-      return ($0.x < $1.x) || (($0.x == $1.x) && ($0.y < $1.y))
+      ($0.x < $1.x) || (($0.x == $1.x) && ($0.y < $1.y))
     }
     var idx = 0
     for object in xSortedArray {
@@ -241,7 +241,7 @@ extension AutoLayoutMergerDocument {
       idx += 1
     }
     let ySortedArray = inMoveObjectSet.values.sorted {
-      return ($0.y < $1.y) || (($0.y == $1.y) && ($0.x < $1.x))
+      ($0.y < $1.y) || (($0.y == $1.y) && ($0.x < $1.x))
     }
     idx = 0
     for object in ySortedArray {
