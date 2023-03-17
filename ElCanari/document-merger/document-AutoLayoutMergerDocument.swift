@@ -597,76 +597,17 @@ import AppKit
     let view_5 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     _ = vStackView.appendView (view_5)
     let view_6 = AutoLayoutHorizontalStackView ()
-      .set (margins: 0)
-      .equalWidth ()
     do{
-      let view_6_0 = AutoLayoutVerticalStackView ()
-        .set (margins: 0)
-      do{
-        let view_6_0_0 = AutoLayoutStaticLabel (title: "Move Selection", bold: true, size: .small, alignment: .center)
-        _ = view_6_0.appendView (view_6_0_0)
-        let view_6_0_1 = AutoLayoutHorizontalStackView ()
-        do{
-          let view_6_0_1_0 = AutoLayoutFlexibleSpace ()
-          _ = view_6_0_1.appendView (view_6_0_1_0)
-          let view_6_0_1_1 = AutoLayoutButton (title: "Up", size: .small)
-            .setTitleAsUpArrow ()
-            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
-            .bind_run (
-              target: self,
-              selector: #selector (AutoLayoutMergerDocument.moveSelectionUpAction (_:))
-            )
-          _ = view_6_0_1.appendView (view_6_0_1_1)
-          let view_6_0_1_2 = AutoLayoutFlexibleSpace ()
-          _ = view_6_0_1.appendView (view_6_0_1_2)
-        }
-        _ = view_6_0.appendView (view_6_0_1)
-        let view_6_0_2 = AutoLayoutHorizontalStackView ()
-        do{
-          let view_6_0_2_0 = AutoLayoutFlexibleSpace ()
-          _ = view_6_0_2.appendView (view_6_0_2_0)
-          let view_6_0_2_1 = AutoLayoutButton (title: "Left", size: .small)
-            .setTitleAsLeftArrow ()
-            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
-            .bind_run (
-              target: self,
-              selector: #selector (AutoLayoutMergerDocument.moveSelectionLeftAction (_:))
-            )
-          _ = view_6_0_2.appendView (view_6_0_2_1)
-          let view_6_0_2_2 = AutoLayoutButton (title: "Right", size: .small)
-            .setTitleAsRightArrow ()
-            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
-            .bind_run (
-              target: self,
-              selector: #selector (AutoLayoutMergerDocument.moveSelectionRightAction (_:))
-            )
-          _ = view_6_0_2.appendView (view_6_0_2_2)
-          let view_6_0_2_3 = AutoLayoutFlexibleSpace ()
-          _ = view_6_0_2.appendView (view_6_0_2_3)
-        }
-        _ = view_6_0.appendView (view_6_0_2)
-        let view_6_0_3 = AutoLayoutHorizontalStackView ()
-        do{
-          let view_6_0_3_0 = AutoLayoutFlexibleSpace ()
-          _ = view_6_0_3.appendView (view_6_0_3_0)
-          let view_6_0_3_1 = AutoLayoutButton (title: "Down", size: .small)
-            .setTitleAsDownArrow ()
-            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
-            .bind_run (
-              target: self,
-              selector: #selector (AutoLayoutMergerDocument.moveSelectionDownAction (_:))
-            )
-          _ = view_6_0_3.appendView (view_6_0_3_1)
-          let view_6_0_3_2 = AutoLayoutFlexibleSpace ()
-          _ = view_6_0_3.appendView (view_6_0_3_2)
-        }
-        _ = view_6_0.appendView (view_6_0_3)
-      }
+      let view_6_0 = AutoLayoutButton (title: "Explode All", size: .small)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutMergerDocument.explodeAllAction (_:))
+        )
       _ = view_6.appendView (view_6_0)
       let view_6_1 = AutoLayoutVerticalStackView ()
         .set (margins: 0)
       do{
-        let view_6_1_0 = AutoLayoutStaticLabel (title: "Stack Selection", bold: true, size: .small, alignment: .center)
+        let view_6_1_0 = AutoLayoutStaticLabel (title: "Stack All", bold: true, size: .small, alignment: .center)
         _ = view_6_1.appendView (view_6_1_0)
         let view_6_1_1 = AutoLayoutHorizontalStackView ()
         do{
@@ -674,10 +615,9 @@ import AppKit
           _ = view_6_1_1.appendView (view_6_1_1_0)
           let view_6_1_1_1 = AutoLayoutButton (title: "Up", size: .small)
             .setTitleAsUpArrow ()
-            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
-              selector: #selector (AutoLayoutMergerDocument.stackSelectionUpAction (_:))
+              selector: #selector (AutoLayoutMergerDocument.stackAllUpAction (_:))
             )
           _ = view_6_1_1.appendView (view_6_1_1_1)
           let view_6_1_1_2 = AutoLayoutFlexibleSpace ()
@@ -690,18 +630,16 @@ import AppKit
           _ = view_6_1_2.appendView (view_6_1_2_0)
           let view_6_1_2_1 = AutoLayoutButton (title: "Left", size: .small)
             .setTitleAsLeftArrow ()
-            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
-              selector: #selector (AutoLayoutMergerDocument.stackSelectionLeftAction (_:))
+              selector: #selector (AutoLayoutMergerDocument.stackAllLeftAction (_:))
             )
           _ = view_6_1_2.appendView (view_6_1_2_1)
           let view_6_1_2_2 = AutoLayoutButton (title: "Right", size: .small)
             .setTitleAsRightArrow ()
-            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
-              selector: #selector (AutoLayoutMergerDocument.stackSelectionRightAction (_:))
+              selector: #selector (AutoLayoutMergerDocument.stackAllRightAction (_:))
             )
           _ = view_6_1_2.appendView (view_6_1_2_2)
           let view_6_1_2_3 = AutoLayoutFlexibleSpace ()
@@ -714,10 +652,9 @@ import AppKit
           _ = view_6_1_3.appendView (view_6_1_3_0)
           let view_6_1_3_1 = AutoLayoutButton (title: "Down", size: .small)
             .setTitleAsDownArrow ()
-            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
-              selector: #selector (AutoLayoutMergerDocument.stackSelectionDownAction (_:))
+              selector: #selector (AutoLayoutMergerDocument.stackAllDownAction (_:))
             )
           _ = view_6_1_3.appendView (view_6_1_3_1)
           let view_6_1_3_2 = AutoLayoutFlexibleSpace ()
@@ -728,15 +665,149 @@ import AppKit
       _ = view_6.appendView (view_6_1)
     }
     _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutButton (title: "Explode Selection", size: .small)
+    let view_7 = AutoLayoutVerticalStackView.HorizontalSeparator ()
+    _ = vStackView.appendView (view_7)
+    let view_8 = AutoLayoutHorizontalStackView ()
+      .set (margins: 0)
+      .equalWidth ()
+    do{
+      let view_8_0 = AutoLayoutVerticalStackView ()
+        .set (margins: 0)
+      do{
+        let view_8_0_0 = AutoLayoutStaticLabel (title: "Move Selection", bold: true, size: .small, alignment: .center)
+        _ = view_8_0.appendView (view_8_0_0)
+        let view_8_0_1 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_8_0_1_0 = AutoLayoutFlexibleSpace ()
+          _ = view_8_0_1.appendView (view_8_0_1_0)
+          let view_8_0_1_1 = AutoLayoutButton (title: "Up", size: .small)
+            .setTitleAsUpArrow ()
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.moveSelectionUpAction (_:))
+            )
+          _ = view_8_0_1.appendView (view_8_0_1_1)
+          let view_8_0_1_2 = AutoLayoutFlexibleSpace ()
+          _ = view_8_0_1.appendView (view_8_0_1_2)
+        }
+        _ = view_8_0.appendView (view_8_0_1)
+        let view_8_0_2 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_8_0_2_0 = AutoLayoutFlexibleSpace ()
+          _ = view_8_0_2.appendView (view_8_0_2_0)
+          let view_8_0_2_1 = AutoLayoutButton (title: "Left", size: .small)
+            .setTitleAsLeftArrow ()
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.moveSelectionLeftAction (_:))
+            )
+          _ = view_8_0_2.appendView (view_8_0_2_1)
+          let view_8_0_2_2 = AutoLayoutButton (title: "Right", size: .small)
+            .setTitleAsRightArrow ()
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.moveSelectionRightAction (_:))
+            )
+          _ = view_8_0_2.appendView (view_8_0_2_2)
+          let view_8_0_2_3 = AutoLayoutFlexibleSpace ()
+          _ = view_8_0_2.appendView (view_8_0_2_3)
+        }
+        _ = view_8_0.appendView (view_8_0_2)
+        let view_8_0_3 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_8_0_3_0 = AutoLayoutFlexibleSpace ()
+          _ = view_8_0_3.appendView (view_8_0_3_0)
+          let view_8_0_3_1 = AutoLayoutButton (title: "Down", size: .small)
+            .setTitleAsDownArrow ()
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.moveSelectionDownAction (_:))
+            )
+          _ = view_8_0_3.appendView (view_8_0_3_1)
+          let view_8_0_3_2 = AutoLayoutFlexibleSpace ()
+          _ = view_8_0_3.appendView (view_8_0_3_2)
+        }
+        _ = view_8_0.appendView (view_8_0_3)
+      }
+      _ = view_8.appendView (view_8_0)
+      let view_8_1 = AutoLayoutVerticalStackView ()
+        .set (margins: 0)
+      do{
+        let view_8_1_0 = AutoLayoutStaticLabel (title: "Stack Selection", bold: true, size: .small, alignment: .center)
+        _ = view_8_1.appendView (view_8_1_0)
+        let view_8_1_1 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_8_1_1_0 = AutoLayoutFlexibleSpace ()
+          _ = view_8_1_1.appendView (view_8_1_1_0)
+          let view_8_1_1_1 = AutoLayoutButton (title: "Up", size: .small)
+            .setTitleAsUpArrow ()
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.stackSelectionUpAction (_:))
+            )
+          _ = view_8_1_1.appendView (view_8_1_1_1)
+          let view_8_1_1_2 = AutoLayoutFlexibleSpace ()
+          _ = view_8_1_1.appendView (view_8_1_1_2)
+        }
+        _ = view_8_1.appendView (view_8_1_1)
+        let view_8_1_2 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_8_1_2_0 = AutoLayoutFlexibleSpace ()
+          _ = view_8_1_2.appendView (view_8_1_2_0)
+          let view_8_1_2_1 = AutoLayoutButton (title: "Left", size: .small)
+            .setTitleAsLeftArrow ()
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.stackSelectionLeftAction (_:))
+            )
+          _ = view_8_1_2.appendView (view_8_1_2_1)
+          let view_8_1_2_2 = AutoLayoutButton (title: "Right", size: .small)
+            .setTitleAsRightArrow ()
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.stackSelectionRightAction (_:))
+            )
+          _ = view_8_1_2.appendView (view_8_1_2_2)
+          let view_8_1_2_3 = AutoLayoutFlexibleSpace ()
+          _ = view_8_1_2.appendView (view_8_1_2_3)
+        }
+        _ = view_8_1.appendView (view_8_1_2)
+        let view_8_1_3 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_8_1_3_0 = AutoLayoutFlexibleSpace ()
+          _ = view_8_1_3.appendView (view_8_1_3_0)
+          let view_8_1_3_1 = AutoLayoutButton (title: "Down", size: .small)
+            .setTitleAsDownArrow ()
+            .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.stackSelectionDownAction (_:))
+            )
+          _ = view_8_1_3.appendView (view_8_1_3_1)
+          let view_8_1_3_2 = AutoLayoutFlexibleSpace ()
+          _ = view_8_1_3.appendView (view_8_1_3_2)
+        }
+        _ = view_8_1.appendView (view_8_1_3)
+      }
+      _ = view_8.appendView (view_8_1)
+    }
+    _ = vStackView.appendView (view_8)
+    let view_9 = AutoLayoutButton (title: "Explode Selection", size: .small)
       .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutMergerDocument.explodeSelectionAction (_:))
       )
-    _ = vStackView.appendView (view_7)
-    let view_8 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_8)
+    _ = vStackView.appendView (view_9)
+    let view_10 = AutoLayoutFlexibleSpace ()
+    _ = vStackView.appendView (view_10)
     return vStackView
   }
 

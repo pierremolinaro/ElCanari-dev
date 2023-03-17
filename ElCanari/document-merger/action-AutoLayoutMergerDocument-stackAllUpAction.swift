@@ -11,9 +11,9 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutMergerDocument {
-  @objc func explodeSelectionAction (_ inSender : NSObject?) {
+  @objc func stackAllUpAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-        self.explodeSelection (objectArray: self.mBoardInstanceController.selectedArray)
+        self.stackUp (overlap: self.rootObject.overlapingArrangment, objectArray: self.rootObject.boardInstances)
 //--- END OF USER ZONE 2
   }
 }

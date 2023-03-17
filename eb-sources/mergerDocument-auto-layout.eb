@@ -819,6 +819,43 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
       )
     }
     separator
+    hStack {
+      Button (title: "Explode All", size : .small) {
+        $run explodeAllAction 
+      }
+      vStack set (margins: 0) {
+        StaticLabel (title: "Stack All", bold: yes, size : .small, alignment: .center)
+        hStack {
+          space
+          Button (title: "Up", size : .small) {
+            setTitleAsUpArrow ()
+            $run stackAllUpAction 
+          }
+          space
+        }
+        hStack {
+          space
+          Button (title: "Left", size : .small) {
+            setTitleAsLeftArrow ()
+            $run stackAllLeftAction 
+          }
+          Button (title: "Right", size : .small) {
+            setTitleAsRightArrow ()
+            $run stackAllRightAction 
+          }
+          space
+        }
+        hStack {
+          space
+          Button (title: "Down", size : .small) {
+            setTitleAsDownArrow ()
+            $run stackAllDownAction 
+          }
+          space
+        }
+      }
+    }
+    separator
     hStack set (margins: 0) equalWidth () {
       vStack set (margins: 0) {
         StaticLabel (title: "Move Selection", bold: yes, size : .small, alignment: .center)
@@ -907,6 +944,11 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
   action stackSelectionUpAction ;
   action stackSelectionDownAction ;
   action explodeSelectionAction ;
+  action stackAllRightAction ;
+  action stackAllLeftAction ;
+  action stackAllUpAction ;
+  action stackAllDownAction ;
+  action explodeAllAction ;
   action showBoardHelpAction ;
 
   //············································································
