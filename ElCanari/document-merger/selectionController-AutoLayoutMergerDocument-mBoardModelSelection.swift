@@ -173,6 +173,18 @@ import AppKit
   //····················································································································
 
   //····················································································································
+  //   Selection observable property: errorArchiveLabelColor
+  //····················································································································
+
+  var errorArchiveLabelColor_property = EBTransientProperty_NSColor ()
+
+  //····················································································································
+  //   Selection observable property: errorArchiveLabelSize
+  //····················································································································
+
+  var errorArchiveLabelSize_property = EBTransientProperty_EBControlSize ()
+
+  //····················································································································
   //   Selection observable property: errorArchiveVersionMessage
   //····················································································································
 
@@ -553,6 +565,8 @@ import AppKit
     self.bind_property_backTracksBezierPaths (model: model)
     self.bind_property_boardLimitsBezierPaths (model: model)
     self.bind_property_drillSegments (model: model)
+    self.bind_property_errorArchiveLabelColor (model: model)
+    self.bind_property_errorArchiveLabelSize (model: model)
     self.bind_property_errorArchiveVersionMessage (model: model)
     self.bind_property_errorArchiveVersionMessageIsHidden (model: model)
     self.bind_property_frontComponentNameSegments (model: model)
@@ -666,6 +680,12 @@ import AppKit
   //--- drillSegments
     self.drillSegments_property.mReadModelFunction = nil 
     self.mModel?.toMany_drillSegments_StopsBeingObserved (by: self.drillSegments_property)
+  //--- errorArchiveLabelColor
+    self.errorArchiveLabelColor_property.mReadModelFunction = nil 
+    self.mModel?.toMany_errorArchiveLabelColor_StopsBeingObserved (by: self.errorArchiveLabelColor_property)
+  //--- errorArchiveLabelSize
+    self.errorArchiveLabelSize_property.mReadModelFunction = nil 
+    self.mModel?.toMany_errorArchiveLabelSize_StopsBeingObserved (by: self.errorArchiveLabelSize_property)
   //--- errorArchiveVersionMessage
     self.errorArchiveVersionMessage_property.mReadModelFunction = nil 
     self.mModel?.toMany_errorArchiveVersionMessage_StopsBeingObserved (by: self.errorArchiveVersionMessage_property)
@@ -1573,6 +1593,86 @@ import AppKit
           var isMultipleSelection = false
           for object in v {
             switch object.drillSegments_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_errorArchiveLabelColor (model : ReadOnlyArrayOf_BoardModel) {
+    model.toMany_errorArchiveLabelColor_StartsToBeObserved (by: self.errorArchiveLabelColor_property)
+    self.errorArchiveLabelColor_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <NSColor> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.errorArchiveLabelColor_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_errorArchiveLabelSize (model : ReadOnlyArrayOf_BoardModel) {
+    model.toMany_errorArchiveLabelSize_StartsToBeObserved (by: self.errorArchiveLabelSize_property)
+    self.errorArchiveLabelSize_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBControlSize> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.errorArchiveLabelSize_property.selection {
             case .empty :
               return .empty
             case .multiple :

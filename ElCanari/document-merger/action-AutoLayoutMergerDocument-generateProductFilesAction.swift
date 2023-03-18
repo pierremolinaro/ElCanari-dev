@@ -17,7 +17,8 @@ extension AutoLayoutMergerDocument {
     case .multiple, .empty :
       break
     case .single (let issues) :
-      if issues.count == 0, let ok = self.rootObject.boardLimitWidthOk, ok {
+//      if issues.count == 0, let ok = self.rootObject.boardLimitWidthOk, ok {
+      if issues.count == 0 {
         self.checkLayerConfigurationAndGenerateProductFiles ()
       }else{
         let alert = NSAlert ()

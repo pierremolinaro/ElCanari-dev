@@ -84,6 +84,18 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol BoardModel_errorArchiveLabelSize : AnyObject {
+  var errorArchiveLabelSize : EBControlSize? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardModel_errorArchiveLabelColor : AnyObject {
+  var errorArchiveLabelColor : NSColor? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol BoardModel_errorArchiveVersionMessageIsHidden : AnyObject {
   var errorArchiveVersionMessageIsHidden : Bool? { get }
 }
@@ -424,6 +436,8 @@ final class BoardModel : EBManagedObject,
          BoardModel_modelLimitWidthUnit,
          BoardModel_artworkName,
          BoardModel_errorArchiveVersionMessage,
+         BoardModel_errorArchiveLabelSize,
+         BoardModel_errorArchiveLabelColor,
          BoardModel_errorArchiveVersionMessageIsHidden,
          BoardModel_layerConfigurationString,
          BoardModel_frontLegendLinesSegments,
@@ -1092,6 +1106,30 @@ final class BoardModel : EBManagedObject,
 
   final var errorArchiveVersionMessage : String? {
     return self.errorArchiveVersionMessage_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: errorArchiveLabelSize
+  //····················································································································
+
+  final let errorArchiveLabelSize_property = EBTransientProperty_EBControlSize ()
+
+  //····················································································································
+
+  final var errorArchiveLabelSize : EBControlSize? {
+    return self.errorArchiveLabelSize_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: errorArchiveLabelColor
+  //····················································································································
+
+  final let errorArchiveLabelColor_property = EBTransientProperty_NSColor ()
+
+  //····················································································································
+
+  final var errorArchiveLabelColor : NSColor? {
+    return self.errorArchiveLabelColor_property.optionalValue
   }
 
   //····················································································································
@@ -1831,6 +1869,40 @@ final class BoardModel : EBManagedObject,
       }
     }
     self.modelVersion_property.startsToBeObserved (by: self.errorArchiveVersionMessage_property)
+  //--- Atomic property: errorArchiveLabelSize
+    self.errorArchiveLabelSize_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.ignoreModelVersionError_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_BoardModel_errorArchiveLabelSize (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.ignoreModelVersionError_property.startsToBeObserved (by: self.errorArchiveLabelSize_property)
+  //--- Atomic property: errorArchiveLabelColor
+    self.errorArchiveLabelColor_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.ignoreModelVersionError_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_BoardModel_errorArchiveLabelColor (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.ignoreModelVersionError_property.startsToBeObserved (by: self.errorArchiveLabelColor_property)
   //--- Atomic property: errorArchiveVersionMessageIsHidden
     self.errorArchiveVersionMessageIsHidden_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

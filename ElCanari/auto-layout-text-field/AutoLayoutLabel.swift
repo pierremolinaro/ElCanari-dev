@@ -7,10 +7,16 @@ import AppKit
 final class AutoLayoutLabel : AutoLayoutBase_NSTextField {
 
   //····················································································································
+
+  private let mBold : Bool
+
+  //····················································································································
   // INIT
   //····················································································································
 
   init (bold inBold : Bool, size inSize : EBControlSize) {
+    self.mBold = inBold
+
     super.init (optionalWidth: nil, bold: inBold, size: inSize)
 
     self.isBezeled = false
@@ -58,6 +64,62 @@ final class AutoLayoutLabel : AutoLayoutBase_NSTextField {
   final func setRedTextColor () -> Self {
     self.textColor = .red
     return self
+  }
+
+  //····················································································································
+  //MARK:  $textColor binding
+  //····················································································································
+
+  private var mColorController : EBObservablePropertyController? = nil
+
+  //····················································································································
+
+  final func bind_textColor (_ inObject : EBReadOnlyProperty_NSColor) -> Self {
+    self.mColorController = EBObservablePropertyController (
+      observedObjects: [inObject],
+      callBack: { [weak self] in self?.updateColor (from: inObject.selection) }
+    )
+    return self
+  }
+
+  //····················································································································
+
+  private func updateColor (from inObjectSelection : EBSelection <NSColor>) {
+    switch inObjectSelection {
+    case .empty, .multiple :
+      ()
+    case .single (let v) :
+      self.textColor = v
+    }
+  }
+
+  //····················································································································
+  //MARK:  $size binding
+  //····················································································································
+
+  private var mSizeController : EBObservablePropertyController? = nil
+
+  //····················································································································
+
+  final func bind_size (_ inObject : EBReadOnlyProperty_EBControlSize) -> Self {
+    self.mSizeController = EBObservablePropertyController (
+      observedObjects: [inObject],
+      callBack: { [weak self] in self?.updateSize (from: inObject.selection) }
+    )
+    return self
+  }
+
+  //····················································································································
+
+  private func updateSize (from inObjectSelection : EBSelection <EBControlSize>) {
+    switch inObjectSelection {
+    case .empty, .multiple :
+      ()
+    case .single (let v) :
+      self.controlSize = v.cocoaControlSize
+      let fontSize = NSFont.systemFontSize (for: self.controlSize)
+      self.font = self.mBold ? NSFont.boldSystemFont (ofSize: fontSize) : NSFont.systemFont (ofSize: fontSize)
+    }
   }
 
   //····················································································································

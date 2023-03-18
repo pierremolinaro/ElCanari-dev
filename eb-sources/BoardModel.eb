@@ -16,6 +16,10 @@ handlingOpposite entity BoardModel {
 
   transient String errorArchiveVersionMessage dependsFrom self.modelVersion ;
 
+  transient EBControlSize errorArchiveLabelSize dependsFrom self.ignoreModelVersionError ;
+
+  transient NSColor errorArchiveLabelColor dependsFrom self.ignoreModelVersionError ;
+
   transient Bool errorArchiveVersionMessageIsHidden dependsFrom self.modelVersion ;
 
 //--- Layer configuration

@@ -30,7 +30,7 @@ extension AutoLayoutMergerDocument {
       let instanceLimit = selectedInstance.boardLimitWidth!
       var acceptableNewRect = CanariRect (
         left: instanceRect.left,
-        bottom: boardLimitWidth - instanceLimit,
+        bottom: max (boardLimitWidth - instanceLimit, 0),
         width: instanceRect.width,
         height: instanceRect.bottom
       )
@@ -162,7 +162,7 @@ extension AutoLayoutMergerDocument {
       let instanceRect = selectedInstance.instanceRect!
       let instanceLimit = selectedInstance.boardLimitWidth!
       var acceptableNewRect = CanariRect (
-        left: boardLimitWidth - instanceLimit,
+        left: max (boardLimitWidth - instanceLimit, 0),
         bottom: instanceRect.bottom,
         width: instanceRect.left,
         height: instanceRect.height
@@ -235,7 +235,7 @@ extension AutoLayoutMergerDocument {
     let xSortedArray = inObjectArray.values.sorted {
       ($0.x < $1.x) || (($0.x == $1.x) && ($0.y < $1.y))
     }
-    var idx = 0
+    var idx = 1
     for object in xSortedArray {
       object.x += idx * translation
       idx += 1
@@ -243,7 +243,7 @@ extension AutoLayoutMergerDocument {
     let ySortedArray = inObjectArray.values.sorted {
       ($0.y < $1.y) || (($0.y == $1.y) && ($0.x < $1.x))
     }
-    idx = 0
+    idx = 1
     for object in ySortedArray {
       object.y += idx * translation
       idx += 1

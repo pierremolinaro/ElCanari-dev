@@ -15,14 +15,13 @@ import AppKit
 
 @MainActor func transient_AutoLayoutMergerDocument_statusMessage (
        _ self_issues : CanariIssueArray,                          
-       _ root_boardLimitWidthErrorMessage : String,               
        _ self_modelVersionErrorMessage : String
 ) -> String {
 //--- START OF USER ZONE 2
         var s = ""
-        if !root_boardLimitWidthErrorMessage.isEmpty {
-          s += root_boardLimitWidthErrorMessage + "\n"
-        }
+//        if !root_boardLimitWidthErrorMessage.isEmpty {
+//          s += root_boardLimitWidthErrorMessage + "\n"
+//        }
         if !self_modelVersionErrorMessage.isEmpty {
           s += self_modelVersionErrorMessage
         }

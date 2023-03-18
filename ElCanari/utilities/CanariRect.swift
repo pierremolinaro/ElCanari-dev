@@ -21,15 +21,15 @@ struct CanariRect : Equatable, Hashable {
   //····················································································································
 
   init () {
-    origin = CanariPoint ()
-    size = CanariSize ()
+    self.origin = CanariPoint ()
+    self.size = CanariSize ()
   }
 
   //····················································································································
 
   init (origin inOrigin : CanariPoint, size inSize : CanariSize) {
-    origin = inOrigin
-    size = inSize
+    self.origin = inOrigin
+    self.size = inSize
   }
 
   //····················································································································
@@ -39,8 +39,8 @@ struct CanariRect : Equatable, Hashable {
     let maxX = max (inP1.x, inP2.x)
     let minY = min (inP1.y, inP2.y)
     let maxY = max (inP1.y, inP2.y)
-    origin = CanariPoint (x: minX, y: minY)
-    size = CanariSize (width: maxX - minX, height: maxY - minY)
+    self.origin = CanariPoint (x: minX, y: minY)
+    self.size = CanariSize (width: maxX - minX, height: maxY - minY)
   }
 
   //····················································································································
@@ -50,16 +50,16 @@ struct CanariRect : Equatable, Hashable {
     let maxX = max (inP1.x, inP2.x, inP3.x, inP4.x)
     let minY = min (inP1.y, inP2.y, inP3.y, inP4.y)
     let maxY = max (inP1.y, inP2.y, inP3.y, inP4.y)
-    origin = CanariPoint (x: minX, y: minY)
-    size = CanariSize (width: maxX - minX, height: maxY - minY)
+    self.origin = CanariPoint (x: minX, y: minY)
+    self.size = CanariSize (width: maxX - minX, height: maxY - minY)
   }
 
   //····················································································································
 
   init (points inPoints : [CanariPoint]) {
     if inPoints.count == 0 {
-      origin = CanariPoint ()
-      size = CanariSize ()
+      self.origin = CanariPoint ()
+      self.size = CanariSize ()
     }else{
       var xMin = Int.max
       var yMin = Int.max
@@ -79,8 +79,8 @@ struct CanariRect : Equatable, Hashable {
           yMax = p.y
         }
       }
-      origin = CanariPoint (x: xMin, y: yMin)
-      size = CanariSize (width: xMax - xMin, height: yMax - yMin)
+      self.origin = CanariPoint (x: xMin, y: yMin)
+      self.size = CanariSize (width: xMax - xMin, height: yMax - yMin)
     }
   }
 
@@ -243,7 +243,7 @@ struct CanariRect : Equatable, Hashable {
   //   CohenSutherlandOutcode
   //····················································································································
 
-  func CohenSutherlandOutcode (x inX : Int, y inY : Int) -> UInt8 {
+  func cohenSutherlandOutcode (x inX : Int, y inY : Int) -> UInt8 {
     var result : UInt8 = 0
     if inX < self.left {
       result |= CohenSutherlandOutcodeLEFT
@@ -312,6 +312,69 @@ struct CanariRect : Equatable, Hashable {
          }
       }
     }
+  }
+
+  //····················································································································
+
+  func subtracting (_ inRect : CanariRect) -> [CanariRect] {
+    var result = [CanariRect] ()
+  //--- Compute R1
+    let r1 = CanariRect (
+      left: self.origin.x,
+      bottom: self.origin.y,
+      width: min (self.size.width, inRect.origin.x - self.origin.x),
+      height: min (self.size.height, inRect.origin.y + inRect.size.height - self.origin.y)
+    )
+    if !r1.isEmpty {
+      result.append (r1)
+    }
+//    outR1.origin = origin ;
+//    outR1.size.width = min (size.width, (AWInt) (inRect.origin.x - origin.x)) ;
+//    outR1.size.height = min (size.height, (AWInt) (inRect.origin.y + inRect.size.height - origin.y)) ;
+  //--- Compute R2
+    let r2 = CanariRect (
+      left: max (self.origin.x, inRect.origin.x),
+      bottom: self.origin.y,
+      width: self.origin.x + self.size.width - max (self.origin.x, inRect.origin.x),
+      height: min (self.size.height, inRect.origin.y - self.origin.y)
+    )
+    if !r2.isEmpty {
+      result.append (r2)
+    }
+//    outR2.origin.x = max (origin.x, inRect.origin.x) ;
+//    outR2.origin.y = origin.y ;
+//    outR2.size.width = origin.x + size.width - outR2.origin.x ;
+//    outR2.size.height = min (size.height, (AWInt) (inRect.origin.y - origin.y)) ;
+  //--- Compute R3
+    let r3 = CanariRect (
+      left: max (self.origin.x, inRect.origin.x + inRect.size.width),
+      bottom: max (inRect.origin.y, self.origin.y),
+      width: self.origin.x + self.size.width - max (self.origin.x, inRect.origin.x + inRect.size.width),
+      height: self.origin.y + self.size.height - max (inRect.origin.y, self.origin.y)
+    )
+    if !r3.isEmpty {
+      result.append (r3)
+    }
+//    outR3.origin.x = max (origin.x, (AWInt) (inRect.origin.x + inRect.size.width)) ;
+//    outR3.origin.y = max (inRect.origin.y, origin.y) ;
+//    outR3.size.width = origin.x + size.width - outR3.origin.x ;
+//    outR3.size.height = origin.y + size.height - outR3.origin.y ;
+  //--- Compute R4
+    let r4 = CanariRect (
+      left: origin.x,
+      bottom: max (self.origin.y, inRect.origin.y + inRect.size.height),
+      width: min (self.origin.x + size.width, inRect.origin.x + inRect.size.width) - self.origin.x,
+      height: self.origin.y + self.size.height - max (self.origin.y, inRect.origin.y + inRect.size.height)
+    )
+    if !r4.isEmpty {
+      result.append (r4)
+    }
+//    outR4.origin.x = origin.x ; // max (origin.x, inRect.origin.x) ;
+//    outR4.origin.y = max (origin.y, (AWInt) (inRect.origin.y + inRect.size.height)) ;
+//    outR4.size.width = min ((AWInt) (origin.x + size.width), (AWInt) (inRect.origin.x + inRect.size.width)) - outR4.origin.x ;
+//    outR4.size.height = origin.y + size.height - outR4.origin.y ;
+  //---
+    return result
   }
 
   //····················································································································

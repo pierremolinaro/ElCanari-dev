@@ -56,6 +56,12 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
       if let relay = self.mObserversOf_errorArchiveVersionMessage { // Transient property
         managedObject.errorArchiveVersionMessage_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_errorArchiveLabelSize { // Transient property
+        managedObject.errorArchiveLabelSize_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_errorArchiveLabelColor { // Transient property
+        managedObject.errorArchiveLabelColor_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_errorArchiveVersionMessageIsHidden { // Transient property
         managedObject.errorArchiveVersionMessageIsHidden_property.stopsBeingObserved (by: relay)
       }
@@ -259,6 +265,12 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
       }
       if let relay = self.mObserversOf_errorArchiveVersionMessage { // Transient property
         managedObject.errorArchiveVersionMessage_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_errorArchiveLabelSize { // Transient property
+        managedObject.errorArchiveLabelSize_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_errorArchiveLabelColor { // Transient property
+        managedObject.errorArchiveLabelColor_property.startsToBeObserved (by: relay)
       }
       if let relay = self.mObserversOf_errorArchiveVersionMessageIsHidden { // Transient property
         managedObject.errorArchiveVersionMessageIsHidden_property.startsToBeObserved (by: relay)
@@ -800,6 +812,64 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func toMany_errorArchiveVersionMessage_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_errorArchiveVersionMessage?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'errorArchiveLabelSize' transient property
+  //····················································································································
+
+  private final var mObserversOf_errorArchiveLabelSize : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_errorArchiveLabelSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_errorArchiveLabelSize {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.errorArchiveLabelSize_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_errorArchiveLabelSize = relay
+    }
+    relay.startsToBeObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_errorArchiveLabelSize_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_errorArchiveLabelSize?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'errorArchiveLabelColor' transient property
+  //····················································································································
+
+  private final var mObserversOf_errorArchiveLabelColor : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_errorArchiveLabelColor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_errorArchiveLabelColor {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.errorArchiveLabelColor_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_errorArchiveLabelColor = relay
+    }
+    relay.startsToBeObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_errorArchiveLabelColor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_errorArchiveLabelColor?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

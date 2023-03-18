@@ -45,24 +45,38 @@ import AppKit
         idx += 1
       }
     //-------------------- Check instances are within bounds
-      let boardInteriorRect = root_boardRect.insetBy (dx: root_boardLimitWidth / 2, dy: root_boardLimitWidth / 2)
+      let boardInteriorRect = root_boardRect.insetBy (dx: root_boardLimitWidth, dy: root_boardLimitWidth)
       idx = 0
       while idx < root_boardInstances_instanceRect.count {
         let instanceRect = root_boardInstances_instanceRect [idx].instanceRect!
         let instanceLimits = root_boardInstances_boardLimitWidth [idx].boardLimitWidth!
-        let boardInteriorRectExpandedByInstanceLimitWidth = boardInteriorRect.insetBy (dx: -instanceLimits, dy: -instanceLimits)
-        let r = boardInteriorRectExpandedByInstanceLimitWidth.union (instanceRect)
-        if r != boardInteriorRectExpandedByInstanceLimitWidth {
-          let intersectionEnlargedForErrorSignaling : NSRect = instanceRect.cocoaRect.insetBy (dx: -3.0, dy: -3.0)
-          var bp = EBBezierPath (rect: intersectionEnlargedForErrorSignaling)
-          bp.lineWidth = 3.0
+        let instanceRectInsetByInstanceLimitWidth = instanceRect.insetBy (dx: instanceLimits, dy: instanceLimits)
+//        let r = boardInteriorRect.union (instanceRectInsetByInstanceLimitWidth)
+        for r in instanceRectInsetByInstanceLimitWidth.subtracting (boardInteriorRect) {
+          var bp = EBBezierPath (roundedRect: r.cocoaRect.insetBy (dx: -3.0, dy: -3.0), xRadius: 3.0, yRadius: 3.0)
+          bp.lineWidth = 1.0
+          bp.lineCapStyle = .round
           let issue = CanariIssue (kind: .error, message: "Outside board", pathes: [bp])
           array.append (issue)
         }
+//        if r != boardInteriorRect {
+//          let intersectionEnlargedForErrorSignaling : NSRect = instanceRect.cocoaRect.insetBy (dx: -3.0, dy: -3.0)
+//          var bp = EBBezierPath (rect: intersectionEnlargedForErrorSignaling)
+//          bp.lineWidth = 3.0
+//          let issue = CanariIssue (kind: .error, message: "Outside board", pathes: [bp])
+//          array.append (issue)
+//        }
+//        let boardInteriorRectExpandedByInstanceLimitWidth = boardInteriorRect.insetBy (dx: -instanceLimits, dy: -instanceLimits)
+//        let r = boardInteriorRectExpandedByInstanceLimitWidth.union (instanceRect)
+//        if r != boardInteriorRectExpandedByInstanceLimitWidth {
+//          let intersectionEnlargedForErrorSignaling : NSRect = instanceRect.cocoaRect.insetBy (dx: -3.0, dy: -3.0)
+//          var bp = EBBezierPath (rect: intersectionEnlargedForErrorSignaling)
+//          bp.lineWidth = 3.0
+//          let issue = CanariIssue (kind: .error, message: "Outside board", pathes: [bp])
+//          array.append (issue)
+//        }
         idx += 1
       }
-    //-------------------- Sort issues
-    //  array.sort (by: CanariIssue.displaySortingCompare)
     //--------------------
       return array
 //--- END OF USER ZONE 2

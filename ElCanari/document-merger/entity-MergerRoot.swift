@@ -198,18 +198,6 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol MergerRoot_boardLimitWidthErrorMessage : AnyObject {
-  var boardLimitWidthErrorMessage : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_boardLimitWidthOk : AnyObject {
-  var boardLimitWidthOk : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 @MainActor protocol MergerRoot_boardWidth : AnyObject {
   var boardWidth : Int? { get }
 }
@@ -299,8 +287,6 @@ final class MergerRoot : EBManagedObject,
          MergerRoot_drillDataFileExtension,
          MergerRoot_modelNames,
          MergerRoot_boardRect,
-         MergerRoot_boardLimitWidthErrorMessage,
-         MergerRoot_boardLimitWidthOk,
          MergerRoot_boardWidth,
          MergerRoot_boardHeight,
          MergerRoot_comments,
@@ -960,30 +946,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: boardLimitWidthErrorMessage
-  //····················································································································
-
-  final let boardLimitWidthErrorMessage_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var boardLimitWidthErrorMessage : String? {
-    return self.boardLimitWidthErrorMessage_property.optionalValue
-  }
-
-  //····················································································································
-  //   Transient property: boardLimitWidthOk
-  //····················································································································
-
-  final let boardLimitWidthOk_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var boardLimitWidthOk : Bool? {
-    return self.boardLimitWidthOk_property.optionalValue
-  }
-
-  //····················································································································
   //   Transient property: boardWidth
   //····················································································································
 
@@ -1440,44 +1402,6 @@ final class MergerRoot : EBManagedObject,
     self.boardManualHeight_property.startsToBeObserved (by: self.boardRect_property)
     self.boardInstances_property.toMany_instanceRect_StartsToBeObserved (by: self.boardRect_property)
     self.boardInstances_property.toMany_boardLimitWidth_StartsToBeObserved (by: self.boardRect_property)
-  //--- Atomic property: boardLimitWidthErrorMessage
-    self.boardLimitWidthErrorMessage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.boardLimitWidth_property.selection
-        let s1 = unwSelf.boardModels_property.selection
-        switch (s0, s1) {
-        case (.single (let v0),
-              .single (let v1)) :
-          return .single (transient_MergerRoot_boardLimitWidthErrorMessage (v0, v1))
-        case (.multiple,
-              .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.boardLimitWidth_property.startsToBeObserved (by: self.boardLimitWidthErrorMessage_property)
-    self.boardModels_property.toMany_modelLimitWidth_StartsToBeObserved (by: self.boardLimitWidthErrorMessage_property)
-  //--- Atomic property: boardLimitWidthOk
-    self.boardLimitWidthOk_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.boardLimitWidthErrorMessage_property.selection
-        switch (s0) {
-        case (.single (let v0)) :
-          return .single (transient_MergerRoot_boardLimitWidthOk (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.boardLimitWidthErrorMessage_property.startsToBeObserved (by: self.boardLimitWidthOk_property)
   //--- Atomic property: boardWidth
     self.boardWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

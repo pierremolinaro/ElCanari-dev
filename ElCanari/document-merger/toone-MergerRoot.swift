@@ -39,8 +39,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       oldValue.mArtworkVersion_property.stopsBeingObserved (by: self.mArtworkVersion_property) // Stored property
       oldValue.modelNames_property.stopsBeingObserved (by: self.modelNames_property) // Transient property
       oldValue.boardRect_property.stopsBeingObserved (by: self.boardRect_property) // Transient property
-      oldValue.boardLimitWidthErrorMessage_property.stopsBeingObserved (by: self.boardLimitWidthErrorMessage_property) // Transient property
-      oldValue.boardLimitWidthOk_property.stopsBeingObserved (by: self.boardLimitWidthOk_property) // Transient property
       oldValue.boardWidth_property.stopsBeingObserved (by: self.boardWidth_property) // Transient property
       oldValue.boardHeight_property.stopsBeingObserved (by: self.boardHeight_property) // Transient property
       oldValue.comments_property.stopsBeingObserved (by: self.comments_property) // Transient property
@@ -82,8 +80,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       newValue.mArtworkVersion_property.startsToBeObserved (by: self.mArtworkVersion_property) // Stored property
       newValue.modelNames_property.startsToBeObserved (by: self.modelNames_property) // Transient property
       newValue.boardRect_property.startsToBeObserved (by: self.boardRect_property) // Transient property
-      newValue.boardLimitWidthErrorMessage_property.startsToBeObserved (by: self.boardLimitWidthErrorMessage_property) // Transient property
-      newValue.boardLimitWidthOk_property.startsToBeObserved (by: self.boardLimitWidthOk_property) // Transient property
       newValue.boardWidth_property.startsToBeObserved (by: self.boardWidth_property) // Transient property
       newValue.boardHeight_property.startsToBeObserved (by: self.boardHeight_property) // Transient property
       newValue.comments_property.startsToBeObserved (by: self.comments_property) // Transient property
@@ -239,18 +235,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let boardRect_property = EBTransientProperty <CanariRect?> ()
-
-  //····················································································································
-  //   Observers of 'boardLimitWidthErrorMessage' transient property
-  //····················································································································
-
-  final let boardLimitWidthErrorMessage_property = EBTransientProperty <String?> ()
-
-  //····················································································································
-  //   Observers of 'boardLimitWidthOk' transient property
-  //····················································································································
-
-  final let boardLimitWidthOk_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'boardWidth' transient property
@@ -455,14 +439,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //--- Configure boardRect transient property
     self.boardRect_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardRect_property.optionalSelection ?? .single (nil)
-    }
-  //--- Configure boardLimitWidthErrorMessage transient property
-    self.boardLimitWidthErrorMessage_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.boardLimitWidthErrorMessage_property.optionalSelection ?? .single (nil)
-    }
-  //--- Configure boardLimitWidthOk transient property
-    self.boardLimitWidthOk_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.boardLimitWidthOk_property.optionalSelection ?? .single (nil)
     }
   //--- Configure boardWidth transient property
     self.boardWidth_property.mReadModelFunction = { [weak self] in

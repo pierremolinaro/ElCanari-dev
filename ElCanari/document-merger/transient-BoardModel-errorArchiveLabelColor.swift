@@ -13,11 +13,11 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_MergerRoot_boardLimitWidthOk (
-       _ self_boardLimitWidthErrorMessage : String
-) -> Bool {
+@MainActor func transient_BoardModel_errorArchiveLabelColor (
+       _ self_ignoreModelVersionError : Bool
+) -> NSColor {
 //--- START OF USER ZONE 2
-       return self_boardLimitWidthErrorMessage.isEmpty
+        return self_ignoreModelVersionError ? .black : .red
 //--- END OF USER ZONE 2
 }
 

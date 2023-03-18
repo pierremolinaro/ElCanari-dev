@@ -71,6 +71,8 @@ extern autolayout class StaticLabels (left : String, right : String, bold: Bool,
 
 extern autolayout class Label (bold: Bool, size: EBControlSize) $enabled $hidden {
   $title transient String
+  $size transient EBControlSize
+  $textColor transient NSColor
   func setRedTextColor ()
   func expandableWidth ()
   func set (alignment: TextAlignment)

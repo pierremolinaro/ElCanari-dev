@@ -13,24 +13,11 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_MergerRoot_boardLimitWidthErrorMessage (
-       _ self_boardLimitWidth : Int,                              
-       _ self_boardModels_modelLimitWidth : [BoardModel_modelLimitWidth]
-) -> String {
+@MainActor func transient_BoardModel_errorArchiveLabelSize (
+       _ self_ignoreModelVersionError : Bool
+) -> EBControlSize {
 //--- START OF USER ZONE 2
-    if self_boardModels_modelLimitWidth.isEmpty {
-      return ""
-    }else{
-      var maxOfModelLimitWidth = 0
-      for model in self_boardModels_modelLimitWidth {
-        maxOfModelLimitWidth = max (maxOfModelLimitWidth, model.modelLimitWidth)
-      }
-      if maxOfModelLimitWidth <= self_boardLimitWidth {
-        return ""
-      }else{
-        return "Board width should be greater of equal to model limit widths"
-      }
-    }
+        return self_ignoreModelVersionError ? .mini : .small
 //--- END OF USER ZONE 2
 }
 

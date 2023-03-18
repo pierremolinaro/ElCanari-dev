@@ -52,12 +52,12 @@ handlingOpposite entity MergerRoot {
      self.boardInstances.all.instanceRect,
      self.boardInstances.all.boardLimitWidth ;
 
-//--- Check board limit width
-  transient String boardLimitWidthErrorMessage dependsFrom
-     self.boardLimitWidth,
-     self. boardModels.all.modelLimitWidth ;
-
-  transient Bool boardLimitWidthOk dependsFrom self.boardLimitWidthErrorMessage ;
+//--- Board limit width
+//  transient String boardLimitWidthErrorMessage dependsFrom
+//     self.boardLimitWidth,
+//     self. boardModels.all.modelLimitWidth ;
+//
+//  transient Bool boardLimitWidthOk dependsFrom self.boardLimitWidthErrorMessage ;
 
   transient Int boardWidth dependsFrom self.boardRect ;
   transient Int boardHeight dependsFrom self.boardRect ;

@@ -31,7 +31,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
       space
       vStack {
         hStack { space ImageObserverView (size : .regular) { $image self.statusImage $tooltip self.statusMessage } space }
-        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
+        StaticLabel (title: "Status", bold: no, size: .small, alignment: .center)
       }
     }
     separator
@@ -44,11 +44,19 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
     root.boardModels.all.ignoreModelVersionError
   ;
 
-  transient NSImage statusImage dependsFrom self.issues, root.boardLimitWidthOk, self.modelVersionErrorMessage ;
+  transient NSImage statusImage dependsFrom
+    self.issues,
+//    root.boardLimitWidthOk,
+    self.modelVersionErrorMessage
+  ;
+//
+//  transient NSImage boardLimitWidthStatusImage dependsFrom root.boardLimitWidthOk ;
 
-  transient NSImage boardLimitWidthStatusImage dependsFrom root.boardLimitWidthOk ;
-
-  transient String statusMessage dependsFrom self.issues, root.boardLimitWidthErrorMessage, self.modelVersionErrorMessage ;
+  transient String statusMessage dependsFrom
+    self.issues,
+//    root.boardLimitWidthErrorMessage,
+    self.modelVersionErrorMessage
+  ;
 
 
   transient String boardDispositionStatusTitle dependsFrom self.issues ;
@@ -316,7 +324,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         }
       )
       space
-      hStack { space Button (title: "Done", size : .regular) { $run dismissDisplaySettingView } }
+      hStack set (rightMargin: 8) { space Button (title: "Done", size : .regular) { $run dismissDisplaySettingView } }
     }
     vStack set (margins: 8) set (width: 250) $hidden root.showDisplaySettingView {
       hStack {
@@ -339,6 +347,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         noHeaderView ()
         $tableValue #mBoardModelController
       }
+      separator
       GridView2 {
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Artwork Name", bold: no, size : .small, alignment: .right),
@@ -369,30 +378,36 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         )
         addSeparator ()
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Board Count", bold: no, size : .small, alignment: .right),
-          right: IntObserverField (bold: yes, size: .small) {
-            set (alignment: .left)
-            $observedValue #mBoardModelSelection.instanceCount
-          }
-        )
-        addSeparator ()
-        addFirstBaseLineAligned (
           left: StaticLabel (title: "Archive Version", bold: no, size : .small, alignment: .right),
           right: IntObserverField (bold: yes, size: .small) {
             set (alignment: .left)
             $observedValue #mBoardModelSelection.modelVersion
           }
         )
-      }
-      Label (bold: yes, size : .small) {
-        setRedTextColor ()
-        $title #mBoardModelSelection.errorArchiveVersionMessage
-        $hidden #mBoardModelSelection.errorArchiveVersionMessageIsHidden
-      }
-      Checkbox (title: "Ignore Board Archive Error", size : .small) {
-        expandableWidth ()
-        $value #mBoardModelSelection.ignoreModelVersionError
-        $hidden #mBoardModelSelection.errorArchiveVersionMessageIsHidden
+        add (single:
+          Label (bold: yes, size : .small) {
+            setRedTextColor ()
+            $title #mBoardModelSelection.errorArchiveVersionMessage
+            $size #mBoardModelSelection.errorArchiveLabelSize
+            $textColor #mBoardModelSelection.errorArchiveLabelColor
+            $hidden #mBoardModelSelection.errorArchiveVersionMessageIsHidden
+          }
+        )
+        add (single:
+          Checkbox (title: "Ignore Board Archive Error", size : .small) {
+            expandableWidth ()
+            $value #mBoardModelSelection.ignoreModelVersionError
+            $hidden #mBoardModelSelection.errorArchiveVersionMessageIsHidden
+          }
+        )
+        addSeparator ()
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Board Count", bold: no, size : .small, alignment: .right),
+          right: IntObserverField (bold: yes, size: .small) {
+            set (alignment: .left)
+            $observedValue #mBoardModelSelection.instanceCount
+          }
+        )
       }
       space
     }
@@ -427,7 +442,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
 
   stackView \BoardBaseInspectorView vStack { }
 
-  stackView \BoardPage hStack {
+  stackView \BoardPage hStack set (spacing: 0) {
     newView boardBaseInspectorView = \BoardBaseInspectorView ()
     newView boardSettingsPage = \BoardSettingsPage ()
     newView boardIssuesPage = \BoardIssuesPage ()
@@ -678,7 +693,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         }
       )
       space
-      hStack { space Button (title: "Done", size : .regular) { $run dismissDisplaySettingView } }
+      hStack set (rightMargin: 8) { space Button (title: "Done", size : .regular) { $run dismissDisplaySettingView } }
     }
     vStack set (margins: 8) set (width: 250) $hidden root.showDisplaySettingView {
       SegmentedControlWithPages (documentView: view boardBaseInspectorView, equalWidth: yes, size : .regular)
@@ -686,7 +701,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         expandableWidth ()
         addPage (title: "", tooltip: "Model Description", pageView: view boardSettingsPage)
         addPage (title: "", tooltip: "Issue Inspector", pageView: view boardIssuesPage)
-        $segmentImage self.boardLimitWidthStatusImage (segmentIndex : 0)
+//        $segmentImage self.boardLimitWidthStatusImage (segmentIndex : 0)
         $segmentImage self.statusImage (segmentIndex : 1)
         $segmentTitle self.boardDispositionStatusTitle (segmentIndex : 1)
       }
@@ -728,211 +743,216 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         { $models root.modelNames }
     }
     separator
-    StaticLabel (title: "Board", bold: yes, size : .small, alignment: .left)
-    hStack {
-      Checkbox (title: "Automatic Size", size: .small) { $value root.automaticBoardSize }
-      space
-      Checkbox (title: "Limits Overlap", size: .small) {
-        $enabled root.boardInstances.count > 0
-        $value root.overlapingArrangment
+    VerticalScrollView (content:
+      vStack {
+        StaticLabel (title: "Board", bold: yes, size : .small, alignment: .left)
+        hStack {
+          Checkbox (title: "Automatic Size", size: .small) { $value root.automaticBoardSize }
+          space
+          Checkbox (title: "Limits Overlap", size: .small) {
+            $enabled root.boardInstances.count > 0
+            $value root.overlapingArrangment
+          }
+        }
+        GridView2 {
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Width", bold: no, size : .small, alignment: .right),
+            right: vStack {
+              CanariDimensionAndPopUp (size: .small) {
+                $dimensionAndUnit root.boardManualWidth, root.boardWidthUnit
+                $hidden root.automaticBoardSize
+              }
+              CanariObservedDimensionAndPopUp (size: .small) {
+                $dimensionAndUnit root.boardWidth, root.boardWidthUnit
+                $hidden !root.automaticBoardSize
+              }
+            }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Height", bold: no, size : .small, alignment: .right),
+            right: vStack {
+              CanariDimensionAndPopUp (size: .small) {
+                $dimensionAndUnit root.boardManualHeight, root.boardHeightUnit
+                $hidden root.automaticBoardSize
+              }
+              CanariObservedDimensionAndPopUp (size: .small) {
+                $dimensionAndUnit root.boardHeight, root.boardHeightUnit
+                $hidden !root.automaticBoardSize
+              }
+            }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Limit Width", bold: no, size : .small, alignment: .right),
+            right: CanariDimensionAndPopUp (size: .small) {
+              $dimensionAndUnit root.boardLimitWidth, root.boardLimitWidthUnit
+            }
+          )
+//          add (single:
+//            Label (bold: yes, size : .small) {
+//              setRedTextColor ()
+//              $title root.boardLimitWidthErrorMessage
+//              $hidden root.boardLimitWidthOk
+//            }
+//          )      
+          addSeparator ()
+          add (single: StaticLabel (title: "Arrow Key Magnitude", bold: yes, size : .small, alignment: .left)
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Arrow Key", bold: no, size : .small, alignment: .right),
+            right: CanariDimensionAndPopUp (size: .small) {
+              $dimensionAndUnit root.arrowMagnitude, root.arrowMagnitudeUnit
+            }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Shift Arrow Key", bold: no, size : .small, alignment: .right),
+            right: CanariDimensionAndPopUp (size: .small) {
+              $dimensionAndUnit root.shiftArrowMagnitude, root.shiftArrowMagnitudeUnit
+            }
+          )
+          addSeparator ()
+          add (single: StaticLabel (title: "Selected Element", bold: yes, size : .small, alignment: .left)
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Model", bold: no, size : .small, alignment: .right),
+            right: Label (bold: yes, size: .small) { $title #mBoardInstanceSelection.modelName }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Right", bold: no, size : .small, alignment: .right),
+            right: CanariDimensionAndPopUp (size: .small) {
+              $dimensionAndUnit #mBoardInstanceSelection.x, root.selectedBoardXUnit
+            }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Bottom", bold: no, size : .small, alignment: .right),
+            right: CanariDimensionAndPopUp (size: .small) {
+              $dimensionAndUnit #mBoardInstanceSelection.y, root.selectedBoardYUnit
+            }
+          )
+          add (single:
+            CanariOrientationSegmentedControl (size : .small) {
+              expandableWidth ()
+              $orientation #mBoardInstanceSelection.instanceRotation
+            }
+          )
+        }
+        separator
+        hStack {
+          vStack {
+            space
+            Button (title: "Explode All", size : .small) { $run explodeAllAction }
+            space
+          }
+          vStack set (margins: 0) {
+            StaticLabel (title: "Stack All", bold: yes, size : .small, alignment: .center)
+            hStack {
+              space
+              Button (title: "Up", size : .small) {
+                setTitleAsUpArrow ()
+                $run stackAllUpAction 
+              }
+              space
+            }
+            hStack {
+              space
+              Button (title: "Left", size : .small) {
+                setTitleAsLeftArrow ()
+                $run stackAllLeftAction 
+              }
+              Button (title: "Right", size : .small) {
+                setTitleAsRightArrow ()
+                $run stackAllRightAction 
+              }
+              space
+            }
+            hStack {
+              space
+              Button (title: "Down", size : .small) {
+                setTitleAsDownArrow ()
+                $run stackAllDownAction 
+              }
+              space
+            }
+          }
+        }
+        separator
+        hStack set (margins: 0) equalWidth () {
+          vStack set (margins: 0) {
+            StaticLabel (title: "Move Selection", bold: yes, size : .small, alignment: .center)
+            hStack {
+              space
+              Button (title: "Up", size : .small) {
+                setTitleAsUpArrow ()
+                $enabled #mBoardInstanceController.selectedArray.count > 0
+                $run moveSelectionUpAction 
+              }
+              space
+            }
+            hStack {
+              space
+              Button (title: "Left", size : .small) {
+                setTitleAsLeftArrow ()
+                $enabled #mBoardInstanceController.selectedArray.count > 0
+                $run moveSelectionLeftAction 
+              }
+              Button (title: "Right", size : .small) {
+                setTitleAsRightArrow ()
+                $enabled #mBoardInstanceController.selectedArray.count > 0
+                $run moveSelectionRightAction 
+              }
+              space
+            }
+            hStack {
+              space
+              Button (title: "Down", size : .small) {
+                setTitleAsDownArrow ()
+                $enabled #mBoardInstanceController.selectedArray.count > 0
+                $run moveSelectionDownAction 
+              }
+              space
+            }
+          }
+          vStack set (margins: 0) {
+            StaticLabel (title: "Stack Selection", bold: yes, size : .small, alignment: .center)
+            hStack {
+              space
+              Button (title: "Up", size : .small) {
+                setTitleAsUpArrow ()
+                $enabled #mBoardInstanceController.selectedArray.count > 0
+                $run stackSelectionUpAction 
+              }
+              space
+            }
+            hStack {
+              space
+              Button (title: "Left", size : .small) {
+                setTitleAsLeftArrow ()
+                $enabled #mBoardInstanceController.selectedArray.count > 0
+                $run stackSelectionLeftAction 
+              }
+              Button (title: "Right", size : .small) {
+                setTitleAsRightArrow ()
+                $enabled #mBoardInstanceController.selectedArray.count > 0
+                $run stackSelectionRightAction 
+              }
+              space
+            }
+            hStack {
+              space
+              Button (title: "Down", size : .small) {
+                setTitleAsDownArrow ()
+                $enabled #mBoardInstanceController.selectedArray.count > 0
+                $run stackSelectionDownAction 
+              }
+              space
+            }
+          }
+        }
+        Button (title: "Explode Selection", size : .small) {
+          $enabled #mBoardInstanceController.selectedArray.count > 0
+          $run explodeSelectionAction 
+        }
       }
-    }
-    GridView2 {
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Width", bold: no, size : .small, alignment: .right),
-        right: vStack {
-          CanariDimensionAndPopUp (size: .small) {
-            $dimensionAndUnit root.boardManualWidth, root.boardWidthUnit
-            $hidden root.automaticBoardSize
-          }
-          CanariObservedDimensionAndPopUp (size: .small) {
-            $dimensionAndUnit root.boardWidth, root.boardWidthUnit
-            $hidden !root.automaticBoardSize
-          }
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Height", bold: no, size : .small, alignment: .right),
-        right: vStack {
-          CanariDimensionAndPopUp (size: .small) {
-            $dimensionAndUnit root.boardManualHeight, root.boardHeightUnit
-            $hidden root.automaticBoardSize
-          }
-          CanariObservedDimensionAndPopUp (size: .small) {
-            $dimensionAndUnit root.boardHeight, root.boardHeightUnit
-            $hidden !root.automaticBoardSize
-          }
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Limit Width", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit root.boardLimitWidth, root.boardLimitWidthUnit
-        }
-      )
-      add (single:
-        Label (bold: yes, size : .small) {
-          setRedTextColor ()
-          $title root.boardLimitWidthErrorMessage
-          $hidden root.boardLimitWidthOk
-        }
-      )      
-      addSeparator ()
-      add (single: StaticLabel (title: "Arrow Key Magnitude", bold: yes, size : .small, alignment: .left)
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Arrow Key", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit root.arrowMagnitude, root.arrowMagnitudeUnit
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Shift Arrow Key", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit root.shiftArrowMagnitude, root.shiftArrowMagnitudeUnit
-        }
-      )
-      addSeparator ()
-      add (single: StaticLabel (title: "Selected Element", bold: yes, size : .small, alignment: .left)
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Model", bold: no, size : .small, alignment: .right),
-        right: Label (bold: yes, size: .small) { $title #mBoardInstanceSelection.modelName }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Right", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #mBoardInstanceSelection.x, root.selectedBoardXUnit
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Bottom", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #mBoardInstanceSelection.y, root.selectedBoardYUnit
-        }
-      )
-      add (single:
-        CanariOrientationSegmentedControl (size : .small) {
-          expandableWidth ()
-          $orientation #mBoardInstanceSelection.instanceRotation
-        }
-      )
-    }
-    separator
-    hStack {
-      Button (title: "Explode All", size : .small) {
-        $run explodeAllAction 
-      }
-      vStack set (margins: 0) {
-        StaticLabel (title: "Stack All", bold: yes, size : .small, alignment: .center)
-        hStack {
-          space
-          Button (title: "Up", size : .small) {
-            setTitleAsUpArrow ()
-            $run stackAllUpAction 
-          }
-          space
-        }
-        hStack {
-          space
-          Button (title: "Left", size : .small) {
-            setTitleAsLeftArrow ()
-            $run stackAllLeftAction 
-          }
-          Button (title: "Right", size : .small) {
-            setTitleAsRightArrow ()
-            $run stackAllRightAction 
-          }
-          space
-        }
-        hStack {
-          space
-          Button (title: "Down", size : .small) {
-            setTitleAsDownArrow ()
-            $run stackAllDownAction 
-          }
-          space
-        }
-      }
-    }
-    separator
-    hStack set (margins: 0) equalWidth () {
-      vStack set (margins: 0) {
-        StaticLabel (title: "Move Selection", bold: yes, size : .small, alignment: .center)
-        hStack {
-          space
-          Button (title: "Up", size : .small) {
-            setTitleAsUpArrow ()
-            $enabled #mBoardInstanceController.selectedArray.count > 0
-            $run moveSelectionUpAction 
-          }
-          space
-        }
-        hStack {
-          space
-          Button (title: "Left", size : .small) {
-            setTitleAsLeftArrow ()
-            $enabled #mBoardInstanceController.selectedArray.count > 0
-            $run moveSelectionLeftAction 
-          }
-          Button (title: "Right", size : .small) {
-            setTitleAsRightArrow ()
-            $enabled #mBoardInstanceController.selectedArray.count > 0
-            $run moveSelectionRightAction 
-          }
-          space
-        }
-        hStack {
-          space
-          Button (title: "Down", size : .small) {
-            setTitleAsDownArrow ()
-            $enabled #mBoardInstanceController.selectedArray.count > 0
-            $run moveSelectionDownAction 
-          }
-          space
-        }
-      }
-      vStack set (margins: 0) {
-        StaticLabel (title: "Stack Selection", bold: yes, size : .small, alignment: .center)
-        hStack {
-          space
-          Button (title: "Up", size : .small) {
-            setTitleAsUpArrow ()
-            $enabled #mBoardInstanceController.selectedArray.count > 0
-            $run stackSelectionUpAction 
-          }
-          space
-        }
-        hStack {
-          space
-          Button (title: "Left", size : .small) {
-            setTitleAsLeftArrow ()
-            $enabled #mBoardInstanceController.selectedArray.count > 0
-            $run stackSelectionLeftAction 
-          }
-          Button (title: "Right", size : .small) {
-            setTitleAsRightArrow ()
-            $enabled #mBoardInstanceController.selectedArray.count > 0
-            $run stackSelectionRightAction 
-          }
-          space
-        }
-        hStack {
-          space
-          Button (title: "Down", size : .small) {
-            setTitleAsDownArrow ()
-            $enabled #mBoardInstanceController.selectedArray.count > 0
-            $run stackSelectionDownAction 
-          }
-          space
-        }
-      }
-    }
-    Button (title: "Explode Selection", size : .small) {
-      $enabled #mBoardInstanceController.selectedArray.count > 0
-      $run explodeSelectionAction 
-    }
-    space
+    )
   }
 
   action moveSelectionRightAction ;
