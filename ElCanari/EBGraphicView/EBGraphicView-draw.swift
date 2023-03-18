@@ -113,7 +113,7 @@ extension EBGraphicView {
     if !self.mIssueBezierPathes.isEmpty {
       switch self.mIssueKind {
       case .error :
-        NSColor.red.withAlphaComponent (0.5).setFill ()
+        NSColor.red.withAlphaComponent (0.25).setFill ()
         for bp in self.mIssueBezierPathes {
           bp.fill ()
         }
@@ -124,7 +124,7 @@ extension EBGraphicView {
           }
         }
       case .warning :
-        NSColor.orange.withAlphaComponent (0.5).setFill ()
+        NSColor.orange.withAlphaComponent (0.25).setFill ()
         for bp in self.mIssueBezierPathes {
           bp.fill ()
         }
