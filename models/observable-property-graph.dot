@@ -13,7 +13,7 @@ digraph G {
   EBObservedObserver -> EBObserverProtocol ;
   "EBObservableProperty<T>" -> EBObservedObserver ;
   ReadOnlyAbstractGenericRelationshipProperty -> EBObservedObject ;
-  EBTransientProperty -> "EBObservableProperty<T>" ;
+  "EBTransientProperty<T>" -> "EBObservableProperty<T>" ;
   "EBReadOnlyEnumProperty<T>" -> "EBObservableProperty<T>" ;
   "EBObservableMutableProperty<T>" -> "EBObservableProperty<T>" ;
   "EBComputedProperty<T>" -> "EBObservableMutableProperty<T>" ;
