@@ -37,7 +37,8 @@ let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
   "Dans un projet, la génération d'une archive pour le merger contient un numéro de version",
-  "Ce numéro de version est vérifié par le merger"
+  "Ce numéro de version est vérifié par le merger",
+  "Version 2.4.0 de Sparkle"
 ]
 let NEWS : [String] = [
 ]
