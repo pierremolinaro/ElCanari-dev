@@ -90,30 +90,6 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol MergerRoot_arrowMagnitude : AnyObject {
-  var arrowMagnitude : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_arrowMagnitudeUnit : AnyObject {
-  var arrowMagnitudeUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_shiftArrowMagnitude : AnyObject {
-  var shiftArrowMagnitude : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_shiftArrowMagnitudeUnit : AnyObject {
-  var shiftArrowMagnitudeUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 @MainActor protocol MergerRoot_mPDFBoardBackgroundColor : AnyObject {
   var mPDFBoardBackgroundColor : NSColor { get }
 }
@@ -269,10 +245,6 @@ final class MergerRoot : EBManagedObject,
          MergerRoot_selectedBoardYUnit,
          MergerRoot_boardLimitWidth,
          MergerRoot_boardLimitWidthUnit,
-         MergerRoot_arrowMagnitude,
-         MergerRoot_arrowMagnitudeUnit,
-         MergerRoot_shiftArrowMagnitude,
-         MergerRoot_shiftArrowMagnitudeUnit,
          MergerRoot_mPDFBoardBackgroundColor,
          MergerRoot_mArtworkName,
          MergerRoot_mArtworkVersion,
@@ -591,82 +563,6 @@ final class MergerRoot : EBManagedObject,
   final var boardLimitWidthUnit : Int {
     get { return self.boardLimitWidthUnit_property.propval }
     set { self.boardLimitWidthUnit_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: arrowMagnitude
-  //····················································································································
-
-  final let arrowMagnitude_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final func reset_arrowMagnitude_toDefaultValue () {
-    self.arrowMagnitude = 900000
-  }
-
-  //····················································································································
-
-  final var arrowMagnitude : Int {
-    get { return self.arrowMagnitude_property.propval }
-    set { self.arrowMagnitude_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: arrowMagnitudeUnit
-  //····················································································································
-
-  final let arrowMagnitudeUnit_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final func reset_arrowMagnitudeUnit_toDefaultValue () {
-    self.arrowMagnitudeUnit = 90000
-  }
-
-  //····················································································································
-
-  final var arrowMagnitudeUnit : Int {
-    get { return self.arrowMagnitudeUnit_property.propval }
-    set { self.arrowMagnitudeUnit_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: shiftArrowMagnitude
-  //····················································································································
-
-  final let shiftArrowMagnitude_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final func reset_shiftArrowMagnitude_toDefaultValue () {
-    self.shiftArrowMagnitude = 3600000
-  }
-
-  //····················································································································
-
-  final var shiftArrowMagnitude : Int {
-    get { return self.shiftArrowMagnitude_property.propval }
-    set { self.shiftArrowMagnitude_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: shiftArrowMagnitudeUnit
-  //····················································································································
-
-  final let shiftArrowMagnitudeUnit_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final func reset_shiftArrowMagnitudeUnit_toDefaultValue () {
-    self.shiftArrowMagnitudeUnit = 90000
-  }
-
-  //····················································································································
-
-  final var shiftArrowMagnitudeUnit : Int {
-    get { return self.shiftArrowMagnitudeUnit_property.propval }
-    set { self.shiftArrowMagnitudeUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -1100,10 +996,6 @@ final class MergerRoot : EBManagedObject,
     self.selectedBoardYUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "selectedBoardYUnit")
     self.boardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "boardLimitWidth")
     self.boardLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "boardLimitWidthUnit")
-    self.arrowMagnitude_property = EBStoredProperty_Int (defaultValue: 900000, undoManager: inUndoManager, key: "arrowMagnitude")
-    self.arrowMagnitudeUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "arrowMagnitudeUnit")
-    self.shiftArrowMagnitude_property = EBStoredProperty_Int (defaultValue: 3600000, undoManager: inUndoManager, key: "shiftArrowMagnitude")
-    self.shiftArrowMagnitudeUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "shiftArrowMagnitudeUnit")
     self.mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, undoManager: inUndoManager, key: "mPDFBoardBackgroundColor")
     self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mArtworkName")
     self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mArtworkVersion")

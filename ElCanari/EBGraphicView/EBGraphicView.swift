@@ -290,7 +290,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   // MARK: -
   //····················································································································
 
-  private var mArrowKeyMagnitude : Int = milsToCanariUnit (fromInt: 25)
+  private var mArrowKeyMagnitude : Int = 0 // milsToCanariUnit (fromInt: 25)
 
   //····················································································································
 
@@ -310,7 +310,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   // MARK: -
   //····················································································································
 
-  private var mShiftArrowKeyMagnitude : Int = milsToCanariUnit (fromInt: 100)
+  private var mShiftArrowKeyMagnitude : Int = 0 // milsToCanariUnit (fromInt: 100)
 
   //····················································································································
 
@@ -380,7 +380,6 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   //····················································································································
 
   var contentsBoundingBox : NSRect {
- //   Swift.print ("contentsBoundingBox")
     var r = NSRect () // For including (0, 0)
     r = r.union (self.objectDisplayBounds)
     r = r.union (self.issueBoundingBox)
@@ -397,7 +396,6 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
       let bp = self.mForegroundImageAffineTransform.transform (NSBezierPath (rect: rImage))
       r = r.union (bp.bounds)
     }
-//    Swift.print ("  \(r)")
     return r
   }
 

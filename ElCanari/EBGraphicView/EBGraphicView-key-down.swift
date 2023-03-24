@@ -49,18 +49,23 @@ extension EBGraphicView {
   //····················································································································
 
   final private func wantsToTranslateSelection (byX inDx : Int, byY inDy : Int) -> Bool {
-    var accepted = true
-    if let controller = self.viewController {
-      for object in controller.selectedGraphicObjectSet.values {
-        if !object.acceptToTranslate (xBy: inDx, yBy: inDy) {
-          accepted = false
-          break
-        }
-      }
-      if accepted {
-        var userSet = EBReferenceSet <EBManagedObject> ()
+    var accepted = false
+    if inDx == 0, inDy == 0 {
+      NSSound.beep ()
+    }else{
+      accepted = true
+      if let controller = self.viewController {
         for object in controller.selectedGraphicObjectSet.values {
-          object.translate (xBy: inDx, yBy:inDy, userSet: &userSet)
+          if !object.acceptToTranslate (xBy: inDx, yBy: inDy) {
+            accepted = false
+            break
+          }
+        }
+        if accepted {
+          var userSet = EBReferenceSet <EBManagedObject> ()
+          for object in controller.selectedGraphicObjectSet.values {
+            object.translate (xBy: inDx, yBy:inDy, userSet: &userSet)
+          }
         }
       }
     }

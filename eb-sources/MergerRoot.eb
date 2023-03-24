@@ -26,11 +26,11 @@ handlingOpposite entity MergerRoot {
   property Int boardLimitWidthUnit default 90_000 ; // 1mm
 
 //--- Arrow magnitude
-  property Int arrowMagnitude default 900_000 ; // 10mm
-  property Int arrowMagnitudeUnit default 90_000 ; // 1mm
-
-  property Int shiftArrowMagnitude default 3_600_000 ; // 40mm
-  property Int shiftArrowMagnitudeUnit default 90_000 ; // 1mm
+//  property Int arrowMagnitude default 900_000 ; // 10mm
+//  property Int arrowMagnitudeUnit default 90_000 ; // 1mm
+//
+//  property Int shiftArrowMagnitude default 3_600_000 ; // 40mm
+//  property Int shiftArrowMagnitudeUnit default 90_000 ; // 1mm
 
 //--- Board model name array
   transient StringTagArray modelNames dependsFrom self.boardModels.all.name, self.boardModels ;

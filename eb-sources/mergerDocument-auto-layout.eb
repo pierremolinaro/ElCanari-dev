@@ -483,8 +483,8 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
       $verticalFlip prefs.mergerBoardViewVerticalFlip
       $overObjectsDisplay root.boardOutlineRectDisplay
       $graphicController #mBoardInstanceController
-      $arrowKeyMagnitude root.arrowMagnitude
-      $shiftArrowKeyMagnitude root.shiftArrowMagnitude
+//      $arrowKeyMagnitude root.arrowMagnitude
+//      $shiftArrowKeyMagnitude root.shiftArrowMagnitude
       $xPlacardUnit root.boardWidthUnit
       $yPlacardUnit root.boardHeightUnit
     }
@@ -556,28 +556,21 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
               $dimensionAndUnit root.boardLimitWidth, root.boardLimitWidthUnit
             }
           )
-//          add (single:
-//            Label (bold: yes, size : .small) {
-//              setRedTextColor ()
-//              $title root.boardLimitWidthErrorMessage
-//              $hidden root.boardLimitWidthOk
+//          addSeparator ()
+//          add (single: StaticLabel (title: "Arrow Key Magnitude", bold: yes, size : .small, alignment: .left)
+//          )
+//          addFirstBaseLineAligned (
+//            left: StaticLabel (title: "Arrow Key", bold: no, size : .small, alignment: .right),
+//            right: CanariDimensionAndPopUp (size: .small) {
+//              $dimensionAndUnit root.arrowMagnitude, root.arrowMagnitudeUnit
 //            }
-//          )      
-          addSeparator ()
-          add (single: StaticLabel (title: "Arrow Key Magnitude", bold: yes, size : .small, alignment: .left)
-          )
-          addFirstBaseLineAligned (
-            left: StaticLabel (title: "Arrow Key", bold: no, size : .small, alignment: .right),
-            right: CanariDimensionAndPopUp (size: .small) {
-              $dimensionAndUnit root.arrowMagnitude, root.arrowMagnitudeUnit
-            }
-          )
-          addFirstBaseLineAligned (
-            left: StaticLabel (title: "Shift Arrow Key", bold: no, size : .small, alignment: .right),
-            right: CanariDimensionAndPopUp (size: .small) {
-              $dimensionAndUnit root.shiftArrowMagnitude, root.shiftArrowMagnitudeUnit
-            }
-          )
+//          )
+//          addFirstBaseLineAligned (
+//            left: StaticLabel (title: "Shift Arrow Key", bold: no, size : .small, alignment: .right),
+//            right: CanariDimensionAndPopUp (size: .small) {
+//              $dimensionAndUnit root.shiftArrowMagnitude, root.shiftArrowMagnitudeUnit
+//            }
+//          )
           addSeparator ()
           add (single: StaticLabel (title: "Selected Element", bold: yes, size : .small, alignment: .left)
           )

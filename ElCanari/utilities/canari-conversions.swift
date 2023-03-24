@@ -197,6 +197,8 @@ func stringFrom (valueInCanariUnit : Int, displayUnit inUnit : Int) -> String {
     return String (format:"%.2f mm", value / 90_000.0)
   }else if inUnit == 900_000 {
     return String (format:"%.2f cm", value / 900_000.0)
+  }else if inUnit == 90_000_000 {
+    return String (format:"%.4f m", value / 90_000_000.0)
   }else if inUnit == 2_286_000 {
     return String (format:"%.2f in", value / 2_286_000.0)
   }else if inUnit == 31_750 {
@@ -217,6 +219,8 @@ func stringFrom (displayUnit inUnit : Int) -> String {
     return "mm"
   }else if inUnit == 900_000 {
     return "cm"
+  }else if inUnit == 90_000_000 {
+    return "m"
   }else if inUnit == 2_286_000 {
     return "in"
   }else if inUnit == 31_750 {

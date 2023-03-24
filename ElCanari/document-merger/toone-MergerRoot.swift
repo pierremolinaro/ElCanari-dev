@@ -30,10 +30,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       oldValue.selectedBoardYUnit_property.stopsBeingObserved (by: self.selectedBoardYUnit_property) // Stored property
       oldValue.boardLimitWidth_property.stopsBeingObserved (by: self.boardLimitWidth_property) // Stored property
       oldValue.boardLimitWidthUnit_property.stopsBeingObserved (by: self.boardLimitWidthUnit_property) // Stored property
-      oldValue.arrowMagnitude_property.stopsBeingObserved (by: self.arrowMagnitude_property) // Stored property
-      oldValue.arrowMagnitudeUnit_property.stopsBeingObserved (by: self.arrowMagnitudeUnit_property) // Stored property
-      oldValue.shiftArrowMagnitude_property.stopsBeingObserved (by: self.shiftArrowMagnitude_property) // Stored property
-      oldValue.shiftArrowMagnitudeUnit_property.stopsBeingObserved (by: self.shiftArrowMagnitudeUnit_property) // Stored property
       oldValue.mPDFBoardBackgroundColor_property.stopsBeingObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
       oldValue.mArtworkName_property.stopsBeingObserved (by: self.mArtworkName_property) // Stored property
       oldValue.mArtworkVersion_property.stopsBeingObserved (by: self.mArtworkVersion_property) // Stored property
@@ -71,10 +67,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       newValue.selectedBoardYUnit_property.startsToBeObserved (by: self.selectedBoardYUnit_property) // Stored property
       newValue.boardLimitWidth_property.startsToBeObserved (by: self.boardLimitWidth_property) // Stored property
       newValue.boardLimitWidthUnit_property.startsToBeObserved (by: self.boardLimitWidthUnit_property) // Stored property
-      newValue.arrowMagnitude_property.startsToBeObserved (by: self.arrowMagnitude_property) // Stored property
-      newValue.arrowMagnitudeUnit_property.startsToBeObserved (by: self.arrowMagnitudeUnit_property) // Stored property
-      newValue.shiftArrowMagnitude_property.startsToBeObserved (by: self.shiftArrowMagnitude_property) // Stored property
-      newValue.shiftArrowMagnitudeUnit_property.startsToBeObserved (by: self.shiftArrowMagnitudeUnit_property) // Stored property
       newValue.mPDFBoardBackgroundColor_property.startsToBeObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
       newValue.mArtworkName_property.startsToBeObserved (by: self.mArtworkName_property) // Stored property
       newValue.mArtworkVersion_property.startsToBeObserved (by: self.mArtworkVersion_property) // Stored property
@@ -181,30 +173,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let boardLimitWidthUnit_property = EBTransientProperty <Int?> ()
-
-  //····················································································································
-  //   Observers of 'arrowMagnitude' stored property
-  //····················································································································
-
-  final let arrowMagnitude_property = EBTransientProperty <Int?> ()
-
-  //····················································································································
-  //   Observers of 'arrowMagnitudeUnit' stored property
-  //····················································································································
-
-  final let arrowMagnitudeUnit_property = EBTransientProperty <Int?> ()
-
-  //····················································································································
-  //   Observers of 'shiftArrowMagnitude' stored property
-  //····················································································································
-
-  final let shiftArrowMagnitude_property = EBTransientProperty <Int?> ()
-
-  //····················································································································
-  //   Observers of 'shiftArrowMagnitudeUnit' stored property
-  //····················································································································
-
-  final let shiftArrowMagnitudeUnit_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'mPDFBoardBackgroundColor' stored property
@@ -403,22 +371,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //--- Configure boardLimitWidthUnit simple stored property
     self.boardLimitWidthUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardLimitWidthUnit_property.optionalSelection ?? .single (nil)
-    }
-  //--- Configure arrowMagnitude simple stored property
-    self.arrowMagnitude_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.arrowMagnitude_property.optionalSelection ?? .single (nil)
-    }
-  //--- Configure arrowMagnitudeUnit simple stored property
-    self.arrowMagnitudeUnit_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.arrowMagnitudeUnit_property.optionalSelection ?? .single (nil)
-    }
-  //--- Configure shiftArrowMagnitude simple stored property
-    self.shiftArrowMagnitude_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.shiftArrowMagnitude_property.optionalSelection ?? .single (nil)
-    }
-  //--- Configure shiftArrowMagnitudeUnit simple stored property
-    self.shiftArrowMagnitudeUnit_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.shiftArrowMagnitudeUnit_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mPDFBoardBackgroundColor simple stored property
     self.mPDFBoardBackgroundColor_property.mReadModelFunction = { [weak self] in

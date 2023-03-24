@@ -28,17 +28,13 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.7.3"
+let VERSION_CANARI = "1.7.4"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Dans un merger, correction de l'affichage de la carte et des fonctions d'alignement"
 ]
 let CHANGES : [String] = [
-  "Dans un projet, la génération d'une archive pour le merger contient un numéro de version",
-  "Ce numéro de version est vérifié par le merger",
-  "Version 2.4.0 de Sparkle"
 ]
 let NEWS : [String] = [
 ]
