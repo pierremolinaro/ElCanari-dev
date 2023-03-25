@@ -702,6 +702,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol ProjectRoot_schematicErrorCount : AnyObject {
+  var schematicErrorCount : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol ProjectRoot_sheetIndexes : AnyObject {
   var sheetIndexes : IntArray? { get }
 }
@@ -794,6 +800,12 @@ import AppKit
 
 @MainActor protocol ProjectRoot_trackLengthString : AnyObject {
   var trackLengthString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol ProjectRoot_boardStatusErrorCount : AnyObject {
+  var boardStatusErrorCount : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -936,14 +948,14 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol ProjectRoot_boardStatusImage : AnyObject {
-  var boardStatusImage : NSImage? { get }
+@MainActor protocol ProjectRoot_boardStatusMessage : AnyObject {
+  var boardStatusMessage : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol ProjectRoot_boardStatusMessage : AnyObject {
-  var boardStatusMessage : String? { get }
+@MainActor protocol ProjectRoot_boardStatusWarningCount : AnyObject {
+  var boardStatusWarningCount : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -966,8 +978,8 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol ProjectRoot_schematicStatusImage : AnyObject {
-  var schematicStatusImage : NSImage? { get }
+@MainActor protocol ProjectRoot_schematicWarningCount : AnyObject {
+  var schematicWarningCount : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1091,6 +1103,7 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_schematicOverDisplay,
          ProjectRoot_connexionWarningString,
          ProjectRoot_connexionErrorString,
+         ProjectRoot_schematicErrorCount,
          ProjectRoot_sheetIndexes,
          ProjectRoot_netsDescription,
          ProjectRoot_boardIssues,
@@ -1107,6 +1120,7 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_inner4LayerTrackCountString,
          ProjectRoot_trackCountString,
          ProjectRoot_trackLengthString,
+         ProjectRoot_boardStatusErrorCount,
          ProjectRoot_interiorBoundBox,
          ProjectRoot_boardBoundBox,
          ProjectRoot_boardInteriorTop,
@@ -1130,12 +1144,12 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_unplacedPackages,
          ProjectRoot_componentsPlacedInBoard,
-         ProjectRoot_boardStatusImage,
          ProjectRoot_boardStatusMessage,
+         ProjectRoot_boardStatusWarningCount,
          ProjectRoot_placedComponentNameArray,
          ProjectRoot_schematicHasErrorOrWarning,
          ProjectRoot_schematicStatusMessage,
-         ProjectRoot_schematicStatusImage {
+         ProjectRoot_schematicWarningCount {
 
   //····················································································································
   //   Atomic property: mArtworkName
@@ -3488,6 +3502,18 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: schematicErrorCount
+  //····················································································································
+
+  final let schematicErrorCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var schematicErrorCount : Int? {
+    return self.schematicErrorCount_property.optionalValue
+  }
+
+  //····················································································································
   //   Transient property: sheetIndexes
   //····················································································································
 
@@ -3677,6 +3703,18 @@ final class ProjectRoot : EBManagedObject,
 
   final var trackLengthString : String? {
     return self.trackLengthString_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: boardStatusErrorCount
+  //····················································································································
+
+  final let boardStatusErrorCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var boardStatusErrorCount : Int? {
+    return self.boardStatusErrorCount_property.optionalValue
   }
 
   //····················································································································
@@ -3956,18 +3994,6 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: boardStatusImage
-  //····················································································································
-
-  final let boardStatusImage_property = EBTransientProperty_NSImage ()
-
-  //····················································································································
-
-  final var boardStatusImage : NSImage? {
-    return self.boardStatusImage_property.optionalValue
-  }
-
-  //····················································································································
   //   Transient property: boardStatusMessage
   //····················································································································
 
@@ -3977,6 +4003,18 @@ final class ProjectRoot : EBManagedObject,
 
   final var boardStatusMessage : String? {
     return self.boardStatusMessage_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: boardStatusWarningCount
+  //····················································································································
+
+  final let boardStatusWarningCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var boardStatusWarningCount : Int? {
+    return self.boardStatusWarningCount_property.optionalValue
   }
 
   //····················································································································
@@ -4016,15 +4054,15 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: schematicStatusImage
+  //   Transient property: schematicWarningCount
   //····················································································································
 
-  final let schematicStatusImage_property = EBTransientProperty_NSImage ()
+  final let schematicWarningCount_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  final var schematicStatusImage : NSImage? {
-    return self.schematicStatusImage_property.optionalValue
+  final var schematicWarningCount : Int? {
+    return self.schematicWarningCount_property.optionalValue
   }
 
   //····················································································································
@@ -4663,6 +4701,23 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self.connexionErrorString_property)
+  //--- Atomic property: schematicErrorCount
+    self.schematicErrorCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mSheets_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectRoot_schematicErrorCount (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self.schematicErrorCount_property)
   //--- Atomic property: sheetIndexes
     self.sheetIndexes_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4959,6 +5014,23 @@ final class ProjectRoot : EBManagedObject,
     }
     self.mBoardObjects_property.toMany_trackLengthInCanariUnit_StartsToBeObserved (by: self.trackLengthString_property)
     self.mTrackLengthUnit_property.startsToBeObserved (by: self.trackLengthString_property)
+  //--- Atomic property: boardStatusErrorCount
+    self.boardStatusErrorCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.boardIssues_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectRoot_boardStatusErrorCount (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardIssues_property.startsToBeObserved (by: self.boardStatusErrorCount_property)
   //--- Atomic property: interiorBoundBox
     self.interiorBoundBox_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5518,27 +5590,6 @@ final class ProjectRoot : EBManagedObject,
     self.mComponents_property.toMany_mNamePrefix_StartsToBeObserved (by: self.componentsPlacedInBoard_property)
     self.mComponents_property.toMany_mNameIndex_StartsToBeObserved (by: self.componentsPlacedInBoard_property)
     self.mComponents_property.toMany_componentIsPlacedInBoard_StartsToBeObserved (by: self.componentsPlacedInBoard_property)
-  //--- Atomic property: boardStatusImage
-    self.boardStatusImage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.boardIssues_property.selection
-        let s1 = unwSelf.unplacedPackages_property.selection
-        switch (s0, s1) {
-        case (.single (let v0),
-              .single (let v1)) :
-          return .single (transient_ProjectRoot_boardStatusImage (v0, v1))
-        case (.multiple,
-              .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.boardIssues_property.startsToBeObserved (by: self.boardStatusImage_property)
-    self.unplacedPackages_property.startsToBeObserved (by: self.boardStatusImage_property)
   //--- Atomic property: boardStatusMessage
     self.boardStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5560,6 +5611,27 @@ final class ProjectRoot : EBManagedObject,
     }
     self.boardIssues_property.startsToBeObserved (by: self.boardStatusMessage_property)
     self.unplacedPackages_property.startsToBeObserved (by: self.boardStatusMessage_property)
+  //--- Atomic property: boardStatusWarningCount
+    self.boardStatusWarningCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.boardIssues_property.selection
+        let s1 = unwSelf.unplacedPackages_property.selection
+        switch (s0, s1) {
+        case (.single (let v0),
+              .single (let v1)) :
+          return .single (transient_ProjectRoot_boardStatusWarningCount (v0, v1))
+        case (.multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardIssues_property.startsToBeObserved (by: self.boardStatusWarningCount_property)
+    self.unplacedPackages_property.startsToBeObserved (by: self.boardStatusWarningCount_property)
   //--- Atomic property: placedComponentNameArray
     self.placedComponentNameArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5639,21 +5711,18 @@ final class ProjectRoot : EBManagedObject,
     self.netWarningCount_property.startsToBeObserved (by: self.schematicStatusMessage_property)
     self.mSheets_property.toMany_connexionWarnings_StartsToBeObserved (by: self.schematicStatusMessage_property)
     self.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self.schematicStatusMessage_property)
-  //--- Atomic property: schematicStatusImage
-    self.schematicStatusImage_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: schematicWarningCount
+    self.schematicWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.unplacedSymbols_property.selection
         let s1 = unwSelf.netWarningCount_property.selection
         let s2 = unwSelf.mSheets_property.selection
-        let s3 = unwSelf.mSheets_property.selection
-        switch (s0, s1, s2, s3) {
+        switch (s0, s1, s2) {
         case (.single (let v0),
               .single (let v1),
-              .single (let v2),
-              .single (let v3)) :
-          return .single (transient_ProjectRoot_schematicStatusImage (v0, v1, v2, v3))
+              .single (let v2)) :
+          return .single (transient_ProjectRoot_schematicWarningCount (v0, v1, v2))
         case (.multiple,
-              .multiple,
               .multiple,
               .multiple) :
           return .multiple
@@ -5664,10 +5733,9 @@ final class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.unplacedSymbols_property.startsToBeObserved (by: self.schematicStatusImage_property)
-    self.netWarningCount_property.startsToBeObserved (by: self.schematicStatusImage_property)
-    self.mSheets_property.toMany_connexionWarnings_StartsToBeObserved (by: self.schematicStatusImage_property)
-    self.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self.schematicStatusImage_property)
+    self.unplacedSymbols_property.startsToBeObserved (by: self.schematicWarningCount_property)
+    self.netWarningCount_property.startsToBeObserved (by: self.schematicWarningCount_property)
+    self.mSheets_property.toMany_connexionWarnings_StartsToBeObserved (by: self.schematicWarningCount_property)
   //--- Install undoers and opposite setter for relationships
     self.mSheets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },

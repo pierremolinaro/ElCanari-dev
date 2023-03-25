@@ -35,23 +35,47 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       vStack {
         hStack {
           space
-          ImageObserverView (size : .regular) {
-            $image root.schematicStatusImage $tooltip root.schematicStatusMessage
+          StatusBadgeView () {
+            $tooltip root.schematicStatusMessage
+            $errorCount root.schematicErrorCount
+            $warningCount root.schematicWarningCount
           }
           space
         }
         StaticLabel (title: "Schematic", bold: no, size : .small, alignment: .center)
       }
+//      vStack {
+//        hStack {
+//          space
+//          ImageObserverView (size : .regular) {
+//            $image root.schematicStatusImage $tooltip root.schematicStatusMessage
+//          }
+//          space
+//        }
+//        StaticLabel (title: "Schematic", bold: no, size : .small, alignment: .center)
+//      } 
       vStack {
         hStack {
           space
-          ImageObserverView (size : .regular) {
-            $image root.boardStatusImage $tooltip root.boardStatusMessage
+          StatusBadgeView () {
+            $tooltip root.boardStatusMessage
+            $errorCount root.boardStatusErrorCount
+            $warningCount root.boardStatusWarningCount
           }
           space
         }
         StaticLabel (title: "Board", bold: no, size : .small, alignment: .center)
       }
+//      vStack {
+//        hStack {
+//          space
+//          ImageObserverView (size : .regular) {
+//            $image root.boardStatusImage $tooltip root.boardStatusMessage
+//          }
+//          space
+//        }
+//        StaticLabel (title: "Board", bold: no, size : .small, alignment: .center)
+//      }
       vStack {
         hStack {
           space

@@ -106,10 +106,16 @@ handlingOpposite entity ProjectRoot {
   transient String trackLengthString dependsFrom self.mBoardObjects.all.trackLengthInCanariUnit, self.mTrackLengthUnit ;
   
   transient CanariIssueArray boardIssues dependsFrom self.mBoardObjects.all.issues ;
-  transient NSImage boardStatusImage dependsFrom
-     self.boardIssues, self.unplacedPackages ;
+//  transient NSImage boardStatusImage dependsFrom
+//     self.boardIssues, self.unplacedPackages ;
 
   transient String boardStatusMessage dependsFrom
+    self.boardIssues, self.unplacedPackages ;
+
+  transient Int boardStatusErrorCount dependsFrom
+    self.boardIssues ;
+
+  transient Int boardStatusWarningCount dependsFrom
     self.boardIssues, self.unplacedPackages ;
   
   property Double mErrorOrWarningIssueSize default 6.0 ;
@@ -289,12 +295,22 @@ handlingOpposite entity ProjectRoot {
      self.mSheets.all.connexionErrors
    ;
 
-  transient NSImage schematicStatusImage dependsFrom
-    self.unplacedSymbols,
-    self.netWarningCount,
-    self.mSheets.all.connexionWarnings,
-    self.mSheets.all.connexionErrors
-  ;
+  transient Int schematicErrorCount dependsFrom
+     self.mSheets.all.connexionErrors
+   ;
+
+  transient Int schematicWarningCount dependsFrom
+     self.unplacedSymbols,
+     self.netWarningCount,
+     self.mSheets.all.connexionWarnings
+   ;
+
+//  transient NSImage schematicStatusImage dependsFrom
+//    self.unplacedSymbols,
+//    self.netWarningCount,
+//    self.mSheets.all.connexionWarnings,
+//    self.mSheets.all.connexionErrors
+//  ;
  
   transient NetInfoArray netsDescription dependsFrom self.mNetClasses.all.netsDescription ;
    

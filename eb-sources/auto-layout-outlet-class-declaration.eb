@@ -117,6 +117,12 @@ extern autolayout class ImageObserverView (size: EBControlSize) $hidden {
   $tooltip transient String
 }
 
+extern autolayout class StatusBadgeView () {
+  $tooltip transient String
+  $errorCount transient Int
+  $warningCount transient Int
+}
+
 extern autolayout class FlexibleSpace {
 }
 

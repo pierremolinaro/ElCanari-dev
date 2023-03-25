@@ -119,6 +119,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.schematicOverDisplay_property.stopsBeingObserved (by: self.schematicOverDisplay_property) // Transient property
       oldValue.connexionWarningString_property.stopsBeingObserved (by: self.connexionWarningString_property) // Transient property
       oldValue.connexionErrorString_property.stopsBeingObserved (by: self.connexionErrorString_property) // Transient property
+      oldValue.schematicErrorCount_property.stopsBeingObserved (by: self.schematicErrorCount_property) // Transient property
       oldValue.sheetIndexes_property.stopsBeingObserved (by: self.sheetIndexes_property) // Transient property
       oldValue.netsDescription_property.stopsBeingObserved (by: self.netsDescription_property) // Transient property
       oldValue.boardIssues_property.stopsBeingObserved (by: self.boardIssues_property) // Transient property
@@ -135,6 +136,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.inner4LayerTrackCountString_property.stopsBeingObserved (by: self.inner4LayerTrackCountString_property) // Transient property
       oldValue.trackCountString_property.stopsBeingObserved (by: self.trackCountString_property) // Transient property
       oldValue.trackLengthString_property.stopsBeingObserved (by: self.trackLengthString_property) // Transient property
+      oldValue.boardStatusErrorCount_property.stopsBeingObserved (by: self.boardStatusErrorCount_property) // Transient property
       oldValue.interiorBoundBox_property.stopsBeingObserved (by: self.interiorBoundBox_property) // Transient property
       oldValue.boardBoundBox_property.stopsBeingObserved (by: self.boardBoundBox_property) // Transient property
       oldValue.boardInteriorTop_property.stopsBeingObserved (by: self.boardInteriorTop_property) // Transient property
@@ -158,12 +160,12 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.unplacedSymbols_property.stopsBeingObserved (by: self.unplacedSymbols_property) // Transient property
       oldValue.unplacedPackages_property.stopsBeingObserved (by: self.unplacedPackages_property) // Transient property
       oldValue.componentsPlacedInBoard_property.stopsBeingObserved (by: self.componentsPlacedInBoard_property) // Transient property
-      oldValue.boardStatusImage_property.stopsBeingObserved (by: self.boardStatusImage_property) // Transient property
       oldValue.boardStatusMessage_property.stopsBeingObserved (by: self.boardStatusMessage_property) // Transient property
+      oldValue.boardStatusWarningCount_property.stopsBeingObserved (by: self.boardStatusWarningCount_property) // Transient property
       oldValue.placedComponentNameArray_property.stopsBeingObserved (by: self.placedComponentNameArray_property) // Transient property
       oldValue.schematicHasErrorOrWarning_property.stopsBeingObserved (by: self.schematicHasErrorOrWarning_property) // Transient property
       oldValue.schematicStatusMessage_property.stopsBeingObserved (by: self.schematicStatusMessage_property) // Transient property
-      oldValue.schematicStatusImage_property.stopsBeingObserved (by: self.schematicStatusImage_property) // Transient property
+      oldValue.schematicWarningCount_property.stopsBeingObserved (by: self.schematicWarningCount_property) // Transient property
       if let relay = self.mObserversOf_mSheets { // to Many
         oldValue.mSheets_property.stopsBeingObserved (by: relay)
       }
@@ -291,6 +293,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.schematicOverDisplay_property.startsToBeObserved (by: self.schematicOverDisplay_property) // Transient property
       newValue.connexionWarningString_property.startsToBeObserved (by: self.connexionWarningString_property) // Transient property
       newValue.connexionErrorString_property.startsToBeObserved (by: self.connexionErrorString_property) // Transient property
+      newValue.schematicErrorCount_property.startsToBeObserved (by: self.schematicErrorCount_property) // Transient property
       newValue.sheetIndexes_property.startsToBeObserved (by: self.sheetIndexes_property) // Transient property
       newValue.netsDescription_property.startsToBeObserved (by: self.netsDescription_property) // Transient property
       newValue.boardIssues_property.startsToBeObserved (by: self.boardIssues_property) // Transient property
@@ -307,6 +310,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.inner4LayerTrackCountString_property.startsToBeObserved (by: self.inner4LayerTrackCountString_property) // Transient property
       newValue.trackCountString_property.startsToBeObserved (by: self.trackCountString_property) // Transient property
       newValue.trackLengthString_property.startsToBeObserved (by: self.trackLengthString_property) // Transient property
+      newValue.boardStatusErrorCount_property.startsToBeObserved (by: self.boardStatusErrorCount_property) // Transient property
       newValue.interiorBoundBox_property.startsToBeObserved (by: self.interiorBoundBox_property) // Transient property
       newValue.boardBoundBox_property.startsToBeObserved (by: self.boardBoundBox_property) // Transient property
       newValue.boardInteriorTop_property.startsToBeObserved (by: self.boardInteriorTop_property) // Transient property
@@ -330,12 +334,12 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.unplacedSymbols_property.startsToBeObserved (by: self.unplacedSymbols_property) // Transient property
       newValue.unplacedPackages_property.startsToBeObserved (by: self.unplacedPackages_property) // Transient property
       newValue.componentsPlacedInBoard_property.startsToBeObserved (by: self.componentsPlacedInBoard_property) // Transient property
-      newValue.boardStatusImage_property.startsToBeObserved (by: self.boardStatusImage_property) // Transient property
       newValue.boardStatusMessage_property.startsToBeObserved (by: self.boardStatusMessage_property) // Transient property
+      newValue.boardStatusWarningCount_property.startsToBeObserved (by: self.boardStatusWarningCount_property) // Transient property
       newValue.placedComponentNameArray_property.startsToBeObserved (by: self.placedComponentNameArray_property) // Transient property
       newValue.schematicHasErrorOrWarning_property.startsToBeObserved (by: self.schematicHasErrorOrWarning_property) // Transient property
       newValue.schematicStatusMessage_property.startsToBeObserved (by: self.schematicStatusMessage_property) // Transient property
-      newValue.schematicStatusImage_property.startsToBeObserved (by: self.schematicStatusImage_property) // Transient property
+      newValue.schematicWarningCount_property.startsToBeObserved (by: self.schematicWarningCount_property) // Transient property
       if let relay = self.mObserversOf_mSheets { // to Many
         newValue.mSheets_property.startsToBeObserved (by: relay)
       }
@@ -979,6 +983,12 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   final let connexionErrorString_property = EBTransientProperty <String?> ()
 
   //····················································································································
+  //   Observers of 'schematicErrorCount' transient property
+  //····················································································································
+
+  final let schematicErrorCount_property = EBTransientProperty <Int?> ()
+
+  //····················································································································
   //   Observers of 'sheetIndexes' transient property
   //····················································································································
 
@@ -1073,6 +1083,12 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let trackLengthString_property = EBTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'boardStatusErrorCount' transient property
+  //····················································································································
+
+  final let boardStatusErrorCount_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'interiorBoundBox' transient property
@@ -1213,16 +1229,16 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   final let componentsPlacedInBoard_property = EBTransientProperty <StringTagArray?> ()
 
   //····················································································································
-  //   Observers of 'boardStatusImage' transient property
-  //····················································································································
-
-  final let boardStatusImage_property = EBTransientProperty <NSImage?> ()
-
-  //····················································································································
   //   Observers of 'boardStatusMessage' transient property
   //····················································································································
 
   final let boardStatusMessage_property = EBTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'boardStatusWarningCount' transient property
+  //····················································································································
+
+  final let boardStatusWarningCount_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'placedComponentNameArray' transient property
@@ -1243,10 +1259,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   final let schematicStatusMessage_property = EBTransientProperty <String?> ()
 
   //····················································································································
-  //   Observers of 'schematicStatusImage' transient property
+  //   Observers of 'schematicWarningCount' transient property
   //····················································································································
 
-  final let schematicStatusImage_property = EBTransientProperty <NSImage?> ()
+  final let schematicWarningCount_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observable toMany property: mSheets
@@ -1848,6 +1864,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.connexionErrorString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.connexionErrorString_property.optionalSelection ?? .single (nil)
     }
+  //--- Configure schematicErrorCount transient property
+    self.schematicErrorCount_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.schematicErrorCount_property.optionalSelection ?? .single (nil)
+    }
   //--- Configure sheetIndexes transient property
     self.sheetIndexes_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.sheetIndexes_property.optionalSelection ?? .single (nil)
@@ -1911,6 +1931,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //--- Configure trackLengthString transient property
     self.trackLengthString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.trackLengthString_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure boardStatusErrorCount transient property
+    self.boardStatusErrorCount_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.boardStatusErrorCount_property.optionalSelection ?? .single (nil)
     }
   //--- Configure interiorBoundBox transient property
     self.interiorBoundBox_property.mReadModelFunction = { [weak self] in
@@ -2004,13 +2028,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.componentsPlacedInBoard_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.componentsPlacedInBoard_property.optionalSelection ?? .single (nil)
     }
-  //--- Configure boardStatusImage transient property
-    self.boardStatusImage_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.boardStatusImage_property.optionalSelection ?? .single (nil)
-    }
   //--- Configure boardStatusMessage transient property
     self.boardStatusMessage_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardStatusMessage_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure boardStatusWarningCount transient property
+    self.boardStatusWarningCount_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.boardStatusWarningCount_property.optionalSelection ?? .single (nil)
     }
   //--- Configure placedComponentNameArray transient property
     self.placedComponentNameArray_property.mReadModelFunction = { [weak self] in
@@ -2024,9 +2048,9 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.schematicStatusMessage_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.schematicStatusMessage_property.optionalSelection ?? .single (nil)
     }
-  //--- Configure schematicStatusImage transient property
-    self.schematicStatusImage_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.schematicStatusImage_property.optionalSelection ?? .single (nil)
+  //--- Configure schematicWarningCount transient property
+    self.schematicWarningCount_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.schematicWarningCount_property.optionalSelection ?? .single (nil)
     }
   }
 

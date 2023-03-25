@@ -13,26 +13,17 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_ProjectRoot_boardStatusImage (
-       _ self_boardIssues : CanariIssueArray,           
-       _ self_unplacedPackages : StringTagArray
-) -> NSImage {
+@MainActor func transient_ProjectRoot_schematicErrorCount (
+       _ self_mSheets_connexionErrors : [SheetInProject_connexionErrors]
+) -> Int {
 //--- START OF USER ZONE 2
         var errorCount = 0
-        var warningCount = self_unplacedPackages.count
-        for issue in self_boardIssues {
-          switch issue.kind {
-          case .error : errorCount += 1
-          case .warning : warningCount += 1
+        for sheet in self_mSheets_connexionErrors {
+          if let n = sheet.connexionErrors {
+            errorCount += n
           }
         }
-        if errorCount > 0 {
-          return NSImage (named: errorStatusImageName)!
-        }else if warningCount > 0 {
-          return NSImage (named: warningStatusImageName)!
-        }else{
-          return NSImage (named: okStatusImageName)!
-        }
+        return errorCount
 //--- END OF USER ZONE 2
 }
 
