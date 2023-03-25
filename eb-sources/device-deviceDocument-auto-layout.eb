@@ -41,18 +41,32 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
       }
       space
       vStack {
-        hStack { space ImageObserverView (size : .regular) { $image self.mStatusImage $tooltip self.mStatusMessage } space }
+        hStack {
+          space
+          StatusBadgeView () {
+            $tooltip self.statusMessage
+            $errorCount self.statusErrorCount
+            $warningCount self.statusWarningCount
+          }
+          space
+        }
         StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
       }
+//      vStack {
+//        hStack { space ImageObserverView (size : .regular) { $image self.mStatusImage $tooltip self.statusMessage } space }
+//        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
+//      }
     }
     separator
     view pageMasterView
   }
 
   transient CanariIssueArray issues dependsFrom root.issues, self.documentFileName ;
-  transient NSImage mStatusImage dependsFrom self.issues ;
-  transient String mStatusMessage dependsFrom self.issues ;
-  transient MetadataStatus mMetadataStatus dependsFrom self.issues ;
+//  transient NSImage mStatusImage dependsFrom self.issues ;
+  transient Int statusWarningCount dependsFrom self.issues ;
+  transient Int statusErrorCount dependsFrom self.issues ;
+  transient String statusMessage dependsFrom self.issues ;
+  transient MetadataStatus metadataStatus dependsFrom self.issues ;
 
 //······················································································································
 //   DESCRIPTION
@@ -555,7 +569,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
     vStack equalHeight () {
       hStack {
         vStack set (width: 84) { StaticLabel (title: "Status", bold: no, size : .small, alignment: .center) space }
-        TextObserverView { $observedValue self.mStatusMessage }
+        TextObserverView { $observedValue self.statusMessage }
       }
       hStack {
         vStack set (width: 84) { StaticLabel (title: "Comments", bold: no, size : .small, alignment: .center) space }

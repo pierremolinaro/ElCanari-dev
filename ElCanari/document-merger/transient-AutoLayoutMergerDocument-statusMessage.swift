@@ -19,9 +19,6 @@ import AppKit
 ) -> String {
 //--- START OF USER ZONE 2
         var s = ""
-//        if !root_boardLimitWidthErrorMessage.isEmpty {
-//          s += root_boardLimitWidthErrorMessage + "\n"
-//        }
         if !self_modelVersionErrorMessage.isEmpty {
           s += self_modelVersionErrorMessage
         }

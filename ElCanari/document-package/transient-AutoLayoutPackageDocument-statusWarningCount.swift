@@ -13,17 +13,11 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_AutoLayoutPackageDocument_statusImage (
+@MainActor func transient_AutoLayoutPackageDocument_statusWarningCount (
        _ self_issues : CanariIssueArray
-) -> NSImage {
+) -> Int {
 //--- START OF USER ZONE 2
-  if self_issues.count == 0 {
-    return NSImage (named: okStatusImageName)!
-  }else if self_issues.errorCount != 0 {
-    return NSImage (named: errorStatusImageName)!
-  }else{
-    return NSImage (named: warningStatusImageName)!
-  }
+         return self_issues.warningCount
 //--- END OF USER ZONE 2
 }
 

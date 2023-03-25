@@ -33,6 +33,18 @@ import AppKit
   }
 
   //····················································································································
+  //   Transient property: statusErrorCount
+  //····················································································································
+
+  final let statusErrorCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var statusErrorCount : Int? {
+    return self.statusErrorCount_property.optionalValue
+  }
+
+  //····················································································································
   //   Transient property: statusMessage
   //····················································································································
 
@@ -81,15 +93,15 @@ import AppKit
   }
 
   //····················································································································
-  //   Transient property: statusImage
+  //   Transient property: statusWarningCount
   //····················································································································
 
-  final let statusImage_property = EBTransientProperty_NSImage ()
+  final let statusWarningCount_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  final var statusImage : NSImage? {
-    return self.statusImage_property.optionalValue
+  final var statusWarningCount : Int? {
+    return self.statusWarningCount_property.optionalValue
   }
 
   //····················································································································
@@ -198,9 +210,10 @@ import AppKit
         do{
           let view_0_4_0_0 = AutoLayoutFlexibleSpace ()
           _ = view_0_4_0.appendView (view_0_4_0_0)
-          let view_0_4_0_1 = AutoLayoutImageObserverView (size: .regular)
-            .bind_image (self.statusImage_property)
+          let view_0_4_0_1 = AutoLayoutStatusBadgeView ()
             .bind_tooltip (self.statusMessage_property)
+            .bind_errorCount (self.statusErrorCount_property)
+            .bind_warningCount (self.statusWarningCount_property)
           _ = view_0_4_0.appendView (view_0_4_0_1)
           let view_0_4_0_2 = AutoLayoutFlexibleSpace ()
           _ = view_0_4_0.appendView (view_0_4_0_2)
@@ -881,6 +894,40 @@ import AppKit
     self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property)
 
 
+  //--- Atomic property: statusErrorCount
+    self.statusErrorCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
+        let s1 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
+        let s2 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
+        let s3 = unwSelf.rootObject.emptyDrillFileExtension_property.selection
+        let s4 = unwSelf.documentFileName_property.selection
+        switch (s0, s1, s2, s3, s4) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
+          return .single (transient_AutoLayoutArtworkDocument_statusErrorCount (v0, v1, v2, v3, v4))
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsToBeObserved (by: self.statusErrorCount_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsToBeObserved (by: self.statusErrorCount_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_hasNoData_StartsToBeObserved (by: self.statusErrorCount_property)
+    self.rootObject.emptyDrillFileExtension_property.startsToBeObserved (by: self.statusErrorCount_property)
+    self.documentFileName_property.startsToBeObserved (by: self.statusErrorCount_property)
+
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -981,8 +1028,8 @@ import AppKit
     self.rootObject.hasDataWarning_property.startsToBeObserved (by: self.segmentedControlDataIssueImage_property)
     self.rootObject.emptyDrillFileExtension_property.startsToBeObserved (by: self.segmentedControlDataIssueImage_property)
 
-  //--- Atomic property: statusImage
-    self.statusImage_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: statusWarningCount
+    self.statusWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
         let s1 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
@@ -995,7 +1042,7 @@ import AppKit
               .single (let v2),
               .single (let v3),
               .single (let v4)) :
-          return .single (transient_AutoLayoutArtworkDocument_statusImage (v0, v1, v2, v3, v4))
+          return .single (transient_AutoLayoutArtworkDocument_statusWarningCount (v0, v1, v2, v3, v4))
         case (.multiple,
               .multiple,
               .multiple,
@@ -1009,11 +1056,11 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsToBeObserved (by: self.statusImage_property)
-    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsToBeObserved (by: self.statusImage_property)
-    self.rootObject.fileGenerationParameterArray_property.toMany_hasNoData_StartsToBeObserved (by: self.statusImage_property)
-    self.rootObject.emptyDrillFileExtension_property.startsToBeObserved (by: self.statusImage_property)
-    self.documentFileName_property.startsToBeObserved (by: self.statusImage_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsToBeObserved (by: self.statusWarningCount_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsToBeObserved (by: self.statusWarningCount_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_hasNoData_StartsToBeObserved (by: self.statusWarningCount_property)
+    self.rootObject.emptyDrillFileExtension_property.startsToBeObserved (by: self.statusWarningCount_property)
+    self.documentFileName_property.startsToBeObserved (by: self.statusWarningCount_property)
 
   }
 

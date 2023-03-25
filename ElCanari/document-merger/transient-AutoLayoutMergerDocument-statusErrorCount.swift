@@ -13,17 +13,16 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_AutoLayoutSymbolDocument_issues (
-       _ root_issues : CanariIssueArray,                   
-       _ self_documentFileName : String
-) -> CanariIssueArray {
+@MainActor func transient_AutoLayoutMergerDocument_statusErrorCount (
+       _ self_issues : CanariIssueArray,                             
+       _ self_modelVersionErrorMessage : String
+) -> Int {
 //--- START OF USER ZONE 2
-       var result = CanariIssueArray ()
-       if let issue = libraryDocumentFileNameIssue (self_documentFileName) {
-         result.append (issue)
-       }
-       result += root_issues
-       return result
+        var errorCount = self_issues.errorCount
+        if !self_modelVersionErrorMessage.isEmpty {
+          errorCount += 1
+        }
+        return errorCount
 //--- END OF USER ZONE 2
 }
 

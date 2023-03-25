@@ -13,17 +13,11 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_AutoLayoutDeviceDocument_mMetadataStatus (
+@MainActor func transient_AutoLayoutDeviceDocument_statusErrorCount (
        _ self_issues : CanariIssueArray
-) -> MetadataStatus {
+) -> Int {
 //--- START OF USER ZONE 2
-  if self_issues.count == 0 {
-    return .ok
-  }else if self_issues.errorCount != 0 {
-    return .warning
-  }else{
-    return .error
-  }
+         return self_issues.errorCount
 //--- END OF USER ZONE 2
 }
 

@@ -37,16 +37,30 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
       }
       space
       vStack {
-        hStack { space ImageObserverView (size: .regular) { $image self.statusImage $tooltip self.statusMessage } space }
+        hStack {
+          space
+          StatusBadgeView () {
+            $tooltip self.statusMessage
+            $errorCount self.statusErrorCount
+            $warningCount self.statusWarningCount
+          }
+          space
+        }
         StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
       }
+//      vStack {
+//        hStack { space ImageObserverView (size: .regular) { $image self.statusImage $tooltip self.statusMessage } space }
+//        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
+//      }
     }
     separator
     view pageMasterView
   }
 
-  transient NSImage statusImage dependsFrom self.issues ;
+//  transient NSImage statusImage dependsFrom self.issues ;
   transient String statusMessage dependsFrom self.issues ;
+  transient Int statusWarningCount dependsFrom self.issues ;
+  transient Int statusErrorCount dependsFrom self.issues ;
   transient MetadataStatus metadataStatus dependsFrom self.issues ;
 
 //----------------------------------------------------------------------------------------------------------------------

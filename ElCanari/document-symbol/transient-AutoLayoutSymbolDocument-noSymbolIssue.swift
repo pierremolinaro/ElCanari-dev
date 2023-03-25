@@ -13,17 +13,11 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_AutoLayoutSymbolDocument_statusImage (
-       _ self_issues : CanariIssueArray
-) -> NSImage {
+@MainActor func transient_AutoLayoutSymbolDocument_noSymbolIssue (
+       _ self_symbolIssues : CanariIssueArray
+) -> Bool {
 //--- START OF USER ZONE 2
-  if self_issues.errorCount != 0 {
-    return NSImage (named: errorStatusImageName)!
-  }else if self_issues.warningCount != 0 {
-    return NSImage (named: warningStatusImageName)!
-  }else{
-    return NSImage (named: okStatusImageName)!
-  }
+   return self_symbolIssues.count == 0
 //--- END OF USER ZONE 2
 }
 

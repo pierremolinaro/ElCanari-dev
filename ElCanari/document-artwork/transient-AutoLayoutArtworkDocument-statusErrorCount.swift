@@ -13,17 +13,56 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_AutoLayoutSymbolDocument_metadataStatus (
-       _ self_symbolIssues : CanariIssueArray
-) -> MetadataStatus {
+@MainActor func transient_AutoLayoutArtworkDocument_statusErrorCount (
+       _ root_fileGenerationParameterArray_fileExtension : [ArtworkFileGenerationParameters_fileExtension],
+       _ root_fileGenerationParameterArray_name : [ArtworkFileGenerationParameters_name],
+       _ root_fileGenerationParameterArray_hasNoData : [ArtworkFileGenerationParameters_hasNoData],
+       _ root_emptyDrillFileExtension : Bool,                         
+       _ self_documentFileName : String
+) -> Int {
 //--- START OF USER ZONE 2
-  if self_symbolIssues.count == 0 {
-    return .ok
-  }else if self_symbolIssues.errorCount != 0 {
-    return .warning
-  }else{
-    return .error
-  }
+        let n = root_fileGenerationParameterArray_fileExtension.count
+        var errorCount = 0
+        var fileExtensionSet = Set <String> ()
+        var nameSet = Set <String> ()
+        for i in 0 ..< n {
+          let fileExtension = root_fileGenerationParameterArray_fileExtension [i].fileExtension
+          let name = root_fileGenerationParameterArray_name [i].name
+          if name.isEmpty {
+            errorCount += 1
+          }else if nameSet.contains (name) {
+            errorCount += 1
+          }else{
+            nameSet.insert (name)
+          }
+          if fileExtension.isEmpty {
+            errorCount += 1
+          }else if fileExtensionSet.contains (fileExtension) {
+            errorCount += 1
+          }else{
+            fileExtensionSet.insert (fileExtension)
+          }
+        }
+        if let issue = libraryDocumentFileNameIssue (self_documentFileName) {
+          switch issue.kind {
+          case .error :
+            errorCount += 1
+          case .warning :
+            ()
+          }
+        }
+        if let issue = libraryDocumentFileNameIssue (self_documentFileName) {
+          switch issue.kind {
+          case .error :
+            errorCount += 1
+          case .warning :
+            ()
+          }
+        }
+        if root_emptyDrillFileExtension {
+          errorCount += 1
+        }
+        return errorCount
 //--- END OF USER ZONE 2
 }
 

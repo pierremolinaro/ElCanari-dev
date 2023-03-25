@@ -13,61 +13,25 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_AutoLayoutArtworkDocument_statusImage (
+@MainActor func transient_AutoLayoutArtworkDocument_statusWarningCount (
        _ root_fileGenerationParameterArray_fileExtension : [ArtworkFileGenerationParameters_fileExtension],
        _ root_fileGenerationParameterArray_name : [ArtworkFileGenerationParameters_name],
        _ root_fileGenerationParameterArray_hasNoData : [ArtworkFileGenerationParameters_hasNoData],
-       _ root_emptyDrillFileExtension : Bool,                    
+       _ root_emptyDrillFileExtension : Bool,                           
        _ self_documentFileName : String
-) -> NSImage {
+) -> Int {
 //--- START OF USER ZONE 2
         let n = root_fileGenerationParameterArray_fileExtension.count
-        var error = false
-        var warning = (n == 0)
-        var fileExtensionSet = Set <String> ()
-        var nameSet = Set <String> ()
-        for i in 0 ..< n {
-          let fileExtension = root_fileGenerationParameterArray_fileExtension [i].fileExtension
-          let name = root_fileGenerationParameterArray_name [i].name
-          if fileExtension.isEmpty {
-            error = true
-          }else if fileExtensionSet.contains (fileExtension) {
-            error = true
-          }else{
-            fileExtensionSet.insert (fileExtension)
-          }
-          if name.isEmpty {
-            error = true
-          }else if nameSet.contains (name) {
-            error = true
-          }else{
-            nameSet.insert (name)
-          }
-        }
-        if let issue = libraryDocumentFileNameIssue (self_documentFileName) {
-          switch issue.kind {
-          case .error :
-            error = true
-          case .warning :
-            warning = true
-          }
+        var warningCount = 0
+        if n == 0 {
+          warningCount += 1
         }
         for parameter in root_fileGenerationParameterArray_hasNoData {
           if let hasNoData = parameter.hasNoData, hasNoData {
-            warning = true
+            warningCount += 1
           }
         }
-        if root_emptyDrillFileExtension {
-          error = true
-        }
-     //---
-        var result = NSImage (named: okStatusImageName)!
-        if error {
-          result = NSImage (named: errorStatusImageName)!
-        }else if warning {
-          result = NSImage (named: warningStatusImageName)!
-        }
-        return result
+        return warningCount
 //--- END OF USER ZONE 2
 }
 

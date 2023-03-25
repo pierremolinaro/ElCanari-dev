@@ -123,27 +123,15 @@ import AppKit
   }
 
   //····················································································································
-  //   Transient property: issues
+  //   Transient property: symbolIssues
   //····················································································································
 
-  final let issues_property = EBTransientProperty_CanariIssueArray ()
-
-  //····················································································································
-
-  final var issues : CanariIssueArray? {
-    return self.issues_property.optionalValue
-  }
-
-  //····················································································································
-  //   Transient property: statusImage
-  //····················································································································
-
-  final let statusImage_property = EBTransientProperty_NSImage ()
+  final let symbolIssues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
-  final var statusImage : NSImage? {
-    return self.statusImage_property.optionalValue
+  final var symbolIssues : CanariIssueArray? {
+    return self.symbolIssues_property.optionalValue
   }
 
   //····················································································································
@@ -159,6 +147,30 @@ import AppKit
   }
 
   //····················································································································
+  //   Transient property: statusErrorCount
+  //····················································································································
+
+  final let statusErrorCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var statusErrorCount : Int? {
+    return self.statusErrorCount_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: statusWarningCount
+  //····················································································································
+
+  final let statusWarningCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var statusWarningCount : Int? {
+    return self.statusWarningCount_property.optionalValue
+  }
+
+  //····················································································································
   //   Transient property: metadataStatus
   //····················································································································
 
@@ -171,15 +183,15 @@ import AppKit
   }
 
   //····················································································································
-  //   Transient property: noIssue
+  //   Transient property: noSymbolIssue
   //····················································································································
 
-  final let noIssue_property = EBTransientProperty_Bool ()
+  final let noSymbolIssue_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  final var noIssue : Bool? {
-    return self.noIssue_property.optionalValue
+  final var noSymbolIssue : Bool? {
+    return self.noSymbolIssue_property.optionalValue
   }
 
   //····················································································································
@@ -312,9 +324,10 @@ import AppKit
         do{
           let view_0_4_0_0 = AutoLayoutFlexibleSpace ()
           _ = view_0_4_0.appendView (view_0_4_0_0)
-          let view_0_4_0_1 = AutoLayoutImageObserverView (size: .regular)
-            .bind_image (self.statusImage_property)
+          let view_0_4_0_1 = AutoLayoutStatusBadgeView ()
             .bind_tooltip (self.statusMessage_property)
+            .bind_errorCount (self.statusErrorCount_property)
+            .bind_warningCount (self.statusWarningCount_property)
           _ = view_0_4_0.appendView (view_0_4_0_1)
           let view_0_4_0_2 = AutoLayoutFlexibleSpace ()
           _ = view_0_4_0.appendView (view_0_4_0_2)
@@ -574,7 +587,7 @@ import AppKit
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutCanariIssueTableView (hasHideIssueButton: true)
-      .bind_issues (self.issues_property)
+      .bind_issues (self.symbolIssues_property)
     self.mSymbolIssueTableView = view_1 // Outlet
     _ = vStackView.appendView (view_1)
     return vStackView
@@ -1157,15 +1170,15 @@ import AppKit
     }
     preferences_symbolColor_property.startsToBeObserved (by: self.addPinButtonImage_property)
 
-  //--- Atomic property: issues
-    self.issues_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: symbolIssues
+    self.symbolIssues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.rootObject.issues_property.selection
         let s1 = unwSelf.documentFileName_property.selection
         switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
-          return .single (transient_AutoLayoutSymbolDocument_issues (v0, v1))
+          return .single (transient_AutoLayoutSymbolDocument_symbolIssues (v0, v1))
         case (.multiple,
               .multiple) :
           return .multiple
@@ -1176,31 +1189,13 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.issues_property.startsToBeObserved (by: self.issues_property)
-    self.documentFileName_property.startsToBeObserved (by: self.issues_property)
-
-  //--- Atomic property: statusImage
-    self.statusImage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.issues_property.selection
-        switch (s0) {
-        case (.single (let v0)) :
-          return .single (transient_AutoLayoutSymbolDocument_statusImage (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.issues_property.startsToBeObserved (by: self.statusImage_property)
+    self.rootObject.issues_property.startsToBeObserved (by: self.symbolIssues_property)
+    self.documentFileName_property.startsToBeObserved (by: self.symbolIssues_property)
 
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.issues_property.selection
+        let s0 = unwSelf.symbolIssues_property.selection
         switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_statusMessage (v0))
@@ -1213,12 +1208,48 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.statusMessage_property)
+    self.symbolIssues_property.startsToBeObserved (by: self.statusMessage_property)
+
+  //--- Atomic property: statusErrorCount
+    self.statusErrorCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.symbolIssues_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutSymbolDocument_statusErrorCount (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.symbolIssues_property.startsToBeObserved (by: self.statusErrorCount_property)
+
+  //--- Atomic property: statusWarningCount
+    self.statusWarningCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.symbolIssues_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutSymbolDocument_statusWarningCount (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.symbolIssues_property.startsToBeObserved (by: self.statusWarningCount_property)
 
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.issues_property.selection
+        let s0 = unwSelf.symbolIssues_property.selection
         switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_metadataStatus (v0))
@@ -1231,15 +1262,15 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.metadataStatus_property)
+    self.symbolIssues_property.startsToBeObserved (by: self.metadataStatus_property)
 
-  //--- Atomic property: noIssue
-    self.noIssue_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: noSymbolIssue
+    self.noSymbolIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.issues_property.selection
+        let s0 = unwSelf.symbolIssues_property.selection
         switch (s0) {
         case (.single (let v0)) :
-          return .single (transient_AutoLayoutSymbolDocument_noIssue (v0))
+          return .single (transient_AutoLayoutSymbolDocument_noSymbolIssue (v0))
         case (.multiple) :
           return .multiple
         default :
@@ -1249,12 +1280,12 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.noIssue_property)
+    self.symbolIssues_property.startsToBeObserved (by: self.noSymbolIssue_property)
 
   //--- Atomic property: segmentedControlSegmentIssueImage
     self.segmentedControlSegmentIssueImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.issues_property.selection
+        let s0 = unwSelf.symbolIssues_property.selection
         switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_segmentedControlSegmentIssueImage (v0))
@@ -1267,12 +1298,12 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.segmentedControlSegmentIssueImage_property)
+    self.symbolIssues_property.startsToBeObserved (by: self.segmentedControlSegmentIssueImage_property)
 
   //--- Atomic property: segmentedControlSegmentIssueString
     self.segmentedControlSegmentIssueString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.issues_property.selection
+        let s0 = unwSelf.symbolIssues_property.selection
         switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_segmentedControlSegmentIssueString (v0))
@@ -1285,7 +1316,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.segmentedControlSegmentIssueString_property)
+    self.symbolIssues_property.startsToBeObserved (by: self.segmentedControlSegmentIssueString_property)
 
   }
 

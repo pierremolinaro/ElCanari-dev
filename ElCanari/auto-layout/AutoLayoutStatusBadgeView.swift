@@ -75,7 +75,7 @@ final class AutoLayoutStatusBadgeView : NSView {
     let bp = NSBezierPath (ovalIn: r)
     bp.fill ()
     let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: 9.0),
+      NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: 10.0),
       NSAttributedString.Key.foregroundColor : NSColor.white
     ]
     let size = str.size (withAttributes: textAttributes)

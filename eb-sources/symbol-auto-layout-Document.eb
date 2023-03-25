@@ -31,22 +31,36 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
       }
       space
       vStack {
-        hStack { space ImageObserverView (size: .regular) { $image self.statusImage $tooltip self.statusMessage } space }
-        StaticLabel (title: "Status", bold: no, size: .small, alignment: .center)
+        hStack {
+          space
+          StatusBadgeView () {
+            $tooltip self.statusMessage
+            $errorCount self.statusErrorCount
+            $warningCount self.statusWarningCount
+          }
+          space
+        }
+        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
       }
+//      vStack {
+//        hStack { space ImageObserverView (size: .regular) { $image self.statusImage $tooltip self.statusMessage } space }
+//        StaticLabel (title: "Status", bold: no, size: .small, alignment: .center)
+//      }
     }
     separator
     view pageMasterView
   }
 
-  transient CanariIssueArray issues dependsFrom root.issues, self.documentFileName ;
-  transient NSImage statusImage dependsFrom self.issues ;
-  transient String statusMessage dependsFrom self.issues ;
-  transient MetadataStatus metadataStatus dependsFrom self.issues ;
+  transient CanariIssueArray symbolIssues dependsFrom root.issues, self.documentFileName ;
+//  transient NSImage statusImage dependsFrom self.symbolIssues ;
+  transient String statusMessage dependsFrom self.symbolIssues ;
+  transient Int statusErrorCount dependsFrom self.symbolIssues ;
+  transient Int statusWarningCount dependsFrom self.symbolIssues ;
+  transient MetadataStatus metadataStatus dependsFrom self.symbolIssues ;
 
-  transient Bool noIssue dependsFrom self.issues ;
-  transient NSImage segmentedControlSegmentIssueImage dependsFrom self.issues ;
-  transient String segmentedControlSegmentIssueString dependsFrom self.issues ;
+  transient Bool noSymbolIssue dependsFrom self.symbolIssues ;
+  transient NSImage segmentedControlSegmentIssueImage dependsFrom self.symbolIssues ;
+  transient String segmentedControlSegmentIssueString dependsFrom self.symbolIssues ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //   PAGE   SYMBOL
@@ -285,7 +299,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
 
   stackView \IssuesInspectorView vStack {
    hStack { space Label (bold: no, size: .small) { $title self.statusMessage } space }
-   CanariIssueTableView (hasHideIssueButton: yes) [outlet mSymbolIssueTableView] { $issues self.issues }
+   CanariIssueTableView (hasHideIssueButton: yes) [outlet mSymbolIssueTableView] { $issues self.symbolIssues }
   }
 
   linker issueTableViewToGraphicView (mSymbolIssueTableView, mSymbolGraphicView)

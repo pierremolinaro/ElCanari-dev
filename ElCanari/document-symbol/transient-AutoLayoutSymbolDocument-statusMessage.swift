@@ -14,13 +14,13 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_AutoLayoutSymbolDocument_statusMessage (
-       _ self_issues : CanariIssueArray
+       _ self_symbolIssues : CanariIssueArray
 ) -> String {
 //--- START OF USER ZONE 2
   var s = "No error, no warning"
-  if self_issues.count > 0 {
-    let errorCount = self_issues.errorCount
-    let warningCount = self_issues.warningCount
+  if self_symbolIssues.count > 0 {
+    let errorCount = self_symbolIssues.errorCount
+    let warningCount = self_symbolIssues.warningCount
     if errorCount == 0 {
       s = "No error"
     }else if errorCount == 1 {

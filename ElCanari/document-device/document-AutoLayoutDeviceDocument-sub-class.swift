@@ -37,7 +37,7 @@ let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
  //····················································································································
 
   override func metadataStatusForSaving () -> UInt8 {
-    return UInt8 (self.mMetadataStatus?.rawValue ?? 0)
+    return UInt8 (self.metadataStatus?.rawValue ?? 0)
   }
 
   //····················································································································

@@ -69,6 +69,30 @@ import AppKit
   }
 
   //····················································································································
+  //   Transient property: statusWarningCount
+  //····················································································································
+
+  final let statusWarningCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var statusWarningCount : Int? {
+    return self.statusWarningCount_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: statusErrorCount
+  //····················································································································
+
+  final let statusErrorCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var statusErrorCount : Int? {
+    return self.statusErrorCount_property.optionalValue
+  }
+
+  //····················································································································
   //   Transient property: metadataStatus
   //····················································································································
 
@@ -197,9 +221,10 @@ import AppKit
         do{
           let view_0_4_0_0 = AutoLayoutFlexibleSpace ()
           _ = view_0_4_0.appendView (view_0_4_0_0)
-          let view_0_4_0_1 = AutoLayoutImageObserverView (size: .regular)
-            .bind_image (self.statusImage_property)
+          let view_0_4_0_1 = AutoLayoutStatusBadgeView ()
             .bind_tooltip (self.statusMessage_property)
+            .bind_errorCount (self.statusErrorCount_property)
+            .bind_warningCount (self.statusWarningCount_property)
           _ = view_0_4_0.appendView (view_0_4_0_1)
           let view_0_4_0_2 = AutoLayoutFlexibleSpace ()
           _ = view_0_4_0.appendView (view_0_4_0_2)
@@ -689,6 +714,42 @@ import AppKit
       }
     }
     self.rootObject.issues_property.startsToBeObserved (by: self.statusMessage_property)
+
+  //--- Atomic property: statusWarningCount
+    self.statusWarningCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.rootObject.issues_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutFontDocument_statusWarningCount (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.startsToBeObserved (by: self.statusWarningCount_property)
+
+  //--- Atomic property: statusErrorCount
+    self.statusErrorCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.rootObject.issues_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutFontDocument_statusErrorCount (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.startsToBeObserved (by: self.statusErrorCount_property)
 
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in

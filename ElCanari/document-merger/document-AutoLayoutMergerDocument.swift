@@ -57,6 +57,18 @@ import AppKit
   }
 
   //····················································································································
+  //   Transient property: statusWarningCount
+  //····················································································································
+
+  final let statusWarningCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var statusWarningCount : Int? {
+    return self.statusWarningCount_property.optionalValue
+  }
+
+  //····················································································································
   //   Transient property: boardDispositionStatusTitle
   //····················································································································
 
@@ -150,6 +162,18 @@ import AppKit
 
   final var statusMessage : String? {
     return self.statusMessage_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: statusErrorCount
+  //····················································································································
+
+  final let statusErrorCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var statusErrorCount : Int? {
+    return self.statusErrorCount_property.optionalValue
   }
 
   //····················································································································
@@ -291,9 +315,10 @@ import AppKit
         do{
           let view_0_3_0_0 = AutoLayoutFlexibleSpace ()
           _ = view_0_3_0.appendView (view_0_3_0_0)
-          let view_0_3_0_1 = AutoLayoutImageObserverView (size: .regular)
-            .bind_image (self.statusImage_property)
+          let view_0_3_0_1 = AutoLayoutStatusBadgeView ()
             .bind_tooltip (self.statusMessage_property)
+            .bind_errorCount (self.statusErrorCount_property)
+            .bind_warningCount (self.statusWarningCount_property)
           _ = view_0_3_0.appendView (view_0_3_0_1)
           let view_0_3_0_2 = AutoLayoutFlexibleSpace ()
           _ = view_0_3_0.appendView (view_0_3_0_2)
@@ -3056,6 +3081,24 @@ import AppKit
     self.rootObject.boardInstances_property.toMany_instanceRect_StartsToBeObserved (by: self.issues_property)
     self.rootObject.boardInstances_property.toMany_boardLimitWidth_StartsToBeObserved (by: self.issues_property)
 
+  //--- Atomic property: statusWarningCount
+    self.statusWarningCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutMergerDocument_statusWarningCount (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.startsToBeObserved (by: self.statusWarningCount_property)
+
   //--- Atomic property: boardDispositionStatusTitle
     self.boardDispositionStatusTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3198,6 +3241,28 @@ import AppKit
     }
     self.issues_property.startsToBeObserved (by: self.statusMessage_property)
     self.modelVersionErrorMessage_property.startsToBeObserved (by: self.statusMessage_property)
+
+  //--- Atomic property: statusErrorCount
+    self.statusErrorCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.issues_property.selection
+        let s1 = unwSelf.modelVersionErrorMessage_property.selection
+        switch (s0, s1) {
+        case (.single (let v0),
+              .single (let v1)) :
+          return .single (transient_AutoLayoutMergerDocument_statusErrorCount (v0, v1))
+        case (.multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.startsToBeObserved (by: self.statusErrorCount_property)
+    self.modelVersionErrorMessage_property.startsToBeObserved (by: self.statusErrorCount_property)
 
   //--- Atomic property: documentIsUnnamed
     self.documentIsUnnamed_property.mReadModelFunction = { [weak self] in

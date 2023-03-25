@@ -207,15 +207,27 @@ import AppKit
   }
 
   //····················································································································
-  //   Transient property: statusMessage
+  //   Transient property: statusWarningCount
   //····················································································································
 
-  final let statusMessage_property = EBTransientProperty_String ()
+  final let statusWarningCount_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  final var statusMessage : String? {
-    return self.statusMessage_property.optionalValue
+  final var statusWarningCount : Int? {
+    return self.statusWarningCount_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: statusErrorCount
+  //····················································································································
+
+  final let statusErrorCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var statusErrorCount : Int? {
+    return self.statusErrorCount_property.optionalValue
   }
 
   //····················································································································
@@ -267,15 +279,15 @@ import AppKit
   }
 
   //····················································································································
-  //   Transient property: statusImage
+  //   Transient property: statusMessage
   //····················································································································
 
-  final let statusImage_property = EBTransientProperty_NSImage ()
+  final let statusMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  final var statusImage : NSImage? {
-    return self.statusImage_property.optionalValue
+  final var statusMessage : String? {
+    return self.statusMessage_property.optionalValue
   }
 
   //····················································································································
@@ -390,9 +402,10 @@ import AppKit
         do{
           let view_0_4_0_0 = AutoLayoutFlexibleSpace ()
           _ = view_0_4_0.appendView (view_0_4_0_0)
-          let view_0_4_0_1 = AutoLayoutImageObserverView (size: .regular)
-            .bind_image (self.statusImage_property)
+          let view_0_4_0_1 = AutoLayoutStatusBadgeView ()
             .bind_tooltip (self.statusMessage_property)
+            .bind_errorCount (self.statusErrorCount_property)
+            .bind_warningCount (self.statusWarningCount_property)
           _ = view_0_4_0.appendView (view_0_4_0_1)
           let view_0_4_0_2 = AutoLayoutFlexibleSpace ()
           _ = view_0_4_0.appendView (view_0_4_0_2)
@@ -3607,13 +3620,13 @@ import AppKit
     self.rootObject.issues_property.startsToBeObserved (by: self.issues_property)
     self.documentFileName_property.startsToBeObserved (by: self.issues_property)
 
-  //--- Atomic property: statusMessage
-    self.statusMessage_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: statusWarningCount
+    self.statusWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.issues_property.selection
         switch (s0) {
         case (.single (let v0)) :
-          return .single (transient_AutoLayoutPackageDocument_statusMessage (v0))
+          return .single (transient_AutoLayoutPackageDocument_statusWarningCount (v0))
         case (.multiple) :
           return .multiple
         default :
@@ -3623,7 +3636,25 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.statusMessage_property)
+    self.issues_property.startsToBeObserved (by: self.statusWarningCount_property)
+
+  //--- Atomic property: statusErrorCount
+    self.statusErrorCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_statusErrorCount (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.startsToBeObserved (by: self.statusErrorCount_property)
 
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
@@ -3697,13 +3728,13 @@ import AppKit
     }
     self.issues_property.startsToBeObserved (by: self.segmentedControlSegmentIssueString_property)
 
-  //--- Atomic property: statusImage
-    self.statusImage_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: statusMessage
+    self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.issues_property.selection
         switch (s0) {
         case (.single (let v0)) :
-          return .single (transient_AutoLayoutPackageDocument_statusImage (v0))
+          return .single (transient_AutoLayoutPackageDocument_statusMessage (v0))
         case (.multiple) :
           return .multiple
         default :
@@ -3713,7 +3744,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.statusImage_property)
+    self.issues_property.startsToBeObserved (by: self.statusMessage_property)
 
   }
 

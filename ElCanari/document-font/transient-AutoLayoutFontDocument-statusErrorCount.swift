@@ -13,11 +13,11 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_AutoLayoutSymbolDocument_noIssue (
-       _ self_issues : CanariIssueArray
-) -> Bool {
+@MainActor func transient_AutoLayoutFontDocument_statusErrorCount (
+       _ root_issues : CanariIssueArray
+) -> Int {
 //--- START OF USER ZONE 2
-   return self_issues.count == 0
+        return root_issues.errorCount
 //--- END OF USER ZONE 2
 }
 

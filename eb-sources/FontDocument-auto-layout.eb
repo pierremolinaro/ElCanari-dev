@@ -34,9 +34,21 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainV
       }
       space
       vStack {
-        hStack { space ImageObserverView (size : .regular) { $image self.statusImage $tooltip self.statusMessage } space }
+        hStack {
+          space
+          StatusBadgeView () {
+            $tooltip self.statusMessage
+            $errorCount self.statusErrorCount
+            $warningCount self.statusWarningCount
+          }
+          space
+        }
         StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
       }
+//      vStack {
+//        hStack { space ImageObserverView (size : .regular) { $image self.statusImage $tooltip self.statusMessage } space }
+//        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
+//      }
     }
     separator
     view pageMasterView
@@ -45,6 +57,8 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainV
   transient NSImage statusImage dependsFrom root.issues ;
   transient String statusTitle dependsFrom root.issues ;
   transient String statusMessage dependsFrom root.issues ;
+  transient Int statusWarningCount dependsFrom root.issues ;
+  transient Int statusErrorCount dependsFrom root.issues ;
   transient MetadataStatus metadataStatus dependsFrom root.issues ;
 
 //------------------------------------------------------------------------------

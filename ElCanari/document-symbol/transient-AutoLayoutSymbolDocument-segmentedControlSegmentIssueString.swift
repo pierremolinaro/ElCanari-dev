@@ -14,12 +14,12 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_AutoLayoutSymbolDocument_segmentedControlSegmentIssueString (
-       _ self_issues : CanariIssueArray
+       _ self_symbolIssues : CanariIssueArray
 ) -> String {
 //--- START OF USER ZONE 2
    var errorCount = 0
     var warningCount = 0
-    for issue in self_issues {
+    for issue in self_symbolIssues {
       switch issue.kind {
       case .error :
         errorCount += 1

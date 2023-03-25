@@ -37,9 +37,21 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
       }
       space
       vStack {
-        hStack { space ImageObserverView (size : .regular) { $image self.statusImage $tooltip self.statusMessage } space }
-        StaticLabel (title: "Status", bold: no, size: .small, alignment: .center)
+        hStack {
+          space
+          StatusBadgeView () {
+            $tooltip self.statusMessage
+            $errorCount self.statusErrorCount
+            $warningCount self.statusWarningCount
+          }
+          space
+        }
+        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
       }
+//      vStack {
+//        hStack { space ImageObserverView (size : .regular) { $image self.statusImage $tooltip self.statusMessage } space }
+//        StaticLabel (title: "Status", bold: no, size: .small, alignment: .center)
+//      }
     }
     separator
     view pageMasterView
@@ -53,18 +65,23 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
 
   transient NSImage statusImage dependsFrom
     self.issues,
-//    root.boardLimitWidthOk,
     self.modelVersionErrorMessage
   ;
-//
-//  transient NSImage boardLimitWidthStatusImage dependsFrom root.boardLimitWidthOk ;
+
 
   transient String statusMessage dependsFrom
     self.issues,
-//    root.boardLimitWidthErrorMessage,
     self.modelVersionErrorMessage
   ;
 
+  transient Int statusWarningCount dependsFrom
+    self.issues
+  ;
+
+  transient Int statusErrorCount dependsFrom
+    self.issues,
+    self.modelVersionErrorMessage
+  ;
 
   transient String boardDispositionStatusTitle dependsFrom self.issues ;
 
@@ -72,7 +89,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
     root.overlapingArrangment, root.boardRect, root.boardLimitWidth,
     root.boardInstances.all.instanceRect, root.boardInstances.all.boardLimitWidth
   ;
-//  action showPrefsForSettingMergerDisplayAction ;
+
   tableViewController #mBoardModelController (allowsEmptySelection: no, allowsMultipleSelection: no) root.boardModels {
     column name (title: "", minWidth: 100, maxWidth: 300, headerAlignment: .left, contentAlignment: .left)
   }

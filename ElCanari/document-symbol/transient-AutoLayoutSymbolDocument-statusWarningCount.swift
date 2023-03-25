@@ -13,17 +13,11 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_AutoLayoutSymbolDocument_metadataStatus (
+@MainActor func transient_AutoLayoutSymbolDocument_statusWarningCount (
        _ self_symbolIssues : CanariIssueArray
-) -> MetadataStatus {
+) -> Int {
 //--- START OF USER ZONE 2
-  if self_symbolIssues.count == 0 {
-    return .ok
-  }else if self_symbolIssues.errorCount != 0 {
-    return .warning
-  }else{
-    return .error
-  }
+         return self_symbolIssues.warningCount
 //--- END OF USER ZONE 2
 }
 
