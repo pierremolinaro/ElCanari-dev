@@ -144,7 +144,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
   final func bind_segmentImage (_ inObject : EBObservableProperty <NSImage>, segmentIndex inSegmentIndex : Int) -> Self {
     self.mSegmentImageController [inSegmentIndex] = EBObservablePropertyController (
       observedObjects: [inObject],
-      callBack: { [weak self] in self?.updateImage (from: inObject, segmentIndex: inSegmentIndex) }
+      callBack: { [weak self, inSegmentIndex] in self?.updateImage (from: inObject, segmentIndex: inSegmentIndex) }
     )
     return self
   }

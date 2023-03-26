@@ -13,16 +13,16 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_ProjectRoot_ercStatusImage (
-       _ self_mLastERCCheckingIsSuccess : Bool,       
-       _ self_mLastERCCheckingSignature : UInt32,     
+@MainActor func transient_ProjectRoot_ercStatusImageOrNoneOnSuccess (
+       _ self_mLastERCCheckingIsSuccess : Bool,                      
+       _ self_mLastERCCheckingSignature : UInt32,                    
        _ self_signatureForERCChecking : UInt32
 ) -> NSImage {
 //--- START OF USER ZONE 2
         if self_mLastERCCheckingSignature != self_signatureForERCChecking {
           return NSImage.statusNone
         }else if self_mLastERCCheckingIsSuccess {
-          return NSImage.statusSuccess
+          return NSImage ()
         }else{
           return NSImage.statusError
         }

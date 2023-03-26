@@ -42,9 +42,22 @@ handlingOpposite entity ProjectRoot {
     self.mBoardObjects.all.signatureForERCChecking, self.mArtwork.one.signatureForERCChecking ;
  
   transient NSImage ercStatusImage dependsFrom
-     self.mLastERCCheckingIsSuccess, self.mLastERCCheckingSignature, self.signatureForERCChecking ;
+     self.mLastERCCheckingIsSuccess,
+     self.mLastERCCheckingSignature,
+     self.signatureForERCChecking
+  ;
+
+  transient NSImage ercStatusImageOrNoneOnSuccess dependsFrom
+     self.mLastERCCheckingIsSuccess,
+     self.mLastERCCheckingSignature,
+     self.signatureForERCChecking
+  ;
+
   transient String ercStatusMessage dependsFrom
-     self.mLastERCCheckingIsSuccess, self.mLastERCCheckingSignature, self.signatureForERCChecking ;
+     self.mLastERCCheckingIsSuccess,
+     self.mLastERCCheckingSignature,
+     self.signatureForERCChecking
+  ;
 
 //--- Board
   toMany BoardObject mBoardObjects inverse toOne mRoot ;
@@ -106,11 +119,17 @@ handlingOpposite entity ProjectRoot {
   transient String trackLengthString dependsFrom self.mBoardObjects.all.trackLengthInCanariUnit, self.mTrackLengthUnit ;
   
   transient CanariIssueArray boardIssues dependsFrom self.mBoardObjects.all.issues ;
-//  transient NSImage boardStatusImage dependsFrom
-//     self.boardIssues, self.unplacedPackages ;
 
   transient String boardStatusMessage dependsFrom
     self.boardIssues, self.unplacedPackages ;
+
+  transient NSImage segmentedControlBoardIssueImage dependsFrom
+     self.mLastERCCheckingIsSuccess,
+     self.mLastERCCheckingSignature,
+     self.signatureForERCChecking,
+     self.boardStatusErrorCount,
+     self.boardStatusWarningCount
+  ;
 
   transient Int boardStatusErrorCount dependsFrom
     self.boardIssues ;
@@ -295,6 +314,16 @@ handlingOpposite entity ProjectRoot {
      self.mSheets.all.connexionErrors
    ;
 
+  transient NSImage segmentedControlNetListIssueImage dependsFrom
+     self.netWarningCount
+  ;
+
+  transient NSImage segmentedControlSchematicIssueImage dependsFrom
+     self.unplacedSymbols,
+     self.mSheets.all.connexionWarnings,
+     self.mSheets.all.connexionErrors
+  ;
+
   transient Int schematicErrorCount dependsFrom
      self.mSheets.all.connexionErrors
    ;
@@ -303,6 +332,11 @@ handlingOpposite entity ProjectRoot {
      self.unplacedSymbols,
      self.netWarningCount,
      self.mSheets.all.connexionWarnings
+   ;
+
+  transient Bool hasSchematicIssue dependsFrom
+     self.schematicErrorCount,
+     self.schematicWarningCount
    ;
 
 //  transient NSImage schematicStatusImage dependsFrom

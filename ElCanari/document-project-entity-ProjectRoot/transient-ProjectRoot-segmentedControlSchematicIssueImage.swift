@@ -13,14 +13,32 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension AutoLayoutProjectDocument {
-  final func configure_boardInspectorConfigurator (_ inOutlet : AutoLayoutSegmentedControlWithPages) {
+@MainActor func transient_ProjectRoot_segmentedControlSchematicIssueImage (
+       _ self_unplacedSymbols : StringTagArray,                            
+       _ self_mSheets_connexionWarnings : [SheetInProject_connexionWarnings],
+       _ self_mSheets_connexionErrors : [SheetInProject_connexionErrors]
+) -> NSImage {
 //--- START OF USER ZONE 2
-        inOutlet.setLabel("🛠", forSegment: 0)
-        inOutlet.setLabel("🔍", forSegment: 2)
-    //    inOutlet.setLabel("🛣", forSegment: 3)
+          var hasError = false
+          var hasWarning = self_unplacedSymbols.count > 0
+          var idx = 0
+          while (idx < self_mSheets_connexionErrors.count) {
+            if let connexionErrors = self_mSheets_connexionErrors [idx].connexionErrors, connexionErrors > 0 {
+              hasError = true
+            }
+            if let connexionWarnings = self_mSheets_connexionWarnings [idx].connexionWarnings, connexionWarnings > 0 {
+              hasWarning = true
+            }
+            idx += 1
+          }
+          if hasError {
+            return NSImage.statusError
+          }else if hasWarning {
+            return NSImage.statusWarning
+          }else{
+            return NSImage ()
+          }
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -744,6 +744,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol ProjectRoot_ercStatusImageOrNoneOnSuccess : AnyObject {
+  var ercStatusImageOrNoneOnSuccess : NSImage? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol ProjectRoot_ercStatusMessage : AnyObject {
   var ercStatusMessage : String? { get }
 }
@@ -924,6 +930,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol ProjectRoot_segmentedControlNetListIssueImage : AnyObject {
+  var segmentedControlNetListIssueImage : NSImage? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol ProjectRoot_netNamesArray : AnyObject {
   var netNamesArray : StringArray? { get }
 }
@@ -978,8 +990,26 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol ProjectRoot_segmentedControlSchematicIssueImage : AnyObject {
+  var segmentedControlSchematicIssueImage : NSImage? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol ProjectRoot_schematicWarningCount : AnyObject {
   var schematicWarningCount : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol ProjectRoot_hasSchematicIssue : AnyObject {
+  var hasSchematicIssue : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol ProjectRoot_segmentedControlBoardIssueImage : AnyObject {
+  var segmentedControlBoardIssueImage : NSImage? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1110,6 +1140,7 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_hasSixLayers,
          ProjectRoot_signatureForERCChecking,
          ProjectRoot_ercStatusImage,
+         ProjectRoot_ercStatusImageOrNoneOnSuccess,
          ProjectRoot_ercStatusMessage,
          ProjectRoot_viaCountString,
          ProjectRoot_topSideTrackCountString,
@@ -1140,6 +1171,7 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_sheetGeometry,
          ProjectRoot_schematicBackgroundDisplay,
          ProjectRoot_netWarningCount,
+         ProjectRoot_segmentedControlNetListIssueImage,
          ProjectRoot_netNamesArray,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_unplacedPackages,
@@ -1149,7 +1181,10 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_placedComponentNameArray,
          ProjectRoot_schematicHasErrorOrWarning,
          ProjectRoot_schematicStatusMessage,
-         ProjectRoot_schematicWarningCount {
+         ProjectRoot_segmentedControlSchematicIssueImage,
+         ProjectRoot_schematicWarningCount,
+         ProjectRoot_hasSchematicIssue,
+         ProjectRoot_segmentedControlBoardIssueImage {
 
   //····················································································································
   //   Atomic property: mArtworkName
@@ -3586,6 +3621,18 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: ercStatusImageOrNoneOnSuccess
+  //····················································································································
+
+  final let ercStatusImageOrNoneOnSuccess_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var ercStatusImageOrNoneOnSuccess : NSImage? {
+    return self.ercStatusImageOrNoneOnSuccess_property.optionalValue
+  }
+
+  //····················································································································
   //   Transient property: ercStatusMessage
   //····················································································································
 
@@ -3946,6 +3993,18 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: segmentedControlNetListIssueImage
+  //····················································································································
+
+  final let segmentedControlNetListIssueImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var segmentedControlNetListIssueImage : NSImage? {
+    return self.segmentedControlNetListIssueImage_property.optionalValue
+  }
+
+  //····················································································································
   //   Transient property: netNamesArray
   //····················································································································
 
@@ -4054,6 +4113,18 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: segmentedControlSchematicIssueImage
+  //····················································································································
+
+  final let segmentedControlSchematicIssueImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var segmentedControlSchematicIssueImage : NSImage? {
+    return self.segmentedControlSchematicIssueImage_property.optionalValue
+  }
+
+  //····················································································································
   //   Transient property: schematicWarningCount
   //····················································································································
 
@@ -4063,6 +4134,30 @@ final class ProjectRoot : EBManagedObject,
 
   final var schematicWarningCount : Int? {
     return self.schematicWarningCount_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: hasSchematicIssue
+  //····················································································································
+
+  final let hasSchematicIssue_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var hasSchematicIssue : Bool? {
+    return self.hasSchematicIssue_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: segmentedControlBoardIssueImage
+  //····················································································································
+
+  final let segmentedControlBoardIssueImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var segmentedControlBoardIssueImage : NSImage? {
+    return self.segmentedControlBoardIssueImage_property.optionalValue
   }
 
   //····················································································································
@@ -4832,6 +4927,31 @@ final class ProjectRoot : EBManagedObject,
     self.mLastERCCheckingIsSuccess_property.startsToBeObserved (by: self.ercStatusImage_property)
     self.mLastERCCheckingSignature_property.startsToBeObserved (by: self.ercStatusImage_property)
     self.signatureForERCChecking_property.startsToBeObserved (by: self.ercStatusImage_property)
+  //--- Atomic property: ercStatusImageOrNoneOnSuccess
+    self.ercStatusImageOrNoneOnSuccess_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mLastERCCheckingIsSuccess_property.selection
+        let s1 = unwSelf.mLastERCCheckingSignature_property.selection
+        let s2 = unwSelf.signatureForERCChecking_property.selection
+        switch (s0, s1, s2) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
+          return .single (transient_ProjectRoot_ercStatusImageOrNoneOnSuccess (v0, v1, v2))
+        case (.multiple,
+              .multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mLastERCCheckingIsSuccess_property.startsToBeObserved (by: self.ercStatusImageOrNoneOnSuccess_property)
+    self.mLastERCCheckingSignature_property.startsToBeObserved (by: self.ercStatusImageOrNoneOnSuccess_property)
+    self.signatureForERCChecking_property.startsToBeObserved (by: self.ercStatusImageOrNoneOnSuccess_property)
   //--- Atomic property: ercStatusMessage
     self.ercStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5502,6 +5622,23 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mNetClasses_property.toMany_netWarningCount_StartsToBeObserved (by: self.netWarningCount_property)
+  //--- Atomic property: segmentedControlNetListIssueImage
+    self.segmentedControlNetListIssueImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.netWarningCount_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectRoot_segmentedControlNetListIssueImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.netWarningCount_property.startsToBeObserved (by: self.segmentedControlNetListIssueImage_property)
   //--- Atomic property: netNamesArray
     self.netNamesArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5711,6 +5848,31 @@ final class ProjectRoot : EBManagedObject,
     self.netWarningCount_property.startsToBeObserved (by: self.schematicStatusMessage_property)
     self.mSheets_property.toMany_connexionWarnings_StartsToBeObserved (by: self.schematicStatusMessage_property)
     self.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self.schematicStatusMessage_property)
+  //--- Atomic property: segmentedControlSchematicIssueImage
+    self.segmentedControlSchematicIssueImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.unplacedSymbols_property.selection
+        let s1 = unwSelf.mSheets_property.selection
+        let s2 = unwSelf.mSheets_property.selection
+        switch (s0, s1, s2) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
+          return .single (transient_ProjectRoot_segmentedControlSchematicIssueImage (v0, v1, v2))
+        case (.multiple,
+              .multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.unplacedSymbols_property.startsToBeObserved (by: self.segmentedControlSchematicIssueImage_property)
+    self.mSheets_property.toMany_connexionWarnings_StartsToBeObserved (by: self.segmentedControlSchematicIssueImage_property)
+    self.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self.segmentedControlSchematicIssueImage_property)
   //--- Atomic property: schematicWarningCount
     self.schematicWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5736,6 +5898,60 @@ final class ProjectRoot : EBManagedObject,
     self.unplacedSymbols_property.startsToBeObserved (by: self.schematicWarningCount_property)
     self.netWarningCount_property.startsToBeObserved (by: self.schematicWarningCount_property)
     self.mSheets_property.toMany_connexionWarnings_StartsToBeObserved (by: self.schematicWarningCount_property)
+  //--- Atomic property: hasSchematicIssue
+    self.hasSchematicIssue_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.schematicErrorCount_property.selection
+        let s1 = unwSelf.schematicWarningCount_property.selection
+        switch (s0, s1) {
+        case (.single (let v0),
+              .single (let v1)) :
+          return .single (transient_ProjectRoot_hasSchematicIssue (v0, v1))
+        case (.multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.schematicErrorCount_property.startsToBeObserved (by: self.hasSchematicIssue_property)
+    self.schematicWarningCount_property.startsToBeObserved (by: self.hasSchematicIssue_property)
+  //--- Atomic property: segmentedControlBoardIssueImage
+    self.segmentedControlBoardIssueImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mLastERCCheckingIsSuccess_property.selection
+        let s1 = unwSelf.mLastERCCheckingSignature_property.selection
+        let s2 = unwSelf.signatureForERCChecking_property.selection
+        let s3 = unwSelf.boardStatusErrorCount_property.selection
+        let s4 = unwSelf.boardStatusWarningCount_property.selection
+        switch (s0, s1, s2, s3, s4) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
+          return .single (transient_ProjectRoot_segmentedControlBoardIssueImage (v0, v1, v2, v3, v4))
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mLastERCCheckingIsSuccess_property.startsToBeObserved (by: self.segmentedControlBoardIssueImage_property)
+    self.mLastERCCheckingSignature_property.startsToBeObserved (by: self.segmentedControlBoardIssueImage_property)
+    self.signatureForERCChecking_property.startsToBeObserved (by: self.segmentedControlBoardIssueImage_property)
+    self.boardStatusErrorCount_property.startsToBeObserved (by: self.segmentedControlBoardIssueImage_property)
+    self.boardStatusWarningCount_property.startsToBeObserved (by: self.segmentedControlBoardIssueImage_property)
   //--- Install undoers and opposite setter for relationships
     self.mSheets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },

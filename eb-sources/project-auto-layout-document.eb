@@ -28,6 +28,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           addPage (title: "Board Contents", tooltip: "", pageView: view boardContentsPage)
           addPage (title: "Product", tooltip: "", pageView: view productPage)
           $selectedPage root.mSelectedPageIndex
+          $segmentImage root.segmentedControlSchematicIssueImage (segmentIndex : 2)
+          $segmentImage root.segmentedControlNetListIssueImage (segmentIndex : 4)
+          $segmentImage root.segmentedControlBoardIssueImage (segmentIndex : 6)
         }
         StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
       }
@@ -90,7 +93,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     separator
     view pageMasterView
   }
-  
+
 //---------------------- Components Tab
 
   stackView \componentsPage hStack set (margins: 8) {
@@ -511,16 +514,16 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     vStack {
       hStack set (leftMargin: 8) set (rightMargin: 8) {
-        SegmentedControlWithPages (documentView: view schematicsInspectorView, equalWidth: yes, size : .small) 
-          [configurator schematicInspectorConfigurator] {
+        SegmentedControlWithPages (documentView: view schematicsInspectorView, equalWidth: no, size : .small) {
           expandableWidth ()
-          addPage (title: "", tooltip: "Selected Element Inspector", pageView: view selectedSchematicElementInspectorView)
-          addPage (title: "", tooltip: "Hot Keys", pageView: view schematicHotKeysInspectorView)
+          addPage (title: "🛠", tooltip: "Selected Element Inspector", pageView: view selectedSchematicElementInspectorView)
+          addPage (title: "🄰", tooltip: "Hot Keys", pageView: view schematicHotKeysInspectorView)
           addPage (title: "", tooltip: "Insert Symbol in Schematic", pageView: view insertSymbolInSchematicView)
-          addPage (image: "", tooltip: "Display Inspector", pageView: view schematicsDisplayInspectorView)
-          addPage (title: "", tooltip: "Sheet Inspector", pageView: view schematicsSheetInspectorView)
+          addPage (title: "🔍", tooltip: "Display Inspector", pageView: view schematicsDisplayInspectorView)
+          addPage (title: "Sheets", tooltip: "Sheet Inspector", pageView: view schematicsSheetInspectorView)
           $selectedPage root. mSelectedSchematicInspector
           $segmentTitle self.unplacedSymbolsCountString (segmentIndex : 2)
+          $segmentImage root.segmentedControlNetListIssueImage (segmentIndex : 4)
         }
       }
       view schematicsInspectorView
@@ -721,8 +724,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     hStack {
       PopUpButton (size: .small) [configurator sheetPopUpButtonConfigurator]
+      ImageObserverView (size: .small) {
+        $image root.segmentedControlSchematicIssueImage
+        $hidden !root.hasSchematicIssue
+      }
       Stepper [configurator sheetStepperConfigurator]
     }
+    separator
     hStack {
       Button (title: "New Sheet", size: .small) { expandableHeight () $run newSheetAction }
       space
@@ -734,6 +742,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       Button (title: "Delete Sheet", size: .small)
         { expandableHeight () $run deleteSheetAction $enabled root.mSheets.count > 1 }
     }
+    separator
     StaticLabel (title: "Selected Sheet Name", bold: no, size: .small, alignment: .left)
     TextField (minWidth: 150, size: .small)
       { automaticallyAdjustHeight (maxWidth: 150) $value root.selectedSheetTitle (sendContinously : yes) }
@@ -1292,16 +1301,16 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
       vStack {
         hStack set (leftMargin: 8) set (rightMargin: 8) {
-          SegmentedControlWithPages (documentView: view boardInspectorView, equalWidth: yes, size : .small) 
-            [configurator boardInspectorConfigurator] {
+          SegmentedControlWithPages (documentView: view boardInspectorView, equalWidth: no, size : .small) {
             expandableWidth ()
-            addPage (title: "", tooltip: "Selected Element Inspector", pageView: view selectedElementInspectorView)
+            addPage (title: "🛠", tooltip: "Selected Element Inspector", pageView: view selectedElementInspectorView)
             addPage (title: "", tooltip: "Insert Component in Board", pageView: view insertComponentInBoardView)
-            addPage (title: "", tooltip: "Display Inspector", pageView: view boardDisplayInspectorView)
+            addPage (title: "🔍", tooltip: "Display Inspector", pageView: view boardDisplayInspectorView)
             addPage (image: "autorouter", tooltip: "Router Inspector", pageView: view boardRouterInspectorView)
             addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: view boardERCInspectorView)
             $selectedPage root.mBoardSelectedInspector
-            $segmentTitle self.unplacedPackagesCountString (segmentIndex : 1)
+            $segmentTitle self.unplacedPackagesCountString (segmentIndex: 1)
+            $segmentImage root.ercStatusImageOrNoneOnSuccess (segmentIndex: 4)
           }
         }
         view boardInspectorView
@@ -1592,7 +1601,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
                 }
                 hStack {
                   space
-                  ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 48, height: 48) {
+                  ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48) {
                     $run launchFreeRouterWithRouterDocument
                   }
                   space
@@ -1618,7 +1627,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
                 }
                 hStack {
                   space
-                  ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 48, height: 48) {
+                  ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48) {
                     $run launchFreeRouterWithoutAnyDocument
                   }
                   space

@@ -126,6 +126,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.hasSixLayers_property.stopsBeingObserved (by: self.hasSixLayers_property) // Transient property
       oldValue.signatureForERCChecking_property.stopsBeingObserved (by: self.signatureForERCChecking_property) // Transient property
       oldValue.ercStatusImage_property.stopsBeingObserved (by: self.ercStatusImage_property) // Transient property
+      oldValue.ercStatusImageOrNoneOnSuccess_property.stopsBeingObserved (by: self.ercStatusImageOrNoneOnSuccess_property) // Transient property
       oldValue.ercStatusMessage_property.stopsBeingObserved (by: self.ercStatusMessage_property) // Transient property
       oldValue.viaCountString_property.stopsBeingObserved (by: self.viaCountString_property) // Transient property
       oldValue.topSideTrackCountString_property.stopsBeingObserved (by: self.topSideTrackCountString_property) // Transient property
@@ -156,6 +157,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.sheetGeometry_property.stopsBeingObserved (by: self.sheetGeometry_property) // Transient property
       oldValue.schematicBackgroundDisplay_property.stopsBeingObserved (by: self.schematicBackgroundDisplay_property) // Transient property
       oldValue.netWarningCount_property.stopsBeingObserved (by: self.netWarningCount_property) // Transient property
+      oldValue.segmentedControlNetListIssueImage_property.stopsBeingObserved (by: self.segmentedControlNetListIssueImage_property) // Transient property
       oldValue.netNamesArray_property.stopsBeingObserved (by: self.netNamesArray_property) // Transient property
       oldValue.unplacedSymbols_property.stopsBeingObserved (by: self.unplacedSymbols_property) // Transient property
       oldValue.unplacedPackages_property.stopsBeingObserved (by: self.unplacedPackages_property) // Transient property
@@ -165,7 +167,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.placedComponentNameArray_property.stopsBeingObserved (by: self.placedComponentNameArray_property) // Transient property
       oldValue.schematicHasErrorOrWarning_property.stopsBeingObserved (by: self.schematicHasErrorOrWarning_property) // Transient property
       oldValue.schematicStatusMessage_property.stopsBeingObserved (by: self.schematicStatusMessage_property) // Transient property
+      oldValue.segmentedControlSchematicIssueImage_property.stopsBeingObserved (by: self.segmentedControlSchematicIssueImage_property) // Transient property
       oldValue.schematicWarningCount_property.stopsBeingObserved (by: self.schematicWarningCount_property) // Transient property
+      oldValue.hasSchematicIssue_property.stopsBeingObserved (by: self.hasSchematicIssue_property) // Transient property
+      oldValue.segmentedControlBoardIssueImage_property.stopsBeingObserved (by: self.segmentedControlBoardIssueImage_property) // Transient property
       if let relay = self.mObserversOf_mSheets { // to Many
         oldValue.mSheets_property.stopsBeingObserved (by: relay)
       }
@@ -300,6 +305,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.hasSixLayers_property.startsToBeObserved (by: self.hasSixLayers_property) // Transient property
       newValue.signatureForERCChecking_property.startsToBeObserved (by: self.signatureForERCChecking_property) // Transient property
       newValue.ercStatusImage_property.startsToBeObserved (by: self.ercStatusImage_property) // Transient property
+      newValue.ercStatusImageOrNoneOnSuccess_property.startsToBeObserved (by: self.ercStatusImageOrNoneOnSuccess_property) // Transient property
       newValue.ercStatusMessage_property.startsToBeObserved (by: self.ercStatusMessage_property) // Transient property
       newValue.viaCountString_property.startsToBeObserved (by: self.viaCountString_property) // Transient property
       newValue.topSideTrackCountString_property.startsToBeObserved (by: self.topSideTrackCountString_property) // Transient property
@@ -330,6 +336,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.sheetGeometry_property.startsToBeObserved (by: self.sheetGeometry_property) // Transient property
       newValue.schematicBackgroundDisplay_property.startsToBeObserved (by: self.schematicBackgroundDisplay_property) // Transient property
       newValue.netWarningCount_property.startsToBeObserved (by: self.netWarningCount_property) // Transient property
+      newValue.segmentedControlNetListIssueImage_property.startsToBeObserved (by: self.segmentedControlNetListIssueImage_property) // Transient property
       newValue.netNamesArray_property.startsToBeObserved (by: self.netNamesArray_property) // Transient property
       newValue.unplacedSymbols_property.startsToBeObserved (by: self.unplacedSymbols_property) // Transient property
       newValue.unplacedPackages_property.startsToBeObserved (by: self.unplacedPackages_property) // Transient property
@@ -339,7 +346,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.placedComponentNameArray_property.startsToBeObserved (by: self.placedComponentNameArray_property) // Transient property
       newValue.schematicHasErrorOrWarning_property.startsToBeObserved (by: self.schematicHasErrorOrWarning_property) // Transient property
       newValue.schematicStatusMessage_property.startsToBeObserved (by: self.schematicStatusMessage_property) // Transient property
+      newValue.segmentedControlSchematicIssueImage_property.startsToBeObserved (by: self.segmentedControlSchematicIssueImage_property) // Transient property
       newValue.schematicWarningCount_property.startsToBeObserved (by: self.schematicWarningCount_property) // Transient property
+      newValue.hasSchematicIssue_property.startsToBeObserved (by: self.hasSchematicIssue_property) // Transient property
+      newValue.segmentedControlBoardIssueImage_property.startsToBeObserved (by: self.segmentedControlBoardIssueImage_property) // Transient property
       if let relay = self.mObserversOf_mSheets { // to Many
         newValue.mSheets_property.startsToBeObserved (by: relay)
       }
@@ -1025,6 +1035,12 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   final let ercStatusImage_property = EBTransientProperty <NSImage?> ()
 
   //····················································································································
+  //   Observers of 'ercStatusImageOrNoneOnSuccess' transient property
+  //····················································································································
+
+  final let ercStatusImageOrNoneOnSuccess_property = EBTransientProperty <NSImage?> ()
+
+  //····················································································································
   //   Observers of 'ercStatusMessage' transient property
   //····················································································································
 
@@ -1205,6 +1221,12 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   final let netWarningCount_property = EBTransientProperty <Int?> ()
 
   //····················································································································
+  //   Observers of 'segmentedControlNetListIssueImage' transient property
+  //····················································································································
+
+  final let segmentedControlNetListIssueImage_property = EBTransientProperty <NSImage?> ()
+
+  //····················································································································
   //   Observers of 'netNamesArray' transient property
   //····················································································································
 
@@ -1259,10 +1281,28 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   final let schematicStatusMessage_property = EBTransientProperty <String?> ()
 
   //····················································································································
+  //   Observers of 'segmentedControlSchematicIssueImage' transient property
+  //····················································································································
+
+  final let segmentedControlSchematicIssueImage_property = EBTransientProperty <NSImage?> ()
+
+  //····················································································································
   //   Observers of 'schematicWarningCount' transient property
   //····················································································································
 
   final let schematicWarningCount_property = EBTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'hasSchematicIssue' transient property
+  //····················································································································
+
+  final let hasSchematicIssue_property = EBTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'segmentedControlBoardIssueImage' transient property
+  //····················································································································
+
+  final let segmentedControlBoardIssueImage_property = EBTransientProperty <NSImage?> ()
 
   //····················································································································
   //   Observable toMany property: mSheets
@@ -1892,6 +1932,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.ercStatusImage_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.ercStatusImage_property.optionalSelection ?? .single (nil)
     }
+  //--- Configure ercStatusImageOrNoneOnSuccess transient property
+    self.ercStatusImageOrNoneOnSuccess_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.ercStatusImageOrNoneOnSuccess_property.optionalSelection ?? .single (nil)
+    }
   //--- Configure ercStatusMessage transient property
     self.ercStatusMessage_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.ercStatusMessage_property.optionalSelection ?? .single (nil)
@@ -2012,6 +2056,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.netWarningCount_property.optionalSelection ?? .single (nil)
     }
+  //--- Configure segmentedControlNetListIssueImage transient property
+    self.segmentedControlNetListIssueImage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.segmentedControlNetListIssueImage_property.optionalSelection ?? .single (nil)
+    }
   //--- Configure netNamesArray transient property
     self.netNamesArray_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.netNamesArray_property.optionalSelection ?? .single (nil)
@@ -2048,9 +2096,21 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.schematicStatusMessage_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.schematicStatusMessage_property.optionalSelection ?? .single (nil)
     }
+  //--- Configure segmentedControlSchematicIssueImage transient property
+    self.segmentedControlSchematicIssueImage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.segmentedControlSchematicIssueImage_property.optionalSelection ?? .single (nil)
+    }
   //--- Configure schematicWarningCount transient property
     self.schematicWarningCount_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.schematicWarningCount_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure hasSchematicIssue transient property
+    self.hasSchematicIssue_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.hasSchematicIssue_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure segmentedControlBoardIssueImage transient property
+    self.segmentedControlBoardIssueImage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.segmentedControlBoardIssueImage_property.optionalSelection ?? .single (nil)
     }
   }
 

@@ -13,15 +13,28 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension AutoLayoutProjectDocument {
-  final func configure_schematicInspectorConfigurator (_ inOutlet : AutoLayoutSegmentedControlWithPages) {
+@MainActor func transient_ProjectRoot_segmentedControlBoardIssueImage (
+       _ self_mLastERCCheckingIsSuccess : Bool,                        
+       _ self_mLastERCCheckingSignature : UInt32,                      
+       _ self_signatureForERCChecking : UInt32,                        
+       _ self_boardStatusErrorCount : Int,                             
+       _ self_boardStatusWarningCount : Int
+) -> NSImage {
 //--- START OF USER ZONE 2
-        inOutlet.setLabel ("🛠", forSegment: 0)
-        inOutlet.setLabel ("🄰", forSegment: 1)
-        inOutlet.setLabel ("🔍", forSegment: 3)
-        inOutlet.setImage (NSImage (named: "sheet"), forSegment: 4)
+         if self_boardStatusErrorCount > 0 {
+           return NSImage.statusError
+         }else if self_mLastERCCheckingSignature == self_signatureForERCChecking, !self_mLastERCCheckingIsSuccess {
+           return NSImage.statusError
+         }else if self_boardStatusWarningCount > 0 {
+           return NSImage.statusWarning
+         }else if self_mLastERCCheckingSignature != self_signatureForERCChecking {
+           return NSImage.statusNone
+         }else if self_mLastERCCheckingIsSuccess {
+           return NSImage ()
+         }else{
+           return NSImage.statusError
+         }
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

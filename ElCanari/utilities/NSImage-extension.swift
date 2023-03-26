@@ -15,25 +15,25 @@ extension NSImage {
   //····················································································································
 
   public static var statusSuccess : NSImage {
-    return NSImage (named: "NSStatusAvailable")!
+    return NSImage (named: NSImage.statusAvailableName)!
   }
 
   //····················································································································
 
   public static var statusWarning : NSImage {
-    return NSImage (named: "NSStatusPartiallyAvailable")!
+    return NSImage (named: NSImage.statusPartiallyAvailableName)!
   }
 
   //····················································································································
 
   public static var statusNone : NSImage {
-    return NSImage (named: "NSStatusNone")!
+    return NSImage (named: NSImage.statusNoneName)!
   }
 
   //····················································································································
 
   public static var statusError : NSImage {
-    return NSImage (named: "NSStatusUnavailable")!
+    return NSImage (named: NSImage.statusUnavailableName)!
   }
 
   //····················································································································

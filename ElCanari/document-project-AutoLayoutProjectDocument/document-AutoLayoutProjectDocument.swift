@@ -577,6 +577,9 @@ import AppKit
           .addPage (title: "Board Contents", tooltip: "", pageView: boardContentsPage)
           .addPage (title: "Product", tooltip: "", pageView: productPage)
           .bind_selectedPage (self.rootObject.mSelectedPageIndex_property)
+          .bind_segmentImage (self.rootObject.segmentedControlSchematicIssueImage_property, segmentIndex:2)
+          .bind_segmentImage (self.rootObject.segmentedControlNetListIssueImage_property, segmentIndex:4)
+          .bind_segmentImage (self.rootObject.segmentedControlBoardIssueImage_property, segmentIndex:6)
         _ = view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutStaticLabel (title: "Page", bold: false, size: .small, alignment: .center)
         _ = view_0_0.appendView (view_0_0_1)
@@ -1136,16 +1139,16 @@ import AppKit
         .set (leftMargin: 8)
         .set (rightMargin: 8)
       do{
-        let view_1_0_0 = AutoLayoutSegmentedControlWithPages (documentView: schematicsInspectorView, equalWidth: true, size: .small)
+        let view_1_0_0 = AutoLayoutSegmentedControlWithPages (documentView: schematicsInspectorView, equalWidth: false, size: .small)
           .expandableWidth ()
-          .addPage (title: "", tooltip: "Selected Element Inspector", pageView: selectedSchematicElementInspectorView)
-          .addPage (title: "", tooltip: "Hot Keys", pageView: schematicHotKeysInspectorView)
+          .addPage (title: "🛠", tooltip: "Selected Element Inspector", pageView: selectedSchematicElementInspectorView)
+          .addPage (title: "🄰", tooltip: "Hot Keys", pageView: schematicHotKeysInspectorView)
           .addPage (title: "", tooltip: "Insert Symbol in Schematic", pageView: insertSymbolInSchematicView)
-          .addPage (image: "", tooltip: "Display Inspector", pageView: schematicsDisplayInspectorView)
-          .addPage (title: "", tooltip: "Sheet Inspector", pageView: schematicsSheetInspectorView)
+          .addPage (title: "🔍", tooltip: "Display Inspector", pageView: schematicsDisplayInspectorView)
+          .addPage (title: "Sheets", tooltip: "Sheet Inspector", pageView: schematicsSheetInspectorView)
           .bind_selectedPage (self.rootObject.mSelectedSchematicInspector_property)
           .bind_segmentTitle (self.unplacedSymbolsCountString_property, segmentIndex:2)
-        self.configure_schematicInspectorConfigurator (view_1_0_0) // Configurator
+          .bind_segmentImage (self.rootObject.segmentedControlNetListIssueImage_property, segmentIndex:4)
         _ = view_1_0.appendView (view_1_0_0)
       }
       _ = view_1.appendView (view_1_0)
@@ -1354,54 +1357,62 @@ import AppKit
       let view_1_0 = AutoLayoutPopUpButton (size: .small)
       self.configure_sheetPopUpButtonConfigurator (view_1_0) // Configurator
       _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutStepper ()
-      self.configure_sheetStepperConfigurator (view_1_1) // Configurator
+      let view_1_1 = AutoLayoutImageObserverView (size: .small)
+        .bind_image (self.rootObject.segmentedControlSchematicIssueImage_property)
+        .bind_hidden (.not (.prop (self.rootObject.hasSchematicIssue_property)))
       _ = view_1.appendView (view_1_1)
+      let view_1_2 = AutoLayoutStepper ()
+      self.configure_sheetStepperConfigurator (view_1_2) // Configurator
+      _ = view_1.appendView (view_1_2)
     }
     _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutHorizontalStackView ()
+    let view_2 = AutoLayoutVerticalStackView.HorizontalSeparator ()
+    _ = vStackView.appendView (view_2)
+    let view_3 = AutoLayoutHorizontalStackView ()
     do{
-      let view_2_0 = AutoLayoutButton (title: "New Sheet", size: .small)
+      let view_3_0 = AutoLayoutButton (title: "New Sheet", size: .small)
         .expandableHeight ()
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.newSheetAction (_:))
         )
-      _ = view_2.appendView (view_2_0)
-      let view_2_1 = AutoLayoutFlexibleSpace ()
-      _ = view_2.appendView (view_2_1)
-      let view_2_2 = AutoLayoutVerticalStackView ()
+      _ = view_3.appendView (view_3_0)
+      let view_3_1 = AutoLayoutFlexibleSpace ()
+      _ = view_3.appendView (view_3_1)
+      let view_3_2 = AutoLayoutVerticalStackView ()
       do{
-        let view_2_2_0 = AutoLayoutButton (title: "Up", size: .small)
+        let view_3_2_0 = AutoLayoutButton (title: "Up", size: .small)
           .expandableWidth ()
-        self.configure_moveSheetUp (view_2_2_0) // Configurator
-        _ = view_2_2.appendView (view_2_2_0)
-        let view_2_2_1 = AutoLayoutButton (title: "Down", size: .small)
-        self.configure_moveSheetDown (view_2_2_1) // Configurator
-        _ = view_2_2.appendView (view_2_2_1)
+        self.configure_moveSheetUp (view_3_2_0) // Configurator
+        _ = view_3_2.appendView (view_3_2_0)
+        let view_3_2_1 = AutoLayoutButton (title: "Down", size: .small)
+        self.configure_moveSheetDown (view_3_2_1) // Configurator
+        _ = view_3_2.appendView (view_3_2_1)
       }
-      _ = view_2.appendView (view_2_2)
-      let view_2_3 = AutoLayoutFlexibleSpace ()
-      _ = view_2.appendView (view_2_3)
-      let view_2_4 = AutoLayoutButton (title: "Delete Sheet", size: .small)
+      _ = view_3.appendView (view_3_2)
+      let view_3_3 = AutoLayoutFlexibleSpace ()
+      _ = view_3.appendView (view_3_3)
+      let view_3_4 = AutoLayoutButton (title: "Delete Sheet", size: .small)
         .expandableHeight ()
         .bind_enabled (.intcmp (.prop (self.rootObject.mSheets_property.count_property), .gt, .literalInt (1)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.deleteSheetAction (_:))
         )
-      _ = view_2.appendView (view_2_4)
+      _ = view_3.appendView (view_3_4)
     }
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutStaticLabel (title: "Selected Sheet Name", bold: false, size: .small, alignment: .left)
     _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutTextField (minWidth: 150, size: .small)
+    let view_4 = AutoLayoutVerticalStackView.HorizontalSeparator ()
+    _ = vStackView.appendView (view_4)
+    let view_5 = AutoLayoutStaticLabel (title: "Selected Sheet Name", bold: false, size: .small, alignment: .left)
+    _ = vStackView.appendView (view_5)
+    let view_6 = AutoLayoutTextField (minWidth: 150, size: .small)
       .automaticallyAdjustHeight (maxWidth: 150)
       .bind_value (self.rootObject.selectedSheetTitle_property, sendContinously:true)
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutGridView2 ()
+    _ = vStackView.appendView (view_6)
+    let view_7 = AutoLayoutVerticalStackView.HorizontalSeparator ()
+    _ = vStackView.appendView (view_7)
+    let view_8 = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_39 (), right: self.computeImplicitView_40 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_41 (), right: self.computeImplicitView_42 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_43 (), right: self.computeImplicitView_44 ())
@@ -1409,9 +1420,9 @@ import AppKit
       .addFirstBaseLineAligned (left: self.computeImplicitView_45 (), right: self.computeImplicitView_46 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_47 (), right: self.computeImplicitView_48 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_49 (), right: self.computeImplicitView_50 ())
-    _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_7)
+    _ = vStackView.appendView (view_8)
+    let view_9 = AutoLayoutFlexibleSpace ()
+    _ = vStackView.appendView (view_9)
     return vStackView
   }
 
@@ -1838,16 +1849,16 @@ import AppKit
           .set (leftMargin: 8)
           .set (rightMargin: 8)
         do{
-          let view_0_1_0_0 = AutoLayoutSegmentedControlWithPages (documentView: boardInspectorView, equalWidth: true, size: .small)
+          let view_0_1_0_0 = AutoLayoutSegmentedControlWithPages (documentView: boardInspectorView, equalWidth: false, size: .small)
             .expandableWidth ()
-            .addPage (title: "", tooltip: "Selected Element Inspector", pageView: selectedElementInspectorView)
+            .addPage (title: "🛠", tooltip: "Selected Element Inspector", pageView: selectedElementInspectorView)
             .addPage (title: "", tooltip: "Insert Component in Board", pageView: insertComponentInBoardView)
-            .addPage (title: "", tooltip: "Display Inspector", pageView: boardDisplayInspectorView)
+            .addPage (title: "🔍", tooltip: "Display Inspector", pageView: boardDisplayInspectorView)
             .addPage (image: "autorouter", tooltip: "Router Inspector", pageView: boardRouterInspectorView)
             .addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: boardERCInspectorView)
             .bind_selectedPage (self.rootObject.mBoardSelectedInspector_property)
             .bind_segmentTitle (self.unplacedPackagesCountString_property, segmentIndex:1)
-          self.configure_boardInspectorConfigurator (view_0_1_0_0) // Configurator
+            .bind_segmentImage (self.rootObject.ercStatusImageOrNoneOnSuccess_property, segmentIndex:4)
           _ = view_0_1_0.appendView (view_0_1_0_0)
         }
         _ = view_0_1.appendView (view_0_1_0)
@@ -4883,7 +4894,7 @@ import AppKit
       do{
         let view_1_0 = AutoLayoutFlexibleSpace ()
         _ = view_1.appendView (view_1_0)
-        let view_1_1 = AutoLayoutImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 48, height: 48)
+        let view_1_1 = AutoLayoutImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48)
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutProjectDocument.launchFreeRouterWithRouterDocument (_:))
@@ -4948,7 +4959,7 @@ import AppKit
       do{
         let view_2_0 = AutoLayoutFlexibleSpace ()
         _ = view_2.appendView (view_2_0)
-        let view_2_1 = AutoLayoutImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 48, height: 48)
+        let view_2_1 = AutoLayoutImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48)
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutProjectDocument.launchFreeRouterWithoutAnyDocument (_:))
