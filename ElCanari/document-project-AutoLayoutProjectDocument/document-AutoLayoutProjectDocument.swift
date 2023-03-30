@@ -399,6 +399,18 @@ import AppKit
   }
 
   //····················································································································
+  //   Transient property: unplacedSymbolsSegmentImage
+  //····················································································································
+
+  final let unplacedSymbolsSegmentImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var unplacedSymbolsSegmentImage : NSImage? {
+    return self.unplacedSymbolsSegmentImage_property.optionalValue
+  }
+
+  //····················································································································
   //   Transient property: boardOutlineOverDisplay
   //····················································································································
 
@@ -432,6 +444,18 @@ import AppKit
 
   final var unplacedPackagesCountString : String? {
     return self.unplacedPackagesCountString_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: unplacedPackagesSegmentImage
+  //····················································································································
+
+  final let unplacedPackagesSegmentImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var unplacedPackagesSegmentImage : NSImage? {
+    return self.unplacedPackagesSegmentImage_property.optionalValue
   }
 
   //····················································································································
@@ -1148,7 +1172,8 @@ import AppKit
           .addPage (title: "Sheets", tooltip: "Sheet Inspector", pageView: schematicsSheetInspectorView)
           .bind_selectedPage (self.rootObject.mSelectedSchematicInspector_property)
           .bind_segmentTitle (self.unplacedSymbolsCountString_property, segmentIndex:2)
-          .bind_segmentImage (self.rootObject.segmentedControlNetListIssueImage_property, segmentIndex:4)
+          .bind_segmentImage (self.unplacedSymbolsSegmentImage_property, segmentIndex:2)
+          .bind_segmentImage (self.rootObject.segmentedControlSheetIssueImage_property, segmentIndex:4)
         _ = view_1_0.appendView (view_1_0_0)
       }
       _ = view_1.appendView (view_1_0)
@@ -1858,6 +1883,7 @@ import AppKit
             .addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: boardERCInspectorView)
             .bind_selectedPage (self.rootObject.mBoardSelectedInspector_property)
             .bind_segmentTitle (self.unplacedPackagesCountString_property, segmentIndex:1)
+            .bind_segmentImage (self.unplacedPackagesSegmentImage_property, segmentIndex:1)
             .bind_segmentImage (self.rootObject.ercStatusImageOrNoneOnSuccess_property, segmentIndex:4)
           _ = view_0_1_0.appendView (view_0_1_0_0)
         }
@@ -7372,6 +7398,24 @@ import AppKit
     }
     self.unplacedSymbolsCount_property.startsToBeObserved (by: self.unplacedSymbolsCountString_property)
 
+  //--- Atomic property: unplacedSymbolsSegmentImage
+    self.unplacedSymbolsSegmentImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.unplacedSymbolsCount_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutProjectDocument_unplacedSymbolsSegmentImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.unplacedSymbolsCount_property.startsToBeObserved (by: self.unplacedSymbolsSegmentImage_property)
+
   //--- Atomic property: boardOutlineOverDisplay
     self.boardOutlineOverDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -7429,6 +7473,24 @@ import AppKit
       }
     }
     self.unplacedPackageCount_property.startsToBeObserved (by: self.unplacedPackagesCountString_property)
+
+  //--- Atomic property: unplacedPackagesSegmentImage
+    self.unplacedPackagesSegmentImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.unplacedPackageCount_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutProjectDocument_unplacedPackagesSegmentImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.unplacedPackageCount_property.startsToBeObserved (by: self.unplacedPackagesSegmentImage_property)
 
   //--- Atomic property: unplacedPackagesMessageString
     self.unplacedPackagesMessageString_property.mReadModelFunction = { [weak self] in

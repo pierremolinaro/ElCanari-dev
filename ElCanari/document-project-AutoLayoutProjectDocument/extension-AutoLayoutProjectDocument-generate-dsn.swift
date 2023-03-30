@@ -43,11 +43,6 @@ extension AutoLayoutProjectDocument {
       savePanel.directoryURL = url
     }
   //--- Save Panel
-//    savePanel.accessoryView = self.mSaveDSNFileAuxiliaryView
-//    self.mExportTrackAndViasToDSNSwitch?.isEnabled = hasTrack
-//    if !hasTrack {
-//      self.mExportTrackAndViasToDSNSwitch?.state = .off
-//    }
     savePanel.allowedFileTypes = ["dsn"]
     savePanel.allowsOtherFileTypes = false
     savePanel.nameFieldStringValue = self.rootObject.mDSNFileProposedName
@@ -169,6 +164,7 @@ extension AutoLayoutProjectDocument {
     s += "    (host_version \"\(ElCanariApplicationVersionString ())\")\n"
     s += "  )\n"
     s += "  (resolution \(converter.unitString) \(converter.resolution))\n"
+    s += "  (unit \(converter.unitString))\n"
     s += "  (structure\n"
     addBoardBoundary (&s, boardBoundBox, signalPolygonVertices, converter)
     autorouteSettings (&s, self.rootObject.mAutoRouterPreferredDirections, layerConfiguration)
@@ -639,7 +635,7 @@ fileprivate func addNetwork (_ ioString : inout String,
     let componentName = component.componentName
     for padDescriptor in component.netList {
       if let netName = padDescriptor.netName {
-        netWorkDictionary [netName] = netWorkDictionary [netName, default: []] + [componentName + "-" + padDescriptor.padString]
+        netWorkDictionary [netName] = netWorkDictionary [netName, default: []] + ["\"" + componentName + "\"-\"" + padDescriptor.padString + "\""]
       }
     }
   }
@@ -717,7 +713,7 @@ fileprivate func addDeviceLibrary (_ ioString : inout String,
   for package in inPackageArrayForRouting {
     ioString += "    (image \"\(package.typeName)\"\n"
     for padType in package.padArray {
-      ioString += "      (pin \(padType.pad.name) \(padType.name) \(padType.centerX) \(padType.centerY))\n"
+      ioString += "      (pin \"\(padType.pad.name)\" \"\(padType.name)\" \(padType.centerX) \(padType.centerY))\n"
     }
     ioString += "    )\n"
   }
@@ -746,16 +742,16 @@ fileprivate func addBoardBoundary (_ ioString : inout String,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addSnapAngle (_ ioString : inout String, _ inSnapAngle : AutorouterSnapAngle) {
-  ioString += "    (snap_angle\n"
+  ioString += "    (snap_angle "
   switch inSnapAngle {
   case .rectilinear :
-    ioString += "      ninety_degree\n"
+    ioString += "ninety_degree"
   case .octolinear :
-    ioString += "      fortyfive_degree\n"
+    ioString += "fortyfive_degree"
   case .anyAngle :
-    ioString += "      none\n"
+    ioString += "none"
   }
-  ioString += "    )\n"
+  ioString += ")\n"
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -971,12 +967,9 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
     case .front : side = "front"
     }
     ioString += "    (component \"\(inPackageArrayForRouting [component.packageIndex].typeName)\"\n"
-    ioString += "      (place\n"
-    ioString += "        \(component.componentName) \(x) \(y) \(side) \(component.rotationInDegrees)\n"
-    var idx = 1
+    ioString += "      (place \"\(component.componentName)\" \(x) \(y) \(side) \(component.rotationInDegrees)\n"
     for padDescriptor in component.netList {
-      ioString += "        (pin \(padDescriptor.padString) (clearance_class default))\n"
-      idx += 1
+      ioString += "        (pin \"\(padDescriptor.padString)\" (clearance_class default))\n"
     }
     ioString += "      )\n"
     ioString += "    )\n"

@@ -317,6 +317,10 @@ handlingOpposite entity ProjectRoot {
   transient NSImage segmentedControlNetListIssueImage dependsFrom
      self.netWarningCount
   ;
+  transient NSImage segmentedControlSheetIssueImage dependsFrom
+     self.mSheets.all.connexionWarnings,
+     self.mSheets.all.connexionErrors
+  ;
 
   transient NSImage segmentedControlSchematicIssueImage dependsFrom
      self.unplacedSymbols,

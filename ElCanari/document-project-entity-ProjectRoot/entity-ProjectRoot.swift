@@ -702,6 +702,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol ProjectRoot_segmentedControlSheetIssueImage : AnyObject {
+  var segmentedControlSheetIssueImage : NSImage? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol ProjectRoot_schematicErrorCount : AnyObject {
   var schematicErrorCount : Int? { get }
 }
@@ -1133,6 +1139,7 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_schematicOverDisplay,
          ProjectRoot_connexionWarningString,
          ProjectRoot_connexionErrorString,
+         ProjectRoot_segmentedControlSheetIssueImage,
          ProjectRoot_schematicErrorCount,
          ProjectRoot_sheetIndexes,
          ProjectRoot_netsDescription,
@@ -3537,6 +3544,18 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: segmentedControlSheetIssueImage
+  //····················································································································
+
+  final let segmentedControlSheetIssueImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var segmentedControlSheetIssueImage : NSImage? {
+    return self.segmentedControlSheetIssueImage_property.optionalValue
+  }
+
+  //····················································································································
   //   Transient property: schematicErrorCount
   //····················································································································
 
@@ -4796,6 +4815,27 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self.connexionErrorString_property)
+  //--- Atomic property: segmentedControlSheetIssueImage
+    self.segmentedControlSheetIssueImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mSheets_property.selection
+        let s1 = unwSelf.mSheets_property.selection
+        switch (s0, s1) {
+        case (.single (let v0),
+              .single (let v1)) :
+          return .single (transient_ProjectRoot_segmentedControlSheetIssueImage (v0, v1))
+        case (.multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSheets_property.toMany_connexionWarnings_StartsToBeObserved (by: self.segmentedControlSheetIssueImage_property)
+    self.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self.segmentedControlSheetIssueImage_property)
   //--- Atomic property: schematicErrorCount
     self.schematicErrorCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

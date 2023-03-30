@@ -523,7 +523,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           addPage (title: "Sheets", tooltip: "Sheet Inspector", pageView: view schematicsSheetInspectorView)
           $selectedPage root. mSelectedSchematicInspector
           $segmentTitle self.unplacedSymbolsCountString (segmentIndex : 2)
-          $segmentImage root.segmentedControlNetListIssueImage (segmentIndex : 4)
+          $segmentImage self.unplacedSymbolsSegmentImage (segmentIndex : 2)
+          $segmentImage root.segmentedControlSheetIssueImage (segmentIndex : 4)
         }
       }
       view schematicsInspectorView
@@ -532,6 +533,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   transient Int unplacedSymbolsCount dependsFrom root.unplacedSymbols ;
   transient String unplacedSymbolsCountString dependsFrom self.unplacedSymbolsCount ;
+  transient NSImage unplacedSymbolsSegmentImage dependsFrom self.unplacedSymbolsCount ;
 
   stackView \schematicsInspectorView vStack set (margins: 8) {
   }  
@@ -1278,6 +1280,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   ;
   transient Int unplacedPackageCount dependsFrom root.unplacedPackages ;
   transient String unplacedPackagesCountString dependsFrom self.unplacedPackageCount ;
+  transient NSImage unplacedPackagesSegmentImage dependsFrom self.unplacedPackageCount ;
   transient String unplacedPackagesMessageString dependsFrom self.unplacedPackageCount ;
 
   stackView \boardContentsPage hStack set (spacing: 0) {
@@ -1310,6 +1313,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: view boardERCInspectorView)
             $selectedPage root.mBoardSelectedInspector
             $segmentTitle self.unplacedPackagesCountString (segmentIndex: 1)
+            $segmentImage self.unplacedPackagesSegmentImage (segmentIndex : 1)
             $segmentImage root.ercStatusImageOrNoneOnSuccess (segmentIndex: 4)
           }
         }

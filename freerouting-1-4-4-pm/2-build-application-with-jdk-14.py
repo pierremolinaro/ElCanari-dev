@@ -2,6 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 #------------------------------------------------------------------------------
+# https://www.oracle.com/java/technologies/downloads/#jdk17-mac
 
 import sys, os, subprocess
 
