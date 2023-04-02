@@ -1601,7 +1601,7 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final func reset_mLayoutClearance_toDefaultValue () {
-    self.mLayoutClearance = 22660
+    self.mLayoutClearance = 22860
   }
 
   //····················································································································
@@ -4205,7 +4205,7 @@ final class ProjectRoot : EBManagedObject,
     self.mExportExistingTracksAndVias_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mExportExistingTracksAndVias")
     self.mExportExistingTracksAndVias2_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mExportExistingTracksAndVias2")
     self.mTrackLengthUnit_property = EBStoredProperty_Int (defaultValue: 90000000, undoManager: inUndoManager, key: "mTrackLengthUnit")
-    self.mLayoutClearance_property = EBStoredProperty_Int (defaultValue: 22660, undoManager: inUndoManager, key: "mLayoutClearance")
+    self.mLayoutClearance_property = EBStoredProperty_Int (defaultValue: 22860, undoManager: inUndoManager, key: "mLayoutClearance")
     self.mLayoutClearanceUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mLayoutClearanceUnit")
     self.mBoardSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1, undoManager: inUndoManager, key: "mBoardSelectedInspector")
     self.mBoardHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mBoardHorizontalFlip")

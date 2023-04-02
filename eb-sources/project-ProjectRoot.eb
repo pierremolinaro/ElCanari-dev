@@ -86,7 +86,7 @@ handlingOpposite entity ProjectRoot {
   
   property Int mTrackLengthUnit default 90_000_000 ; // meter
   
-  property Int mLayoutClearance default 22_660 ; // 10 mil
+  property Int mLayoutClearance default 22_860 ; // 10 mil
   property Int mLayoutClearanceUnit default 2_286 ; // mil
 
   property Int mBoardSelectedInspector default 1 ;
