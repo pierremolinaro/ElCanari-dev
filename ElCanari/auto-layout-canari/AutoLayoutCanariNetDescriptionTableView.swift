@@ -269,32 +269,83 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
       if inSelectedRows.count == 1 {
         let selectedNetInfo : NetInfo = self.mDataSource [inSelectedRows.first!]
         for subnet : NetStatusEntry in selectedNetInfo.subnets {
-          let image : NSImage
+          let optionalImage : NSImage?
           switch subnet.status {
           case .ok :
-            image = NSImage ()
+            optionalImage = nil
           case .warning :
-            image = NSImage.statusWarning
+            optionalImage = NSImage.statusWarning
           case .error :
-            image = NSImage.statusError
+            optionalImage = NSImage.statusError
           }
+          _ = vStack.appendHorizontalSeparator ()
           do{
-            let title = "Subnet" + (subnet.showExactlyOneLabelMessage ? " (exactly one label for this net)" : "")
             let hStack = AutoLayoutHorizontalStackView ()
-              .appendView (AutoLayoutStaticImageView (image: image).notExpandableWidth ())
-              .appendView (AutoLayoutStaticLabel (title: title, bold: true, size: .small, alignment: .left).expandableWidth ())
+              .appendView (AutoLayoutStaticLabel (title: "Subnet", bold: true, size: .small, alignment: .left).notExpandableWidth ())
+            if let image = optionalImage {
+              _ = hStack.appendView (AutoLayoutStaticImageView (image: image).notExpandableWidth ())
+            }
+            let title = subnet.showExactlyOneLabelMessage ? "(exactly one label for this net)" : ""
+            _ = hStack.appendView (AutoLayoutStaticLabel (title: title, bold: true, size: .small, alignment: .left).expandableWidth ())
             _ = vStack.appendView (hStack)
-//                      .appendView (AutoLayoutStaticLabel (title: subnet.string, bold: false, size: .small, alignment: .left).expandableWidth ())
           }
           for pin in subnet.pins {
            let title = "Pin: \(pin.pinName) in sheet #\(pin.sheetIndex) at \(pin.locationString)"
-            _ = vStack.appendView (AutoLayoutStaticLabel (title: title, bold: false, size: .small, alignment: .left).expandableWidth ())
+            let button = SelectedNetButton (title: title, sheetIndex: pin.sheetIndex, locationInSheet: pin.locationInSheet, document: self.mDocument)
+            _ = vStack.appendView (button)
           }
           for label in subnet.labels {
            let title = "Label in sheet #\(label.sheetIndex) at \(label.locationString)"
-            _ = vStack.appendView (AutoLayoutStaticLabel (title: title, bold: false, size: .small, alignment: .left).expandableWidth ())
+            let button = SelectedNetButton (title: title, sheetIndex: label.sheetIndex, locationInSheet: label.locationInSheet, document: self.mDocument)
+            _ = vStack.appendView (button)
           }
         }
+      }
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate class SelectedNetButton : AutoLayoutBase_NSButton {
+
+  private let mSheetIndex : Int
+  private let mLocationInSheet : NSPoint
+  private weak var mDocument : AutoLayoutProjectDocument?
+
+  //····················································································································
+
+  init (title inTitle : String,
+        sheetIndex inSheetIndex : Int,
+        locationInSheet inPoint : CanariPoint,
+        document inDocument : AutoLayoutProjectDocument?) {
+    self.mSheetIndex = inSheetIndex
+    self.mLocationInSheet = inPoint.cocoaPoint
+    self.mDocument = inDocument
+    super.init (title: inTitle, size: .small)
+    _ = self.expandableWidth ()
+    self.target = self
+    self.action = #selector (Self.gotoSchematicSheet (_:))
+  }
+
+  //····················································································································
+
+  required init? (coder inCoder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  @objc func gotoSchematicSheet (_ inUnusedSender : Any?) {
+    if let document = self.mDocument, self.mSheetIndex > 0 {
+      document.rootObject.mSelectedPageIndex = 2 // Schematics
+      document.rootObject.mSelectedSheet = document.rootObject.mSheets [self.mSheetIndex - 1]
+      DispatchQueue.main.async {
+        document.mSchematicsView?.mGraphicView.scroll (self.mLocationInSheet)
+ //       document.mSchematicsView?.mGraphicView.selectObject (at: self.mLocationInSheet)
       }
     }
   }

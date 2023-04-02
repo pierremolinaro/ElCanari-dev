@@ -225,6 +225,15 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   }
 
   //····················································································································
+
+//  final func selectObject (at inLocationInView : NSPoint) {
+//    let (possibleObjectIndex, _) = self.indexOfFrontObject (at: inLocationInView)
+//    if let objectIndex = possibleObjectIndex {
+//      self.mViewController?.setSelection (objectsWithIndexes: [objectIndex])
+//    }
+//  }
+
+  //····················································································································
   // MARK: -
   //····················································································································
 
