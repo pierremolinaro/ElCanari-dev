@@ -17,10 +17,6 @@ class AutoLayoutBase_NSStackView : NSStackView {
 
     self.orientation = inOrientation
     self.distribution = .fill
-//    self.edgeInsets.left   = 0.0
-//    self.edgeInsets.top    = 0.0
-//    self.edgeInsets.right  = 0.0
-//    self.edgeInsets.bottom = 0.0
   }
 
   //····················································································································

@@ -23,7 +23,7 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
   }
 //---
   var netLabelCount = 0
-  var subnetDescriptionStrings = [(Bool, String)] ()
+  var subnetDescriptionStrings = [(Bool, String, [NetPinInSchematics], [NetLabelInSchematics])] ()
   var unExploredPointSet = Set (inPointArray)
   while let aPoint = unExploredPointSet.first {
     unExploredPointSet.removeFirst ()
@@ -48,16 +48,32 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
       }
     }
   //--- Build subnet description string
+    var pinDescriptionArray = [NetPinInSchematics] ()
+    var labelDescriptionArray = [NetLabelInSchematics] ()
     var pinArray = [String] ()
     for p in currentPointSet {
-      if let pinName = p.pin {
+      if let pinName = p.pinName {
         pinArray.append (pinName)
+        let pin = NetPinInSchematics (
+          pinName: pinName,
+          sheetIndex: p.sheet,
+          locationInSheet: p.locationInSheet,
+          locationString: p.locationString
+        )
+        pinDescriptionArray.append (pin)
       }
     }
     var labelArray = [String] ()
     for p in currentPointSet {
       for label in p.labels {
         labelArray.append (label)
+        let netLabel = NetLabelInSchematics (
+          labelName: label,
+          sheetIndex: p.sheet,
+          locationInSheet: p.locationInSheet,
+          locationString: p.locationString
+        )
+        labelDescriptionArray.append (netLabel)
       }
     }
     netLabelCount += labelArray.count
@@ -86,26 +102,50 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
         subnetDescription += p.locationString
       }
     }
-    subnetDescriptionStrings.append ((labelArray.count > 0, subnetDescription))
+    subnetDescriptionStrings.append ((labelArray.count > 0, subnetDescription, pinDescriptionArray, labelDescriptionArray))
   }
-//--- Several subnets ?
-  var hasWarning = false
+//--- Exactly onre label ?
+  let showExactlyOneLabelMessage = inWarnsExactlyOneLabel && (netLabelCount == 1)
+  var hasWarning = showExactlyOneLabelMessage
   var netStatusEntryArray = [NetStatusEntry] ()
+//--- Several subnets ?
   if subnetDescriptionStrings.count == 1 {
-    netStatusEntryArray.append (NetStatusEntry (status: .ok, isSubnetDescription: true, string: subnetDescriptionStrings [0].1))
+    let netStatus = NetStatusEntry (
+      status: hasWarning ? .warning : .ok,
+      showExactlyOneLabelMessage: showExactlyOneLabelMessage,
+      isSubnetDescription: true,
+      string: subnetDescriptionStrings [0].1,
+      pins: subnetDescriptionStrings [0].2,
+      labels: subnetDescriptionStrings [0].3
+    )
+    netStatusEntryArray.append (netStatus)
   }else if subnetDescriptionStrings.count > 1 {
-    for (severalLabels, descriptionString) in subnetDescriptionStrings {
+    for (severalLabels, descriptionString, pinDescriptionArray, labelDescriptionArray) in subnetDescriptionStrings {
       if !severalLabels {
         hasWarning = true
       }
-      netStatusEntryArray.append (NetStatusEntry (status: severalLabels ? .ok : .warning, isSubnetDescription: true, string: descriptionString))
+      let netStatus = NetStatusEntry (
+        status: severalLabels ? .ok : .warning,
+        showExactlyOneLabelMessage: showExactlyOneLabelMessage,
+        isSubnetDescription: true,
+        string: descriptionString,
+        pins: pinDescriptionArray,
+        labels: labelDescriptionArray
+      )
+      netStatusEntryArray.append (netStatus)
     }
   }
 //--- Exactly one label ?
-  if inWarnsExactlyOneLabel && (netLabelCount == 1) {
-    hasWarning = true
-    netStatusEntryArray.append (NetStatusEntry (status: .warning, isSubnetDescription: false, string: "Exactly one label"))
-  }
+//  if inWarnsExactlyOneLabel && (netLabelCount == 1) {
+//    hasWarning = true
+//    let netStatus = NetStatusEntry (
+//      status: .warning,
+//      isSubnetDescription: false,
+//      string: "Exactly one label",
+//      pins: []
+//    )
+//    netStatusEntryArray.append (netStatus)
+//  }
 //---
   return (netStatusEntryArray, hasWarning)
 }
@@ -134,7 +174,7 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
           var labelCount = 0
           for point in netPointInfo {
             labelCount += point.labels.count
-            if point.pin != nil {
+            if point.pinName != nil {
               pinCount += 1
             }
           }

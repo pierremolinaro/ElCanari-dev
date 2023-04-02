@@ -160,7 +160,9 @@ struct NetInfo : Hashable {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct NetInfoPoint : Hashable {
-  let pin : String?
+  let pinName : String?
+  let sheet : Int
+  let locationInSheet : CanariPoint
   let locationString : String
   let labels : StringArray
   let wires : Set <Int>
@@ -186,7 +188,7 @@ struct SchematicSheetGeometry : Hashable {
 
   //····················································································································
 
-  func locationString (_ inPoint : CanariPoint) -> String {
+  func locationString (pointInSheet inPoint : CanariPoint) -> String {
     let gutterWidth = cocoaToCanariUnit (PAPER_GUTTER_WIDTH_COCOA_UNIT)
     let gutterHeight = cocoaToCanariUnit (PAPER_GUTTER_HEIGHT_COCOA_UNIT)
     var column = 0
@@ -220,8 +222,9 @@ struct SchematicSheetDescriptor : Hashable {
 
   //····················································································································
 
-  func locationString (_ inPoint : CanariPoint) -> String {
-    return "\(self.sheetIndex)\(self.geometry.locationString (inPoint))"
+  func sheetLocationString (pointInSheet inPoint : CanariPoint) -> String {
+    return self.geometry.locationString (pointInSheet: inPoint)
+//    return "\(self.sheetIndex)\(self.geometry.locationString (pointInSheet: inPoint))"
   }
 
   //····················································································································

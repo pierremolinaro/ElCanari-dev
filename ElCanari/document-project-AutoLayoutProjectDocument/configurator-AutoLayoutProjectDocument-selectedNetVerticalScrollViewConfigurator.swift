@@ -14,9 +14,11 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  final func configure_pinsOfSelectedNetTableViewConfigurator (_ inOutlet : AutoLayoutTableView) {
+  final func configure_selectedNetVerticalScrollViewConfigurator (_ inOutlet : AutoLayoutVerticalScrollView) {
 //--- START OF USER ZONE 2
-        self.mNetInfoTableView?.setPinsOfSelectedNetTableView (inOutlet)
+        if let docView = inOutlet.documentView as? AutoLayoutVerticalStackView {
+          self.mNetInfoTableView?.setSelectedNetVerticalStackView (docView)
+        }
 //--- END OF USER ZONE 2
   }
 }

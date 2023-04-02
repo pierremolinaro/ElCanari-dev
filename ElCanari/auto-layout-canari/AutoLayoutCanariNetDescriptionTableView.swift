@@ -194,7 +194,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
   //····················································································································
 
   func tableViewDelegate_selectionDidChange (selectedRows inSelectedRows: IndexSet) {
-    self.mPinsOfSelectedNetTableView?.sortAndReloadData ()
+    self.reloadSelectedNetVerticalScrollView (selectedRows: inSelectedRows)
   }
 
   //····················································································································
@@ -255,44 +255,54 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
   //  mPinsOfSelectedNetTableView
   //····················································································································
 
-  private weak var mPinsOfSelectedNetTableView : AutoLayoutTableView? = nil
+  private weak var mSelectedNetVerticalStackView : AutoLayoutVerticalStackView? = nil
 
-  func setPinsOfSelectedNetTableView (_ inPinsOfSelectedNetTableView : AutoLayoutTableView) {
-    self.mPinsOfSelectedNetTableView = inPinsOfSelectedNetTableView
+  //····················································································································
 
-    inPinsOfSelectedNetTableView.configure (
-      allowsEmptySelection: false,
-      allowsMultipleSelection: false,
-      rowCountCallBack: { [weak self] in return self?.selectedNet?.subnets.count ?? 0 },
-      delegate: nil
-    )
+  func setSelectedNetVerticalStackView (_ inSelectedNetVerticalStackView : AutoLayoutVerticalStackView) {
+    self.mSelectedNetVerticalStackView = inSelectedNetVerticalStackView
+  }
 
-    inPinsOfSelectedNetTableView.addColumn_NSImage_String (
-      valueGetterDelegate: { [weak self] in
-        let optN  = self?.selectedNet?.subnets [$0].string
-        let image : NSImage?
-        if let status = self?.selectedNet?.subnets [$0].status {
-          switch status {
+  //····················································································································
+
+  private func reloadSelectedNetVerticalScrollView (selectedRows inSelectedRows : IndexSet) {
+    if let vStack = mSelectedNetVerticalStackView {
+    //--- Remove all items of vStack
+      for view in vStack.views {
+        vStack.removeView (view)
+      }
+    //--- If one selected net, add description views
+      if inSelectedRows.count == 1 {
+        let selectedNetInfo : NetInfo = self.mDataSource [inSelectedRows.first!]
+        for subnet : NetStatusEntry in selectedNetInfo.subnets {
+          let image : NSImage
+          switch subnet.status {
           case .ok :
-            image = NSImage (named: okStatusImageName)
+            image = NSImage ()
           case .warning :
-            image = NSImage (named: warningStatusImageName)
+            image = NSImage.statusWarning
           case .error :
-            image = NSImage (named: errorStatusImageName)
+            image = NSImage.statusError
           }
-        }else{
-          image = nil
+          do{
+            let title = "Subnet" + (subnet.showExactlyOneLabelMessage ? " (exactly one label for this net)" : "")
+            let hStack = AutoLayoutHorizontalStackView ()
+              .appendView (AutoLayoutStaticImageView (image: image).notExpandableWidth ())
+              .appendView (AutoLayoutStaticLabel (title: title, bold: true, size: .small, alignment: .left).expandableWidth ())
+            _ = vStack.appendView (hStack)
+//                      .appendView (AutoLayoutStaticLabel (title: subnet.string, bold: false, size: .small, alignment: .left).expandableWidth ())
+          }
+          for pin in subnet.pins {
+           let title = "Pin: \(pin.pinName) in sheet #\(pin.sheetIndex) at \(pin.locationString)"
+            _ = vStack.appendView (AutoLayoutStaticLabel (title: title, bold: false, size: .small, alignment: .left).expandableWidth ())
+          }
+          for label in subnet.labels {
+           let title = "Label in sheet #\(label.sheetIndex) at \(label.locationString)"
+            _ = vStack.appendView (AutoLayoutStaticLabel (title: title, bold: false, size: .small, alignment: .left).expandableWidth ())
+          }
         }
-        return (optN, image)
-      },
-      sortDelegate: nil,
-      title: "Subnets",
-      minWidth: 60,
-      maxWidth: 600,
-      headerAlignment: .left,
-      contentAlignment: .left
-    )
-
+      }
+    }
   }
 
   //····················································································································

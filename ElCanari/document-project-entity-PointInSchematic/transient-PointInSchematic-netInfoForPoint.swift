@@ -35,9 +35,12 @@ import AppKit
         }
       //--- Location in sheet
         var locationInSheetString : String
+        let sheetIndex : Int
         if let sheetDescriptor = self_mSheet_sheetDescriptor {
-          locationInSheetString = sheetDescriptor.locationString (self_location)
+          sheetIndex = sheetDescriptor.sheetIndex
+          locationInSheetString = sheetDescriptor.sheetLocationString (pointInSheet: self_location)
         }else{
+          sheetIndex = 0
           locationInSheetString = "(no sheet)"
         }
       //--- Labels
@@ -45,7 +48,7 @@ import AppKit
         if self_mLabels_count > 0 {
           labelArray.append (locationInSheetString)
         }
-        var pin : String? = nil
+        var pinName : String? = nil
         if self_mSymbolPinName != "",
            let symbolInstanceName = self_mSymbol_mSymbolInstanceName,
            let componentName = self_mSymbol_componentName {
@@ -56,11 +59,13 @@ import AppKit
               s += threeStrings.left
             }
           }
+          pinName = s
           s += " at " + locationInSheetString
-          pin = s
         }
         return NetInfoPoint (
-          pin: pin,
+          pinName: pinName,
+          sheet: sheetIndex,
+          locationInSheet: self_location,
           locationString: locationInSheetString,
           labels: labelArray,
           wires: wireIndexSet
