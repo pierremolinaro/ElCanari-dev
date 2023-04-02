@@ -26,8 +26,8 @@ enum Status : UInt, Hashable {
 struct NetStatusEntry : Hashable {
   let status : Status
   let showExactlyOneLabelMessage : Bool
-  let isSubnetDescription : Bool
-  let string : String
+//  let isSubnetDescription : Bool
+//  let string : String
   let pins : [NetPinInSchematics]
   let labels : [NetLabelInSchematics]
 }

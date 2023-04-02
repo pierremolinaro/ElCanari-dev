@@ -118,13 +118,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
     )
     self.mTableView.addColumn_NSImage_Int (
       valueGetterDelegate: { [weak self] in
-        var n = 0
-        for subnet in self?.mDataSource [$0].subnets ?? [] {
-          if subnet.isSubnetDescription {
-            n += 1
-          }
-        }
-    //    let n = self?.mDataSource [$0].subnets.count
+        let n = self?.mDataSource [$0].subnets.count ?? 0
         let image : NSImage?
         if let uwSelf = self, let warningImage = NSImage (named: warningStatusImageName) {
           image = uwSelf.mDataSource [$0].subnetsHaveWarning ? NSImage (named: warningStatusImageName) : NSImage (size: warningImage.size)

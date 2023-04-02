@@ -23,7 +23,7 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
   }
 //---
   var netLabelCount = 0
-  var subnetDescriptionStrings = [(Bool, String, [NetPinInSchematics], [NetLabelInSchematics])] ()
+  var subnetDescriptionArray = [(Bool, [NetPinInSchematics], [NetLabelInSchematics])] ()
   var unExploredPointSet = Set (inPointArray)
   while let aPoint = unExploredPointSet.first {
     unExploredPointSet.removeFirst ()
@@ -77,58 +77,54 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
       }
     }
     netLabelCount += labelArray.count
-    var subnetDescription : String
-    if pinArray.count == 0 {
-      subnetDescription = "No pin"
-    }else if pinArray.count == 1 {
-      subnetDescription = "1 pin: "
-    }else{
-      subnetDescription = "\(pinArray.count) pins: "
-    }
-    subnetDescription += pinArray.joined (separator: ", ")
-    subnetDescription += "; "
-    if labelArray.count == 0 {
-      subnetDescription += "no label"
-    }else if labelArray.count == 1 {
-      subnetDescription += "1 label: "
-    }else{
-      subnetDescription += "\(labelArray.count) labels: "
-    }
-    subnetDescription += labelArray.joined (separator: ", ")
-    if (pinArray.count == 0) && (labelArray.count == 0) {
-      subnetDescription += ", at"
-      for p in currentPointSet {
-        subnetDescription += " "
-        subnetDescription += p.locationString
-      }
-    }
-    subnetDescriptionStrings.append ((labelArray.count > 0, subnetDescription, pinDescriptionArray, labelDescriptionArray))
+//    var subnetDescription : String
+//    if pinArray.count == 0 {
+//      subnetDescription = "No pin"
+//    }else if pinArray.count == 1 {
+//      subnetDescription = "1 pin: "
+//    }else{
+//      subnetDescription = "\(pinArray.count) pins: "
+//    }
+//    subnetDescription += pinArray.joined (separator: ", ")
+//    subnetDescription += "; "
+//    if labelArray.count == 0 {
+//      subnetDescription += "no label"
+//    }else if labelArray.count == 1 {
+//      subnetDescription += "1 label: "
+//    }else{
+//      subnetDescription += "\(labelArray.count) labels: "
+//    }
+//    subnetDescription += labelArray.joined (separator: ", ")
+//    if (pinArray.count == 0) && (labelArray.count == 0) {
+//      subnetDescription += ", at"
+//      for p in currentPointSet {
+//        subnetDescription += " "
+//        subnetDescription += p.locationString
+//      }
+//    }
+    subnetDescriptionArray.append ((labelArray.count > 0, pinDescriptionArray, labelDescriptionArray))
   }
 //--- Exactly onre label ?
   let showExactlyOneLabelMessage = inWarnsExactlyOneLabel && (netLabelCount == 1)
   var hasWarning = showExactlyOneLabelMessage
   var netStatusEntryArray = [NetStatusEntry] ()
 //--- Several subnets ?
-  if subnetDescriptionStrings.count == 1 {
+  if subnetDescriptionArray.count == 1 {
     let netStatus = NetStatusEntry (
       status: hasWarning ? .warning : .ok,
       showExactlyOneLabelMessage: showExactlyOneLabelMessage,
-      isSubnetDescription: true,
-      string: subnetDescriptionStrings [0].1,
-      pins: subnetDescriptionStrings [0].2,
-      labels: subnetDescriptionStrings [0].3
+      pins: subnetDescriptionArray [0].1,
+      labels: subnetDescriptionArray [0].2
     )
     netStatusEntryArray.append (netStatus)
-  }else if subnetDescriptionStrings.count > 1 {
-    for (severalLabels, descriptionString, pinDescriptionArray, labelDescriptionArray) in subnetDescriptionStrings {
+  }else if subnetDescriptionArray.count > 1 {
+    for (severalLabels, pinDescriptionArray, labelDescriptionArray) in subnetDescriptionArray {
       if !severalLabels {
         hasWarning = true
       }
       let netStatus = NetStatusEntry (
         status: severalLabels ? .ok : .warning,
         showExactlyOneLabelMessage: showExactlyOneLabelMessage,
-        isSubnetDescription: true,
-        string: descriptionString,
         pins: pinDescriptionArray,
         labels: labelDescriptionArray
       )
