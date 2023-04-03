@@ -100,11 +100,11 @@ extension AutoLayoutProjectDocument {
     array.append (objects: inner3Tracks)
     array.append (objects: inner2Tracks)
     array.append (objects: inner1Tracks)
-    array.append (objects: others)
     array.append (objects: frontTracks)
     array.append (objects: frontComponents)
     array.append (objects: restrictRectangles)
     array.append (objects: connectors)
+    array.append (objects: others)
     self.rootObject.mBoardObjects = array
   }
 
