@@ -31,16 +31,16 @@ import AppKit
     let height = A4MinSize - topMargin - bottomMargin - cocoaToCanariUnit (2.0)
     return SchematicSheetGeometry (
       size: CanariSize (width: width, height: height),
-      horizontalDivisions: 10,
-      verticalDivisions: (10 * A4MinSize) / A4MaxSize
+      horizontalDivisions: (10 * A4MaxSize) / A4MinSize,
+      verticalDivisions: 10
     )
   case .a4Vertical :
     let width = A4MinSize - leftMargin - rightMargin - cocoaToCanariUnit (2.0)
     let height = A4MaxSize - topMargin - bottomMargin - cocoaToCanariUnit (2.0)
     return SchematicSheetGeometry (
       size: CanariSize (width: width, height: height),
-      horizontalDivisions: (10 * A4MinSize) / A4MaxSize,
-      verticalDivisions: 10
+      horizontalDivisions: 10,
+      verticalDivisions: (10 * A4MaxSize) / A4MinSize
     )
   case .custom :
     let width = self_mSchematicCustomWidth

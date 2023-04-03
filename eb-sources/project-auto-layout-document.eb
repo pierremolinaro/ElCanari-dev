@@ -446,12 +446,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
       divider
       vStack {
-        StaticLabel (title: "Selected Net", bold: no, size: .regular, alignment: .center) { set (minWidth: 300) }
+        StaticLabel (title: "Selected Net Inspector", bold: yes, size: .small, alignment: .center) { set (minWidth: 300) }
         VerticalScrollView (content:
           vStack set (margins: 8) {
           }
         ) [configurator selectedNetVerticalScrollViewConfigurator]
-//        TableView (size: .regular, addControlButtons: no) [configurator pinsOfSelectedNetTableViewConfigurator]
       }
     }
   }

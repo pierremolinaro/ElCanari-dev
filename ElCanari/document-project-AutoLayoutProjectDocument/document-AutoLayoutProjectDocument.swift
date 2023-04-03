@@ -1076,7 +1076,7 @@ import AppKit
       _ = view_1.appendView (view_1_1)
       let view_1_2 = AutoLayoutVerticalStackView ()
       do{
-        let view_1_2_0 = AutoLayoutStaticLabel (title: "Selected Net", bold: false, size: .regular, alignment: .center)
+        let view_1_2_0 = AutoLayoutStaticLabel (title: "Selected Net Inspector", bold: true, size: .small, alignment: .center)
           .set (minWidth: 300)
         _ = view_1_2.appendView (view_1_2_0)
         let view_1_2_1 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_0 ())
