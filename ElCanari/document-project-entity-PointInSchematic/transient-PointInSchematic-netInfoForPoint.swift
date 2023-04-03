@@ -34,19 +34,19 @@ import AppKit
           wireIndexSet.insert (objectIntIdentifier (wire))
         }
       //--- Location in sheet
-        var locationInSheetString : String
+        var locationInfo : SchematicSheetGeometry.PointLocationInfo
         let sheetIndex : Int
         if let sheetDescriptor = self_mSheet_sheetDescriptor {
           sheetIndex = sheetDescriptor.sheetIndex
-          locationInSheetString = sheetDescriptor.sheetLocationString (pointInSheet: self_location)
+          locationInfo = sheetDescriptor.sheetLocationString (pointInSheet: self_location)
         }else{
           sheetIndex = 0
-          locationInSheetString = "(no sheet)"
+          locationInfo = SchematicSheetGeometry.PointLocationInfo (row: -1, column: -1, string: "(no sheet)")
         }
       //--- Labels
-        var labelArray = StringArray ()
+        var labelArray = [SchematicSheetGeometry.PointLocationInfo] ()
         if self_mLabels_count > 0 {
-          labelArray.append (locationInSheetString)
+          labelArray.append (locationInfo)
         }
         var pinName : String? = nil
         if self_mSymbolPinName != "",
@@ -60,13 +60,15 @@ import AppKit
             }
           }
           pinName = s
-          s += " at " + locationInSheetString
+//          s += " at " + locationInSheetString
         }
         return NetInfoPoint (
           pinName: pinName,
           sheet: sheetIndex,
           locationInSheet: self_location,
-          locationString: locationInSheetString,
+          locationString: locationInfo.string,
+          row: locationInfo.row,
+          column: locationInfo.column,
           labels: labelArray,
           wires: wireIndexSet
         )

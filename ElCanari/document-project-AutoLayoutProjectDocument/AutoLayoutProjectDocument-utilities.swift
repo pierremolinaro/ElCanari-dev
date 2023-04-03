@@ -148,8 +148,8 @@ struct NetInfo : Hashable {
   let netIdentifier : Int
   let netName : String
   let netClassName : String
-  let points : NetInfoPointArray
-  let subnets : NetStatusEntryArray
+  let points : [NetInfoPoint]
+  let subnets : [NetStatusEntry]
   let subnetsHaveWarning : Bool
   let pinCount : Int
   let labelCount : Int
@@ -164,7 +164,9 @@ struct NetInfoPoint : Hashable {
   let sheet : Int
   let locationInSheet : CanariPoint
   let locationString : String
-  let labels : StringArray
+  let row : Int
+  let column : Int
+  let labels : [SchematicSheetGeometry.PointLocationInfo]
   let wires : Set <Int>
 }
 
@@ -188,7 +190,15 @@ struct SchematicSheetGeometry : Hashable {
 
   //····················································································································
 
-  func locationString (pointInSheet inPoint : CanariPoint) -> String {
+  struct PointLocationInfo : Hashable {
+    let row : Int
+    let column : Int
+    let string : String
+  }
+
+  //····················································································································
+
+  func locationString (pointInSheet inPoint : CanariPoint) -> PointLocationInfo {
     let gutterWidth = cocoaToCanariUnit (PAPER_GUTTER_WIDTH_COCOA_UNIT)
     let gutterHeight = cocoaToCanariUnit (PAPER_GUTTER_HEIGHT_COCOA_UNIT)
     var column = 0
@@ -207,7 +217,45 @@ struct SchematicSheetGeometry : Hashable {
     }
     // Swift.print ("horizontalDivisions \(self.horizontalDivisions), verticalDivisions \(self.verticalDivisions)")
     let unicodeA = 0x41
-    return "\(UnicodeScalar (unicodeA + column)!)\(line)"
+    return PointLocationInfo (row: line, column: column, string: "\(UnicodeScalar (unicodeA + column)!)\(line)")
+  }
+
+
+  //····················································································································
+
+  enum PointInRowOrColumnHeader {
+    case inColumHeader (Int)
+    case inRowHeader (Int)
+    case outsideRowOrColumnHeader
+  }
+
+  //····················································································································
+
+  func pointInRowOrColumnHeader (_ inPoint : NSPoint) -> PointInRowOrColumnHeader {
+    let cocoaSize = self.size.cocoaSize
+    var result = PointInRowOrColumnHeader.outsideRowOrColumnHeader
+    var pointInHorizontalGutter = inPoint.y <= PAPER_GUTTER_HEIGHT_COCOA_UNIT // in bottom gutter
+    if !pointInHorizontalGutter {
+      pointInHorizontalGutter = (inPoint.y >= (cocoaSize.height - PAPER_GUTTER_HEIGHT_COCOA_UNIT)) && (inPoint.y < cocoaSize.height)
+    }
+    if pointInHorizontalGutter {
+      let column = Int ((inPoint.x - PAPER_GUTTER_WIDTH_COCOA_UNIT) * CGFloat (self.horizontalDivisions) / (cocoaSize.width - 2.0 * PAPER_GUTTER_WIDTH_COCOA_UNIT))
+      if column >= 0, column < self.horizontalDivisions {
+        result = .inColumHeader (column)
+      }
+    }else{
+      var pointInVerticalGutter = inPoint.x <= PAPER_GUTTER_WIDTH_COCOA_UNIT // in left gutter
+      if !pointInVerticalGutter {
+        pointInVerticalGutter = (inPoint.x >= (cocoaSize.width - PAPER_GUTTER_WIDTH_COCOA_UNIT)) && (inPoint.x < cocoaSize.width)
+      }
+      if pointInVerticalGutter {
+        let row = Int ((inPoint.y - PAPER_GUTTER_HEIGHT_COCOA_UNIT) * CGFloat (self.verticalDivisions) / (cocoaSize.height - 2.0 * PAPER_GUTTER_HEIGHT_COCOA_UNIT))
+        if row >= 0, row < self.verticalDivisions {
+          result = .inRowHeader (row)
+        }
+      }
+    }
+    return result
   }
 
   //····················································································································
@@ -222,7 +270,7 @@ struct SchematicSheetDescriptor : Hashable {
 
   //····················································································································
 
-  func sheetLocationString (pointInSheet inPoint : CanariPoint) -> String {
+  func sheetLocationString (pointInSheet inPoint : CanariPoint) -> SchematicSheetGeometry.PointLocationInfo {
     return self.geometry.locationString (pointInSheet: inPoint)
 //    return "\(self.sheetIndex)\(self.geometry.locationString (pointInSheet: inPoint))"
   }

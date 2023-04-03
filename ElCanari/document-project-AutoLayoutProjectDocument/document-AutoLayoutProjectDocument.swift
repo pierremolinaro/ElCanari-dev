@@ -1158,12 +1158,15 @@ import AppKit
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView ()
+      .set (leftMargin: 8)
+      .set (rightMargin: 8)
     do{
-      let view_1_0 = AutoLayoutHorizontalStackView ()
-        .set (leftMargin: 8)
-        .set (rightMargin: 8)
+      let view_1_0 = AutoLayoutCheckbox (title: "Enable Line Column Hilite", size: .small)
+        .bind_value (self.rootObject.mSchematicEnableHiliteColumnAndRow_property)
+      _ = view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutHorizontalStackView ()
       do{
-        let view_1_0_0 = AutoLayoutSegmentedControlWithPages (documentView: schematicsInspectorView, equalWidth: false, size: .small)
+        let view_1_1_0 = AutoLayoutSegmentedControlWithPages (documentView: schematicsInspectorView, equalWidth: false, size: .small)
           .expandableWidth ()
           .addPage (title: "🛠", tooltip: "Selected Element Inspector", pageView: selectedSchematicElementInspectorView)
           .addPage (title: "🄰", tooltip: "Hot Keys", pageView: schematicHotKeysInspectorView)
@@ -1174,11 +1177,11 @@ import AppKit
           .bind_segmentTitle (self.unplacedSymbolsCountString_property, segmentIndex:2)
           .bind_segmentImage (self.unplacedSymbolsSegmentImage_property, segmentIndex:2)
           .bind_segmentImage (self.rootObject.segmentedControlSheetIssueImage_property, segmentIndex:4)
-        _ = view_1_0.appendView (view_1_0_0)
+        _ = view_1_1.appendView (view_1_1_0)
       }
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = schematicsInspectorView
       _ = view_1.appendView (view_1_1)
+      let view_1_2 = schematicsInspectorView
+      _ = view_1.appendView (view_1_2)
     }
     _ = vStackView.appendView (view_1)
     return vStackView
@@ -1190,7 +1193,8 @@ import AppKit
 
   final func schematicsInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (topMargin: 8)
+      .set (bottomMargin: 8)
     return vStackView
   }
 
@@ -1200,7 +1204,8 @@ import AppKit
 
   final func schematicsHotKeysInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (topMargin: 8)
+      .set (bottomMargin: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
@@ -1279,7 +1284,8 @@ import AppKit
 
   final func schematicsInsertSymbolInSchematicView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (topMargin: 8)
+      .set (bottomMargin: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
@@ -1316,7 +1322,8 @@ import AppKit
 
   final func schematicsDisplayInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (topMargin: 8)
+      .set (bottomMargin: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
@@ -1354,7 +1361,8 @@ import AppKit
 
   final func schematicsSheetInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (topMargin: 8)
+      .set (bottomMargin: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
@@ -1457,7 +1465,8 @@ import AppKit
 
   final func selectedSchematicElementInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (topMargin: 8)
+      .set (bottomMargin: 8)
     let schematicsWireInspectorView = self.schematicsWireInspectorView ()
     let ncInSchematicsInspectorView = self.ncInSchematicsInspectorView ()
     let schematicsLabelInspectorView = self.schematicsLabelInspectorView ()

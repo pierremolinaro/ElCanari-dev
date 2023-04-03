@@ -13,44 +13,47 @@ extension EBGraphicView {
   final override func mouseDown (with inEvent : NSEvent) {
     if let viewController = self.viewController {
       NSCursor.arrow.set ()
-      let unalignedMouseDownLocationInView = self.convert (inEvent.locationInWindow, from:nil)
-      let modifierFlags = inEvent.modifierFlags
-      let modifierFlagsContainsControl = modifierFlags.contains (.control)
-      let modifierFlagsContainsShift = modifierFlags.contains (.shift)
-      let modifierFlagsContainsOption = modifierFlags.contains (.option)
-      let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontObject (at: unalignedMouseDownLocationInView)
-      switch (modifierFlagsContainsControl, modifierFlagsContainsShift, modifierFlagsContainsOption) {
-      case (true, true, false) : // Ctrl Key On, shift, no option -> Zoom region
-        self.mMouseDownBehaviour = ZoomRegionBehaviour (unalignedMouseDownLocationInView, viewController)
-      case (true, false, false) : // Ctrl Key On, no shift -> Contextual click
-        if let theMenu = self.mContextualMenuBuilder? (unalignedMouseDownLocationInView.canariPoint) {
-          NSMenu.popUpContextMenu (theMenu, with: inEvent, for: self)
+      let unalignedMouseDownLocationInView = self.convert (inEvent.locationInWindow, from: nil)
+      if let mouseDownInterceptor = self.mMouseDownInterceptor, mouseDownInterceptor (unalignedMouseDownLocationInView) {
+      }else{
+        let modifierFlags = inEvent.modifierFlags
+        let modifierFlagsContainsControl = modifierFlags.contains (.control)
+        let modifierFlagsContainsShift = modifierFlags.contains (.shift)
+        let modifierFlagsContainsOption = modifierFlags.contains (.option)
+        let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontObject (at: unalignedMouseDownLocationInView)
+        switch (modifierFlagsContainsControl, modifierFlagsContainsShift, modifierFlagsContainsOption) {
+        case (true, true, false) : // Ctrl Key On, shift, no option -> Zoom region
+          self.mMouseDownBehaviour = ZoomRegionBehaviour (unalignedMouseDownLocationInView, viewController)
+        case (true, false, false) : // Ctrl Key On, no shift -> Contextual click
+          if let theMenu = self.mContextualMenuBuilder? (unalignedMouseDownLocationInView.canariPoint) {
+            NSMenu.popUpContextMenu (theMenu, with: inEvent, for: self)
+          }
+        case (false, true, false) : // Shift Key
+          self.guideFor (possibleObjectIndex: possibleObjectIndex)
+          self.mMouseDownBehaviour = ShiftMouseDownBehaviour (unalignedMouseDownLocationInView, possibleObjectIndex, viewController)
+        case (_, _, true) : // Option Key On
+          if let pbType = self.pasteboardType, self.usesOptionKeyForDuplicatingSelectedObjects {
+            self.ebStartDragging (with: inEvent, dragType: pbType)
+          }else{
+            self.mMouseDownBehaviour = OptionMouseDownBehaviour (unalignedMouseDownLocationInView, self, viewController)
+          }
+        case (false, false, false) : // No Modifier Key
+          self.guideFor (possibleObjectIndex: possibleObjectIndex)
+          if let objectIndex = possibleObjectIndex {
+            self.mMouseDownBehaviour = MouseDownOnObjectBehaviour (
+              unalignedMouseDownLocationInView,
+              objectIndex: objectIndex,
+              possibleKnobIndex: possibleKnobIndex,
+              self,
+              viewController
+            )
+          }else{
+            self.mMouseDownBehaviour = MouseDownOutsideAnyObjectBehaviour (unalignedMouseDownLocationInView, viewController)
+          }
         }
-      case (false, true, false) : // Shift Key
-        self.guideFor (possibleObjectIndex: possibleObjectIndex)
-        self.mMouseDownBehaviour = ShiftMouseDownBehaviour (unalignedMouseDownLocationInView, possibleObjectIndex, viewController)
-      case (_, _, true) : // Option Key On
-        if let pbType = self.pasteboardType, self.usesOptionKeyForDuplicatingSelectedObjects {
-          self.ebStartDragging (with: inEvent, dragType: pbType)
-        }else{
-          self.mMouseDownBehaviour = OptionMouseDownBehaviour (unalignedMouseDownLocationInView, self, viewController)
-        }
-      case (false, false, false) : // No Modifier Key
-        self.guideFor (possibleObjectIndex: possibleObjectIndex)
-        if let objectIndex = possibleObjectIndex {
-          self.mMouseDownBehaviour = MouseDownOnObjectBehaviour (
-            unalignedMouseDownLocationInView,
-            objectIndex: objectIndex,
-            possibleKnobIndex: possibleKnobIndex,
-            self,
-            viewController
-          )
-        }else{
-          self.mMouseDownBehaviour = MouseDownOutsideAnyObjectBehaviour (unalignedMouseDownLocationInView, viewController)
-        }
+      //--- Update helper string
+        self.setHelperTextField (self.mMouseDownBehaviour.helperString (unalignedMouseDownLocationInView, inEvent.modifierFlags, self))
       }
-    //--- Update helper string
-      self.setHelperTextField (self.mMouseDownBehaviour.helperString (unalignedMouseDownLocationInView, inEvent.modifierFlags, self))
     }
   }
 

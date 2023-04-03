@@ -62,8 +62,46 @@ import AppKit
     super.ebBuildUserInterface ()
     self.boardObjectsController.set (document: self)
     self.boardObjectsController.mAfterObjectRemovingCallback = { [weak self] in self?.updateBoardConnectors () }
+    self.mSchematicsView?.mGraphicView.mMouseDownInterceptor = { [weak self] in
+      return self?.schematicMouseDownInterception ($0) ?? false
+    }
   //--- Remove unused devices
     self.rootObject.removeUnusedDevices ()
+  }
+
+  //····················································································································
+  //  Schematic mouse down interception
+  //····················································································································
+
+  func schematicMouseDownInterception (_ inUnalignedPoint : NSPoint) -> Bool {
+    var result = false
+    if self.rootObject.mSchematicEnableHiliteColumnAndRow {
+      let sheetGeometrySelection : EBSelection <SchematicSheetGeometry> = self.rootObject.sheetGeometry_property.selection
+      switch sheetGeometrySelection {
+      case .empty, .multiple :
+        ()
+      case .single (let sheetGeometry) :
+        switch (sheetGeometry.pointInRowOrColumnHeader (inUnalignedPoint)) {
+        case .outsideRowOrColumnHeader :
+          ()
+        case .inRowHeader (let rowIndex) :
+          result = true
+          if self.rootObject.mSchematicHilitedRowIndex == rowIndex {
+            self.rootObject.mSchematicHilitedRowIndex = -1
+          }else{
+            self.rootObject.mSchematicHilitedRowIndex = rowIndex
+          }
+        case .inColumHeader (let columnIndex) :
+          result = true
+          if self.rootObject.mSchematicHilitedColumnIndex == columnIndex {
+            self.rootObject.mSchematicHilitedColumnIndex = -1
+          }else{
+            self.rootObject.mSchematicHilitedColumnIndex = columnIndex
+          }
+        }
+      }
+    }
+    return result
   }
 
   //····················································································································

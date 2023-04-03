@@ -26,8 +26,6 @@ enum Status : UInt, Hashable {
 struct NetStatusEntry : Hashable {
   let status : Status
   let showExactlyOneLabelMessage : Bool
-//  let isSubnetDescription : Bool
-//  let string : String
   let pins : [NetPinInSchematics]
   let labels : [NetLabelInSchematics]
 }
@@ -40,7 +38,7 @@ struct NetPinInSchematics : Hashable {
   let pinName : String
   let sheetIndex : Int
   let locationInSheet : CanariPoint
-  let locationString : String // For example D1, H4, …
+  let location : SchematicSheetGeometry.PointLocationInfo // For example D1, H4, …
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -51,7 +49,7 @@ struct NetLabelInSchematics : Hashable {
   let labelName : String
   let sheetIndex : Int
   let locationInSheet : CanariPoint
-  let locationString : String // For example D1, H4, …
+  let location : SchematicSheetGeometry.PointLocationInfo // For example D1, H4, …
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

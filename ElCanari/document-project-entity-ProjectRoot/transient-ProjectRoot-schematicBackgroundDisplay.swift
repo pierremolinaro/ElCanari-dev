@@ -17,6 +17,9 @@ import AppKit
        _ self_mSchematicTitle : String,                           
        _ self_mSchematicVersion : String,                         
        _ self_sheetGeometry : SchematicSheetGeometry,             
+       _ self_mSchematicHilitedColumnIndex : Int,                 
+       _ self_mSchematicHilitedRowIndex : Int,                    
+       _ self_mSchematicEnableHiliteColumnAndRow : Bool,          
        _ self_mSelectedSheet_mSheetTitle : String?,               
        _ self_mSheets : [AnyObject],                              
        _ self_mSelectedSheet : AnyObject?,                        
@@ -25,6 +28,30 @@ import AppKit
        _ prefs_schematicFrameColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
+        let vMarks = self_sheetGeometry.verticalDivisions
+        let hMarks = self_sheetGeometry.horizontalDivisions
+        let sheetWidth = canariUnitToCocoa (self_sheetGeometry.size.width) - 2.0
+        let sheetHeight = canariUnitToCocoa (self_sheetGeometry.size.height) - 2.0
+        let hIncrement = (sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT * 2.0) / CGFloat (hMarks)
+        let vIncrement = (sheetHeight - PAPER_GUTTER_HEIGHT_COCOA_UNIT * 2.0) / CGFloat (vMarks)
+        let OFFSET : CGFloat =  0.5
+        let hiliteColor = NSColor.lightGray.withAlphaComponent (0.25)
+        var shape = EBShape ()
+      //--- Hilite column ?
+        if self_mSchematicEnableHiliteColumnAndRow, self_mSchematicHilitedColumnIndex >= 0 {
+          let bottomLeft = NSPoint (x: PAPER_GUTTER_WIDTH_COCOA_UNIT + CGFloat (self_mSchematicHilitedColumnIndex) * hIncrement + OFFSET, y: 0.0)
+          let size = NSSize (width: hIncrement, height: sheetHeight)
+          let bp = EBBezierPath (rect: NSRect (origin: bottomLeft, size: size))
+          shape.add (filled: [bp], hiliteColor)
+        }
+      //--- Hilite row ?
+        if self_mSchematicEnableHiliteColumnAndRow, self_mSchematicHilitedRowIndex >= 0 {
+          let bottomLeft = NSPoint (x: 0.0, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT + CGFloat (self_mSchematicHilitedRowIndex) * vIncrement + OFFSET)
+          let size = NSSize (width: sheetWidth, height: vIncrement)
+          let bp = EBBezierPath (rect: NSRect (origin: bottomLeft, size: size))
+          shape.add (filled: [bp], hiliteColor)
+        }
+      //---
         let textAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize),
           NSAttributedString.Key.foregroundColor : prefs_schematicFrameColor
@@ -36,12 +63,6 @@ import AppKit
         let LEFT_COLUMN  : CGFloat = 196.0
         let RIGHT_COLUMN : CGFloat =  32.0
         let LINE_HEIGHT  : CGFloat =  18.0
-        let OFFSET       : CGFloat =  0.5
-        var shape = EBShape ()
-        let sheetWidth = canariUnitToCocoa (self_sheetGeometry.size.width) - 2.0
-        let sheetHeight = canariUnitToCocoa (self_sheetGeometry.size.height) - 2.0
-        let vMarks = self_sheetGeometry.verticalDivisions
-        let hMarks = self_sheetGeometry.horizontalDivisions
       //---
         var filledBP = EBBezierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: PAPER_GUTTER_WIDTH_COCOA_UNIT, height: sheetHeight))
         filledBP.appendRect (NSRect (x: OFFSET, y: sheetHeight - PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: sheetWidth, height: PAPER_GUTTER_HEIGHT_COCOA_UNIT))
@@ -49,6 +70,20 @@ import AppKit
         filledBP.appendRect (NSRect (x: OFFSET, y: OFFSET, width: sheetWidth, height: PAPER_GUTTER_HEIGHT_COCOA_UNIT))
         filledBP.appendRect (NSRect (x: sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT - LEFT_COLUMN - RIGHT_COLUMN + OFFSET, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: LEFT_COLUMN + RIGHT_COLUMN, height: LINE_HEIGHT * 3.0))
         shape.add (filled: [filledBP], prefs_schematicBackColor)
+      //---
+        if self_mSchematicEnableHiliteColumnAndRow {
+          var p = NSPoint (x: OFFSET, y: OFFSET + PAPER_GUTTER_HEIGHT_COCOA_UNIT)
+          var s = NSSize (width: PAPER_GUTTER_WIDTH_COCOA_UNIT, height: sheetHeight - 2.0 * PAPER_GUTTER_HEIGHT_COCOA_UNIT)
+          var filledBP = EBBezierPath (rect: NSRect (origin: p, size: s))
+          p.x += sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT
+          filledBP.appendRect (NSRect (origin: p, size: s))
+          p = NSPoint (x: OFFSET + PAPER_GUTTER_WIDTH_COCOA_UNIT, y: OFFSET)
+          s = NSSize (width: sheetWidth - 2.0 * PAPER_GUTTER_WIDTH_COCOA_UNIT, height: PAPER_GUTTER_HEIGHT_COCOA_UNIT)
+          filledBP.appendRect (NSRect (origin: p, size: s))
+          p.y += sheetHeight - PAPER_GUTTER_HEIGHT_COCOA_UNIT
+          filledBP.appendRect (NSRect (origin: p, size: s))
+          shape.add (filled: [filledBP], hiliteColor)
+        }
       //---
         var bp = EBBezierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: sheetWidth, height: sheetHeight))
         bp.appendRect (NSRect (x: PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT * 2.0, height: sheetHeight - PAPER_GUTTER_HEIGHT_COCOA_UNIT * 2.0))
@@ -62,7 +97,6 @@ import AppKit
         bp.move (to: NSPoint (x: sheetWidth - RIGHT_COLUMN - PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT + PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET))
         bp.relativeLine (to: NSPoint (x: 0.0, y: LINE_HEIGHT * 2.0))
      //--- Draw vertical marks
-       let vIncrement = (sheetHeight - PAPER_GUTTER_HEIGHT_COCOA_UNIT * 2.0) / CGFloat (vMarks)
        var p = NSPoint (x: PAPER_GUTTER_WIDTH_COCOA_UNIT * 0.5 + OFFSET, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT + vIncrement * 0.5 + OFFSET)
        for mark in 0 ..< vMarks {
          shape.add (text: "\(mark)", p, lineAttributes, .center, .center)
@@ -74,7 +108,6 @@ import AppKit
          p.y += vIncrement
        }
      //--- Draw horizontal marks
-       let hIncrement = (sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT * 2.0) / CGFloat (hMarks)
        p = NSPoint (x: PAPER_GUTTER_WIDTH_COCOA_UNIT + hIncrement / 2.0 + OFFSET, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT * 0.5 + OFFSET)
        for mark in 0 ..< hMarks {
          let pointCode = UnicodeScalar (mark + 0x41)! // "A", "B", …

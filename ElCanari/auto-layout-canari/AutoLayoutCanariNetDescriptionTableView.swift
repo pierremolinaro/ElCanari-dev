@@ -291,13 +291,27 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
             _ = vStack.appendView (hStack)
           }
           for pin in subnet.pins {
-           let title = "Pin: \(pin.pinName) in sheet #\(pin.sheetIndex) at \(pin.locationString)"
-            let button = SelectedNetButton (title: title, sheetIndex: pin.sheetIndex, locationInSheet: pin.locationInSheet, document: self.mDocument)
+           let title = "Pin: \(pin.pinName) in sheet #\(pin.sheetIndex) at \(pin.location.string)"
+            let button = SelectedNetButton (
+              title: title,
+              sheetIndex: pin.sheetIndex,
+              rowIndex: pin.location.row,
+              columnIndex: pin.location.column,
+              locationInSheet: pin.locationInSheet,
+              document: self.mDocument
+            )
             _ = vStack.appendView (button)
           }
           for label in subnet.labels {
-           let title = "Label in sheet #\(label.sheetIndex) at \(label.locationString)"
-            let button = SelectedNetButton (title: title, sheetIndex: label.sheetIndex, locationInSheet: label.locationInSheet, document: self.mDocument)
+           let title = "Label in sheet #\(label.sheetIndex) at \(label.location.string)"
+            let button = SelectedNetButton (
+              title: title,
+              sheetIndex: label.sheetIndex,
+              rowIndex: label.location.row,
+              columnIndex: label.location.column,
+              locationInSheet: label.locationInSheet,
+              document: self.mDocument
+            )
             _ = vStack.appendView (button)
           }
         }
@@ -314,6 +328,8 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
 fileprivate class SelectedNetButton : AutoLayoutBase_NSButton {
 
   private let mSheetIndex : Int
+  private let mRowIndex : Int
+  private let mColumnIndex : Int
   private let mLocationInSheet : NSPoint
   private weak var mDocument : AutoLayoutProjectDocument?
 
@@ -321,9 +337,13 @@ fileprivate class SelectedNetButton : AutoLayoutBase_NSButton {
 
   init (title inTitle : String,
         sheetIndex inSheetIndex : Int,
+        rowIndex inRowIndex : Int,
+        columnIndex inColumnIndex : Int,
         locationInSheet inPoint : CanariPoint,
         document inDocument : AutoLayoutProjectDocument?) {
     self.mSheetIndex = inSheetIndex
+    self.mRowIndex = inRowIndex
+    self.mColumnIndex = inColumnIndex
     self.mLocationInSheet = inPoint.cocoaPoint
     self.mDocument = inDocument
     super.init (title: inTitle, size: .small)
@@ -344,10 +364,11 @@ fileprivate class SelectedNetButton : AutoLayoutBase_NSButton {
     if let document = self.mDocument, self.mSheetIndex > 0 {
       document.rootObject.mSelectedPageIndex = 2 // Schematics
       document.rootObject.mSelectedSheet = document.rootObject.mSheets [self.mSheetIndex - 1]
-      DispatchQueue.main.async {
-        document.mSchematicsView?.mGraphicView.scroll (self.mLocationInSheet)
+      document.rootObject.mSchematicEnableHiliteColumnAndRow = true
+      document.rootObject.mSchematicHilitedRowIndex = self.mRowIndex
+      document.rootObject.mSchematicHilitedColumnIndex = self.mColumnIndex
+      document.mSchematicsView?.mGraphicView.scroll (self.mLocationInSheet)
  //       document.mSchematicsView?.mGraphicView.selectObject (at: self.mLocationInSheet)
-      }
     }
   }
 

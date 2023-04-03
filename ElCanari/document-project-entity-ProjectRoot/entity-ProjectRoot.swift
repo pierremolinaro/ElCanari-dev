@@ -348,6 +348,24 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol ProjectRoot_mSchematicHilitedColumnIndex : AnyObject {
+  var mSchematicHilitedColumnIndex : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol ProjectRoot_mSchematicHilitedRowIndex : AnyObject {
+  var mSchematicHilitedRowIndex : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol ProjectRoot_mSchematicEnableHiliteColumnAndRow : AnyObject {
+  var mSchematicEnableHiliteColumnAndRow : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol ProjectRoot_mSelectedPageIndex : AnyObject {
   var mSelectedPageIndex : Int { get }
 }
@@ -1080,6 +1098,9 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_mRectangularBoardHeight,
          ProjectRoot_mRectangularBoardHeightUnit,
          ProjectRoot_mDefaultNetClassName,
+         ProjectRoot_mSchematicHilitedColumnIndex,
+         ProjectRoot_mSchematicHilitedRowIndex,
+         ProjectRoot_mSchematicEnableHiliteColumnAndRow,
          ProjectRoot_mSelectedPageIndex,
          ProjectRoot_mSelectedSchematicInspector,
          ProjectRoot_mSchematicTitle,
@@ -2289,6 +2310,63 @@ final class ProjectRoot : EBManagedObject,
   final var mDefaultNetClassName : String {
     get { return self.mDefaultNetClassName_property.propval }
     set { self.mDefaultNetClassName_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mSchematicHilitedColumnIndex
+  //····················································································································
+
+  final let mSchematicHilitedColumnIndex_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mSchematicHilitedColumnIndex_toDefaultValue () {
+    self.mSchematicHilitedColumnIndex = -1
+  }
+
+  //····················································································································
+
+  final var mSchematicHilitedColumnIndex : Int {
+    get { return self.mSchematicHilitedColumnIndex_property.propval }
+    set { self.mSchematicHilitedColumnIndex_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mSchematicHilitedRowIndex
+  //····················································································································
+
+  final let mSchematicHilitedRowIndex_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mSchematicHilitedRowIndex_toDefaultValue () {
+    self.mSchematicHilitedRowIndex = -1
+  }
+
+  //····················································································································
+
+  final var mSchematicHilitedRowIndex : Int {
+    get { return self.mSchematicHilitedRowIndex_property.propval }
+    set { self.mSchematicHilitedRowIndex_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mSchematicEnableHiliteColumnAndRow
+  //····················································································································
+
+  final let mSchematicEnableHiliteColumnAndRow_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mSchematicEnableHiliteColumnAndRow_toDefaultValue () {
+    self.mSchematicEnableHiliteColumnAndRow = true
+  }
+
+  //····················································································································
+
+  final var mSchematicEnableHiliteColumnAndRow : Bool {
+    get { return self.mSchematicEnableHiliteColumnAndRow_property.propval }
+    set { self.mSchematicEnableHiliteColumnAndRow_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -4241,6 +4319,9 @@ final class ProjectRoot : EBManagedObject,
     self.mRectangularBoardHeight_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: inUndoManager, key: "mRectangularBoardHeight")
     self.mRectangularBoardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mRectangularBoardHeightUnit")
     self.mDefaultNetClassName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mDefaultNetClassName")
+    self.mSchematicHilitedColumnIndex_property = EBStoredProperty_Int (defaultValue: -1, undoManager: inUndoManager, key: "mSchematicHilitedColumnIndex")
+    self.mSchematicHilitedRowIndex_property = EBStoredProperty_Int (defaultValue: -1, undoManager: inUndoManager, key: "mSchematicHilitedRowIndex")
+    self.mSchematicEnableHiliteColumnAndRow_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mSchematicEnableHiliteColumnAndRow")
     self.mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mSelectedPageIndex")
     self.mSelectedSchematicInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mSelectedSchematicInspector")
     self.mSchematicTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mSchematicTitle")
@@ -5602,13 +5683,16 @@ final class ProjectRoot : EBManagedObject,
         let s0 = unwSelf.mSchematicTitle_property.selection
         let s1 = unwSelf.mSchematicVersion_property.selection
         let s2 = unwSelf.sheetGeometry_property.selection
-        let s3 = unwSelf.mSelectedSheet_property.mSheetTitle_property.selection
-        let s4 = unwSelf.mSheets_property.selection
-        let s5 = unwSelf.mSelectedSheet_property.selection
-        let s6 = unwSelf.mSchematicDate_property.selection
-        let s7 = preferences_schematicBackColor_property.selection
-        let s8 = preferences_schematicFrameColor_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8) {
+        let s3 = unwSelf.mSchematicHilitedColumnIndex_property.selection
+        let s4 = unwSelf.mSchematicHilitedRowIndex_property.selection
+        let s5 = unwSelf.mSchematicEnableHiliteColumnAndRow_property.selection
+        let s6 = unwSelf.mSelectedSheet_property.mSheetTitle_property.selection
+        let s7 = unwSelf.mSheets_property.selection
+        let s8 = unwSelf.mSelectedSheet_property.selection
+        let s9 = unwSelf.mSchematicDate_property.selection
+        let s10 = preferences_schematicBackColor_property.selection
+        let s11 = preferences_schematicFrameColor_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -5617,9 +5701,15 @@ final class ProjectRoot : EBManagedObject,
               .single (let v5),
               .single (let v6),
               .single (let v7),
-              .single (let v8)) :
-          return .single (transient_ProjectRoot_schematicBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
+              .single (let v8),
+              .single (let v9),
+              .single (let v10),
+              .single (let v11)) :
+          return .single (transient_ProjectRoot_schematicBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
         case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -5639,6 +5729,9 @@ final class ProjectRoot : EBManagedObject,
     self.mSchematicTitle_property.startsToBeObserved (by: self.schematicBackgroundDisplay_property)
     self.mSchematicVersion_property.startsToBeObserved (by: self.schematicBackgroundDisplay_property)
     self.sheetGeometry_property.startsToBeObserved (by: self.schematicBackgroundDisplay_property)
+    self.mSchematicHilitedColumnIndex_property.startsToBeObserved (by: self.schematicBackgroundDisplay_property)
+    self.mSchematicHilitedRowIndex_property.startsToBeObserved (by: self.schematicBackgroundDisplay_property)
+    self.mSchematicEnableHiliteColumnAndRow_property.startsToBeObserved (by: self.schematicBackgroundDisplay_property)
     self.mSelectedSheet_property.mSheetTitle_property.startsToBeObserved (by: self.schematicBackgroundDisplay_property)
     self.mSheets_property.startsToBeObserved (by: self.schematicBackgroundDisplay_property)
     self.mSelectedSheet_property.startsToBeObserved (by: self.schematicBackgroundDisplay_property)

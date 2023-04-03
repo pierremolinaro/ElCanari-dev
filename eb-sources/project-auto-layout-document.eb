@@ -515,8 +515,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       DragSourceButtonWithMenus (tooltip: "Add Comment") [configurator addCommentInSchematicsButton]
       space
     }
-    vStack {
-      hStack set (leftMargin: 8) set (rightMargin: 8) {
+    vStack set (leftMargin: 8) set (rightMargin: 8) {
+     Checkbox (title: "Enable Line Column Hilite", size : .small) { $value root.mSchematicEnableHiliteColumnAndRow }
+     hStack {
         SegmentedControlWithPages (documentView: view schematicsInspectorView, equalWidth: no, size : .small) {
           expandableWidth ()
           addPage (title: "🛠", tooltip: "Selected Element Inspector", pageView: view selectedSchematicElementInspectorView)
@@ -538,11 +539,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   transient String unplacedSymbolsCountString dependsFrom self.unplacedSymbolsCount ;
   transient NSImage unplacedSymbolsSegmentImage dependsFrom self.unplacedSymbolsCount ;
 
-  stackView \schematicsInspectorView vStack set (margins: 8) {
+  stackView \schematicsInspectorView vStack set (topMargin: 8) set (bottomMargin: 8) {
   }  
   
 //--- Hot keys inspector
-  stackView \schematicsHotKeysInspectorView vStack set (margins: 8) {
+  stackView \schematicsHotKeysInspectorView vStack set (topMargin: 8) set (bottomMargin: 8) {
     hStack {
       Button (title: "◀︎+", size: .regular) { $run prependNewSchematicHotKeysInspectorAction }
       space
@@ -584,7 +585,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }  
 
 //--- Unplaced symbols inspector
-  stackView \schematicsInsertSymbolInSchematicView vStack set (margins: 8) {
+  stackView \schematicsInsertSymbolInSchematicView vStack set (topMargin: 8) set (bottomMargin: 8) {
     hStack {
       Button (title: "◀︎+", size: .regular) { $run prependNewSchematicInsertSymbolInspectorAction }
       space
@@ -599,7 +600,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }  
   
 //--- Grid and Flip inspector
-  stackView \schematicsDisplayInspectorView vStack set (margins: 8) {
+  stackView \schematicsDisplayInspectorView vStack set (topMargin: 8) set (bottomMargin: 8) {
     hStack {
       Button (title: "◀︎+", size: .regular) { $run prependNewSchematicDisplayInspectorAction }
       space
@@ -719,7 +720,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }  
 
 //--- Sheet inspector
-  stackView \schematicsSheetInspectorView  vStack set (margins: 8) {
+  stackView \schematicsSheetInspectorView  vStack set (topMargin: 8) set (bottomMargin: 8) {
     hStack {
       Button (title: "◀︎+", size: .regular) { $run prependNewSchematicSheetInspectorAction }
       space
@@ -807,7 +808,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //   Schematic selected objects inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView \selectedSchematicElementInspectorView vStack set (margins: 8) {
+  stackView \selectedSchematicElementInspectorView vStack set (topMargin: 8) set (bottomMargin: 8) {
     newView schematicsWireInspectorView = \schematicsWireInspectorView ()
     newView ncInSchematicsInspectorView = \ncInSchematicsInspectorView ()
     newView schematicsLabelInspectorView = \schematicsLabelInspectorView ()

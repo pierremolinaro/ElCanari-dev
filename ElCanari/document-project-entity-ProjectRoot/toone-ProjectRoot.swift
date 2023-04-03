@@ -73,6 +73,9 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.mRectangularBoardHeight_property.stopsBeingObserved (by: self.mRectangularBoardHeight_property) // Stored property
       oldValue.mRectangularBoardHeightUnit_property.stopsBeingObserved (by: self.mRectangularBoardHeightUnit_property) // Stored property
       oldValue.mDefaultNetClassName_property.stopsBeingObserved (by: self.mDefaultNetClassName_property) // Stored property
+      oldValue.mSchematicHilitedColumnIndex_property.stopsBeingObserved (by: self.mSchematicHilitedColumnIndex_property) // Stored property
+      oldValue.mSchematicHilitedRowIndex_property.stopsBeingObserved (by: self.mSchematicHilitedRowIndex_property) // Stored property
+      oldValue.mSchematicEnableHiliteColumnAndRow_property.stopsBeingObserved (by: self.mSchematicEnableHiliteColumnAndRow_property) // Stored property
       oldValue.mSelectedPageIndex_property.stopsBeingObserved (by: self.mSelectedPageIndex_property) // Stored property
       oldValue.mSelectedSchematicInspector_property.stopsBeingObserved (by: self.mSelectedSchematicInspector_property) // Stored property
       oldValue.mSchematicTitle_property.stopsBeingObserved (by: self.mSchematicTitle_property) // Stored property
@@ -253,6 +256,9 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.mRectangularBoardHeight_property.startsToBeObserved (by: self.mRectangularBoardHeight_property) // Stored property
       newValue.mRectangularBoardHeightUnit_property.startsToBeObserved (by: self.mRectangularBoardHeightUnit_property) // Stored property
       newValue.mDefaultNetClassName_property.startsToBeObserved (by: self.mDefaultNetClassName_property) // Stored property
+      newValue.mSchematicHilitedColumnIndex_property.startsToBeObserved (by: self.mSchematicHilitedColumnIndex_property) // Stored property
+      newValue.mSchematicHilitedRowIndex_property.startsToBeObserved (by: self.mSchematicHilitedRowIndex_property) // Stored property
+      newValue.mSchematicEnableHiliteColumnAndRow_property.startsToBeObserved (by: self.mSchematicEnableHiliteColumnAndRow_property) // Stored property
       newValue.mSelectedPageIndex_property.startsToBeObserved (by: self.mSelectedPageIndex_property) // Stored property
       newValue.mSelectedSchematicInspector_property.startsToBeObserved (by: self.mSelectedSchematicInspector_property) // Stored property
       newValue.mSchematicTitle_property.startsToBeObserved (by: self.mSchematicTitle_property) // Stored property
@@ -717,6 +723,24 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mDefaultNetClassName_property = EBTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'mSchematicHilitedColumnIndex' stored property
+  //····················································································································
+
+  final let mSchematicHilitedColumnIndex_property = EBTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'mSchematicHilitedRowIndex' stored property
+  //····················································································································
+
+  final let mSchematicHilitedRowIndex_property = EBTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'mSchematicEnableHiliteColumnAndRow' stored property
+  //····················································································································
+
+  final let mSchematicEnableHiliteColumnAndRow_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'mSelectedPageIndex' stored property
@@ -1727,6 +1751,18 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //--- Configure mDefaultNetClassName simple stored property
     self.mDefaultNetClassName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mDefaultNetClassName_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mSchematicHilitedColumnIndex simple stored property
+    self.mSchematicHilitedColumnIndex_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mSchematicHilitedColumnIndex_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mSchematicHilitedRowIndex simple stored property
+    self.mSchematicHilitedRowIndex_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mSchematicHilitedRowIndex_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mSchematicEnableHiliteColumnAndRow simple stored property
+    self.mSchematicEnableHiliteColumnAndRow_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mSchematicEnableHiliteColumnAndRow_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mSelectedPageIndex simple stored property
     self.mSelectedPageIndex_property.mReadModelFunction = { [weak self] in
