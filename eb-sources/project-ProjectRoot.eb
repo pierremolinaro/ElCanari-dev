@@ -234,7 +234,7 @@ handlingOpposite entity ProjectRoot {
   property String mDefaultNetClassName default "" ;
   property Int mSchematicHilitedColumnIndex default -1 ; // -1 -> no hilite
   property Int mSchematicHilitedRowIndex default -1 ; // -1 -> no hilite
-  property Bool mSchematicEnableHiliteColumnAndRow default yes ;
+  property Bool mSchematicEnableHiliteColumnAndRow default no ;
 
   toOne SheetInProject mSelectedSheet ;
   property proxy String selectedSheetTitle : mSelectedSheet.mSheetTitle ;

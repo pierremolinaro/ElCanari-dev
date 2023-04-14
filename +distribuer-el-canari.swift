@@ -35,6 +35,9 @@ let NOTES : [String] = [
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
+  "Utilisation de Sparkle 2.4.1",
+  "des badges pour signaler erreurs et alertes ont été ajoutés",
+  "dans un document, les badges d'états affichent le nombre d'erreurs et, à défaut, d'alertes"
 ]
 let NEWS : [String] = [
 ]

@@ -2359,7 +2359,7 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final func reset_mSchematicEnableHiliteColumnAndRow_toDefaultValue () {
-    self.mSchematicEnableHiliteColumnAndRow = true
+    self.mSchematicEnableHiliteColumnAndRow = false
   }
 
   //····················································································································
@@ -4321,7 +4321,7 @@ final class ProjectRoot : EBManagedObject,
     self.mDefaultNetClassName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mDefaultNetClassName")
     self.mSchematicHilitedColumnIndex_property = EBStoredProperty_Int (defaultValue: -1, undoManager: inUndoManager, key: "mSchematicHilitedColumnIndex")
     self.mSchematicHilitedRowIndex_property = EBStoredProperty_Int (defaultValue: -1, undoManager: inUndoManager, key: "mSchematicHilitedRowIndex")
-    self.mSchematicEnableHiliteColumnAndRow_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mSchematicEnableHiliteColumnAndRow")
+    self.mSchematicEnableHiliteColumnAndRow_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mSchematicEnableHiliteColumnAndRow")
     self.mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mSelectedPageIndex")
     self.mSelectedSchematicInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mSelectedSchematicInspector")
     self.mSchematicTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mSchematicTitle")
