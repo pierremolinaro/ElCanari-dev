@@ -22,6 +22,24 @@ handlingOpposite entity BoardModel {
 
   transient Bool errorArchiveVersionMessageIsHidden dependsFrom self.modelVersion ;
 
+//--- QR Codes
+  toMany RectangleEntity legendFrontQRCodes ;
+  toMany RectangleEntity legendBackQRCodes ;
+
+  transient MergerRectangleArray frontLegendQRCodeRectangles dependsFrom
+    self.legendFrontQRCodes.all.p0x, self.legendFrontQRCodes.all.p0y,
+    self.legendFrontQRCodes.all.p1x, self.legendFrontQRCodes.all.p1y,
+    self.legendFrontQRCodes.all.p2x, self.legendFrontQRCodes.all.p2y,
+    self.legendFrontQRCodes.all.p3x, self.legendFrontQRCodes.all.p3y
+  ;
+
+  transient MergerRectangleArray backLegendQRCodeRectangles dependsFrom
+    self.legendBackQRCodes.all.p0x, self.legendBackQRCodes.all.p0y,
+    self.legendBackQRCodes.all.p1x, self.legendBackQRCodes.all.p1y,
+    self.legendBackQRCodes.all.p2x, self.legendBackQRCodes.all.p2y,
+    self.legendBackQRCodes.all.p3x, self.legendBackQRCodes.all.p3y
+  ;
+ 
 //--- Layer configuration
   property LayerConfiguration layerConfiguration default twoLayers ;
   
@@ -41,7 +59,9 @@ handlingOpposite entity BoardModel {
     self.frontLegendLines.all.width
   ;
 
-  transient BezierPathArray frontLegendLinesBezierPaths dependsFrom self.frontLegendLinesSegments ;
+  transient BezierPathArray frontLegendLinesBezierPaths dependsFrom 
+    self.frontLegendLinesSegments
+  ;
 
 //--- Back Legend Lines
   toMany SegmentEntity backLegendLines ;
@@ -345,11 +365,13 @@ handlingOpposite entity BoardModel {
     self.holesBezierPaths,
     prefs.mergerModelViewDisplayHoles,
     prefs.mergerColorHoles,
-// Front Legend lines
+// Front Legend lines and QR Codes
+    self.frontLegendQRCodeRectangles,
     self.frontLegendLinesBezierPaths,
     prefs.mergerModelViewDisplayFrontLegendLines,
     prefs.mergerColorFrontLegendLines,
 // Back Legend lines
+    self.backLegendQRCodeRectangles,
     self.backLegendLinesBezierPaths,
     prefs.mergerModelViewDisplayBackLegendLines,
     prefs.mergerColorBackLegendLines,
@@ -449,11 +471,13 @@ handlingOpposite entity BoardModel {
     self.holesBezierPaths,
     prefs.mergerBoardViewDisplayHoles,
     prefs.mergerColorHoles,
-// Front Legend lines
+// Front Legend lines and QR Codes
+    self.frontLegendQRCodeRectangles,
     self.frontLegendLinesBezierPaths,
     prefs.mergerBoardViewDisplayFrontLegendLines,
     prefs.mergerColorFrontLegendLines,
-// Back Legend lines
+// Back Legend lines and QR Codes
+    self.backLegendQRCodeRectangles,
     self.backLegendLinesBezierPaths,
     prefs.mergerBoardViewDisplayBackLegendLines,
     prefs.mergerColorBackLegendLines,

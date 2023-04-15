@@ -9,11 +9,13 @@ digraph G {
   "BoardModel" -> "MergerBoardInstance" ;
   "BoardModel" -> "SegmentEntity" ;
   "BoardModel" -> "BoardModelPad" ;
+  "BoardModel" -> "RectangleEntity" ;
   "BoardModel" -> "BoardModelVia" ;
   "ArtworkFileGenerationParameters" [shape=rectangle] ;
   "ArtworkRoot" [shape=rectangle] ;
   "ArtworkRoot" -> "ArtworkFileGenerationParameters" ;
   "SegmentEntity" [shape=rectangle] ;
   "BoardModelPad" [shape=rectangle] ;
+  "RectangleEntity" [shape=rectangle] ;
   "BoardModelVia" [shape=rectangle] ;
 }

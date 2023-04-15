@@ -13,35 +13,49 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension AutoLayoutProjectDocument {
-  final func configure_boardView (_ inOutlet : AutoLayoutGraphicView) {
+@MainActor func transient_BoardQRCode_objectDisplay (
+       _ self_mCenterX : Int,                        
+       _ self_mCenterY : Int,                        
+       _ self_qrCodeDescriptor : QRCodeDescriptor,   
+       _ self_mLayer : BoardQRCodeLayer,             
+       _ self_mRotation : Int,                       
+       _ self_BoardObject_displayFrontLegendForBoard : Bool,
+       _ self_BoardObject_displayBackLegendForBoard : Bool,
+       _ self_BoardObject_displayFrontLayoutForBoard : Bool,
+       _ self_BoardObject_displayBackLayoutForBoard : Bool,
+       _ prefs_frontSideLegendColorForBoard : NSColor,
+       _ prefs_frontSideLayoutColorForBoard : NSColor,
+       _ prefs_backSideLayoutColorForBoard : NSColor,
+       _ prefs_backSideLegendColorForBoard : NSColor
+) -> EBShape {
 //--- START OF USER ZONE 2
-  //--- Set document to scroll view for enabling drag and drop of components
-     inOutlet.mScrollView?.register (document: self)
-     inOutlet.mGraphicView.register (
-       draggedTypes: [kDragAndDropRestrictRectangle, kDragAndDropBoardText, kDragAndDropBoardQRCode, kDragAndDropBoardPackage, kDragAndDropBoardLine, kDragAndDropBoardTrack]
-     )
-     inOutlet.mGraphicView.setUsesOptionKeyForDuplicatingSelectedObjects (false)
-  //--- Option click for creating track
-     inOutlet.mGraphicView.mHelperStringForOptionModifier = "SHIFT: mouse down starts a new track"
-     inOutlet.mGraphicView.setOptionMouseCallbacks (
-       start: { [weak self] (inUnalignedMouseLocation) in return self?.startTrackCreationOnOptionMouseDown (at: inUnalignedMouseLocation) ?? false },
-       continue: { [weak self] (inUnalignedMouseLocation, inModifierFlags) in self?.continueTrackCreationOnOptionMouseDragged (at: inUnalignedMouseLocation, inModifierFlags) },
-       abort: { [weak self] in self?.abortTrackCreationOnOptionMouseUp () },
-       helper: { [weak self] (inModifierFlags) in self?.helperStringForTrackCreation (inModifierFlags) },
-       stop: { [weak self] (inUnalignedMouseLocation) in self?.stopTrackCreationOnOptionMouseUp (at: inUnalignedMouseLocation) ?? false }
-     )
-     inOutlet.mGraphicView.mDrawFrameIssue = false
-  //--- Contextual menu
-     inOutlet.mGraphicView.mContextualMenuBuilder = { [weak self] in return self?.populateContextualClickOnBoard ($0) }
-  //----
-    inOutlet.mGraphicView.setMouseMovedOrFlagsChangedCallback { [weak self] (unalignedMouseLocation) in
-      self?.mouseMovedOrFlagsChangedInBoard (unalignedMouseLocation)
-    }
-  //--- Pasteboard
-    inOutlet.mGraphicView.register (pasteboardType: BOARD_PASTEBOARD_TYPE)
+        let foreColor : NSColor
+        let display : Bool
+        switch self_mLayer {
+        case .legendFront :
+          foreColor = prefs_frontSideLegendColorForBoard
+          display = self_BoardObject_displayFrontLegendForBoard
+        case .legendBack :
+          foreColor = prefs_backSideLegendColorForBoard
+          display = self_BoardObject_displayBackLegendForBoard
+        }
+        var shape = EBShape ()
+        if display {
+          let displayInfos = boardQRCode_displayInfos (
+            centerX: self_mCenterX,
+            centerY: self_mCenterY,
+            self_qrCodeDescriptor,
+            frontSide: self_mLayer == .legendFront,
+            rotation: self_mRotation
+          )
+        //--- Background
+          shape.add (filled: [displayInfos.backgroundBP], nil) // Transparent
+        //--- QR Code
+          shape.add (filled: [displayInfos.qrCodeBP], foreColor)
+        }
+      //---
+        return shape
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -74,6 +74,7 @@ extension AutoLayoutProjectDocument {
     if inDescriptor.drawTextsLegendTopSide {
       strokePathes.append (apertureDictionary: inProductData.legendFrontTexts, transformedBy: af)
       strokePathes.append (oblongs: inProductData.frontLines, transformedBy: af)
+      filledPathes.append (rectangles: inProductData.legendFrontQRCodes, transformedBy: af)
     }
     if inDescriptor.drawTextsLayoutTopSide {
       strokePathes.append (apertureDictionary: inProductData.layoutFrontTexts, transformedBy: af)
@@ -84,6 +85,7 @@ extension AutoLayoutProjectDocument {
     if inDescriptor.drawTextsLegendBottomSide {
       strokePathes.append (apertureDictionary: inProductData.legendBackTexts, transformedBy: af)
       strokePathes.append (oblongs: inProductData.backLines, transformedBy: af)
+      filledPathes.append (rectangles: inProductData.legendBackQRCodes, transformedBy: af)
     }
     if inDescriptor.drawVias {
       strokePathes.append (circles: inProductData.viaPads, transformedBy: af)
@@ -200,6 +202,21 @@ extension AutoLayoutProjectDocument {
         bp.close ()
         self.append (bp)
       }
+    }
+  }
+
+  //····················································································································
+
+  mutating func append (rectangles inRectangles : [ProductRectangle],
+                        transformedBy inAffineTransform : AffineTransform) {
+    for rect in inRectangles {
+      var bp = EBBezierPath ()
+      bp.move (to: inAffineTransform.transform (rect.p0))
+      bp.line (to: inAffineTransform.transform (rect.p1))
+      bp.line (to: inAffineTransform.transform (rect.p2))
+      bp.line (to: inAffineTransform.transform (rect.p3))
+      bp.close ()
+      self.append (bp)
     }
   }
 

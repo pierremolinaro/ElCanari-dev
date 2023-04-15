@@ -6,6 +6,7 @@ digraph G {
   ArtworkFileGenerationParameters ;
   BoardModel ;
   BoardModelVia ;
+  RectangleEntity ;
   BoardModelPad ;
   SegmentEntity ;
   MergerBoardInstance ;
@@ -36,6 +37,8 @@ digraph G {
   BoardModel -> SegmentEntity [dir=both arrowtail=none arrowhead=veevee] ;
   BoardModel -> SegmentEntity [dir=both arrowtail=none arrowhead=veevee] ;
   BoardModel -> SegmentEntity [dir=both arrowtail=none arrowhead=veevee] ;
+  BoardModel -> RectangleEntity [dir=both arrowtail=none arrowhead=veevee] ;
+  BoardModel -> RectangleEntity [dir=both arrowtail=none arrowhead=veevee] ;
   BoardModel -> MergerBoardInstance [dir=both arrowtail=none arrowhead=veevee] ;
   BoardModel -> BoardModelPad [dir=both arrowtail=none arrowhead=veevee] ;
   BoardModel -> BoardModelVia [dir=both arrowtail=none arrowhead=veevee] ;

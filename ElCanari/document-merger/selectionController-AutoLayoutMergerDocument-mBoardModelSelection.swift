@@ -93,6 +93,12 @@ import AppKit
   var backLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
+  //   Selection observable property: backLegendQRCodeRectangles
+  //····················································································································
+
+  var backLegendQRCodeRectangles_property = EBTransientProperty_MergerRectangleArray ()
+
+  //····················································································································
   //   Selection observable property: backLegendTexts
   //····················································································································
 
@@ -259,6 +265,12 @@ import AppKit
   //····················································································································
 
   var frontLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+  //   Selection observable property: frontLegendQRCodeRectangles
+  //····················································································································
+
+  var frontLegendQRCodeRectangles_property = EBTransientProperty_MergerRectangleArray ()
 
   //····················································································································
   //   Selection observable property: frontLegendTexts
@@ -447,6 +459,14 @@ import AppKit
   var layerConfigurationString_property = EBTransientProperty_String ()
 
   //····················································································································
+  //   Selection observable property: legendBackQRCodes
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: legendFrontQRCodes
+  //····················································································································
+
+  //····················································································································
   //   Selection observable property: modelHeight
   //····················································································································
 
@@ -555,6 +575,7 @@ import AppKit
     self.bind_property_backLayoutTextsSegments (model: model)
     self.bind_property_backLegendLinesBezierPaths (model: model)
     self.bind_property_backLegendLinesSegments (model: model)
+    self.bind_property_backLegendQRCodeRectangles (model: model)
     self.bind_property_backLegendTextsBezierPaths (model: model)
     self.bind_property_backLegendTextsSegments (model: model)
     self.bind_property_backPackagesBezierPaths (model: model)
@@ -577,6 +598,7 @@ import AppKit
     self.bind_property_frontLayoutTextsSegments (model: model)
     self.bind_property_frontLegendLinesBezierPaths (model: model)
     self.bind_property_frontLegendLinesSegments (model: model)
+    self.bind_property_frontLegendQRCodeRectangles (model: model)
     self.bind_property_frontLegendTextsBezierPaths (model: model)
     self.bind_property_frontLegendTextsSegments (model: model)
     self.bind_property_frontPackagesBezierPaths (model: model)
@@ -650,6 +672,9 @@ import AppKit
   //--- backLegendLinesSegments
     self.backLegendLinesSegments_property.mReadModelFunction = nil 
     self.mModel?.toMany_backLegendLinesSegments_StopsBeingObserved (by: self.backLegendLinesSegments_property)
+  //--- backLegendQRCodeRectangles
+    self.backLegendQRCodeRectangles_property.mReadModelFunction = nil 
+    self.mModel?.toMany_backLegendQRCodeRectangles_StopsBeingObserved (by: self.backLegendQRCodeRectangles_property)
   //--- backLegendTextsBezierPaths
     self.backLegendTextsBezierPaths_property.mReadModelFunction = nil 
     self.mModel?.toMany_backLegendTextsBezierPaths_StopsBeingObserved (by: self.backLegendTextsBezierPaths_property)
@@ -716,6 +741,9 @@ import AppKit
   //--- frontLegendLinesSegments
     self.frontLegendLinesSegments_property.mReadModelFunction = nil 
     self.mModel?.toMany_frontLegendLinesSegments_StopsBeingObserved (by: self.frontLegendLinesSegments_property)
+  //--- frontLegendQRCodeRectangles
+    self.frontLegendQRCodeRectangles_property.mReadModelFunction = nil 
+    self.mModel?.toMany_frontLegendQRCodeRectangles_StopsBeingObserved (by: self.frontLegendQRCodeRectangles_property)
   //--- frontLegendTextsBezierPaths
     self.frontLegendTextsBezierPaths_property.mReadModelFunction = nil 
     self.mModel?.toMany_frontLegendTextsBezierPaths_StopsBeingObserved (by: self.frontLegendTextsBezierPaths_property)
@@ -1193,6 +1221,46 @@ import AppKit
           var isMultipleSelection = false
           for object in v {
             switch object.backLegendLinesSegments_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backLegendQRCodeRectangles (model : ReadOnlyArrayOf_BoardModel) {
+    model.toMany_backLegendQRCodeRectangles_StartsToBeObserved (by: self.backLegendQRCodeRectangles_property)
+    self.backLegendQRCodeRectangles_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerRectangleArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backLegendQRCodeRectangles_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2073,6 +2141,46 @@ import AppKit
           var isMultipleSelection = false
           for object in v {
             switch object.frontLegendLinesSegments_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontLegendQRCodeRectangles (model : ReadOnlyArrayOf_BoardModel) {
+    model.toMany_frontLegendQRCodeRectangles_StartsToBeObserved (by: self.frontLegendQRCodeRectangles_property)
+    self.frontLegendQRCodeRectangles_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerRectangleArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontLegendQRCodeRectangles_property.selection {
             case .empty :
               return .empty
             case .multiple :

@@ -65,6 +65,12 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
       if let relay = self.mObserversOf_errorArchiveVersionMessageIsHidden { // Transient property
         managedObject.errorArchiveVersionMessageIsHidden_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_frontLegendQRCodeRectangles { // Transient property
+        managedObject.frontLegendQRCodeRectangles_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backLegendQRCodeRectangles { // Transient property
+        managedObject.backLegendQRCodeRectangles_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_layerConfigurationString { // Transient property
         managedObject.layerConfigurationString_property.stopsBeingObserved (by: relay)
       }
@@ -274,6 +280,12 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
       }
       if let relay = self.mObserversOf_errorArchiveVersionMessageIsHidden { // Transient property
         managedObject.errorArchiveVersionMessageIsHidden_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontLegendQRCodeRectangles { // Transient property
+        managedObject.frontLegendQRCodeRectangles_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backLegendQRCodeRectangles { // Transient property
+        managedObject.backLegendQRCodeRectangles_property.startsToBeObserved (by: relay)
       }
       if let relay = self.mObserversOf_layerConfigurationString { // Transient property
         managedObject.layerConfigurationString_property.startsToBeObserved (by: relay)
@@ -899,6 +911,64 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func toMany_errorArchiveVersionMessageIsHidden_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_errorArchiveVersionMessageIsHidden?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'frontLegendQRCodeRectangles' transient property
+  //····················································································································
+
+  private final var mObserversOf_frontLegendQRCodeRectangles : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_frontLegendQRCodeRectangles_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_frontLegendQRCodeRectangles {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.frontLegendQRCodeRectangles_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_frontLegendQRCodeRectangles = relay
+    }
+    relay.startsToBeObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_frontLegendQRCodeRectangles_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_frontLegendQRCodeRectangles?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'backLegendQRCodeRectangles' transient property
+  //····················································································································
+
+  private final var mObserversOf_backLegendQRCodeRectangles : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_backLegendQRCodeRectangles_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_backLegendQRCodeRectangles {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.backLegendQRCodeRectangles_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_backLegendQRCodeRectangles = relay
+    }
+    relay.startsToBeObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_backLegendQRCodeRectangles_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_backLegendQRCodeRectangles?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

@@ -28,11 +28,6 @@ extension AutoLayoutMergerDocument {
     if let fileData = optionalFileData {
       let s = inFilePath.lastPathComponent.deletingPathExtension
       self.parseBoardModel_ELCanariArchive (fromData: fileData, named : s, callBack: { self.registerBoardModelCallBack ($0) } )
-//      let possibleBoardModel = self.parseBoardModel_ELCanariArchive (fromData: fileData, named : s)
-//      if let boardModel = possibleBoardModel {
-//        self.rootObject.boardModels_property.add (boardModel)
-//        self.mBoardModelController.select (object:boardModel)
-//      }
     }else{ // Cannot read file
       let alert = NSAlert ()
       alert.messageText = "Cannot read file"
@@ -281,6 +276,16 @@ extension AutoLayoutMergerDocument {
         }
       }
       boardModel.frontLegendTexts = frontLegendTextEntities
+    }
+  //--- Legend Front QR Codes
+    do{
+      let rectArray = optionalRectArray (fromDict: inBoardArchiveDict, key: "QRCODES-LEGEND-FRONT", self.undoManager, &errorArray)
+      boardModel.legendFrontQRCodes = EBReferenceArray (rectArray)
+    }
+  //--- Legend Back QR Codes
+    do{
+      let rectArray = optionalRectArray (fromDict: inBoardArchiveDict, key: "QRCODES-LEGEND-BACK", self.undoManager, &errorArray)
+      boardModel.legendBackQRCodes = EBReferenceArray (rectArray)
     }
   //--- Back packages
     do{
@@ -784,3 +789,38 @@ fileprivate func array5int (fromString inString : String,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor fileprivate func optionalRectArray (fromDict inBoardArchiveDict : [String : Any],
+                                               key inKey : String,
+                                               _ inUndoManager : UndoManager?,
+                                               _ errorArray : inout [String]) -> [RectangleEntity] {
+  var rectangleArray = [RectangleEntity] ()
+  let stringArray = optionalStringArray (fromDict: inBoardArchiveDict, key: inKey, &errorArray)
+  for str in stringArray {
+    let components = str.components (separatedBy: ":")
+    var pts = [Int] ()
+    for s in components {
+      if let v = Int (s) {
+        pts.append (v)
+      }
+    }
+    if pts.count != 8 {
+      errorArray.append ("The \"\(inKey)\" key value is not an array of 8 int string.")
+    }else{
+      let r = RectangleEntity (inUndoManager)
+      r.p0x = pts [0]
+      r.p0y = pts [1]
+      r.p1x = pts [2]
+      r.p1y = pts [3]
+      r.p2x = pts [4]
+      r.p2y = pts [5]
+      r.p3x = pts [6]
+      r.p3y = pts [7]
+      rectangleArray.append (r)
+    }
+  }
+  return rectangleArray
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

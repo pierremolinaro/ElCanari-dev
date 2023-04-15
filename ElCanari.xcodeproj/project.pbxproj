@@ -603,6 +603,75 @@
 		CF3304EF2773576A00275263 /* configurator-AutoLayoutProjectDocument-boardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3304EE2773576A00275263 /* configurator-AutoLayoutProjectDocument-boardView.swift */; };
 		CF3304F127735C3E00275263 /* controller-array-AutoLayoutProjectDocument-schematicObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3304F027735C3E00275263 /* controller-array-AutoLayoutProjectDocument-schematicObjectsController.swift */; };
 		CF3304F327735DB200275263 /* extension-AutoLayoutProjectDocument-add-drag-track.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3304F227735DB200275263 /* extension-AutoLayoutProjectDocument-add-drag-track.swift */; };
+		CF34949C29EAB36E006AB1EB /* transient-BoardQRCode-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949329EAB36E006AB1EB /* transient-BoardQRCode-signatureForERCChecking.swift */; };
+		CF34949D29EAB36E006AB1EB /* transient-BoardQRCode-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949329EAB36E006AB1EB /* transient-BoardQRCode-signatureForERCChecking.swift */; };
+		CF34949E29EAB36E006AB1EB /* transient-BoardQRCode-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949329EAB36E006AB1EB /* transient-BoardQRCode-signatureForERCChecking.swift */; };
+		CF34949F29EAB36F006AB1EB /* toone-BoardQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949429EAB36E006AB1EB /* toone-BoardQRCode.swift */; };
+		CF3494A029EAB36F006AB1EB /* toone-BoardQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949429EAB36E006AB1EB /* toone-BoardQRCode.swift */; };
+		CF3494A129EAB36F006AB1EB /* toone-BoardQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949429EAB36E006AB1EB /* toone-BoardQRCode.swift */; };
+		CF3494A229EAB36F006AB1EB /* tomany-BoardQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949529EAB36E006AB1EB /* tomany-BoardQRCode.swift */; };
+		CF3494A329EAB36F006AB1EB /* tomany-BoardQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949529EAB36E006AB1EB /* tomany-BoardQRCode.swift */; };
+		CF3494A429EAB36F006AB1EB /* tomany-BoardQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949529EAB36E006AB1EB /* tomany-BoardQRCode.swift */; };
+		CF3494A529EAB36F006AB1EB /* enum-QRCodeCorrectionLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949629EAB36E006AB1EB /* enum-QRCodeCorrectionLevel.swift */; };
+		CF3494A629EAB36F006AB1EB /* enum-QRCodeCorrectionLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949629EAB36E006AB1EB /* enum-QRCodeCorrectionLevel.swift */; };
+		CF3494A729EAB36F006AB1EB /* enum-QRCodeCorrectionLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949629EAB36E006AB1EB /* enum-QRCodeCorrectionLevel.swift */; };
+		CF3494A829EAB36F006AB1EB /* transient-BoardQRCode-qrCodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949729EAB36E006AB1EB /* transient-BoardQRCode-qrCodeDescriptor.swift */; };
+		CF3494A929EAB36F006AB1EB /* transient-BoardQRCode-qrCodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949729EAB36E006AB1EB /* transient-BoardQRCode-qrCodeDescriptor.swift */; };
+		CF3494AA29EAB36F006AB1EB /* transient-BoardQRCode-qrCodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949729EAB36E006AB1EB /* transient-BoardQRCode-qrCodeDescriptor.swift */; };
+		CF3494AB29EAB36F006AB1EB /* property-QRCodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949829EAB36E006AB1EB /* property-QRCodeDescriptor.swift */; };
+		CF3494AC29EAB36F006AB1EB /* property-QRCodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949829EAB36E006AB1EB /* property-QRCodeDescriptor.swift */; };
+		CF3494AD29EAB36F006AB1EB /* property-QRCodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949829EAB36E006AB1EB /* property-QRCodeDescriptor.swift */; };
+		CF3494AE29EAB36F006AB1EB /* transient-BoardQRCode-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949929EAB36E006AB1EB /* transient-BoardQRCode-objectDisplay.swift */; };
+		CF3494AF29EAB36F006AB1EB /* transient-BoardQRCode-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949929EAB36E006AB1EB /* transient-BoardQRCode-objectDisplay.swift */; };
+		CF3494B029EAB36F006AB1EB /* transient-BoardQRCode-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949929EAB36E006AB1EB /* transient-BoardQRCode-objectDisplay.swift */; };
+		CF3494B129EAB36F006AB1EB /* transient-BoardQRCode-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949A29EAB36E006AB1EB /* transient-BoardQRCode-selectionDisplay.swift */; };
+		CF3494B229EAB36F006AB1EB /* transient-BoardQRCode-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949A29EAB36E006AB1EB /* transient-BoardQRCode-selectionDisplay.swift */; };
+		CF3494B329EAB36F006AB1EB /* transient-BoardQRCode-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949A29EAB36E006AB1EB /* transient-BoardQRCode-selectionDisplay.swift */; };
+		CF3494B429EAB36F006AB1EB /* entity-BoardQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949B29EAB36E006AB1EB /* entity-BoardQRCode.swift */; };
+		CF3494B529EAB36F006AB1EB /* entity-BoardQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949B29EAB36E006AB1EB /* entity-BoardQRCode.swift */; };
+		CF3494B629EAB36F006AB1EB /* entity-BoardQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34949B29EAB36E006AB1EB /* entity-BoardQRCode.swift */; };
+		CF3494B829EAB3B1006AB1EB /* QRCodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494B729EAB3B1006AB1EB /* QRCodeDescriptor.swift */; };
+		CF3494B929EAB3B1006AB1EB /* QRCodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494B729EAB3B1006AB1EB /* QRCodeDescriptor.swift */; };
+		CF3494BA29EAB3B1006AB1EB /* QRCodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494B729EAB3B1006AB1EB /* QRCodeDescriptor.swift */; };
+		CF3494BC29EAD288006AB1EB /* extension-BoardQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494BB29EAD288006AB1EB /* extension-BoardQRCode.swift */; };
+		CF3494BD29EAD288006AB1EB /* extension-BoardQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494BB29EAD288006AB1EB /* extension-BoardQRCode.swift */; };
+		CF3494BE29EAD288006AB1EB /* extension-BoardQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494BB29EAD288006AB1EB /* extension-BoardQRCode.swift */; };
+		CF3494C029EAD537006AB1EB /* configurator-AutoLayoutProjectDocument-addQRCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494BF29EAD537006AB1EB /* configurator-AutoLayoutProjectDocument-addQRCodeButton.swift */; };
+		CF3494C129EAD537006AB1EB /* configurator-AutoLayoutProjectDocument-addQRCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494BF29EAD537006AB1EB /* configurator-AutoLayoutProjectDocument-addQRCodeButton.swift */; };
+		CF3494C229EAD537006AB1EB /* configurator-AutoLayoutProjectDocument-addQRCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494BF29EAD537006AB1EB /* configurator-AutoLayoutProjectDocument-addQRCodeButton.swift */; };
+		CF3494C429EAD694006AB1EB /* qrcode.png in Resources */ = {isa = PBXBuildFile; fileRef = CF3494C329EAD694006AB1EB /* qrcode.png */; };
+		CF3494C529EAD694006AB1EB /* qrcode.png in Resources */ = {isa = PBXBuildFile; fileRef = CF3494C329EAD694006AB1EB /* qrcode.png */; };
+		CF3494C629EAD694006AB1EB /* qrcode.png in Resources */ = {isa = PBXBuildFile; fileRef = CF3494C329EAD694006AB1EB /* qrcode.png */; };
+		CF3494C829EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494C729EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift */; };
+		CF3494C929EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494C729EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift */; };
+		CF3494CA29EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494C729EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift */; };
+		CF3494CD29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494CB29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift */; };
+		CF3494CE29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494CB29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift */; };
+		CF3494CF29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494CB29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift */; };
+		CF3494D029EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494CC29EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift */; };
+		CF3494D129EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494CC29EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift */; };
+		CF3494D229EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494CC29EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift */; };
+		CF3494D429EB2CA8006AB1EB /* entity-RectangleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494D329EB2CA8006AB1EB /* entity-RectangleEntity.swift */; };
+		CF3494D529EB2CA8006AB1EB /* entity-RectangleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494D329EB2CA8006AB1EB /* entity-RectangleEntity.swift */; };
+		CF3494D629EB2CA8006AB1EB /* entity-RectangleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494D329EB2CA8006AB1EB /* entity-RectangleEntity.swift */; };
+		CF3494D929EB2EE2006AB1EB /* toone-RectangleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494D729EB2EE2006AB1EB /* toone-RectangleEntity.swift */; };
+		CF3494DA29EB2EE2006AB1EB /* toone-RectangleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494D729EB2EE2006AB1EB /* toone-RectangleEntity.swift */; };
+		CF3494DB29EB2EE2006AB1EB /* toone-RectangleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494D729EB2EE2006AB1EB /* toone-RectangleEntity.swift */; };
+		CF3494DC29EB2EE2006AB1EB /* tomany-RectangleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494D829EB2EE2006AB1EB /* tomany-RectangleEntity.swift */; };
+		CF3494DD29EB2EE2006AB1EB /* tomany-RectangleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494D829EB2EE2006AB1EB /* tomany-RectangleEntity.swift */; };
+		CF3494DE29EB2EE2006AB1EB /* tomany-RectangleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494D829EB2EE2006AB1EB /* tomany-RectangleEntity.swift */; };
+		CF3494E429EB30EA006AB1EB /* property-MergerRectangleArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494E329EB30EA006AB1EB /* property-MergerRectangleArray.swift */; };
+		CF3494E529EB30EA006AB1EB /* property-MergerRectangleArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494E329EB30EA006AB1EB /* property-MergerRectangleArray.swift */; };
+		CF3494E629EB30EA006AB1EB /* property-MergerRectangleArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494E329EB30EA006AB1EB /* property-MergerRectangleArray.swift */; };
+		CF3494E829EB31BB006AB1EB /* transient-BoardModel-frontLegendQRCodeRectangles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494E729EB31BA006AB1EB /* transient-BoardModel-frontLegendQRCodeRectangles.swift */; };
+		CF3494E929EB31BB006AB1EB /* transient-BoardModel-frontLegendQRCodeRectangles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494E729EB31BA006AB1EB /* transient-BoardModel-frontLegendQRCodeRectangles.swift */; };
+		CF3494EA29EB31BB006AB1EB /* transient-BoardModel-frontLegendQRCodeRectangles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494E729EB31BA006AB1EB /* transient-BoardModel-frontLegendQRCodeRectangles.swift */; };
+		CF3494EC29EB35B9006AB1EB /* transient-BoardModel-backLegendQRCodeRectangles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494EB29EB35B9006AB1EB /* transient-BoardModel-backLegendQRCodeRectangles.swift */; };
+		CF3494ED29EB35B9006AB1EB /* transient-BoardModel-backLegendQRCodeRectangles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494EB29EB35B9006AB1EB /* transient-BoardModel-backLegendQRCodeRectangles.swift */; };
+		CF3494EE29EB35B9006AB1EB /* transient-BoardModel-backLegendQRCodeRectangles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494EB29EB35B9006AB1EB /* transient-BoardModel-backLegendQRCodeRectangles.swift */; };
+		CF3494F029EB395E006AB1EB /* enum-BoardQRCodeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494EF29EB395E006AB1EB /* enum-BoardQRCodeLayer.swift */; };
+		CF3494F129EB395E006AB1EB /* enum-BoardQRCodeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494EF29EB395E006AB1EB /* enum-BoardQRCodeLayer.swift */; };
+		CF3494F229EB395E006AB1EB /* enum-BoardQRCodeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494EF29EB395E006AB1EB /* enum-BoardQRCodeLayer.swift */; };
 		CF34A0AF2200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34A0AE2200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift */; };
 		CF34A0B02200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34A0AE2200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift */; };
 		CF3557D528670CB60094E836 /* extension-AutoLayoutProjectDocumentSubClass-print.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3557D428670CB60094E836 /* extension-AutoLayoutProjectDocumentSubClass-print.swift */; };
@@ -5229,6 +5298,29 @@
 		CF3304EE2773576A00275263 /* configurator-AutoLayoutProjectDocument-boardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-boardView.swift"; sourceTree = "<group>"; };
 		CF3304F027735C3E00275263 /* controller-array-AutoLayoutProjectDocument-schematicObjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-array-AutoLayoutProjectDocument-schematicObjectsController.swift"; sourceTree = "<group>"; };
 		CF3304F227735DB200275263 /* extension-AutoLayoutProjectDocument-add-drag-track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-AutoLayoutProjectDocument-add-drag-track.swift"; sourceTree = "<group>"; };
+		CF34949329EAB36E006AB1EB /* transient-BoardQRCode-signatureForERCChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardQRCode-signatureForERCChecking.swift"; sourceTree = "<group>"; };
+		CF34949429EAB36E006AB1EB /* toone-BoardQRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "toone-BoardQRCode.swift"; sourceTree = "<group>"; };
+		CF34949529EAB36E006AB1EB /* tomany-BoardQRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "tomany-BoardQRCode.swift"; sourceTree = "<group>"; };
+		CF34949629EAB36E006AB1EB /* enum-QRCodeCorrectionLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-QRCodeCorrectionLevel.swift"; sourceTree = "<group>"; };
+		CF34949729EAB36E006AB1EB /* transient-BoardQRCode-qrCodeDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardQRCode-qrCodeDescriptor.swift"; sourceTree = "<group>"; };
+		CF34949829EAB36E006AB1EB /* property-QRCodeDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "property-QRCodeDescriptor.swift"; sourceTree = "<group>"; };
+		CF34949929EAB36E006AB1EB /* transient-BoardQRCode-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardQRCode-objectDisplay.swift"; sourceTree = "<group>"; };
+		CF34949A29EAB36E006AB1EB /* transient-BoardQRCode-selectionDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardQRCode-selectionDisplay.swift"; sourceTree = "<group>"; };
+		CF34949B29EAB36E006AB1EB /* entity-BoardQRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-BoardQRCode.swift"; sourceTree = "<group>"; };
+		CF3494B729EAB3B1006AB1EB /* QRCodeDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeDescriptor.swift; sourceTree = "<group>"; };
+		CF3494BB29EAD288006AB1EB /* extension-BoardQRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-BoardQRCode.swift"; sourceTree = "<group>"; };
+		CF3494BF29EAD537006AB1EB /* configurator-AutoLayoutProjectDocument-addQRCodeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-addQRCodeButton.swift"; sourceTree = "<group>"; };
+		CF3494C329EAD694006AB1EB /* qrcode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qrcode.png; sourceTree = "<group>"; };
+		CF3494C729EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift"; sourceTree = "<group>"; };
+		CF3494CB29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardQRCode-minWidthInCanariUnit.swift"; sourceTree = "<group>"; };
+		CF3494CC29EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardQRCode-minHeightInCanariUnit.swift"; sourceTree = "<group>"; };
+		CF3494D329EB2CA8006AB1EB /* entity-RectangleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-RectangleEntity.swift"; sourceTree = "<group>"; };
+		CF3494D729EB2EE2006AB1EB /* toone-RectangleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "toone-RectangleEntity.swift"; sourceTree = "<group>"; };
+		CF3494D829EB2EE2006AB1EB /* tomany-RectangleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "tomany-RectangleEntity.swift"; sourceTree = "<group>"; };
+		CF3494E329EB30EA006AB1EB /* property-MergerRectangleArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "property-MergerRectangleArray.swift"; sourceTree = "<group>"; };
+		CF3494E729EB31BA006AB1EB /* transient-BoardModel-frontLegendQRCodeRectangles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-frontLegendQRCodeRectangles.swift"; sourceTree = "<group>"; };
+		CF3494EB29EB35B9006AB1EB /* transient-BoardModel-backLegendQRCodeRectangles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-backLegendQRCodeRectangles.swift"; sourceTree = "<group>"; };
+		CF3494EF29EB395E006AB1EB /* enum-BoardQRCodeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-BoardQRCodeLayer.swift"; sourceTree = "<group>"; };
 		CF34A0AE2200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CanariLibraryEntry-show-upload-window.swift"; sourceTree = "<group>"; };
 		CF3557D428670CB60094E836 /* extension-AutoLayoutProjectDocumentSubClass-print.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-AutoLayoutProjectDocumentSubClass-print.swift"; sourceTree = "<group>"; };
 		CF3558CE279D64B5000BFC9B /* controller-popup-net-class-from-selected-labels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-popup-net-class-from-selected-labels.swift"; sourceTree = "<group>"; };
@@ -6705,6 +6797,7 @@
 				CFEB7BAD233A27470060A97A /* project — entity — NetInProject */,
 				CFEB7BAE233A274C0060A97A /* project — entity — PointInSchematic */,
 				CFEB7BB0233A27580060A97A /* project — entity — ProjectRoot */,
+				CF34949229EAB327006AB1EB /* project — entity — QRCode */,
 				CFEB7BB2233A27650060A97A /* project — entity — SchematicObject */,
 				CFEB7CF4233A29E70060A97A /* project — entity — SheetInProject */,
 				CFEB7BB1233A275E0060A97A /* project — entity — WireInSchematic */,
@@ -6783,6 +6876,8 @@
 				CF22F15B275A73E6009C6FAC /* entity-BoardModelVia.swift */,
 				CF22F125275A73DD009C6FAC /* entity-MergerBoardInstance.swift */,
 				CF22F153275A73E5009C6FAC /* entity-MergerRoot.swift */,
+				CF3494D329EB2CA8006AB1EB /* entity-RectangleEntity.swift */,
+				CF3494EF29EB395E006AB1EB /* enum-BoardQRCodeLayer.swift */,
 				CF22F2B0275A8A2A009C6FAC /* extension-AutoLayoutMergerDocument-add-model.swift */,
 				CF071E8F275BA47100FF2772 /* extension-AutoLayoutMergerDocument-arrange-move-selection.swift */,
 				CF841E3B275C061E0000EA26 /* extension-AutoLayoutMergerDocument-generate-product-files.swift */,
@@ -6808,11 +6903,13 @@
 				CF22F15E275A73E7009C6FAC /* tomany-BoardModelVia.swift */,
 				CF22F17A275A73EC009C6FAC /* tomany-MergerBoardInstance.swift */,
 				CF22F128275A73DD009C6FAC /* tomany-MergerRoot.swift */,
+				CF3494D829EB2EE2006AB1EB /* tomany-RectangleEntity.swift */,
 				CF22F17B275A73EC009C6FAC /* toone-BoardModel.swift */,
 				CF22F17C275A73EC009C6FAC /* toone-BoardModelPad.swift */,
 				CF22F170275A73EA009C6FAC /* toone-BoardModelVia.swift */,
 				CF22F133275A73DF009C6FAC /* toone-MergerBoardInstance.swift */,
 				CF22F16D275A73EA009C6FAC /* toone-MergerRoot.swift */,
+				CF3494D729EB2EE2006AB1EB /* toone-RectangleEntity.swift */,
 				CF071E81275B8A1E00FF2772 /* transient-AutoLayoutMergerDocument-boardDispositionStatusTitle.swift */,
 				CF9F8BFE28528EB000E313C7 /* transient-AutoLayoutMergerDocument-boardLimitWidthStatusImage.swift */,
 				CF31551D275CDC8A00ED1FA8 /* transient-AutoLayoutMergerDocument-documentFileShouldBeRenamedErrorMessage.swift */,
@@ -6835,6 +6932,7 @@
 				CF22F179275A73EC009C6FAC /* transient-BoardModel-backLayoutTextsSegments.swift */,
 				CF22F13E275A73E1009C6FAC /* transient-BoardModel-backLegendLinesBezierPaths.swift */,
 				CF22F152275A73E5009C6FAC /* transient-BoardModel-backLegendLinesSegments.swift */,
+				CF3494EB29EB35B9006AB1EB /* transient-BoardModel-backLegendQRCodeRectangles.swift */,
 				CF22F141275A73E2009C6FAC /* transient-BoardModel-backLegendTextsBezierPaths.swift */,
 				CF22F16E275A73EA009C6FAC /* transient-BoardModel-backLegendTextsSegments.swift */,
 				CF22F149275A73E3009C6FAC /* transient-BoardModel-backPackagesBezierPaths.swift */,
@@ -6857,6 +6955,7 @@
 				CF22F156275A73E6009C6FAC /* transient-BoardModel-frontLayoutTextsSegments.swift */,
 				CF22F174275A73EB009C6FAC /* transient-BoardModel-frontLegendLinesBezierPaths.swift */,
 				CF22F14B275A73E4009C6FAC /* transient-BoardModel-frontLegendLinesSegments.swift */,
+				CF3494E729EB31BA006AB1EB /* transient-BoardModel-frontLegendQRCodeRectangles.swift */,
 				CF22F145275A73E2009C6FAC /* transient-BoardModel-frontLegendTextsBezierPaths.swift */,
 				CF22F142275A73E2009C6FAC /* transient-BoardModel-frontLegendTextsSegments.swift */,
 				CF22F12F275A73DF009C6FAC /* transient-BoardModel-frontPackagesBezierPaths.swift */,
@@ -7095,6 +7194,26 @@
 			path = "ElCanari/document-package";
 			sourceTree = "<group>";
 		};
+		CF34949229EAB327006AB1EB /* project — entity — QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				CF34949B29EAB36E006AB1EB /* entity-BoardQRCode.swift */,
+				CF34949629EAB36E006AB1EB /* enum-QRCodeCorrectionLevel.swift */,
+				CF3494BB29EAD288006AB1EB /* extension-BoardQRCode.swift */,
+				CF34949829EAB36E006AB1EB /* property-QRCodeDescriptor.swift */,
+				CF34949529EAB36E006AB1EB /* tomany-BoardQRCode.swift */,
+				CF34949429EAB36E006AB1EB /* toone-BoardQRCode.swift */,
+				CF3494CC29EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift */,
+				CF3494CB29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift */,
+				CF34949929EAB36E006AB1EB /* transient-BoardQRCode-objectDisplay.swift */,
+				CF34949729EAB36E006AB1EB /* transient-BoardQRCode-qrCodeDescriptor.swift */,
+				CF34949A29EAB36E006AB1EB /* transient-BoardQRCode-selectionDisplay.swift */,
+				CF34949329EAB36E006AB1EB /* transient-BoardQRCode-signatureForERCChecking.swift */,
+			);
+			name = "project — entity — QRCode";
+			path = "ElCanari/document-project-entity-BoardQRCode";
+			sourceTree = "<group>";
+		};
 		CF34A0AD2200CFC900DEA8EF /* Application — Library Upload */ = {
 			isa = PBXGroup;
 			children = (
@@ -7148,6 +7267,7 @@
 				CF92E1F41DDB1C9E0019691C /* GeometricRect.swift */,
 				CF571D8E295DCC680063E7AB /* NetStatusEntry.swift */,
 				CF61915D26F7739B003B75FF /* NSImage-extension.swift */,
+				CF3494B729EAB3B1006AB1EB /* QRCodeDescriptor.swift */,
 				CF571D9A295DCCFC0063E7AB /* StringArray.swift */,
 				CFD2414C222C09D5000D6B65 /* StringSet.swift */,
 				CF131B85294F5F8100E587B9 /* StringTag.swift */,
@@ -7274,6 +7394,7 @@
 				CF26AF7925EAAF84000E3080 /* package-program-guide.rtf */,
 				CF61729A1B3C4CD600F3CA82 /* package.pdf */,
 				CF61729E1B3C4CD600F3CA82 /* PreviousToolbarImage.tif */,
+				CF3494C329EAD694006AB1EB /* qrcode.png */,
 				CF6172A41B3C4CD600F3CA82 /* restrict-rect-in-board.png */,
 				CF6172A61B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff */,
 				CF888D4A2682250400D97523 /* settings.png */,
@@ -7406,6 +7527,7 @@
 				CF4D3E45276A423800013196 /* AutoLayoutProjectDocument-utilities.swift */,
 				CF9C1C24279C5A720018CCDB /* configurator-AutoLayoutProjectDocument-addCommentInSchematicsButton.swift */,
 				CF6CC7A227789D8C007BA775 /* configurator-AutoLayoutProjectDocument-addLineButton.swift */,
+				CF3494BF29EAD537006AB1EB /* configurator-AutoLayoutProjectDocument-addQRCodeButton.swift */,
 				CF3304EC27734CBE00275263 /* configurator-AutoLayoutProjectDocument-addRestrictRectangleButton.swift */,
 				CF6CC7A82778B6ED007BA775 /* configurator-AutoLayoutProjectDocument-addTextButton.swift */,
 				CF6CC7AC2778BFC0007BA775 /* configurator-AutoLayoutProjectDocument-addTrackButton.swift */,
@@ -7484,6 +7606,7 @@
 				CF56026E279324C600479AB6 /* selectionController-AutoLayoutProjectDocument-boardConnectorSelectionController.swift */,
 				CF54A0442770C95F00D978D9 /* selectionController-AutoLayoutProjectDocument-boardCurveSelectionController.swift */,
 				CF56027027932DF400479AB6 /* selectionController-AutoLayoutProjectDocument-boardLineSelectionController.swift */,
+				CF3494C729EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift */,
 				CF56027A27935C4900479AB6 /* selectionController-AutoLayoutProjectDocument-boardTextSelectionController.swift */,
 				CF56026A2792FEE400479AB6 /* selectionController-AutoLayoutProjectDocument-boardTrackSelectionController.swift */,
 				CF3558E2279D87B3000BFC9B /* selectionController-AutoLayoutProjectDocument-commentInSchematicSelectionController.swift */,
@@ -8887,6 +9010,7 @@
 				CF59C3B529BE36A7004CA404 /* property-IntArray.swift */,
 				CF59C3B429BE36A7004CA404 /* property-MasterPadDescriptor.swift */,
 				CF59C3D329BE36AA004CA404 /* property-MergerPadArray.swift */,
+				CF3494E329EB30EA006AB1EB /* property-MergerRectangleArray.swift */,
 				CF59C3B229BE36A7004CA404 /* property-MergerSegmentArray.swift */,
 				CF59C3C029BE36A8004CA404 /* property-MergerViaShapeArray.swift */,
 				CF59C3D729BE36AA004CA404 /* property-NetInfo.swift */,
@@ -9075,6 +9199,7 @@
 				CFA9F51428D5FA3E0031FD35 /* Credits.rtf in Resources */,
 				CF6172D71B3C4CD600F3CA82 /* exclamation.tif in Resources */,
 				CFB1415627A72E97000F9EAE /* update.png in Resources */,
+				CF3494C429EAD694006AB1EB /* qrcode.png in Resources */,
 				CF21549322B65E4C0068354E /* text-in-symbol.png in Resources */,
 				CF6172C61B3C4CD600F3CA82 /* autorouter.png in Resources */,
 				CF6172E81B3C4CD600F3CA82 /* package.pdf in Resources */,
@@ -9120,6 +9245,7 @@
 				CFA9F51528D5FA3E0031FD35 /* Credits.rtf in Resources */,
 				CF5C4C9C219F04D600EAC52A /* exclamation.tif in Resources */,
 				CFB1415727A72E97000F9EAE /* update.png in Resources */,
+				CF3494C529EAD694006AB1EB /* qrcode.png in Resources */,
 				CF21549422B65E4C0068354E /* text-in-symbol.png in Resources */,
 				CF5C4C9F219F04D600EAC52A /* autorouter.png in Resources */,
 				CF5C4CA5219F04D600EAC52A /* package.pdf in Resources */,
@@ -9165,6 +9291,7 @@
 				CFA9F51628D5FA3E0031FD35 /* Credits.rtf in Resources */,
 				CF9C607825CABE5C00A00D5C /* text-in-symbol.png in Resources */,
 				CFB1415827A72E97000F9EAE /* update.png in Resources */,
+				CF3494C629EAD694006AB1EB /* qrcode.png in Resources */,
 				CF9C607925CABE5C00A00D5C /* autorouter.png in Resources */,
 				CF9C607C25CABE5C00A00D5C /* package.pdf in Resources */,
 				CF9C607E25CABE5C00A00D5C /* A4horizontal.pdf in Resources */,
@@ -9379,6 +9506,7 @@
 				CF4B39BB21D3F1C5001217C6 /* transient-PackageSlavePad-objectDisplay.swift in Sources */,
 				CFEB7B94233A267E0060A97A /* transient-DevicePackageInProject-packagePadDictionary.swift in Sources */,
 				CF0777E12352153000F56EAB /* extension-String-EBPropertyProtocol.swift in Sources */,
+				CF3494C029EAD537006AB1EB /* configurator-AutoLayoutProjectDocument-addQRCodeButton.swift in Sources */,
 				CFB4C0BF2794674800C509A9 /* AutoLayoutTextField.swift in Sources */,
 				CFB7D76A26839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-symbolPageSegmentedControl.swift in Sources */,
 				CF67AC7423E9BD6F0099DE60 /* transient-PackageZone-forbiddenPadArray.swift in Sources */,
@@ -9400,6 +9528,7 @@
 				CFEAAD5B22317CAB00F69A12 /* transient-SymbolSolidOval-filledBezierPath.swift in Sources */,
 				CF22F18F275A73ED009C6FAC /* transient-BoardModel-frontPadsBezierPaths.swift in Sources */,
 				CF4EAA0626F684B600F01746 /* transient-ArtworkRoot-hasSixLayers.swift in Sources */,
+				CF3494E829EB31BB006AB1EB /* transient-BoardModel-frontLegendQRCodeRectangles.swift in Sources */,
 				CF8A8A76275A431500825DF9 /* atomic-DefinedCharactersInDevice.swift in Sources */,
 				CF78DE93222D65CA00E89DCA /* entity-SlavePadInDevice.swift in Sources */,
 				CF3559A2279D9F3D000BFC9B /* selectionController-AutoLayoutProjectDocument-boardConnectorSelectionController.swift in Sources */,
@@ -9644,6 +9773,7 @@
 				CF711CFA275E1A7000280069 /* tomany-CommentInSchematic.swift in Sources */,
 				CF2285E02766812B00804193 /* AutoLayoutScrollView.swift in Sources */,
 				CF2B9CE221C2A8D100EE5683 /* entity-PackageRoot.swift in Sources */,
+				CF3494D929EB2EE2006AB1EB /* toone-RectangleEntity.swift in Sources */,
 				CF59C44929BE36AB004CA404 /* property-TwoStringArray.swift in Sources */,
 				CFB80EA527A1B1470084F73F /* AutoLayoutWebView.swift in Sources */,
 				CF4EA9FE26F671C500F01746 /* transient-NetClassInProject-allowTracksOnInner3LayerString.swift in Sources */,
@@ -9659,6 +9789,7 @@
 				CF22F18C275A73ED009C6FAC /* tomany-MergerRoot.swift in Sources */,
 				CFB7D86E2683A61C007B9D3B /* action-AutoLayoutPackageDocument-loadDIL16ModelImageFromResourcesAction.swift in Sources */,
 				CFFC7ADE23EA049300EBADD9 /* transient-PackageSlavePad-padNameWithZoneName.swift in Sources */,
+				CF3494D429EB2CA8006AB1EB /* entity-RectangleEntity.swift in Sources */,
 				CF355A46279D9F8D000BFC9B /* AutoLayoutCanariProjectDeviceTableView.swift in Sources */,
 				CFEB7CA1233A28860060A97A /* transient-ProjectRoot-boardInteriorTop.swift in Sources */,
 				CF217C10250165BE003E322E /* file-format-text.swift in Sources */,
@@ -9695,6 +9826,7 @@
 				CF59C3E029BE36AB004CA404 /* property-PinQualifiedNameStruct.swift in Sources */,
 				CF5123F4222A894300FA4364 /* transient-PackageOval-strokeBezierPath.swift in Sources */,
 				CF001F6D21F8AB610091518E /* class-LibraryOperationElement.swift in Sources */,
+				CF3494A229EAB36F006AB1EB /* tomany-BoardQRCode.swift in Sources */,
 				CF3557D528670CB60094E836 /* extension-AutoLayoutProjectDocumentSubClass-print.swift in Sources */,
 				CF42D12A275CF1A600B83712 /* controller-array-AutoLayoutMergerDocument-mBoardInstanceController.swift in Sources */,
 				CFDDD4E121BB1529007D2F14 /* EBGraphicView-magnify-and-zoom.swift in Sources */,
@@ -9817,7 +9949,9 @@
 				CF69ABCF21A6C08100F5E49A /* transient-SymbolPin-selectionDisplay.swift in Sources */,
 				CFC1325F26FB4EBB0027AC93 /* EBReferenceSet.swift in Sources */,
 				CFB1F95D2940EDDC00C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithRouterDocument.swift in Sources */,
+				CF3494A829EAB36F006AB1EB /* transient-BoardQRCode-qrCodeDescriptor.swift in Sources */,
 				CF49913128D8C9430099F871 /* enum-PadStyle.swift in Sources */,
+				CF3494F029EB395E006AB1EB /* enum-BoardQRCodeLayer.swift in Sources */,
 				CFF76A052708DF930061C124 /* AutoLayoutCanariNewCharacterView.swift in Sources */,
 				CF49EED1275A499700481930 /* configurator-AutoLayoutFontDocument-fontGraphicView.swift in Sources */,
 				CFDDD4DB21BB1529007D2F14 /* EBGraphicViewControllerProtocol.swift in Sources */,
@@ -9844,6 +9978,7 @@
 				CFEB7CAB233A28860060A97A /* transient-ProjectRoot-placedComponentNameArray.swift in Sources */,
 				CF8560CC2677A34A00B62608 /* AutoLayout-debug.swift in Sources */,
 				CFAE4B222927893D00458900 /* EBWeakReferenceArray-Set.swift in Sources */,
+				CF3494A529EAB36F006AB1EB /* enum-QRCodeCorrectionLevel.swift in Sources */,
 				CF3559AE279D9F3D000BFC9B /* extension-AutoLayoutProjectDocument-remove-components.swift in Sources */,
 				CFEB7C9B233A28860060A97A /* transient-ProjectRoot-boardInteriorLeft.swift in Sources */,
 				CF22F258275A73EE009C6FAC /* entity-BoardModel.swift in Sources */,
@@ -9887,6 +10022,7 @@
 				CF35599C279D9F3D000BFC9B /* configurator-AutoLayoutProjectDocument-schematicPullDownButtonConfigurator.swift in Sources */,
 				CF59C42829BE36AB004CA404 /* property-NSColor.swift in Sources */,
 				CF85624E21E7CB570032F52D /* entity-DeviceRoot.swift in Sources */,
+				CF3494D029EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift in Sources */,
 				CFAEE80629BF2A0E00851F82 /* EBStoredProperty.swift in Sources */,
 				CF42D120275CF1A600B83712 /* extension-AutoLayoutMergerDocument-generate-product-files.swift in Sources */,
 				CFB1F8F72940EDDB00C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutAnyDocument.swift in Sources */,
@@ -10073,6 +10209,7 @@
 				CFEB7CC7233A28860060A97A /* transient-ProjectRoot-schematicBackgroundDisplay.swift in Sources */,
 				CFFEC1B5280470B600E5E8DD /* AutoLayoutViewWithBackground.swift in Sources */,
 				CF61915626F7700E003B75FF /* transient-ArtworkRoot-emptyDrillFileExtension.swift in Sources */,
+				CF34949C29EAB36E006AB1EB /* transient-BoardQRCode-signatureForERCChecking.swift in Sources */,
 				CF61915A26F7709D003B75FF /* transient-AutoLayoutArtworkDocument-emptyDrillFileExtensionImage.swift in Sources */,
 				CFB1F8D32940EDDB00C1E120 /* action-AutoLayoutProjectDocument-appendNewInsertComponentInBoardInspectorAction.swift in Sources */,
 				CF59C3EC29BE36AB004CA404 /* property-NetInfoArray.swift in Sources */,
@@ -10100,6 +10237,8 @@
 				CF9C1C2B279C6A3E0018CCDB /* AutoLayoutPopUpButton.swift in Sources */,
 				CFFEC1E6280483FF00E5E8DD /* tomany-ProjectRoot.swift in Sources */,
 				CFEB7BC6233A27AF0060A97A /* transient-FontInProject-versionString.swift in Sources */,
+				CF3494CD29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift in Sources */,
+				CF3494EC29EB35B9006AB1EB /* transient-BoardModel-backLegendQRCodeRectangles.swift in Sources */,
 				CF4990FE28D8C9430099F871 /* enum-PadShape-extension.swift in Sources */,
 				CF8560D12677A34B00B62608 /* AutoLayout+NSControl+enabled-binding.swift in Sources */,
 				CF9DE3372679F0610064234B /* AutoLayoutApplicationImage.swift in Sources */,
@@ -10175,6 +10314,7 @@
 				CF39CCC3268CC0B4004971F9 /* document-AutoLayoutDeviceDocument.swift in Sources */,
 				CFEC04272945E4C80034D365 /* extension-SymbolInstanceInDevice.swift in Sources */,
 				CFEB7BA0233A26F20060A97A /* transient-DevicePinInProject-descriptor.swift in Sources */,
+				CF3494C829EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift in Sources */,
 				CFB4C045279465E700C509A9 /* AutoLayoutFontButton.swift in Sources */,
 				CF355A45279D9F8D000BFC9B /* AutoLayoutCanariBoardOperationPullDownButton.swift in Sources */,
 				CF0777AE2352100F00F56EAB /* extension-Data-EBPropertyProtocol.swift in Sources */,
@@ -10216,6 +10356,7 @@
 				CFF6D6892427780C00BE9CC9 /* transient-PackageRoot-hasModelImage.swift in Sources */,
 				CFB1F92A2940EDDC00C1E120 /* action-AutoLayoutProjectDocument-exportDSNFileAction.swift in Sources */,
 				CF8386902423CEBC007F1D21 /* EBGraphicView-binding-backgroundImage.swift in Sources */,
+				CF3494E429EB30EA006AB1EB /* property-MergerRectangleArray.swift in Sources */,
 				CF3D9FD924A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift in Sources */,
 				CF712000275E1EA300280069 /* extension-SheetInProject-add-nc.swift in Sources */,
 				CFB7D75526839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-addSymbolText.swift in Sources */,
@@ -10327,6 +10468,7 @@
 				CF22F1E3275A73ED009C6FAC /* transient-BoardModel-frontLegendTextsBezierPaths.swift in Sources */,
 				CF4EA9DF26F6517800F01746 /* transient-ProjectRoot-topSideTrackCountString.swift in Sources */,
 				CF78DE84222D5ACD00E89DCA /* entity-MasterPadInDevice.swift in Sources */,
+				CF3494B829EAB3B1006AB1EB /* QRCodeDescriptor.swift in Sources */,
 				CFA42F5D229AEAAF000AA8C8 /* tomany-ArtworkRoot.swift in Sources */,
 				CF4BA71D23E9E58300C403B5 /* transient-PackageZone-emptyForbiddenPadArray.swift in Sources */,
 				CF617FA3275E7D34008F0C32 /* AutoLayoutViewByPrefixingAppIcon.swift in Sources */,
@@ -10459,6 +10601,7 @@
 				CFB1F8F12940EDDB00C1E120 /* action-AutoLayoutProjectDocument-moveSelectedToSheetInSchematicsAction.swift in Sources */,
 				CFB1F9942940F44600C1E120 /* action-AutoLayoutProjectDocument-prependNewBoardERCCheckingInspectorAction.swift in Sources */,
 				CFEB7C8F233A28860060A97A /* transient-ProjectRoot-netWarningCount.swift in Sources */,
+				CF3494B429EAB36F006AB1EB /* entity-BoardQRCode.swift in Sources */,
 				CFDD6D6D26A1B0F20050CB78 /* AutoLayoutCanariObservedDimensionAndPopUp.swift in Sources */,
 				CF22F23A275A73EE009C6FAC /* transient-BoardModel-traversingPadArray.swift in Sources */,
 				CFB7D89B2683A61C007B9D3B /* configurator-AutoLayoutPackageDocument-packageGraphicView.swift in Sources */,
@@ -10466,12 +10609,14 @@
 				CFB1F8D92940EDDB00C1E120 /* action-AutoLayoutProjectDocument-revealPackageOfSelectedComponentsAction.swift in Sources */,
 				CF49910128D8C9430099F871 /* enum-HorizontalAlignment-extension.swift in Sources */,
 				CF22F213275A73EE009C6FAC /* transient-MergerRoot-boardWidth.swift in Sources */,
+				CF3494AE29EAB36F006AB1EB /* transient-BoardQRCode-objectDisplay.swift in Sources */,
 				CF86415E29D05FDE0004A295 /* transient-ProjectRoot-ercStatusImageOrNoneOnSuccess.swift in Sources */,
 				CFDD6D5B26A1B0F20050CB78 /* AutoLayoutCanariDimensionAndPopUp.swift in Sources */,
 				CFA80DE425C0616900966D91 /* compute-BoardTrack-computedP2X.swift in Sources */,
 				CFFEC1BB2804818B00E5E8DD /* tomany-SymbolObject.swift in Sources */,
 				CF49EED3275A499700481930 /* action-AutoLayoutFontDocument-addSegmentAction.swift in Sources */,
 				CF52BECD2338B5910018B89C /* enum-RastnetDisplay.swift in Sources */,
+				CF3494BC29EAD288006AB1EB /* extension-BoardQRCode.swift in Sources */,
 				CFA80DE025C0604600966D91 /* compute-BoardTrack-computedP1Y.swift in Sources */,
 				CF3559FA279D9F3E000BFC9B /* transient-AutoLayoutProjectDocument-documentFileShouldBeRenamedErrorMessage.swift in Sources */,
 				CF92C3C022BEC30900C221B2 /* EBBezierPath.swift in Sources */,
@@ -10505,6 +10650,7 @@
 				CF355A0A279D9F3E000BFC9B /* extension-AutoLayoutProjectDocument-generate-product-files.swift in Sources */,
 				CF93324A294DFC1D00A37C3E /* debug-drag-and-drop.swift in Sources */,
 				CF22F1CE275A73ED009C6FAC /* transient-BoardModel-backLegendLinesBezierPaths.swift in Sources */,
+				CF3494B129EAB36F006AB1EB /* transient-BoardQRCode-selectionDisplay.swift in Sources */,
 				CFA42F9B229AEACF000AA8C8 /* tomany-SlavePadInDevice.swift in Sources */,
 				CF5B06FA213EC3C9005D6B37 /* entity-SegmentEntity.swift in Sources */,
 				CFEB7B9B233A26D00060A97A /* transient-DevicePadAssignmentInProject-pinPadAssignment.swift in Sources */,
@@ -10574,6 +10720,7 @@
 				CF86B56529CF6ACF00E543BB /* transient-ProjectRoot-boardStatusErrorCount.swift in Sources */,
 				CF355A09279D9F3E000BFC9B /* controller-popup-net-class-from-selected-wires.swift in Sources */,
 				CFEB7AA5233A23270060A97A /* transient-BoardConnector-viaDefaultPadDiameter.swift in Sources */,
+				CF34949F29EAB36F006AB1EB /* toone-BoardQRCode.swift in Sources */,
 				CFEB7CBD233A28860060A97A /* transient-ProjectRoot-borderOutlineBackground.swift in Sources */,
 				CF6D1272275FAAC6000F2BE6 /* AutoLayoutWindowContentView.swift in Sources */,
 				CFEB7CB9233A28860060A97A /* transient-ProjectRoot-boardInteriorBottom.swift in Sources */,
@@ -10635,6 +10782,7 @@
 				CF9F8BF02852689400E313C7 /* action-AutoLayoutMergerDocument-stackSelectionRightAction.swift in Sources */,
 				CF42D10B275CF1A600B83712 /* action-AutoLayoutMergerDocument-dismissDisplaySettingView.swift in Sources */,
 				CF9F8BF32852689400E313C7 /* action-AutoLayoutMergerDocument-stackSelectionUpAction.swift in Sources */,
+				CF3494DC29EB2EE2006AB1EB /* tomany-RectangleEntity.swift in Sources */,
 				CF711D78275E1B0F00280069 /* extension-LabelInSchematic.swift in Sources */,
 				CFB82C28276B922400BAD56E /* AutoLayoutTableView-value-column-NSImage-String.swift in Sources */,
 				CFB7D8E02683A61D007B9D3B /* configurator-AutoLayoutPackageDocument-addPackageBezier.swift in Sources */,
@@ -10729,6 +10877,7 @@
 				CFDD6D6126A1B0F20050CB78 /* AutoLayoutCanariUnconnectedSymbolPadsInDeviceTableView.swift in Sources */,
 				CF62177F27A19E4E00D02368 /* action-Preferences-revealUserLibraryInFinderAction.swift in Sources */,
 				CFFEC1B428046FDC00E5E8DD /* AutoLayoutDatePicker.swift in Sources */,
+				CF3494AB29EAB36F006AB1EB /* property-QRCodeDescriptor.swift in Sources */,
 				CFB4C0E62794677200C509A9 /* AutoLayoutTextObserverView.swift in Sources */,
 				CFDD6D4026A1B0F20050CB78 /* AutoLayoutCanariDimensionField.swift in Sources */,
 				CFBEA95F257965660032C2CA /* EBGraphicView-binding-foregroundImage.swift in Sources */,
@@ -10996,6 +11145,7 @@
 				CFEB7C2D233A284A0060A97A /* transient-PointInSchematic-status.swift in Sources */,
 				CFA42F92229AEACF000AA8C8 /* tomany-SymbolTypeInDevice.swift in Sources */,
 				CFEB7B95233A267E0060A97A /* transient-DevicePackageInProject-packagePadDictionary.swift in Sources */,
+				CF3494C129EAD537006AB1EB /* configurator-AutoLayoutProjectDocument-addQRCodeButton.swift in Sources */,
 				CF0777E22352153000F56EAB /* extension-String-EBPropertyProtocol.swift in Sources */,
 				CFB7D76B26839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-symbolPageSegmentedControl.swift in Sources */,
 				CF67AC7523E9BD6F0099DE60 /* transient-PackageZone-forbiddenPadArray.swift in Sources */,
@@ -11017,6 +11167,7 @@
 				CF22F190275A73ED009C6FAC /* transient-BoardModel-frontPadsBezierPaths.swift in Sources */,
 				CFA43006229AEB68000AA8C8 /* tomany-PackageSlavePad.swift in Sources */,
 				CF59C40229BE36AB004CA404 /* property-SchematicPointStatus.swift in Sources */,
+				CF3494E929EB31BB006AB1EB /* transient-BoardModel-frontLegendQRCodeRectangles.swift in Sources */,
 				CF355A37279D9F8C000BFC9B /* AutoLayoutCanariNetDescriptionTableView.swift in Sources */,
 				CFA42FFE229AEB68000AA8C8 /* tomany-PackageDimension.swift in Sources */,
 				CF4EAA0726F684B600F01746 /* transient-ArtworkRoot-hasSixLayers.swift in Sources */,
@@ -11261,6 +11412,7 @@
 				CF3558EE279D9F3B000BFC9B /* extension-AutoLayoutProjectDocument-schematic-hot-keys.swift in Sources */,
 				CF49EEC5275A499500481930 /* document-AutoLayoutFont-sub-class.swift in Sources */,
 				CF784E54275E3581001BC885 /* ProjectRoot-customized-tracks.swift in Sources */,
+				CF3494DA29EB2EE2006AB1EB /* toone-RectangleEntity.swift in Sources */,
 				CFB7D86F2683A61C007B9D3B /* action-AutoLayoutPackageDocument-loadDIL16ModelImageFromResourcesAction.swift in Sources */,
 				CF22F18D275A73ED009C6FAC /* tomany-MergerRoot.swift in Sources */,
 				CFFC7ADF23EA049300EBADD9 /* transient-PackageSlavePad-padNameWithZoneName.swift in Sources */,
@@ -11276,6 +11428,7 @@
 				CFA42F5E229AEAAF000AA8C8 /* tomany-ArtworkRoot.swift in Sources */,
 				CF46301221EBC4EC00FF9A15 /* multiple-binding-controllers.swift in Sources */,
 				CF355A39279D9F8C000BFC9B /* AutoLayoutCanariProjectDeviceTableView.swift in Sources */,
+				CF3494D529EB2CA8006AB1EB /* entity-RectangleEntity.swift in Sources */,
 				CF49EEB9275A499500481930 /* controller-table-view-AutoLayoutFontDocument-selectedCharacterController.swift in Sources */,
 				CFEB7B81233A26330060A97A /* transient-DeviceInProject-sizeString.swift in Sources */,
 				CF8CA2AC27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift in Sources */,
@@ -11312,6 +11465,7 @@
 				CFEB7AFE233A249E0060A97A /* transient-BoardText-selectionDisplay.swift in Sources */,
 				CFEB7CC2233A28860060A97A /* transient-ProjectRoot-connexionErrorString.swift in Sources */,
 				CF4EA9F626F671C500F01746 /* transient-NetClassInProject-allowTracksOnInner1LayerString.swift in Sources */,
+				CF3494A329EAB36F006AB1EB /* tomany-BoardQRCode.swift in Sources */,
 				CFB7D73B26839B90007B9D3B /* document-AutoLayoutSymbolDocument.swift in Sources */,
 				CF39CCDC268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-updateSymbolsAndPackagesAction.swift in Sources */,
 				CFEB7CDC233A28860060A97A /* transient-ProjectRoot-boardBoundBox.swift in Sources */,
@@ -11434,7 +11588,9 @@
 				CF22F1A5275A73ED009C6FAC /* transient-BoardModel-frontPackagesSegments.swift in Sources */,
 				CF42D142275CF1A900B83712 /* configurator-AutoLayoutMergerDocument-boardPageSegmentedControl.swift in Sources */,
 				CFC1326026FB4EBB0027AC93 /* EBReferenceSet.swift in Sources */,
+				CF3494A929EAB36F006AB1EB /* transient-BoardQRCode-qrCodeDescriptor.swift in Sources */,
 				CFB1F95E2940EDDC00C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithRouterDocument.swift in Sources */,
+				CF3494F129EB395E006AB1EB /* enum-BoardQRCodeLayer.swift in Sources */,
 				CF900CAA222AFE7E0078B4DD /* transient-PackageInDevice-frontSidePadFilledBezierPathArray.swift in Sources */,
 				CF49913228D8C9430099F871 /* enum-PadStyle.swift in Sources */,
 				CF69ABD021A6C08100F5E49A /* transient-SymbolPin-selectionDisplay.swift in Sources */,
@@ -11461,6 +11617,7 @@
 				CFEB7C9C233A28860060A97A /* transient-ProjectRoot-boardInteriorLeft.swift in Sources */,
 				CFEAAD662231807B00F69A12 /* transient-SymbolTypeInDevice-versionString.swift in Sources */,
 				CF35590A279D9F3B000BFC9B /* extension-AutoLayoutProjectDocument-remove-components.swift in Sources */,
+				CF3494A629EAB36F006AB1EB /* enum-QRCodeCorrectionLevel.swift in Sources */,
 				CF2FF0D4242F79C40030E49A /* entity-PackageModelImageDoublePoint.swift in Sources */,
 				CFAE4B232927893D00458900 /* EBWeakReferenceArray-Set.swift in Sources */,
 				CFF2A1F621B2D18E00945D01 /* transient-SymbolSolidOval-selectionDisplay.swift in Sources */,
@@ -11504,6 +11661,7 @@
 				CF42D13D275CF1A800B83712 /* extension-AutoLayoutMergerDocument-model-ElCanari.swift in Sources */,
 				CF11AB9E225A211F0092A524 /* open-device-in-library.swift in Sources */,
 				CFEB7AEF233A247F0060A97A /* transient-BoardRestrictRectangle-objectDisplay.swift in Sources */,
+				CF3494D129EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift in Sources */,
 				CFAEE80729BF2A0E00851F82 /* EBStoredProperty.swift in Sources */,
 				CFB1F8F82940EDDB00C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutAnyDocument.swift in Sources */,
 				CFE85A7421A5B37900991A66 /* transient-SymbolBezierCurve-selectionDisplay.swift in Sources */,
@@ -11690,6 +11848,7 @@
 				CFB1F8D42940EDDB00C1E120 /* action-AutoLayoutProjectDocument-appendNewInsertComponentInBoardInspectorAction.swift in Sources */,
 				CF59C43229BE36AB004CA404 /* property-RastnetInfoArray.swift in Sources */,
 				CF61915B26F7709D003B75FF /* transient-AutoLayoutArtworkDocument-emptyDrillFileExtensionImage.swift in Sources */,
+				CF34949D29EAB36E006AB1EB /* transient-BoardQRCode-signatureForERCChecking.swift in Sources */,
 				CF49912C28D8C9430099F871 /* enum-AutoLayoutUserInterfaceStyle.swift in Sources */,
 				CF30CDE821C5709800CFE9CC /* transient-PackagePad-selectionDisplay.swift in Sources */,
 				CFEB7C1F233A284A0060A97A /* transient-PointInSchematic-symbolNameNetName.swift in Sources */,
@@ -11717,6 +11876,8 @@
 				CF8560F92677A34C00B62608 /* AutoLayout+NSControl+enabled-binding.swift in Sources */,
 				CF9DE3382679F0610064234B /* AutoLayoutApplicationImage.swift in Sources */,
 				CFB1F9852940F0A300C1E120 /* action-AutoLayoutProjectDocument-prependNewBoardDisplayInspectorAction.swift in Sources */,
+				CF3494CE29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift in Sources */,
+				CF3494ED29EB35B9006AB1EB /* transient-BoardModel-backLegendQRCodeRectangles.swift in Sources */,
 				CF22F1F3275A73ED009C6FAC /* transient-BoardModel-backPadArray.swift in Sources */,
 				CFEB7CB6233A28860060A97A /* transient-ProjectRoot-boardInteriorRight.swift in Sources */,
 				CFC829E2235CBA5900A51BD3 /* enum-RouteDirection.swift in Sources */,
@@ -11792,6 +11953,7 @@
 				CF0777AF2352100F00F56EAB /* extension-Data-EBPropertyProtocol.swift in Sources */,
 				CFEC04282945E4C80034D365 /* extension-SymbolInstanceInDevice.swift in Sources */,
 				CFDD88542234002F008D3781 /* transient-DeviceRoot-assignedPadProxies.swift in Sources */,
+				CF3494C929EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift in Sources */,
 				CFB4C046279465E700C509A9 /* AutoLayoutFontButton.swift in Sources */,
 				CF5C4D4C219F04D600EAC52A /* CanariMenu.swift in Sources */,
 				CF355A38279D9F8C000BFC9B /* AutoLayoutCanariBoardOperationPullDownButton.swift in Sources */,
@@ -11833,6 +11995,7 @@
 				CFB1F92B2940EDDC00C1E120 /* action-AutoLayoutProjectDocument-exportDSNFileAction.swift in Sources */,
 				CF3D9FDA24A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift in Sources */,
 				CFB7D75626839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-addSymbolText.swift in Sources */,
+				CF3494E529EB30EA006AB1EB /* property-MergerRectangleArray.swift in Sources */,
 				CFEB7BEF233A28130060A97A /* transient-NetClassInProject-netsDescription.swift in Sources */,
 				CF712001275E1EA300280069 /* extension-SheetInProject-add-nc.swift in Sources */,
 				CFC5BB602232D5AE00E03849 /* transient-DeviceRoot-unconnectedPins.swift in Sources */,
@@ -11944,6 +12107,7 @@
 				CF78DE8C222D609200E89DCA /* transient-MasterPadInDevice-padNumberDisplay.swift in Sources */,
 				CFEB7CB0233A28860060A97A /* transient-ProjectRoot-deviceNames.swift in Sources */,
 				CFA43008229AEB68000AA8C8 /* toone-PackageSlavePad.swift in Sources */,
+				CF3494B929EAB3B1006AB1EB /* QRCodeDescriptor.swift in Sources */,
 				CF4B39D121D41501001217C6 /* transient-PackageRoot-freePadNumbering.swift in Sources */,
 				CF78DE85222D5ACD00E89DCA /* entity-MasterPadInDevice.swift in Sources */,
 				CFD1EA98274EE23B000AED8E /* transient-FontRoot-sampleStringBezierPathDescent.swift in Sources */,
@@ -12076,6 +12240,7 @@
 				CF62187C27A1A3E900D02368 /* configurator-Preferences-automaticallyCheckForUpdatesConfigurator.swift in Sources */,
 				CF711FF2275E1EA300280069 /* extension-SheetInProject-connect.swift in Sources */,
 				CFB1F8F22940EDDB00C1E120 /* action-AutoLayoutProjectDocument-moveSelectedToSheetInSchematicsAction.swift in Sources */,
+				CF3494B529EAB36F006AB1EB /* entity-BoardQRCode.swift in Sources */,
 				CFB1F9952940F44600C1E120 /* action-AutoLayoutProjectDocument-prependNewBoardERCCheckingInspectorAction.swift in Sources */,
 				CF0777CD235212B200F56EAB /* extension-NSBezierPath-EBPropertyProtocol.swift in Sources */,
 				CF52BECE2338B5910018B89C /* enum-RastnetDisplay.swift in Sources */,
@@ -12083,12 +12248,14 @@
 				CFA80DE525C0616900966D91 /* compute-BoardTrack-computedP2X.swift in Sources */,
 				CF62176527A19E4E00D02368 /* action-Preferences-checkLibraryAction.swift in Sources */,
 				CFB1F8DA2940EDDB00C1E120 /* action-AutoLayoutProjectDocument-revealPackageOfSelectedComponentsAction.swift in Sources */,
+				CF3494AF29EAB36F006AB1EB /* transient-BoardQRCode-objectDisplay.swift in Sources */,
 				CF86415F29D05FDE0004A295 /* transient-ProjectRoot-ercStatusImageOrNoneOnSuccess.swift in Sources */,
 				CF49910228D8C9430099F871 /* enum-HorizontalAlignment-extension.swift in Sources */,
 				CFB7D89C2683A61C007B9D3B /* configurator-AutoLayoutPackageDocument-packageGraphicView.swift in Sources */,
 				CFDD6D6E26A1B0F20050CB78 /* AutoLayoutCanariObservedDimensionAndPopUp.swift in Sources */,
 				CFEB7C90233A28860060A97A /* transient-ProjectRoot-netWarningCount.swift in Sources */,
 				CF711C9E275E155300280069 /* extension-BoardLine.swift in Sources */,
+				CF3494BD29EAD288006AB1EB /* extension-BoardQRCode.swift in Sources */,
 				CFDD6D5C26A1B0F20050CB78 /* AutoLayoutCanariDimensionAndPopUp.swift in Sources */,
 				CFA80DE125C0604600966D91 /* compute-BoardTrack-computedP1Y.swift in Sources */,
 				CF355956279D9F3B000BFC9B /* transient-AutoLayoutProjectDocument-documentFileShouldBeRenamedErrorMessage.swift in Sources */,
@@ -12122,6 +12289,7 @@
 				CFD1EA89274EE23B000AED8E /* transient-FontRoot-issues.swift in Sources */,
 				CFB1F90D2940EDDB00C1E120 /* action-AutoLayoutProjectDocument-generateProductFilesAction.swift in Sources */,
 				CFB1F93D2940EDDC00C1E120 /* action-AutoLayoutProjectDocument-resetSelectedDeviceVersionAction.swift in Sources */,
+				CF3494B229EAB36F006AB1EB /* transient-BoardQRCode-selectionDisplay.swift in Sources */,
 				CF42D156275CF1A900B83712 /* action-AutoLayoutMergerDocument-importArtworkAction.swift in Sources */,
 				CF93324B294DFC1D00A37C3E /* debug-drag-and-drop.swift in Sources */,
 				CF22F1DB275A73ED009C6FAC /* transient-BoardModel-frontLegendTextsSegments.swift in Sources */,
@@ -12191,6 +12359,7 @@
 				CF86B56629CF6ACF00E543BB /* transient-ProjectRoot-boardStatusErrorCount.swift in Sources */,
 				CF6D1273275FAAC6000F2BE6 /* AutoLayoutWindowContentView.swift in Sources */,
 				CF22F27A275A73EE009C6FAC /* struct-MergerSegmentArray.swift in Sources */,
+				CF3494A029EAB36F006AB1EB /* toone-BoardQRCode.swift in Sources */,
 				CFB7D8A22683A61C007B9D3B /* controller-array-AutoLayoutPackageDocument-mPackageObjectsController.swift in Sources */,
 				CFEB7AA6233A23270060A97A /* transient-BoardConnector-viaDefaultPadDiameter.swift in Sources */,
 				CFEB7CBE233A28860060A97A /* transient-ProjectRoot-borderOutlineBackground.swift in Sources */,
@@ -12252,6 +12421,7 @@
 				CFB7D76E26839B90007B9D3B /* transient-AutoLayoutSymbolDocument-statusMessage.swift in Sources */,
 				CF9F8BF42852689400E313C7 /* action-AutoLayoutMergerDocument-stackSelectionUpAction.swift in Sources */,
 				CF42D133275CF1A800B83712 /* action-AutoLayoutMergerDocument-dismissDisplaySettingView.swift in Sources */,
+				CF3494DD29EB2EE2006AB1EB /* tomany-RectangleEntity.swift in Sources */,
 				CF711D79275E1B0F00280069 /* extension-LabelInSchematic.swift in Sources */,
 				CFB7D8E12683A61D007B9D3B /* configurator-AutoLayoutPackageDocument-addPackageBezier.swift in Sources */,
 				CF512401222A8FD800FA4364 /* transient-PackageInDevice-selectionDisplay.swift in Sources */,
@@ -12346,6 +12516,7 @@
 				CF4EA9E626F6517800F01746 /* transient-ProjectRoot-inner3LayerTrackCountString.swift in Sources */,
 				CFEB7BBA233A27940060A97A /* transient-DeviceSymbolInstanceInProject-symbolTypeName.swift in Sources */,
 				CFDD6D6226A1B0F20050CB78 /* AutoLayoutCanariUnconnectedSymbolPadsInDeviceTableView.swift in Sources */,
+				CF3494AC29EAB36F006AB1EB /* property-QRCodeDescriptor.swift in Sources */,
 				CFDD6D4126A1B0F20050CB78 /* AutoLayoutCanariDimensionField.swift in Sources */,
 				CF59C43E29BE36AB004CA404 /* property-StringArray.swift in Sources */,
 				CFBEA960257965660032C2CA /* EBGraphicView-binding-foregroundImage.swift in Sources */,
@@ -12613,6 +12784,7 @@
 				CF39CCBC268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-performNCAction.swift in Sources */,
 				CF711DA5275E1B3500280069 /* tomany-NetInProject.swift in Sources */,
 				CF1C030E2754D8240013FEFA /* configurator-AutoLayoutFontDocument-fontGraphicView.swift in Sources */,
+				CF3494C229EAD537006AB1EB /* configurator-AutoLayoutProjectDocument-addQRCodeButton.swift in Sources */,
 				CF9C613325CABE5C00A00D5C /* transient-PointInSchematic-isConnected.swift in Sources */,
 				CF39CCD7268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-addSymbolFromLibraryAction.swift in Sources */,
 				CF59C43929BE36AB004CA404 /* property-NSRect.swift in Sources */,
@@ -12634,6 +12806,7 @@
 				CF9C614725CABE5C00A00D5C /* CanariSize.swift in Sources */,
 				CF59C40329BE36AB004CA404 /* property-SchematicPointStatus.swift in Sources */,
 				CF9C614825CABE5C00A00D5C /* transient-NetInProject-netClassViaHoleDiameter.swift in Sources */,
+				CF3494EA29EB31BB006AB1EB /* transient-BoardModel-frontLegendQRCodeRectangles.swift in Sources */,
 				CFD1EAAB274EE23B000AED8E /* document-AutoLayoutFontDocument.swift in Sources */,
 				CFB4C03B279465E700C509A9 /* AutoLayoutSheetDefaultOkButton.swift in Sources */,
 				CF9C614925CABE5C00A00D5C /* transient-ComponentInProject-errorOrWarningIssueSizeForComponent.swift in Sources */,
@@ -12878,6 +13051,7 @@
 				CF9C61F025CABE5C00A00D5C /* multiple-binding-controllers.swift in Sources */,
 				CFA0B7802779B907006E9309 /* transient-AutoLayoutProjectDocument-rastnetDisplayOneNet.swift in Sources */,
 				CFB7D8972683A61C007B9D3B /* transient-AutoLayoutPackageDocument-addDimensionButtonImage.swift in Sources */,
+				CF3494DB29EB2EE2006AB1EB /* toone-RectangleEntity.swift in Sources */,
 				CF9C61F125CABE5C00A00D5C /* CanariRect.swift in Sources */,
 				CFB7D8BE2683A61D007B9D3B /* configurator-AutoLayoutPackageDocument-addPackageDimension.swift in Sources */,
 				CF9C61F625CABE5C00A00D5C /* transient-DeviceInProject-sizeString.swift in Sources */,
@@ -12893,6 +13067,7 @@
 				CF9C620125CABE5C00A00D5C /* compute-BoardTrack-computedP1X.swift in Sources */,
 				CF9C620425CABE5C00A00D5C /* tomany-DeviceRoot.swift in Sources */,
 				CF9C1C2D279C6A3E0018CCDB /* AutoLayoutPopUpButton.swift in Sources */,
+				CF3494D629EB2CA8006AB1EB /* entity-RectangleEntity.swift in Sources */,
 				CF6C14FF287C915C004E3E2C /* configurator-AutoLayoutProjectDocument-moveSheetUp.swift in Sources */,
 				CF9C620525CABE5C00A00D5C /* EBGraphicView.swift in Sources */,
 				CF8CA2AD27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift in Sources */,
@@ -12929,6 +13104,7 @@
 				CF22F257275A73EE009C6FAC /* tomany-BoardModelPad.swift in Sources */,
 				CF9C622A25CABE5C00A00D5C /* transient-NetInProject-netClassTrackWidth.swift in Sources */,
 				CF9C622B25CABE5C00A00D5C /* Application.swift in Sources */,
+				CF3494A429EAB36F006AB1EB /* tomany-BoardQRCode.swift in Sources */,
 				CF841C4C275BB5FD0000EA26 /* action-AutoLayoutMergerDocument-showBoardHelpAction.swift in Sources */,
 				CF48F9982778F3DA00CEE944 /* transient-AutoLayoutProjectDocument-unplacedPackageCount.swift in Sources */,
 				CF9C622C25CABE5C00A00D5C /* phase2-download-file-list-for-commit.swift in Sources */,
@@ -13051,7 +13227,9 @@
 				CF50D0EA276740F500B35C59 /* transient-AutoLayoutProjectDocument-canRemoveSelectedDevices.swift in Sources */,
 				CF9C628825CABE5C00A00D5C /* transient-NetInProject-netClassName.swift in Sources */,
 				CFB1F95F2940EDDC00C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithRouterDocument.swift in Sources */,
+				CF3494AA29EAB36F006AB1EB /* transient-BoardQRCode-qrCodeDescriptor.swift in Sources */,
 				CF9C628925CABE5C00A00D5C /* file-format-text-utilities.swift in Sources */,
+				CF3494F229EB395E006AB1EB /* enum-BoardQRCodeLayer.swift in Sources */,
 				CF9C628A25CABE5C00A00D5C /* transient-SymbolTypeInDevice-versionString.swift in Sources */,
 				CF39CCCE268CC0B4004971F9 /* transient-AutoLayoutDeviceDocument-hasAssignedPadProxies.swift in Sources */,
 				CF49913328D8C9430099F871 /* enum-PadStyle.swift in Sources */,
@@ -13078,6 +13256,7 @@
 				CF49EEB6275A455E00481930 /* validation-FontRoot-currentCharacterCodePoint.swift in Sources */,
 				CF9C62A025CABE5C00A00D5C /* tomany-PackageModelImageDoublePoint.swift in Sources */,
 				CF39CCFE268CC0B4004971F9 /* transient-AutoLayoutDeviceDocument-statusMessage.swift in Sources */,
+				CF3494A729EAB36F006AB1EB /* enum-QRCodeCorrectionLevel.swift in Sources */,
 				CF9C62A525CABE5C00A00D5C /* open-device-in-library.swift in Sources */,
 				CF9C62A725CABE5C00A00D5C /* CanariPoint.swift in Sources */,
 				CF49C15525D13A030082271E /* transient-SymbolRoot-issues.swift in Sources */,
@@ -13121,6 +13300,7 @@
 				CFAEE80829BF2A0E00851F82 /* EBStoredProperty.swift in Sources */,
 				CFB8DDBC27A6DE030097DF9A /* AutoLayoutDateLabel.swift in Sources */,
 				CF9C62BF25CABE5C00A00D5C /* transient-PointInSchematic-connectedPoints.swift in Sources */,
+				CF3494D229EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift in Sources */,
 				CF1C03FE2754E1AE0013FEFA /* configurator-AutoLayoutFontDocument-fontPageSegmentedControl.swift in Sources */,
 				CF59C45D29BE36AB004CA404 /* property-NetInfoPoint.swift in Sources */,
 				CFB1F8F92940EDDB00C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutAnyDocument.swift in Sources */,
@@ -13307,6 +13487,7 @@
 				CF9C635725CABE5C00A00D5C /* transient-FontInProject-versionString.swift in Sources */,
 				CF8A8A7C275A439D00825DF9 /* CharacterGerberCodeClass.swift in Sources */,
 				CF9C635925CABE5C00A00D5C /* transient-ProjectRoot-boardInteriorRight.swift in Sources */,
+				CF34949E29EAB36E006AB1EB /* transient-BoardQRCode-signatureForERCChecking.swift in Sources */,
 				CFB1F8D52940EDDB00C1E120 /* action-AutoLayoutProjectDocument-appendNewInsertComponentInBoardInspectorAction.swift in Sources */,
 				CF22F266275A73EE009C6FAC /* toone-BoardModelVia.swift in Sources */,
 				CF54A0472770C9D200D978D9 /* configurator-AutoLayoutProjectDocument-boardOutlineBaseConfigurator.swift in Sources */,
@@ -13334,6 +13515,8 @@
 				CFB8DDB427A6CFF20097DF9A /* Preferences-SuperClass.swift in Sources */,
 				CF04FCD327677CEA0062DF89 /* AutoLayoutCanariProjectDeviceTableView.swift in Sources */,
 				CF50D1E227675B4500B35C59 /* AutoLayoutCanariProjectPinPadAssignmentTableView.swift in Sources */,
+				CF3494CF29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift in Sources */,
+				CF3494EE29EB35B9006AB1EB /* transient-BoardModel-backLegendQRCodeRectangles.swift in Sources */,
 				CFB1F9862940F0A300C1E120 /* action-AutoLayoutProjectDocument-prependNewBoardDisplayInspectorAction.swift in Sources */,
 				CF59C40929BE36AB004CA404 /* property-MergerViaShapeArray.swift in Sources */,
 				CF49910028D8C9430099F871 /* enum-PadShape-extension.swift in Sources */,
@@ -13409,6 +13592,7 @@
 				CFEC04292945E4C80034D365 /* extension-SymbolInstanceInDevice.swift in Sources */,
 				CF39CCB6268CC0B3004971F9 /* selectionController-AutoLayoutDeviceDocument-symbolTypeSelection.swift in Sources */,
 				CF9C63A725CABE5C00A00D5C /* transient-ProjectRoot-boardLimitBorderBottom.swift in Sources */,
+				CF3494CA29EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift in Sources */,
 				CF3558D7279D6B4B000BFC9B /* selectionController-AutoLayoutProjectDocument-ncInSchematicSelectionController.swift in Sources */,
 				CFF858972687C201001B868C /* transient-AutoLayoutArtworkDocument-generatedFileCountString.swift in Sources */,
 				CF22F1C7275A73ED009C6FAC /* transient-BoardModel-inner2TracksSegments.swift in Sources */,
@@ -13450,6 +13634,7 @@
 				CF711FFF275E1EA300280069 /* extension-SheetInProject-add-point-to-wire.swift in Sources */,
 				CFB7D8882683A61C007B9D3B /* transient-AutoLayoutPackageDocument-addBezierButtonImage.swift in Sources */,
 				CF9C63D325CABE5C00A00D5C /* transient-BoardTrack-signatureForERCChecking.swift in Sources */,
+				CF3494E629EB30EA006AB1EB /* property-MergerRectangleArray.swift in Sources */,
 				CF68BC7B26A08907009CAFA3 /* AutoLayoutProgressIndicator.swift in Sources */,
 				CF712002275E1EA300280069 /* extension-SheetInProject-add-nc.swift in Sources */,
 				CF711CEB275E1A6200280069 /* toone-BorderCurve.swift in Sources */,
@@ -13561,6 +13746,7 @@
 				CF071E82275B8A1E00FF2772 /* transient-AutoLayoutMergerDocument-boardDispositionStatusTitle.swift in Sources */,
 				CF22F1EE275A73ED009C6FAC /* transient-BoardModel-frontPadArray.swift in Sources */,
 				CFB7D84C2683A61C007B9D3B /* transient-AutoLayoutPackageDocument-metadataStatus.swift in Sources */,
+				CF3494BA29EAB3B1006AB1EB /* QRCodeDescriptor.swift in Sources */,
 				CF9C641325CABE5C00A00D5C /* transient-PackageZone-emptyForbiddenPadArray.swift in Sources */,
 				CF49C12125D13A030082271E /* transient-SymbolOval-objectDisplay.swift in Sources */,
 				CF9C641825CABE5C00A00D5C /* EBGraphicView-binding-verticalFlip.swift in Sources */,
@@ -13693,6 +13879,7 @@
 				CF62187D27A1A3E900D02368 /* configurator-Preferences-automaticallyCheckForUpdatesConfigurator.swift in Sources */,
 				CFB7D73F26839B90007B9D3B /* transient-AutoLayoutSymbolDocument-addTextButtonImage.swift in Sources */,
 				CFB1F8F32940EDDB00C1E120 /* action-AutoLayoutProjectDocument-moveSelectedToSheetInSchematicsAction.swift in Sources */,
+				CF3494B629EAB36F006AB1EB /* entity-BoardQRCode.swift in Sources */,
 				CFB1F9962940F44600C1E120 /* action-AutoLayoutProjectDocument-prependNewBoardERCCheckingInspectorAction.swift in Sources */,
 				CF711E18275E1C8D00280069 /* extension-PackagePad.swift in Sources */,
 				CF711D70275E1AFA00280069 /* tomany-FontInProject.swift in Sources */,
@@ -13700,12 +13887,14 @@
 				CF9C648325CABE5C00A00D5C /* transient-BoardConnector-objectDisplay.swift in Sources */,
 				CF62176627A19E4E00D02368 /* action-Preferences-checkLibraryAction.swift in Sources */,
 				CFB1F8DB2940EDDB00C1E120 /* action-AutoLayoutProjectDocument-revealPackageOfSelectedComponentsAction.swift in Sources */,
+				CF3494B029EAB36F006AB1EB /* transient-BoardQRCode-objectDisplay.swift in Sources */,
 				CF86416029D05FDE0004A295 /* transient-ProjectRoot-ercStatusImageOrNoneOnSuccess.swift in Sources */,
 				CF49910328D8C9430099F871 /* enum-HorizontalAlignment-extension.swift in Sources */,
 				CF04FAEF276773F80062DF89 /* transient-AutoLayoutProjectDocument-selectedDevicePackageNames.swift in Sources */,
 				CF3B26A7278090530084F07C /* AutoLayoutViewWithBackground.swift in Sources */,
 				CF56026F279324C700479AB6 /* selectionController-AutoLayoutProjectDocument-boardConnectorSelectionController.swift in Sources */,
 				CF49C12C25D13A030082271E /* transient-SymbolSegment-selectionDisplay.swift in Sources */,
+				CF3494BE29EAD288006AB1EB /* extension-BoardQRCode.swift in Sources */,
 				CF8A78CD268B988B00B819DE /* AutoLayoutDroppableImageView.swift in Sources */,
 				CF711CAB275E1A2E00280069 /* toone-BoardObject.swift in Sources */,
 				CF9C648725CABE5C00A00D5C /* tomany-SlavePadInDevice.swift in Sources */,
@@ -13739,6 +13928,7 @@
 				CFDD6D5A26A1B0F20050CB78 /* AutoLayoutCanariPadRenumberPullDownButton.swift in Sources */,
 				CFB1F90E2940EDDB00C1E120 /* action-AutoLayoutProjectDocument-generateProductFilesAction.swift in Sources */,
 				CFB1F93E2940EDDC00C1E120 /* action-AutoLayoutProjectDocument-resetSelectedDeviceVersionAction.swift in Sources */,
+				CF3494B329EAB36F006AB1EB /* transient-BoardQRCode-selectionDisplay.swift in Sources */,
 				CF711DB4275E1B4000280069 /* tomany-PointInSchematic.swift in Sources */,
 				CF93324C294DFC1D00A37C3E /* debug-drag-and-drop.swift in Sources */,
 				CF9C649C25CABE5C00A00D5C /* transient-ProjectRoot-unplacedPackages.swift in Sources */,
@@ -13808,6 +13998,7 @@
 				CFDD6D4526A1B0F20050CB78 /* AutoLayoutCanariHorizontalAlignmentSegmentedControl.swift in Sources */,
 				CF86B56729CF6ACF00E543BB /* transient-ProjectRoot-boardStatusErrorCount.swift in Sources */,
 				CF9C64D325CABE5C00A00D5C /* transient-PackagePad-objectDisplay.swift in Sources */,
+				CF3494A129EAB36F006AB1EB /* toone-BoardQRCode.swift in Sources */,
 				CF9C64D525CABE5C00A00D5C /* toone-SlavePadInDevice.swift in Sources */,
 				CF9C64D825CABE5C00A00D5C /* toone-PackageZone.swift in Sources */,
 				CF22F19D275A73ED009C6FAC /* entity-BoardModelPad.swift in Sources */,
@@ -13869,6 +14060,7 @@
 				CF9F8BF22852689400E313C7 /* action-AutoLayoutMergerDocument-stackSelectionRightAction.swift in Sources */,
 				CF9C650C25CABE5C00A00D5C /* transient-PackageInDevice-selectionDisplay.swift in Sources */,
 				CF9F8BF52852689400E313C7 /* action-AutoLayoutMergerDocument-stackSelectionUpAction.swift in Sources */,
+				CF3494DE29EB2EE2006AB1EB /* tomany-RectangleEntity.swift in Sources */,
 				CF49C15B25D13A030082271E /* transient-SymbolPin-issues.swift in Sources */,
 				CF22F212275A73EE009C6FAC /* transient-BoardModel-inner3TracksSegments.swift in Sources */,
 				CF9C650F25CABE5C00A00D5C /* enum-RouteOrigin.swift in Sources */,
@@ -13963,6 +14155,7 @@
 				CF9C654E25CABE5C00A00D5C /* transient-PackageZone-issues.swift in Sources */,
 				CFB7D8702683A61C007B9D3B /* action-AutoLayoutPackageDocument-loadDIL16ModelImageFromResourcesAction.swift in Sources */,
 				CF4EA9E726F6517800F01746 /* transient-ProjectRoot-inner3LayerTrackCountString.swift in Sources */,
+				CF3494AD29EAB36F006AB1EB /* property-QRCodeDescriptor.swift in Sources */,
 				CF9C654F25CABE5C00A00D5C /* open-symbol-in-library.swift in Sources */,
 				CF59C43F29BE36AB004CA404 /* property-StringArray.swift in Sources */,
 				CFF79DE82846174000C7BEE3 /* transient-BoardObject-displayInner1RestrictRectangles.swift in Sources */,

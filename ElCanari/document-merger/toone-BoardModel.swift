@@ -32,6 +32,8 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       oldValue.errorArchiveLabelSize_property.stopsBeingObserved (by: self.errorArchiveLabelSize_property) // Transient property
       oldValue.errorArchiveLabelColor_property.stopsBeingObserved (by: self.errorArchiveLabelColor_property) // Transient property
       oldValue.errorArchiveVersionMessageIsHidden_property.stopsBeingObserved (by: self.errorArchiveVersionMessageIsHidden_property) // Transient property
+      oldValue.frontLegendQRCodeRectangles_property.stopsBeingObserved (by: self.frontLegendQRCodeRectangles_property) // Transient property
+      oldValue.backLegendQRCodeRectangles_property.stopsBeingObserved (by: self.backLegendQRCodeRectangles_property) // Transient property
       oldValue.layerConfigurationString_property.stopsBeingObserved (by: self.layerConfigurationString_property) // Transient property
       oldValue.frontLegendLinesSegments_property.stopsBeingObserved (by: self.frontLegendLinesSegments_property) // Transient property
       oldValue.backLegendLinesSegments_property.stopsBeingObserved (by: self.backLegendLinesSegments_property) // Transient property
@@ -85,6 +87,12 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       oldValue.frontLegendLinesBezierPaths_property.stopsBeingObserved (by: self.frontLegendLinesBezierPaths_property) // Transient property
       oldValue.imageForModel_property.stopsBeingObserved (by: self.imageForModel_property) // Transient property
       oldValue.imageForInstances_property.stopsBeingObserved (by: self.imageForInstances_property) // Transient property
+      if let relay = self.mObserversOf_legendFrontQRCodes { // to Many
+        oldValue.legendFrontQRCodes_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_legendBackQRCodes { // to Many
+        oldValue.legendBackQRCodes_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_frontLegendLines { // to Many
         oldValue.frontLegendLines_property.stopsBeingObserved (by: relay)
       }
@@ -179,6 +187,8 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       newValue.errorArchiveLabelSize_property.startsToBeObserved (by: self.errorArchiveLabelSize_property) // Transient property
       newValue.errorArchiveLabelColor_property.startsToBeObserved (by: self.errorArchiveLabelColor_property) // Transient property
       newValue.errorArchiveVersionMessageIsHidden_property.startsToBeObserved (by: self.errorArchiveVersionMessageIsHidden_property) // Transient property
+      newValue.frontLegendQRCodeRectangles_property.startsToBeObserved (by: self.frontLegendQRCodeRectangles_property) // Transient property
+      newValue.backLegendQRCodeRectangles_property.startsToBeObserved (by: self.backLegendQRCodeRectangles_property) // Transient property
       newValue.layerConfigurationString_property.startsToBeObserved (by: self.layerConfigurationString_property) // Transient property
       newValue.frontLegendLinesSegments_property.startsToBeObserved (by: self.frontLegendLinesSegments_property) // Transient property
       newValue.backLegendLinesSegments_property.startsToBeObserved (by: self.backLegendLinesSegments_property) // Transient property
@@ -232,6 +242,12 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       newValue.frontLegendLinesBezierPaths_property.startsToBeObserved (by: self.frontLegendLinesBezierPaths_property) // Transient property
       newValue.imageForModel_property.startsToBeObserved (by: self.imageForModel_property) // Transient property
       newValue.imageForInstances_property.startsToBeObserved (by: self.imageForInstances_property) // Transient property
+      if let relay = self.mObserversOf_legendFrontQRCodes { // to Many
+        newValue.legendFrontQRCodes_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_legendBackQRCodes { // to Many
+        newValue.legendBackQRCodes_property.startsToBeObserved (by: relay)
+      }
       if let relay = self.mObserversOf_frontLegendLines { // to Many
         newValue.frontLegendLines_property.startsToBeObserved (by: relay)
       }
@@ -405,6 +421,18 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let errorArchiveVersionMessageIsHidden_property = EBTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'frontLegendQRCodeRectangles' transient property
+  //····················································································································
+
+  final let frontLegendQRCodeRectangles_property = EBTransientProperty <MergerRectangleArray?> ()
+
+  //····················································································································
+  //   Observers of 'backLegendQRCodeRectangles' transient property
+  //····················································································································
+
+  final let backLegendQRCodeRectangles_property = EBTransientProperty <MergerRectangleArray?> ()
 
   //····················································································································
   //   Observers of 'layerConfigurationString' transient property
@@ -723,6 +751,58 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let imageForInstances_property = EBTransientProperty <EBShape?> ()
+
+  //····················································································································
+  //   Observable toMany property: legendFrontQRCodes
+  //····················································································································
+
+  private final var mObserversOf_legendFrontQRCodes : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_legendFrontQRCodes_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_legendFrontQRCodes {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.mWeakInternalValue?.legendFrontQRCodes_property.startsToBeObserved (by: relay)
+      self.mObserversOf_legendFrontQRCodes = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_legendFrontQRCodes_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_legendFrontQRCodes?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observable toMany property: legendBackQRCodes
+  //····················································································································
+
+  private final var mObserversOf_legendBackQRCodes : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_legendBackQRCodes_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_legendBackQRCodes {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.mWeakInternalValue?.legendBackQRCodes_property.startsToBeObserved (by: relay)
+      self.mObserversOf_legendBackQRCodes = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_legendBackQRCodes_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_legendBackQRCodes?.stopsBeingObserved (by: inObserver)
+  }
 
   //····················································································································
   //   Observable toMany property: frontLegendLines
@@ -1443,6 +1523,14 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //--- Configure errorArchiveVersionMessageIsHidden transient property
     self.errorArchiveVersionMessageIsHidden_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.errorArchiveVersionMessageIsHidden_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure frontLegendQRCodeRectangles transient property
+    self.frontLegendQRCodeRectangles_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.frontLegendQRCodeRectangles_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure backLegendQRCodeRectangles transient property
+    self.backLegendQRCodeRectangles_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.backLegendQRCodeRectangles_property.optionalSelection ?? .single (nil)
     }
   //--- Configure layerConfigurationString transient property
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in

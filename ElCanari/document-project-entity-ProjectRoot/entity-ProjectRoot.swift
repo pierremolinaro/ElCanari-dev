@@ -66,6 +66,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol ProjectRoot_mBoardLayerForNewQRCode : AnyObject {
+  var mBoardLayerForNewQRCode : BoardQRCodeLayer { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol ProjectRoot_mBoardLayerForNewLine : AnyObject {
   var mBoardLayerForNewLine : BoardLineLayer { get }
 }
@@ -1051,6 +1057,7 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_mBoardSideForNewTrack,
          ProjectRoot_mDirectionForNewTrack,
          ProjectRoot_mBoardLayerForNewText,
+         ProjectRoot_mBoardLayerForNewQRCode,
          ProjectRoot_mBoardLayerForNewLine,
          ProjectRoot_mBoardSideForNewRestrictRectangle,
          ProjectRoot_mNewRestrictRectangleLayers,
@@ -1402,6 +1409,25 @@ final class ProjectRoot : EBManagedObject,
   final var mBoardLayerForNewText : BoardTextLayer {
     get { return self.mBoardLayerForNewText_property.propval }
     set { self.mBoardLayerForNewText_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mBoardLayerForNewQRCode
+  //····················································································································
+
+  final let mBoardLayerForNewQRCode_property : EBStoredProperty_BoardQRCodeLayer
+
+  //····················································································································
+
+  final func reset_mBoardLayerForNewQRCode_toDefaultValue () {
+    self.mBoardLayerForNewQRCode = BoardQRCodeLayer.legendFront
+  }
+
+  //····················································································································
+
+  final var mBoardLayerForNewQRCode : BoardQRCodeLayer {
+    get { return self.mBoardLayerForNewQRCode_property.propval }
+    set { self.mBoardLayerForNewQRCode_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -4272,6 +4298,7 @@ final class ProjectRoot : EBManagedObject,
     self.mBoardSideForNewTrack_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front, undoManager: inUndoManager, key: "mBoardSideForNewTrack")
     self.mDirectionForNewTrack_property = EBStoredProperty_TrackCreationDirection (defaultValue: TrackCreationDirection.anyAngle, undoManager: inUndoManager, key: "mDirectionForNewTrack")
     self.mBoardLayerForNewText_property = EBStoredProperty_BoardTextLayer (defaultValue: BoardTextLayer.legendFront, undoManager: inUndoManager, key: "mBoardLayerForNewText")
+    self.mBoardLayerForNewQRCode_property = EBStoredProperty_BoardQRCodeLayer (defaultValue: BoardQRCodeLayer.legendFront, undoManager: inUndoManager, key: "mBoardLayerForNewQRCode")
     self.mBoardLayerForNewLine_property = EBStoredProperty_BoardLineLayer (defaultValue: BoardLineLayer.legendFront, undoManager: inUndoManager, key: "mBoardLayerForNewLine")
     self.mBoardSideForNewRestrictRectangle_property = EBStoredProperty_RestrictRectangleLayer (defaultValue: RestrictRectangleLayer.frontSide, undoManager: inUndoManager, key: "mBoardSideForNewRestrictRectangle")
     self.mNewRestrictRectangleLayers_property = EBStoredProperty_Int (defaultValue: 1, undoManager: inUndoManager, key: "mNewRestrictRectangleLayers")

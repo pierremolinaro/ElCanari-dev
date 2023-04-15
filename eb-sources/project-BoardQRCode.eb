@@ -1,0 +1,56 @@
+//——————————————————————————————————————————————————————————————————————————————
+//   BoardText
+//——————————————————————————————————————————————————————————————————————————————
+
+graphic handlingOpposite entity BoardQRCode : BoardObject {
+  graphic canCopyAndPaste ;
+
+  property Int mCenterX default 0 ;
+  property Int mXUnit default 2_286 ; // mil
+  property Int mCenterY default 0 ;
+  property Int mYUnit default 2_286 ; // mil
+  property Int mMinWidthUnit default 31_750 ; // pixel
+  property Int mMinHeightUnit default 31_750 ; // pixel
+
+  property BoardQRCodeLayer mLayer default legendFront ;
+  property String mText default "" ;
+  property QRCodeCorrectionLevel mCorrectionLevel default quality ;
+
+  property Int mRotation default 0 ; // 1000 --> 1°
+
+  transient QRCodeDescriptor qrCodeDescriptor dependsFrom self.mText, self.mCorrectionLevel ;
+    
+  transient Int minWidthInCanariUnit dependsFrom self.qrCodeDescriptor ;
+  transient Int minHeightInCanariUnit dependsFrom self.qrCodeDescriptor ;
+    
+  override transient EBShape objectDisplay dependsFrom
+    self.mCenterX, self.mCenterY, self.qrCodeDescriptor,
+    self.mLayer, self.mRotation,
+    super.BoardObject.displayFrontLegendForBoard default yes,
+    super.BoardObject.displayBackLegendForBoard default yes,
+    super.BoardObject.displayFrontLayoutForBoard default yes,
+    super.BoardObject.displayBackLayoutForBoard default yes,
+    prefs.frontSideLegendColorForBoard,
+    prefs.frontSideLayoutColorForBoard,
+    prefs.backSideLayoutColorForBoard,
+    prefs.backSideLegendColorForBoard
+  ;
+
+  override transient EBShape selectionDisplay dependsFrom
+    self.mCenterX, self.mCenterY, self.qrCodeDescriptor,
+    self.mLayer, self.mRotation,
+    prefs.frontSideLegendColorForBoard,
+    prefs.frontSideLayoutColorForBoard,
+    prefs.backSideLayoutColorForBoard,
+    prefs.backSideLegendColorForBoard,
+    prefs.hiliteWidthMultipliedByTen,
+    prefs.mShowTextRotationKnobInBoard
+  ;
+
+  override transient UInt32 signatureForERCChecking dependsFrom
+    self.mLayer, self.mCenterX, self.mCenterY,
+    self.mText, self.mCorrectionLevel,
+    self.mRotation ;
+}
+
+//——————————————————————————————————————————————————————————————————————————————

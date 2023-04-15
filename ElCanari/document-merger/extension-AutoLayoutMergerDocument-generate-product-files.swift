@@ -139,6 +139,8 @@ extension AutoLayoutMergerDocument {
     var frontLayoutTexts = [String] ()
     var backLegendTexts = [String] ()
     var frontLegendTexts = [String] ()
+    var backLegendQRCodes = [String] ()
+    var frontLegendQRCodes = [String] ()
     var backTracks = [String] ()
     var inner1Tracks = [String] ()
     var inner2Tracks = [String] ()
@@ -181,6 +183,22 @@ extension AutoLayoutMergerDocument {
        modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
       myModel?.frontLegendTextsSegments?.add (toArchiveArray: &frontLegendTexts, dx: board.x, dy: board.y,
        modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.frontLegendQRCodeRectangles?.add (
+        toArchiveArray: &frontLegendQRCodes,
+        dx: board.x,
+        dy: board.y,
+        modelWidth: modelWidth,
+        modelHeight: modelHeight,
+        instanceRotation: instanceRotation
+      )
+      myModel?.backLegendQRCodeRectangles?.add (
+        toArchiveArray: &backLegendQRCodes,
+        dx: board.x,
+        dy: board.y,
+        modelWidth: modelWidth,
+        modelHeight: modelHeight,
+        instanceRotation: instanceRotation
+      )
       myModel?.backTrackSegments?.add (
         toArchiveArray: &backTracks,
         dx: board.x,
@@ -347,17 +365,19 @@ extension AutoLayoutMergerDocument {
       case .twoLayers :
         ()
       case .fourLayers :
-        archiveDict ["PADS-TRAVERSING"] = traversingPads // .sorted ()
+        archiveDict ["PADS-TRAVERSING"] = traversingPads
         archiveDict ["TRACKS-INNER1"] = inner1Tracks.sorted ()
         archiveDict ["TRACKS-INNER2"] = inner2Tracks.sorted ()
       case .sixLayers :
-        archiveDict ["PADS-TRAVERSING"] = traversingPads // .sorted ()
+        archiveDict ["PADS-TRAVERSING"] = traversingPads
         archiveDict ["TRACKS-INNER1"] = inner1Tracks.sorted ()
         archiveDict ["TRACKS-INNER2"] = inner2Tracks.sorted ()
         archiveDict ["TRACKS-INNER3"] = inner3Tracks.sorted ()
         archiveDict ["TRACKS-INNER4"] = inner4Tracks.sorted ()
       }
     }
+    archiveDict ["QRCODES-LEGEND-FRONT"] = frontLegendQRCodes
+    archiveDict ["QRCODES-LEGEND-BACK"] = backLegendQRCodes
     archiveDict ["INTERNAL-BOARDS-LIMITS"] = internalBoardsLimits // DO NOT SORT
     archiveDict ["COMPONENT-NAMES-BACK"] = backComponentNames.sorted ()
     archiveDict ["COMPONENT-NAMES-FRONT"] = frontComponentNames.sorted ()
@@ -377,6 +397,8 @@ extension AutoLayoutMergerDocument {
     archiveDict ["TRACKS-FRONT"] = frontTracks.sorted ()
     archiveDict ["VIAS"] = vias.sorted ()
     archiveDict ["DRILLS"] = drills.sorted ()
+  //--- Add version
+    archiveDict ["ARCHIVE-VERSION"] = MERGER_ARCHIVE_VERSION
     // NSLog ("ARCHIVE \(archiveDict)")
   //--- Write file
     let data : Data = try PropertyListSerialization.data (

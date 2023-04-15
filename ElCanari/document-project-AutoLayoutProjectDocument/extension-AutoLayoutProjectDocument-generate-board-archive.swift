@@ -45,6 +45,8 @@ extension AutoLayoutProjectDocument {
     addTracks (&boardArchive, inProductData.tracks [.back, default: []], "TRACKS-BACK", af)
     addTracks (&boardArchive, inProductData.tracks [.front, default: []], "TRACKS-FRONT", af)
     addCircles (&boardArchive, inProductData.viaPads, "VIAS", af)
+    addRectangles (&boardArchive, inProductData.legendFrontQRCodes, "QRCODES-LEGEND-FRONT", af)
+    addRectangles (&boardArchive, inProductData.legendBackQRCodes, "QRCODES-LEGEND-BACK", af)
   //--- Add inner objects ?
     switch self.rootObject.mLayerConfiguration {
     case .twoLayers :
@@ -274,6 +276,25 @@ fileprivate func padDictionary (_ inCenter : CanariPoint,
     "Y" : center.y
   ]
   return padDict
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func addRectangles (_ ioBoardArchive : inout [String : Any],
+                                _ inRectArray : [ProductRectangle],
+                                _ inKey : String,
+                                _ inAffineTransform : AffineTransform) {
+   var stringArray = [String] ()
+   for rect in inRectArray {
+     let p0 = inAffineTransform.transform (rect.p0).canariPoint
+     let p1 = inAffineTransform.transform (rect.p1).canariPoint
+     let p2 = inAffineTransform.transform (rect.p2).canariPoint
+     let p3 = inAffineTransform.transform (rect.p3).canariPoint
+
+     let s = "\(p0.x):\(p0.y):\(p1.x):\(p1.y):\(p2.x):\(p2.y):\(p3.x):\(p3.y)"
+     stringArray.append (s)
+   }
+   ioBoardArchive [inKey] = stringArray.sorted ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

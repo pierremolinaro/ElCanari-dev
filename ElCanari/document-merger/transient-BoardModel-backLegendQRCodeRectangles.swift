@@ -13,35 +13,29 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension AutoLayoutProjectDocument {
-  final func configure_boardView (_ inOutlet : AutoLayoutGraphicView) {
+@MainActor func transient_BoardModel_backLegendQRCodeRectangles (
+       _ self_legendBackQRCodes_p0x : [RectangleEntity_p0x],     
+       _ self_legendBackQRCodes_p0y : [RectangleEntity_p0y],     
+       _ self_legendBackQRCodes_p1x : [RectangleEntity_p1x],     
+       _ self_legendBackQRCodes_p1y : [RectangleEntity_p1y],     
+       _ self_legendBackQRCodes_p2x : [RectangleEntity_p2x],     
+       _ self_legendBackQRCodes_p2y : [RectangleEntity_p2y],     
+       _ self_legendBackQRCodes_p3x : [RectangleEntity_p3x],     
+       _ self_legendBackQRCodes_p3y : [RectangleEntity_p3y]
+) -> MergerRectangleArray {
 //--- START OF USER ZONE 2
-  //--- Set document to scroll view for enabling drag and drop of components
-     inOutlet.mScrollView?.register (document: self)
-     inOutlet.mGraphicView.register (
-       draggedTypes: [kDragAndDropRestrictRectangle, kDragAndDropBoardText, kDragAndDropBoardQRCode, kDragAndDropBoardPackage, kDragAndDropBoardLine, kDragAndDropBoardTrack]
-     )
-     inOutlet.mGraphicView.setUsesOptionKeyForDuplicatingSelectedObjects (false)
-  //--- Option click for creating track
-     inOutlet.mGraphicView.mHelperStringForOptionModifier = "SHIFT: mouse down starts a new track"
-     inOutlet.mGraphicView.setOptionMouseCallbacks (
-       start: { [weak self] (inUnalignedMouseLocation) in return self?.startTrackCreationOnOptionMouseDown (at: inUnalignedMouseLocation) ?? false },
-       continue: { [weak self] (inUnalignedMouseLocation, inModifierFlags) in self?.continueTrackCreationOnOptionMouseDragged (at: inUnalignedMouseLocation, inModifierFlags) },
-       abort: { [weak self] in self?.abortTrackCreationOnOptionMouseUp () },
-       helper: { [weak self] (inModifierFlags) in self?.helperStringForTrackCreation (inModifierFlags) },
-       stop: { [weak self] (inUnalignedMouseLocation) in self?.stopTrackCreationOnOptionMouseUp (at: inUnalignedMouseLocation) ?? false }
-     )
-     inOutlet.mGraphicView.mDrawFrameIssue = false
-  //--- Contextual menu
-     inOutlet.mGraphicView.mContextualMenuBuilder = { [weak self] in return self?.populateContextualClickOnBoard ($0) }
-  //----
-    inOutlet.mGraphicView.setMouseMovedOrFlagsChangedCallback { [weak self] (unalignedMouseLocation) in
-      self?.mouseMovedOrFlagsChangedInBoard (unalignedMouseLocation)
-    }
-  //--- Pasteboard
-    inOutlet.mGraphicView.register (pasteboardType: BOARD_PASTEBOARD_TYPE)
+        var result = MergerRectangleArray ()
+        var idx = 0
+        while idx < self_legendBackQRCodes_p0x.count {
+          let p0 = CanariPoint (x: self_legendBackQRCodes_p0x [idx].p0x, y: self_legendBackQRCodes_p0y [idx].p0y).cocoaPoint
+          let p1 = CanariPoint (x: self_legendBackQRCodes_p1x [idx].p1x, y: self_legendBackQRCodes_p1y [idx].p1y).cocoaPoint
+          let p2 = CanariPoint (x: self_legendBackQRCodes_p2x [idx].p2x, y: self_legendBackQRCodes_p2y [idx].p2y).cocoaPoint
+          let p3 = CanariPoint (x: self_legendBackQRCodes_p3x [idx].p3x, y: self_legendBackQRCodes_p3y [idx].p3y).cocoaPoint
+          result.append (ProductRectangle (p0: p0, p1: p1, p2: p2, p3: p3))
+          idx += 1
+        }
+        return result
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

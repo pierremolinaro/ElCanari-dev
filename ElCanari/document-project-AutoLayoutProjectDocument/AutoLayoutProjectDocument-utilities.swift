@@ -22,6 +22,7 @@ let SCHEMATIC_PASTEBOARD_TYPE = NSPasteboard.PasteboardType (rawValue: "name.pcm
 
 let kDragAndDropRestrictRectangle = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.restrict.rectangle")
 let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.text")
+let kDragAndDropBoardQRCode = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.qrcode")
 let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.package")
 let kDragAndDropBoardLine = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.line")
 let kDragAndDropBoardTrack = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.track")

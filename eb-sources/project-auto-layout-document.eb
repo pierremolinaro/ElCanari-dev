@@ -1305,6 +1305,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         DragSourceButtonWithMenus (tooltip: "Add Text in Board; the layer is set by the contextual menu.") [configurator addTextButton]
         space
         DragSourceButtonWithMenus (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.") [configurator addTrackButton]
+        space
+        DragSourceButtonWithMenus (tooltip: "Add QR Code in Board; the layer is set by the contextual menu.") [configurator addQRCodeButton]
       }
       vStack {
         hStack set (leftMargin: 8) set (rightMargin: 8) {
@@ -1744,6 +1746,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     newView boardLineInspectorView = \BoardLineInspectorView ()
     newView restrictRectangleInspectorView = \RestrictRectangleInspectorView ()
     newView boardTextInspectorView = \BoardTextInspectorView ()
+    newView boardQRCodeInspectorView = \BoardQRCodeInspectorView ()
     newView componentInBoardInspectorView = \ComponentInBoardInspectorView ()
     ObjectInspectorView {
       addObjectInspector (forEntity: entity BoardTrack, inspectorView: view boardTrackInspectorView)
@@ -1751,6 +1754,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       addObjectInspector (forEntity: entity BoardLine, inspectorView: view boardLineInspectorView)
       addObjectInspector (forEntity: entity BoardRestrictRectangle, inspectorView: view restrictRectangleInspectorView)
       addObjectInspector (forEntity: entity BoardText, inspectorView: view boardTextInspectorView)
+      addObjectInspector (forEntity: entity BoardQRCode, inspectorView: view boardQRCodeInspectorView)
       addObjectInspector (forEntity: entity ComponentInProject, inspectorView: view componentInBoardInspectorView)
       $graphicController #boardObjectsController
     }
@@ -2032,11 +2036,67 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     space
   }
 
+//--- QRCode inspector
+  selectionController BoardQRCode #boardQRCodeSelectionController :
+    #boardObjectsController.selectedArray
+  ;
+
+  stackView \BoardQRCodeInspectorView vStack {
+    StaticLabel (title: "QRCode Inspector", bold: yes, size: .small, alignment: .center)
+    StaticLabel (title: "Contents", bold: no, size: .small, alignment: .center)
+    TextField (minWidth: 150, size: .small) {
+      automaticallyAdjustHeight (maxWidth: 150)
+      $value #boardQRCodeSelectionController.mText (sendContinously : yes)
+    }
+    GridView2 {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Correction Level", bold: no, size: .small, alignment: .right),
+        right: EnumPopUpButton (titles: enum QRCodeCorrectionLevel.popupTitles, size: .small) { $selectedIndex #boardQRCodeSelectionController.mCorrectionLevel } 
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Min Width", bold: no, size: .small, alignment: .right),
+        right: CanariObservedDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardQRCodeSelectionController.minWidthInCanariUnit, #boardQRCodeSelectionController.mMinWidthUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Min Height", bold: no, size: .small, alignment: .right),
+        right: CanariObservedDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardQRCodeSelectionController.minHeightInCanariUnit, #boardQRCodeSelectionController.mMinHeightUnit
+        }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Side", bold: no, size: .small, alignment: .right),
+        right: EnumPopUpButton (titles: enum BoardQRCodeLayer.popupTitles, size: .small) { $selectedIndex #boardQRCodeSelectionController.mLayer } 
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
+        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #boardQRCodeSelectionController.mRotation }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Center X", bold: no, size: .small, alignment: .right),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardQRCodeSelectionController.mCenterX, #boardQRCodeSelectionController.mXUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Center Y", bold: no, size: .small, alignment: .right),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardQRCodeSelectionController.mCenterY, #boardQRCodeSelectionController.mYUnit
+        }
+      )
+    }
+    space
+  }
+
 //--- Text inspector
   selectionController BoardText #boardTextSelectionController :
     #boardObjectsController.selectedArray
   ;
-
+  
   stackView \BoardTextInspectorView vStack {
     StaticLabel (title: "Text Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {

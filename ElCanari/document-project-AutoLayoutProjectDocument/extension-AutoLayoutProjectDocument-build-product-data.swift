@@ -23,6 +23,7 @@ extension AutoLayoutProjectDocument {
     let (frontComponentNames, backComponentNames) = self.buildComponentNamePathes ()
     let (frontComponentValues, backComponentValues) = self.buildComponentValuePathes ()
     let (legendFrontTexts, layoutFrontTexts, layoutBackTexts, legendBackTexts) = self.buildTextPathes ()
+    let (legendFrontQRCodes, legendBackQRCodes) = self.buildQRCodePathes ()
     let viaPads = self.buildViaPads ()
     let tracks = self.buildTracks ()
     let (frontLines, backLines) = self.buildLines ()
@@ -45,6 +46,8 @@ extension AutoLayoutProjectDocument {
       layoutFrontTexts: layoutFrontTexts,
       layoutBackTexts: layoutBackTexts,
       legendBackTexts: legendBackTexts,
+      legendFrontQRCodes: legendFrontQRCodes,
+      legendBackQRCodes: legendBackQRCodes,
       viaPads: viaPads,
       tracks: tracks,
       frontLines: frontLines,
@@ -336,6 +339,32 @@ extension AutoLayoutProjectDocument {
       }
     }
     return (legendFrontTexts, layoutFrontTexts, layoutBackTexts, legendBackTexts)
+  }
+
+  //····················································································································
+
+  private func buildQRCodePathes () -> ([ProductRectangle], [ProductRectangle]) {
+    var legendFront = [ProductRectangle] ()
+    var legendBack = [ProductRectangle] ()
+    for object in self.rootObject.mBoardObjects.values {
+      if let qrCode = object as? BoardQRCode, let descriptor = qrCode.qrCodeDescriptor {
+        let displayInfos = boardQRCode_displayInfos (
+          centerX: qrCode.mCenterX,
+          centerY: qrCode.mCenterY,
+          descriptor,
+          frontSide: qrCode.mLayer == .legendFront,
+          rotation: qrCode.mRotation
+        )
+        let rectangles = displayInfos.productRectangles
+        switch qrCode.mLayer {
+        case .legendFront :
+          legendFront += rectangles
+        case .legendBack :
+          legendBack += rectangles
+        }
+      }
+    }
+    return (legendFront, legendBack)
   }
 
   //····················································································································
@@ -676,6 +705,144 @@ struct ProductPolygon { // All in Cocoa Unit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+struct ProductRectangle : Hashable { // All in Cocoa Unit
+  let p0 : NSPoint
+  let p1 : NSPoint
+  let p2 : NSPoint
+  let p3 : NSPoint
+
+  //····················································································································
+
+  func transformed (by inAffineTransform : AffineTransform) -> ProductRectangle {
+    let tp0 = inAffineTransform.transform (self.p0)
+    let tp1 = inAffineTransform.transform (self.p1)
+    let tp2 = inAffineTransform.transform (self.p2)
+    let tp3 = inAffineTransform.transform (self.p3)
+    return ProductRectangle (p0: tp0, p1: tp1, p2: tp2, p3: tp3)
+  }
+
+  //····················································································································
+
+  var polygon : ProductPolygon  { ProductPolygon (origin: self.p0, points: [self.p1, self.p2, self.p3]) }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias MergerRectangleArray = [ProductRectangle]
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension Array where Element == ProductRectangle {
+
+  //····················································································································
+
+  var polygons : [ProductPolygon] {
+    var result = [ProductPolygon] ()
+    for rect in self {
+      result.append (rect.polygon)
+    }
+    return result
+  }
+
+  //····················································································································
+
+  var bezierPathArray : [EBBezierPath] {
+    var result = [EBBezierPath] ()
+    for rect in self {
+      var bp = EBBezierPath ()
+      bp.move (to: rect.p0)
+      bp.line (to: rect.p1)
+      bp.line (to: rect.p2)
+      bp.line (to: rect.p3)
+      bp.close ()
+      result.append (bp)
+    }
+    return result
+  }
+
+  //····················································································································
+
+  func convert (cocoaPoint inPoint : NSPoint,
+                dx inDx : Int,
+                dy inDy: Int,
+                modelWidth inModelWidth : Int,
+                modelHeight inModelHeight : Int,
+                instanceRotation inInstanceRotation : QuadrantRotation) -> CanariPoint {
+    var x = inDx
+    var y = inDy
+    let cocoaP = inPoint.canariPoint
+    switch inInstanceRotation {
+    case .rotation0 :
+      x += cocoaP.x
+      y += cocoaP.y
+    case .rotation90 :
+      x += inModelHeight - cocoaP.y
+      y += cocoaP.x
+    case .rotation180 :
+      x += inModelWidth  - cocoaP.x
+      y += inModelHeight - cocoaP.y
+    case .rotation270 :
+      x += cocoaP.y
+      y += inModelWidth - cocoaP.x
+    }
+    return CanariPoint (x: x, y: y)
+  }
+
+  //····················································································································
+
+  func add (toArchiveArray ioArchiveArray : inout [String],
+            dx inDx : Int,
+            dy inDy: Int,
+            modelWidth inModelWidth : Int,
+            modelHeight inModelHeight : Int,
+            instanceRotation inInstanceRotation : QuadrantRotation) {
+    for rect in self {
+      let p0 = self.convert (
+        cocoaPoint : rect.p0,
+        dx: inDx,
+        dy: inDy,
+        modelWidth: inModelWidth,
+        modelHeight: inModelHeight,
+        instanceRotation: inInstanceRotation
+      )
+      let p1 = self.convert (
+        cocoaPoint : rect.p1,
+        dx: inDx,
+        dy: inDy,
+        modelWidth: inModelWidth,
+        modelHeight: inModelHeight,
+        instanceRotation: inInstanceRotation
+      )
+      let p2 = self.convert (
+        cocoaPoint : rect.p2,
+        dx: inDx,
+        dy: inDy,
+        modelWidth: inModelWidth,
+        modelHeight: inModelHeight,
+        instanceRotation: inInstanceRotation
+      )
+      let p3 = self.convert (
+        cocoaPoint : rect.p3,
+        dx: inDx,
+        dy: inDy,
+        modelWidth: inModelWidth,
+        modelHeight: inModelHeight,
+        instanceRotation: inInstanceRotation
+      )
+      let s = "\(p0.x):\(p0.y):\(p1.x):\(p1.y):\(p2.x):\(p2.y):\(p3.x):\(p3.y)"
+      ioArchiveArray.append (s)
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 enum PadLayer {
   case frontLayer
   case innerLayer
@@ -699,6 +866,8 @@ struct ProductData { // All in Cocoa Unit
   let layoutFrontTexts : PathApertureDictionary
   let layoutBackTexts : PathApertureDictionary
   let legendBackTexts : PathApertureDictionary
+  let legendFrontQRCodes : [ProductRectangle]
+  let legendBackQRCodes : [ProductRectangle]
   let viaPads : [ProductCircle]
   let tracks : [TrackSide : [ProductOblong]]
   let frontLines : [ProductOblong]

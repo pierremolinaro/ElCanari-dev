@@ -54,9 +54,11 @@ import AppKit
        _ self_holesBezierPaths : BezierPathArray,   
        _ prefs_mergerModelViewDisplayHoles : Bool,  
        _ prefs_mergerColorHoles : NSColor,          
+       _ self_frontLegendQRCodeRectangles : MergerRectangleArray,
        _ self_frontLegendLinesBezierPaths : BezierPathArray,
        _ prefs_mergerModelViewDisplayFrontLegendLines : Bool,
        _ prefs_mergerColorFrontLegendLines : NSColor,
+       _ self_backLegendQRCodeRectangles : MergerRectangleArray,
        _ self_backLegendLinesBezierPaths : BezierPathArray,
        _ prefs_mergerModelViewDisplayBackLegendLines : Bool,
        _ prefs_mergerColorBackLegendLines : NSColor,
@@ -96,9 +98,10 @@ import AppKit
 //--- Background
   let backRect = NSRect (x:0.0, y:0.0, width: canariUnitToCocoa(self_modelWidth), height: canariUnitToCocoa(self_modelHeight))
   shapes.add (filled: [EBBezierPath (rect:backRect)], prefs_mergerColorBackground)
-//--- Back Legend Lines
+//--- Back Legend Lines and QR Codes
   if (prefs_mergerModelViewDisplayBackLegendLines) {
     shapes.add (stroke: self_backLegendLinesBezierPaths.array, prefs_mergerColorBackLegendLines)
+    shapes.add (filled: self_backLegendQRCodeRectangles.bezierPathArray, prefs_mergerColorBackLegendLines)
   }
 //--- Back Component Values
   if (prefs_mergerModelViewDisplayBackComponentValues) {
@@ -163,6 +166,7 @@ import AppKit
 //--- Front Legend texts
   if (prefs_mergerModelViewDisplayFrontLegendTexts) {
     shapes.add (stroke: self_frontLegendTextsBezierPaths.array, prefs_mergerColorFrontLegendTexts)
+    shapes.add (filled: self_frontLegendQRCodeRectangles.bezierPathArray, prefs_mergerColorFrontLegendTexts)
   }
 //--- Front Packages
   if (prefs_mergerModelViewDisplayFrontPackages) {

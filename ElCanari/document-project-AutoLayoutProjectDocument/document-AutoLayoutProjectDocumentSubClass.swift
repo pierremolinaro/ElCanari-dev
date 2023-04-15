@@ -348,6 +348,9 @@ import AppKit
       }else if let _ = pasteboard.availableType (from: [kDragAndDropBoardText]) {
         self.performAddBoardTextDragOperation (draggingLocationInDestinationView)
         ok = true
+      }else if let _ = pasteboard.availableType (from: [kDragAndDropBoardQRCode]) {
+        self.performAddBoardQRCodeDragOperation (draggingLocationInDestinationView)
+        ok = true
       }else if let _ = pasteboard.availableType (from: [kDragAndDropBoardPackage]) {
         self.performAddBoardPackageDragOperation (draggingLocationInDestinationView)
         ok = true
@@ -434,6 +437,19 @@ import AppKit
     boardText.mFont = self.rootObject.mFonts.first!
     self.rootObject.mBoardObjects.append (boardText)
     self.boardObjectsController.setSelection ([boardText])
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+  }
+
+  //····················································································································
+
+  private func performAddBoardQRCodeDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
+    let boardQRCode = BoardQRCode (self.undoManager)
+    boardQRCode.mLayer = self.rootObject.mBoardLayerForNewQRCode
+    boardQRCode.mCenterX = p.x
+    boardQRCode.mCenterY = p.y
+    self.rootObject.mBoardObjects.append (boardQRCode)
+    self.boardObjectsController.setSelection ([boardQRCode])
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 

@@ -27,10 +27,21 @@ extension AutoLayoutProjectDocument {
     let temporaryRootObject = ProjectRoot (nil)
     track.mRoot = temporaryRootObject
     let shape = track.objectDisplay
-//    temporaryRootObject.cleanUpRelationshipsAndRemoveAllObservers ()
-//    p1.cleanUpRelationshipsAndRemoveAllObservers ()
-//    p2.cleanUpRelationshipsAndRemoveAllObservers ()
     return shape
+  }
+
+  //····················································································································
+
+  func boardQRCodeImageFactory () -> EBShape? {
+//    var result : EBShape? = nil
+    self.undoManager?.disableUndoRegistration ()
+    let boardQRCode = BoardQRCode (nil)
+    boardQRCode.mLayer = self.rootObject.mBoardLayerForNewQRCode
+    let temporaryRootObject = ProjectRoot (nil)
+    boardQRCode.mRoot = temporaryRootObject
+    let result = boardQRCode.objectDisplay
+    self.undoManager?.enableUndoRegistration ()
+    return result
   }
 
   //····················································································································
@@ -47,7 +58,6 @@ extension AutoLayoutProjectDocument {
         boardText.mRoot = temporaryRootObject
         result = boardText.objectDisplay
         boardText.mFont = nil
-//        temporaryRootObject.cleanUpRelationshipsAndRemoveAllObservers ()
       }
       self.undoManager?.enableUndoRegistration ()
     }else{
@@ -65,7 +75,8 @@ extension AutoLayoutProjectDocument {
     return result
   }
 
-
   //····················································································································
 
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

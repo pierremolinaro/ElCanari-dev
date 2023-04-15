@@ -68,6 +68,7 @@ handlingOpposite entity ProjectRoot {
   property TrackSide mBoardSideForNewTrack default front ;
   property TrackCreationDirection mDirectionForNewTrack default anyAngle ;
   property BoardTextLayer mBoardLayerForNewText default legendFront ;
+  property BoardQRCodeLayer mBoardLayerForNewQRCode default legendFront ;
   property BoardLineLayer mBoardLayerForNewLine default legendFront ;
 
 //--- Restrict rectangle

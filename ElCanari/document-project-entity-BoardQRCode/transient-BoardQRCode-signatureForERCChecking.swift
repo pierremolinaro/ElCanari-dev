@@ -13,35 +13,23 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension AutoLayoutProjectDocument {
-  final func configure_boardView (_ inOutlet : AutoLayoutGraphicView) {
+@MainActor func transient_BoardQRCode_signatureForERCChecking (
+       _ self_mLayer : BoardQRCodeLayer,                       
+       _ self_mCenterX : Int,                                  
+       _ self_mCenterY : Int,                                  
+       _ self_mText : String,                                  
+       _ self_mCorrectionLevel : QRCodeCorrectionLevel,        
+       _ self_mRotation : Int
+) -> UInt32 {
 //--- START OF USER ZONE 2
-  //--- Set document to scroll view for enabling drag and drop of components
-     inOutlet.mScrollView?.register (document: self)
-     inOutlet.mGraphicView.register (
-       draggedTypes: [kDragAndDropRestrictRectangle, kDragAndDropBoardText, kDragAndDropBoardQRCode, kDragAndDropBoardPackage, kDragAndDropBoardLine, kDragAndDropBoardTrack]
-     )
-     inOutlet.mGraphicView.setUsesOptionKeyForDuplicatingSelectedObjects (false)
-  //--- Option click for creating track
-     inOutlet.mGraphicView.mHelperStringForOptionModifier = "SHIFT: mouse down starts a new track"
-     inOutlet.mGraphicView.setOptionMouseCallbacks (
-       start: { [weak self] (inUnalignedMouseLocation) in return self?.startTrackCreationOnOptionMouseDown (at: inUnalignedMouseLocation) ?? false },
-       continue: { [weak self] (inUnalignedMouseLocation, inModifierFlags) in self?.continueTrackCreationOnOptionMouseDragged (at: inUnalignedMouseLocation, inModifierFlags) },
-       abort: { [weak self] in self?.abortTrackCreationOnOptionMouseUp () },
-       helper: { [weak self] (inModifierFlags) in self?.helperStringForTrackCreation (inModifierFlags) },
-       stop: { [weak self] (inUnalignedMouseLocation) in self?.stopTrackCreationOnOptionMouseUp (at: inUnalignedMouseLocation) ?? false }
-     )
-     inOutlet.mGraphicView.mDrawFrameIssue = false
-  //--- Contextual menu
-     inOutlet.mGraphicView.mContextualMenuBuilder = { [weak self] in return self?.populateContextualClickOnBoard ($0) }
-  //----
-    inOutlet.mGraphicView.setMouseMovedOrFlagsChangedCallback { [weak self] (unalignedMouseLocation) in
-      self?.mouseMovedOrFlagsChangedInBoard (unalignedMouseLocation)
-    }
-  //--- Pasteboard
-    inOutlet.mGraphicView.register (pasteboardType: BOARD_PASTEBOARD_TYPE)
+        var crc : UInt32 = 0
+        crc.accumulate (u32: self_mCenterX.ebHashValue ())
+        crc.accumulate (u32: self_mCenterY.ebHashValue ())
+        crc.accumulate (u32: self_mRotation.ebHashValue ())
+        crc.accumulate (u32: self_mText.ebHashValue ())
+        crc.accumulate (u32: self_mCorrectionLevel.ebHashValue ())
+        return crc
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

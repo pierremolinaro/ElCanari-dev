@@ -22,6 +22,7 @@ import Foundation
 let ONE_MILLIMETER_IN_CANARI_UNIT = 90_000
 let ONE_INCH_IN_CANARI_UNIT = 2_286_000
 let ONE_MIL_IN_CANARI_UNIT = 2_286
+let ONE_PIXEL_IN_CANARI_UNIT = 31_750
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -13,7 +13,8 @@ include "eb-sources/FontDocument-auto-layout.eb" ;
 include "eb-sources/artworkDocument-auto-layout.eb" ;
 //--- Merger
 include "eb-sources/BoardModelPad.eb" ;
-include "eb-sources/CanariSegment.eb" ;
+include "eb-sources/SegmentEntity.eb" ;
+include "eb-sources/RectangleEntity.eb" ;
 include "eb-sources/BoardModelVia.eb" ;
 include "eb-sources/BoardModel.eb" ;
 include "eb-sources/MergerBoardInstance.eb" ;
@@ -33,6 +34,7 @@ include "eb-sources/project-auto-layout-document.eb" ;
 include "eb-sources/project-BoardConnector.eb" ;
 include "eb-sources/project-BoardLine.eb" ;
 include "eb-sources/project-BoardObject.eb" ;
+include "eb-sources/project-BoardQRCode.eb" ;
 include "eb-sources/project-BoardRestrictRectangle.eb" ;
 include "eb-sources/project-BoardText.eb" ;
 include "eb-sources/project-BoardTrack.eb" ;

@@ -28,14 +28,14 @@ extension AutoLayoutProjectDocument {
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
       let gridView = AutoLayoutGridView2 ()
     //---
-      let panelTitle = inCreation ? "Create Net" : "Edit Net"
+      let panelTitle = inCreation ? "Create Net Class" : "Edit Net Class"
       _ = layoutView.appendView (AutoLayoutStaticLabel (title: panelTitle, bold: true, size: .regular, alignment: .center))
       _ = layoutView.appendFlexibleSpace ()
     //---
       let netClassNameTextField = AutoLayoutTextField (minWidth: 100, size: .regular).expandableWidth ()
       netClassNameTextField.stringValue = inNetClass.mNetClassName
       do{
-        let left = AutoLayoutStaticLabel (title: "Net Class", bold: false, size: .regular, alignment: .center)
+        let left = AutoLayoutStaticLabel (title: "Net Class", bold: false, size: .regular, alignment: .right)
         _ = gridView.addFirstBaseLineAligned (left: left, right: netClassNameTextField)
       }
     //---
@@ -46,7 +46,7 @@ extension AutoLayoutProjectDocument {
       let netColor_property = EBStoredProperty_NSColor (defaultValue: inNetClass.mNetClassColor, undoManager: nil, key: nil)
       let wireColorWell = AutoLayoutColorWell ().bind_color (netColor_property, sendContinously: false)
       do{
-        let left = AutoLayoutStaticLabel (title: "Wire Color in Schematics", bold: false, size: .regular, alignment: .center)
+        let left = AutoLayoutStaticLabel (title: "Wire Color in Schematics", bold: false, size: .regular, alignment: .right)
         _ = gridView.addFirstBaseLineAligned (left: left, right: AutoLayoutHorizontalStackView.viewFollowedByFlexibleSpace (wireColorWell))
       }
     //---  Width
@@ -54,7 +54,7 @@ extension AutoLayoutProjectDocument {
       let widthUnit_property = EBStoredProperty_Int (defaultValue: inNetClass.mTrackWidthUnit, undoManager: nil, key: nil) // mils
       let widthFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (width_property, widthUnit_property)
       do{
-        let left = AutoLayoutStaticLabel (title: "Track Width", bold: false, size: .regular, alignment: .center)
+        let left = AutoLayoutStaticLabel (title: "Track Width", bold: false, size: .regular, alignment: .right)
         _ = gridView.addFirstBaseLineAligned (left: left, right: widthFields)
       }
     //---  Allow front track
@@ -86,7 +86,7 @@ extension AutoLayoutProjectDocument {
       let viaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaHoleDiameterUnit, undoManager: nil, key: nil)
       let holeDiameterFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (viaHoleDiameter_property, viaHoleDiameterUnit_property)
       do{
-        let left = AutoLayoutStaticLabel (title: "Via Hole Diameter", bold: false, size: .regular, alignment: .center)
+        let left = AutoLayoutStaticLabel (title: "Via Hole Diameter", bold: false, size: .regular, alignment: .right)
         _ = gridView.addFirstBaseLineAligned (left: left, right: holeDiameterFields)
       }
     //--- Pad Diameter
@@ -94,7 +94,7 @@ extension AutoLayoutProjectDocument {
       let viaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaPadDiameterUnit, undoManager: nil, key: nil)
       let padDiameterFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (viaPadDiameter_property, viaPadDiameterUnit_property)
       do{
-        let left = AutoLayoutStaticLabel (title: "Via Pad Diameter", bold: false, size: .regular, alignment: .center)
+        let left = AutoLayoutStaticLabel (title: "Via Pad Diameter", bold: false, size: .regular, alignment: .right)
         _ = gridView.addFirstBaseLineAligned (left: left, right: padDiameterFields)
       }
     //---

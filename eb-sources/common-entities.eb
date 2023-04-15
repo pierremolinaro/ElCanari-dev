@@ -1,19 +1,18 @@
 //——————————————————————————————————————————————————————————————————————————————
 
-//enum AutoLayoutUserInterfaceStyle {
-//  roundedBezel, roundRect, texturedRounded, texturedSquare, shadowlessSquare
-//}
-
-//func enum AutoLayoutUserInterfaceStyle.popupTitles {
-//  roundedBezel : "Rounded Bezel" ;
-//  roundRect : "Round Rect" ;
-//  texturedRounded : "Textured Rounded" ;
-//  texturedSquare : "Textured Square" ;
-//  shadowlessSquare : "Shadowless Square" ;
-//}
-
 enum TextAlignment {
   left, right, center
+}
+
+enum QRCodeCorrectionLevel {
+  low, medium, quality, high
+}
+
+func enum QRCodeCorrectionLevel.popupTitles {
+  low : "Low" ;
+  medium : "Medium" ;
+  quality : "Quality" ;
+  high : "High" ;
 }
 
 
@@ -185,6 +184,17 @@ func enum BoardTextLayer.popupTitles {
   legendFront : "Legend Front Layer" ;
   layoutFront : "Layout Front Layer" ;
   layoutBack  : "Layout Back Layer" ;
+  legendBack : "Legend Back Layer" ;
+}
+
+//——————————————————————————————————————————————————————————————————————————————
+
+enum BoardQRCodeLayer {
+  legendFront, legendBack
+}
+
+func enum BoardQRCodeLayer.popupTitles {
+  legendFront : "Legend Front Layer" ;
   legendBack : "Legend Back Layer" ;
 }
 
