@@ -41,18 +41,6 @@ import AppKit
   final let mYUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
-  //   Selection observable property: mMinWidthUnit
-  //····················································································································
-
-  final let mMinWidthUnit_property = EBComputedProperty_Int ()
-
-  //····················································································································
-  //   Selection observable property: mMinHeightUnit
-  //····················································································································
-
-  final let mMinHeightUnit_property = EBComputedProperty_Int ()
-
-  //····················································································································
   //   Selection observable property: mDrawFrame
   //····················································································································
 
@@ -95,16 +83,10 @@ import AppKit
   final let qrCodeDescriptor_property = EBTransientProperty_QRCodeDescriptor ()
 
   //····················································································································
-  //   Selection observable property: minWidthInCanariUnit
+  //   Selection observable property: moduleCount
   //····················································································································
 
-  final let minWidthInCanariUnit_property = EBTransientProperty_Int ()
-
-  //····················································································································
-  //   Selection observable property: minHeightInCanariUnit
-  //····················································································································
-
-  final let minHeightInCanariUnit_property = EBTransientProperty_Int ()
+  final let moduleCount_property = EBTransientProperty_Int ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
@@ -143,8 +125,6 @@ import AppKit
     self.bind_property_mXUnit ()
     self.bind_property_mCenterY ()
     self.bind_property_mYUnit ()
-    self.bind_property_mMinWidthUnit ()
-    self.bind_property_mMinHeightUnit ()
     self.bind_property_mDrawFrame ()
     self.bind_property_mLayer ()
     self.bind_property_mText ()
@@ -152,8 +132,7 @@ import AppKit
     self.bind_property_mRotation ()
     self.bind_property_mCenterX ()
     self.bind_property_qrCodeDescriptor ()
-    self.bind_property_minWidthInCanariUnit ()
-    self.bind_property_minHeightInCanariUnit ()
+    self.bind_property_moduleCount ()
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
     self.bind_property_signatureForERCChecking ()
@@ -177,14 +156,6 @@ import AppKit
     self.mYUnit_property.mReadModelFunction = nil 
     self.mYUnit_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_mYUnit_StopsBeingObserved (by: self.mYUnit_property)
-  //--- mMinWidthUnit
-    self.mMinWidthUnit_property.mReadModelFunction = nil 
-    self.mMinWidthUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.toMany_mMinWidthUnit_StopsBeingObserved (by: self.mMinWidthUnit_property)
-  //--- mMinHeightUnit
-    self.mMinHeightUnit_property.mReadModelFunction = nil 
-    self.mMinHeightUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.toMany_mMinHeightUnit_StopsBeingObserved (by: self.mMinHeightUnit_property)
   //--- mDrawFrame
     self.mDrawFrame_property.mReadModelFunction = nil 
     self.mDrawFrame_property.mWriteModelFunction = nil 
@@ -212,12 +183,9 @@ import AppKit
   //--- qrCodeDescriptor
     self.qrCodeDescriptor_property.mReadModelFunction = nil 
     self.selectedArray_property.toMany_qrCodeDescriptor_StopsBeingObserved (by: self.qrCodeDescriptor_property)
-  //--- minWidthInCanariUnit
-    self.minWidthInCanariUnit_property.mReadModelFunction = nil 
-    self.selectedArray_property.toMany_minWidthInCanariUnit_StopsBeingObserved (by: self.minWidthInCanariUnit_property)
-  //--- minHeightInCanariUnit
-    self.minHeightInCanariUnit_property.mReadModelFunction = nil 
-    self.selectedArray_property.toMany_minHeightInCanariUnit_StopsBeingObserved (by: self.minHeightInCanariUnit_property)
+  //--- moduleCount
+    self.moduleCount_property.mReadModelFunction = nil 
+    self.selectedArray_property.toMany_moduleCount_StopsBeingObserved (by: self.moduleCount_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
@@ -377,108 +345,6 @@ import AppKit
         case .single (let v) :
           for object in v {
             object.mYUnit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-  }
-  //····················································································································
-
-  private final func bind_property_mMinWidthUnit () {
-    self.selectedArray_property.toMany_mMinWidthUnit_StartsToBeObserved (by: self.mMinWidthUnit_property)
-    self.mMinWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.mMinWidthUnit_property.selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mMinWidthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.mMinWidthUnit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-  }
-  //····················································································································
-
-  private final func bind_property_mMinHeightUnit () {
-    self.selectedArray_property.toMany_mMinHeightUnit_StartsToBeObserved (by: self.mMinHeightUnit_property)
-    self.mMinHeightUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.mMinHeightUnit_property.selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mMinHeightUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.mMinHeightUnit_property.setProp (inValue)
           }
         }
       }
@@ -831,9 +697,9 @@ import AppKit
   }
   //····················································································································
 
-  private final func bind_property_minWidthInCanariUnit () {
-    self.selectedArray_property.toMany_minWidthInCanariUnit_StartsToBeObserved (by: self.minWidthInCanariUnit_property)
-    self.minWidthInCanariUnit_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_moduleCount () {
+    self.selectedArray_property.toMany_moduleCount_StartsToBeObserved (by: self.moduleCount_property)
+    self.moduleCount_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty :
@@ -844,46 +710,7 @@ import AppKit
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.minWidthInCanariUnit_property.selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-  //····················································································································
-
-  private final func bind_property_minHeightInCanariUnit () {
-    self.selectedArray_property.toMany_minHeightInCanariUnit_StartsToBeObserved (by: self.minHeightInCanariUnit_property)
-    self.minHeightInCanariUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.minHeightInCanariUnit_property.selection {
+            switch object.moduleCount_property.selection {
             case .empty :
               return .empty
             case .multiple :

@@ -9,8 +9,6 @@ graphic handlingOpposite entity BoardQRCode : BoardObject {
   property Int mXUnit default 2_286 ; // mil
   property Int mCenterY default 0 ;
   property Int mYUnit default 2_286 ; // mil
-  property Int mMinWidthUnit default 31_750 ; // pixel
-  property Int mMinHeightUnit default 31_750 ; // pixel
   property Bool mDrawFrame default yes ;
 
   property BoardQRCodeLayer mLayer default legendFront ;
@@ -23,8 +21,7 @@ graphic handlingOpposite entity BoardQRCode : BoardObject {
     self.mText, self.mCorrectionLevel, self.mDrawFrame
   ;
     
-  transient Int minWidthInCanariUnit dependsFrom self.qrCodeDescriptor ;
-  transient Int minHeightInCanariUnit dependsFrom self.qrCodeDescriptor ;
+  transient Int moduleCount dependsFrom self.qrCodeDescriptor ;
     
   override transient EBShape objectDisplay dependsFrom
     self.mCenterX, self.mCenterY, self.qrCodeDescriptor,

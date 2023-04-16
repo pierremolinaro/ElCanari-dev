@@ -26,12 +26,6 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
       if let relay = self.mObserversOf_mYUnit { // Stored property
         managedObject.mYUnit_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_mMinWidthUnit { // Stored property
-        managedObject.mMinWidthUnit_property.stopsBeingObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_mMinHeightUnit { // Stored property
-        managedObject.mMinHeightUnit_property.stopsBeingObserved (by: relay)
-      }
       if let relay = self.mObserversOf_mDrawFrame { // Stored property
         managedObject.mDrawFrame_property.stopsBeingObserved (by: relay)
       }
@@ -53,11 +47,8 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
       if let relay = self.mObserversOf_qrCodeDescriptor { // Transient property
         managedObject.qrCodeDescriptor_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_minWidthInCanariUnit { // Transient property
-        managedObject.minWidthInCanariUnit_property.stopsBeingObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_minHeightInCanariUnit { // Transient property
-        managedObject.minHeightInCanariUnit_property.stopsBeingObserved (by: relay)
+      if let relay = self.mObserversOf_moduleCount { // Transient property
+        managedObject.moduleCount_property.stopsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_objectDisplay { // Transient property
         managedObject.objectDisplay_property.stopsBeingObserved (by: relay)
@@ -80,12 +71,6 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
       if let relay = self.mObserversOf_mYUnit { // Stored property
         managedObject.mYUnit_property.startsToBeObserved (by: relay)
       }
-      if let relay = self.mObserversOf_mMinWidthUnit { // Stored property
-        managedObject.mMinWidthUnit_property.startsToBeObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_mMinHeightUnit { // Stored property
-        managedObject.mMinHeightUnit_property.startsToBeObserved (by: relay)
-      }
       if let relay = self.mObserversOf_mDrawFrame { // Stored property
         managedObject.mDrawFrame_property.startsToBeObserved (by: relay)
       }
@@ -107,11 +92,8 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
       if let relay = self.mObserversOf_qrCodeDescriptor { // Transient property
         managedObject.qrCodeDescriptor_property.startsToBeObserved (by: relay)
       }
-      if let relay = self.mObserversOf_minWidthInCanariUnit { // Transient property
-        managedObject.minWidthInCanariUnit_property.startsToBeObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_minHeightInCanariUnit { // Transient property
-        managedObject.minHeightInCanariUnit_property.startsToBeObserved (by: relay)
+      if let relay = self.mObserversOf_moduleCount { // Transient property
+        managedObject.moduleCount_property.startsToBeObserved (by: relay)
       }
       if let relay = self.mObserversOf_objectDisplay { // Transient property
         managedObject.objectDisplay_property.startsToBeObserved (by: relay)
@@ -210,64 +192,6 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   final func toMany_mYUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mYUnit?.stopsBeingObserved (by: inObserver)
-  }
-
-  //····················································································································
-  //   Observers of 'mMinWidthUnit' stored property
-  //····················································································································
-
-  private final var mObserversOf_mMinWidthUnit : EBObservedObserver? = nil
-
-  //····················································································································
-
-  final func toMany_mMinWidthUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_mMinWidthUnit {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.mMinWidthUnit_property.startsToBeObserved (by: relay)
-      }
-      self.mObserversOf_mMinWidthUnit = relay
-    }
-    relay.startsToBeObserved (by: inObserver)
-  }
-
-  //····················································································································
-
-  final func toMany_mMinWidthUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mMinWidthUnit?.stopsBeingObserved (by: inObserver)
-  }
-
-  //····················································································································
-  //   Observers of 'mMinHeightUnit' stored property
-  //····················································································································
-
-  private final var mObserversOf_mMinHeightUnit : EBObservedObserver? = nil
-
-  //····················································································································
-
-  final func toMany_mMinHeightUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_mMinHeightUnit {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.mMinHeightUnit_property.startsToBeObserved (by: relay)
-      }
-      self.mObserversOf_mMinHeightUnit = relay
-    }
-    relay.startsToBeObserved (by: inObserver)
-  }
-
-  //····················································································································
-
-  final func toMany_mMinHeightUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mMinHeightUnit?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -474,61 +398,32 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
   }
 
   //····················································································································
-  //   Observers of 'minWidthInCanariUnit' transient property
+  //   Observers of 'moduleCount' transient property
   //····················································································································
 
-  private final var mObserversOf_minWidthInCanariUnit : EBObservedObserver? = nil
+  private final var mObserversOf_moduleCount : EBObservedObserver? = nil
 
   //····················································································································
 
-  final func toMany_minWidthInCanariUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_moduleCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
-    if let r = self.mObserversOf_minWidthInCanariUnit {
+    if let r = self.mObserversOf_moduleCount {
       relay = r
     }else{
       relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.minWidthInCanariUnit_property.startsToBeObserved (by: relay)
+        managedObject.moduleCount_property.startsToBeObserved (by: relay)
       }
-      self.mObserversOf_minWidthInCanariUnit = relay
+      self.mObserversOf_moduleCount = relay
     }
     relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
-  final func toMany_minWidthInCanariUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_minWidthInCanariUnit?.stopsBeingObserved (by: inObserver)
-  }
-
-  //····················································································································
-  //   Observers of 'minHeightInCanariUnit' transient property
-  //····················································································································
-
-  private final var mObserversOf_minHeightInCanariUnit : EBObservedObserver? = nil
-
-  //····················································································································
-
-  final func toMany_minHeightInCanariUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_minHeightInCanariUnit {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.minHeightInCanariUnit_property.startsToBeObserved (by: relay)
-      }
-      self.mObserversOf_minHeightInCanariUnit = relay
-    }
-    relay.startsToBeObserved (by:  inObserver)
-  }
-
-  //····················································································································
-
-  final func toMany_minHeightInCanariUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_minHeightInCanariUnit?.stopsBeingObserved (by: inObserver)
+  final func toMany_moduleCount_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_moduleCount?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

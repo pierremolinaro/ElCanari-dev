@@ -13,11 +13,18 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate let MARGIN = 3 // 4 modules are required, ci image provides one
+fileprivate let QR_CODE_MARGIN = 3 // 4 modules are required, ci image provides one
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct QRCodeDescriptor : Hashable {
+
+  //····················································································································
+
+  struct QRCodePoint {
+    let x : Int
+    let y : Int
+  }
 
   //····················································································································
 
@@ -45,7 +52,7 @@ struct QRCodeDescriptor : Hashable {
     case .levelM : correctionLevelString = "M"
     case .levelQ : correctionLevelString = "Q"
     case .levelH : correctionLevelString = "H"
-    @unknown default: fatalError ()
+    @unknown default: correctionLevelString = "H"
     }
     let inputParams : [String : Any] = [
       "inputMessage" : inString.data (using: .isoLatin1)!, // ISOLatin1 string encoding is required
@@ -55,12 +62,13 @@ struct QRCodeDescriptor : Hashable {
     let ciImage = barcodeCreationFilter.outputImage!
   //--- Build bit map
     let bitMapImageRep = NSBitmapImageRep (ciImage: ciImage)
-    self.imageWidth = bitMapImageRep.pixelsWide + (inFramed ? 2 : 0) + MARGIN * 2
-    self.imageHeight = bitMapImageRep.pixelsHigh + (inFramed ? 2 : 0) + MARGIN * 2
+    self.imageWidth = bitMapImageRep.pixelsWide + (inFramed ? 2 : 0) + QR_CODE_MARGIN * 2
+    self.imageHeight = bitMapImageRep.pixelsHigh + (inFramed ? 2 : 0) + QR_CODE_MARGIN * 2
   //--- Build QR Code representation
     var rects = [QRCodeRectangle] ()
+    var pixels = [QRCodePoint] ()
     for y in 0 ..< bitMapImageRep.pixelsHigh {
-      let rectOriginY = bitMapImageRep.pixelsHigh + MARGIN - (inFramed ? 0 : 1) - y
+      let rectOriginY = bitMapImageRep.pixelsHigh + QR_CODE_MARGIN - (inFramed ? 0 : 1) - y
       var originX = 0
       var width = 0 // Empty rect
       for x in 0 ..< bitMapImageRep.pixelsWide {
@@ -69,21 +77,52 @@ struct QRCodeDescriptor : Hashable {
         let blackPixel = p < 128
         if blackPixel {
           if width == 0 { // Begin a new rect
-            originX = x + (inFramed ? 1 : 0) + MARGIN
+            originX = x + (inFramed ? 1 : 0) + QR_CODE_MARGIN
             width = 1
           }else{ // Extend an existing rect
             width += 1
           }
+        }else if width == 1 { // White pixel, closing an existing rect
+          pixels.append (QRCodePoint (x: originX, y: rectOriginY))
+          width = 0
         }else if width > 0 { // White pixel, closing an existing rect
           let r = QRCodeRectangle (x: originX, y: rectOriginY, width: width, height: 1)
           rects.append (r)
           width = 0
         }
       }
-      if width > 0 { // closing the last existing rect
+      if width == 1 { // closing the last existing rect
+        pixels.append (QRCodePoint (x: originX, y: rectOriginY))
+      }else if width > 0 { // closing the last existing rect
         let r = QRCodeRectangle (x: originX, y: rectOriginY, width: width, height: 1)
         rects.append (r)
       }
+    }
+  //--- Sort pixel array
+    pixels.sort { ($0.x < $1.x) || (($0.x == $1.x) && ($0.y < $1.y)) }
+//    for p in pixels {
+//      Swift.print ("\(p.x) \(p.y)")
+//    }
+  //--- Group pixels in vertical lines
+    var x = 0
+    var y = 0
+    var height = 0 // Empty rect
+    for p in pixels {
+      if height == 0 { // Start a new rect
+        x = p.x
+        y = p.y
+        height = 1
+      }else if p.x == x, p.y == (y + height) { // Extend a vertical line
+        height += 1
+      }else{ // Close vertical line
+        rects.append (QRCodeRectangle (x: x, y: y, width: 1, height: height))
+        x = p.x
+        y = p.y
+        height = 1
+      }
+    }
+    if height > 0 {
+      rects.append (QRCodeRectangle (x: x, y: y, width: 1, height: height))
     }
   //--- Add Frame
     if inFramed {

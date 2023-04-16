@@ -2056,22 +2056,20 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       addFirstBaseLineAligned (
         left: space,
         right: Checkbox (title: "Draw Frame", size: .small) { $value #boardQRCodeSelectionController.mDrawFrame }
-//        left: StaticLabel (title: "Draw Frame", bold: no, size: .small, alignment: .right),
-//        right: EnumPopUpButton (titles: enum QRCodeCorrectionLevel.popupTitles, size: .small) { $selectedIndex #boardQRCodeSelectionController.mDrawFrame } 
       )
       addSeparator ()
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Min Width", bold: no, size: .small, alignment: .right),
-        right: CanariObservedDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardQRCodeSelectionController.minWidthInCanariUnit, #boardQRCodeSelectionController.mMinWidthUnit
+        left: StaticLabel (title: "Module Count", bold: no, size: .small, alignment: .right),
+        right: IntObserverField (bold: yes, size: .small) {
+          $observedValue #boardQRCodeSelectionController.moduleCount
         }
       )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Min Height", bold: no, size: .small, alignment: .right),
-        right: CanariObservedDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardQRCodeSelectionController.minHeightInCanariUnit, #boardQRCodeSelectionController.mMinHeightUnit
-        }
-      )
+//      addFirstBaseLineAligned (
+//        left: StaticLabel (title: "Min Height", bold: no, size: .small, alignment: .right),
+//        right: CanariObservedDimensionAndPopUp (size: .small) {
+//          $dimensionAndUnit #boardQRCodeSelectionController.minHeightInCanariUnit, #boardQRCodeSelectionController.mMinHeightUnit
+//        }
+//      )
       addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Side", bold: no, size: .small, alignment: .right),

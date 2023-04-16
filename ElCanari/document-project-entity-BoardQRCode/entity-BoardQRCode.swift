@@ -24,18 +24,6 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_mMinWidthUnit : AnyObject {
-  var mMinWidthUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol BoardQRCode_mMinHeightUnit : AnyObject {
-  var mMinHeightUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 @MainActor protocol BoardQRCode_mDrawFrame : AnyObject {
   var mDrawFrame : Bool { get }
 }
@@ -78,14 +66,8 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_minWidthInCanariUnit : AnyObject {
-  var minWidthInCanariUnit : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol BoardQRCode_minHeightInCanariUnit : AnyObject {
-  var minHeightInCanariUnit : Int? { get }
+@MainActor protocol BoardQRCode_moduleCount : AnyObject {
+  var moduleCount : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -114,8 +96,6 @@ final class BoardQRCode : BoardObject,
          BoardQRCode_mXUnit,
          BoardQRCode_mCenterY,
          BoardQRCode_mYUnit,
-         BoardQRCode_mMinWidthUnit,
-         BoardQRCode_mMinHeightUnit,
          BoardQRCode_mDrawFrame,
          BoardQRCode_mLayer,
          BoardQRCode_mText,
@@ -123,8 +103,7 @@ final class BoardQRCode : BoardObject,
          BoardQRCode_mRotation,
          BoardQRCode_mCenterX,
          BoardQRCode_qrCodeDescriptor,
-         BoardQRCode_minWidthInCanariUnit,
-         BoardQRCode_minHeightInCanariUnit,
+         BoardQRCode_moduleCount,
          BoardQRCode_objectDisplay,
          BoardQRCode_selectionDisplay,
          BoardQRCode_signatureForERCChecking {
@@ -184,44 +163,6 @@ final class BoardQRCode : BoardObject,
   final var mYUnit : Int {
     get { return self.mYUnit_property.propval }
     set { self.mYUnit_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: mMinWidthUnit
-  //····················································································································
-
-  final let mMinWidthUnit_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final func reset_mMinWidthUnit_toDefaultValue () {
-    self.mMinWidthUnit = 31750
-  }
-
-  //····················································································································
-
-  final var mMinWidthUnit : Int {
-    get { return self.mMinWidthUnit_property.propval }
-    set { self.mMinWidthUnit_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: mMinHeightUnit
-  //····················································································································
-
-  final let mMinHeightUnit_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final func reset_mMinHeightUnit_toDefaultValue () {
-    self.mMinHeightUnit = 31750
-  }
-
-  //····················································································································
-
-  final var mMinHeightUnit : Int {
-    get { return self.mMinHeightUnit_property.propval }
-    set { self.mMinHeightUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -351,27 +292,15 @@ final class BoardQRCode : BoardObject,
   }
 
   //····················································································································
-  //   Transient property: minWidthInCanariUnit
+  //   Transient property: moduleCount
   //····················································································································
 
-  final let minWidthInCanariUnit_property = EBTransientProperty_Int ()
-
-  //····················································································································
-
-  final var minWidthInCanariUnit : Int? {
-    return self.minWidthInCanariUnit_property.optionalValue
-  }
-
-  //····················································································································
-  //   Transient property: minHeightInCanariUnit
-  //····················································································································
-
-  final let minHeightInCanariUnit_property = EBTransientProperty_Int ()
+  final let moduleCount_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  final var minHeightInCanariUnit : Int? {
-    return self.minHeightInCanariUnit_property.optionalValue
+  final var moduleCount : Int? {
+    return self.moduleCount_property.optionalValue
   }
 
   //····················································································································
@@ -382,8 +311,6 @@ final class BoardQRCode : BoardObject,
     self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mXUnit")
     self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterY")
     self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYUnit")
-    self.mMinWidthUnit_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mMinWidthUnit")
-    self.mMinHeightUnit_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mMinHeightUnit")
     self.mDrawFrame_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mDrawFrame")
     self.mLayer_property = EBStoredProperty_BoardQRCodeLayer (defaultValue: BoardQRCodeLayer.legendFront, undoManager: inUndoManager, key: "mLayer")
     self.mText_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mText")
@@ -416,13 +343,13 @@ final class BoardQRCode : BoardObject,
     self.mText_property.startsToBeObserved (by: self.qrCodeDescriptor_property)
     self.mCorrectionLevel_property.startsToBeObserved (by: self.qrCodeDescriptor_property)
     self.mDrawFrame_property.startsToBeObserved (by: self.qrCodeDescriptor_property)
-  //--- Atomic property: minWidthInCanariUnit
-    self.minWidthInCanariUnit_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: moduleCount
+    self.moduleCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.qrCodeDescriptor_property.selection
         switch (s0) {
         case (.single (let v0)) :
-          return .single (transient_BoardQRCode_minWidthInCanariUnit (v0))
+          return .single (transient_BoardQRCode_moduleCount (v0))
         case (.multiple) :
           return .multiple
         default :
@@ -432,24 +359,7 @@ final class BoardQRCode : BoardObject,
         return .empty
       }
     }
-    self.qrCodeDescriptor_property.startsToBeObserved (by: self.minWidthInCanariUnit_property)
-  //--- Atomic property: minHeightInCanariUnit
-    self.minHeightInCanariUnit_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.qrCodeDescriptor_property.selection
-        switch (s0) {
-        case (.single (let v0)) :
-          return .single (transient_BoardQRCode_minHeightInCanariUnit (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.qrCodeDescriptor_property.startsToBeObserved (by: self.minHeightInCanariUnit_property)
+    self.qrCodeDescriptor_property.startsToBeObserved (by: self.moduleCount_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

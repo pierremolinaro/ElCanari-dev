@@ -645,12 +645,9 @@
 		CF3494C829EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494C729EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift */; };
 		CF3494C929EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494C729EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift */; };
 		CF3494CA29EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494C729EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift */; };
-		CF3494CD29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494CB29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift */; };
-		CF3494CE29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494CB29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift */; };
-		CF3494CF29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494CB29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift */; };
-		CF3494D029EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494CC29EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift */; };
-		CF3494D129EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494CC29EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift */; };
-		CF3494D229EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494CC29EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift */; };
+		CF3494CD29EAE6A9006AB1EB /* transient-BoardQRCode-moduleCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494CB29EAE6A9006AB1EB /* transient-BoardQRCode-moduleCount.swift */; };
+		CF3494CE29EAE6A9006AB1EB /* transient-BoardQRCode-moduleCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494CB29EAE6A9006AB1EB /* transient-BoardQRCode-moduleCount.swift */; };
+		CF3494CF29EAE6A9006AB1EB /* transient-BoardQRCode-moduleCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494CB29EAE6A9006AB1EB /* transient-BoardQRCode-moduleCount.swift */; };
 		CF3494D429EB2CA8006AB1EB /* entity-RectangleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494D329EB2CA8006AB1EB /* entity-RectangleEntity.swift */; };
 		CF3494D529EB2CA8006AB1EB /* entity-RectangleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494D329EB2CA8006AB1EB /* entity-RectangleEntity.swift */; };
 		CF3494D629EB2CA8006AB1EB /* entity-RectangleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3494D329EB2CA8006AB1EB /* entity-RectangleEntity.swift */; };
@@ -5312,8 +5309,7 @@
 		CF3494BF29EAD537006AB1EB /* configurator-AutoLayoutProjectDocument-addQRCodeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-addQRCodeButton.swift"; sourceTree = "<group>"; };
 		CF3494C329EAD694006AB1EB /* qrcode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qrcode.png; sourceTree = "<group>"; };
 		CF3494C729EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift"; sourceTree = "<group>"; };
-		CF3494CB29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardQRCode-minWidthInCanariUnit.swift"; sourceTree = "<group>"; };
-		CF3494CC29EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardQRCode-minHeightInCanariUnit.swift"; sourceTree = "<group>"; };
+		CF3494CB29EAE6A9006AB1EB /* transient-BoardQRCode-moduleCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardQRCode-moduleCount.swift"; sourceTree = "<group>"; };
 		CF3494D329EB2CA8006AB1EB /* entity-RectangleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-RectangleEntity.swift"; sourceTree = "<group>"; };
 		CF3494D729EB2EE2006AB1EB /* toone-RectangleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "toone-RectangleEntity.swift"; sourceTree = "<group>"; };
 		CF3494D829EB2EE2006AB1EB /* tomany-RectangleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "tomany-RectangleEntity.swift"; sourceTree = "<group>"; };
@@ -7203,8 +7199,7 @@
 				CF34949829EAB36E006AB1EB /* property-QRCodeDescriptor.swift */,
 				CF34949529EAB36E006AB1EB /* tomany-BoardQRCode.swift */,
 				CF34949429EAB36E006AB1EB /* toone-BoardQRCode.swift */,
-				CF3494CC29EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift */,
-				CF3494CB29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift */,
+				CF3494CB29EAE6A9006AB1EB /* transient-BoardQRCode-moduleCount.swift */,
 				CF34949929EAB36E006AB1EB /* transient-BoardQRCode-objectDisplay.swift */,
 				CF34949729EAB36E006AB1EB /* transient-BoardQRCode-qrCodeDescriptor.swift */,
 				CF34949A29EAB36E006AB1EB /* transient-BoardQRCode-selectionDisplay.swift */,
@@ -10022,7 +10017,6 @@
 				CF35599C279D9F3D000BFC9B /* configurator-AutoLayoutProjectDocument-schematicPullDownButtonConfigurator.swift in Sources */,
 				CF59C42829BE36AB004CA404 /* property-NSColor.swift in Sources */,
 				CF85624E21E7CB570032F52D /* entity-DeviceRoot.swift in Sources */,
-				CF3494D029EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift in Sources */,
 				CFAEE80629BF2A0E00851F82 /* EBStoredProperty.swift in Sources */,
 				CF42D120275CF1A600B83712 /* extension-AutoLayoutMergerDocument-generate-product-files.swift in Sources */,
 				CFB1F8F72940EDDB00C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutAnyDocument.swift in Sources */,
@@ -10237,7 +10231,7 @@
 				CF9C1C2B279C6A3E0018CCDB /* AutoLayoutPopUpButton.swift in Sources */,
 				CFFEC1E6280483FF00E5E8DD /* tomany-ProjectRoot.swift in Sources */,
 				CFEB7BC6233A27AF0060A97A /* transient-FontInProject-versionString.swift in Sources */,
-				CF3494CD29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift in Sources */,
+				CF3494CD29EAE6A9006AB1EB /* transient-BoardQRCode-moduleCount.swift in Sources */,
 				CF3494EC29EB35B9006AB1EB /* transient-BoardModel-backLegendQRCodeRectangles.swift in Sources */,
 				CF4990FE28D8C9430099F871 /* enum-PadShape-extension.swift in Sources */,
 				CF8560D12677A34B00B62608 /* AutoLayout+NSControl+enabled-binding.swift in Sources */,
@@ -11661,7 +11655,6 @@
 				CF42D13D275CF1A800B83712 /* extension-AutoLayoutMergerDocument-model-ElCanari.swift in Sources */,
 				CF11AB9E225A211F0092A524 /* open-device-in-library.swift in Sources */,
 				CFEB7AEF233A247F0060A97A /* transient-BoardRestrictRectangle-objectDisplay.swift in Sources */,
-				CF3494D129EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift in Sources */,
 				CFAEE80729BF2A0E00851F82 /* EBStoredProperty.swift in Sources */,
 				CFB1F8F82940EDDB00C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutAnyDocument.swift in Sources */,
 				CFE85A7421A5B37900991A66 /* transient-SymbolBezierCurve-selectionDisplay.swift in Sources */,
@@ -11876,7 +11869,7 @@
 				CF8560F92677A34C00B62608 /* AutoLayout+NSControl+enabled-binding.swift in Sources */,
 				CF9DE3382679F0610064234B /* AutoLayoutApplicationImage.swift in Sources */,
 				CFB1F9852940F0A300C1E120 /* action-AutoLayoutProjectDocument-prependNewBoardDisplayInspectorAction.swift in Sources */,
-				CF3494CE29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift in Sources */,
+				CF3494CE29EAE6A9006AB1EB /* transient-BoardQRCode-moduleCount.swift in Sources */,
 				CF3494ED29EB35B9006AB1EB /* transient-BoardModel-backLegendQRCodeRectangles.swift in Sources */,
 				CF22F1F3275A73ED009C6FAC /* transient-BoardModel-backPadArray.swift in Sources */,
 				CFEB7CB6233A28860060A97A /* transient-ProjectRoot-boardInteriorRight.swift in Sources */,
@@ -13300,7 +13293,6 @@
 				CFAEE80829BF2A0E00851F82 /* EBStoredProperty.swift in Sources */,
 				CFB8DDBC27A6DE030097DF9A /* AutoLayoutDateLabel.swift in Sources */,
 				CF9C62BF25CABE5C00A00D5C /* transient-PointInSchematic-connectedPoints.swift in Sources */,
-				CF3494D229EAE6A9006AB1EB /* transient-BoardQRCode-minHeightInCanariUnit.swift in Sources */,
 				CF1C03FE2754E1AE0013FEFA /* configurator-AutoLayoutFontDocument-fontPageSegmentedControl.swift in Sources */,
 				CF59C45D29BE36AB004CA404 /* property-NetInfoPoint.swift in Sources */,
 				CFB1F8F92940EDDB00C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutAnyDocument.swift in Sources */,
@@ -13515,7 +13507,7 @@
 				CFB8DDB427A6CFF20097DF9A /* Preferences-SuperClass.swift in Sources */,
 				CF04FCD327677CEA0062DF89 /* AutoLayoutCanariProjectDeviceTableView.swift in Sources */,
 				CF50D1E227675B4500B35C59 /* AutoLayoutCanariProjectPinPadAssignmentTableView.swift in Sources */,
-				CF3494CF29EAE6A9006AB1EB /* transient-BoardQRCode-minWidthInCanariUnit.swift in Sources */,
+				CF3494CF29EAE6A9006AB1EB /* transient-BoardQRCode-moduleCount.swift in Sources */,
 				CF3494EE29EB35B9006AB1EB /* transient-BoardModel-backLegendQRCodeRectangles.swift in Sources */,
 				CFB1F9862940F0A300C1E120 /* action-AutoLayoutProjectDocument-prependNewBoardDisplayInspectorAction.swift in Sources */,
 				CF59C40929BE36AB004CA404 /* property-MergerViaShapeArray.swift in Sources */,
