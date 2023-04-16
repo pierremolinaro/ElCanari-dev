@@ -15,7 +15,8 @@ import AppKit
 
 @MainActor func transient_BoardQRCode_qrCodeDescriptor (
        _ self_mText : String,                           
-       _ self_mCorrectionLevel : QRCodeCorrectionLevel
+       _ self_mCorrectionLevel : QRCodeCorrectionLevel, 
+       _ self_mDrawFrame : Bool
 ) -> QRCodeDescriptor {
 //--- START OF USER ZONE 2
         let correctionLevel : CIQRCodeDescriptor.ErrorCorrectionLevel
@@ -25,7 +26,7 @@ import AppKit
         case .quality : correctionLevel = .levelQ
         case .high : correctionLevel = .levelH
         }
-        return QRCodeDescriptor (string: self_mText, errorCorrectionLevel: correctionLevel)
+        return QRCodeDescriptor (string: self_mText, errorCorrectionLevel: correctionLevel, framed: self_mDrawFrame)
 //--- END OF USER ZONE 2
 }
 

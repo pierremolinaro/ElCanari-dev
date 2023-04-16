@@ -32,6 +32,9 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
       if let relay = self.mObserversOf_mMinHeightUnit { // Stored property
         managedObject.mMinHeightUnit_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mDrawFrame { // Stored property
+        managedObject.mDrawFrame_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_mLayer { // Stored property
         managedObject.mLayer_property.stopsBeingObserved (by: relay)
       }
@@ -82,6 +85,9 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
       }
       if let relay = self.mObserversOf_mMinHeightUnit { // Stored property
         managedObject.mMinHeightUnit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mDrawFrame { // Stored property
+        managedObject.mDrawFrame_property.startsToBeObserved (by: relay)
       }
       if let relay = self.mObserversOf_mLayer { // Stored property
         managedObject.mLayer_property.startsToBeObserved (by: relay)
@@ -262,6 +268,35 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   final func toMany_mMinHeightUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mMinHeightUnit?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'mDrawFrame' stored property
+  //····················································································································
+
+  private final var mObserversOf_mDrawFrame : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_mDrawFrame_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mDrawFrame {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mDrawFrame_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_mDrawFrame = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mDrawFrame_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mDrawFrame?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

@@ -17,7 +17,7 @@ import AppKit
        _ self_qrCodeDescriptor : QRCodeDescriptor
 ) -> Int {
 //--- START OF USER ZONE 2
-         return self_qrCodeDescriptor.pixelsWide * ONE_PIXEL_IN_CANARI_UNIT
+         return self_qrCodeDescriptor.imageWidth * ONE_PIXEL_IN_CANARI_UNIT
 //--- END OF USER ZONE 2
 }
 

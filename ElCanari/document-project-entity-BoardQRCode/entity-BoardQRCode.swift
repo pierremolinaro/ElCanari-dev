@@ -36,6 +36,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol BoardQRCode_mDrawFrame : AnyObject {
+  var mDrawFrame : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol BoardQRCode_mLayer : AnyObject {
   var mLayer : BoardQRCodeLayer { get }
 }
@@ -110,6 +116,7 @@ final class BoardQRCode : BoardObject,
          BoardQRCode_mYUnit,
          BoardQRCode_mMinWidthUnit,
          BoardQRCode_mMinHeightUnit,
+         BoardQRCode_mDrawFrame,
          BoardQRCode_mLayer,
          BoardQRCode_mText,
          BoardQRCode_mCorrectionLevel,
@@ -215,6 +222,25 @@ final class BoardQRCode : BoardObject,
   final var mMinHeightUnit : Int {
     get { return self.mMinHeightUnit_property.propval }
     set { self.mMinHeightUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mDrawFrame
+  //····················································································································
+
+  final let mDrawFrame_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mDrawFrame_toDefaultValue () {
+    self.mDrawFrame = true
+  }
+
+  //····················································································································
+
+  final var mDrawFrame : Bool {
+    get { return self.mDrawFrame_property.propval }
+    set { self.mDrawFrame_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -358,6 +384,7 @@ final class BoardQRCode : BoardObject,
     self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYUnit")
     self.mMinWidthUnit_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mMinWidthUnit")
     self.mMinHeightUnit_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mMinHeightUnit")
+    self.mDrawFrame_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mDrawFrame")
     self.mLayer_property = EBStoredProperty_BoardQRCodeLayer (defaultValue: BoardQRCodeLayer.legendFront, undoManager: inUndoManager, key: "mLayer")
     self.mText_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mText")
     self.mCorrectionLevel_property = EBStoredProperty_QRCodeCorrectionLevel (defaultValue: QRCodeCorrectionLevel.quality, undoManager: inUndoManager, key: "mCorrectionLevel")
@@ -369,11 +396,14 @@ final class BoardQRCode : BoardObject,
       if let unwSelf = self {
         let s0 = unwSelf.mText_property.selection
         let s1 = unwSelf.mCorrectionLevel_property.selection
-        switch (s0, s1) {
+        let s2 = unwSelf.mDrawFrame_property.selection
+        switch (s0, s1, s2) {
         case (.single (let v0),
-              .single (let v1)) :
-          return .single (transient_BoardQRCode_qrCodeDescriptor (v0, v1))
+              .single (let v1),
+              .single (let v2)) :
+          return .single (transient_BoardQRCode_qrCodeDescriptor (v0, v1, v2))
         case (.multiple,
+              .multiple,
               .multiple) :
           return .multiple
         default :
@@ -385,6 +415,7 @@ final class BoardQRCode : BoardObject,
     }
     self.mText_property.startsToBeObserved (by: self.qrCodeDescriptor_property)
     self.mCorrectionLevel_property.startsToBeObserved (by: self.qrCodeDescriptor_property)
+    self.mDrawFrame_property.startsToBeObserved (by: self.qrCodeDescriptor_property)
   //--- Atomic property: minWidthInCanariUnit
     self.minWidthInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

@@ -2053,6 +2053,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         left: StaticLabel (title: "Correction Level", bold: no, size: .small, alignment: .right),
         right: EnumPopUpButton (titles: enum QRCodeCorrectionLevel.popupTitles, size: .small) { $selectedIndex #boardQRCodeSelectionController.mCorrectionLevel } 
       )
+      addFirstBaseLineAligned (
+        left: space,
+        right: Checkbox (title: "Draw Frame", size: .small) { $value #boardQRCodeSelectionController.mDrawFrame }
+//        left: StaticLabel (title: "Draw Frame", bold: no, size: .small, alignment: .right),
+//        right: EnumPopUpButton (titles: enum QRCodeCorrectionLevel.popupTitles, size: .small) { $selectedIndex #boardQRCodeSelectionController.mDrawFrame } 
+      )
       addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Min Width", bold: no, size: .small, alignment: .right),

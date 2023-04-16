@@ -53,6 +53,12 @@ import AppKit
   final let mMinHeightUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
+  //   Selection observable property: mDrawFrame
+  //····················································································································
+
+  final let mDrawFrame_property = EBComputedProperty_Bool ()
+
+  //····················································································································
   //   Selection observable property: mLayer
   //····················································································································
 
@@ -139,6 +145,7 @@ import AppKit
     self.bind_property_mYUnit ()
     self.bind_property_mMinWidthUnit ()
     self.bind_property_mMinHeightUnit ()
+    self.bind_property_mDrawFrame ()
     self.bind_property_mLayer ()
     self.bind_property_mText ()
     self.bind_property_mCorrectionLevel ()
@@ -178,6 +185,10 @@ import AppKit
     self.mMinHeightUnit_property.mReadModelFunction = nil 
     self.mMinHeightUnit_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_mMinHeightUnit_StopsBeingObserved (by: self.mMinHeightUnit_property)
+  //--- mDrawFrame
+    self.mDrawFrame_property.mReadModelFunction = nil 
+    self.mDrawFrame_property.mWriteModelFunction = nil 
+    self.selectedArray_property.toMany_mDrawFrame_StopsBeingObserved (by: self.mDrawFrame_property)
   //--- mLayer
     self.mLayer_property.mReadModelFunction = nil 
     self.mLayer_property.mWriteModelFunction = nil 
@@ -468,6 +479,57 @@ import AppKit
         case .single (let v) :
           for object in v {
             object.mMinHeightUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mDrawFrame () {
+    self.selectedArray_property.toMany_mDrawFrame_StartsToBeObserved (by: self.mDrawFrame_property)
+    self.mDrawFrame_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mDrawFrame_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mDrawFrame_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mDrawFrame_property.setProp (inValue)
           }
         }
       }

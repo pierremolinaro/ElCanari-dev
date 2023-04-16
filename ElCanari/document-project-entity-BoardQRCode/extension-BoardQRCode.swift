@@ -237,8 +237,8 @@ struct QRCodeDisplayInfos {
                                           _ inQRCodeDescriptor : QRCodeDescriptor,
                                           frontSide inFrontSide : Bool,
                                           rotation inRotation : Int) -> QRCodeDisplayInfos {
-  let width = CGFloat (inQRCodeDescriptor.pixelsWide)
-  let height = CGFloat (inQRCodeDescriptor.pixelsHigh)
+  let width = CGFloat (inQRCodeDescriptor.imageWidth)
+  let height = CGFloat (inQRCodeDescriptor.imageHeight)
   let qrRect = NSRect (center: .zero, size: NSSize (width: width, height: height))
 //--- Affine transform
   var tr = AffineTransform ()
