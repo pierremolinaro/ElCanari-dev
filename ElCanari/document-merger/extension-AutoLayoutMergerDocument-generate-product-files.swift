@@ -569,6 +569,9 @@ extension AutoLayoutMergerDocument {
             myModel?.frontLegendLinesSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
               dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
               modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+            myModel?.frontLegendQRCodeRectangles?.addRectangles (toFilledBezierPaths: &filledBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
         if product.drawTextsLegendBottomSide {
@@ -581,6 +584,9 @@ extension AutoLayoutMergerDocument {
               dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
               modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
             myModel?.backLegendLinesSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+            myModel?.backLegendQRCodeRectangles?.addRectangles (toFilledBezierPaths: &filledBezierPaths,
               dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
               modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
@@ -876,10 +882,12 @@ extension AutoLayoutMergerDocument {
             toPolygones: &polygons,
             dx: board.x,
             dy: board.y,
-            horizontalMirror:horizontalMirror,
+            horizontalMirror: horizontalMirror,
             minimumAperture: minimumApertureMilTenth,
-            boardWidth:boardWidth,
-            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation
+            boardWidth: boardWidth,
+            modelWidth: modelWidth,
+            modelHeight: modelHeight,
+            instanceRotation: instanceRotation
           )
         }
       }
@@ -935,6 +943,17 @@ extension AutoLayoutMergerDocument {
           myModel?.frontLegendLinesSegments?.add (toApertures: &apertureDictionary,
             dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
             modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+          myModel?.frontLegendQRCodeRectangles?.addPolygons (
+            toPolygons: &polygons,
+            dx: board.x,
+            dy: board.y,
+            horizontalMirror: horizontalMirror,
+            minimumAperture: minimumApertureMilTenth,
+            boardWidth: boardWidth,
+            modelWidth: modelWidth,
+            modelHeight: modelHeight,
+            instanceRotation: instanceRotation
+          )
         }
       }
       if product.drawTextsLegendBottomSide {
@@ -949,6 +968,17 @@ extension AutoLayoutMergerDocument {
           myModel?.backLegendLinesSegments?.add (toApertures: &apertureDictionary,
             dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
             modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+          myModel?.backLegendQRCodeRectangles?.addPolygons (
+            toPolygons: &polygons,
+            dx: board.x,
+            dy: board.y,
+            horizontalMirror: horizontalMirror,
+            minimumAperture: minimumApertureMilTenth,
+            boardWidth: boardWidth,
+            modelWidth: modelWidth,
+            modelHeight: modelHeight,
+            instanceRotation: instanceRotation
+          )
         }
       }
       if product.drawTracksTopSide {

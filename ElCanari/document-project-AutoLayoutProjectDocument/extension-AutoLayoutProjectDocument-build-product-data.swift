@@ -765,12 +765,12 @@ extension Array where Element == ProductRectangle {
 
   //····················································································································
 
-  func convert (cocoaPoint inPoint : NSPoint,
-                dx inDx : Int,
-                dy inDy: Int,
-                modelWidth inModelWidth : Int,
-                modelHeight inModelHeight : Int,
-                instanceRotation inInstanceRotation : QuadrantRotation) -> CanariPoint {
+  private func convertToCanari (cocoaPoint inPoint : NSPoint,
+                                dx inDx : Int,
+                                dy inDy: Int,
+                                modelWidth inModelWidth : Int,
+                                modelHeight inModelHeight : Int,
+                                instanceRotation inInstanceRotation : QuadrantRotation) -> CanariPoint {
     var x = inDx
     var y = inDy
     let cocoaP = inPoint.canariPoint
@@ -800,7 +800,7 @@ extension Array where Element == ProductRectangle {
             modelHeight inModelHeight : Int,
             instanceRotation inInstanceRotation : QuadrantRotation) {
     for rect in self {
-      let p0 = self.convert (
+      let p0 = self.convertToCanari (
         cocoaPoint : rect.p0,
         dx: inDx,
         dy: inDy,
@@ -808,7 +808,7 @@ extension Array where Element == ProductRectangle {
         modelHeight: inModelHeight,
         instanceRotation: inInstanceRotation
       )
-      let p1 = self.convert (
+      let p1 = self.convertToCanari (
         cocoaPoint : rect.p1,
         dx: inDx,
         dy: inDy,
@@ -816,7 +816,7 @@ extension Array where Element == ProductRectangle {
         modelHeight: inModelHeight,
         instanceRotation: inInstanceRotation
       )
-      let p2 = self.convert (
+      let p2 = self.convertToCanari (
         cocoaPoint : rect.p2,
         dx: inDx,
         dy: inDy,
@@ -824,7 +824,7 @@ extension Array where Element == ProductRectangle {
         modelHeight: inModelHeight,
         instanceRotation: inInstanceRotation
       )
-      let p3 = self.convert (
+      let p3 = self.convertToCanari (
         cocoaPoint : rect.p3,
         dx: inDx,
         dy: inDy,
@@ -836,6 +836,266 @@ extension Array where Element == ProductRectangle {
       ioArchiveArray.append (s)
     }
   }
+
+  //····················································································································
+
+  func addRectangles (toFilledBezierPaths ioBezierPaths : inout [EBBezierPath],
+                      dx inDx : Int,
+                      dy inDy: Int,
+                      horizontalMirror inHorizontalMirror : Bool,
+                      boardWidth inBoardWidth : Int,
+                      modelWidth inModelWidth : Int,
+                      modelHeight inModelHeight : Int,
+                      instanceRotation inInstanceRotation : QuadrantRotation) {
+    for rect in self {
+      let cP0 = self.convertToCanari (
+        cocoaPoint : rect.p0,
+        dx: inDx,
+        dy: inDy,
+        modelWidth: inModelWidth,
+        modelHeight: inModelHeight,
+        instanceRotation: inInstanceRotation
+      )
+      let p0 = CanariPoint (x: inHorizontalMirror ? (inBoardWidth - cP0.x) : cP0.x, y: cP0.y).cocoaPoint
+      let cP1 = self.convertToCanari (
+        cocoaPoint : rect.p1,
+        dx: inDx,
+        dy: inDy,
+        modelWidth: inModelWidth,
+        modelHeight: inModelHeight,
+        instanceRotation: inInstanceRotation
+      )
+      let p1 = CanariPoint (x: inHorizontalMirror ? (inBoardWidth - cP1.x) : cP1.x, y: cP1.y).cocoaPoint
+      let cP2 = self.convertToCanari (
+        cocoaPoint : rect.p2,
+        dx: inDx,
+        dy: inDy,
+        modelWidth: inModelWidth,
+        modelHeight: inModelHeight,
+        instanceRotation: inInstanceRotation
+      )
+      let p2 = CanariPoint (x: inHorizontalMirror ? (inBoardWidth - cP2.x) : cP2.x, y: cP2.y).cocoaPoint
+      let cP3 = self.convertToCanari (
+        cocoaPoint : rect.p3,
+        dx: inDx,
+        dy: inDy,
+        modelWidth: inModelWidth,
+        modelHeight: inModelHeight,
+        instanceRotation: inInstanceRotation
+      )
+      let p3 = CanariPoint (x: inHorizontalMirror ? (inBoardWidth - cP3.x) : cP3.x, y: cP3.y).cocoaPoint
+      var bp = EBBezierPath ()
+      bp.move (to: p0)
+      bp.line (to: p1)
+      bp.line (to: p2)
+      bp.line (to: p3)
+      bp.close ()
+      ioBezierPaths.append (bp)
+    }
+  }
+
+  //····················································································································
+
+  func addPolygons (toPolygons ioPolygons : inout [[String]],
+                    dx inDx : Int,
+                    dy inDy: Int,
+                    horizontalMirror inHorizontalMirror : Bool,
+                    minimumAperture inMinimumApertureMilTenth : Int,
+                    boardWidth inBoardWidth : Int,
+                    modelWidth inModelWidth : Int,
+                    modelHeight inModelHeight : Int,
+                    instanceRotation inInstanceRotation : QuadrantRotation) {
+    // Swift.print ("GERBER: \(self.padArray.count)")
+    for rect in self {
+      let cP0 = self.convertToCanari (
+        cocoaPoint : rect.p0,
+        dx: inDx,
+        dy: inDy,
+        modelWidth: inModelWidth,
+        modelHeight: inModelHeight,
+        instanceRotation: inInstanceRotation
+      )
+      let p0 = CanariPoint (x: inHorizontalMirror ? (inBoardWidth - cP0.x) : cP0.x, y: cP0.y).milTenthPoint
+      let cP1 = self.convertToCanari (
+        cocoaPoint : rect.p1,
+        dx: inDx,
+        dy: inDy,
+        modelWidth: inModelWidth,
+        modelHeight: inModelHeight,
+        instanceRotation: inInstanceRotation
+      )
+      let p1 = CanariPoint (x: inHorizontalMirror ? (inBoardWidth - cP1.x) : cP1.x, y: cP1.y).milTenthPoint
+      let cP2 = self.convertToCanari (
+        cocoaPoint : rect.p2,
+        dx: inDx,
+        dy: inDy,
+        modelWidth: inModelWidth,
+        modelHeight: inModelHeight,
+        instanceRotation: inInstanceRotation
+      )
+      let p2 = CanariPoint (x: inHorizontalMirror ? (inBoardWidth - cP2.x) : cP2.x, y: cP2.y).milTenthPoint
+      let cP3 = self.convertToCanari (
+        cocoaPoint : rect.p3,
+        dx: inDx,
+        dy: inDy,
+        modelWidth: inModelWidth,
+        modelHeight: inModelHeight,
+        instanceRotation: inInstanceRotation
+      )
+      let p3 = CanariPoint (x: inHorizontalMirror ? (inBoardWidth - cP3.x) : cP3.x, y: cP3.y).milTenthPoint
+      var drawings = [String] ()
+      drawings.append ("X\(Int (p0.x))Y\(Int (p0.y))D02") // Move to
+      drawings.append ("X\(Int (p1.x))Y\(Int (p1.y))D01") // Line to
+      drawings.append ("X\(Int (p2.x))Y\(Int (p2.y))D01") // Line to
+      drawings.append ("X\(Int (p3.x))Y\(Int (p3.y))D01") // Line to
+      drawings.append ("X\(Int (p0.x))Y\(Int (p0.y))D01") // Line to
+      ioPolygons.append (drawings)
+    }
+  }
+
+//      let padRotationInRadians = canariRotationToRadians (pad.rotation + inInstanceRotation.rawValue * 90_000)
+//      var x = inDx
+//      var y = inDy
+//      switch inInstanceRotation {
+//      case .rotation0 :
+//        x += pad.x
+//        y += pad.y
+//      case .rotation90 :
+//        x += inModelHeight - pad.y
+//        y += pad.x
+//      case .rotation180 :
+//        x += inModelWidth  - pad.x
+//        y += inModelHeight - pad.y
+//      case .rotation270 :
+//        x += pad.y
+//        y += inModelWidth - pad.x
+//      }
+//      let xmt : Int
+//      if inHorizontalMirror {
+//        xmt = canariUnitToMilTenth (inBoardWidth - x)
+//      }else{
+//        xmt = canariUnitToMilTenth (x)
+//      }
+//      let ymt : Int = canariUnitToMilTenth (y)
+//      let widthTenthMil  : Int = canariUnitToMilTenth (pad.width)
+//      let heightTenthMil : Int = canariUnitToMilTenth (pad.height)
+//      let widthTenthMilF  = CGFloat (widthTenthMil)
+//      let heightTenthMilF = CGFloat (heightTenthMil)
+//      let widthInch  = canariUnitToInch (pad.width)
+//      let heightInch = canariUnitToInch (pad.height)
+//      switch pad.shape {
+//      case .rect :
+//        let cosa = cos (padRotationInRadians)
+//        let sina = sin (padRotationInRadians)
+//        let hs = widthTenthMilF  / 2.0 // Demie largeur du pad
+//        let ws = heightTenthMilF / 2.0 // Demie-hauteur du pad
+//        let p1x = CGFloat (xmt) + ( hs * cosa - ws * sina)
+//        let p1y = CGFloat (ymt) + ( hs * sina + ws * cosa)
+//        let p2x = CGFloat (xmt) + (-hs * cosa - ws * sina)
+//        let p2y = CGFloat (ymt) + (-hs * sina + ws * cosa)
+//        let p3x = CGFloat (xmt) + (-hs * cosa + ws * sina)
+//        let p3y = CGFloat (ymt) + (-hs * sina - ws * cosa)
+//        let p4x = CGFloat (xmt) + ( hs * cosa + ws * sina)
+//        let p4y = CGFloat (ymt) + ( hs * sina - ws * cosa)
+//        var drawings = [String] ()
+//        drawings.append ("X\(Int (p1x))Y\(Int (p1y))D02") // Move to
+//        drawings.append ("X\(Int (p2x))Y\(Int (p2y))D01") // Line to
+//        drawings.append ("X\(Int (p3x))Y\(Int (p3y))D01") // Line to
+//        drawings.append ("X\(Int (p4x))Y\(Int (p4y))D01") // Line to
+//        drawings.append ("X\(Int (p1x))Y\(Int (p1y))D01") // Line to
+//        ioPolygons.append (drawings)
+//      case .octo :
+//        // Swift.print ("OCTO \(xmt) \(ymt) \(widthInch) \(heightInch)")
+//        var af = AffineTransform ()
+//        af.translate (x: CGFloat (xmt), y: CGFloat (ymt))
+//        af.rotate (byRadians: padRotationInRadians)
+//        let r = NSRect (x:-widthTenthMilF / 2.0, y: -heightTenthMilF / 2.0, width: widthTenthMilF, height: heightTenthMilF)
+//        let bp = EBBezierPath (octogonInRect: r).transformed (by: af)
+//        var points = [NSPoint] (repeating: .zero, count: 3)
+//        var drawings = [String] ()
+//        var origin = NSPoint ()
+//        for i in 0 ..< bp.nsBezierPath.elementCount {
+//          let type = bp.nsBezierPath.element (at: i, associatedPoints: &points)
+//          switch type {
+//          case .moveTo:
+//            origin = points[0]
+//            drawings.append ("X\(Int (origin.x))Y\(Int (origin.y))D02") // Move to
+//          case .lineTo:
+//            drawings.append ("X\(Int (points[0].x))Y\(Int (points[0].y))D01") // Line to
+//          case .curveTo:
+//            ()
+//          case .closePath:
+//            drawings.append ("X\(Int (origin.x))Y\(Int (origin.y))D01") // Line to
+//          @unknown default :
+//            ()
+//          }
+//        }
+//        ioPolygons.append (drawings)
+//
+////        var drawings = [String] ()
+////        drawings.append ("Octogonal pad (\(#file):\(#line)")
+////        ioPolygons.append (drawings)
+//      case .round :
+//        if pad.width < pad.height {
+//          let transform = NSAffineTransform ()
+//          if inHorizontalMirror {
+//            transform.scaleX (by:-1.0, yBy: 1.0)
+//          }
+//          transform.rotate (byRadians: padRotationInRadians)
+//          let apertureString = "C,\(String(format: "%.4f", widthInch))"
+//          let p1 = transform.transform (NSPoint (x: 0.0,  y:  (heightTenthMilF - widthTenthMilF) / 2.0))
+//          let p2 = transform.transform (NSPoint (x: 0.0,  y: -(heightTenthMilF - widthTenthMilF) / 2.0))
+//          let p1x = Int (p1.x.rounded ())
+//          let p1y = Int (p1.y.rounded ())
+//          let p2x = Int (p2.x.rounded ())
+//          let p2y = Int (p2.y.rounded ())
+//          let moveTo = "X\(xmt + p1x)Y\(ymt + p1y)D02"
+//          let lineTo = "X\(xmt + p2x)Y\(ymt + p2y)D01"
+//          if let array = ioApertureDictionary [apertureString] {
+//            var a = array
+//            a.append (moveTo)
+//            a.append (lineTo)
+//            ioApertureDictionary [apertureString] = a
+//          }else{
+//            ioApertureDictionary [apertureString] = [moveTo, lineTo]
+//          }
+//        }else if pad.width > pad.height {
+//          let transform = NSAffineTransform ()
+//          if inHorizontalMirror {
+//            transform.scaleX (by:-1.0, yBy: 1.0)
+//          }
+//          transform.rotate (byRadians: padRotationInRadians)
+//          let apertureString = "C,\(String(format: "%.4f", heightInch))"
+//          let p1 = transform.transform (NSPoint (x:  (widthTenthMilF - heightTenthMilF) / 2.0, y:0.0))
+//          let p2 = transform.transform (NSPoint (x: -(widthTenthMilF - heightTenthMilF) / 2.0, y:0.0))
+//          let p1x = Int (p1.x.rounded ())
+//          let p1y = Int (p1.y.rounded ())
+//          let p2x = Int (p2.x.rounded ())
+//          let p2y = Int (p2.y.rounded ())
+//          let moveTo = "X\(xmt + p1x)Y\(ymt + p1y)D02"
+//          let lineTo = "X\(xmt + p2x)Y\(ymt + p2y)D01"
+//          if let array = ioApertureDictionary [apertureString] {
+//            var a = array
+//            a.append (moveTo)
+//            a.append (lineTo)
+//            ioApertureDictionary [apertureString] = a
+//          }else{
+//            ioApertureDictionary [apertureString] = [moveTo, lineTo]
+//          }
+//        }else{ // Circular pad
+//          let apertureString = "C,\(String(format: "%.4f", widthInch))"
+//          let flash = "X\(xmt)Y\(ymt)D03"
+//          if let array = ioApertureDictionary [apertureString] {
+//            var a = array
+//            a.append (flash)
+//            ioApertureDictionary [apertureString] = a
+//          }else{
+//            ioApertureDictionary [apertureString] = [flash]
+//          }
+//        }
+//      }
+//    }
+//  }
 
   //····················································································································
 
