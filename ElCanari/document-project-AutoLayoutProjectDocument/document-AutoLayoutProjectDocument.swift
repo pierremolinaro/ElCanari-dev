@@ -6009,7 +6009,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_267 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Side", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Layer", bold: false, size: .small, alignment: .right)
     return view
   }
 

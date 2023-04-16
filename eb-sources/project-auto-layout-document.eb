@@ -2064,15 +2064,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $observedValue #boardQRCodeSelectionController.moduleCount
         }
       )
-//      addFirstBaseLineAligned (
-//        left: StaticLabel (title: "Min Height", bold: no, size: .small, alignment: .right),
-//        right: CanariObservedDimensionAndPopUp (size: .small) {
-//          $dimensionAndUnit #boardQRCodeSelectionController.minHeightInCanariUnit, #boardQRCodeSelectionController.mMinHeightUnit
-//        }
-//      )
       addSeparator ()
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Side", bold: no, size: .small, alignment: .right),
+        left: StaticLabel (title: "Layer", bold: no, size: .small, alignment: .right),
         right: EnumPopUpButton (titles: enum BoardQRCodeLayer.popupTitles, size: .small) { $selectedIndex #boardQRCodeSelectionController.mLayer } 
       )
       addFirstBaseLineAligned (

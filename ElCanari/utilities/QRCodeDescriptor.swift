@@ -62,19 +62,20 @@ struct QRCodeDescriptor : Hashable {
     let ciImage = barcodeCreationFilter.outputImage!
   //--- Build bit map
     let bitMapImageRep = NSBitmapImageRep (ciImage: ciImage)
+//    Swift.print ("--5--bitsPerPixel \(bitMapImageRep.bitsPerPixel) samplesPerPixel \(bitMapImageRep.samplesPerPixel) numberOfPlanes \(bitMapImageRep.numberOfPlanes)")
     self.imageWidth = bitMapImageRep.pixelsWide + (inFramed ? 2 : 0) + QR_CODE_MARGIN * 2
     self.imageHeight = bitMapImageRep.pixelsHigh + (inFramed ? 2 : 0) + QR_CODE_MARGIN * 2
   //--- Build QR Code representation
     var rects = [QRCodeRectangle] ()
     var pixels = [QRCodePoint] ()
+    var peek = [Int] (repeating: 0, count: bitMapImageRep.samplesPerPixel)
     for y in 0 ..< bitMapImageRep.pixelsHigh {
       let rectOriginY = bitMapImageRep.pixelsHigh + QR_CODE_MARGIN - (inFramed ? 0 : 1) - y
       var originX = 0
       var width = 0 // Empty rect
       for x in 0 ..< bitMapImageRep.pixelsWide {
-        var p : Int = 0
-        bitMapImageRep.getPixel (&p, atX: x, y: y)
-        let blackPixel = p < 128
+        bitMapImageRep.getPixel (&peek, atX: x, y: y)
+        let blackPixel = peek[0] < 128
         if blackPixel {
           if width == 0 { // Begin a new rect
             originX = x + (inFramed ? 1 : 0) + QR_CODE_MARGIN

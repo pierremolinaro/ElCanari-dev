@@ -9,10 +9,10 @@ enum QRCodeCorrectionLevel {
 }
 
 func enum QRCodeCorrectionLevel.popupTitles {
-  low : "Low" ;
-  medium : "Medium" ;
-  quality : "Quality" ;
-  high : "High" ;
+  low : "L" ;
+  medium : "M" ;
+  quality : "Q" ;
+  high : "H" ;
 }
 
 
@@ -194,8 +194,8 @@ enum BoardQRCodeLayer {
 }
 
 func enum BoardQRCodeLayer.popupTitles {
-  legendFront : "Legend Front Layer" ;
-  legendBack : "Legend Back Layer" ;
+  legendFront : "Legend Front" ;
+  legendBack : "Legend Back" ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

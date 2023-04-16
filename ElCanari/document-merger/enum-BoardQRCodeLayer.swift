@@ -15,7 +15,7 @@ enum BoardQRCodeLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   //····················································································································
 
   static func popupTitles () -> [String] {
-    return ["Legend Front Layer", "Legend Back Layer"]
+    return ["Legend Front", "Legend Back"]
   }
 
   //····················································································································

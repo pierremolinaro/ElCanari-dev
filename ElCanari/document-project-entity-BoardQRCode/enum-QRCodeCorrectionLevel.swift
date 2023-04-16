@@ -17,7 +17,7 @@ enum QRCodeCorrectionLevel : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   //····················································································································
 
   static func popupTitles () -> [String] {
-    return ["Low", "Medium", "Quality", "High"]
+    return ["L", "M", "Q", "H"]
   }
 
   //····················································································································
