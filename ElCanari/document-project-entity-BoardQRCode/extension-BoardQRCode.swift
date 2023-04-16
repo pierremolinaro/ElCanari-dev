@@ -255,15 +255,17 @@ struct QRCodeDisplayInfos {
 //--- QR code
   var filledBP = EBBezierPath ()
   var productRectangles = [ProductRectangle] ()
-  for pixel in inQRCodeDescriptor.blackPixels {
-    let pixelX = CGFloat (pixel.x) - width / 2.0
-    let pixelY = CGFloat (pixel.y) - height / 2.0
-    let r = NSRect (x: pixelX, y: pixelY, width: 1.0, height: 1.0)
+  for rect in inQRCodeDescriptor.blackRectangles {
+    let x = CGFloat (rect.x) - width / 2.0
+    let y = CGFloat (rect.y) - height / 2.0
+    let w = CGFloat (rect.width)
+    let h = CGFloat (rect.height)
+    let r = NSRect (x: x, y: y, width: w, height: h)
     filledBP.appendRect (r)
-    let p0 = tr.transform (NSPoint (x: pixelX,       y: pixelY))
-    let p1 = tr.transform (NSPoint (x: pixelX + 1.0, y: pixelY))
-    let p2 = tr.transform (NSPoint (x: pixelX + 1.0, y: pixelY + 1.0))
-    let p3 = tr.transform (NSPoint (x: pixelX,       y: pixelY + 1.0))
+    let p0 = tr.transform (NSPoint (x: x,     y: y))
+    let p1 = tr.transform (NSPoint (x: x + w, y: y))
+    let p2 = tr.transform (NSPoint (x: x + w, y: y + h))
+    let p3 = tr.transform (NSPoint (x: x,     y: y + h))
     productRectangles.append (ProductRectangle (p0: p0, p1: p1, p2: p2, p3: p3))
   }
   let qrCodeBP = filledBP.transformed (by: tr)

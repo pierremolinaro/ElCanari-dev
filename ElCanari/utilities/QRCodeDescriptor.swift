@@ -14,14 +14,16 @@ struct QRCodeDescriptor : Hashable {
 
   //····················································································································
 
-  struct QRCodePixel : Hashable {
+  struct QRCodeRectangle : Hashable {
     let x : Int
     let y : Int
+    let width : Int
+    let height : Int
   }
 
   //····················································································································
 
-  public let blackPixels : [QRCodePixel]
+  public let blackRectangles : [QRCodeRectangle]
   public let imageWidth : Int
   public let imageHeight : Int
 
@@ -61,7 +63,7 @@ struct QRCodeDescriptor : Hashable {
       bytesPerRow: 0,
       bitsPerPixel: 0
     )
-    var pixels = [QRCodePixel] ()
+    var rects = [QRCodeRectangle] ()
     if let offscreenRep = possibleOffscreenRep,
        let graphicContext = NSGraphicsContext (bitmapImageRep: offscreenRep) {
       NSGraphicsContext.saveGraphicsState ()
@@ -69,6 +71,9 @@ struct QRCodeDescriptor : Hashable {
       graphicContext.imageInterpolation = .none
       ciImageRepresentation.draw (in: NSRect (origin: .zero, size: ciImageRepresentation.size))
       for y in 0 ..< ciImageRepresentation.pixelsHigh {
+        let rectOriginY = ciImageRepresentation.pixelsHigh - (inFramed ? 0 : 1) - y
+        var originX = 0
+        var width = 0 // Empty rect
         for x in 0 ..< ciImageRepresentation.pixelsWide {
           if let color = offscreenRep.colorAt (x: x, y: y) {
             var redComponent : CGFloat = 0.0
@@ -76,28 +81,38 @@ struct QRCodeDescriptor : Hashable {
             var blueComponent : CGFloat = 0.0
             var alphaComponent : CGFloat = 0.0
             color.getRed (&redComponent, green:&greenComponent, blue:&blueComponent, alpha:&alphaComponent)
-            if redComponent < 0.5 {
-              pixels.append (QRCodePixel (x: x + (inFramed ? 1 : 0), y: ciImageRepresentation.pixelsHigh - (inFramed ? 0 : 1) - y))
+            let blackPixel = redComponent < 0.5
+            if blackPixel {
+              if width == 0 { // Begin a new rect
+                originX = x + (inFramed ? 1 : 0)
+                width = 1
+              }else{ // Extend an existing rect
+                width += 1
+              }
+            }else if width > 0 { // White pixel, closing an existing rect
+              let r = QRCodeRectangle (x: originX, y: rectOriginY, width: width, height: 1)
+              rects.append (r)
+              width = 0
             }
           }
+        }
+        if width > 0 { // closing the last existing rect
+          let r = QRCodeRectangle (x: originX, y: rectOriginY, width: width, height: 1)
+          rects.append (r)
         }
       }
       NSGraphicsContext.restoreGraphicsState ()
     }
   //--- Add Frame
     if inFramed {
-      for x in 0 ..< self.imageWidth {
-        pixels.append (QRCodePixel (x: x, y: self.imageHeight - 1))
-        pixels.append (QRCodePixel (x: x, y: 0))
-      }
-      for y in 1 ..< (self.imageHeight - 1) {
-        pixels.append (QRCodePixel (x: 0, y: y))
-        pixels.append (QRCodePixel (x: self.imageWidth - 1, y: y))
-      }
+      rects.append (QRCodeRectangle (x: 0, y: 0, width: self.imageWidth, height: 1))
+      rects.append (QRCodeRectangle (x: 0, y: self.imageHeight - 1, width: self.imageWidth, height: 1))
+      rects.append (QRCodeRectangle (x: 0, y: 1, width: 1, height: self.imageHeight - 2))
+      rects.append (QRCodeRectangle (x: self.imageWidth - 1, y: 1, width: 1, height: self.imageHeight - 2))
     }
   //---
-    self.blackPixels = pixels
-    Swift.print ("QR Code: \(pixels.count) pixels")
+    self.blackRectangles = rects
+//    Swift.print ("QR Code: \(rects.count) rectangles")
   }
 
   //····················································································································
