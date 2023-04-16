@@ -63,15 +63,15 @@ struct QRCodeDescriptor : Hashable {
   //--- Build bit map
     let bitMapImageRep = NSBitmapImageRep (ciImage: ciImage)
 //    Swift.print ("--5--bitsPerPixel \(bitMapImageRep.bitsPerPixel) samplesPerPixel \(bitMapImageRep.samplesPerPixel) numberOfPlanes \(bitMapImageRep.numberOfPlanes)")
-    self.imageWidth = bitMapImageRep.pixelsWide + (inFramed ? 2 : 0) + QR_CODE_MARGIN * 2
+    self.imageWidth  = bitMapImageRep.pixelsWide + (inFramed ? 2 : 0) + QR_CODE_MARGIN * 2
     self.imageHeight = bitMapImageRep.pixelsHigh + (inFramed ? 2 : 0) + QR_CODE_MARGIN * 2
   //--- Build QR Code representation
     var rects = [QRCodeRectangle] ()
     var pixels = [QRCodePoint] ()
     var peek = [Int] (repeating: 0, count: bitMapImageRep.samplesPerPixel)
     for y in 0 ..< bitMapImageRep.pixelsHigh {
-      let rectOriginY = bitMapImageRep.pixelsHigh + QR_CODE_MARGIN - (inFramed ? 0 : 1) - y
       var originX = 0
+      let originY = bitMapImageRep.pixelsHigh + QR_CODE_MARGIN - (inFramed ? 0 : 1) - y
       var width = 0 // Empty rect
       for x in 0 ..< bitMapImageRep.pixelsWide {
         bitMapImageRep.getPixel (&peek, atX: x, y: y)
@@ -84,18 +84,18 @@ struct QRCodeDescriptor : Hashable {
             width += 1
           }
         }else if width == 1 { // White pixel, closing an existing rect
-          pixels.append (QRCodePoint (x: originX, y: rectOriginY))
+          pixels.append (QRCodePoint (x: originX, y: originY))
           width = 0
         }else if width > 0 { // White pixel, closing an existing rect
-          let r = QRCodeRectangle (x: originX, y: rectOriginY, width: width, height: 1)
+          let r = QRCodeRectangle (x: originX, y: originY, width: width, height: 1)
           rects.append (r)
           width = 0
         }
       }
       if width == 1 { // closing the last existing rect
-        pixels.append (QRCodePoint (x: originX, y: rectOriginY))
+        pixels.append (QRCodePoint (x: originX, y: originY))
       }else if width > 0 { // closing the last existing rect
-        let r = QRCodeRectangle (x: originX, y: rectOriginY, width: width, height: 1)
+        let r = QRCodeRectangle (x: originX, y: originY, width: width, height: 1)
         rects.append (r)
       }
     }
