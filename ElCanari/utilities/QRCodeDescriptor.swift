@@ -13,6 +13,10 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+fileprivate let MARGIN = 3 // 4 modules are required, ci image provides one
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 struct QRCodeDescriptor : Hashable {
 
   //····················································································································
@@ -51,12 +55,12 @@ struct QRCodeDescriptor : Hashable {
     let ciImage = barcodeCreationFilter.outputImage!
   //--- Build bit map
     let bitMapImageRep = NSBitmapImageRep (ciImage: ciImage)
-    self.imageWidth = bitMapImageRep.pixelsWide + (inFramed ? 2 : 0)
-    self.imageHeight = bitMapImageRep.pixelsHigh + (inFramed ? 2 : 0)
+    self.imageWidth = bitMapImageRep.pixelsWide + (inFramed ? 2 : 0) + MARGIN * 2
+    self.imageHeight = bitMapImageRep.pixelsHigh + (inFramed ? 2 : 0) + MARGIN * 2
   //--- Build QR Code representation
     var rects = [QRCodeRectangle] ()
     for y in 0 ..< bitMapImageRep.pixelsHigh {
-      let rectOriginY = bitMapImageRep.pixelsHigh - (inFramed ? 0 : 1) - y
+      let rectOriginY = bitMapImageRep.pixelsHigh + MARGIN - (inFramed ? 0 : 1) - y
       var originX = 0
       var width = 0 // Empty rect
       for x in 0 ..< bitMapImageRep.pixelsWide {
@@ -65,7 +69,7 @@ struct QRCodeDescriptor : Hashable {
         let blackPixel = p < 128
         if blackPixel {
           if width == 0 { // Begin a new rect
-            originX = x + (inFramed ? 1 : 0)
+            originX = x + (inFramed ? 1 : 0) + MARGIN
             width = 1
           }else{ // Extend an existing rect
             width += 1
