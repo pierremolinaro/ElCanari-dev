@@ -121,13 +121,13 @@ extension AutoLayoutMergerDocument {
   fileprivate func generateBoardArchive (atPath inFilePath : String) throws {
     var archiveDict = [String : Any] ()
   //---
-    archiveDict ["ARTWORK"] = self.rootObject.mArtworkName
-    archiveDict ["BOARD-HEIGHT"] = self.rootObject.boardHeight ?? 0
-    archiveDict ["BOARD-HEIGHT-UNIT"] = self.rootObject.boardHeightUnit
-    archiveDict ["BOARD-LINE-WIDTH"] = self.rootObject.boardLimitWidth
-    archiveDict ["BOARD-LINE-WIDTH-UNIT"] = self.rootObject.boardLimitWidthUnit
-    archiveDict ["BOARD-WIDTH"] = self.rootObject.boardWidth ?? 0
-    archiveDict ["BOARD-WIDTH-UNIT"] = self.rootObject.boardWidthUnit
+    archiveDict [ARCHIVE_ARTWORK_KEY] = self.rootObject.mArtworkName
+    archiveDict [ARCHIVE_BOARD_HEIGHT_KEY] = self.rootObject.boardHeight ?? 0
+    archiveDict [ARCHIVE_BOARD_HEIGHT_UNIT_KEY] = self.rootObject.boardHeightUnit
+    archiveDict [ARCHIVE_BOARD_LINE_WIDTH_KEY] = self.rootObject.boardLimitWidth
+    archiveDict [ARCHIVE_BOARD_LINE_WIDTH_UNIT_KEY] = self.rootObject.boardLimitWidthUnit
+    archiveDict [ARCHIVE_BOARD_WIDTH_KEY] = self.rootObject.boardWidth ?? 0
+    archiveDict [ARCHIVE_BOARD_WIDTH_UNIT_KEY] = self.rootObject.boardWidthUnit
     var internalBoardsLimits = [String] ()
     var backComponentNames = [String] ()
     var frontComponentNames = [String] ()
@@ -365,40 +365,40 @@ extension AutoLayoutMergerDocument {
       case .twoLayers :
         ()
       case .fourLayers :
-        archiveDict ["PADS-TRAVERSING"] = traversingPads
-        archiveDict ["TRACKS-INNER1"] = inner1Tracks.sorted ()
-        archiveDict ["TRACKS-INNER2"] = inner2Tracks.sorted ()
+        archiveDict [ARCHIVE_PADS_TRAVERSING_KEY] = traversingPads
+        archiveDict [ARCHIVE_TRACKS_INNER1_KEY] = inner1Tracks.sorted ()
+        archiveDict [ARCHIVE_TRACKS_INNER2_KEY] = inner2Tracks.sorted ()
       case .sixLayers :
-        archiveDict ["PADS-TRAVERSING"] = traversingPads
-        archiveDict ["TRACKS-INNER1"] = inner1Tracks.sorted ()
-        archiveDict ["TRACKS-INNER2"] = inner2Tracks.sorted ()
-        archiveDict ["TRACKS-INNER3"] = inner3Tracks.sorted ()
-        archiveDict ["TRACKS-INNER4"] = inner4Tracks.sorted ()
+        archiveDict [ARCHIVE_PADS_TRAVERSING_KEY] = traversingPads
+        archiveDict [ARCHIVE_TRACKS_INNER1_KEY] = inner1Tracks.sorted ()
+        archiveDict [ARCHIVE_TRACKS_INNER2_KEY] = inner2Tracks.sorted ()
+        archiveDict [ARCHIVE_TRACKS_INNER3_KEY] = inner3Tracks.sorted ()
+        archiveDict [ARCHIVE_TRACKS_INNER4_KEY] = inner4Tracks.sorted ()
       }
     }
-    archiveDict ["QRCODES-LEGEND-FRONT"] = frontLegendQRCodes
-    archiveDict ["QRCODES-LEGEND-BACK"] = backLegendQRCodes
-    archiveDict ["INTERNAL-BOARDS-LIMITS"] = internalBoardsLimits // DO NOT SORT
-    archiveDict ["COMPONENT-NAMES-BACK"] = backComponentNames.sorted ()
-    archiveDict ["COMPONENT-NAMES-FRONT"] = frontComponentNames.sorted ()
-    archiveDict ["COMPONENT-VALUES-BACK"] = backComponentValues.sorted ()
-    archiveDict ["COMPONENT-VALUES-FRONT"] = frontComponentValues.sorted ()
-    archiveDict ["PACKAGES-BACK"] = backPackages.sorted ()
-    archiveDict ["PACKAGES-FRONT"] = frontPackages.sorted ()
-    archiveDict ["LINES-BACK"] = backLegendLines.sorted ()
-    archiveDict ["LINES-FRONT"] = frontLegendLines.sorted ()
-    archiveDict ["PADS-FRONT"] = frontPads // .sorted ()
-    archiveDict ["PADS-BACK"] = backPads // .sorted ()
-    archiveDict ["TEXTS-LAYOUT-BACK"] = backLayoutTexts.sorted ()
-    archiveDict ["TEXTS-LAYOUT-FRONT"] = frontLayoutTexts.sorted ()
-    archiveDict ["TEXTS-LEGEND-BACK"] = backLegendTexts.sorted ()
-    archiveDict ["TEXTS-LEGEND-FRONT"] = frontLegendTexts.sorted ()
-    archiveDict ["TRACKS-BACK"] = backTracks.sorted ()
-    archiveDict ["TRACKS-FRONT"] = frontTracks.sorted ()
-    archiveDict ["VIAS"] = vias.sorted ()
-    archiveDict ["DRILLS"] = drills.sorted ()
+    archiveDict [ARCHIVE_QRCODES_LEGEND_FRONT_KEY] = frontLegendQRCodes
+    archiveDict [ARCHIVE_QRCODES_LEGEND_BACK_KEY] = backLegendQRCodes
+    archiveDict [ARCHIVE_INTERNAL_BOARDS_LIMITS_KEY] = internalBoardsLimits // DO NOT SORT
+    archiveDict [ARCHIVE_COMPONENT_NAMES_BACK_KEY] = backComponentNames.sorted ()
+    archiveDict [ARCHIVE_COMPONENT_NAMES_FRONT_KEY] = frontComponentNames.sorted ()
+    archiveDict [ARCHIVE_COMPONENT_VALUES_BACK_KEY] = backComponentValues.sorted ()
+    archiveDict [ARCHIVE_COMPONENT_VALUES_FRONT_KEY] = frontComponentValues.sorted ()
+    archiveDict [ARCHIVE_PACKAGES_BACK_KEY] = backPackages.sorted ()
+    archiveDict [ARCHIVE_PACKAGES_FRONT_KEY] = frontPackages.sorted ()
+    archiveDict [ARCHIVE_LINES_BACK_KEY] = backLegendLines.sorted ()
+    archiveDict [ARCHIVE_LINES_FRONT_KEY] = frontLegendLines.sorted ()
+    archiveDict [ARCHIVE_PADS_FRONT_KEY] = frontPads // .sorted ()
+    archiveDict [ARCHIVE_PADS_BACK_KEY] = backPads // .sorted ()
+    archiveDict [ARCHIVE_TEXTS_LAYOUT_BACK_KEY] = backLayoutTexts.sorted ()
+    archiveDict [ARCHIVE_TEXTS_LAYOUT_FRONT_KEY] = frontLayoutTexts.sorted ()
+    archiveDict [ARCHIVE_TEXTS_LEGEND_BACK_KEY] = backLegendTexts.sorted ()
+    archiveDict [ARCHIVE_TEXTS_LEGEND_FRONT_KEY] = frontLegendTexts.sorted ()
+    archiveDict [ARCHIVE_TRACKS_BACK_KEY] = backTracks.sorted ()
+    archiveDict [ARCHIVE_TRACKS_FRONT_KEY] = frontTracks.sorted ()
+    archiveDict [ARCHIVE_VIAS_KEY] = vias.sorted ()
+    archiveDict [ARCHIVE_DRILLS_KEY] = drills.sorted ()
   //--- Add version
-    archiveDict ["ARCHIVE-VERSION"] = MERGER_ARCHIVE_VERSION
+    archiveDict [ARCHIVE_VERSION_KEY] = MERGER_ARCHIVE_VERSION
     // NSLog ("ARCHIVE \(archiveDict)")
   //--- Write file
     let data : Data = try PropertyListSerialization.data (

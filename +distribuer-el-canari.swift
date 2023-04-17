@@ -28,18 +28,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.7.4"
+let VERSION_CANARI = "1.7.5"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
-  "Utilisation de Sparkle 2.4.1",
-  "des badges pour signaler erreurs et alertes ont été ajoutés",
-  "dans un document, les badges d'états affichent le nombre d'erreurs et, à défaut, d'alertes"
 ]
 let NEWS : [String] = [
+  "Génération de QR Codes"
 ]
 
 //--------------------------------------------------------------------------------------------------

@@ -22,43 +22,43 @@ extension AutoLayoutProjectDocument {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
     var boardArchive = [String : Any] ()
   //--- Add artwork name
-    boardArchive ["ARTWORK"] = self.rootObject.mArtworkName
+    boardArchive [ARCHIVE_ARTWORK_KEY] = self.rootObject.mArtworkName
   //--- Add version
-    boardArchive ["ARCHIVE-VERSION"] = MERGER_ARCHIVE_VERSION
+    boardArchive [ARCHIVE_VERSION_KEY] = MERGER_ARCHIVE_VERSION
   //--- Add Board limits
     let af = self.addBoardLimits (&boardArchive, inProductData)
     addBoardLimitPathToArchive (&boardArchive, inProductData.boardLimitPath, self.rootObject.mBoardLimitsWidth, af)
-    addLinePathes (&boardArchive, inProductData.backComponentNames, "COMPONENT-NAMES-BACK", af)
-    addLinePathes (&boardArchive, inProductData.frontComponentNames, "COMPONENT-NAMES-FRONT", af)
-    addLinePathes (&boardArchive, inProductData.backComponentValues, "COMPONENT-VALUES-BACK", af)
-    addLinePathes (&boardArchive, inProductData.frontComponentValues, "COMPONENT-VALUES-FRONT", af)
-    addOblongs (&boardArchive, inProductData.backLines, "LINES-BACK", af)
-    addOblongs (&boardArchive, inProductData.frontLines, "LINES-FRONT", af)
-    addLinePathes (&boardArchive, inProductData.backPackageLegend, "PACKAGES-BACK", af)
-    addLinePathes (&boardArchive, inProductData.frontPackageLegend, "PACKAGES-FRONT", af)
+    addLinePathes (&boardArchive, inProductData.backComponentNames, ARCHIVE_COMPONENT_NAMES_BACK_KEY, af)
+    addLinePathes (&boardArchive, inProductData.frontComponentNames, ARCHIVE_COMPONENT_NAMES_FRONT_KEY, af)
+    addLinePathes (&boardArchive, inProductData.backComponentValues, ARCHIVE_COMPONENT_VALUES_BACK_KEY, af)
+    addLinePathes (&boardArchive, inProductData.frontComponentValues, ARCHIVE_COMPONENT_VALUES_FRONT_KEY, af)
+    addOblongs (&boardArchive, inProductData.backLines, ARCHIVE_LINES_BACK_KEY, af)
+    addOblongs (&boardArchive, inProductData.frontLines, ARCHIVE_LINES_FRONT_KEY, af)
+    addLinePathes (&boardArchive, inProductData.backPackageLegend, ARCHIVE_PACKAGES_BACK_KEY, af)
+    addLinePathes (&boardArchive, inProductData.frontPackageLegend, ARCHIVE_PACKAGES_FRONT_KEY, af)
     addDrills (&boardArchive, inProductData.holeDictionary, af)
     self.addPadsToArchive (&boardArchive, af)
-    addLinePathes (&boardArchive, inProductData.layoutBackTexts, "TEXTS-LAYOUT-BACK", af)
-    addLinePathes (&boardArchive, inProductData.layoutFrontTexts, "TEXTS-LAYOUT-FRONT", af)
-    addLinePathes (&boardArchive, inProductData.legendBackTexts, "TEXTS-LEGEND-BACK", af)
-    addLinePathes (&boardArchive, inProductData.legendFrontTexts, "TEXTS-LEGEND-FRONT", af)
-    addTracks (&boardArchive, inProductData.tracks [.back, default: []], "TRACKS-BACK", af)
-    addTracks (&boardArchive, inProductData.tracks [.front, default: []], "TRACKS-FRONT", af)
-    addCircles (&boardArchive, inProductData.viaPads, "VIAS", af)
-    addRectangles (&boardArchive, inProductData.legendFrontQRCodes, "QRCODES-LEGEND-FRONT", af)
-    addRectangles (&boardArchive, inProductData.legendBackQRCodes, "QRCODES-LEGEND-BACK", af)
+    addLinePathes (&boardArchive, inProductData.layoutBackTexts, ARCHIVE_TEXTS_LAYOUT_BACK_KEY, af)
+    addLinePathes (&boardArchive, inProductData.layoutFrontTexts, ARCHIVE_TEXTS_LAYOUT_FRONT_KEY, af)
+    addLinePathes (&boardArchive, inProductData.legendBackTexts, ARCHIVE_TEXTS_LEGEND_BACK_KEY, af)
+    addLinePathes (&boardArchive, inProductData.legendFrontTexts, ARCHIVE_TEXTS_LEGEND_FRONT_KEY, af)
+    addTracks (&boardArchive, inProductData.tracks [.back, default: []], ARCHIVE_TRACKS_BACK_KEY, af)
+    addTracks (&boardArchive, inProductData.tracks [.front, default: []], ARCHIVE_TRACKS_FRONT_KEY, af)
+    addCircles (&boardArchive, inProductData.viaPads, ARCHIVE_VIAS_KEY, af)
+    addRectangles (&boardArchive, inProductData.legendFrontQRCodes, ARCHIVE_QRCODES_LEGEND_FRONT_KEY, af)
+    addRectangles (&boardArchive, inProductData.legendBackQRCodes, ARCHIVE_QRCODES_LEGEND_BACK_KEY, af)
   //--- Add inner objects ?
     switch self.rootObject.mLayerConfiguration {
     case .twoLayers :
       ()
     case .fourLayers :
-      addOblongs (&boardArchive, inProductData.tracks [.inner1, default: []], "TRACKS-INNER1", af)
-      addOblongs (&boardArchive, inProductData.tracks [.inner2, default: []], "TRACKS-INNER2", af)
+      addOblongs (&boardArchive, inProductData.tracks [.inner1, default: []], ARCHIVE_TRACKS_INNER1_KEY, af)
+      addOblongs (&boardArchive, inProductData.tracks [.inner2, default: []], ARCHIVE_TRACKS_INNER2_KEY, af)
     case .sixLayers :
-      addOblongs (&boardArchive, inProductData.tracks [.inner1, default: []], "TRACKS-INNER1", af)
-      addOblongs (&boardArchive, inProductData.tracks [.inner2, default: []], "TRACKS-INNER2", af)
-      addOblongs (&boardArchive, inProductData.tracks [.inner3, default: []], "TRACKS-INNER3", af)
-      addOblongs (&boardArchive, inProductData.tracks [.inner4, default: []], "TRACKS-INNER4", af)
+      addOblongs (&boardArchive, inProductData.tracks [.inner1, default: []], ARCHIVE_TRACKS_INNER1_KEY, af)
+      addOblongs (&boardArchive, inProductData.tracks [.inner2, default: []], ARCHIVE_TRACKS_INNER2_KEY, af)
+      addOblongs (&boardArchive, inProductData.tracks [.inner3, default: []], ARCHIVE_TRACKS_INNER3_KEY, af)
+      addOblongs (&boardArchive, inProductData.tracks [.inner4, default: []], ARCHIVE_TRACKS_INNER4_KEY, af)
     }
   //--- Write file
     let data = try PropertyListSerialization.data (fromPropertyList: boardArchive, format: .xml, options: 0)
@@ -70,12 +70,12 @@ extension AutoLayoutProjectDocument {
 
   private func addBoardLimits (_ ioBoardArchive : inout [String : Any], _ inProductData : ProductData) -> AffineTransform {
     let boardBoundBox = inProductData.boardBoundBox
-    ioBoardArchive ["BOARD-HEIGHT"] = cocoaToCanariUnit (boardBoundBox.size.height)
-    ioBoardArchive ["BOARD-HEIGHT-UNIT"] = self.rootObject.mBoardLimitsWidthUnit
-    ioBoardArchive ["BOARD-LINE-WIDTH"] = self.rootObject.mBoardLimitsWidth
-    ioBoardArchive ["BOARD-LINE-WIDTH-UNIT"] = self.rootObject.mBoardLimitsWidthUnit
-    ioBoardArchive ["BOARD-WIDTH"]  = cocoaToCanariUnit (boardBoundBox.size.width)
-    ioBoardArchive ["BOARD-WIDTH-UNIT"] = self.rootObject.mBoardLimitsWidthUnit
+    ioBoardArchive [ARCHIVE_BOARD_HEIGHT_KEY] = cocoaToCanariUnit (boardBoundBox.size.height)
+    ioBoardArchive [ARCHIVE_BOARD_HEIGHT_UNIT_KEY] = self.rootObject.mBoardLimitsWidthUnit
+    ioBoardArchive [ARCHIVE_BOARD_LINE_WIDTH_KEY] = self.rootObject.mBoardLimitsWidth
+    ioBoardArchive [ARCHIVE_BOARD_LINE_WIDTH_UNIT_KEY] = self.rootObject.mBoardLimitsWidthUnit
+    ioBoardArchive [ARCHIVE_BOARD_WIDTH_KEY]  = cocoaToCanariUnit (boardBoundBox.size.width)
+    ioBoardArchive [ARCHIVE_BOARD_WIDTH_UNIT_KEY] = self.rootObject.mBoardLimitsWidthUnit
   //--- Transformation for translating origin to (0, 0)
     var af = AffineTransform ()
     af.translate (x: -boardBoundBox.origin.x, y: -boardBoundBox.origin.y)
@@ -135,10 +135,10 @@ extension AutoLayoutProjectDocument {
         }
       }
     }
-    ioBoardArchive ["PADS-BACK"] = backPads
-    ioBoardArchive ["PADS-FRONT"] = frontPads
+    ioBoardArchive [ARCHIVE_PADS_BACK_KEY] = backPads
+    ioBoardArchive [ARCHIVE_PADS_FRONT_KEY] = frontPads
     if self.rootObject.mLayerConfiguration != .twoLayers {
-      ioBoardArchive ["PADS-TRAVERSING"] = traversingPads
+      ioBoardArchive [ARCHIVE_PADS_TRAVERSING_KEY] = traversingPads
     }
   }
 
@@ -161,7 +161,7 @@ fileprivate func addBoardLimitPathToArchive (_ ioBoardArchive : inout [String : 
      p0 = pp
    }
    stringArray.append ("\(p0.x) \(p0.y) \(firstPoint.x) \(firstPoint.y) \(inWidth)")
-   ioBoardArchive ["INTERNAL-BOARDS-LIMITS"] = stringArray  // DO NOT SORT
+   ioBoardArchive [ARCHIVE_INTERNAL_BOARDS_LIMITS_KEY] = stringArray  // DO NOT SORT
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -250,7 +250,7 @@ fileprivate func addDrills (_ ioBoardArchive : inout [String : Any],
        stringArray.append ("\(p1.x) \(p1.y) \(p2.x) \(p2.y) \(width)")
      }
    }
-   ioBoardArchive ["DRILLS"] = stringArray.sorted ()
+   ioBoardArchive [ARCHIVE_DRILLS_KEY] = stringArray.sorted ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

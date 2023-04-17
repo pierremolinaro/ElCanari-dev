@@ -2390,6 +2390,9 @@
 		CF7C09FF21E4BA8C00FFB7A2 /* open-symbol-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C09FD21E4BA8C00FFB7A2 /* open-symbol-in-library.swift */; };
 		CF7C0A0121E4DAC900FFB7A2 /* open-package-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C0A0021E4DAC900FFB7A2 /* open-package-in-library.swift */; };
 		CF7C0A0221E4DAC900FFB7A2 /* open-package-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C0A0021E4DAC900FFB7A2 /* open-package-in-library.swift */; };
+		CF7E62CF29ED390800397204 /* board-archive-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E62CE29ED390800397204 /* board-archive-utilities.swift */; };
+		CF7E62D029ED390800397204 /* board-archive-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E62CE29ED390800397204 /* board-archive-utilities.swift */; };
+		CF7E62D129ED390800397204 /* board-archive-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E62CE29ED390800397204 /* board-archive-utilities.swift */; };
 		CF7F41F321CAF45400C4C529 /* transient-PackageSegment-lengthInCanariUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F41F221CAF45300C4C529 /* transient-PackageSegment-lengthInCanariUnit.swift */; };
 		CF7F41F421CAF45400C4C529 /* transient-PackageSegment-lengthInCanariUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F41F221CAF45300C4C529 /* transient-PackageSegment-lengthInCanariUnit.swift */; };
 		CF7F506E279C1FBF007BB908 /* transient-AutoLayoutProjectDocument-unplacedSymbolsCountString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F506C279C1FBF007BB908 /* transient-AutoLayoutProjectDocument-unplacedSymbolsCountString.swift */; };
@@ -5841,6 +5844,7 @@
 		CF7B7E3524F2B98E00A12A46 /* rotationCursor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rotationCursor.png; sourceTree = "<group>"; };
 		CF7C09FD21E4BA8C00FFB7A2 /* open-symbol-in-library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "open-symbol-in-library.swift"; sourceTree = "<group>"; };
 		CF7C0A0021E4DAC900FFB7A2 /* open-package-in-library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "open-package-in-library.swift"; sourceTree = "<group>"; };
+		CF7E62CE29ED390800397204 /* board-archive-utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "board-archive-utilities.swift"; sourceTree = "<group>"; };
 		CF7F41F221CAF45300C4C529 /* transient-PackageSegment-lengthInCanariUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageSegment-lengthInCanariUnit.swift"; sourceTree = "<group>"; };
 		CF7F506C279C1FBF007BB908 /* transient-AutoLayoutProjectDocument-unplacedSymbolsCountString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutProjectDocument-unplacedSymbolsCountString.swift"; sourceTree = "<group>"; };
 		CF7F506D279C1FBF007BB908 /* transient-AutoLayoutProjectDocument-unplacedSymbolsCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutProjectDocument-unplacedSymbolsCount.swift"; sourceTree = "<group>"; };
@@ -7251,6 +7255,7 @@
 			isa = PBXGroup;
 			children = (
 				CFE04E55292BA13A000358EF /* append-prepend-new-inspector-to-hstack.swift */,
+				CF7E62CE29ED390800397204 /* board-archive-utilities.swift */,
 				CFBAB0B320DE786C00476FB7 /* canari-conversions.swift */,
 				CFE85A8B21A5C1C100991A66 /* CanariPoint.swift */,
 				CFE85A8E21A5C2EB00991A66 /* CanariRect.swift */,
@@ -10423,6 +10428,7 @@
 				CF1361FE220223E800E7CEE7 /* ftp-read-write.swift in Sources */,
 				CFEB7B54233A25EC0060A97A /* transient-ComponentInProject-availablePackages.swift in Sources */,
 				CFDAB4A028D0C3FC0037A3B1 /* AutoLayoutDoubleObserverField.swift in Sources */,
+				CF7E62CF29ED390800397204 /* board-archive-utilities.swift in Sources */,
 				CFEB7C8D233A28860060A97A /* transient-ProjectRoot-boardIssues.swift in Sources */,
 				CF880FEF1DDB85F400954D4E /* GeometricCircle.swift in Sources */,
 				CFB4C0692794662800C509A9 /* AutoLayoutBoolPopUpButton.swift in Sources */,
@@ -12061,6 +12067,7 @@
 				CF1361FF220223E800E7CEE7 /* ftp-read-write.swift in Sources */,
 				CFDAB4A128D0C3FC0037A3B1 /* AutoLayoutDoubleObserverField.swift in Sources */,
 				CFB9E20322D344EE00D681BF /* enum-TrackSide.swift in Sources */,
+				CF7E62D029ED390800397204 /* board-archive-utilities.swift in Sources */,
 				CFFF883A29BE364C007A12DE /* property-AssignedPadProxiesInDevice.swift in Sources */,
 				CFEB7B55233A25EC0060A97A /* transient-ComponentInProject-availablePackages.swift in Sources */,
 				CF59C44A29BE36AB004CA404 /* property-TwoStringArray.swift in Sources */,
@@ -13699,6 +13706,7 @@
 				CF9C63FD25CABE5C00A00D5C /* phase4-appendLocalFilesToLibraryFileDictionary.swift in Sources */,
 				CF56026D2793158300479AB6 /* AutoLayoutCanariTrackLockView.swift in Sources */,
 				CF39CCEC268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-updateSelectedPackages.swift in Sources */,
+				CF7E62D129ED390800397204 /* board-archive-utilities.swift in Sources */,
 				CFFF883B29BE364C007A12DE /* property-AssignedPadProxiesInDevice.swift in Sources */,
 				CFDAB4A228D0C3FC0037A3B1 /* AutoLayoutDoubleObserverField.swift in Sources */,
 				CF59C44B29BE36AB004CA404 /* property-TwoStringArray.swift in Sources */,

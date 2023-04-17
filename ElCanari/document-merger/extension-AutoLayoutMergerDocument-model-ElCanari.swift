@@ -63,7 +63,7 @@ extension AutoLayoutMergerDocument {
   fileprivate func internal_check_ELCanariArchive_version (_ inBoardArchiveDict : [String : Any],
                                                            named inName : String,
                                                            callBack inCallBack : @escaping (BoardModel) -> Void) {
-    let version : Int = (inBoardArchiveDict ["ARCHIVE-VERSION"] as? Int) ?? 0
+    let version : Int = (inBoardArchiveDict [ARCHIVE_VERSION_KEY] as? Int) ?? 0
     if version != MERGER_ARCHIVE_VERSION {
       let alert = NSAlert ()
       _ = alert.addButton (withTitle: "Ignore Version Error and Continue")
@@ -93,13 +93,13 @@ extension AutoLayoutMergerDocument {
     boardModel.modelVersion = inVersion
     boardModel.ignoreModelVersionError = inIgnoreVersionError
     boardModel.name = inName
-    boardModel.artworkName = string (fromDict: inBoardArchiveDict, key: "ARTWORK", &errorArray)
-    boardModel.modelWidth = int (fromDict: inBoardArchiveDict, key: "BOARD-WIDTH", &errorArray)
-    boardModel.modelWidthUnit = int (fromDict: inBoardArchiveDict, key: "BOARD-WIDTH-UNIT", &errorArray)
-    boardModel.modelHeight = int (fromDict: inBoardArchiveDict, key: "BOARD-HEIGHT", &errorArray)
-    boardModel.modelHeightUnit = int (fromDict: inBoardArchiveDict, key: "BOARD-HEIGHT-UNIT", &errorArray)
-    boardModel.modelLimitWidth = int (fromDict: inBoardArchiveDict, key: "BOARD-LINE-WIDTH", &errorArray)
-    boardModel.modelLimitWidthUnit = int (fromDict: inBoardArchiveDict, key: "BOARD-LINE-WIDTH-UNIT", &errorArray)
+    boardModel.artworkName = string (fromDict: inBoardArchiveDict, key: ARCHIVE_ARTWORK_KEY, &errorArray)
+    boardModel.modelWidth = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_WIDTH_KEY, &errorArray)
+    boardModel.modelWidthUnit = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_WIDTH_UNIT_KEY, &errorArray)
+    boardModel.modelHeight = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_HEIGHT_KEY, &errorArray)
+    boardModel.modelHeightUnit = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_HEIGHT_UNIT_KEY, &errorArray)
+    boardModel.modelLimitWidth = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_LINE_WIDTH_KEY, &errorArray)
+    boardModel.modelLimitWidthUnit = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_LINE_WIDTH_UNIT_KEY, &errorArray)
     let boardRect_mm = NSRect (
       x: 0.0,
       y: 0.0,
@@ -110,7 +110,7 @@ extension AutoLayoutMergerDocument {
   //--- Internal boards limits
     do{
       var internalBoardsLimitsEntities = EBReferenceArray <SegmentEntity> ()
-      let internalBoardsLimits = optionalStringArray (fromDict: inBoardArchiveDict, key: "INTERNAL-BOARDS-LIMITS", &errorArray)
+      let internalBoardsLimits = optionalStringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_INTERNAL_BOARDS_LIMITS_KEY, &errorArray)
       for str in internalBoardsLimits {
         let segment = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
@@ -126,7 +126,7 @@ extension AutoLayoutMergerDocument {
   //--- Front tracks
     do{
       var frontTrackEntities = EBReferenceArray <SegmentEntity> ()
-      let frontTracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-FRONT", &errorArray)
+      let frontTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_FRONT_KEY, &errorArray)
       for str in frontTracks {
         let track = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
@@ -142,7 +142,7 @@ extension AutoLayoutMergerDocument {
   //--- Back tracks
     do{
       var backTrackEntities = EBReferenceArray <SegmentEntity> ()
-      let backTracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-BACK", &errorArray)
+      let backTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_BACK_KEY, &errorArray)
       for str in backTracks {
         let track = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
@@ -158,7 +158,7 @@ extension AutoLayoutMergerDocument {
   //--- Vias
     do{
       var viaEntities = EBReferenceArray <BoardModelVia> ()
-      let vias = stringArray (fromDict: inBoardArchiveDict, key: "VIAS", &errorArray)
+      let vias = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_VIAS_KEY, &errorArray)
       for str in vias {
         let via = BoardModelVia (self.undoManager)
         let ints = array3int (fromString: str, &errorArray)
@@ -172,7 +172,7 @@ extension AutoLayoutMergerDocument {
   //--- Back Legend texts
     do{
       var backLegendLinesEntities = EBReferenceArray <SegmentEntity> ()
-      let backLegendLines = stringArray (fromDict: inBoardArchiveDict, key: "LINES-BACK", &errorArray)
+      let backLegendLines = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_LINES_BACK_KEY, &errorArray)
       for str in backLegendLines {
         let ints = array5int (fromString: str, &errorArray)
         if let segment = clippedSegmentEntity (
@@ -191,7 +191,7 @@ extension AutoLayoutMergerDocument {
   //--- Front Legend texts
     do{
       var frontLegendLinesEntities = EBReferenceArray <SegmentEntity> ()
-      let frontLegendLines = stringArray (fromDict: inBoardArchiveDict, key: "LINES-FRONT", &errorArray)
+      let frontLegendLines = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_LINES_FRONT_KEY, &errorArray)
       for str in frontLegendLines {
         let ints = array5int (fromString: str, &errorArray)
         if let segment = clippedSegmentEntity (
@@ -210,7 +210,7 @@ extension AutoLayoutMergerDocument {
   //--- Front Layout texts
     do{
       var frontLayoutTextEntities = EBReferenceArray <SegmentEntity> ()
-      let frontLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LAYOUT-FRONT", &errorArray)
+      let frontLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TEXTS_LAYOUT_FRONT_KEY, &errorArray)
       for str in frontLayoutTexts {
         let segment = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
@@ -226,7 +226,7 @@ extension AutoLayoutMergerDocument {
   //--- Back Layout texts
     do{
       var backLayoutTextEntities = EBReferenceArray <SegmentEntity> ()
-      let backLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LAYOUT-BACK", &errorArray)
+      let backLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TEXTS_LAYOUT_BACK_KEY, &errorArray)
       for str in backLayoutTexts {
         let segment = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
@@ -242,7 +242,7 @@ extension AutoLayoutMergerDocument {
   //--- Back Legend texts
     do{
       var backLegendTextEntities = EBReferenceArray <SegmentEntity> ()
-      let backLegendTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LEGEND-BACK", &errorArray)
+      let backLegendTexts = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TEXTS_LEGEND_BACK_KEY, &errorArray)
       for str in backLegendTexts {
         let ints = array5int (fromString: str, &errorArray)
         if let segment = clippedSegmentEntity (
@@ -261,7 +261,7 @@ extension AutoLayoutMergerDocument {
   //--- Front Legend texts
     do{
       var frontLegendTextEntities = EBReferenceArray <SegmentEntity> ()
-      let frontTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LEGEND-FRONT", &errorArray)
+      let frontTexts = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TEXTS_LEGEND_FRONT_KEY, &errorArray)
       for str in frontTexts {
         let ints = array5int (fromString: str, &errorArray)
         if let segment = clippedSegmentEntity (
@@ -279,18 +279,18 @@ extension AutoLayoutMergerDocument {
     }
   //--- Legend Front QR Codes
     do{
-      let rectArray = optionalRectArray (fromDict: inBoardArchiveDict, key: "QRCODES-LEGEND-FRONT", self.undoManager, &errorArray)
+      let rectArray = optionalRectArray (fromDict: inBoardArchiveDict, key: ARCHIVE_QRCODES_LEGEND_FRONT_KEY, self.undoManager, &errorArray)
       boardModel.legendFrontQRCodes = EBReferenceArray (rectArray)
     }
   //--- Legend Back QR Codes
     do{
-      let rectArray = optionalRectArray (fromDict: inBoardArchiveDict, key: "QRCODES-LEGEND-BACK", self.undoManager, &errorArray)
+      let rectArray = optionalRectArray (fromDict: inBoardArchiveDict, key: ARCHIVE_QRCODES_LEGEND_BACK_KEY, self.undoManager, &errorArray)
       boardModel.legendBackQRCodes = EBReferenceArray (rectArray)
     }
   //--- Back packages
     do{
       var backPackagesEntities = EBReferenceArray <SegmentEntity> ()
-      let backPackages = stringArray (fromDict: inBoardArchiveDict, key: "PACKAGES-BACK", &errorArray)
+      let backPackages = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_PACKAGES_BACK_KEY, &errorArray)
       for str in backPackages {
         let ints = array5int (fromString: str, &errorArray)
         if let segment = clippedSegmentEntity (
@@ -309,7 +309,7 @@ extension AutoLayoutMergerDocument {
   //--- Front packages
     do{
       var frontPackagesEntities = EBReferenceArray <SegmentEntity> ()
-      let frontPackages = stringArray (fromDict: inBoardArchiveDict, key: "PACKAGES-FRONT", &errorArray)
+      let frontPackages = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_PACKAGES_FRONT_KEY, &errorArray)
       for str in frontPackages {
         let ints = array5int (fromString: str, &errorArray)
         if let segment = clippedSegmentEntity (
@@ -328,7 +328,7 @@ extension AutoLayoutMergerDocument {
   //--- Back component names
     do{
       var backComponentNamesEntities = EBReferenceArray <SegmentEntity> ()
-      let backComponentNames = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-NAMES-BACK", &errorArray)
+      let backComponentNames = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_COMPONENT_NAMES_BACK_KEY, &errorArray)
       for str in backComponentNames {
         let ints = array5int (fromString: str, &errorArray)
         if let segment = clippedSegmentEntity (
@@ -347,7 +347,7 @@ extension AutoLayoutMergerDocument {
   //--- Front component names
     do{
       var frontComponentNamesEntities = EBReferenceArray <SegmentEntity> ()
-      let frontComponentNames = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-NAMES-FRONT", &errorArray)
+      let frontComponentNames = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_COMPONENT_NAMES_FRONT_KEY, &errorArray)
       for str in frontComponentNames {
         let ints = array5int (fromString: str, &errorArray)
         if let segment = clippedSegmentEntity (
@@ -366,7 +366,7 @@ extension AutoLayoutMergerDocument {
   //--- Front component values
     do{
       var frontComponentValuesEntities = EBReferenceArray <SegmentEntity> ()
-      let frontComponentValues = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-VALUES-FRONT", &errorArray)
+      let frontComponentValues = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_COMPONENT_VALUES_FRONT_KEY, &errorArray)
       for str in frontComponentValues {
         let ints = array5int (fromString: str, &errorArray)
         if let segment = clippedSegmentEntity (
@@ -385,7 +385,7 @@ extension AutoLayoutMergerDocument {
   //--- Back component values
     do{
       var backComponentValuesEntities = EBReferenceArray <SegmentEntity> ()
-      let backComponentValues = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-VALUES-BACK", &errorArray)
+      let backComponentValues = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_COMPONENT_VALUES_BACK_KEY, &errorArray)
       for str in backComponentValues {
         let ints = array5int (fromString: str, &errorArray)
         if let segment = clippedSegmentEntity (
@@ -404,7 +404,7 @@ extension AutoLayoutMergerDocument {
   //--- Drills
     do{
       var drillEntities = EBReferenceArray <SegmentEntity> ()
-      let drills = stringArray (fromDict: inBoardArchiveDict, key: "DRILLS", &errorArray)
+      let drills = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_DRILLS_KEY, &errorArray)
       for str in drills {
         let segment = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
@@ -420,7 +420,7 @@ extension AutoLayoutMergerDocument {
   //--- Front pads
     do{
       var backPadEntities = EBReferenceArray <BoardModelPad> ()
-      let backPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "PADS-BACK", &errorArray)
+      let backPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: ARCHIVE_PADS_BACK_KEY, &errorArray)
       for padDict in backPadDictArray {
         let pad = BoardModelPad (self.undoManager)
         pad.x = int (fromDict: padDict, key: "X", &errorArray)
@@ -445,7 +445,7 @@ extension AutoLayoutMergerDocument {
   //--- Front pads
     do{
       var frontPadEntities = EBReferenceArray <BoardModelPad> ()
-      let frontPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "PADS-FRONT", &errorArray)
+      let frontPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: ARCHIVE_PADS_FRONT_KEY, &errorArray)
       for padDict in frontPadDictArray {
         let pad = BoardModelPad (self.undoManager)
         pad.x = int (fromDict: padDict, key: "X", &errorArray)
@@ -468,11 +468,11 @@ extension AutoLayoutMergerDocument {
       boardModel.frontPads = frontPadEntities
     }
   //--- Import internal layers ?
-    let hasInner1 = inBoardArchiveDict ["TRACKS-INNER1"] != nil
-    let hasInner2 = inBoardArchiveDict ["TRACKS-INNER2"] != nil
-    let hasInner3 = inBoardArchiveDict ["TRACKS-INNER3"] != nil
-    let hasInner4 = inBoardArchiveDict ["TRACKS-INNER4"] != nil
-    let hasTraversingPads = inBoardArchiveDict ["PADS-TRAVERSING"] != nil
+    let hasInner1 = inBoardArchiveDict [ARCHIVE_TRACKS_INNER1_KEY] != nil
+    let hasInner2 = inBoardArchiveDict [ARCHIVE_TRACKS_INNER2_KEY] != nil
+    let hasInner3 = inBoardArchiveDict [ARCHIVE_TRACKS_INNER3_KEY] != nil
+    let hasInner4 = inBoardArchiveDict [ARCHIVE_TRACKS_INNER4_KEY] != nil
+    let hasTraversingPads = inBoardArchiveDict [ARCHIVE_PADS_TRAVERSING_KEY] != nil
     if !hasInner1 && !hasInner2 && !hasInner3 && !hasInner4 && !hasTraversingPads {
       boardModel.layerConfiguration = .twoLayers
     }else if hasInner1 && hasInner2 && !hasInner3 && !hasInner4 && hasTraversingPads {
@@ -485,7 +485,7 @@ extension AutoLayoutMergerDocument {
   //--- Import traversing pads
     if hasTraversingPads {
       var traversingPadEntities = EBReferenceArray <BoardModelPad> ()
-      let traversingPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "PADS-TRAVERSING", &errorArray)
+      let traversingPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: ARCHIVE_PADS_TRAVERSING_KEY, &errorArray)
       for padDict in traversingPadDictArray {
         let pad = BoardModelPad (self.undoManager)
         pad.x = int (fromDict: padDict, key: "X", &errorArray)
@@ -510,7 +510,7 @@ extension AutoLayoutMergerDocument {
   //--- Inner 1 tracks
     if hasInner1 {
       var trackEntities = EBReferenceArray <SegmentEntity> ()
-      let tracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-INNER1", &errorArray)
+      let tracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_INNER1_KEY, &errorArray)
       for str in tracks {
         let track = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
@@ -526,7 +526,7 @@ extension AutoLayoutMergerDocument {
   //--- Inner 2 tracks
     if hasInner2 {
       var trackEntities = EBReferenceArray <SegmentEntity> ()
-      let tracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-INNER2", &errorArray)
+      let tracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_INNER2_KEY, &errorArray)
       for str in tracks {
         let track = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
@@ -542,7 +542,7 @@ extension AutoLayoutMergerDocument {
   //--- Inner 3 tracks
     if hasInner3 {
       var trackEntities = EBReferenceArray <SegmentEntity> ()
-      let tracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-INNER3", &errorArray)
+      let tracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_INNER3_KEY, &errorArray)
       for str in tracks {
         let track = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
@@ -558,7 +558,7 @@ extension AutoLayoutMergerDocument {
   //--- Inner 4 tracks
     if hasInner4 {
       var trackEntities = EBReferenceArray <SegmentEntity> ()
-      let tracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-INNER4", &errorArray)
+      let tracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_INNER4_KEY, &errorArray)
       for str in tracks {
         let track = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
