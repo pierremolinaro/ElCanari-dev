@@ -1868,23 +1868,23 @@ import AppKit
         _ = view_0_0.appendView (view_0_0_2)
         let view_0_0_3 = AutoLayoutFlexibleSpace ()
         _ = view_0_0.appendView (view_0_0_3)
-        let view_0_0_4 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Line in Board;  the layer is set by the contextual menu.")
-        self.configure_addLineButton (view_0_0_4) // Configurator
+        let view_0_0_4 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add QR Code in Board; the layer is set by the contextual menu.")
+        self.configure_addQRCodeButton (view_0_0_4) // Configurator
         _ = view_0_0.appendView (view_0_0_4)
         let view_0_0_5 = AutoLayoutFlexibleSpace ()
         _ = view_0_0.appendView (view_0_0_5)
-        let view_0_0_6 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Text in Board; the layer is set by the contextual menu.")
-        self.configure_addTextButton (view_0_0_6) // Configurator
+        let view_0_0_6 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Line in Board;  the layer is set by the contextual menu.")
+        self.configure_addLineButton (view_0_0_6) // Configurator
         _ = view_0_0.appendView (view_0_0_6)
         let view_0_0_7 = AutoLayoutFlexibleSpace ()
         _ = view_0_0.appendView (view_0_0_7)
-        let view_0_0_8 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.")
-        self.configure_addTrackButton (view_0_0_8) // Configurator
+        let view_0_0_8 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Text in Board; the layer is set by the contextual menu.")
+        self.configure_addTextButton (view_0_0_8) // Configurator
         _ = view_0_0.appendView (view_0_0_8)
         let view_0_0_9 = AutoLayoutFlexibleSpace ()
         _ = view_0_0.appendView (view_0_0_9)
-        let view_0_0_10 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add QR Code in Board; the layer is set by the contextual menu.")
-        self.configure_addQRCodeButton (view_0_0_10) // Configurator
+        let view_0_0_10 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.")
+        self.configure_addTrackButton (view_0_0_10) // Configurator
         _ = view_0_0.appendView (view_0_0_10)
       }
       _ = view_0.appendView (view_0_0)

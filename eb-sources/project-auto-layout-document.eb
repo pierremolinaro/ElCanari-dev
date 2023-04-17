@@ -1300,13 +1300,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         space
         DragSourceButtonWithMenus (tooltip: "Add Restrict Rectangle;  the layers are set by the contextual menu.") [configurator addRestrictRectangleButton]
         space
+        DragSourceButtonWithMenus (tooltip: "Add QR Code in Board; the layer is set by the contextual menu.") [configurator addQRCodeButton]
+        space
         DragSourceButtonWithMenus (tooltip: "Add Line in Board;  the layer is set by the contextual menu.") [configurator addLineButton]
         space
         DragSourceButtonWithMenus (tooltip: "Add Text in Board; the layer is set by the contextual menu.") [configurator addTextButton]
         space
         DragSourceButtonWithMenus (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.") [configurator addTrackButton]
-        space
-        DragSourceButtonWithMenus (tooltip: "Add QR Code in Board; the layer is set by the contextual menu.") [configurator addQRCodeButton]
       }
       vStack {
         hStack set (leftMargin: 8) set (rightMargin: 8) {
