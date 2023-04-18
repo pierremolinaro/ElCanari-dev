@@ -4365,9 +4365,6 @@
 		CFDD6D4C26A1B0F20050CB78 /* AutoLayoutCanariObservedDimensionField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD6D3326A1B0F00050CB78 /* AutoLayoutCanariObservedDimensionField.swift */; };
 		CFDD6D4D26A1B0F20050CB78 /* AutoLayoutCanariObservedDimensionField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD6D3326A1B0F00050CB78 /* AutoLayoutCanariObservedDimensionField.swift */; };
 		CFDD6D4E26A1B0F20050CB78 /* AutoLayoutCanariObservedDimensionField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD6D3326A1B0F00050CB78 /* AutoLayoutCanariObservedDimensionField.swift */; };
-		CFDD6D4F26A1B0F20050CB78 /* AutoLayoutCanariDeviceDroppableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD6D3426A1B0F00050CB78 /* AutoLayoutCanariDeviceDroppableImageView.swift */; };
-		CFDD6D5026A1B0F20050CB78 /* AutoLayoutCanariDeviceDroppableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD6D3426A1B0F00050CB78 /* AutoLayoutCanariDeviceDroppableImageView.swift */; };
-		CFDD6D5126A1B0F20050CB78 /* AutoLayoutCanariDeviceDroppableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD6D3426A1B0F00050CB78 /* AutoLayoutCanariDeviceDroppableImageView.swift */; };
 		CFDD6D5226A1B0F20050CB78 /* AutoLayoutCanariUnitPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD6D3526A1B0F10050CB78 /* AutoLayoutCanariUnitPopUpButton.swift */; };
 		CFDD6D5326A1B0F20050CB78 /* AutoLayoutCanariUnitPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD6D3526A1B0F10050CB78 /* AutoLayoutCanariUnitPopUpButton.swift */; };
 		CFDD6D5426A1B0F20050CB78 /* AutoLayoutCanariUnitPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD6D3526A1B0F10050CB78 /* AutoLayoutCanariUnitPopUpButton.swift */; };
@@ -6490,7 +6487,6 @@
 		CFDD6D3126A1B0F00050CB78 /* AutoLayoutCanariAngleFieldAndSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariAngleFieldAndSlider.swift; sourceTree = "<group>"; };
 		CFDD6D3226A1B0F00050CB78 /* AutoLayoutCanariSlavePadAssignPopUpButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariSlavePadAssignPopUpButton.swift; sourceTree = "<group>"; };
 		CFDD6D3326A1B0F00050CB78 /* AutoLayoutCanariObservedDimensionField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariObservedDimensionField.swift; sourceTree = "<group>"; };
-		CFDD6D3426A1B0F00050CB78 /* AutoLayoutCanariDeviceDroppableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariDeviceDroppableImageView.swift; sourceTree = "<group>"; };
 		CFDD6D3526A1B0F10050CB78 /* AutoLayoutCanariUnitPopUpButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariUnitPopUpButton.swift; sourceTree = "<group>"; };
 		CFDD6D3626A1B0F10050CB78 /* AutoLayoutCanariAngleField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariAngleField.swift; sourceTree = "<group>"; };
 		CFDD6D3726A1B0F10050CB78 /* AutoLayoutCanariPadRenumberPullDownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariPadRenumberPullDownButton.swift; sourceTree = "<group>"; };
@@ -8448,7 +8444,6 @@
 				CFB4C0172794216200C509A9 /* AutoLayoutCanariBoardFontPopUpButton.swift */,
 				CF182099277249BE00068AD6 /* AutoLayoutCanariBoardOperationPullDownButton.swift */,
 				CF54A050277104F400D978D9 /* AutoLayoutCanariBoardRectangleView.swift */,
-				CFDD6D3426A1B0F00050CB78 /* AutoLayoutCanariDeviceDroppableImageView.swift */,
 				CFDD6D3826A1B0F10050CB78 /* AutoLayoutCanariDimensionAndPopUp.swift */,
 				CFDD6D2F26A1B0F00050CB78 /* AutoLayoutCanariDimensionField.swift */,
 				CFDD6D3C26A1B0F10050CB78 /* AutoLayoutCanariDimensionUnitSetterPullDownButton.swift */,
@@ -10660,7 +10655,6 @@
 				CF53BE8226775244003971AF /* file-log-operation-duration.swift in Sources */,
 				CF22F267275A73EE009C6FAC /* transient-BoardModel-backTrackSegments.swift in Sources */,
 				CFAEE8F129BF2AE900851F82 /* EBTransientProperty.swift in Sources */,
-				CFDD6D4F26A1B0F20050CB78 /* AutoLayoutCanariDeviceDroppableImageView.swift in Sources */,
 				CFEB7CC9233A28860060A97A /* transient-ProjectRoot-sheetIndexes.swift in Sources */,
 				CF711DBE275E1B6500280069 /* entity-ProjectRoot.swift in Sources */,
 				CF8560CE2677A34B00B62608 /* AutoLayoutSpinningProgressIndicator.swift in Sources */,
@@ -12330,7 +12324,6 @@
 				CFB1F9162940EDDB00C1E120 /* action-AutoLayoutProjectDocument-importSESFromExtendedTabAction.swift in Sources */,
 				CFEB7CCA233A28860060A97A /* transient-ProjectRoot-sheetIndexes.swift in Sources */,
 				CFB1F91F2940EDDB00C1E120 /* action-AutoLayoutProjectDocument-editSelectedDeviceAction.swift in Sources */,
-				CFDD6D5026A1B0F20050CB78 /* AutoLayoutCanariDeviceDroppableImageView.swift in Sources */,
 				CF5220A627A2EC38004FEEB2 /* action-Preferences-checkSystemLibraryUpdateAction.swift in Sources */,
 				CF711DBF275E1B6600280069 /* entity-ProjectRoot.swift in Sources */,
 				CF8560F62677A34C00B62608 /* AutoLayoutSpinningProgressIndicator.swift in Sources */,
@@ -13960,7 +13953,6 @@
 				CF9C642825CABE5C00A00D5C /* transient-PackageArc-strokeBezierPath.swift in Sources */,
 				CF7FC49D29EDBFD30045DD14 /* transient-BoardImage-objectDisplay.swift in Sources */,
 				CF22F1D6275A73ED009C6FAC /* transient-MergerBoardInstance-selectionDisplay.swift in Sources */,
-				CFDD6D5126A1B0F20050CB78 /* AutoLayoutCanariDeviceDroppableImageView.swift in Sources */,
 				CF9C642C25CABE5C00A00D5C /* transient-ProjectRoot-sheetIndexes.swift in Sources */,
 				CFB82B1D276B71CD00BAD56E /* configurator-AutoLayoutProjectDocument-selectedNetVerticalScrollViewConfigurator.swift in Sources */,
 				CF9C642F25CABE5C00A00D5C /* transient-PackagePad-displayedPadName.swift in Sources */,

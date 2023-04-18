@@ -183,19 +183,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       addTab (title: "Devices", tooltip: "", contentView: view devicesInLibraryPage)
       addTab (title: "Fonts", tooltip: "", contentView: view fontsInLibraryPage)
     }
-//    hStack {
-//      space
-//      SegmentedControlWithPages (documentView: view libraryContentView, equalWidth: no, size : .regular) {
-//        addPage (title: "Devices", tooltip: "", pageView: view devicesInLibraryPage)
-//        addPage (title: "Fonts", tooltip: "", pageView: view fontsInLibraryPage)
-//      }
-//      space
-//    }
-//    view libraryContentView
   }
-  
-//  stackView \LibraryContentView vStack { }
-  
+    
   stackView \DevicesInLibraryPage vStack set (margins: 8) expandableWidth () {
      hStack {
       Button (title: "Edit Selected Device", size: .regular) {
@@ -208,11 +197,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         $run resetSelectedDeviceVersionAction
         $enabled #projectDeviceController.selectedArray.count > 0
       }
-//      Button (title: "Remove Selected Device", size: .regular) {
-//        setDeleteKeyAsKeyEquivalent ()
-//        $run removeSelectedDeviceAction
-//        $enabled self.canRemoveSelectedDevices
-//      }
       Button (title: "Export Selected Device", size: .regular) {
         set (shiftCommandKeyEquivalent: "x")
         $run exportSelectedDeviceAction
@@ -2026,7 +2010,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   
   stackView \BoardImageInspectorView vStack {
     StaticLabel (title: "Image Inspector", bold: yes, size: .small, alignment: .center)
-    CanariDeviceDroppableImageView () { $imageData #boardImageSelectionController.mImageData }
+    DroppableImageView () {
+      set (maxWidth: 220)
+      set (maxHeight: 350)
+      $imageData #boardImageSelectionController.mImageData
+    }
     GridView2 {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Image Data", bold: no, size: .small, alignment: .right),
