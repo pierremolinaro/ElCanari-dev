@@ -95,6 +95,7 @@ extension AutoLayoutProjectDocument {
       apertureDictionary.append (inProductData.legendFrontTexts, af)
       apertureDictionary.append (oblongs: inProductData.frontLines, af)
       polygons += inProductData.legendFrontQRCodes.polygons.transformed (by: af)
+      polygons += inProductData.legendFrontImages.polygons.transformed (by: af)
     }
     if inDescriptor.drawTextsLayoutTopSide {
       apertureDictionary.append (inProductData.layoutFrontTexts, af)
@@ -106,6 +107,7 @@ extension AutoLayoutProjectDocument {
       apertureDictionary.append (inProductData.legendBackTexts, af)
       apertureDictionary.append (oblongs: inProductData.backLines, af)
       polygons += inProductData.legendBackQRCodes.polygons.transformed (by: af)
+      polygons += inProductData.legendBackImages.polygons.transformed (by: af)
     }
     if inDescriptor.drawVias {
       apertureDictionary.append (circles: inProductData.viaPads, af)

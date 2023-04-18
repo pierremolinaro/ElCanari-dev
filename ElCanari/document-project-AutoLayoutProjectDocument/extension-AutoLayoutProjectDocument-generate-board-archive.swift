@@ -47,6 +47,8 @@ extension AutoLayoutProjectDocument {
     addCircles (&boardArchive, inProductData.viaPads, ARCHIVE_VIAS_KEY, af)
     addRectangles (&boardArchive, inProductData.legendFrontQRCodes, ARCHIVE_QRCODES_LEGEND_FRONT_KEY, af)
     addRectangles (&boardArchive, inProductData.legendBackQRCodes, ARCHIVE_QRCODES_LEGEND_BACK_KEY, af)
+    addRectangles (&boardArchive, inProductData.legendFrontImages, ARCHIVE_IMAGES_LEGEND_FRONT_KEY, af)
+    addRectangles (&boardArchive, inProductData.legendBackImages, ARCHIVE_IMAGES_LEGEND_BACK_KEY, af)
   //--- Add inner objects ?
     switch self.rootObject.mLayerConfiguration {
     case .twoLayers :

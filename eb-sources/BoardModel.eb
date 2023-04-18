@@ -22,6 +22,25 @@ handlingOpposite entity BoardModel {
 
   transient Bool errorArchiveVersionMessageIsHidden dependsFrom self.modelVersion ;
 
+//--- Images
+  toMany RectangleEntity legendFrontImages ;
+  toMany RectangleEntity legendBackImages ;
+
+  transient MergerRectangleArray frontLegendBoardImageRectangles dependsFrom
+    self.legendFrontImages.all.p0x, self.legendFrontImages.all.p0y,
+    self.legendFrontImages.all.p1x, self.legendFrontImages.all.p1y,
+    self.legendFrontImages.all.p2x, self.legendFrontImages.all.p2y,
+    self.legendFrontImages.all.p3x, self.legendFrontImages.all.p3y
+  ;
+
+  transient MergerRectangleArray backLegendBoardImageRectangles dependsFrom
+    self.legendBackImages.all.p0x, self.legendBackImages.all.p0y,
+    self.legendBackImages.all.p1x, self.legendBackImages.all.p1y,
+    self.legendBackImages.all.p2x, self.legendBackImages.all.p2y,
+    self.legendBackImages.all.p3x, self.legendBackImages.all.p3y
+  ;
+ 
+
 //--- QR Codes
   toMany RectangleEntity legendFrontQRCodes ;
   toMany RectangleEntity legendBackQRCodes ;
@@ -365,12 +384,14 @@ handlingOpposite entity BoardModel {
     self.holesBezierPaths,
     prefs.mergerModelViewDisplayHoles,
     prefs.mergerColorHoles,
-// Front Legend lines and QR Codes
+// Front Legend lines, images and QR Codes
+    self.frontLegendBoardImageRectangles,
     self.frontLegendQRCodeRectangles,
     self.frontLegendLinesBezierPaths,
     prefs.mergerModelViewDisplayFrontLegendLines,
     prefs.mergerColorFrontLegendLines,
-// Back Legend lines
+// Back Legend lines, images and QR Codes
+    self.backLegendBoardImageRectangles,
     self.backLegendQRCodeRectangles,
     self.backLegendLinesBezierPaths,
     prefs.mergerModelViewDisplayBackLegendLines,
@@ -471,12 +492,14 @@ handlingOpposite entity BoardModel {
     self.holesBezierPaths,
     prefs.mergerBoardViewDisplayHoles,
     prefs.mergerColorHoles,
-// Front Legend lines and QR Codes
+// Front Legend lines, images and QR Codes
+    self.frontLegendBoardImageRectangles,
     self.frontLegendQRCodeRectangles,
     self.frontLegendLinesBezierPaths,
     prefs.mergerBoardViewDisplayFrontLegendLines,
     prefs.mergerColorFrontLegendLines,
-// Back Legend lines and QR Codes
+// Back Legend lines, images and QR Codes
+    self.backLegendBoardImageRectangles,
     self.backLegendQRCodeRectangles,
     self.backLegendLinesBezierPaths,
     prefs.mergerBoardViewDisplayBackLegendLines,

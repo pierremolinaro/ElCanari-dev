@@ -2023,8 +2023,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   selectionController BoardImage #boardImageSelectionController :
     #boardObjectsController.selectedArray
   ;
-
-  action loadBoardImage ;
   
   stackView \BoardImageInspectorView vStack {
     StaticLabel (title: "Image Inspector", bold: yes, size: .small, alignment: .center)

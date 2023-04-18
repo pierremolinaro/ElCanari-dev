@@ -277,6 +277,16 @@ extension AutoLayoutMergerDocument {
       }
       boardModel.frontLegendTexts = frontLegendTextEntities
     }
+  //--- Legend Front Images
+    do{
+      let rectArray = optionalRectArray (fromDict: inBoardArchiveDict, key: ARCHIVE_IMAGES_LEGEND_FRONT_KEY, self.undoManager, &errorArray)
+      boardModel.legendFrontImages = EBReferenceArray (rectArray)
+    }
+  //--- Legend Back Images
+    do{
+      let rectArray = optionalRectArray (fromDict: inBoardArchiveDict, key: ARCHIVE_IMAGES_LEGEND_BACK_KEY, self.undoManager, &errorArray)
+      boardModel.legendBackImages = EBReferenceArray (rectArray)
+    }
   //--- Legend Front QR Codes
     do{
       let rectArray = optionalRectArray (fromDict: inBoardArchiveDict, key: ARCHIVE_QRCODES_LEGEND_FRONT_KEY, self.undoManager, &errorArray)

@@ -77,6 +77,12 @@ import AppKit
   var backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
+  //   Selection observable property: backLegendBoardImageRectangles
+  //····················································································································
+
+  var backLegendBoardImageRectangles_property = EBTransientProperty_MergerRectangleArray ()
+
+  //····················································································································
   //   Selection observable property: backLegendLines
   //····················································································································
 
@@ -249,6 +255,12 @@ import AppKit
   //····················································································································
 
   var frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+  //   Selection observable property: frontLegendBoardImageRectangles
+  //····················································································································
+
+  var frontLegendBoardImageRectangles_property = EBTransientProperty_MergerRectangleArray ()
 
   //····················································································································
   //   Selection observable property: frontLegendLines
@@ -459,7 +471,15 @@ import AppKit
   var layerConfigurationString_property = EBTransientProperty_String ()
 
   //····················································································································
+  //   Selection observable property: legendBackImages
+  //····················································································································
+
+  //····················································································································
   //   Selection observable property: legendBackQRCodes
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: legendFrontImages
   //····················································································································
 
   //····················································································································
@@ -573,6 +593,7 @@ import AppKit
     self.bind_property_backComponentValuesBezierPaths (model: model)
     self.bind_property_backLayoutTextsBezierPaths (model: model)
     self.bind_property_backLayoutTextsSegments (model: model)
+    self.bind_property_backLegendBoardImageRectangles (model: model)
     self.bind_property_backLegendLinesBezierPaths (model: model)
     self.bind_property_backLegendLinesSegments (model: model)
     self.bind_property_backLegendQRCodeRectangles (model: model)
@@ -596,6 +617,7 @@ import AppKit
     self.bind_property_frontComponentValuesBezierPaths (model: model)
     self.bind_property_frontLayoutTextsBezierPaths (model: model)
     self.bind_property_frontLayoutTextsSegments (model: model)
+    self.bind_property_frontLegendBoardImageRectangles (model: model)
     self.bind_property_frontLegendLinesBezierPaths (model: model)
     self.bind_property_frontLegendLinesSegments (model: model)
     self.bind_property_frontLegendQRCodeRectangles (model: model)
@@ -666,6 +688,9 @@ import AppKit
   //--- backLayoutTextsSegments
     self.backLayoutTextsSegments_property.mReadModelFunction = nil 
     self.mModel?.toMany_backLayoutTextsSegments_StopsBeingObserved (by: self.backLayoutTextsSegments_property)
+  //--- backLegendBoardImageRectangles
+    self.backLegendBoardImageRectangles_property.mReadModelFunction = nil 
+    self.mModel?.toMany_backLegendBoardImageRectangles_StopsBeingObserved (by: self.backLegendBoardImageRectangles_property)
   //--- backLegendLinesBezierPaths
     self.backLegendLinesBezierPaths_property.mReadModelFunction = nil 
     self.mModel?.toMany_backLegendLinesBezierPaths_StopsBeingObserved (by: self.backLegendLinesBezierPaths_property)
@@ -735,6 +760,9 @@ import AppKit
   //--- frontLayoutTextsSegments
     self.frontLayoutTextsSegments_property.mReadModelFunction = nil 
     self.mModel?.toMany_frontLayoutTextsSegments_StopsBeingObserved (by: self.frontLayoutTextsSegments_property)
+  //--- frontLegendBoardImageRectangles
+    self.frontLegendBoardImageRectangles_property.mReadModelFunction = nil 
+    self.mModel?.toMany_frontLegendBoardImageRectangles_StopsBeingObserved (by: self.frontLegendBoardImageRectangles_property)
   //--- frontLegendLinesBezierPaths
     self.frontLegendLinesBezierPaths_property.mReadModelFunction = nil 
     self.mModel?.toMany_frontLegendLinesBezierPaths_StopsBeingObserved (by: self.frontLegendLinesBezierPaths_property)
@@ -1141,6 +1169,46 @@ import AppKit
           var isMultipleSelection = false
           for object in v {
             switch object.backLayoutTextsSegments_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backLegendBoardImageRectangles (model : ReadOnlyArrayOf_BoardModel) {
+    model.toMany_backLegendBoardImageRectangles_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
+    self.backLegendBoardImageRectangles_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerRectangleArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backLegendBoardImageRectangles_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2061,6 +2129,46 @@ import AppKit
           var isMultipleSelection = false
           for object in v {
             switch object.frontLayoutTextsSegments_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontLegendBoardImageRectangles (model : ReadOnlyArrayOf_BoardModel) {
+    model.toMany_frontLegendBoardImageRectangles_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
+    self.frontLegendBoardImageRectangles_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerRectangleArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontLegendBoardImageRectangles_property.selection {
             case .empty :
               return .empty
             case .multiple :

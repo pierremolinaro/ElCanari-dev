@@ -24,6 +24,7 @@ extension AutoLayoutProjectDocument {
     let (frontComponentValues, backComponentValues) = self.buildComponentValuePathes ()
     let (legendFrontTexts, layoutFrontTexts, layoutBackTexts, legendBackTexts) = self.buildTextPathes ()
     let (legendFrontQRCodes, legendBackQRCodes) = self.buildQRCodePathes ()
+    let (legendFrontImages, legendBackImages) = self.buildBoardImagesPathes ()
     let viaPads = self.buildViaPads ()
     let tracks = self.buildTracks ()
     let (frontLines, backLines) = self.buildLines ()
@@ -48,6 +49,8 @@ extension AutoLayoutProjectDocument {
       legendBackTexts: legendBackTexts,
       legendFrontQRCodes: legendFrontQRCodes,
       legendBackQRCodes: legendBackQRCodes,
+      legendFrontImages: legendFrontImages,
+      legendBackImages: legendBackImages,
       viaPads: viaPads,
       tracks: tracks,
       frontLines: frontLines,
@@ -339,6 +342,33 @@ extension AutoLayoutProjectDocument {
       }
     }
     return (legendFrontTexts, layoutFrontTexts, layoutBackTexts, legendBackTexts)
+  }
+
+  //····················································································································
+
+  private func buildBoardImagesPathes () -> ([ProductRectangle], [ProductRectangle]) {
+    var legendFront = [ProductRectangle] ()
+    var legendBack = [ProductRectangle] ()
+    for object in self.rootObject.mBoardObjects.values {
+      if let boardImage = object as? BoardImage, let descriptor = boardImage.boardImageCodeDescriptor {
+        let displayInfos = boardImage_displayInfos (
+          centerX: boardImage.mCenterX,
+          centerY: boardImage.mCenterY,
+          descriptor,
+          frontSide: boardImage.mLayer == .legendFront,
+          pixelSizeInCanariUnit: boardImage.mPixelSize,
+          rotation: boardImage.mRotation
+        )
+        let rectangles = displayInfos.productRectangles
+        switch boardImage.mLayer {
+        case .legendFront :
+          legendFront += rectangles
+        case .legendBack :
+          legendBack += rectangles
+        }
+      }
+    }
+    return (legendFront, legendBack)
   }
 
   //····················································································································
@@ -1129,6 +1159,8 @@ struct ProductData { // All in Cocoa Unit
   let legendBackTexts : PathApertureDictionary
   let legendFrontQRCodes : [ProductRectangle]
   let legendBackQRCodes : [ProductRectangle]
+  let legendFrontImages : [ProductRectangle]
+  let legendBackImages : [ProductRectangle]
   let viaPads : [ProductCircle]
   let tracks : [TrackSide : [ProductOblong]]
   let frontLines : [ProductOblong]

@@ -75,6 +75,7 @@ extension AutoLayoutProjectDocument {
       strokePathes.append (apertureDictionary: inProductData.legendFrontTexts, transformedBy: af)
       strokePathes.append (oblongs: inProductData.frontLines, transformedBy: af)
       filledPathes.append (rectangles: inProductData.legendFrontQRCodes, transformedBy: af)
+      filledPathes.append (rectangles: inProductData.legendFrontImages, transformedBy: af)
     }
     if inDescriptor.drawTextsLayoutTopSide {
       strokePathes.append (apertureDictionary: inProductData.layoutFrontTexts, transformedBy: af)
@@ -86,6 +87,7 @@ extension AutoLayoutProjectDocument {
       strokePathes.append (apertureDictionary: inProductData.legendBackTexts, transformedBy: af)
       strokePathes.append (oblongs: inProductData.backLines, transformedBy: af)
       filledPathes.append (rectangles: inProductData.legendBackQRCodes, transformedBy: af)
+      filledPathes.append (rectangles: inProductData.legendBackImages, transformedBy: af)
     }
     if inDescriptor.drawVias {
       strokePathes.append (circles: inProductData.viaPads, transformedBy: af)

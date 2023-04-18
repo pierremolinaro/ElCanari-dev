@@ -102,6 +102,18 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol BoardModel_frontLegendBoardImageRectangles : AnyObject {
+  var frontLegendBoardImageRectangles : MergerRectangleArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardModel_backLegendBoardImageRectangles : AnyObject {
+  var backLegendBoardImageRectangles : MergerRectangleArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol BoardModel_frontLegendQRCodeRectangles : AnyObject {
   var frontLegendQRCodeRectangles : MergerRectangleArray? { get }
 }
@@ -451,6 +463,8 @@ final class BoardModel : EBManagedObject,
          BoardModel_errorArchiveLabelSize,
          BoardModel_errorArchiveLabelColor,
          BoardModel_errorArchiveVersionMessageIsHidden,
+         BoardModel_frontLegendBoardImageRectangles,
+         BoardModel_backLegendBoardImageRectangles,
          BoardModel_frontLegendQRCodeRectangles,
          BoardModel_backLegendQRCodeRectangles,
          BoardModel_layerConfigurationString,
@@ -657,6 +671,36 @@ final class BoardModel : EBManagedObject,
   final var ignoreModelVersionError : Bool {
     get { return self.ignoreModelVersionError_property.propval }
     set { self.ignoreModelVersionError_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   To many property: legendFrontImages
+  //····················································································································
+
+  final let legendFrontImages_property = StoredArrayOf_RectangleEntity (usedForSignature: false, key: "legendFrontImages")
+
+  //····················································································································
+
+  //····················································································································
+
+  final var legendFrontImages : EBReferenceArray <RectangleEntity> {
+    get { return self.legendFrontImages_property.propval }
+    set { self.legendFrontImages_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   To many property: legendBackImages
+  //····················································································································
+
+  final let legendBackImages_property = StoredArrayOf_RectangleEntity (usedForSignature: false, key: "legendBackImages")
+
+  //····················································································································
+
+  //····················································································································
+
+  final var legendBackImages : EBReferenceArray <RectangleEntity> {
+    get { return self.legendBackImages_property.propval }
+    set { self.legendBackImages_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -1186,6 +1230,30 @@ final class BoardModel : EBManagedObject,
 
   final var errorArchiveVersionMessageIsHidden : Bool? {
     return self.errorArchiveVersionMessageIsHidden_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: frontLegendBoardImageRectangles
+  //····················································································································
+
+  final let frontLegendBoardImageRectangles_property = EBTransientProperty_MergerRectangleArray ()
+
+  //····················································································································
+
+  final var frontLegendBoardImageRectangles : MergerRectangleArray? {
+    return self.frontLegendBoardImageRectangles_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: backLegendBoardImageRectangles
+  //····················································································································
+
+  final let backLegendBoardImageRectangles_property = EBTransientProperty_MergerRectangleArray ()
+
+  //····················································································································
+
+  final var backLegendBoardImageRectangles : MergerRectangleArray? {
+    return self.backLegendBoardImageRectangles_property.optionalValue
   }
 
   //····················································································································
@@ -1866,6 +1934,10 @@ final class BoardModel : EBManagedObject,
     self.modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelLimitWidthUnit")
     self.artworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "artworkName")
     super.init (inUndoManager)
+  //--- To many property: legendFrontImages (no option)
+    self.legendFrontImages_property.undoManager = inUndoManager
+  //--- To many property: legendBackImages (no option)
+    self.legendBackImages_property.undoManager = inUndoManager
   //--- To many property: legendFrontQRCodes (no option)
     self.legendFrontQRCodes_property.undoManager = inUndoManager
   //--- To many property: legendBackQRCodes (no option)
@@ -1992,6 +2064,96 @@ final class BoardModel : EBManagedObject,
       }
     }
     self.modelVersion_property.startsToBeObserved (by: self.errorArchiveVersionMessageIsHidden_property)
+  //--- Atomic property: frontLegendBoardImageRectangles
+    self.frontLegendBoardImageRectangles_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.legendFrontImages_property.selection
+        let s1 = unwSelf.legendFrontImages_property.selection
+        let s2 = unwSelf.legendFrontImages_property.selection
+        let s3 = unwSelf.legendFrontImages_property.selection
+        let s4 = unwSelf.legendFrontImages_property.selection
+        let s5 = unwSelf.legendFrontImages_property.selection
+        let s6 = unwSelf.legendFrontImages_property.selection
+        let s7 = unwSelf.legendFrontImages_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7)) :
+          return .single (transient_BoardModel_frontLegendBoardImageRectangles (v0, v1, v2, v3, v4, v5, v6, v7))
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.legendFrontImages_property.toMany_p0x_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
+    self.legendFrontImages_property.toMany_p0y_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
+    self.legendFrontImages_property.toMany_p1x_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
+    self.legendFrontImages_property.toMany_p1y_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
+    self.legendFrontImages_property.toMany_p2x_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
+    self.legendFrontImages_property.toMany_p2y_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
+    self.legendFrontImages_property.toMany_p3x_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
+    self.legendFrontImages_property.toMany_p3y_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
+  //--- Atomic property: backLegendBoardImageRectangles
+    self.backLegendBoardImageRectangles_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.legendBackImages_property.selection
+        let s1 = unwSelf.legendBackImages_property.selection
+        let s2 = unwSelf.legendBackImages_property.selection
+        let s3 = unwSelf.legendBackImages_property.selection
+        let s4 = unwSelf.legendBackImages_property.selection
+        let s5 = unwSelf.legendBackImages_property.selection
+        let s6 = unwSelf.legendBackImages_property.selection
+        let s7 = unwSelf.legendBackImages_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7)) :
+          return .single (transient_BoardModel_backLegendBoardImageRectangles (v0, v1, v2, v3, v4, v5, v6, v7))
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.legendBackImages_property.toMany_p0x_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
+    self.legendBackImages_property.toMany_p0y_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
+    self.legendBackImages_property.toMany_p1x_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
+    self.legendBackImages_property.toMany_p1y_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
+    self.legendBackImages_property.toMany_p2x_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
+    self.legendBackImages_property.toMany_p2y_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
+    self.legendBackImages_property.toMany_p3x_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
+    self.legendBackImages_property.toMany_p3y_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
   //--- Atomic property: frontLegendQRCodeRectangles
     self.frontLegendQRCodeRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3388,45 +3550,47 @@ final class BoardModel : EBManagedObject,
         let s37 = unwSelf.holesBezierPaths_property.selection
         let s38 = preferences_mergerModelViewDisplayHoles_property.selection
         let s39 = preferences_mergerColorHoles_property.selection
-        let s40 = unwSelf.frontLegendQRCodeRectangles_property.selection
-        let s41 = unwSelf.frontLegendLinesBezierPaths_property.selection
-        let s42 = preferences_mergerModelViewDisplayFrontLegendLines_property.selection
-        let s43 = preferences_mergerColorFrontLegendLines_property.selection
-        let s44 = unwSelf.backLegendQRCodeRectangles_property.selection
-        let s45 = unwSelf.backLegendLinesBezierPaths_property.selection
-        let s46 = preferences_mergerModelViewDisplayBackLegendLines_property.selection
-        let s47 = preferences_mergerColorBackLegendLines_property.selection
-        let s48 = unwSelf.frontLegendTextsBezierPaths_property.selection
-        let s49 = preferences_mergerModelViewDisplayFrontLegendTexts_property.selection
-        let s50 = preferences_mergerColorFrontLegendTexts_property.selection
-        let s51 = unwSelf.frontLayoutTextsBezierPaths_property.selection
-        let s52 = preferences_mergerModelViewDisplayFrontLayoutTexts_property.selection
-        let s53 = preferences_mergerColorFrontLayoutTexts_property.selection
-        let s54 = unwSelf.backLegendTextsBezierPaths_property.selection
-        let s55 = preferences_mergerModelViewDisplayBackLegendTexts_property.selection
-        let s56 = preferences_mergerColorBackLegendTexts_property.selection
-        let s57 = unwSelf.backLayoutTextsBezierPaths_property.selection
-        let s58 = preferences_mergerModelViewDisplayBackLayoutTexts_property.selection
-        let s59 = preferences_mergerColorBackLayoutTexts_property.selection
-        let s60 = unwSelf.backComponentNamesBezierPaths_property.selection
-        let s61 = preferences_mergerModelViewDisplayBackComponentNames_property.selection
-        let s62 = preferences_mergerColorBackComponentNames_property.selection
-        let s63 = unwSelf.frontComponentNamesBezierPaths_property.selection
-        let s64 = preferences_mergerModelViewDisplayFrontComponentNames_property.selection
-        let s65 = preferences_mergerColorFrontComponentNames_property.selection
-        let s66 = unwSelf.frontComponentValuesBezierPaths_property.selection
-        let s67 = preferences_mergerModelViewDisplayFrontComponentValues_property.selection
-        let s68 = preferences_mergerColorFrontComponentValues_property.selection
-        let s69 = unwSelf.backComponentValuesBezierPaths_property.selection
-        let s70 = preferences_mergerModelViewDisplayBackComponentValues_property.selection
-        let s71 = preferences_mergerColorBackComponentValues_property.selection
-        let s72 = unwSelf.frontPackagesBezierPaths_property.selection
-        let s73 = preferences_mergerModelViewDisplayFrontPackages_property.selection
-        let s74 = preferences_mergerColorFrontPackages_property.selection
-        let s75 = unwSelf.backPackagesBezierPaths_property.selection
-        let s76 = preferences_mergerModelViewDisplayBackPackages_property.selection
-        let s77 = preferences_mergerColorBackPackages_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28, s29, s30, s31, s32, s33, s34, s35, s36, s37, s38, s39, s40, s41, s42, s43, s44, s45, s46, s47, s48, s49, s50, s51, s52, s53, s54, s55, s56, s57, s58, s59, s60, s61, s62, s63, s64, s65, s66, s67, s68, s69, s70, s71, s72, s73, s74, s75, s76, s77) {
+        let s40 = unwSelf.frontLegendBoardImageRectangles_property.selection
+        let s41 = unwSelf.frontLegendQRCodeRectangles_property.selection
+        let s42 = unwSelf.frontLegendLinesBezierPaths_property.selection
+        let s43 = preferences_mergerModelViewDisplayFrontLegendLines_property.selection
+        let s44 = preferences_mergerColorFrontLegendLines_property.selection
+        let s45 = unwSelf.backLegendBoardImageRectangles_property.selection
+        let s46 = unwSelf.backLegendQRCodeRectangles_property.selection
+        let s47 = unwSelf.backLegendLinesBezierPaths_property.selection
+        let s48 = preferences_mergerModelViewDisplayBackLegendLines_property.selection
+        let s49 = preferences_mergerColorBackLegendLines_property.selection
+        let s50 = unwSelf.frontLegendTextsBezierPaths_property.selection
+        let s51 = preferences_mergerModelViewDisplayFrontLegendTexts_property.selection
+        let s52 = preferences_mergerColorFrontLegendTexts_property.selection
+        let s53 = unwSelf.frontLayoutTextsBezierPaths_property.selection
+        let s54 = preferences_mergerModelViewDisplayFrontLayoutTexts_property.selection
+        let s55 = preferences_mergerColorFrontLayoutTexts_property.selection
+        let s56 = unwSelf.backLegendTextsBezierPaths_property.selection
+        let s57 = preferences_mergerModelViewDisplayBackLegendTexts_property.selection
+        let s58 = preferences_mergerColorBackLegendTexts_property.selection
+        let s59 = unwSelf.backLayoutTextsBezierPaths_property.selection
+        let s60 = preferences_mergerModelViewDisplayBackLayoutTexts_property.selection
+        let s61 = preferences_mergerColorBackLayoutTexts_property.selection
+        let s62 = unwSelf.backComponentNamesBezierPaths_property.selection
+        let s63 = preferences_mergerModelViewDisplayBackComponentNames_property.selection
+        let s64 = preferences_mergerColorBackComponentNames_property.selection
+        let s65 = unwSelf.frontComponentNamesBezierPaths_property.selection
+        let s66 = preferences_mergerModelViewDisplayFrontComponentNames_property.selection
+        let s67 = preferences_mergerColorFrontComponentNames_property.selection
+        let s68 = unwSelf.frontComponentValuesBezierPaths_property.selection
+        let s69 = preferences_mergerModelViewDisplayFrontComponentValues_property.selection
+        let s70 = preferences_mergerColorFrontComponentValues_property.selection
+        let s71 = unwSelf.backComponentValuesBezierPaths_property.selection
+        let s72 = preferences_mergerModelViewDisplayBackComponentValues_property.selection
+        let s73 = preferences_mergerColorBackComponentValues_property.selection
+        let s74 = unwSelf.frontPackagesBezierPaths_property.selection
+        let s75 = preferences_mergerModelViewDisplayFrontPackages_property.selection
+        let s76 = preferences_mergerColorFrontPackages_property.selection
+        let s77 = unwSelf.backPackagesBezierPaths_property.selection
+        let s78 = preferences_mergerModelViewDisplayBackPackages_property.selection
+        let s79 = preferences_mergerColorBackPackages_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28, s29, s30, s31, s32, s33, s34, s35, s36, s37, s38, s39, s40, s41, s42, s43, s44, s45, s46, s47, s48, s49, s50, s51, s52, s53, s54, s55, s56, s57, s58, s59, s60, s61, s62, s63, s64, s65, s66, s67, s68, s69, s70, s71, s72, s73, s74, s75, s76, s77, s78, s79) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -3504,9 +3668,13 @@ final class BoardModel : EBManagedObject,
               .single (let v74),
               .single (let v75),
               .single (let v76),
-              .single (let v77)) :
-          return .single (transient_BoardModel_imageForModel (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77))
+              .single (let v77),
+              .single (let v78),
+              .single (let v79)) :
+          return .single (transient_BoardModel_imageForModel (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79))
         case (.multiple,
+              .multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -3632,10 +3800,12 @@ final class BoardModel : EBManagedObject,
     self.holesBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
     preferences_mergerModelViewDisplayHoles_property.startsToBeObserved (by: self.imageForModel_property)
     preferences_mergerColorHoles_property.startsToBeObserved (by: self.imageForModel_property)
+    self.frontLegendBoardImageRectangles_property.startsToBeObserved (by: self.imageForModel_property)
     self.frontLegendQRCodeRectangles_property.startsToBeObserved (by: self.imageForModel_property)
     self.frontLegendLinesBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
     preferences_mergerModelViewDisplayFrontLegendLines_property.startsToBeObserved (by: self.imageForModel_property)
     preferences_mergerColorFrontLegendLines_property.startsToBeObserved (by: self.imageForModel_property)
+    self.backLegendBoardImageRectangles_property.startsToBeObserved (by: self.imageForModel_property)
     self.backLegendQRCodeRectangles_property.startsToBeObserved (by: self.imageForModel_property)
     self.backLegendLinesBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
     preferences_mergerModelViewDisplayBackLegendLines_property.startsToBeObserved (by: self.imageForModel_property)
@@ -3713,45 +3883,47 @@ final class BoardModel : EBManagedObject,
         let s37 = unwSelf.holesBezierPaths_property.selection
         let s38 = preferences_mergerBoardViewDisplayHoles_property.selection
         let s39 = preferences_mergerColorHoles_property.selection
-        let s40 = unwSelf.frontLegendQRCodeRectangles_property.selection
-        let s41 = unwSelf.frontLegendLinesBezierPaths_property.selection
-        let s42 = preferences_mergerBoardViewDisplayFrontLegendLines_property.selection
-        let s43 = preferences_mergerColorFrontLegendLines_property.selection
-        let s44 = unwSelf.backLegendQRCodeRectangles_property.selection
-        let s45 = unwSelf.backLegendLinesBezierPaths_property.selection
-        let s46 = preferences_mergerBoardViewDisplayBackLegendLines_property.selection
-        let s47 = preferences_mergerColorBackLegendLines_property.selection
-        let s48 = unwSelf.frontLegendTextsBezierPaths_property.selection
-        let s49 = preferences_mergerBoardViewDisplayFrontLegendTexts_property.selection
-        let s50 = preferences_mergerColorFrontLegendTexts_property.selection
-        let s51 = unwSelf.frontLayoutTextsBezierPaths_property.selection
-        let s52 = preferences_mergerBoardViewDisplayFrontLayoutTexts_property.selection
-        let s53 = preferences_mergerColorFrontLayoutTexts_property.selection
-        let s54 = unwSelf.backLegendTextsBezierPaths_property.selection
-        let s55 = preferences_mergerBoardViewDisplayBackLegendTexts_property.selection
-        let s56 = preferences_mergerColorBackLegendTexts_property.selection
-        let s57 = unwSelf.backLayoutTextsBezierPaths_property.selection
-        let s58 = preferences_mergerBoardViewDisplayBackLayoutTexts_property.selection
-        let s59 = preferences_mergerColorBackLayoutTexts_property.selection
-        let s60 = unwSelf.backComponentNamesBezierPaths_property.selection
-        let s61 = preferences_mergerBoardViewDisplayBackComponentNames_property.selection
-        let s62 = preferences_mergerColorBackComponentNames_property.selection
-        let s63 = unwSelf.frontComponentNamesBezierPaths_property.selection
-        let s64 = preferences_mergerBoardViewDisplayFrontComponentNames_property.selection
-        let s65 = preferences_mergerColorFrontComponentNames_property.selection
-        let s66 = unwSelf.frontComponentValuesBezierPaths_property.selection
-        let s67 = preferences_mergerBoardViewDisplayFrontComponentValues_property.selection
-        let s68 = preferences_mergerColorFrontComponentValues_property.selection
-        let s69 = unwSelf.backComponentValuesBezierPaths_property.selection
-        let s70 = preferences_mergerBoardViewDisplayBackComponentValues_property.selection
-        let s71 = preferences_mergerColorBackComponentValues_property.selection
-        let s72 = unwSelf.frontPackagesBezierPaths_property.selection
-        let s73 = preferences_mergerBoardViewDisplayFrontPackages_property.selection
-        let s74 = preferences_mergerColorFrontPackages_property.selection
-        let s75 = unwSelf.backPackagesBezierPaths_property.selection
-        let s76 = preferences_mergerBoardViewDisplayBackPackages_property.selection
-        let s77 = preferences_mergerColorBackPackages_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28, s29, s30, s31, s32, s33, s34, s35, s36, s37, s38, s39, s40, s41, s42, s43, s44, s45, s46, s47, s48, s49, s50, s51, s52, s53, s54, s55, s56, s57, s58, s59, s60, s61, s62, s63, s64, s65, s66, s67, s68, s69, s70, s71, s72, s73, s74, s75, s76, s77) {
+        let s40 = unwSelf.frontLegendBoardImageRectangles_property.selection
+        let s41 = unwSelf.frontLegendQRCodeRectangles_property.selection
+        let s42 = unwSelf.frontLegendLinesBezierPaths_property.selection
+        let s43 = preferences_mergerBoardViewDisplayFrontLegendLines_property.selection
+        let s44 = preferences_mergerColorFrontLegendLines_property.selection
+        let s45 = unwSelf.backLegendBoardImageRectangles_property.selection
+        let s46 = unwSelf.backLegendQRCodeRectangles_property.selection
+        let s47 = unwSelf.backLegendLinesBezierPaths_property.selection
+        let s48 = preferences_mergerBoardViewDisplayBackLegendLines_property.selection
+        let s49 = preferences_mergerColorBackLegendLines_property.selection
+        let s50 = unwSelf.frontLegendTextsBezierPaths_property.selection
+        let s51 = preferences_mergerBoardViewDisplayFrontLegendTexts_property.selection
+        let s52 = preferences_mergerColorFrontLegendTexts_property.selection
+        let s53 = unwSelf.frontLayoutTextsBezierPaths_property.selection
+        let s54 = preferences_mergerBoardViewDisplayFrontLayoutTexts_property.selection
+        let s55 = preferences_mergerColorFrontLayoutTexts_property.selection
+        let s56 = unwSelf.backLegendTextsBezierPaths_property.selection
+        let s57 = preferences_mergerBoardViewDisplayBackLegendTexts_property.selection
+        let s58 = preferences_mergerColorBackLegendTexts_property.selection
+        let s59 = unwSelf.backLayoutTextsBezierPaths_property.selection
+        let s60 = preferences_mergerBoardViewDisplayBackLayoutTexts_property.selection
+        let s61 = preferences_mergerColorBackLayoutTexts_property.selection
+        let s62 = unwSelf.backComponentNamesBezierPaths_property.selection
+        let s63 = preferences_mergerBoardViewDisplayBackComponentNames_property.selection
+        let s64 = preferences_mergerColorBackComponentNames_property.selection
+        let s65 = unwSelf.frontComponentNamesBezierPaths_property.selection
+        let s66 = preferences_mergerBoardViewDisplayFrontComponentNames_property.selection
+        let s67 = preferences_mergerColorFrontComponentNames_property.selection
+        let s68 = unwSelf.frontComponentValuesBezierPaths_property.selection
+        let s69 = preferences_mergerBoardViewDisplayFrontComponentValues_property.selection
+        let s70 = preferences_mergerColorFrontComponentValues_property.selection
+        let s71 = unwSelf.backComponentValuesBezierPaths_property.selection
+        let s72 = preferences_mergerBoardViewDisplayBackComponentValues_property.selection
+        let s73 = preferences_mergerColorBackComponentValues_property.selection
+        let s74 = unwSelf.frontPackagesBezierPaths_property.selection
+        let s75 = preferences_mergerBoardViewDisplayFrontPackages_property.selection
+        let s76 = preferences_mergerColorFrontPackages_property.selection
+        let s77 = unwSelf.backPackagesBezierPaths_property.selection
+        let s78 = preferences_mergerBoardViewDisplayBackPackages_property.selection
+        let s79 = preferences_mergerColorBackPackages_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28, s29, s30, s31, s32, s33, s34, s35, s36, s37, s38, s39, s40, s41, s42, s43, s44, s45, s46, s47, s48, s49, s50, s51, s52, s53, s54, s55, s56, s57, s58, s59, s60, s61, s62, s63, s64, s65, s66, s67, s68, s69, s70, s71, s72, s73, s74, s75, s76, s77, s78, s79) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -3829,9 +4001,13 @@ final class BoardModel : EBManagedObject,
               .single (let v74),
               .single (let v75),
               .single (let v76),
-              .single (let v77)) :
-          return .single (transient_BoardModel_imageForInstances (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77))
+              .single (let v77),
+              .single (let v78),
+              .single (let v79)) :
+          return .single (transient_BoardModel_imageForInstances (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79))
         case (.multiple,
+              .multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -3957,10 +4133,12 @@ final class BoardModel : EBManagedObject,
     self.holesBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
     preferences_mergerBoardViewDisplayHoles_property.startsToBeObserved (by: self.imageForInstances_property)
     preferences_mergerColorHoles_property.startsToBeObserved (by: self.imageForInstances_property)
+    self.frontLegendBoardImageRectangles_property.startsToBeObserved (by: self.imageForInstances_property)
     self.frontLegendQRCodeRectangles_property.startsToBeObserved (by: self.imageForInstances_property)
     self.frontLegendLinesBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
     preferences_mergerBoardViewDisplayFrontLegendLines_property.startsToBeObserved (by: self.imageForInstances_property)
     preferences_mergerColorFrontLegendLines_property.startsToBeObserved (by: self.imageForInstances_property)
+    self.backLegendBoardImageRectangles_property.startsToBeObserved (by: self.imageForInstances_property)
     self.backLegendQRCodeRectangles_property.startsToBeObserved (by: self.imageForInstances_property)
     self.backLegendLinesBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
     preferences_mergerBoardViewDisplayBackLegendLines_property.startsToBeObserved (by: self.imageForInstances_property)

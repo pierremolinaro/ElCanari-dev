@@ -54,10 +54,12 @@ import AppKit
        _ self_holesBezierPaths : BezierPathArray,       
        _ prefs_mergerBoardViewDisplayHoles : Bool,      
        _ prefs_mergerColorHoles : NSColor,              
+       _ self_frontLegendBoardImageRectangles : MergerRectangleArray,
        _ self_frontLegendQRCodeRectangles : MergerRectangleArray,
        _ self_frontLegendLinesBezierPaths : BezierPathArray,
        _ prefs_mergerBoardViewDisplayFrontLegendLines : Bool,
        _ prefs_mergerColorFrontLegendLines : NSColor,   
+       _ self_backLegendBoardImageRectangles : MergerRectangleArray,
        _ self_backLegendQRCodeRectangles : MergerRectangleArray,
        _ self_backLegendLinesBezierPaths : BezierPathArray,
        _ prefs_mergerBoardViewDisplayBackLegendLines : Bool,
@@ -98,10 +100,11 @@ import AppKit
 //--- Background
   let backRect = NSRect (x: 0.0, y: 0.0, width: canariUnitToCocoa (self_modelWidth), height: canariUnitToCocoa (self_modelHeight))
   shapes.add (filled: [EBBezierPath (rect: backRect)], prefs_mergerColorBackground)
-//--- Back Legend Lines
+//--- Back Legend Lines, images and QR Codes
   if (prefs_mergerBoardViewDisplayBackLegendLines) {
     shapes.add (stroke: self_backLegendLinesBezierPaths.array, prefs_mergerColorBackLegendLines)
     shapes.add (filled: self_backLegendQRCodeRectangles.bezierPathArray, prefs_mergerColorBackLegendLines)
+    shapes.add (filled: self_backLegendBoardImageRectangles.bezierPathArray, prefs_mergerColorBackLegendLines)
   }
 //--- Back Component Values
   if (prefs_mergerBoardViewDisplayBackComponentValues) {
@@ -163,10 +166,11 @@ import AppKit
   if (prefs_mergerBoardViewDisplayFrontLegendLines) {
     shapes.add (stroke: self_frontLegendLinesBezierPaths.array, prefs_mergerColorFrontLegendLines)
   }
-//--- Front Legend texts
+//--- Front Legend texts, images and QR cCodes
   if (prefs_mergerBoardViewDisplayFrontLegendTexts) {
     shapes.add (stroke: self_frontLegendTextsBezierPaths.array, prefs_mergerColorFrontLegendTexts)
     shapes.add (filled: self_frontLegendQRCodeRectangles.bezierPathArray, prefs_mergerColorFrontLegendTexts)
+    shapes.add (filled: self_frontLegendBoardImageRectangles.bezierPathArray, prefs_mergerColorFrontLegendTexts)
   }
 //--- Front Packages
   if (prefs_mergerBoardViewDisplayFrontPackages) {
