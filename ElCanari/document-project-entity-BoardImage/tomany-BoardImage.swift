@@ -5,15 +5,15 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_BoardQRCode
+//    ReadOnlyArrayOf_BoardImage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> {
+class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardQRCode>,                            
-                                 addedSet inAddedSet : EBReferenceSet <BoardQRCode>) {
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardImage>,                            
+                                 addedSet inAddedSet : EBReferenceSet <BoardImage>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     for managedObject in inRemovedSet.values {
@@ -26,14 +26,29 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
       if let relay = self.mObserversOf_mYUnit { // Stored property
         managedObject.mYUnit_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_mDrawFrame { // Stored property
-        managedObject.mDrawFrame_property.stopsBeingObserved (by: relay)
+      if let relay = self.mObserversOf_mThreshold { // Stored property
+        managedObject.mThreshold_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_mModuleSize { // Stored property
-        managedObject.mModuleSize_property.stopsBeingObserved (by: relay)
+      if let relay = self.mObserversOf_mImageData { // Stored property
+        managedObject.mImageData_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_mModuleSizeUnit { // Stored property
-        managedObject.mModuleSizeUnit_property.stopsBeingObserved (by: relay)
+      if let relay = self.mObserversOf_mInvert { // Stored property
+        managedObject.mInvert_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mScale { // Stored property
+        managedObject.mScale_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mPixelSize { // Stored property
+        managedObject.mPixelSize_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mPixelSizeUnit { // Stored property
+        managedObject.mPixelSizeUnit_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mActualWidthUnit { // Stored property
+        managedObject.mActualWidthUnit_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mActualHeightUnit { // Stored property
+        managedObject.mActualHeightUnit_property.stopsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mLayer { // Stored property
         managedObject.mLayer_property.stopsBeingObserved (by: relay)
@@ -41,20 +56,38 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
       if let relay = self.mObserversOf_mText { // Stored property
         managedObject.mText_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_mCorrectionLevel { // Stored property
-        managedObject.mCorrectionLevel_property.stopsBeingObserved (by: relay)
-      }
       if let relay = self.mObserversOf_mRotation { // Stored property
         managedObject.mRotation_property.stopsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mCenterX { // Stored property
         managedObject.mCenterX_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_qrCodeDescriptor { // Transient property
-        managedObject.qrCodeDescriptor_property.stopsBeingObserved (by: relay)
+      if let relay = self.mObserversOf_imageDataByteCount { // Transient property
+        managedObject.imageDataByteCount_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_moduleCount { // Transient property
-        managedObject.moduleCount_property.stopsBeingObserved (by: relay)
+      if let relay = self.mObserversOf_boardImage { // Transient property
+        managedObject.boardImage_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_boardImageCodeDescriptor { // Transient property
+        managedObject.boardImageCodeDescriptor_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_boardOriginalImageWidth { // Transient property
+        managedObject.boardOriginalImageWidth_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_boardOriginalImageHeight { // Transient property
+        managedObject.boardOriginalImageHeight_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_boardScaledImageWidth { // Transient property
+        managedObject.boardScaledImageWidth_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_boardScaledImageHeight { // Transient property
+        managedObject.boardScaledImageHeight_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_boardActualImageWidth { // Transient property
+        managedObject.boardActualImageWidth_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_boardActualImageHeight { // Transient property
+        managedObject.boardActualImageHeight_property.stopsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_objectDisplay { // Transient property
         managedObject.objectDisplay_property.stopsBeingObserved (by: relay)
@@ -77,14 +110,29 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
       if let relay = self.mObserversOf_mYUnit { // Stored property
         managedObject.mYUnit_property.startsToBeObserved (by: relay)
       }
-      if let relay = self.mObserversOf_mDrawFrame { // Stored property
-        managedObject.mDrawFrame_property.startsToBeObserved (by: relay)
+      if let relay = self.mObserversOf_mThreshold { // Stored property
+        managedObject.mThreshold_property.startsToBeObserved (by: relay)
       }
-      if let relay = self.mObserversOf_mModuleSize { // Stored property
-        managedObject.mModuleSize_property.startsToBeObserved (by: relay)
+      if let relay = self.mObserversOf_mImageData { // Stored property
+        managedObject.mImageData_property.startsToBeObserved (by: relay)
       }
-      if let relay = self.mObserversOf_mModuleSizeUnit { // Stored property
-        managedObject.mModuleSizeUnit_property.startsToBeObserved (by: relay)
+      if let relay = self.mObserversOf_mInvert { // Stored property
+        managedObject.mInvert_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mScale { // Stored property
+        managedObject.mScale_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mPixelSize { // Stored property
+        managedObject.mPixelSize_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mPixelSizeUnit { // Stored property
+        managedObject.mPixelSizeUnit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mActualWidthUnit { // Stored property
+        managedObject.mActualWidthUnit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mActualHeightUnit { // Stored property
+        managedObject.mActualHeightUnit_property.startsToBeObserved (by: relay)
       }
       if let relay = self.mObserversOf_mLayer { // Stored property
         managedObject.mLayer_property.startsToBeObserved (by: relay)
@@ -92,20 +140,38 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
       if let relay = self.mObserversOf_mText { // Stored property
         managedObject.mText_property.startsToBeObserved (by: relay)
       }
-      if let relay = self.mObserversOf_mCorrectionLevel { // Stored property
-        managedObject.mCorrectionLevel_property.startsToBeObserved (by: relay)
-      }
       if let relay = self.mObserversOf_mRotation { // Stored property
         managedObject.mRotation_property.startsToBeObserved (by: relay)
       }
       if let relay = self.mObserversOf_mCenterX { // Stored property
         managedObject.mCenterX_property.startsToBeObserved (by: relay)
       }
-      if let relay = self.mObserversOf_qrCodeDescriptor { // Transient property
-        managedObject.qrCodeDescriptor_property.startsToBeObserved (by: relay)
+      if let relay = self.mObserversOf_imageDataByteCount { // Transient property
+        managedObject.imageDataByteCount_property.startsToBeObserved (by: relay)
       }
-      if let relay = self.mObserversOf_moduleCount { // Transient property
-        managedObject.moduleCount_property.startsToBeObserved (by: relay)
+      if let relay = self.mObserversOf_boardImage { // Transient property
+        managedObject.boardImage_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_boardImageCodeDescriptor { // Transient property
+        managedObject.boardImageCodeDescriptor_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_boardOriginalImageWidth { // Transient property
+        managedObject.boardOriginalImageWidth_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_boardOriginalImageHeight { // Transient property
+        managedObject.boardOriginalImageHeight_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_boardScaledImageWidth { // Transient property
+        managedObject.boardScaledImageWidth_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_boardScaledImageHeight { // Transient property
+        managedObject.boardScaledImageHeight_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_boardActualImageWidth { // Transient property
+        managedObject.boardActualImageWidth_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_boardActualImageHeight { // Transient property
+        managedObject.boardActualImageHeight_property.startsToBeObserved (by: relay)
       }
       if let relay = self.mObserversOf_objectDisplay { // Transient property
         managedObject.objectDisplay_property.startsToBeObserved (by: relay)
@@ -207,90 +273,235 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
   }
 
   //····················································································································
-  //   Observers of 'mDrawFrame' stored property
+  //   Observers of 'mThreshold' stored property
   //····················································································································
 
-  private final var mObserversOf_mDrawFrame : EBObservedObserver? = nil
+  private final var mObserversOf_mThreshold : EBObservedObserver? = nil
 
   //····················································································································
 
-  final func toMany_mDrawFrame_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mThreshold_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
-    if let r = self.mObserversOf_mDrawFrame {
+    if let r = self.mObserversOf_mThreshold {
       relay = r
     }else{
       relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mDrawFrame_property.startsToBeObserved (by: relay)
+        managedObject.mThreshold_property.startsToBeObserved (by: relay)
       }
-      self.mObserversOf_mDrawFrame = relay
+      self.mObserversOf_mThreshold = relay
     }
     relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
-  final func toMany_mDrawFrame_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mDrawFrame?.stopsBeingObserved (by: inObserver)
+  final func toMany_mThreshold_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mThreshold?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
-  //   Observers of 'mModuleSize' stored property
+  //   Observers of 'mImageData' stored property
   //····················································································································
 
-  private final var mObserversOf_mModuleSize : EBObservedObserver? = nil
+  private final var mObserversOf_mImageData : EBObservedObserver? = nil
 
   //····················································································································
 
-  final func toMany_mModuleSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mImageData_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
-    if let r = self.mObserversOf_mModuleSize {
+    if let r = self.mObserversOf_mImageData {
       relay = r
     }else{
       relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mModuleSize_property.startsToBeObserved (by: relay)
+        managedObject.mImageData_property.startsToBeObserved (by: relay)
       }
-      self.mObserversOf_mModuleSize = relay
+      self.mObserversOf_mImageData = relay
     }
     relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
-  final func toMany_mModuleSize_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mModuleSize?.stopsBeingObserved (by: inObserver)
+  final func toMany_mImageData_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mImageData?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
-  //   Observers of 'mModuleSizeUnit' stored property
+  //   Observers of 'mInvert' stored property
   //····················································································································
 
-  private final var mObserversOf_mModuleSizeUnit : EBObservedObserver? = nil
+  private final var mObserversOf_mInvert : EBObservedObserver? = nil
 
   //····················································································································
 
-  final func toMany_mModuleSizeUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mInvert_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
-    if let r = self.mObserversOf_mModuleSizeUnit {
+    if let r = self.mObserversOf_mInvert {
       relay = r
     }else{
       relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mModuleSizeUnit_property.startsToBeObserved (by: relay)
+        managedObject.mInvert_property.startsToBeObserved (by: relay)
       }
-      self.mObserversOf_mModuleSizeUnit = relay
+      self.mObserversOf_mInvert = relay
     }
     relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
-  final func toMany_mModuleSizeUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mModuleSizeUnit?.stopsBeingObserved (by: inObserver)
+  final func toMany_mInvert_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mInvert?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'mScale' stored property
+  //····················································································································
+
+  private final var mObserversOf_mScale : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_mScale_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mScale {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mScale_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_mScale = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mScale_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mScale?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'mPixelSize' stored property
+  //····················································································································
+
+  private final var mObserversOf_mPixelSize : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_mPixelSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mPixelSize {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mPixelSize_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_mPixelSize = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mPixelSize_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mPixelSize?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'mPixelSizeUnit' stored property
+  //····················································································································
+
+  private final var mObserversOf_mPixelSizeUnit : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_mPixelSizeUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mPixelSizeUnit {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mPixelSizeUnit_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_mPixelSizeUnit = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mPixelSizeUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mPixelSizeUnit?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'mActualWidthUnit' stored property
+  //····················································································································
+
+  private final var mObserversOf_mActualWidthUnit : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_mActualWidthUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mActualWidthUnit {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mActualWidthUnit_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_mActualWidthUnit = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mActualWidthUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mActualWidthUnit?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'mActualHeightUnit' stored property
+  //····················································································································
+
+  private final var mObserversOf_mActualHeightUnit : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_mActualHeightUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mActualHeightUnit {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mActualHeightUnit_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_mActualHeightUnit = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mActualHeightUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mActualHeightUnit?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -352,35 +563,6 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
   }
 
   //····················································································································
-  //   Observers of 'mCorrectionLevel' stored property
-  //····················································································································
-
-  private final var mObserversOf_mCorrectionLevel : EBObservedObserver? = nil
-
-  //····················································································································
-
-  final func toMany_mCorrectionLevel_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_mCorrectionLevel {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.mCorrectionLevel_property.startsToBeObserved (by: relay)
-      }
-      self.mObserversOf_mCorrectionLevel = relay
-    }
-    relay.startsToBeObserved (by: inObserver)
-  }
-
-  //····················································································································
-
-  final func toMany_mCorrectionLevel_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mCorrectionLevel?.stopsBeingObserved (by: inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mRotation' stored property
   //····················································································································
 
@@ -439,61 +621,264 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
   }
 
   //····················································································································
-  //   Observers of 'qrCodeDescriptor' transient property
+  //   Observers of 'imageDataByteCount' transient property
   //····················································································································
 
-  private final var mObserversOf_qrCodeDescriptor : EBObservedObserver? = nil
+  private final var mObserversOf_imageDataByteCount : EBObservedObserver? = nil
 
   //····················································································································
 
-  final func toMany_qrCodeDescriptor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_imageDataByteCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
-    if let r = self.mObserversOf_qrCodeDescriptor {
+    if let r = self.mObserversOf_imageDataByteCount {
       relay = r
     }else{
       relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.qrCodeDescriptor_property.startsToBeObserved (by: relay)
+        managedObject.imageDataByteCount_property.startsToBeObserved (by: relay)
       }
-      self.mObserversOf_qrCodeDescriptor = relay
+      self.mObserversOf_imageDataByteCount = relay
     }
     relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
-  final func toMany_qrCodeDescriptor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_qrCodeDescriptor?.stopsBeingObserved (by: inObserver)
+  final func toMany_imageDataByteCount_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_imageDataByteCount?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
-  //   Observers of 'moduleCount' transient property
+  //   Observers of 'boardImage' transient property
   //····················································································································
 
-  private final var mObserversOf_moduleCount : EBObservedObserver? = nil
+  private final var mObserversOf_boardImage : EBObservedObserver? = nil
 
   //····················································································································
 
-  final func toMany_moduleCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardImage_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
-    if let r = self.mObserversOf_moduleCount {
+    if let r = self.mObserversOf_boardImage {
       relay = r
     }else{
       relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.moduleCount_property.startsToBeObserved (by: relay)
+        managedObject.boardImage_property.startsToBeObserved (by: relay)
       }
-      self.mObserversOf_moduleCount = relay
+      self.mObserversOf_boardImage = relay
     }
     relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
-  final func toMany_moduleCount_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_moduleCount?.stopsBeingObserved (by: inObserver)
+  final func toMany_boardImage_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_boardImage?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'boardImageCodeDescriptor' transient property
+  //····················································································································
+
+  private final var mObserversOf_boardImageCodeDescriptor : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_boardImageCodeDescriptor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_boardImageCodeDescriptor {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.boardImageCodeDescriptor_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_boardImageCodeDescriptor = relay
+    }
+    relay.startsToBeObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_boardImageCodeDescriptor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_boardImageCodeDescriptor?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'boardOriginalImageWidth' transient property
+  //····················································································································
+
+  private final var mObserversOf_boardOriginalImageWidth : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_boardOriginalImageWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_boardOriginalImageWidth {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.boardOriginalImageWidth_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_boardOriginalImageWidth = relay
+    }
+    relay.startsToBeObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_boardOriginalImageWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_boardOriginalImageWidth?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'boardOriginalImageHeight' transient property
+  //····················································································································
+
+  private final var mObserversOf_boardOriginalImageHeight : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_boardOriginalImageHeight_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_boardOriginalImageHeight {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.boardOriginalImageHeight_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_boardOriginalImageHeight = relay
+    }
+    relay.startsToBeObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_boardOriginalImageHeight_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_boardOriginalImageHeight?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'boardScaledImageWidth' transient property
+  //····················································································································
+
+  private final var mObserversOf_boardScaledImageWidth : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_boardScaledImageWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_boardScaledImageWidth {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.boardScaledImageWidth_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_boardScaledImageWidth = relay
+    }
+    relay.startsToBeObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_boardScaledImageWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_boardScaledImageWidth?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'boardScaledImageHeight' transient property
+  //····················································································································
+
+  private final var mObserversOf_boardScaledImageHeight : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_boardScaledImageHeight_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_boardScaledImageHeight {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.boardScaledImageHeight_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_boardScaledImageHeight = relay
+    }
+    relay.startsToBeObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_boardScaledImageHeight_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_boardScaledImageHeight?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'boardActualImageWidth' transient property
+  //····················································································································
+
+  private final var mObserversOf_boardActualImageWidth : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_boardActualImageWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_boardActualImageWidth {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.boardActualImageWidth_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_boardActualImageWidth = relay
+    }
+    relay.startsToBeObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_boardActualImageWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_boardActualImageWidth?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'boardActualImageHeight' transient property
+  //····················································································································
+
+  private final var mObserversOf_boardActualImageHeight : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_boardActualImageHeight_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_boardActualImageHeight {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.boardActualImageHeight_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_boardActualImageHeight = relay
+    }
+    relay.startsToBeObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_boardActualImageHeight_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_boardActualImageHeight?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -588,16 +973,16 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf BoardQRCode
+//    TransientArrayOf BoardImage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-// TransientArrayOf_BoardQRCode is useless.
+// TransientArrayOf_BoardImage is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOfSuperOf BoardQRCode
+//    TransientArrayOfSuperOf BoardImage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientArrayOfSuperOf_BoardQRCode <SUPER : EBManagedObject> : ReadOnlyArrayOf_BoardQRCode {
+final class TransientArrayOfSuperOf_BoardImage <SUPER : EBManagedObject> : ReadOnlyArrayOf_BoardImage {
 
   //····················································································································
   //   Data provider
@@ -655,9 +1040,9 @@ final class TransientArrayOfSuperOf_BoardQRCode <SUPER : EBManagedObject> : Read
         newModelArray = EBReferenceArray ()
         self.mTransientKind = .empty
       }
-      var newArray = EBReferenceArray <BoardQRCode> ()
+      var newArray = EBReferenceArray <BoardImage> ()
       for superObject in newModelArray.values {
-        if let object = superObject as? BoardQRCode {
+        if let object = superObject as? BoardImage {
           newArray.append (object)
         }
       }
@@ -667,7 +1052,7 @@ final class TransientArrayOfSuperOf_BoardQRCode <SUPER : EBManagedObject> : Read
 
   //····················································································································
 
-  override var selection : EBSelection < [BoardQRCode] > {
+  override var selection : EBSelection < [BoardImage] > {
     self.computeModelArray ()
     switch self.mTransientKind {
     case .empty :
@@ -681,7 +1066,7 @@ final class TransientArrayOfSuperOf_BoardQRCode <SUPER : EBManagedObject> : Read
 
   //····················································································································
 
-  override var propval : EBReferenceArray <BoardQRCode> {
+  override var propval : EBReferenceArray <BoardImage> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
@@ -691,28 +1076,28 @@ final class TransientArrayOfSuperOf_BoardQRCode <SUPER : EBManagedObject> : Read
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: BoardQRCode
+//    To many relationship read write: BoardImage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-// ReadWriteArrayOf_BoardQRCode is useless.
+// ReadWriteArrayOf_BoardImage is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Proxy: ProxyArrayOf_BoardQRCode
+//    Proxy: ProxyArrayOf_BoardImage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-// ProxyArrayOf_BoardQRCode is useless.
+// ProxyArrayOf_BoardImage is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Stored Array: BoardQRCode
+//    Stored Array: BoardImage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-// StoredArrayOf_BoardQRCode is useless.
+// StoredArrayOf_BoardImage is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Preferences array: BoardQRCode
+//    Preferences array: BoardImage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-// PreferencesArrayOf_BoardQRCode is useless.
+// PreferencesArrayOf_BoardImage is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

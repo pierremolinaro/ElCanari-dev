@@ -33,13 +33,30 @@ extension AutoLayoutProjectDocument {
   //····················································································································
 
   func boardQRCodeImageFactory () -> EBShape? {
-//    var result : EBShape? = nil
     self.undoManager?.disableUndoRegistration ()
     let boardQRCode = BoardQRCode (nil)
     boardQRCode.mLayer = self.rootObject.mBoardLayerForNewQRCode
     let temporaryRootObject = ProjectRoot (nil)
     boardQRCode.mRoot = temporaryRootObject
     let result = boardQRCode.objectDisplay
+    self.undoManager?.enableUndoRegistration ()
+    return result
+  }
+
+  //····················································································································
+
+  func boardImageFactory () -> EBShape? {
+    self.undoManager?.disableUndoRegistration ()
+    let boardImage = BoardImage (nil)
+    boardImage.mLayer = self.rootObject.mBoardLayerForNewImage
+    let fm = FileManager ()
+    if let imagePath = Bundle.main.pathForImageResource (DEFAULT_BOARD_IMAGE),
+        let imageData : Data = fm.contents (atPath: imagePath) {
+      boardImage.mImageData = imageData
+    }
+    let temporaryRootObject = ProjectRoot (nil)
+    boardImage.mRoot = temporaryRootObject
+    let result = boardImage.objectDisplay
     self.undoManager?.enableUndoRegistration ()
     return result
   }

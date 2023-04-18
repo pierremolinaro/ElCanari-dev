@@ -47,16 +47,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
         StaticLabel (title: "Schematic", bold: no, size : .small, alignment: .center)
       }
-//      vStack {
-//        hStack {
-//          space
-//          ImageObserverView (size : .regular) {
-//            $image root.schematicStatusImage $tooltip root.schematicStatusMessage
-//          }
-//          space
-//        }
-//        StaticLabel (title: "Schematic", bold: no, size : .small, alignment: .center)
-//      } 
       vStack {
         hStack {
           space
@@ -69,16 +59,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
         StaticLabel (title: "Board", bold: no, size : .small, alignment: .center)
       }
-//      vStack {
-//        hStack {
-//          space
-//          ImageObserverView (size : .regular) {
-//            $image root.boardStatusImage $tooltip root.boardStatusMessage
-//          }
-//          space
-//        }
-//        StaticLabel (title: "Board", bold: no, size : .small, alignment: .center)
-//      }
       vStack {
         hStack {
           space
@@ -1289,7 +1269,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView \boardContentsPage hStack set (spacing: 0) {
     newView boardInspectorView = \BoardInspectorView ()
-    newView selectedElementInspectorView = \SelectedElementInspectorView ()
+    newView selectedElementInspectorView = \selectedElementInspectorView ()
     newView insertComponentInBoardView = \insertComponentInBoardView ()
     newView boardDisplayInspectorView = \boardDisplayInspectorView ()
     newView boardRouterInspectorView = \boardRouterInspectorView ()
@@ -1298,13 +1278,15 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       hStack set (spacing: 0) set (margins: 8) {
         CanariBoardOperationPullDownButton [configurator boardOperationPullDownButtonConfigurator]
         space
+        DragSourceButtonWithMenus (tooltip: "Add Image; the layer is set by the contextual menu.") [configurator addBoardImageButton]
+        space
+        DragSourceButtonWithMenus (tooltip: "Add QR Code; the layer is set by the contextual menu.") [configurator addQRCodeButton]
+        space
         DragSourceButtonWithMenus (tooltip: "Add Restrict Rectangle;  the layers are set by the contextual menu.") [configurator addRestrictRectangleButton]
         space
-        DragSourceButtonWithMenus (tooltip: "Add QR Code in Board; the layer is set by the contextual menu.") [configurator addQRCodeButton]
+        DragSourceButtonWithMenus (tooltip: "Add Line;  the layer is set by the contextual menu.") [configurator addLineButton]
         space
-        DragSourceButtonWithMenus (tooltip: "Add Line in Board;  the layer is set by the contextual menu.") [configurator addLineButton]
-        space
-        DragSourceButtonWithMenus (tooltip: "Add Text in Board; the layer is set by the contextual menu.") [configurator addTextButton]
+        DragSourceButtonWithMenus (tooltip: "Add Text; the layer is set by the contextual menu.") [configurator addTextButton]
         space
         DragSourceButtonWithMenus (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.") [configurator addTrackButton]
       }
@@ -1386,15 +1368,15 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           single: StaticLabel (title: "Grid and Flip", bold: yes, size: .small, alignment: .left)
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .center),
+          left: StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .right),
           right: CanariDimensionAndPopUp (size : .small)  { $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Display", bold: no, size: .small, alignment: .center),
+          left: StaticLabel (title: "Display", bold: no, size: .small, alignment: .right),
           right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size : .small)  { $selectedIndex root.mBoardGridStyle }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Every", bold: no, size: .small, alignment: .center),
+          left: StaticLabel (title: "Every", bold: no, size: .small, alignment: .right),
           right: TaggedPopUpButton (size: .small) {
             add (title: "1 Step",   withTag:  1)
             add (title: "2 Steps",  withTag:  2)
@@ -1406,7 +1388,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .center),
+          left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right),
           right: Checkbox (title: "Horizontal", size : .small)  { $value root.mBoardHorizontalFlip }
         )
         addFirstBaseLineAligned (
@@ -1414,12 +1396,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           right: Checkbox (title: "Vertical", size : .small)  { $value root.mBoardVerticalFlip }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Cross Grid", bold: no, size: .small, alignment: .center),
-          right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.crossColorGridForBoard (sendContinously:yes) } space }
+          left: StaticLabel (title: "Cross Grid", bold: no, size: .small, alignment: .right),
+          right: ColorWell { expandableWidth ()  set (toolTip: "Stored in Preferences") $color prefs.crossColorGridForBoard (sendContinously:yes) }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Line Grid", bold: no, size: .small, alignment: .center),
-          right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorGridForBoard (sendContinously:yes) } space }
+          left: StaticLabel (title: "Line Grid", bold: no, size: .small, alignment: .right),
+          right: ColorWell { expandableWidth () set (toolTip: "Stored in Preferences") $color prefs.lineColorGridForBoard (sendContinously:yes) }
         )
         add (single: StaticLabel (title: "Rastnet", bold: yes, size: .small, alignment: .left) )
         add (single: EnumPopUpButton (titles: enum RastnetDisplay.popupTitles, size: .small) { $selectedIndex root.mRastnetDisplay } )
@@ -1740,13 +1722,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //   Board selected objects inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView \SelectedElementInspectorView vStack set (margins: 8) {
+  stackView \selectedElementInspectorView vStack set (margins: 8) {
     newView boardTrackInspectorView = \BoardTrackInspectorView ()
     newView boardConnectorInspectorView = \BoardConnectorInspectorView ()
     newView boardLineInspectorView = \BoardLineInspectorView ()
     newView restrictRectangleInspectorView = \RestrictRectangleInspectorView ()
     newView boardTextInspectorView = \BoardTextInspectorView ()
     newView boardQRCodeInspectorView = \BoardQRCodeInspectorView ()
+    newView boardImageInspectorView = \BoardImageInspectorView ()
     newView componentInBoardInspectorView = \ComponentInBoardInspectorView ()
     ObjectInspectorView {
       addObjectInspector (forEntity: entity BoardTrack, inspectorView: view boardTrackInspectorView)
@@ -1755,10 +1738,10 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       addObjectInspector (forEntity: entity BoardRestrictRectangle, inspectorView: view restrictRectangleInspectorView)
       addObjectInspector (forEntity: entity BoardText, inspectorView: view boardTextInspectorView)
       addObjectInspector (forEntity: entity BoardQRCode, inspectorView: view boardQRCodeInspectorView)
+      addObjectInspector (forEntity: entity BoardImage, inspectorView: view boardImageInspectorView)
       addObjectInspector (forEntity: entity ComponentInProject, inspectorView: view componentInBoardInspectorView)
       $graphicController #boardObjectsController
     }
-//    space
   }
 
 //--- Board track
@@ -2036,11 +2019,117 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     space
   }
 
-//--- QRCode inspector
-  selectionController BoardQRCode #boardQRCodeSelectionController :
+//--- Board Image inspector
+  selectionController BoardImage #boardImageSelectionController :
     #boardObjectsController.selectedArray
   ;
 
+  action loadBoardImage ;
+  
+  stackView \BoardImageInspectorView vStack {
+    StaticLabel (title: "Image Inspector", bold: yes, size: .small, alignment: .center)
+    CanariDeviceDroppableImageView () { $imageData #boardImageSelectionController.mImageData }
+    GridView2 {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Image Data", bold: no, size: .small, alignment: .right),
+        right: Label (bold: yes, size: .small) {
+          set (alignment: .left)
+          $title #boardImageSelectionController.imageDataByteCount
+        } 
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Image Width", bold: no, size: .small, alignment: .right),
+        right: Label (bold: yes, size: .small) {
+          set (alignment: .left)
+          $title #boardImageSelectionController.boardOriginalImageWidth
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Image Height", bold: no, size: .small, alignment: .right),
+        right: Label (bold: yes, size: .small) {
+          set (alignment: .left)
+          $title #boardImageSelectionController.boardOriginalImageHeight
+        }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Threshold", bold: no, size: .small, alignment: .right),
+        right: LinearSlider (min: 0, max: 255, ticks: 17) { $intValue #boardImageSelectionController.mThreshold (sendContinously:yes) }
+      )
+      addFirstBaseLineAligned (
+        left: space,
+        right: Checkbox (title: "Invert", size: .small) { $value #boardImageSelectionController.mInvert }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Scale", bold: no, size: .small, alignment: .right),
+        right: DoubleField (width: 64, size: .small) { $value #boardImageSelectionController.mScale (sendContinously: no) }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Scaled Image Width", bold: no, size: .small, alignment: .right),
+        right: Label (bold: yes, size: .small) {
+          set (alignment: .left)
+          $title #boardImageSelectionController.boardScaledImageWidth
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Scaled Image Height", bold: no, size: .small, alignment: .right),
+        right: Label (bold: yes, size: .small) {
+          set (alignment: .left)
+          $title #boardImageSelectionController.boardScaledImageHeight
+        }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Pixel Size", bold: no, size: .small, alignment: .right),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardImageSelectionController.mPixelSize, #boardImageSelectionController.mPixelSizeUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Actual Image Width", bold: no, size: .small, alignment: .right),
+        right: CanariObservedDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardImageSelectionController.boardActualImageWidth, #boardImageSelectionController.mActualWidthUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Actual Image Height", bold: no, size: .small, alignment: .right),
+        right: CanariObservedDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardImageSelectionController.boardActualImageHeight, #boardImageSelectionController.mActualHeightUnit
+        }
+      )
+     addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Layer", bold: no, size: .small, alignment: .right),
+        right: EnumPopUpButton (titles: enum BoardQRCodeLayer.popupTitles, size: .small) {
+          $selectedIndex #boardImageSelectionController.mLayer
+        } 
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
+        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #boardImageSelectionController.mRotation }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Center X", bold: no, size: .small, alignment: .right),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardImageSelectionController.mCenterX, #boardImageSelectionController.mXUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Center Y", bold: no, size: .small, alignment: .right),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardImageSelectionController.mCenterY, #boardImageSelectionController.mYUnit
+        }
+      )
+    }
+    space
+  }
+ 
+ //--- QRCode inspector
+  selectionController BoardQRCode #boardQRCodeSelectionController :
+    #boardObjectsController.selectedArray
+  ;
+ 
   stackView \BoardQRCodeInspectorView vStack {
     StaticLabel (title: "QRCode Inspector", bold: yes, size: .small, alignment: .center)
     StaticLabel (title: "Contents", bold: no, size: .small, alignment: .center)
@@ -2062,6 +2151,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         left: StaticLabel (title: "Module Count", bold: no, size: .small, alignment: .right),
         right: IntObserverField (bold: yes, size: .small) {
           $observedValue #boardQRCodeSelectionController.moduleCount
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Module Size", bold: no, size: .small, alignment: .right),
+        right: CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardQRCodeSelectionController.mModuleSize, #boardQRCodeSelectionController.mModuleSizeUnit
         }
       )
       addSeparator ()

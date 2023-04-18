@@ -15,7 +15,7 @@ class AutoLayoutVerticalStackView : AutoLayoutBase_NSStackView {
     self.alignment = .width
 
     self.setHuggingPriority (.required, for: .horizontal)
-    self.setHuggingPriority (.defaultLow, for: .vertical)
+//    self.setHuggingPriority (.defaultHigh, for: .vertical)
   }
 
   //····················································································································

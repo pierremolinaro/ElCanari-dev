@@ -19,9 +19,8 @@ import AppKit
        _ self_qrCodeDescriptor : QRCodeDescriptor,      
        _ self_mLayer : BoardQRCodeLayer,                
        _ self_mRotation : Int,                          
+       _ self_mModuleSize : Int,                        
        _ prefs_frontSideLegendColorForBoard : NSColor,  
-       _ prefs_frontSideLayoutColorForBoard : NSColor,  
-       _ prefs_backSideLayoutColorForBoard : NSColor,   
        _ prefs_backSideLegendColorForBoard : NSColor,   
        _ prefs_hiliteWidthMultipliedByTen : Int,        
        _ prefs_mShowTextRotationKnobInBoard : Bool
@@ -39,6 +38,7 @@ import AppKit
           centerY: self_mCenterY,
           self_qrCodeDescriptor,
           frontSide: self_mLayer == .legendFront,
+          moduleSizeInCanariUnit: self_mModuleSize,
           rotation: self_mRotation
         )
         var shape = EBShape ()

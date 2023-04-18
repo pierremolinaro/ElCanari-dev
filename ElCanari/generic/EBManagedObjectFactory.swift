@@ -60,6 +60,7 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
   "BoardObject" : BoardObject.self,
   "BoardLine" : BoardLine.self,
   "BoardQRCode" : BoardQRCode.self,
+  "BoardImage" : BoardImage.self,
   "BoardRestrictRectangle" : BoardRestrictRectangle.self,
   "BoardText" : BoardText.self,
   "FontInProject" : FontInProject.self,

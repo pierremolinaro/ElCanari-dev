@@ -2,32 +2,63 @@
 //   BoardText
 //——————————————————————————————————————————————————————————————————————————————
 
-graphic handlingOpposite entity BoardQRCode : BoardObject {
+graphic handlingOpposite entity BoardImage : BoardObject {
   graphic canCopyAndPaste ;
 
   property Int mCenterX default 0 ;
   property Int mXUnit default 2_286 ; // mil
   property Int mCenterY default 0 ;
   property Int mYUnit default 2_286 ; // mil
-  property Bool mDrawFrame default yes ;
-  property Int mModuleSize  default 31_750 ; // px
-  property Int mModuleSizeUnit  default 31_750 ; // px
+  property Int mThreshold default 200 ;
+  property Data mImageData default empty ;
+  property Bool mInvert default no ;
+  property Double mScale default 0.5 ;
+  property Int mPixelSize  default 31_750 ; // px
+  property Int mPixelSizeUnit  default 31_750 ; // px
+  property Int mActualWidthUnit  default 900_000 ; // cm
+  property Int mActualHeightUnit  default 900_000 ; // cm
 
   property BoardQRCodeLayer mLayer default legendFront ;
+ 
   property String mText default "" ;
-  property QRCodeCorrectionLevel mCorrectionLevel default quality ;
 
   property Int mRotation default 0 ; // 1000 --> 1°
 
-  transient QRCodeDescriptor qrCodeDescriptor dependsFrom
-    self.mText, self.mCorrectionLevel, self.mDrawFrame
+  transient String imageDataByteCount dependsFrom self.mImageData ;
+ 
+  transient NSImage boardImage dependsFrom self.mImageData ;
+  
+  transient BoardImageDescriptor boardImageCodeDescriptor dependsFrom
+    self.mImageData, self.mThreshold, self.mInvert, self.mScale
+  ;
+  
+  transient String boardOriginalImageWidth dependsFrom
+    self.boardImageCodeDescriptor
+  ;
+  
+  transient String boardOriginalImageHeight dependsFrom
+    self.boardImageCodeDescriptor
+  ;
+  
+  transient String boardScaledImageWidth dependsFrom
+    self.boardImageCodeDescriptor
+  ;
+  
+  transient String boardScaledImageHeight dependsFrom
+    self.boardImageCodeDescriptor
   ;
     
-  transient Int moduleCount dependsFrom self.qrCodeDescriptor ;
+  transient Int boardActualImageWidth dependsFrom
+    self.boardImageCodeDescriptor, self.mPixelSize
+  ;
+  
+  transient Int boardActualImageHeight dependsFrom
+    self.boardImageCodeDescriptor, self.mPixelSize
+  ;
     
   override transient EBShape objectDisplay dependsFrom
-    self.mCenterX, self.mCenterY, self.qrCodeDescriptor,
-    self.mLayer, self.mRotation, self.mModuleSize,
+    self.mCenterX, self.mCenterY, self.boardImageCodeDescriptor,
+    self.mLayer, self.mRotation, self.mPixelSize,
     super.BoardObject.displayFrontLegendForBoard default yes,
     super.BoardObject.displayBackLegendForBoard default yes,
     prefs.frontSideLegendColorForBoard,
@@ -35,8 +66,8 @@ graphic handlingOpposite entity BoardQRCode : BoardObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
-    self.mCenterX, self.mCenterY, self.qrCodeDescriptor,
-    self.mLayer, self.mRotation, self.mModuleSize,
+    self.mCenterX, self.mCenterY, self.boardImageCodeDescriptor,
+    self.mLayer, self.mRotation, self.mPixelSize,
     prefs.frontSideLegendColorForBoard,
     prefs.backSideLegendColorForBoard,
     prefs.hiliteWidthMultipliedByTen,
@@ -45,8 +76,7 @@ graphic handlingOpposite entity BoardQRCode : BoardObject {
 
   override transient UInt32 signatureForERCChecking dependsFrom
     self.mLayer, self.mCenterX, self.mCenterY,
-    self.mText, self.mCorrectionLevel,
-    self.mRotation, self.mDrawFrame ;
+    self.mImageData, self.mRotation ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

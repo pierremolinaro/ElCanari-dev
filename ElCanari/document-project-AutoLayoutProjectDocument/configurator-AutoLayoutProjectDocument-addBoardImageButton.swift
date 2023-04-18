@@ -13,47 +13,22 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_BoardQRCode_objectDisplay (
-       _ self_mCenterX : Int,                        
-       _ self_mCenterY : Int,                        
-       _ self_qrCodeDescriptor : QRCodeDescriptor,   
-       _ self_mLayer : BoardQRCodeLayer,             
-       _ self_mRotation : Int,                       
-       _ self_mModuleSize : Int,                     
-       _ self_BoardObject_displayFrontLegendForBoard : Bool,
-       _ self_BoardObject_displayBackLegendForBoard : Bool,
-       _ prefs_frontSideLegendColorForBoard : NSColor,
-       _ prefs_backSideLegendColorForBoard : NSColor
-) -> EBShape {
+extension AutoLayoutProjectDocument {
+  final func configure_addBoardImageButton (_ inOutlet : AutoLayoutDragSourceButtonWithMenus) {
 //--- START OF USER ZONE 2
-        let foreColor : NSColor
-        let display : Bool
-        switch self_mLayer {
-        case .legendFront :
-          foreColor = prefs_frontSideLegendColorForBoard
-          display = self_BoardObject_displayFrontLegendForBoard
-        case .legendBack :
-          foreColor = prefs_backSideLegendColorForBoard
-          display = self_BoardObject_displayBackLegendForBoard
-        }
-        var shape = EBShape ()
-        if display {
-          let displayInfos = boardQRCode_displayInfos (
-            centerX: self_mCenterX,
-            centerY: self_mCenterY,
-            self_qrCodeDescriptor,
-            frontSide: self_mLayer == .legendFront,
-            moduleSizeInCanariUnit: self_mModuleSize,
-            rotation: self_mRotation
-          )
-        //--- Background
-          shape.add (filled: [displayInfos.backgroundBP], nil) // Transparent
-        //--- QR Code
-          shape.add (filled: [displayInfos.qrCodeBP], foreColor)
-        }
-      //---
-        return shape
+    inOutlet.register (
+      draggedType: kDragAndDropBoardImage,
+      draggedObjectImage: { [weak self] in return self?.boardImageFactory () },
+      scaleProvider: self.boardObjectsController
+    )
+    inOutlet.set (image: NSImage (named: "board-image"))
+    let menu = CanariChoiceMenu ()
+    menu.addItem (withTitle: "Legend, Front Side", action: nil, keyEquivalent: "")
+    menu.addItem (withTitle: "Legend, Back Side",  action: nil, keyEquivalent: "")
+    menu.bind_selectedIndex (self.rootObject.mBoardLayerForNewImage_property)
+    inOutlet.set (rightContextualMenu: menu)
 //--- END OF USER ZONE 2
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

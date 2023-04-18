@@ -14,19 +14,35 @@ final class AutoLayoutDroppableImageView : NSImageView {
 
   //····················································································································
 
-  private let mImageWidth : CGFloat
   private var mDroppedImageCallBack : Optional < (Data) -> Void> = nil
 
   //····················································································································
 
-   init (width inWidth : Int) {
-    self.mImageWidth = CGFloat (inWidth)
+   init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
+    self.imageScaling = .scaleProportionallyUpOrDown
+    self.imageFrameStyle = .grayBezel
+
+//    self.setContentHuggingPriority (.defaultHigh, for: .vertical)
+
     self.registerForDraggedTypes (myPasteboardImageTypes ())
   }
+
+ //····················································································································
+
+// override var image : NSImage? {
+//   set { super.image = newValue ; self.needsLayout = true }
+//   get { super.image }
+// }
+
+ //····················································································································
+
+ override var intrinsicContentSize : NSSize {
+   return self.image?.size ?? NSSize (width: 10, height: 10)
+ }
 
  //····················································································································
 
@@ -42,11 +58,10 @@ final class AutoLayoutDroppableImageView : NSImageView {
 
   //····················································································································
 
-  override var intrinsicContentSize : NSSize {
-    let s = super.intrinsicContentSize
-    return NSSize (width: self.mImageWidth, height: s.height)
-  }
-
+//  override var intrinsicContentSize : NSSize {
+//    let s = super.intrinsicContentSize
+//    return NSSize (width: self.mImageWidth, height: s.height)
+//  }
 
   //····················································································································
 

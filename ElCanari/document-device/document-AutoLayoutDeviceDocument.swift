@@ -322,7 +322,7 @@ import AppKit
     let view_1 = AutoLayoutHorizontalStackView ()
       .set (spacing: 0)
     do{
-      let view_1_0 = AutoLayoutCanariDeviceDroppableImageView (width: 240)
+      let view_1_0 = AutoLayoutCanariDeviceDroppableImageView ()
         .bind_imageData (self.rootObject.mImageData_property)
       _ = view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutHorizontalStackView.VerticalDivider ()

@@ -79,7 +79,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
       $value root.mTitle (sendContinously: yes)
     }
     hStack set (spacing: 0) {
-      CanariDeviceDroppableImageView (width: 240) { $imageData root.mImageData }
+      CanariDeviceDroppableImageView () { $imageData root.mImageData }
       divider
       vStack {
         StaticLabel (title: "PDF Documentation", bold: no, size : .regular, alignment: .center)

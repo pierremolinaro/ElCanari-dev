@@ -1,8 +1,9 @@
 //
-//  extension-BoardQRCode.swift
+//  extension-BoardImage.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 15/04/2023.
+//  Created by Pierre Molinaro on 08/07/2019.
+//
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -10,23 +11,25 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let BOARD_QRCODE_ORIGIN_KNOB  = 0
-let BOARD_QRCODE_ROTATION_KNOB  = 1
+let BOARD_IMAGE_CENTER  = 0
+let BOARD_IMAGE_ROTATION_KNOB = 1
 
-fileprivate let BOARD_QRCODE_ROTATION_KNOB_DISTANCE : CGFloat = 30.0
+fileprivate let BOARD_IMAGE_ROTATION_KNOB_DISTANCE : CGFloat = 30.0
+
+let DEFAULT_BOARD_IMAGE = "default-board-image"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION BoardQRCode
+//   EXTENSION BoardImage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension BoardQRCode {
+extension BoardImage {
 
   //····················································································································
 
-  func cursorForKnob_BoardQRCode (knob inKnobIndex: Int) -> NSCursor? {
-    if inKnobIndex == BOARD_QRCODE_ORIGIN_KNOB {
+  func cursorForKnob_BoardImage (knob inKnobIndex: Int) -> NSCursor? {
+    if inKnobIndex == BOARD_IMAGE_CENTER {
       return NSCursor.upDownRightLeftCursor
-    }else if inKnobIndex == BOARD_QRCODE_ROTATION_KNOB {
+    }else if inKnobIndex == BOARD_IMAGE_ROTATION_KNOB {
       return NSCursor.rotationCursor
     }else{
       return nil
@@ -34,56 +37,64 @@ extension BoardQRCode {
   }
 
   //····················································································································
-  //  Translation
-  //····················································································································
-
-  func acceptedTranslation_BoardQRCode (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
-  }
-
-  //····················································································································
-
-  func acceptToTranslate_BoardQRCode (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return true
-  }
-
-  //····················································································································
-
-  func translate_BoardQRCode (xBy inDx : Int, yBy inDy : Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    self.mCenterX += inDx
-    self.mCenterY += inDy
-  }
-
-  //····················································································································
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_BoardQRCode (additionalDictionary inDictionary : [String : Any],
-                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return "" // Ok, no error
+  func operationAfterPasting_BoardImage (additionalDictionary inDictionary : [String : Any],
+                                         optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
+                                         objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    return ""
   }
 
   //····················································································································
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_BoardQRCode (_ ioDictionary : inout [String : Any]) {
-//    ioDictionary [FONT_NAME_IN_DICTIONARY] = self.fontName
+  func saveIntoAdditionalDictionary_BoardImage (_ ioDictionary : inout [String : Any]) {
+  }
+
+  //····················································································································
+  //  Translation
+  //····················································································································
+
+  func acceptedTranslation_BoardImage (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
+  }
+
+  //····················································································································
+
+  func acceptToTranslate_BoardImage (xBy inDx: Int, yBy inDy: Int) -> Bool {
+    return true
+  }
+
+  //····················································································································
+
+  func translate_BoardImage (xBy inDx : Int, yBy inDy : Int,
+                             userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+    self.mCenterX += inDx
+    self.mCenterY += inDy
+  }
+
+  //····················································································································
+  //  Alignment Points
+  //····················································································································
+
+  func alignmentPoints_BoardImage () -> Set <CanariPoint> {
+    return Set <CanariPoint> ()
   }
 
   //····················································································································
   //  Knob
   //····················································································································
 
-  func canMove_BoardQRCode (knob inKnobIndex : Int,
-                            proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                            proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                            unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                            shift inShift : Bool) -> CanariPoint {
-    if inKnobIndex == BOARD_QRCODE_ORIGIN_KNOB {
+  func canMove_BoardImage (knob inKnobIndex : Int,
+                           proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                           proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                           unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
+                           shift inShift : Bool) -> CanariPoint {
+    if inKnobIndex == BOARD_IMAGE_CENTER {
       return inProposedAlignedTranslation
-    }else if inKnobIndex == BOARD_QRCODE_ROTATION_KNOB {
+    }else if inKnobIndex == BOARD_IMAGE_ROTATION_KNOB {
       return inProposedAlignedTranslation
     }else{
       return CanariPoint (x: 0, y: 0)
@@ -92,18 +103,18 @@ extension BoardQRCode {
 
   //····················································································································
 
-  func move_BoardQRCode (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
-    if inKnobIndex == BOARD_QRCODE_ORIGIN_KNOB {
+  func move_BoardImage (knob inKnobIndex: Int,
+                        proposedDx inDx: Int,
+                        proposedDy inDy: Int,
+                        unalignedMouseLocationX inUnlignedMouseLocationX : Int,
+                        unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                        alignedMouseLocationX inAlignedMouseLocationX : Int,
+                        alignedMouseLocationY inAlignedMouseLocationY : Int,
+                        shift inShift : Bool) {
+    if inKnobIndex == BOARD_IMAGE_CENTER {
       self.mCenterX += inDx
       self.mCenterY += inDy
-    }else if inKnobIndex == BOARD_QRCODE_ROTATION_KNOB {
+    }else if inKnobIndex == BOARD_IMAGE_ROTATION_KNOB {
       let origin = CanariPoint (x: self.mCenterX, y: self.mCenterY).cocoaPoint
       let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).cocoaPoint
       let newAngleInDegrees = angleInDegreesBetweenNSPoints (origin, newRotationKnobLocation)
@@ -112,10 +123,37 @@ extension BoardQRCode {
   }
 
   //····················································································································
+  //  Rotate 90°
+  //····················································································································
+
+  func canRotate90_BoardImage (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    accumulatedPoints.insertCanariPoint (x: self.mCenterX, y: self.mCenterY)
+    return true
+  }
+
+  //····················································································································
+
+  func rotate90Clockwise_BoardImage (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+    let p1 = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
+    self.mCenterX = p1.x
+    self.mCenterY = p1.y
+    ioSet.insert (self)
+  }
+
+  //····················································································································
+
+  func rotate90CounterClockwise_BoardImage (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+    let p1 = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
+    self.mCenterX = p1.x
+    self.mCenterY = p1.y
+    ioSet.insert (self)
+  }
+
+  //····················································································································
   //   SNAP TO GRID
   //····················································································································
 
-  func canSnapToGrid_BoardQRCode (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_BoardImage (_ inGrid : Int) -> Bool {
     var isAligned = self.mCenterX.isAlignedOnGrid (inGrid)
     if isAligned {
       isAligned = self.mCenterY.isAlignedOnGrid (inGrid)
@@ -125,65 +163,28 @@ extension BoardQRCode {
 
   //····················································································································
 
-  func snapToGrid_BoardQRCode (_ inGrid : Int) {
+  func snapToGrid_BoardImage (_ inGrid : Int) {
     self.mCenterX.align (onGrid: inGrid)
     self.mCenterY.align (onGrid: inGrid)
   }
 
   //····················································································································
-  //  Rotate 90°
+  //  operationBeforeRemoving
   //····················································································································
 
-  func canRotate90_BoardQRCode (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    accumulatedPoints.insertCanariPoint (x: self.mCenterX, y: self.mCenterY)
-    return true
-  }
-
-  //····················································································································
-
-  func rotate90Clockwise_BoardQRCode (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    let p = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
-    self.mCenterX = p.x
-    self.mCenterY = p.y
-    self.mRotation = (self.mRotation + degreesToCanariRotation (270.0)) % degreesToCanariRotation (360.0)
-    ioSet.insert (self)
-  }
-
-  //····················································································································
-
-  func rotate90CounterClockwise_BoardQRCode (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    let p = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
-    self.mCenterX = p.x
-    self.mCenterY = p.y
-    self.mRotation = (self.mRotation + degreesToCanariRotation (90.0)) % degreesToCanariRotation (360.0)
-    ioSet.insert (self)
-  }
-
-  //····················································································································
-  //  Alignment Points
-  //····················································································································
-
-  func alignmentPoints_BoardQRCode () -> Set <CanariPoint> {
-    return Set <CanariPoint> ()
-  }
-
-  //····················································································································
-  //  REMOVING
-  //····················································································································
-
-  func operationBeforeRemoving_BoardQRCode () {
+  func operationBeforeRemoving_BoardImage () {
   }
 
   //····················································································································
   //  HORIZONTAL FLIP
   //····················································································································
 
-  func flipHorizontally_BoardQRCode () {
+  func flipHorizontally_BoardImage () {
   }
 
   //····················································································································
 
-  func canFlipHorizontally_BoardQRCode () -> Bool {
+  func canFlipHorizontally_BoardImage () -> Bool {
     return false
   }
 
@@ -191,12 +192,12 @@ extension BoardQRCode {
   //  VERTICAL FLIP
   //····················································································································
 
-  func flipVertically_BoardQRCode () {
+  func flipVertically_BoardImage () {
   }
 
   //····················································································································
 
-  func canFlipVertically_BoardQRCode () -> Bool {
+  func canFlipVertically_BoardImage () -> Bool {
     return false
   }
 
@@ -206,24 +207,25 @@ extension BoardQRCode {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct QRCodeDisplayInfos {
+struct BoardImageDisplayInfos {
   let rotationKnobLocation : NSPoint
   let backgroundBP : EBBezierPath
-  let qrCodeBP : EBBezierPath
+  let imageBP : EBBezierPath
   let productRectangles : [ProductRectangle]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func boardQRCode_displayInfos (centerX inCenterX : Int,
-                                          centerY inCenterY : Int,
-                                          _ inQRCodeDescriptor : QRCodeDescriptor,
-                                          frontSide inFrontSide : Bool,
-                                          moduleSizeInCanariUnit inModuleSize : Int,
-                                          rotation inRotation : Int) -> QRCodeDisplayInfos {
-  let moduleSize = canariUnitToCocoa (inModuleSize)
-  let width = CGFloat (inQRCodeDescriptor.imageWidth) * moduleSize
-  let height = CGFloat (inQRCodeDescriptor.imageHeight) * moduleSize
+@MainActor func boardImage_displayInfos (centerX inCenterX : Int,
+                                         centerY inCenterY : Int,
+                                         _ inBoardImageDescriptor : BoardImageDescriptor,
+                                         frontSide inFrontSide : Bool,
+                                         pixelSizeInCanariUnit inPixelSize : Int,
+                                         rotation inRotation : Int) -> BoardImageDisplayInfos {
+  let pixelSize = canariUnitToCocoa (inPixelSize)
+  // Swift.print ("pixelSize \(pixelSize)")
+  let width = CGFloat (inBoardImageDescriptor.scaledImageWidth) * pixelSize
+  let height = CGFloat (inBoardImageDescriptor.scaledImageHeight) * pixelSize
   let qrRect = NSRect (center: .zero, size: NSSize (width: width, height: height))
 //--- Affine transform
   var tr = AffineTransform ()
@@ -237,14 +239,15 @@ struct QRCodeDisplayInfos {
   }
 //--- Background
   let backgroundBP = EBBezierPath (rect: qrRect).transformed (by: tr)
-//--- QR code
+//--- Board image
   var filledBP = EBBezierPath ()
   var productRectangles = [ProductRectangle] ()
-  for rect in inQRCodeDescriptor.blackRectangles {
-    let x = CGFloat (rect.x) * moduleSize - width / 2.0
-    let y = CGFloat (rect.y) * moduleSize - height / 2.0
-    let w = CGFloat (rect.width) * moduleSize
-    let h = CGFloat (rect.height) * moduleSize
+//  Swift.print ("rect \(inBoardImageDescriptor.blackRectangles.count)")
+  for rect in inBoardImageDescriptor.blackRectangles {
+    let x = CGFloat (rect.x) * pixelSize - width / 2.0
+    let y = CGFloat (rect.y) * pixelSize - height / 2.0
+    let w = CGFloat (rect.width) * pixelSize
+    let h = CGFloat (rect.height) * pixelSize
     let r = NSRect (x: x, y: y, width: w, height: h)
     filledBP.appendRect (r)
     let p0 = tr.transform (NSPoint (x: x,     y: y))
@@ -253,17 +256,17 @@ struct QRCodeDisplayInfos {
     let p3 = tr.transform (NSPoint (x: x,     y: y + h))
     productRectangles.append (ProductRectangle (p0: p0, p1: p1, p2: p2, p3: p3))
   }
-  let qrCodeBP = filledBP.transformed (by: tr)
+  let imageBP = filledBP.transformed (by: tr)
 //--- Rotation knob
   var rotationKnobTransform = AffineTransform ()
   rotationKnobTransform.translate (x: centerX, y: centerY)
   rotationKnobTransform.rotate (byDegrees: rotationInDegrees)
-  let rotationKnobLocation = rotationKnobTransform.transform (NSPoint (x: BOARD_QRCODE_ROTATION_KNOB_DISTANCE, y: 0.0))
+  let rotationKnobLocation = rotationKnobTransform.transform (NSPoint (x: BOARD_IMAGE_ROTATION_KNOB_DISTANCE, y: 0.0))
 //---
-  return QRCodeDisplayInfos (
+  return BoardImageDisplayInfos (
     rotationKnobLocation: rotationKnobLocation,
     backgroundBP: backgroundBP,
-    qrCodeBP: qrCodeBP,
+    imageBP: imageBP,
     productRectangles: productRectangles
   )
 }

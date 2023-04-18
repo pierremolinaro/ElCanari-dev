@@ -267,6 +267,7 @@ extern autolayout class DoubleObserverField (width: Int, bold: Bool, size: EBCon
 
 
 extern autolayout class ColorWell {
+  func expandableWidth ()
   func expandableHeight ()
   func set (toolTip : String)
   $color property NSColor (sendContinously: Bool)
@@ -354,7 +355,7 @@ extern autolayout class CanariAddSymbolInstancePullDownButton $enabled {
   $symbolTypeNames transient StringArray
 }
 
-extern autolayout class CanariDeviceDroppableImageView (width: Int) {
+extern autolayout class CanariDeviceDroppableImageView () {
   $imageData property Data
 }
 

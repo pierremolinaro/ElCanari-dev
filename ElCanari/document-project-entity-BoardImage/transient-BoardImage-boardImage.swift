@@ -13,46 +13,11 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_BoardQRCode_objectDisplay (
-       _ self_mCenterX : Int,                        
-       _ self_mCenterY : Int,                        
-       _ self_qrCodeDescriptor : QRCodeDescriptor,   
-       _ self_mLayer : BoardQRCodeLayer,             
-       _ self_mRotation : Int,                       
-       _ self_mModuleSize : Int,                     
-       _ self_BoardObject_displayFrontLegendForBoard : Bool,
-       _ self_BoardObject_displayBackLegendForBoard : Bool,
-       _ prefs_frontSideLegendColorForBoard : NSColor,
-       _ prefs_backSideLegendColorForBoard : NSColor
-) -> EBShape {
+@MainActor func transient_BoardImage_boardImage (
+       _ self_mImageData : Data
+) -> NSImage {
 //--- START OF USER ZONE 2
-        let foreColor : NSColor
-        let display : Bool
-        switch self_mLayer {
-        case .legendFront :
-          foreColor = prefs_frontSideLegendColorForBoard
-          display = self_BoardObject_displayFrontLegendForBoard
-        case .legendBack :
-          foreColor = prefs_backSideLegendColorForBoard
-          display = self_BoardObject_displayBackLegendForBoard
-        }
-        var shape = EBShape ()
-        if display {
-          let displayInfos = boardQRCode_displayInfos (
-            centerX: self_mCenterX,
-            centerY: self_mCenterY,
-            self_qrCodeDescriptor,
-            frontSide: self_mLayer == .legendFront,
-            moduleSizeInCanariUnit: self_mModuleSize,
-            rotation: self_mRotation
-          )
-        //--- Background
-          shape.add (filled: [displayInfos.backgroundBP], nil) // Transparent
-        //--- QR Code
-          shape.add (filled: [displayInfos.qrCodeBP], foreColor)
-        }
-      //---
-        return shape
+        return NSImage (data: self_mImageData) ?? NSImage ()
 //--- END OF USER ZONE 2
 }
 

@@ -3,6 +3,7 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 transient property struct QRCodeDescriptor ;
+transient property struct BoardImageDescriptor ;
 transient property struct CanariRect ;
 transient property struct EBBezierPath ;
 transient property struct BoardFontDescriptor ;

@@ -27,6 +27,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.mDirectionForNewTrack_property.stopsBeingObserved (by: self.mDirectionForNewTrack_property) // Stored property
       oldValue.mBoardLayerForNewText_property.stopsBeingObserved (by: self.mBoardLayerForNewText_property) // Stored property
       oldValue.mBoardLayerForNewQRCode_property.stopsBeingObserved (by: self.mBoardLayerForNewQRCode_property) // Stored property
+      oldValue.mBoardLayerForNewImage_property.stopsBeingObserved (by: self.mBoardLayerForNewImage_property) // Stored property
       oldValue.mBoardLayerForNewLine_property.stopsBeingObserved (by: self.mBoardLayerForNewLine_property) // Stored property
       oldValue.mBoardSideForNewRestrictRectangle_property.stopsBeingObserved (by: self.mBoardSideForNewRestrictRectangle_property) // Stored property
       oldValue.mNewRestrictRectangleLayers_property.stopsBeingObserved (by: self.mNewRestrictRectangleLayers_property) // Stored property
@@ -211,6 +212,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.mDirectionForNewTrack_property.startsToBeObserved (by: self.mDirectionForNewTrack_property) // Stored property
       newValue.mBoardLayerForNewText_property.startsToBeObserved (by: self.mBoardLayerForNewText_property) // Stored property
       newValue.mBoardLayerForNewQRCode_property.startsToBeObserved (by: self.mBoardLayerForNewQRCode_property) // Stored property
+      newValue.mBoardLayerForNewImage_property.startsToBeObserved (by: self.mBoardLayerForNewImage_property) // Stored property
       newValue.mBoardLayerForNewLine_property.startsToBeObserved (by: self.mBoardLayerForNewLine_property) // Stored property
       newValue.mBoardSideForNewRestrictRectangle_property.startsToBeObserved (by: self.mBoardSideForNewRestrictRectangle_property) // Stored property
       newValue.mNewRestrictRectangleLayers_property.startsToBeObserved (by: self.mNewRestrictRectangleLayers_property) // Stored property
@@ -449,6 +451,12 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardLayerForNewQRCode_property = EBTransientProperty <BoardQRCodeLayer?> ()
+
+  //····················································································································
+  //   Observers of 'mBoardLayerForNewImage' stored property
+  //····················································································································
+
+  final let mBoardLayerForNewImage_property = EBTransientProperty <BoardQRCodeLayer?> ()
 
   //····················································································································
   //   Observers of 'mBoardLayerForNewLine' stored property
@@ -1575,6 +1583,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //--- Configure mBoardLayerForNewQRCode simple stored property
     self.mBoardLayerForNewQRCode_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardLayerForNewQRCode_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mBoardLayerForNewImage simple stored property
+    self.mBoardLayerForNewImage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mBoardLayerForNewImage_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mBoardLayerForNewLine simple stored property
     self.mBoardLayerForNewLine_property.mReadModelFunction = { [weak self] in

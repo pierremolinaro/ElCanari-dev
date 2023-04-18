@@ -13,13 +13,13 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_BoardQRCode_objectDisplay (
-       _ self_mCenterX : Int,                        
-       _ self_mCenterY : Int,                        
-       _ self_qrCodeDescriptor : QRCodeDescriptor,   
-       _ self_mLayer : BoardQRCodeLayer,             
-       _ self_mRotation : Int,                       
-       _ self_mModuleSize : Int,                     
+@MainActor func transient_BoardImage_objectDisplay (
+       _ self_mCenterX : Int,                       
+       _ self_mCenterY : Int,                       
+       _ self_boardImageCodeDescriptor : BoardImageDescriptor,
+       _ self_mLayer : BoardQRCodeLayer,            
+       _ self_mRotation : Int,                      
+       _ self_mPixelSize : Int,                     
        _ self_BoardObject_displayFrontLegendForBoard : Bool,
        _ self_BoardObject_displayBackLegendForBoard : Bool,
        _ prefs_frontSideLegendColorForBoard : NSColor,
@@ -38,18 +38,18 @@ import AppKit
         }
         var shape = EBShape ()
         if display {
-          let displayInfos = boardQRCode_displayInfos (
+          let displayInfos = boardImage_displayInfos (
             centerX: self_mCenterX,
             centerY: self_mCenterY,
-            self_qrCodeDescriptor,
+            self_boardImageCodeDescriptor,
             frontSide: self_mLayer == .legendFront,
-            moduleSizeInCanariUnit: self_mModuleSize,
+            pixelSizeInCanariUnit: self_mPixelSize,
             rotation: self_mRotation
           )
         //--- Background
           shape.add (filled: [displayInfos.backgroundBP], nil) // Transparent
-        //--- QR Code
-          shape.add (filled: [displayInfos.qrCodeBP], foreColor)
+        //--- Image
+          shape.add (filled: [displayInfos.imageBP], foreColor)
         }
       //---
         return shape

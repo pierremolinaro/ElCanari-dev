@@ -48,10 +48,6 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
         }
         StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
       }
-//      vStack {
-//        hStack { space ImageObserverView (size: .regular) { $image self.statusImage $tooltip self.statusMessage } space }
-//        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
-//      }
     }
     separator
     view pageMasterView

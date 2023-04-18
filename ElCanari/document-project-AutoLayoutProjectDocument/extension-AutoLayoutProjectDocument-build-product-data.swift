@@ -353,6 +353,7 @@ extension AutoLayoutProjectDocument {
           centerY: qrCode.mCenterY,
           descriptor,
           frontSide: qrCode.mLayer == .legendFront,
+          moduleSizeInCanariUnit: qrCode.mModuleSize,
           rotation: qrCode.mRotation
         )
         let rectangles = displayInfos.productRectangles

@@ -6,121 +6,198 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_mXUnit : AnyObject {
+@MainActor protocol BoardImage_mXUnit : AnyObject {
   var mXUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_mCenterY : AnyObject {
+@MainActor protocol BoardImage_mCenterY : AnyObject {
   var mCenterY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_mYUnit : AnyObject {
+@MainActor protocol BoardImage_mYUnit : AnyObject {
   var mYUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_mDrawFrame : AnyObject {
-  var mDrawFrame : Bool { get }
+@MainActor protocol BoardImage_mThreshold : AnyObject {
+  var mThreshold : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_mModuleSize : AnyObject {
-  var mModuleSize : Int { get }
+@MainActor protocol BoardImage_mImageData : AnyObject {
+  var mImageData : Data { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_mModuleSizeUnit : AnyObject {
-  var mModuleSizeUnit : Int { get }
+@MainActor protocol BoardImage_mInvert : AnyObject {
+  var mInvert : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_mLayer : AnyObject {
+@MainActor protocol BoardImage_mScale : AnyObject {
+  var mScale : Double { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardImage_mPixelSize : AnyObject {
+  var mPixelSize : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardImage_mPixelSizeUnit : AnyObject {
+  var mPixelSizeUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardImage_mActualWidthUnit : AnyObject {
+  var mActualWidthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardImage_mActualHeightUnit : AnyObject {
+  var mActualHeightUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardImage_mLayer : AnyObject {
   var mLayer : BoardQRCodeLayer { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_mText : AnyObject {
+@MainActor protocol BoardImage_mText : AnyObject {
   var mText : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_mCorrectionLevel : AnyObject {
-  var mCorrectionLevel : QRCodeCorrectionLevel { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol BoardQRCode_mRotation : AnyObject {
+@MainActor protocol BoardImage_mRotation : AnyObject {
   var mRotation : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_mCenterX : AnyObject {
+@MainActor protocol BoardImage_mCenterX : AnyObject {
   var mCenterX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_qrCodeDescriptor : AnyObject {
-  var qrCodeDescriptor : QRCodeDescriptor? { get }
+@MainActor protocol BoardImage_imageDataByteCount : AnyObject {
+  var imageDataByteCount : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_moduleCount : AnyObject {
-  var moduleCount : Int? { get }
+@MainActor protocol BoardImage_boardImage : AnyObject {
+  var boardImage : NSImage? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_objectDisplay : AnyObject {
+@MainActor protocol BoardImage_boardImageCodeDescriptor : AnyObject {
+  var boardImageCodeDescriptor : BoardImageDescriptor? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardImage_boardOriginalImageWidth : AnyObject {
+  var boardOriginalImageWidth : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardImage_boardOriginalImageHeight : AnyObject {
+  var boardOriginalImageHeight : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardImage_boardScaledImageWidth : AnyObject {
+  var boardScaledImageWidth : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardImage_boardScaledImageHeight : AnyObject {
+  var boardScaledImageHeight : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardImage_boardActualImageWidth : AnyObject {
+  var boardActualImageWidth : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardImage_boardActualImageHeight : AnyObject {
+  var boardActualImageHeight : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardImage_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_selectionDisplay : AnyObject {
+@MainActor protocol BoardImage_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardQRCode_signatureForERCChecking : AnyObject {
+@MainActor protocol BoardImage_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: BoardQRCode
+//    Entity: BoardImage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class BoardQRCode : BoardObject,
-         BoardQRCode_mXUnit,
-         BoardQRCode_mCenterY,
-         BoardQRCode_mYUnit,
-         BoardQRCode_mDrawFrame,
-         BoardQRCode_mModuleSize,
-         BoardQRCode_mModuleSizeUnit,
-         BoardQRCode_mLayer,
-         BoardQRCode_mText,
-         BoardQRCode_mCorrectionLevel,
-         BoardQRCode_mRotation,
-         BoardQRCode_mCenterX,
-         BoardQRCode_qrCodeDescriptor,
-         BoardQRCode_moduleCount,
-         BoardQRCode_objectDisplay,
-         BoardQRCode_selectionDisplay,
-         BoardQRCode_signatureForERCChecking {
+final class BoardImage : BoardObject,
+         BoardImage_mXUnit,
+         BoardImage_mCenterY,
+         BoardImage_mYUnit,
+         BoardImage_mThreshold,
+         BoardImage_mImageData,
+         BoardImage_mInvert,
+         BoardImage_mScale,
+         BoardImage_mPixelSize,
+         BoardImage_mPixelSizeUnit,
+         BoardImage_mActualWidthUnit,
+         BoardImage_mActualHeightUnit,
+         BoardImage_mLayer,
+         BoardImage_mText,
+         BoardImage_mRotation,
+         BoardImage_mCenterX,
+         BoardImage_imageDataByteCount,
+         BoardImage_boardImage,
+         BoardImage_boardImageCodeDescriptor,
+         BoardImage_boardOriginalImageWidth,
+         BoardImage_boardOriginalImageHeight,
+         BoardImage_boardScaledImageWidth,
+         BoardImage_boardScaledImageHeight,
+         BoardImage_boardActualImageWidth,
+         BoardImage_boardActualImageHeight,
+         BoardImage_objectDisplay,
+         BoardImage_selectionDisplay,
+         BoardImage_signatureForERCChecking {
 
   //····················································································································
   //   Atomic property: mXUnit
@@ -180,60 +257,155 @@ final class BoardQRCode : BoardObject,
   }
 
   //····················································································································
-  //   Atomic property: mDrawFrame
+  //   Atomic property: mThreshold
   //····················································································································
 
-  final let mDrawFrame_property : EBStoredProperty_Bool
+  final let mThreshold_property : EBStoredProperty_Int
 
   //····················································································································
 
-  final func reset_mDrawFrame_toDefaultValue () {
-    self.mDrawFrame = true
+  final func reset_mThreshold_toDefaultValue () {
+    self.mThreshold = 200
   }
 
   //····················································································································
 
-  final var mDrawFrame : Bool {
-    get { return self.mDrawFrame_property.propval }
-    set { self.mDrawFrame_property.setProp (newValue) }
+  final var mThreshold : Int {
+    get { return self.mThreshold_property.propval }
+    set { self.mThreshold_property.setProp (newValue) }
   }
 
   //····················································································································
-  //   Atomic property: mModuleSize
+  //   Atomic property: mImageData
   //····················································································································
 
-  final let mModuleSize_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final func reset_mModuleSize_toDefaultValue () {
-    self.mModuleSize = 31750
-  }
+  final let mImageData_property : EBStoredProperty_Data
 
   //····················································································································
 
-  final var mModuleSize : Int {
-    get { return self.mModuleSize_property.propval }
-    set { self.mModuleSize_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: mModuleSizeUnit
-  //····················································································································
-
-  final let mModuleSizeUnit_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final func reset_mModuleSizeUnit_toDefaultValue () {
-    self.mModuleSizeUnit = 31750
+  final func reset_mImageData_toDefaultValue () {
+    self.mImageData = Data ()
   }
 
   //····················································································································
 
-  final var mModuleSizeUnit : Int {
-    get { return self.mModuleSizeUnit_property.propval }
-    set { self.mModuleSizeUnit_property.setProp (newValue) }
+  final var mImageData : Data {
+    get { return self.mImageData_property.propval }
+    set { self.mImageData_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mInvert
+  //····················································································································
+
+  final let mInvert_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mInvert_toDefaultValue () {
+    self.mInvert = false
+  }
+
+  //····················································································································
+
+  final var mInvert : Bool {
+    get { return self.mInvert_property.propval }
+    set { self.mInvert_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mScale
+  //····················································································································
+
+  final let mScale_property : EBStoredProperty_Double
+
+  //····················································································································
+
+  final func reset_mScale_toDefaultValue () {
+    self.mScale = 0.5
+  }
+
+  //····················································································································
+
+  final var mScale : Double {
+    get { return self.mScale_property.propval }
+    set { self.mScale_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mPixelSize
+  //····················································································································
+
+  final let mPixelSize_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mPixelSize_toDefaultValue () {
+    self.mPixelSize = 31750
+  }
+
+  //····················································································································
+
+  final var mPixelSize : Int {
+    get { return self.mPixelSize_property.propval }
+    set { self.mPixelSize_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mPixelSizeUnit
+  //····················································································································
+
+  final let mPixelSizeUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mPixelSizeUnit_toDefaultValue () {
+    self.mPixelSizeUnit = 31750
+  }
+
+  //····················································································································
+
+  final var mPixelSizeUnit : Int {
+    get { return self.mPixelSizeUnit_property.propval }
+    set { self.mPixelSizeUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mActualWidthUnit
+  //····················································································································
+
+  final let mActualWidthUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mActualWidthUnit_toDefaultValue () {
+    self.mActualWidthUnit = 900000
+  }
+
+  //····················································································································
+
+  final var mActualWidthUnit : Int {
+    get { return self.mActualWidthUnit_property.propval }
+    set { self.mActualWidthUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mActualHeightUnit
+  //····················································································································
+
+  final let mActualHeightUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mActualHeightUnit_toDefaultValue () {
+    self.mActualHeightUnit = 900000
+  }
+
+  //····················································································································
+
+  final var mActualHeightUnit : Int {
+    get { return self.mActualHeightUnit_property.propval }
+    set { self.mActualHeightUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -275,25 +447,6 @@ final class BoardQRCode : BoardObject,
   }
 
   //····················································································································
-  //   Atomic property: mCorrectionLevel
-  //····················································································································
-
-  final let mCorrectionLevel_property : EBStoredProperty_QRCodeCorrectionLevel
-
-  //····················································································································
-
-  final func reset_mCorrectionLevel_toDefaultValue () {
-    self.mCorrectionLevel = QRCodeCorrectionLevel.quality
-  }
-
-  //····················································································································
-
-  final var mCorrectionLevel : QRCodeCorrectionLevel {
-    get { return self.mCorrectionLevel_property.propval }
-    set { self.mCorrectionLevel_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mRotation
   //····················································································································
 
@@ -332,27 +485,111 @@ final class BoardQRCode : BoardObject,
   }
 
   //····················································································································
-  //   Transient property: qrCodeDescriptor
+  //   Transient property: imageDataByteCount
   //····················································································································
 
-  final let qrCodeDescriptor_property = EBTransientProperty_QRCodeDescriptor ()
+  final let imageDataByteCount_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  final var qrCodeDescriptor : QRCodeDescriptor? {
-    return self.qrCodeDescriptor_property.optionalValue
+  final var imageDataByteCount : String? {
+    return self.imageDataByteCount_property.optionalValue
   }
 
   //····················································································································
-  //   Transient property: moduleCount
+  //   Transient property: boardImage
   //····················································································································
 
-  final let moduleCount_property = EBTransientProperty_Int ()
+  final let boardImage_property = EBTransientProperty_NSImage ()
 
   //····················································································································
 
-  final var moduleCount : Int? {
-    return self.moduleCount_property.optionalValue
+  final var boardImage : NSImage? {
+    return self.boardImage_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: boardImageCodeDescriptor
+  //····················································································································
+
+  final let boardImageCodeDescriptor_property = EBTransientProperty_BoardImageDescriptor ()
+
+  //····················································································································
+
+  final var boardImageCodeDescriptor : BoardImageDescriptor? {
+    return self.boardImageCodeDescriptor_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: boardOriginalImageWidth
+  //····················································································································
+
+  final let boardOriginalImageWidth_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var boardOriginalImageWidth : String? {
+    return self.boardOriginalImageWidth_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: boardOriginalImageHeight
+  //····················································································································
+
+  final let boardOriginalImageHeight_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var boardOriginalImageHeight : String? {
+    return self.boardOriginalImageHeight_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: boardScaledImageWidth
+  //····················································································································
+
+  final let boardScaledImageWidth_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var boardScaledImageWidth : String? {
+    return self.boardScaledImageWidth_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: boardScaledImageHeight
+  //····················································································································
+
+  final let boardScaledImageHeight_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var boardScaledImageHeight : String? {
+    return self.boardScaledImageHeight_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: boardActualImageWidth
+  //····················································································································
+
+  final let boardActualImageWidth_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var boardActualImageWidth : Int? {
+    return self.boardActualImageWidth_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: boardActualImageHeight
+  //····················································································································
+
+  final let boardActualImageHeight_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var boardActualImageHeight : Int? {
+    return self.boardActualImageHeight_property.optionalValue
   }
 
   //····················································································································
@@ -363,27 +600,68 @@ final class BoardQRCode : BoardObject,
     self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mXUnit")
     self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterY")
     self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYUnit")
-    self.mDrawFrame_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mDrawFrame")
-    self.mModuleSize_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mModuleSize")
-    self.mModuleSizeUnit_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mModuleSizeUnit")
+    self.mThreshold_property = EBStoredProperty_Int (defaultValue: 200, undoManager: inUndoManager, key: "mThreshold")
+    self.mImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mImageData")
+    self.mInvert_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mInvert")
+    self.mScale_property = EBStoredProperty_Double (defaultValue: 0.5, undoManager: inUndoManager, key: "mScale")
+    self.mPixelSize_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mPixelSize")
+    self.mPixelSizeUnit_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mPixelSizeUnit")
+    self.mActualWidthUnit_property = EBStoredProperty_Int (defaultValue: 900000, undoManager: inUndoManager, key: "mActualWidthUnit")
+    self.mActualHeightUnit_property = EBStoredProperty_Int (defaultValue: 900000, undoManager: inUndoManager, key: "mActualHeightUnit")
     self.mLayer_property = EBStoredProperty_BoardQRCodeLayer (defaultValue: BoardQRCodeLayer.legendFront, undoManager: inUndoManager, key: "mLayer")
     self.mText_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mText")
-    self.mCorrectionLevel_property = EBStoredProperty_QRCodeCorrectionLevel (defaultValue: QRCodeCorrectionLevel.quality, undoManager: inUndoManager, key: "mCorrectionLevel")
     self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
     self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterX")
     super.init (inUndoManager)
-  //--- Atomic property: qrCodeDescriptor
-    self.qrCodeDescriptor_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: imageDataByteCount
+    self.imageDataByteCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.mText_property.selection
-        let s1 = unwSelf.mCorrectionLevel_property.selection
-        let s2 = unwSelf.mDrawFrame_property.selection
-        switch (s0, s1, s2) {
+        let s0 = unwSelf.mImageData_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_BoardImage_imageDataByteCount (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mImageData_property.startsToBeObserved (by: self.imageDataByteCount_property)
+  //--- Atomic property: boardImage
+    self.boardImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mImageData_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_BoardImage_boardImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mImageData_property.startsToBeObserved (by: self.boardImage_property)
+  //--- Atomic property: boardImageCodeDescriptor
+    self.boardImageCodeDescriptor_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mImageData_property.selection
+        let s1 = unwSelf.mThreshold_property.selection
+        let s2 = unwSelf.mInvert_property.selection
+        let s3 = unwSelf.mScale_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
-              .single (let v2)) :
-          return .single (transient_BoardQRCode_qrCodeDescriptor (v0, v1, v2))
+              .single (let v2),
+              .single (let v3)) :
+          return .single (transient_BoardImage_boardImageCodeDescriptor (v0, v1, v2, v3))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple) :
           return .multiple
@@ -394,16 +672,17 @@ final class BoardQRCode : BoardObject,
         return .empty
       }
     }
-    self.mText_property.startsToBeObserved (by: self.qrCodeDescriptor_property)
-    self.mCorrectionLevel_property.startsToBeObserved (by: self.qrCodeDescriptor_property)
-    self.mDrawFrame_property.startsToBeObserved (by: self.qrCodeDescriptor_property)
-  //--- Atomic property: moduleCount
-    self.moduleCount_property.mReadModelFunction = { [weak self] in
+    self.mImageData_property.startsToBeObserved (by: self.boardImageCodeDescriptor_property)
+    self.mThreshold_property.startsToBeObserved (by: self.boardImageCodeDescriptor_property)
+    self.mInvert_property.startsToBeObserved (by: self.boardImageCodeDescriptor_property)
+    self.mScale_property.startsToBeObserved (by: self.boardImageCodeDescriptor_property)
+  //--- Atomic property: boardOriginalImageWidth
+    self.boardOriginalImageWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.qrCodeDescriptor_property.selection
+        let s0 = unwSelf.boardImageCodeDescriptor_property.selection
         switch (s0) {
         case (.single (let v0)) :
-          return .single (transient_BoardQRCode_moduleCount (v0))
+          return .single (transient_BoardImage_boardOriginalImageWidth (v0))
         case (.multiple) :
           return .multiple
         default :
@@ -413,16 +692,109 @@ final class BoardQRCode : BoardObject,
         return .empty
       }
     }
-    self.qrCodeDescriptor_property.startsToBeObserved (by: self.moduleCount_property)
+    self.boardImageCodeDescriptor_property.startsToBeObserved (by: self.boardOriginalImageWidth_property)
+  //--- Atomic property: boardOriginalImageHeight
+    self.boardOriginalImageHeight_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.boardImageCodeDescriptor_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_BoardImage_boardOriginalImageHeight (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardImageCodeDescriptor_property.startsToBeObserved (by: self.boardOriginalImageHeight_property)
+  //--- Atomic property: boardScaledImageWidth
+    self.boardScaledImageWidth_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.boardImageCodeDescriptor_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_BoardImage_boardScaledImageWidth (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardImageCodeDescriptor_property.startsToBeObserved (by: self.boardScaledImageWidth_property)
+  //--- Atomic property: boardScaledImageHeight
+    self.boardScaledImageHeight_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.boardImageCodeDescriptor_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_BoardImage_boardScaledImageHeight (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardImageCodeDescriptor_property.startsToBeObserved (by: self.boardScaledImageHeight_property)
+  //--- Atomic property: boardActualImageWidth
+    self.boardActualImageWidth_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.boardImageCodeDescriptor_property.selection
+        let s1 = unwSelf.mPixelSize_property.selection
+        switch (s0, s1) {
+        case (.single (let v0),
+              .single (let v1)) :
+          return .single (transient_BoardImage_boardActualImageWidth (v0, v1))
+        case (.multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardImageCodeDescriptor_property.startsToBeObserved (by: self.boardActualImageWidth_property)
+    self.mPixelSize_property.startsToBeObserved (by: self.boardActualImageWidth_property)
+  //--- Atomic property: boardActualImageHeight
+    self.boardActualImageHeight_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.boardImageCodeDescriptor_property.selection
+        let s1 = unwSelf.mPixelSize_property.selection
+        switch (s0, s1) {
+        case (.single (let v0),
+              .single (let v1)) :
+          return .single (transient_BoardImage_boardActualImageHeight (v0, v1))
+        case (.multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardImageCodeDescriptor_property.startsToBeObserved (by: self.boardActualImageHeight_property)
+    self.mPixelSize_property.startsToBeObserved (by: self.boardActualImageHeight_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.mCenterX_property.selection
         let s1 = unwSelf.mCenterY_property.selection
-        let s2 = unwSelf.qrCodeDescriptor_property.selection
+        let s2 = unwSelf.boardImageCodeDescriptor_property.selection
         let s3 = unwSelf.mLayer_property.selection
         let s4 = unwSelf.mRotation_property.selection
-        let s5 = unwSelf.mModuleSize_property.selection
+        let s5 = unwSelf.mPixelSize_property.selection
         var s6 = unwSelf.displayFrontLegendForBoard_property.selection
         switch s6 {
         case .single :
@@ -450,7 +822,7 @@ final class BoardQRCode : BoardObject,
               .single (let v7),
               .single (let v8),
               .single (let v9)) :
-          return .single (transient_BoardQRCode_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
+          return .single (transient_BoardImage_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
         case (.multiple,
               .multiple,
               .multiple,
@@ -471,10 +843,10 @@ final class BoardQRCode : BoardObject,
     }
     self.mCenterX_property.startsToBeObserved (by: self.objectDisplay_property)
     self.mCenterY_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.qrCodeDescriptor_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.boardImageCodeDescriptor_property.startsToBeObserved (by: self.objectDisplay_property)
     self.mLayer_property.startsToBeObserved (by: self.objectDisplay_property)
     self.mRotation_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mModuleSize_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.mPixelSize_property.startsToBeObserved (by: self.objectDisplay_property)
     self.displayFrontLegendForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
     self.displayBackLegendForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
     preferences_frontSideLegendColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
@@ -484,10 +856,10 @@ final class BoardQRCode : BoardObject,
       if let unwSelf = self {
         let s0 = unwSelf.mCenterX_property.selection
         let s1 = unwSelf.mCenterY_property.selection
-        let s2 = unwSelf.qrCodeDescriptor_property.selection
+        let s2 = unwSelf.boardImageCodeDescriptor_property.selection
         let s3 = unwSelf.mLayer_property.selection
         let s4 = unwSelf.mRotation_property.selection
-        let s5 = unwSelf.mModuleSize_property.selection
+        let s5 = unwSelf.mPixelSize_property.selection
         let s6 = preferences_frontSideLegendColorForBoard_property.selection
         let s7 = preferences_backSideLegendColorForBoard_property.selection
         let s8 = preferences_hiliteWidthMultipliedByTen_property.selection
@@ -503,7 +875,7 @@ final class BoardQRCode : BoardObject,
               .single (let v7),
               .single (let v8),
               .single (let v9)) :
-          return .single (transient_BoardQRCode_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
+          return .single (transient_BoardImage_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
         case (.multiple,
               .multiple,
               .multiple,
@@ -524,10 +896,10 @@ final class BoardQRCode : BoardObject,
     }
     self.mCenterX_property.startsToBeObserved (by: self.selectionDisplay_property)
     self.mCenterY_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.qrCodeDescriptor_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.boardImageCodeDescriptor_property.startsToBeObserved (by: self.selectionDisplay_property)
     self.mLayer_property.startsToBeObserved (by: self.selectionDisplay_property)
     self.mRotation_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mModuleSize_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mPixelSize_property.startsToBeObserved (by: self.selectionDisplay_property)
     preferences_frontSideLegendColorForBoard_property.startsToBeObserved (by: self.selectionDisplay_property)
     preferences_backSideLegendColorForBoard_property.startsToBeObserved (by: self.selectionDisplay_property)
     preferences_hiliteWidthMultipliedByTen_property.startsToBeObserved (by: self.selectionDisplay_property)
@@ -538,22 +910,16 @@ final class BoardQRCode : BoardObject,
         let s0 = unwSelf.mLayer_property.selection
         let s1 = unwSelf.mCenterX_property.selection
         let s2 = unwSelf.mCenterY_property.selection
-        let s3 = unwSelf.mText_property.selection
-        let s4 = unwSelf.mCorrectionLevel_property.selection
-        let s5 = unwSelf.mRotation_property.selection
-        let s6 = unwSelf.mDrawFrame_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6) {
+        let s3 = unwSelf.mImageData_property.selection
+        let s4 = unwSelf.mRotation_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
-              .single (let v4),
-              .single (let v5),
-              .single (let v6)) :
-          return .single (transient_BoardQRCode_signatureForERCChecking (v0, v1, v2, v3, v4, v5, v6))
+              .single (let v4)) :
+          return .single (transient_BoardImage_signatureForERCChecking (v0, v1, v2, v3, v4))
         case (.multiple,
-              .multiple,
-              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -569,10 +935,8 @@ final class BoardQRCode : BoardObject,
     self.mLayer_property.startsToBeObserved (by: self.signatureForERCChecking_property)
     self.mCenterX_property.startsToBeObserved (by: self.signatureForERCChecking_property)
     self.mCenterY_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mText_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mCorrectionLevel_property.startsToBeObserved (by: self.signatureForERCChecking_property)
+    self.mImageData_property.startsToBeObserved (by: self.signatureForERCChecking_property)
     self.mRotation_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mDrawFrame_property.startsToBeObserved (by: self.signatureForERCChecking_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -586,7 +950,7 @@ final class BoardQRCode : BoardObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return self.cursorForKnob_BoardQRCode (knob: inKnobIndex)
+    return self.cursorForKnob_BoardImage (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -594,20 +958,20 @@ final class BoardQRCode : BoardObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return self.acceptedTranslation_BoardQRCode (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_BoardImage (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return self.acceptToTranslate_BoardQRCode (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_BoardImage (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    self.translate_BoardQRCode (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_BoardImage (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -619,7 +983,7 @@ final class BoardQRCode : BoardObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return self.canMove_BoardQRCode (
+    return self.canMove_BoardImage (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -638,7 +1002,7 @@ final class BoardQRCode : BoardObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    self.move_BoardQRCode (
+    self.move_BoardImage (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -655,13 +1019,13 @@ final class BoardQRCode : BoardObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    self.snapToGrid_BoardQRCode (inGrid)
+    self.snapToGrid_BoardImage (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return self.canSnapToGrid_BoardQRCode (inGrid)
+    return self.canSnapToGrid_BoardImage (inGrid)
   }
 
   //····················································································································
@@ -669,13 +1033,13 @@ final class BoardQRCode : BoardObject,
   //····················································································································
 
   override func flipHorizontally () {
-    self.flipHorizontally_BoardQRCode ()
+    self.flipHorizontally_BoardImage ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return self.canFlipHorizontally_BoardQRCode ()
+    return self.canFlipHorizontally_BoardImage ()
   }
 
   //····················································································································
@@ -683,13 +1047,13 @@ final class BoardQRCode : BoardObject,
   //····················································································································
 
   override func flipVertically () {
-    self.flipVertically_BoardQRCode ()
+    self.flipVertically_BoardImage ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return self.canFlipVertically_BoardQRCode ()
+    return self.canFlipVertically_BoardImage ()
   }
 
   //····················································································································
@@ -697,21 +1061,21 @@ final class BoardQRCode : BoardObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return self.canRotate90_BoardQRCode (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_BoardImage (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    self.rotate90Clockwise_BoardQRCode (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_BoardImage (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    self.rotate90CounterClockwise_BoardQRCode (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_BoardImage (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -719,7 +1083,7 @@ final class BoardQRCode : BoardObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
-    self.saveIntoAdditionalDictionary_BoardQRCode (&ioDictionary)
+    self.saveIntoAdditionalDictionary_BoardImage (&ioDictionary)
   }
 
   //····················································································································
@@ -729,7 +1093,7 @@ final class BoardQRCode : BoardObject,
   override func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return self.operationAfterPasting_BoardQRCode (additionalDictionary: inDictionary,
+    return self.operationAfterPasting_BoardImage (additionalDictionary: inDictionary,
                                                       optionalDocument: inOptionalDocument,
                                                       objectArray: inObjectArray)
   }
@@ -739,7 +1103,7 @@ final class BoardQRCode : BoardObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return self.alignmentPoints_BoardQRCode ()
+    return self.alignmentPoints_BoardImage ()
   }
 
   //····················································································································
@@ -747,7 +1111,7 @@ final class BoardQRCode : BoardObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    self.operationBeforeRemoving_BoardQRCode ()
+    self.operationBeforeRemoving_BoardImage ()
   }
 
   //····················································································································

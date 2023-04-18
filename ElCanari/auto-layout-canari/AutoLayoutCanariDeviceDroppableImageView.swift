@@ -16,20 +16,17 @@ final class AutoLayoutCanariDeviceDroppableImageView : AutoLayoutVerticalStackVi
 
   //····················································································································
 
-  private let mImageView : AutoLayoutDroppableImageView
+  private let mImageView : AutoLayoutDroppableImageView = AutoLayoutDroppableImageView ()
   private let mRemoveButton = AutoLayoutButton (title: "-", size: .small)
   private let mPasteImageButton = AutoLayoutButton (title: "Paste Image", size: .small)
   private let mCopyImageButton = AutoLayoutButton (title: "Copy Image", size: .small)
 
   //····················································································································
 
-  init (width inWidth : Int) {
-    self.mImageView = AutoLayoutDroppableImageView (width: inWidth)
+  override init () {
     super.init ()
 
     self.mImageView.set (droppedImageCallBack: { [weak self] (_ data : Data) in self?.setModel (data) })
-    self.mImageView.imageScaling = .scaleProportionallyUpOrDown
-    self.mImageView.imageFrameStyle = .grayBezel
 
     _ = self.appendView (self.mImageView)
     let hStack = AutoLayoutHorizontalStackView ()
@@ -58,7 +55,7 @@ final class AutoLayoutCanariDeviceDroppableImageView : AutoLayoutVerticalStackVi
   //····················································································································
 
   @objc func copyImageAction (_ inUnusedSender : Any?) {
-    if let data = self.mModel?.propval {
+    if let data = self.mModel?.optionalValue {
       let pasteboard = NSPasteboard.general
       pasteboard.clearContents ()
       pasteboard.setData (data, forType: .tiff)
@@ -103,7 +100,7 @@ final class AutoLayoutCanariDeviceDroppableImageView : AutoLayoutVerticalStackVi
   //····················································································································
 
   private var mImageDataController : EBObservablePropertyController? = nil
-  private weak var mModel : EBStoredProperty_Data? = nil
+  private weak var mModel : EBReadWriteProperty_Data? = nil
 
   //····················································································································
 
@@ -113,7 +110,7 @@ final class AutoLayoutCanariDeviceDroppableImageView : AutoLayoutVerticalStackVi
 
   //····················································································································
 
-  final func bind_imageData (_ inModel : EBStoredProperty_Data) -> Self {
+  final func bind_imageData (_ inModel : EBReadWriteProperty_Data) -> Self {
     self.mModel = inModel
     self.mImageDataController = EBObservablePropertyController (
       observedObjects: [inModel],
@@ -121,13 +118,6 @@ final class AutoLayoutCanariDeviceDroppableImageView : AutoLayoutVerticalStackVi
      )
      return self
   }
-
-  //····················································································································
-
-//  final func unbind_imageData () {
-//    self.mImageDataController?.unregister ()
-//    self.mImageDataController = nil
-//  }
 
   //····················································································································
 

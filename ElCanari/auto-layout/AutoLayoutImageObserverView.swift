@@ -17,19 +17,18 @@ final class AutoLayoutImageObserverView : NSImageView {
 
   //····················································································································
 
-  private let mSize : EBControlSize
+  private let mControlSize : EBControlSize?
 
   //····················································································································
 
-  init (size inSize : EBControlSize) {
-    self.mSize = inSize
+  init (size inControlSize : EBControlSize) {
+    self.mControlSize = inControlSize
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
     self.imageScaling = .scaleProportionallyUpOrDown
     self.imageFrameStyle = .none
-    self.controlSize = inSize.cocoaControlSize
-    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
+    self.controlSize = inControlSize.cocoaControlSize
     self.frame.size = self.intrinsicContentSize
   }
 
@@ -48,13 +47,17 @@ final class AutoLayoutImageObserverView : NSImageView {
   //····················································································································
 
   override var intrinsicContentSize : NSSize {
-    let s : CGFloat
-    switch self.mSize {
-    case .mini : s = 15.0 // ???
-    case .small : s = 17.0
-    case .regular : s =  24.0
+    if let controlSize = self.mControlSize {
+      let s : CGFloat
+      switch controlSize {
+      case .mini : s = 15.0 // ???
+      case .small : s = 17.0
+      case .regular : s =  24.0
+      }
+      return NSSize (width: s, height: s)
+    }else{
+      return super.intrinsicContentSize
     }
-    return NSSize (width: s, height: s)
   }
 
   //····················································································································

@@ -54,22 +54,10 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
         }
         StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
       }
-//      vStack {
-//        hStack { space ImageObserverView (size : .regular) { $image self.statusImage $tooltip self.statusMessage } space }
-//        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
-//      }
     }
     separator
     view pageMasterView
   }
-
-//  transient NSImage statusImage dependsFrom
-//    root.fileGenerationParameterArray.all.fileExtension,
-//    root.fileGenerationParameterArray.all.name,
-//    root.fileGenerationParameterArray.all.hasNoData,
-//    root.emptyDrillFileExtension,
-//    self.documentFileName
-//  ;
 
   transient Int statusWarningCount dependsFrom
     root.fileGenerationParameterArray.all.fileExtension,
