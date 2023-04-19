@@ -35,6 +35,12 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
       if let relay = self.mObserversOf_mInvert { // Stored property
         managedObject.mInvert_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mHorizontalFlip { // Stored property
+        managedObject.mHorizontalFlip_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mVerticalFlip { // Stored property
+        managedObject.mVerticalFlip_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_mScale { // Stored property
         managedObject.mScale_property.stopsBeingObserved (by: relay)
       }
@@ -118,6 +124,12 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
       }
       if let relay = self.mObserversOf_mInvert { // Stored property
         managedObject.mInvert_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mHorizontalFlip { // Stored property
+        managedObject.mHorizontalFlip_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mVerticalFlip { // Stored property
+        managedObject.mVerticalFlip_property.startsToBeObserved (by: relay)
       }
       if let relay = self.mObserversOf_mScale { // Stored property
         managedObject.mScale_property.startsToBeObserved (by: relay)
@@ -357,6 +369,64 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   final func toMany_mInvert_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mInvert?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'mHorizontalFlip' stored property
+  //····················································································································
+
+  private final var mObserversOf_mHorizontalFlip : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_mHorizontalFlip_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mHorizontalFlip {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mHorizontalFlip_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_mHorizontalFlip = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mHorizontalFlip_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mHorizontalFlip?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'mVerticalFlip' stored property
+  //····················································································································
+
+  private final var mObserversOf_mVerticalFlip : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_mVerticalFlip_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mVerticalFlip {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mVerticalFlip_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_mVerticalFlip = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mVerticalFlip_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mVerticalFlip?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

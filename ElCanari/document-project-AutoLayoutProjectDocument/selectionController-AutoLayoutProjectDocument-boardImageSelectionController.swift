@@ -59,6 +59,18 @@ import AppKit
   final let mInvert_property = EBComputedProperty_Bool ()
 
   //····················································································································
+  //   Selection observable property: mHorizontalFlip
+  //····················································································································
+
+  final let mHorizontalFlip_property = EBComputedProperty_Bool ()
+
+  //····················································································································
+  //   Selection observable property: mVerticalFlip
+  //····················································································································
+
+  final let mVerticalFlip_property = EBComputedProperty_Bool ()
+
+  //····················································································································
   //   Selection observable property: mScale
   //····················································································································
 
@@ -206,6 +218,8 @@ import AppKit
     self.bind_property_mThreshold ()
     self.bind_property_mImageData ()
     self.bind_property_mInvert ()
+    self.bind_property_mHorizontalFlip ()
+    self.bind_property_mVerticalFlip ()
     self.bind_property_mScale ()
     self.bind_property_mPixelSize ()
     self.bind_property_mPixelSizeUnit ()
@@ -259,6 +273,14 @@ import AppKit
     self.mInvert_property.mReadModelFunction = nil 
     self.mInvert_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_mInvert_StopsBeingObserved (by: self.mInvert_property)
+  //--- mHorizontalFlip
+    self.mHorizontalFlip_property.mReadModelFunction = nil 
+    self.mHorizontalFlip_property.mWriteModelFunction = nil 
+    self.selectedArray_property.toMany_mHorizontalFlip_StopsBeingObserved (by: self.mHorizontalFlip_property)
+  //--- mVerticalFlip
+    self.mVerticalFlip_property.mReadModelFunction = nil 
+    self.mVerticalFlip_property.mWriteModelFunction = nil 
+    self.selectedArray_property.toMany_mVerticalFlip_StopsBeingObserved (by: self.mVerticalFlip_property)
   //--- mScale
     self.mScale_property.mReadModelFunction = nil 
     self.mScale_property.mWriteModelFunction = nil 
@@ -634,6 +656,108 @@ import AppKit
         case .single (let v) :
           for object in v {
             object.mInvert_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mHorizontalFlip () {
+    self.selectedArray_property.toMany_mHorizontalFlip_StartsToBeObserved (by: self.mHorizontalFlip_property)
+    self.mHorizontalFlip_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mHorizontalFlip_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mHorizontalFlip_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mHorizontalFlip_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mVerticalFlip () {
+    self.selectedArray_property.toMany_mVerticalFlip_StartsToBeObserved (by: self.mVerticalFlip_property)
+    self.mVerticalFlip_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mVerticalFlip_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mVerticalFlip_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mVerticalFlip_property.setProp (inValue)
           }
         }
       }

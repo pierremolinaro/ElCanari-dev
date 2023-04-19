@@ -33,7 +33,12 @@ struct BoardImageDescriptor : Hashable {
 
   //····················································································································
 
-  init (imageData inImageData : Data, threshold inThreshold : Int, invert inInvert : Bool, scale inScale : Double) {
+  init (imageData inImageData : Data,
+        threshold inThreshold : Int,
+        invert inInvert : Bool,
+        scale inScale : Double,
+        hFlip inHorizontalFlip : Bool,
+        vFlip inVerticalFlip : Bool) {
     var rectArray = [BoardImageElementRectangle] ()
   //--- Construire l'image originale ----> CIImage
     if let ciOriginalImage = CIImage (data: inImageData, options: [.applyOrientationProperty : true]) {
@@ -50,13 +55,11 @@ struct BoardImageDescriptor : Hashable {
       let grayImageBitMap = NSBitmapImageRep (ciImage: ciGrayImageWithBackground)
       self.scaledImageWidth = grayImageBitMap.pixelsWide
       self.scaledImageHeight = grayImageBitMap.pixelsHigh
-    //--- Échantillonner de nouveau l'image
-    //---
-//      Swift.print ("grayImageBitMap.samplesPerPixel \(grayImageBitMap.samplesPerPixel)")
+    //--- Créer la représentation en rectangles
       var peek = [Int] (repeating: 0, count: grayImageBitMap.samplesPerPixel)
       for y in 0 ..< grayImageBitMap.pixelsHigh {
         var originX = 0
-        let originY = grayImageBitMap.pixelsHigh - y - 1
+        let originY = inVerticalFlip ? y : (grayImageBitMap.pixelsHigh - y - 1)
         var width = 0 // Empty rect
         for x in 0 ..< grayImageBitMap.pixelsWide {
           grayImageBitMap.getPixel (&peek, atX: x, y: y)
@@ -69,12 +72,14 @@ struct BoardImageDescriptor : Hashable {
               width += 1
             }
           }else if width > 0 { // White pixel, closing an existing rect
-            rectArray.append (BoardImageElementRectangle (x: originX, y: originY, width: width, height: 1))
+            let xx = inHorizontalFlip ? (grayImageBitMap.pixelsWide - 1 - originX - width) : originX
+            rectArray.append (BoardImageElementRectangle (x: xx, y: originY, width: width, height: 1))
             width = 0
           }
         }
         if width > 0 { // closing the last existing rect
-          rectArray.append (BoardImageElementRectangle (x: originX, y: originY, width: width, height: 1))
+          let xx = inHorizontalFlip ? (grayImageBitMap.pixelsWide - 1 - originX - width) : originX
+          rectArray.append (BoardImageElementRectangle (x: xx, y: originY, width: width, height: 1))
         }
       }
     }else{

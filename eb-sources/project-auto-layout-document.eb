@@ -2046,6 +2046,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         left: space,
         right: Checkbox (title: "Invert", size: .small) { $value #boardImageSelectionController.mInvert }
       )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right),
+        right: Checkbox (title: "Horizontal", size: .small) { $value #boardImageSelectionController.mHorizontalFlip }
+      )
+      addFirstBaseLineAligned (
+        left: space,
+        right: Checkbox (title: "Vertical", size: .small) { $value #boardImageSelectionController.mVerticalFlip }
+      )
       addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Scale", bold: no, size: .small, alignment: .right),

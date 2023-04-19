@@ -1489,6 +1489,9 @@
 		CF4EAA0626F684B600F01746 /* transient-ArtworkRoot-hasSixLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EAA0526F684B600F01746 /* transient-ArtworkRoot-hasSixLayers.swift */; };
 		CF4EAA0726F684B600F01746 /* transient-ArtworkRoot-hasSixLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EAA0526F684B600F01746 /* transient-ArtworkRoot-hasSixLayers.swift */; };
 		CF4EAA0826F684B600F01746 /* transient-ArtworkRoot-hasSixLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EAA0526F684B600F01746 /* transient-ArtworkRoot-hasSixLayers.swift */; };
+		CF501FE829EFE9370015760A /* board-image-default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF501FE729EFE9370015760A /* board-image-default.png */; };
+		CF501FE929EFE9370015760A /* board-image-default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF501FE729EFE9370015760A /* board-image-default.png */; };
+		CF501FEA29EFE9370015760A /* board-image-default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF501FE729EFE9370015760A /* board-image-default.png */; };
 		CF50656727490E7F009A99B6 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = CF50656627490E7F009A99B6 /* Sparkle */; };
 		CF50D0EA276740F500B35C59 /* transient-AutoLayoutProjectDocument-canRemoveSelectedDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50D0E8276740F500B35C59 /* transient-AutoLayoutProjectDocument-canRemoveSelectedDevices.swift */; };
 		CF50D1E027675A9E00B35C59 /* transient-AutoLayoutProjectDocument-pinPadAssignments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50D1DF27675A9E00B35C59 /* transient-AutoLayoutProjectDocument-pinPadAssignments.swift */; };
@@ -2419,9 +2422,6 @@
 		CF7FC49329EDBB970045DD14 /* configurator-AutoLayoutProjectDocument-addBoardImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC49229EDBB960045DD14 /* configurator-AutoLayoutProjectDocument-addBoardImageButton.swift */; };
 		CF7FC49429EDBB970045DD14 /* configurator-AutoLayoutProjectDocument-addBoardImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC49229EDBB960045DD14 /* configurator-AutoLayoutProjectDocument-addBoardImageButton.swift */; };
 		CF7FC49529EDBB970045DD14 /* configurator-AutoLayoutProjectDocument-addBoardImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC49229EDBB960045DD14 /* configurator-AutoLayoutProjectDocument-addBoardImageButton.swift */; };
-		CF7FC49729EDBE320045DD14 /* board-image.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7FC49629EDBE320045DD14 /* board-image.png */; };
-		CF7FC49829EDBE320045DD14 /* board-image.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7FC49629EDBE320045DD14 /* board-image.png */; };
-		CF7FC49929EDBE320045DD14 /* board-image.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7FC49629EDBE320045DD14 /* board-image.png */; };
 		CF7FC49B29EDBFD30045DD14 /* transient-BoardImage-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC49A29EDBFD20045DD14 /* transient-BoardImage-objectDisplay.swift */; };
 		CF7FC49C29EDBFD30045DD14 /* transient-BoardImage-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC49A29EDBFD20045DD14 /* transient-BoardImage-objectDisplay.swift */; };
 		CF7FC49D29EDBFD30045DD14 /* transient-BoardImage-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC49A29EDBFD20045DD14 /* transient-BoardImage-objectDisplay.swift */; };
@@ -4439,9 +4439,6 @@
 		CFDE5DAD29EED60E005A5EC6 /* transient-BoardImage-boardActualImageWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDE5DA929EED60E005A5EC6 /* transient-BoardImage-boardActualImageWidth.swift */; };
 		CFDE5DAE29EED60E005A5EC6 /* transient-BoardImage-boardActualImageWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDE5DA929EED60E005A5EC6 /* transient-BoardImage-boardActualImageWidth.swift */; };
 		CFDE5DAF29EED60E005A5EC6 /* transient-BoardImage-boardActualImageWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDE5DA929EED60E005A5EC6 /* transient-BoardImage-boardActualImageWidth.swift */; };
-		CFDE5DB129EEE779005A5EC6 /* default-board-image.png in Resources */ = {isa = PBXBuildFile; fileRef = CFDE5DB029EEE779005A5EC6 /* default-board-image.png */; };
-		CFDE5DB229EEE779005A5EC6 /* default-board-image.png in Resources */ = {isa = PBXBuildFile; fileRef = CFDE5DB029EEE779005A5EC6 /* default-board-image.png */; };
-		CFDE5DB329EEE779005A5EC6 /* default-board-image.png in Resources */ = {isa = PBXBuildFile; fileRef = CFDE5DB029EEE779005A5EC6 /* default-board-image.png */; };
 		CFDE7B362766321C00762C03 /* controller-table-view-AutoLayoutProjectDocument-componentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDE7B352766321C00762C03 /* controller-table-view-AutoLayoutProjectDocument-componentController.swift */; };
 		CFDE7B38276633A800762C03 /* transient-AutoLayoutProjectDocument-componentCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDE7B37276633A800762C03 /* transient-AutoLayoutProjectDocument-componentCount.swift */; };
 		CFDE7B3C276635B500762C03 /* extension-AutoLayoutProjectDocument-fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDE7B3B276635B500762C03 /* extension-AutoLayoutProjectDocument-fonts.swift */; };
@@ -5555,6 +5552,7 @@
 		CF4EA9F426F671C500F01746 /* transient-NetClassInProject-allowTracksOnInner3LayerString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-NetClassInProject-allowTracksOnInner3LayerString.swift"; sourceTree = "<group>"; };
 		CF4EAA0126F6836800F01746 /* transient-ArtworkRoot-hasInnerElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ArtworkRoot-hasInnerElements.swift"; sourceTree = "<group>"; };
 		CF4EAA0526F684B600F01746 /* transient-ArtworkRoot-hasSixLayers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ArtworkRoot-hasSixLayers.swift"; sourceTree = "<group>"; };
+		CF501FE729EFE9370015760A /* board-image-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "board-image-default.png"; sourceTree = "<group>"; };
 		CF50D0E8276740F500B35C59 /* transient-AutoLayoutProjectDocument-canRemoveSelectedDevices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutProjectDocument-canRemoveSelectedDevices.swift"; sourceTree = "<group>"; };
 		CF50D1DF27675A9E00B35C59 /* transient-AutoLayoutProjectDocument-pinPadAssignments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutProjectDocument-pinPadAssignments.swift"; sourceTree = "<group>"; };
 		CF50D1E127675B4500B35C59 /* AutoLayoutCanariProjectPinPadAssignmentTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariProjectPinPadAssignmentTableView.swift; sourceTree = "<group>"; };
@@ -5925,7 +5923,6 @@
 		CF7FC48A29EDB97D0045DD14 /* selectionController-AutoLayoutProjectDocument-boardImageSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-AutoLayoutProjectDocument-boardImageSelectionController.swift"; sourceTree = "<group>"; };
 		CF7FC48E29EDBA120045DD14 /* transient-BoardImage-imageDataByteCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardImage-imageDataByteCount.swift"; sourceTree = "<group>"; };
 		CF7FC49229EDBB960045DD14 /* configurator-AutoLayoutProjectDocument-addBoardImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-addBoardImageButton.swift"; sourceTree = "<group>"; };
-		CF7FC49629EDBE320045DD14 /* board-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "board-image.png"; sourceTree = "<group>"; };
 		CF7FC49A29EDBFD20045DD14 /* transient-BoardImage-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardImage-objectDisplay.swift"; sourceTree = "<group>"; };
 		CF7FC49E29EDC1070045DD14 /* transient-BoardImage-selectionDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardImage-selectionDisplay.swift"; sourceTree = "<group>"; };
 		CF7FC4A229EDC2AA0045DD14 /* transient-BoardImage-signatureForERCChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardImage-signatureForERCChecking.swift"; sourceTree = "<group>"; };
@@ -6516,7 +6513,6 @@
 		CFDE5DA129EED1AB005A5EC6 /* transient-BoardImage-boardScaledImageHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardImage-boardScaledImageHeight.swift"; sourceTree = "<group>"; };
 		CFDE5DA829EED60E005A5EC6 /* transient-BoardImage-boardActualImageHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardImage-boardActualImageHeight.swift"; sourceTree = "<group>"; };
 		CFDE5DA929EED60E005A5EC6 /* transient-BoardImage-boardActualImageWidth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardImage-boardActualImageWidth.swift"; sourceTree = "<group>"; };
-		CFDE5DB029EEE779005A5EC6 /* default-board-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default-board-image.png"; sourceTree = "<group>"; };
 		CFDE7B352766321C00762C03 /* controller-table-view-AutoLayoutProjectDocument-componentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-table-view-AutoLayoutProjectDocument-componentController.swift"; sourceTree = "<group>"; };
 		CFDE7B37276633A800762C03 /* transient-AutoLayoutProjectDocument-componentCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutProjectDocument-componentCount.swift"; sourceTree = "<group>"; };
 		CFDE7B3B276635B500762C03 /* extension-AutoLayoutProjectDocument-fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-AutoLayoutProjectDocument-fonts.swift"; sourceTree = "<group>"; };
@@ -7478,11 +7474,10 @@
 				CFBC78792688FE9C00EE6FF4 /* artwork.pdf */,
 				CFC5FBC01FDF06220014A257 /* Assets.xcassets */,
 				CF6172781B3C4CD600F3CA82 /* autorouter.png */,
-				CF7FC49629EDBE320045DD14 /* board-image.png */,
+				CF501FE729EFE9370015760A /* board-image-default.png */,
 				CF6172831B3C4CD600F3CA82 /* circuit-imprime.png */,
 				CFA9F51328D5FA3D0031FD35 /* Credits.rtf */,
 				CF1C8F4B2364DB4800A36E44 /* danger.png */,
-				CFDE5DB029EEE779005A5EC6 /* default-board-image.png */,
 				CF6172891B3C4CD600F3CA82 /* exclamation.tif */,
 				CF61728B1B3C4CD600F3CA82 /* freeRoutingLogo.png */,
 				CF6172921B3C4CD600F3CA82 /* library.png */,
@@ -9300,7 +9295,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF6173091B3C4CD600F3CA82 /* ZoomInToolbarImage.tiff in Resources */,
-				CFDE5DB129EEE779005A5EC6 /* default-board-image.png in Resources */,
 				CF6172BE1B3C4CD600F3CA82 /* A4vertical.pdf in Resources */,
 				CF6172E11B3C4CD600F3CA82 /* line-in-symbol.pdf in Resources */,
 				CF6172D91B3C4CD600F3CA82 /* freeRoutingLogo.png in Resources */,
@@ -9312,6 +9306,7 @@
 				CF61730A1B3C4CD600F3CA82 /* ZoomOutToolbarImage.tiff in Resources */,
 				CF6172F21B3C4CD600F3CA82 /* restrict-rect-in-board.png in Resources */,
 				CFB438BE2430EE0300163B86 /* model-image-dil16.png in Resources */,
+				CF501FE829EFE9370015760A /* board-image-default.png in Resources */,
 				CF7034C42353ABD100F4D2C7 /* alignmentBottom.png in Resources */,
 				CF6172E01B3C4CD600F3CA82 /* library.png in Resources */,
 				CF6471FE24F2796500452009 /* upDownRightLeftCursor.png in Resources */,
@@ -9326,7 +9321,6 @@
 				CFB1415627A72E97000F9EAE /* update.png in Resources */,
 				CF3494C429EAD694006AB1EB /* qrcode.png in Resources */,
 				CF21549322B65E4C0068354E /* text-in-symbol.png in Resources */,
-				CF7FC49729EDBE320045DD14 /* board-image.png in Resources */,
 				CF6172C61B3C4CD600F3CA82 /* autorouter.png in Resources */,
 				CF6172E81B3C4CD600F3CA82 /* package.pdf in Resources */,
 				CF6172BD1B3C4CD600F3CA82 /* A4horizontal.pdf in Resources */,
@@ -9348,7 +9342,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF5C4C6E219F04D600EAC52A /* ZoomInToolbarImage.tiff in Resources */,
-				CFDE5DB229EEE779005A5EC6 /* default-board-image.png in Resources */,
 				CF5C4C71219F04D600EAC52A /* A4vertical.pdf in Resources */,
 				CF5C4C73219F04D600EAC52A /* line-in-symbol.pdf in Resources */,
 				CF5C4C75219F04D600EAC52A /* freeRoutingLogo.png in Resources */,
@@ -9360,6 +9353,7 @@
 				CF5C4C80219F04D600EAC52A /* ZoomOutToolbarImage.tiff in Resources */,
 				CF5C4C83219F04D600EAC52A /* restrict-rect-in-board.png in Resources */,
 				CFB438BF2430EE0300163B86 /* model-image-dil16.png in Resources */,
+				CF501FE929EFE9370015760A /* board-image-default.png in Resources */,
 				CF7034C52353ABD100F4D2C7 /* alignmentBottom.png in Resources */,
 				CF5C4C8C219F04D600EAC52A /* library.png in Resources */,
 				CF6471FF24F2796500452009 /* upDownRightLeftCursor.png in Resources */,
@@ -9374,7 +9368,6 @@
 				CFB1415727A72E97000F9EAE /* update.png in Resources */,
 				CF3494C529EAD694006AB1EB /* qrcode.png in Resources */,
 				CF21549422B65E4C0068354E /* text-in-symbol.png in Resources */,
-				CF7FC49829EDBE320045DD14 /* board-image.png in Resources */,
 				CF5C4C9F219F04D600EAC52A /* autorouter.png in Resources */,
 				CF5C4CA5219F04D600EAC52A /* package.pdf in Resources */,
 				CF5C4CA7219F04D600EAC52A /* A4horizontal.pdf in Resources */,
@@ -9396,7 +9389,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF9C605525CABE5C00A00D5C /* ZoomInToolbarImage.tiff in Resources */,
-				CFDE5DB329EEE779005A5EC6 /* default-board-image.png in Resources */,
 				CF9C605625CABE5C00A00D5C /* A4vertical.pdf in Resources */,
 				CF9C605725CABE5C00A00D5C /* line-in-symbol.pdf in Resources */,
 				CF9C605925CABE5C00A00D5C /* freeRoutingLogo.png in Resources */,
@@ -9408,6 +9400,7 @@
 				CF9C606625CABE5C00A00D5C /* restrict-rect-in-board.png in Resources */,
 				CF9C606925CABE5C00A00D5C /* model-image-dil16.png in Resources */,
 				CF9C606A25CABE5C00A00D5C /* alignmentBottom.png in Resources */,
+				CF501FEA29EFE9370015760A /* board-image-default.png in Resources */,
 				CF9C606B25CABE5C00A00D5C /* library.png in Resources */,
 				CF9C606C25CABE5C00A00D5C /* upDownRightLeftCursor.png in Resources */,
 				CF9C606E25CABE5C00A00D5C /* MainMenu.xib in Resources */,
@@ -9422,7 +9415,6 @@
 				CFB1415827A72E97000F9EAE /* update.png in Resources */,
 				CF3494C629EAD694006AB1EB /* qrcode.png in Resources */,
 				CF9C607925CABE5C00A00D5C /* autorouter.png in Resources */,
-				CF7FC49929EDBE320045DD14 /* board-image.png in Resources */,
 				CF9C607C25CABE5C00A00D5C /* package.pdf in Resources */,
 				CF9C607E25CABE5C00A00D5C /* A4horizontal.pdf in Resources */,
 				CF9C607F25CABE5C00A00D5C /* symbolAnd.pdf in Resources */,

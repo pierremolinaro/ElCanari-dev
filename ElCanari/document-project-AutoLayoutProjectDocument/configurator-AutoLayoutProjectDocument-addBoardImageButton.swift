@@ -21,7 +21,7 @@ extension AutoLayoutProjectDocument {
       draggedObjectImage: { [weak self] in return self?.boardImageFactory () },
       scaleProvider: self.boardObjectsController
     )
-    inOutlet.set (image: NSImage (named: "board-image"))
+    inOutlet.set (image: NSImage (named: DEFAULT_BOARD_IMAGE))
     let menu = CanariChoiceMenu ()
     menu.addItem (withTitle: "Legend, Front Side", action: nil, keyEquivalent: "")
     menu.addItem (withTitle: "Legend, Back Side",  action: nil, keyEquivalent: "")

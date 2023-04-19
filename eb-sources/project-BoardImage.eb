@@ -12,6 +12,8 @@ graphic handlingOpposite entity BoardImage : BoardObject {
   property Int mThreshold default 200 ;
   property Data mImageData default empty ;
   property Bool mInvert default no ;
+  property Bool mHorizontalFlip default no ;
+  property Bool mVerticalFlip default no ;
   property Double mScale default 0.5 ;
   property Int mPixelSize  default 31_750 ; // px
   property Int mPixelSizeUnit  default 31_750 ; // px
@@ -29,7 +31,8 @@ graphic handlingOpposite entity BoardImage : BoardObject {
   transient NSImage boardImage dependsFrom self.mImageData ;
   
   transient BoardImageDescriptor boardImageCodeDescriptor dependsFrom
-    self.mImageData, self.mThreshold, self.mInvert, self.mScale
+    self.mImageData, self.mThreshold, self.mInvert, self.mScale,
+    self.mHorizontalFlip, self.mVerticalFlip
   ;
   
   transient String boardOriginalImageWidth dependsFrom

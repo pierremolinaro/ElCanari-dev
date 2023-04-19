@@ -17,10 +17,19 @@ import AppKit
        _ self_mImageData : Data,                               
        _ self_mThreshold : Int,                                
        _ self_mInvert : Bool,                                  
-       _ self_mScale : Double
+       _ self_mScale : Double,                                 
+       _ self_mHorizontalFlip : Bool,                          
+       _ self_mVerticalFlip : Bool
 ) -> BoardImageDescriptor {
 //--- START OF USER ZONE 2
-        return BoardImageDescriptor (imageData: self_mImageData, threshold: self_mThreshold, invert: self_mInvert, scale: self_mScale)
+        return BoardImageDescriptor (
+          imageData: self_mImageData,
+          threshold: self_mThreshold,
+          invert: self_mInvert,
+          scale: self_mScale,
+          hFlip: self_mHorizontalFlip,
+          vFlip: self_mVerticalFlip
+        )
 //--- END OF USER ZONE 2
 }
 

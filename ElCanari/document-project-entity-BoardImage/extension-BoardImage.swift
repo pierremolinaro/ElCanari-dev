@@ -16,7 +16,7 @@ let BOARD_IMAGE_ROTATION_KNOB = 1
 
 fileprivate let BOARD_IMAGE_ROTATION_KNOB_DISTANCE : CGFloat = 30.0
 
-let DEFAULT_BOARD_IMAGE = "default-board-image"
+let DEFAULT_BOARD_IMAGE = "board-image-default"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EXTENSION BoardImage

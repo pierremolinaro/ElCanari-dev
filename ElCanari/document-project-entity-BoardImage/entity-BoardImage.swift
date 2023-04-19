@@ -42,6 +42,18 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol BoardImage_mHorizontalFlip : AnyObject {
+  var mHorizontalFlip : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardImage_mVerticalFlip : AnyObject {
+  var mVerticalFlip : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol BoardImage_mScale : AnyObject {
   var mScale : Double { get }
 }
@@ -177,6 +189,8 @@ final class BoardImage : BoardObject,
          BoardImage_mThreshold,
          BoardImage_mImageData,
          BoardImage_mInvert,
+         BoardImage_mHorizontalFlip,
+         BoardImage_mVerticalFlip,
          BoardImage_mScale,
          BoardImage_mPixelSize,
          BoardImage_mPixelSizeUnit,
@@ -311,6 +325,44 @@ final class BoardImage : BoardObject,
   final var mInvert : Bool {
     get { return self.mInvert_property.propval }
     set { self.mInvert_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mHorizontalFlip
+  //····················································································································
+
+  final let mHorizontalFlip_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mHorizontalFlip_toDefaultValue () {
+    self.mHorizontalFlip = false
+  }
+
+  //····················································································································
+
+  final var mHorizontalFlip : Bool {
+    get { return self.mHorizontalFlip_property.propval }
+    set { self.mHorizontalFlip_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mVerticalFlip
+  //····················································································································
+
+  final let mVerticalFlip_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mVerticalFlip_toDefaultValue () {
+    self.mVerticalFlip = false
+  }
+
+  //····················································································································
+
+  final var mVerticalFlip : Bool {
+    get { return self.mVerticalFlip_property.propval }
+    set { self.mVerticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -603,6 +655,8 @@ final class BoardImage : BoardObject,
     self.mThreshold_property = EBStoredProperty_Int (defaultValue: 200, undoManager: inUndoManager, key: "mThreshold")
     self.mImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mImageData")
     self.mInvert_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mInvert")
+    self.mHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mHorizontalFlip")
+    self.mVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mVerticalFlip")
     self.mScale_property = EBStoredProperty_Double (defaultValue: 0.5, undoManager: inUndoManager, key: "mScale")
     self.mPixelSize_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mPixelSize")
     self.mPixelSizeUnit_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mPixelSizeUnit")
@@ -654,13 +708,19 @@ final class BoardImage : BoardObject,
         let s1 = unwSelf.mThreshold_property.selection
         let s2 = unwSelf.mInvert_property.selection
         let s3 = unwSelf.mScale_property.selection
-        switch (s0, s1, s2, s3) {
+        let s4 = unwSelf.mHorizontalFlip_property.selection
+        let s5 = unwSelf.mVerticalFlip_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
-              .single (let v3)) :
-          return .single (transient_BoardImage_boardImageCodeDescriptor (v0, v1, v2, v3))
+              .single (let v3),
+              .single (let v4),
+              .single (let v5)) :
+          return .single (transient_BoardImage_boardImageCodeDescriptor (v0, v1, v2, v3, v4, v5))
         case (.multiple,
+              .multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple) :
@@ -676,6 +736,8 @@ final class BoardImage : BoardObject,
     self.mThreshold_property.startsToBeObserved (by: self.boardImageCodeDescriptor_property)
     self.mInvert_property.startsToBeObserved (by: self.boardImageCodeDescriptor_property)
     self.mScale_property.startsToBeObserved (by: self.boardImageCodeDescriptor_property)
+    self.mHorizontalFlip_property.startsToBeObserved (by: self.boardImageCodeDescriptor_property)
+    self.mVerticalFlip_property.startsToBeObserved (by: self.boardImageCodeDescriptor_property)
   //--- Atomic property: boardOriginalImageWidth
     self.boardOriginalImageWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
