@@ -75,15 +75,15 @@ final class CanariPDFWindow : CanariWindow, NSToolbarDelegate {
       toolbarItem.target = self.mPDFView
       toolbarItem.action = #selector (PDFView.zoomOut(_:))
     }else if itemIdentifier == NextPageToolbarIdentifier {
-      toolbarItem.label = "Next"
-      toolbarItem.paletteLabel = "Next"
+      toolbarItem.label = "Next Page"
+      toolbarItem.paletteLabel = "Next Page"
       toolbarItem.toolTip = "Go To Next Page"
       toolbarItem.image = NSImage (named: "NextToolbarImage")
       toolbarItem.target = self.mPDFView
       toolbarItem.action = #selector (PDFView.goToNextPage(_:))
     }else if itemIdentifier == PreviousPageToolbarIdentifier {
-      toolbarItem.label = "Previous"
-      toolbarItem.paletteLabel = "Previous"
+      toolbarItem.label = "Previous Page"
+      toolbarItem.paletteLabel = "Previous Page"
       toolbarItem.toolTip = "Go To Previous Page"
       toolbarItem.image = NSImage (named: "PreviousToolbarImage")
       toolbarItem.target = self.mPDFView

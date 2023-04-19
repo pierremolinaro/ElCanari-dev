@@ -1910,7 +1910,7 @@ import AppKit
             .addPage (title: "🛠", tooltip: "Selected Element Inspector", pageView: selectedElementInspectorView)
             .addPage (title: "", tooltip: "Insert Component in Board", pageView: insertComponentInBoardView)
             .addPage (title: "🔍", tooltip: "Display Inspector", pageView: boardDisplayInspectorView)
-            .addPage (image: "autorouter", tooltip: "Router Inspector", pageView: boardRouterInspectorView)
+            .addPage (image: "autorouter", title: "", tooltip: "Router Inspector", pageView: boardRouterInspectorView)
             .addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: boardERCInspectorView)
             .bind_selectedPage (self.rootObject.mBoardSelectedInspector_property)
             .bind_segmentTitle (self.unplacedPackagesCountString_property, segmentIndex:1)

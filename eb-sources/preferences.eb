@@ -10,9 +10,9 @@ prefs {
     hStack {
       space
       SegmentedControlWithPages (documentView: view prefsPageView, equalWidth: no, size : .regular) {
-        addPage (image: "settings", tooltip: "User Interface", pageView: view prefsUserInterfacePage)
-        addPage (image: "update", tooltip: "Application Update", pageView: view prefsAppUpdatePage)
-        addPage (image: "library", tooltip: "Library", pageView: view prefsLibraryPage)
+        addPage (image: "settings", title: "User Interface", tooltip: "User Interface", pageView: view prefsUserInterfacePage)
+        addPage (image: "update", title: "Application Update", tooltip: "Application Update", pageView: view prefsAppUpdatePage)
+        addPage (image: "library", title: "Library", tooltip: "Library", pageView: view prefsLibraryPage)
         $selectedPage prefs.mSelectedPrefsPage
       }
       space
@@ -74,11 +74,11 @@ prefs {
     hStack {
       space
       GridView2 {
-        addFirstBaseLineAligned (
+        addCenterYAligned (
           left: StaticLabel (title: "Selection Hilite Color", bold: no, size: .regular, alignment: .right),
           right: hStack { ColorWell { $color prefs.selectionHiliteColor (sendContinously: yes) } space }
         )
-        addFirstBaseLineAligned (
+        addCenterYAligned (
           left: StaticLabel (title: "Selection Width", bold: no, size: .regular, alignment: .right),
           right: TaggedPopUpButton (size: .regular) {
             add (title: "0.5 Point", withTag:  5)
@@ -361,8 +361,8 @@ prefs {
       ] {
         $run revealUserLibraryInFinderAction
       }
-      space
       Checkbox (title: "Uses", size: .regular) { $value prefs.usesUserLibrary }
+      space
     }
     hStack {
       Button (title: "Check for System Library Updates…", size: .regular) [
@@ -370,21 +370,19 @@ prefs {
       ] {
         $run checkSystemLibraryUpdateAction
       }
-      space
       Checkbox (title: "At Start Up", size: .regular) { $value prefs.checkForSystemLibraryAtStartUp }
-      space
       PopUpButton (size: .regular) [
         configurator lastSystemLibraryCheckTimeButtonConfigurator
       ] {
         $enabled prefs.checkForSystemLibraryAtStartUp
       }
+      space
     }
     hStack {
       Button (title: "Show Library Update Log Window", size: .regular) { $run showSystemLibraryLogAction }
       StaticLabel (title: "Last Check", bold: no, size: .regular, alignment: .left)
       DateLabel (bold: no, size: .regular) {
         $date prefs.mLastSystemLibraryCheckTime
-//        $hidden !prefs.checkForSystemLibraryAtStartUp   
       }
       space
     }

@@ -1281,7 +1281,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             addPage (title: "🛠", tooltip: "Selected Element Inspector", pageView: view selectedElementInspectorView)
             addPage (title: "", tooltip: "Insert Component in Board", pageView: view insertComponentInBoardView)
             addPage (title: "🔍", tooltip: "Display Inspector", pageView: view boardDisplayInspectorView)
-            addPage (image: "autorouter", tooltip: "Router Inspector", pageView: view boardRouterInspectorView)
+            addPage (image: "autorouter", title: "", tooltip: "Router Inspector", pageView: view boardRouterInspectorView)
             addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: view boardERCInspectorView)
             $selectedPage root.mBoardSelectedInspector
             $segmentTitle self.unplacedPackagesCountString (segmentIndex: 1)

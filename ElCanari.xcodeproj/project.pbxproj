@@ -1738,26 +1738,21 @@
 		CF5A55D121C599EA00C7014E /* transient-PackagePad-annularRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A55CF21C599EA00C7014E /* transient-PackagePad-annularRing.swift */; };
 		CF5B06FA213EC3C9005D6B37 /* entity-SegmentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5B06F8213EC3C9005D6B37 /* entity-SegmentEntity.swift */; };
 		CF5B06FC213EC703005D6B37 /* CanariSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5B06FB213EC703005D6B37 /* CanariSegment.swift */; };
-		CF5C4C6E219F04D600EAC52A /* ZoomInToolbarImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BB1B3C4CD600F3CA82 /* ZoomInToolbarImage.tiff */; };
 		CF5C4C71219F04D600EAC52A /* A4vertical.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172701B3C4CD600F3CA82 /* A4vertical.pdf */; };
 		CF5C4C73219F04D600EAC52A /* line-in-symbol.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172931B3C4CD600F3CA82 /* line-in-symbol.pdf */; };
 		CF5C4C75219F04D600EAC52A /* freeRoutingLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61728B1B3C4CD600F3CA82 /* freeRoutingLogo.png */; };
 		CF5C4C76219F04D600EAC52A /* circuit-imprime.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172831B3C4CD600F3CA82 /* circuit-imprime.png */; };
 		CF5C4C7E219F04D600EAC52A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC5FBC01FDF06220014A257 /* Assets.xcassets */; };
-		CF5C4C80219F04D600EAC52A /* ZoomOutToolbarImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BC1B3C4CD600F3CA82 /* ZoomOutToolbarImage.tiff */; };
 		CF5C4C83219F04D600EAC52A /* restrict-rect-in-board.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A41B3C4CD600F3CA82 /* restrict-rect-in-board.png */; };
 		CF5C4C8C219F04D600EAC52A /* library.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172921B3C4CD600F3CA82 /* library.png */; };
 		CF5C4C95219F04D600EAC52A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6172591B3C4B4300F3CA82 /* MainMenu.xib */; };
-		CF5C4C9B219F04D600EAC52A /* SaveAsToolbarImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A61B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff */; };
 		CF5C4C9C219F04D600EAC52A /* exclamation.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172891B3C4CD600F3CA82 /* exclamation.tif */; };
 		CF5C4C9F219F04D600EAC52A /* autorouter.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172781B3C4CD600F3CA82 /* autorouter.png */; };
 		CF5C4CA5219F04D600EAC52A /* package.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF61729A1B3C4CD600F3CA82 /* package.pdf */; };
 		CF5C4CA7219F04D600EAC52A /* A4horizontal.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF61726F1B3C4CD600F3CA82 /* A4horizontal.pdf */; };
 		CF5C4CA8219F04D600EAC52A /* symbolAnd.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B01B3C4CD600F3CA82 /* symbolAnd.pdf */; };
 		CF5C4CA9219F04D600EAC52A /* track-in-board.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B21B3C4CD600F3CA82 /* track-in-board.png */; };
-		CF5C4CAF219F04D600EAC52A /* NextToolbarImage.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172971B3C4CD600F3CA82 /* NextToolbarImage.tif */; };
 		CF5C4CB6219F04D600EAC52A /* zone.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BA1B3C4CD600F3CA82 /* zone.pdf */; };
-		CF5C4CBD219F04D600EAC52A /* PreviousToolbarImage.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF61729E1B3C4CD600F3CA82 /* PreviousToolbarImage.tif */; };
 		CF5C4CD0219F04D600EAC52A /* EBGraphicManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDC5EFE20FB1F70003AB275 /* EBGraphicManagedObject.swift */; };
 		CF5C4CEE219F04D600EAC52A /* CanariSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5B06FB213EC703005D6B37 /* CanariSegment.swift */; };
 		CF5C4CF8219F04D600EAC52A /* EBDataScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDE5B11B4677C500036ACF /* EBDataScanner.swift */; };
@@ -1792,16 +1787,11 @@
 		CF6172D91B3C4CD600F3CA82 /* freeRoutingLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61728B1B3C4CD600F3CA82 /* freeRoutingLogo.png */; };
 		CF6172E01B3C4CD600F3CA82 /* library.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172921B3C4CD600F3CA82 /* library.png */; };
 		CF6172E11B3C4CD600F3CA82 /* line-in-symbol.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172931B3C4CD600F3CA82 /* line-in-symbol.pdf */; };
-		CF6172E51B3C4CD600F3CA82 /* NextToolbarImage.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172971B3C4CD600F3CA82 /* NextToolbarImage.tif */; };
 		CF6172E81B3C4CD600F3CA82 /* package.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF61729A1B3C4CD600F3CA82 /* package.pdf */; };
-		CF6172EC1B3C4CD600F3CA82 /* PreviousToolbarImage.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF61729E1B3C4CD600F3CA82 /* PreviousToolbarImage.tif */; };
 		CF6172F21B3C4CD600F3CA82 /* restrict-rect-in-board.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A41B3C4CD600F3CA82 /* restrict-rect-in-board.png */; };
-		CF6172F41B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A61B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff */; };
 		CF6172FE1B3C4CD600F3CA82 /* symbolAnd.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B01B3C4CD600F3CA82 /* symbolAnd.pdf */; };
 		CF6173001B3C4CD600F3CA82 /* track-in-board.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B21B3C4CD600F3CA82 /* track-in-board.png */; };
 		CF6173081B3C4CD600F3CA82 /* zone.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BA1B3C4CD600F3CA82 /* zone.pdf */; };
-		CF6173091B3C4CD600F3CA82 /* ZoomInToolbarImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BB1B3C4CD600F3CA82 /* ZoomInToolbarImage.tiff */; };
-		CF61730A1B3C4CD600F3CA82 /* ZoomOutToolbarImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BC1B3C4CD600F3CA82 /* ZoomOutToolbarImage.tiff */; };
 		CF617FA3275E7D34008F0C32 /* AutoLayoutViewByPrefixingAppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF617FA2275E7D34008F0C32 /* AutoLayoutViewByPrefixingAppIcon.swift */; };
 		CF617FA4275E7D34008F0C32 /* AutoLayoutViewByPrefixingAppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF617FA2275E7D34008F0C32 /* AutoLayoutViewByPrefixingAppIcon.swift */; };
 		CF617FA5275E7D34008F0C32 /* AutoLayoutViewByPrefixingAppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF617FA2275E7D34008F0C32 /* AutoLayoutViewByPrefixingAppIcon.swift */; };
@@ -2616,6 +2606,21 @@
 		CF8C300E29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8C300D29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift */; };
 		CF8C300F29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8C300D29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift */; };
 		CF8C301029F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8C300D29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift */; };
+		CF8C301329F0133300F911C9 /* ZoomInToolbarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C301129F0133300F911C9 /* ZoomInToolbarImage.png */; };
+		CF8C301429F0133300F911C9 /* ZoomInToolbarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C301129F0133300F911C9 /* ZoomInToolbarImage.png */; };
+		CF8C301529F0133300F911C9 /* ZoomInToolbarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C301129F0133300F911C9 /* ZoomInToolbarImage.png */; };
+		CF8C301629F0133300F911C9 /* ZoomOutToolbarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C301229F0133300F911C9 /* ZoomOutToolbarImage.png */; };
+		CF8C301729F0133300F911C9 /* ZoomOutToolbarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C301229F0133300F911C9 /* ZoomOutToolbarImage.png */; };
+		CF8C301829F0133300F911C9 /* ZoomOutToolbarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C301229F0133300F911C9 /* ZoomOutToolbarImage.png */; };
+		CF8C301C29F017F300F911C9 /* SaveAsToolbarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C301929F017F300F911C9 /* SaveAsToolbarImage.png */; };
+		CF8C301D29F017F300F911C9 /* SaveAsToolbarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C301929F017F300F911C9 /* SaveAsToolbarImage.png */; };
+		CF8C301E29F017F300F911C9 /* SaveAsToolbarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C301929F017F300F911C9 /* SaveAsToolbarImage.png */; };
+		CF8C301F29F017F300F911C9 /* NextToolbarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C301A29F017F300F911C9 /* NextToolbarImage.png */; };
+		CF8C302029F017F300F911C9 /* NextToolbarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C301A29F017F300F911C9 /* NextToolbarImage.png */; };
+		CF8C302129F017F300F911C9 /* NextToolbarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C301A29F017F300F911C9 /* NextToolbarImage.png */; };
+		CF8C302229F017F300F911C9 /* PreviousToolbarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C301B29F017F300F911C9 /* PreviousToolbarImage.png */; };
+		CF8C302329F017F300F911C9 /* PreviousToolbarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C301B29F017F300F911C9 /* PreviousToolbarImage.png */; };
+		CF8C302429F017F300F911C9 /* PreviousToolbarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8C301B29F017F300F911C9 /* PreviousToolbarImage.png */; };
 		CF8CA2AB27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8CA2AA27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift */; };
 		CF8CA2AC27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8CA2AA27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift */; };
 		CF8CA2AD27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8CA2AA27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift */; };
@@ -2690,7 +2695,6 @@
 		CF9C1C49279C97090018CCDB /* configurator-AutoLayoutProjectDocument-sheetOrientationSegmentedControlConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C1C48279C97090018CCDB /* configurator-AutoLayoutProjectDocument-sheetOrientationSegmentedControlConfigurator.swift */; };
 		CF9C1C4B279C9C320018CCDB /* configurator-AutoLayoutProjectDocument-sheetStepperConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C1C4A279C9C320018CCDB /* configurator-AutoLayoutProjectDocument-sheetStepperConfigurator.swift */; };
 		CF9C1C4D279CA2D40018CCDB /* selectionController-AutoLayoutProjectDocument-wireInSchematicSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C1C4C279CA2D40018CCDB /* selectionController-AutoLayoutProjectDocument-wireInSchematicSelectionController.swift */; };
-		CF9C605525CABE5C00A00D5C /* ZoomInToolbarImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BB1B3C4CD600F3CA82 /* ZoomInToolbarImage.tiff */; };
 		CF9C605625CABE5C00A00D5C /* A4vertical.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172701B3C4CD600F3CA82 /* A4vertical.pdf */; };
 		CF9C605725CABE5C00A00D5C /* line-in-symbol.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172931B3C4CD600F3CA82 /* line-in-symbol.pdf */; };
 		CF9C605925CABE5C00A00D5C /* freeRoutingLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61728B1B3C4CD600F3CA82 /* freeRoutingLogo.png */; };
@@ -2698,7 +2702,6 @@
 		CF9C605B25CABE5C00A00D5C /* circuit-imprime.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172831B3C4CD600F3CA82 /* circuit-imprime.png */; };
 		CF9C606025CABE5C00A00D5C /* alignmentRight.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2685523524EB7007C47F6 /* alignmentRight.png */; };
 		CF9C606225CABE5C00A00D5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC5FBC01FDF06220014A257 /* Assets.xcassets */; };
-		CF9C606525CABE5C00A00D5C /* ZoomOutToolbarImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BC1B3C4CD600F3CA82 /* ZoomOutToolbarImage.tiff */; };
 		CF9C606625CABE5C00A00D5C /* restrict-rect-in-board.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A41B3C4CD600F3CA82 /* restrict-rect-in-board.png */; };
 		CF9C606925CABE5C00A00D5C /* model-image-dil16.png in Resources */ = {isa = PBXBuildFile; fileRef = CFB438BD2430EE0300163B86 /* model-image-dil16.png */; };
 		CF9C606A25CABE5C00A00D5C /* alignmentBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7034BD2353ABD100F4D2C7 /* alignmentBottom.png */; };
@@ -2708,7 +2711,6 @@
 		CF9C607225CABE5C00A00D5C /* alignmentCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2684E23524D18007C47F6 /* alignmentCenter.png */; };
 		CF9C607325CABE5C00A00D5C /* alignmentTop.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7034BB2353ABD000F4D2C7 /* alignmentTop.png */; };
 		CF9C607425CABE5C00A00D5C /* how-to.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF76EF2F2205ADA4005ECF32 /* how-to.rtf */; };
-		CF9C607525CABE5C00A00D5C /* SaveAsToolbarImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A61B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff */; };
 		CF9C607625CABE5C00A00D5C /* exclamation.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172891B3C4CD600F3CA82 /* exclamation.tif */; };
 		CF9C607825CABE5C00A00D5C /* text-in-symbol.png in Resources */ = {isa = PBXBuildFile; fileRef = CF21549222B65E4C0068354E /* text-in-symbol.png */; };
 		CF9C607925CABE5C00A00D5C /* autorouter.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172781B3C4CD600F3CA82 /* autorouter.png */; };
@@ -2718,11 +2720,9 @@
 		CF9C608025CABE5C00A00D5C /* alignmentBaseline.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7034BF2353ABD100F4D2C7 /* alignmentBaseline.png */; };
 		CF9C608125CABE5C00A00D5C /* track-in-board.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B21B3C4CD600F3CA82 /* track-in-board.png */; };
 		CF9C608625CABE5C00A00D5C /* rotationCursor.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7B7E3524F2B98E00A12A46 /* rotationCursor.png */; };
-		CF9C608725CABE5C00A00D5C /* NextToolbarImage.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172971B3C4CD600F3CA82 /* NextToolbarImage.tif */; };
 		CF9C608925CABE5C00A00D5C /* zone.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BA1B3C4CD600F3CA82 /* zone.pdf */; };
 		CF9C608A25CABE5C00A00D5C /* alignmentMiddle.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7034BE2353ABD100F4D2C7 /* alignmentMiddle.png */; };
 		CF9C609025CABE5C00A00D5C /* danger.png in Resources */ = {isa = PBXBuildFile; fileRef = CF1C8F4B2364DB4800A36E44 /* danger.png */; };
-		CF9C609125CABE5C00A00D5C /* PreviousToolbarImage.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF61729E1B3C4CD600F3CA82 /* PreviousToolbarImage.tif */; };
 		CF9C609325CABE5C00A00D5C /* transient-SymbolInstanceInDevice-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A09A02231969300A17B92 /* transient-SymbolInstanceInDevice-objectDisplay.swift */; };
 		CF9C609625CABE5C00A00D5C /* transient-ProjectRoot-boardGridStepMultipliedByDisplayFactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7C70233A28830060A97A /* transient-ProjectRoot-boardGridStepMultipliedByDisplayFactor.swift */; };
 		CF9C609D25CABE5C00A00D5C /* transient-ProjectRoot-unplacedSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7C66233A28820060A97A /* transient-ProjectRoot-unplacedSymbols.swift */; };
@@ -5679,16 +5679,11 @@
 		CF61728B1B3C4CD600F3CA82 /* freeRoutingLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = freeRoutingLogo.png; sourceTree = "<group>"; };
 		CF6172921B3C4CD600F3CA82 /* library.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = library.png; sourceTree = "<group>"; };
 		CF6172931B3C4CD600F3CA82 /* line-in-symbol.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "line-in-symbol.pdf"; sourceTree = "<group>"; };
-		CF6172971B3C4CD600F3CA82 /* NextToolbarImage.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = NextToolbarImage.tif; sourceTree = "<group>"; };
 		CF61729A1B3C4CD600F3CA82 /* package.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = package.pdf; sourceTree = "<group>"; };
-		CF61729E1B3C4CD600F3CA82 /* PreviousToolbarImage.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PreviousToolbarImage.tif; sourceTree = "<group>"; };
 		CF6172A41B3C4CD600F3CA82 /* restrict-rect-in-board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "restrict-rect-in-board.png"; sourceTree = "<group>"; };
-		CF6172A61B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = SaveAsToolbarImage.tiff; sourceTree = "<group>"; };
 		CF6172B01B3C4CD600F3CA82 /* symbolAnd.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = symbolAnd.pdf; sourceTree = "<group>"; };
 		CF6172B21B3C4CD600F3CA82 /* track-in-board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "track-in-board.png"; sourceTree = "<group>"; };
 		CF6172BA1B3C4CD600F3CA82 /* zone.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = zone.pdf; sourceTree = "<group>"; };
-		CF6172BB1B3C4CD600F3CA82 /* ZoomInToolbarImage.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ZoomInToolbarImage.tiff; sourceTree = "<group>"; };
-		CF6172BC1B3C4CD600F3CA82 /* ZoomOutToolbarImage.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ZoomOutToolbarImage.tiff; sourceTree = "<group>"; };
 		CF617FA2275E7D34008F0C32 /* AutoLayoutViewByPrefixingAppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutViewByPrefixingAppIcon.swift; sourceTree = "<group>"; };
 		CF61914226F7564A003B75FF /* transient-ArtworkFileGenerationParameters-hasNoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ArtworkFileGenerationParameters-hasNoData.swift"; sourceTree = "<group>"; };
 		CF61914626F75965003B75FF /* transient-ArtworkFileGenerationParameters-parameterStatusImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ArtworkFileGenerationParameters-parameterStatusImage.swift"; sourceTree = "<group>"; };
@@ -6001,6 +5996,11 @@
 		CF8BE751235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOnlyAbstractObjectProperty.swift; sourceTree = "<group>"; };
 		CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBObservablePropertyController.swift; sourceTree = "<group>"; };
 		CF8C300D29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardQRCode-actualImageSize.swift"; sourceTree = "<group>"; };
+		CF8C301129F0133300F911C9 /* ZoomInToolbarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZoomInToolbarImage.png; sourceTree = "<group>"; };
+		CF8C301229F0133300F911C9 /* ZoomOutToolbarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZoomOutToolbarImage.png; sourceTree = "<group>"; };
+		CF8C301929F017F300F911C9 /* SaveAsToolbarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SaveAsToolbarImage.png; sourceTree = "<group>"; };
+		CF8C301A29F017F300F911C9 /* NextToolbarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NextToolbarImage.png; sourceTree = "<group>"; };
+		CF8C301B29F017F300F911C9 /* PreviousToolbarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PreviousToolbarImage.png; sourceTree = "<group>"; };
 		CF8CA2AA27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift"; sourceTree = "<group>"; };
 		CF8DDB4C21C25957009B74B1 /* EBGraphicView-draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-draw.swift"; sourceTree = "<group>"; };
 		CF8E2A5722268CE5008A2A62 /* transient-DeviceRoot-imageIsValid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceRoot-imageIsValid.swift"; sourceTree = "<group>"; };
@@ -7488,21 +7488,21 @@
 				CF6172921B3C4CD600F3CA82 /* library.png */,
 				CF6172931B3C4CD600F3CA82 /* line-in-symbol.pdf */,
 				CFB438BD2430EE0300163B86 /* model-image-dil16.png */,
-				CF6172971B3C4CD600F3CA82 /* NextToolbarImage.tif */,
+				CF8C301A29F017F300F911C9 /* NextToolbarImage.png */,
 				CF26AF7925EAAF84000E3080 /* package-program-guide.rtf */,
 				CF61729A1B3C4CD600F3CA82 /* package.pdf */,
-				CF61729E1B3C4CD600F3CA82 /* PreviousToolbarImage.tif */,
+				CF8C301B29F017F300F911C9 /* PreviousToolbarImage.png */,
 				CF3494C329EAD694006AB1EB /* qrcode.png */,
 				CF6172A41B3C4CD600F3CA82 /* restrict-rect-in-board.png */,
-				CF6172A61B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff */,
+				CF8C301929F017F300F911C9 /* SaveAsToolbarImage.png */,
 				CF888D4A2682250400D97523 /* settings.png */,
 				CF6172B01B3C4CD600F3CA82 /* symbolAnd.pdf */,
 				CF21549222B65E4C0068354E /* text-in-symbol.png */,
 				CF6172B21B3C4CD600F3CA82 /* track-in-board.png */,
 				CFB1415527A72E97000F9EAE /* update.png */,
 				CF6172BA1B3C4CD600F3CA82 /* zone.pdf */,
-				CF6172BB1B3C4CD600F3CA82 /* ZoomInToolbarImage.tiff */,
-				CF6172BC1B3C4CD600F3CA82 /* ZoomOutToolbarImage.tiff */,
+				CF8C301129F0133300F911C9 /* ZoomInToolbarImage.png */,
+				CF8C301229F0133300F911C9 /* ZoomOutToolbarImage.png */,
 			);
 			name = Resources;
 			path = ElCanari/resources;
@@ -9299,46 +9299,46 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF6173091B3C4CD600F3CA82 /* ZoomInToolbarImage.tiff in Resources */,
 				CF6172BE1B3C4CD600F3CA82 /* A4vertical.pdf in Resources */,
 				CF6172E11B3C4CD600F3CA82 /* line-in-symbol.pdf in Resources */,
 				CF6172D91B3C4CD600F3CA82 /* freeRoutingLogo.png in Resources */,
+				CF8C301F29F017F300F911C9 /* NextToolbarImage.png in Resources */,
 				CFC2685823524EB7007C47F6 /* alignmentLeft.png in Resources */,
 				CF888D4B2682250400D97523 /* settings.png in Resources */,
 				CF6172D11B3C4CD600F3CA82 /* circuit-imprime.png in Resources */,
 				CFC2685723524EB7007C47F6 /* alignmentRight.png in Resources */,
 				CFC5FBC11FDF06220014A257 /* Assets.xcassets in Resources */,
-				CF61730A1B3C4CD600F3CA82 /* ZoomOutToolbarImage.tiff in Resources */,
 				CF6172F21B3C4CD600F3CA82 /* restrict-rect-in-board.png in Resources */,
 				CFB438BE2430EE0300163B86 /* model-image-dil16.png in Resources */,
 				CF501FE829EFE9370015760A /* board-image-default.png in Resources */,
 				CF7034C42353ABD100F4D2C7 /* alignmentBottom.png in Resources */,
 				CF6172E01B3C4CD600F3CA82 /* library.png in Resources */,
 				CF6471FE24F2796500452009 /* upDownRightLeftCursor.png in Resources */,
+				CF8C301C29F017F300F911C9 /* SaveAsToolbarImage.png in Resources */,
 				CF61725B1B3C4B4300F3CA82 /* MainMenu.xib in Resources */,
 				CFBC787A2688FE9C00EE6FF4 /* artwork.pdf in Resources */,
 				CFC2684F23524D18007C47F6 /* alignmentCenter.png in Resources */,
 				CF7034C02353ABD100F4D2C7 /* alignmentTop.png in Resources */,
 				CF76EF302205ADA4005ECF32 /* how-to.rtf in Resources */,
-				CF6172F41B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff in Resources */,
 				CFA9F51428D5FA3E0031FD35 /* Credits.rtf in Resources */,
+				CF8C302229F017F300F911C9 /* PreviousToolbarImage.png in Resources */,
 				CF6172D71B3C4CD600F3CA82 /* exclamation.tif in Resources */,
 				CFB1415627A72E97000F9EAE /* update.png in Resources */,
 				CF3494C429EAD694006AB1EB /* qrcode.png in Resources */,
 				CF21549322B65E4C0068354E /* text-in-symbol.png in Resources */,
 				CF6172C61B3C4CD600F3CA82 /* autorouter.png in Resources */,
+				CF8C301329F0133300F911C9 /* ZoomInToolbarImage.png in Resources */,
 				CF6172E81B3C4CD600F3CA82 /* package.pdf in Resources */,
 				CF6172BD1B3C4CD600F3CA82 /* A4horizontal.pdf in Resources */,
 				CF6172FE1B3C4CD600F3CA82 /* symbolAnd.pdf in Resources */,
 				CF7034C82353ABD100F4D2C7 /* alignmentBaseline.png in Resources */,
 				CF6173001B3C4CD600F3CA82 /* track-in-board.png in Resources */,
 				CF7B7E3624F2B98E00A12A46 /* rotationCursor.png in Resources */,
-				CF6172E51B3C4CD600F3CA82 /* NextToolbarImage.tif in Resources */,
 				CF6173081B3C4CD600F3CA82 /* zone.pdf in Resources */,
 				CF26AF7A25EAAF84000E3080 /* package-program-guide.rtf in Resources */,
 				CF7034C62353ABD100F4D2C7 /* alignmentMiddle.png in Resources */,
+				CF8C301629F0133300F911C9 /* ZoomOutToolbarImage.png in Resources */,
 				CF1C8F4C2364DB4800A36E44 /* danger.png in Resources */,
-				CF6172EC1B3C4CD600F3CA82 /* PreviousToolbarImage.tif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9346,46 +9346,46 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF5C4C6E219F04D600EAC52A /* ZoomInToolbarImage.tiff in Resources */,
 				CF5C4C71219F04D600EAC52A /* A4vertical.pdf in Resources */,
 				CF5C4C73219F04D600EAC52A /* line-in-symbol.pdf in Resources */,
 				CF5C4C75219F04D600EAC52A /* freeRoutingLogo.png in Resources */,
+				CF8C302029F017F300F911C9 /* NextToolbarImage.png in Resources */,
 				CF5C4C76219F04D600EAC52A /* circuit-imprime.png in Resources */,
 				CF888D4C2682250400D97523 /* settings.png in Resources */,
 				CFE25A9B23525888007232F7 /* alignmentRight.png in Resources */,
 				CF5C4C7E219F04D600EAC52A /* Assets.xcassets in Resources */,
 				CFE25A9A23525884007232F7 /* alignmentLeft.png in Resources */,
-				CF5C4C80219F04D600EAC52A /* ZoomOutToolbarImage.tiff in Resources */,
 				CF5C4C83219F04D600EAC52A /* restrict-rect-in-board.png in Resources */,
 				CFB438BF2430EE0300163B86 /* model-image-dil16.png in Resources */,
 				CF501FE929EFE9370015760A /* board-image-default.png in Resources */,
 				CF7034C52353ABD100F4D2C7 /* alignmentBottom.png in Resources */,
 				CF5C4C8C219F04D600EAC52A /* library.png in Resources */,
 				CF6471FF24F2796500452009 /* upDownRightLeftCursor.png in Resources */,
+				CF8C301D29F017F300F911C9 /* SaveAsToolbarImage.png in Resources */,
 				CF5C4C95219F04D600EAC52A /* MainMenu.xib in Resources */,
 				CFBC787B2688FE9C00EE6FF4 /* artwork.pdf in Resources */,
 				CFC2685023524D18007C47F6 /* alignmentCenter.png in Resources */,
 				CF7034C12353ABD100F4D2C7 /* alignmentTop.png in Resources */,
 				CF76EF312205ADA4005ECF32 /* how-to.rtf in Resources */,
-				CF5C4C9B219F04D600EAC52A /* SaveAsToolbarImage.tiff in Resources */,
 				CFA9F51528D5FA3E0031FD35 /* Credits.rtf in Resources */,
+				CF8C302329F017F300F911C9 /* PreviousToolbarImage.png in Resources */,
 				CF5C4C9C219F04D600EAC52A /* exclamation.tif in Resources */,
 				CFB1415727A72E97000F9EAE /* update.png in Resources */,
 				CF3494C529EAD694006AB1EB /* qrcode.png in Resources */,
 				CF21549422B65E4C0068354E /* text-in-symbol.png in Resources */,
 				CF5C4C9F219F04D600EAC52A /* autorouter.png in Resources */,
+				CF8C301429F0133300F911C9 /* ZoomInToolbarImage.png in Resources */,
 				CF5C4CA5219F04D600EAC52A /* package.pdf in Resources */,
 				CF5C4CA7219F04D600EAC52A /* A4horizontal.pdf in Resources */,
 				CF5C4CA8219F04D600EAC52A /* symbolAnd.pdf in Resources */,
 				CF7034C92353ABD100F4D2C7 /* alignmentBaseline.png in Resources */,
 				CF5C4CA9219F04D600EAC52A /* track-in-board.png in Resources */,
 				CF7B7E3724F2B98E00A12A46 /* rotationCursor.png in Resources */,
-				CF5C4CAF219F04D600EAC52A /* NextToolbarImage.tif in Resources */,
 				CF5C4CB6219F04D600EAC52A /* zone.pdf in Resources */,
 				CF26AF7B25EAAF84000E3080 /* package-program-guide.rtf in Resources */,
 				CF7034C72353ABD100F4D2C7 /* alignmentMiddle.png in Resources */,
+				CF8C301729F0133300F911C9 /* ZoomOutToolbarImage.png in Resources */,
 				CF1C8F4D2364DB4800A36E44 /* danger.png in Resources */,
-				CF5C4CBD219F04D600EAC52A /* PreviousToolbarImage.tif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9393,15 +9393,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF9C605525CABE5C00A00D5C /* ZoomInToolbarImage.tiff in Resources */,
 				CF9C605625CABE5C00A00D5C /* A4vertical.pdf in Resources */,
 				CF9C605725CABE5C00A00D5C /* line-in-symbol.pdf in Resources */,
 				CF9C605925CABE5C00A00D5C /* freeRoutingLogo.png in Resources */,
+				CF8C302129F017F300F911C9 /* NextToolbarImage.png in Resources */,
 				CF9C605A25CABE5C00A00D5C /* alignmentLeft.png in Resources */,
 				CF9C605B25CABE5C00A00D5C /* circuit-imprime.png in Resources */,
 				CF9C606025CABE5C00A00D5C /* alignmentRight.png in Resources */,
 				CF9C606225CABE5C00A00D5C /* Assets.xcassets in Resources */,
-				CF9C606525CABE5C00A00D5C /* ZoomOutToolbarImage.tiff in Resources */,
 				CF9C606625CABE5C00A00D5C /* restrict-rect-in-board.png in Resources */,
 				CF9C606925CABE5C00A00D5C /* model-image-dil16.png in Resources */,
 				CF9C606A25CABE5C00A00D5C /* alignmentBottom.png in Resources */,
@@ -9409,30 +9408,31 @@
 				CF9C606B25CABE5C00A00D5C /* library.png in Resources */,
 				CF9C606C25CABE5C00A00D5C /* upDownRightLeftCursor.png in Resources */,
 				CF9C606E25CABE5C00A00D5C /* MainMenu.xib in Resources */,
+				CF8C301E29F017F300F911C9 /* SaveAsToolbarImage.png in Resources */,
 				CFBC787C2688FE9C00EE6FF4 /* artwork.pdf in Resources */,
 				CF9C607225CABE5C00A00D5C /* alignmentCenter.png in Resources */,
 				CF9C607325CABE5C00A00D5C /* alignmentTop.png in Resources */,
 				CF9C607425CABE5C00A00D5C /* how-to.rtf in Resources */,
-				CF9C607525CABE5C00A00D5C /* SaveAsToolbarImage.tiff in Resources */,
 				CF9C607625CABE5C00A00D5C /* exclamation.tif in Resources */,
 				CFA9F51628D5FA3E0031FD35 /* Credits.rtf in Resources */,
+				CF8C302429F017F300F911C9 /* PreviousToolbarImage.png in Resources */,
 				CF9C607825CABE5C00A00D5C /* text-in-symbol.png in Resources */,
 				CFB1415827A72E97000F9EAE /* update.png in Resources */,
 				CF3494C629EAD694006AB1EB /* qrcode.png in Resources */,
 				CF9C607925CABE5C00A00D5C /* autorouter.png in Resources */,
 				CF9C607C25CABE5C00A00D5C /* package.pdf in Resources */,
+				CF8C301529F0133300F911C9 /* ZoomInToolbarImage.png in Resources */,
 				CF9C607E25CABE5C00A00D5C /* A4horizontal.pdf in Resources */,
 				CF9C607F25CABE5C00A00D5C /* symbolAnd.pdf in Resources */,
 				CF9C608025CABE5C00A00D5C /* alignmentBaseline.png in Resources */,
 				CF9C608125CABE5C00A00D5C /* track-in-board.png in Resources */,
 				CF888D4D2682250400D97523 /* settings.png in Resources */,
 				CF9C608625CABE5C00A00D5C /* rotationCursor.png in Resources */,
-				CF9C608725CABE5C00A00D5C /* NextToolbarImage.tif in Resources */,
 				CF9C608925CABE5C00A00D5C /* zone.pdf in Resources */,
 				CF26AF7C25EAAF84000E3080 /* package-program-guide.rtf in Resources */,
 				CF9C608A25CABE5C00A00D5C /* alignmentMiddle.png in Resources */,
+				CF8C301829F0133300F911C9 /* ZoomOutToolbarImage.png in Resources */,
 				CF9C609025CABE5C00A00D5C /* danger.png in Resources */,
-				CF9C609125CABE5C00A00D5C /* PreviousToolbarImage.tif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
