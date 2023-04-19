@@ -12,6 +12,7 @@ graphic handlingOpposite entity BoardQRCode : BoardObject {
   property Bool mDrawFrame default yes ;
   property Int mModuleSize  default 31_750 ; // px
   property Int mModuleSizeUnit  default 31_750 ; // px
+  property Int mActualSizeUnit  default 31_750 ; // px
 
   property BoardQRCodeLayer mLayer default legendFront ;
   property String mText default "" ;
@@ -24,6 +25,8 @@ graphic handlingOpposite entity BoardQRCode : BoardObject {
   ;
     
   transient Int moduleCount dependsFrom self.qrCodeDescriptor ;
+    
+  transient Int actualImageSize dependsFrom self.moduleCount, self.mModuleSize ;
     
   override transient EBShape objectDisplay dependsFrom
     self.mCenterX, self.mCenterY, self.qrCodeDescriptor,

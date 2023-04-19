@@ -35,6 +35,9 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
       if let relay = self.mObserversOf_mModuleSizeUnit { // Stored property
         managedObject.mModuleSizeUnit_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mActualSizeUnit { // Stored property
+        managedObject.mActualSizeUnit_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_mLayer { // Stored property
         managedObject.mLayer_property.stopsBeingObserved (by: relay)
       }
@@ -55,6 +58,9 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
       }
       if let relay = self.mObserversOf_moduleCount { // Transient property
         managedObject.moduleCount_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_actualImageSize { // Transient property
+        managedObject.actualImageSize_property.stopsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_objectDisplay { // Transient property
         managedObject.objectDisplay_property.stopsBeingObserved (by: relay)
@@ -86,6 +92,9 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
       if let relay = self.mObserversOf_mModuleSizeUnit { // Stored property
         managedObject.mModuleSizeUnit_property.startsToBeObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mActualSizeUnit { // Stored property
+        managedObject.mActualSizeUnit_property.startsToBeObserved (by: relay)
+      }
       if let relay = self.mObserversOf_mLayer { // Stored property
         managedObject.mLayer_property.startsToBeObserved (by: relay)
       }
@@ -106,6 +115,9 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
       }
       if let relay = self.mObserversOf_moduleCount { // Transient property
         managedObject.moduleCount_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_actualImageSize { // Transient property
+        managedObject.actualImageSize_property.startsToBeObserved (by: relay)
       }
       if let relay = self.mObserversOf_objectDisplay { // Transient property
         managedObject.objectDisplay_property.startsToBeObserved (by: relay)
@@ -291,6 +303,35 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   final func toMany_mModuleSizeUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mModuleSizeUnit?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'mActualSizeUnit' stored property
+  //····················································································································
+
+  private final var mObserversOf_mActualSizeUnit : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_mActualSizeUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mActualSizeUnit {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mActualSizeUnit_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_mActualSizeUnit = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mActualSizeUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mActualSizeUnit?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -494,6 +535,35 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   final func toMany_moduleCount_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_moduleCount?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'actualImageSize' transient property
+  //····················································································································
+
+  private final var mObserversOf_actualImageSize : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_actualImageSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_actualImageSize {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.actualImageSize_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_actualImageSize = relay
+    }
+    relay.startsToBeObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_actualImageSize_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_actualImageSize?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

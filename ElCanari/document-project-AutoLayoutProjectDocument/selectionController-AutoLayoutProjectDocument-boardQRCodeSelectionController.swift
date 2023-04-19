@@ -59,6 +59,12 @@ import AppKit
   final let mModuleSizeUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
+  //   Selection observable property: mActualSizeUnit
+  //····················································································································
+
+  final let mActualSizeUnit_property = EBComputedProperty_Int ()
+
+  //····················································································································
   //   Selection observable property: mLayer
   //····················································································································
 
@@ -101,6 +107,12 @@ import AppKit
   final let moduleCount_property = EBTransientProperty_Int ()
 
   //····················································································································
+  //   Selection observable property: actualImageSize
+  //····················································································································
+
+  final let actualImageSize_property = EBTransientProperty_Int ()
+
+  //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
@@ -140,6 +152,7 @@ import AppKit
     self.bind_property_mDrawFrame ()
     self.bind_property_mModuleSize ()
     self.bind_property_mModuleSizeUnit ()
+    self.bind_property_mActualSizeUnit ()
     self.bind_property_mLayer ()
     self.bind_property_mText ()
     self.bind_property_mCorrectionLevel ()
@@ -147,6 +160,7 @@ import AppKit
     self.bind_property_mCenterX ()
     self.bind_property_qrCodeDescriptor ()
     self.bind_property_moduleCount ()
+    self.bind_property_actualImageSize ()
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
     self.bind_property_signatureForERCChecking ()
@@ -182,6 +196,10 @@ import AppKit
     self.mModuleSizeUnit_property.mReadModelFunction = nil 
     self.mModuleSizeUnit_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_mModuleSizeUnit_StopsBeingObserved (by: self.mModuleSizeUnit_property)
+  //--- mActualSizeUnit
+    self.mActualSizeUnit_property.mReadModelFunction = nil 
+    self.mActualSizeUnit_property.mWriteModelFunction = nil 
+    self.selectedArray_property.toMany_mActualSizeUnit_StopsBeingObserved (by: self.mActualSizeUnit_property)
   //--- mLayer
     self.mLayer_property.mReadModelFunction = nil 
     self.mLayer_property.mWriteModelFunction = nil 
@@ -208,6 +226,9 @@ import AppKit
   //--- moduleCount
     self.moduleCount_property.mReadModelFunction = nil 
     self.selectedArray_property.toMany_moduleCount_StopsBeingObserved (by: self.moduleCount_property)
+  //--- actualImageSize
+    self.actualImageSize_property.mReadModelFunction = nil 
+    self.selectedArray_property.toMany_actualImageSize_StopsBeingObserved (by: self.actualImageSize_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
@@ -527,6 +548,57 @@ import AppKit
   }
   //····················································································································
 
+  private final func bind_property_mActualSizeUnit () {
+    self.selectedArray_property.toMany_mActualSizeUnit_StartsToBeObserved (by: self.mActualSizeUnit_property)
+    self.mActualSizeUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mActualSizeUnit_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mActualSizeUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mActualSizeUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+  //····················································································································
+
   private final func bind_property_mLayer () {
     self.selectedArray_property.toMany_mLayer_StartsToBeObserved (by: self.mLayer_property)
     self.mLayer_property.mReadModelFunction = { [weak self] in
@@ -835,6 +907,45 @@ import AppKit
           var isMultipleSelection = false
           for object in v {
             switch object.moduleCount_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_actualImageSize () {
+    self.selectedArray_property.toMany_actualImageSize_StartsToBeObserved (by: self.actualImageSize_property)
+    self.actualImageSize_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.actualImageSize_property.selection {
             case .empty :
               return .empty
             case .multiple :

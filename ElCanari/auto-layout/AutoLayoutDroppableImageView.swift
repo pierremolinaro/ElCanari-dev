@@ -17,27 +17,43 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
   //····················································································································
 
   private let mImageView = AutoLayoutInternalDroppableImageView ()
-  private let mRemoveButton = AutoLayoutButton (title: "-", size: .small)
-  private let mPasteImageButton = AutoLayoutButton (title: "Paste Image", size: .small)
-  private let mCopyImageButton = AutoLayoutButton (title: "Copy Image", size: .small)
+  private let mRemoveButton : AutoLayoutButton?
 
   //····················································································································
 
-  override init () {
+  init (removeButton inHasRemoveButton : Bool) {
+    self.mRemoveButton = inHasRemoveButton
+      ? AutoLayoutButton (title: "-", size: .small)
+      : nil
+
     super.init ()
 
+    _ = self.mRemoveButton?.bind_run (target: self, selector: #selector (Self.removeImageAction (_:)))
     self.mImageView.mDroppableImageView = self
 
+    let pasteImageButton = AutoLayoutButton (title: "Paste Image", size: .small)
+      .bind_run (target: self, selector: #selector (Self.pasteImageAction (_:)))
+
+    let copyImageButton = AutoLayoutButton (title: "Copy Image", size: .small)
+      .bind_run (target: self, selector: #selector (Self.copyImageAction (_:)))
+
+
     _ = self.appendView (self.mImageView)
-    _ = self.mRemoveButton.bind_run (target: self, selector: #selector (Self.removeImageAction (_:)))
-    _ = self.mPasteImageButton.bind_run (target: self, selector: #selector (Self.pasteImageAction (_:)))
-    _ = self.mCopyImageButton.bind_run (target: self, selector: #selector (Self.copyImageAction (_:)))
-    let hStack = AutoLayoutHorizontalStackView ()
-      .appendView (self.mRemoveButton)
-      .appendView (self.mPasteImageButton)
-      .appendView (self.mCopyImageButton)
-      .appendFlexibleSpace ()
-    _ = self.appendView (hStack)
+
+    if let removeButton = self.mRemoveButton {
+      let hStack = AutoLayoutHorizontalStackView ()
+        .appendView (removeButton)
+        .appendFlexibleSpace ()
+        .appendView (pasteImageButton)
+        .appendView (copyImageButton)
+      _ = self.appendView (hStack)
+    }else{
+      let hStack = AutoLayoutHorizontalStackView ()
+        .appendView (pasteImageButton)
+        .appendFlexibleSpace ()
+        .appendView (copyImageButton)
+      _ = self.appendView (hStack)
+    }
   }
 
  //····················································································································
@@ -104,10 +120,10 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
     switch object.selection {
     case .empty, .multiple :
       self.mImageView.image = nil
-      self.mRemoveButton.isEnabled = false
+      self.mRemoveButton?.isEnabled = false
     case .single (let data) :
       self.mImageView.image = NSImage (data: data)
-      self.mRemoveButton.isEnabled = !data.isEmpty
+      self.mRemoveButton?.isEnabled = !data.isEmpty
     }
   }
 

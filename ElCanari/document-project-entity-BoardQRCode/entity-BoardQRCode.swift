@@ -42,6 +42,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol BoardQRCode_mActualSizeUnit : AnyObject {
+  var mActualSizeUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol BoardQRCode_mLayer : AnyObject {
   var mLayer : BoardQRCodeLayer { get }
 }
@@ -84,6 +90,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol BoardQRCode_actualImageSize : AnyObject {
+  var actualImageSize : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol BoardQRCode_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
@@ -111,6 +123,7 @@ final class BoardQRCode : BoardObject,
          BoardQRCode_mDrawFrame,
          BoardQRCode_mModuleSize,
          BoardQRCode_mModuleSizeUnit,
+         BoardQRCode_mActualSizeUnit,
          BoardQRCode_mLayer,
          BoardQRCode_mText,
          BoardQRCode_mCorrectionLevel,
@@ -118,6 +131,7 @@ final class BoardQRCode : BoardObject,
          BoardQRCode_mCenterX,
          BoardQRCode_qrCodeDescriptor,
          BoardQRCode_moduleCount,
+         BoardQRCode_actualImageSize,
          BoardQRCode_objectDisplay,
          BoardQRCode_selectionDisplay,
          BoardQRCode_signatureForERCChecking {
@@ -234,6 +248,25 @@ final class BoardQRCode : BoardObject,
   final var mModuleSizeUnit : Int {
     get { return self.mModuleSizeUnit_property.propval }
     set { self.mModuleSizeUnit_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mActualSizeUnit
+  //····················································································································
+
+  final let mActualSizeUnit_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final func reset_mActualSizeUnit_toDefaultValue () {
+    self.mActualSizeUnit = 31750
+  }
+
+  //····················································································································
+
+  final var mActualSizeUnit : Int {
+    get { return self.mActualSizeUnit_property.propval }
+    set { self.mActualSizeUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -356,6 +389,18 @@ final class BoardQRCode : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: actualImageSize
+  //····················································································································
+
+  final let actualImageSize_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  final var actualImageSize : Int? {
+    return self.actualImageSize_property.optionalValue
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -366,6 +411,7 @@ final class BoardQRCode : BoardObject,
     self.mDrawFrame_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mDrawFrame")
     self.mModuleSize_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mModuleSize")
     self.mModuleSizeUnit_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mModuleSizeUnit")
+    self.mActualSizeUnit_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mActualSizeUnit")
     self.mLayer_property = EBStoredProperty_BoardQRCodeLayer (defaultValue: BoardQRCodeLayer.legendFront, undoManager: inUndoManager, key: "mLayer")
     self.mText_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mText")
     self.mCorrectionLevel_property = EBStoredProperty_QRCodeCorrectionLevel (defaultValue: QRCodeCorrectionLevel.quality, undoManager: inUndoManager, key: "mCorrectionLevel")
@@ -414,6 +460,27 @@ final class BoardQRCode : BoardObject,
       }
     }
     self.qrCodeDescriptor_property.startsToBeObserved (by: self.moduleCount_property)
+  //--- Atomic property: actualImageSize
+    self.actualImageSize_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.moduleCount_property.selection
+        let s1 = unwSelf.mModuleSize_property.selection
+        switch (s0, s1) {
+        case (.single (let v0),
+              .single (let v1)) :
+          return .single (transient_BoardQRCode_actualImageSize (v0, v1))
+        case (.multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.moduleCount_property.startsToBeObserved (by: self.actualImageSize_property)
+    self.mModuleSize_property.startsToBeObserved (by: self.actualImageSize_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

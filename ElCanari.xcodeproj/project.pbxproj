@@ -2613,6 +2613,9 @@
 		CF8BE753235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE751235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift */; };
 		CF8BE7562351166A00F95B3A /* EBObservablePropertyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */; };
 		CF8BE7572351166A00F95B3A /* EBObservablePropertyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */; };
+		CF8C300E29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8C300D29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift */; };
+		CF8C300F29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8C300D29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift */; };
+		CF8C301029F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8C300D29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift */; };
 		CF8CA2AB27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8CA2AA27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift */; };
 		CF8CA2AC27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8CA2AA27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift */; };
 		CF8CA2AD27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8CA2AA27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift */; };
@@ -5997,6 +6000,7 @@
 		CF8BE746235112CC00F95B3A /* ReadOnlyAbstractArrayProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOnlyAbstractArrayProperty.swift; sourceTree = "<group>"; };
 		CF8BE751235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOnlyAbstractObjectProperty.swift; sourceTree = "<group>"; };
 		CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBObservablePropertyController.swift; sourceTree = "<group>"; };
+		CF8C300D29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardQRCode-actualImageSize.swift"; sourceTree = "<group>"; };
 		CF8CA2AA27A2D1BD00EF078C /* configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-Preferences-revealInFinderSystemLibraryButtonConfigurator.swift"; sourceTree = "<group>"; };
 		CF8DDB4C21C25957009B74B1 /* EBGraphicView-draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-draw.swift"; sourceTree = "<group>"; };
 		CF8E2A5722268CE5008A2A62 /* transient-DeviceRoot-imageIsValid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceRoot-imageIsValid.swift"; sourceTree = "<group>"; };
@@ -7294,6 +7298,7 @@
 				CF34949829EAB36E006AB1EB /* property-QRCodeDescriptor.swift */,
 				CF34949529EAB36E006AB1EB /* tomany-BoardQRCode.swift */,
 				CF34949429EAB36E006AB1EB /* toone-BoardQRCode.swift */,
+				CF8C300D29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift */,
 				CF3494CB29EAE6A9006AB1EB /* transient-BoardQRCode-moduleCount.swift */,
 				CF34949929EAB36E006AB1EB /* transient-BoardQRCode-objectDisplay.swift */,
 				CF34949729EAB36E006AB1EB /* transient-BoardQRCode-qrCodeDescriptor.swift */,
@@ -9546,6 +9551,7 @@
 				CFC5BB592232D44D00E03849 /* transient-SymbolInstanceInDevice-unconnectedPins.swift in Sources */,
 				CFEB7B6B233A260F0060A97A /* transient-ComponentSymbolInProject-selectionDisplay.swift in Sources */,
 				CF42D131275CF1A600B83712 /* controller-table-view-AutoLayoutMergerDocument-mDataController.swift in Sources */,
+				CF8C300E29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift in Sources */,
 				CF6B32E821C8F75000E3B985 /* transient-PackageGuide-selectionDisplay.swift in Sources */,
 				CFABB1BA27A2B0D40007A1F9 /* configurator-AutoLayoutDeviceDocument-symbolInspectorSegmentedControl.swift in Sources */,
 				CFEB7BA2233A26F20060A97A /* transient-DevicePinInProject-pinQualifiedName.swift in Sources */,
@@ -11206,6 +11212,7 @@
 				CFB7D89F2683A61C007B9D3B /* configurator-AutoLayoutPackageDocument-addPackageSegment.swift in Sources */,
 				CFEB7AA0233A23270060A97A /* transient-BoardConnector-connectedToComponent.swift in Sources */,
 				CF35592C279D9F3B000BFC9B /* configurator-AutoLayoutProjectDocument-addLineButton.swift in Sources */,
+				CF8C300F29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift in Sources */,
 				CF42D159275CF1A900B83712 /* controller-table-view-AutoLayoutMergerDocument-mDataController.swift in Sources */,
 				CF2FF0CE242F79C40030E49A /* toone-PackageModelImageDoublePoint.swift in Sources */,
 				CFEB7B6C233A260F0060A97A /* transient-ComponentSymbolInProject-selectionDisplay.swift in Sources */,
@@ -12866,6 +12873,7 @@
 				CF9C60F125CABE5C00A00D5C /* toone-PackageModelImageDoublePoint.swift in Sources */,
 				CF9C60F225CABE5C00A00D5C /* transient-PackageGuide-selectionDisplay.swift in Sources */,
 				CF9C60F325CABE5C00A00D5C /* transient-DevicePinInProject-pinQualifiedName.swift in Sources */,
+				CF8C301029F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift in Sources */,
 				CF9C60F425CABE5C00A00D5C /* toone-SymbolPinTypeInDevice.swift in Sources */,
 				CFB7D8582683A61C007B9D3B /* document-AutoLayoutPackageDocument-build-model-points.swift in Sources */,
 				CF22F284275A73EE009C6FAC /* tomany-MergerBoardInstance.swift in Sources */,

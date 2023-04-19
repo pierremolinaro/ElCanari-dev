@@ -2010,7 +2010,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   
   stackView \BoardImageInspectorView vStack {
     StaticLabel (title: "Image Inspector", bold: yes, size: .small, alignment: .center)
-    DroppableImageView () {
+    DroppableImageView (removeButton : no) {
       set (maxWidth: 220)
       set (maxHeight: 350)
       $imageData #boardImageSelectionController.mImageData
@@ -2151,6 +2151,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         left: StaticLabel (title: "Module Size", bold: no, size: .small, alignment: .right),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardQRCodeSelectionController.mModuleSize, #boardQRCodeSelectionController.mModuleSizeUnit
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Actual Image Size", bold: no, size: .small, alignment: .right),
+        right: CanariObservedDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #boardQRCodeSelectionController.actualImageSize, #boardQRCodeSelectionController.mActualSizeUnit
         }
       )
       addSeparator ()

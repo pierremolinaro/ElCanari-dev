@@ -12,6 +12,10 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+fileprivate let DEFAULT_IMAGE_SIZE = 40
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 struct BoardImageDescriptor : Hashable {
 
   //····················································································································
@@ -83,10 +87,14 @@ struct BoardImageDescriptor : Hashable {
         }
       }
     }else{
-      self.originalImageWidth  = 20
-      self.originalImageHeight = 20
-      self.scaledImageWidth = 20
-      self.scaledImageHeight = 20
+      self.originalImageWidth  = DEFAULT_IMAGE_SIZE
+      self.originalImageHeight = DEFAULT_IMAGE_SIZE
+      self.scaledImageWidth = DEFAULT_IMAGE_SIZE
+      self.scaledImageHeight = DEFAULT_IMAGE_SIZE
+      rectArray.append (BoardImageElementRectangle (x: 0, y: 0, width: DEFAULT_IMAGE_SIZE, height: 1))
+      rectArray.append (BoardImageElementRectangle (x: 0, y: DEFAULT_IMAGE_SIZE - 1, width: DEFAULT_IMAGE_SIZE, height: 1))
+      rectArray.append (BoardImageElementRectangle (x: 0, y: 1, width: 1, height: DEFAULT_IMAGE_SIZE - 2))
+      rectArray.append (BoardImageElementRectangle (x: DEFAULT_IMAGE_SIZE - 1, y: 1, width: 1, height: DEFAULT_IMAGE_SIZE - 2))
     }
   //---
     self.blackRectangles = rectArray

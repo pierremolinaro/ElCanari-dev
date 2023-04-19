@@ -355,7 +355,7 @@ extern autolayout class CanariAddSymbolInstancePullDownButton $enabled {
   $symbolTypeNames transient StringArray
 }
 
-extern autolayout class DroppableImageView () {
+extern autolayout class DroppableImageView (removeButton : Bool) {
   $imageData property Data
   func set (maxWidth: Int)
   func set (maxHeight: Int)
