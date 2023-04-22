@@ -2010,10 +2010,16 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   
   stackView \BoardImageInspectorView vStack {
     StaticLabel (title: "Image Inspector", bold: yes, size: .small, alignment: .center)
+    hStack set (margins: 0) {
+      StaticLabel (title: "Display", bold: no, size: .small, alignment: .right)
+      EnumPopUpButton (titles: enum BoardImageDisplay.popupTitles, size: .small) {
+        $selectedIndex #boardImageSelectionController.mImageDisplay
+      } 
+    }
     DroppableImageView (removeButton : no) {
       set (maxWidth: 220)
       set (maxHeight: 350)
-      $imageData #boardImageSelectionController.mImageData
+      $imageData #boardImageSelectionController.computedDataImage
     }
     GridView2 {
       addFirstBaseLineAligned (
@@ -2040,7 +2046,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Threshold", bold: no, size: .small, alignment: .right),
-        right: LinearSlider (min: 0, max: 255, ticks: 17) { $intValue #boardImageSelectionController.mThreshold (sendContinously:yes) }
+        right: LinearSlider (min: 0, max: 255, ticks: 9) { $intValue #boardImageSelectionController.mThreshold (sendContinously:yes) }
       )
       addFirstBaseLineAligned (
         left: space,

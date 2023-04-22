@@ -84,6 +84,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol BoardImage_mImageDisplay : AnyObject {
+  var mImageDisplay : BoardImageDisplay { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol BoardImage_mLayer : AnyObject {
   var mLayer : BoardQRCodeLayer { get }
 }
@@ -190,6 +196,7 @@ final class BoardImage : BoardObject,
          BoardImage_mPixelSizeUnit,
          BoardImage_mActualWidthUnit,
          BoardImage_mActualHeightUnit,
+         BoardImage_mImageDisplay,
          BoardImage_mLayer,
          BoardImage_mText,
          BoardImage_mRotation,
@@ -454,6 +461,25 @@ final class BoardImage : BoardObject,
   }
 
   //····················································································································
+  //   Atomic property: mImageDisplay
+  //····················································································································
+
+  final let mImageDisplay_property : EBStoredProperty_BoardImageDisplay
+
+  //····················································································································
+
+  final func reset_mImageDisplay_toDefaultValue () {
+    self.mImageDisplay = BoardImageDisplay.original
+  }
+
+  //····················································································································
+
+  final var mImageDisplay : BoardImageDisplay {
+    get { return self.mImageDisplay_property.propval }
+    set { self.mImageDisplay_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Atomic property: mLayer
   //····················································································································
 
@@ -527,6 +553,18 @@ final class BoardImage : BoardObject,
   final var mCenterX : Int {
     get { return self.mCenterX_property.propval }
     set { self.mCenterX_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Transient property: computedDataImage
+  //····················································································································
+
+  final let computedDataImage_property = EBComputedProperty_Data ()
+
+  //····················································································································
+
+  final var computedDataImage : Data? {
+    return self.computedDataImage_property.optionalValue
   }
 
   //····················································································································
@@ -643,11 +681,38 @@ final class BoardImage : BoardObject,
     self.mPixelSizeUnit_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mPixelSizeUnit")
     self.mActualWidthUnit_property = EBStoredProperty_Int (defaultValue: 900000, undoManager: inUndoManager, key: "mActualWidthUnit")
     self.mActualHeightUnit_property = EBStoredProperty_Int (defaultValue: 900000, undoManager: inUndoManager, key: "mActualHeightUnit")
+    self.mImageDisplay_property = EBStoredProperty_BoardImageDisplay (defaultValue: BoardImageDisplay.original, undoManager: inUndoManager, key: "mImageDisplay")
     self.mLayer_property = EBStoredProperty_BoardQRCodeLayer (defaultValue: BoardQRCodeLayer.legendFront, undoManager: inUndoManager, key: "mLayer")
     self.mText_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mText")
     self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
     self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterX")
     super.init (inUndoManager)
+  //--- Computed property: computedDataImage
+    self.computedDataImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mImageData_property.selection
+        let s1 = unwSelf.mScale_property.selection
+        let s2 = unwSelf.mImageDisplay_property.selection
+        switch (s0, s1, s2) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
+          return .single (computed_BoardImage_computedDataImage (v0, v1, v2))
+        case (.multiple,
+              .multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.computedDataImage_property.mWriteModelFunction = { [weak self] in self?.compute_computedDataImage_property ($0) }
+    self.mImageData_property.startsToBeObserved (by: self.computedDataImage_property)
+    self.mScale_property.startsToBeObserved (by: self.computedDataImage_property)
+    self.mImageDisplay_property.startsToBeObserved (by: self.computedDataImage_property)
   //--- Atomic property: imageDataByteCount
     self.imageDataByteCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

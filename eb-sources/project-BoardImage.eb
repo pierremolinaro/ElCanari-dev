@@ -19,13 +19,15 @@ graphic handlingOpposite entity BoardImage : BoardObject {
   property Int mPixelSizeUnit  default 31_750 ; // px
   property Int mActualWidthUnit  default 900_000 ; // cm
   property Int mActualHeightUnit  default 900_000 ; // cm
-
+  property BoardImageDisplay mImageDisplay default original ;
   property BoardQRCodeLayer mLayer default legendFront ;
  
   property String mText default "" ;
 
   property Int mRotation default 0 ; // 1000 --> 1°
 
+  computed Data computedDataImage dependsFrom self.mImageData, self.mScale, self.mImageDisplay ;
+  
   transient String imageDataByteCount dependsFrom self.mImageData ;
   
   transient BoardImageDescriptor boardImageCodeDescriptor dependsFrom

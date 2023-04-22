@@ -2248,12 +2248,22 @@ import AppKit
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Image Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutDroppableImageView (removeButton: false)
+    let view_1 = AutoLayoutHorizontalStackView ()
+      .set (margins: 0)
+    do{
+      let view_1_0 = AutoLayoutStaticLabel (title: "Display", bold: false, size: .small, alignment: .right)
+      _ = view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutEnumPopUpButton (titles: BoardImageDisplay.popupTitles (), size: .small)
+        .bind_selectedIndex (self.boardImageSelectionController.mImageDisplay_property)
+      _ = view_1.appendView (view_1_1)
+    }
+    _ = vStackView.appendView (view_1)
+    let view_2 = AutoLayoutDroppableImageView (removeButton: false)
       .set (maxWidth: 220)
       .set (maxHeight: 350)
-      .bind_imageData (self.boardImageSelectionController.mImageData_property)
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutGridView2 ()
+      .bind_imageData (self.boardImageSelectionController.computedDataImage_property)
+    _ = vStackView.appendView (view_2)
+    let view_3 = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_261 (), right: self.computeImplicitView_262 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_263 (), right: self.computeImplicitView_264 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_265 (), right: self.computeImplicitView_266 ())
@@ -2275,9 +2285,9 @@ import AppKit
       .addFirstBaseLineAligned (left: self.computeImplicitView_289 (), right: self.computeImplicitView_290 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_291 (), right: self.computeImplicitView_292 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_293 (), right: self.computeImplicitView_294 ())
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_3)
+    let view_4 = AutoLayoutFlexibleSpace ()
+    _ = vStackView.appendView (view_4)
     return vStackView
   }
 
@@ -6067,7 +6077,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_268 () -> NSView {
-    let view = AutoLayoutLinearSlider (min: 0, max: 255, ticks: 17)
+    let view = AutoLayoutLinearSlider (min: 0, max: 255, ticks: 9)
       .bind_intValue (self.boardImageSelectionController.mThreshold_property, sendContinously:true)
     return view
   }

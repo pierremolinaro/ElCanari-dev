@@ -101,6 +101,12 @@ import AppKit
   final let mActualHeightUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
+  //   Selection observable property: mImageDisplay
+  //····················································································································
+
+  final let mImageDisplay_property = EBComputedProperty_BoardImageDisplay ()
+
+  //····················································································································
   //   Selection observable property: mLayer
   //····················································································································
 
@@ -123,6 +129,12 @@ import AppKit
   //····················································································································
 
   final let mCenterX_property = EBComputedProperty_Int ()
+
+  //····················································································································
+  //   Selection observable property: computedDataImage
+  //····················································································································
+
+  final let computedDataImage_property = EBComputedProperty_Data ()
 
   //····················································································································
   //   Selection observable property: imageDataByteCount
@@ -219,10 +231,12 @@ import AppKit
     self.bind_property_mPixelSizeUnit ()
     self.bind_property_mActualWidthUnit ()
     self.bind_property_mActualHeightUnit ()
+    self.bind_property_mImageDisplay ()
     self.bind_property_mLayer ()
     self.bind_property_mText ()
     self.bind_property_mRotation ()
     self.bind_property_mCenterX ()
+    self.bind_property_computedDataImage ()
     self.bind_property_imageDataByteCount ()
     self.bind_property_boardImageCodeDescriptor ()
     self.bind_property_boardOriginalImageWidth ()
@@ -294,6 +308,10 @@ import AppKit
     self.mActualHeightUnit_property.mReadModelFunction = nil 
     self.mActualHeightUnit_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_mActualHeightUnit_StopsBeingObserved (by: self.mActualHeightUnit_property)
+  //--- mImageDisplay
+    self.mImageDisplay_property.mReadModelFunction = nil 
+    self.mImageDisplay_property.mWriteModelFunction = nil 
+    self.selectedArray_property.toMany_mImageDisplay_StopsBeingObserved (by: self.mImageDisplay_property)
   //--- mLayer
     self.mLayer_property.mReadModelFunction = nil 
     self.mLayer_property.mWriteModelFunction = nil 
@@ -310,6 +328,10 @@ import AppKit
     self.mCenterX_property.mReadModelFunction = nil 
     self.mCenterX_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_mCenterX_StopsBeingObserved (by: self.mCenterX_property)
+  //--- computedDataImage
+    self.computedDataImage_property.mReadModelFunction = nil 
+    self.computedDataImage_property.mWriteModelFunction = nil 
+    self.selectedArray_property.toMany_computedDataImage_StopsBeingObserved (by: self.computedDataImage_property)
   //--- imageDataByteCount
     self.imageDataByteCount_property.mReadModelFunction = nil 
     self.selectedArray_property.toMany_imageDataByteCount_StopsBeingObserved (by: self.imageDataByteCount_property)
@@ -1010,6 +1032,57 @@ import AppKit
   }
   //····················································································································
 
+  private final func bind_property_mImageDisplay () {
+    self.selectedArray_property.toMany_mImageDisplay_StartsToBeObserved (by: self.mImageDisplay_property)
+    self.mImageDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BoardImageDisplay> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mImageDisplay_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mImageDisplay_property.mWriteModelFunction = { [weak self] (inValue : BoardImageDisplay) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mImageDisplay_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+  //····················································································································
+
   private final func bind_property_mLayer () {
     self.selectedArray_property.toMany_mLayer_StartsToBeObserved (by: self.mLayer_property)
     self.mLayer_property.mReadModelFunction = { [weak self] in
@@ -1207,6 +1280,57 @@ import AppKit
         case .single (let v) :
           for object in v {
             object.mCenterX_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_computedDataImage () {
+    self.selectedArray_property.toMany_computedDataImage_StartsToBeObserved (by: self.computedDataImage_property)
+    self.computedDataImage_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Data> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.computedDataImage_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.computedDataImage_property.mWriteModelFunction = { [weak self] (inValue : Data) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.computedDataImage_property.setProp (inValue)
           }
         }
       }

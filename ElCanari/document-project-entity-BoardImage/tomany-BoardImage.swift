@@ -56,6 +56,9 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
       if let relay = self.mObserversOf_mActualHeightUnit { // Stored property
         managedObject.mActualHeightUnit_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mImageDisplay { // Stored property
+        managedObject.mImageDisplay_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_mLayer { // Stored property
         managedObject.mLayer_property.stopsBeingObserved (by: relay)
       }
@@ -101,6 +104,9 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
       if let relay = self.mObserversOf_signatureForERCChecking { // Transient property
         managedObject.signatureForERCChecking_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_computedDataImage { // Computed property
+        managedObject.computedDataImage_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
@@ -142,6 +148,9 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
       }
       if let relay = self.mObserversOf_mActualHeightUnit { // Stored property
         managedObject.mActualHeightUnit_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mImageDisplay { // Stored property
+        managedObject.mImageDisplay_property.startsToBeObserved (by: relay)
       }
       if let relay = self.mObserversOf_mLayer { // Stored property
         managedObject.mLayer_property.startsToBeObserved (by: relay)
@@ -187,6 +196,9 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
       }
       if let relay = self.mObserversOf_signatureForERCChecking { // Transient property
         managedObject.signatureForERCChecking_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_computedDataImage { // Computed property
+        managedObject.computedDataImage_property.startsToBeObserved (by: relay)
       }
     }
   }
@@ -566,6 +578,35 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   final func toMany_mActualHeightUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mActualHeightUnit?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'mImageDisplay' stored property
+  //····················································································································
+
+  private final var mObserversOf_mImageDisplay : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_mImageDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mImageDisplay {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mImageDisplay_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_mImageDisplay = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mImageDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mImageDisplay?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1001,6 +1042,35 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   final func toMany_signatureForERCChecking_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_signatureForERCChecking?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'computedDataImage' computed property
+  //····················································································································
+
+  private final var mObserversOf_computedDataImage : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_computedDataImage_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_computedDataImage {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.computedDataImage_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_computedDataImage = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_computedDataImage_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_computedDataImage?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

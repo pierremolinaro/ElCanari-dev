@@ -200,6 +200,18 @@ func enum BoardQRCodeLayer.popupTitles {
 
 //——————————————————————————————————————————————————————————————————————————————
 
+enum BoardImageDisplay {
+  original, gray, histogram
+}
+
+func enum BoardImageDisplay.popupTitles {
+  original : "Original Image" ;
+  gray : "Scaled Gray Image" ;
+  histogram : "Scaled Gray Image Histogram" ;
+}
+
+//——————————————————————————————————————————————————————————————————————————————
+
 enum BoardTextVerticalAlignment {
   above, base, center, below
 }
