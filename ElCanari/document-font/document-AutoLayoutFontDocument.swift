@@ -283,14 +283,13 @@ import AppKit
       do{
         let view_2_0_0 = AutoLayoutSegmentedControlWithPages (documentView: fontPageInspectorMasterView, equalWidth: true, size: .small)
           .expandableWidth ()
-          .addPage (title: "", tooltip: "Selected Character Inspector", pageView: selectedCharacterInspectorView)
-          .addPage (title: "", tooltip: "Sample String Inspector", pageView: sampleStringInspectorView)
+          .addPage (title: "🛠", tooltip: "Selected Character Inspector", pageView: selectedCharacterInspectorView)
+          .addPage (title: "🔍", tooltip: "Sample String Inspector", pageView: sampleStringInspectorView)
           .addPage (title: "", tooltip: "Issue Inspector", pageView: issuesInspectorView)
           .bind_selectedPage (self.rootObject.selectedInspector_property)
           .bind_segmentImage (self.statusImage_property, segmentIndex:2)
           .bind_segmentTitle (self.statusTitle_property, segmentIndex:2)
         self.mFontInspectorSegmentedControl = view_2_0_0 // Outlet
-        self.configure_fontPageSegmentedControl (view_2_0_0) // Configurator
         _ = view_2_0.appendView (view_2_0_0)
         let view_2_0_1 = AutoLayoutVerticalStackView ()
           .set (leftMargin: 20)

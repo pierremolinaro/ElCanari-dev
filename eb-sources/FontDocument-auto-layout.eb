@@ -45,10 +45,6 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainV
         }
         StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
       }
-//      vStack {
-//        hStack { space ImageObserverView (size : .regular) { $image self.statusImage $tooltip self.statusMessage } space }
-//        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
-//      }
     }
     separator
     view pageMasterView
@@ -85,10 +81,10 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainV
     hStack {
       vStack {
         SegmentedControlWithPages (documentView: view fontPageInspectorMasterView, equalWidth: yes, size: .small)
-          [outlet mFontInspectorSegmentedControl configurator fontPageSegmentedControl] {
+          [outlet mFontInspectorSegmentedControl] {
           expandableWidth ()
-          addPage (title: "", tooltip: "Selected Character Inspector", pageView: view selectedCharacterInspectorView)
-          addPage (title: "", tooltip: "Sample String Inspector", pageView: view sampleStringInspectorView)
+          addPage (title: "🛠", tooltip: "Selected Character Inspector", pageView: view selectedCharacterInspectorView)
+          addPage (title: "🔍", tooltip: "Sample String Inspector", pageView: view sampleStringInspectorView)
           addPage (title: "", tooltip: "Issue Inspector", pageView: view issuesInspectorView)
           $selectedPage root.selectedInspector
           $segmentImage self.statusImage (segmentIndex : 2)

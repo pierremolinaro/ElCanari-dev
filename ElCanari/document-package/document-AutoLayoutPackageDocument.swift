@@ -599,9 +599,9 @@ import AppKit
       do{
         let view_0_2_0 = AutoLayoutSegmentedControlWithPages (documentView: packagePageInspectorMasterView, equalWidth: true, size: .small)
           .expandableWidth ()
-          .addPage (title: "", tooltip: "Selected Object Inspector", pageView: selectedObjectsInspectorView)
-          .addPage (title: "", tooltip: "Grid / Zoom Inspector", pageView: gridZoomInspectorView)
-          .addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: displayInspectorView)
+          .addPage (title: "🛠", tooltip: "Selected Object Inspector", pageView: selectedObjectsInspectorView)
+          .addPage (title: "🔍", tooltip: "Grid / Zoom Inspector", pageView: gridZoomInspectorView)
+          .addPage (title: "🔍P", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: displayInspectorView)
           .addPage (title: "", tooltip: "Issue Inspector", pageView: issuesInspectorView)
           .bind_selectedPage (self.rootObject.selectedInspector_property)
           .bind_segmentImage (self.segmentedControlSegmentIssueImage_property, segmentIndex:3)

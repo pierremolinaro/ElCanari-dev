@@ -128,11 +128,10 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
     newView symbolPageOperationView = \SymbolPageOperationView ()
     newView symbolGridZoomInspectorView = \SymbolGridZoomInspectorView ()
     vStack set (width: 250) set (margins: 8) {
-      SegmentedControlWithPages (documentView: view symbolPageInspectorView, equalWidth: yes, size: .small)
-        [configurator symbolInspectorSegmentedControl] {
+      SegmentedControlWithPages (documentView: view symbolPageInspectorView, equalWidth: yes, size: .small) {
         expandableWidth ()
-        addPage (title: "", tooltip: "", pageView: view symbolPageOperationView)
-        addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: view symbolGridZoomInspectorView)
+        addPage (title: "🛠", tooltip: "", pageView: view symbolPageOperationView)
+        addPage (title: "🔍", tooltip: "Grid, Zoom and Display Inspector", pageView: view symbolGridZoomInspectorView)
         $selectedPage root. mSelectedSymbolInspectorIndex
       }
       vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
@@ -228,11 +227,10 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
     newView packagePageOperationView = \PackagePageOperationView ()
     newView packageGridZoomInspectorView = \PackageGridZoomInspectorView ()
     vStack set (width: 250) set (margins: 8) {
-      SegmentedControlWithPages (documentView: view packagePageInspectorView, equalWidth: yes, size: .small)
-        [configurator packageInspectorSegmentedControl] {
+      SegmentedControlWithPages (documentView: view packagePageInspectorView, equalWidth: yes, size: .small) {
         expandableWidth ()
-        addPage (title: "", tooltip: "", pageView: view packagePageOperationView)
-        addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: view packageGridZoomInspectorView)
+        addPage (title: "🛠", tooltip: "", pageView: view packagePageOperationView)
+        addPage (title: "🔍", tooltip: "Grid, Zoom and Display Inspector", pageView: view packageGridZoomInspectorView)
         $selectedPage root. mSelectedPackageInspectorIndex
       }
       vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {

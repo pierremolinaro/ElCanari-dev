@@ -294,9 +294,9 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
        SegmentedControlWithPages (documentView: view packagePageInspectorMasterView, equalWidth: yes, size : .small)
           [configurator packagePageSegmentedControl] {
           expandableWidth ()
-          addPage (title: "", tooltip: "Selected Object Inspector", pageView: view selectedObjectsInspectorView)
-          addPage (title: "", tooltip: "Grid / Zoom Inspector", pageView: view gridZoomInspectorView)
-          addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: view displayInspectorView)
+          addPage (title: "🛠", tooltip: "Selected Object Inspector", pageView: view selectedObjectsInspectorView)
+          addPage (title: "🔍", tooltip: "Grid / Zoom Inspector", pageView: view gridZoomInspectorView)
+          addPage (title: "🔍P", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: view displayInspectorView)
           addPage (title: "", tooltip: "Issue Inspector", pageView: view issuesInspectorView)
           $selectedPage root.selectedInspector
           $segmentImage self.segmentedControlSegmentIssueImage (segmentIndex : 3)

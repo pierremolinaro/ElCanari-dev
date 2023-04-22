@@ -387,10 +387,9 @@ import AppKit
     do{
       let view_0_0 = AutoLayoutSegmentedControlWithPages (documentView: symbolPageInspectorView, equalWidth: true, size: .small)
         .expandableWidth ()
-        .addPage (title: "", tooltip: "", pageView: symbolPageOperationView)
-        .addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: symbolGridZoomInspectorView)
+        .addPage (title: "🛠", tooltip: "", pageView: symbolPageOperationView)
+        .addPage (title: "🔍", tooltip: "Grid, Zoom and Display Inspector", pageView: symbolGridZoomInspectorView)
         .bind_selectedPage (self.rootObject.mSelectedSymbolInspectorIndex_property)
-      self.configure_symbolInspectorSegmentedControl (view_0_0) // Configurator
       _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()
         .set (leftMargin: 20)
@@ -513,10 +512,9 @@ import AppKit
     do{
       let view_0_0 = AutoLayoutSegmentedControlWithPages (documentView: packagePageInspectorView, equalWidth: true, size: .small)
         .expandableWidth ()
-        .addPage (title: "", tooltip: "", pageView: packagePageOperationView)
-        .addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: packageGridZoomInspectorView)
+        .addPage (title: "🛠", tooltip: "", pageView: packagePageOperationView)
+        .addPage (title: "🔍", tooltip: "Grid, Zoom and Display Inspector", pageView: packageGridZoomInspectorView)
         .bind_selectedPage (self.rootObject.mSelectedPackageInspectorIndex_property)
-      self.configure_packageInspectorSegmentedControl (view_0_0) // Configurator
       _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()
         .set (leftMargin: 20)

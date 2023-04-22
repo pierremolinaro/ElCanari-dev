@@ -107,9 +107,9 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
        SegmentedControlWithPages (documentView: view symbolPageInspectorMasterView, equalWidth: yes, size: .small)
           [outlet mSymbolInspectorSegmentedControl configurator symbolPageSegmentedControl] {
           expandableWidth ()
-          addPage (title: "", tooltip: "Selected Object Inspector", pageView: view selectedObjectsInspectorView)
-          addPage (title: "", tooltip: "Grid / Zoom Inspector", pageView: view gridZoomInspectorView)
-          addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: view displayInspectorView)
+          addPage (title: "🛠", tooltip: "Selected Object Inspector", pageView: view selectedObjectsInspectorView)
+          addPage (title: "🔍", tooltip: "Grid / Zoom Inspector", pageView: view gridZoomInspectorView)
+          addPage (title: "🔍P", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: view displayInspectorView)
           addPage (title: "", tooltip: "Issue Inspector", pageView: view issuesInspectorView)
           $selectedPage root.selectedInspector
           $segmentImage self.segmentedControlSegmentIssueImage (segmentIndex : 3)
