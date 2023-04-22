@@ -71,9 +71,6 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
       if let relay = self.mObserversOf_imageDataByteCount { // Transient property
         managedObject.imageDataByteCount_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_boardImage { // Transient property
-        managedObject.boardImage_property.stopsBeingObserved (by: relay)
-      }
       if let relay = self.mObserversOf_boardImageCodeDescriptor { // Transient property
         managedObject.boardImageCodeDescriptor_property.stopsBeingObserved (by: relay)
       }
@@ -160,9 +157,6 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
       }
       if let relay = self.mObserversOf_imageDataByteCount { // Transient property
         managedObject.imageDataByteCount_property.startsToBeObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_boardImage { // Transient property
-        managedObject.boardImage_property.startsToBeObserved (by: relay)
       }
       if let relay = self.mObserversOf_boardImageCodeDescriptor { // Transient property
         managedObject.boardImageCodeDescriptor_property.startsToBeObserved (by: relay)
@@ -717,35 +711,6 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   final func toMany_imageDataByteCount_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_imageDataByteCount?.stopsBeingObserved (by: inObserver)
-  }
-
-  //····················································································································
-  //   Observers of 'boardImage' transient property
-  //····················································································································
-
-  private final var mObserversOf_boardImage : EBObservedObserver? = nil
-
-  //····················································································································
-
-  final func toMany_boardImage_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_boardImage {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.boardImage_property.startsToBeObserved (by: relay)
-      }
-      self.mObserversOf_boardImage = relay
-    }
-    relay.startsToBeObserved (by:  inObserver)
-  }
-
-  //····················································································································
-
-  final func toMany_boardImage_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_boardImage?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

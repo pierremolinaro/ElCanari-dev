@@ -2415,9 +2415,6 @@
 		CF7FC4A329EDC2AA0045DD14 /* transient-BoardImage-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC4A229EDC2AA0045DD14 /* transient-BoardImage-signatureForERCChecking.swift */; };
 		CF7FC4A429EDC2AA0045DD14 /* transient-BoardImage-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC4A229EDC2AA0045DD14 /* transient-BoardImage-signatureForERCChecking.swift */; };
 		CF7FC4A529EDC2AA0045DD14 /* transient-BoardImage-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC4A229EDC2AA0045DD14 /* transient-BoardImage-signatureForERCChecking.swift */; };
-		CF7FC4A729EDC51B0045DD14 /* transient-BoardImage-boardImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC4A629EDC51B0045DD14 /* transient-BoardImage-boardImage.swift */; };
-		CF7FC4A829EDC51B0045DD14 /* transient-BoardImage-boardImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC4A629EDC51B0045DD14 /* transient-BoardImage-boardImage.swift */; };
-		CF7FC4A929EDC51B0045DD14 /* transient-BoardImage-boardImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC4A629EDC51B0045DD14 /* transient-BoardImage-boardImage.swift */; };
 		CF7FC4AB29EDCA620045DD14 /* BoardImageDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC4AA29EDCA620045DD14 /* BoardImageDescriptor.swift */; };
 		CF7FC4AC29EDCA620045DD14 /* BoardImageDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC4AA29EDCA620045DD14 /* BoardImageDescriptor.swift */; };
 		CF7FC4AD29EDCA620045DD14 /* BoardImageDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FC4AA29EDCA620045DD14 /* BoardImageDescriptor.swift */; };
@@ -5910,7 +5907,6 @@
 		CF7FC49A29EDBFD20045DD14 /* transient-BoardImage-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardImage-objectDisplay.swift"; sourceTree = "<group>"; };
 		CF7FC49E29EDC1070045DD14 /* transient-BoardImage-selectionDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardImage-selectionDisplay.swift"; sourceTree = "<group>"; };
 		CF7FC4A229EDC2AA0045DD14 /* transient-BoardImage-signatureForERCChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardImage-signatureForERCChecking.swift"; sourceTree = "<group>"; };
-		CF7FC4A629EDC51B0045DD14 /* transient-BoardImage-boardImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardImage-boardImage.swift"; sourceTree = "<group>"; };
 		CF7FC4AA29EDCA620045DD14 /* BoardImageDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardImageDescriptor.swift; sourceTree = "<group>"; };
 		CF7FC4B229EDDA4E0045DD14 /* transient-BoardImage-boardImageCodeDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardImage-boardImageCodeDescriptor.swift"; sourceTree = "<group>"; };
 		CF7FC4B629EDDA7F0045DD14 /* property-BoardImageDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "property-BoardImageDescriptor.swift"; sourceTree = "<group>"; };
@@ -7743,7 +7739,6 @@
 				CF7FC47A29EDB2870045DD14 /* toone-BoardImage.swift */,
 				CFDE5DA829EED60E005A5EC6 /* transient-BoardImage-boardActualImageHeight.swift */,
 				CFDE5DA929EED60E005A5EC6 /* transient-BoardImage-boardActualImageWidth.swift */,
-				CF7FC4A629EDC51B0045DD14 /* transient-BoardImage-boardImage.swift */,
 				CF7FC4B229EDDA4E0045DD14 /* transient-BoardImage-boardImageCodeDescriptor.swift */,
 				CF7FC4BA29EDDAF30045DD14 /* transient-BoardImage-boardOriginalImageHeight.swift */,
 				CF7FC4BB29EDDAF30045DD14 /* transient-BoardImage-boardOriginalImageWidth.swift */,
@@ -9823,7 +9818,6 @@
 				CFD1EAAF274EE23B000AED8E /* transient-FontRoot-sampleStringBezierPathAscent.swift in Sources */,
 				CFEDE5B61B4677C500036ACF /* EBDataScanner.swift in Sources */,
 				CF2673DC275E588E0003CB0A /* AutoLayoutComboBox.swift in Sources */,
-				CF7FC4A729EDC51B0045DD14 /* transient-BoardImage-boardImage.swift in Sources */,
 				CF1D9C7821BBEA6400FFF459 /* EBGraphicView-binding-underObjectsDisplay.swift in Sources */,
 				CF784E56275E3581001BC885 /* ProjectRoot-customized-connectors.swift in Sources */,
 				CFCD3AD021FC85FA00DE503C /* phase5-buildLibraryOperations.swift in Sources */,
@@ -11480,7 +11474,6 @@
 				CF711FFB275E1EA300280069 /* extension-SheetInProject-wires-containing-point.swift in Sources */,
 				CF5C4CF8219F04D600EAC52A /* EBDataScanner.swift in Sources */,
 				CFEB7CB2233A28860060A97A /* transient-ProjectRoot-netsDescription.swift in Sources */,
-				CF7FC4A829EDC51B0045DD14 /* transient-BoardImage-boardImage.swift in Sources */,
 				CF1D9C7921BBEA6400FFF459 /* EBGraphicView-binding-underObjectsDisplay.swift in Sources */,
 				CF49EEC0275A499500481930 /* transient-AutoLayoutFontDocument-statusMessage.swift in Sources */,
 				CFA42FF0229AEB68000AA8C8 /* toone-PackageArc.swift in Sources */,
@@ -13138,7 +13131,6 @@
 				CF9C61BA25CABE5C00A00D5C /* entity-PackageGuide.swift in Sources */,
 				CF9C61BB25CABE5C00A00D5C /* EBDataScanner.swift in Sources */,
 				CF9C61BD25CABE5C00A00D5C /* EBGraphicView-binding-underObjectsDisplay.swift in Sources */,
-				CF7FC4A929EDC51B0045DD14 /* transient-BoardImage-boardImage.swift in Sources */,
 				CF9C61BF25CABE5C00A00D5C /* phase5-buildLibraryOperations.swift in Sources */,
 				CF9C61C225CABE5C00A00D5C /* transient-ProjectRoot-netsDescription.swift in Sources */,
 				CF711CD8275E1A5200280069 /* toone-BoardTrack.swift in Sources */,

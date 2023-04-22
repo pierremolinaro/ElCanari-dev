@@ -114,12 +114,6 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardImage_boardImage : AnyObject {
-  var boardImage : NSImage? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 @MainActor protocol BoardImage_boardImageCodeDescriptor : AnyObject {
   var boardImageCodeDescriptor : BoardImageDescriptor? { get }
 }
@@ -201,7 +195,6 @@ final class BoardImage : BoardObject,
          BoardImage_mRotation,
          BoardImage_mCenterX,
          BoardImage_imageDataByteCount,
-         BoardImage_boardImage,
          BoardImage_boardImageCodeDescriptor,
          BoardImage_boardOriginalImageWidth,
          BoardImage_boardOriginalImageHeight,
@@ -549,18 +542,6 @@ final class BoardImage : BoardObject,
   }
 
   //····················································································································
-  //   Transient property: boardImage
-  //····················································································································
-
-  final let boardImage_property = EBTransientProperty_NSImage ()
-
-  //····················································································································
-
-  final var boardImage : NSImage? {
-    return self.boardImage_property.optionalValue
-  }
-
-  //····················································································································
   //   Transient property: boardImageCodeDescriptor
   //····················································································································
 
@@ -684,23 +665,6 @@ final class BoardImage : BoardObject,
       }
     }
     self.mImageData_property.startsToBeObserved (by: self.imageDataByteCount_property)
-  //--- Atomic property: boardImage
-    self.boardImage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.mImageData_property.selection
-        switch (s0) {
-        case (.single (let v0)) :
-          return .single (transient_BoardImage_boardImage (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mImageData_property.startsToBeObserved (by: self.boardImage_property)
   //--- Atomic property: boardImageCodeDescriptor
     self.boardImageCodeDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

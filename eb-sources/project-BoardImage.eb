@@ -27,8 +27,6 @@ graphic handlingOpposite entity BoardImage : BoardObject {
   property Int mRotation default 0 ; // 1000 --> 1°
 
   transient String imageDataByteCount dependsFrom self.mImageData ;
- 
-  transient NSImage boardImage dependsFrom self.mImageData ;
   
   transient BoardImageDescriptor boardImageCodeDescriptor dependsFrom
     self.mImageData, self.mThreshold, self.mInvert, self.mScale,

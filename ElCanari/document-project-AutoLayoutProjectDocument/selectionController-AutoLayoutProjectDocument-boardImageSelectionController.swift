@@ -131,12 +131,6 @@ import AppKit
   final let imageDataByteCount_property = EBTransientProperty_String ()
 
   //····················································································································
-  //   Selection observable property: boardImage
-  //····················································································································
-
-  final let boardImage_property = EBTransientProperty_NSImage ()
-
-  //····················································································································
   //   Selection observable property: boardImageCodeDescriptor
   //····················································································································
 
@@ -230,7 +224,6 @@ import AppKit
     self.bind_property_mRotation ()
     self.bind_property_mCenterX ()
     self.bind_property_imageDataByteCount ()
-    self.bind_property_boardImage ()
     self.bind_property_boardImageCodeDescriptor ()
     self.bind_property_boardOriginalImageWidth ()
     self.bind_property_boardOriginalImageHeight ()
@@ -320,9 +313,6 @@ import AppKit
   //--- imageDataByteCount
     self.imageDataByteCount_property.mReadModelFunction = nil 
     self.selectedArray_property.toMany_imageDataByteCount_StopsBeingObserved (by: self.imageDataByteCount_property)
-  //--- boardImage
-    self.boardImage_property.mReadModelFunction = nil 
-    self.selectedArray_property.toMany_boardImage_StopsBeingObserved (by: self.boardImage_property)
   //--- boardImageCodeDescriptor
     self.boardImageCodeDescriptor_property.mReadModelFunction = nil 
     self.selectedArray_property.toMany_boardImageCodeDescriptor_StopsBeingObserved (by: self.boardImageCodeDescriptor_property)
@@ -1238,45 +1228,6 @@ import AppKit
           var isMultipleSelection = false
           for object in v {
             switch object.imageDataByteCount_property.selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-  //····················································································································
-
-  private final func bind_property_boardImage () {
-    self.selectedArray_property.toMany_boardImage_StartsToBeObserved (by: self.boardImage_property)
-    self.boardImage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <NSImage> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.boardImage_property.selection {
             case .empty :
               return .empty
             case .multiple :
