@@ -86,7 +86,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : AutoLayoutBase_NSPopUpBu
         }
       }
       self.addItem (withTitle: "Exchange with")
-      let allPads = document.rootObject.packagePads.values.sorted (by: { $0.padNumber < $1.padNumber } )
+      let allPads = document.rootObject.packagePads.values.sorted { $0.padNumber < $1.padNumber }
       for pad in allPads {
         if pad.zone === myZone {
           self.addItem (withTitle: pad.padNameWithZoneName ?? "?")

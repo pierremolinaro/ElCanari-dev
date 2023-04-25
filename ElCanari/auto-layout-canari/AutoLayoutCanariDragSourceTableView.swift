@@ -131,9 +131,9 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
     if self.mTableView.sortDescriptors.count == 1 {
       let sortDescriptor = self.mTableView.sortDescriptors [0]
       if sortDescriptor.ascending {
-        self.mModelArray.sort (by: { $0.string.localizedStandardCompare ($1.string) == .orderedAscending } )
+        self.mModelArray.sort { $0.string.localizedStandardCompare ($1.string) == .orderedAscending }
       }else{
-        self.mModelArray.sort (by: { $0.string.localizedStandardCompare ($1.string) == .orderedDescending } )
+        self.mModelArray.sort { $0.string.localizedStandardCompare ($1.string) == .orderedDescending }
       }
     }
   //--- Tell Table view to reload

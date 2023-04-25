@@ -130,7 +130,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton {
     for slavePad in self.mSelectedSlavePadArray {
       masterPadSet.insert (slavePad.master!)
     }
-    self.mReferencedMasterPadArray = Array (masterPadSet.values).sorted (by: { $0.padNameWithZoneName! < $1.padNameWithZoneName!})
+    self.mReferencedMasterPadArray = Array (masterPadSet.values).sorted { $0.padNameWithZoneName! < $1.padNameWithZoneName!}
     self.buildMenu ()
   }
 
@@ -168,7 +168,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton {
         }
       }
     }
-    self.mMasterPadArray.sort (by: { $0.padNameWithZoneName! < $1.padNameWithZoneName!})
+    self.mMasterPadArray.sort { $0.padNameWithZoneName! < $1.padNameWithZoneName!}
     self.buildMenu ()
   }
 

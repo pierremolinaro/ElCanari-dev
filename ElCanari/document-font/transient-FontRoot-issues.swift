@@ -23,7 +23,7 @@ import AppKit
             issues += s
           }
         }
-        return issues.sorted (by: { $0.representativeValue < $1.representativeValue } )
+        return issues.sorted { $0.representativeValue < $1.representativeValue }
 //--- END OF USER ZONE 2
 }
 

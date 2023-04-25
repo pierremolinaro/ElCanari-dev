@@ -63,16 +63,6 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     super.ebBuildUserInterface () // Should be the last instruction
   }
 
-
-  //····················································································································
-  //   removeUserInterface
-  //····················································································································
-
-/*  override func removeUserInterface () {
-  //  self.removeImagePointsObservers ()
-    super.removeUserInterface ()
-  } */
-
   //····················································································································
   //    Drag and drop destination
   //····················································································································
@@ -317,7 +307,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     var allPads = self.rootObject.packagePads_property.propval
     let aPad = allPads.first
     var zoneDictionary = EBReferenceDictionary <PackageZone, [PackagePad]> ()
-    for zone in self.rootObject.packageZones_property.propval.values {
+    for zone in self.rootObject.packageZones.values {
       let zoneRect = zone.rect!
       var idx = 0
       while idx < allPads.count {
@@ -380,7 +370,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
         }
       }
     //--- Sort pads by pad number
-      allPads.sort (by: { $0.padNumber < $1.padNumber } )
+      allPads.sort { $0.padNumber < $1.padNumber }
     case .counterClock :
       if allPads.count > 0 {
         var xMin = Int.max
@@ -403,24 +393,24 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
         }
         let center = CanariPoint (x: (xMin + xMax) / 2, y: (yMin + yMax) / 2)
         let startAngle = CGFloat (self.rootObject.counterClockNumberingStartAngle) * .pi / 180.0
-        allPads.sort (by: { $0.angleInRadian (from: center, from: startAngle) < $1.angleInRadian (from: center, from: startAngle) } )
+        allPads.sort { $0.angleInRadian (from: center, from: startAngle) < $1.angleInRadian (from: center, from: startAngle) }
       }
     case .upRight :
-      allPads.sort (by: { ($0.yCenter > $1.yCenter) || (($0.yCenter == $1.yCenter) && ($0.xCenter > $1.xCenter)) } )
+      allPads.sort { ($0.yCenter > $1.yCenter) || (($0.yCenter == $1.yCenter) && ($0.xCenter > $1.xCenter)) }
     case .upLeft :
-      allPads.sort (by: { ($0.yCenter > $1.yCenter) || (($0.yCenter == $1.yCenter) && ($0.xCenter < $1.xCenter)) } )
+      allPads.sort { ($0.yCenter > $1.yCenter) || (($0.yCenter == $1.yCenter) && ($0.xCenter < $1.xCenter)) }
     case .downRight :
-      allPads.sort (by: { ($0.yCenter < $1.yCenter) || (($0.yCenter == $1.yCenter) && ($0.xCenter > $1.xCenter)) } )
+      allPads.sort { ($0.yCenter < $1.yCenter) || (($0.yCenter == $1.yCenter) && ($0.xCenter > $1.xCenter)) }
     case .downLeft :
-      allPads.sort (by: { ($0.yCenter < $1.yCenter) || (($0.yCenter == $1.yCenter) && ($0.xCenter < $1.xCenter)) } )
+      allPads.sort { ($0.yCenter < $1.yCenter) || (($0.yCenter == $1.yCenter) && ($0.xCenter < $1.xCenter)) }
     case .rightUp :
-      allPads.sort (by: { ($0.xCenter > $1.xCenter) || (($0.xCenter == $1.xCenter) && ($0.yCenter < $1.yCenter)) } )
+      allPads.sort { ($0.xCenter > $1.xCenter) || (($0.xCenter == $1.xCenter) && ($0.yCenter < $1.yCenter)) }
     case .rightDown :
-      allPads.sort (by: { ($0.xCenter > $1.xCenter) || (($0.xCenter == $1.xCenter) && ($0.yCenter > $1.yCenter)) } )
+      allPads.sort { ($0.xCenter > $1.xCenter) || (($0.xCenter == $1.xCenter) && ($0.yCenter > $1.yCenter)) }
     case .leftUp :
-      allPads.sort (by: { ($0.xCenter < $1.xCenter) || (($0.xCenter == $1.xCenter) && ($0.yCenter < $1.yCenter)) } )
+      allPads.sort { ($0.xCenter < $1.xCenter) || (($0.xCenter == $1.xCenter) && ($0.yCenter < $1.yCenter)) }
     case .leftDown :
-      allPads.sort (by: { ($0.xCenter < $1.xCenter) || (($0.xCenter == $1.xCenter) && ($0.yCenter > $1.yCenter)) } )
+      allPads.sort { ($0.xCenter < $1.xCenter) || (($0.xCenter == $1.xCenter) && ($0.yCenter > $1.yCenter)) }
     }
   //--- Set pad numbers from 1
     var idx = 1

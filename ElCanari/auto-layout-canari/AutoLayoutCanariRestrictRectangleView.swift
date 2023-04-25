@@ -50,7 +50,7 @@ final class AutoLayoutCanariRestrictRectangleView : AutoLayoutVerticalStackView 
                                                _ inInner4Model : EBReadWriteProperty_Bool) -> Self {
     self.mModelObserver = EBObservablePropertyController (
       observedObjects: [inFrontModel, inBackModel, inInner1Model, inInner2Model, inInner3Model, inInner4Model],
-      callBack: { self.deferredUpdateCheckboxes (nil) }
+      callBack: { [weak self] in self?.deferredUpdateCheckboxes (nil) }
     )
 
     _ = self.mFrontLayerCheckBox.bind_value (inFrontModel)
