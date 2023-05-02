@@ -11,7 +11,7 @@ extension EBGraphicView {
   //····················································································································
 
   final override func mouseDown (with inEvent : NSEvent) {
-    if let viewController = self.viewController {
+    if let controller = self.mViewController {
       NSCursor.arrow.set ()
       let unalignedMouseDownLocationInView = self.convert (inEvent.locationInWindow, from: nil)
       if let mouseDownInterceptor = self.mMouseDownInterceptor, mouseDownInterceptor (unalignedMouseDownLocationInView) {
@@ -23,19 +23,19 @@ extension EBGraphicView {
         let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontObject (at: unalignedMouseDownLocationInView)
         switch (modifierFlagsContainsControl, modifierFlagsContainsShift, modifierFlagsContainsOption) {
         case (true, true, false) : // Ctrl Key On, shift, no option -> Zoom region
-          self.mMouseDownBehaviour = ZoomRegionBehaviour (unalignedMouseDownLocationInView, viewController)
+          self.mMouseDownBehaviour = ZoomRegionBehaviour (unalignedMouseDownLocationInView, controller)
         case (true, false, false) : // Ctrl Key On, no shift -> Contextual click
           if let theMenu = self.mContextualMenuBuilder? (unalignedMouseDownLocationInView.canariPoint) {
             NSMenu.popUpContextMenu (theMenu, with: inEvent, for: self)
           }
         case (false, true, false) : // Shift Key
           self.guideFor (possibleObjectIndex: possibleObjectIndex)
-          self.mMouseDownBehaviour = ShiftMouseDownBehaviour (unalignedMouseDownLocationInView, possibleObjectIndex, viewController)
+          self.mMouseDownBehaviour = ShiftMouseDownBehaviour (unalignedMouseDownLocationInView, possibleObjectIndex, controller)
         case (_, _, true) : // Option Key On
-          if let pbType = self.pasteboardType, self.usesOptionKeyForDuplicatingSelectedObjects {
+          if let pbType = self.mPasteboardType, self.mUsesOptionKeyForDuplicatingSelectedObjects {
             self.ebStartDragging (with: inEvent, dragType: pbType)
           }else{
-            self.mMouseDownBehaviour = OptionMouseDownBehaviour (unalignedMouseDownLocationInView, self, viewController)
+            self.mMouseDownBehaviour = OptionMouseDownBehaviour (unalignedMouseDownLocationInView, self, controller)
           }
         case (false, false, false) : // No Modifier Key
           self.guideFor (possibleObjectIndex: possibleObjectIndex)
@@ -45,10 +45,10 @@ extension EBGraphicView {
               objectIndex: objectIndex,
               possibleKnobIndex: possibleKnobIndex,
               self,
-              viewController
+              controller
             )
           }else{
-            self.mMouseDownBehaviour = MouseDownOutsideAnyObjectBehaviour (unalignedMouseDownLocationInView, viewController)
+            self.mMouseDownBehaviour = MouseDownOutsideAnyObjectBehaviour (unalignedMouseDownLocationInView, controller)
           }
         }
       //--- Update helper string
@@ -62,7 +62,7 @@ extension EBGraphicView {
   final override func mouseDragged (with inEvent : NSEvent) {
     super.mouseDragged (with: inEvent)
     let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
-    let locationOnGridInView = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
+    let locationOnGridInView = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mMouseGridInCanariUnit))
     self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
     self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation: unalignedLocationInView, inEvent.modifierFlags, self)
     self.setHelperTextField (self.mMouseDownBehaviour.helperString (unalignedLocationInView, inEvent.modifierFlags, self))
@@ -92,7 +92,7 @@ extension EBGraphicView {
                          proposedAlignedTranslation inProposedAlignedTranslation: CanariPoint,
                          alignedLastMouseDraggedLocation inAlignedLastMouseDraggedLocation : CanariPoint,
                          unalignedLastMouseDraggedLocation inUnalignedLastMouseDraggedLocation : CanariPoint) {
-    let objects = self.viewController?.graphicObjectArray ?? []
+    let objects = self.mViewController?.graphicObjectArray ?? []
 //    let shift = NSApplication.shared.currentEvent?.modifierFlags.contains (.shift) ?? false
     let shift = NSEvent.modifierFlags.contains (.shift)
     if let knobIndex = inPossibleKnobIndex { // Mode knob
@@ -129,7 +129,7 @@ extension EBGraphicView {
   final fileprivate func dragSelection (_ proposedTranslation: CanariPoint, _ lastMouseDraggedLocation : CanariPoint) {
     var dx = proposedTranslation.x
     var dy = proposedTranslation.y
-    if let controller = self.viewController {
+    if let controller = self.mViewController {
       for object in controller.selectedGraphicObjectSet.values {
         let p = object.acceptedTranslation (xBy: dx, yBy: dy)
         dx = p.x
@@ -165,7 +165,7 @@ extension EBGraphicView {
         possibleObjectIndex = idx
       }
     }
-    let objects = self.objectDisplayArray
+    let objects = self.mObjectDisplayArray
     idx = objects.count
     while (idx > 0) && (possibleObjectIndex == nil) {
       idx -= 1
@@ -192,7 +192,7 @@ extension EBGraphicView {
   final func indexesOfObjects (intersecting inRect : NSRect) -> Set <Int> {
     var result = Set <Int> ()
     var idx = 0
-    for object in self.objectDisplayArray {
+    for object in self.mObjectDisplayArray {
       if object.intersects (rect: inRect) {
         result.insert (idx)
       }
@@ -209,7 +209,7 @@ extension EBGraphicView {
     self.mMouseMovedOrFlagsChangedCallback? (unalignedLocationInView)
     self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation: unalignedLocationInView, inEvent.modifierFlags, self)
   //--- XY
-    let locationOnGridInView = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
+    let locationOnGridInView = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mMouseGridInCanariUnit))
     self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
   //--- Helper string
     self.setHelperTextField (self.mMouseDownBehaviour.helperString (unalignedLocationInView, inEvent.modifierFlags, self))
@@ -223,7 +223,7 @@ extension EBGraphicView {
     let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontObject (at: inLocation)
     if let objectIndex = possibleObjectIndex,
        let knobIndex = possibleKnobIndex,
-       let object = self.viewController?.graphicObjectArray [objectIndex],
+       let object = self.mViewController?.graphicObjectArray [objectIndex],
        let newCursor = object.cursorForKnob (knob: knobIndex) {
          newCursor.set ()
     }else{

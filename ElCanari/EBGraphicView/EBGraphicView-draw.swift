@@ -31,7 +31,7 @@ extension EBGraphicView {
     }
     self.drawGrid (inDirtyRect)
     self.mUnderObjectsDisplay.draw (inDirtyRect)
-    for object in self.objectDisplayArray {
+    for object in self.mObjectDisplayArray {
       object.draw (inDirtyRect)
     }
     self.mOverObjectsDisplay.draw (inDirtyRect)

@@ -37,7 +37,8 @@ let BUGFIXES : [String] = [
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Génération de QR Codes"
+  "Ajout de QR Codes sur le circuit imprimé",
+  "Ajout d'images sur le circuit imprimé"
 ]
 
 //--------------------------------------------------------------------------------------------------

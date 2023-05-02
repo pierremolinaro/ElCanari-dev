@@ -2045,23 +2045,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addSeparator ()
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Threshold", bold: no, size: .small, alignment: .right),
-        right: LinearSlider (min: 0, max: 255, ticks: 9) { $intValue #boardImageSelectionController.mThreshold (sendContinously:yes) }
-      )
-      addFirstBaseLineAligned (
-        left: space,
-        right: Checkbox (title: "Invert", size: .small) { $value #boardImageSelectionController.mInvert }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right),
-        right: Checkbox (title: "Horizontal", size: .small) { $value #boardImageSelectionController.mHorizontalFlip }
-      )
-      addFirstBaseLineAligned (
-        left: space,
-        right: Checkbox (title: "Vertical", size: .small) { $value #boardImageSelectionController.mVerticalFlip }
-      )
-      addSeparator ()
-      addFirstBaseLineAligned (
         left: StaticLabel (title: "Scale", bold: no, size: .small, alignment: .right),
         right: DoubleField (width: 64, size: .small) { $value #boardImageSelectionController.mScale (sendContinously: no) }
       )
@@ -2078,6 +2061,23 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           set (alignment: .left)
           $title #boardImageSelectionController.boardScaledImageHeight
         }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Threshold", bold: no, size: .small, alignment: .right),
+        right: LinearSlider (min: 0, max: 255, ticks: 9) { $intValue #boardImageSelectionController.mThreshold (sendContinously:yes) }
+      )
+      addFirstBaseLineAligned (
+        left: space,
+        right: Checkbox (title: "Invert", size: .small) { $value #boardImageSelectionController.mInvert }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right),
+        right: Checkbox (title: "Horizontal", size: .small) { $value #boardImageSelectionController.mHorizontalFlip }
+      )
+      addFirstBaseLineAligned (
+        left: space,
+        right: Checkbox (title: "Vertical", size: .small) { $value #boardImageSelectionController.mVerticalFlip }
       )
       addSeparator ()
       addFirstBaseLineAligned (

@@ -159,7 +159,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   // MARK: -
   //····················································································································
 
-  var mMouseMovedOrFlagsChangedCallback : Optional < (_ inMouseUnalignedLocation : NSPoint) -> Void> = nil
+   private(set) var mMouseMovedOrFlagsChangedCallback : Optional < (_ inMouseUnalignedLocation : NSPoint) -> Void> = nil
 
   //····················································································································
 
@@ -188,7 +188,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   // MARK: -
   //····················································································································
 
-  var mMouseExitCallback : Optional < () -> Void> = nil
+  private(set) var mMouseExitCallback : Optional < () -> Void> = nil
 
   //····················································································································
 
@@ -200,7 +200,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   // MARK: -
   //····················································································································
 
-  var mKeyDownCallback : Optional < (_ inMouseLocation : NSPoint, _ inKey : UnicodeScalar) -> Void> = nil
+  private(set) var mKeyDownCallback : Optional < (_ inMouseLocation : NSPoint, _ inKey : UnicodeScalar) -> Void> = nil
 
   //····················································································································
 
@@ -212,11 +212,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   // MARK: -
   //····················································································································
 
-  private weak var mViewController : EBGraphicViewControllerProtocol? = nil // SOULD BE WEAK
-
-  //····················································································································
-
-  var viewController : EBGraphicViewControllerProtocol? { return self.mViewController }
+  private(set) weak var mViewController : EBGraphicViewControllerProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -229,15 +225,6 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   func objectWithIndexIsSelected (_ inIndex : Int) -> Bool {
     return self.mViewController?.selectedIndexesSet.contains (inIndex) ?? false
   }
-
-  //····················································································································
-
-//  final func selectObject (at inLocationInView : NSPoint) {
-//    let (possibleObjectIndex, _) = self.indexOfFrontObject (at: inLocationInView)
-//    if let objectIndex = possibleObjectIndex {
-//      self.mViewController?.setSelection (objectsWithIndexes: [objectIndex])
-//    }
-//  }
 
   //····················································································································
   // MARK: -
@@ -305,11 +292,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   // MARK: -
   //····················································································································
 
-  private var mArrowKeyMagnitude : Int = 0 // milsToCanariUnit (fromInt: 25)
-
-  //····················································································································
-
-  var arrowKeyMagnitude : Int { return self.mArrowKeyMagnitude }
+  private(set) var mArrowKeyMagnitude : Int = 0
 
   //····················································································································
 
@@ -325,11 +308,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   // MARK: -
   //····················································································································
 
-  private var mShiftArrowKeyMagnitude : Int = 0 // milsToCanariUnit (fromInt: 100)
-
-  //····················································································································
-
-  var shiftArrowKeyMagnitude : Int { return self.mShiftArrowKeyMagnitude }
+  private(set) var mShiftArrowKeyMagnitude : Int = 0
 
  //····················································································································
 
@@ -362,7 +341,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   // MARK: -
   //····················································································································
 
-  private var mObjectDisplayArray = [EBShape] () {
+  private(set) var mObjectDisplayArray = [EBShape] () {
     didSet {
       if self.mObjectDisplayArray != oldValue {
         self.noteInvalidRectangles (old: oldValue, new: self.mObjectDisplayArray)
@@ -371,10 +350,6 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
       }
     }
   }
-
-  //····················································································································
-
-  var objectDisplayArray : [EBShape] { return mObjectDisplayArray }
 
   //····················································································································
 
@@ -418,11 +393,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   // MARK: -
   //····················································································································
 
-  fileprivate var mMouseGridInCanariUnit : Int = 1 // No grid for mouse
-
-  //····················································································································
-
-  var mouseGridInCanariUnit : Int { return mMouseGridInCanariUnit }
+  fileprivate(set) var mMouseGridInCanariUnit : Int = 1 // No grid for mouse
 
   //····················································································································
 
@@ -438,11 +409,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   // MARK: -
   //····················································································································
 
-  private var mPasteboardType : NSPasteboard.PasteboardType? = nil
-
-  //····················································································································
-
-  var pasteboardType : NSPasteboard.PasteboardType? { return self.mPasteboardType }
+  private(set) var mPasteboardType : NSPasteboard.PasteboardType? = nil
 
   //····················································································································
 
@@ -532,7 +499,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   // MARK: -
   //····················································································································
 
-  var mXPlacardUnit = 2286 // mils
+  private(set) var mXPlacardUnit = 2286 // mils
 
   //····················································································································
 
@@ -548,7 +515,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   // MARK: -
   //····················································································································
 
-  var mYPlacardUnit = 2286 // mils
+  private(set) var mYPlacardUnit = 2286 // mils
 
   //····················································································································
 
@@ -807,13 +774,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   // USES OPTION KEY FOR DUPLICATING SELECTED OBJECTS
   //····················································································································
 
-  private var mUsesOptionKeyForDuplicatingSelectedObjects = true
-
-  //····················································································································
-
-  var usesOptionKeyForDuplicatingSelectedObjects : Bool {
-     return self.mUsesOptionKeyForDuplicatingSelectedObjects
-  }
+  private(set) var mUsesOptionKeyForDuplicatingSelectedObjects = true
 
   //····················································································································
 

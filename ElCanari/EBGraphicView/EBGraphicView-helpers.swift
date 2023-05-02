@@ -142,7 +142,7 @@ extension EBGraphicView {
       let rectInScreen = NSRect (origin: mouseLocationInScreen, size: NSSize ())
       let rectInWindow = myWindow.convertFromScreen (rectInScreen)
       let mouseLocationInView = self.convert (rectInWindow.origin, from: nil)
-      let locationOnGridInView = mouseLocationInView.aligned (onGrid: canariUnitToCocoa (self.arrowKeyMagnitude))
+      let locationOnGridInView = mouseLocationInView.aligned (onGrid: canariUnitToCocoa (self.mArrowKeyMagnitude))
       self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
     }
   }
@@ -165,7 +165,7 @@ extension EBGraphicView {
     case (false, true, false) : // Shift Key
       helperString = "SHIFT: mouse down complements selection of objects intersecting selection rectangle"
     case (_, _, true) : // Option Key On
-      if let _ = self.pasteboardType {
+      if let _ = self.mPasteboardType {
         helperString = "OPTION: mouse down starts duplication of selected objects"
       }else if let s = self.mHelperStringForOptionModifier {
         helperString = s

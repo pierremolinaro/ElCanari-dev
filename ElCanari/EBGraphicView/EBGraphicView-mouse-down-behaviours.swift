@@ -63,7 +63,7 @@ final class MouseDownOutsideAnyObjectBehaviour : DefaultBehaviourOnMouseDown { /
       let r = NSRect (point: self.mMouseDownUnalignedLocation, point: inMouseDraggedUnalignedLocation)
       inGraphicView.mSelectionRectangle = r
       let indexSet : Set <Int> = inGraphicView.indexesOfObjects (intersecting: r)
-      inGraphicView.viewController?.setSelection (objectsWithIndexes: Array (indexSet))
+      inGraphicView.mViewController?.setSelection (objectsWithIndexes: Array (indexSet))
     }
   }
 
@@ -84,7 +84,7 @@ final class MouseDownOutsideAnyObjectBehaviour : DefaultBehaviourOnMouseDown { /
   override func abortMouseOperation (_ inGraphicView : EBGraphicView) {
     self.mOperationInProgress = false
     inGraphicView.mSelectionRectangle = nil
-    inGraphicView.viewController?.setSelection (objectsWithIndexes: [])
+    inGraphicView.mViewController?.setSelection (objectsWithIndexes: [])
   }
 
   //····················································································································
@@ -111,7 +111,7 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
         _ inGraphicView : EBGraphicView,
         _ inViewController : EBGraphicViewControllerProtocol) {
     self.mLastMouseDraggedUnalignedLocation = inUnalignedLocation
-    self.mLastMouseDraggedAlignedLocation = inUnalignedLocation.canariPointAligned (onCanariGrid: inGraphicView.mouseGridInCanariUnit)
+    self.mLastMouseDraggedAlignedLocation = inUnalignedLocation.canariPointAligned (onCanariGrid: inGraphicView.mMouseGridInCanariUnit)
     self.mObjectIndex = inObjectIndex
     let objectWasSelected = inViewController.selectedIndexesSet.contains (inObjectIndex)
     if !objectWasSelected {
@@ -131,14 +131,14 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
       x: inMouseDraggedUnalignedLocation.x - self.mLastMouseDraggedUnalignedLocation.x,
       y: inMouseDraggedUnalignedLocation.y - self.mLastMouseDraggedUnalignedLocation.y
     )
-    let mouseDraggedCanariAlignedLocation = inMouseDraggedUnalignedLocation.canariPointAligned (onCanariGrid: inGraphicView.mouseGridInCanariUnit)
+    let mouseDraggedCanariAlignedLocation = inMouseDraggedUnalignedLocation.canariPointAligned (onCanariGrid: inGraphicView.mMouseGridInCanariUnit)
     let proposedAlignedTranslation = CanariPoint (
       x: mouseDraggedCanariAlignedLocation.x - self.mLastMouseDraggedAlignedLocation.x,
       y: mouseDraggedCanariAlignedLocation.y - self.mLastMouseDraggedAlignedLocation.y
     )
     if !self.mBeginUndoGroupingDone {
       self.mBeginUndoGroupingDone = true
-      inGraphicView.viewController?.undoManager?.beginUndoGrouping ()
+      inGraphicView.mViewController?.undoManager?.beginUndoGrouping ()
     }
     inGraphicView.guideFor (objectIndexes: [self.mObjectIndex])
     inGraphicView.dragObject (
@@ -165,7 +165,7 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
   override func onMouseUp (_ inUnalignedMouseUpLocation : NSPoint,
                            _ inGraphicView : EBGraphicView) {
     if self.mBeginUndoGroupingDone {
-      inGraphicView.viewController?.undoManager?.endUndoGrouping ()
+      inGraphicView.mViewController?.undoManager?.endUndoGrouping ()
     }
   }
 
@@ -202,7 +202,7 @@ final class ShiftMouseDownBehaviour : DefaultBehaviourOnMouseDown { // Mouse dow
     let r = NSRect (point: self.mMouseDownUnalignedLocation, point: inMouseDraggedUnalignedLocation)
     inGraphicView.mSelectionRectangle = r
     let indexSet : Set <Int> = inGraphicView.indexesOfObjects (intersecting: r)
-    inGraphicView.viewController?.setSelection (objectsWithIndexes: Array (indexSet.symmetricDifference (self.mSelectedObjectIndexSet)))
+    inGraphicView.mViewController?.setSelection (objectsWithIndexes: Array (indexSet.symmetricDifference (self.mSelectedObjectIndexSet)))
   }
 
   //····················································································································
@@ -254,8 +254,8 @@ final class OptionMouseDownBehaviour : DefaultBehaviourOnMouseDown { // Mouse do
     if self.mOperationInProgress {
       self.mOperationInProgress = false
       inGraphicView.mAbortOptionMouseOperationCallback? ()
-      inGraphicView.viewController?.undoManager?.endUndoGrouping ()
-      inGraphicView.viewController?.undoManager?.undo ()
+      inGraphicView.mViewController?.undoManager?.endUndoGrouping ()
+      inGraphicView.mViewController?.undoManager?.undo ()
     }
   }
 
@@ -279,9 +279,9 @@ final class OptionMouseDownBehaviour : DefaultBehaviourOnMouseDown { // Mouse do
                            _ inGraphicView : EBGraphicView) {
     if self.mOperationInProgress {
       let accepts = inGraphicView.mStopOptionMouseUpCallback? (inUnalignedMouseUpLocation) ?? true
-      inGraphicView.viewController?.undoManager?.endUndoGrouping ()
+      inGraphicView.mViewController?.undoManager?.endUndoGrouping ()
       if !accepts {
-        inGraphicView.viewController?.undoManager?.undo ()
+        inGraphicView.mViewController?.undoManager?.undo ()
       }
     }
   }

@@ -22,7 +22,7 @@ extension EBGraphicView {
   //····················································································································
 
   final func guideFor (objectIndexes inIndexSet : Set <Int>) {
-    let alignmentPointSetArray = self.viewController?.alignmentPointSetArray () ?? []
+    let alignmentPointSetArray = self.mViewController?.alignmentPointSetArray () ?? []
     let bp = NSBezierPath ()
     for index in inIndexSet {
       let objectAlignmentPoints = alignmentPointSetArray [index]

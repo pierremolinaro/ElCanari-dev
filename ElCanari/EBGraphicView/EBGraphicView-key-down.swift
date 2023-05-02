@@ -17,8 +17,8 @@ extension EBGraphicView {
        !inEvent.modifierFlags.contains (.control),
        !inEvent.modifierFlags.contains (.command) {
       let amount : Int = inEvent.modifierFlags.contains (.shift)
-        ? self.shiftArrowKeyMagnitude
-        : self.arrowKeyMagnitude
+        ? self.mShiftArrowKeyMagnitude
+        : self.mArrowKeyMagnitude
       for character in characters.unicodeScalars {
         switch (character) {
         case NSEvent.SpecialKey (rawValue: 27).unicodeScalar : // Escape
@@ -54,7 +54,7 @@ extension EBGraphicView {
       NSSound.beep ()
     }else{
       accepted = true
-      if let controller = self.viewController {
+      if let controller = self.mViewController {
         for object in controller.selectedGraphicObjectSet.values {
           if !object.acceptToTranslate (xBy: inDx, yBy: inDy) {
             accepted = false

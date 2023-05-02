@@ -2271,8 +2271,8 @@ import AppKit
       .addFirstBaseLineAligned (left: self.computeImplicitView_267 (), right: self.computeImplicitView_268 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_269 (), right: self.computeImplicitView_270 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_271 (), right: self.computeImplicitView_272 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_273 (), right: self.computeImplicitView_274 ())
       .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_273 (), right: self.computeImplicitView_274 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_275 (), right: self.computeImplicitView_276 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_277 (), right: self.computeImplicitView_278 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_279 (), right: self.computeImplicitView_280 ())
@@ -6068,7 +6068,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_267 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Threshold", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Scale", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6077,8 +6077,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_268 () -> NSView {
-    let view = AutoLayoutLinearSlider (min: 0, max: 255, ticks: 9)
-      .bind_intValue (self.boardImageSelectionController.mThreshold_property, sendContinously:true)
+    let view = AutoLayoutDoubleField (width: 64, size: .small)
+      .bind_value (self.boardImageSelectionController.mScale_property, sendContinously:false)
     return view
   }
 
@@ -6087,7 +6087,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_269 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
+    let view = AutoLayoutStaticLabel (title: "Scaled Image Width", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6096,8 +6096,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_270 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Invert", size: .small)
-      .bind_value (self.boardImageSelectionController.mInvert_property)
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .set (alignment: .left)
+      .bind_title (self.boardImageSelectionController.boardScaledImageWidth_property)
     return view
   }
 
@@ -6106,7 +6107,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_271 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Scaled Image Height", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6115,8 +6116,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_272 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
-      .bind_value (self.boardImageSelectionController.mHorizontalFlip_property)
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .set (alignment: .left)
+      .bind_title (self.boardImageSelectionController.boardScaledImageHeight_property)
     return view
   }
 
@@ -6125,7 +6127,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_273 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
+    let view = AutoLayoutStaticLabel (title: "Threshold", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6134,8 +6136,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_274 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
-      .bind_value (self.boardImageSelectionController.mVerticalFlip_property)
+    let view = AutoLayoutLinearSlider (min: 0, max: 255, ticks: 9)
+      .bind_intValue (self.boardImageSelectionController.mThreshold_property, sendContinously:true)
     return view
   }
 
@@ -6144,7 +6146,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_275 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Scale", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -6153,8 +6155,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_276 () -> NSView {
-    let view = AutoLayoutDoubleField (width: 64, size: .small)
-      .bind_value (self.boardImageSelectionController.mScale_property, sendContinously:false)
+    let view = AutoLayoutCheckbox (title: "Invert", size: .small)
+      .bind_value (self.boardImageSelectionController.mInvert_property)
     return view
   }
 
@@ -6163,7 +6165,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_277 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Scaled Image Width", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6172,9 +6174,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_278 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .set (alignment: .left)
-      .bind_title (self.boardImageSelectionController.boardScaledImageWidth_property)
+    let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
+      .bind_value (self.boardImageSelectionController.mHorizontalFlip_property)
     return view
   }
 
@@ -6183,7 +6184,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_279 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Scaled Image Height", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -6192,9 +6193,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_280 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .set (alignment: .left)
-      .bind_title (self.boardImageSelectionController.boardScaledImageHeight_property)
+    let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
+      .bind_value (self.boardImageSelectionController.mVerticalFlip_property)
     return view
   }
 

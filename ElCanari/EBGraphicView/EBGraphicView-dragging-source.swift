@@ -24,8 +24,8 @@ extension EBGraphicView : NSDraggingSource {
     if let objectIndex = possibleObjectIndex {
     //--- Build dragged object set
       var draggedObjectSet = EBReferenceSet <EBGraphicManagedObject> ()
-      let objectArray = self.viewController?.graphicObjectArray ?? []
-      let selectedObjectSet = self.viewController?.selectedGraphicObjectSet ?? EBReferenceSet <EBGraphicManagedObject> ()
+      let objectArray = self.mViewController?.graphicObjectArray ?? []
+      let selectedObjectSet = self.mViewController?.selectedGraphicObjectSet ?? EBReferenceSet <EBGraphicManagedObject> ()
       if selectedObjectSet.contains (objectArray [objectIndex]) { // Clic on a selected object: drag selection
         draggedObjectSet = selectedObjectSet
       }else{ // Object is not selected: drag only this object
@@ -47,7 +47,7 @@ extension EBGraphicView : NSDraggingSource {
     let pasteboardItem = NSPasteboardItem ()
     let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
   //--- Buils image and data
-    let objectArray = self.viewController?.graphicObjectArray ?? []
+    let objectArray = self.mViewController?.graphicObjectArray ?? []
     var displayShape = EBShape ()
     var objectDictionaryArray = [[String : Any]] ()
     var objectAdditionalDictionaryArray = [[String : Any]] ()

@@ -22,7 +22,7 @@ extension EBGraphicView {
 
   final func defineToolTips () {
     self.removeAllToolTips ()
-    for shape in self.objectDisplayArray {
+    for shape in self.mObjectDisplayArray {
       shape.installToolTips (toView: self)
     }
   }
