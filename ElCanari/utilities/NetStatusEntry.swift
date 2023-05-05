@@ -20,10 +20,10 @@ enum Status : UInt, Hashable {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   NetStatusEntry
+//   SubnetDescriptor
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct NetStatusEntry : Hashable {
+struct SubnetDescriptor : Hashable {
   let status : Status
   let showExactlyOneLabelMessage : Bool
   let pins : [NetPinInSchematics]
@@ -56,6 +56,6 @@ struct NetLabelInSchematics : Hashable {
 //   NetStatusEntryArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias NetStatusEntryArray = [NetStatusEntry]
+//typealias NetStatusEntryArray = [SubnetDescriptor]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

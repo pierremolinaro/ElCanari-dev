@@ -26,6 +26,11 @@ graphic handlingOpposite entity WireInSchematic : SchematicObject {
   transient String netClassName dependsFrom self.mP1.one.netClassName ;
   
   transient Bool hasNet dependsFrom self.mP1.one.hasNet ;
+  
+  override transient CanariWireArray wires dependsFrom
+    self.mP1.one.location,
+    self.mP2.one.location
+  ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

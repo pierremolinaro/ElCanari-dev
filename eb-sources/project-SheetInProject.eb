@@ -8,8 +8,14 @@ handlingOpposite entity SheetInProject {
   toMany PointInSchematic mPoints inverse toOne mSheet ;
 
   property String mSheetTitle default "" ;
+
+  toMany proxy NetClassInProject netClasses : mRoot.mNetClasses ;
   
-  transient CanariIssueArray issues dependsFrom self.mPoints.all.status ;
+  transient CanariIssueArray issues dependsFrom
+    self.mPoints.all.status,
+    self.mObjects.all.wires,
+    prefs.symbolDrawingWidthMultipliedByTenForSchematic
+  ;
 
   transient EBShape connectedPoints dependsFrom
     prefs.connectionColorForSchematic,

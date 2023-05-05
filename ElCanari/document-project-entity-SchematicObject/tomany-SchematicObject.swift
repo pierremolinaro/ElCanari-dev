@@ -23,6 +23,9 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
       if let relay = self.mObserversOf_connectedPoints { // Transient property
         managedObject.connectedPoints_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_wires { // Transient property
+        managedObject.wires_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_sheetDescriptor { // Transient property
         managedObject.sheetDescriptor_property.stopsBeingObserved (by: relay)
       }
@@ -43,6 +46,9 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
       }
       if let relay = self.mObserversOf_connectedPoints { // Transient property
         managedObject.connectedPoints_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_wires { // Transient property
+        managedObject.wires_property.startsToBeObserved (by: relay)
       }
       if let relay = self.mObserversOf_sheetDescriptor { // Transient property
         managedObject.sheetDescriptor_property.startsToBeObserved (by: relay)
@@ -115,6 +121,35 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
 
   final func toMany_connectedPoints_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_connectedPoints?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'wires' transient property
+  //····················································································································
+
+  private final var mObserversOf_wires : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_wires_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_wires {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.wires_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_wires = relay
+    }
+    relay.startsToBeObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_wires_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_wires?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

@@ -53,6 +53,12 @@ import AppKit
   final let hasNet_property = EBTransientProperty_Bool ()
 
   //····················································································································
+  //   Selection observable property: wires
+  //····················································································································
+
+  final let wires_property = EBTransientProperty_CanariWireArray ()
+
+  //····················································································································
   //   Selected array (not observable)
   //····················································································································
 
@@ -73,6 +79,7 @@ import AppKit
     self.bind_property_netName ()
     self.bind_property_netClassName ()
     self.bind_property_hasNet ()
+    self.bind_property_wires ()
   }
 
   //····················································································································
@@ -96,6 +103,9 @@ import AppKit
   //--- hasNet
     self.hasNet_property.mReadModelFunction = nil 
     self.selectedArray_property.toMany_hasNet_StopsBeingObserved (by: self.hasNet_property)
+  //--- wires
+    self.wires_property.mReadModelFunction = nil 
+    self.selectedArray_property.toMany_wires_StopsBeingObserved (by: self.wires_property)
   } */
 
   //····················································································································
@@ -270,6 +280,45 @@ import AppKit
           var isMultipleSelection = false
           for object in v {
             switch object.hasNet_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_wires () {
+    self.selectedArray_property.toMany_wires_StartsToBeObserved (by: self.wires_property)
+    self.wires_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <CanariWireArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.wires_property.selection {
             case .empty :
               return .empty
             case .multiple :

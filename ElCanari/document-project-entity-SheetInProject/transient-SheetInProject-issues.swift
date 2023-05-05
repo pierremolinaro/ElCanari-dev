@@ -14,9 +14,12 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SheetInProject_issues (
-       _ self_mPoints_status : [PointInSchematic_status]
+       _ self_mPoints_status : [PointInSchematic_status],
+       _ self_mObjects_wires : [SchematicObject_wires],
+       _ prefs_symbolDrawingWidthMultipliedByTenForSchematic : Int
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
+      //--- Point dictionary
         var pointDictionary = [CanariPoint : [SchematicPointStatus]] ()
         for object in self_mPoints_status {
           if let status = object.status {
@@ -27,9 +30,10 @@ import AppKit
             }
           }
         }
+      //--- Issues, several points at same location
         var issues = CanariIssueArray ()
-        for (location, statusArray) in pointDictionary {
-          if statusArray.count > 1 {
+        for (location, pointArray) in pointDictionary {
+          if pointArray.count > 1 {
             let r = NSRect (
               x: canariUnitToCocoa (location.x) - SCHEMATIC_GRID_IN_COCOA_UNIT,
               y: canariUnitToCocoa (location.y) - SCHEMATIC_GRID_IN_COCOA_UNIT,
@@ -37,8 +41,8 @@ import AppKit
               height: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0
             )
             let path = EBBezierPath (ovalIn: r)
-            issues.append (CanariIssue (kind: .error, message: "\(statusArray.count) points at the same location", pathes: [path]))
-          }else if !statusArray [0].connected {
+            issues.append (CanariIssue (kind: .error, message: "\(pointArray.count) points at the same location", pathes: [path]))
+          }else if !pointArray [0].connected {
             let r = NSRect (
               x: canariUnitToCocoa (location.x) - SCHEMATIC_GRID_IN_COCOA_UNIT,
               y: canariUnitToCocoa (location.y) - SCHEMATIC_GRID_IN_COCOA_UNIT,
@@ -49,6 +53,31 @@ import AppKit
             issues.append (CanariIssue (kind: .warning, message: "Unconnected pin", pathes: [path]))
           }
         }
+      //--- Check if a point is over a wire
+        for wire in self_mObjects_wires {
+          for wireDescriptor : CanariWireDescription in wire.wires ?? [] {
+            let segment = CanariSegment (
+              x1: wireDescriptor.p1.x,
+              y1: wireDescriptor.p1.y,
+              x2: wireDescriptor.p2.x,
+              y2: wireDescriptor.p2.y,
+              width: CANARI_UNITS_PER_PIXEL * prefs_symbolDrawingWidthMultipliedByTenForSchematic / 10
+            )
+            for (point, _) in pointDictionary {
+              if segment.strictlyContains (point: point) {
+                let r = NSRect (
+                  x: canariUnitToCocoa (point.x) - SCHEMATIC_GRID_IN_COCOA_UNIT,
+                  y: canariUnitToCocoa (point.y) - SCHEMATIC_GRID_IN_COCOA_UNIT,
+                  width: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0,
+                  height: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0
+                )
+                let path = EBBezierPath (ovalIn: r)
+                issues.append (CanariIssue (kind: .error, message: "Point not connected to Wire", pathes: [path]))
+              }
+            }
+          }
+        }
+      //---
         return issues
 //--- END OF USER ZONE 2
 }

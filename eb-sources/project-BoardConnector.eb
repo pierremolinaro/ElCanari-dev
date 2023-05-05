@@ -32,7 +32,8 @@ graphic handlingOpposite entity BoardConnector : BoardObject {
   property Bool mUsesCustomPadDiameter default no ;
 
   transient CanariPoint location dependsFrom
-    self.mComponent.one.componentPadDictionary, self.mComponentPadName, self.mPadIndex,
+    self.mComponent.one.componentPadDictionary,
+    self.mComponentPadName, self.mPadIndex,
     self.mX, self.mY
   ;
 

@@ -8,8 +8,16 @@ import AppKit
 
 //--- START OF USER ZONE 1
 
+fileprivate struct LocalSubnetDescriptor {
+  let severalLabels : Bool
+  let pins : [NetPinInSchematics]
+  let labels : [NetLabelInSchematics]
+}
+
+//--------------------------------------------------------------------------------------------------
+
 fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
-                                 _ inPointArray : NetInfoPointArray) -> (NetStatusEntryArray, Bool) { // ( ..., has warning)
+                                 _ inPointArray : NetInfoPointArray) -> ([SubnetDescriptor], Bool) { // ( ..., has warning)
 //--- Wire dictionary (for compute subnet accessibility)
   var wireDictionary = [Int : NetInfoPointArray] ()
   for point in inPointArray {
@@ -23,7 +31,7 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
   }
 //---
   var netLabelCount = 0
-  var subnetDescriptionArray = [(Bool, [NetPinInSchematics], [NetLabelInSchematics])] ()
+  var subnetDescriptionArray = [LocalSubnetDescriptor] ()
   var unExploredPointSet = Set (inPointArray)
   while let aPoint = unExploredPointSet.first {
     unExploredPointSet.removeFirst ()
@@ -48,6 +56,7 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
       }
     }
   //--- Build subnet description string
+//    var pointArray = [CanariPoint] ()
     var pinDescriptionArray = [NetPinInSchematics] ()
     var labelDescriptionArray = [NetLabelInSchematics] ()
     var pinArray = [String] ()
@@ -76,34 +85,44 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
           location: info
         )
         labelDescriptionArray.append (netLabel)
+//        pointArray.append (p.locationInSheet)
       }
     }
     netLabelCount += labelArray.count
-    subnetDescriptionArray.append ((labelArray.count > 0, pinDescriptionArray, labelDescriptionArray))
+//    subnetDescriptionArray.append ((labelArray.count > 0, pinDescriptionArray, labelDescriptionArray))
+    let d = LocalSubnetDescriptor (
+      severalLabels: labelArray.count > 0,
+      pins: pinDescriptionArray,
+      labels: labelDescriptionArray
+//      points: pointArray
+    )
+    subnetDescriptionArray.append (d)
   }
 //--- Exactly onre label ?
   let showExactlyOneLabelMessage = inWarnsExactlyOneLabel && (netLabelCount == 1)
   var hasWarning = showExactlyOneLabelMessage
-  var netStatusEntryArray = [NetStatusEntry] ()
+  var netStatusEntryArray = [SubnetDescriptor] ()
 //--- Several subnets ?
   if subnetDescriptionArray.count == 1 {
-    let netStatus = NetStatusEntry (
+    let netStatus = SubnetDescriptor (
       status: hasWarning ? .warning : .ok,
       showExactlyOneLabelMessage: showExactlyOneLabelMessage,
-      pins: subnetDescriptionArray [0].1,
-      labels: subnetDescriptionArray [0].2
+      pins: subnetDescriptionArray [0].pins,
+      labels: subnetDescriptionArray [0].labels
+//      points: subnetDescriptionArray [0].points
     )
     netStatusEntryArray.append (netStatus)
   }else if subnetDescriptionArray.count > 1 {
-    for (severalLabels, pinDescriptionArray, labelDescriptionArray) in subnetDescriptionArray {
-      if !severalLabels {
+    for descriptor : LocalSubnetDescriptor in subnetDescriptionArray {
+      if !descriptor.severalLabels {
         hasWarning = true
       }
-      let netStatus = NetStatusEntry (
-        status: severalLabels ? .ok : .warning,
+      let netStatus = SubnetDescriptor (
+        status: descriptor.severalLabels ? .ok : .warning,
         showExactlyOneLabelMessage: showExactlyOneLabelMessage,
-        pins: pinDescriptionArray,
-        labels: labelDescriptionArray
+        pins: descriptor.pins,
+        labels: descriptor.labels
+//        points: descriptor.points
       )
       netStatusEntryArray.append (netStatus)
     }

@@ -102,6 +102,30 @@ final class SheetInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   ToMany proxy: netClasses
+  //····················································································································
+
+  var netClasses_modelDidChangeController : EBObservablePropertyController? = nil
+  // var netClasses_boundObjectDidChangeController : EBObservablePropertyController? = nil
+  final let netClasses_property = ProxyArrayOf_NetClassInProject ()
+
+  //····················································································································
+
+  var netClasses : EBReferenceArray <NetClassInProject> {
+    get {
+      switch self.netClasses_property.selection {
+      case .empty, .multiple :
+        return EBReferenceArray ()
+      case .single (let v) :
+        return EBReferenceArray (v)
+      }
+    }
+    set {
+      self.netClasses_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
   //   To one property: mRoot
   //····················································································································
 
@@ -216,6 +240,19 @@ final class SheetInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
       resetter: { inObject in inObject.mSheet_property.setProp (nil) }
     )
+  //--- ToMany proxy: netClasses
+    do{
+      let controller = EBObservablePropertyController (
+        observedObjects: [self.mRoot_property],
+        callBack: { [weak self] in
+          if let me = self, let model = me.mRoot {
+            me.netClasses_property.setModel (model.mNetClasses_property)
+          }
+        }
+      )
+      self.mRoot_property.toMany_mNetClasses_StartsToBeObserved (by: controller)
+      self.netClasses_modelDidChangeController = controller
+    }
   //--- To one property: mRoot (has opposite to many relationship: mSheets)
     self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -226,10 +263,16 @@ final class SheetInProject : EBManagedObject,
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.mPoints_property.selection
-        switch (s0) {
-        case (.single (let v0)) :
-          return .single (transient_SheetInProject_issues (v0))
-        case (.multiple) :
+        let s1 = unwSelf.mObjects_property.selection
+        let s2 = preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.selection
+        switch (s0, s1, s2) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
+          return .single (transient_SheetInProject_issues (v0, v1, v2))
+        case (.multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -239,6 +282,8 @@ final class SheetInProject : EBManagedObject,
       }
     }
     self.mPoints_property.toMany_status_StartsToBeObserved (by: self.issues_property)
+    self.mObjects_property.toMany_wires_StartsToBeObserved (by: self.issues_property)
+    preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.startsToBeObserved (by: self.issues_property)
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

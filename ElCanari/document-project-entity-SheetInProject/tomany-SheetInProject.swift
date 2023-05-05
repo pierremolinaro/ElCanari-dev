@@ -35,6 +35,9 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
       if let relay = self.mObserversOf_sheetDescriptor { // Transient property
         managedObject.sheetDescriptor_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_netClasses { // Tomany proxy
+        managedObject.netClasses_property.stopsBeingObserved (by: relay)
+      }
     }
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
@@ -55,6 +58,9 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
       }
       if let relay = self.mObserversOf_sheetDescriptor { // Transient property
         managedObject.sheetDescriptor_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_netClasses { // Tomany proxy
+        managedObject.netClasses_property.startsToBeObserved (by: relay)
       }
     }
   }
@@ -86,6 +92,35 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   final func toMany_mSheetTitle_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSheetTitle?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'netClasses' toMany proxy
+  //····················································································································
+
+  private final var mObserversOf_netClasses : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_netClasses_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_netClasses {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.netClasses_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_netClasses = relay
+    }
+    relay.startsToBeObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_netClasses_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_netClasses?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

@@ -35,6 +35,12 @@ import AppKit
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol WireInSchematic_wires : AnyObject {
+  var wires : CanariWireArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: WireInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -43,7 +49,8 @@ final class WireInSchematic : SchematicObject,
          WireInSchematic_selectionDisplay,
          WireInSchematic_netName,
          WireInSchematic_netClassName,
-         WireInSchematic_hasNet {
+         WireInSchematic_hasNet,
+         WireInSchematic_wires {
 
   //····················································································································
   //   To one property: mP1
@@ -284,6 +291,27 @@ final class WireInSchematic : SchematicObject,
       }
     }
     self.mP1_property.hasNet_property.startsToBeObserved (by: self.hasNet_property)
+  //--- Atomic property: wires
+    self.wires_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mP1_property.location_property.selection
+        let s1 = unwSelf.mP2_property.location_property.selection
+        switch (s0, s1) {
+        case (.single (let v0),
+              .single (let v1)) :
+          return .single (transient_WireInSchematic_wires (v0, v1))
+        case (.multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mP1_property.location_property.startsToBeObserved (by: self.wires_property)
+    self.mP2_property.location_property.startsToBeObserved (by: self.wires_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

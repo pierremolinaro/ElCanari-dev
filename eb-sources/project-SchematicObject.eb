@@ -11,6 +11,8 @@ abstract graphic handlingOpposite entity SchematicObject {
   
   abstract transient CanariPointArray connectedPoints ;
   
+  abstract transient CanariWireArray wires ;
+  
   transient SchematicSheetDescriptor sheetDescriptor dependsFrom self.mSheet.one.sheetDescriptor ;
 }
 

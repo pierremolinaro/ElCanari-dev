@@ -112,6 +112,17 @@ struct DeviceSymbolInfo : Hashable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+typealias CanariWireArray = [CanariWireDescription]
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct CanariWireDescription : Hashable {
+  let p1 : CanariPoint
+  let p2 : CanariPoint
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 typealias SymbolInProjectIdentifierArray = [SymbolInProjectIdentifier]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -151,7 +162,7 @@ struct NetInfo : Hashable {
   let netName : String
   let netClassName : String
   let points : [NetInfoPoint]
-  let subnets : [NetStatusEntry]
+  let subnets : [SubnetDescriptor]
   let subnetsHaveWarning : Bool
   let pinCount : Int
   let labelCount : Int

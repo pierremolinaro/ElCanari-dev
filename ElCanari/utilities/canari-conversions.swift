@@ -19,10 +19,10 @@ import Foundation
 // 1 px = 1/72 pouce = 31 750 cu
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let ONE_MILLIMETER_IN_CANARI_UNIT = 90_000
-let ONE_INCH_IN_CANARI_UNIT = 2_286_000
-let ONE_MIL_IN_CANARI_UNIT = 2_286
-let ONE_PIXEL_IN_CANARI_UNIT = 31_750
+let CANARI_UNITS_PER_MM    = 90_000
+let CANARI_UNITS_PER_INCH  = 2_286_000
+let CANARI_UNITS_PER_MIL   = 2_286
+let CANARI_UNITS_PER_PIXEL = 31_750
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -73,19 +73,19 @@ func milsToCocoaUnit (_ inValueInMils : CGFloat) -> CGFloat {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func millimeterToCanariUnit (_ inValue : CGFloat) -> Int {
-  return Int ((inValue * CGFloat (ONE_MILLIMETER_IN_CANARI_UNIT)).rounded ())
+  return Int ((inValue * CGFloat (CANARI_UNITS_PER_MM)).rounded ())
 }
 
 //······················································································································
 
 func milsToCanariUnit (fromInt inValue : Int) -> Int {
-  return inValue * ONE_MIL_IN_CANARI_UNIT
+  return inValue * CANARI_UNITS_PER_MIL
 }
 
 //······················································································································
 
 func milsToCanariUnit (fromDouble inValue : Double) -> Int {
-  return Int (inValue * Double (ONE_MIL_IN_CANARI_UNIT))
+  return Int (inValue * Double (CANARI_UNITS_PER_MIL))
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -93,7 +93,7 @@ func milsToCanariUnit (fromDouble inValue : Double) -> Int {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func canariUnitToMillimeter (_ inValue : Int) -> CGFloat {
-  return CGFloat (inValue) / CGFloat (ONE_MILLIMETER_IN_CANARI_UNIT)
+  return CGFloat (inValue) / CGFloat (CANARI_UNITS_PER_MM)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

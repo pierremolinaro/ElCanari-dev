@@ -18,6 +18,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol SchematicObject_wires : AnyObject {
+  var wires : CanariWireArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol SchematicObject_sheetDescriptor : AnyObject {
   var sheetDescriptor : SchematicSheetDescriptor? { get }
 }
@@ -47,6 +53,7 @@ import AppKit
 class SchematicObject : EBGraphicManagedObject,
          SchematicObject_issues,
          SchematicObject_connectedPoints,
+         SchematicObject_wires,
          SchematicObject_sheetDescriptor,
          SchematicObject_selectionDisplay,
          SchematicObject_objectDisplay,
@@ -102,6 +109,18 @@ class SchematicObject : EBGraphicManagedObject,
 
   final var connectedPoints : CanariPointArray? {
     return self.connectedPoints_property.optionalValue
+  }
+
+  //····················································································································
+  //   Transient property: wires
+  //····················································································································
+
+  final let wires_property = EBTransientProperty_CanariWireArray ()
+
+  //····················································································································
+
+  final var wires : CanariWireArray? {
+    return self.wires_property.optionalValue
   }
 
   //····················································································································
