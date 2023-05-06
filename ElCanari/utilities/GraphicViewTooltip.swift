@@ -16,7 +16,7 @@ typealias GraphicViewTooltipArray = [GraphicViewTooltip]
 //   Tooltip
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class GraphicViewTooltip : NSObject, NSViewToolTipOwner {
+@MainActor class GraphicViewTooltip : NSObject, NSViewToolTipOwner {
 
   //····················································································································
   //   Properties
@@ -32,37 +32,29 @@ class GraphicViewTooltip : NSObject, NSViewToolTipOwner {
     self.kind = inKind
     self.message = inMessage
     self.rect = inRect
+    super.init ()
+    noteObjectAllocation (self)
   }
 
   //····················································································································
-  //  Equatable Protocol
-  //····················································································································
 
-//  static func == (lhs: GraphicViewTooltip, rhs: GraphicViewTooltip) -> Bool {
-//    return (lhs.kind == rhs.kind) && (lhs.message == rhs.message) && (lhs.rect == rhs.rect)
-//  }
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   //····················································································································
-  //  Hashable Protocol
+  //  NSViewToolTipOwner Protocol
   //····················································································································
 
-//  func hash (into hasher: inout Hasher) {
-//    self.kind.hash (into: &hasher)
-//    self.message.hash (into: &hasher)
-//    self.rect.hash (into: &hasher)
-//  }
-
-  //····················································································································
-
-  @MainActor func view (
-      _ view: NSView,
-      stringForToolTip tag: NSView.ToolTipTag,
-      point: NSPoint,
-      userData data: UnsafeMutableRawPointer?
-  ) -> String {
+  func view (_ view : NSView,
+             stringForToolTip tag : NSView.ToolTipTag,
+             point : NSPoint,
+             userData data : UnsafeMutableRawPointer?) -> String {
     return self.message
   }
-}
 
+  //····················································································································
+
+}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
