@@ -13,17 +13,11 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_SheetInProject_issues (
-       _ self_schematicIssues : GraphicViewTooltipArray
-) -> CanariIssueArray {
+@MainActor func transient_ProjectRoot_schematicTooltips (
+       _ self_mSelectedSheet_schematicIssues : GraphicViewTooltipArray?
+) -> GraphicViewTooltipArray {
 //--- START OF USER ZONE 2
-        var issueArray = CanariIssueArray ()
-        for schematicIssue in self_schematicIssues {
-          let path = EBBezierPath (ovalIn: schematicIssue.rect)
-          let issue = CanariIssue (kind: schematicIssue.kind, message: schematicIssue.message, pathes: [path])
-          issueArray.append (issue)
-        }
-        return issueArray
+        return self_mSelectedSheet_schematicIssues ?? []
 //--- END OF USER ZONE 2
 }
 

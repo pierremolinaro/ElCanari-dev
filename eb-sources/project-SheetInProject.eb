@@ -9,10 +9,14 @@ handlingOpposite entity SheetInProject {
 
   property String mSheetTitle default "" ;
   
-  transient CanariIssueArray issues dependsFrom
+  transient GraphicViewTooltipArray schematicIssues dependsFrom
     self.mPoints.all.status,
     self.mObjects.all.wires,
     prefs.symbolDrawingWidthMultipliedByTenForSchematic
+  ;
+  
+  transient CanariIssueArray issues dependsFrom
+    self.schematicIssues
   ;
 
   transient EBShape connectedPoints dependsFrom

@@ -1115,6 +1115,7 @@ import AppKit
     let view_2 = AutoLayoutGraphicView (minZoom: 50, maxZoom: 1000)
       .bind_underObjectsDisplay (self.rootObject.schematicBackgroundDisplay_property)
       .bind_overObjectsDisplay (self.rootObject.schematicOverDisplay_property)
+      .bind_tooltips (self.rootObject.schematicTooltips_property)
       .bind_horizontalFlip (self.rootObject.mSchematicHorizontalFlip_property)
       .bind_verticalFlip (self.rootObject.mSchematicVerticalFlip_property)
       .bind_gridStyle (self.rootObject.mSchematicGridStyle_property)

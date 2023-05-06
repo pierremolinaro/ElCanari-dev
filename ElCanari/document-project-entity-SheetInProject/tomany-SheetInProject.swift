@@ -20,6 +20,9 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
       if let relay = self.mObserversOf_mSheetTitle { // Stored property
         managedObject.mSheetTitle_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_schematicIssues { // Transient property
+        managedObject.schematicIssues_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_issues { // Transient property
         managedObject.issues_property.stopsBeingObserved (by: relay)
       }
@@ -40,6 +43,9 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_mSheetTitle { // Stored property
         managedObject.mSheetTitle_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_schematicIssues { // Transient property
+        managedObject.schematicIssues_property.startsToBeObserved (by: relay)
       }
       if let relay = self.mObserversOf_issues { // Transient property
         managedObject.issues_property.startsToBeObserved (by: relay)
@@ -86,6 +92,35 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   final func toMany_mSheetTitle_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSheetTitle?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'schematicIssues' transient property
+  //····················································································································
+
+  private final var mObserversOf_schematicIssues : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_schematicIssues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_schematicIssues {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.schematicIssues_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_schematicIssues = relay
+    }
+    relay.startsToBeObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_schematicIssues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_schematicIssues?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

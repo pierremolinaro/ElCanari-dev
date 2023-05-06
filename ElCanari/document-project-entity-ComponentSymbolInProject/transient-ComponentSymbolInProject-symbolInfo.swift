@@ -113,7 +113,7 @@ import AppKit
                 width: SCHEMATIC_GRID_IN_COCOA_UNIT,
                 height: SCHEMATIC_GRID_IN_COCOA_UNIT
               )
-              pinTextShape.addToolTip (toolTipRect, pinNetNameDictionary [pin.pinName] ?? "—")
+              pinTextShape.appendToolTip (toolTipRect, pinNetNameDictionary [pin.pinName] ?? "—")
            //---
               let d = ComponentPinDescriptor (
                 pinIdentifier: PinSymbolInProjectIdentifier (symbol: pin.symbol, pinName: pin.pinName),

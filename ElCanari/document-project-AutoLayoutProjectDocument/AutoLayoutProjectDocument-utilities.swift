@@ -531,7 +531,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
       ioShape.add (EBShape (text: self.name, NSPoint (), textAttributes, .center, .center).transformed (by: af))
     }
   //--- Tool tip
-    ioShape.addToolTip (rPad, inPadNetDictionary [self.name] ?? "No net")
+    ioShape.appendToolTip (rPad, inPadNetDictionary [self.name] ?? "No net")
   //--- Slave pads
     for pad in slavePads {
       pad.accumulatePadBezierPathes (

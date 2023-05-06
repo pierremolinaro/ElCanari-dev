@@ -17,6 +17,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
       oldValue.mSheetTitle_property.stopsBeingObserved (by: self.mSheetTitle_property) // Stored property
+      oldValue.schematicIssues_property.stopsBeingObserved (by: self.schematicIssues_property) // Transient property
       oldValue.issues_property.stopsBeingObserved (by: self.issues_property) // Transient property
       oldValue.connectedPoints_property.stopsBeingObserved (by: self.connectedPoints_property) // Transient property
       oldValue.schematicConnexionWarnings_property.stopsBeingObserved (by: self.schematicConnexionWarnings_property) // Transient property
@@ -32,6 +33,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
       newValue.mSheetTitle_property.startsToBeObserved (by: self.mSheetTitle_property) // Stored property
+      newValue.schematicIssues_property.startsToBeObserved (by: self.schematicIssues_property) // Transient property
       newValue.issues_property.startsToBeObserved (by: self.issues_property) // Transient property
       newValue.connectedPoints_property.startsToBeObserved (by: self.connectedPoints_property) // Transient property
       newValue.schematicConnexionWarnings_property.startsToBeObserved (by: self.schematicConnexionWarnings_property) // Transient property
@@ -51,6 +53,12 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //····················································································································
 
   final let mSheetTitle_property = EBTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'schematicIssues' transient property
+  //····················································································································
+
+  final let schematicIssues_property = EBTransientProperty <GraphicViewTooltipArray?> ()
 
   //····················································································································
   //   Observers of 'issues' transient property
@@ -143,6 +151,10 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //--- Configure mSheetTitle simple stored property
     self.mSheetTitle_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSheetTitle_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure schematicIssues transient property
+    self.schematicIssues_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.schematicIssues_property.optionalSelection ?? .single (nil)
     }
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in

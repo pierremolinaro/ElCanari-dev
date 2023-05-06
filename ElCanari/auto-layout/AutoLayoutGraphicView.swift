@@ -204,6 +204,13 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
+  final func bind_tooltips (_ inObject : EBObservableProperty <GraphicViewTooltipArray>) -> Self {
+    self.mGraphicView.bind_tooltips (inObject)
+    return self
+  }
+
+  //····················································································································
+
   final func bind_horizontalFlip (_ inObject : EBObservableProperty <Bool>) -> Self {
     self.mGraphicView.bind_horizontalFlip (inObject)
     return self

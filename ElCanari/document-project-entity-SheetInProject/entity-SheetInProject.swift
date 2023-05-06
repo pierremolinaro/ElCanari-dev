@@ -12,6 +12,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol SheetInProject_schematicIssues : AnyObject {
+  var schematicIssues : GraphicViewTooltipArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol SheetInProject_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
@@ -46,6 +52,7 @@ import AppKit
 
 final class SheetInProject : EBManagedObject,
          SheetInProject_mSheetTitle,
+         SheetInProject_schematicIssues,
          SheetInProject_issues,
          SheetInProject_connectedPoints,
          SheetInProject_schematicConnexionWarnings,
@@ -128,6 +135,18 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   final let mRoot_none = EBTransientProperty <Bool> ()
+
+  //····················································································································
+  //   Transient property: schematicIssues
+  //····················································································································
+
+  final let schematicIssues_property = EBTransientProperty_GraphicViewTooltipArray ()
+
+  //····················································································································
+
+  final var schematicIssues : GraphicViewTooltipArray? {
+    return self.schematicIssues_property.optionalValue
+  }
 
   //····················································································································
   //   Transient property: issues
@@ -222,8 +241,8 @@ final class SheetInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mSheets_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mSheets_property.remove (me) } }
     )
-  //--- Atomic property: issues
-    self.issues_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: schematicIssues
+    self.schematicIssues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.mPoints_property.selection
         let s1 = unwSelf.mObjects_property.selection
@@ -232,7 +251,7 @@ final class SheetInProject : EBManagedObject,
         case (.single (let v0),
               .single (let v1),
               .single (let v2)) :
-          return .single (transient_SheetInProject_issues (v0, v1, v2))
+          return .single (transient_SheetInProject_schematicIssues (v0, v1, v2))
         case (.multiple,
               .multiple,
               .multiple) :
@@ -244,9 +263,26 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPoints_property.toMany_status_StartsToBeObserved (by: self.issues_property)
-    self.mObjects_property.toMany_wires_StartsToBeObserved (by: self.issues_property)
-    preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.startsToBeObserved (by: self.issues_property)
+    self.mPoints_property.toMany_status_StartsToBeObserved (by: self.schematicIssues_property)
+    self.mObjects_property.toMany_wires_StartsToBeObserved (by: self.schematicIssues_property)
+    preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.startsToBeObserved (by: self.schematicIssues_property)
+  //--- Atomic property: issues
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.schematicIssues_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_SheetInProject_issues (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.schematicIssues_property.startsToBeObserved (by: self.issues_property)
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

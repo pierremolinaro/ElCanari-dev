@@ -305,6 +305,10 @@ handlingOpposite entity ProjectRoot {
     prefs.schematicFrameColor
   ;
 
+  transient GraphicViewTooltipArray schematicTooltips dependsFrom
+    self.mSelectedSheet.one.schematicIssues
+  ;
+
   transient Bool schematicHasErrorOrWarning dependsFrom
      self.unplacedSymbols,
      self.netWarningCount,

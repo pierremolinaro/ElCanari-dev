@@ -122,6 +122,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.boardShapeIsRectangular_property.stopsBeingObserved (by: self.boardShapeIsRectangular_property) // Transient property
       oldValue.selectedSheetIssues_property.stopsBeingObserved (by: self.selectedSheetIssues_property) // Transient property
       oldValue.schematicOverDisplay_property.stopsBeingObserved (by: self.schematicOverDisplay_property) // Transient property
+      oldValue.schematicTooltips_property.stopsBeingObserved (by: self.schematicTooltips_property) // Transient property
       oldValue.segmentedControlSheetIssueImage_property.stopsBeingObserved (by: self.segmentedControlSheetIssueImage_property) // Transient property
       oldValue.schematicErrorCount_property.stopsBeingObserved (by: self.schematicErrorCount_property) // Transient property
       oldValue.sheetIndexes_property.stopsBeingObserved (by: self.sheetIndexes_property) // Transient property
@@ -305,6 +306,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.boardShapeIsRectangular_property.startsToBeObserved (by: self.boardShapeIsRectangular_property) // Transient property
       newValue.selectedSheetIssues_property.startsToBeObserved (by: self.selectedSheetIssues_property) // Transient property
       newValue.schematicOverDisplay_property.startsToBeObserved (by: self.schematicOverDisplay_property) // Transient property
+      newValue.schematicTooltips_property.startsToBeObserved (by: self.schematicTooltips_property) // Transient property
       newValue.segmentedControlSheetIssueImage_property.startsToBeObserved (by: self.segmentedControlSheetIssueImage_property) // Transient property
       newValue.schematicErrorCount_property.startsToBeObserved (by: self.schematicErrorCount_property) // Transient property
       newValue.sheetIndexes_property.startsToBeObserved (by: self.sheetIndexes_property) // Transient property
@@ -1017,6 +1019,12 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let schematicOverDisplay_property = EBTransientProperty <EBShape?> ()
+
+  //····················································································································
+  //   Observers of 'schematicTooltips' transient property
+  //····················································································································
+
+  final let schematicTooltips_property = EBTransientProperty <GraphicViewTooltipArray?> ()
 
   //····················································································································
   //   Observers of 'segmentedControlSheetIssueImage' transient property
@@ -1947,6 +1955,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //--- Configure schematicOverDisplay transient property
     self.schematicOverDisplay_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.schematicOverDisplay_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure schematicTooltips transient property
+    self.schematicTooltips_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.schematicTooltips_property.optionalSelection ?? .single (nil)
     }
   //--- Configure segmentedControlSheetIssueImage transient property
     self.segmentedControlSheetIssueImage_property.mReadModelFunction = { [weak self] in

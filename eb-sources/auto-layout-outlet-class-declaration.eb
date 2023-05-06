@@ -214,6 +214,7 @@ extern autolayout class PullDownButton (title: String, size: EBControlSize) $run
 extern autolayout class GraphicView (minZoom : Int, maxZoom : Int) $graphicController $hidden {
   $underObjectsDisplay transient EBShape
   $overObjectsDisplay transient EBShape
+  $tooltips transient GraphicViewTooltipArray
   $arrowKeyMagnitude transient Int
   $shiftArrowKeyMagnitude transient Int
   $backColor transient NSColor

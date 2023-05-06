@@ -437,6 +437,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     GraphicView (minZoom: 50, maxZoom: 1_000) [outlet mSchematicsView configurator schematicView] {
       $underObjectsDisplay root.schematicBackgroundDisplay
       $overObjectsDisplay root.schematicOverDisplay
+      $tooltips root.schematicTooltips
       $horizontalFlip root.mSchematicHorizontalFlip
       $verticalFlip root.mSchematicVerticalFlip
       $graphicController #schematicObjectsController

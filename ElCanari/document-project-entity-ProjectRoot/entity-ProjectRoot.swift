@@ -720,6 +720,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol ProjectRoot_schematicTooltips : AnyObject {
+  var schematicTooltips : GraphicViewTooltipArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol ProjectRoot_segmentedControlSheetIssueImage : AnyObject {
   var segmentedControlSheetIssueImage : NSImage? { get }
 }
@@ -1160,6 +1166,7 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_boardShapeIsRectangular,
          ProjectRoot_selectedSheetIssues,
          ProjectRoot_schematicOverDisplay,
+         ProjectRoot_schematicTooltips,
          ProjectRoot_segmentedControlSheetIssueImage,
          ProjectRoot_schematicErrorCount,
          ProjectRoot_sheetIndexes,
@@ -3636,6 +3643,18 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: schematicTooltips
+  //····················································································································
+
+  final let schematicTooltips_property = EBTransientProperty_GraphicViewTooltipArray ()
+
+  //····················································································································
+
+  final var schematicTooltips : GraphicViewTooltipArray? {
+    return self.schematicTooltips_property.optionalValue
+  }
+
+  //····················································································································
   //   Transient property: segmentedControlSheetIssueImage
   //····················································································································
 
@@ -4878,6 +4897,23 @@ final class ProjectRoot : EBManagedObject,
     }
     self.mSelectedSheet_property.connectedPoints_property.startsToBeObserved (by: self.schematicOverDisplay_property)
     self.selectedSheetIssues_property.startsToBeObserved (by: self.schematicOverDisplay_property)
+  //--- Atomic property: schematicTooltips
+    self.schematicTooltips_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mSelectedSheet_property.schematicIssues_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectRoot_schematicTooltips (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSelectedSheet_property.schematicIssues_property.startsToBeObserved (by: self.schematicTooltips_property)
   //--- Atomic property: segmentedControlSheetIssueImage
     self.segmentedControlSheetIssueImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

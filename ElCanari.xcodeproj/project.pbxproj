@@ -164,6 +164,21 @@
 		CF131B88294F5F8100E587B9 /* StringTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF131B85294F5F8100E587B9 /* StringTag.swift */; };
 		CF1361FE220223E800E7CEE7 /* ftp-read-write.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1361FD220223E800E7CEE7 /* ftp-read-write.swift */; };
 		CF1361FF220223E800E7CEE7 /* ftp-read-write.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1361FD220223E800E7CEE7 /* ftp-read-write.swift */; };
+		CF13CDAD2A06628900870156 /* transient-ProjectRoot-schematicTooltips.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13CDAC2A06628900870156 /* transient-ProjectRoot-schematicTooltips.swift */; };
+		CF13CDAE2A06628900870156 /* transient-ProjectRoot-schematicTooltips.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13CDAC2A06628900870156 /* transient-ProjectRoot-schematicTooltips.swift */; };
+		CF13CDAF2A06628900870156 /* transient-ProjectRoot-schematicTooltips.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13CDAC2A06628900870156 /* transient-ProjectRoot-schematicTooltips.swift */; };
+		CF13CDB12A06661400870156 /* GraphicViewTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13CDB02A06661400870156 /* GraphicViewTooltip.swift */; };
+		CF13CDB22A06661400870156 /* GraphicViewTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13CDB02A06661400870156 /* GraphicViewTooltip.swift */; };
+		CF13CDB32A06661400870156 /* GraphicViewTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13CDB02A06661400870156 /* GraphicViewTooltip.swift */; };
+		CF13CDB52A0666E700870156 /* property-GraphicViewTooltipArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13CDB42A0666E700870156 /* property-GraphicViewTooltipArray.swift */; };
+		CF13CDB62A0666E700870156 /* property-GraphicViewTooltipArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13CDB42A0666E700870156 /* property-GraphicViewTooltipArray.swift */; };
+		CF13CDB72A0666E700870156 /* property-GraphicViewTooltipArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13CDB42A0666E700870156 /* property-GraphicViewTooltipArray.swift */; };
+		CF13CDB92A0667A500870156 /* transient-SheetInProject-schematicIssues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13CDB82A0667A500870156 /* transient-SheetInProject-schematicIssues.swift */; };
+		CF13CDBA2A0667A500870156 /* transient-SheetInProject-schematicIssues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13CDB82A0667A500870156 /* transient-SheetInProject-schematicIssues.swift */; };
+		CF13CDBB2A0667A500870156 /* transient-SheetInProject-schematicIssues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13CDB82A0667A500870156 /* transient-SheetInProject-schematicIssues.swift */; };
+		CF13CDBD2A06767300870156 /* EBGraphicView-binding-tooltips.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13CDBC2A06767300870156 /* EBGraphicView-binding-tooltips.swift */; };
+		CF13CDBE2A06767300870156 /* EBGraphicView-binding-tooltips.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13CDBC2A06767300870156 /* EBGraphicView-binding-tooltips.swift */; };
+		CF13CDBF2A06767300870156 /* EBGraphicView-binding-tooltips.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13CDBC2A06767300870156 /* EBGraphicView-binding-tooltips.swift */; };
 		CF13E24C27721E8C008A4D28 /* transient-AutoLayoutProjectDocument-rastnetShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13E24A27721E8C008A4D28 /* transient-AutoLayoutProjectDocument-rastnetShape.swift */; };
 		CF13E24D27721E8C008A4D28 /* transient-AutoLayoutProjectDocument-boardOutlineOverDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13E24B27721E8C008A4D28 /* transient-AutoLayoutProjectDocument-boardOutlineOverDisplay.swift */; };
 		CF14417D27551D3B006C3E1F /* transient-AutoLayoutFontDocument-canDeleteCurrentCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF14417A27551D3B006C3E1F /* transient-AutoLayoutFontDocument-canDeleteCurrentCharacter.swift */; };
@@ -5172,6 +5187,11 @@
 		CF12F044277A5B8A0066D4B0 /* extension-AutoLayoutProjectDocument-import-ses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-AutoLayoutProjectDocument-import-ses.swift"; sourceTree = "<group>"; };
 		CF131B85294F5F8100E587B9 /* StringTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTag.swift; sourceTree = "<group>"; };
 		CF1361FD220223E800E7CEE7 /* ftp-read-write.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ftp-read-write.swift"; sourceTree = "<group>"; };
+		CF13CDAC2A06628900870156 /* transient-ProjectRoot-schematicTooltips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectRoot-schematicTooltips.swift"; sourceTree = "<group>"; };
+		CF13CDB02A06661400870156 /* GraphicViewTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicViewTooltip.swift; sourceTree = "<group>"; };
+		CF13CDB42A0666E700870156 /* property-GraphicViewTooltipArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "property-GraphicViewTooltipArray.swift"; sourceTree = "<group>"; };
+		CF13CDB82A0667A500870156 /* transient-SheetInProject-schematicIssues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SheetInProject-schematicIssues.swift"; sourceTree = "<group>"; };
+		CF13CDBC2A06767300870156 /* EBGraphicView-binding-tooltips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-binding-tooltips.swift"; sourceTree = "<group>"; };
 		CF13E24A27721E8C008A4D28 /* transient-AutoLayoutProjectDocument-rastnetShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutProjectDocument-rastnetShape.swift"; sourceTree = "<group>"; };
 		CF13E24B27721E8C008A4D28 /* transient-AutoLayoutProjectDocument-boardOutlineOverDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutProjectDocument-boardOutlineOverDisplay.swift"; sourceTree = "<group>"; };
 		CF14417A27551D3B006C3E1F /* transient-AutoLayoutFontDocument-canDeleteCurrentCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutFontDocument-canDeleteCurrentCharacter.swift"; sourceTree = "<group>"; };
@@ -7350,6 +7370,7 @@
 				CF880FEE1DDB85F400954D4E /* GeometricCircle.swift */,
 				CFC3EDBA1DE0C10900445A35 /* GeometricOblong.swift */,
 				CF92E1F41DDB1C9E0019691C /* GeometricRect.swift */,
+				CF13CDB02A06661400870156 /* GraphicViewTooltip.swift */,
 				CF571D8E295DCC680063E7AB /* NetStatusEntry.swift */,
 				CF61915D26F7739B003B75FF /* NSImage-extension.swift */,
 				CF3494B729EAB3B1006AB1EB /* QRCodeDescriptor.swift */,
@@ -8481,6 +8502,7 @@
 				CF4A6C0F21C6C0C700997A19 /* EBGraphicView-binding-mouseGrid.swift */,
 				CF1D9C7A21BBEB2200FFF459 /* EBGraphicView-binding-overObjectsDisplay.swift */,
 				CF968AF021BBD3700010175E /* EBGraphicView-binding-shiftArrowKeyMagnitude.swift */,
+				CF13CDBC2A06767300870156 /* EBGraphicView-binding-tooltips.swift */,
 				CF1D9C7721BBEA6400FFF459 /* EBGraphicView-binding-underObjectsDisplay.swift */,
 				CF968B0221BBD8E70010175E /* EBGraphicView-binding-verticalFlip.swift */,
 				CF968AF621BBD5180010175E /* EBGraphicView-binding-xPlacardUnit.swift */,
@@ -9014,6 +9036,7 @@
 				CF70CF7C24AA947800016B8D /* transient-ProjectRoot-schematicHasErrorOrWarning.swift */,
 				CFEB7C6D233A28830060A97A /* transient-ProjectRoot-schematicOverDisplay.swift */,
 				CF86B56929CF6C8600E543BB /* transient-ProjectRoot-schematicStatusMessage.swift */,
+				CF13CDAC2A06628900870156 /* transient-ProjectRoot-schematicTooltips.swift */,
 				CF86B54B29CF63A600E543BB /* transient-ProjectRoot-schematicWarningCount.swift */,
 				CF86415929D05D9E0004A295 /* transient-ProjectRoot-segmentedControlBoardIssueImage.swift */,
 				CF86406A29D046A70004A295 /* transient-ProjectRoot-segmentedControlNetListIssueImage.swift */,
@@ -9084,6 +9107,7 @@
 				CFEB7CF6233A2A030060A97A /* transient-SheetInProject-issues.swift */,
 				CFEB7CF5233A2A030060A97A /* transient-SheetInProject-schematicConnexionErrors.swift */,
 				CFEB7CF8233A2A030060A97A /* transient-SheetInProject-schematicConnexionWarnings.swift */,
+				CF13CDB82A0667A500870156 /* transient-SheetInProject-schematicIssues.swift */,
 				CFEB7CF7233A2A030060A97A /* transient-SheetInProject-sheetDescriptor.swift */,
 			);
 			name = "project — entity — SheetInProject";
@@ -9138,6 +9162,7 @@
 				CF59C3D929BE36AA004CA404 /* property-PinPadAssignmentInProject.swift */,
 				CF59C3B329BE36A7004CA404 /* property-PinQualifiedNameStruct.swift */,
 				CF59C3CE29BE36A9004CA404 /* property-RastnetInfoArray.swift */,
+				CF13CDB42A0666E700870156 /* property-GraphicViewTooltipArray.swift */,
 				CF59C3BE29BE36A8004CA404 /* property-SchematicPointStatus.swift */,
 				CF59C3C829BE36A9004CA404 /* property-SchematicSheetDescriptor.swift */,
 				CF59C3C429BE36A8004CA404 /* property-SchematicSheetGeometry.swift */,
@@ -9754,12 +9779,14 @@
 				CF49910728D8C9430099F871 /* enum-TextAlignment.swift in Sources */,
 				CFF79DD1284614A900C7BEE3 /* transient-BoardObject-displayInner4LayoutForBoard.swift in Sources */,
 				CF22F1AD275A73ED009C6FAC /* toone-MergerBoardInstance.swift in Sources */,
+				CF13CDBD2A06767300870156 /* EBGraphicView-binding-tooltips.swift in Sources */,
 				CFEB7B11233A24BF0060A97A /* transient-BoardTrack-netClassTrackWidth.swift in Sources */,
 				CF711D66275E1AEA00280069 /* tomany-DeviceSymbolInstanceInProject.swift in Sources */,
 				CF9F8BFF28528EB000E313C7 /* transient-AutoLayoutMergerDocument-boardLimitWidthStatusImage.swift in Sources */,
 				CFA80DCF25C04F1300966D91 /* transient-BoardTrack-p2CanMove.swift in Sources */,
 				CFFEC1E0280483F000E5E8DD /* toone-SymbolText.swift in Sources */,
 				CFEB7BDB233A27EF0060A97A /* transient-NCInSchematic-selectionDisplay.swift in Sources */,
+				CF13CDB92A0667A500870156 /* transient-SheetInProject-schematicIssues.swift in Sources */,
 				CF4EA9E226F6517800F01746 /* transient-ProjectRoot-inner1LayerTrackCountString.swift in Sources */,
 				CF78DE95222D65CA00E89DCA /* transient-SlavePadInDevice-frontSideFilledBezierPath.swift in Sources */,
 				CF42D130275CF1A600B83712 /* linker-AutoLayoutMergerDocument-issueTableViewToGraphicView.swift in Sources */,
@@ -10480,6 +10507,7 @@
 				CF1893A82202EEC600EF2308 /* library-repository-status.swift in Sources */,
 				CF711FFD275E1EA300280069 /* extension-SheetInProject-add-point-to-wire.swift in Sources */,
 				CFF6D6892427780C00BE9CC9 /* transient-PackageRoot-hasModelImage.swift in Sources */,
+				CF13CDB52A0666E700870156 /* property-GraphicViewTooltipArray.swift in Sources */,
 				CFB1F92A2940EDDC00C1E120 /* action-AutoLayoutProjectDocument-exportDSNFileAction.swift in Sources */,
 				CF8386902423CEBC007F1D21 /* EBGraphicView-binding-backgroundImage.swift in Sources */,
 				CF3494E429EB30EA006AB1EB /* property-MergerRectangleArray.swift in Sources */,
@@ -11027,6 +11055,7 @@
 				CF22F17D275A73EC009C6FAC /* transient-BoardModel-backComponentValueSegments.swift in Sources */,
 				CF0777C22352100F00F56EAB /* extension-Double-EBPropertyProtocol.swift in Sources */,
 				CF711D1E275E1A9800280069 /* entity-DeviceInProject.swift in Sources */,
+				CF13CDB12A06661400870156 /* GraphicViewTooltip.swift in Sources */,
 				CF40D14E29CF870900B94422 /* transient-AutoLayoutMergerDocument-statusErrorCount.swift in Sources */,
 				CF86415A29D05D9E0004A295 /* transient-ProjectRoot-segmentedControlBoardIssueImage.swift in Sources */,
 				CF7FC4B729EDDA7F0045DD14 /* property-BoardImageDescriptor.swift in Sources */,
@@ -11076,6 +11105,7 @@
 				CFB7D8E92683A61D007B9D3B /* configurator-AutoLayoutPackageDocument-packagePageSegmentedControl.swift in Sources */,
 				CFB8DDBE27A6E4440097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift in Sources */,
 				CFBAB0B420DE786C00476FB7 /* canari-conversions.swift in Sources */,
+				CF13CDAD2A06628900870156 /* transient-ProjectRoot-schematicTooltips.swift in Sources */,
 				CF001F6A21F8AAE10091518E /* func-sha1.swift in Sources */,
 				CF59C3F229BE36AB004CA404 /* property-ThreeStringArray.swift in Sources */,
 				CF711D71275E1AFA00280069 /* entity-FontInProject.swift in Sources */,
@@ -11412,12 +11442,14 @@
 				CFA80DD025C04F1300966D91 /* transient-BoardTrack-p2CanMove.swift in Sources */,
 				CF49910828D8C9430099F871 /* enum-TextAlignment.swift in Sources */,
 				CFF79DD2284614A900C7BEE3 /* transient-BoardObject-displayInner4LayoutForBoard.swift in Sources */,
+				CF13CDBE2A06767300870156 /* EBGraphicView-binding-tooltips.swift in Sources */,
 				CFEB7BDC233A27F00060A97A /* transient-NCInSchematic-selectionDisplay.swift in Sources */,
 				CF42D158275CF1A900B83712 /* linker-AutoLayoutMergerDocument-issueTableViewToGraphicView.swift in Sources */,
 				CF35A54B21A825BC00A0E500 /* extension-CGRect-NSRect.swift in Sources */,
 				CF9F8C0028528EB000E313C7 /* transient-AutoLayoutMergerDocument-boardLimitWidthStatusImage.swift in Sources */,
 				CF4B39BA21D3F1C5001217C6 /* transient-PackageSlavePad-padIsTraversing.swift in Sources */,
 				CF4EA9E326F6517800F01746 /* transient-ProjectRoot-inner1LayerTrackCountString.swift in Sources */,
+				CF13CDBA2A0667A500870156 /* transient-SheetInProject-schematicIssues.swift in Sources */,
 				CF5123F2222A889400FA4364 /* transient-PackageBezier-strokeBezierPath.swift in Sources */,
 				CF0777DC2352153000F56EAB /* EBValidationResult.swift in Sources */,
 				CFB4C04F279465E700C509A9 /* AutoLayoutHelpButton.swift in Sources */,
@@ -12138,6 +12170,7 @@
 				CFFF881029BE364C007A12DE /* property-CGFloat.swift in Sources */,
 				CF711FFE275E1EA300280069 /* extension-SheetInProject-add-point-to-wire.swift in Sources */,
 				CFB1F92B2940EDDC00C1E120 /* action-AutoLayoutProjectDocument-exportDSNFileAction.swift in Sources */,
+				CF13CDB62A0666E700870156 /* property-GraphicViewTooltipArray.swift in Sources */,
 				CF3D9FDA24A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift in Sources */,
 				CFB7D75626839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-addSymbolText.swift in Sources */,
 				CF3494E529EB30EA006AB1EB /* property-MergerRectangleArray.swift in Sources */,
@@ -12685,6 +12718,7 @@
 				CF711D1F275E1A9800280069 /* entity-DeviceInProject.swift in Sources */,
 				CF0777C32352100F00F56EAB /* extension-Double-EBPropertyProtocol.swift in Sources */,
 				CF355975279D9F3B000BFC9B /* extension-AutoLayoutProjectDocument-add-edit-net-class.swift in Sources */,
+				CF13CDB22A06661400870156 /* GraphicViewTooltip.swift in Sources */,
 				CF40D14F29CF870900B94422 /* transient-AutoLayoutMergerDocument-statusErrorCount.swift in Sources */,
 				CF86415B29D05D9E0004A295 /* transient-ProjectRoot-segmentedControlBoardIssueImage.swift in Sources */,
 				CF7FC4B829EDDA7F0045DD14 /* property-BoardImageDescriptor.swift in Sources */,
@@ -12734,6 +12768,7 @@
 				CF4D083521C2F10E00380ACA /* entity-PackageObject.swift in Sources */,
 				CF22F199275A73ED009C6FAC /* transient-BoardModel-inner4TracksSegments.swift in Sources */,
 				CFB8DDBF27A6E4440097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift in Sources */,
+				CF13CDAE2A06628900870156 /* transient-ProjectRoot-schematicTooltips.swift in Sources */,
 				CFB7D8EA2683A61D007B9D3B /* configurator-AutoLayoutPackageDocument-packagePageSegmentedControl.swift in Sources */,
 				CFEB7B5B233A25EC0060A97A /* transient-ComponentInProject-componentNameFontName.swift in Sources */,
 				CF711D72275E1AFA00280069 /* entity-FontInProject.swift in Sources */,
@@ -13070,12 +13105,14 @@
 				CF49910928D8C9430099F871 /* enum-TextAlignment.swift in Sources */,
 				CFF79DD3284614A900C7BEE3 /* transient-BoardObject-displayInner4LayoutForBoard.swift in Sources */,
 				CF2673DE275E588E0003CB0A /* AutoLayoutComboBox.swift in Sources */,
+				CF13CDBF2A06767300870156 /* EBGraphicView-binding-tooltips.swift in Sources */,
 				CF9C619525CABE5C00A00D5C /* transient-SlavePadInDevice-frontSideFilledBezierPath.swift in Sources */,
 				CF9C619625CABE5C00A00D5C /* transient-PackagePad-slavePadCount.swift in Sources */,
 				CF9C619725CABE5C00A00D5C /* EBValidationResult.swift in Sources */,
 				CF9F8C0128528EB000E313C7 /* transient-AutoLayoutMergerDocument-boardLimitWidthStatusImage.swift in Sources */,
 				CF9C619825CABE5C00A00D5C /* transient-SchematicObject-sheetDescriptor.swift in Sources */,
 				CF9C619925CABE5C00A00D5C /* transient-LabelInSchematic-location.swift in Sources */,
+				CF13CDBB2A0667A500870156 /* transient-SheetInProject-schematicIssues.swift in Sources */,
 				CF9C619A25CABE5C00A00D5C /* tomany-PackageInDevice.swift in Sources */,
 				CF1C03102754D8A90013FEFA /* document-AutoLayoutFontDocument-extension.swift in Sources */,
 				CF711E24275E1C8E00280069 /* extension-PackageBezier.swift in Sources */,
@@ -13796,6 +13833,7 @@
 				CFB1F92C2940EDDC00C1E120 /* action-AutoLayoutProjectDocument-exportDSNFileAction.swift in Sources */,
 				CF711FFF275E1EA300280069 /* extension-SheetInProject-add-point-to-wire.swift in Sources */,
 				CFB7D8882683A61C007B9D3B /* transient-AutoLayoutPackageDocument-addBezierButtonImage.swift in Sources */,
+				CF13CDB72A0666E700870156 /* property-GraphicViewTooltipArray.swift in Sources */,
 				CF9C63D325CABE5C00A00D5C /* transient-BoardTrack-signatureForERCChecking.swift in Sources */,
 				CF3494E629EB30EA006AB1EB /* property-MergerRectangleArray.swift in Sources */,
 				CF68BC7B26A08907009CAFA3 /* AutoLayoutProgressIndicator.swift in Sources */,
@@ -14343,6 +14381,7 @@
 				CF711D20275E1A9800280069 /* entity-DeviceInProject.swift in Sources */,
 				CF9C655625CABE5C00A00D5C /* enum-TrackSide.swift in Sources */,
 				CF40D15029CF870900B94422 /* transient-AutoLayoutMergerDocument-statusErrorCount.swift in Sources */,
+				CF13CDB32A06661400870156 /* GraphicViewTooltip.swift in Sources */,
 				CFDE7B422766374600762C03 /* controller-table-view-AutoLayoutProjectDocument-projectDeviceController.swift in Sources */,
 				CF86415C29D05D9E0004A295 /* transient-ProjectRoot-segmentedControlBoardIssueImage.swift in Sources */,
 				CF7FC4B929EDDA7F0045DD14 /* property-BoardImageDescriptor.swift in Sources */,
@@ -14392,6 +14431,7 @@
 				CF49C11E25D13A030082271E /* transient-SymbolText-objectDisplay.swift in Sources */,
 				CF49C14625D13A030082271E /* transient-AutoLayoutSymbolDocument-noSymbolIssue.swift in Sources */,
 				CFB8DDC027A6E4440097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift in Sources */,
+				CF13CDAF2A06628900870156 /* transient-ProjectRoot-schematicTooltips.swift in Sources */,
 				CFB7D8F02683A732007B9D3B /* transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueImage.swift in Sources */,
 				CF9C657A25CABE5C00A00D5C /* transient-ComponentInProject-componentNameFontName.swift in Sources */,
 				CF711D73275E1AFA00280069 /* entity-FontInProject.swift in Sources */,

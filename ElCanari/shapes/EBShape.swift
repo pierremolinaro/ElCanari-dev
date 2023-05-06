@@ -203,13 +203,13 @@ struct EBShape : Hashable {
   //  Tool tips
   //····················································································································
 
-  mutating func addToolTip (_ inRect : NSRect, _ inText : String) {
+  mutating func appendToolTip (_ inRect : NSRect, _ inText : String) {
     if self.mSharedObject == nil {
       self.mSharedObject = EBShapeObject ()
     }else if !isKnownUniquelyReferenced (&self.mSharedObject) {
       self.mSharedObject = EBShapeObject (self.mSharedObject!)
     }
-    self.mSharedObject?.addToolTip (inRect, inText)
+    self.mSharedObject?.appendToolTip (inRect, inText)
   }
 
   //····················································································································
@@ -573,7 +573,7 @@ fileprivate final class EBShapeObject {
   //  Tool tips
   //····················································································································
 
-  func addToolTip (_ inRect : NSRect, _ inText : String) {
+  func appendToolTip (_ inRect : NSRect, _ inText : String) {
     self.mToolTips.append (EBToolTip (path: EBBezierPath (rect: inRect), string: inText))
   }
 

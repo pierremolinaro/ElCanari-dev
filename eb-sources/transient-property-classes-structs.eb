@@ -47,6 +47,7 @@ transient property struct MergerRectangleArray ;
 transient property struct MergerPadArray ;
 
 transient property struct CanariIssueArray ;
+transient property struct GraphicViewTooltipArray ;
 transient property struct NSRect ;
 transient property struct UnconnectedSymbolPinsInDevice ;
 transient property struct AssignedPadProxiesInDevice ;
