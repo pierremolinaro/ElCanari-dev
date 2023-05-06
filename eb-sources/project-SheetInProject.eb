@@ -8,8 +8,6 @@ handlingOpposite entity SheetInProject {
   toMany PointInSchematic mPoints inverse toOne mSheet ;
 
   property String mSheetTitle default "" ;
-
-  toMany proxy NetClassInProject netClasses : mRoot.mNetClasses ;
   
   transient CanariIssueArray issues dependsFrom
     self.mPoints.all.status,
@@ -22,9 +20,9 @@ handlingOpposite entity SheetInProject {
     self.mPoints.all.connectedPoints
   ;
   
-  transient Int connexionWarnings dependsFrom self.issues ;
+  transient Int schematicConnexionWarnings dependsFrom self.issues ;
   
-  transient Int connexionErrors dependsFrom self.issues ;
+  transient Int schematicConnexionErrors dependsFrom self.issues ;
   
   transient SchematicSheetDescriptor sheetDescriptor dependsFrom
      self.mRoot.one.sheetGeometry,

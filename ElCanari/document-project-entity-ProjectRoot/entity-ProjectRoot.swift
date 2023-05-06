@@ -720,18 +720,6 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol ProjectRoot_connexionWarningString : AnyObject {
-  var connexionWarningString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_connexionErrorString : AnyObject {
-  var connexionErrorString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 @MainActor protocol ProjectRoot_segmentedControlSheetIssueImage : AnyObject {
   var segmentedControlSheetIssueImage : NSImage? { get }
 }
@@ -1172,8 +1160,6 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_boardShapeIsRectangular,
          ProjectRoot_selectedSheetIssues,
          ProjectRoot_schematicOverDisplay,
-         ProjectRoot_connexionWarningString,
-         ProjectRoot_connexionErrorString,
          ProjectRoot_segmentedControlSheetIssueImage,
          ProjectRoot_schematicErrorCount,
          ProjectRoot_sheetIndexes,
@@ -3650,30 +3636,6 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: connexionWarningString
-  //····················································································································
-
-  final let connexionWarningString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var connexionWarningString : String? {
-    return self.connexionWarningString_property.optionalValue
-  }
-
-  //····················································································································
-  //   Transient property: connexionErrorString
-  //····················································································································
-
-  final let connexionErrorString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var connexionErrorString : String? {
-    return self.connexionErrorString_property.optionalValue
-  }
-
-  //····················································································································
   //   Transient property: segmentedControlSheetIssueImage
   //····················································································································
 
@@ -4916,40 +4878,6 @@ final class ProjectRoot : EBManagedObject,
     }
     self.mSelectedSheet_property.connectedPoints_property.startsToBeObserved (by: self.schematicOverDisplay_property)
     self.selectedSheetIssues_property.startsToBeObserved (by: self.schematicOverDisplay_property)
-  //--- Atomic property: connexionWarningString
-    self.connexionWarningString_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.mSheets_property.selection
-        switch (s0) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectRoot_connexionWarningString (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mSheets_property.toMany_connexionWarnings_StartsToBeObserved (by: self.connexionWarningString_property)
-  //--- Atomic property: connexionErrorString
-    self.connexionErrorString_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.mSheets_property.selection
-        switch (s0) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectRoot_connexionErrorString (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self.connexionErrorString_property)
   //--- Atomic property: segmentedControlSheetIssueImage
     self.segmentedControlSheetIssueImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4969,8 +4897,8 @@ final class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSheets_property.toMany_connexionWarnings_StartsToBeObserved (by: self.segmentedControlSheetIssueImage_property)
-    self.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self.segmentedControlSheetIssueImage_property)
+    self.mSheets_property.toMany_schematicConnexionWarnings_StartsToBeObserved (by: self.segmentedControlSheetIssueImage_property)
+    self.mSheets_property.toMany_schematicConnexionErrors_StartsToBeObserved (by: self.segmentedControlSheetIssueImage_property)
   //--- Atomic property: schematicErrorCount
     self.schematicErrorCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4987,7 +4915,7 @@ final class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self.schematicErrorCount_property)
+    self.mSheets_property.toMany_schematicConnexionErrors_StartsToBeObserved (by: self.schematicErrorCount_property)
   //--- Atomic property: sheetIndexes
     self.sheetIndexes_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -6004,8 +5932,8 @@ final class ProjectRoot : EBManagedObject,
     }
     self.unplacedSymbols_property.startsToBeObserved (by: self.schematicHasErrorOrWarning_property)
     self.netWarningCount_property.startsToBeObserved (by: self.schematicHasErrorOrWarning_property)
-    self.mSheets_property.toMany_connexionWarnings_StartsToBeObserved (by: self.schematicHasErrorOrWarning_property)
-    self.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self.schematicHasErrorOrWarning_property)
+    self.mSheets_property.toMany_schematicConnexionWarnings_StartsToBeObserved (by: self.schematicHasErrorOrWarning_property)
+    self.mSheets_property.toMany_schematicConnexionErrors_StartsToBeObserved (by: self.schematicHasErrorOrWarning_property)
   //--- Atomic property: schematicStatusMessage
     self.schematicStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -6033,8 +5961,8 @@ final class ProjectRoot : EBManagedObject,
     }
     self.unplacedSymbols_property.startsToBeObserved (by: self.schematicStatusMessage_property)
     self.netWarningCount_property.startsToBeObserved (by: self.schematicStatusMessage_property)
-    self.mSheets_property.toMany_connexionWarnings_StartsToBeObserved (by: self.schematicStatusMessage_property)
-    self.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self.schematicStatusMessage_property)
+    self.mSheets_property.toMany_schematicConnexionWarnings_StartsToBeObserved (by: self.schematicStatusMessage_property)
+    self.mSheets_property.toMany_schematicConnexionErrors_StartsToBeObserved (by: self.schematicStatusMessage_property)
   //--- Atomic property: segmentedControlSchematicIssueImage
     self.segmentedControlSchematicIssueImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -6058,8 +5986,8 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.unplacedSymbols_property.startsToBeObserved (by: self.segmentedControlSchematicIssueImage_property)
-    self.mSheets_property.toMany_connexionWarnings_StartsToBeObserved (by: self.segmentedControlSchematicIssueImage_property)
-    self.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self.segmentedControlSchematicIssueImage_property)
+    self.mSheets_property.toMany_schematicConnexionWarnings_StartsToBeObserved (by: self.segmentedControlSchematicIssueImage_property)
+    self.mSheets_property.toMany_schematicConnexionErrors_StartsToBeObserved (by: self.segmentedControlSchematicIssueImage_property)
   //--- Atomic property: schematicWarningCount
     self.schematicWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -6084,7 +6012,7 @@ final class ProjectRoot : EBManagedObject,
     }
     self.unplacedSymbols_property.startsToBeObserved (by: self.schematicWarningCount_property)
     self.netWarningCount_property.startsToBeObserved (by: self.schematicWarningCount_property)
-    self.mSheets_property.toMany_connexionWarnings_StartsToBeObserved (by: self.schematicWarningCount_property)
+    self.mSheets_property.toMany_schematicConnexionWarnings_StartsToBeObserved (by: self.schematicWarningCount_property)
   //--- Atomic property: hasSchematicIssue
     self.hasSchematicIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

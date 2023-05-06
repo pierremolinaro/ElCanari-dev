@@ -24,14 +24,14 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol SheetInProject_connexionWarnings : AnyObject {
-  var connexionWarnings : Int? { get }
+@MainActor protocol SheetInProject_schematicConnexionWarnings : AnyObject {
+  var schematicConnexionWarnings : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol SheetInProject_connexionErrors : AnyObject {
-  var connexionErrors : Int? { get }
+@MainActor protocol SheetInProject_schematicConnexionErrors : AnyObject {
+  var schematicConnexionErrors : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -48,8 +48,8 @@ final class SheetInProject : EBManagedObject,
          SheetInProject_mSheetTitle,
          SheetInProject_issues,
          SheetInProject_connectedPoints,
-         SheetInProject_connexionWarnings,
-         SheetInProject_connexionErrors,
+         SheetInProject_schematicConnexionWarnings,
+         SheetInProject_schematicConnexionErrors,
          SheetInProject_sheetDescriptor {
 
   //····················································································································
@@ -99,30 +99,6 @@ final class SheetInProject : EBManagedObject,
   final var mSheetTitle : String {
     get { return self.mSheetTitle_property.propval }
     set { self.mSheetTitle_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   ToMany proxy: netClasses
-  //····················································································································
-
-  var netClasses_modelDidChangeController : EBObservablePropertyController? = nil
-  // var netClasses_boundObjectDidChangeController : EBObservablePropertyController? = nil
-  final let netClasses_property = ProxyArrayOf_NetClassInProject ()
-
-  //····················································································································
-
-  var netClasses : EBReferenceArray <NetClassInProject> {
-    get {
-      switch self.netClasses_property.selection {
-      case .empty, .multiple :
-        return EBReferenceArray ()
-      case .single (let v) :
-        return EBReferenceArray (v)
-      }
-    }
-    set {
-      self.netClasses_property.setProp (newValue)
-    }
   }
 
   //····················································································································
@@ -178,27 +154,27 @@ final class SheetInProject : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: connexionWarnings
+  //   Transient property: schematicConnexionWarnings
   //····················································································································
 
-  final let connexionWarnings_property = EBTransientProperty_Int ()
+  final let schematicConnexionWarnings_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  final var connexionWarnings : Int? {
-    return self.connexionWarnings_property.optionalValue
+  final var schematicConnexionWarnings : Int? {
+    return self.schematicConnexionWarnings_property.optionalValue
   }
 
   //····················································································································
-  //   Transient property: connexionErrors
+  //   Transient property: schematicConnexionErrors
   //····················································································································
 
-  final let connexionErrors_property = EBTransientProperty_Int ()
+  final let schematicConnexionErrors_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  final var connexionErrors : Int? {
-    return self.connexionErrors_property.optionalValue
+  final var schematicConnexionErrors : Int? {
+    return self.schematicConnexionErrors_property.optionalValue
   }
 
   //····················································································································
@@ -240,19 +216,6 @@ final class SheetInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
       resetter: { inObject in inObject.mSheet_property.setProp (nil) }
     )
-  //--- ToMany proxy: netClasses
-    do{
-      let controller = EBObservablePropertyController (
-        observedObjects: [self.mRoot_property],
-        callBack: { [weak self] in
-          if let me = self, let model = me.mRoot {
-            me.netClasses_property.setModel (model.mNetClasses_property)
-          }
-        }
-      )
-      self.mRoot_property.toMany_mNetClasses_StartsToBeObserved (by: controller)
-      self.netClasses_modelDidChangeController = controller
-    }
   //--- To one property: mRoot (has opposite to many relationship: mSheets)
     self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -305,13 +268,13 @@ final class SheetInProject : EBManagedObject,
     }
     preferences_connectionColorForSchematic_property.startsToBeObserved (by: self.connectedPoints_property)
     self.mPoints_property.toMany_connectedPoints_StartsToBeObserved (by: self.connectedPoints_property)
-  //--- Atomic property: connexionWarnings
-    self.connexionWarnings_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: schematicConnexionWarnings
+    self.schematicConnexionWarnings_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.issues_property.selection
         switch (s0) {
         case (.single (let v0)) :
-          return .single (transient_SheetInProject_connexionWarnings (v0))
+          return .single (transient_SheetInProject_schematicConnexionWarnings (v0))
         case (.multiple) :
           return .multiple
         default :
@@ -321,14 +284,14 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.connexionWarnings_property)
-  //--- Atomic property: connexionErrors
-    self.connexionErrors_property.mReadModelFunction = { [weak self] in
+    self.issues_property.startsToBeObserved (by: self.schematicConnexionWarnings_property)
+  //--- Atomic property: schematicConnexionErrors
+    self.schematicConnexionErrors_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.issues_property.selection
         switch (s0) {
         case (.single (let v0)) :
-          return .single (transient_SheetInProject_connexionErrors (v0))
+          return .single (transient_SheetInProject_schematicConnexionErrors (v0))
         case (.multiple) :
           return .multiple
         default :
@@ -338,7 +301,7 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.connexionErrors_property)
+    self.issues_property.startsToBeObserved (by: self.schematicConnexionErrors_property)
   //--- Atomic property: sheetDescriptor
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

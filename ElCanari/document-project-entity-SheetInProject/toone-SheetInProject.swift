@@ -19,8 +19,8 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
       oldValue.mSheetTitle_property.stopsBeingObserved (by: self.mSheetTitle_property) // Stored property
       oldValue.issues_property.stopsBeingObserved (by: self.issues_property) // Transient property
       oldValue.connectedPoints_property.stopsBeingObserved (by: self.connectedPoints_property) // Transient property
-      oldValue.connexionWarnings_property.stopsBeingObserved (by: self.connexionWarnings_property) // Transient property
-      oldValue.connexionErrors_property.stopsBeingObserved (by: self.connexionErrors_property) // Transient property
+      oldValue.schematicConnexionWarnings_property.stopsBeingObserved (by: self.schematicConnexionWarnings_property) // Transient property
+      oldValue.schematicConnexionErrors_property.stopsBeingObserved (by: self.schematicConnexionErrors_property) // Transient property
       oldValue.sheetDescriptor_property.stopsBeingObserved (by: self.sheetDescriptor_property) // Transient property
       if let relay = self.mObserversOf_mObjects { // to Many
         oldValue.mObjects_property.stopsBeingObserved (by: relay)
@@ -34,8 +34,8 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
       newValue.mSheetTitle_property.startsToBeObserved (by: self.mSheetTitle_property) // Stored property
       newValue.issues_property.startsToBeObserved (by: self.issues_property) // Transient property
       newValue.connectedPoints_property.startsToBeObserved (by: self.connectedPoints_property) // Transient property
-      newValue.connexionWarnings_property.startsToBeObserved (by: self.connexionWarnings_property) // Transient property
-      newValue.connexionErrors_property.startsToBeObserved (by: self.connexionErrors_property) // Transient property
+      newValue.schematicConnexionWarnings_property.startsToBeObserved (by: self.schematicConnexionWarnings_property) // Transient property
+      newValue.schematicConnexionErrors_property.startsToBeObserved (by: self.schematicConnexionErrors_property) // Transient property
       newValue.sheetDescriptor_property.startsToBeObserved (by: self.sheetDescriptor_property) // Transient property
       if let relay = self.mObserversOf_mObjects { // to Many
         newValue.mObjects_property.startsToBeObserved (by: relay)
@@ -65,16 +65,16 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   final let connectedPoints_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
-  //   Observers of 'connexionWarnings' transient property
+  //   Observers of 'schematicConnexionWarnings' transient property
   //····················································································································
 
-  final let connexionWarnings_property = EBTransientProperty <Int?> ()
+  final let schematicConnexionWarnings_property = EBTransientProperty <Int?> ()
 
   //····················································································································
-  //   Observers of 'connexionErrors' transient property
+  //   Observers of 'schematicConnexionErrors' transient property
   //····················································································································
 
-  final let connexionErrors_property = EBTransientProperty <Int?> ()
+  final let schematicConnexionErrors_property = EBTransientProperty <Int?> ()
 
   //····················································································································
   //   Observers of 'sheetDescriptor' transient property
@@ -152,13 +152,13 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.connectedPoints_property.optionalSelection ?? .single (nil)
     }
-  //--- Configure connexionWarnings transient property
-    self.connexionWarnings_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.connexionWarnings_property.optionalSelection ?? .single (nil)
+  //--- Configure schematicConnexionWarnings transient property
+    self.schematicConnexionWarnings_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.schematicConnexionWarnings_property.optionalSelection ?? .single (nil)
     }
-  //--- Configure connexionErrors transient property
-    self.connexionErrors_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.connexionErrors_property.optionalSelection ?? .single (nil)
+  //--- Configure schematicConnexionErrors transient property
+    self.schematicConnexionErrors_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.schematicConnexionErrors_property.optionalSelection ?? .single (nil)
     }
   //--- Configure sheetDescriptor transient property
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in

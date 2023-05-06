@@ -14,19 +14,19 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ProjectRoot_segmentedControlSheetIssueImage (
-       _ self_mSheets_connexionWarnings : [SheetInProject_connexionWarnings],
-       _ self_mSheets_connexionErrors : [SheetInProject_connexionErrors]
+       _ self_mSheets_schematicConnexionWarnings : [SheetInProject_schematicConnexionWarnings],
+       _ self_mSheets_schematicConnexionErrors : [SheetInProject_schematicConnexionErrors]
 ) -> NSImage {
 //--- START OF USER ZONE 2
         var hasError = false
         var hasWarning = false
-        for sheet in self_mSheets_connexionErrors {
-          if let connexionErrors = sheet.connexionErrors, connexionErrors > 0 {
+        for sheet in self_mSheets_schematicConnexionErrors {
+          if let connexionErrors = sheet.schematicConnexionErrors, connexionErrors > 0 {
             hasError = true
           }
         }
-        for sheet in self_mSheets_connexionWarnings {
-          if let connexionWarnings = sheet.connexionWarnings, connexionWarnings > 0 {
+        for sheet in self_mSheets_schematicConnexionWarnings {
+          if let connexionWarnings = sheet.schematicConnexionWarnings, connexionWarnings > 0 {
             hasWarning = true
           }
         }

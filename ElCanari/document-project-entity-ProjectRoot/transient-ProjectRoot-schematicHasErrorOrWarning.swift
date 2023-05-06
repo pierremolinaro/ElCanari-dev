@@ -16,20 +16,20 @@ import AppKit
 @MainActor func transient_ProjectRoot_schematicHasErrorOrWarning (
        _ self_unplacedSymbols : StringTagArray,                   
        _ self_netWarningCount : Int,                              
-       _ self_mSheets_connexionWarnings : [SheetInProject_connexionWarnings],
-       _ self_mSheets_connexionErrors : [SheetInProject_connexionErrors]
+       _ self_mSheets_schematicConnexionWarnings : [SheetInProject_schematicConnexionWarnings],
+       _ self_mSheets_schematicConnexionErrors : [SheetInProject_schematicConnexionErrors]
 ) -> Bool {
 //--- START OF USER ZONE 2
        if (self_unplacedSymbols.count > 0) || (self_netWarningCount > 0) {
          return true
        }
-       for sheet in self_mSheets_connexionErrors {
-         if let n = sheet.connexionErrors, n > 0 {
+       for sheet in self_mSheets_schematicConnexionErrors {
+         if let n = sheet.schematicConnexionErrors, n > 0 {
            return true
          }
        }
-       for sheet in self_mSheets_connexionWarnings {
-         if let n = sheet.connexionWarnings, n > 0 {
+       for sheet in self_mSheets_schematicConnexionWarnings {
+         if let n = sheet.schematicConnexionWarnings, n > 0 {
            return true
          }
        }

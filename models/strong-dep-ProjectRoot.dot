@@ -34,7 +34,6 @@ digraph G {
   "NetClassInProject" [shape=rectangle] ;
   "NetClassInProject" -> "NetInProject" ;
   "SheetInProject" [shape=rectangle] ;
-  "SheetInProject" -> "NetClassInProject" ;
   "SheetInProject" -> "SchematicObject" ;
   "SheetInProject" -> "PointInSchematic" ;
   "SchematicObject" [shape=rectangle] ;

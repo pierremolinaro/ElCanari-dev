@@ -13,17 +13,18 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_SheetInProject_connexionWarnings (
+@MainActor func transient_SheetInProject_schematicConnexionErrors (
        _ self_issues : CanariIssueArray
 ) -> Int {
 //--- START OF USER ZONE 2
         var n = 0
         for issue in self_issues {
-          if issue.kind == .warning {
+          if issue.kind == .error {
             n += 1
           }
         }
         return n
+
 //--- END OF USER ZONE 2
 }
 

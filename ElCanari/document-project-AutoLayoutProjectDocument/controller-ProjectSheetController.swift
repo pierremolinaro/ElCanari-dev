@@ -32,8 +32,8 @@ final class ProjectSheetController : EBOutletEvent {
     self.mSheetPopUpButtonArray.append (inPopUpButton)
   //--- Add sheet titles observer
     self.mEventCallBack = { [weak self] in self?.updatePopUpButtonAndSteppers () }
-    inDocument.rootObject.mSheets_property.toMany_connexionWarnings_StartsToBeObserved (by: self)
-    inDocument.rootObject.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self)
+    inDocument.rootObject.mSheets_property.toMany_schematicConnexionWarnings_StartsToBeObserved (by: self)
+    inDocument.rootObject.mSheets_property.toMany_schematicConnexionErrors_StartsToBeObserved (by: self)
     inDocument.rootObject.mSheets_property.toMany_mSheetTitle_StartsToBeObserved (by: self)
     inDocument.rootObject.mSelectedSheet_property.startsToBeObserved (by: self)
   }
@@ -91,11 +91,11 @@ final class ProjectSheetController : EBOutletEvent {
         if sheet.mSheetTitle != "" {
           attributedString.append (NSAttributedString (string: ": \(sheet.mSheetTitle)", attributes: attributes))
         }
-        if let errorCount = sheet.connexionErrors, errorCount > 0 {
+        if let errorCount = sheet.schematicConnexionErrors, errorCount > 0 {
           attributes [NSAttributedString.Key.foregroundColor] = NSColor.red
           attributedString.append (NSAttributedString (string: " — \(errorCount)", attributes: attributes))
         }
-        if let warningCount = sheet.connexionWarnings, warningCount > 0 {
+        if let warningCount = sheet.schematicConnexionWarnings, warningCount > 0 {
           attributes [NSAttributedString.Key.foregroundColor] = NSColor.orange
           attributedString.append (NSAttributedString (string: " — \(warningCount)", attributes: attributes))
         }

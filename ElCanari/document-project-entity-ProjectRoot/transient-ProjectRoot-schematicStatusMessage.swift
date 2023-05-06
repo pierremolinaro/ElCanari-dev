@@ -16,14 +16,14 @@ import AppKit
 @MainActor func transient_ProjectRoot_schematicStatusMessage (
        _ self_unplacedSymbols : StringTagArray,               
        _ self_netWarningCount : Int,                          
-       _ self_mSheets_connexionWarnings : [SheetInProject_connexionWarnings],
-       _ self_mSheets_connexionErrors : [SheetInProject_connexionErrors]
+       _ self_mSheets_schematicConnexionWarnings : [SheetInProject_schematicConnexionWarnings],
+       _ self_mSheets_schematicConnexionErrors : [SheetInProject_schematicConnexionErrors]
 ) -> String {
 //--- START OF USER ZONE 2
         var array = [String] ()
         var errorCount = 0
-        for sheet in self_mSheets_connexionErrors {
-          if let n = sheet.connexionErrors {
+        for sheet in self_mSheets_schematicConnexionErrors {
+          if let n = sheet.schematicConnexionErrors {
             errorCount += n
           }
         }
@@ -38,8 +38,8 @@ import AppKit
           array.append ("\(self_netWarningCount) net warnings (see \"Net List\" page)")
         }
         var connectionWarningCount = 0
-        for sheet in self_mSheets_connexionWarnings {
-          if let n = sheet.connexionWarnings {
+        for sheet in self_mSheets_schematicConnexionWarnings {
+          if let n = sheet.schematicConnexionWarnings {
             connectionWarningCount += n
           }
         }

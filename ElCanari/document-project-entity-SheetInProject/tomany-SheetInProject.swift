@@ -26,17 +26,14 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
       if let relay = self.mObserversOf_connectedPoints { // Transient property
         managedObject.connectedPoints_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_connexionWarnings { // Transient property
-        managedObject.connexionWarnings_property.stopsBeingObserved (by: relay)
+      if let relay = self.mObserversOf_schematicConnexionWarnings { // Transient property
+        managedObject.schematicConnexionWarnings_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_connexionErrors { // Transient property
-        managedObject.connexionErrors_property.stopsBeingObserved (by: relay)
+      if let relay = self.mObserversOf_schematicConnexionErrors { // Transient property
+        managedObject.schematicConnexionErrors_property.stopsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_sheetDescriptor { // Transient property
         managedObject.sheetDescriptor_property.stopsBeingObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_netClasses { // Tomany proxy
-        managedObject.netClasses_property.stopsBeingObserved (by: relay)
       }
     }
   //--- Add observers to added objects
@@ -50,17 +47,14 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
       if let relay = self.mObserversOf_connectedPoints { // Transient property
         managedObject.connectedPoints_property.startsToBeObserved (by: relay)
       }
-      if let relay = self.mObserversOf_connexionWarnings { // Transient property
-        managedObject.connexionWarnings_property.startsToBeObserved (by: relay)
+      if let relay = self.mObserversOf_schematicConnexionWarnings { // Transient property
+        managedObject.schematicConnexionWarnings_property.startsToBeObserved (by: relay)
       }
-      if let relay = self.mObserversOf_connexionErrors { // Transient property
-        managedObject.connexionErrors_property.startsToBeObserved (by: relay)
+      if let relay = self.mObserversOf_schematicConnexionErrors { // Transient property
+        managedObject.schematicConnexionErrors_property.startsToBeObserved (by: relay)
       }
       if let relay = self.mObserversOf_sheetDescriptor { // Transient property
         managedObject.sheetDescriptor_property.startsToBeObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_netClasses { // Tomany proxy
-        managedObject.netClasses_property.startsToBeObserved (by: relay)
       }
     }
   }
@@ -92,35 +86,6 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   final func toMany_mSheetTitle_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSheetTitle?.stopsBeingObserved (by: inObserver)
-  }
-
-  //····················································································································
-  //   Observers of 'netClasses' toMany proxy
-  //····················································································································
-
-  private final var mObserversOf_netClasses : EBObservedObserver? = nil
-
-  //····················································································································
-
-  final func toMany_netClasses_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_netClasses {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.netClasses_property.startsToBeObserved (by: relay)
-      }
-      self.mObserversOf_netClasses = relay
-    }
-    relay.startsToBeObserved (by: inObserver)
-  }
-
-  //····················································································································
-
-  final func toMany_netClasses_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_netClasses?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -182,61 +147,61 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   }
 
   //····················································································································
-  //   Observers of 'connexionWarnings' transient property
+  //   Observers of 'schematicConnexionWarnings' transient property
   //····················································································································
 
-  private final var mObserversOf_connexionWarnings : EBObservedObserver? = nil
+  private final var mObserversOf_schematicConnexionWarnings : EBObservedObserver? = nil
 
   //····················································································································
 
-  final func toMany_connexionWarnings_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_schematicConnexionWarnings_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
-    if let r = self.mObserversOf_connexionWarnings {
+    if let r = self.mObserversOf_schematicConnexionWarnings {
       relay = r
     }else{
       relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.connexionWarnings_property.startsToBeObserved (by: relay)
+        managedObject.schematicConnexionWarnings_property.startsToBeObserved (by: relay)
       }
-      self.mObserversOf_connexionWarnings = relay
+      self.mObserversOf_schematicConnexionWarnings = relay
     }
     relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
-  final func toMany_connexionWarnings_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_connexionWarnings?.stopsBeingObserved (by: inObserver)
+  final func toMany_schematicConnexionWarnings_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_schematicConnexionWarnings?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
-  //   Observers of 'connexionErrors' transient property
+  //   Observers of 'schematicConnexionErrors' transient property
   //····················································································································
 
-  private final var mObserversOf_connexionErrors : EBObservedObserver? = nil
+  private final var mObserversOf_schematicConnexionErrors : EBObservedObserver? = nil
 
   //····················································································································
 
-  final func toMany_connexionErrors_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_schematicConnexionErrors_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
-    if let r = self.mObserversOf_connexionErrors {
+    if let r = self.mObserversOf_schematicConnexionErrors {
       relay = r
     }else{
       relay = EBObservedObserver ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.connexionErrors_property.startsToBeObserved (by: relay)
+        managedObject.schematicConnexionErrors_property.startsToBeObserved (by: relay)
       }
-      self.mObserversOf_connexionErrors = relay
+      self.mObserversOf_schematicConnexionErrors = relay
     }
     relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
-  final func toMany_connexionErrors_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_connexionErrors?.stopsBeingObserved (by: inObserver)
+  final func toMany_schematicConnexionErrors_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_schematicConnexionErrors?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

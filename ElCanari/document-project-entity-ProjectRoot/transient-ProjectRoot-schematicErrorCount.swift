@@ -14,12 +14,12 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ProjectRoot_schematicErrorCount (
-       _ self_mSheets_connexionErrors : [SheetInProject_connexionErrors]
+       _ self_mSheets_schematicConnexionErrors : [SheetInProject_schematicConnexionErrors]
 ) -> Int {
 //--- START OF USER ZONE 2
         var errorCount = 0
-        for sheet in self_mSheets_connexionErrors {
-          if let n = sheet.connexionErrors {
+        for sheet in self_mSheets_schematicConnexionErrors {
+          if let n = sheet.schematicConnexionErrors {
             errorCount += n
           }
         }

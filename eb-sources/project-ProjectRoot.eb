@@ -304,60 +304,50 @@ handlingOpposite entity ProjectRoot {
     prefs.schematicBackColor,
     prefs.schematicFrameColor
   ;
-  
-  transient String connexionWarningString dependsFrom self.mSheets.all.connexionWarnings ;
-  
-  transient String connexionErrorString dependsFrom self.mSheets.all.connexionErrors ;
 
   transient Bool schematicHasErrorOrWarning dependsFrom
      self.unplacedSymbols,
      self.netWarningCount,
-     self.mSheets.all.connexionWarnings,
-     self.mSheets.all.connexionErrors
+     self.mSheets.all.schematicConnexionWarnings,
+     self.mSheets.all.schematicConnexionErrors
    ;
 
   transient String schematicStatusMessage dependsFrom
      self.unplacedSymbols,
      self.netWarningCount,
-     self.mSheets.all.connexionWarnings,
-     self.mSheets.all.connexionErrors
+     self.mSheets.all.schematicConnexionWarnings,
+     self.mSheets.all.schematicConnexionErrors
    ;
 
   transient NSImage segmentedControlNetListIssueImage dependsFrom
      self.netWarningCount
   ;
+
   transient NSImage segmentedControlSheetIssueImage dependsFrom
-     self.mSheets.all.connexionWarnings,
-     self.mSheets.all.connexionErrors
+     self.mSheets.all.schematicConnexionWarnings,
+     self.mSheets.all.schematicConnexionErrors
   ;
 
   transient NSImage segmentedControlSchematicIssueImage dependsFrom
      self.unplacedSymbols,
-     self.mSheets.all.connexionWarnings,
-     self.mSheets.all.connexionErrors
+     self.mSheets.all.schematicConnexionWarnings,
+     self.mSheets.all.schematicConnexionErrors
   ;
 
   transient Int schematicErrorCount dependsFrom
-     self.mSheets.all.connexionErrors
+     self.mSheets.all.schematicConnexionErrors
    ;
 
   transient Int schematicWarningCount dependsFrom
      self.unplacedSymbols,
      self.netWarningCount,
-     self.mSheets.all.connexionWarnings
+     self.mSheets.all.schematicConnexionWarnings
    ;
 
   transient Bool hasSchematicIssue dependsFrom
      self.schematicErrorCount,
      self.schematicWarningCount
    ;
-
-//  transient NSImage schematicStatusImage dependsFrom
-//    self.unplacedSymbols,
-//    self.netWarningCount,
-//    self.mSheets.all.connexionWarnings,
-//    self.mSheets.all.connexionErrors
-//  ;
  
   transient NetInfoArray netsDescription dependsFrom self.mNetClasses.all.netsDescription ;
    

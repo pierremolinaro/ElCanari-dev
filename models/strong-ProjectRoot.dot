@@ -41,7 +41,6 @@ digraph G {
   ProjectRoot -> SchematicObject [dir=both arrowtail=none arrowhead=veevee] ;
   SheetInProject -> SchematicObject [dir=both arrowtail=none arrowhead=veevee] ;
   SheetInProject -> PointInSchematic [dir=both arrowtail=none arrowhead=veevee] ;
-  SheetInProject -> NetClassInProject [dir=both arrowtail=none arrowhead=veevee] ;
   PointInSchematic -> LabelInSchematic [dir=both arrowtail=none arrowhead=veevee] ;
   PointInSchematic -> NCInSchematic [dir=both arrowtail=none arrowhead=onormal] ;
   PointInSchematic -> WireInSchematic [dir=both arrowtail=none arrowhead=veevee] ;

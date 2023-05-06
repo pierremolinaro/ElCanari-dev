@@ -13,24 +13,17 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_ProjectRoot_connexionErrorString (
-       _ self_mSheets_connexionErrors : [SheetInProject_connexionErrors]
-) -> String {
+@MainActor func transient_SheetInProject_schematicConnexionWarnings (
+       _ self_issues : CanariIssueArray
+) -> Int {
 //--- START OF USER ZONE 2
-        var connexionErrors = 0
-        for sheet in self_mSheets_connexionErrors {
-          if let n = sheet.connexionErrors {
-            connexionErrors += n
+        var n = 0
+        for issue in self_issues {
+          if issue.kind == .warning {
+            n += 1
           }
         }
-        if connexionErrors == 0 {
-          return ""
-//        }else if connexionErrors == 1 {
-//          return "1"
-        }else{
-          return "\(connexionErrors)"
-        }
-
+        return n
 //--- END OF USER ZONE 2
 }
 

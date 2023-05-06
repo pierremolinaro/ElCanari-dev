@@ -16,12 +16,12 @@ import AppKit
 @MainActor func transient_ProjectRoot_schematicWarningCount (
        _ self_unplacedSymbols : StringTagArray,              
        _ self_netWarningCount : Int,                         
-       _ self_mSheets_connexionWarnings : [SheetInProject_connexionWarnings]
+       _ self_mSheets_schematicConnexionWarnings : [SheetInProject_schematicConnexionWarnings]
 ) -> Int {
 //--- START OF USER ZONE 2
         var connectionWarningCount = self_unplacedSymbols.count + self_netWarningCount
-        for sheet in self_mSheets_connexionWarnings {
-          if let n = sheet.connexionWarnings {
+        for sheet in self_mSheets_schematicConnexionWarnings {
+          if let n = sheet.schematicConnexionWarnings {
             connectionWarningCount += n
           }
         }

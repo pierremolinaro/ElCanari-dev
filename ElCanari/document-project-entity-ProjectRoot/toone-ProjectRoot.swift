@@ -122,8 +122,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.boardShapeIsRectangular_property.stopsBeingObserved (by: self.boardShapeIsRectangular_property) // Transient property
       oldValue.selectedSheetIssues_property.stopsBeingObserved (by: self.selectedSheetIssues_property) // Transient property
       oldValue.schematicOverDisplay_property.stopsBeingObserved (by: self.schematicOverDisplay_property) // Transient property
-      oldValue.connexionWarningString_property.stopsBeingObserved (by: self.connexionWarningString_property) // Transient property
-      oldValue.connexionErrorString_property.stopsBeingObserved (by: self.connexionErrorString_property) // Transient property
       oldValue.segmentedControlSheetIssueImage_property.stopsBeingObserved (by: self.segmentedControlSheetIssueImage_property) // Transient property
       oldValue.schematicErrorCount_property.stopsBeingObserved (by: self.schematicErrorCount_property) // Transient property
       oldValue.sheetIndexes_property.stopsBeingObserved (by: self.sheetIndexes_property) // Transient property
@@ -307,8 +305,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.boardShapeIsRectangular_property.startsToBeObserved (by: self.boardShapeIsRectangular_property) // Transient property
       newValue.selectedSheetIssues_property.startsToBeObserved (by: self.selectedSheetIssues_property) // Transient property
       newValue.schematicOverDisplay_property.startsToBeObserved (by: self.schematicOverDisplay_property) // Transient property
-      newValue.connexionWarningString_property.startsToBeObserved (by: self.connexionWarningString_property) // Transient property
-      newValue.connexionErrorString_property.startsToBeObserved (by: self.connexionErrorString_property) // Transient property
       newValue.segmentedControlSheetIssueImage_property.startsToBeObserved (by: self.segmentedControlSheetIssueImage_property) // Transient property
       newValue.schematicErrorCount_property.startsToBeObserved (by: self.schematicErrorCount_property) // Transient property
       newValue.sheetIndexes_property.startsToBeObserved (by: self.sheetIndexes_property) // Transient property
@@ -1021,18 +1017,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let schematicOverDisplay_property = EBTransientProperty <EBShape?> ()
-
-  //····················································································································
-  //   Observers of 'connexionWarningString' transient property
-  //····················································································································
-
-  final let connexionWarningString_property = EBTransientProperty <String?> ()
-
-  //····················································································································
-  //   Observers of 'connexionErrorString' transient property
-  //····················································································································
-
-  final let connexionErrorString_property = EBTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'segmentedControlSheetIssueImage' transient property
@@ -1963,14 +1947,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //--- Configure schematicOverDisplay transient property
     self.schematicOverDisplay_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.schematicOverDisplay_property.optionalSelection ?? .single (nil)
-    }
-  //--- Configure connexionWarningString transient property
-    self.connexionWarningString_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.connexionWarningString_property.optionalSelection ?? .single (nil)
-    }
-  //--- Configure connexionErrorString transient property
-    self.connexionErrorString_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.connexionErrorString_property.optionalSelection ?? .single (nil)
     }
   //--- Configure segmentedControlSheetIssueImage transient property
     self.segmentedControlSheetIssueImage_property.mReadModelFunction = { [weak self] in
