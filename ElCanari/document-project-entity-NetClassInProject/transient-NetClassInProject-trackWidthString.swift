@@ -18,7 +18,7 @@ import AppKit
        _ self_mTrackWidthUnit : Int
 ) -> String {
 //--- START OF USER ZONE 2
-       return stringFrom (valueInCanariUnit: self_mTrackWidth, displayUnit: self_mTrackWidthUnit)
+       return valueAndUnitStringFrom (valueInCanariUnit: self_mTrackWidth, displayUnit: self_mTrackWidthUnit)
 //--- END OF USER ZONE 2
 }
 

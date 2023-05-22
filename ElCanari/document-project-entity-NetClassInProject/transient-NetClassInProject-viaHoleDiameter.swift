@@ -18,7 +18,7 @@ import AppKit
        _ self_mViaHoleDiameterUnit : Int
 ) -> String {
 //--- START OF USER ZONE 2
-       return stringFrom (valueInCanariUnit: self_mViaHoleDiameter, displayUnit: self_mViaHoleDiameterUnit)
+       return valueAndUnitStringFrom (valueInCanariUnit: self_mViaHoleDiameter, displayUnit: self_mViaHoleDiameterUnit)
 //--- END OF USER ZONE 2
 }
 

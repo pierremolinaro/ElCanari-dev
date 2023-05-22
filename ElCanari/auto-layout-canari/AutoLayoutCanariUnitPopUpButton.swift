@@ -17,14 +17,14 @@ final class AutoLayoutCanariUnitPopUpButton : AutoLayoutBase_NSPopUpButton {
   init (size inSize : EBControlSize) {
     super.init (pullsDown: false, size: inSize)
 
-    self.add (title: "inch", withTag: 2_286_000)
-    self.add (title: "mil", withTag: 2_286)
-    self.add (title: "pt", withTag: 31_750)
-    self.add (title: "cm", withTag: 900_000)
-    self.add (title: "mm", withTag: 90_000)
-    self.add (title: "µm", withTag: 90)
-    self.add (title: "pc", withTag: 381_000)
-    self.add (title: "m", withTag: 90_000_000)
+    self.addItem (forUnit: CANARI_UNITS_PER_MIL)
+    self.addItem (forUnit: CANARI_UNITS_PER_INCH)
+    self.addItem (forUnit: CANARI_UNITS_PER_µM)
+    self.addItem (forUnit: CANARI_UNITS_PER_MM)
+    self.addItem (forUnit: CANARI_UNITS_PER_CM)
+    self.addItem (forUnit: CANARI_UNITS_PER_M)
+    self.addItem (forUnit: CANARI_UNITS_PER_PIXEL)
+    self.addItem (forUnit: CANARI_UNITS_PER_PC)
   }
 
   //····················································································································
@@ -35,9 +35,10 @@ final class AutoLayoutCanariUnitPopUpButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 
-  fileprivate func add (title inTitle : String, withTag inTag : Int) {
-    self.addItem (withTitle: inTitle)
-    self.lastItem?.tag = inTag
+  fileprivate func addItem (forUnit inUnit : Int) {
+    let unitString = unitStringFrom (displayUnit: inUnit)
+    self.addItem (withTitle: unitString)
+    self.lastItem?.tag = inUnit
   }
 
   //····················································································································

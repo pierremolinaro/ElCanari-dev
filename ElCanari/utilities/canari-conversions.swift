@@ -19,45 +19,83 @@ import Foundation
 // 1 px = 1/72 pouce = 31 750 cu
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let CANARI_UNITS_PER_MM    = 90_000
-let CANARI_UNITS_PER_INCH  = 2_286_000
+let CANARI_UNITS_PER_µM    = 90
 let CANARI_UNITS_PER_MIL   = 2_286
 let CANARI_UNITS_PER_PIXEL = 31_750
+let CANARI_UNITS_PER_PC    = 381_000
+let CANARI_UNITS_PER_MM    = CANARI_UNITS_PER_µM * 1000
+let CANARI_UNITS_PER_CM    = CANARI_UNITS_PER_MM * 10
+let CANARI_UNITS_PER_M     = CANARI_UNITS_PER_MM * 1000
+let CANARI_UNITS_PER_INCH  = CANARI_UNITS_PER_MIL * 1000
+
+let PIXELS_PER_INCH = CANARI_UNITS_PER_INCH / CANARI_UNITS_PER_PIXEL // 72
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//  Display string
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate struct DisplayComponents {
+  let value : String
+  let unit : String
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func displayComponentsFrom (valueInCanariUnit inValue : Int, unit inUnit : Int) -> DisplayComponents { // Value, Unit
+  let value = CGFloat (inValue)
+  if inUnit == CANARI_UNITS_PER_µM {
+    return DisplayComponents (value: "\(Int (value / CGFloat (CANARI_UNITS_PER_µM)))", unit: "µm")
+  }else if inUnit == CANARI_UNITS_PER_MM {
+    return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_MM)), unit: "mm")
+  }else if inUnit == CANARI_UNITS_PER_CM {
+    return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_CM)), unit: "cm")
+  }else if inUnit == CANARI_UNITS_PER_M {
+    return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_M)), unit: "m")
+  }else if inUnit == CANARI_UNITS_PER_INCH {
+    return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_INCH)), unit: "in")
+  }else if inUnit == CANARI_UNITS_PER_PIXEL {
+    return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_PIXEL)), unit: "pt")
+  }else if inUnit == CANARI_UNITS_PER_PC {
+    return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_PC)), unit: "pc")
+  }else{
+    return DisplayComponents (value: "\(Int (value / CGFloat (CANARI_UNITS_PER_MIL)))", unit: "mil")
+  }
+}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func canariUnitToCocoa (_ inValue : Int) -> CGFloat {
-  return CGFloat (inValue) / 31_750.0
+  return CGFloat (inValue) / CGFloat (CANARI_UNITS_PER_PIXEL)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func cocoaToCanariUnit (_ inValue : CGFloat) -> Int {
-  return Int (inValue *  31_750.0)
+  return Int (inValue *  CGFloat (CANARI_UNITS_PER_PIXEL))
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func cocoaToInch (_ inValue : CGFloat) -> CGFloat {
-  return inValue / 72.0
+  return inValue / CGFloat (PIXELS_PER_INCH)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func cocoaToMilTenth (_ inValue : CGFloat) -> Int {
-  return Int (inValue * 10_000.0 / 72.0)
+  return Int (inValue * 10_000.0 / CGFloat (PIXELS_PER_INCH))
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func canariUnitToInch (_ inValue : Int) -> CGFloat {
-  return CGFloat (inValue) / 2_286_000.0
+  return CGFloat (inValue) / CGFloat (CANARI_UNITS_PER_INCH)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func canariUnitToMilTenth (_ inValue : Int) -> Int { // 1/10 mil = 1 / 10 000 inch
-  return Int ((CGFloat (inValue) / 228.6).rounded ())
+  return Int ((CGFloat (inValue) / (CGFloat (CANARI_UNITS_PER_INCH) / 10.0)).rounded ())
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -65,7 +103,7 @@ func canariUnitToMilTenth (_ inValue : Int) -> Int { // 1/10 mil = 1 / 10 000 in
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func milsToCocoaUnit (_ inValueInMils : CGFloat) -> CGFloat {
-  return inValueInMils * 72.0 / 1000.0
+  return inValueInMils * CGFloat (PIXELS_PER_INCH) / 1000.0
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -89,148 +127,38 @@ func milsToCanariUnit (fromDouble inValue : Double) -> Int {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Conversion to millimeter
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func canariUnitToMillimeter (_ inValue : Int) -> CGFloat {
   return CGFloat (inValue) / CGFloat (CANARI_UNITS_PER_MM)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// L'unité de rotation utilisée dans canari est le 1/1000° [cru = Canari Rotation Unit]
-// 1_000 cru = 1°
-// 90_000 cru = 90°
+//   Display
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func canariRotationToRadians (_ inCanariRotation : Int) -> CGFloat {
-  return CGFloat (inCanariRotation % 360_000) * CGFloat.pi / 180_000.0
+func valueAndUnitStringFrom (valueInCocoaUnit inValue : CGFloat, displayUnit : Int) -> String {
+  return valueAndUnitStringFrom (valueInCanariUnit: cocoaToCanariUnit (inValue), displayUnit: displayUnit)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func degreesToCanariRotation (_ inRotationInDegrees : CGFloat) -> Int {
-  return Int ((inRotationInDegrees * 1_000.0).rounded ())
+func valueAndUnitStringFrom (valueInCanariUnit inValue : Int, displayUnit inUnit : Int) -> String {
+  let v = displayComponentsFrom (valueInCanariUnit: inValue, unit: inUnit)
+  return v.value + " " + v.unit
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func angleInDegreesBetweenNSPoints (_ inP1 : NSPoint, _ inP2 : NSPoint) -> CGFloat {
-  let dx = inP2.x - inP1.x
-  let dy = inP2.y - inP1.y
-  let distance = sqrt (dx * dx + dy * dy)
-  var angle : CGFloat = 0.0
-  if distance > 0.0 {
-    angle = asin (dy / distance) * 180.0 / CGFloat.pi
-    if dx < 0.0 {
-      angle = 180.0 - angle
-    }
-    if angle < 0.0 {
-      angle += 360.0
-    }
-  }
-  return angle
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//  Value aligned on grid
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension Int {
-
-  //····················································································································
-
-  func value (alignedOnGrid inGrid: Int) -> Int {
-    return ((self + inGrid / 2) / inGrid) * inGrid
-  }
-
-  //····················································································································
-
-  mutating func align (onGrid inGrid: Int) {
-    self = self.value (alignedOnGrid: inGrid)
-  }
-
-  //····················································································································
-
-  func isAlignedOnGrid (_ inGrid: Int) -> Bool {
-    return self == self.value (alignedOnGrid: inGrid)
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//  Display string
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func stringFrom (valueInCocoaUnit : CGFloat, displayUnit : Int) -> String {
-  return stringFrom (valueInCanariUnit: cocoaToCanariUnit (valueInCocoaUnit), displayUnit: displayUnit)
+func unitStringFrom (displayUnit inUnit : Int) -> String {
+  let v = displayComponentsFrom (valueInCanariUnit: 0, unit: inUnit)
+  return v.unit
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func stringFrom (valueInCanariUnit : Int, unit inUnit : Int) -> String {
-  let value = CGFloat (valueInCanariUnit)
-  if inUnit == 90 {
-    return "\(Int (value / 90.0))"
-  }else if inUnit == 90_000 {
-    return String (format:"%.2f", value / 90_000.0)
-  }else if inUnit == 900_000 {
-    return String (format:"%.2f", value / 900_000.0)
-  }else if inUnit == 2_286_000 {
-    return String (format:"%.2f", value / 2_286_000.0)
-  }else if inUnit == 31_750 {
-    return String (format:"%.2f", value / 31_750.0)
-  }else if inUnit == 381_000 {
-    return String (format:"%.2f", value / 381_000.0)
-  }else{
-    return "\(Int (value / 2_286.0))"
-  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func stringFrom (valueInCanariUnit : Int, displayUnit inUnit : Int) -> String {
-  let value = CGFloat (valueInCanariUnit)
-  if inUnit == 90 {
-    return "\(Int (value / 90.0)) µm"
-  }else if inUnit == 90_000 {
-    return String (format:"%.2f mm", value / 90_000.0)
-  }else if inUnit == 900_000 {
-    return String (format:"%.2f cm", value / 900_000.0)
-  }else if inUnit == 90_000_000 {
-    return String (format:"%.4f m", value / 90_000_000.0)
-  }else if inUnit == 2_286_000 {
-    return String (format:"%.2f in", value / 2_286_000.0)
-  }else if inUnit == 31_750 {
-    return String (format:"%.2f pt", value / 31_750.0)
-  }else if inUnit == 381_000 {
-    return String (format:"%.2f pc", value / 381_000.0)
-  }else{
-    return "\(Int (value / 2_286.0)) mil"
-  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func stringFrom (displayUnit inUnit : Int) -> String {
-  if inUnit == 90 {
-    return "µm"
-  }else if inUnit == 90_000 {
-    return "mm"
-  }else if inUnit == 900_000 {
-    return "cm"
-  }else if inUnit == 90_000_000 {
-    return "m"
-  }else if inUnit == 2_286_000 {
-    return "in"
-  }else if inUnit == 31_750 {
-    return "pt"
-  }else if inUnit == 381_000 {
-    return "pc"
-  }else{
-    return "mil"
-  }
-}
+//func valueStringFrom (valueInCanariUnit inValue : Int, unit inUnit : Int) -> String {
+//  let v = displayComponentsFrom (valueInCanariUnit: inValue, unit: inUnit)
+//  return v.value
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

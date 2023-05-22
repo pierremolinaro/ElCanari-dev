@@ -81,8 +81,8 @@ extension EBGraphicView {
          view.subviews.count == 2,
          let placardX = view.subviews [0] as? NSTextField,
          let placardY = view.subviews [1] as? NSTextField {
-        placardX.stringValue = "X = " + stringFrom (valueInCocoaUnit: inLocationInView.x, displayUnit: self.mXPlacardUnit)
-        placardY.stringValue = "Y = " + stringFrom (valueInCocoaUnit: inLocationInView.y, displayUnit: self.mYPlacardUnit)
+        placardX.stringValue = "X = " + valueAndUnitStringFrom (valueInCocoaUnit: inLocationInView.x, displayUnit: self.mXPlacardUnit)
+        placardY.stringValue = "Y = " + valueAndUnitStringFrom (valueInCocoaUnit: inLocationInView.y, displayUnit: self.mYPlacardUnit)
         placardX.sizeToFit ()
         placardY.sizeToFit ()
         let w = max (placardX.frame.size.width, placardY.frame.size.width)

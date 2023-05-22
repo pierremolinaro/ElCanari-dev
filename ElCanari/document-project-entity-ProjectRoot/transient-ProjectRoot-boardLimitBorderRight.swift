@@ -18,7 +18,7 @@ import AppKit
        _ self_mBoardLimitsBoundingBoxUnit : Int
 ) -> String {
 //--- START OF USER ZONE 2
-        return stringFrom (valueInCanariUnit: self_boardBoundBox.right, displayUnit: self_mBoardLimitsBoundingBoxUnit)
+        return valueAndUnitStringFrom (valueInCanariUnit: self_boardBoundBox.right, displayUnit: self_mBoardLimitsBoundingBoxUnit)
 //--- END OF USER ZONE 2
 }
 

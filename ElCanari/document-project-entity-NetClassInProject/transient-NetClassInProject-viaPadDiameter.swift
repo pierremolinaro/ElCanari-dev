@@ -18,7 +18,7 @@ import AppKit
        _ self_mViaPadDiameterUnit : Int
 ) -> String {
 //--- START OF USER ZONE 2
-       return stringFrom (valueInCanariUnit: self_mViaPadDiameter, displayUnit: self_mViaPadDiameterUnit)
+       return valueAndUnitStringFrom (valueInCanariUnit: self_mViaPadDiameter, displayUnit: self_mViaPadDiameterUnit)
 //--- END OF USER ZONE 2
 }
 

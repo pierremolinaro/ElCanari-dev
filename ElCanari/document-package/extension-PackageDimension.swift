@@ -224,19 +224,19 @@ extension PackageDimension {
 
   override func program () -> String {
     var s = "dimension "
-    s += stringFrom (valueInCanariUnit: self.x1, displayUnit : self.x1Unit)
+    s += valueAndUnitStringFrom (valueInCanariUnit: self.x1, displayUnit : self.x1Unit)
     s += " : "
-    s += stringFrom (valueInCanariUnit: self.y1, displayUnit : self.y1Unit)
+    s += valueAndUnitStringFrom (valueInCanariUnit: self.y1, displayUnit : self.y1Unit)
     s += " to "
-    s += stringFrom (valueInCanariUnit: self.x2, displayUnit : self.x2Unit)
+    s += valueAndUnitStringFrom (valueInCanariUnit: self.x2, displayUnit : self.x2Unit)
     s += " : "
-    s += stringFrom (valueInCanariUnit: self.y2, displayUnit : self.y2Unit)
+    s += valueAndUnitStringFrom (valueInCanariUnit: self.y2, displayUnit : self.y2Unit)
     s += " label "
-    s += stringFrom (valueInCanariUnit: self.xDimension, displayUnit : self.xDimensionUnit)
+    s += valueAndUnitStringFrom (valueInCanariUnit: self.xDimension, displayUnit : self.xDimensionUnit)
     s += " : "
-    s += stringFrom (valueInCanariUnit: self.yDimension, displayUnit : self.yDimensionUnit)
+    s += valueAndUnitStringFrom (valueInCanariUnit: self.yDimension, displayUnit : self.yDimensionUnit)
     s += " unit "
-    s += stringFrom (displayUnit : self.distanceUnit)
+    s += unitStringFrom (displayUnit : self.distanceUnit)
     s += ";\n"
     return s
   }

@@ -189,21 +189,21 @@ extension PackagePad {
 
   override func program () -> String {
     var s = "pad "
-    s += stringFrom (valueInCanariUnit: self.xCenter, displayUnit : self.xCenterUnit)
+    s += valueAndUnitStringFrom (valueInCanariUnit: self.xCenter, displayUnit : self.xCenterUnit)
     s += " : "
-    s += stringFrom (valueInCanariUnit: self.yCenter, displayUnit : self.yCenterUnit)
+    s += valueAndUnitStringFrom (valueInCanariUnit: self.yCenter, displayUnit : self.yCenterUnit)
     s += " size "
-    s += stringFrom (valueInCanariUnit: self.width, displayUnit : self.widthUnit)
+    s += valueAndUnitStringFrom (valueInCanariUnit: self.width, displayUnit : self.widthUnit)
     s += " : "
-    s += stringFrom (valueInCanariUnit: self.height, displayUnit : self.heightUnit)
+    s += valueAndUnitStringFrom (valueInCanariUnit: self.height, displayUnit : self.heightUnit)
     s += " shape "
     s += self.padShape.string
     s += " style "
     s += self.padStyle.string
     s += " hole "
-    s += stringFrom (valueInCanariUnit: self.holeWidth, displayUnit : self.holeWidthUnit)
+    s += valueAndUnitStringFrom (valueInCanariUnit: self.holeWidth, displayUnit : self.holeWidthUnit)
     s += " : "
-    s += stringFrom (valueInCanariUnit: self.holeHeight, displayUnit : self.holeHeightUnit)
+    s += valueAndUnitStringFrom (valueInCanariUnit: self.holeHeight, displayUnit : self.holeHeightUnit)
     s += " number "
     s += "\(self.padNumber)"
     if self.slaves.count > 0 {

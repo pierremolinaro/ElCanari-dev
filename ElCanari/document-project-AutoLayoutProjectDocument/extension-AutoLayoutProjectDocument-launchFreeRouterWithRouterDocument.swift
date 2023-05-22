@@ -52,7 +52,7 @@ extension AutoLayoutProjectDocument {
     //--- Launch free router with document
       if let freeRouterApplication : URL = self.uncompressedFreeRouterURL () {
         let openConfiguration = NSWorkspace.OpenConfiguration ()
-        openConfiguration.arguments = ["-de", dsnFilePath]
+        openConfiguration.arguments = ["-de", dsnFilePath, "-oit", "0.0"]
         NSWorkspace.shared.openApplication (at: freeRouterApplication, configuration: openConfiguration) { (optionalApplication, optionalError) in
           if optionalApplication == nil {
             let alert = NSAlert ()
