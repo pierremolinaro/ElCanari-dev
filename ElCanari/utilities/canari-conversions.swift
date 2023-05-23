@@ -95,7 +95,8 @@ func canariUnitToInch (_ inValue : Int) -> CGFloat {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func canariUnitToMilTenth (_ inValue : Int) -> Int { // 1/10 mil = 1 / 10 000 inch
-  return Int ((CGFloat (inValue) / (CGFloat (CANARI_UNITS_PER_INCH) / 10.0)).rounded ())
+  let v = CGFloat (inValue) * 10.0 / CGFloat (CANARI_UNITS_PER_MIL)
+  return Int (v.rounded ())
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
