@@ -156,10 +156,3 @@ func unitStringFrom (displayUnit inUnit : Int) -> String {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//func valueStringFrom (valueInCanariUnit inValue : Int, unit inUnit : Int) -> String {
-//  let v = displayComponentsFrom (valueInCanariUnit: inValue, unit: inUnit)
-//  return v.value
-//}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

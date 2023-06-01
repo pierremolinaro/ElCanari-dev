@@ -1573,7 +1573,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_41 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1611,7 +1611,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_45 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1630,7 +1630,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_47 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Length", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Length", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1678,7 +1678,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_52 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1716,7 +1716,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_56 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1754,7 +1754,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_60 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1792,7 +1792,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_64 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1840,7 +1840,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_69 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1859,7 +1859,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_71 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1878,7 +1878,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_73 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1926,7 +1926,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_78 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1945,7 +1945,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_80 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Radius", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Radius", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1964,7 +1964,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_82 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Start Angle", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Start Angle", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1983,7 +1983,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_84 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Angle", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Angle", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2002,7 +2002,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_86 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Start Tangent", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Start Tangent", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2021,7 +2021,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_88 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "End Tangent", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "End Tangent", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2069,7 +2069,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_93 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2107,7 +2107,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_97 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2298,7 +2298,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_117 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2317,7 +2317,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_119 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2336,7 +2336,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_121 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2374,7 +2374,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_125 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2393,7 +2393,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_127 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Name", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Name", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2918,7 +2918,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_180 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Grid Style", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Grid Style", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2937,7 +2937,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_182 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Grid Display", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Grid Display", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2962,7 +2962,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_184 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2981,7 +2981,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_186 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -3059,7 +3059,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_194 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Knob Size", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Knob Size", bold: false, size: .small, alignment: .right)
     return view
   }
 
