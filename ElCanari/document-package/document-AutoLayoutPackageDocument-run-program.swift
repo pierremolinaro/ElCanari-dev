@@ -166,9 +166,9 @@ extension AutoLayoutPackageDocument {
 
   //····················································································································
 
-  private func scanNumber (_ inString : [UnicodeScalar],
-                           _ ioIndex : inout Int,
-                           _ ioOk : inout Bool) -> Int {
+  private func scanInteger (_ inString : [UnicodeScalar],
+                            _ ioIndex : inout Int,
+                            _ ioOk : inout Bool) -> Int {
     self.passSeparators (inString, &ioIndex, &ioOk)
     var emptyNumber = true
     var value = 0
@@ -230,7 +230,7 @@ extension AutoLayoutPackageDocument {
   private func scanNumberWithUnit (_ inString : [UnicodeScalar],
                                    _ ioIndex : inout Int,
                                    _ ioOk : inout Bool) -> (Int, Int) {
-    let x = self.scanNumber (inString, &ioIndex, &ioOk)
+    let x = self.scanInteger (inString, &ioIndex, &ioOk)
     let xUnit = self.scanUnit (inString, &ioIndex, &ioOk)
     return (x * xUnit, xUnit)
   }
@@ -240,10 +240,10 @@ extension AutoLayoutPackageDocument {
   private func scanPoint (_ inString : [UnicodeScalar],
                           _ ioIndex : inout Int,
                           _ ioOk : inout Bool) -> ((Int, Int), (Int, Int)) {
-    let x = self.scanNumber (inString, &ioIndex, &ioOk)
+    let x = self.scanInteger (inString, &ioIndex, &ioOk)
     let xUnit = self.scanUnit (inString, &ioIndex, &ioOk)
     self.checkChar (":", inString, &ioIndex, &ioOk)
-    let y = self.scanNumber (inString, &ioIndex, &ioOk)
+    let y = self.scanInteger (inString, &ioIndex, &ioOk)
     let yUnit = self.scanUnit (inString, &ioIndex, &ioOk)
     return ((x * xUnit, xUnit), (y * yUnit, yUnit))
   }
@@ -367,7 +367,7 @@ extension AutoLayoutPackageDocument {
     let ((holeWidth, holeWidthUnit), (holeHeight, holeHeightUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkName ("id", inString, &ioIndex, &ioOk)
     let slavePadErrorLocation = ioIndex
-    let masterPadID = self.scanNumber (inString, &ioIndex, &ioOk)
+    let masterPadID = self.scanInteger (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageSlavePad (self.undoManager)
     object.xCenter = xCenter
@@ -419,10 +419,10 @@ extension AutoLayoutPackageDocument {
     self.checkName ("hole", inString, &ioIndex, &ioOk)
     let ((holeWidth, holeWidthUnit), (holeHeight, holeHeightUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkName ("number", inString, &ioIndex, &ioOk)
-    let padNumber = self.scanNumber (inString, &ioIndex, &ioOk)
+    let padNumber = self.scanInteger (inString, &ioIndex, &ioOk)
     let object = PackagePad (self.undoManager)
     if self.test ("id", inString, &ioIndex, &ioOk) {
-      let padID = self.scanNumber (inString, &ioIndex, &ioOk)
+      let padID = self.scanInteger (inString, &ioIndex, &ioOk)
       ioMasterPadDictionary [padID] = object
     }
     self.checkChar (";", inString, &ioIndex, &ioOk)
@@ -510,9 +510,9 @@ extension AutoLayoutPackageDocument {
     self.checkName ("radius", inString, &ioIndex, &ioOk)
     let (radius, radiusUnit) = self.scanNumberWithUnit (inString, &ioIndex, &ioOk)
     self.checkName ("start", inString, &ioIndex, &ioOk)
-    let startAngle = self.scanNumber(inString, &ioIndex, &ioOk)
+    let startAngle = self.scanInteger(inString, &ioIndex, &ioOk)
     self.checkName ("angle", inString, &ioIndex, &ioOk)
-    let arcAngle = self.scanNumber(inString, &ioIndex, &ioOk)
+    let arcAngle = self.scanInteger(inString, &ioIndex, &ioOk)
     self.checkName ("leading", inString, &ioIndex, &ioOk)
     let (startTangentLength, startTangentLengthUnit) = self.scanNumberWithUnit (inString, &ioIndex, &ioOk)
     self.checkName ("training", inString, &ioIndex, &ioOk)
