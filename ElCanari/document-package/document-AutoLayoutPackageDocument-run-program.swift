@@ -295,7 +295,6 @@ extension AutoLayoutPackageDocument {
     self.checkName ("numbering", inString, &ioIndex, &ioOk)
     let numberingIndex = ioIndex
     let numberingName = self.scanName (inString, &ioIndex, &ioOk)
-//    let possibleZoneNumbering = PadNumbering (string: numberingName)
     let possibleZoneNumbering : PadNumbering?
     switch numberingName {
       case "noNumbering" : possibleZoneNumbering = .noNumbering // 0
