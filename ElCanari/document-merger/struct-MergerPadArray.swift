@@ -260,15 +260,15 @@ struct MergerPadArray : Hashable {
             ()
           case .closePath:
             drawings.append ("X\(Int (origin.x))Y\(Int (origin.y))D01") // Line to
+          case .cubicCurveTo:
+            ()
+          case .quadraticCurveTo:
+            ()
           @unknown default :
             ()
           }
         }
         ioPolygons.append (drawings)
-
-//        var drawings = [String] ()
-//        drawings.append ("Octogonal pad (\(#file):\(#line)")
-//        ioPolygons.append (drawings)
       case .round :
         if pad.width < pad.height {
           let transform = NSAffineTransform ()

@@ -200,6 +200,58 @@ extension AutoLayoutPackageDocument {
 
   //····················································································································
 
+  private func scanFraction (_ inString : [UnicodeScalar],
+                             _ ioIndex : inout Int,
+                             _ ioOk : inout Bool) -> (Int, Int) { // Numerator, denominator
+    self.passSeparators (inString, &ioIndex, &ioOk)
+    var emptyNumber = true
+    var numerator = 0
+    var denominator = 1
+    var loop = true
+    var sign = 1
+    if ioOk && (ioIndex < inString.count) && (inString [ioIndex] == "-") {
+      sign = -1
+      ioIndex += 1
+    }
+    while ioOk && loop {
+      if ioIndex >= inString.count {
+        self.raiseError (ioIndex, "End of text reached", #line)
+        ioOk = false
+      }else if (inString [ioIndex] >= "0") && (inString [ioIndex] <= "9") {
+        emptyNumber = false
+        numerator *= 10
+        numerator += Int (inString [ioIndex].value - 48) // 48 : ASCCI code of "0"
+        ioIndex += 1
+      }else{
+        loop = false
+      }
+    }
+    if ioOk && (ioIndex < inString.count) && (inString [ioIndex] == ".") {
+      ioIndex += 1
+      loop = true
+      while ioOk && loop {
+        if ioIndex >= inString.count {
+          self.raiseError (ioIndex, "End of text reached", #line)
+          ioOk = false
+        }else if (inString [ioIndex] >= "0") && (inString [ioIndex] <= "9") {
+          denominator *= 10
+          numerator *= 10
+          numerator += Int (inString [ioIndex].value - 48) // 48 : ASCCI code of "0"
+          ioIndex += 1
+        }else{
+          loop = false
+        }
+      }
+    }
+    if ioOk && emptyNumber {
+      self.raiseError (ioIndex, "An integer value is expected here", #line)
+      ioOk = false
+    }
+    return (sign * numerator, denominator)
+  }
+
+  //····················································································································
+
   private func scanUnit (_ inString : [UnicodeScalar],
                          _ ioIndex : inout Int,
                          _ ioOk : inout Bool) -> Int {
@@ -230,9 +282,9 @@ extension AutoLayoutPackageDocument {
   private func scanNumberWithUnit (_ inString : [UnicodeScalar],
                                    _ ioIndex : inout Int,
                                    _ ioOk : inout Bool) -> (Int, Int) {
-    let x = self.scanInteger (inString, &ioIndex, &ioOk)
-    let xUnit = self.scanUnit (inString, &ioIndex, &ioOk)
-    return (x * xUnit, xUnit)
+    let (n, d) = self.scanFraction (inString, &ioIndex, &ioOk)
+    let unit = self.scanUnit (inString, &ioIndex, &ioOk)
+    return ((n * unit) / d, unit)
   }
 
   //····················································································································
@@ -240,12 +292,12 @@ extension AutoLayoutPackageDocument {
   private func scanPoint (_ inString : [UnicodeScalar],
                           _ ioIndex : inout Int,
                           _ ioOk : inout Bool) -> ((Int, Int), (Int, Int)) {
-    let x = self.scanInteger (inString, &ioIndex, &ioOk)
+    let (xn, xd) = self.scanFraction (inString, &ioIndex, &ioOk)
     let xUnit = self.scanUnit (inString, &ioIndex, &ioOk)
     self.checkChar (":", inString, &ioIndex, &ioOk)
-    let y = self.scanInteger (inString, &ioIndex, &ioOk)
+    let (yn, yd) = self.scanFraction (inString, &ioIndex, &ioOk)
     let yUnit = self.scanUnit (inString, &ioIndex, &ioOk)
-    return ((x * xUnit, xUnit), (y * yUnit, yUnit))
+    return (((xn * xUnit) / xd, xUnit), ((yn * yUnit) / yd, yUnit))
   }
 
   //····················································································································

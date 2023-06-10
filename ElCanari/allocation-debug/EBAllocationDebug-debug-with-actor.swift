@@ -150,7 +150,7 @@ nonisolated func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAY
       Task.detached {
         try? await Task.sleep (nanoseconds: 250_000_000) // 250 ms
         let (totalAllocatedObjectCountByClass, liveObjectCountByClass) = await self.getAllocations ()
-        DispatchQueue.main.sync {
+        DispatchQueue.main.async {
           gDebugObject?.display (totalAllocatedObjectCountByClass, liveObjectCountByClass)
         }
       }
@@ -458,7 +458,7 @@ fileprivate struct EBAllocationItemDisplay {
   //    display
   //····················································································································
 
-  func display (_ inTotalAllocatedObjectCountByClass : [String : Int], _ inLiveObjectCountByClass : [String : Int]) {
+  @MainActor func display (_ inTotalAllocatedObjectCountByClass : [String : Int], _ inLiveObjectCountByClass : [String : Int]) {
     self.mTotalAllocatedObjectCountByClass = inTotalAllocatedObjectCountByClass
     self.mLiveObjectCountByClass = inLiveObjectCountByClass
     self.displayAllocation ()

@@ -531,7 +531,7 @@ extension AutoLayoutMergerDocument {
           var currentPoint = NSPoint ()
           for idx in 0 ..< flattenedBP.elementCount {
             var pointArray = [NSPoint (), NSPoint (), NSPoint ()] // 3-point array
-            let element : NSBezierPath.ElementType = flattenedBP.element(at:idx, associatedPoints: &pointArray)
+            let element : NSBezierPath.ElementType = flattenedBP.element (at:idx, associatedPoints: &pointArray)
             switch element {
             case .moveTo :
               currentPoint = pointArray [0]
@@ -558,6 +558,10 @@ extension AutoLayoutMergerDocument {
               ioErrorArray.append (("Invalid curveToBezierPathElement", #line))
             case .closePath :
               ioErrorArray.append (("Invalid closePathBezierPathElement", #line))
+            case .cubicCurveTo:
+              ()
+            case .quadraticCurveTo:
+              ()
             @unknown default:
               ()
             }

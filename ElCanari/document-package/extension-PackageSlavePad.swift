@@ -198,21 +198,21 @@ extension PackageSlavePad {
 
   override func program () -> String {
     var s = "slave "
-    s += valueAndUnitStringFrom (valueInCanariUnit: self.xCenter, displayUnit : self.xCenterUnit)
+    s += intValueAndUnitStringFrom (valueInCanariUnit: self.xCenter, displayUnit : self.xCenterUnit)
     s += " : "
-    s += valueAndUnitStringFrom (valueInCanariUnit: self.yCenter, displayUnit : self.yCenterUnit)
+    s += intValueAndUnitStringFrom (valueInCanariUnit: self.yCenter, displayUnit : self.yCenterUnit)
     s += " size "
-    s += valueAndUnitStringFrom (valueInCanariUnit: self.width, displayUnit : self.widthUnit)
+    s += intValueAndUnitStringFrom (valueInCanariUnit: self.width, displayUnit : self.widthUnit)
     s += " : "
-    s += valueAndUnitStringFrom (valueInCanariUnit: self.height, displayUnit : self.heightUnit)
+    s += intValueAndUnitStringFrom (valueInCanariUnit: self.height, displayUnit : self.heightUnit)
     s += " shape "
     s += self.padShape.string
     s += " style "
     s += self.padStyle.string
     s += " hole "
-    s += valueAndUnitStringFrom (valueInCanariUnit: self.holeWidth, displayUnit : self.holeWidthUnit)
+    s += intValueAndUnitStringFrom (valueInCanariUnit: self.holeWidth, displayUnit : self.holeWidthUnit)
     s += " : "
-    s += valueAndUnitStringFrom (valueInCanariUnit: self.holeHeight, displayUnit : self.holeHeightUnit)
+    s += intValueAndUnitStringFrom (valueInCanariUnit: self.holeHeight, displayUnit : self.holeHeightUnit)
     s += " id "
     s += "\(self.master_property.propval!.objectIndex)"
     s += ";\n"

@@ -166,6 +166,10 @@ extension NSRect : Hashable {
           currentPoint = p
         case .curveTo, .closePath: // Flattened path has no element of theses types
           ()
+        case .cubicCurveTo:
+          ()
+        case .quadraticCurveTo:
+          ()
         @unknown default:
           ()
         }
@@ -206,6 +210,10 @@ extension NSRect : Hashable {
             intersect = possibleResultSegment != nil
             currentPoint = p
           case .curveTo, .closePath: // Flattened path has no element of theses types
+            ()
+          case .cubicCurveTo:
+            ()
+          case .quadraticCurveTo:
             ()
           @unknown default:
             ()

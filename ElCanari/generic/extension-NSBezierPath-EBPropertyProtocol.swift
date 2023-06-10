@@ -49,6 +49,10 @@ extension NSBezierPath : EBStoredPropertyProtocol {
         result += "@\(points[0].x) \(points[0].y) \(points[1].x) \(points[1].y) \(points[2].x) \(points[2].y)"
       case .closePath:
         result += "#"
+      case .cubicCurveTo:
+        ()
+      case .quadraticCurveTo:
+        ()
       @unknown default :
         ()
       }

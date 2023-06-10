@@ -40,7 +40,7 @@ import AppKit
   bp.move (to: NSPoint.center (p1, p2))
   bp.line (to: pText)
 //--- Text
-  let dimensionText = valueAndUnitStringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
+  let dimensionText = intValueAndUnitStringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
   var shape = EBShape ()
   shape.add (stroke: [bp], NSColor.cyan)
   let center = NSPoint.center (p1, p2)

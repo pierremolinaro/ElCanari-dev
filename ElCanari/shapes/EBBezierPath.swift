@@ -409,6 +409,10 @@ struct EBBezierPath : Hashable {
             currentPoint = p
           case .curveTo, .closePath: // Flattened path has no element of theses types
             ()
+          case .cubicCurveTo:
+            ()
+          case .quadraticCurveTo:
+            ()
           @unknown default:
             ()
           }
@@ -598,6 +602,10 @@ struct EBBezierPath : Hashable {
           optionalStartPoint = nil
           linePoints.removeAll ()
         }
+      case .cubicCurveTo:
+        ()
+      case .quadraticCurveTo:
+        ()
       @unknown default:
          ()
       }
@@ -637,6 +645,10 @@ extension NSBezierPath {
         path.addCurve (to: points[2], control1: points[0], control2: points[1])
       case .closePath:
         path.closeSubpath ()
+      case .cubicCurveTo:
+        ()
+      case .quadraticCurveTo:
+        ()
       @unknown default:
          ()
       }
@@ -650,10 +662,10 @@ extension NSBezierPath {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func pathByStrokingCallback (_ info : UnsafeMutableRawPointer?, _ element : UnsafePointer<CGPathElement>) {
-  if let bezierPath : NSBezierPath = info?.load (as: NSBezierPath.self) {
-    let points = element.pointee.points
-    switch element.pointee.type {
+private func pathByStrokingCallback (_ inInfo : UnsafeMutableRawPointer?, _ inElement : UnsafePointer<CGPathElement>) {
+  if let bezierPath : NSBezierPath = inInfo?.load (as: NSBezierPath.self) {
+    let points = inElement.pointee.points
+    switch inElement.pointee.type {
     case .moveToPoint:
       bezierPath.move (to: points [0])
     case .addLineToPoint:

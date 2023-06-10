@@ -123,6 +123,10 @@ extension AutoLayoutProjectDocument {
           if closedPathCount == retainedClosedPath {
             retainedBP.close ()
           }
+        case .cubicCurveTo:
+          ()
+        case .quadraticCurveTo:
+          ()
         @unknown default :
           ()
         }

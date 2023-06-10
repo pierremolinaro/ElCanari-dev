@@ -247,21 +247,21 @@ extension PackageBezier {
 
   override func program () -> String {
     var s = "bezier "
-    s += valueAndUnitStringFrom (valueInCanariUnit: self.x1, displayUnit : self.x1Unit)
+    s += intValueAndUnitStringFrom (valueInCanariUnit: self.x1, displayUnit : self.x1Unit)
     s += " : "
-    s += valueAndUnitStringFrom (valueInCanariUnit: self.y1, displayUnit : self.y1Unit)
+    s += intValueAndUnitStringFrom (valueInCanariUnit: self.y1, displayUnit : self.y1Unit)
     s += " to "
-    s += valueAndUnitStringFrom (valueInCanariUnit: self.x2, displayUnit : self.x2Unit)
+    s += intValueAndUnitStringFrom (valueInCanariUnit: self.x2, displayUnit : self.x2Unit)
     s += " : "
-    s += valueAndUnitStringFrom (valueInCanariUnit: self.y2, displayUnit : self.y2Unit)
+    s += intValueAndUnitStringFrom (valueInCanariUnit: self.y2, displayUnit : self.y2Unit)
     s += " cp "
-    s += valueAndUnitStringFrom (valueInCanariUnit: self.cpx1, displayUnit : self.cpx1Unit)
+    s += intValueAndUnitStringFrom (valueInCanariUnit: self.cpx1, displayUnit : self.cpx1Unit)
     s += " : "
-    s += valueAndUnitStringFrom (valueInCanariUnit: self.cpy1, displayUnit : self.cpy1Unit)
+    s += intValueAndUnitStringFrom (valueInCanariUnit: self.cpy1, displayUnit : self.cpy1Unit)
     s += " cp "
-    s += valueAndUnitStringFrom (valueInCanariUnit: self.cpx2, displayUnit : self.cpx2Unit)
+    s += intValueAndUnitStringFrom (valueInCanariUnit: self.cpx2, displayUnit : self.cpx2Unit)
     s += " : "
-    s += valueAndUnitStringFrom (valueInCanariUnit: self.cpy2, displayUnit : self.cpy2Unit)
+    s += intValueAndUnitStringFrom (valueInCanariUnit: self.cpy2, displayUnit : self.cpy2Unit)
     s += ";\n"
     return s
   }
