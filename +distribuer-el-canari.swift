@@ -28,17 +28,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.7.6"
+let VERSION_CANARI = "1.7.7"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Schématique : un point placé au dessus d'une piste sans y être connecté est maintenant détecté et signalé comme erreur par une pastille rouge."
+  "Package : rétablissement du fonctionnement de la description d'un package par programme."
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Schématique : les erreurs et alertes apparaissant dans un « tooltip»."
 ]
 
 //--------------------------------------------------------------------------------------------------

@@ -43,22 +43,50 @@ fileprivate struct DisplayComponents {
 
 fileprivate func displayComponentsFrom (valueInCanariUnit inValue : Int, unit inUnit : Int) -> DisplayComponents { // Value, Unit
   let value = CGFloat (inValue)
-  if inUnit == CANARI_UNITS_PER_µM {
-    return DisplayComponents (value: "\(Int (value / CGFloat (CANARI_UNITS_PER_µM)))", unit: "µm")
-  }else if inUnit == CANARI_UNITS_PER_MM {
-    return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_MM)), unit: "mm")
+  if inUnit == CANARI_UNITS_PER_MM {
+    if (inValue % CANARI_UNITS_PER_MM) == 0 {
+      return DisplayComponents (value: String (inValue / CANARI_UNITS_PER_MM), unit: "mm")
+    }else{
+      return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_MM)), unit: "mm")
+    }
   }else if inUnit == CANARI_UNITS_PER_CM {
-    return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_CM)), unit: "cm")
+    if (inValue % CANARI_UNITS_PER_CM) == 0 {
+      return DisplayComponents (value: String (inValue / CANARI_UNITS_PER_CM), unit: "cm")
+    }else{
+      return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_CM)), unit: "cm")
+    }
   }else if inUnit == CANARI_UNITS_PER_M {
-    return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_M)), unit: "m")
+    if (inValue % CANARI_UNITS_PER_M) == 0 {
+      return DisplayComponents (value: String (inValue / CANARI_UNITS_PER_M), unit: "m")
+    }else{
+      return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_M)), unit: "m")
+    }
   }else if inUnit == CANARI_UNITS_PER_INCH {
-    return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_INCH)), unit: "in")
+    if (inValue % CANARI_UNITS_PER_INCH) == 0 {
+      return DisplayComponents (value: String (inValue / CANARI_UNITS_PER_INCH), unit: "in")
+    }else{
+      return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_INCH)), unit: "in")
+    }
   }else if inUnit == CANARI_UNITS_PER_PIXEL {
-    return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_PIXEL)), unit: "pt")
+    if (inValue % CANARI_UNITS_PER_PIXEL) == 0 {
+      return DisplayComponents (value: String (inValue / CANARI_UNITS_PER_PIXEL), unit: "pt")
+    }else{
+      return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_PIXEL)), unit: "pt")
+    }
   }else if inUnit == CANARI_UNITS_PER_PC {
-    return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_PC)), unit: "pc")
+    if (inValue % CANARI_UNITS_PER_PC) == 0 {
+      return DisplayComponents (value: String (inValue / CANARI_UNITS_PER_PC), unit: "pc")
+    }else{
+      return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_PC)), unit: "pc")
+    }
+  }else if inUnit == CANARI_UNITS_PER_MIL {
+    if (inValue % CANARI_UNITS_PER_MIL) == 0 {
+      return DisplayComponents (value: String (inValue / CANARI_UNITS_PER_MIL), unit: "mil")
+    }else{
+      return DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_MIL)), unit: "mil")
+    }
   }else{
-    return DisplayComponents (value: "\(Int (value / CGFloat (CANARI_UNITS_PER_MIL)))", unit: "mil")
+    return DisplayComponents (value: "\(Int (value / CGFloat (CANARI_UNITS_PER_µM)))", unit: "µm")
   }
 }
 

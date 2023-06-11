@@ -1,8 +1,11 @@
 {\rtf1\ansi\ansicpg1252\cocoartf2709
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fnil\fcharset0 Menlo-Bold;\f2\fnil\fcharset0 Menlo-Regular;
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red230\green230\blue230;\red253\green128\blue8;
+\red253\green128\blue8;\red85\green142\blue40;\red251\green2\blue255;\red251\green2\blue255;\red43\green71\blue20;
 }
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red230\green230\blue230;}
-{\*\expandedcolortbl;;\csgray\c0;\csgray\c92143;}
+{\*\expandedcolortbl;;\csgray\c0;\csgray\c92143;\cssrgb\c100000\c57811\c0;
+\cssrgb\c100000\c57637\c0;\cssrgb\c39975\c61335\c20601;\cssrgb\c100000\c25279\c100000;\cssrgb\c100000\c25279\c100000;\cssrgb\c21795\c34243\c10019;
+}
 \paperw11900\paperh16840\margl1440\margr1440\vieww19120\viewh14400\viewkind0
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
 
@@ -17,15 +20,20 @@ The "Run" button parses and executes the instruction list. On success, the curre
 The "Clear Error" button removes the red color.\
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb3 The instruction list\
+
+\f1\b \cb3 The instruction list\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb1 The program is a sequence of instructions, terminated by the 
+
+\f0\b0 \cb1 The program is a sequence of instructions, terminated by the 
 \f1\b end
-\f0\b0  keyword. An instruction is terminated by a semicolon. In the following BNF rules, the syntax metacharacters are in orange. ( \'85 )* denotes zero, one or more repetitions of enclosed material,  ( \'85 )+ denotes one or more repetitions,  and | the selection.\
+\f0\b0  keyword. An instruction is terminated by a semicolon. In the following BNF rules, the syntax metacharacters are in orange. \cf4 ( \cf2 \'85 \cf5 )*\cf2  denotes zero, one or more repetitions of enclosed material,  \cf5 (\cf2  \'85 \cf5 )+\cf2  denotes one or more repetitions,  and \cf5 |\cf2  the selection.\
 	
-\f2 <program> ::= (<instruction>)* 
-\f1\b end
-\f0\b0 \
+\f1\b \cf6 <program>
+\f0\b0 \cf2  ::= \cf5 (
+\f1\b \cf6 <instruction>
+\f0\b0 \cf5 )*\cf2  
+\f1\b \cf7 end
+\f0\b0 \cf2 \
 \
 Instructions correspond to the "Add\'85" buttons in the "Package" page. An instruction is one of the following:\
 	- segment instruction;\
@@ -39,122 +47,207 @@ Instructions correspond to the "Add\'85" buttons in the "Package" page. An instr
 	- dimension instruction.\
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb3 Name, unit, number, dimension, point: \
+
+\f1\b \cb3 Name, unit, integer, number, dimension, point, size: \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb1 	
-\f2 <name> ::= (a | b | \'85 | z | A | B | \'85 | Z)+
-\f0 \
+
+\f0\b0 \cb1 	
+\f1\b \cf6 <name>
+\f0\b0 \cf2  \cf5 ::=\cf2  \cf5 (\cf8 a\cf2  \cf5 |\cf2  \cf8 b\cf2  \cf5 |\cf2  \'85 \cf5 |\cf2  \cf8 z\cf2  \cf5 |\cf2  \cf8 A\cf2  \cf5 |\cf2  \cf8 B\cf2  \cf5 |\cf2  \'85 \cf5 |\cf2  \cf8 Z\cf5 )+\cf2 \
 \
 	
-\f2 <unit> ::= \'b5m | mm | cm | in | mil | pt | pc
-\f0 \
-Possible units are : \'b5m (1000 \'b5m = 1mm), cm (10 mm = 1 cm), in (1 in = 25.4 mm), mil (1000 mil = 1 in), pt  (72 pt = 1 in), pc (6 pc = 1 in).\
+\f1\b \cf6 <unit>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf8 \'b5m
+\f0\b0 \cf2  \cf5 |\cf2  
+\f1\b \cf8 mm
+\f0\b0 \cf2  \cf5 |\cf2  
+\f1\b \cf8 cm
+\f0\b0 \cf5 |\cf2  
+\f1\b \cf8 m
+\f0\b0 \cf2  \cf5 |\cf2  
+\f1\b \cf8 in
+\f0\b0 \cf2  \cf5 |\cf2  
+\f1\b \cf8 mil
+\f0\b0 \cf2  \cf5 |\cf2  
+\f1\b \cf8 pt
+\f0\b0 \cf2  \cf5 |\cf2  
+\f1\b \cf8 pc
+\f0\b0 \cf2 \
+Possible units are : \'b5m (1000 \'b5m = 1mm), cm (10 mm = 1 cm), in (1 in = 25.4 mm), mil (1000 mil = 1 in), pt (72 pt = 1 in), pc (6 pc = 1 in).\
 \
 	
-\f2 <number> ::= (0 | 1 | \'85 | 9)+
-\f0 \
+\f1\b \cf6 <integer>
+\f0\b0 \cf2  \cf5 ::=\cf2  \cf5 (\cf8 0\cf2  \cf5 |\cf2  \cf8 1\cf2  \cf5 |\cf2  \'85 \cf5 |\cf2  \cf8 9\cf5 )+\cf2 \
 	
-\f2 <number> ::= -(0 | 1 | \'85 | 9)+
-\f0 \
-A number is a negative or positive literal integer value.\
+\f1\b \cf6 <integer>
+\f0\b0 \cf2  \cf5 ::=\cf2  \cf8 -\cf2  \cf5 (\cf8 0\cf2  \cf5 |\cf2  \cf8 1\cf2  \cf5 |\cf2  \'85 \cf5 |\cf2  \cf8 9\cf5 )+\cf2 \
+An integer is a negative or positive literal integer value.\
 \
 	
-\f2 <dimension> ::= <number> <unit>
-\f0 \
+\f1\b \cf6 <number>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf6 <integer>
+\f0\b0 \cf2 \
+	
+\f1\b \cf6 <number>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf6 <integer> 
+\f0\b0 \cf8 .\cf2  \cf5 (\cf8 0\cf2  \cf5 |\cf2  \cf8 1\cf2  \cf5 |\cf2  \'85 \cf5 |\cf2  \cf8 9\cf5 )*\cf2 \
+A number is a negative or positive literal decimal value.\
+\
+	
+\f1\b \cf6 <dimension>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf6 <number>\cf9  \cf6 <unit>
+\f0\b0 \cf2 \
 A dimension is a number followed by an unit. For example: 10 mil.\
 \
 	
-\f2 <point> ::= <dimension> 
-\f1\b :
-\f2\b0  <dimension>
-\f0 \
-A  point consists of two dimensions separated by a colon.\
+\f1\b \cf6 <point>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf6 <dimension>
+\f0\b0 \cf2  
+\f1\b \cf7 :
+\f0\b0 \cf2  
+\f1\b \cf6 <dimension>
+\f0\b0 \cf2 \
+A point consists of two dimensions separated by a colon.\
 \
 	
-\f2 <size> ::= <dimension> 
-\f1\b :
-\f2\b0  <dimension>
-\f0 \
-A  point consists of two dimensions separated by a colon.\
+\f1\b \cf6 <size>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf6 <dimension>
+\f0\b0 \cf2  
+\f1\b \cf8 :
+\f0\b0 \cf2  
+\f1\b \cf6 <dimension>
+\f0\b0 \cf2 \
+A size consists of two dimensions separated by a colon.\
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb3 Segment instruction: \
+
+\f1\b \cb3 Segment instruction: \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb1 	
-\f2 <instruction> ::= 
-\f1\b segment
-\f2\b0  <point> 
-\f1\b to
-\f2\b0  <point>
-\f1\b  ;
-\f0\b0 \
+
+\f0\b0 \cb1 	
+\f1\b \cf6 <instruction>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf8 segment
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf7 to
+\f0\b0 \cf2  
+\f1\b \cf6 <point>\cf2  \cf8 ;
+\f0\b0 \cf2 \
 The two points are the two ends of the segment.\
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb3 Bezier curve instruction: \
+
+\f1\b \cb3 Bezier curve instruction: \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb1 	
-\f2 <instruction> ::= 
-\f1\b bezier
-\f2\b0  <point> 
-\f1\b to
-\f2\b0  <point> 
-\f1\b cp
-\f2\b0  <point> 
-\f1\b cp
-\f2\b0  <point>
-\f1\b  ;
-\f0\b0 \
+
+\f0\b0 \cb1 	
+\f1\b \cf6 <instruction>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf8 bezier
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf8 to
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf8 cp
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf8 cp
+\f0\b0 \cf2  
+\f1\b \cf6 <point>\cf2  \cf8 ;
+\f0\b0 \cf2 \
 The two first points are the two ends of the curve, and are followed by the first control point and the second control point.\
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb3 Oval instruction: \
+
+\f1\b \cb3 Oval instruction: \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb1 	
-\f2 <instruction> ::= 
-\f1\b oval
-\f2\b0  <point> 
-\f1\b size
-\f2\b0  <point>
-\f1\b  ;
-\f0\b0 \
+
+\f0\b0 \cb1 	
+\f1\b \cf6 <instruction>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf8 oval
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf8 size
+\f0\b0 \cf2  
+\f1\b \cf6 <point>\cf2  \cf8 ;
+\f0\b0 \cf2 \
 The first point is the bottom left point of the rectangle circumscribed to the oval, followed by its width and its height.  \
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb3 Arc instruction: \
+
+\f1\b \cb3 Arc instruction: \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb1 	
-\f2 <instruction> ::= 
-\f1\b arc
-\f2\b0  <point> 
-\f1\b radius
-\f2\b0  <dimension> 
-\f1\b start
-\f2\b0  <number> 
-\f1\b angle
-\f2\b0  <number> 
-\f1\b leading
-\f2\b0  <dimension> 
-\f1\b training
-\f2\b0  <dimension>
-\f1\b  ;
+
+\f0\b0 \cb1 	
+\f1\b \cf6 <instruction>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf8 arc
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf8 radius
+\f0\b0 \cf2  
+\f1\b \cf6 <dimension>
+\f0\b0 \cf2  
+\f1\b \cf8 start
+\f0\b0 \cf2  
+\f1\b \cf6 <number>
+\f0\b0 \cf2  
+\f1\b \cf8 angle
+\f0\b0 \cf2  
+\f1\b \cf6 <number>
+\f0\b0 \cf2  
+\f1\b \cf8 leading
+\f0\b0 \cf2  
+\f1\b \cf6 <dimension>
+\f0\b0 \cf2  
+\f1\b \cf8 training
+\f0\b0 \cf2  
+\f1\b \cf6 <dimension>\cf2  ;
 \f0\b0 \
 or\
 	
-\f2 <instruction> ::= 
-\f1\b arc
-\f2\b0  <point> 
-\f1\b radius
-\f2\b0  <dimension> 
-\f1\b start
-\f2\b0  <number> 
-\f1\b angle
-\f2\b0  <number> 
-\f1\b leading
-\f2\b0  <dimension> 
-\f1\b training
-\f2\b0  <dimension> 
-\f1\b closed ;
+\f1\b \cf6 <instruction>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf8 arc
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf8 radius
+\f0\b0 \cf2  
+\f1\b \cf6 <dimension>
+\f0\b0 \cf2  
+\f1\b \cf8 start
+\f0\b0 \cf2  
+\f1\b \cf6 <number>
+\f0\b0 \cf2  
+\f1\b \cf8 angle
+\f0\b0 \cf2  
+\f1\b \cf6 <number>
+\f0\b0 \cf2  
+\f1\b \cf8 leading
+\f0\b0 \cf2  
+\f1\b \cf6 <dimension>
+\f0\b0 \cf2  
+\f1\b \cf8 training
+\f0\b0 \cf2  
+\f1\b \cf6 <dimension>
+\f0\b0 \cf2  
+\f1\b \cf8 closed\cf2  ;
 \f0\b0 \
 The point is the center of the arc. The start angle is the number following 
 \f1\b start
@@ -169,171 +262,185 @@ The point is the center of the arc. The start angle is the number following
 \f0\b0  for closing the path.\
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb3 Pad instruction: \
+
+\f1\b \cb3 Pad instruction: \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb1 	
-\f2 <instruction> ::= 
-\f1\b pad
-\f2\b0  <point> 
-\f1\b size
-\f2\b0  <size> 
-\f1\b shape
-\f2\b0  <name> 
-\f1\b style
-\f2\b0  <name> 
-\f1\b hole
-\f2\b0  <size>
-\f1\b  number
-\f2\b0  <number>
-\f1\b  ;
-\f0\b0 \
+
+\f0\b0 \cb1 	
+\f1\b \cf6 <instruction>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf8 pad
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf8 size
+\f0\b0 \cf2  
+\f1\b \cf6 <size>
+\f0\b0 \cf2  
+\f1\b \cf8 shape
+\f0\b0 \cf2  
+\f1\b \cf6 <name>
+\f0\b0 \cf2  
+\f1\b \cf8 style
+\f0\b0 \cf2  
+\f1\b \cf6 <name>
+\f0\b0 \cf2  
+\f1\b \cf8 hole
+\f0\b0 \cf2  
+\f1\b \cf6 <size>\cf2  \cf8 number
+\f0\b0 \cf2  
+\f1\b \cf6 <integer>\cf2  \cf8 ;
+\f0\b0 \cf2 \
 or\
 	
-\f2 <instruction> ::= 
-\f1\b pad
-\f2\b0  <point> 
-\f1\b size
-\f2\b0  <size> 
-\f1\b shape
-\f2\b0  <name> 
-\f1\b style
-\f2\b0  <name> 
-\f1\b hole
-\f2\b0  <size>
-\f1\b  number
-\f2\b0  <number>
-\f1\b  id
-\f2\b0  <number>
-\f1\b  ;
-\f0\b0 \
+\f1\b \cf6 <instruction>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf8 pad
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf8 size
+\f0\b0 \cf2  
+\f1\b \cf6 <size>
+\f0\b0 \cf2  
+\f1\b \cf8 shape
+\f0\b0 \cf2  
+\f1\b \cf6 <name>
+\f0\b0 \cf2  
+\f1\b \cf8 style
+\f0\b0 \cf2  
+\f1\b \cf6 <name>
+\f0\b0 \cf2  
+\f1\b \cf8 hole
+\f0\b0 \cf2  
+\f1\b \cf6 <size>\cf2  \cf8 number
+\f0\b0 \cf2  
+\f1\b \cf6 <integer>\cf2  \cf8 id
+\f0\b0 \cf2  
+\f1\b \cf6 <integer>\cf2  \cf8 ;
+\f0\b0 \cf2 \
 The first point defines the center of the pad, and the next point is the size of the pad. The 
 \f1\b shape
-\f0\b0  name is: 
-\f2 rect
-\f0 , 
-\f2 round
-\f0  or 
-\f2 octo
-\f0 .  The 
+\f0\b0  name is: rect, round or octo.  The 
 \f1\b style
-\f0\b0  name is: 
-\f2 traversing
-\f0  or 
-\f2 surface
-\f0 . The hole is an oblong, defined by its width and its height. A hole dimension should be always defined, even if the pad is a surface pad (in such case, values are not used). The 
+\f0\b0  name is: traversing or surface. The hole is an oblong, defined by its width and its height. A hole dimension should be always defined, even if the pad is a surface pad (in such case, values are not used). The 
 \f1\b number
 \f0\b0  argument is the number of the pad. Note that pad numbers are automatically reassigned depending from their location (within a zone or not), the numbering policy, so that they are numbered from 1. The 
 \f1\b id
 \f0\b0  argument is optional, it is a reference from linked slave pads.  If a pad has no slave pad, this argument is useless. You can use any value, provided it is unique. \
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb3 Slave Pad instruction: \
+
+\f1\b \cb3 Slave Pad instruction: \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb1 	
-\f2 <instruction> ::= 
-\f1\b pad
-\f2\b0  <point> 
-\f1\b size
-\f2\b0  <size> 
-\f1\b shape
-\f2\b0  <name> 
-\f1\b style
-\f2\b0  <name> 
-\f1\b hole
-\f2\b0  <size>
-\f1\b  id
-\f2\b0  <number>
-\f1\b  ;
-\f0\b0 \
+
+\f0\b0 \cb1 	
+\f1\b \cf6 <instruction>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf8 pad
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf8 size
+\f0\b0 \cf2  
+\f1\b \cf6 <size>
+\f0\b0 \cf2  
+\f1\b \cf8 shape
+\f0\b0 \cf2  
+\f1\b \cf6 <name>
+\f0\b0 \cf2  
+\f1\b \cf8 style
+\f0\b0 \cf2  
+\f1\b \cf6 <name>
+\f0\b0 \cf2  
+\f1\b \cf8 hole
+\f0\b0 \cf2  
+\f1\b \cf6 <size>\cf2  \cf8 id
+\f0\b0 \cf2  
+\f1\b \cf6 <integer>\cf2  \cf8 ;
+\f0\b0 \cf2 \
 The first point defines the center of the pad, and the next point is the size of the pad. The 
 \f1\b shape
-\f0\b0  name is: 
-\f2 rect
-\f0 , 
-\f2 round
-\f0  or 
-\f2 octo
-\f0 .  The 
+\f0\b0  name is: rect, round or octo.  The 
 \f1\b style
-\f0\b0  name is: 
-\f2 traversing
-\f0  or 
-\f2 surface
-\f0 .  The hole is an oblong, defined by its width and its height. A hole dimension should be always defined, even if the pad is a surface pad (in such case, values are not used). The 
+\f0\b0  name is: traversing or surface.  The hole is an oblong, defined by its width and its height. A hole dimension should be always defined, even if the pad is a surface pad (in such case, values are not used). The 
 \f1\b id
 \f0\b0  argument value corresponds to the corresponding master pad 
 \f1\b id
 \f0\b0  value. \
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb3 Zone instruction: \
+
+\f1\b \cb3 Zone instruction: \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb1 	
-\f2 <instruction> ::= 
-\f1\b zone
-\f2\b0  <point> 
-\f1\b size
-\f2\b0  <point> 
-\f1\b label
-\f2\b0  <point> 
-\f1\b name
-\f2\b0  <string> 
-\f1\b numbering
-\f2\b0  <name>
-\f1\b  ;
-\f0\b0 \
+
+\f0\b0 \cb1 	
+\f1\b \cf6 <instruction>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf8 zone
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf8 size
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf8 label
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf8 name
+\f0\b0 \cf2  <string> 
+\f1\b \cf8 numbering
+\f0\b0 \cf2  
+\f1\b \cf6 <name>\cf2  \cf8 ;
+\f0\b0 \cf2 \
 The zone rectangle is defined by its bottom left point and its size. The label location follows 
 \f1\b label
-\f0\b0 , and the zone name is definied by a string. The numbering scheme is one of the following: 
-\f2 noNumbering
-\f0 , 
-\f2 counterClock
-\f0 , 
-\f2 upRight
-\f0 , 
-\f2 upLeft
-\f0 , 
-\f2 downRight
-\f0 , 
-\f2 downLeft
-\f0 , 
-\f2 rightUp
-\f0 , 
-\f2 rightDown
-\f0 , 
-\f2 leftUp
-\f0 , 
-\f2 leftDown
-\f0 .\
+\f0\b0 , and the zone name is definied by a string. The numbering scheme is one of the following: noNumbering, counterClock, upRight, upLeft, downRight, downLeft, rightUp, rightDown, leftUp, leftDown.\
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb3 Guide instruction: \
+
+\f1\b \cb3 Guide instruction: \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb1 	
-\f2 <instruction> ::= 
-\f1\b guide
-\f2\b0  <point> 
-\f1\b to
-\f2\b0  <point>
-\f1\b  ;
-\f0\b0 \
+
+\f0\b0 \cb1 	
+\f1\b \cf6 <instruction>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf8 guide
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf8 to
+\f0\b0 \cf2  
+\f1\b \cf6 <point>\cf2  \cf8 ;
+\f0\b0 \cf2 \
 The two points are the two ends of the guide segment.\
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb3 Dimension instruction: \
+
+\f1\b \cb3 Dimension instruction: \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
-\cb1 	
-\f2 <instruction> ::= 
-\f1\b dimension
-\f2\b0  <point> 
-\f1\b to
-\f2\b0  <point> 
-\f1\b label
-\f2\b0  <point> 
-\f1\b unit
-\f2\b0  <unit>
-\f1\b  ;
-\f0\b0 \
+
+\f0\b0 \cb1 	
+\f1\b \cf6 <instruction>
+\f0\b0 \cf2  \cf5 ::=\cf2  
+\f1\b \cf8 dimension
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf8 to
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf8 label
+\f0\b0 \cf2  
+\f1\b \cf6 <point>
+\f0\b0 \cf2  
+\f1\b \cf8 unit
+\f0\b0 \cf2  
+\f1\b \cf6 <unit>\cf2  \cf8 ;
+\f0\b0 \cf2 \
 The two first points are the two ends of the dimension segment, the third one is the location of the label, followed by the unit used for displaying the distance between the end points of the dimension segment.\
 \
 }
