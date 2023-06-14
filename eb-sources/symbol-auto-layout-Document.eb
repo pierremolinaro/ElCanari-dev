@@ -42,17 +42,12 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
         }
         StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
       }
-//      vStack {
-//        hStack { space ImageObserverView (size: .regular) { $image self.statusImage $tooltip self.statusMessage } space }
-//        StaticLabel (title: "Status", bold: no, size: .small, alignment: .center)
-//      }
     }
     separator
     view pageMasterView
   }
 
   transient CanariIssueArray symbolIssues dependsFrom root.issues, self.documentFileName ;
-//  transient NSImage statusImage dependsFrom self.symbolIssues ;
   transient String statusMessage dependsFrom self.symbolIssues ;
   transient Int statusErrorCount dependsFrom self.symbolIssues ;
   transient Int statusWarningCount dependsFrom self.symbolIssues ;

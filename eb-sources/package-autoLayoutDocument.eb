@@ -24,6 +24,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
           addPage (title: "Program", tooltip: "Program Editor", pageView: view programPage)
           addPage (title: "Infos", tooltip: "Package Informations", pageView: view infosPage)
           $selectedPage root.selectedPageIndex
+          $segmentImage self.segmentedControlPackageIssueImage (segmentIndex : 1)
         }
         StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
       }
@@ -53,11 +54,14 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
     view pageMasterView
   }
 
-//  transient NSImage statusImage dependsFrom self.issues ;
   transient String statusMessage dependsFrom self.issues ;
   transient Int statusWarningCount dependsFrom self.issues ;
   transient Int statusErrorCount dependsFrom self.issues ;
   transient MetadataStatus metadataStatus dependsFrom self.issues ;
+
+  transient NSImage segmentedControlPackageIssueImage dependsFrom
+     self.issues
+  ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //   PAGE    MODEL IMAGE

@@ -243,6 +243,18 @@ import AppKit
   }
 
   //····················································································································
+  //   Transient property: segmentedControlPackageIssueImage
+  //····················································································································
+
+  final let segmentedControlPackageIssueImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var segmentedControlPackageIssueImage : NSImage? {
+    return self.segmentedControlPackageIssueImage_property.optionalValue
+  }
+
+  //····················································································································
   //   Transient property: noIssue
   //····················································································································
 
@@ -370,6 +382,7 @@ import AppKit
           .addPage (title: "Program", tooltip: "Program Editor", pageView: programPage)
           .addPage (title: "Infos", tooltip: "Package Informations", pageView: infosPage)
           .bind_selectedPage (self.rootObject.selectedPageIndex_property)
+          .bind_segmentImage (self.segmentedControlPackageIssueImage_property, segmentIndex:1)
         _ = view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutStaticLabel (title: "Page", bold: false, size: .small, alignment: .center)
         _ = view_0_0.appendView (view_0_0_1)
@@ -3673,6 +3686,24 @@ import AppKit
       }
     }
     self.issues_property.startsToBeObserved (by: self.metadataStatus_property)
+
+  //--- Atomic property: segmentedControlPackageIssueImage
+    self.segmentedControlPackageIssueImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_segmentedControlPackageIssueImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.startsToBeObserved (by: self.segmentedControlPackageIssueImage_property)
 
   //--- Atomic property: noIssue
     self.noIssue_property.mReadModelFunction = { [weak self] in

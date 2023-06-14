@@ -231,7 +231,8 @@ entity SymbolRoot {
 //--- Issues
   transient CanariIssueArray issues dependsFrom
     self.symbolObjects.all.issues,
-    self.symbolPins.all.name, self.symbolPins.all.nameRect, self.symbolPins.all.xPin, self.symbolPins.all.yPin ;
+    self.symbolPins.all.name, self.symbolPins.all.nameRect,
+    self.symbolPins.all.xPin, self.symbolPins.all.yPin ;
 }
 
 //----------------------------------------------------------------------------*

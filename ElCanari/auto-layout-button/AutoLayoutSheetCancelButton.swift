@@ -15,8 +15,7 @@ final class AutoLayoutSheetCancelButton : NSButton {
 
   //····················································································································
 
-  init (title inTitle : String,
-        size inSize : EBControlSize) {
+  init (title inTitle : String, size inSize : EBControlSize) {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false

@@ -4201,6 +4201,9 @@
 		CFC2685723524EB7007C47F6 /* alignmentRight.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2685523524EB7007C47F6 /* alignmentRight.png */; };
 		CFC2685823524EB7007C47F6 /* alignmentLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2685623524EB7007C47F6 /* alignmentLeft.png */; };
 		CFC3EDBB1DE0C10900445A35 /* GeometricOblong.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC3EDBA1DE0C10900445A35 /* GeometricOblong.swift */; };
+		CFC4C51C2A39C43000599EA3 /* transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC4C51B2A39C43000599EA3 /* transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift */; };
+		CFC4C51D2A39C43000599EA3 /* transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC4C51B2A39C43000599EA3 /* transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift */; };
+		CFC4C51E2A39C43000599EA3 /* transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC4C51B2A39C43000599EA3 /* transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift */; };
 		CFC4E0FC2391622E00AE5CCD /* transient-ProjectRoot-sheetGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC4E0FB2391622E00AE5CCD /* transient-ProjectRoot-sheetGeometry.swift */; };
 		CFC4E0FD2391622E00AE5CCD /* transient-ProjectRoot-sheetGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC4E0FB2391622E00AE5CCD /* transient-ProjectRoot-sheetGeometry.swift */; };
 		CFC5BB562232D25900E03849 /* atomic-UnconnectedSymbolPinsInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5BB552232D25900E03849 /* atomic-UnconnectedSymbolPinsInDevice.swift */; };
@@ -6430,6 +6433,7 @@
 		CFC2685523524EB7007C47F6 /* alignmentRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alignmentRight.png; sourceTree = "<group>"; };
 		CFC2685623524EB7007C47F6 /* alignmentLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alignmentLeft.png; sourceTree = "<group>"; };
 		CFC3EDBA1DE0C10900445A35 /* GeometricOblong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometricOblong.swift; sourceTree = "<group>"; };
+		CFC4C51B2A39C43000599EA3 /* transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift"; sourceTree = "<group>"; };
 		CFC4E0FB2391622E00AE5CCD /* transient-ProjectRoot-sheetGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectRoot-sheetGeometry.swift"; sourceTree = "<group>"; };
 		CFC5BB552232D25900E03849 /* atomic-UnconnectedSymbolPinsInDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "atomic-UnconnectedSymbolPinsInDevice.swift"; sourceTree = "<group>"; };
 		CFC5BB582232D44D00E03849 /* transient-SymbolInstanceInDevice-unconnectedPins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolInstanceInDevice-unconnectedPins.swift"; sourceTree = "<group>"; };
@@ -7226,6 +7230,7 @@
 				CF379167269CBAFD00FA083F /* transient-AutoLayoutPackageDocument-issues.swift */,
 				CFB7D80E2683A615007B9D3B /* transient-AutoLayoutPackageDocument-metadataStatus.swift */,
 				CF00846121C4363E003627E9 /* transient-AutoLayoutPackageDocument-noIssue.swift */,
+				CFC4C51B2A39C43000599EA3 /* transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift */,
 				CFB7D8EC2683A731007B9D3B /* transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueImage.swift */,
 				CFB7D8ED2683A732007B9D3B /* transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueString.swift */,
 				CF40D13929CF81B600B94422 /* transient-AutoLayoutPackageDocument-statusErrorCount.swift */,
@@ -9963,6 +9968,7 @@
 				CFEB7B80233A26320060A97A /* transient-DeviceInProject-sizeString.swift in Sources */,
 				CF3559A9279D9F3D000BFC9B /* extension-AutoLayoutProjectDocument-nets.swift in Sources */,
 				CFDD6D4626A1B0F20050CB78 /* AutoLayoutCanariAngleFieldAndSlider.swift in Sources */,
+				CFC4C51C2A39C43000599EA3 /* transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift in Sources */,
 				CF05C9B521A809AC0021652C /* transient-SymbolSegment-issues.swift in Sources */,
 				CF8560CF2677A34B00B62608 /* AutoLayout+NSView+hidden-binding.swift in Sources */,
 				CF8A0A932231B2C800A17B92 /* transient-DeviceRoot-symbolTypeNames.swift in Sources */,
@@ -11628,6 +11634,7 @@
 				CF355905279D9F3B000BFC9B /* extension-AutoLayoutProjectDocument-nets.swift in Sources */,
 				CFA42F5C229AEAAF000AA8C8 /* toone-ArtworkFileGenerationParameters.swift in Sources */,
 				CFA80DD925C05E9700966D91 /* compute-BoardTrack-computedP1X.swift in Sources */,
+				CFC4C51D2A39C43000599EA3 /* transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift in Sources */,
 				CF05C9B621A809AC0021652C /* transient-SymbolSegment-issues.swift in Sources */,
 				CF49EEBB275A499500481930 /* action-AutoLayoutFontDocument-deleteCurrentCharacterAction.swift in Sources */,
 				CF49EEC2275A499500481930 /* transient-AutoLayoutFontDocument-metadataStatus.swift in Sources */,
@@ -13293,6 +13300,7 @@
 				CFB7D87F2683A61C007B9D3B /* action-AutoLayoutPackageDocument-loadModelImageFromPasteboardAction.swift in Sources */,
 				CFD1EAAE274EE23B000AED8E /* transient-SegmentForFontCharacter-objectDisplay.swift in Sources */,
 				CF9C621425CABE5C00A00D5C /* EBGraphicView-magnify-and-zoom.swift in Sources */,
+				CFC4C51E2A39C43000599EA3 /* transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift in Sources */,
 				CF9C621725CABE5C00A00D5C /* transient-SymbolTypeInDevice-pinNameShape.swift in Sources */,
 				CFD1EA75274EE23A000AED8E /* transient-FontCharacter-gerberCode.swift in Sources */,
 				CF9C621925CABE5C00A00D5C /* transient-BoardText-selectionDisplay.swift in Sources */,
