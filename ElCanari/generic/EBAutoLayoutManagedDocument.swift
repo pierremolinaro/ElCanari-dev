@@ -94,41 +94,41 @@ class EBAutoLayoutManagedDocument : NSDocument {
   //
   //····················································································································
 
-  func draggingEntered (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> NSDragOperation {
+  func draggingEntered (_ _ : NSDraggingInfo, _ _ : NSScrollView) -> NSDragOperation {
     // NSLog ("draggingEntered")
     return .copy
   }
 
   //····················································································································
 
-  func draggingUpdated (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> NSDragOperation {
+  func draggingUpdated (_ _ : NSDraggingInfo, _ _ : NSScrollView) -> NSDragOperation {
     // NSLog ("draggingUpdated")
     return .copy
   }
 
   //····················································································································
 
-  func draggingExited (_ sender: NSDraggingInfo?, _ destinationScrollView : NSScrollView) {
+  func draggingExited (_ _ : NSDraggingInfo?, _ _ : NSScrollView) {
     // NSLog ("draggingExited")
   }
 
   //····················································································································
 
-  func prepareForDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
+  func prepareForDragOperation (_ _ : NSDraggingInfo, _ _ : NSScrollView) -> Bool {
     // NSLog ("prepareForDragOperation")
     return true
   }
 
   //····················································································································
 
-  func performDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
+  func performDragOperation (_ sender: NSDraggingInfo, _ _ : NSScrollView) -> Bool {
     // NSLog ("performDragOperation")
     return false
   }
 
   //····················································································································
 
-  func concludeDragOperation (_ inSender: NSDraggingInfo?, _ destinationScrollView : NSScrollView) {
+  func concludeDragOperation (_ _ : NSDraggingInfo?, _ _ : NSScrollView) {
   }
 
   //····················································································································

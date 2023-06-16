@@ -22,7 +22,7 @@ extension PackagePad {
   //  Cursor
   //····················································································································
 
-  func cursorForKnob_PackagePad (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_PackagePad (knob _ : Int) -> NSCursor? {
     return nil // Uses default cursor
   }
 
@@ -36,13 +36,15 @@ extension PackagePad {
 
   //····················································································································
 
-  func acceptToTranslate_PackagePad (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_PackagePad (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_PackagePad (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_PackagePad (xBy inDx: Int,
+                             yBy inDy: Int,
+                             userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.xCenter += inDx
     self.yCenter += inDy
   }
@@ -77,24 +79,24 @@ extension PackagePad {
   //  Knob
   //····················································································································
 
-  func canMove_PackagePad (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+  func canMove_PackagePad (knob _ : Int,
+                         proposedUnalignedAlignedTranslation _ : CanariPoint,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+                         unalignedMouseDraggedLocation _ : CanariPoint,
+                         shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
  }
 
   //····················································································································
 
-  func move_PackagePad (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+  func move_PackagePad (knob _ : Int,
+                        proposedDx _ : Int,
+                        proposedDy _ : Int,
+                        unalignedMouseLocationX _ : Int,
+                        unalignedMouseLocationY _ : Int,
+                        alignedMouseLocationX _ : Int,
+                        alignedMouseLocationY _ : Int,
+                        shift _ : Bool) {
   }
 
   //····················································································································
@@ -108,7 +110,8 @@ extension PackagePad {
 
   //····················································································································
 
-  func rotate90Clockwise_PackagePad (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_PackagePad (from inRotationCenter : CanariPoint,
+                                     userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let newCenter = inRotationCenter.rotated90Clockwise (x: self.xCenter, y: self.yCenter)
     self.xCenter = newCenter.x
     self.yCenter = newCenter.y
@@ -118,7 +121,8 @@ extension PackagePad {
 
   //····················································································································
 
-  func rotate90CounterClockwise_PackagePad (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_PackagePad (from inRotationCenter : CanariPoint,
+                                            userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.xCenter, y: self.yCenter)
     self.xCenter = newCenter.x
     self.yCenter = newCenter.y
@@ -128,9 +132,9 @@ extension PackagePad {
 
   //····················································································································
 
-  func operationAfterPasting_PackagePad (additionalDictionary inDictionary : [String : Any],
-                                         optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                         objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_PackagePad (additionalDictionary _ : [String : Any],
+                                         optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                         objectArray _ : [EBGraphicManagedObject]) -> String {
     self.padNumber += VERY_LARGE_PAD_NUMBER // So it will be numbered by model observer CustomizedPackageDocument:handlePadNumbering
     return "" // Means ok
   }
@@ -139,7 +143,7 @@ extension PackagePad {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackagePad (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_PackagePad (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -502,21 +506,20 @@ final class PadGeometryForERC {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension Array where Element == PadGeometryForERC {
-
-  //····················································································································
-
-  func bezierPathes () -> [EBBezierPath] {
-    var result = [EBBezierPath] ()
-    for entry in self {
-      result.append (entry.bezierPath)
-    }
-    return result
-  }
-
-  //····················································································································
-
-}
-
+//extension Array where Element == PadGeometryForERC {
+//
+//  //····················································································································
+//
+//  func bezierPathes () -> [EBBezierPath] {
+//    var result = [EBBezierPath] ()
+//    for entry in self {
+//      result.append (entry.bezierPath)
+//    }
+//    return result
+//  }
+//
+//  //····················································································································
+//
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -21,7 +21,7 @@ extension BoardTrack {
 
   //····················································································································
 
-  func cursorForKnob_BoardTrack (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_BoardTrack (knob _ : Int) -> NSCursor? {
     return NSCursor.upDownRightLeftCursor
   }
 
@@ -29,9 +29,9 @@ extension BoardTrack {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_BoardTrack (additionalDictionary inDictionary : [String : Any],
-                                         optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                         objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_BoardTrack (additionalDictionary _ : [String : Any],
+                                         optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                         objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -65,7 +65,7 @@ extension BoardTrack {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_BoardTrack (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_BoardTrack (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -78,7 +78,7 @@ extension BoardTrack {
 
   //····················································································································
 
-  func acceptToTranslate_BoardTrack (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_BoardTrack (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
@@ -101,47 +101,24 @@ extension BoardTrack {
   //  Knob
   //····················································································································
 
-  func canMove_BoardTrack (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+  func canMove_BoardTrack (knob _ : Int,
+                           proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                           proposedAlignedTranslation _ : CanariPoint,
+                           unalignedMouseDraggedLocation _ : CanariPoint,
+                           shift _ : Bool) -> CanariPoint {
     return inProposedUnalignedTranslation
-//    if let p1 = self.mConnectorP1?.location, let p2 = self.mConnectorP2?.location {
-//      if inKnobIndex == BOARD_TRACK_P1 {
-//        if inShift {
-//          return inProposedUnalignedTranslation
-//        }else{
-//          var p = inUnalignedMouseDraggedLocation.p
-//          p.quadrantAligned (from: p2)
-//          return CanariPoint (x: p.x - p1.x, y: p.y - p1.y)
-//        }
-//      }else if inKnobIndex == BOARD_TRACK_P2 {
-//        if inShift {
-//          return inProposedUnalignedTranslation
-//        }else{
-//          var p = inUnalignedMouseDraggedLocation.p
-//          p.quadrantAligned (from: p1)
-//          return CanariPoint (x: p.x - p2.x, y: p.y - p2.y)
-//        }
-//      }else{
-//        return CanariPoint ()
-//      }
-//    }else{
-//      return CanariPoint ()
-//    }
   }
 
   //····················································································································
 
-  func move_BoardTrack (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnalignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnalignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+  func move_BoardTrack (knob inKnobIndex : Int,
+                        proposedDx _ : Int,
+                        proposedDy _ : Int,
+                        unalignedMouseLocationX inUnalignedMouseLocationX : Int,
+                        unalignedMouseLocationY inUnalignedMouseLocationY : Int,
+                        alignedMouseLocationX _ : Int,
+                        alignedMouseLocationY _ : Int,
+                        shift _ : Bool) {
     if inKnobIndex == BOARD_TRACK_P1 {
       switch self.mDirectionLockOnKnobDragging {
       case .unlocked :

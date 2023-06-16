@@ -71,39 +71,39 @@ import AppKit
 
   //····················································································································
 
-  func addHole (toFilledBezierPaths ioBezierPaths : inout [EBBezierPath],
-                dx inDx : Int,
-                dy inDy: Int,
-                pdfHoleDiameter inHoleDiameter : CGFloat,
-                horizontalMirror inHorizontalMirror : Bool,
-                boardWidth inBoardWidth : Int,
-                modelWidth inModelWidth : Int,
-                modelHeight inModelHeight : Int,
-                instanceRotation inInstanceRotation : QuadrantRotation) {
-    for via in self.viaShapeArray {
-      var x = inDx
-      var y = inDy
-      switch inInstanceRotation {
-      case .rotation0 :
-        x += via.x
-        y += via.y
-      case .rotation90 :
-        x += inModelHeight - via.y
-        y += via.x
-      case .rotation180 :
-        x += inModelWidth  - via.x
-        y += inModelHeight - via.y
-      case .rotation270 :
-        x += via.y
-        y += inModelWidth - via.x
-      }
-      let xf = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x) : x)
-      let yf = canariUnitToCocoa (y)
-      let r = NSRect (x: xf - inHoleDiameter / 2.0, y: yf - inHoleDiameter / 2.0, width: inHoleDiameter, height : inHoleDiameter)
-      let bp = EBBezierPath (ovalIn: r)
-      ioBezierPaths.append (bp)
-    }
-  }
+//  func addHole (toFilledBezierPaths ioBezierPaths : inout [EBBezierPath],
+//                dx inDx : Int,
+//                dy inDy: Int,
+//                pdfHoleDiameter inHoleDiameter : CGFloat,
+//                horizontalMirror inHorizontalMirror : Bool,
+//                boardWidth inBoardWidth : Int,
+//                modelWidth inModelWidth : Int,
+//                modelHeight inModelHeight : Int,
+//                instanceRotation inInstanceRotation : QuadrantRotation) {
+//    for via in self.viaShapeArray {
+//      var x = inDx
+//      var y = inDy
+//      switch inInstanceRotation {
+//      case .rotation0 :
+//        x += via.x
+//        y += via.y
+//      case .rotation90 :
+//        x += inModelHeight - via.y
+//        y += via.x
+//      case .rotation180 :
+//        x += inModelWidth  - via.x
+//        y += inModelHeight - via.y
+//      case .rotation270 :
+//        x += via.y
+//        y += inModelWidth - via.x
+//      }
+//      let xf = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x) : x)
+//      let yf = canariUnitToCocoa (y)
+//      let r = NSRect (x: xf - inHoleDiameter / 2.0, y: yf - inHoleDiameter / 2.0, width: inHoleDiameter, height : inHoleDiameter)
+//      let bp = EBBezierPath (ovalIn: r)
+//      ioBezierPaths.append (bp)
+//    }
+//  }
 
   //····················································································································
 

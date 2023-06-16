@@ -111,7 +111,7 @@ import AppKit
 
   //····················································································································
 
-  @objc func renameComponentIndexPopUpButtonAction (_ inSender : NSObject?) {
+  @objc func renameComponentIndexPopUpButtonAction (_ _ : Any?) {
     let newIndex = self.mIndexesPopUpButton.indexOfSelectedItem
     self.mComponentNewIndex = newIndex + 1
     self.updateValidationButton ()
@@ -119,15 +119,15 @@ import AppKit
 
   //····················································································································
 
-  func populatePrefixComboBox (_ currentPrefixSet : Set <String>, _ currentNamePrefix : String) {
-    self.mComboBox.removeAllItems ()
-    let sortedArray = Array (currentPrefixSet).sorted ()
-    self.mComboBox.addItems (withObjectValues: sortedArray)
-    if let idx = sortedArray.firstIndex(of: currentNamePrefix) {
-      self.mComboBox.selectItem (at: idx)
-    }
-    self.updateValidationButton ()
-  }
+//  func populatePrefixComboBox (_ currentPrefixSet : Set <String>, _ currentNamePrefix : String) {
+//    self.mComboBox.removeAllItems ()
+//    let sortedArray = Array (currentPrefixSet).sorted ()
+//    self.mComboBox.addItems (withObjectValues: sortedArray)
+//    if let idx = sortedArray.firstIndex(of: currentNamePrefix) {
+//      self.mComboBox.selectItem (at: idx)
+//    }
+//    self.updateValidationButton ()
+//  }
 
   //····················································································································
 

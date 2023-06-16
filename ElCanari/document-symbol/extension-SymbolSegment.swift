@@ -13,7 +13,7 @@ extension SymbolSegment {
 
   //····················································································································
 
-  func cursorForKnob_SymbolSegment (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_SymbolSegment (knob _ : Int) -> NSCursor? {
     return NSCursor.upDownRightLeftCursor
   }
 
@@ -21,9 +21,9 @@ extension SymbolSegment {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_SymbolSegment (additionalDictionary inDictionary : [String : Any],
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_SymbolSegment (additionalDictionary _ : [String : Any],
+                                            optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                            objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -31,7 +31,7 @@ extension SymbolSegment {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SymbolSegment (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_SymbolSegment (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -76,7 +76,7 @@ extension SymbolSegment {
 
   //····················································································································
 
-  func acceptToTranslate_SymbolSegment (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_SymbolSegment (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
 //    let newX1 = self.x1 + inDx
 //    let newY1 = self.y1 + inDy
@@ -87,7 +87,7 @@ extension SymbolSegment {
 
   //····················································································································
 
-  func translate_SymbolSegment (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_SymbolSegment (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.x1 += inDx
     self.y1 += inDy
     self.x2 += inDx
@@ -98,24 +98,24 @@ extension SymbolSegment {
   //  Knob
   //····················································································································
 
-  func canMove_SymbolSegment (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+  func canMove_SymbolSegment (knob _ : Int,
+                              proposedUnalignedAlignedTranslation _ : CanariPoint,
+                              proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                              unalignedMouseDraggedLocation _ : CanariPoint,
+                              shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
  }
 
   //····················································································································
 
   func move_SymbolSegment (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+                           proposedDx inDx: Int,
+                           proposedDy inDy: Int,
+                           unalignedMouseLocationX _ : Int,
+                           unalignedMouseLocationY _ : Int,
+                           alignedMouseLocationX _ : Int,
+                           alignedMouseLocationY _ : Int,
+                           shift _ : Bool) {
 //    Swift.print ("inDx \(inDx), inDy \(inDy)")
     if inKnobIndex == SYMBOL_SEGMENT_ENDPOINT_1 {
       self.x1 += inDx
@@ -201,18 +201,18 @@ extension SymbolSegment {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_SymbolSegment (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+  func canRotate90_SymbolSegment (accumulatedPoints _ : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
  //····················································································································
 
-  func rotate90Clockwise_SymbolSegment (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_SymbolSegment (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
  //····················································································································
 
-  func rotate90CounterClockwise_SymbolSegment (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_SymbolSegment (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································

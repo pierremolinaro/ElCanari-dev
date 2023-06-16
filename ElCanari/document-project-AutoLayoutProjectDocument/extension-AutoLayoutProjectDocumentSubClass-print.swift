@@ -37,7 +37,7 @@ extension AutoLayoutProjectDocumentSubClass {
 
   //····················································································································
 
-  @objc override func printDocument (_ inSender : Any?) {
+  @objc override func printDocument (_ _ : Any?) {
     if self.rootObject.mSelectedPageIndex == 2 {
       self.printSchematics ()
     }else if self.rootObject.mSelectedPageIndex == 6 {
@@ -191,9 +191,9 @@ extension AutoLayoutProjectDocumentSubClass {
 
   //····················································································································
 
-  @objc private func documentDidRunModalPrintOperation (_ inDocument : NSDocument,
-                                                        success inSuccess : Bool,
-                                                        contextInfo inUnusedContextInfo : Any?) {
+  @objc private func documentDidRunModalPrintOperation (_ _ : NSDocument,
+                                                        success _ : Bool,
+                                                        contextInfo _ : Any?) {
      //    self.mPrintOperation = nil // Crash !
     DispatchQueue.main.async { self.mPrintOperation = nil }
   }

@@ -23,7 +23,7 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
-  func cursorForKnob_ComponentSymbolInProject (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_ComponentSymbolInProject (knob inKnobIndex : Int) -> NSCursor? {
     if inKnobIndex == SYMBOL_IN_SCHEMATICS_CENTER_KNOB {
       return NSCursor.upDownRightLeftCursor
     }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_ROTATION_KNOB {
@@ -47,13 +47,13 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
-  func acceptToTranslate_ComponentSymbolInProject (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_ComponentSymbolInProject (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_ComponentSymbolInProject (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_ComponentSymbolInProject (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.mCenterX += inDx
     self.mCenterY += inDy
   }
@@ -62,9 +62,9 @@ extension ComponentSymbolInProject {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_ComponentSymbolInProject (additionalDictionary inDictionary : [String : Any],
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_ComponentSymbolInProject (additionalDictionary _ : [String : Any],
+                                                       optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                                       objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -72,31 +72,31 @@ extension ComponentSymbolInProject {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_ComponentSymbolInProject (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_ComponentSymbolInProject (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
   //  Move
   //····················································································································
 
-  func canMove_ComponentSymbolInProject (knob inKnobIndex : Int,
-                proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                shift inShift : Bool) -> CanariPoint {
+  func canMove_ComponentSymbolInProject (knob _ : Int,
+                                         proposedUnalignedAlignedTranslation _ : CanariPoint,
+                                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                                         unalignedMouseDraggedLocation _ : CanariPoint,
+                                         shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
   }
 
   //····················································································································
 
-  func move_ComponentSymbolInProject (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+  func move_ComponentSymbolInProject (knob inKnobIndex : Int,
+                                      proposedDx inDx : Int,
+                                      proposedDy inDy : Int,
+                                      unalignedMouseLocationX _ : Int,
+                                      unalignedMouseLocationY _ : Int,
+                                      alignedMouseLocationX inAlignedMouseLocationX : Int,
+                                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                                      shift _ : Bool) {
     if inKnobIndex == SYMBOL_IN_SCHEMATICS_CENTER_KNOB {
       self.mCenterX += inDx
       self.mCenterY += inDy
@@ -173,7 +173,7 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
-  func rotate90Clockwise_ComponentSymbolInProject (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_ComponentSymbolInProject (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
     self.mCenterX = p.x
     self.mCenterY = p.y
@@ -186,7 +186,7 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
-  func rotate90CounterClockwise_ComponentSymbolInProject (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_ComponentSymbolInProject (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
     self.mCenterX = p.x
     self.mCenterY = p.y

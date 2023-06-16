@@ -129,24 +129,24 @@ class AutoLayoutBase_NSStackView : NSStackView {
 
   //····················································································································
 
-  final func setSpacing (_ inValue : Int) -> Self {
-    self.spacing = CGFloat (inValue)
-    return self
-  }
+//  final func setSpacing (_ inValue : Int) -> Self {
+//    self.spacing = CGFloat (inValue)
+//    return self
+//  }
 
   //····················································································································
 
-  final func flexibleSpace () -> Self {
-    _ = self.appendView (AutoLayoutFlexibleSpace ())
-    return self
-  }
+//  final func flexibleSpace () -> Self {
+//    _ = self.appendView (AutoLayoutFlexibleSpace ())
+//    return self
+//  }
 
   //····················································································································
 
-  final func add (item inView : NSView) -> Self {
-    _ = self.appendView (inView)
-    return self
-  }
+//  final func add (item inView : NSView) -> Self {
+//    _ = self.appendView (inView)
+//    return self
+//  }
 
   //····················································································································
 

@@ -21,7 +21,7 @@ extension BoardRestrictRectangle {
 
   //····················································································································
 
-  func cursorForKnob_BoardRestrictRectangle (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_BoardRestrictRectangle (knob inKnobIndex : Int) -> NSCursor? {
     if (inKnobIndex == BOARD_RESTRICT_RECT_RIGHT) && (inKnobIndex == BOARD_RESTRICT_RECT_LEFT) {
       return NSCursor.resizeLeftRight
     }else if (inKnobIndex == BOARD_RESTRICT_RECT_BOTTOM) && (inKnobIndex == BOARD_RESTRICT_RECT_TOP) {
@@ -33,7 +33,7 @@ extension BoardRestrictRectangle {
 
   //····················································································································
 
-  func acceptedTranslation_BoardRestrictRectangle (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+  func acceptedTranslation_BoardRestrictRectangle (xBy inDx : Int, yBy inDy : Int) -> CanariPoint {
     var acceptedX = inDx
     let newX = self.mX + acceptedX
     if newX < 0 {
@@ -49,15 +49,15 @@ extension BoardRestrictRectangle {
 
   //····················································································································
 
-  func acceptToTranslate_BoardRestrictRectangle (xBy inDx: Int, yBy inDy: Int) -> Bool {
-//    let newX = self.mX + inDx
-//    let newY = self.mY + inDy
+  func acceptToTranslate_BoardRestrictRectangle (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_BoardRestrictRectangle (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_BoardRestrictRectangle (xBy inDx : Int,
+                                         yBy inDy : Int,
+                                         userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.mX += inDx
     self.mY += inDy
   }
@@ -66,9 +66,9 @@ extension BoardRestrictRectangle {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_BoardRestrictRectangle (additionalDictionary inDictionary : [String : Any],
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_BoardRestrictRectangle (additionalDictionary _ : [String : Any],
+                                                     optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                                     objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -76,7 +76,7 @@ extension BoardRestrictRectangle {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_BoardRestrictRectangle (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_BoardRestrictRectangle (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -84,10 +84,10 @@ extension BoardRestrictRectangle {
   //····················································································································
 
   func canMove_BoardRestrictRectangle (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+                                       proposedUnalignedAlignedTranslation _ : CanariPoint,
+                                       proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                                       unalignedMouseDraggedLocation _ : CanariPoint,
+                                       shift _ : Bool) -> CanariPoint {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == BOARD_RESTRICT_RECT_LEFT {
@@ -121,11 +121,11 @@ extension BoardRestrictRectangle {
   func move_BoardRestrictRectangle (knob inKnobIndex: Int,
                       proposedDx inDx: Int,
                       proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+                      unalignedMouseLocationX _ : Int,
+                      unalignedMouseLocationY _ : Int,
+                      alignedMouseLocationX _ : Int,
+                      alignedMouseLocationY _ : Int,
+                      shift _ : Bool) {
     if inKnobIndex == BOARD_RESTRICT_RECT_RIGHT {
       self.mWidth += inDx
     }else if inKnobIndex == BOARD_RESTRICT_RECT_LEFT {
@@ -143,9 +143,9 @@ extension BoardRestrictRectangle {
   //  COPY AND PASTE
   //····················································································································
 
-  func canCopyAndPaste_BoardRestrictRectangle () -> Bool {
-    return true
-  }
+//  func canCopyAndPaste_BoardRestrictRectangle () -> Bool {
+//    return true
+//  }
 
   //····················································································································
   //  SNAP TO GRID

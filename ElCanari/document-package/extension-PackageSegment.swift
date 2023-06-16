@@ -13,7 +13,7 @@ extension PackageSegment {
 
   //····················································································································
 
-  func cursorForKnob_PackageSegment (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_PackageSegment (knob _ : Int) -> NSCursor? {
     return NSCursor.upDownRightLeftCursor
   }
 
@@ -21,9 +21,9 @@ extension PackageSegment {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_PackageSegment (additionalDictionary inDictionary : [String : Any],
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_PackageSegment (additionalDictionary _ : [String : Any],
+                                             optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                             objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -31,7 +31,7 @@ extension PackageSegment {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackageSegment (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_PackageSegment (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -44,13 +44,15 @@ extension PackageSegment {
 
   //····················································································································
 
-  func acceptToTranslate_PackageSegment (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_PackageSegment (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_PackageSegment (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_PackageSegment (xBy inDx: Int,
+                                 yBy inDy: Int,
+                                 userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.x1 += inDx
     self.y1 += inDy
     self.x2 += inDx
@@ -61,24 +63,24 @@ extension PackageSegment {
   //  Move
   //····················································································································
 
-  func canMove_PackageSegment (knob inKnobIndex : Int,
-                proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                shift inShift : Bool) -> CanariPoint {
+  func canMove_PackageSegment (knob _ : Int,
+                               proposedUnalignedAlignedTranslation _ : CanariPoint,
+                               proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                               unalignedMouseDraggedLocation _ : CanariPoint,
+                               shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
   }
 
   //····················································································································
 
-  func move_PackageSegment (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+  func move_PackageSegment (knob inKnobIndex : Int,
+                            proposedDx inDx : Int,
+                            proposedDy inDy : Int,
+                            unalignedMouseLocationX _ : Int,
+                            unalignedMouseLocationY _ : Int,
+                            alignedMouseLocationX _ : Int,
+                            alignedMouseLocationY _ : Int,
+                            shift _ : Bool) {
     if inKnobIndex == PACKAGE_SEGMENT_ENDPOINT_1 {
       self.x1 += inDx
       self.y1 += inDy
@@ -128,7 +130,8 @@ extension PackageSegment {
 
   //····················································································································
 
-  func rotate90Clockwise_PackageSegment (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_PackageSegment (from inRotationCenter : CanariPoint,
+                                         userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
     let p2 = inRotationCenter.rotated90Clockwise (x: self.x2, y: self.y2)
     self.x1 = p1.x
@@ -139,7 +142,8 @@ extension PackageSegment {
 
   //····················································································································
 
-  func rotate90CounterClockwise_PackageSegment (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_PackageSegment (from inRotationCenter : CanariPoint,
+                                                userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
     let p2 = inRotationCenter.rotated90CounterClockwise (x: self.x2, y: self.y2)
     self.x1 = p1.x

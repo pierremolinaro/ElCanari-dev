@@ -5585,22 +5585,19 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: borderViewBackground
     self.borderViewBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = preferences_boardBackgroundColorForBoard_property.selection
-        let s1 = unwSelf.borderOutlineBackground_property.selection
-        let s2 = unwSelf.mBoardObjects_property.selection
-        let s3 = unwSelf.boardBoundBox_property.selection
-        let s4 = preferences_boardLimitsColorForBoard_property.selection
-        let s5 = unwSelf.mContentOpacityInBoardOutline_property.selection
-        switch (s0, s1, s2, s3, s4, s5) {
+        let s0 = unwSelf.borderOutlineBackground_property.selection
+        let s1 = unwSelf.mBoardObjects_property.selection
+        let s2 = unwSelf.boardBoundBox_property.selection
+        let s3 = preferences_boardLimitsColorForBoard_property.selection
+        let s4 = unwSelf.mContentOpacityInBoardOutline_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
-              .single (let v4),
-              .single (let v5)) :
-          return .single (transient_ProjectRoot_borderViewBackground (v0, v1, v2, v3, v4, v5))
+              .single (let v4)) :
+          return .single (transient_ProjectRoot_borderViewBackground (v0, v1, v2, v3, v4))
         case (.multiple,
-              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -5613,7 +5610,6 @@ final class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    preferences_boardBackgroundColorForBoard_property.startsToBeObserved (by: self.borderViewBackground_property)
     self.borderOutlineBackground_property.startsToBeObserved (by: self.borderViewBackground_property)
     self.mBoardObjects_property.toMany_objectDisplay_StartsToBeObserved (by: self.borderViewBackground_property)
     self.boardBoundBox_property.startsToBeObserved (by: self.borderViewBackground_property)

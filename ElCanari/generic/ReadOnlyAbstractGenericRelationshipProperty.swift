@@ -47,7 +47,7 @@ class ReadOnlyAbstractGenericRelationshipProperty : EBObservedObserver {
 
   //····················································································································
 
-  public final func set (document inDocument : EBAutoLayoutManagedDocument) {
+  final func set (document inDocument : EBAutoLayoutManagedDocument) {
     self.mDocument = inDocument
   }
 

@@ -25,7 +25,7 @@ extension BorderCurve {
 
   //····················································································································
 
-  func cursorForKnob_BorderCurve (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_BorderCurve (knob _ : Int) -> NSCursor? {
     return NSCursor.upDownRightLeftCursor
   }
 
@@ -61,9 +61,9 @@ extension BorderCurve {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_BorderCurve (additionalDictionary inDictionary : [String : Any],
-                                          optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                          objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_BorderCurve (additionalDictionary _ : [String : Any],
+                                          optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                          objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -71,7 +71,7 @@ extension BorderCurve {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_BorderCurve (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_BorderCurve (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -129,10 +129,10 @@ extension BorderCurve {
   //····················································································································
 
   func canMove_BorderCurve (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+                            proposedUnalignedAlignedTranslation _ : CanariPoint,
+                            proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                            unalignedMouseDraggedLocation _ : CanariPoint,
+                            shift _ : Bool) -> CanariPoint {
     if let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
       if inKnobIndex == BOARD_LIMIT_P1_KNOB, let next = self.mNext {
         let dx = max (inProposedAlignedTranslation.x, -self.mX)
@@ -165,13 +165,13 @@ extension BorderCurve {
   //····················································································································
 
   func move_BorderCurve (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+                         proposedDx inDx: Int,
+                         proposedDy inDy: Int,
+                         unalignedMouseLocationX _ : Int,
+                         unalignedMouseLocationY _ : Int,
+                         alignedMouseLocationX _ : Int,
+                         alignedMouseLocationY _ : Int,
+                         shift _ : Bool) {
     if inKnobIndex == BOARD_LIMIT_P1_KNOB {
       self.mX += inDx
       self.mY += inDy
@@ -195,18 +195,18 @@ extension BorderCurve {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_BorderCurve (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+  func canRotate90_BorderCurve (accumulatedPoints _ : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
   //····················································································································
 
-  func rotate90Clockwise_BorderCurve (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_BorderCurve (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_BorderCurve (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_BorderCurve (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
@@ -221,7 +221,7 @@ extension BorderCurve {
   //   SNAP TO GRID
   //····················································································································
 
-  func canSnapToGrid_BorderCurve (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_BorderCurve (_ _ : Int) -> Bool {
     if let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
       let grid = self.mRoot!.mBoardLimitsGridStep
       var isAligned = self.mCPX1.isAlignedOnGrid (grid)
@@ -254,7 +254,7 @@ extension BorderCurve {
 
   //····················································································································
 
-  func snapToGrid_BorderCurve (_ inGrid : Int) {
+  func snapToGrid_BorderCurve (_ _ : Int) {
     let grid = self.mRoot!.mBoardLimitsGridStep
     self.mCPX1.align (onGrid: grid)
     self.mCPY1.align (onGrid: grid)

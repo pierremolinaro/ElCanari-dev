@@ -68,12 +68,12 @@ final class AutoLayoutRTFTextView : NSScrollView {
     set { self.mTextView.string = newValue }
   }
 
-  var textStorage : NSTextStorage? { self.mTextView.textStorage }
+//  var textStorage : NSTextStorage? { self.mTextView.textStorage }
 
-  var isEditable : Bool {
-    get { return self.mTextView.isEditable }
-    set { self.mTextView.isEditable = newValue }
-  }
+//  var isEditable : Bool {
+//    get { return self.mTextView.isEditable }
+//    set { self.mTextView.isEditable = newValue }
+//  }
 
   //····················································································································
 

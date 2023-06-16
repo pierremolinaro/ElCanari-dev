@@ -26,7 +26,7 @@ extension BoardImage {
 
   //····················································································································
 
-  func cursorForKnob_BoardImage (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_BoardImage (knob inKnobIndex : Int) -> NSCursor? {
     if inKnobIndex == BOARD_IMAGE_CENTER {
       return NSCursor.upDownRightLeftCursor
     }else if inKnobIndex == BOARD_IMAGE_ROTATION_KNOB {
@@ -40,9 +40,9 @@ extension BoardImage {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_BoardImage (additionalDictionary inDictionary : [String : Any],
-                                         optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                         objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_BoardImage (additionalDictionary _ : [String : Any],
+                                         optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                         objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -50,7 +50,7 @@ extension BoardImage {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_BoardImage (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_BoardImage (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -63,14 +63,14 @@ extension BoardImage {
 
   //····················································································································
 
-  func acceptToTranslate_BoardImage (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_BoardImage (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
   func translate_BoardImage (xBy inDx : Int, yBy inDy : Int,
-                             userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+                             userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.mCenterX += inDx
     self.mCenterY += inDy
   }
@@ -88,10 +88,10 @@ extension BoardImage {
   //····················································································································
 
   func canMove_BoardImage (knob inKnobIndex : Int,
-                           proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                           proposedUnalignedAlignedTranslation _ : CanariPoint,
                            proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                           unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                           shift inShift : Bool) -> CanariPoint {
+                           unalignedMouseDraggedLocation _ : CanariPoint,
+                           shift _ : Bool) -> CanariPoint {
     if inKnobIndex == BOARD_IMAGE_CENTER {
       return inProposedAlignedTranslation
     }else if inKnobIndex == BOARD_IMAGE_ROTATION_KNOB {
@@ -103,14 +103,14 @@ extension BoardImage {
 
   //····················································································································
 
-  func move_BoardImage (knob inKnobIndex: Int,
-                        proposedDx inDx: Int,
-                        proposedDy inDy: Int,
-                        unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                        unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+  func move_BoardImage (knob inKnobIndex : Int,
+                        proposedDx inDx : Int,
+                        proposedDy inDy : Int,
+                        unalignedMouseLocationX _ : Int,
+                        unalignedMouseLocationY _ : Int,
                         alignedMouseLocationX inAlignedMouseLocationX : Int,
                         alignedMouseLocationY inAlignedMouseLocationY : Int,
-                        shift inShift : Bool) {
+                        shift _ : Bool) {
     if inKnobIndex == BOARD_IMAGE_CENTER {
       self.mCenterX += inDx
       self.mCenterY += inDy
@@ -133,7 +133,8 @@ extension BoardImage {
 
   //····················································································································
 
-  func rotate90Clockwise_BoardImage (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_BoardImage (from inRotationCenter : CanariPoint,
+                                     userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
     self.mCenterX = p1.x
     self.mCenterY = p1.y
@@ -142,7 +143,8 @@ extension BoardImage {
 
   //····················································································································
 
-  func rotate90CounterClockwise_BoardImage (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_BoardImage (from inRotationCenter : CanariPoint,
+                                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
     self.mCenterX = p1.x
     self.mCenterY = p1.y

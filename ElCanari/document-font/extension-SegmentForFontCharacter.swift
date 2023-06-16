@@ -143,13 +143,13 @@ extension SegmentForFontCharacter {
 
   //····················································································································
 
-  func acceptToTranslate_SegmentForFontCharacter (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_SegmentForFontCharacter (xBy _ : Int, yBy _ : Int) -> Bool {
     return false
   }
 
   //····················································································································
 
-  func translate_SegmentForFontCharacter (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
+  func translate_SegmentForFontCharacter (xBy _ : Int, yBy _ : Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································

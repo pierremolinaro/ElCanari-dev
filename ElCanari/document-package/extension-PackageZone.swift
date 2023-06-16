@@ -32,9 +32,9 @@ extension PackageZone {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_PackageZone (additionalDictionary inDictionary : [String : Any],
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_PackageZone (additionalDictionary _ : [String : Any],
+                                          optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                          objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -42,7 +42,7 @@ extension PackageZone {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackageZone (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_PackageZone (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -55,13 +55,15 @@ extension PackageZone {
 
   //····················································································································
 
-  func acceptToTranslate_PackageZone (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_PackageZone (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_PackageZone (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_PackageZone (xBy inDx: Int,
+                              yBy inDy: Int,
+                              userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.x += inDx
     self.y += inDy
     self.xName += inDx
@@ -73,10 +75,10 @@ extension PackageZone {
   //····················································································································
 
   func canMove_PackageZone (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+                            proposedUnalignedAlignedTranslation _ : CanariPoint,
+                            proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                            unalignedMouseDraggedLocation _ : CanariPoint,
+                            shift _ : Bool) -> CanariPoint {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == PACKAGE_ZONE_LEFT {
@@ -108,14 +110,14 @@ extension PackageZone {
 
   //····················································································································
 
-  func move_PackageZone (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+  func move_PackageZone (knob inKnobIndex : Int,
+                         proposedDx inDx : Int,
+                         proposedDy inDy : Int,
+                         unalignedMouseLocationX _ : Int,
+                         unalignedMouseLocationY _ : Int,
+                         alignedMouseLocationX _ : Int,
+                         alignedMouseLocationY _ : Int,
+                         shift _ : Bool) {
     if inKnobIndex == PACKAGE_ZONE_RIGHT {
       self.width += inDx
     }else if inKnobIndex == PACKAGE_ZONE_LEFT {
@@ -237,20 +239,20 @@ extension PackageZone {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_PackageZone (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+  func canRotate90_PackageZone (accumulatedPoints _ : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
  //····················································································································
 
-  func rotate90Clockwise_PackageZone (from inRotationCenter : CanariPoint,
-                                      userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_PackageZone (from _ : CanariPoint,
+                                      userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
  //····················································································································
 
-  func rotate90CounterClockwise_PackageZone (from inRotationCenter : CanariPoint,
-                                             userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_PackageZone (from _ : CanariPoint,
+                                             userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
  //····················································································································

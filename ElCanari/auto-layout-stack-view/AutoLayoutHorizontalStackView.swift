@@ -54,17 +54,17 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
 
   //····················································································································
 
-  final func appendVerticalSeparator () {
-    let separator = Self.VerticalSeparator ()
-    _ = self.appendView (separator)
-  }
+//  final func appendVerticalSeparator () {
+//    let separator = Self.VerticalSeparator ()
+//    _ = self.appendView (separator)
+//  }
 
   //····················································································································
 
-  final func prependVerticalSeparator () {
-    let separator = Self.VerticalSeparator ()
-    _ = self.prependView (separator)
-  }
+//  final func prependVerticalSeparator () {
+//    let separator = Self.VerticalSeparator ()
+//    _ = self.prependView (separator)
+//  }
 
   //····················································································································
   //   Facilities
@@ -80,13 +80,13 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
 
   //····················································································································
 
-  final func appendViewFollowedByFlexibleSpace (_ inView : NSView) -> Self {
-    let hStack = AutoLayoutVerticalStackView ()
-    _ = hStack.appendView (inView)
-    _ = hStack.appendFlexibleSpace ()
-    self.addView (hStack, in: .leading)
-    return self
-  }
+//  final func appendViewFollowedByFlexibleSpace (_ inView : NSView) -> Self {
+//    let hStack = AutoLayoutVerticalStackView ()
+//    _ = hStack.appendView (inView)
+//    _ = hStack.appendFlexibleSpace ()
+//    self.addView (hStack, in: .leading)
+//    return self
+//  }
 
   //····················································································································
 

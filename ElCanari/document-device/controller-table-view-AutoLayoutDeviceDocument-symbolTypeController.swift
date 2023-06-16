@@ -263,7 +263,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : NSObject,
   //    remove
   //····················································································································
 
-  @objc func remove (_ sender : Any) {
+  @objc func remove (_ _ : Any) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :

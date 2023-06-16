@@ -22,7 +22,7 @@ extension PackageSlavePad {
   //  Cursor
   //····················································································································
 
-  func cursorForKnob_PackageSlavePad (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_PackageSlavePad (knob _ : Int) -> NSCursor? {
     return nil // Uses default cursor
   }
 
@@ -36,13 +36,15 @@ extension PackageSlavePad {
 
   //····················································································································
 
-  func acceptToTranslate_PackageSlavePad (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_PackageSlavePad (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_PackageSlavePad (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_PackageSlavePad (xBy inDx: Int,
+                                  yBy inDy: Int,
+                                  userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.xCenter += inDx
     self.yCenter += inDy
   }
@@ -58,7 +60,8 @@ extension PackageSlavePad {
 
   //····················································································································
 
-  func rotate90Clockwise_PackageSlavePad (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_PackageSlavePad (from inRotationCenter : CanariPoint,
+                                          userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let newCenter = inRotationCenter.rotated90Clockwise (x: self.xCenter, y: self.yCenter)
     self.xCenter = newCenter.x
     self.yCenter = newCenter.y
@@ -68,7 +71,8 @@ extension PackageSlavePad {
 
   //····················································································································
 
-  func rotate90CounterClockwise_PackageSlavePad (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_PackageSlavePad (from inRotationCenter : CanariPoint,
+                                                 userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.xCenter, y: self.yCenter)
     self.xCenter = newCenter.x
     self.yCenter = newCenter.y
@@ -80,24 +84,24 @@ extension PackageSlavePad {
   //  Move
   //····················································································································
 
-  func canMove_PackageSlavePad (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+  func canMove_PackageSlavePad (knob _ : Int,
+                                proposedUnalignedAlignedTranslation _ : CanariPoint,
+                                proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                                unalignedMouseDraggedLocation _ : CanariPoint,
+                                shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
   }
 
   //····················································································································
 
-  func move_PackageSlavePad (knob inKnobIndex: Int,
-             proposedDx inDx: Int,
-             proposedDy inDy: Int,
-             unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-             unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-             alignedMouseLocationX inAlignedMouseLocationX : Int,
-             alignedMouseLocationY inAlignedMouseLocationY : Int,
-             shift inShift : Bool) {
+  func move_PackageSlavePad (knob _ : Int,
+                             proposedDx _ : Int,
+                             proposedDy _ : Int,
+                             unalignedMouseLocationX _ : Int,
+                             unalignedMouseLocationY _ : Int,
+                             alignedMouseLocationX _ : Int,
+                             alignedMouseLocationY _ : Int,
+                             shift _ : Bool) {
   }
 
 
@@ -172,7 +176,7 @@ extension PackageSlavePad {
   //····················································································································
 
   func operationAfterPasting_PackageSlavePad (additionalDictionary inDictionary : [String : Any],
-                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
+                                              optionalDocument _ : EBAutoLayoutManagedDocument?,
                                               objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     if let masterPadIndex = inDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] as? Int {
       for object in inObjectArray {
@@ -190,9 +194,9 @@ extension PackageSlavePad {
   //
   //····················································································································
 
-  func angle (from inCanariPoint : CanariPoint) -> CGFloat {
-    return CanariPoint.angleInRadian (CanariPoint (x: self.xCenter, y: self.yCenter), inCanariPoint)
-  }
+//  func angle (from inCanariPoint : CanariPoint) -> CGFloat {
+//    return CanariPoint.angleInRadian (CanariPoint (x: self.xCenter, y: self.yCenter), inCanariPoint)
+//  }
 
   //····················································································································
 

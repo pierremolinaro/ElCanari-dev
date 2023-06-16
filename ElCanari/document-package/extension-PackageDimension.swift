@@ -15,7 +15,7 @@ extension PackageDimension {
 
   //····················································································································
 
-  func cursorForKnob_PackageDimension (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_PackageDimension (knob inKnobIndex : Int) -> NSCursor? {
     if inKnobIndex == PACKAGE_DIMENSION_CENTER {
       return nil
     }else{
@@ -27,9 +27,9 @@ extension PackageDimension {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_PackageDimension (additionalDictionary inDictionary : [String : Any],
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_PackageDimension (additionalDictionary _ : [String : Any],
+                                               optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                               objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -37,26 +37,26 @@ extension PackageDimension {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackageDimension (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_PackageDimension (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
   //  Translation
   //····················································································································
 
-  func acceptedTranslation_PackageDimension  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+  func acceptedTranslation_PackageDimension (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
     return CanariPoint (x: inDx, y: inDy)
   }
 
   //····················································································································
 
-  func acceptToTranslate_PackageDimension (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_PackageDimension (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_PackageDimension (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_PackageDimension (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.x1 += inDx
     self.y1 += inDy
     self.x2 += inDx
@@ -67,24 +67,24 @@ extension PackageDimension {
   //  Move
   //····················································································································
 
-  func canMove_PackageDimension (knob inKnobIndex : Int,
-                proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                shift inShift : Bool) -> CanariPoint {
+  func canMove_PackageDimension (knob _ : Int,
+                                 proposedUnalignedAlignedTranslation _ : CanariPoint,
+                                 proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                                 unalignedMouseDraggedLocation _ : CanariPoint,
+                                 shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
   }
 
   //····················································································································
 
   func move_PackageDimension (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+                              proposedDx inDx: Int,
+                              proposedDy inDy: Int,
+                              unalignedMouseLocationX _ : Int,
+                              unalignedMouseLocationY _ : Int,
+                              alignedMouseLocationX _ : Int,
+                              alignedMouseLocationY _ : Int,
+                              shift _ : Bool) {
     if inKnobIndex == PACKAGE_DIMENSION_CENTER {
       self.x1 += inDx
       self.y1 += inDy
@@ -142,7 +142,7 @@ extension PackageDimension {
 
   //····················································································································
 
-  func rotate90Clockwise_PackageDimension (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_PackageDimension (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
     self.x1 = p1.x
     self.y1 = p1.y
@@ -156,7 +156,7 @@ extension PackageDimension {
 
   //····················································································································
 
-  func rotate90CounterClockwise_PackageDimension (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_PackageDimension (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
     self.x1 = p1.x
     self.y1 = p1.y

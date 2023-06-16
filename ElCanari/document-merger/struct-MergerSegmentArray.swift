@@ -141,7 +141,7 @@ struct MergerSegmentArray : Hashable {
   func addDrillForPDF (toStrokeBezierPaths ioBezierPaths : inout [EBBezierPath],
                        dx inDx : Int,
                        dy inDy: Int,
-                       boardWidth inBoardWidth : Int,
+//                       boardWidth inBoardWidth : Int,
                        modelWidth inModelWidth : Int,
                        modelHeight inModelHeight : Int,
                        instanceRotation inInstanceRotation : QuadrantRotation) {

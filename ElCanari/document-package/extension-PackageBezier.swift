@@ -46,7 +46,7 @@ extension PackageBezier {
 
   //····················································································································
 
-  func acceptToTranslate_PackageBezier (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_PackageBezier (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
@@ -84,7 +84,7 @@ extension PackageBezier {
                       unalignedMouseLocationY _ : Int,
                       alignedMouseLocationX _ : Int,
                       alignedMouseLocationY _ : Int,
-                      shift inShift : Bool) {
+                      shift _ : Bool) {
     if inKnobIndex == PACKAGE_BEZIER_CURVE_ENDPOINT_1 {
       self.x1 += inDx
       self.y1 += inDy
@@ -150,7 +150,8 @@ extension PackageBezier {
 
   //····················································································································
 
-  func rotate90Clockwise_PackageBezier (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_PackageBezier (from inRotationCenter : CanariPoint,
+                                         userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
     let p2 = inRotationCenter.rotated90Clockwise (x: self.x2, y: self.y2)
     let cp1 = inRotationCenter.rotated90Clockwise (x: self.cpx1, y: self.cpy1)
@@ -167,7 +168,8 @@ extension PackageBezier {
 
   //····················································································································
 
-  func rotate90CounterClockwise_PackageBezier (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_PackageBezier (from inRotationCenter : CanariPoint,
+                                                userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
     let p2 = inRotationCenter.rotated90CounterClockwise (x: self.x2, y: self.y2)
     let cp1 = inRotationCenter.rotated90CounterClockwise (x: self.cpx1, y: self.cpy1)

@@ -180,7 +180,7 @@ struct MergerPadArray : Hashable {
                 dx inDx : Int,
                 dy inDy: Int,
                 horizontalMirror inHorizontalMirror : Bool,
-                minimumAperture inMinimumApertureMilTenth : Int,
+ //               minimumAperture inMinimumApertureMilTenth : Int,
                 boardWidth inBoardWidth : Int,
                 modelWidth inModelWidth : Int,
                 modelHeight inModelHeight : Int,

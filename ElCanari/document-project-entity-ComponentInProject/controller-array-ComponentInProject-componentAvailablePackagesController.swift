@@ -175,7 +175,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
   //    add
   //····················································································································
 
-   @objc func add (_ sender : Any) {
+   @objc func add (_ _ : Any) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
@@ -195,7 +195,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
   //    remove
   //····················································································································
 
-  @objc func remove (_ sender : Any) {
+  @objc func remove (_ _ : Any) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :

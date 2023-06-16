@@ -22,7 +22,7 @@ extension BoardConnector {
   //  Cursor
   //····················································································································
 
-  func cursorForKnob_BoardConnector (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_BoardConnector (knob _ : Int) -> NSCursor? {
     return nil // Uses default cursor
   }
 
@@ -30,9 +30,9 @@ extension BoardConnector {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_BoardConnector (additionalDictionary inDictionary : [String : Any],
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_BoardConnector (additionalDictionary _ : [String : Any],
+                                             optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                             objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -40,27 +40,27 @@ extension BoardConnector {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_BoardConnector (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_BoardConnector (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_BoardConnector (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+  func canRotate90_BoardConnector (accumulatedPoints _ : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
   //····················································································································
 
-  func rotate90Clockwise_BoardConnector (from inRotationCenter : CanariPoint,
-                                         userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_BoardConnector (from _ : CanariPoint,
+                                         userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_BoardConnector (from inRotationCenter : CanariPoint,
-                                                userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_BoardConnector (from _ : CanariPoint,
+                                                userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
@@ -88,13 +88,15 @@ extension BoardConnector {
 
   //····················································································································
 
-  func acceptToTranslate_BoardConnector (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_BoardConnector (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_BoardConnector (xBy inDx : Int, yBy inDy : Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_BoardConnector (xBy inDx : Int,
+                                 yBy inDy : Int,
+                                 userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     if !ioSet.contains (self) {
       ioSet.insert (self)
       self.mX += inDx
@@ -107,10 +109,10 @@ extension BoardConnector {
   //····················································································································
 
   func canMove_BoardConnector (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+                               proposedUnalignedAlignedTranslation _ : CanariPoint,
+                               proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                               unalignedMouseDraggedLocation _ : CanariPoint,
+                               shift _ : Bool) -> CanariPoint {
     if (inKnobIndex == BOARD_CONNECTOR_KNOB) && !(self.connectedToComponent ?? true) {
       return inProposedAlignedTranslation
     }else{
@@ -120,14 +122,14 @@ extension BoardConnector {
 
   //····················································································································
 
-  func move_BoardConnector (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+  func move_BoardConnector (knob inKnobIndex : Int,
+                            proposedDx inDx : Int,
+                            proposedDy inDy : Int,
+                            unalignedMouseLocationX _ : Int,
+                            unalignedMouseLocationY _ : Int,
+                            alignedMouseLocationX _ : Int,
+                            alignedMouseLocationY _ : Int,
+                            shift _ : Bool) {
     if inKnobIndex == BOARD_CONNECTOR_KNOB {
       self.mX += inDx
       self.mY += inDy

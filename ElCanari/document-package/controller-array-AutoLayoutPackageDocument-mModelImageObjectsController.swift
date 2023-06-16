@@ -435,7 +435,7 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
   //    add
   //····················································································································
 
-   @objc func add (_ sender : Any) {
+   @objc func add (_ _ : Any) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
@@ -455,7 +455,7 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
   //    remove
   //····················································································································
 
-  @objc func remove (_ sender : Any) {
+  @objc func remove (_ _ : Any) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
@@ -995,7 +995,7 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
 
   //····················································································································
 
-  func addToSelection (objectsWithIndex inIndexes : [Int]) {
+ /* func addToSelection (objectsWithIndex inIndexes : [Int]) {
     let objects = self.objectArray
     var newSelectedSet = self.selectedArray_property.propset
     for idx in inIndexes {
@@ -1003,17 +1003,17 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
       newSelectedSet.insert (newSelectedObject)
     }
     self.selectedSet = newSelectedSet
-  }
+  } */
 
   //····················································································································
 
-  func removeFromSelection (objectWithIndex inIndex : Int) {
+/*  func removeFromSelection (objectWithIndex inIndex : Int) {
     let objects = self.objectArray
     let object = objects [inIndex]
     var newSelectedSet = self.selectedArray_property.propset
     newSelectedSet.remove (object)
     self.selectedSet = newSelectedSet
-  }
+  } */
 
   //····················································································································
 

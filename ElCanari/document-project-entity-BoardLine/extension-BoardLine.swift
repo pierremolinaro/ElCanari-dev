@@ -22,7 +22,7 @@ extension BoardLine {
 
   //····················································································································
 
-  func cursorForKnob_BoardLine (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_BoardLine (knob _ : Int) -> NSCursor? {
     return NSCursor.upDownRightLeftCursor
   }
 
@@ -30,9 +30,9 @@ extension BoardLine {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_BoardLine (additionalDictionary inDictionary : [String : Any],
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_BoardLine (additionalDictionary _ : [String : Any],
+                                        optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                        objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -40,7 +40,7 @@ extension BoardLine {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_BoardLine (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_BoardLine (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -53,14 +53,14 @@ extension BoardLine {
 
   //····················································································································
 
-  func acceptToTranslate_BoardLine (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_BoardLine (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
   func translate_BoardLine (xBy inDx : Int, yBy inDy : Int,
-                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+                            userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.mX1 += inDx
     self.mY1 += inDy
     self.mX2 += inDx
@@ -80,10 +80,10 @@ extension BoardLine {
   //····················································································································
 
   func canMove_BoardLine (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+                          proposedUnalignedAlignedTranslation _ : CanariPoint,
+                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                          unalignedMouseDraggedLocation _ : CanariPoint,
+                          shift _ : Bool) -> CanariPoint {
     if inKnobIndex == BOARD_LINE_P1 {
       return inProposedAlignedTranslation
     }else if inKnobIndex == BOARD_LINE_P2 {
@@ -95,14 +95,14 @@ extension BoardLine {
 
   //····················································································································
 
-  func move_BoardLine (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+  func move_BoardLine (knob inKnobIndex : Int,
+                      proposedDx inDx : Int,
+                      proposedDy inDy : Int,
+                      unalignedMouseLocationX _ : Int,
+                      unalignedMouseLocationY _ : Int,
+                      alignedMouseLocationX _ : Int,
+                      alignedMouseLocationY _ : Int,
+                      shift _ : Bool) {
     if inKnobIndex == BOARD_LINE_P1 {
       self.mX1 += inDx
       self.mY1 += inDy
@@ -124,7 +124,8 @@ extension BoardLine {
 
   //····················································································································
 
-  func rotate90Clockwise_BoardLine (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_BoardLine (from inRotationCenter : CanariPoint,
+                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.mX1, y: self.mY1)
     self.mX1 = p1.x
     self.mY1 = p1.y
@@ -136,7 +137,8 @@ extension BoardLine {
 
   //····················································································································
 
-  func rotate90CounterClockwise_BoardLine (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_BoardLine (from inRotationCenter : CanariPoint,
+                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.mX1, y: self.mY1)
     self.mX1 = p1.x
     self.mY1 = p1.y

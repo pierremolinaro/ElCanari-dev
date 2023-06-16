@@ -47,7 +47,7 @@ extension QuadrantRotation {
 
   //····················································································································
 
-  func ebSymbolTextShapeVerticalAlignment (alignment inAlignment : HorizontalAlignment, mirror inMirror : Bool) -> EBTextVerticalAlignment {
+  func ebSymbolTextShapeVerticalAlignment (alignment _ : HorizontalAlignment, mirror inMirror : Bool) -> EBTextVerticalAlignment {
     let verticalAlignment : EBTextVerticalAlignment
     switch self {
     case .rotation0 :

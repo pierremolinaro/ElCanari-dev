@@ -196,7 +196,7 @@ final class Controller_AutoLayoutMergerDocument_mBoardModelController : NSObject
   //    remove
   //····················································································································
 
-  @objc func remove (_ sender : Any) {
+  @objc func remove (_ _ : Any) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :

@@ -81,7 +81,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  func helperStringForWireCreation (_ inModifierFlags : NSEvent.ModifierFlags) -> String {
+  func helperStringForWireCreation (_ _ : NSEvent.ModifierFlags) -> String {
     return "Dragging defines new wire; SHIFT constraints octolinear direction"
   }
 
@@ -93,7 +93,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  func stopWireCreationOnOptionMouseUp (at inUnalignedMousePoint : NSPoint) -> Bool {
+  func stopWireCreationOnOptionMouseUp (at _ : NSPoint) -> Bool {
      if let wire = self.mWireCreatedByOptionClick, let selectedSheet = self.rootObject.mSelectedSheet {
        let p1 = wire.mP1!.location!
        let p2 = wire.mP2!.location!

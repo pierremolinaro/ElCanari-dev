@@ -748,13 +748,13 @@ struct ProductRectangle : Hashable { // All in Cocoa Unit
 
   //····················································································································
 
-  func transformed (by inAffineTransform : AffineTransform) -> ProductRectangle {
-    let tp0 = inAffineTransform.transform (self.p0)
-    let tp1 = inAffineTransform.transform (self.p1)
-    let tp2 = inAffineTransform.transform (self.p2)
-    let tp3 = inAffineTransform.transform (self.p3)
-    return ProductRectangle (p0: tp0, p1: tp1, p2: tp2, p3: tp3)
-  }
+//  func transformed (by inAffineTransform : AffineTransform) -> ProductRectangle {
+//    let tp0 = inAffineTransform.transform (self.p0)
+//    let tp1 = inAffineTransform.transform (self.p1)
+//    let tp2 = inAffineTransform.transform (self.p2)
+//    let tp3 = inAffineTransform.transform (self.p3)
+//    return ProductRectangle (p0: tp0, p1: tp1, p2: tp2, p3: tp3)
+//  }
 
   //····················································································································
 
@@ -935,7 +935,7 @@ extension Array where Element == ProductRectangle {
                     dx inDx : Int,
                     dy inDy: Int,
                     horizontalMirror inHorizontalMirror : Bool,
-                    minimumAperture inMinimumApertureMilTenth : Int,
+//                    minimumAperture inMinimumApertureMilTenth : Int,
                     boardWidth inBoardWidth : Int,
                     modelWidth inModelWidth : Int,
                     modelHeight inModelHeight : Int,

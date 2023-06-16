@@ -102,7 +102,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  func helperStringForTrackCreation (_ inModifierFlags : NSEvent.ModifierFlags) -> String {
+  func helperStringForTrackCreation (_ _ : NSEvent.ModifierFlags) -> String {
     let side = self.rootObject.mBoardSideForNewTrack
     var s : String
     switch (side) {
@@ -119,7 +119,7 @@ extension AutoLayoutProjectDocument {
   //····················································································································
 
   func continueTrackCreationOnOptionMouseDragged (at inUnalignedMouseLocation : NSPoint,
-                                                  _ inModifierFlags : NSEvent.ModifierFlags) {
+                                                  _ _ : NSEvent.ModifierFlags) {
     if let connector2 = self.mTrackCreatedByOptionClick?.mConnectorP2, let p1 = self.mTrackCreatedByOptionClick?.mConnectorP1?.location {
       var canariUnalignedMouseLocation = inUnalignedMouseLocation.canariPoint
       switch self.rootObject.mDirectionForNewTrack {
@@ -150,11 +150,11 @@ extension AutoLayoutProjectDocument {
     if let connector1 = self.mTrackCreatedByOptionClick?.mConnectorP1 {
       if let netName = connector1.netName () {
       //--- Exclude connectors connected to connector 1
-        var excludedConnectors = self.findAllConnectorsConnectedTo (connector1, trackSide: newTrackSide)
+        var excludedConnectors = self.findAllConnectorsConnectedTo (connector1)
       //--- Exclude connectors at mouse location
         let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseLocation.canariPoint, trackSide: newTrackSide)
         for c in connectorsUnderMouse {
-          excludedConnectors.append (objects: self.findAllConnectorsConnectedTo (c, trackSide: newTrackSide))
+          excludedConnectors.append (objects: self.findAllConnectorsConnectedTo (c))
         }
       //--- Build shape
         var bpArray = [EBBezierPath] ()
@@ -207,7 +207,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  func stopTrackCreationOnOptionMouseUp (at inUnalignedMousePoint : NSPoint) -> Bool {
+  func stopTrackCreationOnOptionMouseUp (at _ : NSPoint) -> Bool {
      var accepts = true
      if let track = self.mTrackCreatedByOptionClick {
      //--- Retain track only if distance between P1 and P2 is greater than mControlKeyHiliteDiameterSlider

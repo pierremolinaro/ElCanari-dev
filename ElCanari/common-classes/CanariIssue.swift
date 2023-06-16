@@ -71,7 +71,7 @@ struct CanariIssue : Hashable {
   // Sorting
   //····················································································································
 
-  public static func displaySortingCompare (lhs: CanariIssue, rhs: CanariIssue) -> Bool {
+  static func displaySortingCompare (lhs: CanariIssue, rhs: CanariIssue) -> Bool {
     let lP = lhs.center
     let rP = rhs.center
     return (lP.x < rP.x) || ((lP.x == rP.x) && (lP.y < rP.y))

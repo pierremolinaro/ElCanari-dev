@@ -27,7 +27,7 @@ extension ComponentInProject {
 
   //····················································································································
 
-  func cursorForKnob_ComponentInProject (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_ComponentInProject (knob inKnobIndex : Int) -> NSCursor? {
     if inKnobIndex == COMPONENT_PACKAGE_CENTER_KNOB {
       return NSCursor.upDownRightLeftCursor
     }else if inKnobIndex == COMPONENT_PACKAGE_ROTATION_KNOB {
@@ -51,13 +51,13 @@ extension ComponentInProject {
 
   //····················································································································
 
-  func acceptToTranslate_ComponentInProject (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_ComponentInProject (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_ComponentInProject (xBy inDx : Int, yBy inDy : Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_ComponentInProject (xBy inDx : Int, yBy inDy : Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.mX += inDx
     self.mY += inDy
   }
@@ -66,9 +66,9 @@ extension ComponentInProject {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_ComponentInProject (additionalDictionary inDictionary : [String : Any],
-                                                 optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                                 objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_ComponentInProject (additionalDictionary _ : [String : Any],
+                                                 optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                                 objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -102,7 +102,7 @@ extension ComponentInProject {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_ComponentInProject (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_ComponentInProject (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -110,10 +110,10 @@ extension ComponentInProject {
   //····················································································································
 
   func canMove_ComponentInProject (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+                                   proposedUnalignedAlignedTranslation _ : CanariPoint,
+                                   proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                                   unalignedMouseDraggedLocation _ : CanariPoint,
+                                   shift _ : Bool) -> CanariPoint {
     if inKnobIndex == COMPONENT_PACKAGE_CENTER_KNOB {
       return inProposedAlignedTranslation
     }else if inKnobIndex == COMPONENT_PACKAGE_ROTATION_KNOB {
@@ -130,13 +130,13 @@ extension ComponentInProject {
   //····················································································································
 
   func move_ComponentInProject (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+                                proposedDx inDx: Int,
+                                proposedDy inDy: Int,
+                                unalignedMouseLocationX _ : Int,
+                                unalignedMouseLocationY _ : Int,
+                                alignedMouseLocationX inAlignedMouseLocationX : Int,
+                                alignedMouseLocationY inAlignedMouseLocationY : Int,
+                                shift _ : Bool) {
     if inKnobIndex == COMPONENT_PACKAGE_CENTER_KNOB {
       self.mX += inDx
       self.mY += inDy

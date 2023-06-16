@@ -18,7 +18,7 @@ extension NCInSchematic {
   //  Cursor
   //····················································································································
 
-  func cursorForKnob_NCInSchematic (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_NCInSchematic (knob _ : Int) -> NSCursor? {
     return nil // Uses default cursor
   }
 
@@ -26,9 +26,9 @@ extension NCInSchematic {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_NCInSchematic (additionalDictionary inDictionary : [String : Any],
-                                            optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                            objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_NCInSchematic (additionalDictionary _ : [String : Any],
+                                            optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                            objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -36,7 +36,7 @@ extension NCInSchematic {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_NCInSchematic (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_NCInSchematic (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -75,13 +75,13 @@ extension NCInSchematic {
 
   //····················································································································
 
-  func acceptToTranslate_NCInSchematic (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_NCInSchematic (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_NCInSchematic (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_NCInSchematic (xBy _ : Int, yBy _ : Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
@@ -104,7 +104,7 @@ extension NCInSchematic {
 
   //····················································································································
 
-  func rotate90Clockwise_NCInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_NCInSchematic (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation270
@@ -119,7 +119,7 @@ extension NCInSchematic {
 
   //····················································································································
 
-  func rotate90CounterClockwise_NCInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_NCInSchematic (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation90
@@ -147,12 +147,12 @@ extension NCInSchematic {
   //  Snap to grid
   //····················································································································
 
-  func snapToGrid_NCInSchematic (_ inGrid : Int) {
+  func snapToGrid_NCInSchematic (_ _ : Int) {
   }
 
   //····················································································································
 
-  func canSnapToGrid_NCInSchematic (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_NCInSchematic (_ _ : Int) -> Bool {
     return false
   }
 
@@ -160,24 +160,24 @@ extension NCInSchematic {
   //  Move
   //····················································································································
 
-  func canMove_NCInSchematic (knob inKnobIndex : Int,
-                proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                shift inShift : Bool) -> CanariPoint {
+  func canMove_NCInSchematic (knob _ : Int,
+                              proposedUnalignedAlignedTranslation _ : CanariPoint,
+                              proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                              unalignedMouseDraggedLocation _ : CanariPoint,
+                              shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
   }
 
   //····················································································································
 
-  func move_NCInSchematic (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+  func move_NCInSchematic (knob _ : Int,
+                           proposedDx _ : Int,
+                           proposedDy _ : Int,
+                           unalignedMouseLocationX _ : Int,
+                           unalignedMouseLocationY _ : Int,
+                           alignedMouseLocationX _ : Int,
+                           alignedMouseLocationY _ : Int,
+                           shift _ : Bool) {
   }
 
   //····················································································································

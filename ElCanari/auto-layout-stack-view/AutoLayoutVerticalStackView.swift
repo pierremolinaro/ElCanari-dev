@@ -45,13 +45,13 @@ class AutoLayoutVerticalStackView : AutoLayoutBase_NSStackView {
 
   //····················································································································
 
-  final func appendViewFollowedByFlexibleSpace (_ inView : NSView) -> Self {
-    let hStack = AutoLayoutHorizontalStackView ()
-    _ = hStack.appendView (inView)
-    _ = hStack.appendFlexibleSpace ()
-    self.addView (hStack, in: .leading)
-    return self
-  }
+//  final func appendViewFollowedByFlexibleSpace (_ inView : NSView) -> Self {
+//    let hStack = AutoLayoutHorizontalStackView ()
+//    _ = hStack.appendView (inView)
+//    _ = hStack.appendFlexibleSpace ()
+//    self.addView (hStack, in: .leading)
+//    return self
+//  }
 
   //····················································································································
 
@@ -114,11 +114,11 @@ class AutoLayoutVerticalStackView : AutoLayoutBase_NSStackView {
 
   //····················································································································
 
-  final func set (height inHeight : Int) -> Self {
-    self.mHeight = CGFloat (inHeight)
-    self.needsUpdateConstraints = true
-    return self
-  }
+//  final func set (height inHeight : Int) -> Self {
+//    self.mHeight = CGFloat (inHeight)
+//    self.needsUpdateConstraints = true
+//    return self
+//  }
 
   //····················································································································
   //   equalHeight

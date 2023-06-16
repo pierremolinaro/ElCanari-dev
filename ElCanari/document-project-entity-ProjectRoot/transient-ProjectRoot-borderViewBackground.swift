@@ -14,7 +14,6 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ProjectRoot_borderViewBackground (
-       _ prefs_boardBackgroundColorForBoard : NSColor,      
        _ self_borderOutlineBackground : EBShape,            
        _ self_mBoardObjects_objectDisplay : [BoardObject_objectDisplay],
        _ self_boardBoundBox : CanariRect,                   
@@ -32,7 +31,7 @@ import AppKit
        }else{
          for object in self_mBoardObjects_objectDisplay {
            if let s = object.objectDisplay {
-             shape.add (s.alpha (withFraction: self_mContentOpacityInBoardOutline, of: prefs_boardBackgroundColorForBoard))
+             shape.add (s.alpha (withFraction: self_mContentOpacityInBoardOutline))
            }
          }
        }

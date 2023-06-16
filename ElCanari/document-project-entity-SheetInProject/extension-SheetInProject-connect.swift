@@ -14,7 +14,7 @@ extension SheetInProject {
 
   //····················································································································
 
-  func removeFromWire (point inPoint : PointInSchematic, _ inWindow : NSWindow) {
+  func removeFromWire (point inPoint : PointInSchematic) {
     if inPoint.mNC == nil, inPoint.mLabels.count == 0, (inPoint.mWiresP1s.count + inPoint.mWiresP2s.count) == 2 {
       if inPoint.mWiresP1s.count == 2 {
         let removedWire = inPoint.mWiresP1s [0]

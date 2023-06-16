@@ -539,10 +539,8 @@ extension AutoLayoutProjectDocument {
   //····················································································································
 
   func removePointFromWireInSchematic (points inPoints : [PointInSchematic]) {
-    if let selectedSheet = self.rootObject.mSelectedSheet,
-       let window = self.windowForSheet,
-       inPoints.count == 1 {
-      selectedSheet.removeFromWire (point: inPoints [0], window)
+    if let selectedSheet = self.rootObject.mSelectedSheet, inPoints.count == 1 {
+      selectedSheet.removeFromWire (point: inPoints [0])
       self.updateSchematicPointsAndNets ()
     }
   }

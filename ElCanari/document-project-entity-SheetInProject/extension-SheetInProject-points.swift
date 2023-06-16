@@ -14,15 +14,15 @@ extension SheetInProject {
 
   //····················································································································
 
-  func netSetFor (points : [PointInSchematic]) -> EBReferenceSet <NetInProject> {
-    var netSet = EBReferenceSet <NetInProject> ()
-    for p in points {
-      if let net = p.mNet {
-        netSet.insert (net)
-      }
-    }
-    return netSet
-  }
+//  func netSetFor (points : [PointInSchematic]) -> EBReferenceSet <NetInProject> {
+//    var netSet = EBReferenceSet <NetInProject> ()
+//    for p in points {
+//      if let net = p.mNet {
+//        netSet.insert (net)
+//      }
+//    }
+//    return netSet
+//  }
 
   //····················································································································
 

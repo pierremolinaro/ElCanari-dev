@@ -23,7 +23,7 @@ extension BoardQRCode {
 
   //····················································································································
 
-  func cursorForKnob_BoardQRCode (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_BoardQRCode (knob inKnobIndex : Int) -> NSCursor? {
     if inKnobIndex == BOARD_QRCODE_ORIGIN_KNOB {
       return NSCursor.upDownRightLeftCursor
     }else if inKnobIndex == BOARD_QRCODE_ROTATION_KNOB {
@@ -37,19 +37,21 @@ extension BoardQRCode {
   //  Translation
   //····················································································································
 
-  func acceptedTranslation_BoardQRCode (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+  func acceptedTranslation_BoardQRCode (xBy inDx : Int, yBy inDy : Int) -> CanariPoint {
     return CanariPoint (x: inDx, y: inDy)
   }
 
   //····················································································································
 
-  func acceptToTranslate_BoardQRCode (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_BoardQRCode (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_BoardQRCode (xBy inDx : Int, yBy inDy : Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_BoardQRCode (xBy inDx : Int,
+                              yBy inDy : Int,
+                              userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.mCenterX += inDx
     self.mCenterY += inDy
   }
@@ -58,9 +60,9 @@ extension BoardQRCode {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_BoardQRCode (additionalDictionary inDictionary : [String : Any],
-                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_BoardQRCode (additionalDictionary _ : [String : Any],
+                                          optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                          objectArray _ : [EBGraphicManagedObject]) -> String {
     return "" // Ok, no error
   }
 
@@ -68,7 +70,7 @@ extension BoardQRCode {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_BoardQRCode (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_BoardQRCode (_ _ : inout [String : Any]) {
 //    ioDictionary [FONT_NAME_IN_DICTIONARY] = self.fontName
   }
 
@@ -77,10 +79,10 @@ extension BoardQRCode {
   //····················································································································
 
   func canMove_BoardQRCode (knob inKnobIndex : Int,
-                            proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                            proposedUnalignedAlignedTranslation _ : CanariPoint,
                             proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                            unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                            shift inShift : Bool) -> CanariPoint {
+                            unalignedMouseDraggedLocation _ : CanariPoint,
+                            shift _ : Bool) -> CanariPoint {
     if inKnobIndex == BOARD_QRCODE_ORIGIN_KNOB {
       return inProposedAlignedTranslation
     }else if inKnobIndex == BOARD_QRCODE_ROTATION_KNOB {
@@ -92,14 +94,14 @@ extension BoardQRCode {
 
   //····················································································································
 
-  func move_BoardQRCode (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+  func move_BoardQRCode (knob inKnobIndex : Int,
+                         proposedDx inDx : Int,
+                         proposedDy inDy : Int,
+                         unalignedMouseLocationX _ : Int,
+                         unalignedMouseLocationY _ : Int,
+                         alignedMouseLocationX inAlignedMouseLocationX : Int,
+                         alignedMouseLocationY inAlignedMouseLocationY : Int,
+                         shift _ : Bool) {
     if inKnobIndex == BOARD_QRCODE_ORIGIN_KNOB {
       self.mCenterX += inDx
       self.mCenterY += inDy
@@ -141,7 +143,8 @@ extension BoardQRCode {
 
   //····················································································································
 
-  func rotate90Clockwise_BoardQRCode (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_BoardQRCode (from inRotationCenter : CanariPoint,
+                                      userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
     self.mCenterX = p.x
     self.mCenterY = p.y
@@ -151,7 +154,8 @@ extension BoardQRCode {
 
   //····················································································································
 
-  func rotate90CounterClockwise_BoardQRCode (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_BoardQRCode (from inRotationCenter : CanariPoint,
+                                             userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
     self.mCenterX = p.x
     self.mCenterY = p.y

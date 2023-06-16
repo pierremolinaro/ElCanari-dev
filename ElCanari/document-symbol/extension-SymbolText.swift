@@ -10,7 +10,7 @@ extension SymbolText {
   //  Cursor
   //····················································································································
 
-  func cursorForKnob_SymbolText (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_SymbolText (knob _ : Int) -> NSCursor? {
     return nil // Uses default cursor
   }
 
@@ -18,9 +18,9 @@ extension SymbolText {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_SymbolText (additionalDictionary inDictionary : [String : Any],
-                                         optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                         objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_SymbolText (additionalDictionary _ : [String : Any],
+                                         optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                         objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -28,7 +28,7 @@ extension SymbolText {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SymbolText (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_SymbolText (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -61,18 +61,18 @@ extension SymbolText {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_SymbolText (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+  func canRotate90_SymbolText (accumulatedPoints _ : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
   //····················································································································
 
-  func rotate90Clockwise_SymbolText (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_SymbolText (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_SymbolText (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_SymbolText (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
@@ -92,13 +92,13 @@ extension SymbolText {
   }
   //····················································································································
 
-  func acceptToTranslate_SymbolText (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_SymbolText (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_SymbolText (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_SymbolText (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.x += inDx
     self.y += inDy
   }
@@ -107,24 +107,24 @@ extension SymbolText {
   //  Knob
   //····················································································································
 
-  func canMove_SymbolText (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+  func canMove_SymbolText (knob _ : Int,
+                           proposedUnalignedAlignedTranslation _ : CanariPoint,
+                           proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                           unalignedMouseDraggedLocation _ : CanariPoint,
+                           shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
  }
 
   //····················································································································
 
-  func move_SymbolText (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+  func move_SymbolText (knob _: Int,
+                        proposedDx inDx: Int,
+                        proposedDy inDy: Int,
+                        unalignedMouseLocationX _ : Int,
+                        unalignedMouseLocationY _ : Int,
+                        alignedMouseLocationX _ : Int,
+                        alignedMouseLocationY _ : Int,
+                        shift _ : Bool) {
     self.x += inDx
     self.y += inDy
   }

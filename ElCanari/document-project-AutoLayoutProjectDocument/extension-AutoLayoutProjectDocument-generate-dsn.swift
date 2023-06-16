@@ -166,7 +166,8 @@ extension AutoLayoutProjectDocument {
     s += "  (resolution \(converter.unitString) \(converter.resolution))\n"
     s += "  (unit \(converter.unitString))\n"
     s += "  (structure\n"
-    addBoardBoundary (&s, boardBoundBox, signalPolygonVertices, converter)
+//    addBoardBoundary (&s, boardBoundBox, signalPolygonVertices, converter)
+    addBoardBoundary (&s, signalPolygonVertices)
     autorouteSettings (&s, self.rootObject.mAutoRouterPreferredDirections, layerConfiguration)
     addSnapAngle (&s, self.rootObject.mAutorouterSnapAngle)
     addViaClasses (&s, netClasses)
@@ -722,9 +723,9 @@ fileprivate func addDeviceLibrary (_ ioString : inout String,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addBoardBoundary (_ ioString : inout String,
-                                   _ inBoardBoundBox : CanariRect,
-                                   _ inSignalPolygonVertices : EBLinePath, // In DSN Unit
-                                   _ inConverter : CanariUnitToDSNUnitConverter) {
+//                                   _ inBoardBoundBox : CanariRect,
+                                   _ inSignalPolygonVertices : EBLinePath) { // In DSN Unit
+//                                   _ inConverter : CanariUnitToDSNUnitConverter) {
 
   ioString += "    (boundary\n"
   ioString += "      (path pcb 0\n"

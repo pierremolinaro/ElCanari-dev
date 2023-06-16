@@ -15,7 +15,7 @@ extension PackageOval {
 
   //····················································································································
 
-  func cursorForKnob_PackageOval (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_PackageOval (knob inKnobIndex : Int) -> NSCursor? {
     if (inKnobIndex == PACKAGE_OVAL_RIGHT) && (inKnobIndex == PACKAGE_OVAL_LEFT) {
       return NSCursor.resizeLeftRight
     }else if (inKnobIndex == PACKAGE_OVAL_BOTTOM) && (inKnobIndex == PACKAGE_OVAL_TOP) {
@@ -29,9 +29,9 @@ extension PackageOval {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_PackageOval (additionalDictionary inDictionary : [String : Any],
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_PackageOval (additionalDictionary _ : [String : Any],
+                                          optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                          objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -39,7 +39,7 @@ extension PackageOval {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackageOval (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_PackageOval (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -52,13 +52,15 @@ extension PackageOval {
 
   //····················································································································
 
-  func acceptToTranslate_PackageOval (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_PackageOval (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_PackageOval (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_PackageOval (xBy inDx: Int,
+                              yBy inDy: Int,
+                              userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.x += inDx
     self.y += inDy
   }
@@ -94,10 +96,10 @@ extension PackageOval {
   //····················································································································
 
   func canMove_PackageOval (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+                            proposedUnalignedAlignedTranslation _ : CanariPoint,
+                            proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                            unalignedMouseDraggedLocation _ : CanariPoint,
+                            shift _ : Bool) -> CanariPoint {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == PACKAGE_OVAL_LEFT {
@@ -122,14 +124,14 @@ extension PackageOval {
 
   //····················································································································
 
-  func move_PackageOval (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+  func move_PackageOval (knob inKnobIndex : Int,
+                         proposedDx inDx : Int,
+                         proposedDy inDy : Int,
+                         unalignedMouseLocationX _ : Int,
+                         unalignedMouseLocationY _ : Int,
+                         alignedMouseLocationX _ : Int,
+                         alignedMouseLocationY _ : Int,
+                         shift _ : Bool) {
     if inKnobIndex == PACKAGE_OVAL_RIGHT {
       self.width += inDx
     }else if inKnobIndex == PACKAGE_OVAL_LEFT {
@@ -155,7 +157,8 @@ extension PackageOval {
 
   //····················································································································
 
-  func rotate90Clockwise_PackageOval (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_PackageOval (from inRotationCenter : CanariPoint,
+                                      userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let newCenter = inRotationCenter.rotated90Clockwise (x: self.x + self.width / 2, y: self.y + self.height / 2)
     (self.width, self.height) = (self.height, self.width)
     self.x = newCenter.x - self.width / 2
@@ -164,7 +167,8 @@ extension PackageOval {
 
   //····················································································································
 
-  func rotate90CounterClockwise_PackageOval (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_PackageOval (from inRotationCenter : CanariPoint,
+                                             userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.x + self.width / 2, y: self.y + self.height / 2)
     (self.width, self.height) = (self.height, self.width)
     self.x = newCenter.x - self.width / 2

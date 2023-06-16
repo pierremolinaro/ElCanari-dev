@@ -8,7 +8,7 @@ import AppKit
 //   EBGraphicView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
+final class EBGraphicView : NSView {
 
   //····················································································································
   // MARK: -
@@ -125,7 +125,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   // MARK: -
   //····················································································································
 
-  @objc private func ebFrameChanged (_ inNotification : Notification) {
+  @objc private func ebFrameChanged (_ _ : Notification) {
     self.defineToolTips ()
   }
 

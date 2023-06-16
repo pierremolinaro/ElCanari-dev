@@ -24,7 +24,7 @@ extension AutoLayoutProjectDocument {
       if connectorsUnderMouse.count == 1 {
         let connectorUnderMouse = connectorsUnderMouse [0]
         if let netName = connectorUnderMouse.netName () {
-          let connectedConnectors = self.findAllConnectorsConnectedTo (connectorUnderMouse, trackSide: newTrackSide)
+          let connectedConnectors = self.findAllConnectorsConnectedTo (connectorUnderMouse)
           var bpArray = [EBBezierPath] ()
           for object in self.rootObject.mBoardObjects.values {
             if let connector = object as? BoardConnector,
@@ -71,8 +71,9 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  func findAllConnectorsConnectedTo (_ inConnector : BoardConnector,
-                                     trackSide inTrackSide : TrackSide) -> EBReferenceArray <BoardConnector> {
+//  func findAllConnectorsConnectedTo (_ inConnector : BoardConnector,
+//                                     trackSide inTrackSide : TrackSide) -> EBReferenceArray <BoardConnector> {
+  func findAllConnectorsConnectedTo (_ inConnector : BoardConnector) -> EBReferenceArray <BoardConnector> {
     var connectorSet = EBReferenceSet (inConnector)
     var exploreArray = [inConnector]
     while !exploreArray.isEmpty {

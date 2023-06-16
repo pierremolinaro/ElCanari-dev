@@ -27,9 +27,9 @@ extension SymbolSolidOval {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_SymbolSolidOval (additionalDictionary inDictionary : [String : Any],
-                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_SymbolSolidOval (additionalDictionary _ : [String : Any],
+                                              optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                              objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -37,7 +37,7 @@ extension SymbolSolidOval {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SymbolSolidOval (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_SymbolSolidOval (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -91,7 +91,7 @@ extension SymbolSolidOval {
 
   //····················································································································
 
-  func acceptToTranslate_SymbolSolidOval (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_SymbolSolidOval (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
 //    let newX = self.x + inDx
 //    let newY = self.y + inDy
@@ -100,7 +100,7 @@ extension SymbolSolidOval {
 
   //····················································································································
 
-  func translate_SymbolSolidOval (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_SymbolSolidOval (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.x += inDx
     self.y += inDy
   }
@@ -109,18 +109,18 @@ extension SymbolSolidOval {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_SymbolSolidOval (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+  func canRotate90_SymbolSolidOval (accumulatedPoints _ : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
   //····················································································································
 
-  func rotate90Clockwise_SymbolSolidOval (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_SymbolSolidOval (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_SymbolSolidOval (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_SymbolSolidOval (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
@@ -128,10 +128,10 @@ extension SymbolSolidOval {
   //····················································································································
 
   func canMove_SymbolSolidOval (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+                                proposedUnalignedAlignedTranslation _ : CanariPoint,
+                                proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                                unalignedMouseDraggedLocation _ : CanariPoint,
+                                shift _ : Bool) -> CanariPoint {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == SYMBOL_SOLID_OVAL_LEFT {
@@ -163,13 +163,13 @@ extension SymbolSolidOval {
   //····················································································································
 
   func move_SymbolSolidOval (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+                             proposedDx inDx: Int,
+                             proposedDy inDy: Int,
+                             unalignedMouseLocationX _ : Int,
+                             unalignedMouseLocationY _ : Int,
+                             alignedMouseLocationX _ : Int,
+                             alignedMouseLocationY _ : Int,
+                             shift _ : Bool) {
     if inKnobIndex == SYMBOL_SOLID_OVAL_RIGHT {
       self.width += inDx
     }else if inKnobIndex == SYMBOL_SOLID_OVAL_LEFT {

@@ -90,11 +90,11 @@ extension PackageArc {
   func move_PackageArc (knob inKnobIndex: Int,
                       proposedDx inDx: Int,
                       proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                      unalignedMouseLocationX _ : Int,
+                      unalignedMouseLocationY _ : Int,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+                      shift _ : Bool) {
     let center = CanariPoint (x: self.xCenter, y: self.yCenter).cocoaPoint
     let radius = canariUnitToCocoa (self.radius)
     let startAngle = CGFloat (self.startAngle) / 1000.0
@@ -167,13 +167,13 @@ extension PackageArc {
   //  SNAP TO GRID
   //····················································································································
 
-  func canSnapToGrid_PackageArc (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_PackageArc (_ _ : Int) -> Bool {
     return false
   }
 
   //····················································································································
 
-  func snapToGrid_PackageArc (_ inGrid : Int) {
+  func snapToGrid_PackageArc (_ _ : Int) {
   }
 
   //····················································································································
@@ -220,18 +220,18 @@ extension PackageArc {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_PackageArc (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+  func canRotate90_PackageArc (accumulatedPoints _ : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
  //····················································································································
 
-  func rotate90Clockwise_PackageArc (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_PackageArc (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
  //····················································································································
 
-  func rotate90CounterClockwise_PackageArc (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_PackageArc (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································

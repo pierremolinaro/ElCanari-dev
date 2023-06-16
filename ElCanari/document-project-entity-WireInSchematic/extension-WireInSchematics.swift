@@ -22,7 +22,7 @@ extension WireInSchematic {
 
   //····················································································································
 
-  func cursorForKnob_WireInSchematic (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_WireInSchematic (knob _ : Int) -> NSCursor? {
     return NSCursor.upDownRightLeftCursor
   }
 
@@ -30,9 +30,9 @@ extension WireInSchematic {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_WireInSchematic (additionalDictionary inDictionary : [String : Any],
-                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_WireInSchematic (additionalDictionary _ : [String : Any],
+                                              optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                              objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -66,7 +66,7 @@ extension WireInSchematic {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_WireInSchematic (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_WireInSchematic (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -78,7 +78,7 @@ extension WireInSchematic {
   }
   //····················································································································
 
-  func acceptToTranslate_WireInSchematic (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_WireInSchematic (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
@@ -101,30 +101,30 @@ extension WireInSchematic {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_WireInSchematic (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+  func canRotate90_WireInSchematic (accumulatedPoints _ : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
   //····················································································································
 
-  func rotate90Clockwise_WireInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_WireInSchematic (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_WireInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_WireInSchematic (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
   //  Snap to grid
   //····················································································································
 
-  func snapToGrid_WireInSchematic (_ inGrid : Int) {
+  func snapToGrid_WireInSchematic (_ _ : Int) {
   }
 
   //····················································································································
 
-  func canSnapToGrid_WireInSchematic (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_WireInSchematic (_ _ : Int) -> Bool {
     return false
   }
 
@@ -148,10 +148,10 @@ extension WireInSchematic {
   //····················································································································
 
   func canMove_WireInSchematic (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+                                proposedUnalignedAlignedTranslation _ : CanariPoint,
+                                proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                                unalignedMouseDraggedLocation _ : CanariPoint,
+                                shift _ : Bool) -> CanariPoint {
     if inKnobIndex == WIRE_CENTER_KNOB, self.mP1?.mSymbol == nil, self.mP2?.mSymbol == nil {
       return CanariPoint (x: inProposedAlignedTranslation.x, y: inProposedAlignedTranslation.y)
     }else if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil, let other = self.mP2 {
@@ -176,11 +176,11 @@ extension WireInSchematic {
   func move_WireInSchematic (knob inKnobIndex: Int,
                              proposedDx inDx: Int,
                              proposedDy inDy: Int,
-                             unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                             unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                             alignedMouseLocationX inAlignedMouseLocationX : Int,
-                             alignedMouseLocationY inAlignedMouseLocationY : Int,
-                             shift inShift : Bool) {
+                             unalignedMouseLocationX _ : Int,
+                             unalignedMouseLocationY _ : Int,
+                             alignedMouseLocationX _ : Int,
+                             alignedMouseLocationY _ : Int,
+                             shift _ : Bool) {
     if inKnobIndex == WIRE_CENTER_KNOB, let p1 = self.mP1, p1.mSymbol == nil, let p2 = self.mP2, p2.mSymbol == nil {
       p1.mX += inDx
       p1.mY += inDy

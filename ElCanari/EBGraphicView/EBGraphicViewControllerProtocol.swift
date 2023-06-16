@@ -72,9 +72,9 @@ import AppKit
 
   func setSelection (objectsWithIndexes inIndexes : [Int])
 
-  func addToSelection (objectsWithIndex inIndexes : [Int])
+//  func addToSelection (objectsWithIndex inIndexes : [Int])
 
-  func removeFromSelection (objectWithIndex inIndex : Int)
+//  func removeFromSelection (objectWithIndex inIndex : Int)
 
   func clearSelection ()
 

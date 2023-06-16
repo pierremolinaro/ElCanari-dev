@@ -214,9 +214,9 @@ extension AutoLayoutProjectDocument {
   //····················································································································
 
   private func findOrAddConnector (at inP : CanariPoint,
-                                   _ inNet : NetInProject,
+//                                   _ inNet : NetInProject,
                                    _ inSide : TrackSide,
-                                   _ inTrackWidthInCanariUnit : Int,
+//                                   _ inTrackWidthInCanariUnit : Int,
                                    _ inViaArray : [(BoardConnector, NetInProject)],
                                    _ ioConnectorArray : inout [BoardConnector],
                                    _ ioAddedObjectArray : inout [BoardObject]) -> BoardConnector {
@@ -294,8 +294,10 @@ extension AutoLayoutProjectDocument {
   //--- Write tracks
     for t in routedTracksArray {
      let track = BoardTrack (self.undoManager)
-      let p1 = self.findOrAddConnector (at: t.p1, t.net, t.side, t.width, inRoutedViaArray, &connectorArray, &addedObjectArray)
-      let p2 = self.findOrAddConnector (at: t.p2, t.net, t.side, t.width, inRoutedViaArray, &connectorArray, &addedObjectArray)
+//      let p1 = self.findOrAddConnector (at: t.p1, t.net, t.side, t.width, inRoutedViaArray, &connectorArray, &addedObjectArray)
+//      let p2 = self.findOrAddConnector (at: t.p2, t.net, t.side, t.width, inRoutedViaArray, &connectorArray, &addedObjectArray)
+      let p1 = self.findOrAddConnector (at: t.p1, t.side, inRoutedViaArray, &connectorArray, &addedObjectArray)
+      let p2 = self.findOrAddConnector (at: t.p2, t.side, inRoutedViaArray, &connectorArray, &addedObjectArray)
       if p1 !== p2 {
         track.mConnectorP1 = p1
         track.mConnectorP2 = p2

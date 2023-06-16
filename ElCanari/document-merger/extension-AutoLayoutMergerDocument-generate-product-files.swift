@@ -730,7 +730,7 @@ extension AutoLayoutMergerDocument {
 
   fileprivate func writePDFDrillFile (atPath inFilePath : String) throws {
     if let cocoaBoardRect : NSRect = self.rootObject.boardRect?.cocoaRect {
-      let boardWidth = self.rootObject.boardWidth ?? 0
+//      let boardWidth = self.rootObject.boardWidth ?? 0
       let drillDataFileExtension = self.rootObject.mArtwork_property.propval?.drillDataFileExtension ?? "??"
       let filePath = inFilePath + "." + drillDataFileExtension + ".pdf"
       self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
@@ -744,7 +744,7 @@ extension AutoLayoutMergerDocument {
           toStrokeBezierPaths: &drillBezierPaths,
           dx: board.x,
           dy: board.y,
-          boardWidth: boardWidth,
+//          boardWidth: boardWidth,
           modelWidth: modelWidth,
           modelHeight: modelHeight,
           instanceRotation: instanceRotation
@@ -770,7 +770,7 @@ extension AutoLayoutMergerDocument {
       s += "%MOIN*%\n" // length unit is inch
       var apertureDictionary = [String : [String]] ()
       var polygons = [[String]] ()
-      let minimumApertureMilTenth = canariUnitToMilTenth (self.rootObject.mArtwork_property.propval!.minPPTPTTTW)
+//      let minimumApertureMilTenth = canariUnitToMilTenth (self.rootObject.mArtwork_property.propval!.minPPTPTTTW)
       if product.drawInternalBoardLimits {
         for board in self.rootObject.boardInstances_property.propval.values {
           let lineWidth : Int = board.myModel_property.propval!.modelLimitWidth
@@ -891,7 +891,7 @@ extension AutoLayoutMergerDocument {
             dx: board.x,
             dy: board.y,
             horizontalMirror: horizontalMirror,
-            minimumAperture: minimumApertureMilTenth,
+//            minimumAperture: minimumApertureMilTenth,
             boardWidth: boardWidth,
             modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation
           )
@@ -909,7 +909,7 @@ extension AutoLayoutMergerDocument {
             dx: board.x,
             dy: board.y,
             horizontalMirror: horizontalMirror,
-            minimumAperture: minimumApertureMilTenth,
+//            minimumAperture: minimumApertureMilTenth,
             boardWidth: boardWidth,
             modelWidth: modelWidth,
             modelHeight: modelHeight,
@@ -929,7 +929,7 @@ extension AutoLayoutMergerDocument {
             dx: board.x,
             dy: board.y,
             horizontalMirror:horizontalMirror,
-            minimumAperture: minimumApertureMilTenth,
+//            minimumAperture: minimumApertureMilTenth,
             boardWidth:boardWidth,
             modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation
           )
@@ -974,7 +974,7 @@ extension AutoLayoutMergerDocument {
             dx: board.x,
             dy: board.y,
             horizontalMirror: horizontalMirror,
-            minimumAperture: minimumApertureMilTenth,
+//            minimumAperture: minimumApertureMilTenth,
             boardWidth: boardWidth,
             modelWidth: modelWidth,
             modelHeight: modelHeight,
@@ -985,7 +985,7 @@ extension AutoLayoutMergerDocument {
             dx: board.x,
             dy: board.y,
             horizontalMirror: horizontalMirror,
-            minimumAperture: minimumApertureMilTenth,
+//            minimumAperture: minimumApertureMilTenth,
             boardWidth: boardWidth,
             modelWidth: modelWidth,
             modelHeight: modelHeight,
@@ -1010,7 +1010,7 @@ extension AutoLayoutMergerDocument {
             dx: board.x,
             dy: board.y,
             horizontalMirror: horizontalMirror,
-            minimumAperture: minimumApertureMilTenth,
+//            minimumAperture: minimumApertureMilTenth,
             boardWidth: boardWidth,
             modelWidth: modelWidth,
             modelHeight: modelHeight,
@@ -1021,7 +1021,7 @@ extension AutoLayoutMergerDocument {
             dx: board.x,
             dy: board.y,
             horizontalMirror: horizontalMirror,
-            minimumAperture: minimumApertureMilTenth,
+//            minimumAperture: minimumApertureMilTenth,
             boardWidth: boardWidth,
             modelWidth: modelWidth,
             modelHeight: modelHeight,

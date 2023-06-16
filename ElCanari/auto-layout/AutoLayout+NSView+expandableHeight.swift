@@ -21,10 +21,10 @@ extension NSView {
 
   //····················································································································
 
-  final func notExpandableHeight () -> Self {
-    self.setContentHuggingPriority (.required, for: .vertical)
-    return self
-  }
+//  final func notExpandableHeight () -> Self {
+//    self.setContentHuggingPriority (.required, for: .vertical)
+//    return self
+//  }
 
   //····················································································································
 

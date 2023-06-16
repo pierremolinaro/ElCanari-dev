@@ -26,9 +26,9 @@ extension SymbolPin {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_SymbolPin (additionalDictionary inDictionary : [String : Any],
-                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_SymbolPin (additionalDictionary _ : [String : Any],
+                                        optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                        objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -36,7 +36,7 @@ extension SymbolPin {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SymbolPin (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_SymbolPin (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -49,13 +49,13 @@ extension SymbolPin {
 
   //····················································································································
 
-  func acceptToTranslate_SymbolPin (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_SymbolPin (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_SymbolPin (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_SymbolPin (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.xPin += inDx
     self.yPin += inDy
     self.xName += inDx
@@ -94,42 +94,42 @@ extension SymbolPin {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_SymbolPin (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+  func canRotate90_SymbolPin (accumulatedPoints _ : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
   //····················································································································
 
-  func rotate90Clockwise_SymbolPin (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_SymbolPin (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_SymbolPin (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_SymbolPin (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
   //  Knob
   //····················································································································
 
-  func canMove_SymbolPin (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+  func canMove_SymbolPin (knob _ : Int,
+                          proposedUnalignedAlignedTranslation _ : CanariPoint,
+                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                          unalignedMouseDraggedLocation _ : CanariPoint,
+                          shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
  }
 
   //····················································································································
 
   func move_SymbolPin (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+                       proposedDx inDx: Int,
+                       proposedDy inDy: Int,
+                       unalignedMouseLocationX _ : Int,
+                       unalignedMouseLocationY _ : Int,
+                       alignedMouseLocationX _ : Int,
+                       alignedMouseLocationY _ : Int,
+                       shift _ : Bool) {
     if inKnobIndex == SYMBOL_PIN_ENDPOINT {
       self.xPin += inDx
       self.yPin += inDy

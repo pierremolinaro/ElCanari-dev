@@ -18,7 +18,7 @@ extension CommentInSchematic {
   //  Cursor
   //····················································································································
 
-  func cursorForKnob_CommentInSchematic (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_CommentInSchematic (knob _ : Int) -> NSCursor? {
     return nil // Uses default cursor
   }
 
@@ -26,9 +26,9 @@ extension CommentInSchematic {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_CommentInSchematic (additionalDictionary inDictionary : [String : Any],
-                                                 optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                                 objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_CommentInSchematic (additionalDictionary _ : [String : Any],
+                                                 optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                                 objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -62,7 +62,7 @@ extension CommentInSchematic {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_CommentInSchematic (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_CommentInSchematic (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -75,13 +75,13 @@ extension CommentInSchematic {
 
   //····················································································································
 
-  func acceptToTranslate_CommentInSchematic (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_CommentInSchematic (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_CommentInSchematic (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_CommentInSchematic (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.mX += inDx
     self.mY += inDy
   }
@@ -90,42 +90,42 @@ extension CommentInSchematic {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_CommentInSchematic (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+  func canRotate90_CommentInSchematic (accumulatedPoints _ : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
   //····················································································································
 
-  func rotate90Clockwise_CommentInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_CommentInSchematic (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_CommentInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_CommentInSchematic (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
   //  Move
   //····················································································································
 
-  func canMove_CommentInSchematic (knob inKnobIndex : Int,
-                                   proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+  func canMove_CommentInSchematic (knob _ : Int,
+                                   proposedUnalignedAlignedTranslation _ : CanariPoint,
                                    proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                                   unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                                   shift inShift : Bool) -> CanariPoint {
+                                   unalignedMouseDraggedLocation _ : CanariPoint,
+                                   shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
   }
 
   //····················································································································
 
-  func move_CommentInSchematic (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+  func move_CommentInSchematic (knob _ : Int,
+                                proposedDx inDx: Int,
+                                proposedDy inDy: Int,
+                                unalignedMouseLocationX _ : Int,
+                                unalignedMouseLocationY _ : Int,
+                                alignedMouseLocationX _ : Int,
+                                alignedMouseLocationY _ : Int,
+                                shift _ : Bool) {
     self.mX += inDx
     self.mY += inDy
   }

@@ -41,7 +41,7 @@ extension LabelInSchematic {
 
   //····················································································································
 
-  func acceptToTranslate_LabelInSchematic (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_LabelInSchematic (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
@@ -59,9 +59,9 @@ extension LabelInSchematic {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_LabelInSchematic (additionalDictionary inDictionary : [String : Any],
-                                               optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                               objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_LabelInSchematic (additionalDictionary _ : [String : Any],
+                                               optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                               objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -95,31 +95,31 @@ extension LabelInSchematic {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_LabelInSchematic (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_LabelInSchematic (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
   //  Move
   //····················································································································
 
-  func canMove_LabelInSchematic (knob inKnobIndex : Int,
-                proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                shift inShift : Bool) -> CanariPoint {
+  func canMove_LabelInSchematic (knob _ : Int,
+                                 proposedUnalignedAlignedTranslation _ : CanariPoint,
+                                 proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                                 unalignedMouseDraggedLocation _ : CanariPoint,
+                                 shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
   }
 
   //····················································································································
 
   func move_LabelInSchematic (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+                              proposedDx inDx: Int,
+                              proposedDy inDy: Int,
+                              unalignedMouseLocationX _ : Int,
+                              unalignedMouseLocationY _ : Int,
+                              alignedMouseLocationX inAlignedMouseLocationX : Int,
+                              alignedMouseLocationY inAlignedMouseLocationY : Int,
+                              shift _ : Bool) {
     if let point = self.mPoint, point.mSymbol == nil {
       if inKnobIndex == LABEL_IN_SCHEMATICS_TRANSLATION_KNOB {
         point.mX += inDx
@@ -147,12 +147,12 @@ extension LabelInSchematic {
   //  Snap to grid
   //····················································································································
 
-  func snapToGrid_LabelInSchematic (_ inGrid : Int) {
+  func snapToGrid_LabelInSchematic (_ _ : Int) {
   }
 
   //····················································································································
 
-  func canSnapToGrid_LabelInSchematic (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_LabelInSchematic (_ _ : Int) -> Bool {
     return false
   }
 
@@ -179,7 +179,7 @@ extension LabelInSchematic {
 
   //····················································································································
 
-  func rotate90Clockwise_LabelInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_LabelInSchematic (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation270
@@ -194,7 +194,7 @@ extension LabelInSchematic {
 
   //····················································································································
 
-  func rotate90CounterClockwise_LabelInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_LabelInSchematic (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation90

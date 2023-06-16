@@ -219,7 +219,6 @@ handlingOpposite entity ProjectRoot {
   ;
 
   transient EBShape borderViewBackground dependsFrom
-    prefs.boardBackgroundColorForBoard,
     self.borderOutlineBackground,
     self.mBoardObjects.all.objectDisplay,
     self.boardBoundBox,

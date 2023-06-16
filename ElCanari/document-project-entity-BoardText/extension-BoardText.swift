@@ -24,7 +24,7 @@ extension BoardText {
 
   //····················································································································
 
-  func cursorForKnob_BoardText (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_BoardText (knob inKnobIndex : Int) -> NSCursor? {
     if inKnobIndex == BOARD_TEXT_ORIGIN_KNOB {
       return NSCursor.upDownRightLeftCursor
     }else if inKnobIndex == BOARD_TEXT_ROTATION_KNOB {
@@ -44,13 +44,13 @@ extension BoardText {
 
   //····················································································································
 
-  func acceptToTranslate_BoardText (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_BoardText (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_BoardText (xBy inDx : Int, yBy inDy : Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_BoardText (xBy inDx : Int, yBy inDy : Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.mX += inDx
     self.mY += inDy
   }
@@ -61,7 +61,7 @@ extension BoardText {
 
   func operationAfterPasting_BoardText (additionalDictionary inDictionary : [String : Any],
                                         optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+                                        objectArray _ : [EBGraphicManagedObject]) -> String {
     if let fontName = inDictionary [FONT_NAME_IN_DICTIONARY] as? String,
        let projectDocument = inOptionalDocument as? AutoLayoutProjectDocumentSubClass {
       var optionalFont : FontInProject? = nil
@@ -94,10 +94,10 @@ extension BoardText {
   //····················································································································
 
   func canMove_BoardText (knob inKnobIndex : Int,
-                          proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                          proposedUnalignedAlignedTranslation _ : CanariPoint,
                           proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                          shift inShift : Bool) -> CanariPoint {
+                          unalignedMouseDraggedLocation _ : CanariPoint,
+                          shift _ : Bool) -> CanariPoint {
     if inKnobIndex == BOARD_TEXT_ORIGIN_KNOB {
       return inProposedAlignedTranslation
     }else if inKnobIndex == BOARD_TEXT_ROTATION_KNOB {
@@ -112,11 +112,11 @@ extension BoardText {
   func move_BoardText (knob inKnobIndex: Int,
                       proposedDx inDx: Int,
                       proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                      unalignedMouseLocationX _ : Int,
+                      unalignedMouseLocationY _ : Int,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+                      shift _ : Bool) {
     if inKnobIndex == BOARD_TEXT_ORIGIN_KNOB {
       self.mX += inDx
       self.mY += inDy

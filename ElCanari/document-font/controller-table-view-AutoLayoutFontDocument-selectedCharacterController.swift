@@ -183,7 +183,7 @@ final class Controller_AutoLayoutFontDocument_selectedCharacterController : NSOb
   //    remove
   //····················································································································
 
-  @objc func remove (_ sender : Any) {
+  @objc func remove (_ _ : Any) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :

@@ -177,7 +177,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainV
         $codePoint root.currentCharacterCodePoint
         $characters root.definedCharacters
       }
-      Stepper { $value root .currentCharacterCodePoint (sendContinously: yes) }
+      Stepper { $value root .currentCharacterCodePoint }
       StaticLabel (title: "Code", bold: no, size: .small, alignment: .center)
       Label (bold: no, size: .small) { $title root.currentCharacterCodePointString }
       space

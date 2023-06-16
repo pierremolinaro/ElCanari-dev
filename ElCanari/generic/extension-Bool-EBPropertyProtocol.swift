@@ -62,13 +62,13 @@ extension Bool : EBStoredPropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-public func < (left : Bool, right : Bool) -> Bool {
+func < (left : Bool, right : Bool) -> Bool {
   return !left && right
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-public func > (left : Bool, right : Bool) -> Bool {
+func > (left : Bool, right : Bool) -> Bool {
   return left && !right
 }
 

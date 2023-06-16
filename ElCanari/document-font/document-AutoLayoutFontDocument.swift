@@ -439,7 +439,7 @@ import AppKit
         .bind_characters (self.rootObject.definedCharacters_property)
       _ = view_6.appendView (view_6_0)
       let view_6_1 = AutoLayoutStepper ()
-        .bind_value (self.rootObject.currentCharacterCodePoint_property, sendContinously:true)
+        .bind_value (self.rootObject.currentCharacterCodePoint_property)
       _ = view_6.appendView (view_6_1)
       let view_6_2 = AutoLayoutStaticLabel (title: "Code", bold: false, size: .small, alignment: .center)
       _ = view_6.appendView (view_6_2)

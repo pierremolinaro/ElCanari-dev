@@ -412,13 +412,13 @@ extension ApplicationDelegate {
 
   //····················································································································
 
-  func partStatusOk () -> Bool {
-    if let s = try? self.partStatus () {
-      return s == .ok
-    }else{
-      return false
-    }
-  }
+//  func partStatusOk () -> Bool {
+//    if let s = try? self.partStatus () {
+//      return s == .ok
+//    }else{
+//      return false
+//    }
+//  }
 
  //····················································································································
 

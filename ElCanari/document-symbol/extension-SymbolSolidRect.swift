@@ -27,9 +27,9 @@ extension SymbolSolidRect {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_SymbolSolidRect (additionalDictionary inDictionary : [String : Any],
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_SymbolSolidRect (additionalDictionary _ : [String : Any],
+                                              optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                              objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -37,7 +37,7 @@ extension SymbolSolidRect {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SymbolSolidRect (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_SymbolSolidRect (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -49,13 +49,13 @@ extension SymbolSolidRect {
   }
   //····················································································································
 
-  func acceptToTranslate_SymbolSolidRect (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_SymbolSolidRect (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_SymbolSolidRect (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_SymbolSolidRect (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.x += inDx
     self.y += inDy
   }
@@ -90,18 +90,18 @@ extension SymbolSolidRect {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_SymbolSolidRect (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+  func canRotate90_SymbolSolidRect (accumulatedPoints _ : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
   //····················································································································
 
-  func rotate90Clockwise_SymbolSolidRect (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_SymbolSolidRect (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_SymbolSolidRect (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_SymbolSolidRect (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
@@ -109,10 +109,10 @@ extension SymbolSolidRect {
   //····················································································································
 
   func canMove_SymbolSolidRect (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+                                proposedUnalignedAlignedTranslation _ : CanariPoint,
+                                proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                                unalignedMouseDraggedLocation _ : CanariPoint,
+                                shift _ : Bool) -> CanariPoint {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == SYMBOL_SOLID_RECT_LEFT {
@@ -138,13 +138,13 @@ extension SymbolSolidRect {
   //····················································································································
 
   func move_SymbolSolidRect (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+                             proposedDx inDx: Int,
+                             proposedDy inDy: Int,
+                             unalignedMouseLocationX _ : Int,
+                             unalignedMouseLocationY _ : Int,
+                             alignedMouseLocationX _ : Int,
+                             alignedMouseLocationY _ : Int,
+                             shift _ : Bool) {
     if inKnobIndex == SYMBOL_SOLID_RECT_RIGHT {
       self.width += inDx
     }else if inKnobIndex == SYMBOL_SOLID_RECT_LEFT {

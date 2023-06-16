@@ -219,7 +219,7 @@ private let parallelDownloadCount = 3
 
   //····················································································································
 
-  @objc func startLibraryUpdateAction (_ inSender : AnyObject) {
+  @objc func startLibraryUpdateAction (_ _ : AnyObject) {
     self.mUpDateButton.isEnabled = false
   //--- Launch parallel downloads
     for _ in 1 ... parallelDownloadCount {

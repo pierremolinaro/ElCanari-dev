@@ -91,7 +91,7 @@ final class AutoLayoutStaticTextView : NSScrollView {
     set { self.mTextView.string = newValue }
   }
 
-  var textStorage : NSTextStorage? { self.mTextView.textStorage }
+//  var textStorage : NSTextStorage? { self.mTextView.textStorage }
 
   //····················································································································
 

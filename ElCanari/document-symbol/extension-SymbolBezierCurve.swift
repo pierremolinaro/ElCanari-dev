@@ -15,7 +15,7 @@ extension SymbolBezierCurve {
 
   //····················································································································
 
-  func cursorForKnob_SymbolBezierCurve (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_SymbolBezierCurve (knob _ : Int) -> NSCursor? {
     return NSCursor.upDownRightLeftCursor
   }
 
@@ -23,9 +23,9 @@ extension SymbolBezierCurve {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_SymbolBezierCurve (additionalDictionary inDictionary : [String : Any],
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_SymbolBezierCurve (additionalDictionary _ : [String : Any],
+                                                optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                                objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -33,7 +33,7 @@ extension SymbolBezierCurve {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SymbolBezierCurve (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_SymbolBezierCurve (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -101,7 +101,7 @@ extension SymbolBezierCurve {
 
   //····················································································································
 
-  func acceptToTranslate_SymbolBezierCurve (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_SymbolBezierCurve (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
 //    let newX1 = self.x1 + inDx
 //    let newY1 = self.y1 + inDy
@@ -117,7 +117,7 @@ extension SymbolBezierCurve {
 
   //····················································································································
 
-  func translate_SymbolBezierCurve (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_SymbolBezierCurve (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.x1 += inDx
     self.y1 += inDy
     self.x2 += inDx
@@ -132,24 +132,24 @@ extension SymbolBezierCurve {
   //  Move
   //····················································································································
 
-  func canMove_SymbolBezierCurve (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+  func canMove_SymbolBezierCurve (knob _ : Int,
+                                  proposedUnalignedAlignedTranslation _ : CanariPoint,
+                                  proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                                  unalignedMouseDraggedLocation _ : CanariPoint,
+                                  shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
  }
 
   //····················································································································
 
   func move_SymbolBezierCurve (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+                               proposedDx inDx: Int,
+                               proposedDy inDy: Int,
+                               unalignedMouseLocationX _ : Int,
+                               unalignedMouseLocationY _ : Int,
+                               alignedMouseLocationX _ : Int,
+                               alignedMouseLocationY _ : Int,
+                               shift _ : Bool) {
     if inKnobIndex == SYMBOL_BEZIER_CURVE_ENDPOINT_1 {
       self.x1 += inDx
       self.y1 += inDy
@@ -215,7 +215,7 @@ extension SymbolBezierCurve {
 
   //····················································································································
 
-  func rotate90Clockwise_SymbolBezierCurve (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_SymbolBezierCurve (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
     let p2 = inRotationCenter.rotated90Clockwise (x: self.x2, y: self.y2)
     let cp1 = inRotationCenter.rotated90Clockwise (x: self.cpx1, y: self.cpy1)
@@ -232,7 +232,7 @@ extension SymbolBezierCurve {
 
   //····················································································································
 
-  func rotate90CounterClockwise_SymbolBezierCurve (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_SymbolBezierCurve (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
     let p2 = inRotationCenter.rotated90CounterClockwise (x: self.x2, y: self.y2)
     let cp1 = inRotationCenter.rotated90CounterClockwise (x: self.cpx1, y: self.cpy1)

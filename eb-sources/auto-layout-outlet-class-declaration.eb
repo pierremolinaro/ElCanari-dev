@@ -408,7 +408,7 @@ extern autolayout class CanariFontCharacterGerberCodeTableView (size: EBControlS
 }
 
 extern autolayout class Stepper {
-  $value property Int (sendContinously: Bool)
+  $value property Int
 }
 
 extern autolayout class CanariDragSourceTableView {
