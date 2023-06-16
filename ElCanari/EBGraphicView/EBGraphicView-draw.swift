@@ -38,7 +38,7 @@ extension EBGraphicView {
     for shape in self.selectionShapes {
       shape.draw (inDirtyRect)
     }
-    self.drawIssue (inDirtyRect)
+    self.drawIssue ()
     if let ciImage = self.mForegroundImage {
       let graphicContext = NSGraphicsContext.current
       graphicContext?.saveGraphicsState ()
@@ -47,7 +47,7 @@ extension EBGraphicView {
       ciImage.draw (at: rImage.origin, from: rImage, operation: .sourceOver, fraction: self.mForegroundImageOpacity)
       graphicContext?.restoreGraphicsState ()
     }
-    self.drawGuideBezierPath (inDirtyRect)
+    self.drawGuideBezierPath ()
     self.drawSelectionRectangle (inDirtyRect)
     if let shape = self.mOptionalFrontShape {
       shape.draw (inDirtyRect)
@@ -109,7 +109,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final fileprivate func drawIssue (_ inDirtyRect : NSRect) {
+  final fileprivate func drawIssue () {
     if !self.mIssueBezierPathes.isEmpty {
       switch self.mIssueKind {
       case .error :
@@ -140,7 +140,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final fileprivate func drawGuideBezierPath (_ inDirtyRect : NSRect) {
+  final fileprivate func drawGuideBezierPath () {
     if let bp = self.mGuideBezierPath, !bp.isEmpty {
       NSColor.orange.setStroke ()
       bp.stroke ()

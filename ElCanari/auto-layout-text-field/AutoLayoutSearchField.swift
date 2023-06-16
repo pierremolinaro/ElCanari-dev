@@ -75,7 +75,7 @@ final class AutoLayoutSearchField : NSSearchField, NSSearchFieldDelegate {
 
   //····················································································································
 
-  @objc func ebAction (_ inUnusedSender : Any?) {
+  @objc func ebAction (_ _ : Any?) {
     self.mValueController?.updateModel (withValue: self.stringValue)
     self.mDelegate? (self.stringValue)
   }

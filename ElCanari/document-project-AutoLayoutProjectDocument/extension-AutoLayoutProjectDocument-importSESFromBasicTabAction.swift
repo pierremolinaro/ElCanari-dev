@@ -29,7 +29,7 @@ extension AutoLayoutProjectDocument {
 
   func importGuiDefaultFile (fileBasePath inFileBasePath : String) {
     let filePath = inFileBasePath + "gui_defaults.par"
-    if let fileContents = try? String (contentsOf: URL (fileURLWithPath: filePath), encoding: .utf8), preferences_mFreeRouterGuiDefaultFileContents != fileContents {
+    if let fileContents = try? String (contentsOf: URL (fileURLWithPath: filePath), encoding: .utf8), preferences_mFreeRouterGuiDefaultFileContents_property.propval != fileContents {
       let alert = NSAlert ()
       _ = alert.addButton (withTitle: "Import")
       _ = alert.addButton (withTitle: "Do not Import")
@@ -37,7 +37,7 @@ extension AutoLayoutProjectDocument {
       alert.informativeText = "Import new contents into ElCanari preferences ?"
       alert.beginSheetModal (for: self.windowForSheet!) { (inResponse : NSApplication.ModalResponse) in
         if inResponse == .alertFirstButtonReturn {
-          preferences_mFreeRouterGuiDefaultFileContents = fileContents
+          preferences_mFreeRouterGuiDefaultFileContents_property.setProp (fileContents)
           // Swift.print ("WRITE PREFS")
         }
         DispatchQueue.main.async { self.importSESFile (fileBasePath: inFileBasePath) }

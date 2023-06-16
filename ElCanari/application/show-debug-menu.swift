@@ -27,8 +27,8 @@ import AppKit
   //  Property
   //····················································································································
 
-  private var mDebugMenuItem = NSMenuItem (title: "Debug", action: nil, keyEquivalent: "")
-  private var mShowMenuController : EBObservablePropertyController? = nil
+  private let mDebugMenuItem = NSMenuItem (title: "Debug", action: nil, keyEquivalent: "")
+  private let mShowMenuController : EBObservablePropertyController?
 
   //····················································································································
   //  Init
@@ -39,8 +39,9 @@ import AppKit
     self.mDebugMenuItem.submenu = menu
     self.mShowMenuController = EBObservablePropertyController (
       observedObjects: [preferences_showDebugMenu_property],
-      callBack: { [weak self] in self?.updateDebugMenuVisibility () }
+      callBack: nil
     )
+    self.mShowMenuController?.mEventCallBack = { [weak self] in self?.updateDebugMenuVisibility () }
     appendAllocationDebugMenuItems (menu)
     appendShowTransientEventLogWindowMenuItem (menu)
     appendShowDocumentFileOperationDurationWindowMenuItem (menu)

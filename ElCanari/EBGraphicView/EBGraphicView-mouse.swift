@@ -120,13 +120,13 @@ extension EBGraphicView {
         )
       }
     }else{ // Move selected objects
-      self.dragSelection (inProposedAlignedTranslation, inAlignedLastMouseDraggedLocation)
+      self.dragSelection (inProposedAlignedTranslation)
     }
   }
 
   //····················································································································
 
-  final fileprivate func dragSelection (_ proposedTranslation: CanariPoint, _ lastMouseDraggedLocation : CanariPoint) {
+  final fileprivate func dragSelection (_ proposedTranslation: CanariPoint) {
     var dx = proposedTranslation.x
     var dy = proposedTranslation.y
     if let controller = self.mViewController {

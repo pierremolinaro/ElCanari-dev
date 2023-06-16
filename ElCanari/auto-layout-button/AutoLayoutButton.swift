@@ -65,11 +65,11 @@ import AppKit
 //↓,&#x2193;,&darr;,down
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let ESCAPE_KEY_STRING  = "\u{238B}"
+//let ESCAPE_KEY_STRING  = "\u{238B}"
 let DELETE_KEY_STRING  = "\u{232B}"
 let COMMAND_KEY_STRING = "\u{2318}"
 let CONTROL_KEY_STRING = "\u{2303}"
-let OPTION_KEY_STRING  = "\u{2325}"
+//let OPTION_KEY_STRING  = "\u{2325}"
 let SHIFT_KEY_STRING   = "\u{21E7}"
 
 let LEFT_ARROW_STRING  = "\u{2190}"
@@ -98,10 +98,10 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
 
   //····················································································································
 
-  final func set (height inHeight : Int) -> Self {
-    self.mHeight = CGFloat (inHeight)
-    return self
-  }
+//  final func set (height inHeight : Int) -> Self {
+//    self.mHeight = CGFloat (inHeight)
+//    return self
+//  }
 
   //····················································································································
 
@@ -133,24 +133,24 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
 
   //····················································································································
 
-  final func setEscapeKeyAsKeyEquivalent () -> Self {
-    self.keyEquivalent = "\u{1b}"
-    self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) { [weak self] inEvent in
-      if let me = self {
-        let modifierFlagsContainsCommand = inEvent.modifierFlags.contains (.command)
-        if modifierFlagsContainsCommand, me.mTemporaryWidthOnControlKey == nil {
-          me.mSavedTitle = me.title
-          me.mTemporaryWidthOnControlKey = me.alignmentRect (forFrame: me.frame).width
-          me.title = ESCAPE_KEY_STRING
-        }else if !modifierFlagsContainsCommand, me.mTemporaryWidthOnControlKey != nil {
-          me.title = me.mSavedTitle
-          me.mTemporaryWidthOnControlKey = nil
-        }
-      }
-      return inEvent
-    }
-    return self
-  }
+//  final func setEscapeKeyAsKeyEquivalent () -> Self {
+//    self.keyEquivalent = "\u{1b}"
+//    self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) { [weak self] inEvent in
+//      if let me = self {
+//        let modifierFlagsContainsCommand = inEvent.modifierFlags.contains (.command)
+//        if modifierFlagsContainsCommand, me.mTemporaryWidthOnControlKey == nil {
+//          me.mSavedTitle = me.title
+//          me.mTemporaryWidthOnControlKey = me.alignmentRect (forFrame: me.frame).width
+//          me.title = ESCAPE_KEY_STRING
+//        }else if !modifierFlagsContainsCommand, me.mTemporaryWidthOnControlKey != nil {
+//          me.title = me.mSavedTitle
+//          me.mTemporaryWidthOnControlKey = nil
+//        }
+//      }
+//      return inEvent
+//    }
+//    return self
+//  }
 
   //····················································································································
 
@@ -219,25 +219,25 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
 
   //····················································································································
 
-  final func set (optionCommandKeyEquivalent inKeyEquivalent : String) -> Self {
-    self.keyEquivalent = inKeyEquivalent
-    self.keyEquivalentModifierMask = [.command, .option]
-    self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) { [weak self] inEvent in
-      if let me = self {
-        let modifierFlagsContainsCommand = inEvent.modifierFlags.contains (.command)
-        if modifierFlagsContainsCommand, me.mTemporaryWidthOnControlKey == nil {
-          me.mSavedTitle = me.title
-          me.mTemporaryWidthOnControlKey = me.alignmentRect (forFrame: me.frame).width
-          me.title = OPTION_KEY_STRING + " " + COMMAND_KEY_STRING + " " + me.keyEquivalent.uppercased ()
-        }else if !modifierFlagsContainsCommand, me.mTemporaryWidthOnControlKey != nil {
-          me.title = me.mSavedTitle
-          me.mTemporaryWidthOnControlKey = nil
-        }
-      }
-      return inEvent
-    }
-    return self
-  }
+//  final func set (optionCommandKeyEquivalent inKeyEquivalent : String) -> Self {
+//    self.keyEquivalent = inKeyEquivalent
+//    self.keyEquivalentModifierMask = [.command, .option]
+//    self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) { [weak self] inEvent in
+//      if let me = self {
+//        let modifierFlagsContainsCommand = inEvent.modifierFlags.contains (.command)
+//        if modifierFlagsContainsCommand, me.mTemporaryWidthOnControlKey == nil {
+//          me.mSavedTitle = me.title
+//          me.mTemporaryWidthOnControlKey = me.alignmentRect (forFrame: me.frame).width
+//          me.title = OPTION_KEY_STRING + " " + COMMAND_KEY_STRING + " " + me.keyEquivalent.uppercased ()
+//        }else if !modifierFlagsContainsCommand, me.mTemporaryWidthOnControlKey != nil {
+//          me.title = me.mSavedTitle
+//          me.mTemporaryWidthOnControlKey = nil
+//        }
+//      }
+//      return inEvent
+//    }
+//    return self
+//  }
 
   //····················································································································
 

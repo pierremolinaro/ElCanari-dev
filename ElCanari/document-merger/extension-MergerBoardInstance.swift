@@ -19,7 +19,7 @@ extension MergerBoardInstance {
   //  Cursor
   //····················································································································
 
-  func cursorForKnob_MergerBoardInstance (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_MergerBoardInstance (knob _ : Int) -> NSCursor? {
     return nil // Uses default cursor
   }
 
@@ -27,9 +27,9 @@ extension MergerBoardInstance {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_MergerBoardInstance (additionalDictionary inDictionary : [String : Any],
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_MergerBoardInstance (additionalDictionary _ : [String : Any],
+                                                  optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                                  objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -37,7 +37,7 @@ extension MergerBoardInstance {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_MergerBoardInstance (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_MergerBoardInstance (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -66,7 +66,7 @@ extension MergerBoardInstance {
 
   //····················································································································
 
-  func translate_MergerBoardInstance (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_MergerBoardInstance (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.x += inDx
     self.y += inDy
   }
@@ -91,18 +91,18 @@ extension MergerBoardInstance {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_MergerBoardInstance (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+  func canRotate90_MergerBoardInstance (accumulatedPoints _ : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
  //····················································································································
 
-  func rotate90Clockwise_MergerBoardInstance (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_MergerBoardInstance (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
  //····················································································································
 
-  func rotate90CounterClockwise_MergerBoardInstance (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_MergerBoardInstance (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
@@ -135,12 +135,12 @@ extension MergerBoardInstance {
   //  Snap to grid
   //····················································································································
 
-  func snapToGrid_MergerBoardInstance (_ inGrid : Int) {
+  func snapToGrid_MergerBoardInstance (_ _ : Int) {
   }
 
   //····················································································································
 
-  func canSnapToGrid_MergerBoardInstance (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_MergerBoardInstance (_ _ : Int) -> Bool {
     return false
   }
 
@@ -148,24 +148,24 @@ extension MergerBoardInstance {
   //  Move
   //····················································································································
 
-  func canMove_MergerBoardInstance (knob inKnobIndex : Int,
-                proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                shift inShift : Bool) -> CanariPoint {
+  func canMove_MergerBoardInstance (knob _ : Int,
+                                    proposedUnalignedAlignedTranslation _ : CanariPoint,
+                                    proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                                    unalignedMouseDraggedLocation _ : CanariPoint,
+                                    shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
   }
 
   //····················································································································
 
-  func move_MergerBoardInstance (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+  func move_MergerBoardInstance (knob _ : Int,
+                                 proposedDx _ : Int,
+                                 proposedDy _ : Int,
+                                 unalignedMouseLocationX _ : Int,
+                                 unalignedMouseLocationY _ : Int,
+                                 alignedMouseLocationX _ : Int,
+                                 alignedMouseLocationY _ : Int,
+                                 shift _ : Bool) {
   }
 
   //····················································································································

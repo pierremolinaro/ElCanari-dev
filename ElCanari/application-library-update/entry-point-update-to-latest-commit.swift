@@ -85,7 +85,7 @@ let CURL = "/usr/bin/curl"
     }
     enableItemsAfterCompletion ()
   }
-  preferences_mLastSystemLibraryCheckTime = Date ()
+  preferences_mLastSystemLibraryCheckTime_property.setProp (Date ())
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

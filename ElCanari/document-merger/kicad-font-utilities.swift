@@ -68,8 +68,8 @@ enum KicadStringJustification {
                                  fontSize inFontSize : CGFloat,
                                  thickness inThickness : CGFloat,
                                  font inKicadFont : [UInt32 : BoardFontCharacter],
-                                 leftMM inModelLeftMM  : CGFloat,
-                                 bottomMM inModelBottomMM : CGFloat,
+//                                 leftMM inModelLeftMM  : CGFloat,
+//                                 bottomMM inModelBottomMM : CGFloat,
                                  boardRect inBoardRect : NSRect,
                                  _ inUndoManager : UndoManager?) -> [SegmentEntity] {
   let mirror : CGFloat = inMirror ? -1.0 : 1.0
@@ -119,8 +119,7 @@ enum KicadStringJustification {
             p2_mm: p2,
             width_mm: inThickness,
             clipRect_mm: inBoardRect,
-            inUndoManager,
-            file: #file, #line
+            inUndoManager
           ) {
             segments.append (segment)
           }

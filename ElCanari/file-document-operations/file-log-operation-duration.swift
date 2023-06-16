@@ -94,7 +94,7 @@ import AppKit
 
   //····················································································································
 
-  @objc func clearTextAction (_ inSender : Any?) {
+  @objc func clearTextAction (_ _ : Any?) {
     self.mTextView.string = ""
   }
 

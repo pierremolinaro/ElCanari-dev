@@ -16,7 +16,7 @@ extension SegmentForFontCharacter {
   //  Cursor
   //····················································································································
 
-  func cursorForKnob_SegmentForFontCharacter (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_SegmentForFontCharacter (knob _ : Int) -> NSCursor? {
     return nil // Uses default cursor
   }
 
@@ -24,9 +24,9 @@ extension SegmentForFontCharacter {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_SegmentForFontCharacter (additionalDictionary inDictionary : [String : Any],
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_SegmentForFontCharacter (additionalDictionary _ : [String : Any],
+                                             optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                             objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -34,7 +34,7 @@ extension SegmentForFontCharacter {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SegmentForFontCharacter (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_SegmentForFontCharacter (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -56,18 +56,18 @@ extension SegmentForFontCharacter {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_SegmentForFontCharacter (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+  func canRotate90_SegmentForFontCharacter (accumulatedPoints _ : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
  //····················································································································
 
-  func rotate90Clockwise_SegmentForFontCharacter (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_SegmentForFontCharacter (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
  //····················································································································
 
-  func rotate90CounterClockwise_SegmentForFontCharacter (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_SegmentForFontCharacter (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
@@ -100,12 +100,12 @@ extension SegmentForFontCharacter {
   //  Snap to grid
   //····················································································································
 
-  func snapToGrid_SegmentForFontCharacter (_ inGrid : Int) {
+  func snapToGrid_SegmentForFontCharacter (_ _ : Int) {
   }
 
   //····················································································································
 
-  func canSnapToGrid_SegmentForFontCharacter (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_SegmentForFontCharacter (_ _ : Int) -> Bool {
     return false
   }
 
@@ -113,24 +113,24 @@ extension SegmentForFontCharacter {
   //  Move
   //····················································································································
 
-  func canMove_SegmentForFontCharacter (knob inKnobIndex : Int,
-                proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                shift inShift : Bool) -> CanariPoint {
+  func canMove_SegmentForFontCharacter (knob _ : Int,
+                                        proposedUnalignedAlignedTranslation _ : CanariPoint,
+                                        proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                                        unalignedMouseDraggedLocation _ : CanariPoint,
+                                        shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
   }
 
   //····················································································································
 
-  func move_SegmentForFontCharacter (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+  func move_SegmentForFontCharacter (knob _ : Int,
+                                     proposedDx _ : Int,
+                                     proposedDy _ : Int,
+                                     unalignedMouseLocationX _ : Int,
+                                     unalignedMouseLocationY _ : Int,
+                                     alignedMouseLocationX _ : Int,
+                                     alignedMouseLocationY _ : Int,
+                                     shift _ : Bool) {
   }
 
   //····················································································································
@@ -149,7 +149,7 @@ extension SegmentForFontCharacter {
 
   //····················································································································
 
-  func translate_SegmentForFontCharacter (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_SegmentForFontCharacter (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································

@@ -226,15 +226,15 @@ struct LibraryContentsDescriptor {
 
   //····················································································································
 
-  func dictionary () -> [String : Any] {
-    let dict : [String : Any] = [
-      "path" : self.mRelativePath,
-      "commit" : self.mCommit,
-      "length" : self.mSize,
-      "sha" : self.mSHA
-    ]
-    return dict
-  }
+//  func dictionary () -> [String : Any] {
+//    let dict : [String : Any] = [
+//      "path" : self.mRelativePath,
+//      "commit" : self.mCommit,
+//      "length" : self.mSize,
+//      "sha" : self.mSHA
+//    ]
+//    return dict
+//  }
 
   //····················································································································
 

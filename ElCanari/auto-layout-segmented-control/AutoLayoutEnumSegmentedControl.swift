@@ -72,7 +72,7 @@ final class AutoLayoutEnumSegmentedControl : AutoLayoutBase_NSSegmentedControl {
   // SELECTED TAB DID CHANGE
   //····················································································································
 
-  @objc private func selectedSegmentDidChange (_ inSender : Any?) {
+  @objc private func selectedSegmentDidChange (_ _ : Any?) {
   }
 
   //····················································································································

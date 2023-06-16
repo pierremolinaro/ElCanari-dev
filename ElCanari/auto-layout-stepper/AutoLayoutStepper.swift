@@ -37,7 +37,7 @@ final class AutoLayoutStepper : AutoLayoutBase_NSStepper {
 
   //····················································································································
 
-  @objc private func stepperAction (_ sender : AutoLayoutStepper) {
+  @objc private func stepperAction (_ _ : AutoLayoutStepper) {
     let v = Int (self.doubleValue.rounded (.toNearestOrEven))
     self.mValueController?.updateModel (withValue: v)
   }

@@ -15,13 +15,13 @@ extension AutoLayoutTableView {
   //····················································································································
 
   func addColumn_NSColor (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSColor?,
-                          valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : NSColor) -> Void >,
-                          sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+                          valueSetterDelegate _ : Optional < (_ inRow : Int, _ inNewValue : NSColor) -> Void >,
+                          sortDelegate _ : Optional < (_ inAscending : Bool) -> Void>,
                           title inTitle : String,
                           minWidth inMinWidth : Int,
                           maxWidth inMaxWidth : Int,
                           headerAlignment inHeaderAlignment : TextAlignment,
-                          contentAlignment inContentAlignment : TextAlignment) {
+                          contentAlignment _ : TextAlignment) {
     let column = InternalColorValueTableColumn (
       withIdentifierNamed: String (self.columnCount),
       valueGetterDelegate: inGetterDelegate

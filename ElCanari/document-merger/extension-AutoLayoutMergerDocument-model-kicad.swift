@@ -386,8 +386,8 @@ extension AutoLayoutMergerDocument {
         fontSize: fontSize,
         thickness: thickness,
         font: ioTemporaryBoardModel.mKicadFont,
-        leftMM: ioTemporaryBoardModel.mLeftMM,
-        bottomMM: ioTemporaryBoardModel.mBottomMM,
+//        leftMM: ioTemporaryBoardModel.mLeftMM,
+//        bottomMM: ioTemporaryBoardModel.mBottomMM,
         boardRect: ioTemporaryBoardModel.mBoardRect_mm,
         self.undoManager
       )
@@ -448,10 +448,6 @@ extension AutoLayoutMergerDocument {
           )
           textTransform.rotate (byDegrees: -moduleRotationInDegrees)
           textTransform.translateX (by: startX, yBy: startY)
-        //  textTransform.rotate (byDegrees: moduleRotationInDegrees)
-//          if let textRotationInDegrees = item.getOptionalFloat (["fp_text", "at"], 2, &ioErrorArray, #line) {
-//            textTransform.rotate (byDegrees: -textRotationInDegrees)
-//          }
           let segments = drawKicadString (
             str: stringValue,
             transform: textTransform,
@@ -460,8 +456,8 @@ extension AutoLayoutMergerDocument {
             fontSize: fontSize,
             thickness: thickness,
             font: ioTemporaryBoardModel.mKicadFont,
-            leftMM: ioTemporaryBoardModel.mLeftMM,
-            bottomMM: ioTemporaryBoardModel.mBottomMM,
+//            leftMM: ioTemporaryBoardModel.mLeftMM,
+//            bottomMM: ioTemporaryBoardModel.mBottomMM,
             boardRect: ioTemporaryBoardModel.mBoardRect_mm,
             self.undoManager
           )
@@ -488,8 +484,7 @@ extension AutoLayoutMergerDocument {
             p2_mm: NSPoint (x: end.x, y: end.y),
             width_mm: widthMM,
             clipRect_mm: ioTemporaryBoardModel.mBoardRect_mm,
-            self.undoManager,
-            file: #file, #line
+            self.undoManager
           ) {
             if layer == "F.Cu" {
               if lineLayer == "F.SilkS" {

@@ -15,7 +15,7 @@ let DEBUG_HORIZONTAL_SEPARATOR_FILL_COLOR = NSColor.systemPurple.withAlphaCompon
 let DEBUG_VERTICAL_SEPARATOR_FILL_COLOR   = NSColor.systemPink.withAlphaComponent (0.25)
 let DEBUG_KEY_CHAIN_STROKE_COLOR          = NSColor.systemBrown
 let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
-let DEBUG_FILL_COLOR                      = NSColor.systemGray.withAlphaComponent (0.07)
+//let DEBUG_FILL_COLOR                      = NSColor.systemGray.withAlphaComponent (0.07)
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Public functions
@@ -88,7 +88,7 @@ let DEBUG_FILL_COLOR                      = NSColor.systemGray.withAlphaComponen
 
   //····················································································································
 
-  @objc func toggleDebugAutoLayout (_ inSender : Any?) {
+  @objc func toggleDebugAutoLayout (_ _ : Any?) {
     self.mDebugAutoLayout.toggle ()
     self.menuItem.state = self.mDebugAutoLayout ? .on : .off
     for window in NSApplication.shared.windows {
@@ -100,7 +100,7 @@ let DEBUG_FILL_COLOR                      = NSColor.systemGray.withAlphaComponen
 
   //····················································································································
 
-  @objc func toggleShowKeyResponderChain (_ inSender : Any?) {
+  @objc func toggleShowKeyResponderChain (_ _ : Any?) {
     self.mShowKeyResponderChain.toggle ()
     self.responderKeyChainItem.state = self.mShowKeyResponderChain ? .on : .off
     for window in NSApplication.shared.windows {

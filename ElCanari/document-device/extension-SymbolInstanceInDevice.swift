@@ -18,7 +18,7 @@ extension SymbolInstanceInDevice {
   //  Cursor
   //····················································································································
 
-  func cursorForKnob_SymbolInstanceInDevice (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_SymbolInstanceInDevice (knob _ : Int) -> NSCursor? {
     return nil // Uses default cursor
   }
 
@@ -26,9 +26,9 @@ extension SymbolInstanceInDevice {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_SymbolInstanceInDevice (additionalDictionary inDictionary : [String : Any],
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_SymbolInstanceInDevice (additionalDictionary _ : [String : Any],
+                                             optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                             objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -36,7 +36,7 @@ extension SymbolInstanceInDevice {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SymbolInstanceInDevice (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_SymbolInstanceInDevice (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -47,7 +47,7 @@ extension SymbolInstanceInDevice {
 
   //····················································································································
 
-  func translate_SymbolInstanceInDevice (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_SymbolInstanceInDevice (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.mX += inDx
     self.mY += inDy
   }
@@ -112,25 +112,25 @@ extension SymbolInstanceInDevice {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_SymbolInstanceInDevice (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+  func canRotate90_SymbolInstanceInDevice (accumulatedPoints _ : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
  //····················································································································
 
-  func rotate90Clockwise_SymbolInstanceInDevice (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_SymbolInstanceInDevice (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
  //····················································································································
 
-  func rotate90CounterClockwise_SymbolInstanceInDevice (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_SymbolInstanceInDevice (from _ : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
   //  Snap to grid
   //····················································································································
 
-  func snapToGrid_SymbolInstanceInDevice (_ inGrid : Int) {
+  func snapToGrid_SymbolInstanceInDevice (_ _ : Int) {
   }
 
   //····················································································································
@@ -143,7 +143,7 @@ extension SymbolInstanceInDevice {
   
   //····················································································································
 
-  func canSnapToGrid_SymbolInstanceInDevice (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_SymbolInstanceInDevice (_ _ : Int) -> Bool {
     return false
   }
 
@@ -151,24 +151,24 @@ extension SymbolInstanceInDevice {
   //  Move
   //····················································································································
 
-  func canMove_SymbolInstanceInDevice (knob inKnobIndex : Int,
-                proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                shift inShift : Bool) -> CanariPoint {
+  func canMove_SymbolInstanceInDevice (knob _ : Int,
+                                       proposedUnalignedAlignedTranslation _ : CanariPoint,
+                                       proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                                       unalignedMouseDraggedLocation _ : CanariPoint,
+                                       shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
   }
 
   //····················································································································
 
-  func move_SymbolInstanceInDevice (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
-                      shift inShift : Bool) {
+  func move_SymbolInstanceInDevice (knob _ : Int,
+                                    proposedDx _ : Int,
+                                    proposedDy _ : Int,
+                                    unalignedMouseLocationX _ : Int,
+                                    unalignedMouseLocationY _ : Int,
+                                    alignedMouseLocationX _ : Int,
+                                    alignedMouseLocationY _ : Int,
+                                    shift _ : Bool) {
   }
 
   //····················································································································

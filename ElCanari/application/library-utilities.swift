@@ -24,14 +24,14 @@ func partNameIsValid (_ inPartName : String) -> Bool {
   let fm = FileManager ()
   var result = [String] ()
 //--- User library
-  if preferences_usesUserLibrary {
+  if preferences_usesUserLibrary_property.propval {
     let ulp = userLibraryPath ()
     if fm.fileExists (atPath: ulp) {
       result.append (ulp)
     }
   }
 //--- Other libraries
-  for libraryEntry in preferences_additionnalLibraryArray.values {
+  for libraryEntry in preferences_additionnalLibraryArray_property.propval.values {
     if libraryEntry.mUses {
       if fm.fileExists (atPath: libraryEntry.mPath) {
         result.append (libraryEntry.mPath)

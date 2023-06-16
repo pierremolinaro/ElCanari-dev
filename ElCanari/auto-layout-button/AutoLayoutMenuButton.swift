@@ -19,7 +19,7 @@ final class AutoLayoutMenuButton : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  init (size inSize : EBControlSize, menu inMenu : NSMenu) {
+  init (menu inMenu : NSMenu) {
     self.mMenu = inMenu
     super.init ()
 

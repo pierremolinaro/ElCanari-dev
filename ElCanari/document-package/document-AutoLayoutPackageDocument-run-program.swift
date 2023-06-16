@@ -60,12 +60,12 @@ extension AutoLayoutPackageDocument {
     self.passSeparators (inString, &ioIndex, &ioOk)
     if ioOk {
       if ioIndex >= inString.count {
-        self.raiseError (ioIndex, "End of text reached", #line)
+        self.raiseError (ioIndex, "End of text reached", line: #line)
         ioOk = false
       }else if inValue == inString [ioIndex] {
         ioIndex += 1
       }else{
-        self.raiseError (ioIndex, "\"\(inValue)\" expected", #line)
+        self.raiseError (ioIndex, "\"\(inValue)\" expected", line: #line)
         ioOk = false
       }
     }
@@ -86,7 +86,7 @@ extension AutoLayoutPackageDocument {
     if ioOk {
       ioOk = idf == inValue
       if !ioOk {
-        self.raiseError (ioIndex, "\"\(inValue)\" expected", #line)
+        self.raiseError (ioIndex, "\"\(inValue)\" expected", line: #line)
       }
     }
   }
@@ -101,13 +101,13 @@ extension AutoLayoutPackageDocument {
   //--- First character
     if ioOk {
       if ioIndex >= inString.count {
-        self.raiseError (ioIndex, "End of text reached", #line)
+        self.raiseError (ioIndex, "End of text reached", line: #line)
         ioOk = false
       }else if self.isLetter (inString [ioIndex]) {
         value += "\(inString [ioIndex])"
         ioIndex += 1
       }else{
-        self.raiseError (ioIndex, "Invalid start of name, a letter expected", #line)
+        self.raiseError (ioIndex, "Invalid start of name, a letter expected", line: #line)
         ioOk = false
       }
     }
@@ -115,7 +115,7 @@ extension AutoLayoutPackageDocument {
     var loop = true
     while ioOk && loop {
       if ioIndex >= inString.count {
-        self.raiseError (ioIndex, "End of text reached", #line)
+        self.raiseError (ioIndex, "End of text reached", line: #line)
         ioOk = false
       }else if self.isLetter (inString [ioIndex]) {
         value += "\(inString [ioIndex])"
@@ -136,22 +136,22 @@ extension AutoLayoutPackageDocument {
     var value = ""
     if ioOk {
       if ioIndex >= inString.count {
-        self.raiseError (ioIndex, "End of text reached", #line)
+        self.raiseError (ioIndex, "End of text reached", line: #line)
         ioOk = false
       }else if inString [ioIndex] == "\"" {
         ioIndex += 1
       }else{
-        self.raiseError (ioIndex, "Invalid start of string, \" expected", #line)
+        self.raiseError (ioIndex, "Invalid start of string, \" expected", line: #line)
         ioOk = false
       }
     }
     var loop = true
     while ioOk && loop {
       if ioIndex >= inString.count {
-        self.raiseError (ioIndex, "End of text reached", #line)
+        self.raiseError (ioIndex, "End of text reached", line: #line)
         ioOk = false
       }else if inString [ioIndex] == "\n" {
-        self.raiseError (ioIndex, "End of line reached within a character string", #line)
+        self.raiseError (ioIndex, "End of line reached within a character string", line: #line)
         ioOk = false
       }else if inString [ioIndex] != "\"" {
         value += "\(inString [ioIndex])"
@@ -180,7 +180,7 @@ extension AutoLayoutPackageDocument {
     }
     while ioOk && loop {
       if ioIndex >= inString.count {
-        self.raiseError (ioIndex, "End of text reached", #line)
+        self.raiseError (ioIndex, "End of text reached", line: #line)
         ioOk = false
       }else if (inString [ioIndex] >= "0") && (inString [ioIndex] <= "9") {
         emptyNumber = false
@@ -192,7 +192,7 @@ extension AutoLayoutPackageDocument {
       }
     }
     if ioOk && emptyNumber {
-      self.raiseError (ioIndex, "An integer value is expected here", #line)
+      self.raiseError (ioIndex, "An integer value is expected here", line: #line)
       ioOk = false
     }
     return sign * value
@@ -215,7 +215,7 @@ extension AutoLayoutPackageDocument {
     }
     while ioOk && loop {
       if ioIndex >= inString.count {
-        self.raiseError (ioIndex, "End of text reached", #line)
+        self.raiseError (ioIndex, "End of text reached", line: #line)
         ioOk = false
       }else if (inString [ioIndex] >= "0") && (inString [ioIndex] <= "9") {
         emptyNumber = false
@@ -231,7 +231,7 @@ extension AutoLayoutPackageDocument {
       loop = true
       while ioOk && loop {
         if ioIndex >= inString.count {
-          self.raiseError (ioIndex, "End of text reached", #line)
+          self.raiseError (ioIndex, "End of text reached", line: #line)
           ioOk = false
         }else if (inString [ioIndex] >= "0") && (inString [ioIndex] <= "9") {
           denominator *= 10
@@ -244,7 +244,7 @@ extension AutoLayoutPackageDocument {
       }
     }
     if ioOk && emptyNumber {
-      self.raiseError (ioIndex, "An integer value is expected here", #line)
+      self.raiseError (ioIndex, "An integer value is expected here", line: #line)
       ioOk = false
     }
     return (sign * numerator, denominator)
@@ -271,7 +271,7 @@ extension AutoLayoutPackageDocument {
     }else if self.test ("pc", inString, &ioIndex, &ioOk) {
       return 381_000
     }else{
-      self.raiseError (ioIndex, "Expected dimension unit: µm, mm, cm, mil, in, pt or pc", #line)
+      self.raiseError (ioIndex, "Expected dimension unit: µm, mm, cm, mil, in, pt or pc", line: #line)
       ioOk = false
       return 1
     }
@@ -379,7 +379,7 @@ extension AutoLayoutPackageDocument {
     if ioOk, let zoneNumbering = possibleZoneNumbering {
       object.zoneNumbering = zoneNumbering
     }else if ioOk {
-      self.raiseError (numberingIndex, "Invalid numbering name", #line)
+      self.raiseError (numberingIndex, "Invalid numbering name", line: #line)
       ioOk = false
     }
     ioObjects.append (object)
@@ -642,7 +642,7 @@ extension AutoLayoutPackageDocument {
 
   //····················································································································
 
-  private func raiseError (_ inErrorLocation : Int, _ inMessage : String, _ line : Int) {
+  private func raiseError (_ inErrorLocation : Int, _ inMessage : String, line _ : Int) {
     // Swift.print ("\(line)")
     self.mProgramErrorTextField?.stringValue = inMessage
     if let textStorage = self.mProgramTextView?.textStorage {
@@ -663,7 +663,7 @@ extension AutoLayoutPackageDocument {
   final func runProgram () {
     let text = self.mProgramTextView?.string ?? ""
     if text.isEmpty {
-      self.raiseError (0, "Empty Program", #line)
+      self.raiseError (0, "Empty Program", line: #line)
     }else{
       let ua = text.unicodeArray
       var idx = 0
@@ -701,7 +701,7 @@ extension AutoLayoutPackageDocument {
           if let masterPad = masterPadDictionary [masterPadID] {
             slavePad.master_property.setProp (masterPad)
           }else{
-            self.raiseError (errorLocation, "no master pad with id = \(masterPadID)", #line)
+            self.raiseError (errorLocation, "no master pad with id = \(masterPadID)", line: #line)
             ok = false
             break
           }

@@ -49,7 +49,7 @@ final class AutoLayoutTextField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  @objc func ebAction (_ inUnusedSender : Any?) {
+  @objc func ebAction (_ _ : Any?) {
     self.mValueController?.updateModel (withValue: self.stringValue)
   }
 

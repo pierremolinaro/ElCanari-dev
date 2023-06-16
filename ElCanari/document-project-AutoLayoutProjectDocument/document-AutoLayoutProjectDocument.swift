@@ -2080,7 +2080,7 @@ import AppKit
     let view_0 = AutoLayoutStaticLabel (title: "ERC Checking", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutCheckbox (title: "Check Clearance\nbetween Pads of the same Net", size: .small)
-      .set (width: 200, multiline: true)
+      .set (width: 200)
       .bind_value (self.rootObject.mCheckClearanceBetweenPadsOfSameNet_property)
     _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutButton (title: "Design Rule Check", size: .small)

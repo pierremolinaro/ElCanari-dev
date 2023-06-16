@@ -27,32 +27,32 @@ struct CanariRect : Equatable, Hashable {
 
   //····················································································································
 
-  init (origin inOrigin : CanariPoint, size inSize : CanariSize) {
-    self.origin = inOrigin
-    self.size = inSize
-  }
+//  init (origin inOrigin : CanariPoint, size inSize : CanariSize) {
+//    self.origin = inOrigin
+//    self.size = inSize
+//  }
 
   //····················································································································
 
-  init (p1 inP1 : CanariPoint, p2 inP2 : CanariPoint) {
-    let minX = min (inP1.x, inP2.x)
-    let maxX = max (inP1.x, inP2.x)
-    let minY = min (inP1.y, inP2.y)
-    let maxY = max (inP1.y, inP2.y)
-    self.origin = CanariPoint (x: minX, y: minY)
-    self.size = CanariSize (width: maxX - minX, height: maxY - minY)
-  }
+//  init (p1 inP1 : CanariPoint, p2 inP2 : CanariPoint) {
+//    let minX = min (inP1.x, inP2.x)
+//    let maxX = max (inP1.x, inP2.x)
+//    let minY = min (inP1.y, inP2.y)
+//    let maxY = max (inP1.y, inP2.y)
+//    self.origin = CanariPoint (x: minX, y: minY)
+//    self.size = CanariSize (width: maxX - minX, height: maxY - minY)
+//  }
 
   //····················································································································
 
-  init (p1 inP1 : CanariPoint, p2 inP2 : CanariPoint, p3 inP3 : CanariPoint, p4 inP4 : CanariPoint) {
-    let minX = min (inP1.x, inP2.x, inP3.x, inP4.x)
-    let maxX = max (inP1.x, inP2.x, inP3.x, inP4.x)
-    let minY = min (inP1.y, inP2.y, inP3.y, inP4.y)
-    let maxY = max (inP1.y, inP2.y, inP3.y, inP4.y)
-    self.origin = CanariPoint (x: minX, y: minY)
-    self.size = CanariSize (width: maxX - minX, height: maxY - minY)
-  }
+//  init (p1 inP1 : CanariPoint, p2 inP2 : CanariPoint, p3 inP3 : CanariPoint, p4 inP4 : CanariPoint) {
+//    let minX = min (inP1.x, inP2.x, inP3.x, inP4.x)
+//    let maxX = max (inP1.x, inP2.x, inP3.x, inP4.x)
+//    let minY = min (inP1.y, inP2.y, inP3.y, inP4.y)
+//    let maxY = max (inP1.y, inP2.y, inP3.y, inP4.y)
+//    self.origin = CanariPoint (x: minX, y: minY)
+//    self.size = CanariSize (width: maxX - minX, height: maxY - minY)
+//  }
 
   //····················································································································
 
@@ -137,19 +137,19 @@ struct CanariRect : Equatable, Hashable {
   //   Rotation around rectangle center
   //····················································································································
 
-  func rotated90Clockwise (_ inP : CanariPoint) -> CanariPoint {
-    let x = self.origin.x + self.origin.y + self.size.height - inP.y
-    let y = self.origin.x + self.origin.y + self.size.width  - inP.x
-    return CanariPoint (x: x, y: y)
-  }
+//  func rotated90Clockwise (_ inP : CanariPoint) -> CanariPoint {
+//    let x = self.origin.x + self.origin.y + self.size.height - inP.y
+//    let y = self.origin.x + self.origin.y + self.size.width  - inP.x
+//    return CanariPoint (x: x, y: y)
+//  }
 
   //····················································································································
 
-  func rotated90CounterClockwise (_ inP : CanariPoint) -> CanariPoint {
-    let x = self.origin.x + inP.y - self.origin.y
-    let y = self.origin.x + self.origin.y + self.size.width - inP.x
-    return CanariPoint (x: x, y: y)
-  }
+//  func rotated90CounterClockwise (_ inP : CanariPoint) -> CanariPoint {
+//    let x = self.origin.x + inP.y - self.origin.y
+//    let y = self.origin.x + self.origin.y + self.size.width - inP.x
+//    return CanariPoint (x: x, y: y)
+//  }
 
   //····················································································································
   //   cocoaRect
@@ -166,14 +166,14 @@ struct CanariRect : Equatable, Hashable {
 
   //····················································································································
 
-  var millimeterRect : NSRect {
-    return NSRect (
-      x: canariUnitToMillimeter (self.origin.x),
-      y: canariUnitToMillimeter (self.origin.y),
-      width: canariUnitToMillimeter (self.size.width),
-      height: canariUnitToMillimeter (self.size.height)
-    )
-  }
+//  var millimeterRect : NSRect {
+//    return NSRect (
+//      x: canariUnitToMillimeter (self.origin.x),
+//      y: canariUnitToMillimeter (self.origin.y),
+//      width: canariUnitToMillimeter (self.size.width),
+//      height: canariUnitToMillimeter (self.size.height)
+//    )
+//  }
 
   //····················································································································
   //   Union
@@ -243,20 +243,20 @@ struct CanariRect : Equatable, Hashable {
   //   CohenSutherlandOutcode
   //····················································································································
 
-  func cohenSutherlandOutcode (x inX : Int, y inY : Int) -> UInt8 {
-    var result : UInt8 = 0
-    if inX < self.left {
-      result |= CohenSutherlandOutcodeLEFT
-    }else if inX > self.right {
-      result |= CohenSutherlandOutcodeRIGHT
-    }
-    if inY < self.bottom {
-      result |= CohenSutherlandOutcodeBOTTOM
-    }else if inY > self.top {
-      result |= CohenSutherlandOutcodeTOP
-    }
-    return result
-  }
+//  func cohenSutherlandOutcode (x inX : Int, y inY : Int) -> UInt8 {
+//    var result : UInt8 = 0
+//    if inX < self.left {
+//      result |= CohenSutherlandOutcodeLEFT
+//    }else if inX > self.right {
+//      result |= CohenSutherlandOutcodeRIGHT
+//    }
+//    if inY < self.bottom {
+//      result |= CohenSutherlandOutcodeBOTTOM
+//    }else if inY > self.top {
+//      result |= CohenSutherlandOutcodeTOP
+//    }
+//    return result
+//  }
 
   //····················································································································
   // Relative location of a point from rectangle center
@@ -281,38 +281,38 @@ struct CanariRect : Equatable, Hashable {
   //
   //····················································································································
 
-  enum RelativeLocation { case right ; case above ; case left ; case below}
+//  enum RelativeLocation { case right ; case above ; case left ; case below}
 
   //····················································································································
 
-  func relativeLocation (of inPoint : CanariPoint) -> RelativeLocation {
-    if self.isEmpty {
-      return .left
-    }else{
-      let dx = inPoint.x - self.origin.x
-      let dy = inPoint.y - self.origin.y
-      if (dx == 0) && (dy == 0) {
-        return .left
-      }else{
-         let underAscendingDiagonal  = (self.size.width * dy) < (self.size.height * dx)
-         let descendingDiagonalX = self.size.width
-         let descendingDiagonalY = -self.size.height
-         let dxFromTopLeft = dx
-         let dyFromTopLeft = inPoint.y - self.origin.y - self.size.height
-         let underDescendingDiagonal = (descendingDiagonalX * dyFromTopLeft) < (descendingDiagonalY * dxFromTopLeft)
-         switch (underAscendingDiagonal, underDescendingDiagonal) {
-         case (false, false) :
-           return .above
-         case (false, true) :
-           return .left
-         case (true, false) :
-           return .right
-         case (true, true) :
-           return .below
-         }
-      }
-    }
-  }
+//  func relativeLocation (of inPoint : CanariPoint) -> RelativeLocation {
+//    if self.isEmpty {
+//      return .left
+//    }else{
+//      let dx = inPoint.x - self.origin.x
+//      let dy = inPoint.y - self.origin.y
+//      if (dx == 0) && (dy == 0) {
+//        return .left
+//      }else{
+//         let underAscendingDiagonal  = (self.size.width * dy) < (self.size.height * dx)
+//         let descendingDiagonalX = self.size.width
+//         let descendingDiagonalY = -self.size.height
+//         let dxFromTopLeft = dx
+//         let dyFromTopLeft = inPoint.y - self.origin.y - self.size.height
+//         let underDescendingDiagonal = (descendingDiagonalX * dyFromTopLeft) < (descendingDiagonalY * dxFromTopLeft)
+//         switch (underAscendingDiagonal, underDescendingDiagonal) {
+//         case (false, false) :
+//           return .above
+//         case (false, true) :
+//           return .left
+//         case (true, false) :
+//           return .right
+//         case (true, true) :
+//           return .below
+//         }
+//      }
+//    }
+//  }
 
   //····················································································································
 

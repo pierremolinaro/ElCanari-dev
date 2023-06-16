@@ -384,33 +384,33 @@ fileprivate struct EBAllocationItemDisplay {
   //    noteObjectAllocation
   //····················································································································
 
-  fileprivate func noteObjectAllocation (ofType inType : AnyObject.Type) {
-    let className = String (describing: inType)
-    let currentCount = self.mTotalAllocatedObjectCountByClass [className] ?? 0
-    self.mTotalAllocatedObjectCountByClass [className] = currentCount + 1
-  //---
-    let liveCount = self.mLiveObjectCountByClass [className] ?? 0
-    self.mLiveObjectCountByClass [className] = liveCount + 1
-  //---
-    self.triggerRefreshDisplay ()
-  }
+//  fileprivate func noteObjectAllocation (ofType inType : AnyObject.Type) {
+//    let className = String (describing: inType)
+//    let currentCount = self.mTotalAllocatedObjectCountByClass [className] ?? 0
+//    self.mTotalAllocatedObjectCountByClass [className] = currentCount + 1
+//  //---
+//    let liveCount = self.mLiveObjectCountByClass [className] ?? 0
+//    self.mLiveObjectCountByClass [className] = liveCount + 1
+//  //---
+//    self.triggerRefreshDisplay ()
+//  }
 
   //····················································································································
   //    pmNoteObjectDeallocation
   //····················································································································
 
-  fileprivate func noteObjectDeallocation (ofType inType : AnyObject.Type) {
-    let className = String (describing: inType)
-    if let n = self.mLiveObjectCountByClass [className] {
-      if n > 1 {
-        self.mLiveObjectCountByClass [className] = n - 1
-      }else{
-        self.mLiveObjectCountByClass [className] = nil
-      }
-    }
-  //---
-    self.triggerRefreshDisplay ()
-  }
+//  fileprivate func noteObjectDeallocation (ofType inType : AnyObject.Type) {
+//    let className = String (describing: inType)
+//    if let n = self.mLiveObjectCountByClass [className] {
+//      if n > 1 {
+//        self.mLiveObjectCountByClass [className] = n - 1
+//      }else{
+//        self.mLiveObjectCountByClass [className] = nil
+//      }
+//    }
+//  //---
+//    self.triggerRefreshDisplay ()
+//  }
 
   //····················································································································
 
@@ -435,7 +435,7 @@ fileprivate struct EBAllocationItemDisplay {
 
   //····················································································································
 
-  @objc private func allocationStatsDisplayFilterIndexDidChange (_ inSender : AnyObject) {
+  @objc private func allocationStatsDisplayFilterIndexDidChange (_ _ : AnyObject) {
     self.triggerRefreshDisplay ()
   }
 

@@ -9,12 +9,12 @@ import AppKit
 // https://stackoverflow.com/questions/31173903/swift-2-cannot-invoke-fseventstreamcreate-with-an-argument-list-of-type
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func callbackForFSEvent (streamRef : ConstFSEventStreamRef,
-                                    clientCallBackInfo : UnsafeMutableRawPointer?,
-                                    numEvents : Int,
-                                    eventPaths : UnsafeMutableRawPointer,
-                                    eventFlags : UnsafePointer <FSEventStreamEventFlags>?,
-                                    eventIds : UnsafePointer <FSEventStreamEventId>?) {
+@MainActor func callbackForFSEvent (streamRef _ : ConstFSEventStreamRef,
+                                    clientCallBackInfo _ : UnsafeMutableRawPointer?,
+                                    numEvents _ : Int,
+                                    eventPaths _ : UnsafeMutableRawPointer,
+                                    eventFlags _ : UnsafePointer <FSEventStreamEventFlags>?,
+                                    eventIds _ : UnsafePointer <FSEventStreamEventId>?) {
   gPreferences?.updateForLibrary ()
 }
 

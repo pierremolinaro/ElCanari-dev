@@ -25,17 +25,17 @@ final class KicadItem {
 
   //····················································································································
 
-  func display (_ inIndentationString : String, _ ioString : inout String) {
-    if self.items.count == 0 {
-      ioString += inIndentationString + "'\(self.key)'\n"
-    }else{
-      ioString += inIndentationString + "('\(self.key)'\n"
-      for item in self.items {
-        item.display (inIndentationString + " ", &ioString)
-      }
-      ioString += inIndentationString + ")\n"
-    }
-  }
+//  func display (_ inIndentationString : String, _ ioString : inout String) {
+//    if self.items.count == 0 {
+//      ioString += inIndentationString + "'\(self.key)'\n"
+//    }else{
+//      ioString += inIndentationString + "('\(self.key)'\n"
+//      for item in self.items {
+//        item.display (inIndentationString + " ", &ioString)
+//      }
+//      ioString += inIndentationString + ")\n"
+//    }
+//  }
 
   //····················································································································
 
@@ -136,30 +136,30 @@ final class KicadItem {
 
   //····················································································································
 
-  func getOptionalString (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)], _ inLine : Int) -> String? {
-    var result : String? = nil
-    if inPath [0] == self.key {
-      if inPath.count == 1 {
-        result = self.items [inIndex].key
-      }else{
-        var search = true
-        var idx = 0
-        while search {
-          let item = self.items [idx]
-          if item.key == inPath [1] {
-            result = item.getOptionalString ([String] (inPath.dropFirst ()), inIndex, &ioErrorArray, inLine)
-            search = false
-          }else{
-            idx += 1
-            search = idx < self.items.count
-          }
-        }
-      }
-    }else{
-      ioErrorArray.append (("Invalid key \(self.key) instead of \(inPath [0])", inLine))
-    }
-    return result
-  }
+//  func getOptionalString (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)], _ inLine : Int) -> String? {
+//    var result : String? = nil
+//    if inPath [0] == self.key {
+//      if inPath.count == 1 {
+//        result = self.items [inIndex].key
+//      }else{
+//        var search = true
+//        var idx = 0
+//        while search {
+//          let item = self.items [idx]
+//          if item.key == inPath [1] {
+//            result = item.getOptionalString ([String] (inPath.dropFirst ()), inIndex, &ioErrorArray, inLine)
+//            search = false
+//          }else{
+//            idx += 1
+//            search = idx < self.items.count
+//          }
+//        }
+//      }
+//    }else{
+//      ioErrorArray.append (("Invalid key \(self.key) instead of \(inPath [0])", inLine))
+//    }
+//    return result
+//  }
 
   //····················································································································
 

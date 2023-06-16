@@ -152,8 +152,8 @@ import AppKit
         var af = AffineTransform ()
         af.scale (x: horizontalFlip, y: verticalFlip)
         var symbolShape = EBShape ()
-        symbolShape.add (filled: [EBBezierPath (symbolInfo.filledBezierPath)], preferences_symbolColorForSchematic)
-        symbolShape.add (stroke: [EBBezierPath (symbolInfo.strokeBezierPath)], preferences_symbolColorForSchematic)
+        symbolShape.add (filled: [EBBezierPath (symbolInfo.filledBezierPath)], preferences_symbolColorForSchematic_property.propval)
+        symbolShape.add (stroke: [EBBezierPath (symbolInfo.strokeBezierPath)], preferences_symbolColorForSchematic_property.propval)
         let scaledSymbolShape = symbolShape.transformed (by: af)
         resultImage = buildPDFimage (frame: scaledSymbolShape.boundingBox, shape: scaledSymbolShape)
       //--- Move image rect origin to mouse click location

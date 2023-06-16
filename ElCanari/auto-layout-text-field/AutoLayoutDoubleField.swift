@@ -51,24 +51,24 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  final func set (min inMin : Int) -> Self {
-    self.mNumberFormatter.minimum = NSNumber (value: inMin)
-    return self
-  }
+//  final func set (min inMin : Int) -> Self {
+//    self.mNumberFormatter.minimum = NSNumber (value: inMin)
+//    return self
+//  }
 
   //····················································································································
 
-  final func set (max inMax : Int) -> Self {
-    self.mNumberFormatter.maximum = NSNumber (value: inMax)
-    return self
-  }
+//  final func set (max inMax : Int) -> Self {
+//    self.mNumberFormatter.maximum = NSNumber (value: inMax)
+//    return self
+//  }
 
   //····················································································································
 
-  final func set (format inFormatString : String) -> Self {
-    self.mNumberFormatter.format = inFormatString
-    return self
-  }
+//  final func set (format inFormatString : String) -> Self {
+//    self.mNumberFormatter.format = inFormatString
+//    return self
+//  }
 
   //····················································································································
 
@@ -96,7 +96,7 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  @objc fileprivate func valueDidChangeAction (_ inSender : AutoLayoutDoubleField) {
+  @objc fileprivate func valueDidChangeAction (_ _ : AutoLayoutDoubleField) {
     if let formatter = self.formatter as? NumberFormatter,
        let outletValueNumber = formatter.number (from: self.stringValue) {
       let value = outletValueNumber.doubleValue

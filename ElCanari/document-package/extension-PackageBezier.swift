@@ -15,7 +15,7 @@ extension PackageBezier {
 
   //····················································································································
 
-  func cursorForKnob_PackageBezier (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_PackageBezier (knob _ : Int) -> NSCursor? {
     return NSCursor.upDownRightLeftCursor
   }
 
@@ -23,9 +23,9 @@ extension PackageBezier {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_PackageBezier (additionalDictionary inDictionary : [String : Any],
-                                            optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                            objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_PackageBezier (additionalDictionary _ : [String : Any],
+                                            optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                            objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -33,7 +33,7 @@ extension PackageBezier {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackageBezier (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_PackageBezier (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
@@ -52,7 +52,7 @@ extension PackageBezier {
 
   //····················································································································
 
-  func translate_PackageBezier (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_PackageBezier (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.x1 += inDx
     self.y1 += inDy
     self.x2 += inDx
@@ -67,11 +67,11 @@ extension PackageBezier {
   //  Move
   //····················································································································
 
-  func canMove_PackageBezier (knob inKnobIndex : Int,
-                proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                shift inShift : Bool) -> CanariPoint {
+  func canMove_PackageBezier (knob _ : Int,
+                              proposedUnalignedAlignedTranslation _ : CanariPoint,
+                              proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                              unalignedMouseDraggedLocation _ : CanariPoint,
+                              shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
   }
 
@@ -80,10 +80,10 @@ extension PackageBezier {
   func move_PackageBezier (knob inKnobIndex: Int,
                       proposedDx inDx: Int,
                       proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                      unalignedMouseLocationX _ : Int,
+                      unalignedMouseLocationY _ : Int,
+                      alignedMouseLocationX _ : Int,
+                      alignedMouseLocationY _ : Int,
                       shift inShift : Bool) {
     if inKnobIndex == PACKAGE_BEZIER_CURVE_ENDPOINT_1 {
       self.x1 += inDx

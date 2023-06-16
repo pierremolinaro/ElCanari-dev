@@ -56,7 +56,7 @@ import AppKit
   //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
-    @objc private func clearTransientEventLogWindow (_ inUnusedSender : Any?) {
+    @objc private func clearTransientEventLogWindow (_ _ : Any?) {
       self.mTransientEventExplorerTextView?.string = ""
     }
   #endif

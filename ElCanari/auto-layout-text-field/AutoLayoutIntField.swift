@@ -100,7 +100,7 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  @objc fileprivate func valueDidChangeAction (_ inSender : Any?) {
+  @objc fileprivate func valueDidChangeAction (_ _ : Any?) {
     if let formatter = self.formatter as? NumberFormatter, let outletValueNumber = formatter.number (from: self.stringValue) {
       let value = Int (outletValueNumber.doubleValue.rounded ())
       self.mValueController?.updateModel (withValue: value)

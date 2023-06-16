@@ -134,7 +134,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  @objc final private func performLiveScrolling (_ inNotification : Notification) {
+  @objc final private func performLiveScrolling (_ _ : Notification) {
     if let myWindow = self.window {
       let mouseLocationInScreen = NSEvent.mouseLocation
     //--- Note: NSWindow.convertPoint (fromScreen:) is available from 10.12

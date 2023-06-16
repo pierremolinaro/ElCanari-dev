@@ -25,14 +25,14 @@ struct MergerPad : Hashable {
 
   //····················································································································
 
-  func translatedBy (x inX : Int, y inY : Int) -> MergerPad {
-    return MergerPad (x: self.x + inX,
-                      y: self.y + inY,
-                      width: self.width,
-                      height: self.height,
-                      shape: self.shape,
-                      rotation: self.rotation)
-  }
+//  func translatedBy (x inX : Int, y inY : Int) -> MergerPad {
+//    return MergerPad (x: self.x + inX,
+//                      y: self.y + inY,
+//                      width: self.width,
+//                      height: self.height,
+//                      shape: self.shape,
+//                      rotation: self.rotation)
+//  }
 
   //····················································································································
 
@@ -139,39 +139,39 @@ struct MergerPadArray : Hashable {
 
   //····················································································································
 
-  func addHoles (toFilledBezierPaths ioBezierPaths : inout [EBBezierPath],
-                 dx inDx : Int,
-                 dy inDy: Int,
-                 pdfHoleDiameter inHoleDiameter : CGFloat,
-                 horizontalMirror inHorizontalMirror : Bool,
-                 boardWidth inBoardWidth : Int,
-                 modelWidth inModelWidth : Int,
-                 modelHeight inModelHeight : Int,
-                 instanceRotation inInstanceRotation : QuadrantRotation) {
-    for pad in self.padArray {
-      var x = inDx
-      var y = inDy
-      switch inInstanceRotation {
-      case .rotation0 :
-        x += pad.x
-        y += pad.y
-      case .rotation90 :
-        x += inModelHeight - pad.y
-        y += pad.x
-      case .rotation180 :
-        x += inModelWidth  - pad.x
-        y += inModelHeight - pad.y
-      case .rotation270 :
-        x += pad.y
-        y += inModelWidth - pad.x
-      }
-      let xf = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x) : x)
-      let yf = canariUnitToCocoa (y)
-      let r = NSRect (x: xf - inHoleDiameter / 2.0, y: yf - inHoleDiameter / 2.0, width:inHoleDiameter, height:inHoleDiameter)
-      let bp = EBBezierPath (ovalIn: r)
-      ioBezierPaths.append (bp)
-    }
-  }
+//  func addHoles (toFilledBezierPaths ioBezierPaths : inout [EBBezierPath],
+//                 dx inDx : Int,
+//                 dy inDy: Int,
+//                 pdfHoleDiameter inHoleDiameter : CGFloat,
+//                 horizontalMirror inHorizontalMirror : Bool,
+//                 boardWidth inBoardWidth : Int,
+//                 modelWidth inModelWidth : Int,
+//                 modelHeight inModelHeight : Int,
+//                 instanceRotation inInstanceRotation : QuadrantRotation) {
+//    for pad in self.padArray {
+//      var x = inDx
+//      var y = inDy
+//      switch inInstanceRotation {
+//      case .rotation0 :
+//        x += pad.x
+//        y += pad.y
+//      case .rotation90 :
+//        x += inModelHeight - pad.y
+//        y += pad.x
+//      case .rotation180 :
+//        x += inModelWidth  - pad.x
+//        y += inModelHeight - pad.y
+//      case .rotation270 :
+//        x += pad.y
+//        y += inModelWidth - pad.x
+//      }
+//      let xf = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x) : x)
+//      let yf = canariUnitToCocoa (y)
+//      let r = NSRect (x: xf - inHoleDiameter / 2.0, y: yf - inHoleDiameter / 2.0, width:inHoleDiameter, height:inHoleDiameter)
+//      let bp = EBBezierPath (ovalIn: r)
+//      ioBezierPaths.append (bp)
+//    }
+//  }
 
   //····················································································································
 

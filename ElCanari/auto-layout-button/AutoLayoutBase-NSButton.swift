@@ -60,7 +60,7 @@ class AutoLayoutBase_NSButton : NSButton {
 
   //····················································································································
 
-   @objc private final func runClosureAction (_ inUnused : Any?) {
+   @objc private final func runClosureAction (_ _ : Any?) {
      self.mClosureAction? ()
   }
 

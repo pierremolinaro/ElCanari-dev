@@ -15,13 +15,13 @@ extension ApplicationDelegate {
   //····················································································································
 
   @MainActor func checkForLibraryUpdateAtLaunch () {
-    if preferences_checkForSystemLibraryAtStartUp {
+    if preferences_checkForSystemLibraryAtStartUp_property.propval {
       _ = g_Preferences?.setUpLibraryUpdateLogWindow ()
       if let logTextView = g_Preferences?.mLibraryUpdateLogTextView {
         // NSLog ("g_Preferences?.mLastSystemLibraryCheckTime \(g_Preferences?.mLastSystemLibraryCheckTime)")
-        let lastCheckDate = preferences_mLastSystemLibraryCheckTime
+        let lastCheckDate = preferences_mLastSystemLibraryCheckTime_property.propval
         var nextInterval = 24.0 * 3600.0  // One day
-        let tag = preferences_systemLibraryCheckTimeInterval
+        let tag = preferences_systemLibraryCheckTimeInterval_property.propval
         if tag == 1 {
           nextInterval *= 7.0 // One week
         }else if tag == 2 {
@@ -30,7 +30,7 @@ extension ApplicationDelegate {
         let checkDate = Date (timeInterval: nextInterval, since:lastCheckDate)
         if checkDate < Date () {
           startLibraryUpdateOperation (showProgressWindow: false, logTextView)
-          preferences_mLastSystemLibraryCheckTime = Date ()
+          preferences_mLastSystemLibraryCheckTime_property.setProp (Date ())
         }
       }else{
         NSLog ("g_Preferences?.mLibraryUpdateLogTextView is nil")

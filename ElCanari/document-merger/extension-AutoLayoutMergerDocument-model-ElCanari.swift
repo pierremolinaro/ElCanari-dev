@@ -180,8 +180,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.undoManager,
-          file: #file, #line
+          self.undoManager
         ) {
           backLegendLinesEntities.append (segment)
         }
@@ -199,8 +198,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.undoManager,
-          file: #file, #line
+          self.undoManager
         ) {
           frontLegendLinesEntities.append (segment)
         }
@@ -250,8 +248,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.undoManager,
-          file: #file, #line
+          self.undoManager
         ) {
           backLegendTextEntities.append (segment)
         }
@@ -269,8 +266,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.undoManager,
-          file: #file, #line
+          self.undoManager
         ) {
           frontLegendTextEntities.append (segment)
         }
@@ -308,8 +304,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.undoManager,
-          file: #file, #line
+          self.undoManager
         ) {
           backPackagesEntities.append (segment)
         }
@@ -327,8 +322,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.undoManager,
-          file: #file, #line
+          self.undoManager
         ) {
           frontPackagesEntities.append (segment)
         }
@@ -346,8 +340,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.undoManager,
-          file: #file, #line
+          self.undoManager
         ) {
           backComponentNamesEntities.append (segment)
         }
@@ -365,8 +358,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.undoManager,
-          file: #file, #line
+          self.undoManager
         ) {
           frontComponentNamesEntities.append (segment)
         }
@@ -384,8 +376,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y: canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.undoManager,
-          file: #file, #line
+          self.undoManager
         ) {
           frontComponentValuesEntities.append (segment)
         }
@@ -403,8 +394,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y: canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.undoManager,
-          file: #file, #line
+          self.undoManager
         ) {
           backComponentValuesEntities.append (segment)
         }

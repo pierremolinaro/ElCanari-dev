@@ -78,7 +78,7 @@ final class AutoLayoutCanariRestrictRectangleView : AutoLayoutVerticalStackView 
 
   private var mRegistered = false
 
-  @objc private func deferredUpdateCheckboxes (_ inUnusedSender : Any?) {
+  @objc private func deferredUpdateCheckboxes (_ _ : Any?) {
     if !self.mRegistered {
       self.mRegistered = true
       DispatchQueue.main.async { self.updateCheckboxes () }

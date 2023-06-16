@@ -26,7 +26,7 @@ import AppKit
   let revisions = getRepositoryCommitList (&possibleAlert, proxy, inLogTextView)
   let possibleStoredCurrentCommit = getStoredCurrentCommit ()
   let possibleRemoteCurrentCommit : Int?
-  if possibleAlert == nil, let commitIndex = displayRepositoryCommitList (revisions, proxy, inLogTextView) {
+  if possibleAlert == nil, let commitIndex = displayRepositoryCommitList (revisions) {
     possibleRemoteCurrentCommit = commitIndex
   }else{
     possibleRemoteCurrentCommit = nil
@@ -122,15 +122,15 @@ import AppKit
 //https://stackoverflow.com/questions/39433852/parsing-a-iso8601-string-to-date-in-swift
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func iso8601StringToDate (_ inString : String?) -> Date? {
-  var date : Date? = nil
-  if let str = inString {
-    let dateFormatter = DateFormatter ()
-    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-    date = dateFormatter.date (from: str)
-  }
-  return date
-}
+//private func iso8601StringToDate (_ inString : String?) -> Date? {
+//  var date : Date? = nil
+//  if let str = inString {
+//    let dateFormatter = DateFormatter ()
+//    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+//    date = dateFormatter.date (from: str)
+//  }
+//  return date
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -235,7 +235,7 @@ private func iso8601StringToDate (_ inString : String?) -> Date? {
 
   //····················································································································
 
-  func dialog (_ inLogTextView : AutoLayoutStaticTextView) -> Int? {
+  func dialog () -> Int? {
   //--- Build Panel
     let panel = NSPanel (
       contentRect: NSRect (x: 0, y: 0, width: 600, height: 300),
@@ -280,11 +280,9 @@ private func iso8601StringToDate (_ inString : String?) -> Date? {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor fileprivate func displayRepositoryCommitList (_ revisions : [LibraryRevisionDescriptor],
-                                                         _ proxy : [String],
-                                                         _ inLogTextView : AutoLayoutStaticTextView) -> Int? {
-  let libraryCommitListController = LibraryCommitListController (revisions)
-  let result = libraryCommitListController.dialog (inLogTextView)
+@MainActor fileprivate func displayRepositoryCommitList (_ inRevisions : [LibraryRevisionDescriptor]) -> Int? {
+  let libraryCommitListController = LibraryCommitListController (inRevisions)
+  let result = libraryCommitListController.dialog ()
   return result
 }
 

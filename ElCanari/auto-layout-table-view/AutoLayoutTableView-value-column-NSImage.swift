@@ -15,7 +15,7 @@ extension AutoLayoutTableView {
   //····················································································································
 
   func addColumn_NSImage (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSImage?,
-                          valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : NSImage) -> Void >,
+                          valueSetterDelegate _ : Optional < (_ inRow : Int, _ inNewValue : NSImage) -> Void >,
                           sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
                           title inTitle : String,
                           minWidth inMinWidth : Int,

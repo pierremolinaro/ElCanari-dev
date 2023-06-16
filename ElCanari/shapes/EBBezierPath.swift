@@ -45,9 +45,9 @@ struct EBBezierPath : Hashable {
 
   //····················································································································
 
-  var cgPath : CGPath {
-    return self.mPath.cgPath
-  }
+//  var cgPath : CGPath {
+//    return self.mPath.cgPath
+//  }
 
   //····················································································································
 
@@ -155,9 +155,9 @@ struct EBBezierPath : Hashable {
 
   //····················································································································
 
-  static func < (lhs : EBBezierPath, rhs : EBBezierPath) -> Bool {
-    return ObjectIdentifier (lhs.mPath) < ObjectIdentifier (rhs.mPath)
-  }
+//  static func < (lhs : EBBezierPath, rhs : EBBezierPath) -> Bool {
+//    return ObjectIdentifier (lhs.mPath) < ObjectIdentifier (rhs.mPath)
+//  }
 
   //····················································································································
 
@@ -424,7 +424,7 @@ struct EBBezierPath : Hashable {
 
   //····················································································································
 
-  public var pathByStroking : EBBezierPath {
+  var pathByStroking : EBBezierPath {
     let lineCap : CGLineCap
     switch self.lineCapStyle {
     case .butt : lineCap = .butt

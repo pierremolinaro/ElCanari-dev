@@ -360,7 +360,7 @@ fileprivate class SelectedNetButton : AutoLayoutBase_NSButton {
 
   //····················································································································
 
-  @objc func gotoSchematicSheet (_ inUnusedSender : Any?) {
+  @objc func gotoSchematicSheet (_ _ : Any?) {
     if let document = self.mDocument, self.mSheetIndex > 0 {
       document.rootObject.mSelectedPageIndex = 2 // Schematics
       document.rootObject.mSelectedSheet = document.rootObject.mSheets [self.mSheetIndex - 1]

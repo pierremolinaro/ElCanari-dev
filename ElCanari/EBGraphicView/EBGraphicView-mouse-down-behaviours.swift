@@ -181,14 +181,12 @@ final class ShiftMouseDownBehaviour : DefaultBehaviourOnMouseDown { // Mouse dow
 
   private let mMouseDownUnalignedLocation : NSPoint
   private let mSelectedObjectIndexSet : Set <Int>
-  private let mPossibleObjectIndex : Int?
 
   //····················································································································
 
   init (_ inUnalignedLocation : NSPoint, _ inPossibleObjectIndex : Int?, _ inViewController : EBGraphicViewControllerProtocol) {
     self.mMouseDownUnalignedLocation = inUnalignedLocation
     self.mSelectedObjectIndexSet = inViewController.selectedIndexesSet
-    self.mPossibleObjectIndex = inPossibleObjectIndex
     if let objectIndex = inPossibleObjectIndex {
       inViewController.setSelection (objectsWithIndexes: Array (self.mSelectedObjectIndexSet.symmetricDifference ([objectIndex])))
     }
@@ -301,7 +299,7 @@ final class ZoomRegionBehaviour : DefaultBehaviourOnMouseDown { // Mouse down wi
 
   //····················································································································
 
-  init (_ inUnalignedLocation : NSPoint, _ inViewController : EBGraphicViewControllerProtocol) {
+  init (_ inUnalignedLocation : NSPoint, _ _ : EBGraphicViewControllerProtocol) {
     self.mMouseDownUnalignedLocation = inUnalignedLocation
     self.mOperationInProgress = true
   }

@@ -236,13 +236,13 @@ struct EBShape : Hashable {
   //  Blended color
   //····················································································································
 
-  func blended (withFraction inFraction : CGFloat, of inColor : NSColor) -> EBShape {
-    var result = EBShape ()
-    if let sharedObject = self.mSharedObject {
-      result.mSharedObject = sharedObject.blended (withFraction: inFraction, of: inColor)
-    }
-    return result
-  }
+//  func blended (withFraction inFraction : CGFloat, of inColor : NSColor) -> EBShape {
+//    var result = EBShape ()
+//    if let sharedObject = self.mSharedObject {
+//      result.mSharedObject = sharedObject.blended (withFraction: inFraction, of: inColor)
+//    }
+//    return result
+//  }
 
   //····················································································································
   //  Opacity blending
@@ -673,16 +673,16 @@ fileprivate final class EBShapeObject {
   //  Blended color
   //····················································································································
 
-   func blended (withFraction inFraction : CGFloat, of inColor : NSColor) -> EBShapeObject {
-    let result = EBShapeObject ()
-    for element in self.mElements.values {
-      let newElement = element.blended (withFraction: inFraction, of: inColor)
-      result.mElements.append (newElement)
-    }
-    result.mCachedBoundingBox = self.mCachedBoundingBox
-    result.mToolTips = self.mToolTips
-    return result
-   }
+//   func blended (withFraction inFraction : CGFloat, of inColor : NSColor) -> EBShapeObject {
+//    let result = EBShapeObject ()
+//    for element in self.mElements.values {
+//      let newElement = element.blended (withFraction: inFraction, of: inColor)
+//      result.mElements.append (newElement)
+//    }
+//    result.mCachedBoundingBox = self.mCachedBoundingBox
+//    result.mToolTips = self.mToolTips
+//    return result
+//   }
 
   //····················································································································
   //  Opacity
@@ -778,7 +778,7 @@ fileprivate final class EBShapeElement {
   //  Draw Rect
   //····················································································································
 
-  func draw (_ inDirtyRect : NSRect) {
+  func draw (_ _ : NSRect) {
     if let color = self.mColor {
       switch self.mClipRule {
       case .none :

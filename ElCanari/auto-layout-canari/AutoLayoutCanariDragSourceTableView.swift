@@ -173,9 +173,9 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
   //   GETTERS
   //····················································································································
 
-  func title (atIndex inIndex : Int) -> String {
-    return self.mModelArray [inIndex].string
-  }
+//  func title (atIndex inIndex : Int) -> String {
+//    return self.mModelArray [inIndex].string
+//  }
 
   //····················································································································
 

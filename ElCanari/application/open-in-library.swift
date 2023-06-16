@@ -239,7 +239,7 @@ import AppKit
 
   //····················································································································
 
-  @objc private func stopModalAndOpenDocumentAction (_ inSender : Any?) {
+  @objc private func stopModalAndOpenDocumentAction (_ _ : Any?) {
     NSApplication.shared.stopModal ()
     self.mDialog.orderOut (nil)
     let selectedRow = self.mTableView.selectedRow
@@ -423,7 +423,7 @@ import AppKit
   //   SEARCH FIELD ACTION
   //····················································································································
 
-  @objc private func searchFieldAction (_ inUnusedSender : Any?) {
+  @objc private func searchFieldAction (_ _ : Any?) {
     let filter = self.mSearchField.stringValue.uppercased ()
   //--- Table view
     if filter.isEmpty {
@@ -549,13 +549,13 @@ import AppKit
 
   //····················································································································
 
-  func partStatusOk () -> Bool {
-    if let s = try? self.partStatus () {
-      return s == .ok
-    }else{
-      return false
-    }
-  }
+//  func partStatusOk () -> Bool {
+//    if let s = try? self.partStatus () {
+//      return s == .ok
+//    }else{
+//      return false
+//    }
+//  }
 
  //····················································································································
 

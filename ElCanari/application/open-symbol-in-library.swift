@@ -35,7 +35,7 @@ final class OpenSymbolInLibrary : OpenInLibrary {
       let box = partShape.boundingBox
       return box.isEmpty
         ? nil
-        : buildPDFimage (frame: box, shape: partShape, backgroundColor: preferences_symbolBackgroundColor)
+        : buildPDFimage (frame: box, shape: partShape, backgroundColor: preferences_symbolBackgroundColor_property.propval)
     }
   }
 

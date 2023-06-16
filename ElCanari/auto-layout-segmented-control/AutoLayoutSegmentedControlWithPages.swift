@@ -102,7 +102,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     let newPage = self.mPages [self.selectedSegment]
     _ = self.mDocumentView.appendView (newPage)
     self.mSelectedTabIndexController?.updateModel (withValue: self.selectedSegment)
-    self.mSelectedSegmentController?.updateModel (self)
+    self.mSelectedSegmentController?.updateModel ()
   }
 
   //····················································································································
@@ -233,7 +233,7 @@ fileprivate final class Controller_AutoLayoutSegmentedControl_selectedSegment : 
 
   //····················································································································
 
-  func updateModel (_ sender : AutoLayoutSegmentedControlWithPages) {
+  func updateModel () {
     if let outlet = self.mOutlet {
       self.mObject.setFrom (rawValue: outlet.selectedSegment)
     }

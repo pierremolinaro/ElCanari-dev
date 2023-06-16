@@ -15,9 +15,7 @@ import Foundation
                                       p2_mm inP2 : NSPoint,
                                       width_mm inWith : CGFloat,
                                       clipRect_mm inClipRect: NSRect,
-                                      _ inUndoManager : UndoManager?,
-                                      file : String,
-                                      _ inLine : Int) -> SegmentEntity? {
+                                      _ inUndoManager : UndoManager?) -> SegmentEntity? {
   let r : NSRect = inClipRect.insetBy (dx: inWith / 2.0, dy: inWith / 2.0)
   if let (p1, p2) = r.clippedSegment (p1: inP1, p2: inP2) {
     let segment = SegmentEntity (inUndoManager)

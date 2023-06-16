@@ -67,7 +67,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
   //    Drag and drop destination
   //····················································································································
 
-  override func draggingEntered (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> NSDragOperation {
+  override func draggingEntered (_ _ : NSDraggingInfo, _ _ : NSScrollView) -> NSDragOperation {
     return .copy
   }
 

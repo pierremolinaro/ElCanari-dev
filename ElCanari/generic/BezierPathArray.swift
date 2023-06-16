@@ -28,13 +28,13 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
 
   //····················································································································
 
-  mutating func append (_ inBezierPathArray : [EBBezierPath]) {
-    for bp in inBezierPathArray {
-      if !bp.isEmpty {
-        self.mPathes.append (bp)
-      }
-    }
-  }
+//  mutating func append (_ inBezierPathArray : [EBBezierPath]) {
+//    for bp in inBezierPathArray {
+//      if !bp.isEmpty {
+//        self.mPathes.append (bp)
+//      }
+//    }
+//  }
 
    //····················································································································
 
@@ -44,17 +44,17 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
 
  //····················································································································
 
-  var bounds : NSRect {
-    var r = NSRect.null
-    for path in self.mPathes {
-      r = r.union (path.bounds)
-    }
-    return r
-  }
+//  var bounds : NSRect {
+//    var r = NSRect.null
+//    for path in self.mPathes {
+//      r = r.union (path.bounds)
+//    }
+//    return r
+//  }
 
   //····················································································································
 
-  public static func < (lhs: BezierPathArray, rhs: BezierPathArray) -> Bool {
+  static func < (lhs: BezierPathArray, rhs: BezierPathArray) -> Bool {
     var inferior = lhs.mPathes.count < rhs.mPathes.count
     if lhs.mPathes.count == rhs.mPathes.count {
       var idx = 0

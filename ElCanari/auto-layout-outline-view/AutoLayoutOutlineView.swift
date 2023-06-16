@@ -123,13 +123,13 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
 
   //····················································································································
 
-  @objc final func addEntryAction (_ inUnusedSender : Any?) {
+  @objc final func addEntryAction (_ _ : Any?) {
     self.mDelegate?.outlineViewDelegate_addEntry ()
   }
 
   //····················································································································
 
-  @objc final func removeSelectedEntriesAction (_ inUnusedSender : Any?) {
+  @objc final func removeSelectedEntriesAction (_ _ : Any?) {
     self.mDelegate?.outlineViewDelegate_removeSelectedEntries ()
   }
 

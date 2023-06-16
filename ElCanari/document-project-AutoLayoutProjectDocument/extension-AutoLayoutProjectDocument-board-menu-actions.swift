@@ -16,7 +16,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  @objc func removeAllViasAndTracksAction (_ inUnusedSender : Any?) {
+  @objc func removeAllViasAndTracksAction (_ _ : Any?) {
     self.removeAllViasAndTracks ()
   }
 
@@ -51,7 +51,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  @objc func sortBoardObjectsFollowingBoardLayersAction (_ inUnusedSender : Any?) {
+  @objc func sortBoardObjectsFollowingBoardLayersAction (_ _ : Any?) {
     var backTracks = EBReferenceArray <BoardObject> ()
     var backComponents = EBReferenceArray <BoardObject> ()
     var others = EBReferenceArray <BoardObject> ()

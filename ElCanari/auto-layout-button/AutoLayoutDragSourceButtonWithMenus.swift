@@ -80,7 +80,7 @@ final class AutoLayoutDragSourceButtonWithMenus : AutoLayoutBase_NSView {
   //····················································································································
 
   func set (leftContextualMenu inMenu : NSMenu) {
-    let button = AutoLayoutMenuButton (size: .small, menu: inMenu)
+    let button = AutoLayoutMenuButton (menu: inMenu)
     self.addSubview (button)
     var c = NSLayoutConstraint (item: self, attribute: .left, relatedBy: .equal, toItem: button, attribute: .left, multiplier: 1.0, constant: 0.0)
     var constraints = [c]
@@ -92,7 +92,7 @@ final class AutoLayoutDragSourceButtonWithMenus : AutoLayoutBase_NSView {
   //····················································································································
 
   func set (rightContextualMenu inMenu : NSMenu) {
-    let button = AutoLayoutMenuButton (size: .small, menu: inMenu)
+    let button = AutoLayoutMenuButton (menu: inMenu)
     self.addSubview (button)
     var c = NSLayoutConstraint (item: self, attribute: .right, relatedBy: .equal, toItem: button, attribute: .right, multiplier: 1.0, constant: 0.0)
     var constraints = [c]

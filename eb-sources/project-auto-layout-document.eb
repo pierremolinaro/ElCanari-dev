@@ -1688,7 +1688,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //      Button (title: "+▶︎", size: .regular) { $run appendNewBoardERCCheckingInspectorAction }
 //    }
     Checkbox (title: "Check Clearance\nbetween Pads of the same Net", size: .small) {
-      set (width: 200, multiline: yes)
+      set (width: 200)
       $value root.mCheckClearanceBetweenPadsOfSameNet
     }
     Button (title: "Design Rule Check", size: .small) { $run performERCCheckingAction }

@@ -48,12 +48,12 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func bind_backgroundImageOpacity (_ model : EBReadOnlyProperty_Double, file : String, line : Int) {
-    self.mBackgroundImageOpacityController = EBObservablePropertyController (
-      observedObjects: [model],
-      callBack: { [weak self] in self?.updateBackgroundImageOpacity (from: model) }
-    )
-  }
+//  final func bind_backgroundImageOpacity (_ model : EBReadOnlyProperty_Double, file : String, line : Int) {
+//    self.mBackgroundImageOpacityController = EBObservablePropertyController (
+//      observedObjects: [model],
+//      callBack: { [weak self] in self?.updateBackgroundImageOpacity (from: model) }
+//    )
+//  }
 
   //····················································································································
 
@@ -64,17 +64,17 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final private func updateBackgroundImageOpacity (from model : EBReadOnlyProperty_Double) {
-    switch model.selection {
-    case .empty :
-      break
-    case .single (let v) :
-      self.mBackgroundImageOpacity = CGFloat (v)
-      self.needsDisplay = true
-    case .multiple :
-      break
-    }
-  }
+//  final private func updateBackgroundImageOpacity (from model : EBReadOnlyProperty_Double) {
+//    switch model.selection {
+//    case .empty :
+//      break
+//    case .single (let v) :
+//      self.mBackgroundImageOpacity = CGFloat (v)
+//      self.needsDisplay = true
+//    case .multiple :
+//      break
+//    }
+//  }
 
   //····················································································································
 

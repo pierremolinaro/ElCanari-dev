@@ -52,7 +52,7 @@ final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  @objc fileprivate func valueDidChangeAction (_ inSender : Any?) {
+  @objc fileprivate func valueDidChangeAction (_ _ : Any?) {
     let ok = self.mValueController?.performValidation (self.stringValue) ?? true
     if !ok {
       self.mValueController?.updateOutlet ()

@@ -150,7 +150,7 @@ extension CanariLibraryEntry {
 
   //····················································································································
 
-  @objc private func showStatusAction (_ inSender : Any?) {
+  @objc private func showStatusAction (_ _ : Any?) {
     if let logTextView = gLibraryUploadDialog?.mLibraryRepositoryLogTextView {
       _ = self.status (logTextView)
     }
@@ -158,7 +158,7 @@ extension CanariLibraryEntry {
 
   //····················································································································
 
-  @objc private func showDefineUserAndPasswordDialogAction (_ inSender : Any?) {
+  @objc private func showDefineUserAndPasswordDialogAction (_ _ : Any?) {
     if let window = gLibraryUploadDialog?.mLibraryUploadWindow {
       let alert = NSAlert ()
       alert.messageText = "User and password:"
@@ -186,7 +186,7 @@ extension CanariLibraryEntry {
 
   //····················································································································
 
-  @objc private func showDefineRepositoryDialogAction (_ inSender : Any?) {
+  @objc private func showDefineRepositoryDialogAction (_ _ : Any?) {
     if let window = gLibraryUploadDialog?.mLibraryUploadWindow {
       let alert = NSAlert ()
       alert.messageText = "Repository URL:"
@@ -214,7 +214,7 @@ extension CanariLibraryEntry {
 
   //····················································································································
 
-  @objc func repositorPerformCommitAction (_ inSender : Any?) {
+  @objc func repositorPerformCommitAction (_ _ : Any?) {
     if let logTextView = gLibraryUploadDialog?.mLibraryRepositoryLogTextView {
       self.repositorPerformCommit (logTextView)
     }
@@ -395,7 +395,7 @@ extension CanariLibraryEntry {
 
   //····················································································································
 
-  @objc func loadRepositorCurrentCommitAction (_ inSender : Any?) {
+  @objc func loadRepositorCurrentCommitAction (_ _ : Any?) {
     _ = self.loadRepositorCurrentCommit ()
   }
 

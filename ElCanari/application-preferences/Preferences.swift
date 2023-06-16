@@ -730,24 +730,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_hiliteWidthMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 15, prefKey: Preferences_hiliteWidthMultipliedByTen)
 
 //····················································································································
-
-@MainActor var preferences_hiliteWidthMultipliedByTen : Int {
-  get { return preferences_hiliteWidthMultipliedByTen_property.propval }
-  set { preferences_hiliteWidthMultipliedByTen_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: usesUserLibrary
 //····················································································································
 
 @MainActor let preferences_usesUserLibrary_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_usesUserLibrary)
-
-//····················································································································
-
-@MainActor var preferences_usesUserLibrary : Bool {
-  get { return preferences_usesUserLibrary_property.propval }
-  set { preferences_usesUserLibrary_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: symbolColor
@@ -756,24 +742,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_symbolColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_symbolColor)
 
 //····················································································································
-
-@MainActor var preferences_symbolColor : NSColor {
-  get { return preferences_symbolColor_property.propval }
-  set { preferences_symbolColor_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: crossColorOfSymbolGrid
 //····················································································································
 
 @MainActor let preferences_crossColorOfSymbolGrid_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_crossColorOfSymbolGrid)
-
-//····················································································································
-
-@MainActor var preferences_crossColorOfSymbolGrid : NSColor {
-  get { return preferences_crossColorOfSymbolGrid_property.propval }
-  set { preferences_crossColorOfSymbolGrid_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: lineColorOfSymbolGrid
@@ -782,24 +754,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_lineColorOfSymbolGrid_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_lineColorOfSymbolGrid)
 
 //····················································································································
-
-@MainActor var preferences_lineColorOfSymbolGrid : NSColor {
-  get { return preferences_lineColorOfSymbolGrid_property.propval }
-  set { preferences_lineColorOfSymbolGrid_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: symbolBackgroundColor
 //····················································································································
 
 @MainActor let preferences_symbolBackgroundColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_symbolBackgroundColor)
-
-//····················································································································
-
-@MainActor var preferences_symbolBackgroundColor : NSColor {
-  get { return preferences_symbolBackgroundColor_property.propval }
-  set { preferences_symbolBackgroundColor_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: symbolDrawingWidthMultipliedByTen
@@ -808,24 +766,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_symbolDrawingWidthMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 5, prefKey: Preferences_symbolDrawingWidthMultipliedByTen)
 
 //····················································································································
-
-@MainActor var preferences_symbolDrawingWidthMultipliedByTen : Int {
-  get { return preferences_symbolDrawingWidthMultipliedByTen_property.propval }
-  set { preferences_symbolDrawingWidthMultipliedByTen_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: crossColorOfPackageGrid
 //····················································································································
 
 @MainActor let preferences_crossColorOfPackageGrid_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_crossColorOfPackageGrid)
-
-//····················································································································
-
-@MainActor var preferences_crossColorOfPackageGrid : NSColor {
-  get { return preferences_crossColorOfPackageGrid_property.propval }
-  set { preferences_crossColorOfPackageGrid_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: lineColorOfPackageGrid
@@ -834,24 +778,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_lineColorOfPackageGrid_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_lineColorOfPackageGrid)
 
 //····················································································································
-
-@MainActor var preferences_lineColorOfPackageGrid : NSColor {
-  get { return preferences_lineColorOfPackageGrid_property.propval }
-  set { preferences_lineColorOfPackageGrid_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: packageBackgroundColor
 //····················································································································
 
 @MainActor let preferences_packageBackgroundColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_packageBackgroundColor)
-
-//····················································································································
-
-@MainActor var preferences_packageBackgroundColor : NSColor {
-  get { return preferences_packageBackgroundColor_property.propval }
-  set { preferences_packageBackgroundColor_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: packageColor
@@ -860,24 +790,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_packageColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_packageColor)
 
 //····················································································································
-
-@MainActor var preferences_packageColor : NSColor {
-  get { return preferences_packageColor_property.propval }
-  set { preferences_packageColor_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: frontSidePadColor
 //····················································································································
 
 @MainActor let preferences_frontSidePadColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_frontSidePadColor)
-
-//····················································································································
-
-@MainActor var preferences_frontSidePadColor : NSColor {
-  get { return preferences_frontSidePadColor_property.propval }
-  set { preferences_frontSidePadColor_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: displayPackageFrontSidePads
@@ -886,24 +802,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_displayPackageFrontSidePads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayPackageFrontSidePads)
 
 //····················································································································
-
-@MainActor var preferences_displayPackageFrontSidePads : Bool {
-  get { return preferences_displayPackageFrontSidePads_property.propval }
-  set { preferences_displayPackageFrontSidePads_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: backSidePadColor
 //····················································································································
 
 @MainActor let preferences_backSidePadColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_backSidePadColor)
-
-//····················································································································
-
-@MainActor var preferences_backSidePadColor : NSColor {
-  get { return preferences_backSidePadColor_property.propval }
-  set { preferences_backSidePadColor_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: displayPackageBackSidePads
@@ -912,24 +814,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_displayPackageBackSidePads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayPackageBackSidePads)
 
 //····················································································································
-
-@MainActor var preferences_displayPackageBackSidePads : Bool {
-  get { return preferences_displayPackageBackSidePads_property.propval }
-  set { preferences_displayPackageBackSidePads_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: padNumberColor
 //····················································································································
 
 @MainActor let preferences_padNumberColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_padNumberColor)
-
-//····················································································································
-
-@MainActor var preferences_padNumberColor : NSColor {
-  get { return preferences_padNumberColor_property.propval }
-  set { preferences_padNumberColor_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: padNumberFont
@@ -938,24 +826,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_padNumberFont_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 3.0), prefKey: Preferences_padNumberFont)
 
 //····················································································································
-
-@MainActor var preferences_padNumberFont : NSFont {
-  get { return preferences_padNumberFont_property.propval }
-  set { preferences_padNumberFont_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: showPadNumber
 //····················································································································
 
 @MainActor let preferences_showPadNumber_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_showPadNumber)
-
-//····················································································································
-
-@MainActor var preferences_showPadNumber : Bool {
-  get { return preferences_showPadNumber_property.propval }
-  set { preferences_showPadNumber_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: packageGuideColor
@@ -964,24 +838,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_packageGuideColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.yellow, prefKey: Preferences_packageGuideColor)
 
 //····················································································································
-
-@MainActor var preferences_packageGuideColor : NSColor {
-  get { return preferences_packageGuideColor_property.propval }
-  set { preferences_packageGuideColor_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: packageDimensionColor
 //····················································································································
 
 @MainActor let preferences_packageDimensionColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.orange, prefKey: Preferences_packageDimensionColor)
-
-//····················································································································
-
-@MainActor var preferences_packageDimensionColor : NSColor {
-  get { return preferences_packageDimensionColor_property.propval }
-  set { preferences_packageDimensionColor_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: dimensionFont
@@ -990,24 +850,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_dimensionFont_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 2.0), prefKey: Preferences_dimensionFont)
 
 //····················································································································
-
-@MainActor var preferences_dimensionFont : NSFont {
-  get { return preferences_dimensionFont_property.propval }
-  set { preferences_dimensionFont_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: padZoneColor
 //····················································································································
 
 @MainActor let preferences_padZoneColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.magenta, prefKey: Preferences_padZoneColor)
-
-//····················································································································
-
-@MainActor var preferences_padZoneColor : NSColor {
-  get { return preferences_padZoneColor_property.propval }
-  set { preferences_padZoneColor_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: padZoneFont
@@ -1016,24 +862,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_padZoneFont_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 3.0), prefKey: Preferences_padZoneFont)
 
 //····················································································································
-
-@MainActor var preferences_padZoneFont : NSFont {
-  get { return preferences_padZoneFont_property.propval }
-  set { preferences_padZoneFont_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: packageDrawingWidthMultipliedByTen
 //····················································································································
 
 @MainActor let preferences_packageDrawingWidthMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 15, prefKey: Preferences_packageDrawingWidthMultipliedByTen)
-
-//····················································································································
-
-@MainActor var preferences_packageDrawingWidthMultipliedByTen : Int {
-  get { return preferences_packageDrawingWidthMultipliedByTen_property.propval }
-  set { preferences_packageDrawingWidthMultipliedByTen_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mSymbolBackColorForDevice
@@ -1042,24 +874,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mSymbolBackColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_mSymbolBackColorForDevice)
 
 //····················································································································
-
-@MainActor var preferences_mSymbolBackColorForDevice : NSColor {
-  get { return preferences_mSymbolBackColorForDevice_property.propval }
-  set { preferences_mSymbolBackColorForDevice_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mPackageBackColorForDevice
 //····················································································································
 
 @MainActor let preferences_mPackageBackColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_mPackageBackColorForDevice)
-
-//····················································································································
-
-@MainActor var preferences_mPackageBackColorForDevice : NSColor {
-  get { return preferences_mPackageBackColorForDevice_property.propval }
-  set { preferences_mPackageBackColorForDevice_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mSymbolHorizontalFlipForDevice
@@ -1068,24 +886,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mSymbolHorizontalFlipForDevice_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mSymbolHorizontalFlipForDevice)
 
 //····················································································································
-
-@MainActor var preferences_mSymbolHorizontalFlipForDevice : Bool {
-  get { return preferences_mSymbolHorizontalFlipForDevice_property.propval }
-  set { preferences_mSymbolHorizontalFlipForDevice_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mSymbolVerticalFlipForDevice
 //····················································································································
 
 @MainActor let preferences_mSymbolVerticalFlipForDevice_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mSymbolVerticalFlipForDevice)
-
-//····················································································································
-
-@MainActor var preferences_mSymbolVerticalFlipForDevice : Bool {
-  get { return preferences_mSymbolVerticalFlipForDevice_property.propval }
-  set { preferences_mSymbolVerticalFlipForDevice_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mPackageHorizontalFlipForDevice
@@ -1094,24 +898,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mPackageHorizontalFlipForDevice_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mPackageHorizontalFlipForDevice)
 
 //····················································································································
-
-@MainActor var preferences_mPackageHorizontalFlipForDevice : Bool {
-  get { return preferences_mPackageHorizontalFlipForDevice_property.propval }
-  set { preferences_mPackageHorizontalFlipForDevice_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mPackageVerticalFlipForDevice
 //····················································································································
 
 @MainActor let preferences_mPackageVerticalFlipForDevice_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mPackageVerticalFlipForDevice)
-
-//····················································································································
-
-@MainActor var preferences_mPackageVerticalFlipForDevice : Bool {
-  get { return preferences_mPackageVerticalFlipForDevice_property.propval }
-  set { preferences_mPackageVerticalFlipForDevice_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mPackageColorForDevice
@@ -1120,24 +910,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mPackageColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mPackageColorForDevice)
 
 //····················································································································
-
-@MainActor var preferences_mPackageColorForDevice : NSColor {
-  get { return preferences_mPackageColorForDevice_property.propval }
-  set { preferences_mPackageColorForDevice_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mFrontSidePadColorForDevice
 //····················································································································
 
 @MainActor let preferences_mFrontSidePadColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_mFrontSidePadColorForDevice)
-
-//····················································································································
-
-@MainActor var preferences_mFrontSidePadColorForDevice : NSColor {
-  get { return preferences_mFrontSidePadColorForDevice_property.propval }
-  set { preferences_mFrontSidePadColorForDevice_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mBottomSidePadColorForDevice
@@ -1146,24 +922,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mBottomSidePadColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_mBottomSidePadColorForDevice)
 
 //····················································································································
-
-@MainActor var preferences_mBottomSidePadColorForDevice : NSColor {
-  get { return preferences_mBottomSidePadColorForDevice_property.propval }
-  set { preferences_mBottomSidePadColorForDevice_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mPadNumberColorForDevice
 //····················································································································
 
 @MainActor let preferences_mPadNumberColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_mPadNumberColorForDevice)
-
-//····················································································································
-
-@MainActor var preferences_mPadNumberColorForDevice : NSColor {
-  get { return preferences_mPadNumberColorForDevice_property.propval }
-  set { preferences_mPadNumberColorForDevice_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mPackageNameFontForDevice
@@ -1172,24 +934,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mPackageNameFontForDevice_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 9.0), prefKey: Preferences_mPackageNameFontForDevice)
 
 //····················································································································
-
-@MainActor var preferences_mPackageNameFontForDevice : NSFont {
-  get { return preferences_mPackageNameFontForDevice_property.propval }
-  set { preferences_mPackageNameFontForDevice_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mPadNumberFontForDevice
 //····················································································································
 
 @MainActor let preferences_mPadNumberFontForDevice_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 5.0), prefKey: Preferences_mPadNumberFontForDevice)
-
-//····················································································································
-
-@MainActor var preferences_mPadNumberFontForDevice : NSFont {
-  get { return preferences_mPadNumberFontForDevice_property.propval }
-  set { preferences_mPadNumberFontForDevice_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mSymbolColorForDevice
@@ -1198,24 +946,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mSymbolColorForDevice_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mSymbolColorForDevice)
 
 //····················································································································
-
-@MainActor var preferences_mSymbolColorForDevice : NSColor {
-  get { return preferences_mSymbolColorForDevice_property.propval }
-  set { preferences_mSymbolColorForDevice_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mSymbolNameFontForDevice
 //····················································································································
 
 @MainActor let preferences_mSymbolNameFontForDevice_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 9.0), prefKey: Preferences_mSymbolNameFontForDevice)
-
-//····················································································································
-
-@MainActor var preferences_mSymbolNameFontForDevice : NSFont {
-  get { return preferences_mSymbolNameFontForDevice_property.propval }
-  set { preferences_mSymbolNameFontForDevice_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mPinNameFontForDevice
@@ -1224,24 +958,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mPinNameFontForDevice_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_mPinNameFontForDevice)
 
 //····················································································································
-
-@MainActor var preferences_mPinNameFontForDevice : NSFont {
-  get { return preferences_mPinNameFontForDevice_property.propval }
-  set { preferences_mPinNameFontForDevice_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: symbolDrawingWidthForDeviceMultipliedByTen
 //····················································································································
 
 @MainActor let preferences_symbolDrawingWidthForDeviceMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 15, prefKey: Preferences_symbolDrawingWidthForDeviceMultipliedByTen)
-
-//····················································································································
-
-@MainActor var preferences_symbolDrawingWidthForDeviceMultipliedByTen : Int {
-  get { return preferences_symbolDrawingWidthForDeviceMultipliedByTen_property.propval }
-  set { preferences_symbolDrawingWidthForDeviceMultipliedByTen_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: packageDrawingWidthForDeviceMultipliedByTen
@@ -1250,24 +970,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_packageDrawingWidthForDeviceMultipliedByTen_property = EBPreferencesProperty_Int (defaultValue: 15, prefKey: Preferences_packageDrawingWidthForDeviceMultipliedByTen)
 
 //····················································································································
-
-@MainActor var preferences_packageDrawingWidthForDeviceMultipliedByTen : Int {
-  get { return preferences_packageDrawingWidthForDeviceMultipliedByTen_property.propval }
-  set { preferences_packageDrawingWidthForDeviceMultipliedByTen_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: schematicBackColor
 //····················································································································
 
 @MainActor let preferences_schematicBackColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_schematicBackColor)
-
-//····················································································································
-
-@MainActor var preferences_schematicBackColor : NSColor {
-  get { return preferences_schematicBackColor_property.propval }
-  set { preferences_schematicBackColor_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: schematicFrameColor
@@ -1276,24 +982,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_schematicFrameColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_schematicFrameColor)
 
 //····················································································································
-
-@MainActor var preferences_schematicFrameColor : NSColor {
-  get { return preferences_schematicFrameColor_property.propval }
-  set { preferences_schematicFrameColor_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: dotColorGridForSchematic
 //····················································································································
 
 @MainActor let preferences_dotColorGridForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_dotColorGridForSchematic)
-
-//····················································································································
-
-@MainActor var preferences_dotColorGridForSchematic : NSColor {
-  get { return preferences_dotColorGridForSchematic_property.propval }
-  set { preferences_dotColorGridForSchematic_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: lineColorGridForSchematic
@@ -1302,24 +994,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_lineColorGridForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_lineColorGridForSchematic)
 
 //····················································································································
-
-@MainActor var preferences_lineColorGridForSchematic : NSColor {
-  get { return preferences_lineColorGridForSchematic_property.propval }
-  set { preferences_lineColorGridForSchematic_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: symbolColorForUnplacedComponentsForSchematic
 //····················································································································
 
 @MainActor let preferences_symbolColorForUnplacedComponentsForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.darkGray, prefKey: Preferences_symbolColorForUnplacedComponentsForSchematic)
-
-//····················································································································
-
-@MainActor var preferences_symbolColorForUnplacedComponentsForSchematic : NSColor {
-  get { return preferences_symbolColorForUnplacedComponentsForSchematic_property.propval }
-  set { preferences_symbolColorForUnplacedComponentsForSchematic_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: symbolColorForSchematic
@@ -1328,24 +1006,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_symbolColorForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_symbolColorForSchematic)
 
 //····················································································································
-
-@MainActor var preferences_symbolColorForSchematic : NSColor {
-  get { return preferences_symbolColorForSchematic_property.propval }
-  set { preferences_symbolColorForSchematic_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: componentNameColorForSchematic
 //····················································································································
 
 @MainActor let preferences_componentNameColorForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_componentNameColorForSchematic)
-
-//····················································································································
-
-@MainActor var preferences_componentNameColorForSchematic : NSColor {
-  get { return preferences_componentNameColorForSchematic_property.propval }
-  set { preferences_componentNameColorForSchematic_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: componentNameFontForSchematic
@@ -1354,24 +1018,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_componentNameFontForSchematic_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_componentNameFontForSchematic)
 
 //····················································································································
-
-@MainActor var preferences_componentNameFontForSchematic : NSFont {
-  get { return preferences_componentNameFontForSchematic_property.propval }
-  set { preferences_componentNameFontForSchematic_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: componentValueColorForSchematic
 //····················································································································
 
 @MainActor let preferences_componentValueColorForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_componentValueColorForSchematic)
-
-//····················································································································
-
-@MainActor var preferences_componentValueColorForSchematic : NSColor {
-  get { return preferences_componentValueColorForSchematic_property.propval }
-  set { preferences_componentValueColorForSchematic_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: componentValueFontForSchematic
@@ -1380,24 +1030,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_componentValueFontForSchematic_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_componentValueFontForSchematic)
 
 //····················································································································
-
-@MainActor var preferences_componentValueFontForSchematic : NSFont {
-  get { return preferences_componentValueFontForSchematic_property.propval }
-  set { preferences_componentValueFontForSchematic_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: pinNameFontForSchematic
 //····················································································································
 
 @MainActor let preferences_pinNameFontForSchematic_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_pinNameFontForSchematic)
-
-//····················································································································
-
-@MainActor var preferences_pinNameFontForSchematic : NSFont {
-  get { return preferences_pinNameFontForSchematic_property.propval }
-  set { preferences_pinNameFontForSchematic_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: pinNameColorForSchematic
@@ -1406,24 +1042,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_pinNameColorForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_pinNameColorForSchematic)
 
 //····················································································································
-
-@MainActor var preferences_pinNameColorForSchematic : NSColor {
-  get { return preferences_pinNameColorForSchematic_property.propval }
-  set { preferences_pinNameColorForSchematic_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: pinNumberFontForSchematic
 //····················································································································
 
 @MainActor let preferences_pinNumberFontForSchematic_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_pinNumberFontForSchematic)
-
-//····················································································································
-
-@MainActor var preferences_pinNumberFontForSchematic : NSFont {
-  get { return preferences_pinNumberFontForSchematic_property.propval }
-  set { preferences_pinNumberFontForSchematic_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: pinNumberColorForSchematic
@@ -1432,24 +1054,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_pinNumberColorForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.darkGray, prefKey: Preferences_pinNumberColorForSchematic)
 
 //····················································································································
-
-@MainActor var preferences_pinNumberColorForSchematic : NSColor {
-  get { return preferences_pinNumberColorForSchematic_property.propval }
-  set { preferences_pinNumberColorForSchematic_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: connectionColorForSchematic
 //····················································································································
 
 @MainActor let preferences_connectionColorForSchematic_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_connectionColorForSchematic)
-
-//····················································································································
-
-@MainActor var preferences_connectionColorForSchematic : NSColor {
-  get { return preferences_connectionColorForSchematic_property.propval }
-  set { preferences_connectionColorForSchematic_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: symbolDrawingWidthMultipliedByTenForSchematic
@@ -1458,24 +1066,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_symbolDrawingWidthMultipliedByTenForSchematic_property = EBPreferencesProperty_Int (defaultValue: 5, prefKey: Preferences_symbolDrawingWidthMultipliedByTenForSchematic)
 
 //····················································································································
-
-@MainActor var preferences_symbolDrawingWidthMultipliedByTenForSchematic : Int {
-  get { return preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.propval }
-  set { preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: crossColorGridForBoard
 //····················································································································
 
 @MainActor let preferences_crossColorGridForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_crossColorGridForBoard)
-
-//····················································································································
-
-@MainActor var preferences_crossColorGridForBoard : NSColor {
-  get { return preferences_crossColorGridForBoard_property.propval }
-  set { preferences_crossColorGridForBoard_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: lineColorGridForBoard
@@ -1484,24 +1078,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_lineColorGridForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.lightGray, prefKey: Preferences_lineColorGridForBoard)
 
 //····················································································································
-
-@MainActor var preferences_lineColorGridForBoard : NSColor {
-  get { return preferences_lineColorGridForBoard_property.propval }
-  set { preferences_lineColorGridForBoard_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: boardBackgroundColorForBoard
 //····················································································································
 
 @MainActor let preferences_boardBackgroundColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.black, prefKey: Preferences_boardBackgroundColorForBoard)
-
-//····················································································································
-
-@MainActor var preferences_boardBackgroundColorForBoard : NSColor {
-  get { return preferences_boardBackgroundColorForBoard_property.propval }
-  set { preferences_boardBackgroundColorForBoard_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: errorBackgroundColorForBoard
@@ -1510,24 +1090,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_errorBackgroundColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_errorBackgroundColorForBoard)
 
 //····················································································································
-
-@MainActor var preferences_errorBackgroundColorForBoard : NSColor {
-  get { return preferences_errorBackgroundColorForBoard_property.propval }
-  set { preferences_errorBackgroundColorForBoard_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: warningBackgroundColorForBoard
 //····················································································································
 
 @MainActor let preferences_warningBackgroundColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.orange, prefKey: Preferences_warningBackgroundColorForBoard)
-
-//····················································································································
-
-@MainActor var preferences_warningBackgroundColorForBoard : NSColor {
-  get { return preferences_warningBackgroundColorForBoard_property.propval }
-  set { preferences_warningBackgroundColorForBoard_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: drawWarningBackgroundForBoard
@@ -1536,24 +1102,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_drawWarningBackgroundForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_drawWarningBackgroundForBoard)
 
 //····················································································································
-
-@MainActor var preferences_drawWarningBackgroundForBoard : Bool {
-  get { return preferences_drawWarningBackgroundForBoard_property.propval }
-  set { preferences_drawWarningBackgroundForBoard_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: boardLimitsColorForBoard
 //····················································································································
 
 @MainActor let preferences_boardLimitsColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_boardLimitsColorForBoard)
-
-//····················································································································
-
-@MainActor var preferences_boardLimitsColorForBoard : NSColor {
-  get { return preferences_boardLimitsColorForBoard_property.propval }
-  set { preferences_boardLimitsColorForBoard_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: boardClearanceColorForBoard
@@ -1562,24 +1114,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_boardClearanceColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.yellow, prefKey: Preferences_boardClearanceColorForBoard)
 
 //····················································································································
-
-@MainActor var preferences_boardClearanceColorForBoard : NSColor {
-  get { return preferences_boardClearanceColorForBoard_property.propval }
-  set { preferences_boardClearanceColorForBoard_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: frontSideRestrictRectangleColorForBoard
 //····················································································································
 
 @MainActor let preferences_frontSideRestrictRectangleColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_frontSideRestrictRectangleColorForBoard)
-
-//····················································································································
-
-@MainActor var preferences_frontSideRestrictRectangleColorForBoard : NSColor {
-  get { return preferences_frontSideRestrictRectangleColorForBoard_property.propval }
-  set { preferences_frontSideRestrictRectangleColorForBoard_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: backSideRestrictRectangleColorForBoard
@@ -1588,24 +1126,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_backSideRestrictRectangleColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_backSideRestrictRectangleColorForBoard)
 
 //····················································································································
-
-@MainActor var preferences_backSideRestrictRectangleColorForBoard : NSColor {
-  get { return preferences_backSideRestrictRectangleColorForBoard_property.propval }
-  set { preferences_backSideRestrictRectangleColorForBoard_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: inner1SideRestrictRectangleColorForBoard
 //····················································································································
 
 @MainActor let preferences_inner1SideRestrictRectangleColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.yellow, prefKey: Preferences_inner1SideRestrictRectangleColorForBoard)
-
-//····················································································································
-
-@MainActor var preferences_inner1SideRestrictRectangleColorForBoard : NSColor {
-  get { return preferences_inner1SideRestrictRectangleColorForBoard_property.propval }
-  set { preferences_inner1SideRestrictRectangleColorForBoard_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: inner2SideRestrictRectangleColorForBoard
@@ -1614,24 +1138,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_inner2SideRestrictRectangleColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.orange, prefKey: Preferences_inner2SideRestrictRectangleColorForBoard)
 
 //····················································································································
-
-@MainActor var preferences_inner2SideRestrictRectangleColorForBoard : NSColor {
-  get { return preferences_inner2SideRestrictRectangleColorForBoard_property.propval }
-  set { preferences_inner2SideRestrictRectangleColorForBoard_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: inner3SideRestrictRectangleColorForBoard
 //····················································································································
 
 @MainActor let preferences_inner3SideRestrictRectangleColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.purple, prefKey: Preferences_inner3SideRestrictRectangleColorForBoard)
-
-//····················································································································
-
-@MainActor var preferences_inner3SideRestrictRectangleColorForBoard : NSColor {
-  get { return preferences_inner3SideRestrictRectangleColorForBoard_property.propval }
-  set { preferences_inner3SideRestrictRectangleColorForBoard_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: inner4SideRestrictRectangleColorForBoard
@@ -1640,24 +1150,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_inner4SideRestrictRectangleColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.magenta, prefKey: Preferences_inner4SideRestrictRectangleColorForBoard)
 
 //····················································································································
-
-@MainActor var preferences_inner4SideRestrictRectangleColorForBoard : NSColor {
-  get { return preferences_inner4SideRestrictRectangleColorForBoard_property.propval }
-  set { preferences_inner4SideRestrictRectangleColorForBoard_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: frontSideLegendColorForBoard
 //····················································································································
 
 @MainActor let preferences_frontSideLegendColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_frontSideLegendColorForBoard)
-
-//····················································································································
-
-@MainActor var preferences_frontSideLegendColorForBoard : NSColor {
-  get { return preferences_frontSideLegendColorForBoard_property.propval }
-  set { preferences_frontSideLegendColorForBoard_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: frontSideLayoutColorForBoard
@@ -1666,24 +1162,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_frontSideLayoutColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_frontSideLayoutColorForBoard)
 
 //····················································································································
-
-@MainActor var preferences_frontSideLayoutColorForBoard : NSColor {
-  get { return preferences_frontSideLayoutColorForBoard_property.propval }
-  set { preferences_frontSideLayoutColorForBoard_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: backSideLayoutColorForBoard
 //····················································································································
 
 @MainActor let preferences_backSideLayoutColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_backSideLayoutColorForBoard)
-
-//····················································································································
-
-@MainActor var preferences_backSideLayoutColorForBoard : NSColor {
-  get { return preferences_backSideLayoutColorForBoard_property.propval }
-  set { preferences_backSideLayoutColorForBoard_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: inner1LayoutColorForBoard
@@ -1692,24 +1174,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_inner1LayoutColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_inner1LayoutColorForBoard)
 
 //····················································································································
-
-@MainActor var preferences_inner1LayoutColorForBoard : NSColor {
-  get { return preferences_inner1LayoutColorForBoard_property.propval }
-  set { preferences_inner1LayoutColorForBoard_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: inner2LayoutColorForBoard
 //····················································································································
 
 @MainActor let preferences_inner2LayoutColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_inner2LayoutColorForBoard)
-
-//····················································································································
-
-@MainActor var preferences_inner2LayoutColorForBoard : NSColor {
-  get { return preferences_inner2LayoutColorForBoard_property.propval }
-  set { preferences_inner2LayoutColorForBoard_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: inner3LayoutColorForBoard
@@ -1718,24 +1186,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_inner3LayoutColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_inner3LayoutColorForBoard)
 
 //····················································································································
-
-@MainActor var preferences_inner3LayoutColorForBoard : NSColor {
-  get { return preferences_inner3LayoutColorForBoard_property.propval }
-  set { preferences_inner3LayoutColorForBoard_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: inner4LayoutColorForBoard
 //····················································································································
 
 @MainActor let preferences_inner4LayoutColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_inner4LayoutColorForBoard)
-
-//····················································································································
-
-@MainActor var preferences_inner4LayoutColorForBoard : NSColor {
-  get { return preferences_inner4LayoutColorForBoard_property.propval }
-  set { preferences_inner4LayoutColorForBoard_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: backSideLegendColorForBoard
@@ -1744,24 +1198,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_backSideLegendColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_backSideLegendColorForBoard)
 
 //····················································································································
-
-@MainActor var preferences_backSideLegendColorForBoard : NSColor {
-  get { return preferences_backSideLegendColorForBoard_property.propval }
-  set { preferences_backSideLegendColorForBoard_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: frontSidePadColorForBoard
 //····················································································································
 
 @MainActor let preferences_frontSidePadColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_frontSidePadColorForBoard)
-
-//····················································································································
-
-@MainActor var preferences_frontSidePadColorForBoard : NSColor {
-  get { return preferences_frontSidePadColorForBoard_property.propval }
-  set { preferences_frontSidePadColorForBoard_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: backSidePadColorForBoard
@@ -1770,24 +1210,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_backSidePadColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_backSidePadColorForBoard)
 
 //····················································································································
-
-@MainActor var preferences_backSidePadColorForBoard : NSColor {
-  get { return preferences_backSidePadColorForBoard_property.propval }
-  set { preferences_backSidePadColorForBoard_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: padNumberFontForBoard
 //····················································································································
 
 @MainActor let preferences_padNumberFontForBoard_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 3.0), prefKey: Preferences_padNumberFontForBoard)
-
-//····················································································································
-
-@MainActor var preferences_padNumberFontForBoard : NSFont {
-  get { return preferences_padNumberFontForBoard_property.propval }
-  set { preferences_padNumberFontForBoard_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: padNumberColorForBoard
@@ -1796,24 +1222,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_padNumberColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_padNumberColorForBoard)
 
 //····················································································································
-
-@MainActor var preferences_padNumberColorForBoard : NSColor {
-  get { return preferences_padNumberColorForBoard_property.propval }
-  set { preferences_padNumberColorForBoard_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mShowComponentRotationKnobInBoard
 //····················································································································
 
 @MainActor let preferences_mShowComponentRotationKnobInBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mShowComponentRotationKnobInBoard)
-
-//····················································································································
-
-@MainActor var preferences_mShowComponentRotationKnobInBoard : Bool {
-  get { return preferences_mShowComponentRotationKnobInBoard_property.propval }
-  set { preferences_mShowComponentRotationKnobInBoard_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mShowTextRotationKnobInBoard
@@ -1822,24 +1234,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mShowTextRotationKnobInBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mShowTextRotationKnobInBoard)
 
 //····················································································································
-
-@MainActor var preferences_mShowTextRotationKnobInBoard : Bool {
-  get { return preferences_mShowTextRotationKnobInBoard_property.propval }
-  set { preferences_mShowTextRotationKnobInBoard_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: sampleString
 //····················································································································
 
 @MainActor let preferences_sampleString_property = EBPreferencesProperty_String (defaultValue: "The quick brown fox jumps over the lazy dog", prefKey: Preferences_sampleString)
-
-//····················································································································
-
-@MainActor var preferences_sampleString : String {
-  get { return preferences_sampleString_property.propval }
-  set { preferences_sampleString_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: showGerberDrawingFlow
@@ -1848,24 +1246,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_showGerberDrawingFlow_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_showGerberDrawingFlow)
 
 //····················································································································
-
-@MainActor var preferences_showGerberDrawingFlow : Bool {
-  get { return preferences_showGerberDrawingFlow_property.propval }
-  set { preferences_showGerberDrawingFlow_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: showGerberDrawingIndexes
 //····················································································································
 
 @MainActor let preferences_showGerberDrawingIndexes_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_showGerberDrawingIndexes)
-
-//····················································································································
-
-@MainActor var preferences_showGerberDrawingIndexes : Bool {
-  get { return preferences_showGerberDrawingIndexes_property.propval }
-  set { preferences_showGerberDrawingIndexes_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: fontEditionTransparency
@@ -1874,24 +1258,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_fontEditionTransparency_property = EBPreferencesProperty_Double (defaultValue: 0.5, prefKey: Preferences_fontEditionTransparency)
 
 //····················································································································
-
-@MainActor var preferences_fontEditionTransparency : Double {
-  get { return preferences_fontEditionTransparency_property.propval }
-  set { preferences_fontEditionTransparency_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: checkForSystemLibraryAtStartUp
 //····················································································································
 
 @MainActor let preferences_checkForSystemLibraryAtStartUp_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_checkForSystemLibraryAtStartUp)
-
-//····················································································································
-
-@MainActor var preferences_checkForSystemLibraryAtStartUp : Bool {
-  get { return preferences_checkForSystemLibraryAtStartUp_property.propval }
-  set { preferences_checkForSystemLibraryAtStartUp_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: systemLibraryCheckTimeInterval
@@ -1900,24 +1270,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_systemLibraryCheckTimeInterval_property = EBPreferencesProperty_Int (defaultValue: 0, prefKey: Preferences_systemLibraryCheckTimeInterval)
 
 //····················································································································
-
-@MainActor var preferences_systemLibraryCheckTimeInterval : Int {
-  get { return preferences_systemLibraryCheckTimeInterval_property.propval }
-  set { preferences_systemLibraryCheckTimeInterval_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerModelViewHorizontalFlip
 //····················································································································
 
 @MainActor let preferences_mergerModelViewHorizontalFlip_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewHorizontalFlip)
-
-//····················································································································
-
-@MainActor var preferences_mergerModelViewHorizontalFlip : Bool {
-  get { return preferences_mergerModelViewHorizontalFlip_property.propval }
-  set { preferences_mergerModelViewHorizontalFlip_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerModelViewVerticalFlip
@@ -1926,24 +1282,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerModelViewVerticalFlip_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewVerticalFlip)
 
 //····················································································································
-
-@MainActor var preferences_mergerModelViewVerticalFlip : Bool {
-  get { return preferences_mergerModelViewVerticalFlip_property.propval }
-  set { preferences_mergerModelViewVerticalFlip_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerModelViewDisplayHoles
 //····················································································································
 
 @MainActor let preferences_mergerModelViewDisplayHoles_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayHoles)
-
-//····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayHoles : Bool {
-  get { return preferences_mergerModelViewDisplayHoles_property.propval }
-  set { preferences_mergerModelViewDisplayHoles_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayVias
@@ -1952,24 +1294,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerModelViewDisplayVias_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayVias)
 
 //····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayVias : Bool {
-  get { return preferences_mergerModelViewDisplayVias_property.propval }
-  set { preferences_mergerModelViewDisplayVias_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerModelViewDisplayFrontPads
 //····················································································································
 
 @MainActor let preferences_mergerModelViewDisplayFrontPads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayFrontPads)
-
-//····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayFrontPads : Bool {
-  get { return preferences_mergerModelViewDisplayFrontPads_property.propval }
-  set { preferences_mergerModelViewDisplayFrontPads_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayModelBoardLimits
@@ -1978,24 +1306,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerModelViewDisplayModelBoardLimits_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayModelBoardLimits)
 
 //····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayModelBoardLimits : Bool {
-  get { return preferences_mergerModelViewDisplayModelBoardLimits_property.propval }
-  set { preferences_mergerModelViewDisplayModelBoardLimits_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerModelViewDisplayFrontComponentNames
 //····················································································································
 
 @MainActor let preferences_mergerModelViewDisplayFrontComponentNames_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontComponentNames)
-
-//····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayFrontComponentNames : Bool {
-  get { return preferences_mergerModelViewDisplayFrontComponentNames_property.propval }
-  set { preferences_mergerModelViewDisplayFrontComponentNames_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayFrontComponentValues
@@ -2004,24 +1318,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerModelViewDisplayFrontComponentValues_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontComponentValues)
 
 //····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayFrontComponentValues : Bool {
-  get { return preferences_mergerModelViewDisplayFrontComponentValues_property.propval }
-  set { preferences_mergerModelViewDisplayFrontComponentValues_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerModelViewDisplayFrontPackages
 //····················································································································
 
 @MainActor let preferences_mergerModelViewDisplayFrontPackages_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontPackages)
-
-//····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayFrontPackages : Bool {
-  get { return preferences_mergerModelViewDisplayFrontPackages_property.propval }
-  set { preferences_mergerModelViewDisplayFrontPackages_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayFrontLegendTexts
@@ -2030,24 +1330,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerModelViewDisplayFrontLegendTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontLegendTexts)
 
 //····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayFrontLegendTexts : Bool {
-  get { return preferences_mergerModelViewDisplayFrontLegendTexts_property.propval }
-  set { preferences_mergerModelViewDisplayFrontLegendTexts_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerModelViewDisplayFrontTracks
 //····················································································································
 
 @MainActor let preferences_mergerModelViewDisplayFrontTracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontTracks)
-
-//····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayFrontTracks : Bool {
-  get { return preferences_mergerModelViewDisplayFrontTracks_property.propval }
-  set { preferences_mergerModelViewDisplayFrontTracks_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayInner1Tracks
@@ -2056,24 +1342,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerModelViewDisplayInner1Tracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayInner1Tracks)
 
 //····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayInner1Tracks : Bool {
-  get { return preferences_mergerModelViewDisplayInner1Tracks_property.propval }
-  set { preferences_mergerModelViewDisplayInner1Tracks_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerModelViewDisplayInner2Tracks
 //····················································································································
 
 @MainActor let preferences_mergerModelViewDisplayInner2Tracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayInner2Tracks)
-
-//····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayInner2Tracks : Bool {
-  get { return preferences_mergerModelViewDisplayInner2Tracks_property.propval }
-  set { preferences_mergerModelViewDisplayInner2Tracks_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayInner3Tracks
@@ -2082,24 +1354,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerModelViewDisplayInner3Tracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayInner3Tracks)
 
 //····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayInner3Tracks : Bool {
-  get { return preferences_mergerModelViewDisplayInner3Tracks_property.propval }
-  set { preferences_mergerModelViewDisplayInner3Tracks_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerModelViewDisplayInner4Tracks
 //····················································································································
 
 @MainActor let preferences_mergerModelViewDisplayInner4Tracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayInner4Tracks)
-
-//····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayInner4Tracks : Bool {
-  get { return preferences_mergerModelViewDisplayInner4Tracks_property.propval }
-  set { preferences_mergerModelViewDisplayInner4Tracks_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayFrontLayoutTexts
@@ -2108,24 +1366,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerModelViewDisplayFrontLayoutTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontLayoutTexts)
 
 //····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayFrontLayoutTexts : Bool {
-  get { return preferences_mergerModelViewDisplayFrontLayoutTexts_property.propval }
-  set { preferences_mergerModelViewDisplayFrontLayoutTexts_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerModelViewDisplayBackPads
 //····················································································································
 
 @MainActor let preferences_mergerModelViewDisplayBackPads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayBackPads)
-
-//····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayBackPads : Bool {
-  get { return preferences_mergerModelViewDisplayBackPads_property.propval }
-  set { preferences_mergerModelViewDisplayBackPads_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayTraversingPads
@@ -2134,24 +1378,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerModelViewDisplayTraversingPads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayTraversingPads)
 
 //····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayTraversingPads : Bool {
-  get { return preferences_mergerModelViewDisplayTraversingPads_property.propval }
-  set { preferences_mergerModelViewDisplayTraversingPads_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerModelViewDisplayBackComponentNames
 //····················································································································
 
 @MainActor let preferences_mergerModelViewDisplayBackComponentNames_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackComponentNames)
-
-//····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayBackComponentNames : Bool {
-  get { return preferences_mergerModelViewDisplayBackComponentNames_property.propval }
-  set { preferences_mergerModelViewDisplayBackComponentNames_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayBackComponentValues
@@ -2160,24 +1390,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerModelViewDisplayBackComponentValues_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackComponentValues)
 
 //····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayBackComponentValues : Bool {
-  get { return preferences_mergerModelViewDisplayBackComponentValues_property.propval }
-  set { preferences_mergerModelViewDisplayBackComponentValues_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerModelViewDisplayBackLegendTexts
 //····················································································································
 
 @MainActor let preferences_mergerModelViewDisplayBackLegendTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackLegendTexts)
-
-//····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayBackLegendTexts : Bool {
-  get { return preferences_mergerModelViewDisplayBackLegendTexts_property.propval }
-  set { preferences_mergerModelViewDisplayBackLegendTexts_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayBackPackages
@@ -2186,24 +1402,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerModelViewDisplayBackPackages_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackPackages)
 
 //····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayBackPackages : Bool {
-  get { return preferences_mergerModelViewDisplayBackPackages_property.propval }
-  set { preferences_mergerModelViewDisplayBackPackages_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerModelViewDisplayBackTracks
 //····················································································································
 
 @MainActor let preferences_mergerModelViewDisplayBackTracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackTracks)
-
-//····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayBackTracks : Bool {
-  get { return preferences_mergerModelViewDisplayBackTracks_property.propval }
-  set { preferences_mergerModelViewDisplayBackTracks_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayBackLayoutTexts
@@ -2212,24 +1414,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerModelViewDisplayBackLayoutTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayBackLayoutTexts)
 
 //····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayBackLayoutTexts : Bool {
-  get { return preferences_mergerModelViewDisplayBackLayoutTexts_property.propval }
-  set { preferences_mergerModelViewDisplayBackLayoutTexts_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerModelViewDisplayFrontLegendLines
 //····················································································································
 
 @MainActor let preferences_mergerModelViewDisplayFrontLegendLines_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerModelViewDisplayFrontLegendLines)
-
-//····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayFrontLegendLines : Bool {
-  get { return preferences_mergerModelViewDisplayFrontLegendLines_property.propval }
-  set { preferences_mergerModelViewDisplayFrontLegendLines_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerModelViewDisplayBackLegendLines
@@ -2238,24 +1426,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerModelViewDisplayBackLegendLines_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerModelViewDisplayBackLegendLines)
 
 //····················································································································
-
-@MainActor var preferences_mergerModelViewDisplayBackLegendLines : Bool {
-  get { return preferences_mergerModelViewDisplayBackLegendLines_property.propval }
-  set { preferences_mergerModelViewDisplayBackLegendLines_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerBoardViewHorizontalFlip
 //····················································································································
 
 @MainActor let preferences_mergerBoardViewHorizontalFlip_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewHorizontalFlip)
-
-//····················································································································
-
-@MainActor var preferences_mergerBoardViewHorizontalFlip : Bool {
-  get { return preferences_mergerBoardViewHorizontalFlip_property.propval }
-  set { preferences_mergerBoardViewHorizontalFlip_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerBoardViewVerticalFlip
@@ -2264,24 +1438,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerBoardViewVerticalFlip_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewVerticalFlip)
 
 //····················································································································
-
-@MainActor var preferences_mergerBoardViewVerticalFlip : Bool {
-  get { return preferences_mergerBoardViewVerticalFlip_property.propval }
-  set { preferences_mergerBoardViewVerticalFlip_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerBoardViewDisplayHoles
 //····················································································································
 
 @MainActor let preferences_mergerBoardViewDisplayHoles_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayHoles)
-
-//····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayHoles : Bool {
-  get { return preferences_mergerBoardViewDisplayHoles_property.propval }
-  set { preferences_mergerBoardViewDisplayHoles_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayVias
@@ -2290,24 +1450,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerBoardViewDisplayVias_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayVias)
 
 //····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayVias : Bool {
-  get { return preferences_mergerBoardViewDisplayVias_property.propval }
-  set { preferences_mergerBoardViewDisplayVias_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerBoardViewDisplayFrontPads
 //····················································································································
 
 @MainActor let preferences_mergerBoardViewDisplayFrontPads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayFrontPads)
-
-//····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayFrontPads : Bool {
-  get { return preferences_mergerBoardViewDisplayFrontPads_property.propval }
-  set { preferences_mergerBoardViewDisplayFrontPads_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayTraversingPads
@@ -2316,24 +1462,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerBoardViewDisplayTraversingPads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayTraversingPads)
 
 //····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayTraversingPads : Bool {
-  get { return preferences_mergerBoardViewDisplayTraversingPads_property.propval }
-  set { preferences_mergerBoardViewDisplayTraversingPads_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerBoardViewDisplayModelBoardsLimits
 //····················································································································
 
 @MainActor let preferences_mergerBoardViewDisplayModelBoardsLimits_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayModelBoardsLimits)
-
-//····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayModelBoardsLimits : Bool {
-  get { return preferences_mergerBoardViewDisplayModelBoardsLimits_property.propval }
-  set { preferences_mergerBoardViewDisplayModelBoardsLimits_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayBoardLimits
@@ -2342,24 +1474,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerBoardViewDisplayBoardLimits_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayBoardLimits)
 
 //····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayBoardLimits : Bool {
-  get { return preferences_mergerBoardViewDisplayBoardLimits_property.propval }
-  set { preferences_mergerBoardViewDisplayBoardLimits_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerBoardViewDisplayFrontComponentNames
 //····················································································································
 
 @MainActor let preferences_mergerBoardViewDisplayFrontComponentNames_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontComponentNames)
-
-//····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayFrontComponentNames : Bool {
-  get { return preferences_mergerBoardViewDisplayFrontComponentNames_property.propval }
-  set { preferences_mergerBoardViewDisplayFrontComponentNames_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayFrontComponentValues
@@ -2368,24 +1486,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerBoardViewDisplayFrontComponentValues_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontComponentValues)
 
 //····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayFrontComponentValues : Bool {
-  get { return preferences_mergerBoardViewDisplayFrontComponentValues_property.propval }
-  set { preferences_mergerBoardViewDisplayFrontComponentValues_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerBoardViewDisplayFrontPackages
 //····················································································································
 
 @MainActor let preferences_mergerBoardViewDisplayFrontPackages_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontPackages)
-
-//····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayFrontPackages : Bool {
-  get { return preferences_mergerBoardViewDisplayFrontPackages_property.propval }
-  set { preferences_mergerBoardViewDisplayFrontPackages_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayFrontLegendTexts
@@ -2394,24 +1498,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerBoardViewDisplayFrontLegendTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontLegendTexts)
 
 //····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayFrontLegendTexts : Bool {
-  get { return preferences_mergerBoardViewDisplayFrontLegendTexts_property.propval }
-  set { preferences_mergerBoardViewDisplayFrontLegendTexts_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerBoardViewDisplayFrontTracks
 //····················································································································
 
 @MainActor let preferences_mergerBoardViewDisplayFrontTracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontTracks)
-
-//····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayFrontTracks : Bool {
-  get { return preferences_mergerBoardViewDisplayFrontTracks_property.propval }
-  set { preferences_mergerBoardViewDisplayFrontTracks_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayInner1Tracks
@@ -2420,24 +1510,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerBoardViewDisplayInner1Tracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayInner1Tracks)
 
 //····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayInner1Tracks : Bool {
-  get { return preferences_mergerBoardViewDisplayInner1Tracks_property.propval }
-  set { preferences_mergerBoardViewDisplayInner1Tracks_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerBoardViewDisplayInner2Tracks
 //····················································································································
 
 @MainActor let preferences_mergerBoardViewDisplayInner2Tracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayInner2Tracks)
-
-//····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayInner2Tracks : Bool {
-  get { return preferences_mergerBoardViewDisplayInner2Tracks_property.propval }
-  set { preferences_mergerBoardViewDisplayInner2Tracks_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayInner3Tracks
@@ -2446,24 +1522,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerBoardViewDisplayInner3Tracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayInner3Tracks)
 
 //····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayInner3Tracks : Bool {
-  get { return preferences_mergerBoardViewDisplayInner3Tracks_property.propval }
-  set { preferences_mergerBoardViewDisplayInner3Tracks_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerBoardViewDisplayInner4Tracks
 //····················································································································
 
 @MainActor let preferences_mergerBoardViewDisplayInner4Tracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayInner4Tracks)
-
-//····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayInner4Tracks : Bool {
-  get { return preferences_mergerBoardViewDisplayInner4Tracks_property.propval }
-  set { preferences_mergerBoardViewDisplayInner4Tracks_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayFrontLayoutTexts
@@ -2472,24 +1534,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerBoardViewDisplayFrontLayoutTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontLayoutTexts)
 
 //····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayFrontLayoutTexts : Bool {
-  get { return preferences_mergerBoardViewDisplayFrontLayoutTexts_property.propval }
-  set { preferences_mergerBoardViewDisplayFrontLayoutTexts_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerBoardViewDisplayBackPads
 //····················································································································
 
 @MainActor let preferences_mergerBoardViewDisplayBackPads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayBackPads)
-
-//····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayBackPads : Bool {
-  get { return preferences_mergerBoardViewDisplayBackPads_property.propval }
-  set { preferences_mergerBoardViewDisplayBackPads_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayBackComponentNames
@@ -2498,24 +1546,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerBoardViewDisplayBackComponentNames_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackComponentNames)
 
 //····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayBackComponentNames : Bool {
-  get { return preferences_mergerBoardViewDisplayBackComponentNames_property.propval }
-  set { preferences_mergerBoardViewDisplayBackComponentNames_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerBoardViewDisplayBackComponentValues
 //····················································································································
 
 @MainActor let preferences_mergerBoardViewDisplayBackComponentValues_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackComponentValues)
-
-//····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayBackComponentValues : Bool {
-  get { return preferences_mergerBoardViewDisplayBackComponentValues_property.propval }
-  set { preferences_mergerBoardViewDisplayBackComponentValues_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayBackLegendTexts
@@ -2524,24 +1558,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerBoardViewDisplayBackLegendTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackLegendTexts)
 
 //····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayBackLegendTexts : Bool {
-  get { return preferences_mergerBoardViewDisplayBackLegendTexts_property.propval }
-  set { preferences_mergerBoardViewDisplayBackLegendTexts_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerBoardViewDisplayBackPackages
 //····················································································································
 
 @MainActor let preferences_mergerBoardViewDisplayBackPackages_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackPackages)
-
-//····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayBackPackages : Bool {
-  get { return preferences_mergerBoardViewDisplayBackPackages_property.propval }
-  set { preferences_mergerBoardViewDisplayBackPackages_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayBackTracks
@@ -2550,24 +1570,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerBoardViewDisplayBackTracks_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackTracks)
 
 //····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayBackTracks : Bool {
-  get { return preferences_mergerBoardViewDisplayBackTracks_property.propval }
-  set { preferences_mergerBoardViewDisplayBackTracks_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerBoardViewDisplayBackLayoutTexts
 //····················································································································
 
 @MainActor let preferences_mergerBoardViewDisplayBackLayoutTexts_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayBackLayoutTexts)
-
-//····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayBackLayoutTexts : Bool {
-  get { return preferences_mergerBoardViewDisplayBackLayoutTexts_property.propval }
-  set { preferences_mergerBoardViewDisplayBackLayoutTexts_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerBoardViewDisplayFrontLegendLines
@@ -2576,24 +1582,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerBoardViewDisplayFrontLegendLines_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_mergerBoardViewDisplayFrontLegendLines)
 
 //····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayFrontLegendLines : Bool {
-  get { return preferences_mergerBoardViewDisplayFrontLegendLines_property.propval }
-  set { preferences_mergerBoardViewDisplayFrontLegendLines_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerBoardViewDisplayBackLegendLines
 //····················································································································
 
 @MainActor let preferences_mergerBoardViewDisplayBackLegendLines_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_mergerBoardViewDisplayBackLegendLines)
-
-//····················································································································
-
-@MainActor var preferences_mergerBoardViewDisplayBackLegendLines : Bool {
-  get { return preferences_mergerBoardViewDisplayBackLegendLines_property.propval }
-  set { preferences_mergerBoardViewDisplayBackLegendLines_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerColorHoles
@@ -2602,24 +1594,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerColorHoles_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.white, prefKey: Preferences_mergerColorHoles)
 
 //····················································································································
-
-@MainActor var preferences_mergerColorHoles : NSColor {
-  get { return preferences_mergerColorHoles_property.propval }
-  set { preferences_mergerColorHoles_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerColorVias
 //····················································································································
 
 @MainActor let preferences_mergerColorVias_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.red, prefKey: Preferences_mergerColorVias)
-
-//····················································································································
-
-@MainActor var preferences_mergerColorVias : NSColor {
-  get { return preferences_mergerColorVias_property.propval }
-  set { preferences_mergerColorVias_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerColorFrontPads
@@ -2628,24 +1606,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerColorFrontPads_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorFrontPads)
 
 //····················································································································
-
-@MainActor var preferences_mergerColorFrontPads : NSColor {
-  get { return preferences_mergerColorFrontPads_property.propval }
-  set { preferences_mergerColorFrontPads_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerColorBoardLimits
 //····················································································································
 
 @MainActor let preferences_mergerColorBoardLimits_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorBoardLimits)
-
-//····················································································································
-
-@MainActor var preferences_mergerColorBoardLimits : NSColor {
-  get { return preferences_mergerColorBoardLimits_property.propval }
-  set { preferences_mergerColorBoardLimits_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerColorInternalBoardsLimits
@@ -2654,24 +1618,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerColorInternalBoardsLimits_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.yellow, prefKey: Preferences_mergerColorInternalBoardsLimits)
 
 //····················································································································
-
-@MainActor var preferences_mergerColorInternalBoardsLimits : NSColor {
-  get { return preferences_mergerColorInternalBoardsLimits_property.propval }
-  set { preferences_mergerColorInternalBoardsLimits_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerColorFrontComponentNames
 //····················································································································
 
 @MainActor let preferences_mergerColorFrontComponentNames_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorFrontComponentNames)
-
-//····················································································································
-
-@MainActor var preferences_mergerColorFrontComponentNames : NSColor {
-  get { return preferences_mergerColorFrontComponentNames_property.propval }
-  set { preferences_mergerColorFrontComponentNames_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerColorFrontComponentValues
@@ -2680,24 +1630,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerColorFrontComponentValues_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorFrontComponentValues)
 
 //····················································································································
-
-@MainActor var preferences_mergerColorFrontComponentValues : NSColor {
-  get { return preferences_mergerColorFrontComponentValues_property.propval }
-  set { preferences_mergerColorFrontComponentValues_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerColorFrontPackages
 //····················································································································
 
 @MainActor let preferences_mergerColorFrontPackages_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorFrontPackages)
-
-//····················································································································
-
-@MainActor var preferences_mergerColorFrontPackages : NSColor {
-  get { return preferences_mergerColorFrontPackages_property.propval }
-  set { preferences_mergerColorFrontPackages_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerColorFrontLegendTexts
@@ -2706,24 +1642,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerColorFrontLegendTexts_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorFrontLegendTexts)
 
 //····················································································································
-
-@MainActor var preferences_mergerColorFrontLegendTexts : NSColor {
-  get { return preferences_mergerColorFrontLegendTexts_property.propval }
-  set { preferences_mergerColorFrontLegendTexts_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerColorFrontTracks
 //····················································································································
 
 @MainActor let preferences_mergerColorFrontTracks_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_mergerColorFrontTracks)
-
-//····················································································································
-
-@MainActor var preferences_mergerColorFrontTracks : NSColor {
-  get { return preferences_mergerColorFrontTracks_property.propval }
-  set { preferences_mergerColorFrontTracks_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerColorInner1Tracks
@@ -2732,24 +1654,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerColorInner1Tracks_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.orange, prefKey: Preferences_mergerColorInner1Tracks)
 
 //····················································································································
-
-@MainActor var preferences_mergerColorInner1Tracks : NSColor {
-  get { return preferences_mergerColorInner1Tracks_property.propval }
-  set { preferences_mergerColorInner1Tracks_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerColorInner2Tracks
 //····················································································································
 
 @MainActor let preferences_mergerColorInner2Tracks_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.brown, prefKey: Preferences_mergerColorInner2Tracks)
-
-//····················································································································
-
-@MainActor var preferences_mergerColorInner2Tracks : NSColor {
-  get { return preferences_mergerColorInner2Tracks_property.propval }
-  set { preferences_mergerColorInner2Tracks_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerColorInner3Tracks
@@ -2758,24 +1666,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerColorInner3Tracks_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.yellow, prefKey: Preferences_mergerColorInner3Tracks)
 
 //····················································································································
-
-@MainActor var preferences_mergerColorInner3Tracks : NSColor {
-  get { return preferences_mergerColorInner3Tracks_property.propval }
-  set { preferences_mergerColorInner3Tracks_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerColorInner4Tracks
 //····················································································································
 
 @MainActor let preferences_mergerColorInner4Tracks_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.purple, prefKey: Preferences_mergerColorInner4Tracks)
-
-//····················································································································
-
-@MainActor var preferences_mergerColorInner4Tracks : NSColor {
-  get { return preferences_mergerColorInner4Tracks_property.propval }
-  set { preferences_mergerColorInner4Tracks_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerColorFrontLayoutTexts
@@ -2784,24 +1678,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerColorFrontLayoutTexts_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_mergerColorFrontLayoutTexts)
 
 //····················································································································
-
-@MainActor var preferences_mergerColorFrontLayoutTexts : NSColor {
-  get { return preferences_mergerColorFrontLayoutTexts_property.propval }
-  set { preferences_mergerColorFrontLayoutTexts_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerColorBackPads
 //····················································································································
 
 @MainActor let preferences_mergerColorBackPads_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.orange, prefKey: Preferences_mergerColorBackPads)
-
-//····················································································································
-
-@MainActor var preferences_mergerColorBackPads : NSColor {
-  get { return preferences_mergerColorBackPads_property.propval }
-  set { preferences_mergerColorBackPads_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerColorTraversingPads
@@ -2810,24 +1690,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerColorTraversingPads_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorTraversingPads)
 
 //····················································································································
-
-@MainActor var preferences_mergerColorTraversingPads : NSColor {
-  get { return preferences_mergerColorTraversingPads_property.propval }
-  set { preferences_mergerColorTraversingPads_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerColorBackComponentNames
 //····················································································································
 
 @MainActor let preferences_mergerColorBackComponentNames_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorBackComponentNames)
-
-//····················································································································
-
-@MainActor var preferences_mergerColorBackComponentNames : NSColor {
-  get { return preferences_mergerColorBackComponentNames_property.propval }
-  set { preferences_mergerColorBackComponentNames_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerColorBackComponentValues
@@ -2836,24 +1702,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerColorBackComponentValues_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorBackComponentValues)
 
 //····················································································································
-
-@MainActor var preferences_mergerColorBackComponentValues : NSColor {
-  get { return preferences_mergerColorBackComponentValues_property.propval }
-  set { preferences_mergerColorBackComponentValues_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerColorBackLegendTexts
 //····················································································································
 
 @MainActor let preferences_mergerColorBackLegendTexts_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorBackLegendTexts)
-
-//····················································································································
-
-@MainActor var preferences_mergerColorBackLegendTexts : NSColor {
-  get { return preferences_mergerColorBackLegendTexts_property.propval }
-  set { preferences_mergerColorBackLegendTexts_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerColorBackPackages
@@ -2862,24 +1714,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerColorBackPackages_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorBackPackages)
 
 //····················································································································
-
-@MainActor var preferences_mergerColorBackPackages : NSColor {
-  get { return preferences_mergerColorBackPackages_property.propval }
-  set { preferences_mergerColorBackPackages_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerColorBackTracks
 //····················································································································
 
 @MainActor let preferences_mergerColorBackTracks_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_mergerColorBackTracks)
-
-//····················································································································
-
-@MainActor var preferences_mergerColorBackTracks : NSColor {
-  get { return preferences_mergerColorBackTracks_property.propval }
-  set { preferences_mergerColorBackTracks_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerColorBackLayoutTexts
@@ -2888,24 +1726,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerColorBackLayoutTexts_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_mergerColorBackLayoutTexts)
 
 //····················································································································
-
-@MainActor var preferences_mergerColorBackLayoutTexts : NSColor {
-  get { return preferences_mergerColorBackLayoutTexts_property.propval }
-  set { preferences_mergerColorBackLayoutTexts_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerColorFrontLegendLines
 //····················································································································
 
 @MainActor let preferences_mergerColorFrontLegendLines_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.gray, prefKey: Preferences_mergerColorFrontLegendLines)
-
-//····················································································································
-
-@MainActor var preferences_mergerColorFrontLegendLines : NSColor {
-  get { return preferences_mergerColorFrontLegendLines_property.propval }
-  set { preferences_mergerColorFrontLegendLines_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mergerColorBackLegendLines
@@ -2914,24 +1738,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mergerColorBackLegendLines_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_mergerColorBackLegendLines)
 
 //····················································································································
-
-@MainActor var preferences_mergerColorBackLegendLines : NSColor {
-  get { return preferences_mergerColorBackLegendLines_property.propval }
-  set { preferences_mergerColorBackLegendLines_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mergerColorBackground
 //····················································································································
 
 @MainActor let preferences_mergerColorBackground_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.lightGray, prefKey: Preferences_mergerColorBackground)
-
-//····················································································································
-
-@MainActor var preferences_mergerColorBackground : NSColor {
-  get { return preferences_mergerColorBackground_property.propval }
-  set { preferences_mergerColorBackground_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: artworkDialogFilterString
@@ -2940,24 +1750,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_artworkDialogFilterString_property = EBPreferencesProperty_String (defaultValue: "", prefKey: Preferences_artworkDialogFilterString)
 
 //····················································································································
-
-@MainActor var preferences_artworkDialogFilterString : String {
-  get { return preferences_artworkDialogFilterString_property.propval }
-  set { preferences_artworkDialogFilterString_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mSelectedPrefsPage
 //····················································································································
 
 @MainActor let preferences_mSelectedPrefsPage_property = EBPreferencesProperty_Int (defaultValue: 0, prefKey: Preferences_mSelectedPrefsPage)
-
-//····················································································································
-
-@MainActor var preferences_mSelectedPrefsPage : Int {
-  get { return preferences_mSelectedPrefsPage_property.propval }
-  set { preferences_mSelectedPrefsPage_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: showDebugMenu
@@ -2966,24 +1762,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_showDebugMenu_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_showDebugMenu)
 
 //····················································································································
-
-@MainActor var preferences_showDebugMenu : Bool {
-  get { return preferences_showDebugMenu_property.propval }
-  set { preferences_showDebugMenu_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: selectionHiliteColor
 //····················································································································
 
 @MainActor let preferences_selectionHiliteColor_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.cyan, prefKey: Preferences_selectionHiliteColor)
-
-//····················································································································
-
-@MainActor var preferences_selectionHiliteColor : NSColor {
-  get { return preferences_selectionHiliteColor_property.propval }
-  set { preferences_selectionHiliteColor_property.setProp (newValue) }
-}
 
 //····················································································································
 //   To many property: additionnalLibraryArray
@@ -2992,24 +1774,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_additionnalLibraryArray_property = PreferencesArrayOf_CanariLibraryEntry (prefKey: Preferences_additionnalLibraryArray)
 
 //····················································································································
-
-@MainActor var preferences_additionnalLibraryArray : EBReferenceArray <CanariLibraryEntry> {
-  get { return preferences_additionnalLibraryArray_property.propval }
-  set { preferences_additionnalLibraryArray_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: pinNameFont
 //····················································································································
 
 @MainActor let preferences_pinNameFont_property = EBPreferencesProperty_NSFont (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_pinNameFont)
-
-//····················································································································
-
-@MainActor var preferences_pinNameFont : NSFont {
-  get { return preferences_pinNameFont_property.propval }
-  set { preferences_pinNameFont_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Atomic property: mFreeRouterGuiDefaultFileContents
@@ -3018,37 +1786,16 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mFreeRouterGuiDefaultFileContents_property = EBPreferencesProperty_String (defaultValue: "", prefKey: Preferences_mFreeRouterGuiDefaultFileContents)
 
 //····················································································································
-
-@MainActor var preferences_mFreeRouterGuiDefaultFileContents : String {
-  get { return preferences_mFreeRouterGuiDefaultFileContents_property.propval }
-  set { preferences_mFreeRouterGuiDefaultFileContents_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: sampleStringSize
 //····················································································································
 
 @MainActor let preferences_sampleStringSize_property = EBPreferencesProperty_Double (defaultValue: 24, prefKey: Preferences_sampleStringSize)
 
 //····················································································································
-
-@MainActor var preferences_sampleStringSize : Double {
-  get { return preferences_sampleStringSize_property.propval }
-  set { preferences_sampleStringSize_property.setProp (newValue) }
-}
-
-//····················································································································
 //   Atomic property: mLastSystemLibraryCheckTime
 //····················································································································
 
 @MainActor let preferences_mLastSystemLibraryCheckTime_property = EBPreferencesProperty_Date (defaultValue: Date.distantPast, prefKey: Preferences_mLastSystemLibraryCheckTime)
-
-//····················································································································
-
-@MainActor var preferences_mLastSystemLibraryCheckTime : Date {
-  get { return preferences_mLastSystemLibraryCheckTime_property.propval }
-  set { preferences_mLastSystemLibraryCheckTime_property.setProp (newValue) }
-}
 
 //····················································································································
 //   Table View controller: userLibraryArrayController
@@ -3063,22 +1810,10 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mValueRevealInFinder_packages_property = EBTransientProperty_StringArray ()
 
 //····················································································································
-
-@MainActor var preferences_mValueRevealInFinder_packages : StringArray? {
-  return preferences_mValueRevealInFinder_packages_property.optionalValue
-}
-
-//····················································································································
 //   Transient property: mValueRevealInFinder_devices
 //····················································································································
 
 @MainActor let preferences_mValueRevealInFinder_devices_property = EBTransientProperty_StringArray ()
-
-//····················································································································
-
-@MainActor var preferences_mValueRevealInFinder_devices : StringArray? {
-  return preferences_mValueRevealInFinder_devices_property.optionalValue
-}
 
 //····················································································································
 //   Transient property: mValueRevealInFinder_fonts
@@ -3087,34 +1822,16 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mValueRevealInFinder_fonts_property = EBTransientProperty_StringArray ()
 
 //····················································································································
-
-@MainActor var preferences_mValueRevealInFinder_fonts : StringArray? {
-  return preferences_mValueRevealInFinder_fonts_property.optionalValue
-}
-
-//····················································································································
 //   Transient property: mValueRevealInFinder_artworks
 //····················································································································
 
 @MainActor let preferences_mValueRevealInFinder_artworks_property = EBTransientProperty_StringArray ()
 
 //····················································································································
-
-@MainActor var preferences_mValueRevealInFinder_artworks : StringArray? {
-  return preferences_mValueRevealInFinder_artworks_property.optionalValue
-}
-
-//····················································································································
 //   Transient property: mValueRevealInFinder_symbols
 //····················································································································
 
 @MainActor let preferences_mValueRevealInFinder_symbols_property = EBTransientProperty_StringArray ()
-
-//····················································································································
-
-@MainActor var preferences_mValueRevealInFinder_symbols : StringArray? {
-  return preferences_mValueRevealInFinder_symbols_property.optionalValue
-}
 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

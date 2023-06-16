@@ -37,7 +37,7 @@ final class AutoLayoutCheckbox : AutoLayoutBase_NSButton {
 
   //····················································································································
 
-  func set (width inWidth : Int, multiline inMultiLine : Bool) -> Self {
+  func set (width inWidth : Int) -> Self {
     self.mWidth = CGFloat (inWidth)
 //    self.usesSingleLineMode = !inMultiLine
 //    self.cell?.truncatesLastVisibleLine = !inMultiLine

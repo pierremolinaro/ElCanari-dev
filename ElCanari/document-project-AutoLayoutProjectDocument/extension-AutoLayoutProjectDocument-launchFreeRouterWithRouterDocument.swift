@@ -36,9 +36,9 @@ extension AutoLayoutProjectDocument {
     }
     // Swift.print ("freerouterTemporaryBaseFilePath \(freerouterTemporaryBaseFilePath)")
   //---------- Write gui_default.par
-    if preferences_mFreeRouterGuiDefaultFileContents != "" {
+    if preferences_mFreeRouterGuiDefaultFileContents_property.propval != "" {
       let guiDefaultPath = freerouterTemporaryBaseFilePath + "gui_defaults.par"
-      try? preferences_mFreeRouterGuiDefaultFileContents.write (to: URL (fileURLWithPath: guiDefaultPath), atomically: true, encoding: .utf8)
+      try? preferences_mFreeRouterGuiDefaultFileContents_property.propval.write (to: URL (fileURLWithPath: guiDefaultPath), atomically: true, encoding: .utf8)
       // Swift.print ("WRITE PATH \(guiDefaultPath)")
     }
   //---------- Build freerouter document

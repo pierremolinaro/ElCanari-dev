@@ -45,13 +45,13 @@ extension PackageArc {
 
   //····················································································································
 
-  func acceptToTranslate_PackageArc (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_PackageArc (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  func translate_PackageArc (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_PackageArc (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.xCenter += inDx
     self.yCenter += inDy
   }
@@ -60,9 +60,9 @@ extension PackageArc {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_PackageArc (additionalDictionary inDictionary : [String : Any],
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_PackageArc (additionalDictionary _ : [String : Any],
+                                         optionalDocument _ : EBAutoLayoutManagedDocument?,
+                                         objectArray _ : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -70,18 +70,18 @@ extension PackageArc {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackageArc (_ ioDictionary : inout [String : Any]) {
+  func saveIntoAdditionalDictionary_PackageArc (_ _ : inout [String : Any]) {
   }
 
   //····················································································································
   //  Knob
   //····················································································································
 
-  func canMove_PackageArc (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                         shift inShift : Bool) -> CanariPoint {
+  func canMove_PackageArc (knob _ : Int,
+                           proposedUnalignedAlignedTranslation _ : CanariPoint,
+                           proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                           unalignedMouseDraggedLocation _ : CanariPoint,
+                           shift _ : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
  }
 

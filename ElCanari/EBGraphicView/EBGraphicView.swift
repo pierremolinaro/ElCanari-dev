@@ -737,7 +737,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   var mBackgroundImageDataController : EBObservablePropertyController? = nil
 
   var mBackgroundImageOpacity : CGFloat = 1.0
-  var mBackgroundImageOpacityController : EBObservablePropertyController? = nil
+//  var mBackgroundImageOpacityController : EBObservablePropertyController? = nil
 
   var mBackgroundImageAffineTransform = NSAffineTransform () {
     didSet {
