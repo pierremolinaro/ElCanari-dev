@@ -94,12 +94,12 @@ final class AutoLayoutCanariFontCharacterSelectButton : AutoLayoutBase_NSButton 
   //  $codePoint binding
   //····················································································································
 
-  private var mCodePointController : EBGenericReadWritePropertyController <Int>?
+  private var mCodePointController : EBReadWritePropertyController_Int?
 
   //····················································································································
 
   final func bind_codePoint (_ object : EBReadWriteProperty_Int) -> Self {
-    self.mCodePointController = EBGenericReadWritePropertyController <Int> (
+    self.mCodePointController = EBReadWritePropertyController_Int (
       observedObject: object,
       callBack: { [weak self] in self?.updateCodePoint (object) }
     )

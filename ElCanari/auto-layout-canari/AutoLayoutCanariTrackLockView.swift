@@ -321,12 +321,12 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
   //   MANUAL LOCK FOR P1 CONTROLLER
   //····················································································································
 
-  private var mManualLockP1Controller : EBGenericReadWritePropertyController <Bool>? = nil
+  private var mManualLockP1Controller : EBReadWritePropertyController_Bool? = nil
 
   //····················································································································
 
   final func bind_manualLockP1 (_ inObject : EBReadWriteProperty_Bool) -> Self {
-    self.mManualLockP1Controller = EBGenericReadWritePropertyController <Bool> (
+    self.mManualLockP1Controller = EBReadWritePropertyController_Bool (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateLockP1 (inObject) }
     )
@@ -348,12 +348,12 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
   //   MANUAL LOCK FOR P2 CONTROLLER
   //····················································································································
 
-  private var mManualLockP2Controller : EBGenericReadWritePropertyController <Bool>? = nil
+  private var mManualLockP2Controller : EBReadWritePropertyController_Bool? = nil
 
   //····················································································································
 
   final func bind_manualLockP2 (_ inObject : EBReadWriteProperty_Bool) -> Self {
-    self.mManualLockP2Controller = EBGenericReadWritePropertyController <Bool> (
+    self.mManualLockP2Controller = EBReadWritePropertyController_Bool (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateLockP2 (inObject) }
     )

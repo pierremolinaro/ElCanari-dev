@@ -25,7 +25,7 @@ extension EBGraphicView {
   //····················································································································
 
   final func bind_zoom (_ inObject : EBReadWriteProperty_Int) {
-    self.mZoomController = EBGenericReadWritePropertyController <Int> (
+    self.mZoomController = EBReadWritePropertyController_Int (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateOutlet (inObject) }
     )

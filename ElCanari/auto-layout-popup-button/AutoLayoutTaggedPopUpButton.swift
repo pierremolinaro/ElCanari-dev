@@ -51,12 +51,12 @@ final class AutoLayoutTaggedPopUpButton : AutoLayoutBase_NSPopUpButton {
   //  $selectedTag binding
   //····················································································································
 
-  private var mSelectedTagController : EBGenericReadWritePropertyController <Int>? = nil
+  private var mSelectedTagController : EBReadWritePropertyController_Int? = nil
 
   //····················································································································
 
   final func bind_selectedTag (_ inObject : EBObservableMutableProperty <Int>) -> Self {
-    self.mSelectedTagController = EBGenericReadWritePropertyController <Int> (
+    self.mSelectedTagController = EBReadWritePropertyController_Int (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateTag (from: inObject) }
     )

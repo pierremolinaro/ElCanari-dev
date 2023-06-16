@@ -76,7 +76,7 @@ prefs {
       GridView2 {
         addCenterYAligned (
           left: StaticLabel (title: "Selection Hilite Color", bold: no, size: .regular, alignment: .right),
-          right: hStack { ColorWell { $color prefs.selectionHiliteColor (sendContinously: yes) } space }
+          right: hStack { ColorWell { $color prefs.selectionHiliteColor } space }
         )
         addCenterYAligned (
           left: StaticLabel (title: "Selection Width", bold: no, size: .regular, alignment: .right),

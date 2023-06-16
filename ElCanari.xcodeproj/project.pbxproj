@@ -3446,8 +3446,6 @@
 		CFA80DD025C04F1300966D91 /* transient-BoardTrack-p2CanMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA80DCD25C04F1300966D91 /* transient-BoardTrack-p2CanMove.swift */; };
 		CFA80DD125C04F1400966D91 /* transient-BoardTrack-p1CanMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA80DCE25C04F1300966D91 /* transient-BoardTrack-p1CanMove.swift */; };
 		CFA80DD225C04F1400966D91 /* transient-BoardTrack-p1CanMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA80DCE25C04F1300966D91 /* transient-BoardTrack-p1CanMove.swift */; };
-		CFA80DD425C0503700966D91 /* EBGenericReadWritePropertyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA80DD325C0503700966D91 /* EBGenericReadWritePropertyController.swift */; };
-		CFA80DD525C0503700966D91 /* EBGenericReadWritePropertyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA80DD325C0503700966D91 /* EBGenericReadWritePropertyController.swift */; };
 		CFA80DD825C05E9700966D91 /* compute-BoardTrack-computedP1X.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA80DD625C05E9700966D91 /* compute-BoardTrack-computedP1X.swift */; };
 		CFA80DD925C05E9700966D91 /* compute-BoardTrack-computedP1X.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA80DD625C05E9700966D91 /* compute-BoardTrack-computedP1X.swift */; };
 		CFA80DDA25C05E9700966D91 /* computed-BoardTrack-computedP1X.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA80DD725C05E9700966D91 /* computed-BoardTrack-computedP1X.swift */; };
@@ -4217,6 +4215,9 @@
 		CFC5FBC11FDF06220014A257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC5FBC01FDF06220014A257 /* Assets.xcassets */; };
 		CFC6325822F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC6325722F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift */; };
 		CFC6325922F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC6325722F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift */; };
+		CFC727812A3C712D0002C487 /* periphery in Frameworks */ = {isa = PBXBuildFile; productRef = CFC727802A3C712D0002C487 /* periphery */; };
+		CFC727832A3C8C310002C487 /* EBGenericReadWritePropertyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA80DD325C0503700966D91 /* EBGenericReadWritePropertyController.swift */; };
+		CFC727842A3C8C320002C487 /* EBGenericReadWritePropertyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA80DD325C0503700966D91 /* EBGenericReadWritePropertyController.swift */; };
 		CFC829E1235CBA5900A51BD3 /* enum-RouteDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC829DF235CBA5900A51BD3 /* enum-RouteDirection.swift */; };
 		CFC829E2235CBA5900A51BD3 /* enum-RouteDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC829DF235CBA5900A51BD3 /* enum-RouteDirection.swift */; };
 		CFC829E3235CBA5900A51BD3 /* enum-RouteOrigin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC829E0235CBA5900A51BD3 /* enum-RouteOrigin.swift */; };
@@ -6842,6 +6843,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF50656727490E7F009A99B6 /* Sparkle in Frameworks */,
+				CFC727812A3C712D0002C487 /* periphery in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9155,6 +9157,7 @@
 				CF59C3C729BE36A9004CA404 /* property-Double.swift */,
 				CF59C3CA29BE36A9004CA404 /* property-EBBezierPath.swift */,
 				CF59C3B629BE36A7004CA404 /* property-EBShape.swift */,
+				CF13CDB42A0666E700870156 /* property-GraphicViewTooltipArray.swift */,
 				CF59C3BB29BE36A7004CA404 /* property-Int.swift */,
 				CF59C3B529BE36A7004CA404 /* property-IntArray.swift */,
 				CF59C3B429BE36A7004CA404 /* property-MasterPadDescriptor.swift */,
@@ -9177,7 +9180,6 @@
 				CF59C3D929BE36AA004CA404 /* property-PinPadAssignmentInProject.swift */,
 				CF59C3B329BE36A7004CA404 /* property-PinQualifiedNameStruct.swift */,
 				CF59C3CE29BE36A9004CA404 /* property-RastnetInfoArray.swift */,
-				CF13CDB42A0666E700870156 /* property-GraphicViewTooltipArray.swift */,
 				CF59C3BE29BE36A8004CA404 /* property-SchematicPointStatus.swift */,
 				CF59C3C829BE36A9004CA404 /* property-SchematicSheetDescriptor.swift */,
 				CF59C3C429BE36A8004CA404 /* property-SchematicSheetGeometry.swift */,
@@ -9217,6 +9219,7 @@
 			name = "ElCanari-Debug";
 			packageProductDependencies = (
 				CF50656627490E7F009A99B6 /* Sparkle */,
+				CFC727802A3C712D0002C487 /* periphery */,
 			);
 			productInstallPath = "$(HOME)/bin";
 			productName = canari;
@@ -9307,6 +9310,7 @@
 			mainGroup = 4B5CE2FE28308FD9F2A7BAF3;
 			packageReferences = (
 				CF50656527490E7F009A99B6 /* XCRemoteSwiftPackageReference "Sparkle" */,
+				CFC7277F2A3C712D0002C487 /* XCRemoteSwiftPackageReference "periphery" */,
 			);
 			productRefGroup = CF747FB01B3C3D8D00140C49 /* Products */;
 			projectDirPath = "";
@@ -10019,7 +10023,6 @@
 				CFFB3C6D29EEF60E00D473DF /* transient-BoardModel-frontLegendBoardImageRectangles.swift in Sources */,
 				CFCD3ACA21FC76F300DE503C /* phase2-download-file-list-for-commit.swift in Sources */,
 				CFB7D88F2683A61C007B9D3B /* configurator-AutoLayoutPackageDocument-addPackageSlavePad.swift in Sources */,
-				CFA80DD425C0503700966D91 /* EBGenericReadWritePropertyController.swift in Sources */,
 				CFD1EAB2274EE23B000AED8E /* transient-SegmentForFontCharacter-selectionDisplay.swift in Sources */,
 				CFB7D84A2683A61C007B9D3B /* transient-AutoLayoutPackageDocument-metadataStatus.swift in Sources */,
 				CF00844D21C42A91003627E9 /* entity-PackageOval.swift in Sources */,
@@ -10731,6 +10734,7 @@
 				CF42D12C275CF1A600B83712 /* action-AutoLayoutMergerDocument-generateProductFilesAction.swift in Sources */,
 				CFB1F8F42940EDDB00C1E120 /* action-AutoLayoutProjectDocument-addComponentFromFileLibraryAction.swift in Sources */,
 				CF51403D276BB1C0008DB542 /* transient-ProjectRoot-hasSixLayers.swift in Sources */,
+				CFC727842A3C8C320002C487 /* EBGenericReadWritePropertyController.swift in Sources */,
 				CFA1AA17223265E30023928C /* entity-SymbolPinTypeInDevice.swift in Sources */,
 				CF42D121275CF1A600B83712 /* transient-AutoLayoutMergerDocument-incorrectDocumentFileDetailedErrorMessage.swift in Sources */,
 				CF144184275522C3006C3E1F /* AutoLayoutCanariFontCharacterSelectButton.swift in Sources */,
@@ -11677,7 +11681,6 @@
 				CFB7D8902683A61C007B9D3B /* configurator-AutoLayoutPackageDocument-addPackageSlavePad.swift in Sources */,
 				CFA430C4229AEC41000AA8C8 /* tomany-SymbolPin.swift in Sources */,
 				CF59C45029BE36AB004CA404 /* property-PinInProjectDescriptor.swift in Sources */,
-				CFA80DD525C0503700966D91 /* EBGenericReadWritePropertyController.swift in Sources */,
 				CFD1EAB3274EE23B000AED8E /* transient-SegmentForFontCharacter-selectionDisplay.swift in Sources */,
 				CFB7D84B2683A61C007B9D3B /* transient-AutoLayoutPackageDocument-metadataStatus.swift in Sources */,
 				CF5C4D0A219F04D600EAC52A /* Application.swift in Sources */,
@@ -12397,6 +12400,7 @@
 				CF39CCE2268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-updateSelectedSymbols.swift in Sources */,
 				CFF79DEA2846174000C7BEE3 /* transient-BoardObject-displayFrontRestrictRectangles.swift in Sources */,
 				CFFF881F29BE364C007A12DE /* property-BezierPathArray.swift in Sources */,
+				CFC727832A3C8C310002C487 /* EBGenericReadWritePropertyController.swift in Sources */,
 				CFB1F8F52940EDDB00C1E120 /* action-AutoLayoutProjectDocument-addComponentFromFileLibraryAction.swift in Sources */,
 				CF51403E276BB1C0008DB542 /* transient-ProjectRoot-hasSixLayers.swift in Sources */,
 				CFB7D8512683A61C007B9D3B /* selectionController-AutoLayoutPackageDocument-mPackageArcSelectionController.swift in Sources */,
@@ -14885,6 +14889,14 @@
 				minimumVersion = 2.3.2;
 			};
 		};
+		CFC7277F2A3C712D0002C487 /* XCRemoteSwiftPackageReference "periphery" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/peripheryapp/periphery";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.13.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -14902,6 +14914,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CF50656527490E7F009A99B6 /* XCRemoteSwiftPackageReference "Sparkle" */;
 			productName = Sparkle;
+		};
+		CFC727802A3C712D0002C487 /* periphery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFC7277F2A3C712D0002C487 /* XCRemoteSwiftPackageReference "periphery" */;
+			productName = periphery;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

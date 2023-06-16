@@ -956,7 +956,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_mSymbolBackColorForDevice_property, sendContinously:false)
+        .bind_color (preferences_mSymbolBackColorForDevice_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -1020,7 +1020,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_mSymbolColorForDevice_property, sendContinously:false)
+        .bind_color (preferences_mSymbolColorForDevice_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -1109,7 +1109,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_mPackageBackColorForDevice_property, sendContinously:false)
+        .bind_color (preferences_mPackageBackColorForDevice_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -1173,7 +1173,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_mPackageColorForDevice_property, sendContinously:false)
+        .bind_color (preferences_mPackageColorForDevice_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -1223,7 +1223,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_mFrontSidePadColorForDevice_property, sendContinously:false)
+        .bind_color (preferences_mFrontSidePadColorForDevice_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -1249,7 +1249,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_mBottomSidePadColorForDevice_property, sendContinously:false)
+        .bind_color (preferences_mBottomSidePadColorForDevice_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -1275,7 +1275,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_mPadNumberColorForDevice_property, sendContinously:false)
+        .bind_color (preferences_mPadNumberColorForDevice_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -1329,7 +1329,7 @@ import AppKit
     let view = AutoLayoutColorWell ()
       .expandableHeight ()
       .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_packageColor_property, sendContinously:false)
+      .bind_color (preferences_packageColor_property)
     return view
   }
 
@@ -1352,7 +1352,7 @@ import AppKit
     let view = AutoLayoutColorWell ()
       .expandableHeight ()
       .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_padNumberColor_property, sendContinously:false)
+      .bind_color (preferences_padNumberColor_property)
     return view
   }
 
@@ -1375,7 +1375,7 @@ import AppKit
     let view = AutoLayoutColorWell ()
       .expandableHeight ()
       .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_frontSidePadColor_property, sendContinously:false)
+      .bind_color (preferences_frontSidePadColor_property)
     return view
   }
 
@@ -1398,7 +1398,7 @@ import AppKit
     let view = AutoLayoutColorWell ()
       .expandableHeight ()
       .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_backSidePadColor_property, sendContinously:false)
+      .bind_color (preferences_backSidePadColor_property)
     return view
   }
 

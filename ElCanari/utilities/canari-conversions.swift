@@ -185,9 +185,9 @@ func unitStringFrom (displayUnit inUnit : Int) -> String {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func intValueAndUnitStringFrom (valueInCocoaUnit inValue : CGFloat, displayUnit inUnit : Int) -> String {
-  return intValueAndUnitStringFrom (valueInCanariUnit: cocoaToCanariUnit (inValue), displayUnit: inUnit)
-}
+//func intValueAndUnitStringFrom (valueInCocoaUnit inValue : CGFloat, displayUnit inUnit : Int) -> String {
+//  return intValueAndUnitStringFrom (valueInCanariUnit: cocoaToCanariUnit (inValue), displayUnit: inUnit)
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

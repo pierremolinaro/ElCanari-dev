@@ -14,6 +14,47 @@ typealias EBReadWriteProperty_NSBezierPath   = EBObservableMutableProperty <NSBe
 typealias EBComputedProperty_NSBezierPath    = EBComputedProperty <NSBezierPath>
 typealias EBStoredProperty_NSBezierPath      = EBStoredProperty <NSBezierPath>
 typealias EBPreferencesProperty_NSBezierPath = EBPreferenceProperty <NSBezierPath>
+typealias EBReadWritePropertyController_NSBezierPath = EBGenericReadWritePropertyController <NSBezierPath>
 
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+/*final class EBReadWritePropertyController_NSBezierPath : EBObservablePropertyController {
+
+  //····················································································································
+
+  private weak var mObject : EBReadWriteProperty_NSBezierPath?
+
+  //····················································································································
+
+  init (observedObject inObject : EBReadWriteProperty_NSBezierPath, callBack inCallBack : @escaping () -> Void) {
+    self.mObject = inObject
+    super.init (observedObjects : [inObject], callBack : inCallBack)
+  }
+
+  //····················································································································
+
+  func updateModel (withValue inValue : NSBezierPath) {
+    self.mObject?.setProp (inValue)
+  }
+
+  //····················································································································
+
+  var value : NSBezierPath? {
+    if let s = self.mObject?.selection {
+      switch s {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
+}*/
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

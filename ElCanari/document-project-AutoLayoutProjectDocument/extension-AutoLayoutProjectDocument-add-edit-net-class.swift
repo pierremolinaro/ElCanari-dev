@@ -44,7 +44,7 @@ extension AutoLayoutProjectDocument {
       _ = gridView.add (single: netClassNameErrorLabel)
     //--- Color
       let netColor_property = EBStoredProperty_NSColor (defaultValue: inNetClass.mNetClassColor, undoManager: nil, key: nil)
-      let wireColorWell = AutoLayoutColorWell ().bind_color (netColor_property, sendContinously: false)
+      let wireColorWell = AutoLayoutColorWell ().bind_color (netColor_property)
       do{
         let left = AutoLayoutStaticLabel (title: "Wire Color in Schematics", bold: false, size: .regular, alignment: .right)
         _ = gridView.addFirstBaseLineAligned (left: left, right: AutoLayoutHorizontalStackView.viewFollowedByFlexibleSpace (wireColorWell))

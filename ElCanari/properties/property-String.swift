@@ -14,6 +14,7 @@ typealias EBReadWriteProperty_String   = EBObservableMutableProperty <String>
 typealias EBComputedProperty_String    = EBComputedProperty <String>
 typealias EBStoredProperty_String      = EBStoredProperty <String>
 typealias EBPreferencesProperty_String = EBPreferenceProperty <String>
+typealias EBReadWritePropertyController_String = EBGenericReadWritePropertyController <String>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -58,5 +59,45 @@ func values_String_are_ordered (_ inLeft : String,
     }
   }
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+/*final class EBReadWritePropertyController_String : EBObservablePropertyController {
+
+  //····················································································································
+
+  private weak var mObject : EBReadWriteProperty_String?
+
+  //····················································································································
+
+  init (observedObject inObject : EBReadWriteProperty_String, callBack inCallBack : @escaping () -> Void) {
+    self.mObject = inObject
+    super.init (observedObjects : [inObject], callBack : inCallBack)
+  }
+
+  //····················································································································
+
+  func updateModel (withValue inValue : String) {
+    self.mObject?.setProp (inValue)
+  }
+
+  //····················································································································
+
+  var value : String? {
+    if let s = self.mObject?.selection {
+      switch s {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
+}*/
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -14,6 +14,7 @@ typealias EBReadWriteProperty_Date   = EBObservableMutableProperty <Date>
 typealias EBComputedProperty_Date    = EBComputedProperty <Date>
 typealias EBStoredProperty_Date      = EBStoredProperty <Date>
 typealias EBPreferencesProperty_Date = EBPreferenceProperty <Date>
+typealias EBReadWritePropertyController_Date = EBGenericReadWritePropertyController <Date>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -64,5 +65,45 @@ func values_Date_are_ordered (_ inLeft : Date,
     }
   }
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+/*final class EBReadWritePropertyController_Date : EBObservablePropertyController {
+
+  //····················································································································
+
+  private weak var mObject : EBReadWriteProperty_Date?
+
+  //····················································································································
+
+  init (observedObject inObject : EBReadWriteProperty_Date, callBack inCallBack : @escaping () -> Void) {
+    self.mObject = inObject
+    super.init (observedObjects : [inObject], callBack : inCallBack)
+  }
+
+  //····················································································································
+
+  func updateModel (withValue inValue : Date) {
+    self.mObject?.setProp (inValue)
+  }
+
+  //····················································································································
+
+  var value : Date? {
+    if let s = self.mObject?.selection {
+      switch s {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
+}*/
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

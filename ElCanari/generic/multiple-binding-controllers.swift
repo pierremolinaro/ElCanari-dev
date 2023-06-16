@@ -19,81 +19,81 @@ extension NSView : HiddenEBProtocol {
 //   MultipleBindingController_hidden
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class MultipleBindingController_hidden : EBOutletEvent {
-
-  private weak var mOutlet : HiddenEBProtocol?
-
-  //····················································································································
-
-  init (computeFunction inExpression : EBMultipleBindingBooleanExpression,
-        outlet inOutlet : HiddenEBProtocol?) {
-    self.mOutlet = inOutlet
-    super.init ()
-    self.mEventCallBack = { [weak self] in self?.updateOutlet (inExpression.compute ()) }
-    var modelArray = [EBObservableObjectProtocol] ()
-    inExpression.addModelsTo (&modelArray)
-    for observedModel in modelArray {
-      observedModel.startsToBeObserved (by: self)
-    }
-  }
-
-  //····················································································································
-
-   private func updateOutlet (_ inSelection : EBSelection <Bool>) {
-    switch inSelection {
-    case .single (let b) :
-      self.mOutlet?.isHidden = b
-    default :
-      self.mOutlet?.isHidden = false
-    }
-  }
-
-  //····················································································································
-
-}
+//final class MultipleBindingController_hidden : EBOutletEvent {
+//
+//  private weak var mOutlet : HiddenEBProtocol?
+//
+//  //····················································································································
+//
+//  init (computeFunction inExpression : EBMultipleBindingBooleanExpression,
+//        outlet inOutlet : HiddenEBProtocol?) {
+//    self.mOutlet = inOutlet
+//    super.init ()
+//    self.mEventCallBack = { [weak self] in self?.updateOutlet (inExpression.compute ()) }
+//    var modelArray = [EBObservableObjectProtocol] ()
+//    inExpression.addModelsTo (&modelArray)
+//    for observedModel in modelArray {
+//      observedModel.startsToBeObserved (by: self)
+//    }
+//  }
+//
+//  //····················································································································
+//
+//   private func updateOutlet (_ inSelection : EBSelection <Bool>) {
+//    switch inSelection {
+//    case .single (let b) :
+//      self.mOutlet?.isHidden = b
+//    default :
+//      self.mOutlet?.isHidden = false
+//    }
+//  }
+//
+//  //····················································································································
+//
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   MultipleBindingController_enabled
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol EnabledMultipleBindingProtocol : AnyObject {
-  func enableFromEnableBinding (_ inEnable : Bool)
-}
+//protocol EnabledMultipleBindingProtocol : AnyObject {
+//  func enableFromEnableBinding (_ inEnable : Bool)
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class MultipleBindingController_enabled : EBOutletEvent {
-
-  private weak var mOutlet : EnabledMultipleBindingProtocol? = nil
-
-  //····················································································································
-
-  init (computeFunction inExpression : EBMultipleBindingBooleanExpression,
-        outlet inOutlet : EnabledMultipleBindingProtocol?) {
-    self.mOutlet = inOutlet
-    super.init ()
-    var modelArray = [EBObservableObjectProtocol] ()
-    inExpression.addModelsTo (&modelArray)
-    for observedModel in modelArray {
-      observedModel.startsToBeObserved (by: self)
-    }
-    self.mEventCallBack = { [weak self] in self?.updateOutlet (inExpression.compute ()) }
-  }
-
-  //····················································································································
-
-  private func updateOutlet (_ inModel : EBSelection <Bool>) {
-    switch inModel {
-    case .single (let b) :
-      self.mOutlet?.enableFromEnableBinding (b)
-    default :
-      self.mOutlet?.enableFromEnableBinding (false)
-    }
-  }
-
-  //····················································································································
-
-}
+//final class MultipleBindingController_enabled : EBOutletEvent {
+//
+//  private weak var mOutlet : EnabledMultipleBindingProtocol? = nil
+//
+//  //····················································································································
+//
+//  init (computeFunction inExpression : EBMultipleBindingBooleanExpression,
+//        outlet inOutlet : EnabledMultipleBindingProtocol?) {
+//    self.mOutlet = inOutlet
+//    super.init ()
+//    var modelArray = [EBObservableObjectProtocol] ()
+//    inExpression.addModelsTo (&modelArray)
+//    for observedModel in modelArray {
+//      observedModel.startsToBeObserved (by: self)
+//    }
+//    self.mEventCallBack = { [weak self] in self?.updateOutlet (inExpression.compute ()) }
+//  }
+//
+//  //····················································································································
+//
+//  private func updateOutlet (_ inModel : EBSelection <Bool>) {
+//    switch inModel {
+//    case .single (let b) :
+//      self.mOutlet?.enableFromEnableBinding (b)
+//    default :
+//      self.mOutlet?.enableFromEnableBinding (false)
+//    }
+//  }
+//
+//  //····················································································································
+//
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

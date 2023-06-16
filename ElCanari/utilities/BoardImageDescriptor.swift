@@ -29,11 +29,11 @@ struct BoardImageDescriptor : Hashable {
 
   //····················································································································
 
-  public let blackRectangles : [BoardImageElementRectangle]
-  public let originalImageWidth : Int
-  public let originalImageHeight : Int
-  public let scaledImageWidth : Int
-  public let scaledImageHeight : Int
+  let blackRectangles : [BoardImageElementRectangle]
+  let originalImageWidth : Int
+  let originalImageHeight : Int
+  let scaledImageWidth : Int
+  let scaledImageHeight : Int
 
   //····················································································································
 

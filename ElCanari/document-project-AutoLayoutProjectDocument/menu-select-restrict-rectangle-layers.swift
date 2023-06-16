@@ -103,12 +103,12 @@ import AppKit
 
   //····················································································································
 
-  private var mLayersController : EBGenericReadWritePropertyController <Int>? = nil
+  private var mLayersController : EBReadWritePropertyController_Int? = nil
 
   //····················································································································
 
   final func bind_layers (_ object : EBReadWriteProperty_Int) {
-    self.mLayersController = EBGenericReadWritePropertyController <Int> (
+    self.mLayersController = EBReadWritePropertyController_Int (
       observedObject: object,
       callBack: { [weak self] in self?.updateOutlet (object) }
     )

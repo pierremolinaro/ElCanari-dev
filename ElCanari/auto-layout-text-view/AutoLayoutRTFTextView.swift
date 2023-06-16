@@ -102,12 +102,12 @@ final class AutoLayoutRTFTextView : NSScrollView {
 
   //····················································································································
 
-  private var mValueController : EBGenericReadWritePropertyController <String>? = nil
+  private var mValueController : EBReadWritePropertyController_String? = nil
 
   //····················································································································
 
   final func bind_value (_ inObject : EBReadWriteProperty_String) -> Self {
-    self.mValueController = EBGenericReadWritePropertyController <String> (
+    self.mValueController = EBReadWritePropertyController_String (
       observedObject: inObject,
       callBack: { [weak self] in self?.update (from: inObject) }
     )

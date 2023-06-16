@@ -88,15 +88,13 @@ final class AutoLayoutColorWell : NSColorWell {
 
   //····················································································································
 
-  private var mColorController : EBGenericReadWritePropertyController <NSColor>? = nil
-  var mSendContinously = false
+  private var mColorController : EBReadWritePropertyController_NSColor? = nil
 
   //····················································································································
 
-  final func bind_color (_ inObject : EBReadWriteProperty_NSColor, sendContinously : Bool) -> Self {
+  final func bind_color (_ inObject : EBReadWriteProperty_NSColor) -> Self {
     NSColorPanel.shared.showsAlpha = true
-    self.mSendContinously = sendContinously
-    self.mColorController = EBGenericReadWritePropertyController <NSColor> (
+    self.mColorController = EBReadWritePropertyController_NSColor (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateColor (from: inObject)  }
     )

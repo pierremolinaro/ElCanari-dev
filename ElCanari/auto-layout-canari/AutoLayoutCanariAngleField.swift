@@ -97,12 +97,12 @@ final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField {
   //  $angle binding
   //····················································································································
 
-  private var mAngleController : EBGenericReadWritePropertyController <Int>? = nil
+  private var mAngleController : EBReadWritePropertyController_Int? = nil
 
   //····················································································································
 
   final func bind_angle (_ model : EBReadWriteProperty_Int) -> Self {
-    self.mAngleController = EBGenericReadWritePropertyController <Int> (
+    self.mAngleController = EBReadWritePropertyController_Int (
       observedObject: model,
       callBack: { [weak self] in self?.update (from: model) }
     )

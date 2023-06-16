@@ -14,6 +14,7 @@ typealias EBReadWriteProperty_BezierPathArray   = EBObservableMutableProperty <B
 typealias EBComputedProperty_BezierPathArray    = EBComputedProperty <BezierPathArray>
 typealias EBStoredProperty_BezierPathArray      = EBStoredProperty <BezierPathArray>
 typealias EBPreferencesProperty_BezierPathArray = EBPreferenceProperty <BezierPathArray>
+typealias EBReadWritePropertyController_BezierPathArray = EBGenericReadWritePropertyController <BezierPathArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -64,5 +65,45 @@ func values_BezierPathArray_are_ordered (_ inLeft : BezierPathArray,
     }
   }
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+/*final class EBReadWritePropertyController_BezierPathArray : EBObservablePropertyController {
+
+  //····················································································································
+
+  private weak var mObject : EBReadWriteProperty_BezierPathArray?
+
+  //····················································································································
+
+  init (observedObject inObject : EBReadWriteProperty_BezierPathArray, callBack inCallBack : @escaping () -> Void) {
+    self.mObject = inObject
+    super.init (observedObjects : [inObject], callBack : inCallBack)
+  }
+
+  //····················································································································
+
+  func updateModel (withValue inValue : BezierPathArray) {
+    self.mObject?.setProp (inValue)
+  }
+
+  //····················································································································
+
+  var value : BezierPathArray? {
+    if let s = self.mObject?.selection {
+      switch s {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
+}*/
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

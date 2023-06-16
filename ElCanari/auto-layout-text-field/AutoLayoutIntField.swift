@@ -114,13 +114,13 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
   //MARK:  $value binding
   //····················································································································
 
-  private var mValueController : EBGenericReadWritePropertyController <Int>? = nil
+  private var mValueController : EBReadWritePropertyController_Int? = nil
 
   //····················································································································
 
   final func bind_value (_ inObject : EBReadWriteProperty_Int, sendContinously : Bool) -> Self {
     self.isContinuous = sendContinously
-    self.mValueController = EBGenericReadWritePropertyController <Int> (
+    self.mValueController = EBReadWritePropertyController_Int (
       observedObject: inObject,
       callBack:  { [weak self] in self?.update (from: inObject) }
     )

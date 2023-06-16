@@ -261,7 +261,6 @@ extern autolayout class DoubleField (width: Int, size: EBControlSize) $enabled {
 }
 
 extern autolayout class DoubleObserverField (width: Int, bold: Bool, size: EBControlSize) $enabled $hidden {
-//  func set (alignment: TextAlignment)
   func expandableWidth ()
   $observedValue transient Double
 }
@@ -271,7 +270,7 @@ extern autolayout class ColorWell {
   func expandableWidth ()
   func expandableHeight ()
   func set (toolTip : String)
-  $color property NSColor (sendContinously: Bool)
+  $color property NSColor
 }
 
 extern autolayout class FontButton (width: Int, size: EBControlSize) {

@@ -3105,7 +3105,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_packageBackgroundColor_property, sendContinously:false)
+        .bind_color (preferences_packageBackgroundColor_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -3131,7 +3131,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_crossColorOfPackageGrid_property, sendContinously:false)
+        .bind_color (preferences_crossColorOfPackageGrid_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -3157,7 +3157,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_lineColorOfPackageGrid_property, sendContinously:false)
+        .bind_color (preferences_lineColorOfPackageGrid_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -3183,7 +3183,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_packageColor_property, sendContinously:false)
+        .bind_color (preferences_packageColor_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -3234,7 +3234,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_padNumberColor_property, sendContinously:false)
+        .bind_color (preferences_padNumberColor_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutCheckbox (title: "Show", size: .small)
         .expandableHeight ()
@@ -3284,7 +3284,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_frontSidePadColor_property, sendContinously:false)
+        .bind_color (preferences_frontSidePadColor_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutCheckbox (title: "Show", size: .small)
         .expandableHeight ()
@@ -3315,7 +3315,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_backSidePadColor_property, sendContinously:false)
+        .bind_color (preferences_backSidePadColor_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutCheckbox (title: "Show", size: .small)
         .expandableHeight ()
@@ -3345,7 +3345,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_packageGuideColor_property, sendContinously:false)
+        .bind_color (preferences_packageGuideColor_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -3371,7 +3371,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_packageDimensionColor_property, sendContinously:false)
+        .bind_color (preferences_packageDimensionColor_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -3416,7 +3416,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_padZoneColor_property, sendContinously:false)
+        .bind_color (preferences_padZoneColor_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)

@@ -124,12 +124,12 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
   //  $selectedPage binding
   //····················································································································
 
-  private var mSelectedTabIndexController : EBGenericReadWritePropertyController <Int>? = nil
+  private var mSelectedTabIndexController : EBReadWritePropertyController_Int? = nil
 
   //····················································································································
 
   final func bind_selectedPage (_ inObject : EBObservableMutableProperty <Int>) -> Self {
-    self.mSelectedTabIndexController = EBGenericReadWritePropertyController <Int> (
+    self.mSelectedTabIndexController = EBReadWritePropertyController_Int (
       observedObject: inObject,
       callBack: { [weak self] in self?.update (from: inObject) }
     )

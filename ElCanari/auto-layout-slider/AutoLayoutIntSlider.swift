@@ -70,12 +70,12 @@ final class AutoLayoutIntSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
-  private var mValueController : EBGenericReadWritePropertyController <Int>? = nil
+  private var mValueController : EBReadWritePropertyController_Int? = nil
 
   //····················································································································
 
   final func bind_value (_ object : EBReadWriteProperty_Int) -> Self {
-    self.mValueController = EBGenericReadWritePropertyController <Int> (
+    self.mValueController = EBReadWritePropertyController_Int (
       observedObject: object,
       callBack: { [weak self] in self?.update (from: object) }
     )

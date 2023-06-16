@@ -111,13 +111,13 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
   //MARK:  $value binding
   //····················································································································
 
-  private var mValueController : EBGenericReadWritePropertyController <Double>? = nil
+  private var mValueController : EBReadWritePropertyController_Double? = nil
 
   //····················································································································
 
   final func bind_value (_ inObject : EBReadWriteProperty_Double, sendContinously : Bool) -> Self {
     self.isContinuous = sendContinously
-    self.mValueController = EBGenericReadWritePropertyController <Double> (
+    self.mValueController = EBReadWritePropertyController_Double (
       observedObject: inObject,
       callBack: { [weak self] in self?.update (from: inObject) }
     )

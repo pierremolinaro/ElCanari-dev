@@ -906,7 +906,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_symbolColor_property, sendContinously:false)
+        .bind_color (preferences_symbolColor_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -932,7 +932,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_symbolBackgroundColor_property, sendContinously:false)
+        .bind_color (preferences_symbolBackgroundColor_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -958,7 +958,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_crossColorOfSymbolGrid_property, sendContinously:false)
+        .bind_color (preferences_crossColorOfSymbolGrid_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -984,7 +984,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_lineColorOfSymbolGrid_property, sendContinously:false)
+        .bind_color (preferences_lineColorOfSymbolGrid_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)

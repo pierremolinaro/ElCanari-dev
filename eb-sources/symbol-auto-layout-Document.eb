@@ -255,19 +255,19 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
     GridView2 {
       addCenterYAligned (
         left: StaticLabel (title: "Symbol", bold: no, size: .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColor (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColor } space }
       )
       addCenterYAligned (
         left: StaticLabel (title: "Background", bold: no, size: .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolBackgroundColor (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolBackgroundColor } space }
       )
       addCenterYAligned (
         left: StaticLabel (title: "Cross Grid", bold: no, size: .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.crossColorOfSymbolGrid (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.crossColorOfSymbolGrid } space }
       )
       addCenterYAligned (
         left: StaticLabel (title: "Line Grid", bold: no, size: .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorOfSymbolGrid (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorOfSymbolGrid } space }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Line Width", bold: no, size: .small, alignment: .center),

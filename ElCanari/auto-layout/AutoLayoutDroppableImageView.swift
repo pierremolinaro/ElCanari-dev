@@ -78,13 +78,13 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  @objc func removeImageAction (_ inUnusedSender : Any?) {
+  @objc func removeImageAction (_ _ : Any?) {
     self.setModel (Data ())
   }
 
   //····················································································································
 
-  @objc func copyImageAction (_ inUnusedSender : Any?) {
+  @objc func copyImageAction (_ _ : Any?) {
     if let data = self.mModel?.optionalValue {
       let pasteboard = NSPasteboard.general
       pasteboard.clearContents ()
@@ -94,7 +94,7 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  @objc func pasteImageAction (_ inUnusedSender : Any?) {
+  @objc func pasteImageAction (_ _ : Any?) {
     if let pdfData = NSPasteboard.general.data (forType: .pdf) {
       self.setModel (pdfData)
     }else if let pngData = NSPasteboard.general.data (forType: .png) {
@@ -161,7 +161,7 @@ fileprivate final class AutoLayoutInternalDroppableImageView : NSImageView {
 
   private var mMaxWidth : CGFloat? = nil
   private var mMaxHeight : CGFloat? = nil
-  public weak var mDroppableImageView : AutoLayoutDroppableImageView? = nil
+  weak var mDroppableImageView : AutoLayoutDroppableImageView? = nil
 
   //····················································································································
 

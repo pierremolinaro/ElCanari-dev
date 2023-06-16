@@ -68,12 +68,12 @@ final class AutoLayoutCanariUnitPopUpButton : AutoLayoutBase_NSPopUpButton {
   //  $selectedUnit binding
   //····················································································································
 
-  private var mSelectedUnitController : EBGenericReadWritePropertyController <Int>? = nil
+  private var mSelectedUnitController : EBReadWritePropertyController_Int? = nil
 
   //····················································································································
 
   final func bind_unit (_ inObject : EBObservableMutableProperty <Int>) -> Self {
-    self.mSelectedUnitController = EBGenericReadWritePropertyController <Int> (
+    self.mSelectedUnitController = EBReadWritePropertyController_Int (
       observedObject: inObject,
       callBack: { [weak self, weak inObject] in self?.updateTag (from: inObject) }
     )

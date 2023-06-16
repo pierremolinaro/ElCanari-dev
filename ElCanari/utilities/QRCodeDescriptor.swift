@@ -37,9 +37,9 @@ struct QRCodeDescriptor : Hashable {
 
   //····················································································································
 
-  public let blackRectangles : [QRCodeRectangle]
-  public let imageWidth : Int
-  public let imageHeight : Int
+  let blackRectangles : [QRCodeRectangle]
+  let imageWidth : Int
+  let imageHeight : Int
 
   //····················································································································
 

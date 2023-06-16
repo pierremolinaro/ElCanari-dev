@@ -1005,20 +1005,20 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
     GridView2 {
       addCenterYAligned (
         left: StaticLabel (title: "Background", bold: no, size : .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageBackgroundColor (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageBackgroundColor } space }
       )
       addCenterYAligned (
         left: StaticLabel (title: "Cross Grid", bold: no, size : .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.crossColorOfPackageGrid (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.crossColorOfPackageGrid } space }
       )
       addCenterYAligned (
         left: StaticLabel (title: "Line Grid", bold: no, size : .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorOfPackageGrid (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorOfPackageGrid } space }
       )
       addSeparator ()
       addCenterYAligned (
         left: StaticLabel (title: "Package", bold: no, size : .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageColor (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageColor } space }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Line Width", bold: no, size : .small, alignment: .center),
@@ -1035,7 +1035,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
       addCenterYAligned (
         left: StaticLabel (title: "Pad Numbering", bold: no, size : .small, alignment: .center),
         right: hStack setCenterYAlignment () {
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColor (sendContinously:no) }
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColor }
           Checkbox (title: "Show", size : .small) { expandableHeight () $value prefs.showPadNumber }
           space
         }
@@ -1045,7 +1045,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
       addCenterYAligned (
         left: StaticLabel (title: "Top Side Pads", bold: no, size : .small, alignment: .center),
         right: hStack setCenterYAlignment () {
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColor (sendContinously:no) }
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColor }
           Checkbox (title: "Show", size : .small) { expandableHeight () $value prefs.displayPackageFrontSidePads }
           space
         }
@@ -1053,7 +1053,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
       addCenterYAligned (
         left: StaticLabel (title: "Back Side Pads", bold: no, size : .small, alignment: .center),
         right: hStack setCenterYAlignment () {
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColor (sendContinously:no) }
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColor }
           Checkbox (title: "Show", size : .small) { expandableHeight () $value prefs.displayPackageBackSidePads }
           space
         }
@@ -1061,11 +1061,11 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
       addSeparator ()
       addCenterYAligned (
         left: StaticLabel (title: "Guide Color", bold: no, size : .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageGuideColor (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageGuideColor } space }
       )
       addCenterYAligned (
         left: StaticLabel (title: "Dimension Color", bold: no, size : .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageDimensionColor (sendContinously:no) } space }
+        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageDimensionColor } space }
       )
       add (single: StaticLabel (title: "Dimension Font", bold: no, size : .small, alignment: .left) )
       add (single: FontButton (width: 125, size : .small) {$fontValue prefs.dimensionFont})
@@ -1073,7 +1073,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
       addCenterYAligned (
         left: StaticLabel (title: "Zone Color", bold: no, size : .small, alignment: .center),
         right: hStack {
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padZoneColor (sendContinously:no) }
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padZoneColor }
           space
         }
       )

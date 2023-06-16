@@ -68,12 +68,12 @@ final class AutoLayoutDoubleSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
-  private var mValueController : EBGenericReadWritePropertyController <Double>? = nil
+  private var mValueController : EBReadWritePropertyController_Double? = nil
 
   //····················································································································
 
   final func bind_value (_ object : EBReadWriteProperty_Double) -> Self {
-    self.mValueController = EBGenericReadWritePropertyController <Double> (
+    self.mValueController = EBReadWritePropertyController_Double (
       observedObject: object,
       callBack: { [weak self] in self?.update (from: object) }
     )

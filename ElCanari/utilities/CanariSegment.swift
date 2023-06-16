@@ -65,8 +65,8 @@ struct CanariSegment : Hashable {
 
   //····················································································································
 
-  var p1 : CanariPoint { return CanariPoint (x: self.x1, y: self.y1) }
-  var p2 : CanariPoint { return CanariPoint (x: self.x2, y: self.y2) }
+//  var p1 : CanariPoint { return CanariPoint (x: self.x1, y: self.y1) }
+//  var p2 : CanariPoint { return CanariPoint (x: self.x2, y: self.y2) }
 
   //····················································································································
 

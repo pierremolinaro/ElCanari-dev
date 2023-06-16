@@ -2821,7 +2821,7 @@ import AppKit
       let view_0_0 = AutoLayoutFlexibleSpace ()
       _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutColorWell ()
-        .bind_color (self.rootObject.mPDFBoardBackgroundColor_property, sendContinously:false)
+        .bind_color (self.rootObject.mPDFBoardBackgroundColor_property)
       _ = view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutStaticLabel (title: "Board Background Color", bold: false, size: .regular, alignment: .center)
       _ = view_0.appendView (view_0_2)
@@ -2977,7 +2977,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_dotColorGridForSchematic_property, sendContinously:true)
+        .bind_color (preferences_dotColorGridForSchematic_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -3003,7 +3003,7 @@ import AppKit
     do{
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_lineColorGridForSchematic_property, sendContinously:true)
+        .bind_color (preferences_lineColorGridForSchematic_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
@@ -3044,7 +3044,7 @@ import AppKit
   private final func computeImplicitView_17 () -> NSView {
     let view = AutoLayoutColorWell ()
       .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_symbolColorForUnplacedComponentsForSchematic_property, sendContinously:true)
+      .bind_color (preferences_symbolColorForUnplacedComponentsForSchematic_property)
     return view
   }
 
@@ -3064,7 +3064,7 @@ import AppKit
   private final func computeImplicitView_19 () -> NSView {
     let view = AutoLayoutColorWell ()
       .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_symbolColorForSchematic_property, sendContinously:true)
+      .bind_color (preferences_symbolColorForSchematic_property)
     return view
   }
 
@@ -3107,7 +3107,7 @@ import AppKit
   private final func computeImplicitView_22 () -> NSView {
     let view = AutoLayoutColorWell ()
       .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_componentNameColorForSchematic_property, sendContinously:true)
+      .bind_color (preferences_componentNameColorForSchematic_property)
     return view
   }
 
@@ -3137,7 +3137,7 @@ import AppKit
   private final func computeImplicitView_25 () -> NSView {
     let view = AutoLayoutColorWell ()
       .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_componentValueColorForSchematic_property, sendContinously:true)
+      .bind_color (preferences_componentValueColorForSchematic_property)
     return view
   }
 
@@ -3167,7 +3167,7 @@ import AppKit
   private final func computeImplicitView_28 () -> NSView {
     let view = AutoLayoutColorWell ()
       .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_pinNameColorForSchematic_property, sendContinously:true)
+      .bind_color (preferences_pinNameColorForSchematic_property)
     return view
   }
 
@@ -3197,7 +3197,7 @@ import AppKit
   private final func computeImplicitView_31 () -> NSView {
     let view = AutoLayoutColorWell ()
       .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_pinNumberColorForSchematic_property, sendContinously:true)
+      .bind_color (preferences_pinNumberColorForSchematic_property)
     return view
   }
 
@@ -3227,7 +3227,7 @@ import AppKit
   private final func computeImplicitView_34 () -> NSView {
     let view = AutoLayoutColorWell ()
       .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_connectionColorForSchematic_property, sendContinously:true)
+      .bind_color (preferences_connectionColorForSchematic_property)
     return view
   }
 
@@ -3247,7 +3247,7 @@ import AppKit
   private final func computeImplicitView_36 () -> NSView {
     let view = AutoLayoutColorWell ()
       .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_schematicBackColor_property, sendContinously:true)
+      .bind_color (preferences_schematicBackColor_property)
     return view
   }
 
@@ -3267,7 +3267,7 @@ import AppKit
   private final func computeImplicitView_38 () -> NSView {
     let view = AutoLayoutColorWell ()
       .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_schematicFrameColor_property, sendContinously:true)
+      .bind_color (preferences_schematicFrameColor_property)
     return view
   }
 
@@ -3452,7 +3452,7 @@ import AppKit
 
   private final func computeImplicitView_53 () -> NSView {
     let view = AutoLayoutColorWell ()
-      .bind_color (self.commentInSchematicSelectionController.mColor_property, sendContinously:true)
+      .bind_color (self.commentInSchematicSelectionController.mColor_property)
     return view
   }
 
@@ -4116,7 +4116,7 @@ import AppKit
     let view = AutoLayoutColorWell ()
       .expandableWidth ()
       .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_crossColorGridForBoard_property, sendContinously:true)
+      .bind_color (preferences_crossColorGridForBoard_property)
     return view
   }
 
@@ -4137,7 +4137,7 @@ import AppKit
     let view = AutoLayoutColorWell ()
       .expandableWidth ()
       .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_lineColorGridForBoard_property, sendContinously:true)
+      .bind_color (preferences_lineColorGridForBoard_property)
     return view
   }
 
@@ -4283,7 +4283,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_frontSidePadColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_frontSidePadColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4311,7 +4311,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_backSidePadColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_backSidePadColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4339,7 +4339,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_padNumberColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_padNumberColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4367,7 +4367,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_frontSideLegendColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_frontSideLegendColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4395,7 +4395,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_backSideLegendColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_backSideLegendColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4423,7 +4423,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_frontSideLayoutColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_frontSideLayoutColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4451,7 +4451,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_inner1LayoutColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_inner1LayoutColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4479,7 +4479,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_inner2LayoutColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_inner2LayoutColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4507,7 +4507,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_inner3LayoutColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_inner3LayoutColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4535,7 +4535,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_inner4LayoutColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_inner4LayoutColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4563,7 +4563,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_backSideLayoutColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_backSideLayoutColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4591,7 +4591,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_frontSideRestrictRectangleColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_frontSideRestrictRectangleColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4619,7 +4619,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_backSideRestrictRectangleColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_backSideRestrictRectangleColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4647,7 +4647,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_inner1SideRestrictRectangleColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_inner1SideRestrictRectangleColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4675,7 +4675,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_inner2SideRestrictRectangleColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_inner2SideRestrictRectangleColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4703,7 +4703,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_inner3SideRestrictRectangleColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_inner3SideRestrictRectangleColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4731,7 +4731,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_inner4SideRestrictRectangleColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_inner4SideRestrictRectangleColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4759,7 +4759,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_boardLimitsColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_boardLimitsColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4785,7 +4785,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_boardClearanceColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_boardClearanceColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4811,7 +4811,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_boardBackgroundColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_boardBackgroundColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4837,7 +4837,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_errorBackgroundColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_errorBackgroundColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4865,7 +4865,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_warningBackgroundColorForBoard_property, sendContinously:true)
+        .bind_color (preferences_warningBackgroundColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view

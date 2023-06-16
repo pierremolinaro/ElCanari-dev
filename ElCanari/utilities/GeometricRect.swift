@@ -48,9 +48,9 @@ final class GeometricRect {
   //   length
   //····················································································································
 
-  var length : CGFloat {
-    return NSPoint.distance (self.p1, self.p2)
-  }
+//  var length : CGFloat {
+//    return NSPoint.distance (self.p1, self.p2)
+//  }
 
   //····················································································································
   //   CircumCircle
@@ -70,31 +70,31 @@ final class GeometricRect {
 
   //····················································································································
 
-  func circumCircle () -> GeometricCircle {
-    return GeometricCircle (center: self.center, radius: self.circumRadius)
-  }
+//  func circumCircle () -> GeometricCircle {
+//    return GeometricCircle (center: self.center, radius: self.circumRadius)
+//  }
 
   //····················································································································
   //   inscribedCircle
   //····················································································································
 
-  private var mInnerRadius : CGFloat? = nil
-  var innerRadius : CGFloat {
-    if let r = self.mInnerRadius {
-      return r
-    }else{
-      let d = NSPoint.distance (self.p1, self.p2)
-      let r = min (d, self.width) / 2.0
-      self.mInnerRadius = r
-      return r
-    }
-  }
+//  private var mInnerRadius : CGFloat? = nil
+//  var innerRadius : CGFloat {
+//    if let r = self.mInnerRadius {
+//      return r
+//    }else{
+//      let d = NSPoint.distance (self.p1, self.p2)
+//      let r = min (d, self.width) / 2.0
+//      self.mInnerRadius = r
+//      return r
+//    }
+//  }
 
   //····················································································································
 
-  func inscribedCircle () -> GeometricCircle {
-    return GeometricCircle (center: self.center, radius: self.innerRadius)
-  }
+//  func inscribedCircle () -> GeometricCircle {
+//    return GeometricCircle (center: self.center, radius: self.innerRadius)
+//  }
 
   //····················································································································
   //   Contains point
@@ -221,9 +221,9 @@ final class GeometricRect {
 
   //····················································································································
 
-  func transformed (by inAffineTransform : AffineTransform) -> GeometricRect {
-    return GeometricRect (inAffineTransform.transform (self.p1), inAffineTransform.transform (self.p2), self.width)
-  }
+//  func transformed (by inAffineTransform : AffineTransform) -> GeometricRect {
+//    return GeometricRect (inAffineTransform.transform (self.p1), inAffineTransform.transform (self.p2), self.width)
+//  }
 
   //····················································································································
 

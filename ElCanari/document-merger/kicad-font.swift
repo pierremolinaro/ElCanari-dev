@@ -4380,7 +4380,7 @@ fileprivate func enterCharacter00ac (_ ioDict : inout BoardFontDictionary) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter00ad (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter00ad (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -15360,7 +15360,7 @@ fileprivate func enterCharacter038a (_ ioDict : inout BoardFontDictionary) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter038b (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter038b (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -15389,7 +15389,7 @@ fileprivate func enterCharacter038c (_ ioDict : inout BoardFontDictionary) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter038d (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter038d (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -15674,7 +15674,7 @@ fileprivate func enterCharacter03a1 (_ ioDict : inout BoardFontDictionary) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter03a2 (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter03a2 (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -35335,27 +35335,27 @@ fileprivate func enterCharacter200a (_ ioDict : inout BoardFontDictionary) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter200b (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter200b (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter200c (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter200c (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter200d (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter200d (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter200e (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter200e (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter200f (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter200f (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -35641,42 +35641,42 @@ fileprivate func enterCharacter2027 (_ ioDict : inout BoardFontDictionary) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter2028 (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter2028 (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter2029 (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter2029 (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter202a (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter202a (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter202b (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter202b (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter202c (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter202c (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter202d (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter202d (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter202e (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter202e (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter202f (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter202f (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -36571,22 +36571,22 @@ fileprivate func enterCharacter2060 (_ ioDict : inout BoardFontDictionary) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter2061 (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter2061 (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter2062 (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter2062 (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter2063 (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter2063 (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter2064 (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter2064 (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -36646,17 +36646,17 @@ fileprivate func enterCharacter2069 (_ ioDict : inout BoardFontDictionary) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter206a (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter206a (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter206b (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter206b (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter206c (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter206c (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -36666,12 +36666,12 @@ fileprivate func enterCharacter206d (_ ioDict : inout BoardFontDictionary) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter206e (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter206e (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter206f (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter206f (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -37135,7 +37135,7 @@ fileprivate func enterCharacter208e (_ ioDict : inout BoardFontDictionary) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterCharacter208f (_ ioDict : inout BoardFontDictionary) {
+fileprivate func enterCharacter208f (_ _ : inout BoardFontDictionary) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

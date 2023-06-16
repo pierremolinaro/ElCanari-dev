@@ -66,12 +66,12 @@ final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
-  private var mDoubleValueController : EBGenericReadWritePropertyController <Double>? = nil
+  private var mDoubleValueController : EBReadWritePropertyController_Double? = nil
 
   //····················································································································
 
   final func bind_doubleValue (_ inObject : EBReadWriteProperty_Double, sendContinously : Bool) -> Self {
-    self.mDoubleValueController = EBGenericReadWritePropertyController <Double> (
+    self.mDoubleValueController = EBReadWritePropertyController_Double (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateDoubleValue (inObject) }
     )
@@ -96,12 +96,12 @@ final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
-  private var mIntValueController : EBGenericReadWritePropertyController <Int>? = nil
+  private var mIntValueController : EBReadWritePropertyController_Int? = nil
 
   //····················································································································
 
   final func bind_intValue (_ inObject : EBReadWriteProperty_Int, sendContinously : Bool) -> Self {
-    self.mIntValueController = EBGenericReadWritePropertyController <Int> (
+    self.mIntValueController = EBReadWritePropertyController_Int (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateIntValue (inObject) }
     )

@@ -49,12 +49,12 @@ final class AutoLayoutBoolPopUpButton : AutoLayoutBase_NSPopUpButton {
   //  $value binding
   //····················································································································
 
-  private var mValueController : EBGenericReadWritePropertyController <Bool>? = nil
+  private var mValueController : EBReadWritePropertyController_Bool? = nil
 
   //····················································································································
 
   final func bind_value (_ inObject : EBReadWriteProperty_Bool) -> Self {
-    self.mValueController = EBGenericReadWritePropertyController <Bool> (
+    self.mValueController = EBReadWritePropertyController_Bool (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateIndex (inObject) }
     )

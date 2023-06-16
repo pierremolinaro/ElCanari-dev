@@ -73,9 +73,9 @@ struct GeometricCircle {
 
   //····················································································································
 
-  func transformed (by inAffineTransform : AffineTransform) -> GeometricCircle {
-    return GeometricCircle (center: inAffineTransform.transform (self.center), radius: self.radius)
-  }
+//  func transformed (by inAffineTransform : AffineTransform) -> GeometricCircle {
+//    return GeometricCircle (center: inAffineTransform.transform (self.center), radius: self.radius)
+//  }
 
   //····················································································································
 

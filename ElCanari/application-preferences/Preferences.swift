@@ -297,7 +297,7 @@ import AppKit
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
-        .bind_color (preferences_selectionHiliteColor_property, sendContinously:true)
+        .bind_color (preferences_selectionHiliteColor_property)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       _ = view.appendView (view_1)
