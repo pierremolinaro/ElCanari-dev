@@ -18,8 +18,6 @@ final class MergerRoot : EBManagedObject {
 
   //····················································································································
 
-  //····················································································································
-
   final var boardModels : EBReferenceArray <BoardModel> {
     get { return self.boardModels_property.propval }
     set { self.boardModels_property.setProp (newValue) }
@@ -30,8 +28,6 @@ final class MergerRoot : EBManagedObject {
   //····················································································································
 
   final let boardInstances_property = StoredArrayOf_MergerBoardInstance (usedForSignature: false, key: "boardInstances")
-
-  //····················································································································
 
   //····················································································································
 

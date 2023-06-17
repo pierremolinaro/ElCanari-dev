@@ -571,8 +571,6 @@ final class ProjectRoot : EBManagedObject {
 
   //····················································································································
 
-  //····················································································································
-
   final var mSheets : EBReferenceArray <SheetInProject> {
     get { return self.mSheets_property.propval }
     set { self.mSheets_property.setProp (newValue) }
@@ -868,8 +866,6 @@ final class ProjectRoot : EBManagedObject {
 
   //····················································································································
 
-  //····················································································································
-
   final var mFonts : EBReferenceArray <FontInProject> {
     get { return self.mFonts_property.propval }
     set { self.mFonts_property.setProp (newValue) }
@@ -883,8 +879,6 @@ final class ProjectRoot : EBManagedObject {
 
   //····················································································································
 
-  //····················································································································
-
   final var mDevices : EBReferenceArray <DeviceInProject> {
     get { return self.mDevices_property.propval }
     set { self.mDevices_property.setProp (newValue) }
@@ -895,8 +889,6 @@ final class ProjectRoot : EBManagedObject {
   //····················································································································
 
   final let mNetClasses_property = StoredArrayOf_NetClassInProject (usedForSignature: false, key: "mNetClasses")
-
-  //····················································································································
 
   //····················································································································
 
@@ -925,8 +917,6 @@ final class ProjectRoot : EBManagedObject {
 
   //····················································································································
 
-  //····················································································································
-
   final var mBorderCurves : EBReferenceArray <BorderCurve> {
     get { return self.mBorderCurves_property.propval }
     set { self.mBorderCurves_property.setProp (newValue) }
@@ -937,8 +927,6 @@ final class ProjectRoot : EBManagedObject {
   //····················································································································
 
   final let mBoardObjects_property = StoredArrayOf_BoardObject (usedForSignature: false, key: "mBoardObjects")
-
-  //····················································································································
 
   //····················································································································
 
@@ -977,8 +965,6 @@ final class ProjectRoot : EBManagedObject {
   //····················································································································
 
   final let mComponents_property = StoredArrayOf_ComponentInProject (usedForSignature: false, key: "mComponents")
-
-  //····················································································································
 
   //····················································································································
 

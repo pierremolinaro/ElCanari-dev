@@ -126,8 +126,6 @@ final class FontCharacter : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var segments : EBReferenceArray <SegmentForFontCharacter> {
     get { return self.segments_property.propval }
     set { self.segments_property.setProp (newValue) }

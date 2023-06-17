@@ -67,8 +67,6 @@ final class SheetInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mObjects : EBReferenceArray <SchematicObject> {
     get { return self.mObjects_property.propval }
     set { self.mObjects_property.setProp (newValue) }
@@ -79,8 +77,6 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   final let mPoints_property = StoredArrayOf_PointInSchematic (usedForSignature: false, key: "mPoints")
-
-  //····················································································································
 
   //····················································································································
 

@@ -250,10 +250,12 @@ extension AutoLayoutProjectDocument {
     if connectorsUnderMouse.count == 1 {
       let connector = connectorsUnderMouse [0]
       let connectionCount = connector.mTracksP1.count + connector.mTracksP2.count
-      if connectionCount == 2 {
-        let tracks = connector.mTracksP1.values + connector.mTracksP2.values
-        let track0Direction = tracks [0].trackDirectionInDegrees!
-        let track1Direction = tracks [1].trackDirectionInDegrees!
+      let tracks = connector.mTracksP1.values + connector.mTracksP2.values
+      if connectionCount == 2,
+           let track0Direction = tracks [0].trackDirectionInDegrees_property.optionalValue,
+           let track1Direction = tracks [1].trackDirectionInDegrees_property.optionalValue {
+//        let track0Direction = tracks [0].trackDirectionInDegrees!
+//        let track1Direction = tracks [1].trackDirectionInDegrees!
         let canRectiLinearAlign = ((track0Direction % 90_000) != 0) || ((track1Direction % 90_000) != 0)
         let canOctoLinearAlign =
           ((track0Direction % 45_000) != 0) || // La piste 0 n'est pas rectilinéaire

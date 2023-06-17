@@ -150,8 +150,6 @@ final class ArtworkRoot : EBManagedObject {
 
   //····················································································································
 
-  //····················································································································
-
   final var fileGenerationParameterArray : EBReferenceArray <ArtworkFileGenerationParameters> {
     get { return self.fileGenerationParameterArray_property.propval }
     set { self.fileGenerationParameterArray_property.setProp (newValue) }

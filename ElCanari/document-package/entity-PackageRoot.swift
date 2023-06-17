@@ -388,8 +388,6 @@ final class PackageRoot : EBManagedObject {
 
   //····················································································································
 
-  //····················································································································
-
   final var mModelImageObjects : EBReferenceArray <PackageModelImageDoublePoint> {
     get { return self.mModelImageObjects_property.propval }
     set { self.mModelImageObjects_property.setProp (newValue) }
@@ -400,8 +398,6 @@ final class PackageRoot : EBManagedObject {
   //····················································································································
 
   final let packageObjects_property = StoredArrayOf_PackageObject (usedForSignature: true, key: "packageObjects")
-
-  //····················································································································
 
   //····················································································································
 

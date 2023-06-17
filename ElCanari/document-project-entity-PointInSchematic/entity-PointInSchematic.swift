@@ -136,8 +136,6 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mLabels : EBReferenceArray <LabelInSchematic> {
     get { return self.mLabels_property.propval }
     set { self.mLabels_property.setProp (newValue) }
@@ -177,8 +175,6 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mWiresP2s : EBReferenceArray <WireInSchematic> {
     get { return self.mWiresP2s_property.propval }
     set { self.mWiresP2s_property.setProp (newValue) }
@@ -189,8 +185,6 @@ final class PointInSchematic : EBManagedObject,
   //····················································································································
 
   final let mWiresP1s_property = StoredArrayOf_WireInSchematic (usedForSignature: false, key: "mWiresP1s")
-
-  //····················································································································
 
   //····················································································································
 

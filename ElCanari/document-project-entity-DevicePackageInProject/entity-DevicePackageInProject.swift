@@ -39,8 +39,6 @@ final class DevicePackageInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mMasterPads : EBReferenceArray <DeviceMasterPadInProject> {
     get { return self.mMasterPads_property.propval }
     set { self.mMasterPads_property.setProp (newValue) }

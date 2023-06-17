@@ -441,12 +441,6 @@ final class BoardImage : BoardObject,
   final let computedDataImage_property = EBComputedProperty_Data ()
 
   //····················································································································
-
-  final var computedDataImage : Data? {
-    return self.computedDataImage_property.optionalValue
-  }
-
-  //····················································································································
   //   Transient property: imageDataByteCount
   //····················································································································
 

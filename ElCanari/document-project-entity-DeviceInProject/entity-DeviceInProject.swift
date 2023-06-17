@@ -161,8 +161,6 @@ final class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mPackages : EBReferenceArray <DevicePackageInProject> {
     get { return self.mPackages_property.propval }
     set { self.mPackages_property.setProp (newValue) }
@@ -173,8 +171,6 @@ final class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final let mSymbols_property = StoredArrayOf_DeviceSymbolInstanceInProject (usedForSignature: false, key: "mSymbols")
-
-  //····················································································································
 
   //····················································································································
 
@@ -191,8 +187,6 @@ final class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mComponents : EBReferenceArray <ComponentInProject> {
     get { return self.mComponents_property.propval }
     set { self.mComponents_property.setProp (newValue) }
@@ -203,8 +197,6 @@ final class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final let mPadAssignments_property = StoredArrayOf_DevicePadAssignmentInProject (usedForSignature: false, key: "mPadAssignments")
-
-  //····················································································································
 
   //····················································································································
 

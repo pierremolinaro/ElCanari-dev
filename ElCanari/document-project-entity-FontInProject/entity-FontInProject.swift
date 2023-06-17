@@ -95,8 +95,6 @@ final class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mTexts : EBReferenceArray <BoardText> {
     get { return self.mTexts_property.propval }
     set { self.mTexts_property.setProp (newValue) }
@@ -162,8 +160,6 @@ final class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mComponentNames : EBReferenceArray <ComponentInProject> {
     get { return self.mComponentNames_property.propval }
     set { self.mComponentNames_property.setProp (newValue) }
@@ -174,8 +170,6 @@ final class FontInProject : EBManagedObject,
   //····················································································································
 
   final let mComponentValues_property = StoredArrayOf_ComponentInProject (usedForSignature: false, key: "mComponentValues")
-
-  //····················································································································
 
   //····················································································································
 

@@ -205,8 +205,6 @@ final class DeviceMasterPadInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mSlavePads : EBReferenceArray <DeviceSlavePadInProject> {
     get { return self.mSlavePads_property.propval }
     set { self.mSlavePads_property.setProp (newValue) }

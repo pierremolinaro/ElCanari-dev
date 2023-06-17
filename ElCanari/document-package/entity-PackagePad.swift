@@ -428,8 +428,6 @@ final class PackagePad : PackageObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var slaves : EBReferenceArray <PackageSlavePad> {
     get { return self.slaves_property.propval }
     set { self.slaves_property.setProp (newValue) }

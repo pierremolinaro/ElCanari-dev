@@ -564,22 +564,10 @@ final class BoardTrack : BoardObject,
   final let trackDirectionInDegrees_property = EBComputedProperty_Int ()
 
   //····················································································································
-
-  final var trackDirectionInDegrees : Int? {
-    return self.trackDirectionInDegrees_property.optionalValue
-  }
-
-  //····················································································································
   //   Transient property: computedP1X
   //····················································································································
 
   final let computedP1X_property = EBComputedProperty_Int ()
-
-  //····················································································································
-
-  final var computedP1X : Int? {
-    return self.computedP1X_property.optionalValue
-  }
 
   //····················································································································
   //   Transient property: computedP1Y
@@ -588,34 +576,16 @@ final class BoardTrack : BoardObject,
   final let computedP1Y_property = EBComputedProperty_Int ()
 
   //····················································································································
-
-  final var computedP1Y : Int? {
-    return self.computedP1Y_property.optionalValue
-  }
-
-  //····················································································································
   //   Transient property: computedP2X
   //····················································································································
 
   final let computedP2X_property = EBComputedProperty_Int ()
 
   //····················································································································
-
-  final var computedP2X : Int? {
-    return self.computedP2X_property.optionalValue
-  }
-
-  //····················································································································
   //   Transient property: computedP2Y
   //····················································································································
 
   final let computedP2Y_property = EBComputedProperty_Int ()
-
-  //····················································································································
-
-  final var computedP2Y : Int? {
-    return self.computedP2Y_property.optionalValue
-  }
 
   //····················································································································
   //   Transient property: p1CanMove

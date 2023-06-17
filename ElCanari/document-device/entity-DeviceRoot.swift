@@ -126,8 +126,6 @@ final class DeviceRoot : EBManagedObject {
 
   //····················································································································
 
-  //····················································································································
-
   final var mDocs : EBReferenceArray <DeviceDocumentation> {
     get { return self.mDocs_property.propval }
     set { self.mDocs_property.setProp (newValue) }
@@ -138,8 +136,6 @@ final class DeviceRoot : EBManagedObject {
   //····················································································································
 
   final let mSymbolInstances_property = StoredArrayOf_SymbolInstanceInDevice (usedForSignature: true, key: "mSymbolInstances")
-
-  //····················································································································
 
   //····················································································································
 
@@ -156,8 +152,6 @@ final class DeviceRoot : EBManagedObject {
 
   //····················································································································
 
-  //····················································································································
-
   final var mPackages : EBReferenceArray <PackageInDevice> {
     get { return self.mPackages_property.propval }
     set { self.mPackages_property.setProp (newValue) }
@@ -171,8 +165,6 @@ final class DeviceRoot : EBManagedObject {
 
   //····················································································································
 
-  //····················································································································
-
   final var mSymbolTypes : EBReferenceArray <SymbolTypeInDevice> {
     get { return self.mSymbolTypes_property.propval }
     set { self.mSymbolTypes_property.setProp (newValue) }
@@ -183,8 +175,6 @@ final class DeviceRoot : EBManagedObject {
   //····················································································································
 
   final let mPadProxies_property = StoredArrayOf_PadProxyInDevice (usedForSignature: true, key: "mPadProxies")
-
-  //····················································································································
 
   //····················································································································
 

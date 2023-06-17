@@ -632,8 +632,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var legendFrontImages : EBReferenceArray <RectangleEntity> {
     get { return self.legendFrontImages_property.propval }
     set { self.legendFrontImages_property.setProp (newValue) }
@@ -644,8 +642,6 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final let legendBackImages_property = StoredArrayOf_RectangleEntity (usedForSignature: false, key: "legendBackImages")
-
-  //····················································································································
 
   //····················································································································
 
@@ -662,8 +658,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var legendFrontQRCodes : EBReferenceArray <RectangleEntity> {
     get { return self.legendFrontQRCodes_property.propval }
     set { self.legendFrontQRCodes_property.setProp (newValue) }
@@ -674,8 +668,6 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final let legendBackQRCodes_property = StoredArrayOf_RectangleEntity (usedForSignature: false, key: "legendBackQRCodes")
-
-  //····················································································································
 
   //····················································································································
 
@@ -705,8 +697,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var frontLegendLines : EBReferenceArray <SegmentEntity> {
     get { return self.frontLegendLines_property.propval }
     set { self.frontLegendLines_property.setProp (newValue) }
@@ -717,8 +707,6 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final let backLegendLines_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "backLegendLines")
-
-  //····················································································································
 
   //····················································································································
 
@@ -735,8 +723,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var frontLegendTexts : EBReferenceArray <SegmentEntity> {
     get { return self.frontLegendTexts_property.propval }
     set { self.frontLegendTexts_property.setProp (newValue) }
@@ -747,8 +733,6 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final let frontLayoutTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "frontLayoutTexts")
-
-  //····················································································································
 
   //····················································································································
 
@@ -765,8 +749,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var backLegendTexts : EBReferenceArray <SegmentEntity> {
     get { return self.backLegendTexts_property.propval }
     set { self.backLegendTexts_property.setProp (newValue) }
@@ -777,8 +759,6 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final let backLayoutTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "backLayoutTexts")
-
-  //····················································································································
 
   //····················································································································
 
@@ -795,8 +775,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var internalBoardsLimits : EBReferenceArray <SegmentEntity> {
     get { return self.internalBoardsLimits_property.propval }
     set { self.internalBoardsLimits_property.setProp (newValue) }
@@ -807,8 +785,6 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final let drills_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "drills")
-
-  //····················································································································
 
   //····················································································································
 
@@ -825,8 +801,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var vias : EBReferenceArray <BoardModelVia> {
     get { return self.vias_property.propval }
     set { self.vias_property.setProp (newValue) }
@@ -837,8 +811,6 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final let frontPads_property = StoredArrayOf_BoardModelPad (usedForSignature: false, key: "frontPads")
-
-  //····················································································································
 
   //····················································································································
 
@@ -855,8 +827,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var backPads : EBReferenceArray <BoardModelPad> {
     get { return self.backPads_property.propval }
     set { self.backPads_property.setProp (newValue) }
@@ -867,8 +837,6 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final let traversingPads_property = StoredArrayOf_BoardModelPad (usedForSignature: false, key: "traversingPads")
-
-  //····················································································································
 
   //····················································································································
 
@@ -911,8 +879,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var backComponentNames : EBReferenceArray <SegmentEntity> {
     get { return self.backComponentNames_property.propval }
     set { self.backComponentNames_property.setProp (newValue) }
@@ -923,8 +889,6 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final let frontComponentNames_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "frontComponentNames")
-
-  //····················································································································
 
   //····················································································································
 
@@ -941,8 +905,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var frontComponentValues : EBReferenceArray <SegmentEntity> {
     get { return self.frontComponentValues_property.propval }
     set { self.frontComponentValues_property.setProp (newValue) }
@@ -953,8 +915,6 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final let backComponentValues_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "backComponentValues")
-
-  //····················································································································
 
   //····················································································································
 
@@ -971,8 +931,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var backTracks : EBReferenceArray <SegmentEntity> {
     get { return self.backTracks_property.propval }
     set { self.backTracks_property.setProp (newValue) }
@@ -983,8 +941,6 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final let frontTracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "frontTracks")
-
-  //····················································································································
 
   //····················································································································
 
@@ -1001,8 +957,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var inner1Tracks : EBReferenceArray <SegmentEntity> {
     get { return self.inner1Tracks_property.propval }
     set { self.inner1Tracks_property.setProp (newValue) }
@@ -1013,8 +967,6 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final let inner2Tracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "inner2Tracks")
-
-  //····················································································································
 
   //····················································································································
 
@@ -1031,8 +983,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var inner3Tracks : EBReferenceArray <SegmentEntity> {
     get { return self.inner3Tracks_property.propval }
     set { self.inner3Tracks_property.setProp (newValue) }
@@ -1043,8 +993,6 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final let inner4Tracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "inner4Tracks")
-
-  //····················································································································
 
   //····················································································································
 
@@ -1061,8 +1009,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var frontPackages : EBReferenceArray <SegmentEntity> {
     get { return self.frontPackages_property.propval }
     set { self.frontPackages_property.setProp (newValue) }
@@ -1073,8 +1019,6 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final let backPackages_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "backPackages")
-
-  //····················································································································
 
   //····················································································································
 
@@ -1101,8 +1045,6 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final let myInstances_property = StoredArrayOf_MergerBoardInstance (usedForSignature: false, key: "myInstances")
-
-  //····················································································································
 
   //····················································································································
 

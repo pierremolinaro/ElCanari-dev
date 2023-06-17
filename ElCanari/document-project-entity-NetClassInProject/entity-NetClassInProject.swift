@@ -389,8 +389,6 @@ final class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mNets : EBReferenceArray <NetInProject> {
     get { return self.mNets_property.propval }
     set { self.mNets_property.setProp (newValue) }

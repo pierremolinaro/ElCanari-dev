@@ -418,8 +418,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mConnectors : EBReferenceArray <BoardConnector> {
     get { return self.mConnectors_property.propval }
     set { self.mConnectors_property.setProp (newValue) }
@@ -430,8 +428,6 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final let mSymbols_property = StoredArrayOf_ComponentSymbolInProject (usedForSignature: false, key: "mSymbols")
-
-  //····················································································································
 
   //····················································································································
 

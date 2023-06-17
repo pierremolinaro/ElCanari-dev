@@ -78,8 +78,6 @@ final class SymbolRoot : EBManagedObject {
 
   //····················································································································
 
-  //····················································································································
-
   final var symbolObjects : EBReferenceArray <SymbolObject> {
     get { return self.symbolObjects_property.propval }
     set { self.symbolObjects_property.setProp (newValue) }

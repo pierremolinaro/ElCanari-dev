@@ -225,8 +225,6 @@ final class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mInstances : EBReferenceArray <SymbolPinInstanceInDevice> {
     get { return self.mInstances_property.propval }
     set { self.mInstances_property.setProp (newValue) }

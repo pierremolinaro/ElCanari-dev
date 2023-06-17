@@ -378,8 +378,6 @@ final class PackageZone : PackageObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var forbiddenPadNumbers : EBReferenceArray <ForbiddenPadNumber> {
     get { return self.forbiddenPadNumbers_property.propval }
     set { self.forbiddenPadNumbers_property.setProp (newValue) }

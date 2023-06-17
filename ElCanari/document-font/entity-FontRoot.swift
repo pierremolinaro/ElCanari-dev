@@ -61,8 +61,6 @@ final class FontRoot : EBManagedObject {
 
   //····················································································································
 
-  //····················································································································
-
   final var characters : EBReferenceArray <FontCharacter> {
     get { return self.characters_property.propval }
     set { self.characters_property.setProp (newValue) }

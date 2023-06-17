@@ -187,8 +187,6 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mMasterPads : EBReferenceArray <MasterPadInDevice> {
     get { return self.mMasterPads_property.propval }
     set { self.mMasterPads_property.setProp (newValue) }
