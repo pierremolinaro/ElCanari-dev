@@ -363,14 +363,14 @@ final class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
   //····················································································································
 
-  func resetDataProvider () {
+/*  func resetDataProvider () {
     if self.mDataProvider != nil {
       self.mSortObserver = nil
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = nil
       self.mIsOrderedBefore = nil
     }
-  }
+  } */
 
   //····················································································································
 

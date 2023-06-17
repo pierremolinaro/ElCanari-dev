@@ -441,7 +441,10 @@ graphic entity PackageGuide : PackageObject {
 
   override transient EBShape objectDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
-  override transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2, super.PackageObject.knobSize ;
+  override transient EBShape selectionDisplay dependsFrom 
+    self.x1, self.y1, self.x2, self.y2,
+    super.PackageObject.knobSize
+  ;
 
   override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }

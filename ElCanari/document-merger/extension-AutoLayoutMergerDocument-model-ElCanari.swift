@@ -598,18 +598,18 @@ extension AutoLayoutMergerDocument {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func double (fromDict inDictionary : [String : Any], key inKey : String, _ errorArray : inout [String]) -> Double {
-  let object : Any? = inDictionary [inKey]
-  var result = 0.0 // Default result
-  if object == nil {
-    errorArray.append ("No \"\(inKey)\" key.")
-  }else if let number = object as? NSNumber {
-    result = number.doubleValue
-  }else{
-    errorArray.append ("The \"\(inKey)\" key value is not a double.")
-  }
-  return result
-}
+//fileprivate func double (fromDict inDictionary : [String : Any], key inKey : String, _ errorArray : inout [String]) -> Double {
+//  let object : Any? = inDictionary [inKey]
+//  var result = 0.0 // Default result
+//  if object == nil {
+//    errorArray.append ("No \"\(inKey)\" key.")
+//  }else if let number = object as? NSNumber {
+//    result = number.doubleValue
+//  }else{
+//    errorArray.append ("The \"\(inKey)\" key value is not a double.")
+//  }
+//  return result
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -630,18 +630,18 @@ fileprivate func int (fromDict inDictionary : [String : Any],
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func intOrZero (fromDict inDictionary : [String : Any],
-                            key inKey : String,
-                            _ errorArray : inout [String]) -> Int {
-  let object : Any? = inDictionary [inKey]
-  var result = 0 // Default result
-  if let number = object as? NSNumber {
-    result = number.intValue
-  }else if object != nil {
-    errorArray.append ("The \"\(inKey)\" key value is not an integer.")
-  }
-  return result
-}
+//fileprivate func intOrZero (fromDict inDictionary : [String : Any],
+//                            key inKey : String,
+//                            _ errorArray : inout [String]) -> Int {
+//  let object : Any? = inDictionary [inKey]
+//  var result = 0 // Default result
+//  if let number = object as? NSNumber {
+//    result = number.intValue
+//  }else if object != nil {
+//    errorArray.append ("The \"\(inKey)\" key value is not an integer.")
+//  }
+//  return result
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -738,29 +738,29 @@ fileprivate func array3int (fromString inString : String,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func array4int (fromString inString : String,
-                             _ errorArray : inout [String]) -> [Int] {
-  let strArray : [String] = inString.components(separatedBy: " ")
-  var result = [Int] () // Default result
-  if strArray.count != 4 {
-    errorArray.append ("The string is not a four integer array.")
-  }else{
-    for s in strArray {
-      let possibleInt : Int? = Int (s)
-      if let n = possibleInt {
-        result.append (n)
-      }else{
-        errorArray.append ("The string is not a four integer array.")
-      }
-    }
-  }
-//--- If an error occurs, add fake int to get a four element vector
-  while result.count < 4 {
-    result.append (0)
-  }
-//---
-  return result
-}
+//fileprivate func array4int (fromString inString : String,
+//                             _ errorArray : inout [String]) -> [Int] {
+//  let strArray : [String] = inString.components(separatedBy: " ")
+//  var result = [Int] () // Default result
+//  if strArray.count != 4 {
+//    errorArray.append ("The string is not a four integer array.")
+//  }else{
+//    for s in strArray {
+//      let possibleInt : Int? = Int (s)
+//      if let n = possibleInt {
+//        result.append (n)
+//      }else{
+//        errorArray.append ("The string is not a four integer array.")
+//      }
+//    }
+//  }
+////--- If an error occurs, add fake int to get a four element vector
+//  while result.count < 4 {
+//    result.append (0)
+//  }
+////---
+//  return result
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

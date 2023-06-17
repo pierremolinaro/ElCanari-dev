@@ -50,11 +50,11 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
       if let relay = self.mObserversOf_mWidth { // Stored property
         managedObject.mWidth_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_objectDisplay { // Transient property
-        managedObject.objectDisplay_property.stopsBeingObserved (by: relay)
-      }
       if let relay = self.mObserversOf_selectionDisplay { // Transient property
         managedObject.selectionDisplay_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_objectDisplay { // Transient property
+        managedObject.objectDisplay_property.stopsBeingObserved (by: relay)
       }
     }
   //--- Add observers to added objects
@@ -92,11 +92,11 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
       if let relay = self.mObserversOf_mWidth { // Stored property
         managedObject.mWidth_property.startsToBeObserved (by: relay)
       }
-      if let relay = self.mObserversOf_objectDisplay { // Transient property
-        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
-      }
       if let relay = self.mObserversOf_selectionDisplay { // Transient property
         managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_objectDisplay { // Transient property
+        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
       }
     }
   }
@@ -421,35 +421,6 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   }
 
   //····················································································································
-  //   Observers of 'objectDisplay' transient property
-  //····················································································································
-
-  private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
-
-  //····················································································································
-
-  final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_objectDisplay {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
-      }
-      self.mObserversOf_objectDisplay = relay
-    }
-    relay.startsToBeObserved (by:  inObserver)
-  }
-
-  //····················································································································
-
-  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -476,6 +447,35 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_objectDisplay {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsToBeObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+      }
+      self.mObserversOf_objectDisplay = relay
+    }
+    relay.startsToBeObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

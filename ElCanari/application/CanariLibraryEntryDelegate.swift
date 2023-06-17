@@ -79,9 +79,9 @@ final class CanariLibraryEntryDelegate : EBObserverProtocol {
   
   //····················································································································
 
-  fileprivate final func monitoredFileDidChange () {
-    self.mObject?.mStatusImage_property.observedObjectDidChange ()
-  }
+//  fileprivate final func monitoredFileDidChange () {
+//    self.mObject?.mStatusImage_property.observedObjectDidChange ()
+//  }
   
   //····················································································································
 

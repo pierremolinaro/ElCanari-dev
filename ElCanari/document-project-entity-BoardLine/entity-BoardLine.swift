@@ -72,14 +72,14 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardLine_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
+@MainActor protocol BoardLine_selectionDisplay : AnyObject {
+  var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardLine_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
+@MainActor protocol BoardLine_objectDisplay : AnyObject {
+  var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -98,8 +98,8 @@ final class BoardLine : BoardObject,
          BoardLine_mY2Unit,
          BoardLine_mLayer,
          BoardLine_mWidth,
-         BoardLine_objectDisplay,
-         BoardLine_selectionDisplay {
+         BoardLine_selectionDisplay,
+         BoardLine_objectDisplay {
 
   //····················································································································
   //   Atomic property: mWidthUnit
@@ -327,6 +327,39 @@ final class BoardLine : BoardObject,
     self.mLayer_property = EBStoredProperty_BoardLineLayer (defaultValue: BoardLineLayer.legendFront, undoManager: inUndoManager, key: "mLayer")
     self.mWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager, key: "mWidth")
     super.init (inUndoManager)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mX1_property.selection
+        let s1 = unwSelf.mY1_property.selection
+        let s2 = unwSelf.mX2_property.selection
+        let s3 = unwSelf.mY2_property.selection
+        let s4 = preferences_hiliteWidthMultipliedByTen_property.selection
+        switch (s0, s1, s2, s3, s4) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
+          return .single (transient_BoardLine_selectionDisplay (v0, v1, v2, v3, v4))
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mX1_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mY1_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mX2_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mY2_property.startsToBeObserved (by: self.selectionDisplay_property)
+    preferences_hiliteWidthMultipliedByTen_property.startsToBeObserved (by: self.selectionDisplay_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -372,47 +405,6 @@ final class BoardLine : BoardObject,
     self.mLayer_property.startsToBeObserved (by: self.objectDisplay_property)
     preferences_frontSideLegendColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
     preferences_backSideLegendColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-  //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.mX1_property.selection
-        let s1 = unwSelf.mY1_property.selection
-        let s2 = unwSelf.mX2_property.selection
-        let s3 = unwSelf.mY2_property.selection
-        let s4 = unwSelf.mWidth_property.selection
-        let s5 = unwSelf.mLayer_property.selection
-        let s6 = preferences_hiliteWidthMultipliedByTen_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6) {
-        case (.single (let v0),
-              .single (let v1),
-              .single (let v2),
-              .single (let v3),
-              .single (let v4),
-              .single (let v5),
-              .single (let v6)) :
-          return .single (transient_BoardLine_selectionDisplay (v0, v1, v2, v3, v4, v5, v6))
-        case (.multiple,
-              .multiple,
-              .multiple,
-              .multiple,
-              .multiple,
-              .multiple,
-              .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mX1_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mY1_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mX2_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mY2_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mWidth_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mLayer_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_hiliteWidthMultipliedByTen_property.startsToBeObserved (by: self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

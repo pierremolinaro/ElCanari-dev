@@ -1168,14 +1168,14 @@ final class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_A
 
   //····················································································································
 
-  func resetDataProvider () {
+/*  func resetDataProvider () {
     if self.mDataProvider != nil {
       self.mSortObserver = nil
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = nil
       self.mIsOrderedBefore = nil
     }
-  }
+  } */
 
   //····················································································································
 

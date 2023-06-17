@@ -63,11 +63,11 @@ extension AutoLayoutDeviceDocument {
 
   //····················································································································
 
-  final func resetSymbolsVersion () {
-    for symbolType in self.rootObject.mSymbolTypes.values {
-      symbolType.mVersion = 0
-    }
-  }
+//  final func resetSymbolsVersion () {
+//    for symbolType in self.rootObject.mSymbolTypes.values {
+//      symbolType.mVersion = 0
+//    }
+//  }
 
   //····················································································································
 
@@ -194,11 +194,11 @@ extension AutoLayoutDeviceDocument {
 
   //····················································································································
 
-  final func resetPackagesVersion () {
-    for package in self.rootObject.mPackages.values {
-      package.mVersion = 0
-    }
-  }
+//  final func resetPackagesVersion () {
+//    for package in self.rootObject.mPackages.values {
+//      package.mVersion = 0
+//    }
+//  }
 
   //····················································································································
 

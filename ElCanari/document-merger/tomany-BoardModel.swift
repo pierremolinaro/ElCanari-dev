@@ -2638,14 +2638,14 @@ final class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 
   //····················································································································
 
-  func resetDataProvider () {
+/*  func resetDataProvider () {
     if self.mDataProvider != nil {
       self.mSortObserver = nil
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = nil
       self.mIsOrderedBefore = nil
     }
-  }
+  } */
 
   //····················································································································
 

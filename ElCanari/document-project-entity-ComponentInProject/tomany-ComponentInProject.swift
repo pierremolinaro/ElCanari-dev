@@ -1728,14 +1728,14 @@ final class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInPro
 
   //····················································································································
 
-  func resetDataProvider () {
+/*  func resetDataProvider () {
     if self.mDataProvider != nil {
       self.mSortObserver = nil
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = nil
       self.mIsOrderedBefore = nil
     }
-  }
+  } */
 
   //····················································································································
 

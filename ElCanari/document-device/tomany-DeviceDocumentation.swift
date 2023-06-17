@@ -188,14 +188,14 @@ final class TransientArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumen
 
   //····················································································································
 
-  func resetDataProvider () {
+/*  func resetDataProvider () {
     if self.mDataProvider != nil {
       self.mSortObserver = nil
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = nil
       self.mIsOrderedBefore = nil
     }
-  }
+  } */
 
   //····················································································································
 

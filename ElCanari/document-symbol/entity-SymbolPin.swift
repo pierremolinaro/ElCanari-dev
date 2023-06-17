@@ -436,21 +436,15 @@ final class SymbolPin : SymbolObject,
         let s3 = unwSelf.yName_property.selection
         let s4 = unwSelf.xNumber_property.selection
         let s5 = unwSelf.yNumber_property.selection
-        let s6 = unwSelf.nameHorizontalAlignment_property.selection
-        let s7 = unwSelf.numberHorizontalAlignment_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7) {
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
               .single (let v4),
-              .single (let v5),
-              .single (let v6),
-              .single (let v7)) :
-          return .single (transient_SymbolPin_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+              .single (let v5)) :
+          return .single (transient_SymbolPin_selectionDisplay (v0, v1, v2, v3, v4, v5))
         case (.multiple,
-              .multiple,
-              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -470,8 +464,6 @@ final class SymbolPin : SymbolObject,
     self.yName_property.startsToBeObserved (by: self.selectionDisplay_property)
     self.xNumber_property.startsToBeObserved (by: self.selectionDisplay_property)
     self.yNumber_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.nameHorizontalAlignment_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.numberHorizontalAlignment_property.startsToBeObserved (by: self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

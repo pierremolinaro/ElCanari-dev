@@ -35,8 +35,8 @@ graphic entity SymbolPin : SymbolObject {
   override transient EBShape selectionDisplay dependsFrom
      self.xPin, self.yPin,
      self.xName, self.yName,
-     self.xNumber, self.yNumber,
-     self.nameHorizontalAlignment, self.numberHorizontalAlignment
+//     self.nameHorizontalAlignment, self.numberHorizontalAlignment,
+     self.xNumber, self.yNumber
   ;
 
   override transient CanariIssueArray issues dependsFrom

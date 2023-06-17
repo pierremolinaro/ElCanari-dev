@@ -19,8 +19,7 @@ import AppKit
        _ self_myModel_modelWidth : Int?,                     
        _ self_myModel_modelHeight : Int?,                    
        _ self_instanceRotation : QuadrantRotation,           
-       _ self_myModel_imageForInstances : EBShape?,          
-       _ self_instanceRect : CanariRect
+       _ self_myModel_imageForInstances : EBShape?
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let modeImage = self_myModel_imageForInstances!
