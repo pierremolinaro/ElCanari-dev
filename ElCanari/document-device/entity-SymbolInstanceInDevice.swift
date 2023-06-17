@@ -83,7 +83,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   final var mPinInstances : EBReferenceArray <SymbolPinInstanceInDevice> {
     get { return self.mPinInstances_property.propval }
-    set { self.mPinInstances_property.setProp (newValue) }
   }
 
   //····················································································································

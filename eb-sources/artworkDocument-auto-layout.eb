@@ -292,7 +292,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
 //------------------------------------------------------------------------------
 
 handlingOpposite entity ArtworkRoot {
-  toMany @generateDirectAccess @signature ArtworkFileGenerationParameters fileGenerationParameterArray inverse toOne mArtwork ;
+  toMany @generateDirectRead @signature ArtworkFileGenerationParameters fileGenerationParameterArray inverse toOne mArtwork ;
 
   property @generateDirectRead @signature LayerConfiguration layerConfiguration default twoLayers ;
 

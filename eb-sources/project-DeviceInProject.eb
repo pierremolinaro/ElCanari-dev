@@ -10,7 +10,7 @@ handlingOpposite entity DeviceInProject {
 
   toMany @generateDirectAccess DevicePackageInProject mPackages ;
   toMany @generateDirectAccess DeviceSymbolInstanceInProject mSymbols ;
-  toMany @generateDirectAccess ComponentInProject mComponents inverse toOne mDevice ;
+  toMany @generateDirectRead ComponentInProject mComponents inverse toOne mDevice ;
   toMany @generateDirectAccess DevicePadAssignmentInProject mPadAssignments ;
 
   transient String deviceComponentCountString dependsFrom self.mComponents.count ;

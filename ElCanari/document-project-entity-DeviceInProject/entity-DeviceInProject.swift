@@ -189,7 +189,6 @@ final class DeviceInProject : EBManagedObject,
 
   final var mComponents : EBReferenceArray <ComponentInProject> {
     get { return self.mComponents_property.propval }
-    set { self.mComponents_property.setProp (newValue) }
   }
 
   //····················································································································

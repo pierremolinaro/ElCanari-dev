@@ -134,7 +134,6 @@ final class DeviceRoot : EBManagedObject {
 
   final var mSymbolInstances : EBReferenceArray <SymbolInstanceInDevice> {
     get { return self.mSymbolInstances_property.propval }
-    set { self.mSymbolInstances_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -147,7 +146,6 @@ final class DeviceRoot : EBManagedObject {
 
   final var mPackages : EBReferenceArray <PackageInDevice> {
     get { return self.mPackages_property.propval }
-    set { self.mPackages_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -160,7 +158,6 @@ final class DeviceRoot : EBManagedObject {
 
   final var mSymbolTypes : EBReferenceArray <SymbolTypeInDevice> {
     get { return self.mSymbolTypes_property.propval }
-    set { self.mSymbolTypes_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -173,7 +170,6 @@ final class DeviceRoot : EBManagedObject {
 
   final var mPadProxies : EBReferenceArray <PadProxyInDevice> {
     get { return self.mPadProxies_property.propval }
-    set { self.mPadProxies_property.setProp (newValue) }
   }
 
   //····················································································································

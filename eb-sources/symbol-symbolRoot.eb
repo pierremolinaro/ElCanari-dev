@@ -225,7 +225,7 @@ entity SymbolRoot {
   property @signature Int yPlacardUnit default 2_286 ; // mils
 
 //--- Symbol definition
-  toMany @signature @generateDirectAccess SymbolObject symbolObjects ;
+  toMany @signature @generateDirectRead SymbolObject symbolObjects ;
   toMany SymbolPin symbolPins dependsFrom self.symbolObjects ;
 
 //--- Issues

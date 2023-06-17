@@ -20,7 +20,6 @@ final class MergerRoot : EBManagedObject {
 
   final var boardModels : EBReferenceArray <BoardModel> {
     get { return self.boardModels_property.propval }
-    set { self.boardModels_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -33,7 +32,6 @@ final class MergerRoot : EBManagedObject {
 
   final var boardInstances : EBReferenceArray <MergerBoardInstance> {
     get { return self.boardInstances_property.propval }
-    set { self.boardInstances_property.setProp (newValue) }
   }
 
   //····················································································································

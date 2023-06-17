@@ -83,7 +83,6 @@ final class SymbolTypeInDevice : EBManagedObject,
 
   final var mInstances : EBReferenceArray <SymbolInstanceInDevice> {
     get { return self.mInstances_property.propval }
-    set { self.mInstances_property.setProp (newValue) }
   }
 
   //····················································································································

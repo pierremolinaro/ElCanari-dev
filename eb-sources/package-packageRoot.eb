@@ -325,7 +325,7 @@ graphic handlingOpposite entity PackagePad : PackageObject {
   property @signature Int annularRingUnit default 2_286 ;
 
   toOne PackageZone zone ;
-  toMany @signature @generateDirectAccess PackageSlavePad slaves inverse toOne master ;
+  toMany @signature @generateDirectRead PackageSlavePad slaves inverse toOne master ;
 
   override transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeWidth, self.holeHeight,

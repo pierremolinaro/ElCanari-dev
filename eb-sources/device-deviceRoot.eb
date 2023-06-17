@@ -46,7 +46,7 @@ handlingOpposite entity DeviceRoot {
   transient Bool symbolNameAreConsistent dependsFrom self.inconsistentSymbolNameSetMessage ;
 
 //--- Packages
-  toMany @signature @generateDirectAccess PackageInDevice mPackages inverse toOne mRoot ;
+  toMany @signature @generateDirectRead PackageInDevice mPackages inverse toOne mRoot ;
   property Int mPackageDisplayZoom default 400 ;
   property Bool mPackageDisplayHorizontalFlip default no ;
   property Bool mPackageDisplayVerticalFlip default no ;
@@ -56,8 +56,8 @@ handlingOpposite entity DeviceRoot {
   property Bool mShowPackageBackPads default yes ;
 
 //--- Symbols
-  toMany @signature @generateDirectAccess SymbolTypeInDevice mSymbolTypes ;
-  toMany @signature @generateDirectAccess SymbolInstanceInDevice mSymbolInstances inverse toOne mDeviceRoot ;
+  toMany @signature @generateDirectRead SymbolTypeInDevice mSymbolTypes ;
+  toMany @signature @generateDirectRead SymbolInstanceInDevice mSymbolInstances inverse toOne mDeviceRoot ;
 
   property Int mSymbolDisplayZoom default 400 ;
 
@@ -66,7 +66,7 @@ handlingOpposite entity DeviceRoot {
   transient UnconnectedSymbolPinsInDevice unconnectedPins dependsFrom self.mSymbolInstances.all.unconnectedPins ;
 
 //--- Pad proxys
-  toMany @signature @generateDirectAccess PadProxyInDevice mPadProxies ;
+  toMany @signature @generateDirectRead PadProxyInDevice mPadProxies ;
 
   transient StringArray unconnectedPads
     dependsFrom self.mPadProxies.all.mPadName, self.mPadProxies.all.isConnected ;
@@ -151,7 +151,7 @@ graphic handlingOpposite entity PackageInDevice {
 //——————————————————————————————————————————————————————————————————————————————
 
 handlingOpposite entity MasterPadInDevice {
-  toMany @signature @generateDirectAccess SlavePadInDevice mSlavePads inverse toOne mMasterPad ;
+  toMany @signature @generateDirectRead SlavePadInDevice mSlavePads inverse toOne mMasterPad ;
 
   property @signature @generateDirectAccess Int mCenterX default 0 ;
   property @signature @generateDirectAccess Int mCenterY default 0 ;
@@ -213,7 +213,7 @@ handlingOpposite entity SlavePadInDevice {
 //——————————————————————————————————————————————————————————————————————————————
 
 handlingOpposite entity SymbolTypeInDevice {
-  toMany @generateDirectAccess SymbolInstanceInDevice mInstances inverse toOne mType ;
+  toMany @generateDirectRead SymbolInstanceInDevice mInstances inverse toOne mType ;
   toMany @signature @generateDirectAccess SymbolPinTypeInDevice mPinTypes ;
 
   property @signature @generateDirectAccess String mTypeName default "" ;
@@ -264,7 +264,7 @@ handlingOpposite entity SymbolPinTypeInDevice {
 graphic handlingOpposite entity SymbolInstanceInDevice {
   toOne @weak DeviceRoot mDeviceRoot inverse toMany mSymbolInstances ;
   toOne @weak SymbolTypeInDevice mType inverse toMany mInstances ;
-  toMany @signature @generateDirectAccess SymbolPinInstanceInDevice mPinInstances inverse toOne mSymbolInstance ;
+  toMany @signature @generateDirectRead SymbolPinInstanceInDevice mPinInstances inverse toOne mSymbolInstance ;
 
   property @signature String mInstanceName default "" ;
   property @generateDirectAccess Int mX default 0 ;

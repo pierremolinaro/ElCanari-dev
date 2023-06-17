@@ -296,7 +296,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   final var mPoints : EBReferenceArray <PointInSchematic> {
     get { return self.mPoints_property.propval }
-    set { self.mPoints_property.setProp (newValue) }
   }
 
   //····················································································································
