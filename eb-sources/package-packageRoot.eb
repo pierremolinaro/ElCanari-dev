@@ -39,16 +39,16 @@ func enum PadNumbering.popupTitles {
 
 handlingOpposite entity PackageRoot {
 //--- Selected page index
-  property Int selectedPageIndex default 1 ;
+  property @generateDirectAccess Int selectedPageIndex default 1 ;
 
 //--- Selected inspector
   property Int selectedInspector default 0 ;
 
 //--- Comment
-  property @signature String comments default "" ;
+  property @generateDirectAccess @signature String comments default "" ;
 
 //--- Program
-  property @signature String program default "" ;
+  property @generateDirectAccess @signature String program default "" ;
 
 //--- Package definition
   toMany @signature PackageObject packageObjects inverse toOne mRoot ;
@@ -74,21 +74,21 @@ handlingOpposite entity PackageRoot {
   property Int mModelImagePageGridStep default 2_286 ; // 1 mil
   property Int mModelImagePageGridStepUnit default 2_286 ; // mil
   property Int mModelImagePageGridDisplayFactor default 100 ;
-  property Int mModelImagePageZoom default 200 ;
+  property @generateResetMethod @generateDirectAccess Int mModelImagePageZoom default 200 ;
   property Int mModelImagePageXPlacardUnit default 2_286 ; // mils
   property Int mModelImagePageYPlacardUnit default 2_286 ; // mils
   property Int mModelImageSecondPointXUnit default 2_286 ; // mils
   property Int mModelImageSecondPointYUnit default 2_286 ; // mils
 
-  property Data mModelImageData default empty ;
-  property @generateResetMethod Int mModelImageFirstPointXOnLock default 0 ;
-  property @generateResetMethod Int mModelImageFirstPointYOnLock default 0 ;
-  property Int mModelImagePointsDxOnLock default 0 ;
-  property Int mModelImagePointsDyOnLock default 0 ;
-  property @generateResetMethod Double mModelImageScale default 1.0 ;
-  property @generateResetMethod Double mModelImageRotationInRadians default 0.0 ;
+  property @generateResetMethod @generateDirectAccess Data mModelImageData default empty ;
+  property @generateResetMethod @generateDirectAccess Int mModelImageFirstPointXOnLock default 0 ;
+  property @generateResetMethod @generateDirectAccess Int mModelImageFirstPointYOnLock default 0 ;
+  property @generateDirectAccess Int mModelImagePointsDxOnLock default 0 ;
+  property @generateDirectAccess Int mModelImagePointsDyOnLock default 0 ;
+  property @generateResetMethod @generateDirectAccess Double mModelImageScale default 1.0 ;
+  property @generateResetMethod @generateDirectAccess Double mModelImageRotationInRadians default 0.0 ;
   property @generateResetMethod Int mModelPointsCircleRadius default 10 ;
-  property @generateResetMethod Bool mPointsAreLocked default no ;
+  property @generateResetMethod @generateDirectAccess Bool mPointsAreLocked default no ;
 
   property Int mDimensionUnitFirstModelPointX default 2_286 ;
   property Int mDimensionUnitFirstModelPointY default 2_286 ;
@@ -108,10 +108,10 @@ handlingOpposite entity PackageRoot {
   property Int knobSizeMultpliedByTen default 20 ;
 
 //--- Pad numbering
-  property PadNumbering padNumbering default noNumbering ;
+  property @generateDirectAccess PadNumbering padNumbering default noNumbering ;
   transient Bool freePadNumbering dependsFrom self.padNumbering ;
   transient Bool counterClockNumbering dependsFrom self.padNumbering ;
-  property @signature Int counterClockNumberingStartAngle default 90 ;
+  property @generateDirectAccess @signature Int counterClockNumberingStartAngle default 90 ;
 
 //--- XY placard unit
   property @signature Int xPlacardUnit default 2_286 ; // mils
@@ -520,7 +520,7 @@ graphic entity PackageZone : PackageObject {
   property @signature Int yNameUnit default 2_286 ;
 
 //--- Pad numbering
-  property @signature PadNumbering zoneNumbering default noNumbering ;
+  property @generateDirectAccess @signature PadNumbering zoneNumbering default noNumbering ;
 
   override transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.width, self.height,

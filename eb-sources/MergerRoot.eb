@@ -4,26 +4,26 @@ handlingOpposite entity MergerRoot {
   toMany BoardModel boardModels ;
   toMany MergerBoardInstance boardInstances inverse toOne myRoot ;
 
-  property Int selectedPageIndex default 0 ;
+  property @generateDirectAccess Int selectedPageIndex default 0 ;
   property Int zoom default 100 ;
-  property Bool showDisplaySettingView default no ;
+  property @generateDirectAccess Bool showDisplaySettingView default no ;
   
-  property QuadrantRotation modelInsertionRotation default rotation0 ;
+  property @generateDirectAccess QuadrantRotation modelInsertionRotation default rotation0 ;
 
 //--- Board size
   property Bool automaticBoardSize default yes ;
   property Int boardManualWidth default 9_000_000 ;
   property Int boardManualHeight default 9_000_000 ;
-  property Int boardWidthUnit default 90_000 ;
-  property Int boardHeightUnit default 90_000 ;
+  property @generateDirectAccess Int boardWidthUnit default 90_000 ;
+  property @generateDirectAccess Int boardHeightUnit default 90_000 ;
 
-  property Bool overlapingArrangment default no ;
+  property @generateDirectAccess Bool overlapingArrangment default no ;
   property Int selectedBoardXUnit default 90_000 ;
   property Int selectedBoardYUnit default 90_000 ;
 
 //--- Board line width
-  property Int boardLimitWidth default 90_000 ; // 1mm
-  property Int boardLimitWidthUnit default 90_000 ; // 1mm
+  property @generateDirectAccess Int boardLimitWidth default 90_000 ; // 1mm
+  property @generateDirectAccess Int boardLimitWidthUnit default 90_000 ; // 1mm
 
 //--- Arrow magnitude
 //  property Int arrowMagnitude default 900_000 ; // 10mm
@@ -52,23 +52,16 @@ handlingOpposite entity MergerRoot {
      self.boardInstances.all.instanceRect,
      self.boardInstances.all.boardLimitWidth ;
 
-//--- Board limit width
-//  transient String boardLimitWidthErrorMessage dependsFrom
-//     self.boardLimitWidth,
-//     self. boardModels.all.modelLimitWidth ;
-//
-//  transient Bool boardLimitWidthOk dependsFrom self.boardLimitWidthErrorMessage ;
-
   transient Int boardWidth dependsFrom self.boardRect ;
   transient Int boardHeight dependsFrom self.boardRect ;
 
 //--- PDF Generation
-  property NSColor mPDFBoardBackgroundColor default lightGray ;
+  property @generateDirectAccess NSColor mPDFBoardBackgroundColor default lightGray ;
 
 //--- Artwork
   toOne ArtworkRoot mArtwork ;
-  property String mArtworkName default "" ;
-  property Int mArtworkVersion default 0 ;
+  property @generateDirectAccess String mArtworkName default "" ;
+  property  @generateDirectAccess Int mArtworkVersion default 0 ;
 
   property proxy Int minPPTPTTTWdisplayUnit : mArtwork.minPPTPTTTWdisplayUnit ;
   property proxy Int minPPTPTTTW : mArtwork.minPPTPTTTW ;

@@ -60,13 +60,6 @@ final class MergerRoot : EBManagedObject {
   final let zoom_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var zoom : Int {
-    get { return self.zoom_property.propval }
-    set { self.zoom_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: showDisplaySettingView
   //····················································································································
 
@@ -99,37 +92,16 @@ final class MergerRoot : EBManagedObject {
   final let automaticBoardSize_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var automaticBoardSize : Bool {
-    get { return self.automaticBoardSize_property.propval }
-    set { self.automaticBoardSize_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: boardManualWidth
   //····················································································································
 
   final let boardManualWidth_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var boardManualWidth : Int {
-    get { return self.boardManualWidth_property.propval }
-    set { self.boardManualWidth_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: boardManualHeight
   //····················································································································
 
   final let boardManualHeight_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var boardManualHeight : Int {
-    get { return self.boardManualHeight_property.propval }
-    set { self.boardManualHeight_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: boardWidthUnit
@@ -177,24 +149,10 @@ final class MergerRoot : EBManagedObject {
   final let selectedBoardXUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var selectedBoardXUnit : Int {
-    get { return self.selectedBoardXUnit_property.propval }
-    set { self.selectedBoardXUnit_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: selectedBoardYUnit
   //····················································································································
 
   final let selectedBoardYUnit_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var selectedBoardYUnit : Int {
-    get { return self.selectedBoardYUnit_property.propval }
-    set { self.selectedBoardYUnit_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: boardLimitWidth
@@ -675,7 +633,7 @@ final class MergerRoot : EBManagedObject {
       }
     }
     self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mArtwork?.minPPTPTTTWdisplayUnit = inValue
+      self?.mArtwork?.minPPTPTTTWdisplayUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minPPTPTTTWdisplayUnit_property.startsToBeObserved (by: self.minPPTPTTTWdisplayUnit_property)
   //--- Atomic proxy property: minPPTPTTTW
@@ -698,7 +656,7 @@ final class MergerRoot : EBManagedObject {
       }
     }
     self.minPPTPTTTW_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mArtwork?.minPPTPTTTW = inValue
+      self?.mArtwork?.minPPTPTTTW_property.setProp (inValue)
     }
     self.mArtwork_property.minPPTPTTTW_property.startsToBeObserved (by: self.minPPTPTTTW_property)
   //--- Atomic proxy property: minValueForOARdisplayUnit
@@ -721,7 +679,7 @@ final class MergerRoot : EBManagedObject {
       }
     }
     self.minValueForOARdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mArtwork?.minValueForOARdisplayUnit = inValue
+      self?.mArtwork?.minValueForOARdisplayUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForOARdisplayUnit_property.startsToBeObserved (by: self.minValueForOARdisplayUnit_property)
   //--- Atomic proxy property: minValueForOARinEBUnit
@@ -744,7 +702,7 @@ final class MergerRoot : EBManagedObject {
       }
     }
     self.minValueForOARinEBUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mArtwork?.minValueForOARinEBUnit = inValue
+      self?.mArtwork?.minValueForOARinEBUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForOARinEBUnit_property.startsToBeObserved (by: self.minValueForOARinEBUnit_property)
   //--- Atomic proxy property: minValueForPHDdisplayUnit
@@ -767,7 +725,7 @@ final class MergerRoot : EBManagedObject {
       }
     }
     self.minValueForPHDdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mArtwork?.minValueForPHDdisplayUnit = inValue
+      self?.mArtwork?.minValueForPHDdisplayUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForPHDdisplayUnit_property.startsToBeObserved (by: self.minValueForPHDdisplayUnit_property)
   //--- Atomic proxy property: minValueForPHDinEBUnit
@@ -790,7 +748,7 @@ final class MergerRoot : EBManagedObject {
       }
     }
     self.minValueForPHDinEBUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mArtwork?.minValueForPHDinEBUnit = inValue
+      self?.mArtwork?.minValueForPHDinEBUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForPHDinEBUnit_property.startsToBeObserved (by: self.minValueForPHDinEBUnit_property)
   //--- Atomic proxy property: minValueForBoardLimitWidth
@@ -813,7 +771,7 @@ final class MergerRoot : EBManagedObject {
       }
     }
     self.minValueForBoardLimitWidth_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mArtwork?.minValueForBoardLimitWidth = inValue
+      self?.mArtwork?.minValueForBoardLimitWidth_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForBoardLimitWidth_property.startsToBeObserved (by: self.minValueForBoardLimitWidth_property)
   //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
@@ -836,7 +794,7 @@ final class MergerRoot : EBManagedObject {
       }
     }
     self.minValueForBoardLimitWidthDisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mArtwork?.minValueForBoardLimitWidthDisplayUnit = inValue
+      self?.mArtwork?.minValueForBoardLimitWidthDisplayUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForBoardLimitWidthDisplayUnit_property.startsToBeObserved (by: self.minValueForBoardLimitWidthDisplayUnit_property)
   //--- Atomic proxy property: drillDataFileExtension
@@ -859,7 +817,7 @@ final class MergerRoot : EBManagedObject {
       }
     }
     self.drillDataFileExtension_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
-      self?.mArtwork?.drillDataFileExtension = inValue
+      self?.mArtwork?.drillDataFileExtension_property.setProp (inValue)
     }
     self.mArtwork_property.drillDataFileExtension_property.startsToBeObserved (by: self.drillDataFileExtension_property)
   //--- ToMany proxy: fileGenerationParameterArray

@@ -10,17 +10,17 @@ handlingOpposite entity DeviceRoot {
   property @signature String mTitle default "" ;
 
 //--- Image
-  property @signature Data mImageData default empty ;
+  property @generateDirectAccess @signature Data mImageData default empty ;
   transient Bool imageIsValid dependsFrom self.mImageData ;
 
 //--- Documentation
   toMany @signature DeviceDocumentation mDocs ;
 
 //--- Prefix
-  property @signature String mPrefix default "" ;
+  property @signature @generateDirectAccess String mPrefix default "" ;
 
 //--- Comment
-  property @signature String mComments default "" ;
+  property @generateDirectAccess @signature String mComments default "" ;
 
 //--- Issues
   transient CanariIssueArray issues dependsFrom

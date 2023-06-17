@@ -17,24 +17,10 @@ final class DeviceRoot : EBManagedObject {
   final let mSelectedPageIndex_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var mSelectedPageIndex : Int {
-    get { return self.mSelectedPageIndex_property.propval }
-    set { self.mSelectedPageIndex_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mSelectedSymbolInspectorIndex
   //····················································································································
 
   final let mSelectedSymbolInspectorIndex_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var mSelectedSymbolInspectorIndex : Int {
-    get { return self.mSelectedSymbolInspectorIndex_property.propval }
-    set { self.mSelectedSymbolInspectorIndex_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mSelectedPackageInspectorIndex
@@ -43,24 +29,10 @@ final class DeviceRoot : EBManagedObject {
   final let mSelectedPackageInspectorIndex_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var mSelectedPackageInspectorIndex : Int {
-    get { return self.mSelectedPackageInspectorIndex_property.propval }
-    set { self.mSelectedPackageInspectorIndex_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mTitle
   //····················································································································
 
   final let mTitle_property : EBStoredProperty_String
-
-  //····················································································································
-
-  final var mTitle : String {
-    get { return self.mTitle_property.propval }
-    set { self.mTitle_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mImageData
@@ -108,24 +80,10 @@ final class DeviceRoot : EBManagedObject {
   final let mPackageDisplayZoom_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var mPackageDisplayZoom : Int {
-    get { return self.mPackageDisplayZoom_property.propval }
-    set { self.mPackageDisplayZoom_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mPackageDisplayHorizontalFlip
   //····················································································································
 
   final let mPackageDisplayHorizontalFlip_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final var mPackageDisplayHorizontalFlip : Bool {
-    get { return self.mPackageDisplayHorizontalFlip_property.propval }
-    set { self.mPackageDisplayHorizontalFlip_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mPackageDisplayVerticalFlip
@@ -134,24 +92,10 @@ final class DeviceRoot : EBManagedObject {
   final let mPackageDisplayVerticalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var mPackageDisplayVerticalFlip : Bool {
-    get { return self.mPackageDisplayVerticalFlip_property.propval }
-    set { self.mPackageDisplayVerticalFlip_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mShowPackages
   //····················································································································
 
   final let mShowPackages_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final var mShowPackages : Bool {
-    get { return self.mShowPackages_property.propval }
-    set { self.mShowPackages_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mShowPackagePadNumbers
@@ -160,24 +104,10 @@ final class DeviceRoot : EBManagedObject {
   final let mShowPackagePadNumbers_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var mShowPackagePadNumbers : Bool {
-    get { return self.mShowPackagePadNumbers_property.propval }
-    set { self.mShowPackagePadNumbers_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mShowPackageFrontPads
   //····················································································································
 
   final let mShowPackageFrontPads_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final var mShowPackageFrontPads : Bool {
-    get { return self.mShowPackageFrontPads_property.propval }
-    set { self.mShowPackageFrontPads_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mShowPackageBackPads
@@ -186,24 +116,10 @@ final class DeviceRoot : EBManagedObject {
   final let mShowPackageBackPads_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var mShowPackageBackPads : Bool {
-    get { return self.mShowPackageBackPads_property.propval }
-    set { self.mShowPackageBackPads_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mSymbolDisplayZoom
   //····················································································································
 
   final let mSymbolDisplayZoom_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var mSymbolDisplayZoom : Int {
-    get { return self.mSymbolDisplayZoom_property.propval }
-    set { self.mSymbolDisplayZoom_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   To many property: mDocs

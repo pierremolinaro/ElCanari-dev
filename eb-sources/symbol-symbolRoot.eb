@@ -9,8 +9,8 @@ abstract graphic entity SymbolObject {
 graphic entity SymbolPin : SymbolObject {
   graphic canCopyAndPaste ;
 
-  property @signature Int xPin default 0 ;
-  property @signature Int yPin default 0 ;
+  property @signature @generateDirectAccess Int xPin default 0 ;
+  property @signature @generateDirectAccess Int yPin default 0 ;
   property @signature Int xName default 0 ;
   property @signature Int yName default 2_286_00 ;
   property @signature Int xNumber default 0 ;
@@ -58,9 +58,9 @@ graphic entity SymbolPin : SymbolObject {
 graphic entity SymbolText : SymbolObject {
   graphic canCopyAndPaste ;
 
-  property @signature Int x default 0 ;
-  property @signature Int y default 0 ;
-  property @signature String text default "text" ;
+  property @signature @generateDirectAccess Int x default 0 ;
+  property @signature @generateDirectAccess Int y default 0 ;
+  property @signature @generateDirectAccess String text default "text" ;
   property @signature HorizontalAlignment horizontalAlignment default center ;
 
   override transient EBShape objectDisplay dependsFrom
@@ -80,10 +80,10 @@ graphic entity SymbolText : SymbolObject {
 graphic entity SymbolSolidRect : SymbolObject {
   graphic canCopyAndPaste ;
 
-  property @signature Int x default 0 ;
-  property @signature Int y default 0 ;
-  property @signature Int width default 6_858_00 ;
-  property @signature Int height default 6_858_00 ;
+  property @signature @generateDirectAccess Int x default 0 ;
+  property @signature @generateDirectAccess Int y default 0 ;
+  property @signature @generateDirectAccess Int width default 6_858_00 ;
+  property @signature @generateDirectAccess Int height default 6_858_00 ;
 
   transient NSBezierPath filledBezierPath dependsFrom self.x, self.y, self.width, self.height ;
 
@@ -104,10 +104,10 @@ graphic entity SymbolSolidRect : SymbolObject {
 graphic entity SymbolOval : SymbolObject {
   graphic canCopyAndPaste ;
 
-  property @signature Int x default 0 ;
-  property @signature Int y default 0 ;
-  property @signature Int width default 6_858_00 ;
-  property @signature Int height default 6_858_00 ;
+  property @signature @generateDirectAccess Int x default 0 ;
+  property @signature @generateDirectAccess Int y default 0 ;
+  property @signature @generateDirectAccess Int width default 6_858_00 ;
+  property @signature @generateDirectAccess Int height default 6_858_00 ;
 
   transient NSBezierPath strokeBezierPath dependsFrom self.x, self.y, self.width, self.height ;
 
@@ -128,10 +128,10 @@ graphic entity SymbolOval : SymbolObject {
 graphic entity SymbolSolidOval : SymbolObject {
   graphic canCopyAndPaste ;
 
-  property @signature Int x default 0 ;
-  property @signature Int y default 0 ;
-  property @signature Int width default 6_858_00 ;
-  property @signature Int height default 6_858_00 ;
+  property @signature @generateDirectAccess Int x default 0 ;
+  property @signature @generateDirectAccess Int y default 0 ;
+  property @signature @generateDirectAccess Int width default 6_858_00 ;
+  property @signature @generateDirectAccess Int height default 6_858_00 ;
 
   transient NSBezierPath filledBezierPath dependsFrom self.x, self.y, self.width, self.height ;
 
@@ -151,14 +151,14 @@ graphic entity SymbolSolidOval : SymbolObject {
 graphic entity SymbolBezierCurve : SymbolObject {
   graphic canCopyAndPaste ;
 
-  property @signature Int x1 default 0 ;
-  property @signature Int y1 default 6_858_00 ;
-  property @signature Int x2 default 0 ;
-  property @signature Int y2 default 0 ;
-  property @signature Int cpx1 default 6_858_00 ;
-  property @signature Int cpy1 default 6_858_00 ;
-  property @signature Int cpx2 default 6_858_00 ;
-  property @signature Int cpy2 default 0 ;
+  property @signature @generateDirectAccess Int x1 default 0 ;
+  property @signature @generateDirectAccess Int y1 default 6_858_00 ;
+  property @signature @generateDirectAccess Int x2 default 0 ;
+  property @signature @generateDirectAccess Int y2 default 0 ;
+  property @signature @generateDirectAccess Int cpx1 default 6_858_00 ;
+  property @signature @generateDirectAccess Int cpy1 default 6_858_00 ;
+  property @signature @generateDirectAccess Int cpx2 default 6_858_00 ;
+  property @signature @generateDirectAccess Int cpy2 default 0 ;
 
   transient NSBezierPath strokeBezierPath dependsFrom
      self.x1, self.y1, self.x2, self.y2,
@@ -186,10 +186,10 @@ graphic entity SymbolBezierCurve : SymbolObject {
 graphic entity SymbolSegment : SymbolObject {
   graphic canCopyAndPaste ;
 
-  property @signature Int x1 default 0 ;
-  property @signature Int y1 default 0 ;
-  property @signature Int x2 default 6_858_00 ;
-  property @signature Int y2 default 6_858_00 ;
+  property @generateDirectAccess @signature Int x1 default 0 ;
+  property @generateDirectAccess @signature Int y1 default 0 ;
+  property @generateDirectAccess @signature Int x2 default 6_858_00 ;
+  property @generateDirectAccess @signature Int y2 default 6_858_00 ;
 
   transient NSBezierPath strokeBezierPath dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
@@ -211,7 +211,7 @@ entity SymbolRoot {
   property Int selectedInspector default 0 ;
 
 //--- Comment
-  property @signature String comments default "" ;
+  property @generateDirectAccess @signature String comments default "" ;
 
 //--- Grid and display inspector
   property Bool horizontalFlip default no ;

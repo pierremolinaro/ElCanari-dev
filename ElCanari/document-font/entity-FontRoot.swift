@@ -30,37 +30,16 @@ final class FontRoot : EBManagedObject {
   final let nominalSize_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var nominalSize : Int {
-    get { return self.nominalSize_property.propval }
-    set { self.nominalSize_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: selectedTab
   //····················································································································
 
   final let selectedTab_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var selectedTab : Int {
-    get { return self.selectedTab_property.propval }
-    set { self.selectedTab_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: selectedInspector
   //····················································································································
 
   final let selectedInspector_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var selectedInspector : Int {
-    get { return self.selectedInspector_property.propval }
-    set { self.selectedInspector_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: currentCharacterCodePoint

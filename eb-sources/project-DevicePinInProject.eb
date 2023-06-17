@@ -1,22 +1,22 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 entity DevicePinInProject {
-  property String mPinName default "" ;
-  property String mSymbolInstanceName default "" ;
-  property String mSymbolTypeName default "" ;
+  property @generateDirectAccess String mPinName default "" ;
+  property @generateDirectAccess String mSymbolInstanceName default "" ;
+  property @generateDirectAccess String mSymbolTypeName default "" ;
 
-  property Int mPinX default 0 ;
-  property Int mPinY default 0 ;
+  property @generateDirectAccess Int mPinX default 0 ;
+  property @generateDirectAccess Int mPinY default 0 ;
 
-  property Int mXName default 0 ;
-  property Int mYName default 0 ;
+  property @generateDirectAccess Int mXName default 0 ;
+  property @generateDirectAccess Int mYName default 0 ;
 
-  property HorizontalAlignment mNameHorizontalAlignment default center ;
-  property Bool mPinNameIsDisplayedInSchematic default yes ;
+  property @generateDirectAccess HorizontalAlignment mNameHorizontalAlignment default center ;
+  property @generateDirectAccess Bool mPinNameIsDisplayedInSchematic default yes ;
 
-  property Int mXNumber default 0 ;
-  property Int mYNumber default 0 ;
-  property HorizontalAlignment mNumberHorizontalAlignment default center ;
+  property @generateDirectAccess Int mXNumber default 0 ;
+  property @generateDirectAccess Int mYNumber default 0 ;
+  property @generateDirectAccess HorizontalAlignment mNumberHorizontalAlignment default center ;
 
   transient PinQualifiedNameStruct pinQualifiedName dependsFrom self.mSymbolInstanceName, self.mPinName ;
 

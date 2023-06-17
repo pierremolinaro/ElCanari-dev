@@ -1,10 +1,10 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 entity DeviceSymbolTypeInProject {
-  property String mSymbolTypeName default "" ;
+  property @generateDirectAccess String mSymbolTypeName default "" ;
 
-  property NSBezierPath mStrokeBezierPath default empty ;
-  property NSBezierPath mFilledBezierPath default empty ;
+  property @generateDirectAccess NSBezierPath mStrokeBezierPath default empty ;
+  property @generateDirectAccess NSBezierPath mFilledBezierPath default empty ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

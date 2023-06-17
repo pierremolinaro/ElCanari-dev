@@ -294,27 +294,27 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
 handlingOpposite entity ArtworkRoot {
   toMany @signature ArtworkFileGenerationParameters fileGenerationParameterArray inverse toOne mArtwork ;
 
-  property @signature LayerConfiguration layerConfiguration default twoLayers ;
+  property @generateDirectAccess @signature LayerConfiguration layerConfiguration default twoLayers ;
 
   property Int selectedTab default 0 ;
-  property @signature String comments default "" ;
+  property @generateDirectAccess @signature String comments default "" ;
 
   property Int minPPTPTTTWdisplayUnit default 90 ; // 1µm
-  property @signature Int minPPTPTTTW default 18_000 ; // 200µm
+  property @generateDirectAccess @signature Int minPPTPTTTW default 18_000 ; // 200µm
 
   property Int minValueForOARdisplayUnit default 90 ; // 1µm
-  property @signature Int minValueForOARinEBUnit default 18_000 ; // 200µm
+  property @generateDirectAccess @signature Int minValueForOARinEBUnit default 18_000 ; // 200µm
 
   property Int minValueForPHDdisplayUnit default 90 ; // 1µm
-  property @signature Int minValueForPHDinEBUnit default 18_000 ; // 200µm
+  property @generateDirectAccess @signature Int minValueForPHDinEBUnit default 18_000 ; // 200µm
 
-  property Int minValueForBoardLimitWidthDisplayUnit default 90_000 ; // 1mm
-  property @signature Int minValueForBoardLimitWidth default 90_000 ; // 1mm
+  property @generateDirectAccess Int minValueForBoardLimitWidthDisplayUnit default 90_000 ; // 1mm
+  property @generateDirectAccess @signature Int minValueForBoardLimitWidth default 90_000 ; // 1mm
 
-  property @signature String title default "" ;
+  property @generateDirectAccess @signature String title default "" ;
 
 //--- Excellon drill data
-  property @signature String drillDataFileExtension default "DRF" ;
+  property @generateDirectAccess @signature String drillDataFileExtension default "DRF" ;
 
 //--- For artwork embedded in document
   transient UInt32 signatureForERCChecking dependsFrom

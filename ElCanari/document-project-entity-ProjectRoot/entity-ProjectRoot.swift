@@ -186,13 +186,6 @@ final class ProjectRoot : EBManagedObject {
   final let mBoardSideForNewRestrictRectangle_property : EBStoredProperty_RestrictRectangleLayer
 
   //····················································································································
-
-  final var mBoardSideForNewRestrictRectangle : RestrictRectangleLayer {
-    get { return self.mBoardSideForNewRestrictRectangle_property.propval }
-    set { self.mBoardSideForNewRestrictRectangle_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mNewRestrictRectangleLayers
   //····················································································································
 
@@ -264,13 +257,6 @@ final class ProjectRoot : EBManagedObject {
   final let mAutorouterInterfaceMode_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var mAutorouterInterfaceMode : Int {
-    get { return self.mAutorouterInterfaceMode_property.propval }
-    set { self.mAutorouterInterfaceMode_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mExportExistingTracksAndVias
   //····················································································································
 
@@ -303,13 +289,6 @@ final class ProjectRoot : EBManagedObject {
   final let mTrackLengthUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var mTrackLengthUnit : Int {
-    get { return self.mTrackLengthUnit_property.propval }
-    set { self.mTrackLengthUnit_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mLayoutClearance
   //····················································································································
 
@@ -327,13 +306,6 @@ final class ProjectRoot : EBManagedObject {
   //····················································································································
 
   final let mLayoutClearanceUnit_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var mLayoutClearanceUnit : Int {
-    get { return self.mLayoutClearanceUnit_property.propval }
-    set { self.mLayoutClearanceUnit_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mBoardSelectedInspector
@@ -355,24 +327,10 @@ final class ProjectRoot : EBManagedObject {
   final let mBoardHorizontalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var mBoardHorizontalFlip : Bool {
-    get { return self.mBoardHorizontalFlip_property.propval }
-    set { self.mBoardHorizontalFlip_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mBoardVerticalFlip
   //····················································································································
 
   final let mBoardVerticalFlip_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final var mBoardVerticalFlip : Bool {
-    get { return self.mBoardVerticalFlip_property.propval }
-    set { self.mBoardVerticalFlip_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mBoardGridStyle
@@ -381,37 +339,16 @@ final class ProjectRoot : EBManagedObject {
   final let mBoardGridStyle_property : EBStoredProperty_GridStyle
 
   //····················································································································
-
-  final var mBoardGridStyle : GridStyle {
-    get { return self.mBoardGridStyle_property.propval }
-    set { self.mBoardGridStyle_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mBoardGridDisplayFactor
   //····················································································································
 
   final let mBoardGridDisplayFactor_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var mBoardGridDisplayFactor : Int {
-    get { return self.mBoardGridDisplayFactor_property.propval }
-    set { self.mBoardGridDisplayFactor_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mBoardZoom
   //····················································································································
 
   final let mBoardZoom_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var mBoardZoom : Int {
-    get { return self.mBoardZoom_property.propval }
-    set { self.mBoardZoom_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mBoardGridStep
@@ -444,13 +381,6 @@ final class ProjectRoot : EBManagedObject {
   //····················································································································
 
   final let mErrorOrWarningIssueSize_property : EBStoredProperty_Double
-
-  //····················································································································
-
-  final var mErrorOrWarningIssueSize : Double {
-    get { return self.mErrorOrWarningIssueSize_property.propval }
-    set { self.mErrorOrWarningIssueSize_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mControlKeyHiliteDiameter
@@ -524,24 +454,10 @@ final class ProjectRoot : EBManagedObject {
   final let mBoardClearanceUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var mBoardClearanceUnit : Int {
-    get { return self.mBoardClearanceUnit_property.propval }
-    set { self.mBoardClearanceUnit_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mBoardLimitsSelectedInspector
   //····················································································································
 
   final let mBoardLimitsSelectedInspector_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var mBoardLimitsSelectedInspector : Int {
-    get { return self.mBoardLimitsSelectedInspector_property.propval }
-    set { self.mBoardLimitsSelectedInspector_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mBoardLimitsHorizontalFlip
@@ -550,24 +466,10 @@ final class ProjectRoot : EBManagedObject {
   final let mBoardLimitsHorizontalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var mBoardLimitsHorizontalFlip : Bool {
-    get { return self.mBoardLimitsHorizontalFlip_property.propval }
-    set { self.mBoardLimitsHorizontalFlip_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mBoardLimitsVerticalFlip
   //····················································································································
 
   final let mBoardLimitsVerticalFlip_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final var mBoardLimitsVerticalFlip : Bool {
-    get { return self.mBoardLimitsVerticalFlip_property.propval }
-    set { self.mBoardLimitsVerticalFlip_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mBoardLimitsGridStyle
@@ -576,37 +478,16 @@ final class ProjectRoot : EBManagedObject {
   final let mBoardLimitsGridStyle_property : EBStoredProperty_GridStyle
 
   //····················································································································
-
-  final var mBoardLimitsGridStyle : GridStyle {
-    get { return self.mBoardLimitsGridStyle_property.propval }
-    set { self.mBoardLimitsGridStyle_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mBoardLimitsGridDisplayFactor
   //····················································································································
 
   final let mBoardLimitsGridDisplayFactor_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var mBoardLimitsGridDisplayFactor : Int {
-    get { return self.mBoardLimitsGridDisplayFactor_property.propval }
-    set { self.mBoardLimitsGridDisplayFactor_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mBoardLimitsZoom
   //····················································································································
 
   final let mBoardLimitsZoom_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var mBoardLimitsZoom : Int {
-    get { return self.mBoardLimitsZoom_property.propval }
-    set { self.mBoardLimitsZoom_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mBoardLimitsGridStep
@@ -628,24 +509,10 @@ final class ProjectRoot : EBManagedObject {
   final let mBoardLimitsGridStepUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var mBoardLimitsGridStepUnit : Int {
-    get { return self.mBoardLimitsGridStepUnit_property.propval }
-    set { self.mBoardLimitsGridStepUnit_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mBoardLimitsBoundingBoxUnit
   //····················································································································
 
   final let mBoardLimitsBoundingBoxUnit_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var mBoardLimitsBoundingBoxUnit : Int {
-    get { return self.mBoardLimitsBoundingBoxUnit_property.propval }
-    set { self.mBoardLimitsBoundingBoxUnit_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mBoardPointsBoundingBoxUnit
@@ -654,37 +521,16 @@ final class ProjectRoot : EBManagedObject {
   final let mBoardPointsBoundingBoxUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var mBoardPointsBoundingBoxUnit : Int {
-    get { return self.mBoardPointsBoundingBoxUnit_property.propval }
-    set { self.mBoardPointsBoundingBoxUnit_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mBoardSelectedCurveDisplayUnit
   //····················································································································
 
   final let mBoardSelectedCurveDisplayUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var mBoardSelectedCurveDisplayUnit : Int {
-    get { return self.mBoardSelectedCurveDisplayUnit_property.propval }
-    set { self.mBoardSelectedCurveDisplayUnit_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mBoardLimitControlPointsDisplayUnit
   //····················································································································
 
   final let mBoardLimitControlPointsDisplayUnit_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var mBoardLimitControlPointsDisplayUnit : Int {
-    get { return self.mBoardLimitControlPointsDisplayUnit_property.propval }
-    set { self.mBoardLimitControlPointsDisplayUnit_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mBoardShape
@@ -706,13 +552,6 @@ final class ProjectRoot : EBManagedObject {
   final let mContentOpacityInBoardOutline_property : EBStoredProperty_Double
 
   //····················································································································
-
-  final var mContentOpacityInBoardOutline : Double {
-    get { return self.mContentOpacityInBoardOutline_property.propval }
-    set { self.mContentOpacityInBoardOutline_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mRectangularBoardWidth
   //····················································································································
 
@@ -732,13 +571,6 @@ final class ProjectRoot : EBManagedObject {
   final let mRectangularBoardWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var mRectangularBoardWidthUnit : Int {
-    get { return self.mRectangularBoardWidthUnit_property.propval }
-    set { self.mRectangularBoardWidthUnit_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mRectangularBoardHeight
   //····················································································································
 
@@ -756,13 +588,6 @@ final class ProjectRoot : EBManagedObject {
   //····················································································································
 
   final let mRectangularBoardHeightUnit_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var mRectangularBoardHeightUnit : Int {
-    get { return self.mRectangularBoardHeightUnit_property.propval }
-    set { self.mRectangularBoardHeightUnit_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   To many property: mSheets
@@ -851,37 +676,16 @@ final class ProjectRoot : EBManagedObject {
   final let mSelectedSchematicInspector_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var mSelectedSchematicInspector : Int {
-    get { return self.mSelectedSchematicInspector_property.propval }
-    set { self.mSelectedSchematicInspector_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mSchematicTitle
   //····················································································································
 
   final let mSchematicTitle_property : EBStoredProperty_String
 
   //····················································································································
-
-  final var mSchematicTitle : String {
-    get { return self.mSchematicTitle_property.propval }
-    set { self.mSchematicTitle_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mSchematicVersion
   //····················································································································
 
   final let mSchematicVersion_property : EBStoredProperty_String
-
-  //····················································································································
-
-  final var mSchematicVersion : String {
-    get { return self.mSchematicVersion_property.propval }
-    set { self.mSchematicVersion_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mSchematicDate
@@ -903,24 +707,10 @@ final class ProjectRoot : EBManagedObject {
   final let mSchematicHorizontalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var mSchematicHorizontalFlip : Bool {
-    get { return self.mSchematicHorizontalFlip_property.propval }
-    set { self.mSchematicHorizontalFlip_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mSchematicVerticalFlip
   //····················································································································
 
   final let mSchematicVerticalFlip_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final var mSchematicVerticalFlip : Bool {
-    get { return self.mSchematicVerticalFlip_property.propval }
-    set { self.mSchematicVerticalFlip_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mSchematicZoom
@@ -929,37 +719,16 @@ final class ProjectRoot : EBManagedObject {
   final let mSchematicZoom_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var mSchematicZoom : Int {
-    get { return self.mSchematicZoom_property.propval }
-    set { self.mSchematicZoom_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mSchematicGridStyle
   //····················································································································
 
   final let mSchematicGridStyle_property : EBStoredProperty_GridStyle
 
   //····················································································································
-
-  final var mSchematicGridStyle : GridStyle {
-    get { return self.mSchematicGridStyle_property.propval }
-    set { self.mSchematicGridStyle_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mSchematicGridDisplayFactor
   //····················································································································
 
   final let mSchematicGridDisplayFactor_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var mSchematicGridDisplayFactor : Int {
-    get { return self.mSchematicGridDisplayFactor_property.propval }
-    set { self.mSchematicGridDisplayFactor_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: mSchematicCustomWidth
@@ -981,13 +750,6 @@ final class ProjectRoot : EBManagedObject {
   final let mSchematicCustomWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var mSchematicCustomWidthUnit : Int {
-    get { return self.mSchematicCustomWidthUnit_property.propval }
-    set { self.mSchematicCustomWidthUnit_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mSchematicCustomHeight
   //····················································································································
 
@@ -1007,24 +769,10 @@ final class ProjectRoot : EBManagedObject {
   final let mSchematicCustomHeightUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var mSchematicCustomHeightUnit : Int {
-    get { return self.mSchematicCustomHeightUnit_property.propval }
-    set { self.mSchematicCustomHeightUnit_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: drawErrorBackgroundForBoard
   //····················································································································
 
   final let drawErrorBackgroundForBoard_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final var drawErrorBackgroundForBoard : Bool {
-    get { return self.drawErrorBackgroundForBoard_property.propval }
-    set { self.drawErrorBackgroundForBoard_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: displayFrontRestrictRectangles
@@ -1033,24 +781,10 @@ final class ProjectRoot : EBManagedObject {
   final let displayFrontRestrictRectangles_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var displayFrontRestrictRectangles : Bool {
-    get { return self.displayFrontRestrictRectangles_property.propval }
-    set { self.displayFrontRestrictRectangles_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: displayBackRestrictRectangles
   //····················································································································
 
   final let displayBackRestrictRectangles_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final var displayBackRestrictRectangles : Bool {
-    get { return self.displayBackRestrictRectangles_property.propval }
-    set { self.displayBackRestrictRectangles_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: displayInner1RestrictRectangles
@@ -1059,24 +793,10 @@ final class ProjectRoot : EBManagedObject {
   final let displayInner1RestrictRectangles_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var displayInner1RestrictRectangles : Bool {
-    get { return self.displayInner1RestrictRectangles_property.propval }
-    set { self.displayInner1RestrictRectangles_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: displayInner2RestrictRectangles
   //····················································································································
 
   final let displayInner2RestrictRectangles_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final var displayInner2RestrictRectangles : Bool {
-    get { return self.displayInner2RestrictRectangles_property.propval }
-    set { self.displayInner2RestrictRectangles_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: displayInner3RestrictRectangles
@@ -1085,24 +805,10 @@ final class ProjectRoot : EBManagedObject {
   final let displayInner3RestrictRectangles_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var displayInner3RestrictRectangles : Bool {
-    get { return self.displayInner3RestrictRectangles_property.propval }
-    set { self.displayInner3RestrictRectangles_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: displayInner4RestrictRectangles
   //····················································································································
 
   final let displayInner4RestrictRectangles_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final var displayInner4RestrictRectangles : Bool {
-    get { return self.displayInner4RestrictRectangles_property.propval }
-    set { self.displayInner4RestrictRectangles_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: displayFrontLegendForBoard
@@ -1111,24 +817,10 @@ final class ProjectRoot : EBManagedObject {
   final let displayFrontLegendForBoard_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var displayFrontLegendForBoard : Bool {
-    get { return self.displayFrontLegendForBoard_property.propval }
-    set { self.displayFrontLegendForBoard_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: displayFrontLayoutForBoard
   //····················································································································
 
   final let displayFrontLayoutForBoard_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final var displayFrontLayoutForBoard : Bool {
-    get { return self.displayFrontLayoutForBoard_property.propval }
-    set { self.displayFrontLayoutForBoard_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: displayBackLayoutForBoard
@@ -1137,24 +829,10 @@ final class ProjectRoot : EBManagedObject {
   final let displayBackLayoutForBoard_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var displayBackLayoutForBoard : Bool {
-    get { return self.displayBackLayoutForBoard_property.propval }
-    set { self.displayBackLayoutForBoard_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: displayInner1LayoutForBoard
   //····················································································································
 
   final let displayInner1LayoutForBoard_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final var displayInner1LayoutForBoard : Bool {
-    get { return self.displayInner1LayoutForBoard_property.propval }
-    set { self.displayInner1LayoutForBoard_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: displayInner2LayoutForBoard
@@ -1163,24 +841,10 @@ final class ProjectRoot : EBManagedObject {
   final let displayInner2LayoutForBoard_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var displayInner2LayoutForBoard : Bool {
-    get { return self.displayInner2LayoutForBoard_property.propval }
-    set { self.displayInner2LayoutForBoard_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: displayInner3LayoutForBoard
   //····················································································································
 
   final let displayInner3LayoutForBoard_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final var displayInner3LayoutForBoard : Bool {
-    get { return self.displayInner3LayoutForBoard_property.propval }
-    set { self.displayInner3LayoutForBoard_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: displayInner4LayoutForBoard
@@ -1189,24 +853,10 @@ final class ProjectRoot : EBManagedObject {
   final let displayInner4LayoutForBoard_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var displayInner4LayoutForBoard : Bool {
-    get { return self.displayInner4LayoutForBoard_property.propval }
-    set { self.displayInner4LayoutForBoard_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: displayBackLegendForBoard
   //····················································································································
 
   final let displayBackLegendForBoard_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final var displayBackLegendForBoard : Bool {
-    get { return self.displayBackLegendForBoard_property.propval }
-    set { self.displayBackLegendForBoard_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: displayFrontPadsForBoard
@@ -1215,37 +865,16 @@ final class ProjectRoot : EBManagedObject {
   final let displayFrontPadsForBoard_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var displayFrontPadsForBoard : Bool {
-    get { return self.displayFrontPadsForBoard_property.propval }
-    set { self.displayFrontPadsForBoard_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: displayBackPadsForBoard
   //····················································································································
 
   final let displayBackPadsForBoard_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var displayBackPadsForBoard : Bool {
-    get { return self.displayBackPadsForBoard_property.propval }
-    set { self.displayBackPadsForBoard_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: displayPadNumbersForBoard
   //····················································································································
 
   final let displayPadNumbersForBoard_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final var displayPadNumbersForBoard : Bool {
-    get { return self.displayPadNumbersForBoard_property.propval }
-    set { self.displayPadNumbersForBoard_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: packageDrawingWidthMultpliedByTenForBoard
@@ -1355,13 +984,6 @@ final class ProjectRoot : EBManagedObject {
   final let mRastnetDisplay_property : EBStoredProperty_RastnetDisplay
 
   //····················································································································
-
-  final var mRastnetDisplay : RastnetDisplay {
-    get { return self.mRastnetDisplay_property.propval }
-    set { self.mRastnetDisplay_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mRastnetDisplayedNetName
   //····················································································································
 
@@ -1379,13 +1001,6 @@ final class ProjectRoot : EBManagedObject {
   //····················································································································
 
   final let mRastnetDisplayedComponentName_property : EBStoredProperty_String
-
-  //····················································································································
-
-  final var mRastnetDisplayedComponentName : String {
-    get { return self.mRastnetDisplayedComponentName_property.propval }
-    set { self.mRastnetDisplayedComponentName_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   To many property: mComponents
@@ -2652,7 +2267,7 @@ final class ProjectRoot : EBManagedObject {
       }
     }
     self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mArtwork?.minPPTPTTTWdisplayUnit = inValue
+      self?.mArtwork?.minPPTPTTTWdisplayUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minPPTPTTTWdisplayUnit_property.startsToBeObserved (by: self.minPPTPTTTWdisplayUnit_property)
   //--- Atomic proxy property: minPPTPTTTW
@@ -2675,7 +2290,7 @@ final class ProjectRoot : EBManagedObject {
       }
     }
     self.minPPTPTTTW_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mArtwork?.minPPTPTTTW = inValue
+      self?.mArtwork?.minPPTPTTTW_property.setProp (inValue)
     }
     self.mArtwork_property.minPPTPTTTW_property.startsToBeObserved (by: self.minPPTPTTTW_property)
   //--- Atomic proxy property: minValueForOARdisplayUnit
@@ -2698,7 +2313,7 @@ final class ProjectRoot : EBManagedObject {
       }
     }
     self.minValueForOARdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mArtwork?.minValueForOARdisplayUnit = inValue
+      self?.mArtwork?.minValueForOARdisplayUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForOARdisplayUnit_property.startsToBeObserved (by: self.minValueForOARdisplayUnit_property)
   //--- Atomic proxy property: minValueForOARinEBUnit
@@ -2721,7 +2336,7 @@ final class ProjectRoot : EBManagedObject {
       }
     }
     self.minValueForOARinEBUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mArtwork?.minValueForOARinEBUnit = inValue
+      self?.mArtwork?.minValueForOARinEBUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForOARinEBUnit_property.startsToBeObserved (by: self.minValueForOARinEBUnit_property)
   //--- Atomic proxy property: minValueForPHDdisplayUnit
@@ -2744,7 +2359,7 @@ final class ProjectRoot : EBManagedObject {
       }
     }
     self.minValueForPHDdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mArtwork?.minValueForPHDdisplayUnit = inValue
+      self?.mArtwork?.minValueForPHDdisplayUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForPHDdisplayUnit_property.startsToBeObserved (by: self.minValueForPHDdisplayUnit_property)
   //--- Atomic proxy property: minValueForPHDinEBUnit
@@ -2767,7 +2382,7 @@ final class ProjectRoot : EBManagedObject {
       }
     }
     self.minValueForPHDinEBUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mArtwork?.minValueForPHDinEBUnit = inValue
+      self?.mArtwork?.minValueForPHDinEBUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForPHDinEBUnit_property.startsToBeObserved (by: self.minValueForPHDinEBUnit_property)
   //--- Atomic proxy property: minValueForBoardLimitWidth
@@ -2790,7 +2405,7 @@ final class ProjectRoot : EBManagedObject {
       }
     }
     self.minValueForBoardLimitWidth_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mArtwork?.minValueForBoardLimitWidth = inValue
+      self?.mArtwork?.minValueForBoardLimitWidth_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForBoardLimitWidth_property.startsToBeObserved (by: self.minValueForBoardLimitWidth_property)
   //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
@@ -2813,7 +2428,7 @@ final class ProjectRoot : EBManagedObject {
       }
     }
     self.minValueForBoardLimitWidthDisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mArtwork?.minValueForBoardLimitWidthDisplayUnit = inValue
+      self?.mArtwork?.minValueForBoardLimitWidthDisplayUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForBoardLimitWidthDisplayUnit_property.startsToBeObserved (by: self.minValueForBoardLimitWidthDisplayUnit_property)
   //--- Atomic proxy property: artworkComments
@@ -2836,7 +2451,7 @@ final class ProjectRoot : EBManagedObject {
       }
     }
     self.artworkComments_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
-      self?.mArtwork?.comments = inValue
+      self?.mArtwork?.comments_property.setProp (inValue)
     }
     self.mArtwork_property.comments_property.startsToBeObserved (by: self.artworkComments_property)
   //--- Atomic proxy property: artworkLayerConfiguration
@@ -2859,7 +2474,7 @@ final class ProjectRoot : EBManagedObject {
       }
     }
     self.artworkLayerConfiguration_property.mWriteModelFunction = { [weak self] (_ inValue : LayerConfiguration) in
-      self?.mArtwork?.layerConfiguration = inValue
+      self?.mArtwork?.layerConfiguration_property.setProp (inValue)
     }
     self.mArtwork_property.layerConfiguration_property.startsToBeObserved (by: self.artworkLayerConfiguration_property)
   //--- Atomic proxy property: artworkTitle
@@ -2882,7 +2497,7 @@ final class ProjectRoot : EBManagedObject {
       }
     }
     self.artworkTitle_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
-      self?.mArtwork?.title = inValue
+      self?.mArtwork?.title_property.setProp (inValue)
     }
     self.mArtwork_property.title_property.startsToBeObserved (by: self.artworkTitle_property)
   //--- Atomic proxy property: selectedSheetTitle
@@ -2905,7 +2520,7 @@ final class ProjectRoot : EBManagedObject {
       }
     }
     self.selectedSheetTitle_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
-      self?.mSelectedSheet?.mSheetTitle = inValue
+      self?.mSelectedSheet?.mSheetTitle_property.setProp (inValue)
     }
     self.mSelectedSheet_property.mSheetTitle_property.startsToBeObserved (by: self.selectedSheetTitle_property)
   //--- ToMany proxy: selectedSheetObjects
@@ -2941,7 +2556,7 @@ final class ProjectRoot : EBManagedObject {
       }
     }
     self.drillDataFileExtension_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
-      self?.mArtwork?.drillDataFileExtension = inValue
+      self?.mArtwork?.drillDataFileExtension_property.setProp (inValue)
     }
     self.mArtwork_property.drillDataFileExtension_property.startsToBeObserved (by: self.drillDataFileExtension_property)
   //--- ToMany proxy: fileGenerationParameterArray

@@ -17,13 +17,6 @@ final class SymbolRoot : EBManagedObject {
   final let selectedInspector_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var selectedInspector : Int {
-    get { return self.selectedInspector_property.propval }
-    set { self.selectedInspector_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: comments
   //····················································································································
 
@@ -43,24 +36,10 @@ final class SymbolRoot : EBManagedObject {
   final let horizontalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final var horizontalFlip : Bool {
-    get { return self.horizontalFlip_property.propval }
-    set { self.horizontalFlip_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: verticalFlip
   //····················································································································
 
   final let verticalFlip_property : EBStoredProperty_Bool
-
-  //····················································································································
-
-  final var verticalFlip : Bool {
-    get { return self.verticalFlip_property.propval }
-    set { self.verticalFlip_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: gridStyle
@@ -69,24 +48,10 @@ final class SymbolRoot : EBManagedObject {
   final let gridStyle_property : EBStoredProperty_GridStyle
 
   //····················································································································
-
-  final var gridStyle : GridStyle {
-    get { return self.gridStyle_property.propval }
-    set { self.gridStyle_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: gridDisplay
   //····················································································································
 
   final let gridDisplay_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var gridDisplay : Int {
-    get { return self.gridDisplay_property.propval }
-    set { self.gridDisplay_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: zoom
@@ -95,37 +60,16 @@ final class SymbolRoot : EBManagedObject {
   final let zoom_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var zoom : Int {
-    get { return self.zoom_property.propval }
-    set { self.zoom_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: xPlacardUnit
   //····················································································································
 
   final let xPlacardUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var xPlacardUnit : Int {
-    get { return self.xPlacardUnit_property.propval }
-    set { self.xPlacardUnit_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: yPlacardUnit
   //····················································································································
 
   final let yPlacardUnit_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var yPlacardUnit : Int {
-    get { return self.yPlacardUnit_property.propval }
-    set { self.yPlacardUnit_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   To many property: symbolObjects
@@ -159,13 +103,6 @@ final class SymbolRoot : EBManagedObject {
   //····················································································································
 
   final let selectedPageIndex_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var selectedPageIndex : Int {
-    get { return self.selectedPageIndex_property.propval }
-    set { self.selectedPageIndex_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Transient property: issues

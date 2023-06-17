@@ -30,13 +30,6 @@ final class ArtworkRoot : EBManagedObject {
   final let selectedTab_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var selectedTab : Int {
-    get { return self.selectedTab_property.propval }
-    set { self.selectedTab_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: comments
   //····················································································································
 
@@ -54,13 +47,6 @@ final class ArtworkRoot : EBManagedObject {
   //····················································································································
 
   final let minPPTPTTTWdisplayUnit_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var minPPTPTTTWdisplayUnit : Int {
-    get { return self.minPPTPTTTWdisplayUnit_property.propval }
-    set { self.minPPTPTTTWdisplayUnit_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: minPPTPTTTW
@@ -82,13 +68,6 @@ final class ArtworkRoot : EBManagedObject {
   final let minValueForOARdisplayUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final var minValueForOARdisplayUnit : Int {
-    get { return self.minValueForOARdisplayUnit_property.propval }
-    set { self.minValueForOARdisplayUnit_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: minValueForOARinEBUnit
   //····················································································································
 
@@ -106,13 +85,6 @@ final class ArtworkRoot : EBManagedObject {
   //····················································································································
 
   final let minValueForPHDdisplayUnit_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final var minValueForPHDdisplayUnit : Int {
-    get { return self.minValueForPHDdisplayUnit_property.propval }
-    set { self.minValueForPHDdisplayUnit_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Atomic property: minValueForPHDinEBUnit

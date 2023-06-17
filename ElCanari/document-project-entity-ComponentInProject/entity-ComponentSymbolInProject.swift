@@ -459,7 +459,7 @@ final class ComponentSymbolInProject : SchematicObject,
       }
     }
     self.componentValueProxy_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
-      self?.mComponent?.mComponentValue = inValue
+      self?.mComponent?.mComponentValue_property.setProp (inValue)
     }
     self.mComponent_property.mComponentValue_property.startsToBeObserved (by: self.componentValueProxy_property)
   //--- To one property: mComponent (has opposite to many relationship: mSymbols)

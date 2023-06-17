@@ -433,7 +433,7 @@ final class BorderCurve : EBGraphicManagedObject,
       }
     }
     self.mNextX_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mNext?.mX = inValue
+      self?.mNext?.mX_property.setProp (inValue)
     }
     self.mNext_property.mX_property.startsToBeObserved (by: self.mNextX_property)
   //--- Atomic proxy property: mNextY
@@ -456,7 +456,7 @@ final class BorderCurve : EBGraphicManagedObject,
       }
     }
     self.mNextY_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
-      self?.mNext?.mY = inValue
+      self?.mNext?.mY_property.setProp (inValue)
     }
     self.mNext_property.mY_property.startsToBeObserved (by: self.mNextY_property)
   //--- To one property: mRoot (has opposite to many relationship: mBorderCurves)

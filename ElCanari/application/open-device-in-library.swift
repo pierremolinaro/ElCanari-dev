@@ -29,7 +29,6 @@ final class OpenDeviceInLibrary : OpenInLibrary {
         let imageData = deviceRoot.mImageData
         image = NSImage (data: imageData)
       }
-//      inRootObject?.removeRecursivelyAllRelationsShips ()
       return image
     }
   }
