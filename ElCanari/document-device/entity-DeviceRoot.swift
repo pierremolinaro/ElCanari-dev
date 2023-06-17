@@ -125,13 +125,6 @@ final class DeviceRoot : EBManagedObject {
   final let mDocs_property = StoredArrayOf_DeviceDocumentation (usedForSignature: true, key: "mDocs")
 
   //····················································································································
-
-  final var mDocs : EBReferenceArray <DeviceDocumentation> {
-    get { return self.mDocs_property.propval }
-    set { self.mDocs_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   To many property: mSymbolInstances
   //····················································································································
 

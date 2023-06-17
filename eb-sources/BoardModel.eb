@@ -23,8 +23,8 @@ handlingOpposite entity BoardModel {
   transient Bool errorArchiveVersionMessageIsHidden dependsFrom self.modelVersion ;
 
 //--- Images
-  toMany RectangleEntity legendFrontImages ;
-  toMany RectangleEntity legendBackImages ;
+  toMany @generateDirectAccess RectangleEntity legendFrontImages ;
+  toMany @generateDirectAccess RectangleEntity legendBackImages ;
 
   transient MergerRectangleArray frontLegendBoardImageRectangles dependsFrom
     self.legendFrontImages.all.p0x, self.legendFrontImages.all.p0y,
@@ -42,8 +42,8 @@ handlingOpposite entity BoardModel {
  
 
 //--- QR Codes
-  toMany RectangleEntity legendFrontQRCodes ;
-  toMany RectangleEntity legendBackQRCodes ;
+  toMany @generateDirectAccess RectangleEntity legendFrontQRCodes ;
+  toMany @generateDirectAccess RectangleEntity legendBackQRCodes ;
 
   transient MergerRectangleArray frontLegendQRCodeRectangles dependsFrom
     self.legendFrontQRCodes.all.p0x, self.legendFrontQRCodes.all.p0y,
@@ -70,7 +70,7 @@ handlingOpposite entity BoardModel {
   transient Int instanceCount dependsFrom self.myInstances.count ;
 
 //--- Front Legend Lines
-  toMany SegmentEntity frontLegendLines ;
+  toMany @generateDirectAccess SegmentEntity frontLegendLines ;
 
   transient MergerSegmentArray frontLegendLinesSegments dependsFrom
     self.frontLegendLines.all.x1, self.frontLegendLines.all.y1,
@@ -83,7 +83,7 @@ handlingOpposite entity BoardModel {
   ;
 
 //--- Back Legend Lines
-  toMany SegmentEntity backLegendLines ;
+  toMany @generateDirectAccess SegmentEntity backLegendLines ;
 
   transient MergerSegmentArray backLegendLinesSegments dependsFrom
     self.backLegendLines.all.x1, self.backLegendLines.all.y1,
@@ -94,7 +94,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray backLegendLinesBezierPaths dependsFrom self.backLegendLinesSegments ;
 
 //--- Front Legend Texts
-  toMany SegmentEntity frontLegendTexts ;
+  toMany @generateDirectAccess SegmentEntity frontLegendTexts ;
 
   transient MergerSegmentArray frontLegendTextsSegments dependsFrom
     self.frontLegendTexts.all.x1, self.frontLegendTexts.all.y1,
@@ -105,7 +105,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray frontLegendTextsBezierPaths dependsFrom self.frontLegendTextsSegments ;
 
 //--- Front Layout Texts
-  toMany SegmentEntity frontLayoutTexts ;
+  toMany @generateDirectAccess SegmentEntity frontLayoutTexts ;
 
   transient MergerSegmentArray frontLayoutTextsSegments dependsFrom
     self.frontLayoutTexts.all.x1, self.frontLayoutTexts.all.y1,
@@ -116,7 +116,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray frontLayoutTextsBezierPaths dependsFrom self.frontLayoutTextsSegments ;
 
 //--- Back Legend Texts
-  toMany SegmentEntity backLegendTexts ;
+  toMany @generateDirectAccess SegmentEntity backLegendTexts ;
 
   transient MergerSegmentArray backLegendTextsSegments dependsFrom
     self.backLegendTexts.all.x1, self.backLegendTexts.all.y1,
@@ -127,7 +127,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray backLegendTextsBezierPaths dependsFrom self.backLegendTextsSegments ;
 
 //--- Back Layout Texts
-  toMany SegmentEntity backLayoutTexts ;
+  toMany @generateDirectAccess SegmentEntity backLayoutTexts ;
 
   transient MergerSegmentArray backLayoutTextsSegments dependsFrom
     self.backLayoutTexts.all.x1, self.backLayoutTexts.all.y1,
@@ -138,7 +138,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray backLayoutTextsBezierPaths dependsFrom self.backLayoutTextsSegments ;
 
 //--- Internal board limits
-  toMany SegmentEntity internalBoardsLimits ;
+  toMany @generateDirectAccess SegmentEntity internalBoardsLimits ;
 
   transient MergerSegmentArray internalBoardsLimitsSegments dependsFrom
     self.internalBoardsLimits.all.x1, self.internalBoardsLimits.all.y1,
@@ -149,7 +149,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray internalBoardsLimitsBezierPaths dependsFrom self.internalBoardsLimitsSegments ;
 
 //--- Drills
-  toMany SegmentEntity drills ;
+  toMany @generateDirectAccess SegmentEntity drills ;
 
   transient MergerSegmentArray drillSegments
     dependsFrom self.drills.all.x1, self.drills.all.y1, self.drills.all.x2, self.drills.all.y2, self.drills.all.width ;
@@ -157,7 +157,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray holesBezierPaths dependsFrom self.drillSegments ;
 
 //--- Vias
-  toMany BoardModelVia vias ;
+  toMany @generateDirectAccess BoardModelVia vias ;
 
   transient MergerViaShapeArray viaShapes
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.padDiameter ;
@@ -165,7 +165,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray viasBezierPaths dependsFrom self.viaShapes ;
 
 //--- Front pads
-  toMany BoardModelPad frontPads ;
+  toMany @generateDirectAccess BoardModelPad frontPads ;
 
   transient MergerPadArray frontPadArray
     dependsFrom self.frontPads.all.x, self.frontPads.all.y, self.frontPads.all.width, self.frontPads.all.height,
@@ -174,7 +174,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray frontPadsBezierPaths dependsFrom self.frontPadArray ;
 
 //--- Back pads
-  toMany BoardModelPad backPads ;
+  toMany @generateDirectAccess BoardModelPad backPads ;
 
   transient MergerPadArray backPadArray
     dependsFrom self.backPads.all.x, self.backPads.all.y, self.backPads.all.width, self.backPads.all.height,
@@ -183,7 +183,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray backPadsBezierPaths dependsFrom self.backPadArray ;
 
 //--- Traversing pads
-  toMany BoardModelPad traversingPads ;
+  toMany @generateDirectAccess BoardModelPad traversingPads ;
 
   transient MergerPadArray traversingPadArray
     dependsFrom self.traversingPads.all.x, self.traversingPads.all.y, self.traversingPads.all.width, self.traversingPads.all.height,
@@ -198,7 +198,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray boardLimitsBezierPaths dependsFrom self.modelWidth, self.modelHeight, self.modelLimitWidth ;
 
 //--- Back component names
-  toMany SegmentEntity backComponentNames ;
+  toMany @generateDirectAccess SegmentEntity backComponentNames ;
 
   transient MergerSegmentArray backComponentNameSegments dependsFrom
     self.backComponentNames.all.x1, self.backComponentNames.all.y1,
@@ -209,7 +209,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray backComponentNamesBezierPaths dependsFrom self.backComponentNameSegments ;
 
 //--- Front component names
-  toMany SegmentEntity frontComponentNames ;
+  toMany @generateDirectAccess SegmentEntity frontComponentNames ;
 
   transient MergerSegmentArray frontComponentNameSegments dependsFrom
     self.frontComponentNames.all.x1, self.frontComponentNames.all.y1,
@@ -220,7 +220,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray frontComponentNamesBezierPaths dependsFrom self.frontComponentNameSegments ;
 
 //--- Front component values
-  toMany SegmentEntity frontComponentValues ;
+  toMany @generateDirectAccess SegmentEntity frontComponentValues ;
 
   transient MergerSegmentArray frontComponentValueSegments dependsFrom
     self.frontComponentValues.all.x1, self.frontComponentValues.all.y1,
@@ -231,7 +231,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray frontComponentValuesBezierPaths dependsFrom self.frontComponentValueSegments ;
 
 //--- Back component values
-  toMany SegmentEntity backComponentValues ;
+  toMany @generateDirectAccess SegmentEntity backComponentValues ;
 
   transient MergerSegmentArray backComponentValueSegments dependsFrom
     self.backComponentValues.all.x1, self.backComponentValues.all.y1,
@@ -242,7 +242,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray backComponentValuesBezierPaths dependsFrom self.backComponentValueSegments ;
 
 //--- Back tracks
-  toMany SegmentEntity backTracks ;
+  toMany @generateDirectAccess SegmentEntity backTracks ;
 
   transient MergerSegmentArray backTrackSegments dependsFrom
     self.backTracks.all.x1, self.backTracks.all.y1,
@@ -253,7 +253,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray backTracksBezierPaths dependsFrom self.backTrackSegments ;
 
 //--- Front tracks
-  toMany SegmentEntity frontTracks ;
+  toMany @generateDirectAccess SegmentEntity frontTracks ;
 
   transient MergerSegmentArray frontTrackSegments dependsFrom
     self.frontTracks.all.x1, self.frontTracks.all.y1,
@@ -264,7 +264,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray frontTracksBezierPaths dependsFrom self.frontTrackSegments ;
 
 //--- Inner1 packages
-  toMany SegmentEntity inner1Tracks ;
+  toMany @generateDirectAccess SegmentEntity inner1Tracks ;
 
   transient MergerSegmentArray inner1TracksSegments dependsFrom
     self.inner1Tracks.all.x1, self.inner1Tracks.all.y1,
@@ -275,7 +275,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray inner1TracksBezierPaths dependsFrom self.inner1TracksSegments ;
 
 //--- Inner2 packages
-  toMany SegmentEntity inner2Tracks ;
+  toMany @generateDirectAccess SegmentEntity inner2Tracks ;
 
   transient MergerSegmentArray inner2TracksSegments dependsFrom
     self.inner2Tracks.all.x1, self.inner2Tracks.all.y1,
@@ -286,7 +286,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray inner2TracksBezierPaths dependsFrom self.inner2TracksSegments ;
 
 //--- Inner3 packages
-  toMany SegmentEntity inner3Tracks ;
+  toMany @generateDirectAccess SegmentEntity inner3Tracks ;
 
   transient MergerSegmentArray inner3TracksSegments dependsFrom
     self.inner3Tracks.all.x1, self.inner3Tracks.all.y1,
@@ -297,7 +297,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray inner3TracksBezierPaths dependsFrom self.inner3TracksSegments ;
 
 //--- Inner4 packages
-  toMany SegmentEntity inner4Tracks ;
+  toMany @generateDirectAccess SegmentEntity inner4Tracks ;
 
   transient MergerSegmentArray inner4TracksSegments dependsFrom
     self.inner4Tracks.all.x1, self.inner4Tracks.all.y1,
@@ -308,7 +308,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray inner4TracksBezierPaths dependsFrom self.inner4TracksSegments ;
 
 //--- Front packages
-  toMany SegmentEntity frontPackages ;
+  toMany @generateDirectAccess SegmentEntity frontPackages ;
 
   transient MergerSegmentArray frontPackagesSegments dependsFrom
     self.frontPackages.all.x1, self.frontPackages.all.y1,
@@ -319,7 +319,7 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray frontPackagesBezierPaths dependsFrom self.frontPackagesSegments ;
 
 //--- Back packages
-  toMany SegmentEntity backPackages ;
+  toMany @generateDirectAccess SegmentEntity backPackages ;
 
   transient MergerSegmentArray backPackagesSegments dependsFrom
     self.backPackages.all.x1, self.backPackages.all.y1,

@@ -1047,13 +1047,6 @@ final class BoardModel : EBManagedObject,
   final let myInstances_property = StoredArrayOf_MergerBoardInstance (usedForSignature: false, key: "myInstances")
 
   //····················································································································
-
-  final var myInstances : EBReferenceArray <MergerBoardInstance> {
-    get { return self.myInstances_property.propval }
-    set { self.myInstances_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Transient property: errorArchiveVersionMessage
   //····················································································································
 

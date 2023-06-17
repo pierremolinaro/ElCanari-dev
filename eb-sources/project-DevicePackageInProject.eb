@@ -1,7 +1,7 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 entity DevicePackageInProject {
-  toMany DeviceMasterPadInProject mMasterPads ;
+  toMany @generateDirectAccess DeviceMasterPadInProject mMasterPads ;
 
   property @generateDirectAccess String mPackageName default "" ;
   property @generateDirectAccess NSBezierPath mStrokeBezierPath default empty ;

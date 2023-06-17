@@ -1,7 +1,7 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 entity DeviceMasterPadInProject {
-  toMany DeviceSlavePadInProject mSlavePads ;
+  toMany @generateDirectAccess DeviceSlavePadInProject mSlavePads ;
 
   property @generateDirectAccess Int mCenterX default 0 ;
   property @generateDirectAccess Int mCenterY default 0 ;

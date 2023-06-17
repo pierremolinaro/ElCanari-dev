@@ -87,7 +87,7 @@ extension AutoLayoutProjectDocument {
         if inResponse == .stop, let newPackageName = popupButton.titleOfSelectedItem {
           for component in selectedComponents.values {
             var newPossiblePackage : DevicePackageInProject? = nil
-            for candidatePackage in component.mDevice?.mPackages.values ?? [] {
+            for candidatePackage in component.mDevice?.mPackages_property.propval.values ?? [] {
               if candidatePackage.mPackageName == newPackageName {
                 newPossiblePackage = candidatePackage
               }
@@ -121,7 +121,7 @@ extension ComponentInProject {
   func set (package inPackage : DevicePackageInProject) {
     if self.isPlacedInBoard! {
     //--- Check the corresponding pad does exist in new package
-      for currentConnector in self.mConnectors.values {
+      for currentConnector in self.mConnectors_property.propval.values {
         var found = false
         for (padName, masterPadDescriptor) in inPackage.packagePadDictionary! {
           if (currentConnector.mComponentPadName == padName) && (currentConnector.mPadIndex <= masterPadDescriptor.slavePads.count) {
@@ -146,7 +146,7 @@ extension ComponentInProject {
         if masterPadDescriptor.slavePads.count > 0 {
           for slavePadIndex in 1 ... masterPadDescriptor.slavePads.count {
             var found = false
-            for currentConnector in self.mConnectors.values {
+            for currentConnector in self.mConnectors_property.propval.values {
               if (currentConnector.mComponentPadName == padName) && (currentConnector.mPadIndex == slavePadIndex) {
                 found = true
               }

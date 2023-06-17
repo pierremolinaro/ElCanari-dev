@@ -6,7 +6,7 @@ graphic handlingOpposite entity ComponentSymbolInProject : SchematicObject {
   toOne @weak ComponentInProject mComponent inverse toMany mSymbols ;
   property proxy String componentValueProxy : mComponent.mComponentValue ;
 
-  toMany PointInSchematic mPoints inverse toOne mSymbol ;
+  toMany @generateDirectAccess PointInSchematic mPoints inverse toOne mSymbol ;
 
   property @generateDirectAccess Int mCenterX default 0 ;
   property @generateDirectAccess Int mCenterY default 0 ;

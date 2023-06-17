@@ -204,7 +204,7 @@ extension AutoLayoutProjectDocument {
 
   private func getComponentNamePrefixes () -> Set <String> {
     var prefixSet = Set <String> ()
-    for component in self.rootObject.mComponents.values {
+    for component in self.rootObject.mComponents_property.propval.values {
       prefixSet.insert (component.mNamePrefix)
     }
     return prefixSet
@@ -214,7 +214,7 @@ extension AutoLayoutProjectDocument {
 
   fileprivate func getComponentNameIndexes (forPrefix inPrefix : String) -> Set <Int> {
     var indexes = Set <Int> ()
-    for component in self.rootObject.mComponents.values {
+    for component in self.rootObject.mComponents_property.propval.values {
       if component.mNamePrefix == inPrefix {
         indexes.insert (component.mNameIndex)
       }
@@ -226,7 +226,7 @@ extension AutoLayoutProjectDocument {
 
   fileprivate func performRenameComponent (component inComponent : ComponentInProject,
                                            renameContext inRenameContext : RenameContext) {
-    for component in self.rootObject.mComponents.values {
+    for component in self.rootObject.mComponents_property.propval.values {
       component.mNameIndex *= 2 ;
     }
     if inComponent.mNamePrefix == inRenameContext.mComponentNewPrefix {
@@ -246,7 +246,7 @@ extension AutoLayoutProjectDocument {
 
   func performNormalizeComponentNames () {
     var allComponents = [String : [ComponentInProject]] ()
-    for component in self.rootObject.mComponents.values {
+    for component in self.rootObject.mComponents_property.propval.values {
       let prefix = component.mNamePrefix
       allComponents [prefix] = allComponents [prefix, default: []] + [component]
     }

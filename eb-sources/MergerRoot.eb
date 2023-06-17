@@ -1,8 +1,8 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 handlingOpposite entity MergerRoot {
-  toMany BoardModel boardModels ;
-  toMany MergerBoardInstance boardInstances inverse toOne myRoot ;
+  toMany @generateDirectAccess BoardModel boardModels ;
+  toMany @generateDirectAccess MergerBoardInstance boardInstances inverse toOne myRoot ;
 
   property @generateDirectAccess Int selectedPageIndex default 0 ;
   property Int zoom default 100 ;

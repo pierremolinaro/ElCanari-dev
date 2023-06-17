@@ -94,13 +94,6 @@ final class FontInProject : EBManagedObject,
   final let mTexts_property = StoredArrayOf_BoardText (usedForSignature: false, key: "mTexts")
 
   //····················································································································
-
-  final var mTexts : EBReferenceArray <BoardText> {
-    get { return self.mTexts_property.propval }
-    set { self.mTexts_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mNominalSize
   //····················································································································
 
@@ -159,24 +152,10 @@ final class FontInProject : EBManagedObject,
   final let mComponentNames_property = StoredArrayOf_ComponentInProject (usedForSignature: false, key: "mComponentNames")
 
   //····················································································································
-
-  final var mComponentNames : EBReferenceArray <ComponentInProject> {
-    get { return self.mComponentNames_property.propval }
-    set { self.mComponentNames_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   To many property: mComponentValues
   //····················································································································
 
   final let mComponentValues_property = StoredArrayOf_ComponentInProject (usedForSignature: false, key: "mComponentValues")
-
-  //····················································································································
-
-  final var mComponentValues : EBReferenceArray <ComponentInProject> {
-    get { return self.mComponentValues_property.propval }
-    set { self.mComponentValues_property.setProp (newValue) }
-  }
 
   //····················································································································
   //   Transient property: versionString

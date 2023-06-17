@@ -8,10 +8,10 @@ handlingOpposite entity DeviceInProject {
   property @generateDirectAccess Int mDeviceVersion default 0 ;
   property @generateDirectAccess Data mDeviceFileData default empty ;
 
-  toMany DevicePackageInProject mPackages ;
-  toMany DeviceSymbolInstanceInProject mSymbols ;
-  toMany ComponentInProject mComponents inverse toOne mDevice ;
-  toMany DevicePadAssignmentInProject mPadAssignments ;
+  toMany @generateDirectAccess DevicePackageInProject mPackages ;
+  toMany @generateDirectAccess DeviceSymbolInstanceInProject mSymbols ;
+  toMany @generateDirectAccess ComponentInProject mComponents inverse toOne mDevice ;
+  toMany @generateDirectAccess DevicePadAssignmentInProject mPadAssignments ;
 
   transient String deviceComponentCountString dependsFrom self.mComponents.count ;
   transient String versionString dependsFrom self.mDeviceVersion ;

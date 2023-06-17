@@ -46,7 +46,7 @@ handlingOpposite entity DeviceRoot {
   transient Bool symbolNameAreConsistent dependsFrom self.inconsistentSymbolNameSetMessage ;
 
 //--- Packages
-  toMany @signature PackageInDevice mPackages inverse toOne mRoot ;
+  toMany @signature @generateDirectAccess PackageInDevice mPackages inverse toOne mRoot ;
   property Int mPackageDisplayZoom default 400 ;
   property Bool mPackageDisplayHorizontalFlip default no ;
   property Bool mPackageDisplayVerticalFlip default no ;
@@ -56,8 +56,8 @@ handlingOpposite entity DeviceRoot {
   property Bool mShowPackageBackPads default yes ;
 
 //--- Symbols
-  toMany @signature SymbolTypeInDevice mSymbolTypes ;
-  toMany @signature SymbolInstanceInDevice mSymbolInstances inverse toOne mDeviceRoot ;
+  toMany @signature @generateDirectAccess SymbolTypeInDevice mSymbolTypes ;
+  toMany @signature @generateDirectAccess SymbolInstanceInDevice mSymbolInstances inverse toOne mDeviceRoot ;
 
   property Int mSymbolDisplayZoom default 400 ;
 
@@ -66,7 +66,7 @@ handlingOpposite entity DeviceRoot {
   transient UnconnectedSymbolPinsInDevice unconnectedPins dependsFrom self.mSymbolInstances.all.unconnectedPins ;
 
 //--- Pad proxys
-  toMany @signature PadProxyInDevice mPadProxies ;
+  toMany @signature @generateDirectAccess PadProxyInDevice mPadProxies ;
 
   transient StringArray unconnectedPads
     dependsFrom self.mPadProxies.all.mPadName, self.mPadProxies.all.isConnected ;
@@ -93,7 +93,7 @@ entity DeviceDocumentation {
 graphic handlingOpposite entity PackageInDevice {
   toOne @weak DeviceRoot mRoot inverse toMany mPackages ;
 
-  toMany @signature MasterPadInDevice mMasterPads ;
+  toMany @signature @generateDirectAccess MasterPadInDevice mMasterPads ;
 
   property @signature @generateDirectAccess Data mFileData default empty ;
   property @signature @generateDirectAccess String mName default "" ;
@@ -151,7 +151,7 @@ graphic handlingOpposite entity PackageInDevice {
 //——————————————————————————————————————————————————————————————————————————————
 
 handlingOpposite entity MasterPadInDevice {
-  toMany @signature SlavePadInDevice mSlavePads inverse toOne mMasterPad ;
+  toMany @signature @generateDirectAccess SlavePadInDevice mSlavePads inverse toOne mMasterPad ;
 
   property @signature @generateDirectAccess Int mCenterX default 0 ;
   property @signature @generateDirectAccess Int mCenterY default 0 ;
@@ -213,8 +213,8 @@ handlingOpposite entity SlavePadInDevice {
 //——————————————————————————————————————————————————————————————————————————————
 
 handlingOpposite entity SymbolTypeInDevice {
-  toMany SymbolInstanceInDevice mInstances inverse toOne mType ;
-  toMany @signature SymbolPinTypeInDevice mPinTypes ;
+  toMany @generateDirectAccess SymbolInstanceInDevice mInstances inverse toOne mType ;
+  toMany @signature @generateDirectAccess SymbolPinTypeInDevice mPinTypes ;
 
   property @signature @generateDirectAccess String mTypeName default "" ;
   property @generateDirectAccess @signature Int mVersion default 0 ;
@@ -235,7 +235,7 @@ handlingOpposite entity SymbolTypeInDevice {
 //——————————————————————————————————————————————————————————————————————————————
 
 handlingOpposite entity SymbolPinTypeInDevice {
-  toMany SymbolPinInstanceInDevice mInstances inverse toOne mType  ;
+  toMany @generateDirectAccess SymbolPinInstanceInDevice mInstances inverse toOne mType  ;
 
   property @signature @generateDirectAccess Int mPinX default 0 ;
   property @signature @generateDirectAccess Int mPinY default 0 ;
@@ -264,7 +264,7 @@ handlingOpposite entity SymbolPinTypeInDevice {
 graphic handlingOpposite entity SymbolInstanceInDevice {
   toOne @weak DeviceRoot mDeviceRoot inverse toMany mSymbolInstances ;
   toOne @weak SymbolTypeInDevice mType inverse toMany mInstances ;
-  toMany @signature SymbolPinInstanceInDevice mPinInstances inverse toOne mSymbolInstance ;
+  toMany @signature @generateDirectAccess SymbolPinInstanceInDevice mPinInstances inverse toOne mSymbolInstance ;
 
   property @signature String mInstanceName default "" ;
   property @generateDirectAccess Int mX default 0 ;

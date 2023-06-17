@@ -45,7 +45,7 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
 //--- Display in board
   property @generateDirectAccess Bool mDisplayLegend default yes ;
 
-  toMany BoardConnector mConnectors inverse toOne mComponent ;
+  toMany @generateDirectAccess BoardConnector mConnectors inverse toOne mComponent ;
   
   override transient CanariIssueArray issues dependsFrom self.mConnectors.all.issues ;
 
@@ -103,7 +103,7 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
   transient Bool hasSlavePads dependsFrom self.packagePadDictionary ;
   
 //--- Symbols
-  toMany ComponentSymbolInProject mSymbols inverse toOne mComponent ;
+  toMany @generateDirectAccess ComponentSymbolInProject mSymbols inverse toOne mComponent ;
 
   transient StringTagArray unplacedSymbols dependsFrom
     self.componentName,

@@ -13,7 +13,7 @@ import AppKit
 extension AutoLayoutProjectDocument {
   @objc func removeEmbeddedDevicesAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-       for device in self.rootObject.mDevices.values {
+       for device in self.rootObject.mDevices_property.propval.values {
          device.mDeviceFileData = Data ()
        }
 //--- END OF USER ZONE 2

@@ -18,8 +18,8 @@ graphic handlingOpposite entity BoardConnector : BoardObject {
   property @generateDirectAccess Int mX default 0 ; // Used if not connected to a Pad
   property @generateDirectAccess Int mY default 0 ; // Used if not connected to a Pad
 
-  toMany BoardTrack mTracksP1 inverse toOne mConnectorP1 ;
-  toMany BoardTrack mTracksP2 inverse toOne mConnectorP2 ;
+  toMany @generateDirectAccess BoardTrack mTracksP1 inverse toOne mConnectorP1 ;
+  toMany @generateDirectAccess BoardTrack mTracksP2 inverse toOne mConnectorP2 ;
 
   property Int mDefaultHoleDiameterUnit default 2_286 ; // mil
   property @generateDirectAccess Int mCustomHoleDiameter default 45_720 ; // 20 mil

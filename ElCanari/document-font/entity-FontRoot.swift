@@ -60,13 +60,6 @@ final class FontRoot : EBManagedObject {
   final let characters_property = Custom_FontCharacter_StoredArrayOf_FontCharacter (usedForSignature: true, key: KEY_FOR_FontCharacter_characters)
 
   //····················································································································
-
-  final var characters : EBReferenceArray <FontCharacter> {
-    get { return self.characters_property.propval }
-    set { self.characters_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Transient property: currentCharacterCodePointString
   //····················································································································
 

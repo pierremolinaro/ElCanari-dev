@@ -3,7 +3,7 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 handlingOpposite entity NetClassInProject {
-  toMany NetInProject mNets inverse toOne mNetClass ;
+  toMany @generateDirectAccess NetInProject mNets inverse toOne mNetClass ;
   property @generateDirectAccess String mNetClassName default "Default" ;
   property @generateDirectAccess NSColor mNetClassColor default blue ;
 

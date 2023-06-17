@@ -125,13 +125,6 @@ final class FontCharacter : EBManagedObject,
   final let segments_property = StoredArrayOf_SegmentForFontCharacter (usedForSignature: true, key: "segments")
 
   //····················································································································
-
-  final var segments : EBReferenceArray <SegmentForFontCharacter> {
-    get { return self.segments_property.propval }
-    set { self.segments_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Transient property: segmentArrayForDrawing
   //····················································································································
 

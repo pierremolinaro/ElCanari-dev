@@ -60,7 +60,7 @@ handlingOpposite entity ProjectRoot {
   ;
 
 //--- Board
-  toMany BoardObject mBoardObjects inverse toOne mRoot ;
+  toMany @generateDirectAccess BoardObject mBoardObjects inverse toOne mRoot ;
   
   property @generateDirectAccess LayerConfiguration mLayerConfiguration default twoLayers ;
   transient String layerConfigurationString dependsFrom self.mLayerConfiguration ;
@@ -151,7 +151,7 @@ handlingOpposite entity ProjectRoot {
   property  @generateDirectAccess String mDSNFileProposedName default "design.dsn" ;
  
 //--- Board border
-  toMany BorderCurve mBorderCurves inverse toOne mRoot ;
+  toMany @generateDirectAccess BorderCurve mBorderCurves inverse toOne mRoot ;
 
   property @generateDirectRead Int mBoardLimitsWidth default 90_000 ; // 1 mm
   property @generateDirectRead Int mBoardLimitsWidthUnit default 90_000 ; // mm
@@ -227,12 +227,12 @@ handlingOpposite entity ProjectRoot {
   ;
 
 //--- Schematic
-  toMany FontInProject mFonts ;
+  toMany @generateDirectAccess FontInProject mFonts ;
   transient StringArray fontNameArray dependsFrom self.mFonts.all.mFontName ;
-  toMany DeviceInProject mDevices ;
-  toMany ComponentInProject mComponents ;
-  toMany NetClassInProject mNetClasses ;
-  toMany SheetInProject mSheets inverse toOne mRoot ;
+  toMany @generateDirectAccess DeviceInProject mDevices ;
+  toMany @generateDirectAccess ComponentInProject mComponents ;
+  toMany @generateDirectAccess NetClassInProject mNetClasses ;
+  toMany @generateDirectAccess SheetInProject mSheets inverse toOne mRoot ;
   property @generateDirectAccess String mDefaultNetClassName default "" ;
   property @generateDirectAccess Int mSchematicHilitedColumnIndex default -1 ; // -1 -> no hilite
   property @generateDirectAccess Int mSchematicHilitedRowIndex default -1 ; // -1 -> no hilite

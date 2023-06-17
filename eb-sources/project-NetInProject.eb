@@ -4,8 +4,8 @@
 
 handlingOpposite entity NetInProject {
   toOne @weak NetClassInProject mNetClass inverse toMany mNets ;
-  toMany PointInSchematic mPoints inverse toOne mNet ;
-  toMany BoardTrack mTracks inverse toOne mNet ;
+  toMany @generateDirectAccess PointInSchematic mPoints inverse toOne mNet ;
+  toMany @generateDirectAccess BoardTrack mTracks inverse toOne mNet ;
  
   property @generateDirectAccess String mNetName default "" ;
   property @generateDirectAccess Bool mWarnsExactlyOneLabel default yes ;

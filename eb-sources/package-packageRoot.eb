@@ -51,7 +51,7 @@ handlingOpposite entity PackageRoot {
   property @generateDirectAccess @signature String program default "" ;
 
 //--- Package definition
-  toMany @signature PackageObject packageObjects inverse toOne mRoot ;
+  toMany @signature @generateDirectAccess PackageObject packageObjects inverse toOne mRoot ;
   toMany PackagePad packagePads dependsFrom self.packageObjects ;
   toMany PackageSlavePad packageSlavePads dependsFrom self.packageObjects ;
   toMany PackageZone packageZones dependsFrom self.packageObjects ;
@@ -102,7 +102,7 @@ handlingOpposite entity PackageRoot {
   property proxy Int mModelImageSecondPointDx : mModelImageDoublePoint.mSecondDx ;
   property proxy Int mModelImageSecondPointDy : mModelImageDoublePoint.mSecondDy ;
 
-  toMany PackageModelImageDoublePoint mModelImageObjects inverse toOne mRoot ;
+  toMany @generateDirectAccess PackageModelImageDoublePoint mModelImageObjects inverse toOne mRoot ;
 
 //--- Knob size
   property Int knobSizeMultpliedByTen default 20 ;
@@ -325,7 +325,7 @@ graphic handlingOpposite entity PackagePad : PackageObject {
   property @signature Int annularRingUnit default 2_286 ;
 
   toOne PackageZone zone ;
-  toMany @signature PackageSlavePad slaves inverse toOne master ;
+  toMany @signature @generateDirectAccess PackageSlavePad slaves inverse toOne master ;
 
   override transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeWidth, self.holeHeight,
@@ -513,7 +513,7 @@ graphic entity PackageZone : PackageObject {
   property @signature @generateDirectAccess String zoneName default "" ;
   property Bool displayZoneName default yes ;
   property Bool displayZoneNameWithPadNumbers default yes ;
-  toMany @signature ForbiddenPadNumber forbiddenPadNumbers ;
+  toMany @signature @generateDirectAccess ForbiddenPadNumber forbiddenPadNumbers ;
   property @signature @generateDirectAccess Int xName default 2_286_00 ;
   property @signature @generateDirectAccess Int yName default 2_286_00 ;
   property @signature @generateDirectAccess Int xNameUnit default 2_286 ;

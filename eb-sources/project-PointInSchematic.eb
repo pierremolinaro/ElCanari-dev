@@ -11,13 +11,13 @@ handlingOpposite entity PointInSchematic {
 
   toOne NCInSchematic mNC inverse toOne mPoint ;
 
-  toMany LabelInSchematic mLabels inverse toOne mPoint ;
+  toMany @generateDirectAccess LabelInSchematic mLabels inverse toOne mPoint ;
 
   property @generateDirectAccess Int mX default 0 ; // Used only if mSymbol is nil
   property @generateDirectAccess Int mY default 0 ; // Used only if mSymbol is nil 
 
-  toMany WireInSchematic mWiresP1s inverse toOne mP1 ;
-  toMany WireInSchematic mWiresP2s inverse toOne mP2 ;
+  toMany @generateDirectAccess WireInSchematic mWiresP1s inverse toOne mP1 ;
+  toMany @generateDirectAccess WireInSchematic mWiresP2s inverse toOne mP2 ;
   
   transient CanariPoint location dependsFrom
     self.mX, self.mY, self.mSymbolPinName,
