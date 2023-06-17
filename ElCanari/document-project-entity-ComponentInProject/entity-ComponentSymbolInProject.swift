@@ -151,10 +151,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final func reset_mCenterX_toDefaultValue () {
-    self.mCenterX = 0
-  }
-
   //····················································································································
 
   final var mCenterX : Int {
@@ -169,10 +165,6 @@ final class ComponentSymbolInProject : SchematicObject,
   final let mCenterY_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mCenterY_toDefaultValue () {
-    self.mCenterY = 0
-  }
 
   //····················································································································
 
@@ -189,10 +181,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final func reset_mRotation_toDefaultValue () {
-    self.mRotation = QuadrantRotation.rotation0
-  }
-
   //····················································································································
 
   final var mRotation : QuadrantRotation {
@@ -207,10 +195,6 @@ final class ComponentSymbolInProject : SchematicObject,
   final let mMirror_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mMirror_toDefaultValue () {
-    self.mMirror = false
-  }
 
   //····················································································································
 
@@ -227,10 +211,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final func reset_mSymbolInstanceName_toDefaultValue () {
-    self.mSymbolInstanceName = ""
-  }
-
   //····················································································································
 
   final var mSymbolInstanceName : String {
@@ -245,10 +225,6 @@ final class ComponentSymbolInProject : SchematicObject,
   final let mSymbolTypeName_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_mSymbolTypeName_toDefaultValue () {
-    self.mSymbolTypeName = ""
-  }
 
   //····················································································································
 
@@ -265,10 +241,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final func reset_mDisplayComponentNameOffsetX_toDefaultValue () {
-    self.mDisplayComponentNameOffsetX = 0
-  }
-
   //····················································································································
 
   final var mDisplayComponentNameOffsetX : Int {
@@ -283,10 +255,6 @@ final class ComponentSymbolInProject : SchematicObject,
   final let mDisplayComponentNameOffsetY_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mDisplayComponentNameOffsetY_toDefaultValue () {
-    self.mDisplayComponentNameOffsetY = 457200
-  }
 
   //····················································································································
 
@@ -303,10 +271,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final func reset_mDisplayComponentValue_toDefaultValue () {
-    self.mDisplayComponentValue = true
-  }
-
   //····················································································································
 
   final var mDisplayComponentValue : Bool {
@@ -322,10 +286,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final func reset_mDisplayComponentValueOffsetX_toDefaultValue () {
-    self.mDisplayComponentValueOffsetX = 0
-  }
-
   //····················································································································
 
   final var mDisplayComponentValueOffsetX : Int {
@@ -340,10 +300,6 @@ final class ComponentSymbolInProject : SchematicObject,
   final let mDisplayComponentValueOffsetY_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mDisplayComponentValueOffsetY_toDefaultValue () {
-    self.mDisplayComponentValueOffsetY = -457200
-  }
 
   //····················································································································
 

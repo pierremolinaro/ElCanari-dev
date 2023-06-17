@@ -110,10 +110,6 @@ final class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mNominalSize_toDefaultValue () {
-    self.mNominalSize = 0
-  }
-
   //····················································································································
 
   final var mNominalSize : Int {
@@ -128,10 +124,6 @@ final class FontInProject : EBManagedObject,
   final let mFontName_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_mFontName_toDefaultValue () {
-    self.mFontName = ""
-  }
 
   //····················································································································
 
@@ -148,10 +140,6 @@ final class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mFontVersion_toDefaultValue () {
-    self.mFontVersion = 0
-  }
-
   //····················································································································
 
   final var mFontVersion : Int {
@@ -166,10 +154,6 @@ final class FontInProject : EBManagedObject,
   final let mDescriptiveString_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_mDescriptiveString_toDefaultValue () {
-    self.mDescriptiveString = ""
-  }
 
   //····················································································································
 

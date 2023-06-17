@@ -67,10 +67,6 @@ final class SymbolText : SymbolObject,
 
   //····················································································································
 
-  final func reset_y_toDefaultValue () {
-    self.y = 0
-  }
-
   //····················································································································
 
   final var y : Int {
@@ -85,10 +81,6 @@ final class SymbolText : SymbolObject,
   final let text_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_text_toDefaultValue () {
-    self.text = "text"
-  }
 
   //····················································································································
 
@@ -105,10 +97,6 @@ final class SymbolText : SymbolObject,
 
   //····················································································································
 
-  final func reset_horizontalAlignment_toDefaultValue () {
-    self.horizontalAlignment = HorizontalAlignment.center
-  }
-
   //····················································································································
 
   final var horizontalAlignment : HorizontalAlignment {
@@ -123,10 +111,6 @@ final class SymbolText : SymbolObject,
   final let x_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_x_toDefaultValue () {
-    self.x = 0
-  }
 
   //····················································································································
 

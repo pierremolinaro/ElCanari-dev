@@ -97,10 +97,6 @@ final class SheetInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mSheetTitle_toDefaultValue () {
-    self.mSheetTitle = ""
-  }
-
   //····················································································································
 
   final var mSheetTitle : String {

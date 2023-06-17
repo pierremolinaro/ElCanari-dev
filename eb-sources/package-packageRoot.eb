@@ -81,20 +81,20 @@ handlingOpposite entity PackageRoot {
   property Int mModelImageSecondPointYUnit default 2_286 ; // mils
 
   property Data mModelImageData default empty ;
-  property Int mModelImageFirstPointXOnLock default 0 ;
-  property Int mModelImageFirstPointYOnLock default 0 ;
+  property @generateResetMethod Int mModelImageFirstPointXOnLock default 0 ;
+  property @generateResetMethod Int mModelImageFirstPointYOnLock default 0 ;
   property Int mModelImagePointsDxOnLock default 0 ;
   property Int mModelImagePointsDyOnLock default 0 ;
-  property Double mModelImageScale default 1.0 ;
-  property Double mModelImageRotationInRadians default 0.0 ;
+  property @generateResetMethod Double mModelImageScale default 1.0 ;
+  property @generateResetMethod Double mModelImageRotationInRadians default 0.0 ;
+  property @generateResetMethod Int mModelPointsCircleRadius default 10 ;
+  property @generateResetMethod Bool mPointsAreLocked default no ;
 
   property Int mDimensionUnitFirstModelPointX default 2_286 ;
   property Int mDimensionUnitFirstModelPointY default 2_286 ;
   property Int mDimensionUnitSecondModelPointDx default 2_286 ;
   property Int mDimensionUnitSecondModelPointDy default 2_286 ;
  
-  property Int mModelPointsCircleRadius default 10 ;
-
   toOne PackageModelImageDoublePoint mModelImageDoublePoint ;
   property proxy Int mModelImageFirstPointX : mModelImageDoublePoint.mFirstX ;
   property proxy Int mModelImageFirstPointY : mModelImageDoublePoint.mFirstY ;
@@ -103,7 +103,6 @@ handlingOpposite entity PackageRoot {
   property proxy Int mModelImageSecondPointDy : mModelImageDoublePoint.mSecondDy ;
 
   toMany PackageModelImageDoublePoint mModelImageObjects inverse toOne mRoot ;
-  property Bool mPointsAreLocked default no ;
 
 //--- Knob size
   property Int knobSizeMultpliedByTen default 20 ;

@@ -144,10 +144,6 @@ final class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_layerConfiguration_toDefaultValue () {
-    self.layerConfiguration = LayerConfiguration.twoLayers
-  }
-
   //····················································································································
 
   final var layerConfiguration : LayerConfiguration {
@@ -162,10 +158,6 @@ final class ArtworkRoot : EBManagedObject,
   final let selectedTab_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_selectedTab_toDefaultValue () {
-    self.selectedTab = 0
-  }
 
   //····················································································································
 
@@ -182,10 +174,6 @@ final class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_comments_toDefaultValue () {
-    self.comments = ""
-  }
-
   //····················································································································
 
   final var comments : String {
@@ -200,10 +188,6 @@ final class ArtworkRoot : EBManagedObject,
   final let minPPTPTTTWdisplayUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_minPPTPTTTWdisplayUnit_toDefaultValue () {
-    self.minPPTPTTTWdisplayUnit = 90
-  }
 
   //····················································································································
 
@@ -220,10 +204,6 @@ final class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_minPPTPTTTW_toDefaultValue () {
-    self.minPPTPTTTW = 18000
-  }
-
   //····················································································································
 
   final var minPPTPTTTW : Int {
@@ -238,10 +218,6 @@ final class ArtworkRoot : EBManagedObject,
   final let minValueForOARdisplayUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_minValueForOARdisplayUnit_toDefaultValue () {
-    self.minValueForOARdisplayUnit = 90
-  }
 
   //····················································································································
 
@@ -258,10 +234,6 @@ final class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_minValueForOARinEBUnit_toDefaultValue () {
-    self.minValueForOARinEBUnit = 18000
-  }
-
   //····················································································································
 
   final var minValueForOARinEBUnit : Int {
@@ -276,10 +248,6 @@ final class ArtworkRoot : EBManagedObject,
   final let minValueForPHDdisplayUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_minValueForPHDdisplayUnit_toDefaultValue () {
-    self.minValueForPHDdisplayUnit = 90
-  }
 
   //····················································································································
 
@@ -296,10 +264,6 @@ final class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_minValueForPHDinEBUnit_toDefaultValue () {
-    self.minValueForPHDinEBUnit = 18000
-  }
-
   //····················································································································
 
   final var minValueForPHDinEBUnit : Int {
@@ -314,10 +278,6 @@ final class ArtworkRoot : EBManagedObject,
   final let minValueForBoardLimitWidthDisplayUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_minValueForBoardLimitWidthDisplayUnit_toDefaultValue () {
-    self.minValueForBoardLimitWidthDisplayUnit = 90000
-  }
 
   //····················································································································
 
@@ -334,10 +294,6 @@ final class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_minValueForBoardLimitWidth_toDefaultValue () {
-    self.minValueForBoardLimitWidth = 90000
-  }
-
   //····················································································································
 
   final var minValueForBoardLimitWidth : Int {
@@ -353,10 +309,6 @@ final class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_title_toDefaultValue () {
-    self.title = ""
-  }
-
   //····················································································································
 
   final var title : String {
@@ -371,10 +323,6 @@ final class ArtworkRoot : EBManagedObject,
   final let drillDataFileExtension_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_drillDataFileExtension_toDefaultValue () {
-    self.drillDataFileExtension = "DRF"
-  }
 
   //····················································································································
 

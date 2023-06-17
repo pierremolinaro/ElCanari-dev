@@ -53,10 +53,6 @@ final class CanariLibraryEntry : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mPath_toDefaultValue () {
-    self.mPath = "Hello"
-  }
-
   //····················································································································
 
   final var mPath : String {
@@ -71,10 +67,6 @@ final class CanariLibraryEntry : EBManagedObject,
   final let mUses_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mUses_toDefaultValue () {
-    self.mUses = true
-  }
 
   //····················································································································
 
@@ -91,10 +83,6 @@ final class CanariLibraryEntry : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mLibraryRepositoryURL_toDefaultValue () {
-    self.mLibraryRepositoryURL = ""
-  }
-
   //····················································································································
 
   final var mLibraryRepositoryURL : String {
@@ -109,10 +97,6 @@ final class CanariLibraryEntry : EBManagedObject,
   final let mUserAndPasswordTag_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_mUserAndPasswordTag_toDefaultValue () {
-    self.mUserAndPasswordTag = ""
-  }
 
   //····················································································································
 

@@ -53,10 +53,6 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mSymbolInstanceName_toDefaultValue () {
-    self.mSymbolInstanceName = ""
-  }
-
   //····················································································································
 
   final var mSymbolInstanceName : String {

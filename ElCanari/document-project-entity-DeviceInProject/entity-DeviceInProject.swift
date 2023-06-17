@@ -109,10 +109,6 @@ final class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mDeviceName_toDefaultValue () {
-    self.mDeviceName = ""
-  }
-
   //····················································································································
 
   final var mDeviceName : String {
@@ -127,10 +123,6 @@ final class DeviceInProject : EBManagedObject,
   final let mPrefix_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_mPrefix_toDefaultValue () {
-    self.mPrefix = ""
-  }
 
   //····················································································································
 
@@ -147,10 +139,6 @@ final class DeviceInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mDeviceVersion_toDefaultValue () {
-    self.mDeviceVersion = 0
-  }
-
   //····················································································································
 
   final var mDeviceVersion : Int {
@@ -165,10 +153,6 @@ final class DeviceInProject : EBManagedObject,
   final let mDeviceFileData_property : EBStoredProperty_Data
 
   //····················································································································
-
-  final func reset_mDeviceFileData_toDefaultValue () {
-    self.mDeviceFileData = Data ()
-  }
 
   //····················································································································
 

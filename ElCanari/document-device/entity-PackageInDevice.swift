@@ -109,10 +109,6 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final func reset_mFileData_toDefaultValue () {
-    self.mFileData = Data ()
-  }
-
   //····················································································································
 
   final var mFileData : Data {
@@ -127,10 +123,6 @@ final class PackageInDevice : EBGraphicManagedObject,
   final let mName_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_mName_toDefaultValue () {
-    self.mName = ""
-  }
 
   //····················································································································
 
@@ -147,10 +139,6 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final func reset_mVersion_toDefaultValue () {
-    self.mVersion = 0
-  }
-
   //····················································································································
 
   final var mVersion : Int {
@@ -165,10 +153,6 @@ final class PackageInDevice : EBGraphicManagedObject,
   final let mStrokeBezierPath_property : EBStoredProperty_NSBezierPath
 
   //····················································································································
-
-  final func reset_mStrokeBezierPath_toDefaultValue () {
-    self.mStrokeBezierPath = NSBezierPath ()
-  }
 
   //····················································································································
 
@@ -185,10 +169,6 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final func reset_mX_toDefaultValue () {
-    self.mX = 0
-  }
-
   //····················································································································
 
   final var mX : Int {
@@ -203,10 +183,6 @@ final class PackageInDevice : EBGraphicManagedObject,
   final let mY_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mY_toDefaultValue () {
-    self.mY = 0
-  }
 
   //····················································································································
 

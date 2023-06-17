@@ -130,10 +130,6 @@ final class BoardText : BoardObject,
 
   //····················································································································
 
-  final func reset_mX_toDefaultValue () {
-    self.mX = 0
-  }
-
   //····················································································································
 
   final var mX : Int {
@@ -148,10 +144,6 @@ final class BoardText : BoardObject,
   final let mXUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mXUnit_toDefaultValue () {
-    self.mXUnit = 2286
-  }
 
   //····················································································································
 
@@ -168,10 +160,6 @@ final class BoardText : BoardObject,
 
   //····················································································································
 
-  final func reset_mY_toDefaultValue () {
-    self.mY = 0
-  }
-
   //····················································································································
 
   final var mY : Int {
@@ -186,10 +174,6 @@ final class BoardText : BoardObject,
   final let mYUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mYUnit_toDefaultValue () {
-    self.mYUnit = 2286
-  }
 
   //····················································································································
 
@@ -206,10 +190,6 @@ final class BoardText : BoardObject,
 
   //····················································································································
 
-  final func reset_mFontSize_toDefaultValue () {
-    self.mFontSize = 4
-  }
-
   //····················································································································
 
   final var mFontSize : Double {
@@ -224,10 +204,6 @@ final class BoardText : BoardObject,
   final let mLayer_property : EBStoredProperty_BoardTextLayer
 
   //····················································································································
-
-  final func reset_mLayer_toDefaultValue () {
-    self.mLayer = BoardTextLayer.legendFront
-  }
 
   //····················································································································
 
@@ -244,10 +220,6 @@ final class BoardText : BoardObject,
 
   //····················································································································
 
-  final func reset_mText_toDefaultValue () {
-    self.mText = ""
-  }
-
   //····················································································································
 
   final var mText : String {
@@ -262,10 +234,6 @@ final class BoardText : BoardObject,
   final let mHorizontalAlignment_property : EBStoredProperty_HorizontalAlignment
 
   //····················································································································
-
-  final func reset_mHorizontalAlignment_toDefaultValue () {
-    self.mHorizontalAlignment = HorizontalAlignment.center
-  }
 
   //····················································································································
 
@@ -282,10 +250,6 @@ final class BoardText : BoardObject,
 
   //····················································································································
 
-  final func reset_mVerticalAlignment_toDefaultValue () {
-    self.mVerticalAlignment = BoardTextVerticalAlignment.base
-  }
-
   //····················································································································
 
   final var mVerticalAlignment : BoardTextVerticalAlignment {
@@ -300,10 +264,6 @@ final class BoardText : BoardObject,
   final let mRotation_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mRotation_toDefaultValue () {
-    self.mRotation = 0
-  }
 
   //····················································································································
 
@@ -320,10 +280,6 @@ final class BoardText : BoardObject,
 
   //····················································································································
 
-  final func reset_mWeight_toDefaultValue () {
-    self.mWeight = 1
-  }
-
   //····················································································································
 
   final var mWeight : Double {
@@ -338,10 +294,6 @@ final class BoardText : BoardObject,
   final let mOblique_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mOblique_toDefaultValue () {
-    self.mOblique = false
-  }
 
   //····················································································································
 

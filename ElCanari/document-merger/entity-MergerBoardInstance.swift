@@ -74,10 +74,6 @@ final class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  final func reset_x_toDefaultValue () {
-    self.x = 0
-  }
-
   //····················································································································
 
   final var x : Int {
@@ -93,10 +89,6 @@ final class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  final func reset_y_toDefaultValue () {
-    self.y = 0
-  }
-
   //····················································································································
 
   final var y : Int {
@@ -111,10 +103,6 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   final let instanceRotation_property : EBStoredProperty_QuadrantRotation
 
   //····················································································································
-
-  final func reset_instanceRotation_toDefaultValue () {
-    self.instanceRotation = QuadrantRotation.rotation0
-  }
 
   //····················································································································
 

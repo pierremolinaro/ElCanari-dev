@@ -96,10 +96,6 @@ final class SymbolTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mTypeName_toDefaultValue () {
-    self.mTypeName = ""
-  }
-
   //····················································································································
 
   final var mTypeName : String {
@@ -114,10 +110,6 @@ final class SymbolTypeInDevice : EBManagedObject,
   final let mVersion_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mVersion_toDefaultValue () {
-    self.mVersion = 0
-  }
 
   //····················································································································
 
@@ -134,10 +126,6 @@ final class SymbolTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mFileData_toDefaultValue () {
-    self.mFileData = Data ()
-  }
-
   //····················································································································
 
   final var mFileData : Data {
@@ -153,10 +141,6 @@ final class SymbolTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mStrokeBezierPath_toDefaultValue () {
-    self.mStrokeBezierPath = NSBezierPath ()
-  }
-
   //····················································································································
 
   final var mStrokeBezierPath : NSBezierPath {
@@ -171,10 +155,6 @@ final class SymbolTypeInDevice : EBManagedObject,
   final let mFilledBezierPath_property : EBStoredProperty_NSBezierPath
 
   //····················································································································
-
-  final func reset_mFilledBezierPath_toDefaultValue () {
-    self.mFilledBezierPath = NSBezierPath ()
-  }
 
   //····················································································································
 

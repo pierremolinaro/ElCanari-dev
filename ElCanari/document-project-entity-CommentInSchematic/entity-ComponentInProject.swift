@@ -340,10 +340,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final func reset_mSlavePadsShouldBeRouted_toDefaultValue () {
-    self.mSlavePadsShouldBeRouted = true
-  }
-
   //····················································································································
 
   final var mSlavePadsShouldBeRouted : Bool {
@@ -358,10 +354,6 @@ final class ComponentInProject : BoardObject,
   final let mX_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mX_toDefaultValue () {
-    self.mX = 0
-  }
 
   //····················································································································
 
@@ -378,10 +370,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final func reset_mY_toDefaultValue () {
-    self.mY = 0
-  }
-
   //····················································································································
 
   final var mY : Int {
@@ -396,10 +384,6 @@ final class ComponentInProject : BoardObject,
   final let mRotation_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mRotation_toDefaultValue () {
-    self.mRotation = 0
-  }
 
   //····················································································································
 
@@ -416,10 +400,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final func reset_mSide_toDefaultValue () {
-    self.mSide = ComponentSide.front
-  }
-
   //····················································································································
 
   final var mSide : ComponentSide {
@@ -434,10 +414,6 @@ final class ComponentInProject : BoardObject,
   final let mDisplayLegend_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mDisplayLegend_toDefaultValue () {
-    self.mDisplayLegend = true
-  }
 
   //····················································································································
 
@@ -484,10 +460,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final func reset_mNameIsVisibleInBoard_toDefaultValue () {
-    self.mNameIsVisibleInBoard = true
-  }
-
   //····················································································································
 
   final var mNameIsVisibleInBoard : Bool {
@@ -502,10 +474,6 @@ final class ComponentInProject : BoardObject,
   final let mXName_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mXName_toDefaultValue () {
-    self.mXName = 0
-  }
 
   //····················································································································
 
@@ -522,10 +490,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final func reset_mYName_toDefaultValue () {
-    self.mYName = 685800
-  }
-
   //····················································································································
 
   final var mYName : Int {
@@ -540,10 +504,6 @@ final class ComponentInProject : BoardObject,
   final let mNameFontSize_property : EBStoredProperty_Double
 
   //····················································································································
-
-  final func reset_mNameFontSize_toDefaultValue () {
-    self.mNameFontSize = 4
-  }
 
   //····················································································································
 
@@ -560,10 +520,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final func reset_mNameRotation_toDefaultValue () {
-    self.mNameRotation = 0
-  }
-
   //····················································································································
 
   final var mNameRotation : Int {
@@ -578,10 +534,6 @@ final class ComponentInProject : BoardObject,
   final let mValueIsVisibleInBoard_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mValueIsVisibleInBoard_toDefaultValue () {
-    self.mValueIsVisibleInBoard = true
-  }
 
   //····················································································································
 
@@ -598,10 +550,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final func reset_mXValue_toDefaultValue () {
-    self.mXValue = 0
-  }
-
   //····················································································································
 
   final var mXValue : Int {
@@ -616,10 +564,6 @@ final class ComponentInProject : BoardObject,
   final let mYValue_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mYValue_toDefaultValue () {
-    self.mYValue = -685800
-  }
 
   //····················································································································
 
@@ -636,10 +580,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final func reset_mValueFontSize_toDefaultValue () {
-    self.mValueFontSize = 4
-  }
-
   //····················································································································
 
   final var mValueFontSize : Double {
@@ -654,10 +594,6 @@ final class ComponentInProject : BoardObject,
   final let mValueRotation_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mValueRotation_toDefaultValue () {
-    self.mValueRotation = 0
-  }
 
   //····················································································································
 
@@ -674,10 +610,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final func reset_mComponentValue_toDefaultValue () {
-    self.mComponentValue = ""
-  }
-
   //····················································································································
 
   final var mComponentValue : String {
@@ -692,10 +624,6 @@ final class ComponentInProject : BoardObject,
   final let mNamePrefix_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_mNamePrefix_toDefaultValue () {
-    self.mNamePrefix = ""
-  }
 
   //····················································································································
 
@@ -712,10 +640,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final func reset_mNameIndex_toDefaultValue () {
-    self.mNameIndex = 0
-  }
-
   //····················································································································
 
   final var mNameIndex : Int {
@@ -730,10 +654,6 @@ final class ComponentInProject : BoardObject,
   final let mXUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mXUnit_toDefaultValue () {
-    self.mXUnit = 2286
-  }
 
   //····················································································································
 
@@ -750,10 +670,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final func reset_mYUnit_toDefaultValue () {
-    self.mYUnit = 2286
-  }
-
   //····················································································································
 
   final var mYUnit : Int {
@@ -768,10 +684,6 @@ final class ComponentInProject : BoardObject,
   final let mXNameUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mXNameUnit_toDefaultValue () {
-    self.mXNameUnit = 2286
-  }
 
   //····················································································································
 
@@ -788,10 +700,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final func reset_mYNameUnit_toDefaultValue () {
-    self.mYNameUnit = 2286
-  }
-
   //····················································································································
 
   final var mYNameUnit : Int {
@@ -807,10 +715,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final func reset_mXValueUnit_toDefaultValue () {
-    self.mXValueUnit = 2286
-  }
-
   //····················································································································
 
   final var mXValueUnit : Int {
@@ -825,10 +729,6 @@ final class ComponentInProject : BoardObject,
   final let mYValueUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mYValueUnit_toDefaultValue () {
-    self.mYValueUnit = 2286
-  }
 
   //····················································································································
 

@@ -180,6 +180,18 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol PackageRoot_mModelPointsCircleRadius : AnyObject {
+  var mModelPointsCircleRadius : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol PackageRoot_mPointsAreLocked : AnyObject {
+  var mPointsAreLocked : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol PackageRoot_mDimensionUnitFirstModelPointX : AnyObject {
   var mDimensionUnitFirstModelPointX : Int { get }
 }
@@ -200,18 +212,6 @@ import AppKit
 
 @MainActor protocol PackageRoot_mDimensionUnitSecondModelPointDy : AnyObject {
   var mDimensionUnitSecondModelPointDy : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelPointsCircleRadius : AnyObject {
-  var mModelPointsCircleRadius : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mPointsAreLocked : AnyObject {
-  var mPointsAreLocked : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -380,12 +380,12 @@ final class PackageRoot : EBManagedObject,
          PackageRoot_mModelImagePointsDyOnLock,
          PackageRoot_mModelImageScale,
          PackageRoot_mModelImageRotationInRadians,
+         PackageRoot_mModelPointsCircleRadius,
+         PackageRoot_mPointsAreLocked,
          PackageRoot_mDimensionUnitFirstModelPointX,
          PackageRoot_mDimensionUnitFirstModelPointY,
          PackageRoot_mDimensionUnitSecondModelPointDx,
          PackageRoot_mDimensionUnitSecondModelPointDy,
-         PackageRoot_mModelPointsCircleRadius,
-         PackageRoot_mPointsAreLocked,
          PackageRoot_knobSizeMultpliedByTen,
          PackageRoot_padNumbering,
          PackageRoot_counterClockNumberingStartAngle,
@@ -417,10 +417,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_selectedPageIndex_toDefaultValue () {
-    self.selectedPageIndex = 1
-  }
-
   //····················································································································
 
   final var selectedPageIndex : Int {
@@ -435,10 +431,6 @@ final class PackageRoot : EBManagedObject,
   final let selectedInspector_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_selectedInspector_toDefaultValue () {
-    self.selectedInspector = 0
-  }
 
   //····················································································································
 
@@ -455,10 +447,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_comments_toDefaultValue () {
-    self.comments = ""
-  }
-
   //····················································································································
 
   final var comments : String {
@@ -473,10 +461,6 @@ final class PackageRoot : EBManagedObject,
   final let program_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_program_toDefaultValue () {
-    self.program = ""
-  }
 
   //····················································································································
 
@@ -493,10 +477,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_horizontalFlip_toDefaultValue () {
-    self.horizontalFlip = false
-  }
-
   //····················································································································
 
   final var horizontalFlip : Bool {
@@ -511,10 +491,6 @@ final class PackageRoot : EBManagedObject,
   final let verticalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_verticalFlip_toDefaultValue () {
-    self.verticalFlip = false
-  }
 
   //····················································································································
 
@@ -531,10 +507,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_gridStyle_toDefaultValue () {
-    self.gridStyle = GridStyle.line
-  }
-
   //····················································································································
 
   final var gridStyle : GridStyle {
@@ -549,10 +521,6 @@ final class PackageRoot : EBManagedObject,
   final let gridStep_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_gridStep_toDefaultValue () {
-    self.gridStep = 57150
-  }
 
   //····················································································································
 
@@ -569,10 +537,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_gridStepUnit_toDefaultValue () {
-    self.gridStepUnit = 2286
-  }
-
   //····················································································································
 
   final var gridStepUnit : Int {
@@ -587,10 +551,6 @@ final class PackageRoot : EBManagedObject,
   final let gridDisplayFactor_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_gridDisplayFactor_toDefaultValue () {
-    self.gridDisplayFactor = 4
-  }
 
   //····················································································································
 
@@ -607,10 +567,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_zoom_toDefaultValue () {
-    self.zoom = 600
-  }
-
   //····················································································································
 
   final var zoom : Int {
@@ -625,10 +581,6 @@ final class PackageRoot : EBManagedObject,
   final let mModelImageOpacity_property : EBStoredProperty_Double
 
   //····················································································································
-
-  final func reset_mModelImageOpacity_toDefaultValue () {
-    self.mModelImageOpacity = 0.5
-  }
 
   //····················································································································
 
@@ -645,10 +597,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mModelImagePageHorizontalFlip_toDefaultValue () {
-    self.mModelImagePageHorizontalFlip = false
-  }
-
   //····················································································································
 
   final var mModelImagePageHorizontalFlip : Bool {
@@ -663,10 +611,6 @@ final class PackageRoot : EBManagedObject,
   final let mModelImagePageVerticalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mModelImagePageVerticalFlip_toDefaultValue () {
-    self.mModelImagePageVerticalFlip = false
-  }
 
   //····················································································································
 
@@ -683,10 +627,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mModelImagePageGridStyle_toDefaultValue () {
-    self.mModelImagePageGridStyle = GridStyle.noGrid
-  }
-
   //····················································································································
 
   final var mModelImagePageGridStyle : GridStyle {
@@ -701,10 +641,6 @@ final class PackageRoot : EBManagedObject,
   final let mModelImagePageGridStep_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mModelImagePageGridStep_toDefaultValue () {
-    self.mModelImagePageGridStep = 2286
-  }
 
   //····················································································································
 
@@ -721,10 +657,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mModelImagePageGridStepUnit_toDefaultValue () {
-    self.mModelImagePageGridStepUnit = 2286
-  }
-
   //····················································································································
 
   final var mModelImagePageGridStepUnit : Int {
@@ -739,10 +671,6 @@ final class PackageRoot : EBManagedObject,
   final let mModelImagePageGridDisplayFactor_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mModelImagePageGridDisplayFactor_toDefaultValue () {
-    self.mModelImagePageGridDisplayFactor = 100
-  }
 
   //····················································································································
 
@@ -759,10 +687,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mModelImagePageZoom_toDefaultValue () {
-    self.mModelImagePageZoom = 200
-  }
-
   //····················································································································
 
   final var mModelImagePageZoom : Int {
@@ -777,10 +701,6 @@ final class PackageRoot : EBManagedObject,
   final let mModelImagePageXPlacardUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mModelImagePageXPlacardUnit_toDefaultValue () {
-    self.mModelImagePageXPlacardUnit = 2286
-  }
 
   //····················································································································
 
@@ -797,10 +717,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mModelImagePageYPlacardUnit_toDefaultValue () {
-    self.mModelImagePageYPlacardUnit = 2286
-  }
-
   //····················································································································
 
   final var mModelImagePageYPlacardUnit : Int {
@@ -816,10 +732,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mModelImageSecondPointXUnit_toDefaultValue () {
-    self.mModelImageSecondPointXUnit = 2286
-  }
-
   //····················································································································
 
   final var mModelImageSecondPointXUnit : Int {
@@ -834,10 +746,6 @@ final class PackageRoot : EBManagedObject,
   final let mModelImageSecondPointYUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mModelImageSecondPointYUnit_toDefaultValue () {
-    self.mModelImageSecondPointYUnit = 2286
-  }
 
   //····················································································································
 
@@ -892,10 +800,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mModelImagePointsDxOnLock_toDefaultValue () {
-    self.mModelImagePointsDxOnLock = 0
-  }
-
   //····················································································································
 
   final var mModelImagePointsDxOnLock : Int {
@@ -910,10 +814,6 @@ final class PackageRoot : EBManagedObject,
   final let mModelImagePointsDyOnLock_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mModelImagePointsDyOnLock_toDefaultValue () {
-    self.mModelImagePointsDyOnLock = 0
-  }
 
   //····················································································································
 
@@ -961,82 +861,6 @@ final class PackageRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Atomic property: mDimensionUnitFirstModelPointX
-  //····················································································································
-
-  final let mDimensionUnitFirstModelPointX_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final func reset_mDimensionUnitFirstModelPointX_toDefaultValue () {
-    self.mDimensionUnitFirstModelPointX = 2286
-  }
-
-  //····················································································································
-
-  final var mDimensionUnitFirstModelPointX : Int {
-    get { return self.mDimensionUnitFirstModelPointX_property.propval }
-    set { self.mDimensionUnitFirstModelPointX_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: mDimensionUnitFirstModelPointY
-  //····················································································································
-
-  final let mDimensionUnitFirstModelPointY_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final func reset_mDimensionUnitFirstModelPointY_toDefaultValue () {
-    self.mDimensionUnitFirstModelPointY = 2286
-  }
-
-  //····················································································································
-
-  final var mDimensionUnitFirstModelPointY : Int {
-    get { return self.mDimensionUnitFirstModelPointY_property.propval }
-    set { self.mDimensionUnitFirstModelPointY_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: mDimensionUnitSecondModelPointDx
-  //····················································································································
-
-  final let mDimensionUnitSecondModelPointDx_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final func reset_mDimensionUnitSecondModelPointDx_toDefaultValue () {
-    self.mDimensionUnitSecondModelPointDx = 2286
-  }
-
-  //····················································································································
-
-  final var mDimensionUnitSecondModelPointDx : Int {
-    get { return self.mDimensionUnitSecondModelPointDx_property.propval }
-    set { self.mDimensionUnitSecondModelPointDx_property.setProp (newValue) }
-  }
-
-  //····················································································································
-  //   Atomic property: mDimensionUnitSecondModelPointDy
-  //····················································································································
-
-  final let mDimensionUnitSecondModelPointDy_property : EBStoredProperty_Int
-
-  //····················································································································
-
-  final func reset_mDimensionUnitSecondModelPointDy_toDefaultValue () {
-    self.mDimensionUnitSecondModelPointDy = 2286
-  }
-
-  //····················································································································
-
-  final var mDimensionUnitSecondModelPointDy : Int {
-    get { return self.mDimensionUnitSecondModelPointDy_property.propval }
-    set { self.mDimensionUnitSecondModelPointDy_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   Atomic property: mModelPointsCircleRadius
   //····················································································································
 
@@ -1075,16 +899,72 @@ final class PackageRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: mDimensionUnitFirstModelPointX
+  //····················································································································
+
+  final let mDimensionUnitFirstModelPointX_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  //····················································································································
+
+  final var mDimensionUnitFirstModelPointX : Int {
+    get { return self.mDimensionUnitFirstModelPointX_property.propval }
+    set { self.mDimensionUnitFirstModelPointX_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mDimensionUnitFirstModelPointY
+  //····················································································································
+
+  final let mDimensionUnitFirstModelPointY_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  //····················································································································
+
+  final var mDimensionUnitFirstModelPointY : Int {
+    get { return self.mDimensionUnitFirstModelPointY_property.propval }
+    set { self.mDimensionUnitFirstModelPointY_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mDimensionUnitSecondModelPointDx
+  //····················································································································
+
+  final let mDimensionUnitSecondModelPointDx_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  //····················································································································
+
+  final var mDimensionUnitSecondModelPointDx : Int {
+    get { return self.mDimensionUnitSecondModelPointDx_property.propval }
+    set { self.mDimensionUnitSecondModelPointDx_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mDimensionUnitSecondModelPointDy
+  //····················································································································
+
+  final let mDimensionUnitSecondModelPointDy_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  //····················································································································
+
+  final var mDimensionUnitSecondModelPointDy : Int {
+    get { return self.mDimensionUnitSecondModelPointDy_property.propval }
+    set { self.mDimensionUnitSecondModelPointDy_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Atomic property: knobSizeMultpliedByTen
   //····················································································································
 
   final let knobSizeMultpliedByTen_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_knobSizeMultpliedByTen_toDefaultValue () {
-    self.knobSizeMultpliedByTen = 20
-  }
 
   //····················································································································
 
@@ -1101,10 +981,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_padNumbering_toDefaultValue () {
-    self.padNumbering = PadNumbering.noNumbering
-  }
-
   //····················································································································
 
   final var padNumbering : PadNumbering {
@@ -1119,10 +995,6 @@ final class PackageRoot : EBManagedObject,
   final let counterClockNumberingStartAngle_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_counterClockNumberingStartAngle_toDefaultValue () {
-    self.counterClockNumberingStartAngle = 90
-  }
 
   //····················································································································
 
@@ -1139,10 +1011,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_xPlacardUnit_toDefaultValue () {
-    self.xPlacardUnit = 2286
-  }
-
   //····················································································································
 
   final var xPlacardUnit : Int {
@@ -1157,10 +1025,6 @@ final class PackageRoot : EBManagedObject,
   final let yPlacardUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_yPlacardUnit_toDefaultValue () {
-    self.yPlacardUnit = 2286
-  }
 
   //····················································································································
 
@@ -1242,10 +1106,6 @@ final class PackageRoot : EBManagedObject,
   final let mModelImageData_property : EBStoredProperty_Data
 
   //····················································································································
-
-  final func reset_mModelImageData_toDefaultValue () {
-    self.mModelImageData = Data ()
-  }
 
   //····················································································································
 
@@ -1536,12 +1396,12 @@ final class PackageRoot : EBManagedObject,
     self.mModelImagePointsDyOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mModelImagePointsDyOnLock")
     self.mModelImageScale_property = EBStoredProperty_Double (defaultValue: 1, undoManager: inUndoManager, key: "mModelImageScale")
     self.mModelImageRotationInRadians_property = EBStoredProperty_Double (defaultValue: 0, undoManager: inUndoManager, key: "mModelImageRotationInRadians")
+    self.mModelPointsCircleRadius_property = EBStoredProperty_Int (defaultValue: 10, undoManager: inUndoManager, key: "mModelPointsCircleRadius")
+    self.mPointsAreLocked_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mPointsAreLocked")
     self.mDimensionUnitFirstModelPointX_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mDimensionUnitFirstModelPointX")
     self.mDimensionUnitFirstModelPointY_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mDimensionUnitFirstModelPointY")
     self.mDimensionUnitSecondModelPointDx_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mDimensionUnitSecondModelPointDx")
     self.mDimensionUnitSecondModelPointDy_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mDimensionUnitSecondModelPointDy")
-    self.mModelPointsCircleRadius_property = EBStoredProperty_Int (defaultValue: 10, undoManager: inUndoManager, key: "mModelPointsCircleRadius")
-    self.mPointsAreLocked_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mPointsAreLocked")
     self.knobSizeMultpliedByTen_property = EBStoredProperty_Int (defaultValue: 20, undoManager: inUndoManager, key: "knobSizeMultpliedByTen")
     self.padNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering, undoManager: inUndoManager, key: "padNumbering")
     self.counterClockNumberingStartAngle_property = EBStoredProperty_Int (defaultValue: 90, undoManager: inUndoManager, key: "counterClockNumberingStartAngle")

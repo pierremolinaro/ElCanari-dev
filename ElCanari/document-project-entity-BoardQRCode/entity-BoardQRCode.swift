@@ -144,10 +144,6 @@ final class BoardQRCode : BoardObject,
 
   //····················································································································
 
-  final func reset_mXUnit_toDefaultValue () {
-    self.mXUnit = 2286
-  }
-
   //····················································································································
 
   final var mXUnit : Int {
@@ -162,10 +158,6 @@ final class BoardQRCode : BoardObject,
   final let mCenterY_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mCenterY_toDefaultValue () {
-    self.mCenterY = 0
-  }
 
   //····················································································································
 
@@ -182,10 +174,6 @@ final class BoardQRCode : BoardObject,
 
   //····················································································································
 
-  final func reset_mYUnit_toDefaultValue () {
-    self.mYUnit = 2286
-  }
-
   //····················································································································
 
   final var mYUnit : Int {
@@ -200,10 +188,6 @@ final class BoardQRCode : BoardObject,
   final let mDrawFrame_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mDrawFrame_toDefaultValue () {
-    self.mDrawFrame = true
-  }
 
   //····················································································································
 
@@ -220,10 +204,6 @@ final class BoardQRCode : BoardObject,
 
   //····················································································································
 
-  final func reset_mModuleSize_toDefaultValue () {
-    self.mModuleSize = 31750
-  }
-
   //····················································································································
 
   final var mModuleSize : Int {
@@ -238,10 +218,6 @@ final class BoardQRCode : BoardObject,
   final let mModuleSizeUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mModuleSizeUnit_toDefaultValue () {
-    self.mModuleSizeUnit = 31750
-  }
 
   //····················································································································
 
@@ -258,10 +234,6 @@ final class BoardQRCode : BoardObject,
 
   //····················································································································
 
-  final func reset_mActualSizeUnit_toDefaultValue () {
-    self.mActualSizeUnit = 31750
-  }
-
   //····················································································································
 
   final var mActualSizeUnit : Int {
@@ -276,10 +248,6 @@ final class BoardQRCode : BoardObject,
   final let mLayer_property : EBStoredProperty_BoardQRCodeLayer
 
   //····················································································································
-
-  final func reset_mLayer_toDefaultValue () {
-    self.mLayer = BoardQRCodeLayer.legendFront
-  }
 
   //····················································································································
 
@@ -296,10 +264,6 @@ final class BoardQRCode : BoardObject,
 
   //····················································································································
 
-  final func reset_mText_toDefaultValue () {
-    self.mText = ""
-  }
-
   //····················································································································
 
   final var mText : String {
@@ -314,10 +278,6 @@ final class BoardQRCode : BoardObject,
   final let mCorrectionLevel_property : EBStoredProperty_QRCodeCorrectionLevel
 
   //····················································································································
-
-  final func reset_mCorrectionLevel_toDefaultValue () {
-    self.mCorrectionLevel = QRCodeCorrectionLevel.quality
-  }
 
   //····················································································································
 
@@ -334,10 +294,6 @@ final class BoardQRCode : BoardObject,
 
   //····················································································································
 
-  final func reset_mRotation_toDefaultValue () {
-    self.mRotation = 0
-  }
-
   //····················································································································
 
   final var mRotation : Int {
@@ -352,10 +308,6 @@ final class BoardQRCode : BoardObject,
   final let mCenterX_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mCenterX_toDefaultValue () {
-    self.mCenterX = 0
-  }
 
   //····················································································································
 

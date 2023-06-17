@@ -39,10 +39,6 @@ final class DeviceDocumentation : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mFileName_toDefaultValue () {
-    self.mFileName = ""
-  }
-
   //····················································································································
 
   final var mFileName : String {
@@ -57,10 +53,6 @@ final class DeviceDocumentation : EBManagedObject,
   final let mFileData_property : EBStoredProperty_Data
 
   //····················································································································
-
-  final func reset_mFileData_toDefaultValue () {
-    self.mFileData = Data ()
-  }
 
   //····················································································································
 

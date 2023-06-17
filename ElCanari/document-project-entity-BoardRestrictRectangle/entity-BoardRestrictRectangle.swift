@@ -137,10 +137,6 @@ final class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  final func reset_mXUnit_toDefaultValue () {
-    self.mXUnit = 2286
-  }
-
   //····················································································································
 
   final var mXUnit : Int {
@@ -155,10 +151,6 @@ final class BoardRestrictRectangle : BoardObject,
   final let mY_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mY_toDefaultValue () {
-    self.mY = 0
-  }
 
   //····················································································································
 
@@ -175,10 +167,6 @@ final class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  final func reset_mYUnit_toDefaultValue () {
-    self.mYUnit = 2286
-  }
-
   //····················································································································
 
   final var mYUnit : Int {
@@ -193,10 +181,6 @@ final class BoardRestrictRectangle : BoardObject,
   final let mWidth_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mWidth_toDefaultValue () {
-    self.mWidth = 2286000
-  }
 
   //····················································································································
 
@@ -213,10 +197,6 @@ final class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  final func reset_mWidthUnit_toDefaultValue () {
-    self.mWidthUnit = 2286
-  }
-
   //····················································································································
 
   final var mWidthUnit : Int {
@@ -231,10 +211,6 @@ final class BoardRestrictRectangle : BoardObject,
   final let mHeight_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mHeight_toDefaultValue () {
-    self.mHeight = 2286000
-  }
 
   //····················································································································
 
@@ -251,10 +227,6 @@ final class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  final func reset_mHeightUnit_toDefaultValue () {
-    self.mHeightUnit = 2286
-  }
-
   //····················································································································
 
   final var mHeightUnit : Int {
@@ -269,10 +241,6 @@ final class BoardRestrictRectangle : BoardObject,
   final let mIsInFrontLayer_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mIsInFrontLayer_toDefaultValue () {
-    self.mIsInFrontLayer = true
-  }
 
   //····················································································································
 
@@ -289,10 +257,6 @@ final class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  final func reset_mIsInBackLayer_toDefaultValue () {
-    self.mIsInBackLayer = true
-  }
-
   //····················································································································
 
   final var mIsInBackLayer : Bool {
@@ -307,10 +271,6 @@ final class BoardRestrictRectangle : BoardObject,
   final let mIsInInner1Layer_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mIsInInner1Layer_toDefaultValue () {
-    self.mIsInInner1Layer = false
-  }
 
   //····················································································································
 
@@ -327,10 +287,6 @@ final class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  final func reset_mIsInInner2Layer_toDefaultValue () {
-    self.mIsInInner2Layer = false
-  }
-
   //····················································································································
 
   final var mIsInInner2Layer : Bool {
@@ -345,10 +301,6 @@ final class BoardRestrictRectangle : BoardObject,
   final let mIsInInner3Layer_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mIsInInner3Layer_toDefaultValue () {
-    self.mIsInInner3Layer = false
-  }
 
   //····················································································································
 
@@ -365,10 +317,6 @@ final class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  final func reset_mIsInInner4Layer_toDefaultValue () {
-    self.mIsInInner4Layer = false
-  }
-
   //····················································································································
 
   final var mIsInInner4Layer : Bool {
@@ -383,10 +331,6 @@ final class BoardRestrictRectangle : BoardObject,
   final let mX_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mX_toDefaultValue () {
-    self.mX = 0
-  }
 
   //····················································································································
 

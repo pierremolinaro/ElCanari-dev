@@ -207,10 +207,6 @@ final class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mNetClassName_toDefaultValue () {
-    self.mNetClassName = "Default"
-  }
-
   //····················································································································
 
   final var mNetClassName : String {
@@ -225,10 +221,6 @@ final class NetClassInProject : EBManagedObject,
   final let mNetClassColor_property : EBStoredProperty_NSColor
 
   //····················································································································
-
-  final func reset_mNetClassColor_toDefaultValue () {
-    self.mNetClassColor = NSColor.blue
-  }
 
   //····················································································································
 
@@ -245,10 +237,6 @@ final class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mTrackWidth_toDefaultValue () {
-    self.mTrackWidth = 45720
-  }
-
   //····················································································································
 
   final var mTrackWidth : Int {
@@ -263,10 +251,6 @@ final class NetClassInProject : EBManagedObject,
   final let mTrackWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mTrackWidthUnit_toDefaultValue () {
-    self.mTrackWidthUnit = 2286
-  }
 
   //····················································································································
 
@@ -283,10 +267,6 @@ final class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mViaHoleDiameter_toDefaultValue () {
-    self.mViaHoleDiameter = 45720
-  }
-
   //····················································································································
 
   final var mViaHoleDiameter : Int {
@@ -301,10 +281,6 @@ final class NetClassInProject : EBManagedObject,
   final let mViaHoleDiameterUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mViaHoleDiameterUnit_toDefaultValue () {
-    self.mViaHoleDiameterUnit = 2286
-  }
 
   //····················································································································
 
@@ -321,10 +297,6 @@ final class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mViaPadDiameter_toDefaultValue () {
-    self.mViaPadDiameter = 91440
-  }
-
   //····················································································································
 
   final var mViaPadDiameter : Int {
@@ -339,10 +311,6 @@ final class NetClassInProject : EBManagedObject,
   final let mViaPadDiameterUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mViaPadDiameterUnit_toDefaultValue () {
-    self.mViaPadDiameterUnit = 2286
-  }
 
   //····················································································································
 
@@ -359,10 +327,6 @@ final class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mAllowTracksOnFrontSide_toDefaultValue () {
-    self.mAllowTracksOnFrontSide = true
-  }
-
   //····················································································································
 
   final var mAllowTracksOnFrontSide : Bool {
@@ -377,10 +341,6 @@ final class NetClassInProject : EBManagedObject,
   final let mAllowTracksOnBackSide_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mAllowTracksOnBackSide_toDefaultValue () {
-    self.mAllowTracksOnBackSide = true
-  }
 
   //····················································································································
 
@@ -397,10 +357,6 @@ final class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mAllowTracksOnInner1Layer_toDefaultValue () {
-    self.mAllowTracksOnInner1Layer = true
-  }
-
   //····················································································································
 
   final var mAllowTracksOnInner1Layer : Bool {
@@ -415,10 +371,6 @@ final class NetClassInProject : EBManagedObject,
   final let mAllowTracksOnInner2Layer_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mAllowTracksOnInner2Layer_toDefaultValue () {
-    self.mAllowTracksOnInner2Layer = true
-  }
 
   //····················································································································
 
@@ -435,10 +387,6 @@ final class NetClassInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mAllowTracksOnInner3Layer_toDefaultValue () {
-    self.mAllowTracksOnInner3Layer = true
-  }
-
   //····················································································································
 
   final var mAllowTracksOnInner3Layer : Bool {
@@ -453,10 +401,6 @@ final class NetClassInProject : EBManagedObject,
   final let mAllowTracksOnInner4Layer_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mAllowTracksOnInner4Layer_toDefaultValue () {
-    self.mAllowTracksOnInner4Layer = true
-  }
 
   //····················································································································
 

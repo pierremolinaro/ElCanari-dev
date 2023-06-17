@@ -45,12 +45,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       oldValue.mModelImagePointsDyOnLock_property.stopsBeingObserved (by: self.mModelImagePointsDyOnLock_property) // Stored property
       oldValue.mModelImageScale_property.stopsBeingObserved (by: self.mModelImageScale_property) // Stored property
       oldValue.mModelImageRotationInRadians_property.stopsBeingObserved (by: self.mModelImageRotationInRadians_property) // Stored property
+      oldValue.mModelPointsCircleRadius_property.stopsBeingObserved (by: self.mModelPointsCircleRadius_property) // Stored property
+      oldValue.mPointsAreLocked_property.stopsBeingObserved (by: self.mPointsAreLocked_property) // Stored property
       oldValue.mDimensionUnitFirstModelPointX_property.stopsBeingObserved (by: self.mDimensionUnitFirstModelPointX_property) // Stored property
       oldValue.mDimensionUnitFirstModelPointY_property.stopsBeingObserved (by: self.mDimensionUnitFirstModelPointY_property) // Stored property
       oldValue.mDimensionUnitSecondModelPointDx_property.stopsBeingObserved (by: self.mDimensionUnitSecondModelPointDx_property) // Stored property
       oldValue.mDimensionUnitSecondModelPointDy_property.stopsBeingObserved (by: self.mDimensionUnitSecondModelPointDy_property) // Stored property
-      oldValue.mModelPointsCircleRadius_property.stopsBeingObserved (by: self.mModelPointsCircleRadius_property) // Stored property
-      oldValue.mPointsAreLocked_property.stopsBeingObserved (by: self.mPointsAreLocked_property) // Stored property
       oldValue.knobSizeMultpliedByTen_property.stopsBeingObserved (by: self.knobSizeMultpliedByTen_property) // Stored property
       oldValue.padNumbering_property.stopsBeingObserved (by: self.padNumbering_property) // Stored property
       oldValue.counterClockNumberingStartAngle_property.stopsBeingObserved (by: self.counterClockNumberingStartAngle_property) // Stored property
@@ -116,12 +116,12 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       newValue.mModelImagePointsDyOnLock_property.startsToBeObserved (by: self.mModelImagePointsDyOnLock_property) // Stored property
       newValue.mModelImageScale_property.startsToBeObserved (by: self.mModelImageScale_property) // Stored property
       newValue.mModelImageRotationInRadians_property.startsToBeObserved (by: self.mModelImageRotationInRadians_property) // Stored property
+      newValue.mModelPointsCircleRadius_property.startsToBeObserved (by: self.mModelPointsCircleRadius_property) // Stored property
+      newValue.mPointsAreLocked_property.startsToBeObserved (by: self.mPointsAreLocked_property) // Stored property
       newValue.mDimensionUnitFirstModelPointX_property.startsToBeObserved (by: self.mDimensionUnitFirstModelPointX_property) // Stored property
       newValue.mDimensionUnitFirstModelPointY_property.startsToBeObserved (by: self.mDimensionUnitFirstModelPointY_property) // Stored property
       newValue.mDimensionUnitSecondModelPointDx_property.startsToBeObserved (by: self.mDimensionUnitSecondModelPointDx_property) // Stored property
       newValue.mDimensionUnitSecondModelPointDy_property.startsToBeObserved (by: self.mDimensionUnitSecondModelPointDy_property) // Stored property
-      newValue.mModelPointsCircleRadius_property.startsToBeObserved (by: self.mModelPointsCircleRadius_property) // Stored property
-      newValue.mPointsAreLocked_property.startsToBeObserved (by: self.mPointsAreLocked_property) // Stored property
       newValue.knobSizeMultpliedByTen_property.startsToBeObserved (by: self.knobSizeMultpliedByTen_property) // Stored property
       newValue.padNumbering_property.startsToBeObserved (by: self.padNumbering_property) // Stored property
       newValue.counterClockNumberingStartAngle_property.startsToBeObserved (by: self.counterClockNumberingStartAngle_property) // Stored property
@@ -333,6 +333,18 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   final let mModelImageRotationInRadians_property = EBTransientProperty <Double?> ()
 
   //····················································································································
+  //   Observers of 'mModelPointsCircleRadius' stored property
+  //····················································································································
+
+  final let mModelPointsCircleRadius_property = EBTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'mPointsAreLocked' stored property
+  //····················································································································
+
+  final let mPointsAreLocked_property = EBTransientProperty <Bool?> ()
+
+  //····················································································································
   //   Observers of 'mDimensionUnitFirstModelPointX' stored property
   //····················································································································
 
@@ -355,18 +367,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //····················································································································
 
   final let mDimensionUnitSecondModelPointDy_property = EBTransientProperty <Int?> ()
-
-  //····················································································································
-  //   Observers of 'mModelPointsCircleRadius' stored property
-  //····················································································································
-
-  final let mModelPointsCircleRadius_property = EBTransientProperty <Int?> ()
-
-  //····················································································································
-  //   Observers of 'mPointsAreLocked' stored property
-  //····················································································································
-
-  final let mPointsAreLocked_property = EBTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'knobSizeMultpliedByTen' stored property
@@ -728,6 +728,14 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     self.mModelImageRotationInRadians_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mModelImageRotationInRadians_property.optionalSelection ?? .single (nil)
     }
+  //--- Configure mModelPointsCircleRadius simple stored property
+    self.mModelPointsCircleRadius_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mModelPointsCircleRadius_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mPointsAreLocked simple stored property
+    self.mPointsAreLocked_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mPointsAreLocked_property.optionalSelection ?? .single (nil)
+    }
   //--- Configure mDimensionUnitFirstModelPointX simple stored property
     self.mDimensionUnitFirstModelPointX_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mDimensionUnitFirstModelPointX_property.optionalSelection ?? .single (nil)
@@ -743,14 +751,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //--- Configure mDimensionUnitSecondModelPointDy simple stored property
     self.mDimensionUnitSecondModelPointDy_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mDimensionUnitSecondModelPointDy_property.optionalSelection ?? .single (nil)
-    }
-  //--- Configure mModelPointsCircleRadius simple stored property
-    self.mModelPointsCircleRadius_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.mModelPointsCircleRadius_property.optionalSelection ?? .single (nil)
-    }
-  //--- Configure mPointsAreLocked simple stored property
-    self.mPointsAreLocked_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.mPointsAreLocked_property.optionalSelection ?? .single (nil)
     }
   //--- Configure knobSizeMultpliedByTen simple stored property
     self.knobSizeMultpliedByTen_property.mReadModelFunction = { [weak self] in

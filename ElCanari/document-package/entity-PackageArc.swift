@@ -137,10 +137,6 @@ final class PackageArc : PackageObject,
 
   //····················································································································
 
-  final func reset_yCenter_toDefaultValue () {
-    self.yCenter = 342900
-  }
-
   //····················································································································
 
   final var yCenter : Int {
@@ -155,10 +151,6 @@ final class PackageArc : PackageObject,
   final let radius_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_radius_toDefaultValue () {
-    self.radius = 342900
-  }
 
   //····················································································································
 
@@ -175,10 +167,6 @@ final class PackageArc : PackageObject,
 
   //····················································································································
 
-  final func reset_startAngle_toDefaultValue () {
-    self.startAngle = 45000
-  }
-
   //····················································································································
 
   final var startAngle : Int {
@@ -193,10 +181,6 @@ final class PackageArc : PackageObject,
   final let arcAngle_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_arcAngle_toDefaultValue () {
-    self.arcAngle = 270000
-  }
 
   //····················································································································
 
@@ -213,10 +197,6 @@ final class PackageArc : PackageObject,
 
   //····················································································································
 
-  final func reset_startTangent_toDefaultValue () {
-    self.startTangent = 0
-  }
-
   //····················································································································
 
   final var startTangent : Int {
@@ -231,10 +211,6 @@ final class PackageArc : PackageObject,
   final let endTangent_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_endTangent_toDefaultValue () {
-    self.endTangent = 0
-  }
 
   //····················································································································
 
@@ -251,10 +227,6 @@ final class PackageArc : PackageObject,
 
   //····················································································································
 
-  final func reset_pathIsClosed_toDefaultValue () {
-    self.pathIsClosed = false
-  }
-
   //····················································································································
 
   final var pathIsClosed : Bool {
@@ -269,10 +241,6 @@ final class PackageArc : PackageObject,
   final let xCenterUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_xCenterUnit_toDefaultValue () {
-    self.xCenterUnit = 2286
-  }
 
   //····················································································································
 
@@ -289,10 +257,6 @@ final class PackageArc : PackageObject,
 
   //····················································································································
 
-  final func reset_yCenterUnit_toDefaultValue () {
-    self.yCenterUnit = 2286
-  }
-
   //····················································································································
 
   final var yCenterUnit : Int {
@@ -307,10 +271,6 @@ final class PackageArc : PackageObject,
   final let radiusUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_radiusUnit_toDefaultValue () {
-    self.radiusUnit = 2286
-  }
 
   //····················································································································
 
@@ -327,10 +287,6 @@ final class PackageArc : PackageObject,
 
   //····················································································································
 
-  final func reset_startTangentUnit_toDefaultValue () {
-    self.startTangentUnit = 2286
-  }
-
   //····················································································································
 
   final var startTangentUnit : Int {
@@ -346,10 +302,6 @@ final class PackageArc : PackageObject,
 
   //····················································································································
 
-  final func reset_endTangentUnit_toDefaultValue () {
-    self.endTangentUnit = 2286
-  }
-
   //····················································································································
 
   final var endTangentUnit : Int {
@@ -364,10 +316,6 @@ final class PackageArc : PackageObject,
   final let xCenter_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_xCenter_toDefaultValue () {
-    self.xCenter = 342900
-  }
 
   //····················································································································
 

@@ -95,10 +95,6 @@ final class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mPinX_toDefaultValue () {
-    self.mPinX = 0
-  }
-
   //····················································································································
 
   final var mPinX : Int {
@@ -113,10 +109,6 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   final let mPinY_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mPinY_toDefaultValue () {
-    self.mPinY = 0
-  }
 
   //····················································································································
 
@@ -133,10 +125,6 @@ final class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mXName_toDefaultValue () {
-    self.mXName = 0
-  }
-
   //····················································································································
 
   final var mXName : Int {
@@ -151,10 +139,6 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   final let mYName_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mYName_toDefaultValue () {
-    self.mYName = 0
-  }
 
   //····················································································································
 
@@ -171,10 +155,6 @@ final class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mName_toDefaultValue () {
-    self.mName = ""
-  }
-
   //····················································································································
 
   final var mName : String {
@@ -189,10 +169,6 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   final let mNameHorizontalAlignment_property : EBStoredProperty_HorizontalAlignment
 
   //····················································································································
-
-  final func reset_mNameHorizontalAlignment_toDefaultValue () {
-    self.mNameHorizontalAlignment = HorizontalAlignment.center
-  }
 
   //····················································································································
 
@@ -209,10 +185,6 @@ final class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mPinNameIsDisplayedInSchematics_toDefaultValue () {
-    self.mPinNameIsDisplayedInSchematics = true
-  }
-
   //····················································································································
 
   final var mPinNameIsDisplayedInSchematics : Bool {
@@ -227,10 +199,6 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   final let mXNumber_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mXNumber_toDefaultValue () {
-    self.mXNumber = 0
-  }
 
   //····················································································································
 
@@ -247,10 +215,6 @@ final class SymbolPinTypeInDevice : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mYNumber_toDefaultValue () {
-    self.mYNumber = 0
-  }
-
   //····················································································································
 
   final var mYNumber : Int {
@@ -265,10 +229,6 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   final let mNumberHorizontalAlignment_property : EBStoredProperty_HorizontalAlignment
 
   //····················································································································
-
-  final func reset_mNumberHorizontalAlignment_toDefaultValue () {
-    self.mNumberHorizontalAlignment = HorizontalAlignment.center
-  }
 
   //····················································································································
 

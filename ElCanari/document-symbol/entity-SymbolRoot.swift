@@ -95,10 +95,6 @@ final class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_selectedInspector_toDefaultValue () {
-    self.selectedInspector = 0
-  }
-
   //····················································································································
 
   final var selectedInspector : Int {
@@ -113,10 +109,6 @@ final class SymbolRoot : EBManagedObject,
   final let comments_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_comments_toDefaultValue () {
-    self.comments = ""
-  }
 
   //····················································································································
 
@@ -133,10 +125,6 @@ final class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_horizontalFlip_toDefaultValue () {
-    self.horizontalFlip = false
-  }
-
   //····················································································································
 
   final var horizontalFlip : Bool {
@@ -151,10 +139,6 @@ final class SymbolRoot : EBManagedObject,
   final let verticalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_verticalFlip_toDefaultValue () {
-    self.verticalFlip = false
-  }
 
   //····················································································································
 
@@ -171,10 +155,6 @@ final class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_gridStyle_toDefaultValue () {
-    self.gridStyle = GridStyle.line
-  }
-
   //····················································································································
 
   final var gridStyle : GridStyle {
@@ -189,10 +169,6 @@ final class SymbolRoot : EBManagedObject,
   final let gridDisplay_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_gridDisplay_toDefaultValue () {
-    self.gridDisplay = 4
-  }
 
   //····················································································································
 
@@ -209,10 +185,6 @@ final class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_zoom_toDefaultValue () {
-    self.zoom = 600
-  }
-
   //····················································································································
 
   final var zoom : Int {
@@ -228,10 +200,6 @@ final class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_xPlacardUnit_toDefaultValue () {
-    self.xPlacardUnit = 2286
-  }
-
   //····················································································································
 
   final var xPlacardUnit : Int {
@@ -246,10 +214,6 @@ final class SymbolRoot : EBManagedObject,
   final let yPlacardUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_yPlacardUnit_toDefaultValue () {
-    self.yPlacardUnit = 2286
-  }
 
   //····················································································································
 
@@ -292,10 +256,6 @@ final class SymbolRoot : EBManagedObject,
   final let selectedPageIndex_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_selectedPageIndex_toDefaultValue () {
-    self.selectedPageIndex = 0
-  }
 
   //····················································································································
 

@@ -96,10 +96,6 @@ final class NetInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mNetName_toDefaultValue () {
-    self.mNetName = ""
-  }
-
   //····················································································································
 
   final var mNetName : String {
@@ -114,10 +110,6 @@ final class NetInProject : EBManagedObject,
   final let mWarnsExactlyOneLabel_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mWarnsExactlyOneLabel_toDefaultValue () {
-    self.mWarnsExactlyOneLabel = true
-  }
 
   //····················································································································
 

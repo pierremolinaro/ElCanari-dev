@@ -39,10 +39,6 @@ final class DevicePadAssignmentInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mPadName_toDefaultValue () {
-    self.mPadName = ""
-  }
-
   //····················································································································
 
   final var mPadName : String {

@@ -60,10 +60,6 @@ final class LabelInSchematic : SchematicObject,
 
   //····················································································································
 
-  final func reset_mOrientation_toDefaultValue () {
-    self.mOrientation = QuadrantRotation.rotation0
-  }
-
   //····················································································································
 
   final var mOrientation : QuadrantRotation {

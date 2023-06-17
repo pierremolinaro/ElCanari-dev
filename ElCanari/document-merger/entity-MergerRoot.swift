@@ -307,10 +307,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_selectedPageIndex_toDefaultValue () {
-    self.selectedPageIndex = 0
-  }
-
   //····················································································································
 
   final var selectedPageIndex : Int {
@@ -325,10 +321,6 @@ final class MergerRoot : EBManagedObject,
   final let zoom_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_zoom_toDefaultValue () {
-    self.zoom = 100
-  }
 
   //····················································································································
 
@@ -345,10 +337,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_showDisplaySettingView_toDefaultValue () {
-    self.showDisplaySettingView = false
-  }
-
   //····················································································································
 
   final var showDisplaySettingView : Bool {
@@ -363,10 +351,6 @@ final class MergerRoot : EBManagedObject,
   final let modelInsertionRotation_property : EBStoredProperty_QuadrantRotation
 
   //····················································································································
-
-  final func reset_modelInsertionRotation_toDefaultValue () {
-    self.modelInsertionRotation = QuadrantRotation.rotation0
-  }
 
   //····················································································································
 
@@ -383,10 +367,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_automaticBoardSize_toDefaultValue () {
-    self.automaticBoardSize = true
-  }
-
   //····················································································································
 
   final var automaticBoardSize : Bool {
@@ -401,10 +381,6 @@ final class MergerRoot : EBManagedObject,
   final let boardManualWidth_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_boardManualWidth_toDefaultValue () {
-    self.boardManualWidth = 9000000
-  }
 
   //····················································································································
 
@@ -421,10 +397,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_boardManualHeight_toDefaultValue () {
-    self.boardManualHeight = 9000000
-  }
-
   //····················································································································
 
   final var boardManualHeight : Int {
@@ -439,10 +411,6 @@ final class MergerRoot : EBManagedObject,
   final let boardWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_boardWidthUnit_toDefaultValue () {
-    self.boardWidthUnit = 90000
-  }
 
   //····················································································································
 
@@ -459,10 +427,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_boardHeightUnit_toDefaultValue () {
-    self.boardHeightUnit = 90000
-  }
-
   //····················································································································
 
   final var boardHeightUnit : Int {
@@ -477,10 +441,6 @@ final class MergerRoot : EBManagedObject,
   final let overlapingArrangment_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_overlapingArrangment_toDefaultValue () {
-    self.overlapingArrangment = false
-  }
 
   //····················································································································
 
@@ -497,10 +457,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_selectedBoardXUnit_toDefaultValue () {
-    self.selectedBoardXUnit = 90000
-  }
-
   //····················································································································
 
   final var selectedBoardXUnit : Int {
@@ -515,10 +471,6 @@ final class MergerRoot : EBManagedObject,
   final let selectedBoardYUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_selectedBoardYUnit_toDefaultValue () {
-    self.selectedBoardYUnit = 90000
-  }
 
   //····················································································································
 
@@ -535,10 +487,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_boardLimitWidth_toDefaultValue () {
-    self.boardLimitWidth = 90000
-  }
-
   //····················································································································
 
   final var boardLimitWidth : Int {
@@ -553,10 +501,6 @@ final class MergerRoot : EBManagedObject,
   final let boardLimitWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_boardLimitWidthUnit_toDefaultValue () {
-    self.boardLimitWidthUnit = 90000
-  }
 
   //····················································································································
 
@@ -573,10 +517,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mPDFBoardBackgroundColor_toDefaultValue () {
-    self.mPDFBoardBackgroundColor = NSColor.lightGray
-  }
-
   //····················································································································
 
   final var mPDFBoardBackgroundColor : NSColor {
@@ -592,10 +532,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mArtworkName_toDefaultValue () {
-    self.mArtworkName = ""
-  }
-
   //····················································································································
 
   final var mArtworkName : String {
@@ -610,10 +546,6 @@ final class MergerRoot : EBManagedObject,
   final let mArtworkVersion_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mArtworkVersion_toDefaultValue () {
-    self.mArtworkVersion = 0
-  }
 
   //····················································································································
 

@@ -127,11 +127,11 @@ struct CanariPoint : Equatable, Hashable {
   //   Rotation ±90° around point
   //····················································································································
 
-  func rotated90Clockwise (_ inP : CanariPoint) -> CanariPoint {
-    let dx = inP.x - self.x
-    let dy = inP.y - self.y
-    return CanariPoint (x: self.x + dy, y: self.y - dx)
-  }
+//  func rotated90Clockwise (_ inP : CanariPoint) -> CanariPoint {
+//    let dx = inP.x - self.x
+//    let dy = inP.y - self.y
+//    return CanariPoint (x: self.x + dy, y: self.y - dx)
+//  }
 
   //····················································································································
 
@@ -143,11 +143,11 @@ struct CanariPoint : Equatable, Hashable {
 
   //····················································································································
 
-  func rotated90CounterClockwise (_ inP : CanariPoint) -> CanariPoint {
-    let dx = inP.x - self.x
-    let dy = inP.y - self.y
-    return CanariPoint (x: self.x - dy, y: self.y + dx)
-  }
+//  func rotated90CounterClockwise (_ inP : CanariPoint) -> CanariPoint {
+//    let dx = inP.x - self.x
+//    let dy = inP.y - self.y
+//    return CanariPoint (x: self.x - dy, y: self.y + dx)
+//  }
 
   //····················································································································
 

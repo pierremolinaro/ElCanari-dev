@@ -102,10 +102,6 @@ final class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_comments_toDefaultValue () {
-    self.comments = ""
-  }
-
   //····················································································································
 
   final var comments : String {
@@ -120,10 +116,6 @@ final class FontRoot : EBManagedObject,
   final let nominalSize_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_nominalSize_toDefaultValue () {
-    self.nominalSize = 14
-  }
 
   //····················································································································
 
@@ -140,10 +132,6 @@ final class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_selectedTab_toDefaultValue () {
-    self.selectedTab = 0
-  }
-
   //····················································································································
 
   final var selectedTab : Int {
@@ -159,10 +147,6 @@ final class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_selectedInspector_toDefaultValue () {
-    self.selectedInspector = 0
-  }
-
   //····················································································································
 
   final var selectedInspector : Int {
@@ -177,10 +161,6 @@ final class FontRoot : EBManagedObject,
   final let currentCharacterCodePoint_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_currentCharacterCodePoint_toDefaultValue () {
-    self.currentCharacterCodePoint = 32
-  }
 
   //····················································································································
 

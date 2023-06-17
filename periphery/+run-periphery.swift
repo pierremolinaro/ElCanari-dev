@@ -38,6 +38,8 @@ let scriptDir = URL (fileURLWithPath: CommandLine.arguments [0]).deletingLastPat
 let fm = FileManager ()
 fm.changeCurrentDirectoryPath (scriptDir + "/..")
 
+runCommand ("/opt/homebrew/bin/periphery", ["help", "scan"])
+
 let options = [
   "scan", "--retain-objc-accessible",
   "--project", "ElCanari.xcodeproj",

@@ -53,10 +53,6 @@ final class PadProxyInDevice : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mPinInstanceName_toDefaultValue () {
-    self.mPinInstanceName = ""
-  }
-
   //····················································································································
 
   final var mPinInstanceName : String {
@@ -72,10 +68,6 @@ final class PadProxyInDevice : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mPadName_toDefaultValue () {
-    self.mPadName = ""
-  }
-
   //····················································································································
 
   final var mPadName : String {
@@ -90,10 +82,6 @@ final class PadProxyInDevice : EBManagedObject,
   final let mIsNC_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mIsNC_toDefaultValue () {
-    self.mIsNC = false
-  }
 
   //····················································································································
 

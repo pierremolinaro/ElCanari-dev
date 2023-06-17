@@ -54,10 +54,6 @@ final class DevicePackageInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mPackageName_toDefaultValue () {
-    self.mPackageName = ""
-  }
-
   //····················································································································
 
   final var mPackageName : String {
@@ -72,10 +68,6 @@ final class DevicePackageInProject : EBManagedObject,
   final let mStrokeBezierPath_property : EBStoredProperty_NSBezierPath
 
   //····················································································································
-
-  final func reset_mStrokeBezierPath_toDefaultValue () {
-    self.mStrokeBezierPath = NSBezierPath ()
-  }
 
   //····················································································································
 

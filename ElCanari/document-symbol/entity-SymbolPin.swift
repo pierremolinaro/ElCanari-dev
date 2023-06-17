@@ -123,10 +123,6 @@ final class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  final func reset_yPin_toDefaultValue () {
-    self.yPin = 0
-  }
-
   //····················································································································
 
   final var yPin : Int {
@@ -141,10 +137,6 @@ final class SymbolPin : SymbolObject,
   final let xName_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_xName_toDefaultValue () {
-    self.xName = 0
-  }
 
   //····················································································································
 
@@ -161,10 +153,6 @@ final class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  final func reset_yName_toDefaultValue () {
-    self.yName = 228600
-  }
-
   //····················································································································
 
   final var yName : Int {
@@ -179,10 +167,6 @@ final class SymbolPin : SymbolObject,
   final let xNumber_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_xNumber_toDefaultValue () {
-    self.xNumber = 0
-  }
 
   //····················································································································
 
@@ -199,10 +183,6 @@ final class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  final func reset_yNumber_toDefaultValue () {
-    self.yNumber = -228600
-  }
-
   //····················································································································
 
   final var yNumber : Int {
@@ -217,10 +197,6 @@ final class SymbolPin : SymbolObject,
   final let name_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_name_toDefaultValue () {
-    self.name = ""
-  }
 
   //····················································································································
 
@@ -237,10 +213,6 @@ final class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  final func reset_nameHorizontalAlignment_toDefaultValue () {
-    self.nameHorizontalAlignment = HorizontalAlignment.center
-  }
-
   //····················································································································
 
   final var nameHorizontalAlignment : HorizontalAlignment {
@@ -255,10 +227,6 @@ final class SymbolPin : SymbolObject,
   final let numberHorizontalAlignment_property : EBStoredProperty_HorizontalAlignment
 
   //····················································································································
-
-  final func reset_numberHorizontalAlignment_toDefaultValue () {
-    self.numberHorizontalAlignment = HorizontalAlignment.center
-  }
 
   //····················································································································
 
@@ -275,10 +243,6 @@ final class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  final func reset_pinNameIsDisplayedInSchematics_toDefaultValue () {
-    self.pinNameIsDisplayedInSchematics = true
-  }
-
   //····················································································································
 
   final var pinNameIsDisplayedInSchematics : Bool {
@@ -293,10 +257,6 @@ final class SymbolPin : SymbolObject,
   final let xPin_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_xPin_toDefaultValue () {
-    self.xPin = 0
-  }
 
   //····················································································································
 

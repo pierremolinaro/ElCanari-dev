@@ -221,10 +221,6 @@ final class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final func reset_mComponentPadName_toDefaultValue () {
-    self.mComponentPadName = ""
-  }
-
   //····················································································································
 
   final var mComponentPadName : String {
@@ -239,10 +235,6 @@ final class BoardConnector : BoardObject,
   final let mPadIndex_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mPadIndex_toDefaultValue () {
-    self.mPadIndex = 0
-  }
 
   //····················································································································
 
@@ -259,10 +251,6 @@ final class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final func reset_mX_toDefaultValue () {
-    self.mX = 0
-  }
-
   //····················································································································
 
   final var mX : Int {
@@ -277,10 +265,6 @@ final class BoardConnector : BoardObject,
   final let mY_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mY_toDefaultValue () {
-    self.mY = 0
-  }
 
   //····················································································································
 
@@ -312,10 +296,6 @@ final class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final func reset_mDefaultHoleDiameterUnit_toDefaultValue () {
-    self.mDefaultHoleDiameterUnit = 2286
-  }
-
   //····················································································································
 
   final var mDefaultHoleDiameterUnit : Int {
@@ -330,10 +310,6 @@ final class BoardConnector : BoardObject,
   final let mCustomHoleDiameter_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mCustomHoleDiameter_toDefaultValue () {
-    self.mCustomHoleDiameter = 45720
-  }
 
   //····················································································································
 
@@ -350,10 +326,6 @@ final class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final func reset_mCustomHoleDiameterUnit_toDefaultValue () {
-    self.mCustomHoleDiameterUnit = 2286
-  }
-
   //····················································································································
 
   final var mCustomHoleDiameterUnit : Int {
@@ -368,10 +340,6 @@ final class BoardConnector : BoardObject,
   final let mUsesCustomHoleDiameter_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mUsesCustomHoleDiameter_toDefaultValue () {
-    self.mUsesCustomHoleDiameter = false
-  }
 
   //····················································································································
 
@@ -388,10 +356,6 @@ final class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final func reset_mDefaultPadDiameterUnit_toDefaultValue () {
-    self.mDefaultPadDiameterUnit = 2286
-  }
-
   //····················································································································
 
   final var mDefaultPadDiameterUnit : Int {
@@ -406,10 +370,6 @@ final class BoardConnector : BoardObject,
   final let mCustomPadDiameter_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mCustomPadDiameter_toDefaultValue () {
-    self.mCustomPadDiameter = 91440
-  }
 
   //····················································································································
 
@@ -426,10 +386,6 @@ final class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final func reset_mCustomPadDiameterUnit_toDefaultValue () {
-    self.mCustomPadDiameterUnit = 2286
-  }
-
   //····················································································································
 
   final var mCustomPadDiameterUnit : Int {
@@ -444,10 +400,6 @@ final class BoardConnector : BoardObject,
   final let mUsesCustomPadDiameter_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mUsesCustomPadDiameter_toDefaultValue () {
-    self.mUsesCustomPadDiameter = false
-  }
 
   //····················································································································
 

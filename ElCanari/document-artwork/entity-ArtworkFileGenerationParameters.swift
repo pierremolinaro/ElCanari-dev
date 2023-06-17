@@ -235,10 +235,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final func reset_drawBoardLimits_toDefaultValue () {
-    self.drawBoardLimits = false
-  }
-
   //····················································································································
 
   final var drawBoardLimits : Bool {
@@ -253,10 +249,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   final let drawInternalBoardLimits_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_drawInternalBoardLimits_toDefaultValue () {
-    self.drawInternalBoardLimits = false
-  }
 
   //····················································································································
 
@@ -273,10 +265,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final func reset_drawComponentNamesTopSide_toDefaultValue () {
-    self.drawComponentNamesTopSide = false
-  }
-
   //····················································································································
 
   final var drawComponentNamesTopSide : Bool {
@@ -291,10 +279,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   final let drawComponentNamesBottomSide_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_drawComponentNamesBottomSide_toDefaultValue () {
-    self.drawComponentNamesBottomSide = false
-  }
 
   //····················································································································
 
@@ -311,10 +295,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final func reset_drawComponentValuesTopSide_toDefaultValue () {
-    self.drawComponentValuesTopSide = false
-  }
-
   //····················································································································
 
   final var drawComponentValuesTopSide : Bool {
@@ -329,10 +309,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   final let drawComponentValuesBottomSide_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_drawComponentValuesBottomSide_toDefaultValue () {
-    self.drawComponentValuesBottomSide = false
-  }
 
   //····················································································································
 
@@ -349,10 +325,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final func reset_drawPackageLegendTopSide_toDefaultValue () {
-    self.drawPackageLegendTopSide = false
-  }
-
   //····················································································································
 
   final var drawPackageLegendTopSide : Bool {
@@ -367,10 +339,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   final let drawPackageLegendBottomSide_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_drawPackageLegendBottomSide_toDefaultValue () {
-    self.drawPackageLegendBottomSide = false
-  }
 
   //····················································································································
 
@@ -387,10 +355,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final func reset_drawPadHolesInPDF_toDefaultValue () {
-    self.drawPadHolesInPDF = false
-  }
-
   //····················································································································
 
   final var drawPadHolesInPDF : Bool {
@@ -405,10 +369,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   final let drawPadsTopSide_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_drawPadsTopSide_toDefaultValue () {
-    self.drawPadsTopSide = false
-  }
 
   //····················································································································
 
@@ -425,10 +385,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final func reset_drawPadsBottomSide_toDefaultValue () {
-    self.drawPadsBottomSide = false
-  }
-
   //····················································································································
 
   final var drawPadsBottomSide : Bool {
@@ -443,10 +399,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   final let drawTextsLayoutTopSide_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_drawTextsLayoutTopSide_toDefaultValue () {
-    self.drawTextsLayoutTopSide = false
-  }
 
   //····················································································································
 
@@ -463,10 +415,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final func reset_drawTextsLayoutBottomSide_toDefaultValue () {
-    self.drawTextsLayoutBottomSide = false
-  }
-
   //····················································································································
 
   final var drawTextsLayoutBottomSide : Bool {
@@ -481,10 +429,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   final let drawTextsLegendTopSide_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_drawTextsLegendTopSide_toDefaultValue () {
-    self.drawTextsLegendTopSide = false
-  }
 
   //····················································································································
 
@@ -501,10 +445,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final func reset_drawTextsLegendBottomSide_toDefaultValue () {
-    self.drawTextsLegendBottomSide = false
-  }
-
   //····················································································································
 
   final var drawTextsLegendBottomSide : Bool {
@@ -519,10 +459,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   final let drawTracksTopSide_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_drawTracksTopSide_toDefaultValue () {
-    self.drawTracksTopSide = false
-  }
 
   //····················································································································
 
@@ -539,10 +475,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final func reset_drawTracksInner1Layer_toDefaultValue () {
-    self.drawTracksInner1Layer = false
-  }
-
   //····················································································································
 
   final var drawTracksInner1Layer : Bool {
@@ -557,10 +489,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   final let drawTracksInner2Layer_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_drawTracksInner2Layer_toDefaultValue () {
-    self.drawTracksInner2Layer = false
-  }
 
   //····················································································································
 
@@ -577,10 +505,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final func reset_drawTracksInner3Layer_toDefaultValue () {
-    self.drawTracksInner3Layer = false
-  }
-
   //····················································································································
 
   final var drawTracksInner3Layer : Bool {
@@ -595,10 +519,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   final let drawTracksInner4Layer_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_drawTracksInner4Layer_toDefaultValue () {
-    self.drawTracksInner4Layer = false
-  }
 
   //····················································································································
 
@@ -615,10 +535,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final func reset_drawTracksBottomSide_toDefaultValue () {
-    self.drawTracksBottomSide = false
-  }
-
   //····················································································································
 
   final var drawTracksBottomSide : Bool {
@@ -633,10 +549,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   final let drawTraversingPads_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_drawTraversingPads_toDefaultValue () {
-    self.drawTraversingPads = false
-  }
 
   //····················································································································
 
@@ -653,10 +565,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final func reset_drawVias_toDefaultValue () {
-    self.drawVias = false
-  }
-
   //····················································································································
 
   final var drawVias : Bool {
@@ -671,10 +579,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   final let fileExtension_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_fileExtension_toDefaultValue () {
-    self.fileExtension = ""
-  }
 
   //····················································································································
 
@@ -691,10 +595,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final func reset_horizontalMirror_toDefaultValue () {
-    self.horizontalMirror = false
-  }
-
   //····················································································································
 
   final var horizontalMirror : Bool {
@@ -709,10 +609,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   final let name_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_name_toDefaultValue () {
-    self.name = "Unnamed"
-  }
 
   //····················································································································
 
@@ -729,10 +625,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  final func reset_measurementUnitForPadHoleInPDF_toDefaultValue () {
-    self.measurementUnitForPadHoleInPDF = 90000
-  }
-
   //····················································································································
 
   final var measurementUnitForPadHoleInPDF : Int {
@@ -747,10 +639,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   final let padHoleDiameterInPDF_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_padHoleDiameterInPDF_toDefaultValue () {
-    self.padHoleDiameterInPDF = 90000
-  }
 
   //····················································································································
 

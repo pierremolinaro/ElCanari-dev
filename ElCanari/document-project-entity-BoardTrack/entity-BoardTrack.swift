@@ -221,10 +221,6 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final func reset_mSide_toDefaultValue () {
-    self.mSide = TrackSide.front
-  }
-
   //····················································································································
 
   final var mSide : TrackSide {
@@ -239,10 +235,6 @@ final class BoardTrack : BoardObject,
   final let mDefaultTrackWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mDefaultTrackWidthUnit_toDefaultValue () {
-    self.mDefaultTrackWidthUnit = 2286
-  }
 
   //····················································································································
 
@@ -259,10 +251,6 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final func reset_mCustomTrackWidth_toDefaultValue () {
-    self.mCustomTrackWidth = 45720
-  }
-
   //····················································································································
 
   final var mCustomTrackWidth : Int {
@@ -277,10 +265,6 @@ final class BoardTrack : BoardObject,
   final let mCustomTrackWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mCustomTrackWidthUnit_toDefaultValue () {
-    self.mCustomTrackWidthUnit = 2286
-  }
 
   //····················································································································
 
@@ -297,10 +281,6 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final func reset_mUsesCustomTrackWidth_toDefaultValue () {
-    self.mUsesCustomTrackWidth = false
-  }
-
   //····················································································································
 
   final var mUsesCustomTrackWidth : Bool {
@@ -315,10 +295,6 @@ final class BoardTrack : BoardObject,
   final let mIsPreservedByAutoRouter_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mIsPreservedByAutoRouter_toDefaultValue () {
-    self.mIsPreservedByAutoRouter = false
-  }
 
   //····················································································································
 
@@ -335,10 +311,6 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final func reset_mP1XUnit_toDefaultValue () {
-    self.mP1XUnit = 2286
-  }
-
   //····················································································································
 
   final var mP1XUnit : Int {
@@ -353,10 +325,6 @@ final class BoardTrack : BoardObject,
   final let mP1YUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mP1YUnit_toDefaultValue () {
-    self.mP1YUnit = 2286
-  }
 
   //····················································································································
 
@@ -373,10 +341,6 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final func reset_mP2XUnit_toDefaultValue () {
-    self.mP2XUnit = 2286
-  }
-
   //····················································································································
 
   final var mP2XUnit : Int {
@@ -391,10 +355,6 @@ final class BoardTrack : BoardObject,
   final let mP2YUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mP2YUnit_toDefaultValue () {
-    self.mP2YUnit = 2286
-  }
 
   //····················································································································
 
@@ -411,10 +371,6 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final func reset_mManualLockP1_toDefaultValue () {
-    self.mManualLockP1 = false
-  }
-
   //····················································································································
 
   final var mManualLockP1 : Bool {
@@ -430,10 +386,6 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final func reset_mManualLockP2_toDefaultValue () {
-    self.mManualLockP2 = false
-  }
-
   //····················································································································
 
   final var mManualLockP2 : Bool {
@@ -448,10 +400,6 @@ final class BoardTrack : BoardObject,
   final let mDirectionLockOnKnobDragging_property : EBStoredProperty_TrackLockDirection
 
   //····················································································································
-
-  final func reset_mDirectionLockOnKnobDragging_toDefaultValue () {
-    self.mDirectionLockOnKnobDragging = TrackLockDirection.unlocked
-  }
 
   //····················································································································
 

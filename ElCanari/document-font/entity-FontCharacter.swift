@@ -74,10 +74,6 @@ final class FontCharacter : EBManagedObject,
 
   //····················································································································
 
-  final func reset_codePoint_toDefaultValue () {
-    self.codePoint = 0
-  }
-
   //····················································································································
 
   final var codePoint : Int {
@@ -92,10 +88,6 @@ final class FontCharacter : EBManagedObject,
   final let advance_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_advance_toDefaultValue () {
-    self.advance = 0
-  }
 
   //····················································································································
 
@@ -112,10 +104,6 @@ final class FontCharacter : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mWarnsWhenNoSegment_toDefaultValue () {
-    self.mWarnsWhenNoSegment = true
-  }
-
   //····················································································································
 
   final var mWarnsWhenNoSegment : Bool {
@@ -130,10 +118,6 @@ final class FontCharacter : EBManagedObject,
   final let mWarnsWhenAdvanceIsZero_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mWarnsWhenAdvanceIsZero_toDefaultValue () {
-    self.mWarnsWhenAdvanceIsZero = true
-  }
 
   //····················································································································
 

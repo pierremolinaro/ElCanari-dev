@@ -193,10 +193,6 @@ final class DeviceRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mSelectedPageIndex_toDefaultValue () {
-    self.mSelectedPageIndex = 0
-  }
-
   //····················································································································
 
   final var mSelectedPageIndex : Int {
@@ -211,10 +207,6 @@ final class DeviceRoot : EBManagedObject,
   final let mSelectedSymbolInspectorIndex_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mSelectedSymbolInspectorIndex_toDefaultValue () {
-    self.mSelectedSymbolInspectorIndex = 0
-  }
 
   //····················································································································
 
@@ -231,10 +223,6 @@ final class DeviceRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mSelectedPackageInspectorIndex_toDefaultValue () {
-    self.mSelectedPackageInspectorIndex = 0
-  }
-
   //····················································································································
 
   final var mSelectedPackageInspectorIndex : Int {
@@ -249,10 +237,6 @@ final class DeviceRoot : EBManagedObject,
   final let mTitle_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_mTitle_toDefaultValue () {
-    self.mTitle = ""
-  }
 
   //····················································································································
 
@@ -269,10 +253,6 @@ final class DeviceRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mImageData_toDefaultValue () {
-    self.mImageData = Data ()
-  }
-
   //····················································································································
 
   final var mImageData : Data {
@@ -287,10 +267,6 @@ final class DeviceRoot : EBManagedObject,
   final let mPrefix_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_mPrefix_toDefaultValue () {
-    self.mPrefix = ""
-  }
 
   //····················································································································
 
@@ -307,10 +283,6 @@ final class DeviceRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mComments_toDefaultValue () {
-    self.mComments = ""
-  }
-
   //····················································································································
 
   final var mComments : String {
@@ -325,10 +297,6 @@ final class DeviceRoot : EBManagedObject,
   final let mPackageDisplayZoom_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mPackageDisplayZoom_toDefaultValue () {
-    self.mPackageDisplayZoom = 400
-  }
 
   //····················································································································
 
@@ -345,10 +313,6 @@ final class DeviceRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mPackageDisplayHorizontalFlip_toDefaultValue () {
-    self.mPackageDisplayHorizontalFlip = false
-  }
-
   //····················································································································
 
   final var mPackageDisplayHorizontalFlip : Bool {
@@ -363,10 +327,6 @@ final class DeviceRoot : EBManagedObject,
   final let mPackageDisplayVerticalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mPackageDisplayVerticalFlip_toDefaultValue () {
-    self.mPackageDisplayVerticalFlip = false
-  }
 
   //····················································································································
 
@@ -383,10 +343,6 @@ final class DeviceRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mShowPackages_toDefaultValue () {
-    self.mShowPackages = true
-  }
-
   //····················································································································
 
   final var mShowPackages : Bool {
@@ -401,10 +357,6 @@ final class DeviceRoot : EBManagedObject,
   final let mShowPackagePadNumbers_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mShowPackagePadNumbers_toDefaultValue () {
-    self.mShowPackagePadNumbers = true
-  }
 
   //····················································································································
 
@@ -421,10 +373,6 @@ final class DeviceRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mShowPackageFrontPads_toDefaultValue () {
-    self.mShowPackageFrontPads = true
-  }
-
   //····················································································································
 
   final var mShowPackageFrontPads : Bool {
@@ -440,10 +388,6 @@ final class DeviceRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mShowPackageBackPads_toDefaultValue () {
-    self.mShowPackageBackPads = true
-  }
-
   //····················································································································
 
   final var mShowPackageBackPads : Bool {
@@ -458,10 +402,6 @@ final class DeviceRoot : EBManagedObject,
   final let mSymbolDisplayZoom_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mSymbolDisplayZoom_toDefaultValue () {
-    self.mSymbolDisplayZoom = 400
-  }
 
   //····················································································································
 

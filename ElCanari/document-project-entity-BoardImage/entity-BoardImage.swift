@@ -221,10 +221,6 @@ final class BoardImage : BoardObject,
 
   //····················································································································
 
-  final func reset_mXUnit_toDefaultValue () {
-    self.mXUnit = 2286
-  }
-
   //····················································································································
 
   final var mXUnit : Int {
@@ -239,10 +235,6 @@ final class BoardImage : BoardObject,
   final let mCenterY_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mCenterY_toDefaultValue () {
-    self.mCenterY = 0
-  }
 
   //····················································································································
 
@@ -259,10 +251,6 @@ final class BoardImage : BoardObject,
 
   //····················································································································
 
-  final func reset_mYUnit_toDefaultValue () {
-    self.mYUnit = 2286
-  }
-
   //····················································································································
 
   final var mYUnit : Int {
@@ -277,10 +265,6 @@ final class BoardImage : BoardObject,
   final let mThreshold_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mThreshold_toDefaultValue () {
-    self.mThreshold = 200
-  }
 
   //····················································································································
 
@@ -297,10 +281,6 @@ final class BoardImage : BoardObject,
 
   //····················································································································
 
-  final func reset_mImageData_toDefaultValue () {
-    self.mImageData = Data ()
-  }
-
   //····················································································································
 
   final var mImageData : Data {
@@ -315,10 +295,6 @@ final class BoardImage : BoardObject,
   final let mInvert_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mInvert_toDefaultValue () {
-    self.mInvert = false
-  }
 
   //····················································································································
 
@@ -335,10 +311,6 @@ final class BoardImage : BoardObject,
 
   //····················································································································
 
-  final func reset_mHorizontalFlip_toDefaultValue () {
-    self.mHorizontalFlip = false
-  }
-
   //····················································································································
 
   final var mHorizontalFlip : Bool {
@@ -353,10 +325,6 @@ final class BoardImage : BoardObject,
   final let mVerticalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mVerticalFlip_toDefaultValue () {
-    self.mVerticalFlip = false
-  }
 
   //····················································································································
 
@@ -373,10 +341,6 @@ final class BoardImage : BoardObject,
 
   //····················································································································
 
-  final func reset_mScale_toDefaultValue () {
-    self.mScale = 0.5
-  }
-
   //····················································································································
 
   final var mScale : Double {
@@ -391,10 +355,6 @@ final class BoardImage : BoardObject,
   final let mPixelSize_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mPixelSize_toDefaultValue () {
-    self.mPixelSize = 31750
-  }
 
   //····················································································································
 
@@ -411,10 +371,6 @@ final class BoardImage : BoardObject,
 
   //····················································································································
 
-  final func reset_mPixelSizeUnit_toDefaultValue () {
-    self.mPixelSizeUnit = 31750
-  }
-
   //····················································································································
 
   final var mPixelSizeUnit : Int {
@@ -429,10 +385,6 @@ final class BoardImage : BoardObject,
   final let mActualWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mActualWidthUnit_toDefaultValue () {
-    self.mActualWidthUnit = 900000
-  }
 
   //····················································································································
 
@@ -449,10 +401,6 @@ final class BoardImage : BoardObject,
 
   //····················································································································
 
-  final func reset_mActualHeightUnit_toDefaultValue () {
-    self.mActualHeightUnit = 900000
-  }
-
   //····················································································································
 
   final var mActualHeightUnit : Int {
@@ -467,10 +415,6 @@ final class BoardImage : BoardObject,
   final let mImageDisplay_property : EBStoredProperty_BoardImageDisplay
 
   //····················································································································
-
-  final func reset_mImageDisplay_toDefaultValue () {
-    self.mImageDisplay = BoardImageDisplay.original
-  }
 
   //····················································································································
 
@@ -487,10 +431,6 @@ final class BoardImage : BoardObject,
 
   //····················································································································
 
-  final func reset_mLayer_toDefaultValue () {
-    self.mLayer = BoardQRCodeLayer.legendFront
-  }
-
   //····················································································································
 
   final var mLayer : BoardQRCodeLayer {
@@ -505,10 +445,6 @@ final class BoardImage : BoardObject,
   final let mText_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_mText_toDefaultValue () {
-    self.mText = ""
-  }
 
   //····················································································································
 
@@ -525,10 +461,6 @@ final class BoardImage : BoardObject,
 
   //····················································································································
 
-  final func reset_mRotation_toDefaultValue () {
-    self.mRotation = 0
-  }
-
   //····················································································································
 
   final var mRotation : Int {
@@ -543,10 +475,6 @@ final class BoardImage : BoardObject,
   final let mCenterX_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mCenterX_toDefaultValue () {
-    self.mCenterX = 0
-  }
 
   //····················································································································
 

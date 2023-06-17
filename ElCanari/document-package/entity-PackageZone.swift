@@ -172,10 +172,6 @@ final class PackageZone : PackageObject,
 
   //····················································································································
 
-  final func reset_x_toDefaultValue () {
-    self.x = 0
-  }
-
   //····················································································································
 
   final var x : Int {
@@ -190,10 +186,6 @@ final class PackageZone : PackageObject,
   final let y_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_y_toDefaultValue () {
-    self.y = 0
-  }
 
   //····················································································································
 
@@ -210,10 +202,6 @@ final class PackageZone : PackageObject,
 
   //····················································································································
 
-  final func reset_width_toDefaultValue () {
-    self.width = 457200
-  }
-
   //····················································································································
 
   final var width : Int {
@@ -228,10 +216,6 @@ final class PackageZone : PackageObject,
   final let height_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_height_toDefaultValue () {
-    self.height = 457200
-  }
 
   //····················································································································
 
@@ -248,10 +232,6 @@ final class PackageZone : PackageObject,
 
   //····················································································································
 
-  final func reset_xUnit_toDefaultValue () {
-    self.xUnit = 2286
-  }
-
   //····················································································································
 
   final var xUnit : Int {
@@ -266,10 +246,6 @@ final class PackageZone : PackageObject,
   final let yUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_yUnit_toDefaultValue () {
-    self.yUnit = 2286
-  }
 
   //····················································································································
 
@@ -286,10 +262,6 @@ final class PackageZone : PackageObject,
 
   //····················································································································
 
-  final func reset_widthUnit_toDefaultValue () {
-    self.widthUnit = 2286
-  }
-
   //····················································································································
 
   final var widthUnit : Int {
@@ -304,10 +276,6 @@ final class PackageZone : PackageObject,
   final let heightUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_heightUnit_toDefaultValue () {
-    self.heightUnit = 2286
-  }
 
   //····················································································································
 
@@ -324,10 +292,6 @@ final class PackageZone : PackageObject,
 
   //····················································································································
 
-  final func reset_zoneName_toDefaultValue () {
-    self.zoneName = ""
-  }
-
   //····················································································································
 
   final var zoneName : String {
@@ -342,10 +306,6 @@ final class PackageZone : PackageObject,
   final let displayZoneName_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_displayZoneName_toDefaultValue () {
-    self.displayZoneName = true
-  }
 
   //····················································································································
 
@@ -362,10 +322,6 @@ final class PackageZone : PackageObject,
 
   //····················································································································
 
-  final func reset_displayZoneNameWithPadNumbers_toDefaultValue () {
-    self.displayZoneNameWithPadNumbers = true
-  }
-
   //····················································································································
 
   final var displayZoneNameWithPadNumbers : Bool {
@@ -380,10 +336,6 @@ final class PackageZone : PackageObject,
   final let xName_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_xName_toDefaultValue () {
-    self.xName = 228600
-  }
 
   //····················································································································
 
@@ -400,10 +352,6 @@ final class PackageZone : PackageObject,
 
   //····················································································································
 
-  final func reset_yName_toDefaultValue () {
-    self.yName = 228600
-  }
-
   //····················································································································
 
   final var yName : Int {
@@ -418,10 +366,6 @@ final class PackageZone : PackageObject,
   final let xNameUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_xNameUnit_toDefaultValue () {
-    self.xNameUnit = 2286
-  }
 
   //····················································································································
 
@@ -438,10 +382,6 @@ final class PackageZone : PackageObject,
 
   //····················································································································
 
-  final func reset_yNameUnit_toDefaultValue () {
-    self.yNameUnit = 2286
-  }
-
   //····················································································································
 
   final var yNameUnit : Int {
@@ -456,10 +396,6 @@ final class PackageZone : PackageObject,
   final let zoneNumbering_property : EBStoredProperty_PadNumbering
 
   //····················································································································
-
-  final func reset_zoneNumbering_toDefaultValue () {
-    self.zoneNumbering = PadNumbering.noNumbering
-  }
 
   //····················································································································
 

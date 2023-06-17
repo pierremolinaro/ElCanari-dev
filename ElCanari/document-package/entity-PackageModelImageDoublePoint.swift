@@ -74,10 +74,6 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   //····················································································································
 
-  final func reset_mFirstX_toDefaultValue () {
-    self.mFirstX = 457200
-  }
-
   //····················································································································
 
   final var mFirstX : Int {
@@ -92,10 +88,6 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   final let mFirstY_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mFirstY_toDefaultValue () {
-    self.mFirstY = 457200
-  }
 
   //····················································································································
 
@@ -112,10 +104,6 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   //····················································································································
 
-  final func reset_mFirstColor_toDefaultValue () {
-    self.mFirstColor = NSColor.green
-  }
-
   //····················································································································
 
   final var mFirstColor : NSColor {
@@ -130,10 +118,6 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   final let mSecondDx_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mSecondDx_toDefaultValue () {
-    self.mSecondDx = 457200
-  }
 
   //····················································································································
 
@@ -150,10 +134,6 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   //····················································································································
 
-  final func reset_mSecondDy_toDefaultValue () {
-    self.mSecondDy = 457200
-  }
-
   //····················································································································
 
   final var mSecondDy : Int {
@@ -168,10 +148,6 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   final let mSecondColor_property : EBStoredProperty_NSColor
 
   //····················································································································
-
-  final func reset_mSecondColor_toDefaultValue () {
-    self.mSecondColor = NSColor.brown
-  }
 
   //····················································································································
 

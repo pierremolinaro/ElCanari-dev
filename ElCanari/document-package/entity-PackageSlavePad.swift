@@ -186,10 +186,6 @@ final class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  final func reset_xCenter_toDefaultValue () {
-    self.xCenter = 0
-  }
-
   //····················································································································
 
   final var xCenter : Int {
@@ -204,10 +200,6 @@ final class PackageSlavePad : PackageObject,
   final let yCenter_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_yCenter_toDefaultValue () {
-    self.yCenter = 0
-  }
 
   //····················································································································
 
@@ -224,10 +216,6 @@ final class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  final func reset_width_toDefaultValue () {
-    self.width = 114300
-  }
-
   //····················································································································
 
   final var width : Int {
@@ -242,10 +230,6 @@ final class PackageSlavePad : PackageObject,
   final let height_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_height_toDefaultValue () {
-    self.height = 228600
-  }
 
   //····················································································································
 
@@ -262,10 +246,6 @@ final class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  final func reset_holeWidth_toDefaultValue () {
-    self.holeWidth = 57150
-  }
-
   //····················································································································
 
   final var holeWidth : Int {
@@ -280,10 +260,6 @@ final class PackageSlavePad : PackageObject,
   final let holeHeight_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_holeHeight_toDefaultValue () {
-    self.holeHeight = 57150
-  }
 
   //····················································································································
 
@@ -300,10 +276,6 @@ final class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  final func reset_padShape_toDefaultValue () {
-    self.padShape = PadShape.octo
-  }
-
   //····················································································································
 
   final var padShape : PadShape {
@@ -318,10 +290,6 @@ final class PackageSlavePad : PackageObject,
   final let padStyle_property : EBStoredProperty_SlavePadStyle
 
   //····················································································································
-
-  final func reset_padStyle_toDefaultValue () {
-    self.padStyle = SlavePadStyle.traversing
-  }
 
   //····················································································································
 
@@ -338,10 +306,6 @@ final class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  final func reset_xCenterUnit_toDefaultValue () {
-    self.xCenterUnit = 2286
-  }
-
   //····················································································································
 
   final var xCenterUnit : Int {
@@ -356,10 +320,6 @@ final class PackageSlavePad : PackageObject,
   final let yCenterUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_yCenterUnit_toDefaultValue () {
-    self.yCenterUnit = 2286
-  }
 
   //····················································································································
 
@@ -376,10 +336,6 @@ final class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  final func reset_widthUnit_toDefaultValue () {
-    self.widthUnit = 2286
-  }
-
   //····················································································································
 
   final var widthUnit : Int {
@@ -394,10 +350,6 @@ final class PackageSlavePad : PackageObject,
   final let heightUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_heightUnit_toDefaultValue () {
-    self.heightUnit = 2286
-  }
 
   //····················································································································
 
@@ -414,10 +366,6 @@ final class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  final func reset_holeWidthUnit_toDefaultValue () {
-    self.holeWidthUnit = 2286
-  }
-
   //····················································································································
 
   final var holeWidthUnit : Int {
@@ -433,10 +381,6 @@ final class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  final func reset_holeHeightUnit_toDefaultValue () {
-    self.holeHeightUnit = 2286
-  }
-
   //····················································································································
 
   final var holeHeightUnit : Int {
@@ -451,10 +395,6 @@ final class PackageSlavePad : PackageObject,
   final let annularRingUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_annularRingUnit_toDefaultValue () {
-    self.annularRingUnit = 2286
-  }
 
   //····················································································································
 

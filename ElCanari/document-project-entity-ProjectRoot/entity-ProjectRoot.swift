@@ -1229,10 +1229,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mArtworkName_toDefaultValue () {
-    self.mArtworkName = ""
-  }
-
   //····················································································································
 
   final var mArtworkName : String {
@@ -1247,10 +1243,6 @@ final class ProjectRoot : EBManagedObject,
   final let mArtworkVersion_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mArtworkVersion_toDefaultValue () {
-    self.mArtworkVersion = 0
-  }
 
   //····················································································································
 
@@ -1267,10 +1259,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mPDFBoardBackgroundColor_toDefaultValue () {
-    self.mPDFBoardBackgroundColor = NSColor.lightGray
-  }
-
   //····················································································································
 
   final var mPDFBoardBackgroundColor : NSColor {
@@ -1285,10 +1273,6 @@ final class ProjectRoot : EBManagedObject,
   final let mCheckClearanceBetweenPadsOfSameNet_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mCheckClearanceBetweenPadsOfSameNet_toDefaultValue () {
-    self.mCheckClearanceBetweenPadsOfSameNet = true
-  }
 
   //····················································································································
 
@@ -1305,10 +1289,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mLastERCCheckingIsSuccess_toDefaultValue () {
-    self.mLastERCCheckingIsSuccess = false
-  }
-
   //····················································································································
 
   final var mLastERCCheckingIsSuccess : Bool {
@@ -1323,10 +1303,6 @@ final class ProjectRoot : EBManagedObject,
   final let mLastERCCheckingSignature_property : EBStoredProperty_UInt32
 
   //····················································································································
-
-  final func reset_mLastERCCheckingSignature_toDefaultValue () {
-    self.mLastERCCheckingSignature = 1
-  }
 
   //····················································································································
 
@@ -1343,10 +1319,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mLayerConfiguration_toDefaultValue () {
-    self.mLayerConfiguration = LayerConfiguration.twoLayers
-  }
-
   //····················································································································
 
   final var mLayerConfiguration : LayerConfiguration {
@@ -1361,10 +1333,6 @@ final class ProjectRoot : EBManagedObject,
   final let mBoardSideForNewTrack_property : EBStoredProperty_TrackSide
 
   //····················································································································
-
-  final func reset_mBoardSideForNewTrack_toDefaultValue () {
-    self.mBoardSideForNewTrack = TrackSide.front
-  }
 
   //····················································································································
 
@@ -1381,10 +1349,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mDirectionForNewTrack_toDefaultValue () {
-    self.mDirectionForNewTrack = TrackCreationDirection.anyAngle
-  }
-
   //····················································································································
 
   final var mDirectionForNewTrack : TrackCreationDirection {
@@ -1399,10 +1363,6 @@ final class ProjectRoot : EBManagedObject,
   final let mBoardLayerForNewText_property : EBStoredProperty_BoardTextLayer
 
   //····················································································································
-
-  final func reset_mBoardLayerForNewText_toDefaultValue () {
-    self.mBoardLayerForNewText = BoardTextLayer.legendFront
-  }
 
   //····················································································································
 
@@ -1419,10 +1379,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mBoardLayerForNewQRCode_toDefaultValue () {
-    self.mBoardLayerForNewQRCode = BoardQRCodeLayer.legendFront
-  }
-
   //····················································································································
 
   final var mBoardLayerForNewQRCode : BoardQRCodeLayer {
@@ -1437,10 +1393,6 @@ final class ProjectRoot : EBManagedObject,
   final let mBoardLayerForNewImage_property : EBStoredProperty_BoardQRCodeLayer
 
   //····················································································································
-
-  final func reset_mBoardLayerForNewImage_toDefaultValue () {
-    self.mBoardLayerForNewImage = BoardQRCodeLayer.legendFront
-  }
 
   //····················································································································
 
@@ -1457,10 +1409,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mBoardLayerForNewLine_toDefaultValue () {
-    self.mBoardLayerForNewLine = BoardLineLayer.legendFront
-  }
-
   //····················································································································
 
   final var mBoardLayerForNewLine : BoardLineLayer {
@@ -1475,10 +1423,6 @@ final class ProjectRoot : EBManagedObject,
   final let mBoardSideForNewRestrictRectangle_property : EBStoredProperty_RestrictRectangleLayer
 
   //····················································································································
-
-  final func reset_mBoardSideForNewRestrictRectangle_toDefaultValue () {
-    self.mBoardSideForNewRestrictRectangle = RestrictRectangleLayer.frontSide
-  }
 
   //····················································································································
 
@@ -1495,10 +1439,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mNewRestrictRectangleLayers_toDefaultValue () {
-    self.mNewRestrictRectangleLayers = 1
-  }
-
   //····················································································································
 
   final var mNewRestrictRectangleLayers : Int {
@@ -1513,10 +1453,6 @@ final class ProjectRoot : EBManagedObject,
   final let mAutoRouterPreferredDirections_property : EBStoredProperty_AutorouterPreferredDirections
 
   //····················································································································
-
-  final func reset_mAutoRouterPreferredDirections_toDefaultValue () {
-    self.mAutoRouterPreferredDirections = AutorouterPreferredDirections.vFrontHback
-  }
 
   //····················································································································
 
@@ -1533,10 +1469,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mAutorouterSnapAngle_toDefaultValue () {
-    self.mAutorouterSnapAngle = AutorouterSnapAngle.octolinear
-  }
-
   //····················································································································
 
   final var mAutorouterSnapAngle : AutorouterSnapAngle {
@@ -1551,10 +1483,6 @@ final class ProjectRoot : EBManagedObject,
   final let mRouteDirection_property : EBStoredProperty_RouteDirection
 
   //····················································································································
-
-  final func reset_mRouteDirection_toDefaultValue () {
-    self.mRouteDirection = RouteDirection.from
-  }
 
   //····················································································································
 
@@ -1571,10 +1499,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mRouteOrigin_toDefaultValue () {
-    self.mRouteOrigin = RouteOrigin.center
-  }
-
   //····················································································································
 
   final var mRouteOrigin : RouteOrigin {
@@ -1589,10 +1513,6 @@ final class ProjectRoot : EBManagedObject,
   final let mAutorouterInterfaceMode_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mAutorouterInterfaceMode_toDefaultValue () {
-    self.mAutorouterInterfaceMode = 0
-  }
 
   //····················································································································
 
@@ -1609,10 +1529,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mExportExistingTracksAndVias_toDefaultValue () {
-    self.mExportExistingTracksAndVias = false
-  }
-
   //····················································································································
 
   final var mExportExistingTracksAndVias : Bool {
@@ -1627,10 +1543,6 @@ final class ProjectRoot : EBManagedObject,
   final let mExportExistingTracksAndVias2_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mExportExistingTracksAndVias2_toDefaultValue () {
-    self.mExportExistingTracksAndVias2 = false
-  }
 
   //····················································································································
 
@@ -1647,10 +1559,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mTrackLengthUnit_toDefaultValue () {
-    self.mTrackLengthUnit = 90000000
-  }
-
   //····················································································································
 
   final var mTrackLengthUnit : Int {
@@ -1665,10 +1573,6 @@ final class ProjectRoot : EBManagedObject,
   final let mLayoutClearance_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mLayoutClearance_toDefaultValue () {
-    self.mLayoutClearance = 22860
-  }
 
   //····················································································································
 
@@ -1685,10 +1589,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mLayoutClearanceUnit_toDefaultValue () {
-    self.mLayoutClearanceUnit = 2286
-  }
-
   //····················································································································
 
   final var mLayoutClearanceUnit : Int {
@@ -1703,10 +1603,6 @@ final class ProjectRoot : EBManagedObject,
   final let mBoardSelectedInspector_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mBoardSelectedInspector_toDefaultValue () {
-    self.mBoardSelectedInspector = 1
-  }
 
   //····················································································································
 
@@ -1723,10 +1619,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mBoardHorizontalFlip_toDefaultValue () {
-    self.mBoardHorizontalFlip = false
-  }
-
   //····················································································································
 
   final var mBoardHorizontalFlip : Bool {
@@ -1741,10 +1633,6 @@ final class ProjectRoot : EBManagedObject,
   final let mBoardVerticalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mBoardVerticalFlip_toDefaultValue () {
-    self.mBoardVerticalFlip = false
-  }
 
   //····················································································································
 
@@ -1761,10 +1649,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mBoardGridStyle_toDefaultValue () {
-    self.mBoardGridStyle = GridStyle.line
-  }
-
   //····················································································································
 
   final var mBoardGridStyle : GridStyle {
@@ -1779,10 +1663,6 @@ final class ProjectRoot : EBManagedObject,
   final let mBoardGridDisplayFactor_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mBoardGridDisplayFactor_toDefaultValue () {
-    self.mBoardGridDisplayFactor = 4
-  }
 
   //····················································································································
 
@@ -1799,10 +1679,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mBoardZoom_toDefaultValue () {
-    self.mBoardZoom = 0
-  }
-
   //····················································································································
 
   final var mBoardZoom : Int {
@@ -1817,10 +1693,6 @@ final class ProjectRoot : EBManagedObject,
   final let mBoardGridStep_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mBoardGridStep_toDefaultValue () {
-    self.mBoardGridStep = 57150
-  }
 
   //····················································································································
 
@@ -1837,10 +1709,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mBoardGridStepUnit_toDefaultValue () {
-    self.mBoardGridStepUnit = 2286
-  }
-
   //····················································································································
 
   final var mBoardGridStepUnit : Int {
@@ -1855,10 +1723,6 @@ final class ProjectRoot : EBManagedObject,
   final let mErrorOrWarningIssueSize_property : EBStoredProperty_Double
 
   //····················································································································
-
-  final func reset_mErrorOrWarningIssueSize_toDefaultValue () {
-    self.mErrorOrWarningIssueSize = 6
-  }
 
   //····················································································································
 
@@ -1875,10 +1739,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mControlKeyHiliteDiameter_toDefaultValue () {
-    self.mControlKeyHiliteDiameter = 100
-  }
-
   //····················································································································
 
   final var mControlKeyHiliteDiameter : Double {
@@ -1893,10 +1753,6 @@ final class ProjectRoot : EBManagedObject,
   final let mDSNFileProposedName_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_mDSNFileProposedName_toDefaultValue () {
-    self.mDSNFileProposedName = "design.dsn"
-  }
 
   //····················································································································
 
@@ -1913,10 +1769,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mBoardLimitsWidth_toDefaultValue () {
-    self.mBoardLimitsWidth = 90000
-  }
-
   //····················································································································
 
   final var mBoardLimitsWidth : Int {
@@ -1931,10 +1783,6 @@ final class ProjectRoot : EBManagedObject,
   final let mBoardLimitsWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mBoardLimitsWidthUnit_toDefaultValue () {
-    self.mBoardLimitsWidthUnit = 90000
-  }
 
   //····················································································································
 
@@ -1951,10 +1799,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mBoardClearance_toDefaultValue () {
-    self.mBoardClearance = 90000
-  }
-
   //····················································································································
 
   final var mBoardClearance : Int {
@@ -1969,10 +1813,6 @@ final class ProjectRoot : EBManagedObject,
   final let mBoardClearanceUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mBoardClearanceUnit_toDefaultValue () {
-    self.mBoardClearanceUnit = 90000
-  }
 
   //····················································································································
 
@@ -1989,10 +1829,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mBoardLimitsSelectedInspector_toDefaultValue () {
-    self.mBoardLimitsSelectedInspector = 0
-  }
-
   //····················································································································
 
   final var mBoardLimitsSelectedInspector : Int {
@@ -2007,10 +1843,6 @@ final class ProjectRoot : EBManagedObject,
   final let mBoardLimitsHorizontalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mBoardLimitsHorizontalFlip_toDefaultValue () {
-    self.mBoardLimitsHorizontalFlip = false
-  }
 
   //····················································································································
 
@@ -2027,10 +1859,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mBoardLimitsVerticalFlip_toDefaultValue () {
-    self.mBoardLimitsVerticalFlip = false
-  }
-
   //····················································································································
 
   final var mBoardLimitsVerticalFlip : Bool {
@@ -2045,10 +1873,6 @@ final class ProjectRoot : EBManagedObject,
   final let mBoardLimitsGridStyle_property : EBStoredProperty_GridStyle
 
   //····················································································································
-
-  final func reset_mBoardLimitsGridStyle_toDefaultValue () {
-    self.mBoardLimitsGridStyle = GridStyle.line
-  }
 
   //····················································································································
 
@@ -2065,10 +1889,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mBoardLimitsGridDisplayFactor_toDefaultValue () {
-    self.mBoardLimitsGridDisplayFactor = 5
-  }
-
   //····················································································································
 
   final var mBoardLimitsGridDisplayFactor : Int {
@@ -2083,10 +1903,6 @@ final class ProjectRoot : EBManagedObject,
   final let mBoardLimitsZoom_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mBoardLimitsZoom_toDefaultValue () {
-    self.mBoardLimitsZoom = 0
-  }
 
   //····················································································································
 
@@ -2103,10 +1919,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mBoardLimitsGridStep_toDefaultValue () {
-    self.mBoardLimitsGridStep = 90000
-  }
-
   //····················································································································
 
   final var mBoardLimitsGridStep : Int {
@@ -2121,10 +1933,6 @@ final class ProjectRoot : EBManagedObject,
   final let mBoardLimitsGridStepUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mBoardLimitsGridStepUnit_toDefaultValue () {
-    self.mBoardLimitsGridStepUnit = 90000
-  }
 
   //····················································································································
 
@@ -2141,10 +1949,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mBoardLimitsBoundingBoxUnit_toDefaultValue () {
-    self.mBoardLimitsBoundingBoxUnit = 90000
-  }
-
   //····················································································································
 
   final var mBoardLimitsBoundingBoxUnit : Int {
@@ -2159,10 +1963,6 @@ final class ProjectRoot : EBManagedObject,
   final let mBoardPointsBoundingBoxUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mBoardPointsBoundingBoxUnit_toDefaultValue () {
-    self.mBoardPointsBoundingBoxUnit = 90000
-  }
 
   //····················································································································
 
@@ -2179,10 +1979,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mBoardSelectedCurveDisplayUnit_toDefaultValue () {
-    self.mBoardSelectedCurveDisplayUnit = 90000
-  }
-
   //····················································································································
 
   final var mBoardSelectedCurveDisplayUnit : Int {
@@ -2197,10 +1993,6 @@ final class ProjectRoot : EBManagedObject,
   final let mBoardLimitControlPointsDisplayUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mBoardLimitControlPointsDisplayUnit_toDefaultValue () {
-    self.mBoardLimitControlPointsDisplayUnit = 90000
-  }
 
   //····················································································································
 
@@ -2217,10 +2009,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mBoardShape_toDefaultValue () {
-    self.mBoardShape = BoardShape.rectangular
-  }
-
   //····················································································································
 
   final var mBoardShape : BoardShape {
@@ -2235,10 +2023,6 @@ final class ProjectRoot : EBManagedObject,
   final let mContentOpacityInBoardOutline_property : EBStoredProperty_Double
 
   //····················································································································
-
-  final func reset_mContentOpacityInBoardOutline_toDefaultValue () {
-    self.mContentOpacityInBoardOutline = 0.5
-  }
 
   //····················································································································
 
@@ -2255,10 +2039,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mRectangularBoardWidth_toDefaultValue () {
-    self.mRectangularBoardWidth = 9000000
-  }
-
   //····················································································································
 
   final var mRectangularBoardWidth : Int {
@@ -2273,10 +2053,6 @@ final class ProjectRoot : EBManagedObject,
   final let mRectangularBoardWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mRectangularBoardWidthUnit_toDefaultValue () {
-    self.mRectangularBoardWidthUnit = 90000
-  }
 
   //····················································································································
 
@@ -2293,10 +2069,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mRectangularBoardHeight_toDefaultValue () {
-    self.mRectangularBoardHeight = 9000000
-  }
-
   //····················································································································
 
   final var mRectangularBoardHeight : Int {
@@ -2311,10 +2083,6 @@ final class ProjectRoot : EBManagedObject,
   final let mRectangularBoardHeightUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mRectangularBoardHeightUnit_toDefaultValue () {
-    self.mRectangularBoardHeightUnit = 90000
-  }
 
   //····················································································································
 
@@ -2346,10 +2114,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mDefaultNetClassName_toDefaultValue () {
-    self.mDefaultNetClassName = ""
-  }
-
   //····················································································································
 
   final var mDefaultNetClassName : String {
@@ -2364,10 +2128,6 @@ final class ProjectRoot : EBManagedObject,
   final let mSchematicHilitedColumnIndex_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mSchematicHilitedColumnIndex_toDefaultValue () {
-    self.mSchematicHilitedColumnIndex = -1
-  }
 
   //····················································································································
 
@@ -2384,10 +2144,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mSchematicHilitedRowIndex_toDefaultValue () {
-    self.mSchematicHilitedRowIndex = -1
-  }
-
   //····················································································································
 
   final var mSchematicHilitedRowIndex : Int {
@@ -2402,10 +2158,6 @@ final class ProjectRoot : EBManagedObject,
   final let mSchematicEnableHiliteColumnAndRow_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mSchematicEnableHiliteColumnAndRow_toDefaultValue () {
-    self.mSchematicEnableHiliteColumnAndRow = false
-  }
 
   //····················································································································
 
@@ -2422,10 +2174,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mSelectedPageIndex_toDefaultValue () {
-    self.mSelectedPageIndex = 0
-  }
-
   //····················································································································
 
   final var mSelectedPageIndex : Int {
@@ -2440,10 +2188,6 @@ final class ProjectRoot : EBManagedObject,
   final let mSelectedSchematicInspector_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mSelectedSchematicInspector_toDefaultValue () {
-    self.mSelectedSchematicInspector = 0
-  }
 
   //····················································································································
 
@@ -2460,10 +2204,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mSchematicTitle_toDefaultValue () {
-    self.mSchematicTitle = ""
-  }
-
   //····················································································································
 
   final var mSchematicTitle : String {
@@ -2478,10 +2218,6 @@ final class ProjectRoot : EBManagedObject,
   final let mSchematicVersion_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_mSchematicVersion_toDefaultValue () {
-    self.mSchematicVersion = ""
-  }
 
   //····················································································································
 
@@ -2498,10 +2234,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mSchematicDate_toDefaultValue () {
-    self.mSchematicDate = Date ()
-  }
-
   //····················································································································
 
   final var mSchematicDate : Date {
@@ -2516,10 +2248,6 @@ final class ProjectRoot : EBManagedObject,
   final let mSchematicHorizontalFlip_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_mSchematicHorizontalFlip_toDefaultValue () {
-    self.mSchematicHorizontalFlip = false
-  }
 
   //····················································································································
 
@@ -2536,10 +2264,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mSchematicVerticalFlip_toDefaultValue () {
-    self.mSchematicVerticalFlip = false
-  }
-
   //····················································································································
 
   final var mSchematicVerticalFlip : Bool {
@@ -2554,10 +2278,6 @@ final class ProjectRoot : EBManagedObject,
   final let mSchematicZoom_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mSchematicZoom_toDefaultValue () {
-    self.mSchematicZoom = 0
-  }
 
   //····················································································································
 
@@ -2574,10 +2294,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mSchematicGridStyle_toDefaultValue () {
-    self.mSchematicGridStyle = GridStyle.line
-  }
-
   //····················································································································
 
   final var mSchematicGridStyle : GridStyle {
@@ -2592,10 +2308,6 @@ final class ProjectRoot : EBManagedObject,
   final let mSchematicGridDisplayFactor_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mSchematicGridDisplayFactor_toDefaultValue () {
-    self.mSchematicGridDisplayFactor = 4
-  }
 
   //····················································································································
 
@@ -2612,10 +2324,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mSchematicCustomWidth_toDefaultValue () {
-    self.mSchematicCustomWidth = 27000000
-  }
-
   //····················································································································
 
   final var mSchematicCustomWidth : Int {
@@ -2630,10 +2338,6 @@ final class ProjectRoot : EBManagedObject,
   final let mSchematicCustomWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mSchematicCustomWidthUnit_toDefaultValue () {
-    self.mSchematicCustomWidthUnit = 90000
-  }
 
   //····················································································································
 
@@ -2650,10 +2354,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mSchematicCustomHeight_toDefaultValue () {
-    self.mSchematicCustomHeight = 27000000
-  }
-
   //····················································································································
 
   final var mSchematicCustomHeight : Int {
@@ -2668,10 +2368,6 @@ final class ProjectRoot : EBManagedObject,
   final let mSchematicCustomHeightUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mSchematicCustomHeightUnit_toDefaultValue () {
-    self.mSchematicCustomHeightUnit = 90000
-  }
 
   //····················································································································
 
@@ -2688,10 +2384,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_drawErrorBackgroundForBoard_toDefaultValue () {
-    self.drawErrorBackgroundForBoard = true
-  }
-
   //····················································································································
 
   final var drawErrorBackgroundForBoard : Bool {
@@ -2706,10 +2398,6 @@ final class ProjectRoot : EBManagedObject,
   final let displayFrontRestrictRectangles_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_displayFrontRestrictRectangles_toDefaultValue () {
-    self.displayFrontRestrictRectangles = true
-  }
 
   //····················································································································
 
@@ -2726,10 +2414,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_displayBackRestrictRectangles_toDefaultValue () {
-    self.displayBackRestrictRectangles = true
-  }
-
   //····················································································································
 
   final var displayBackRestrictRectangles : Bool {
@@ -2744,10 +2428,6 @@ final class ProjectRoot : EBManagedObject,
   final let displayInner1RestrictRectangles_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_displayInner1RestrictRectangles_toDefaultValue () {
-    self.displayInner1RestrictRectangles = true
-  }
 
   //····················································································································
 
@@ -2764,10 +2444,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_displayInner2RestrictRectangles_toDefaultValue () {
-    self.displayInner2RestrictRectangles = true
-  }
-
   //····················································································································
 
   final var displayInner2RestrictRectangles : Bool {
@@ -2782,10 +2458,6 @@ final class ProjectRoot : EBManagedObject,
   final let displayInner3RestrictRectangles_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_displayInner3RestrictRectangles_toDefaultValue () {
-    self.displayInner3RestrictRectangles = true
-  }
 
   //····················································································································
 
@@ -2802,10 +2474,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_displayInner4RestrictRectangles_toDefaultValue () {
-    self.displayInner4RestrictRectangles = true
-  }
-
   //····················································································································
 
   final var displayInner4RestrictRectangles : Bool {
@@ -2820,10 +2488,6 @@ final class ProjectRoot : EBManagedObject,
   final let displayFrontLegendForBoard_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_displayFrontLegendForBoard_toDefaultValue () {
-    self.displayFrontLegendForBoard = true
-  }
 
   //····················································································································
 
@@ -2840,10 +2504,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_displayFrontLayoutForBoard_toDefaultValue () {
-    self.displayFrontLayoutForBoard = true
-  }
-
   //····················································································································
 
   final var displayFrontLayoutForBoard : Bool {
@@ -2858,10 +2518,6 @@ final class ProjectRoot : EBManagedObject,
   final let displayBackLayoutForBoard_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_displayBackLayoutForBoard_toDefaultValue () {
-    self.displayBackLayoutForBoard = true
-  }
 
   //····················································································································
 
@@ -2878,10 +2534,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_displayInner1LayoutForBoard_toDefaultValue () {
-    self.displayInner1LayoutForBoard = true
-  }
-
   //····················································································································
 
   final var displayInner1LayoutForBoard : Bool {
@@ -2896,10 +2548,6 @@ final class ProjectRoot : EBManagedObject,
   final let displayInner2LayoutForBoard_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_displayInner2LayoutForBoard_toDefaultValue () {
-    self.displayInner2LayoutForBoard = true
-  }
 
   //····················································································································
 
@@ -2916,10 +2564,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_displayInner3LayoutForBoard_toDefaultValue () {
-    self.displayInner3LayoutForBoard = true
-  }
-
   //····················································································································
 
   final var displayInner3LayoutForBoard : Bool {
@@ -2934,10 +2578,6 @@ final class ProjectRoot : EBManagedObject,
   final let displayInner4LayoutForBoard_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_displayInner4LayoutForBoard_toDefaultValue () {
-    self.displayInner4LayoutForBoard = true
-  }
 
   //····················································································································
 
@@ -2954,10 +2594,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_displayBackLegendForBoard_toDefaultValue () {
-    self.displayBackLegendForBoard = true
-  }
-
   //····················································································································
 
   final var displayBackLegendForBoard : Bool {
@@ -2972,10 +2608,6 @@ final class ProjectRoot : EBManagedObject,
   final let displayFrontPadsForBoard_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_displayFrontPadsForBoard_toDefaultValue () {
-    self.displayFrontPadsForBoard = true
-  }
 
   //····················································································································
 
@@ -2992,10 +2624,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_displayBackPadsForBoard_toDefaultValue () {
-    self.displayBackPadsForBoard = true
-  }
-
   //····················································································································
 
   final var displayBackPadsForBoard : Bool {
@@ -3011,10 +2639,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_displayPadNumbersForBoard_toDefaultValue () {
-    self.displayPadNumbersForBoard = true
-  }
-
   //····················································································································
 
   final var displayPadNumbersForBoard : Bool {
@@ -3029,10 +2653,6 @@ final class ProjectRoot : EBManagedObject,
   final let packageDrawingWidthMultpliedByTenForBoard_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_packageDrawingWidthMultpliedByTenForBoard_toDefaultValue () {
-    self.packageDrawingWidthMultpliedByTenForBoard = 5
-  }
 
   //····················································································································
 
@@ -3094,10 +2714,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mSchematicSheetOrientation_toDefaultValue () {
-    self.mSchematicSheetOrientation = SchematicSheetOrientation.a4Horizontal
-  }
-
   //····················································································································
 
   final var mSchematicSheetOrientation : SchematicSheetOrientation {
@@ -3143,10 +2759,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mRastnetDisplay_toDefaultValue () {
-    self.mRastnetDisplay = RastnetDisplay.allNets
-  }
-
   //····················································································································
 
   final var mRastnetDisplay : RastnetDisplay {
@@ -3162,10 +2774,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mRastnetDisplayedNetName_toDefaultValue () {
-    self.mRastnetDisplayedNetName = ""
-  }
-
   //····················································································································
 
   final var mRastnetDisplayedNetName : String {
@@ -3180,10 +2788,6 @@ final class ProjectRoot : EBManagedObject,
   final let mRastnetDisplayedComponentName_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_mRastnetDisplayedComponentName_toDefaultValue () {
-    self.mRastnetDisplayedComponentName = ""
-  }
 
   //····················································································································
 

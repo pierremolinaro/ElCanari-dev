@@ -96,10 +96,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final func reset_mInstanceName_toDefaultValue () {
-    self.mInstanceName = ""
-  }
-
   //····················································································································
 
   final var mInstanceName : String {
@@ -115,10 +111,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final func reset_mX_toDefaultValue () {
-    self.mX = 0
-  }
-
   //····················································································································
 
   final var mX : Int {
@@ -133,10 +125,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   final let mY_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mY_toDefaultValue () {
-    self.mY = 0
-  }
 
   //····················································································································
 

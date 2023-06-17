@@ -529,10 +529,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final func reset_name_toDefaultValue () {
-    self.name = ""
-  }
-
   //····················································································································
 
   final var name : String {
@@ -547,10 +543,6 @@ final class BoardModel : EBManagedObject,
   final let modelWidth_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_modelWidth_toDefaultValue () {
-    self.modelWidth = 0
-  }
 
   //····················································································································
 
@@ -567,10 +559,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final func reset_modelWidthUnit_toDefaultValue () {
-    self.modelWidthUnit = 0
-  }
-
   //····················································································································
 
   final var modelWidthUnit : Int {
@@ -585,10 +573,6 @@ final class BoardModel : EBManagedObject,
   final let modelHeight_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_modelHeight_toDefaultValue () {
-    self.modelHeight = 0
-  }
 
   //····················································································································
 
@@ -605,10 +589,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final func reset_modelHeightUnit_toDefaultValue () {
-    self.modelHeightUnit = 0
-  }
-
   //····················································································································
 
   final var modelHeightUnit : Int {
@@ -623,10 +603,6 @@ final class BoardModel : EBManagedObject,
   final let zoom_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_zoom_toDefaultValue () {
-    self.zoom = 0
-  }
 
   //····················································································································
 
@@ -643,10 +619,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final func reset_modelVersion_toDefaultValue () {
-    self.modelVersion = 0
-  }
-
   //····················································································································
 
   final var modelVersion : Int {
@@ -661,10 +633,6 @@ final class BoardModel : EBManagedObject,
   final let ignoreModelVersionError_property : EBStoredProperty_Bool
 
   //····················································································································
-
-  final func reset_ignoreModelVersionError_toDefaultValue () {
-    self.ignoreModelVersionError = false
-  }
 
   //····················································································································
 
@@ -740,10 +708,6 @@ final class BoardModel : EBManagedObject,
   final let layerConfiguration_property : EBStoredProperty_LayerConfiguration
 
   //····················································································································
-
-  final func reset_layerConfiguration_toDefaultValue () {
-    self.layerConfiguration = LayerConfiguration.twoLayers
-  }
 
   //····················································································································
 
@@ -940,10 +904,6 @@ final class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  final func reset_modelLimitWidth_toDefaultValue () {
-    self.modelLimitWidth = 0
-  }
-
   //····················································································································
 
   final var modelLimitWidth : Int {
@@ -958,10 +918,6 @@ final class BoardModel : EBManagedObject,
   final let modelLimitWidthUnit_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_modelLimitWidthUnit_toDefaultValue () {
-    self.modelLimitWidthUnit = 0
-  }
 
   //····················································································································
 
@@ -1157,10 +1113,6 @@ final class BoardModel : EBManagedObject,
   final let artworkName_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_artworkName_toDefaultValue () {
-    self.artworkName = ""
-  }
 
   //····················································································································
 

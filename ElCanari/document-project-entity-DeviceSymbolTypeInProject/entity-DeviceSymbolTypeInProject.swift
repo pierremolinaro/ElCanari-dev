@@ -39,10 +39,6 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mSymbolTypeName_toDefaultValue () {
-    self.mSymbolTypeName = ""
-  }
-
   //····················································································································
 
   final var mSymbolTypeName : String {
@@ -58,10 +54,6 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mStrokeBezierPath_toDefaultValue () {
-    self.mStrokeBezierPath = NSBezierPath ()
-  }
-
   //····················································································································
 
   final var mStrokeBezierPath : NSBezierPath {
@@ -76,10 +68,6 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
   final let mFilledBezierPath_property : EBStoredProperty_NSBezierPath
 
   //····················································································································
-
-  final func reset_mFilledBezierPath_toDefaultValue () {
-    self.mFilledBezierPath = NSBezierPath ()
-  }
 
   //····················································································································
 

@@ -46,10 +46,10 @@ class AutoLayoutBase_NSStepper : NSStepper {
 
   //····················································································································
 
-  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
-    return self
-  }
+//  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+//    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
+//    return self
+//  }
 
   //····················································································································
 

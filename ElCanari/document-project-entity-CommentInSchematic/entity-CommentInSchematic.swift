@@ -81,10 +81,6 @@ final class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  final func reset_mColor_toDefaultValue () {
-    self.mColor = NSColor.black
-  }
-
   //····················································································································
 
   final var mColor : NSColor {
@@ -99,10 +95,6 @@ final class CommentInSchematic : SchematicObject,
   final let mSize_property : EBStoredProperty_Double
 
   //····················································································································
-
-  final func reset_mSize_toDefaultValue () {
-    self.mSize = 11
-  }
 
   //····················································································································
 
@@ -119,10 +111,6 @@ final class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  final func reset_mHorizontalAlignment_toDefaultValue () {
-    self.mHorizontalAlignment = HorizontalAlignment.center
-  }
-
   //····················································································································
 
   final var mHorizontalAlignment : HorizontalAlignment {
@@ -137,10 +125,6 @@ final class CommentInSchematic : SchematicObject,
   final let mVerticalAlignment_property : EBStoredProperty_VerticalAlignment
 
   //····················································································································
-
-  final func reset_mVerticalAlignment_toDefaultValue () {
-    self.mVerticalAlignment = VerticalAlignment.center
-  }
 
   //····················································································································
 
@@ -157,10 +141,6 @@ final class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  final func reset_mX_toDefaultValue () {
-    self.mX = 0
-  }
-
   //····················································································································
 
   final var mX : Int {
@@ -176,10 +156,6 @@ final class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  final func reset_mY_toDefaultValue () {
-    self.mY = 0
-  }
-
   //····················································································································
 
   final var mY : Int {
@@ -194,10 +170,6 @@ final class CommentInSchematic : SchematicObject,
   final let mComment_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_mComment_toDefaultValue () {
-    self.mComment = ""
-  }
 
   //····················································································································
 

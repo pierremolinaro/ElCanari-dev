@@ -102,10 +102,6 @@ final class MasterPadInDevice : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mCenterX_toDefaultValue () {
-    self.mCenterX = 0
-  }
-
   //····················································································································
 
   final var mCenterX : Int {
@@ -120,10 +116,6 @@ final class MasterPadInDevice : EBManagedObject,
   final let mCenterY_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mCenterY_toDefaultValue () {
-    self.mCenterY = 0
-  }
 
   //····················································································································
 
@@ -140,10 +132,6 @@ final class MasterPadInDevice : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mWidth_toDefaultValue () {
-    self.mWidth = 114300
-  }
-
   //····················································································································
 
   final var mWidth : Int {
@@ -158,10 +146,6 @@ final class MasterPadInDevice : EBManagedObject,
   final let mHeight_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mHeight_toDefaultValue () {
-    self.mHeight = 228600
-  }
 
   //····················································································································
 
@@ -178,10 +162,6 @@ final class MasterPadInDevice : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mHoleWidth_toDefaultValue () {
-    self.mHoleWidth = 57150
-  }
-
   //····················································································································
 
   final var mHoleWidth : Int {
@@ -196,10 +176,6 @@ final class MasterPadInDevice : EBManagedObject,
   final let mHoleHeight_property : EBStoredProperty_Int
 
   //····················································································································
-
-  final func reset_mHoleHeight_toDefaultValue () {
-    self.mHoleHeight = 57150
-  }
 
   //····················································································································
 
@@ -216,10 +192,6 @@ final class MasterPadInDevice : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mShape_toDefaultValue () {
-    self.mShape = PadShape.octo
-  }
-
   //····················································································································
 
   final var mShape : PadShape {
@@ -235,10 +207,6 @@ final class MasterPadInDevice : EBManagedObject,
 
   //····················································································································
 
-  final func reset_mStyle_toDefaultValue () {
-    self.mStyle = PadStyle.traversing
-  }
-
   //····················································································································
 
   final var mStyle : PadStyle {
@@ -253,10 +221,6 @@ final class MasterPadInDevice : EBManagedObject,
   final let mName_property : EBStoredProperty_String
 
   //····················································································································
-
-  final func reset_mName_toDefaultValue () {
-    self.mName = ""
-  }
 
   //····················································································································
 
