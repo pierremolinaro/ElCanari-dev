@@ -7,10 +7,10 @@ handlingOpposite entity FontInProject {
   toMany ComponentInProject mComponentNames inverse toOne mNameFont ;
   toMany ComponentInProject mComponentValues inverse toOne mValueFont ;
 
-  property Int mNominalSize default 0 ;
-  property String mFontName default "" ;
-  property Int mFontVersion default 0 ;
-  property String mDescriptiveString default "" ;
+  property @generateDirectAccess Int mNominalSize default 0 ;
+  property @generateDirectAccess String mFontName default "" ;
+  property @generateDirectAccess Int mFontVersion default 0 ;
+  property @generateDirectAccess String mDescriptiveString default "" ;
 
   transient String versionString dependsFrom self.mFontVersion ;
   transient String sizeString dependsFrom self.mDescriptiveString ;

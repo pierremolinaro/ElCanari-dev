@@ -20,7 +20,6 @@ final class FontRoot : EBManagedObject {
 
   final var comments : String {
     get { return self.comments_property.propval }
-    set { self.comments_property.setProp (newValue) }
   }
 
   //····················································································································

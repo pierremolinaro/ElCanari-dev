@@ -645,7 +645,6 @@ final class ComponentInProject : BoardObject,
 
   final var mXNameUnit : Int {
     get { return self.mXNameUnit_property.propval }
-    set { self.mXNameUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -658,7 +657,6 @@ final class ComponentInProject : BoardObject,
 
   final var mYNameUnit : Int {
     get { return self.mYNameUnit_property.propval }
-    set { self.mYNameUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -671,7 +669,6 @@ final class ComponentInProject : BoardObject,
 
   final var mXValueUnit : Int {
     get { return self.mXValueUnit_property.propval }
-    set { self.mXValueUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -684,7 +681,6 @@ final class ComponentInProject : BoardObject,
 
   final var mYValueUnit : Int {
     get { return self.mYValueUnit_property.propval }
-    set { self.mYValueUnit_property.setProp (newValue) }
   }
 
   //····················································································································

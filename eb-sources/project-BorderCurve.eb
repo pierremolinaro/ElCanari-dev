@@ -14,17 +14,17 @@ func enum BorderCurveShape.popupTitles {
 graphic handlingOpposite entity BorderCurve {
   graphic cannotBeDeleted ;
 
-  property BorderCurveShape mShape default line ;
+  property @generateDirectAccess BorderCurveShape mShape default line ;
   toOne @weak ProjectRoot mRoot inverse toMany mBorderCurves ;
   toOne @weak BorderCurve mNext inverse toOne mPrevious ;
   toOne @weak BorderCurve mPrevious inverse toOne mNext ;
 
-  property Int mX default 0 ;
-  property Int mY default 0 ;
-  property Int mCPX1 default 0 ;
-  property Int mCPY1 default 0 ;
-  property Int mCPX2 default 0 ;
-  property Int mCPY2 default 0 ;
+  property @generateDirectAccess Int mX default 0 ;
+  property @generateDirectAccess Int mY default 0 ;
+  property @generateDirectAccess Int mCPX1 default 0 ;
+  property @generateDirectAccess Int mCPY1 default 0 ;
+  property @generateDirectAccess Int mCPX2 default 0 ;
+  property @generateDirectAccess Int mCPY2 default 0 ;
 
   override transient BorderCurveDescriptor descriptor dependsFrom
     self.mX, self.mY, self.mNext.one.mX, self.mNext.one.mY,

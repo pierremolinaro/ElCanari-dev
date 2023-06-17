@@ -540,12 +540,12 @@ prefs {
 entity CanariLibraryEntry {
   externDelegate CanariLibraryEntryDelegate ;
 
-  property String mPath default "Hello" ;
-  property Bool mUses default yes ;
+  property @generateDirectAccess String mPath default "Hello" ;
+  property @generateDirectAccess Bool mUses default yes ;
   transient NSImage mStatusImage dependsFrom self.mPath ;
 
-  property String mLibraryRepositoryURL default "" ;
-  property String mUserAndPasswordTag default "" ;
+  property @generateDirectAccess String mLibraryRepositoryURL default "" ;
+  property @generateDirectAccess String mUserAndPasswordTag default "" ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

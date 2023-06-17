@@ -5,7 +5,7 @@
 graphic handlingOpposite entity NCInSchematic : SchematicObject {
   toOne @weak PointInSchematic mPoint inverse toOne mNC ;
 
-  property QuadrantRotation mOrientation default rotation0 ;
+  property @generateDirectAccess QuadrantRotation mOrientation default rotation0 ;
 
   override transient EBShape objectDisplay dependsFrom
     self.mPoint.one.location,

@@ -5,21 +5,21 @@
 graphic entity BoardRestrictRectangle : BoardObject {
   graphic canCopyAndPaste ;
 
-  property Int mX default 0 ;
+  property @generateDirectAccess Int mX default 0 ;
   property Int mXUnit default 2_286 ; // mil
-  property Int mY default 0 ;
+  property @generateDirectAccess Int mY default 0 ;
   property Int mYUnit default 2_286 ; // mil
-  property Int mWidth default 2_286_000 ;
+  property @generateDirectAccess Int mWidth default 2_286_000 ;
   property Int mWidthUnit default 2_286 ; // mil
-  property Int mHeight default 2_286_000 ;
+  property @generateDirectAccess Int mHeight default 2_286_000 ;
   property Int mHeightUnit default 2_286 ; // mil
 
-  property Bool mIsInFrontLayer default yes ;
-  property Bool mIsInBackLayer default yes ;
-  property Bool mIsInInner1Layer default no ;
-  property Bool mIsInInner2Layer default no ;
-  property Bool mIsInInner3Layer default no ;
-  property Bool mIsInInner4Layer default no ;
+  property @generateDirectAccess Bool mIsInFrontLayer default yes ;
+  property @generateDirectAccess Bool mIsInBackLayer default yes ;
+  property @generateDirectAccess Bool mIsInInner1Layer default no ;
+  property @generateDirectAccess Bool mIsInInner2Layer default no ;
+  property @generateDirectAccess Bool mIsInInner3Layer default no ;
+  property @generateDirectAccess Bool mIsInInner4Layer default no ;
 
   override transient EBShape objectDisplay dependsFrom
     self.mX, self.mY, self.mWidth, self.mHeight,

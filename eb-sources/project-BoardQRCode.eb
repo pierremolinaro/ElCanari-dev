@@ -5,20 +5,20 @@
 graphic handlingOpposite entity BoardQRCode : BoardObject {
   graphic canCopyAndPaste ;
 
-  property Int mCenterX default 0 ;
+  property @generateDirectAccess Int mCenterX default 0 ;
   property Int mXUnit default 2_286 ; // mil
-  property Int mCenterY default 0 ;
+  property @generateDirectAccess Int mCenterY default 0 ;
   property Int mYUnit default 2_286 ; // mil
   property Bool mDrawFrame default yes ;
   property Int mModuleSize  default 31_750 ; // px
   property Int mModuleSizeUnit  default 31_750 ; // px
   property Int mActualSizeUnit  default 31_750 ; // px
 
-  property BoardQRCodeLayer mLayer default legendFront ;
+  property @generateDirectAccess BoardQRCodeLayer mLayer default legendFront ;
   property String mText default "" ;
   property QRCodeCorrectionLevel mCorrectionLevel default quality ;
 
-  property Int mRotation default 0 ; // 1000 --> 1°
+  property @generateDirectAccess Int mRotation default 0 ; // 1000 --> 1°
 
   transient QRCodeDescriptor qrCodeDescriptor dependsFrom
     self.mText, self.mCorrectionLevel, self.mDrawFrame

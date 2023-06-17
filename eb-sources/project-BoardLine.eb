@@ -19,19 +19,19 @@ graphic entity BoardLine : BoardObject {
   property Int mWidth default 57_150 ; // 25 mils
   property Int mWidthUnit default 2_286 ; // mil
 
-  property Int mX1 default 0 ;
-  property Int mX1Unit default 2_286 ; // mil
+  property @generateDirectAccess Int mX1 default 0 ;
+  property @generateDirectAccess Int mX1Unit default 2_286 ; // mil
 
-  property Int mY1 default 0 ;
-  property Int mY1Unit default 2_286 ; // mil
+  property @generateDirectAccess Int mY1 default 0 ;
+  property @generateDirectAccess Int mY1Unit default 2_286 ; // mil
 
-  property Int mX2 default 457_200 ; // 200 mils
-  property Int mX2Unit default 2_286 ; // mil
+  property @generateDirectAccess Int mX2 default 457_200 ; // 200 mils
+  property @generateDirectAccess Int mX2Unit default 2_286 ; // mil
 
-  property Int mY2 default 457_200 ; // 200 mils
-  property Int mY2Unit default 2_286 ; // mil
+  property @generateDirectAccess Int mY2 default 457_200 ; // 200 mils
+  property @generateDirectAccess Int mY2Unit default 2_286 ; // mil
 
-  property BoardLineLayer mLayer default legendFront ;
+  property @generateDirectAccess BoardLineLayer mLayer default legendFront ;
 
   override transient EBShape objectDisplay dependsFrom
     self.mX1, self.mY1, self.mX2, self.mY2, self.mWidth, self.mLayer,

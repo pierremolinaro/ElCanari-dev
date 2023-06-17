@@ -217,7 +217,6 @@ final class PackageArc : PackageObject,
 
   final var pathIsClosed : Bool {
     get { return self.pathIsClosed_property.propval }
-    set { self.pathIsClosed_property.setProp (newValue) }
   }
 
   //····················································································································

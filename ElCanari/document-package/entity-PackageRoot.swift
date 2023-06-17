@@ -39,7 +39,6 @@ final class PackageRoot : EBManagedObject {
 
   final var comments : String {
     get { return self.comments_property.propval }
-    set { self.comments_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -355,7 +354,6 @@ final class PackageRoot : EBManagedObject {
 
   final var padNumbering : PadNumbering {
     get { return self.padNumbering_property.propval }
-    set { self.padNumbering_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -368,7 +366,6 @@ final class PackageRoot : EBManagedObject {
 
   final var counterClockNumberingStartAngle : Int {
     get { return self.counterClockNumberingStartAngle_property.propval }
-    set { self.counterClockNumberingStartAngle_property.setProp (newValue) }
   }
 
   //····················································································································

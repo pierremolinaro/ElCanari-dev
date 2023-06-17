@@ -5,12 +5,12 @@
 graphic handlingOpposite entity BoardImage : BoardObject {
   graphic canCopyAndPaste ;
 
-  property Int mCenterX default 0 ;
+  property @generateDirectAccess Int mCenterX default 0 ;
   property Int mXUnit default 2_286 ; // mil
-  property Int mCenterY default 0 ;
+  property @generateDirectAccess Int mCenterY default 0 ;
   property Int mYUnit default 2_286 ; // mil
   property Int mThreshold default 200 ;
-  property Data mImageData default empty ;
+  property @generateDirectAccess Data mImageData default empty ;
   property Bool mInvert default no ;
   property Bool mHorizontalFlip default no ;
   property Bool mVerticalFlip default no ;
@@ -20,11 +20,11 @@ graphic handlingOpposite entity BoardImage : BoardObject {
   property Int mActualWidthUnit  default 900_000 ; // cm
   property Int mActualHeightUnit  default 900_000 ; // cm
   property BoardImageDisplay mImageDisplay default original ;
-  property BoardQRCodeLayer mLayer default legendFront ;
+  property @generateDirectAccess BoardQRCodeLayer mLayer default legendFront ;
  
   property String mText default "" ;
 
-  property Int mRotation default 0 ; // 1000 --> 1°
+  property @generateDirectAccess Int mRotation default 0 ; // 1000 --> 1°
 
   computed Data computedDataImage dependsFrom self.mImageData, self.mScale, self.mImageDisplay ;
   

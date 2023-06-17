@@ -8,29 +8,22 @@ handlingOpposite entity MergerRoot {
   property Int zoom default 100 ;
   property @generateDirectAccess Bool showDisplaySettingView default no ;
   
-  property @generateDirectAccess QuadrantRotation modelInsertionRotation default rotation0 ;
+  property @generateDirectRead QuadrantRotation modelInsertionRotation default rotation0 ;
 
 //--- Board size
   property Bool automaticBoardSize default yes ;
   property Int boardManualWidth default 9_000_000 ;
   property Int boardManualHeight default 9_000_000 ;
-  property @generateDirectAccess Int boardWidthUnit default 90_000 ;
-  property @generateDirectAccess Int boardHeightUnit default 90_000 ;
+  property @generateDirectRead Int boardWidthUnit default 90_000 ;
+  property @generateDirectRead Int boardHeightUnit default 90_000 ;
 
-  property @generateDirectAccess Bool overlapingArrangment default no ;
+  property @generateDirectRead Bool overlapingArrangment default no ;
   property Int selectedBoardXUnit default 90_000 ;
   property Int selectedBoardYUnit default 90_000 ;
 
 //--- Board line width
-  property @generateDirectAccess Int boardLimitWidth default 90_000 ; // 1mm
-  property @generateDirectAccess Int boardLimitWidthUnit default 90_000 ; // 1mm
-
-//--- Arrow magnitude
-//  property Int arrowMagnitude default 900_000 ; // 10mm
-//  property Int arrowMagnitudeUnit default 90_000 ; // 1mm
-//
-//  property Int shiftArrowMagnitude default 3_600_000 ; // 40mm
-//  property Int shiftArrowMagnitudeUnit default 90_000 ; // 1mm
+  property @generateDirectRead Int boardLimitWidth default 90_000 ; // 1mm
+  property @generateDirectRead Int boardLimitWidthUnit default 90_000 ; // 1mm
 
 //--- Board model name array
   transient StringTagArray modelNames dependsFrom self.boardModels.all.name, self.boardModels ;
@@ -56,12 +49,12 @@ handlingOpposite entity MergerRoot {
   transient Int boardHeight dependsFrom self.boardRect ;
 
 //--- PDF Generation
-  property @generateDirectAccess NSColor mPDFBoardBackgroundColor default lightGray ;
+  property @generateDirectRead NSColor mPDFBoardBackgroundColor default lightGray ;
 
 //--- Artwork
   toOne ArtworkRoot mArtwork ;
   property @generateDirectAccess String mArtworkName default "" ;
-  property  @generateDirectAccess Int mArtworkVersion default 0 ;
+  property @generateDirectAccess Int mArtworkVersion default 0 ;
 
   property proxy Int minPPTPTTTWdisplayUnit : mArtwork.minPPTPTTTWdisplayUnit ;
   property proxy Int minPPTPTTTW : mArtwork.minPPTPTTTW ;

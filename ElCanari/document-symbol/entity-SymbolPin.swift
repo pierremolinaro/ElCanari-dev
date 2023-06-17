@@ -190,7 +190,6 @@ final class SymbolPin : SymbolObject,
 
   final var name : String {
     get { return self.name_property.propval }
-    set { self.name_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -203,7 +202,6 @@ final class SymbolPin : SymbolObject,
 
   final var nameHorizontalAlignment : HorizontalAlignment {
     get { return self.nameHorizontalAlignment_property.propval }
-    set { self.nameHorizontalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -216,7 +214,6 @@ final class SymbolPin : SymbolObject,
 
   final var numberHorizontalAlignment : HorizontalAlignment {
     get { return self.numberHorizontalAlignment_property.propval }
-    set { self.numberHorizontalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -229,7 +226,6 @@ final class SymbolPin : SymbolObject,
 
   final var pinNameIsDisplayedInSchematics : Bool {
     get { return self.pinNameIsDisplayedInSchematics_property.propval }
-    set { self.pinNameIsDisplayedInSchematics_property.setProp (newValue) }
   }
 
   //····················································································································

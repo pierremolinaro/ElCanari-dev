@@ -3,10 +3,10 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 handlingOpposite entity DeviceInProject {
-  property String mDeviceName default "" ;
-  property String mPrefix default "" ;
-  property Int mDeviceVersion default 0 ;
-  property Data mDeviceFileData default empty ;
+  property @generateDirectAccess String mDeviceName default "" ;
+  property @generateDirectAccess String mPrefix default "" ;
+  property @generateDirectAccess Int mDeviceVersion default 0 ;
+  property @generateDirectAccess Data mDeviceFileData default empty ;
 
   toMany DevicePackageInProject mPackages ;
   toMany DeviceSymbolInstanceInProject mSymbols ;

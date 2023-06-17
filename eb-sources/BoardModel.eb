@@ -1,18 +1,18 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 handlingOpposite entity BoardModel {
-  property String artworkName default "" ;
-  property String name default "" ;
-  property Int modelWidth default 0 ;
-  property Int modelWidthUnit default 0 ;
-  property Int modelHeight default 0 ;
-  property Int modelHeightUnit default 0 ;
+  property @generateDirectAccess String artworkName default "" ;
+  property @generateDirectAccess String name default "" ;
+  property @generateDirectAccess Int modelWidth default 0 ;
+  property @generateDirectAccess Int modelWidthUnit default 0 ;
+  property @generateDirectAccess Int modelHeight default 0 ;
+  property @generateDirectAccess Int modelHeightUnit default 0 ;
 
   property Int zoom default 0 ; // 0 means "fit to window"
 
 //--- Model version
-  property Int modelVersion default 0 ;
-  property Bool ignoreModelVersionError default no ;
+  property @generateDirectAccess Int modelVersion default 0 ;
+  property @generateDirectAccess Bool ignoreModelVersionError default no ;
 
   transient String errorArchiveVersionMessage dependsFrom self.modelVersion ;
 
@@ -60,7 +60,7 @@ handlingOpposite entity BoardModel {
   ;
  
 //--- Layer configuration
-  property LayerConfiguration layerConfiguration default twoLayers ;
+  property @generateDirectAccess LayerConfiguration layerConfiguration default twoLayers ;
   
   transient String layerConfigurationString dependsFrom self.layerConfiguration ;
 
@@ -192,8 +192,8 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray traversingPadsBezierPaths dependsFrom self.traversingPadArray ;
 
 //--- Board limits
-  property Int modelLimitWidth default 0 ;
-  property Int modelLimitWidthUnit default 0 ;
+  property @generateDirectAccess Int modelLimitWidth default 0 ;
+  property @generateDirectAccess Int modelLimitWidthUnit default 0 ;
 
   transient BezierPathArray boardLimitsBezierPaths dependsFrom self.modelWidth, self.modelHeight, self.modelLimitWidth ;
 

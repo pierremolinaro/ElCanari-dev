@@ -291,7 +291,6 @@ final class PackageZone : PackageObject,
 
   final var displayZoneName : Bool {
     get { return self.displayZoneName_property.propval }
-    set { self.displayZoneName_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -304,7 +303,6 @@ final class PackageZone : PackageObject,
 
   final var displayZoneNameWithPadNumbers : Bool {
     get { return self.displayZoneNameWithPadNumbers_property.propval }
-    set { self.displayZoneNameWithPadNumbers_property.setProp (newValue) }
   }
 
   //····················································································································

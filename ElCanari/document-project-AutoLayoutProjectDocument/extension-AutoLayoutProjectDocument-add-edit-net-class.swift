@@ -174,16 +174,6 @@ extension AutoLayoutProjectDocument {
           inNetClass.mAllowTracksOnBackSide = allowBackTrack_property.propval
           inCallBack ()
         }
-//        widthFields.unbind_dimensionAndUnit ()
-//        holeDiameterFields.unbind_dimensionAndUnit ()
-//        padDiameterFields.unbind_dimensionAndUnit ()
-//        wireColorWell.unbind_color ()
-//        allowFrontTrackCheckBox.unbind_value ()
-//        allowInner1TrackCheckBox.unbind_value ()
-//        allowInner2TrackCheckBox.unbind_value ()
-//        allowInner3TrackCheckBox.unbind_value ()
-//        allowInner4TrackCheckBox.unbind_value ()
-//        allowBackTrackCheckBox.unbind_value ()
       }
     }
   }

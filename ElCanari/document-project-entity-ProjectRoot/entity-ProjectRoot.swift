@@ -46,7 +46,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mPDFBoardBackgroundColor : NSColor {
     get { return self.mPDFBoardBackgroundColor_property.propval }
-    set { self.mPDFBoardBackgroundColor_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -59,7 +58,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mCheckClearanceBetweenPadsOfSameNet : Bool {
     get { return self.mCheckClearanceBetweenPadsOfSameNet_property.propval }
-    set { self.mCheckClearanceBetweenPadsOfSameNet_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -111,7 +109,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mBoardSideForNewTrack : TrackSide {
     get { return self.mBoardSideForNewTrack_property.propval }
-    set { self.mBoardSideForNewTrack_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -124,7 +121,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mDirectionForNewTrack : TrackCreationDirection {
     get { return self.mDirectionForNewTrack_property.propval }
-    set { self.mDirectionForNewTrack_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -137,7 +133,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mBoardLayerForNewText : BoardTextLayer {
     get { return self.mBoardLayerForNewText_property.propval }
-    set { self.mBoardLayerForNewText_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -150,7 +145,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mBoardLayerForNewQRCode : BoardQRCodeLayer {
     get { return self.mBoardLayerForNewQRCode_property.propval }
-    set { self.mBoardLayerForNewQRCode_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -163,7 +157,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mBoardLayerForNewImage : BoardQRCodeLayer {
     get { return self.mBoardLayerForNewImage_property.propval }
-    set { self.mBoardLayerForNewImage_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -176,7 +169,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mBoardLayerForNewLine : BoardLineLayer {
     get { return self.mBoardLayerForNewLine_property.propval }
-    set { self.mBoardLayerForNewLine_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -195,7 +187,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mNewRestrictRectangleLayers : Int {
     get { return self.mNewRestrictRectangleLayers_property.propval }
-    set { self.mNewRestrictRectangleLayers_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -208,7 +199,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mAutoRouterPreferredDirections : AutorouterPreferredDirections {
     get { return self.mAutoRouterPreferredDirections_property.propval }
-    set { self.mAutoRouterPreferredDirections_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -221,7 +211,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mAutorouterSnapAngle : AutorouterSnapAngle {
     get { return self.mAutorouterSnapAngle_property.propval }
-    set { self.mAutorouterSnapAngle_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -234,7 +223,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mRouteDirection : RouteDirection {
     get { return self.mRouteDirection_property.propval }
-    set { self.mRouteDirection_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -247,7 +235,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mRouteOrigin : RouteOrigin {
     get { return self.mRouteOrigin_property.propval }
-    set { self.mRouteOrigin_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -266,7 +253,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mExportExistingTracksAndVias : Bool {
     get { return self.mExportExistingTracksAndVias_property.propval }
-    set { self.mExportExistingTracksAndVias_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -279,7 +265,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mExportExistingTracksAndVias2 : Bool {
     get { return self.mExportExistingTracksAndVias2_property.propval }
-    set { self.mExportExistingTracksAndVias2_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -298,7 +283,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mLayoutClearance : Int {
     get { return self.mLayoutClearance_property.propval }
-    set { self.mLayoutClearance_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -360,7 +344,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mBoardGridStep : Int {
     get { return self.mBoardGridStep_property.propval }
-    set { self.mBoardGridStep_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -373,7 +356,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mBoardGridStepUnit : Int {
     get { return self.mBoardGridStepUnit_property.propval }
-    set { self.mBoardGridStepUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -392,7 +374,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mControlKeyHiliteDiameter : Double {
     get { return self.mControlKeyHiliteDiameter_property.propval }
-    set { self.mControlKeyHiliteDiameter_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -418,7 +399,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mBoardLimitsWidth : Int {
     get { return self.mBoardLimitsWidth_property.propval }
-    set { self.mBoardLimitsWidth_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -431,7 +411,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mBoardLimitsWidthUnit : Int {
     get { return self.mBoardLimitsWidthUnit_property.propval }
-    set { self.mBoardLimitsWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -444,7 +423,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mBoardClearance : Int {
     get { return self.mBoardClearance_property.propval }
-    set { self.mBoardClearance_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -499,7 +477,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mBoardLimitsGridStep : Int {
     get { return self.mBoardLimitsGridStep_property.propval }
-    set { self.mBoardLimitsGridStep_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -542,7 +519,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mBoardShape : BoardShape {
     get { return self.mBoardShape_property.propval }
-    set { self.mBoardShape_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -561,7 +537,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mRectangularBoardWidth : Int {
     get { return self.mRectangularBoardWidth_property.propval }
-    set { self.mRectangularBoardWidth_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -580,7 +555,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mRectangularBoardHeight : Int {
     get { return self.mRectangularBoardHeight_property.propval }
-    set { self.mRectangularBoardHeight_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -740,7 +714,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mSchematicCustomWidth : Int {
     get { return self.mSchematicCustomWidth_property.propval }
-    set { self.mSchematicCustomWidth_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -759,7 +732,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mSchematicCustomHeight : Int {
     get { return self.mSchematicCustomHeight_property.propval }
-    set { self.mSchematicCustomHeight_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -886,7 +858,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var packageDrawingWidthMultpliedByTenForBoard : Int {
     get { return self.packageDrawingWidthMultpliedByTenForBoard_property.propval }
-    set { self.packageDrawingWidthMultpliedByTenForBoard_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -944,7 +915,6 @@ final class ProjectRoot : EBManagedObject {
 
   final var mSchematicSheetOrientation : SchematicSheetOrientation {
     get { return self.mSchematicSheetOrientation_property.propval }
-    set { self.mSchematicSheetOrientation_property.setProp (newValue) }
   }
 
   //····················································································································

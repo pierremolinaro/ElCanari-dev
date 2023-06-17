@@ -20,7 +20,6 @@ final class ArtworkRoot : EBManagedObject {
 
   final var layerConfiguration : LayerConfiguration {
     get { return self.layerConfiguration_property.propval }
-    set { self.layerConfiguration_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -39,7 +38,6 @@ final class ArtworkRoot : EBManagedObject {
 
   final var comments : String {
     get { return self.comments_property.propval }
-    set { self.comments_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -58,7 +56,6 @@ final class ArtworkRoot : EBManagedObject {
 
   final var minPPTPTTTW : Int {
     get { return self.minPPTPTTTW_property.propval }
-    set { self.minPPTPTTTW_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -77,7 +74,6 @@ final class ArtworkRoot : EBManagedObject {
 
   final var minValueForOARinEBUnit : Int {
     get { return self.minValueForOARinEBUnit_property.propval }
-    set { self.minValueForOARinEBUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -96,7 +92,6 @@ final class ArtworkRoot : EBManagedObject {
 
   final var minValueForPHDinEBUnit : Int {
     get { return self.minValueForPHDinEBUnit_property.propval }
-    set { self.minValueForPHDinEBUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -109,7 +104,6 @@ final class ArtworkRoot : EBManagedObject {
 
   final var minValueForBoardLimitWidthDisplayUnit : Int {
     get { return self.minValueForBoardLimitWidthDisplayUnit_property.propval }
-    set { self.minValueForBoardLimitWidthDisplayUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -122,7 +116,6 @@ final class ArtworkRoot : EBManagedObject {
 
   final var minValueForBoardLimitWidth : Int {
     get { return self.minValueForBoardLimitWidth_property.propval }
-    set { self.minValueForBoardLimitWidth_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -135,7 +128,6 @@ final class ArtworkRoot : EBManagedObject {
 
   final var title : String {
     get { return self.title_property.propval }
-    set { self.title_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -148,7 +140,6 @@ final class ArtworkRoot : EBManagedObject {
 
   final var drillDataFileExtension : String {
     get { return self.drillDataFileExtension_property.propval }
-    set { self.drillDataFileExtension_property.setProp (newValue) }
   }
 
   //····················································································································

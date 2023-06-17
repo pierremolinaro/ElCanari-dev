@@ -11,10 +11,10 @@ graphic entity SymbolPin : SymbolObject {
 
   property @signature @generateDirectAccess Int xPin default 0 ;
   property @signature @generateDirectAccess Int yPin default 0 ;
-  property @signature Int xName default 0 ;
-  property @signature Int yName default 2_286_00 ;
-  property @signature Int xNumber default 0 ;
-  property @signature Int yNumber default -2_286_00 ;
+  property @signature @generateDirectAccess Int xName default 0 ;
+  property @signature @generateDirectAccess Int yName default 2_286_00 ;
+  property @signature @generateDirectAccess Int xNumber default 0 ;
+  property @signature @generateDirectAccess Int yNumber default -2_286_00 ;
   property @signature String name default "" ;
   property @signature HorizontalAlignment nameHorizontalAlignment default center ;
   property @signature HorizontalAlignment numberHorizontalAlignment default center ;
@@ -60,7 +60,7 @@ graphic entity SymbolText : SymbolObject {
 
   property @signature @generateDirectAccess Int x default 0 ;
   property @signature @generateDirectAccess Int y default 0 ;
-  property @signature @generateDirectAccess String text default "text" ;
+  property @signature @generateDirectRead String text default "text" ;
   property @signature HorizontalAlignment horizontalAlignment default center ;
 
   override transient EBShape objectDisplay dependsFrom
@@ -211,7 +211,7 @@ entity SymbolRoot {
   property Int selectedInspector default 0 ;
 
 //--- Comment
-  property @generateDirectAccess @signature String comments default "" ;
+  property @generateDirectRead @signature String comments default "" ;
 
 //--- Grid and display inspector
   property Bool horizontalFlip default no ;

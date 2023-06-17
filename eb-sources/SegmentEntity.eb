@@ -1,11 +1,11 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 entity SegmentEntity {
-  property Int x1 default 0 ;
-  property Int y1 default 0 ;
-  property Int x2 default 0 ;
-  property Int y2 default 0 ;
-  property Int width default 0 ;
+  property @generateDirectAccess Int x1 default 0 ;
+  property @generateDirectAccess Int y1 default 0 ;
+  property @generateDirectAccess Int x2 default 0 ;
+  property @generateDirectAccess Int y2 default 0 ;
+  property @generateDirectAccess Int width default 0 ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

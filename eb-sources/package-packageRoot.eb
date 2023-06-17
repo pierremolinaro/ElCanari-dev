@@ -45,7 +45,7 @@ handlingOpposite entity PackageRoot {
   property Int selectedInspector default 0 ;
 
 //--- Comment
-  property @generateDirectAccess @signature String comments default "" ;
+  property @generateDirectRead @signature String comments default "" ;
 
 //--- Program
   property @generateDirectAccess @signature String program default "" ;
@@ -108,10 +108,10 @@ handlingOpposite entity PackageRoot {
   property Int knobSizeMultpliedByTen default 20 ;
 
 //--- Pad numbering
-  property @generateDirectAccess PadNumbering padNumbering default noNumbering ;
+  property @generateDirectRead PadNumbering padNumbering default noNumbering ;
   transient Bool freePadNumbering dependsFrom self.padNumbering ;
   transient Bool counterClockNumbering dependsFrom self.padNumbering ;
-  property @generateDirectAccess @signature Int counterClockNumberingStartAngle default 90 ;
+  property @generateDirectRead @signature Int counterClockNumberingStartAngle default 90 ;
 
 //--- XY placard unit
   property @signature Int xPlacardUnit default 2_286 ; // mils
@@ -160,16 +160,16 @@ handlingOpposite entity PackageRoot {
 graphic entity PackageSegment : PackageObject {
   graphic canCopyAndPaste ;
 
-  property @signature Int x1 default 0 ;
-  property @signature Int y1 default 0 ;
-  property @signature Int x2 default 6_858_00 ;
-  property @signature Int y2 default 6_858_00 ;
+  property @signature @generateDirectAccess Int x1 default 0 ;
+  property @signature @generateDirectAccess Int y1 default 0 ;
+  property @signature @generateDirectAccess Int x2 default 6_858_00 ;
+  property @signature @generateDirectAccess Int y2 default 6_858_00 ;
 
-  property @signature Int x1Unit default 2_286 ;
-  property @signature Int y1Unit default 2_286 ;
-  property @signature Int x2Unit default 2_286 ;
-  property @signature Int y2Unit default 2_286 ;
-  property @signature Int lengthUnit default 2_286 ;
+  property @signature @generateDirectAccess Int x1Unit default 2_286 ;
+  property @signature @generateDirectAccess Int y1Unit default 2_286 ;
+  property @signature @generateDirectAccess Int x2Unit default 2_286 ;
+  property @signature @generateDirectAccess Int y2Unit default 2_286 ;
+  property @signature @generateDirectAccess Int lengthUnit default 2_286 ;
 
   transient NSBezierPath strokeBezierPath dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
@@ -189,23 +189,23 @@ graphic entity PackageSegment : PackageObject {
 graphic entity PackageBezier : PackageObject {
   graphic canCopyAndPaste ;
 
-  property @signature Int x1 default 0 ;
-  property @signature Int y1 default 6_858_00 ;
-  property @signature Int x2 default 0 ;
-  property @signature Int y2 default 0 ;
-  property @signature Int cpx1 default 6_858_00 ;
-  property @signature Int cpy1 default 6_858_00 ;
-  property @signature Int cpx2 default 6_858_00 ;
-  property @signature Int cpy2 default 0 ;
+  property @signature @generateDirectAccess Int x1 default 0 ;
+  property @signature @generateDirectAccess Int y1 default 6_858_00 ;
+  property @signature @generateDirectAccess Int x2 default 0 ;
+  property @signature @generateDirectAccess Int y2 default 0 ;
+  property @signature @generateDirectAccess Int cpx1 default 6_858_00 ;
+  property @signature @generateDirectAccess Int cpy1 default 6_858_00 ;
+  property @signature @generateDirectAccess Int cpx2 default 6_858_00 ;
+  property @signature @generateDirectAccess Int cpy2 default 0 ;
 
-  property @signature Int x1Unit default 2_286 ;
-  property @signature Int y1Unit default 2_286 ;
-  property @signature Int x2Unit default 2_286 ;
-  property @signature Int y2Unit default 2_286 ;
-  property @signature Int cpx1Unit default 2_286 ;
-  property @signature Int cpy1Unit default 2_286 ;
-  property @signature Int cpx2Unit default 2_286 ;
-  property @signature Int cpy2Unit default 2_286 ;
+  property @signature @generateDirectAccess Int x1Unit default 2_286 ;
+  property @signature @generateDirectAccess Int y1Unit default 2_286 ;
+  property @signature @generateDirectAccess Int x2Unit default 2_286 ;
+  property @signature @generateDirectAccess Int y2Unit default 2_286 ;
+  property @signature @generateDirectAccess Int cpx1Unit default 2_286 ;
+  property @signature @generateDirectAccess Int cpy1Unit default 2_286 ;
+  property @signature @generateDirectAccess Int cpx2Unit default 2_286 ;
+  property @signature @generateDirectAccess Int cpy2Unit default 2_286 ;
 
   transient NSBezierPath strokeBezierPath dependsFrom
      self.x1, self.y1, self.x2, self.y2,
@@ -234,15 +234,15 @@ graphic entity PackageBezier : PackageObject {
 graphic entity PackageOval : PackageObject {
   graphic canCopyAndPaste ;
 
-  property @signature Int x default 0 ;
-  property @signature Int y default 0 ;
-  property @signature Int width default 6_858_00 ;
-  property @signature Int height default 6_858_00 ;
+  property @signature @generateDirectAccess Int x default 0 ;
+  property @signature @generateDirectAccess Int y default 0 ;
+  property @signature @generateDirectAccess Int width default 6_858_00 ;
+  property @signature @generateDirectAccess Int height default 6_858_00 ;
 
-  property @signature Int xUnit default 2_286 ;
-  property @signature Int yUnit default 2_286 ;
-  property @signature Int widthUnit default 2_286 ;
-  property @signature Int heightUnit default 2_286 ;
+  property @signature @generateDirectAccess Int xUnit default 2_286 ;
+  property @signature @generateDirectAccess Int yUnit default 2_286 ;
+  property @signature @generateDirectAccess Int widthUnit default 2_286 ;
+  property @signature @generateDirectAccess Int heightUnit default 2_286 ;
 
   transient NSBezierPath strokeBezierPath dependsFrom
      self.x, self.y, self.width, self.height
@@ -265,20 +265,20 @@ graphic entity PackageOval : PackageObject {
 graphic entity PackageArc : PackageObject {
   graphic canCopyAndPaste ;
 
-  property @signature Int xCenter default 3_429_00 ;
-  property @signature Int yCenter default 3_429_00 ;
-  property @signature Int radius default 3_429_00 ;
-  property @signature Int startAngle default 45_000 ; // In degrees * 1000
-  property @signature Int arcAngle default 270_000 ; // In degrees * 1000
-  property @signature Int startTangent default 0 ;
-  property @signature Int endTangent default 0 ;
+  property @signature @generateDirectAccess Int xCenter default 3_429_00 ;
+  property @signature @generateDirectAccess Int yCenter default 3_429_00 ;
+  property @signature @generateDirectAccess Int radius default 3_429_00 ;
+  property @signature @generateDirectAccess Int startAngle default 45_000 ; // In degrees * 1000
+  property @signature @generateDirectAccess Int arcAngle default 270_000 ; // In degrees * 1000
+  property @signature @generateDirectAccess Int startTangent default 0 ;
+  property @signature @generateDirectAccess Int endTangent default 0 ;
   property @signature Bool pathIsClosed default no ;
 
-  property @signature Int xCenterUnit default 2_286 ;
-  property @signature Int yCenterUnit default 2_286 ;
-  property @signature Int radiusUnit  default 2_286 ;
-  property @signature Int startTangentUnit default 2_286 ;
-  property @signature Int endTangentUnit default 2_286 ;
+  property @signature @generateDirectAccess Int xCenterUnit default 2_286 ;
+  property @signature @generateDirectAccess Int yCenterUnit default 2_286 ;
+  property @signature @generateDirectAccess Int radiusUnit  default 2_286 ;
+  property @signature @generateDirectAccess Int startTangentUnit default 2_286 ;
+  property @signature @generateDirectAccess Int endTangentUnit default 2_286 ;
 
   transient EBBezierPath strokeBezierPath dependsFrom
      self.xCenter, self.yCenter, self.radius, self.startAngle, self.arcAngle,
@@ -306,22 +306,22 @@ graphic entity PackageArc : PackageObject {
 graphic handlingOpposite entity PackagePad : PackageObject {
   graphic canCopyAndPaste ;
 
-  property @signature Int xCenter default 0 ;
-  property @signature Int yCenter default 0 ;
-  property @signature Int width default 114_300 ;
-  property @signature Int height default 228_600 ;
-  property @signature Int holeWidth default 57_150 ;
-  property @signature Int holeHeight default 57_150 ;
-  property @signature PadShape padShape default octo ;
-  property @signature PadStyle padStyle default traversing ;
-  property @signature Int padNumber default 0 ;
+  property @signature @generateDirectAccess Int xCenter default 0 ;
+  property @signature @generateDirectAccess Int yCenter default 0 ;
+  property @signature @generateDirectAccess Int width default 114_300 ;
+  property @signature @generateDirectAccess Int height default 228_600 ;
+  property @signature @generateDirectAccess Int holeWidth default 57_150 ;
+  property @signature @generateDirectAccess Int holeHeight default 57_150 ;
+  property @signature @generateDirectAccess PadShape padShape default octo ;
+  property @signature @generateDirectAccess PadStyle padStyle default traversing ;
+  property @signature @generateDirectAccess Int padNumber default 0 ;
 
-  property @signature Int xCenterUnit default 2_286 ;
-  property @signature Int yCenterUnit default 2_286 ;
-  property @signature Int widthUnit  default 2_286 ;
-  property @signature Int heightUnit  default 2_286 ;
-  property @signature Int holeWidthUnit default 2_286 ;
-  property @signature Int holeHeightUnit default 2_286 ;
+  property @signature @generateDirectAccess Int xCenterUnit default 2_286 ;
+  property @signature @generateDirectAccess Int yCenterUnit default 2_286 ;
+  property @signature @generateDirectAccess Int widthUnit  default 2_286 ;
+  property @signature @generateDirectAccess Int heightUnit  default 2_286 ;
+  property @signature @generateDirectAccess Int holeWidthUnit default 2_286 ;
+  property @signature @generateDirectAccess Int holeHeightUnit default 2_286 ;
   property @signature Int annularRingUnit default 2_286 ;
 
   toOne PackageZone zone ;
@@ -374,21 +374,21 @@ graphic handlingOpposite entity PackagePad : PackageObject {
 graphic handlingOpposite entity PackageSlavePad : PackageObject {
   graphic canCopyAndPaste ;
 
-  property @signature Int xCenter default 0 ;
-  property @signature Int yCenter default 0 ;
-  property @signature Int width default 114_300 ;
-  property @signature Int height default 228_600 ;
-  property @signature Int holeWidth default 57_150 ;
-  property @signature Int holeHeight default 57_150 ;
-  property @signature PadShape padShape default octo ;
-  property @signature SlavePadStyle padStyle default traversing ;
+  property @signature @generateDirectAccess Int xCenter default 0 ;
+  property @signature @generateDirectAccess Int yCenter default 0 ;
+  property @signature @generateDirectAccess Int width default 114_300 ;
+  property @signature @generateDirectAccess Int height default 228_600 ;
+  property @signature @generateDirectAccess Int holeWidth default 57_150 ;
+  property @signature @generateDirectAccess Int holeHeight default 57_150 ;
+  property @signature @generateDirectAccess PadShape padShape default octo ;
+  property @signature @generateDirectAccess SlavePadStyle padStyle default traversing ;
 
-  property @signature Int xCenterUnit default 2_286 ;
-  property @signature Int yCenterUnit default 2_286 ;
-  property @signature Int widthUnit  default 2_286 ;
-  property @signature Int heightUnit  default 2_286 ;
-  property @signature Int holeWidthUnit default 2_286 ;
-  property @signature Int holeHeightUnit default 2_286 ;
+  property @signature @generateDirectAccess Int xCenterUnit default 2_286 ;
+  property @signature @generateDirectAccess Int yCenterUnit default 2_286 ;
+  property @signature @generateDirectAccess Int widthUnit  default 2_286 ;
+  property @signature @generateDirectAccess Int heightUnit  default 2_286 ;
+  property @signature @generateDirectAccess Int holeWidthUnit default 2_286 ;
+  property @signature @generateDirectAccess Int holeHeightUnit default 2_286 ;
   property @signature Int annularRingUnit default 2_286 ;
 
   toOne @weak PackagePad master inverse toMany slaves ;
@@ -428,15 +428,15 @@ graphic handlingOpposite entity PackageSlavePad : PackageObject {
 graphic entity PackageGuide : PackageObject {
   graphic canCopyAndPaste ;
 
-  property @signature Int x1 default 0 ;
-  property @signature Int y1 default 0 ;
-  property @signature Int x2 default 6_858_00 ;
-  property @signature Int y2 default 6_858_00 ;
+  property @signature @generateDirectAccess Int x1 default 0 ;
+  property @signature @generateDirectAccess Int y1 default 0 ;
+  property @signature @generateDirectAccess Int x2 default 6_858_00 ;
+  property @signature @generateDirectAccess Int y2 default 6_858_00 ;
 
-  property @signature Int x1Unit default 2_286 ;
-  property @signature Int y1Unit default 2_286 ;
-  property @signature Int x2Unit default 2_286 ;
-  property @signature Int y2Unit default 2_286 ;
+  property @signature @generateDirectAccess Int x1Unit default 2_286 ;
+  property @signature @generateDirectAccess Int y1Unit default 2_286 ;
+  property @signature @generateDirectAccess Int x2Unit default 2_286 ;
+  property @signature @generateDirectAccess Int y2Unit default 2_286 ;
 
   override transient EBShape objectDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
@@ -453,22 +453,22 @@ graphic entity PackageGuide : PackageObject {
 graphic entity PackageDimension : PackageObject {
   graphic canCopyAndPaste ;
 
-  property @signature Int x1 default 0 ;
-  property @signature Int y1 default 0 ;
-  property @signature Int x2 default 6_858_00 ;
-  property @signature Int y2 default 0 ;
-  property @signature Int xDimension default 0 ;
-  property @signature Int yDimension default 0 ;
+  property @signature @generateDirectAccess Int x1 default 0 ;
+  property @signature @generateDirectAccess Int y1 default 0 ;
+  property @signature @generateDirectAccess Int x2 default 6_858_00 ;
+  property @signature @generateDirectAccess Int y2 default 0 ;
+  property @signature @generateDirectAccess Int xDimension default 0 ;
+  property @signature @generateDirectAccess Int yDimension default 0 ;
 
-  property @signature Int x1Unit default 2_286 ;
-  property @signature Int y1Unit default 2_286 ;
+  property @signature @generateDirectAccess Int x1Unit default 2_286 ;
+  property @signature @generateDirectAccess Int y1Unit default 2_286 ;
 
-  property @signature Int x2Unit default 2_286 ;
-  property @signature Int y2Unit default 2_286 ;
-  property @signature Int xDimensionUnit default 2_286 ;
-  property @signature Int yDimensionUnit default 2_286 ;
-  property @signature Int distanceUnit default 2_286 ;
-  property @signature Bool drawDimensionBackground default yes ;
+  property @signature @generateDirectAccess Int x2Unit default 2_286 ;
+  property @signature @generateDirectAccess Int y2Unit default 2_286 ;
+  property @signature @generateDirectAccess Int xDimensionUnit default 2_286 ;
+  property @signature @generateDirectAccess Int yDimensionUnit default 2_286 ;
+  property @signature @generateDirectAccess Int distanceUnit default 2_286 ;
+  property @signature @generateDirectAccess Bool drawDimensionBackground default yes ;
 
 
   transient Int distanceInCanariUnit dependsFrom
@@ -500,27 +500,27 @@ graphic entity PackageDimension : PackageObject {
 graphic entity PackageZone : PackageObject {
   graphic canCopyAndPaste ;
 
-  property @signature Int x default 0 ;
-  property @signature Int y default 0 ;
-  property @signature Int width default 4_572_00 ;
-  property @signature Int height default 4_572_00 ;
+  property @signature @generateDirectAccess Int x default 0 ;
+  property @signature @generateDirectAccess Int y default 0 ;
+  property @signature @generateDirectAccess Int width default 4_572_00 ;
+  property @signature @generateDirectAccess Int height default 4_572_00 ;
 
-  property @signature Int xUnit default 2_286 ;
-  property @signature Int yUnit default 2_286 ;
-  property @signature Int widthUnit default 2_286 ;
-  property @signature Int heightUnit default 2_286 ;
+  property @signature @generateDirectAccess Int xUnit default 2_286 ;
+  property @signature @generateDirectAccess Int yUnit default 2_286 ;
+  property @signature @generateDirectAccess Int widthUnit default 2_286 ;
+  property @signature @generateDirectAccess Int heightUnit default 2_286 ;
 
-  property @signature String zoneName default "" ;
+  property @signature @generateDirectAccess String zoneName default "" ;
   property Bool displayZoneName default yes ;
   property Bool displayZoneNameWithPadNumbers default yes ;
   toMany @signature ForbiddenPadNumber forbiddenPadNumbers ;
-  property @signature Int xName default 2_286_00 ;
-  property @signature Int yName default 2_286_00 ;
-  property @signature Int xNameUnit default 2_286 ;
-  property @signature Int yNameUnit default 2_286 ;
+  property @signature @generateDirectAccess Int xName default 2_286_00 ;
+  property @signature @generateDirectAccess Int yName default 2_286_00 ;
+  property @signature @generateDirectAccess Int xNameUnit default 2_286 ;
+  property @signature @generateDirectAccess Int yNameUnit default 2_286 ;
 
 //--- Pad numbering
-  property @generateDirectAccess @signature PadNumbering zoneNumbering default noNumbering ;
+  property @signature @generateDirectAccess PadNumbering zoneNumbering default noNumbering ;
 
   override transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.width, self.height,
@@ -552,7 +552,7 @@ graphic entity PackageZone : PackageObject {
 //——————————————————————————————————————————————————————————————————————————————
 
 entity ForbiddenPadNumber {
-  property @signature Int padNumber default 0 ;
+  property @generateDirectAccess @signature Int padNumber default 0 ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————
@@ -560,12 +560,12 @@ entity ForbiddenPadNumber {
 graphic handlingOpposite entity PackageModelImageDoublePoint {
   toOne @weak PackageRoot mRoot inverse toMany mModelImageObjects ;
 
-  property Int mFirstX default 457_200 ;
-  property Int mFirstY default 457_200 ;
+  property @generateDirectAccess Int mFirstX default 457_200 ;
+  property @generateDirectAccess Int mFirstY default 457_200 ;
   property NSColor mFirstColor default green ;
 
-  property Int mSecondDx default 457_200 ;
-  property Int mSecondDy default 457_200 ;
+  property @generateDirectAccess Int mSecondDx default 457_200 ;
+  property @generateDirectAccess Int mSecondDy default 457_200 ;
   property NSColor mSecondColor default brown ;
 
   transient EBShape objectDisplay dependsFrom

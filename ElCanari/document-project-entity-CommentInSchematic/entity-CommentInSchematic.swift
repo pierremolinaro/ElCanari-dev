@@ -83,7 +83,6 @@ final class CommentInSchematic : SchematicObject,
 
   final var mColor : NSColor {
     get { return self.mColor_property.propval }
-    set { self.mColor_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -96,7 +95,6 @@ final class CommentInSchematic : SchematicObject,
 
   final var mSize : Double {
     get { return self.mSize_property.propval }
-    set { self.mSize_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -109,7 +107,6 @@ final class CommentInSchematic : SchematicObject,
 
   final var mHorizontalAlignment : HorizontalAlignment {
     get { return self.mHorizontalAlignment_property.propval }
-    set { self.mHorizontalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -122,7 +119,6 @@ final class CommentInSchematic : SchematicObject,
 
   final var mVerticalAlignment : VerticalAlignment {
     get { return self.mVerticalAlignment_property.propval }
-    set { self.mVerticalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -161,7 +157,6 @@ final class CommentInSchematic : SchematicObject,
 
   final var mComment : String {
     get { return self.mComment_property.propval }
-    set { self.mComment_property.setProp (newValue) }
   }
 
   //····················································································································

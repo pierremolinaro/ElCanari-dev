@@ -82,7 +82,6 @@ final class SymbolText : SymbolObject,
 
   final var text : String {
     get { return self.text_property.propval }
-    set { self.text_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -95,7 +94,6 @@ final class SymbolText : SymbolObject,
 
   final var horizontalAlignment : HorizontalAlignment {
     get { return self.horizontalAlignment_property.propval }
-    set { self.horizontalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································

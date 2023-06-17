@@ -11,8 +11,8 @@ graphic entity CommentInSchematic : SchematicObject {
   property HorizontalAlignment mHorizontalAlignment default center ;
   property VerticalAlignment mVerticalAlignment default center ;
 
-  property Int mX default 0 ;
-  property Int mY default 0 ;
+  property @generateDirectAccess Int mX default 0 ;
+  property @generateDirectAccess Int mY default 0 ;
   
   override transient EBShape objectDisplay dependsFrom
     self.mComment,

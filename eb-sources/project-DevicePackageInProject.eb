@@ -3,8 +3,8 @@
 entity DevicePackageInProject {
   toMany DeviceMasterPadInProject mMasterPads ;
 
-  property String mPackageName default "" ;
-  property NSBezierPath mStrokeBezierPath default empty ;
+  property @generateDirectAccess String mPackageName default "" ;
+  property @generateDirectAccess NSBezierPath mStrokeBezierPath default empty ;
   
   transient PackageMasterPadDictionary packagePadDictionary dependsFrom self.mMasterPads.all.descriptor ;
 }

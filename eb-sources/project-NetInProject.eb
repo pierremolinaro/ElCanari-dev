@@ -7,8 +7,8 @@ handlingOpposite entity NetInProject {
   toMany PointInSchematic mPoints inverse toOne mNet ;
   toMany BoardTrack mTracks inverse toOne mNet ;
  
-  property String mNetName default "" ;
-  property Bool mWarnsExactlyOneLabel default yes ;
+  property @generateDirectAccess String mNetName default "" ;
+  property @generateDirectAccess Bool mWarnsExactlyOneLabel default yes ;
  
   transient String netClassName dependsFrom self.mNetClass.one.mNetClassName ;
   transient Int netClassTrackWidth dependsFrom self.mNetClass.one.mTrackWidth ;

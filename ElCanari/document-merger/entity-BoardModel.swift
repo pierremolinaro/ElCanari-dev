@@ -596,7 +596,6 @@ final class BoardModel : EBManagedObject,
 
   final var zoom : Int {
     get { return self.zoom_property.propval }
-    set { self.zoom_property.setProp (newValue) }
   }
 
   //····················································································································

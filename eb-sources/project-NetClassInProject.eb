@@ -4,24 +4,24 @@
 
 handlingOpposite entity NetClassInProject {
   toMany NetInProject mNets inverse toOne mNetClass ;
-  property String mNetClassName default "Default" ;
-  property NSColor mNetClassColor default blue ;
+  property @generateDirectAccess String mNetClassName default "Default" ;
+  property @generateDirectAccess NSColor mNetClassColor default blue ;
 
-  property Int mTrackWidth default 45_720 ; // 20 mils
-  property Int mTrackWidthUnit default 2_286 ; // mil
+  property @generateDirectAccess Int mTrackWidth default 45_720 ; // 20 mils
+  property @generateDirectAccess Int mTrackWidthUnit default 2_286 ; // mil
 
-  property Int mViaHoleDiameter default 45_720 ; // 20 mils
-  property Int mViaHoleDiameterUnit default 2_286 ; // mil
+  property @generateDirectAccess Int mViaHoleDiameter default 45_720 ; // 20 mils
+  property @generateDirectAccess Int mViaHoleDiameterUnit default 2_286 ; // mil
 
-  property Int mViaPadDiameter default 91_440 ; // 40 mils
-  property Int mViaPadDiameterUnit default 2_286 ; // mil
+  property @generateDirectAccess Int mViaPadDiameter default 91_440 ; // 40 mils
+  property @generateDirectAccess Int mViaPadDiameterUnit default 2_286 ; // mil
 
-  property Bool mAllowTracksOnFrontSide default yes ;
-  property Bool mAllowTracksOnBackSide default yes ;
-  property Bool mAllowTracksOnInner1Layer default yes ;
-  property Bool mAllowTracksOnInner2Layer default yes ;
-  property Bool mAllowTracksOnInner3Layer default yes ;
-  property Bool mAllowTracksOnInner4Layer default yes ;
+  property @generateDirectAccess Bool mAllowTracksOnFrontSide default yes ;
+  property @generateDirectAccess Bool mAllowTracksOnBackSide default yes ;
+  property @generateDirectAccess Bool mAllowTracksOnInner1Layer default yes ;
+  property @generateDirectAccess Bool mAllowTracksOnInner2Layer default yes ;
+  property @generateDirectAccess Bool mAllowTracksOnInner3Layer default yes ;
+  property @generateDirectAccess Bool mAllowTracksOnInner4Layer default yes ;
   
   transient Bool canRemove dependsFrom self.mNets.count ;
   transient String netUsage dependsFrom self.mNets.count ;

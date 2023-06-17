@@ -98,7 +98,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   final var mInstanceName : String {
     get { return self.mInstanceName_property.propval }
-    set { self.mInstanceName_property.setProp (newValue) }
   }
 
   //····················································································································

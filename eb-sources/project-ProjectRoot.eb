@@ -31,10 +31,10 @@ handlingOpposite entity ProjectRoot {
   property proxy LayerConfiguration artworkLayerConfiguration : mArtwork.layerConfiguration ;
  
 //--- PDF Generation
-  property @generateDirectAccess NSColor mPDFBoardBackgroundColor default lightGray ;
+  property @generateDirectRead NSColor mPDFBoardBackgroundColor default lightGray ;
   
 //--- ERC Status
-  property @generateDirectAccess Bool mCheckClearanceBetweenPadsOfSameNet default yes ;
+  property @generateDirectRead Bool mCheckClearanceBetweenPadsOfSameNet default yes ;
   property @generateDirectAccess Bool mLastERCCheckingIsSuccess default no ;
   property @generateDirectAccess UInt32 mLastERCCheckingSignature default 1 ;
 
@@ -65,41 +65,41 @@ handlingOpposite entity ProjectRoot {
   property @generateDirectAccess LayerConfiguration mLayerConfiguration default twoLayers ;
   transient String layerConfigurationString dependsFrom self.mLayerConfiguration ;
 
-  property @generateDirectAccess TrackSide mBoardSideForNewTrack default front ;
-  property @generateDirectAccess TrackCreationDirection mDirectionForNewTrack default anyAngle ;
-  property @generateDirectAccess BoardTextLayer mBoardLayerForNewText default legendFront ;
-  property @generateDirectAccess BoardQRCodeLayer mBoardLayerForNewQRCode default legendFront ;
-  property @generateDirectAccess BoardQRCodeLayer mBoardLayerForNewImage default legendFront ;
+  property @generateDirectRead TrackSide mBoardSideForNewTrack default front ;
+  property @generateDirectRead TrackCreationDirection mDirectionForNewTrack default anyAngle ;
+  property @generateDirectRead BoardTextLayer mBoardLayerForNewText default legendFront ;
+  property @generateDirectRead BoardQRCodeLayer mBoardLayerForNewQRCode default legendFront ;
+  property @generateDirectRead BoardQRCodeLayer mBoardLayerForNewImage default legendFront ;
 
-  property @generateDirectAccess BoardLineLayer mBoardLayerForNewLine default legendFront ;
+  property @generateDirectRead BoardLineLayer mBoardLayerForNewLine default legendFront ;
 
 //--- Restrict rectangle
   property RestrictRectangleLayer mBoardSideForNewRestrictRectangle default frontSide ;
 //--- Bit 0 -> front, 1 : Back, 2 -> Inner 1, ... , 5 -> Inner 4
-  property @generateDirectAccess Int mNewRestrictRectangleLayers default 1 ;
+  property @generateDirectRead Int mNewRestrictRectangleLayers default 1 ;
   
-  property @generateDirectAccess AutorouterPreferredDirections mAutoRouterPreferredDirections default vFrontHback ;
-  property @generateDirectAccess AutorouterSnapAngle mAutorouterSnapAngle default octolinear ;
-  property @generateDirectAccess RouteDirection mRouteDirection default from ;
-  property @generateDirectAccess RouteOrigin mRouteOrigin default center ;
+  property @generateDirectRead AutorouterPreferredDirections mAutoRouterPreferredDirections default vFrontHback ;
+  property @generateDirectRead AutorouterSnapAngle mAutorouterSnapAngle default octolinear ;
+  property @generateDirectRead RouteDirection mRouteDirection default from ;
+  property @generateDirectRead RouteOrigin mRouteOrigin default center ;
 
   property Int mAutorouterInterfaceMode default 0 ;
-  property @generateDirectAccess Bool mExportExistingTracksAndVias default no ;
-  property @generateDirectAccess Bool mExportExistingTracksAndVias2 default no ;
+  property @generateDirectRead Bool mExportExistingTracksAndVias default no ;
+  property @generateDirectRead Bool mExportExistingTracksAndVias2 default no ;
   
   property Int mTrackLengthUnit default 90_000_000 ; // meter
   
-  property @generateDirectAccess Int mLayoutClearance default 22_860 ; // 10 mil
+  property @generateDirectRead Int mLayoutClearance default 22_860 ; // 10 mil
   property Int mLayoutClearanceUnit default 2_286 ; // mil
 
-  property @generateDirectAccess Int mBoardSelectedInspector default 1 ;
+  property  @generateDirectAccess Int mBoardSelectedInspector default 1 ;
   property Bool mBoardHorizontalFlip default no ;
   property Bool mBoardVerticalFlip default no ;
   property GridStyle mBoardGridStyle default line ;
   property Int mBoardGridDisplayFactor default 4 ;
   property Int mBoardZoom default 0 ;
-  property @generateDirectAccess Int mBoardGridStep default 57_150 ; // 25 mils
-  property @generateDirectAccess Int mBoardGridStepUnit default 2_286 ; // mil
+  property @generateDirectRead Int mBoardGridStep default 57_150 ; // 25 mils
+  property @generateDirectRead Int mBoardGridStepUnit default 2_286 ; // mil
 
   transient Int boardGridStepMultipliedByDisplayFactor dependsFrom
     self.mBoardGridStep, self.mBoardGridDisplayFactor
@@ -142,21 +142,21 @@ handlingOpposite entity ProjectRoot {
   
   property Double mErrorOrWarningIssueSize default 6.0 ;
   
-  property @generateDirectAccess Double mControlKeyHiliteDiameter default 100.0 ;
+  property @generateDirectRead Double mControlKeyHiliteDiameter default 100.0 ;
   
   property RastnetDisplay mRastnetDisplay default allNets ;
   property @generateDirectAccess String mRastnetDisplayedNetName default "" ;
   property String mRastnetDisplayedComponentName default "" ;
 
-  property @generateDirectAccess String mDSNFileProposedName default "design.dsn" ;
+  property  @generateDirectAccess String mDSNFileProposedName default "design.dsn" ;
  
 //--- Board border
   toMany BorderCurve mBorderCurves inverse toOne mRoot ;
 
-  property @generateDirectAccess Int mBoardLimitsWidth default 90_000 ; // 1 mm
-  property @generateDirectAccess Int mBoardLimitsWidthUnit default 90_000 ; // mm
+  property @generateDirectRead Int mBoardLimitsWidth default 90_000 ; // 1 mm
+  property @generateDirectRead Int mBoardLimitsWidthUnit default 90_000 ; // mm
 
-  property @generateDirectAccess Int mBoardClearance default 90_000 ; // 1 mm
+  property @generateDirectRead Int mBoardClearance default 90_000 ; // 1 mm
   property Int mBoardClearanceUnit default 90_000 ; // mm
 
   property Int mBoardLimitsSelectedInspector default 0 ;
@@ -166,7 +166,7 @@ handlingOpposite entity ProjectRoot {
   property Int mBoardLimitsGridDisplayFactor default 5 ;
   property Int mBoardLimitsZoom default 0 ;
 
-  property @generateDirectAccess Int mBoardLimitsGridStep default 90_000 ; // mm
+  property @generateDirectRead Int mBoardLimitsGridStep default 90_000 ; // mm
   property Int mBoardLimitsGridStepUnit default 90_000 ; // mm
   property Int mBoardLimitsBoundingBoxUnit default 90_000 ; // mm
   property Int mBoardPointsBoundingBoxUnit default 90_000 ; // mm
@@ -177,13 +177,13 @@ handlingOpposite entity ProjectRoot {
     self.mBoardLimitsGridStep, self.mBoardLimitsGridDisplayFactor
   ;
 
-  property @generateDirectAccess BoardShape mBoardShape default rectangular ;
+  property @generateDirectRead BoardShape mBoardShape default rectangular ;
   property Double mContentOpacityInBoardOutline default 0.5 ;
   
-  property @generateDirectAccess Int mRectangularBoardWidth default 90_000_00 ; // 100 mm
+  property @generateDirectRead Int mRectangularBoardWidth default 90_000_00 ; // 100 mm
   property Int mRectangularBoardWidthUnit default 90_000 ; // mm
 
-  property @generateDirectAccess Int mRectangularBoardHeight default 90_000_00 ; // 100 mm
+  property @generateDirectRead Int mRectangularBoardHeight default 90_000_00 ; // 100 mm
   property Int mRectangularBoardHeightUnit default 90_000 ; // mm
 
   transient Bool boardShapeIsRectangular dependsFrom self.mBoardShape ;
@@ -246,23 +246,23 @@ handlingOpposite entity ProjectRoot {
     self.mSelectedSheet.one.connectedPoints,
     self.selectedSheetIssues
   ; 
-  property @generateDirectAccess Int mSelectedPageIndex default 0 ;
+  property  @generateDirectAccess Int mSelectedPageIndex default 0 ;
 
   property Int mSelectedSchematicInspector default 0 ;
   property String mSchematicTitle default "" ;
   property String mSchematicVersion default "" ;
-  property @generateDirectAccess Date mSchematicDate default now ;
+  property  @generateDirectAccess Date mSchematicDate default now ;
   property Bool mSchematicHorizontalFlip default no ;
   property Bool mSchematicVerticalFlip default no ;
   property Int mSchematicZoom default 0 ;
   property GridStyle mSchematicGridStyle default line ;
   property Int mSchematicGridDisplayFactor default 4 ;
 
-  property @generateDirectAccess Int mSchematicCustomWidth default 27_000_000 ; // 300 mm
+  property @generateDirectRead Int mSchematicCustomWidth default 27_000_000 ; // 300 mm
   property Int mSchematicCustomWidthUnit default 90_000 ; // mm
-  property @generateDirectAccess Int mSchematicCustomHeight default 27_000_000 ; // 300 mm
+  property @generateDirectRead Int mSchematicCustomHeight default 27_000_000 ; // 300 mm
   property Int mSchematicCustomHeightUnit default 90_000 ; // mm
-  property @generateDirectAccess SchematicSheetOrientation mSchematicSheetOrientation default a4Horizontal ;
+  property @generateDirectRead SchematicSheetOrientation mSchematicSheetOrientation default a4Horizontal ;
 
   transient StringArray deviceNames dependsFrom self.mDevices.all.mDeviceName ;
 
@@ -380,7 +380,7 @@ handlingOpposite entity ProjectRoot {
   property Bool displayBackPadsForBoard default yes ;
   property Bool displayPadNumbersForBoard default yes ;
 //--- Package drawing width
-  property @generateDirectAccess Int packageDrawingWidthMultpliedByTenForBoard default 5  ;
+  property @generateDirectRead Int packageDrawingWidthMultpliedByTenForBoard default 5  ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

@@ -145,7 +145,6 @@ final class BoardText : BoardObject,
 
   final var mXUnit : Int {
     get { return self.mXUnit_property.propval }
-    set { self.mXUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -171,7 +170,6 @@ final class BoardText : BoardObject,
 
   final var mYUnit : Int {
     get { return self.mYUnit_property.propval }
-    set { self.mYUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -184,7 +182,6 @@ final class BoardText : BoardObject,
 
   final var mFontSize : Double {
     get { return self.mFontSize_property.propval }
-    set { self.mFontSize_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -210,7 +207,6 @@ final class BoardText : BoardObject,
 
   final var mText : String {
     get { return self.mText_property.propval }
-    set { self.mText_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -223,7 +219,6 @@ final class BoardText : BoardObject,
 
   final var mHorizontalAlignment : HorizontalAlignment {
     get { return self.mHorizontalAlignment_property.propval }
-    set { self.mHorizontalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -236,7 +231,6 @@ final class BoardText : BoardObject,
 
   final var mVerticalAlignment : BoardTextVerticalAlignment {
     get { return self.mVerticalAlignment_property.propval }
-    set { self.mVerticalAlignment_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -262,7 +256,6 @@ final class BoardText : BoardObject,
 
   final var mWeight : Double {
     get { return self.mWeight_property.propval }
-    set { self.mWeight_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -275,7 +268,6 @@ final class BoardText : BoardObject,
 
   final var mOblique : Bool {
     get { return self.mOblique_property.propval }
-    set { self.mOblique_property.setProp (newValue) }
   }
 
   //····················································································································

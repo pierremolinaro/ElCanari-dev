@@ -44,7 +44,6 @@ final class DeviceRoot : EBManagedObject {
 
   final var mImageData : Data {
     get { return self.mImageData_property.propval }
-    set { self.mImageData_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -57,7 +56,6 @@ final class DeviceRoot : EBManagedObject {
 
   final var mPrefix : String {
     get { return self.mPrefix_property.propval }
-    set { self.mPrefix_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -70,7 +68,6 @@ final class DeviceRoot : EBManagedObject {
 
   final var mComments : String {
     get { return self.mComments_property.propval }
-    set { self.mComments_property.setProp (newValue) }
   }
 
   //····················································································································

@@ -1,14 +1,14 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 entity DeviceSlavePadInProject {
-  property Int mCenterX default 0 ;
-  property Int mCenterY default 0 ;
-  property Int mWidth default 114_300 ;
-  property Int mHeight default 228_600 ;
-  property Int mHoleWidth default 57_150 ;
-  property Int mHoleHeight default 57_150 ;
-  property PadShape mShape default octo ;
-  property SlavePadStyle mStyle default traversing ;
+  property @generateDirectAccess Int mCenterX default 0 ;
+  property @generateDirectAccess Int mCenterY default 0 ;
+  property @generateDirectAccess Int mWidth default 114_300 ;
+  property @generateDirectAccess Int mHeight default 228_600 ;
+  property @generateDirectAccess Int mHoleWidth default 57_150 ;
+  property @generateDirectAccess Int mHoleHeight default 57_150 ;
+  property @generateDirectAccess PadShape mShape default octo ;
+  property @generateDirectAccess SlavePadStyle mStyle default traversing ;
   
   transient SlavePadDescriptor descriptor dependsFrom
     self.mCenterX,

@@ -2,9 +2,9 @@
 
 entity BoardModelVia {
 
-  property Int x default 0 ;
-  property Int y default 0 ;
-  property Int padDiameter default 0 ;
+  property @generateDirectAccess Int x default 0 ;
+  property @generateDirectAccess Int y default 0 ;
+  property @generateDirectAccess Int padDiameter default 0 ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

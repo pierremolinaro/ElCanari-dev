@@ -35,18 +35,18 @@ graphic handlingOpposite entity BoardTrack : BoardObject {
   toOne @weak BoardConnector mConnectorP2 inverse toMany mTracksP2 ;
   toOne @weak NetInProject mNet inverse toMany mTracks ;
 
-  property TrackSide mSide default front ;
+  property @generateDirectAccess TrackSide mSide default front ;
 
   property Int mDefaultTrackWidthUnit default 2_286 ; // mil
-  property Int mCustomTrackWidth default 45_720 ; // 20 mil
+  property @generateDirectAccess Int mCustomTrackWidth default 45_720 ; // 20 mil
   property Int mCustomTrackWidthUnit default 2_286 ; // mil
-  property Bool mUsesCustomTrackWidth default no ;
-  property Bool mIsPreservedByAutoRouter default no ;
+  property @generateDirectAccess Bool mUsesCustomTrackWidth default no ;
+  property @generateDirectAccess Bool mIsPreservedByAutoRouter default no ;
 
-  property Int mP1XUnit default 2_286 ; // mil
-  property Int mP1YUnit default 2_286 ; // mil
-  property Int mP2XUnit default 2_286 ; // mil
-  property Int mP2YUnit default 2_286 ; // mil
+  property @generateDirectAccess Int mP1XUnit default 2_286 ; // mil
+  property @generateDirectAccess Int mP1YUnit default 2_286 ; // mil
+  property @generateDirectAccess Int mP2XUnit default 2_286 ; // mil
+  property @generateDirectAccess Int mP2YUnit default 2_286 ; // mil
   property Bool mManualLockP1 default no ;
   property Bool mManualLockP2 default no ;
   

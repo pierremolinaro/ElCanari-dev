@@ -223,7 +223,6 @@ final class BoardImage : BoardObject,
 
   final var mXUnit : Int {
     get { return self.mXUnit_property.propval }
-    set { self.mXUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -249,7 +248,6 @@ final class BoardImage : BoardObject,
 
   final var mYUnit : Int {
     get { return self.mYUnit_property.propval }
-    set { self.mYUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -262,7 +260,6 @@ final class BoardImage : BoardObject,
 
   final var mThreshold : Int {
     get { return self.mThreshold_property.propval }
-    set { self.mThreshold_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -288,7 +285,6 @@ final class BoardImage : BoardObject,
 
   final var mInvert : Bool {
     get { return self.mInvert_property.propval }
-    set { self.mInvert_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -301,7 +297,6 @@ final class BoardImage : BoardObject,
 
   final var mHorizontalFlip : Bool {
     get { return self.mHorizontalFlip_property.propval }
-    set { self.mHorizontalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -314,7 +309,6 @@ final class BoardImage : BoardObject,
 
   final var mVerticalFlip : Bool {
     get { return self.mVerticalFlip_property.propval }
-    set { self.mVerticalFlip_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -327,7 +321,6 @@ final class BoardImage : BoardObject,
 
   final var mScale : Double {
     get { return self.mScale_property.propval }
-    set { self.mScale_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -340,7 +333,6 @@ final class BoardImage : BoardObject,
 
   final var mPixelSize : Int {
     get { return self.mPixelSize_property.propval }
-    set { self.mPixelSize_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -353,7 +345,6 @@ final class BoardImage : BoardObject,
 
   final var mPixelSizeUnit : Int {
     get { return self.mPixelSizeUnit_property.propval }
-    set { self.mPixelSizeUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -366,7 +357,6 @@ final class BoardImage : BoardObject,
 
   final var mActualWidthUnit : Int {
     get { return self.mActualWidthUnit_property.propval }
-    set { self.mActualWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -379,7 +369,6 @@ final class BoardImage : BoardObject,
 
   final var mActualHeightUnit : Int {
     get { return self.mActualHeightUnit_property.propval }
-    set { self.mActualHeightUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -392,7 +381,6 @@ final class BoardImage : BoardObject,
 
   final var mImageDisplay : BoardImageDisplay {
     get { return self.mImageDisplay_property.propval }
-    set { self.mImageDisplay_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -418,7 +406,6 @@ final class BoardImage : BoardObject,
 
   final var mText : String {
     get { return self.mText_property.propval }
-    set { self.mText_property.setProp (newValue) }
   }
 
   //····················································································································

@@ -3,11 +3,11 @@
 graphic handlingOpposite entity MergerBoardInstance {
   toOne @weak MergerRoot myRoot inverse toMany boardInstances ;
   toOne @weak BoardModel myModel inverse toMany myInstances ;
-  property Int x default 0 ;
-  property Int y default 0 ;
+  property @generateDirectAccess Int x default 0 ;
+  property @generateDirectAccess Int y default 0 ;
 
 //--- Instance rotation
-  property QuadrantRotation instanceRotation default rotation0 ;
+  property @generateDirectAccess QuadrantRotation instanceRotation default rotation0 ;
 
 //--- Instance rect
   transient CanariRect instanceRect dependsFrom

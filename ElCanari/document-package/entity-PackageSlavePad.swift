@@ -370,7 +370,6 @@ final class PackageSlavePad : PackageObject,
 
   final var annularRingUnit : Int {
     get { return self.annularRingUnit_property.propval }
-    set { self.annularRingUnit_property.setProp (newValue) }
   }
 
   //····················································································································

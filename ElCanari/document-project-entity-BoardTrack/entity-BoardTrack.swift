@@ -236,7 +236,6 @@ final class BoardTrack : BoardObject,
 
   final var mDefaultTrackWidthUnit : Int {
     get { return self.mDefaultTrackWidthUnit_property.propval }
-    set { self.mDefaultTrackWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -262,7 +261,6 @@ final class BoardTrack : BoardObject,
 
   final var mCustomTrackWidthUnit : Int {
     get { return self.mCustomTrackWidthUnit_property.propval }
-    set { self.mCustomTrackWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -353,7 +351,6 @@ final class BoardTrack : BoardObject,
 
   final var mManualLockP1 : Bool {
     get { return self.mManualLockP1_property.propval }
-    set { self.mManualLockP1_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -366,7 +363,6 @@ final class BoardTrack : BoardObject,
 
   final var mManualLockP2 : Bool {
     get { return self.mManualLockP2_property.propval }
-    set { self.mManualLockP2_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -379,7 +375,6 @@ final class BoardTrack : BoardObject,
 
   final var mDirectionLockOnKnobDragging : TrackLockDirection {
     get { return self.mDirectionLockOnKnobDragging_property.propval }
-    set { self.mDirectionLockOnKnobDragging_property.setProp (newValue) }
   }
 
   //····················································································································

@@ -5,7 +5,7 @@
 graphic handlingOpposite entity LabelInSchematic : SchematicObject {
   toOne @weak PointInSchematic mPoint inverse toMany mLabels ;
 
-  property QuadrantRotation mOrientation default rotation0 ;
+  property @generateDirectAccess QuadrantRotation mOrientation default rotation0 ;
  
   transient CanariPoint location dependsFrom self.mPoint.one.location ;
 

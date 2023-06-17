@@ -139,7 +139,6 @@ final class BoardRestrictRectangle : BoardObject,
 
   final var mXUnit : Int {
     get { return self.mXUnit_property.propval }
-    set { self.mXUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -165,7 +164,6 @@ final class BoardRestrictRectangle : BoardObject,
 
   final var mYUnit : Int {
     get { return self.mYUnit_property.propval }
-    set { self.mYUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -191,7 +189,6 @@ final class BoardRestrictRectangle : BoardObject,
 
   final var mWidthUnit : Int {
     get { return self.mWidthUnit_property.propval }
-    set { self.mWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -217,7 +214,6 @@ final class BoardRestrictRectangle : BoardObject,
 
   final var mHeightUnit : Int {
     get { return self.mHeightUnit_property.propval }
-    set { self.mHeightUnit_property.setProp (newValue) }
   }
 
   //····················································································································

@@ -146,7 +146,6 @@ final class BoardQRCode : BoardObject,
 
   final var mXUnit : Int {
     get { return self.mXUnit_property.propval }
-    set { self.mXUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -172,7 +171,6 @@ final class BoardQRCode : BoardObject,
 
   final var mYUnit : Int {
     get { return self.mYUnit_property.propval }
-    set { self.mYUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -185,7 +183,6 @@ final class BoardQRCode : BoardObject,
 
   final var mDrawFrame : Bool {
     get { return self.mDrawFrame_property.propval }
-    set { self.mDrawFrame_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -198,7 +195,6 @@ final class BoardQRCode : BoardObject,
 
   final var mModuleSize : Int {
     get { return self.mModuleSize_property.propval }
-    set { self.mModuleSize_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -211,7 +207,6 @@ final class BoardQRCode : BoardObject,
 
   final var mModuleSizeUnit : Int {
     get { return self.mModuleSizeUnit_property.propval }
-    set { self.mModuleSizeUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -224,7 +219,6 @@ final class BoardQRCode : BoardObject,
 
   final var mActualSizeUnit : Int {
     get { return self.mActualSizeUnit_property.propval }
-    set { self.mActualSizeUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -250,7 +244,6 @@ final class BoardQRCode : BoardObject,
 
   final var mText : String {
     get { return self.mText_property.propval }
-    set { self.mText_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -263,7 +256,6 @@ final class BoardQRCode : BoardObject,
 
   final var mCorrectionLevel : QRCodeCorrectionLevel {
     get { return self.mCorrectionLevel_property.propval }
-    set { self.mCorrectionLevel_property.setProp (newValue) }
   }
 
   //····················································································································

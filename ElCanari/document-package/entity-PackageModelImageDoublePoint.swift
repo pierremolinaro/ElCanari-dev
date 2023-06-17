@@ -102,7 +102,6 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   final var mFirstColor : NSColor {
     get { return self.mFirstColor_property.propval }
-    set { self.mFirstColor_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -141,7 +140,6 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   final var mSecondColor : NSColor {
     get { return self.mSecondColor_property.propval }
-    set { self.mSecondColor_property.setProp (newValue) }
   }
 
   //····················································································································

@@ -111,7 +111,6 @@ final class BoardLine : BoardObject,
 
   final var mWidthUnit : Int {
     get { return self.mWidthUnit_property.propval }
-    set { self.mWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -241,7 +240,6 @@ final class BoardLine : BoardObject,
 
   final var mWidth : Int {
     get { return self.mWidth_property.propval }
-    set { self.mWidth_property.setProp (newValue) }
   }
 
   //····················································································································

@@ -8,20 +8,20 @@ graphic handlingOpposite entity ComponentSymbolInProject : SchematicObject {
 
   toMany PointInSchematic mPoints inverse toOne mSymbol ;
 
-  property Int mCenterX default 0 ;
-  property Int mCenterY default 0 ;
-  property QuadrantRotation mRotation default rotation0 ;
-  property Bool mMirror default no ;
+  property @generateDirectAccess Int mCenterX default 0 ;
+  property @generateDirectAccess Int mCenterY default 0 ;
+  property @generateDirectAccess QuadrantRotation mRotation default rotation0 ;
+  property @generateDirectAccess Bool mMirror default no ;
 
-  property String mSymbolInstanceName default "" ;
-  property String mSymbolTypeName default "" ;
+  property @generateDirectAccess String mSymbolInstanceName default "" ;
+  property @generateDirectAccess String mSymbolTypeName default "" ;
 
-  property Int mDisplayComponentNameOffsetX default 0 ;
-  property Int mDisplayComponentNameOffsetY default 457_200 ; // 200 mils
+  property @generateDirectAccess Int mDisplayComponentNameOffsetX default 0 ;
+  property @generateDirectAccess Int mDisplayComponentNameOffsetY default 457_200 ; // 200 mils
 
-  property Bool mDisplayComponentValue default yes ;
-  property Int mDisplayComponentValueOffsetX default 0 ;
-  property Int mDisplayComponentValueOffsetY default -457_200 ; // -200 mils
+  property @generateDirectAccess Bool mDisplayComponentValue default yes ;
+  property @generateDirectAccess Int mDisplayComponentValueOffsetX default 0 ;
+  property @generateDirectAccess Int mDisplayComponentValueOffsetY default -457_200 ; // -200 mils
 
   transient String componentName dependsFrom self.mComponent.one.componentName ;
   transient String deviceName dependsFrom self.mComponent.one.deviceName ;

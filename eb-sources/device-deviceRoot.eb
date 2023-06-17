@@ -10,17 +10,17 @@ handlingOpposite entity DeviceRoot {
   property @signature String mTitle default "" ;
 
 //--- Image
-  property @generateDirectAccess @signature Data mImageData default empty ;
+  property @generateDirectRead @signature Data mImageData default empty ;
   transient Bool imageIsValid dependsFrom self.mImageData ;
 
 //--- Documentation
   toMany @signature DeviceDocumentation mDocs ;
 
 //--- Prefix
-  property @signature @generateDirectAccess String mPrefix default "" ;
+  property @signature @generateDirectRead String mPrefix default "" ;
 
 //--- Comment
-  property @generateDirectAccess @signature String mComments default "" ;
+  property @generateDirectRead @signature String mComments default "" ;
 
 //--- Issues
   transient CanariIssueArray issues dependsFrom
@@ -82,8 +82,8 @@ handlingOpposite entity DeviceRoot {
 
 entity DeviceDocumentation {
 
-  property @signature String mFileName default "" ;
-  property @signature Data mFileData default empty ;
+  property @signature @generateDirectAccess String mFileName default "" ;
+  property @signature @generateDirectAccess Data mFileData default empty ;
 
   transient Int fileSize dependsFrom self.mFileData ;
 }
@@ -95,14 +95,14 @@ graphic handlingOpposite entity PackageInDevice {
 
   toMany @signature MasterPadInDevice mMasterPads ;
 
-  property @signature Data mFileData default empty ;
-  property @signature String mName default "" ;
-  property @signature Int mVersion default 0 ;
+  property @signature @generateDirectAccess Data mFileData default empty ;
+  property @signature @generateDirectAccess String mName default "" ;
+  property @signature @generateDirectAccess Int mVersion default 0 ;
 
-  property @signature NSBezierPath mStrokeBezierPath default empty ;
+  property @signature @generateDirectAccess NSBezierPath mStrokeBezierPath default empty ;
 
-  property Int mX default 0 ;
-  property Int mY default 0 ;
+  property @generateDirectAccess Int mX default 0 ;
+  property @generateDirectAccess Int mY default 0 ;
 
   transient String versionString dependsFrom self.mVersion ;
 
@@ -153,15 +153,15 @@ graphic handlingOpposite entity PackageInDevice {
 handlingOpposite entity MasterPadInDevice {
   toMany @signature SlavePadInDevice mSlavePads inverse toOne mMasterPad ;
 
-  property @signature Int mCenterX default 0 ;
-  property @signature Int mCenterY default 0 ;
-  property @signature Int mWidth default 114_300 ;
-  property @signature Int mHeight default 228_600 ;
-  property @signature Int mHoleWidth default 57_150 ;
-  property @signature Int mHoleHeight default 57_150 ;
-  property @signature PadShape mShape default octo ;
-  property @signature PadStyle mStyle default traversing ;
-  property @signature String mName default "" ;
+  property @signature @generateDirectAccess Int mCenterX default 0 ;
+  property @signature @generateDirectAccess Int mCenterY default 0 ;
+  property @signature @generateDirectAccess Int mWidth default 114_300 ;
+  property @signature @generateDirectAccess Int mHeight default 228_600 ;
+  property @signature @generateDirectAccess Int mHoleWidth default 57_150 ;
+  property @signature @generateDirectAccess Int mHoleHeight default 57_150 ;
+  property @signature @generateDirectAccess PadShape mShape default octo ;
+  property @signature @generateDirectAccess PadStyle mStyle default traversing ;
+  property @signature @generateDirectAccess String mName default "" ;
 
   transient BezierPathArray frontSideFilledBezierPathArray dependsFrom
      self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleWidth, self.mHoleHeight,
@@ -184,14 +184,14 @@ handlingOpposite entity MasterPadInDevice {
 handlingOpposite entity SlavePadInDevice {
   toOne @weak MasterPadInDevice mMasterPad inverse toMany mSlavePads  ;
 
-  property @signature Int mCenterX default 0 ;
-  property @signature Int mCenterY default 0 ;
-  property @signature Int mWidth default 114_300 ;
-  property @signature Int mHeight default 228_600 ;
-  property @signature Int mHoleWidth default 57_150 ;
-  property @signature Int mHoleHeight default 57_150 ;
-  property @signature PadShape mShape default octo ;
-  property @signature SlavePadStyle mStyle default traversing ;
+  property @signature @generateDirectAccess Int mCenterX default 0 ;
+  property @signature @generateDirectAccess Int mCenterY default 0 ;
+  property @signature @generateDirectAccess Int mWidth default 114_300 ;
+  property @signature @generateDirectAccess Int mHeight default 228_600 ;
+  property @signature @generateDirectAccess Int mHoleWidth default 57_150 ;
+  property @signature @generateDirectAccess Int mHoleHeight default 57_150 ;
+  property @signature @generateDirectAccess PadShape mShape default octo ;
+  property @signature @generateDirectAccess SlavePadStyle mStyle default traversing ;
 
   transient EBBezierPath frontSideFilledBezierPath dependsFrom
      self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleWidth, self.mHoleHeight,
@@ -216,12 +216,12 @@ handlingOpposite entity SymbolTypeInDevice {
   toMany SymbolInstanceInDevice mInstances inverse toOne mType ;
   toMany @signature SymbolPinTypeInDevice mPinTypes ;
 
-  property @signature String mTypeName default "" ;
-  property @signature Int mVersion default 0 ;
-  property @signature Data mFileData default empty ;
+  property @signature @generateDirectAccess String mTypeName default "" ;
+  property @generateDirectAccess @signature Int mVersion default 0 ;
+  property @generateDirectAccess @signature Data mFileData default empty ;
 
-  property @signature NSBezierPath mStrokeBezierPath default empty ;
-  property @signature NSBezierPath mFilledBezierPath default empty ;
+  property @generateDirectAccess @signature NSBezierPath mStrokeBezierPath default empty ;
+  property @generateDirectAccess @signature NSBezierPath mFilledBezierPath default empty ;
 
   transient String versionString dependsFrom self.mVersion ;
 
@@ -237,19 +237,19 @@ handlingOpposite entity SymbolTypeInDevice {
 handlingOpposite entity SymbolPinTypeInDevice {
   toMany SymbolPinInstanceInDevice mInstances inverse toOne mType  ;
 
-  property @signature Int mPinX default 0 ;
-  property @signature Int mPinY default 0 ;
+  property @signature @generateDirectAccess Int mPinX default 0 ;
+  property @signature @generateDirectAccess Int mPinY default 0 ;
 
-  property @signature Int mXName default 0 ;
-  property @signature Int mYName default 0 ;
+  property @generateDirectAccess @signature Int mXName default 0 ;
+  property @generateDirectAccess @signature Int mYName default 0 ;
 
-  property @signature String mName default "" ;
-  property @signature HorizontalAlignment mNameHorizontalAlignment default center ;
-  property @signature Bool mPinNameIsDisplayedInSchematics default yes ;
+  property @generateDirectAccess @signature String mName default "" ;
+  property @generateDirectAccess @signature HorizontalAlignment mNameHorizontalAlignment default center ;
+  property @generateDirectAccess @signature Bool mPinNameIsDisplayedInSchematics default yes ;
 
-  property @signature Int mXNumber default 0 ;
-  property @signature Int mYNumber default 0 ;
-  property @signature HorizontalAlignment mNumberHorizontalAlignment default center ;
+  property @generateDirectAccess @signature Int mXNumber default 0 ;
+  property @generateDirectAccess @signature Int mYNumber default 0 ;
+  property @generateDirectAccess @signature HorizontalAlignment mNumberHorizontalAlignment default center ;
 
   transient EBShape nameShape dependsFrom
      self.mXName, self.mYName,
@@ -267,8 +267,8 @@ graphic handlingOpposite entity SymbolInstanceInDevice {
   toMany @signature SymbolPinInstanceInDevice mPinInstances inverse toOne mSymbolInstance ;
 
   property @signature String mInstanceName default "" ;
-  property Int mX default 0 ;
-  property Int mY default 0 ;
+  property @generateDirectAccess Int mX default 0 ;
+  property @generateDirectAccess Int mY default 0 ;
 
   transient EBShape objectDisplay dependsFrom
      self.mType.one.mStrokeBezierPath,
@@ -334,11 +334,11 @@ handlingOpposite entity SymbolPinInstanceInDevice {
 handlingOpposite entity PadProxyInDevice {
   toOne SymbolPinInstanceInDevice mPinInstance inverse toOne mPadProxy ;
   
-  property @signature String mPinInstanceName default "" ; // Used for signature
+  property @signature @generateDirectAccess String mPinInstanceName default "" ; // Used for signature
   
-  property @signature String mPadName default "" ;
+  property @signature @generateDirectAccess String mPadName default "" ;
 
-  property @signature Bool mIsNC default no ;
+  property @signature @generateDirectAccess Bool mIsNC default no ;
 
   transient Bool isConnected dependsFrom self.mIsNC, self.mPinInstance.none ;
 

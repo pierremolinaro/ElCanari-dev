@@ -18,7 +18,7 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
   transient String deviceName dependsFrom self.mDevice.one.mDeviceName ;
 
 //--- Package
-  property Bool mSlavePadsShouldBeRouted default yes ;
+  property @generateDirectAccess Bool mSlavePadsShouldBeRouted default yes ;
  
   override transient UInt32 signatureForERCChecking dependsFrom
     self.mSlavePadsShouldBeRouted ;
@@ -43,7 +43,7 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
   transient StringArray availablePackages dependsFrom self.mDevice.one.packageNames ;
 
 //--- Display in board
-  property Bool mDisplayLegend default yes ;
+  property @generateDirectAccess Bool mDisplayLegend default yes ;
 
   toMany BoardConnector mConnectors inverse toOne mComponent ;
   
@@ -119,40 +119,40 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
   transient DeviceSymbolDictionary deviceSymbolDictionary dependsFrom self.mDevice.one.deviceSymbolDictionary ;  
 
 //--- Component Name
-  property String mNamePrefix default "" ;
-  property Int mNameIndex default 0 ;
+  property @generateDirectAccess String mNamePrefix default "" ;
+  property @generateDirectAccess Int mNameIndex default 0 ;
   override transient String componentName dependsFrom self.mNamePrefix, self.mNameIndex ;
 
 //--- Component location in board  
-  property Int mX default 0 ;
-  property Int mXUnit default 2_286 ; // mils
-  property Int mY default 0 ;
-  property Int mYUnit default 2_286 ; // mils
-  property Int mRotation default 0 ; // 1000 -> 1°
-  property ComponentSide mSide default front ;
+  property @generateDirectAccess Int mX default 0 ;
+  property @generateDirectAccess Int mXUnit default 2_286 ; // mils
+  property @generateDirectAccess Int mY default 0 ;
+  property @generateDirectAccess Int mYUnit default 2_286 ; // mils
+  property @generateDirectAccess Int mRotation default 0 ; // 1000 -> 1°
+  property @generateDirectAccess ComponentSide mSide default front ;
 
 //--- Component name display
   toOne @weak FontInProject mNameFont inverse toMany mComponentNames ;
-  property Double mNameFontSize default 4.0 ;
-  property Int mXName default 0 ;
+  property @generateDirectAccess Double mNameFontSize default 4.0 ;
+  property @generateDirectAccess Int mXName default 0 ;
   property Int mXNameUnit default 2_286 ; // mils
-  property Int mYName default 685_800 ; // 300 mils
+  property @generateDirectAccess Int mYName default 685_800 ; // 300 mils
   property Int mYNameUnit default 2_286 ; // mils
-  property Bool mNameIsVisibleInBoard default yes ;
-  property Int mNameRotation default 0 ; // 1000 -> 1°
+  property @generateDirectAccess Bool mNameIsVisibleInBoard default yes ;
+  property @generateDirectAccess Int mNameRotation default 0 ; // 1000 -> 1°
 
   transient String componentNameFontName dependsFrom self.mNameFont.one.mFontName ;
 
 //--- Component value display
-  property String mComponentValue default "" ;
+  property @generateDirectAccess String mComponentValue default "" ;
   toOne @weak FontInProject mValueFont inverse toMany mComponentValues ;
-  property Double mValueFontSize default 4.0 ;
-  property Int mXValue default 0 ;
+  property @generateDirectAccess Double mValueFontSize default 4.0 ;
+  property @generateDirectAccess Int mXValue default 0 ;
   property Int mXValueUnit default 2_286 ; // mils
-  property Int mYValue default -685_800 ; // 300 mils
+  property @generateDirectAccess Int mYValue default -685_800 ; // 300 mils
   property Int mYValueUnit default 2_286 ; // mils
-  property Bool mValueIsVisibleInBoard default yes ;
-  property Int mValueRotation default 0 ; // 1000 -> 1°
+  property @generateDirectAccess Bool mValueIsVisibleInBoard default yes ;
+  property @generateDirectAccess Int mValueRotation default 0 ; // 1000 -> 1°
 
   transient String componentValueFontName dependsFrom self.mValueFont.one.mFontName ;
 }

@@ -294,27 +294,27 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
 handlingOpposite entity ArtworkRoot {
   toMany @signature ArtworkFileGenerationParameters fileGenerationParameterArray inverse toOne mArtwork ;
 
-  property @generateDirectAccess @signature LayerConfiguration layerConfiguration default twoLayers ;
+  property @generateDirectRead @signature LayerConfiguration layerConfiguration default twoLayers ;
 
   property Int selectedTab default 0 ;
-  property @generateDirectAccess @signature String comments default "" ;
+  property @generateDirectRead @signature String comments default "" ;
 
   property Int minPPTPTTTWdisplayUnit default 90 ; // 1µm
-  property @generateDirectAccess @signature Int minPPTPTTTW default 18_000 ; // 200µm
+  property @generateDirectRead @signature Int minPPTPTTTW default 18_000 ; // 200µm
 
   property Int minValueForOARdisplayUnit default 90 ; // 1µm
-  property @generateDirectAccess @signature Int minValueForOARinEBUnit default 18_000 ; // 200µm
+  property @generateDirectRead @signature Int minValueForOARinEBUnit default 18_000 ; // 200µm
 
   property Int minValueForPHDdisplayUnit default 90 ; // 1µm
-  property @generateDirectAccess @signature Int minValueForPHDinEBUnit default 18_000 ; // 200µm
+  property @generateDirectRead @signature Int minValueForPHDinEBUnit default 18_000 ; // 200µm
 
-  property @generateDirectAccess Int minValueForBoardLimitWidthDisplayUnit default 90_000 ; // 1mm
-  property @generateDirectAccess @signature Int minValueForBoardLimitWidth default 90_000 ; // 1mm
+  property @generateDirectRead Int minValueForBoardLimitWidthDisplayUnit default 90_000 ; // 1mm
+  property @generateDirectRead @signature Int minValueForBoardLimitWidth default 90_000 ; // 1mm
 
-  property @generateDirectAccess @signature String title default "" ;
+  property @generateDirectRead @signature String title default "" ;
 
 //--- Excellon drill data
-  property @generateDirectAccess @signature String drillDataFileExtension default "DRF" ;
+  property @generateDirectRead @signature String drillDataFileExtension default "DRF" ;
 
 //--- For artwork embedded in document
   transient UInt32 signatureForERCChecking dependsFrom
@@ -356,7 +356,7 @@ handlingOpposite entity ArtworkFileGenerationParameters {
   property @signature Bool drawVias default no ;
   property @signature String fileExtension default "" ;
   property @signature Bool horizontalMirror default no ;
-  property @signature String name default "Unnamed" ;
+  property @signature @generateDirectAccess String name default "Unnamed" ;
   property @signature Int measurementUnitForPadHoleInPDF default 90_000 ; // mm
   property @signature Int padHoleDiameterInPDF default 90_000 ; // 1 mm
   

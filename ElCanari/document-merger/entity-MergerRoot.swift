@@ -82,7 +82,6 @@ final class MergerRoot : EBManagedObject {
 
   final var modelInsertionRotation : QuadrantRotation {
     get { return self.modelInsertionRotation_property.propval }
-    set { self.modelInsertionRotation_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -113,7 +112,6 @@ final class MergerRoot : EBManagedObject {
 
   final var boardWidthUnit : Int {
     get { return self.boardWidthUnit_property.propval }
-    set { self.boardWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -126,7 +124,6 @@ final class MergerRoot : EBManagedObject {
 
   final var boardHeightUnit : Int {
     get { return self.boardHeightUnit_property.propval }
-    set { self.boardHeightUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -139,7 +136,6 @@ final class MergerRoot : EBManagedObject {
 
   final var overlapingArrangment : Bool {
     get { return self.overlapingArrangment_property.propval }
-    set { self.overlapingArrangment_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -164,7 +160,6 @@ final class MergerRoot : EBManagedObject {
 
   final var boardLimitWidth : Int {
     get { return self.boardLimitWidth_property.propval }
-    set { self.boardLimitWidth_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -177,7 +172,6 @@ final class MergerRoot : EBManagedObject {
 
   final var boardLimitWidthUnit : Int {
     get { return self.boardLimitWidthUnit_property.propval }
-    set { self.boardLimitWidthUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -190,7 +184,6 @@ final class MergerRoot : EBManagedObject {
 
   final var mPDFBoardBackgroundColor : NSColor {
     get { return self.mPDFBoardBackgroundColor_property.propval }
-    set { self.mPDFBoardBackgroundColor_property.setProp (newValue) }
   }
 
   //····················································································································

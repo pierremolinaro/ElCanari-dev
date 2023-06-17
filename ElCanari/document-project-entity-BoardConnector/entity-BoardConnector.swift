@@ -290,7 +290,6 @@ final class BoardConnector : BoardObject,
 
   final var mDefaultHoleDiameterUnit : Int {
     get { return self.mDefaultHoleDiameterUnit_property.propval }
-    set { self.mDefaultHoleDiameterUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -316,7 +315,6 @@ final class BoardConnector : BoardObject,
 
   final var mCustomHoleDiameterUnit : Int {
     get { return self.mCustomHoleDiameterUnit_property.propval }
-    set { self.mCustomHoleDiameterUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -342,7 +340,6 @@ final class BoardConnector : BoardObject,
 
   final var mDefaultPadDiameterUnit : Int {
     get { return self.mDefaultPadDiameterUnit_property.propval }
-    set { self.mDefaultPadDiameterUnit_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -368,7 +365,6 @@ final class BoardConnector : BoardObject,
 
   final var mCustomPadDiameterUnit : Int {
     get { return self.mCustomPadDiameterUnit_property.propval }
-    set { self.mCustomPadDiameterUnit_property.setProp (newValue) }
   }
 
   //····················································································································

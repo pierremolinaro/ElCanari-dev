@@ -1,11 +1,11 @@
 
 entity FontCharacter {
   toMany @signature SegmentForFontCharacter segments ;
-  property @signature Int codePoint default 0 ; // Unicode point code
-  property @signature Int advance default 0 ;
+  property @signature @generateDirectAccess Int codePoint default 0 ; // Unicode point code
+  property @signature @generateDirectAccess Int advance default 0 ;
 
-  property @signature Bool mWarnsWhenNoSegment default yes ;
-  property @signature Bool mWarnsWhenAdvanceIsZero default yes ;
+  property @signature @generateDirectAccess Bool mWarnsWhenNoSegment default yes ;
+  property @signature @generateDirectAccess Bool mWarnsWhenAdvanceIsZero default yes ;
 
   transient CharacterSegmentList segmentArrayForDrawing dependsFrom
      self.segments.all.x1, self.segments.all.y1, self.segments.all.x2, self.segments.all.y2 ;

@@ -1,7 +1,7 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 entity DevicePadAssignmentInProject {
-  property String mPadName default "" ;
+  property @generateDirectAccess String mPadName default "" ;
   toOne DevicePinInProject mPin ; // Is nil if pad is NC
 
   transient ThreeStrings pinPadAssignment dependsFrom self.mPadName, self.mPin.one.mSymbolInstanceName, self.mPin.one.mPinName ;

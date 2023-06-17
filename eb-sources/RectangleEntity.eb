@@ -1,14 +1,14 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 entity RectangleEntity {
-  property Int p0x default 0 ;
-  property Int p0y default 0 ;
-  property Int p1x default 0 ;
-  property Int p1y default 0 ;
-  property Int p2x default 0 ;
-  property Int p2y default 0 ;
-  property Int p3x default 0 ;
-  property Int p3y default 0 ;
+  property @generateDirectAccess Int p0x default 0 ;
+  property @generateDirectAccess Int p0y default 0 ;
+  property @generateDirectAccess Int p1x default 0 ;
+  property @generateDirectAccess Int p1y default 0 ;
+  property @generateDirectAccess Int p2x default 0 ;
+  property @generateDirectAccess Int p2y default 0 ;
+  property @generateDirectAccess Int p3x default 0 ;
+  property @generateDirectAccess Int p3y default 0 ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————
