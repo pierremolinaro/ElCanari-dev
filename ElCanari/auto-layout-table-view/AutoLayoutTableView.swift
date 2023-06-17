@@ -108,21 +108,21 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   //····················································································································
 
-  final func set (hasHorizontalGrid inFlag : Bool) -> Self {
-    if inFlag {
-      self.mTableView.gridStyleMask.insert (.solidHorizontalGridLineMask)
-    }else{
-      self.mTableView.gridStyleMask.remove (.solidHorizontalGridLineMask)
-    }
-    return self
-  }
+//  final func set (hasHorizontalGrid inFlag : Bool) -> Self {
+//    if inFlag {
+//      self.mTableView.gridStyleMask.insert (.solidHorizontalGridLineMask)
+//    }else{
+//      self.mTableView.gridStyleMask.remove (.solidHorizontalGridLineMask)
+//    }
+//    return self
+//  }
   
   //····················································································································
 
-  final func set (usesAlternatingRowBackgroundColors inFlag : Bool) -> Self {
-    self.mTableView.usesAlternatingRowBackgroundColors = inFlag
-    return self
-  }
+//  final func set (usesAlternatingRowBackgroundColors inFlag : Bool) -> Self {
+//    self.mTableView.usesAlternatingRowBackgroundColors = inFlag
+//    return self
+//  }
 
   //····················································································································
 

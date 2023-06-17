@@ -97,8 +97,6 @@ final class SheetInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mSheetTitle : String {
     get { return self.mSheetTitle_property.propval }
     set { self.mSheetTitle_property.setProp (newValue) }

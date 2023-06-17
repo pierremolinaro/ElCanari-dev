@@ -5,116 +5,16 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DevicePinInProject_mPinName : AnyObject {
-  var mPinName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DevicePinInProject_mSymbolInstanceName : AnyObject {
-  var mSymbolInstanceName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DevicePinInProject_mSymbolTypeName : AnyObject {
-  var mSymbolTypeName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DevicePinInProject_mPinX : AnyObject {
-  var mPinX : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DevicePinInProject_mPinY : AnyObject {
-  var mPinY : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DevicePinInProject_mXName : AnyObject {
-  var mXName : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DevicePinInProject_mYName : AnyObject {
-  var mYName : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DevicePinInProject_mNameHorizontalAlignment : AnyObject {
-  var mNameHorizontalAlignment : HorizontalAlignment { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DevicePinInProject_mPinNameIsDisplayedInSchematic : AnyObject {
-  var mPinNameIsDisplayedInSchematic : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DevicePinInProject_mXNumber : AnyObject {
-  var mXNumber : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DevicePinInProject_mYNumber : AnyObject {
-  var mYNumber : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DevicePinInProject_mNumberHorizontalAlignment : AnyObject {
-  var mNumberHorizontalAlignment : HorizontalAlignment { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DevicePinInProject_pinQualifiedName : AnyObject {
-  var pinQualifiedName : PinQualifiedNameStruct? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DevicePinInProject_descriptor : AnyObject {
-  var descriptor : PinInProjectDescriptor? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: DevicePinInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class DevicePinInProject : EBManagedObject,
-         DevicePinInProject_mPinName,
-         DevicePinInProject_mSymbolInstanceName,
-         DevicePinInProject_mSymbolTypeName,
-         DevicePinInProject_mPinX,
-         DevicePinInProject_mPinY,
-         DevicePinInProject_mXName,
-         DevicePinInProject_mYName,
-         DevicePinInProject_mNameHorizontalAlignment,
-         DevicePinInProject_mPinNameIsDisplayedInSchematic,
-         DevicePinInProject_mXNumber,
-         DevicePinInProject_mYNumber,
-         DevicePinInProject_mNumberHorizontalAlignment,
-         DevicePinInProject_pinQualifiedName,
-         DevicePinInProject_descriptor {
+final class DevicePinInProject : EBManagedObject {
 
   //····················································································································
   //   Atomic property: mPinName
   //····················································································································
 
   final let mPinName_property : EBStoredProperty_String
-
-  //····················································································································
 
   //····················································································································
 
@@ -131,8 +31,6 @@ final class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mSymbolInstanceName : String {
     get { return self.mSymbolInstanceName_property.propval }
     set { self.mSymbolInstanceName_property.setProp (newValue) }
@@ -143,8 +41,6 @@ final class DevicePinInProject : EBManagedObject,
   //····················································································································
 
   final let mSymbolTypeName_property : EBStoredProperty_String
-
-  //····················································································································
 
   //····················································································································
 
@@ -161,8 +57,6 @@ final class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mPinX : Int {
     get { return self.mPinX_property.propval }
     set { self.mPinX_property.setProp (newValue) }
@@ -173,8 +67,6 @@ final class DevicePinInProject : EBManagedObject,
   //····················································································································
 
   final let mPinY_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -191,8 +83,6 @@ final class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mXName : Int {
     get { return self.mXName_property.propval }
     set { self.mXName_property.setProp (newValue) }
@@ -203,8 +93,6 @@ final class DevicePinInProject : EBManagedObject,
   //····················································································································
 
   final let mYName_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -221,8 +109,6 @@ final class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mNameHorizontalAlignment : HorizontalAlignment {
     get { return self.mNameHorizontalAlignment_property.propval }
     set { self.mNameHorizontalAlignment_property.setProp (newValue) }
@@ -233,8 +119,6 @@ final class DevicePinInProject : EBManagedObject,
   //····················································································································
 
   final let mPinNameIsDisplayedInSchematic_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -251,8 +135,6 @@ final class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mXNumber : Int {
     get { return self.mXNumber_property.propval }
     set { self.mXNumber_property.setProp (newValue) }
@@ -266,8 +148,6 @@ final class DevicePinInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mYNumber : Int {
     get { return self.mYNumber_property.propval }
     set { self.mYNumber_property.setProp (newValue) }
@@ -278,8 +158,6 @@ final class DevicePinInProject : EBManagedObject,
   //····················································································································
 
   final let mNumberHorizontalAlignment_property : EBStoredProperty_HorizontalAlignment
-
-  //····················································································································
 
   //····················································································································
 

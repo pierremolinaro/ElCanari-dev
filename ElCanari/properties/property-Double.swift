@@ -18,19 +18,19 @@ typealias EBReadWritePropertyController_Double = EBGenericReadWritePropertyContr
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func values_Double_are_ordered (_ inLeft : Double,
-                                _ inAscending : Bool,
-                                _ inRight : Double) -> Bool {
+/* func values_Double_are_ordered (_ inLeft : Double,
+                                   _ inAscending : Bool,
+                                   _ inRight : Double) -> Bool {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   return left < right
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func compare_Double_properties (_ inLeft : EBReadOnlyProperty_Double,
-                                           _ inAscending : Bool,
-                                           _ inRight : EBReadOnlyProperty_Double) -> ComparisonResult {
+/* @MainActor func compare_Double_properties (_ inLeft : EBReadOnlyProperty_Double,
+                                              _ inAscending : Bool,
+                                              _ inRight : EBReadOnlyProperty_Double) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   switch left.selection {
@@ -64,7 +64,7 @@ func values_Double_are_ordered (_ inLeft : Double,
       }
     }
   }
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

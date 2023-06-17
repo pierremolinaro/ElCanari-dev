@@ -235,8 +235,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var drawBoardLimits : Bool {
     get { return self.drawBoardLimits_property.propval }
     set { self.drawBoardLimits_property.setProp (newValue) }
@@ -247,8 +245,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   final let drawInternalBoardLimits_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -265,8 +261,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var drawComponentNamesTopSide : Bool {
     get { return self.drawComponentNamesTopSide_property.propval }
     set { self.drawComponentNamesTopSide_property.setProp (newValue) }
@@ -277,8 +271,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   final let drawComponentNamesBottomSide_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -295,8 +287,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var drawComponentValuesTopSide : Bool {
     get { return self.drawComponentValuesTopSide_property.propval }
     set { self.drawComponentValuesTopSide_property.setProp (newValue) }
@@ -307,8 +297,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   final let drawComponentValuesBottomSide_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -325,8 +313,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var drawPackageLegendTopSide : Bool {
     get { return self.drawPackageLegendTopSide_property.propval }
     set { self.drawPackageLegendTopSide_property.setProp (newValue) }
@@ -337,8 +323,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   final let drawPackageLegendBottomSide_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -355,8 +339,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var drawPadHolesInPDF : Bool {
     get { return self.drawPadHolesInPDF_property.propval }
     set { self.drawPadHolesInPDF_property.setProp (newValue) }
@@ -367,8 +349,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   final let drawPadsTopSide_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -385,8 +365,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var drawPadsBottomSide : Bool {
     get { return self.drawPadsBottomSide_property.propval }
     set { self.drawPadsBottomSide_property.setProp (newValue) }
@@ -397,8 +375,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   final let drawTextsLayoutTopSide_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -415,8 +391,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var drawTextsLayoutBottomSide : Bool {
     get { return self.drawTextsLayoutBottomSide_property.propval }
     set { self.drawTextsLayoutBottomSide_property.setProp (newValue) }
@@ -427,8 +401,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   final let drawTextsLegendTopSide_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -445,8 +417,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var drawTextsLegendBottomSide : Bool {
     get { return self.drawTextsLegendBottomSide_property.propval }
     set { self.drawTextsLegendBottomSide_property.setProp (newValue) }
@@ -457,8 +427,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   final let drawTracksTopSide_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -475,8 +443,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var drawTracksInner1Layer : Bool {
     get { return self.drawTracksInner1Layer_property.propval }
     set { self.drawTracksInner1Layer_property.setProp (newValue) }
@@ -487,8 +453,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   final let drawTracksInner2Layer_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -505,8 +469,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var drawTracksInner3Layer : Bool {
     get { return self.drawTracksInner3Layer_property.propval }
     set { self.drawTracksInner3Layer_property.setProp (newValue) }
@@ -517,8 +479,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   final let drawTracksInner4Layer_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -535,8 +495,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var drawTracksBottomSide : Bool {
     get { return self.drawTracksBottomSide_property.propval }
     set { self.drawTracksBottomSide_property.setProp (newValue) }
@@ -547,8 +505,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   final let drawTraversingPads_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -565,8 +521,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var drawVias : Bool {
     get { return self.drawVias_property.propval }
     set { self.drawVias_property.setProp (newValue) }
@@ -577,8 +531,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   final let fileExtension_property : EBStoredProperty_String
-
-  //····················································································································
 
   //····················································································································
 
@@ -595,8 +547,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var horizontalMirror : Bool {
     get { return self.horizontalMirror_property.propval }
     set { self.horizontalMirror_property.setProp (newValue) }
@@ -607,8 +557,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   final let name_property : EBStoredProperty_String
-
-  //····················································································································
 
   //····················································································································
 
@@ -625,8 +573,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var measurementUnitForPadHoleInPDF : Int {
     get { return self.measurementUnitForPadHoleInPDF_property.propval }
     set { self.measurementUnitForPadHoleInPDF_property.setProp (newValue) }
@@ -637,8 +583,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   final let padHoleDiameterInPDF_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 

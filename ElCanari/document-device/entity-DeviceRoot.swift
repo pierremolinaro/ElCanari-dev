@@ -5,193 +5,16 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_mSelectedPageIndex : AnyObject {
-  var mSelectedPageIndex : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_mSelectedSymbolInspectorIndex : AnyObject {
-  var mSelectedSymbolInspectorIndex : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_mSelectedPackageInspectorIndex : AnyObject {
-  var mSelectedPackageInspectorIndex : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_mTitle : AnyObject {
-  var mTitle : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_mImageData : AnyObject {
-  var mImageData : Data { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_mPrefix : AnyObject {
-  var mPrefix : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_mComments : AnyObject {
-  var mComments : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_mPackageDisplayZoom : AnyObject {
-  var mPackageDisplayZoom : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_mPackageDisplayHorizontalFlip : AnyObject {
-  var mPackageDisplayHorizontalFlip : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_mPackageDisplayVerticalFlip : AnyObject {
-  var mPackageDisplayVerticalFlip : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_mShowPackages : AnyObject {
-  var mShowPackages : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_mShowPackagePadNumbers : AnyObject {
-  var mShowPackagePadNumbers : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_mShowPackageFrontPads : AnyObject {
-  var mShowPackageFrontPads : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_mShowPackageBackPads : AnyObject {
-  var mShowPackageBackPads : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_mSymbolDisplayZoom : AnyObject {
-  var mSymbolDisplayZoom : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_imageIsValid : AnyObject {
-  var imageIsValid : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_unconnectedPins : AnyObject {
-  var unconnectedPins : UnconnectedSymbolPinsInDevice? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_inconsistentPackagePadNameSetsMessage : AnyObject {
-  var inconsistentPackagePadNameSetsMessage : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_inconsistentSymbolNameSetMessage : AnyObject {
-  var inconsistentSymbolNameSetMessage : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_packagePadNameSetsAreConsistent : AnyObject {
-  var packagePadNameSetsAreConsistent : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_symbolNameAreConsistent : AnyObject {
-  var symbolNameAreConsistent : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_symbolTypeNames : AnyObject {
-  var symbolTypeNames : StringArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_unconnectedPads : AnyObject {
-  var unconnectedPads : StringArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_assignedPadProxies : AnyObject {
-  var assignedPadProxies : AssignedPadProxiesInDevice? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceRoot_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: DeviceRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class DeviceRoot : EBManagedObject,
-         DeviceRoot_mSelectedPageIndex,
-         DeviceRoot_mSelectedSymbolInspectorIndex,
-         DeviceRoot_mSelectedPackageInspectorIndex,
-         DeviceRoot_mTitle,
-         DeviceRoot_mImageData,
-         DeviceRoot_mPrefix,
-         DeviceRoot_mComments,
-         DeviceRoot_mPackageDisplayZoom,
-         DeviceRoot_mPackageDisplayHorizontalFlip,
-         DeviceRoot_mPackageDisplayVerticalFlip,
-         DeviceRoot_mShowPackages,
-         DeviceRoot_mShowPackagePadNumbers,
-         DeviceRoot_mShowPackageFrontPads,
-         DeviceRoot_mShowPackageBackPads,
-         DeviceRoot_mSymbolDisplayZoom,
-         DeviceRoot_imageIsValid,
-         DeviceRoot_unconnectedPins,
-         DeviceRoot_inconsistentPackagePadNameSetsMessage,
-         DeviceRoot_inconsistentSymbolNameSetMessage,
-         DeviceRoot_packagePadNameSetsAreConsistent,
-         DeviceRoot_symbolNameAreConsistent,
-         DeviceRoot_symbolTypeNames,
-         DeviceRoot_unconnectedPads,
-         DeviceRoot_assignedPadProxies,
-         DeviceRoot_issues {
+final class DeviceRoot : EBManagedObject {
 
   //····················································································································
   //   Atomic property: mSelectedPageIndex
   //····················································································································
 
   final let mSelectedPageIndex_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -208,8 +31,6 @@ final class DeviceRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mSelectedSymbolInspectorIndex : Int {
     get { return self.mSelectedSymbolInspectorIndex_property.propval }
     set { self.mSelectedSymbolInspectorIndex_property.setProp (newValue) }
@@ -220,8 +41,6 @@ final class DeviceRoot : EBManagedObject,
   //····················································································································
 
   final let mSelectedPackageInspectorIndex_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -238,8 +57,6 @@ final class DeviceRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mTitle : String {
     get { return self.mTitle_property.propval }
     set { self.mTitle_property.setProp (newValue) }
@@ -250,8 +67,6 @@ final class DeviceRoot : EBManagedObject,
   //····················································································································
 
   final let mImageData_property : EBStoredProperty_Data
-
-  //····················································································································
 
   //····················································································································
 
@@ -268,8 +83,6 @@ final class DeviceRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mPrefix : String {
     get { return self.mPrefix_property.propval }
     set { self.mPrefix_property.setProp (newValue) }
@@ -280,8 +93,6 @@ final class DeviceRoot : EBManagedObject,
   //····················································································································
 
   final let mComments_property : EBStoredProperty_String
-
-  //····················································································································
 
   //····················································································································
 
@@ -298,8 +109,6 @@ final class DeviceRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mPackageDisplayZoom : Int {
     get { return self.mPackageDisplayZoom_property.propval }
     set { self.mPackageDisplayZoom_property.setProp (newValue) }
@@ -310,8 +119,6 @@ final class DeviceRoot : EBManagedObject,
   //····················································································································
 
   final let mPackageDisplayHorizontalFlip_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -328,8 +135,6 @@ final class DeviceRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mPackageDisplayVerticalFlip : Bool {
     get { return self.mPackageDisplayVerticalFlip_property.propval }
     set { self.mPackageDisplayVerticalFlip_property.setProp (newValue) }
@@ -340,8 +145,6 @@ final class DeviceRoot : EBManagedObject,
   //····················································································································
 
   final let mShowPackages_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -358,8 +161,6 @@ final class DeviceRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mShowPackagePadNumbers : Bool {
     get { return self.mShowPackagePadNumbers_property.propval }
     set { self.mShowPackagePadNumbers_property.setProp (newValue) }
@@ -370,8 +171,6 @@ final class DeviceRoot : EBManagedObject,
   //····················································································································
 
   final let mShowPackageFrontPads_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -388,8 +187,6 @@ final class DeviceRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mShowPackageBackPads : Bool {
     get { return self.mShowPackageBackPads_property.propval }
     set { self.mShowPackageBackPads_property.setProp (newValue) }
@@ -400,8 +197,6 @@ final class DeviceRoot : EBManagedObject,
   //····················································································································
 
   final let mSymbolDisplayZoom_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 

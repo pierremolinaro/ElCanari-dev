@@ -477,11 +477,8 @@ final class EBGraphicView : NSView {
   //  MARK: -
   //····················································································································
 
-  private var mDeferredUpdateViewFrameAndBoundsRegistered = false
-
   func setNeedsDisplayAndUpdateViewBounds () {
     self.needsDisplay = true
-    self.mDeferredUpdateViewFrameAndBoundsRegistered = true
     self.deferredApplyZoom ()
   }
 
@@ -490,7 +487,6 @@ final class EBGraphicView : NSView {
   private func deferredApplyZoom () {
     // Swift.print ("deferredApplyZoom")
     if NSEvent.pressedMouseButtons == 0 { // No pressed button
-      self.mDeferredUpdateViewFrameAndBoundsRegistered = false
       self.applyZoom ()
     }else{
       DispatchQueue.main.async { self.deferredApplyZoom () }
@@ -549,12 +545,6 @@ final class EBGraphicView : NSView {
   //····················································································································
 
   var mZoomController : EBReadWritePropertyController_Int? = nil
-
-  //····················································································································
-  // MARK: -
-  //····················································································································
-
-  var mControlKeyHiliteDiameterController : EBObservablePropertyController? = nil
 
   //····················································································································
   // MARK: -

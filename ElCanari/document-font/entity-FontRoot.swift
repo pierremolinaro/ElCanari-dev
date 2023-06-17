@@ -5,102 +5,16 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol FontRoot_comments : AnyObject {
-  var comments : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol FontRoot_nominalSize : AnyObject {
-  var nominalSize : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol FontRoot_selectedTab : AnyObject {
-  var selectedTab : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol FontRoot_selectedInspector : AnyObject {
-  var selectedInspector : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol FontRoot_currentCharacterCodePoint : AnyObject {
-  var currentCharacterCodePoint : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol FontRoot_currentCharacterCodePointString : AnyObject {
-  var currentCharacterCodePointString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol FontRoot_sampleStringBezierPath : AnyObject {
-  var sampleStringBezierPath : NSBezierPath? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol FontRoot_sampleStringBezierPathWidth : AnyObject {
-  var sampleStringBezierPathWidth : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol FontRoot_sampleStringBezierPathAscent : AnyObject {
-  var sampleStringBezierPathAscent : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol FontRoot_sampleStringBezierPathDescent : AnyObject {
-  var sampleStringBezierPathDescent : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol FontRoot_definedCharacters : AnyObject {
-  var definedCharacters : DefinedCharactersInDevice? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol FontRoot_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: FontRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class FontRoot : EBManagedObject,
-         FontRoot_comments,
-         FontRoot_nominalSize,
-         FontRoot_selectedTab,
-         FontRoot_selectedInspector,
-         FontRoot_currentCharacterCodePoint,
-         FontRoot_currentCharacterCodePointString,
-         FontRoot_sampleStringBezierPath,
-         FontRoot_sampleStringBezierPathWidth,
-         FontRoot_sampleStringBezierPathAscent,
-         FontRoot_sampleStringBezierPathDescent,
-         FontRoot_definedCharacters,
-         FontRoot_issues {
+final class FontRoot : EBManagedObject {
 
   //····················································································································
   //   Atomic property: comments
   //····················································································································
 
   final let comments_property : EBStoredProperty_String
-
-  //····················································································································
 
   //····················································································································
 
@@ -117,8 +31,6 @@ final class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var nominalSize : Int {
     get { return self.nominalSize_property.propval }
     set { self.nominalSize_property.setProp (newValue) }
@@ -129,8 +41,6 @@ final class FontRoot : EBManagedObject,
   //····················································································································
 
   final let selectedTab_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -147,8 +57,6 @@ final class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var selectedInspector : Int {
     get { return self.selectedInspector_property.propval }
     set { self.selectedInspector_property.setProp (newValue) }
@@ -159,8 +67,6 @@ final class FontRoot : EBManagedObject,
   //····················································································································
 
   final let currentCharacterCodePoint_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 

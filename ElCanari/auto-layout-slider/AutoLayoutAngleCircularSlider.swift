@@ -50,16 +50,16 @@ final class AutoLayoutAngleCircularSlider : AutoLayoutBase_NSSlider {
   //  doubleValue binding
   //····················································································································
 
-  fileprivate func updateDoubleValue (_ object : EBReadOnlyProperty_Double) {
-    switch object.selection {
-    case .empty, .multiple :
-      self.stringValue = "-"
-      self.enable (fromValueBinding: false, self.enabledBindingController)
-    case .single (let propertyValue) :
-      self.doubleValue = propertyValue
-      self.enable (fromValueBinding: true, self.enabledBindingController)
-    }
-  }
+//  fileprivate func updateDoubleValue (_ object : EBReadOnlyProperty_Double) {
+//    switch object.selection {
+//    case .empty, .multiple :
+//      self.stringValue = "-"
+//      self.enable (fromValueBinding: false, self.enabledBindingController)
+//    case .single (let propertyValue) :
+//      self.doubleValue = propertyValue
+//      self.enable (fromValueBinding: true, self.enabledBindingController)
+//    }
+//  }
 
   //····················································································································
   //  intValue binding

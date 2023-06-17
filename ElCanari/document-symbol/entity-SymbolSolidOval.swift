@@ -5,74 +5,16 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol SymbolSolidOval_y : AnyObject {
-  var y : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol SymbolSolidOval_width : AnyObject {
-  var width : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol SymbolSolidOval_height : AnyObject {
-  var height : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol SymbolSolidOval_x : AnyObject {
-  var x : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol SymbolSolidOval_filledBezierPath : AnyObject {
-  var filledBezierPath : NSBezierPath? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol SymbolSolidOval_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol SymbolSolidOval_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol SymbolSolidOval_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SymbolSolidOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SymbolSolidOval : SymbolObject,
-         SymbolSolidOval_y,
-         SymbolSolidOval_width,
-         SymbolSolidOval_height,
-         SymbolSolidOval_x,
-         SymbolSolidOval_filledBezierPath,
-         SymbolSolidOval_objectDisplay,
-         SymbolSolidOval_selectionDisplay,
-         SymbolSolidOval_issues {
+final class SymbolSolidOval : SymbolObject {
 
   //····················································································································
   //   Atomic property: y
   //····················································································································
 
   final let y_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -89,8 +31,6 @@ final class SymbolSolidOval : SymbolObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var width : Int {
     get { return self.width_property.propval }
     set { self.width_property.setProp (newValue) }
@@ -104,8 +44,6 @@ final class SymbolSolidOval : SymbolObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var height : Int {
     get { return self.height_property.propval }
     set { self.height_property.setProp (newValue) }
@@ -116,8 +54,6 @@ final class SymbolSolidOval : SymbolObject,
   //····················································································································
 
   final let x_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 

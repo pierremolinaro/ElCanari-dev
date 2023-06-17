@@ -60,8 +60,6 @@ final class LabelInSchematic : SchematicObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mOrientation : QuadrantRotation {
     get { return self.mOrientation_property.propval }
     set { self.mOrientation_property.setProp (newValue) }

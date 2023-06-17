@@ -26,3 +26,43 @@ extension Int {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor func compare_Int_properties (_ inLeft : EBReadOnlyProperty_Int,
+                                        _ inAscending : Bool,
+                                        _ inRight : EBReadOnlyProperty_Int) -> ComparisonResult {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
+  switch left.selection {
+  case .empty :
+    switch right.selection {
+    case .empty :
+      return .orderedSame
+    default:
+      return .orderedAscending
+    }
+  case .multiple :
+    switch right.selection {
+    case .empty :
+      return .orderedDescending
+    case .multiple :
+      return .orderedSame
+   case .single (_) :
+      return .orderedAscending
+   }
+ case .single (let currentValue) :
+    switch right.selection {
+    case .empty, .multiple :
+      return .orderedDescending
+    case .single (let otherValue) :
+      if currentValue < otherValue {
+        return .orderedAscending
+      }else if currentValue > otherValue {
+        return .orderedDescending
+      }else{
+        return .orderedSame
+      }
+    }
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

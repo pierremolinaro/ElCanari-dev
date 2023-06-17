@@ -79,7 +79,7 @@ final class AutoLayoutEnumSegmentedControl : AutoLayoutBase_NSSegmentedControl {
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     self.mSelectedSegmentController?.updateModel (self.indexOfSelectedItem)
-    self.mSelectedIndexController?.updateModel (self.indexOfSelectedItem)
+//    self.mSelectedIndexController?.updateModel (self.indexOfSelectedItem)
     return super.sendAction (action, to:to)
   }
 
@@ -103,17 +103,17 @@ final class AutoLayoutEnumSegmentedControl : AutoLayoutBase_NSSegmentedControl {
   //  $selectedIndex binding
   //····················································································································
 
-  private var mSelectedIndexController : Controller_AutoLayoutSegmentedControl_Index? = nil
+//  private var mSelectedIndexController : Controller_AutoLayoutSegmentedControl_Index? = nil
 
   //····················································································································
 
-  final func bind_selectedIndex (_ inObject : EBReadWriteProperty_Int) -> Self {
-    self.mSelectedIndexController = Controller_AutoLayoutSegmentedControl_Index (
-      object: inObject,
-      outlet: self
-    )
-    return self
-  }
+//  final func bind_selectedIndex (_ inObject : EBReadWriteProperty_Int) -> Self {
+//    self.mSelectedIndexController = Controller_AutoLayoutSegmentedControl_Index (
+//      object: inObject,
+//      outlet: self
+//    )
+//    return self
+//  }
 
   //····················································································································
 
@@ -153,27 +153,27 @@ fileprivate final class Controller_AutoLayoutEnumSegmentedControl_Index : EBObse
 //   Controller_AutoLayoutSegmentedControl_Index
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class Controller_AutoLayoutSegmentedControl_Index : EBObservablePropertyController {
-
-  //····················································································································
-
-  private let mObject : EBReadWriteProperty_Int
-
-  //····················································································································
-
-  init (object inObject : EBReadWriteProperty_Int, outlet inOutlet : AutoLayoutEnumSegmentedControl) {
-    self.mObject = inObject
-    super.init (observedObjects: [inObject], callBack: { [weak inOutlet] in inOutlet?.updateIndex (fromInteger: inObject) } )
-  }
-
-  //····················································································································
-
-  func updateModel (_ inValue : Int) {
-    self.mObject.setProp (inValue)
-  }
-
-  //····················································································································
-
-}
+//fileprivate final class Controller_AutoLayoutSegmentedControl_Index : EBObservablePropertyController {
+//
+//  //····················································································································
+//
+//  private let mObject : EBReadWriteProperty_Int
+//
+//  //····················································································································
+//
+//  init (object inObject : EBReadWriteProperty_Int, outlet inOutlet : AutoLayoutEnumSegmentedControl) {
+//    self.mObject = inObject
+//    super.init (observedObjects: [inObject], callBack: { [weak inOutlet] in inOutlet?.updateIndex (fromInteger: inObject) } )
+//  }
+//
+//  //····················································································································
+//
+//  func updateModel (_ inValue : Int) {
+//    self.mObject.setProp (inValue)
+//  }
+//
+//  //····················································································································
+//
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

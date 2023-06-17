@@ -18,19 +18,19 @@ typealias EBReadWritePropertyController_UInt32 = EBGenericReadWritePropertyContr
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func values_UInt32_are_ordered (_ inLeft : UInt32,
-                                _ inAscending : Bool,
-                                _ inRight : UInt32) -> Bool {
+/* func values_UInt32_are_ordered (_ inLeft : UInt32,
+                                   _ inAscending : Bool,
+                                   _ inRight : UInt32) -> Bool {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   return left < right
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func compare_UInt32_properties (_ inLeft : EBReadOnlyProperty_UInt32,
-                                           _ inAscending : Bool,
-                                           _ inRight : EBReadOnlyProperty_UInt32) -> ComparisonResult {
+/* @MainActor func compare_UInt32_properties (_ inLeft : EBReadOnlyProperty_UInt32,
+                                              _ inAscending : Bool,
+                                              _ inRight : EBReadOnlyProperty_UInt32) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   switch left.selection {
@@ -64,7 +64,7 @@ func values_UInt32_are_ordered (_ inLeft : UInt32,
       }
     }
   }
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

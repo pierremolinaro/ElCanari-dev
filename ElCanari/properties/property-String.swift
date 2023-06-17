@@ -18,19 +18,19 @@ typealias EBReadWritePropertyController_String = EBGenericReadWritePropertyContr
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func values_String_are_ordered (_ inLeft : String,
-                                _ inAscending : Bool,
-                                _ inRight : String) -> Bool {
+/* func values_String_are_ordered (_ inLeft : String,
+                                   _ inAscending : Bool,
+                                   _ inRight : String) -> Bool {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   return left.localizedStandardCompare (right) == .orderedAscending
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func compare_String_properties (_ inLeft : EBReadOnlyProperty_String,
-                                           _ inAscending : Bool,
-                                           _ inRight : EBReadOnlyProperty_String) -> ComparisonResult {
+/* @MainActor func compare_String_properties (_ inLeft : EBReadOnlyProperty_String,
+                                              _ inAscending : Bool,
+                                              _ inRight : EBReadOnlyProperty_String) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   switch left.selection {
@@ -58,7 +58,7 @@ func values_String_are_ordered (_ inLeft : String,
       return currentValue.localizedStandardCompare (otherValue)
     }
   }
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

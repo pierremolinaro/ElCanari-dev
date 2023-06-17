@@ -5,144 +5,16 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_layerConfiguration : AnyObject {
-  var layerConfiguration : LayerConfiguration { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_selectedTab : AnyObject {
-  var selectedTab : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_comments : AnyObject {
-  var comments : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_minPPTPTTTWdisplayUnit : AnyObject {
-  var minPPTPTTTWdisplayUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_minPPTPTTTW : AnyObject {
-  var minPPTPTTTW : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_minValueForOARdisplayUnit : AnyObject {
-  var minValueForOARdisplayUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_minValueForOARinEBUnit : AnyObject {
-  var minValueForOARinEBUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_minValueForPHDdisplayUnit : AnyObject {
-  var minValueForPHDdisplayUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_minValueForPHDinEBUnit : AnyObject {
-  var minValueForPHDinEBUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_minValueForBoardLimitWidthDisplayUnit : AnyObject {
-  var minValueForBoardLimitWidthDisplayUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_minValueForBoardLimitWidth : AnyObject {
-  var minValueForBoardLimitWidth : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_title : AnyObject {
-  var title : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_drillDataFileExtension : AnyObject {
-  var drillDataFileExtension : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_hasInnerElements : AnyObject {
-  var hasInnerElements : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_hasSixLayers : AnyObject {
-  var hasSixLayers : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_hasDataWarning : AnyObject {
-  var hasDataWarning : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_emptyDrillFileExtension : AnyObject {
-  var emptyDrillFileExtension : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkRoot_signatureForERCChecking : AnyObject {
-  var signatureForERCChecking : UInt32? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArtworkRoot : EBManagedObject,
-         ArtworkRoot_layerConfiguration,
-         ArtworkRoot_selectedTab,
-         ArtworkRoot_comments,
-         ArtworkRoot_minPPTPTTTWdisplayUnit,
-         ArtworkRoot_minPPTPTTTW,
-         ArtworkRoot_minValueForOARdisplayUnit,
-         ArtworkRoot_minValueForOARinEBUnit,
-         ArtworkRoot_minValueForPHDdisplayUnit,
-         ArtworkRoot_minValueForPHDinEBUnit,
-         ArtworkRoot_minValueForBoardLimitWidthDisplayUnit,
-         ArtworkRoot_minValueForBoardLimitWidth,
-         ArtworkRoot_title,
-         ArtworkRoot_drillDataFileExtension,
-         ArtworkRoot_hasInnerElements,
-         ArtworkRoot_hasSixLayers,
-         ArtworkRoot_hasDataWarning,
-         ArtworkRoot_emptyDrillFileExtension,
-         ArtworkRoot_signatureForERCChecking {
+final class ArtworkRoot : EBManagedObject {
 
   //····················································································································
   //   Atomic property: layerConfiguration
   //····················································································································
 
   final let layerConfiguration_property : EBStoredProperty_LayerConfiguration
-
-  //····················································································································
 
   //····················································································································
 
@@ -159,8 +31,6 @@ final class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var selectedTab : Int {
     get { return self.selectedTab_property.propval }
     set { self.selectedTab_property.setProp (newValue) }
@@ -171,8 +41,6 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   final let comments_property : EBStoredProperty_String
-
-  //····················································································································
 
   //····················································································································
 
@@ -189,8 +57,6 @@ final class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var minPPTPTTTWdisplayUnit : Int {
     get { return self.minPPTPTTTWdisplayUnit_property.propval }
     set { self.minPPTPTTTWdisplayUnit_property.setProp (newValue) }
@@ -201,8 +67,6 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   final let minPPTPTTTW_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -219,8 +83,6 @@ final class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var minValueForOARdisplayUnit : Int {
     get { return self.minValueForOARdisplayUnit_property.propval }
     set { self.minValueForOARdisplayUnit_property.setProp (newValue) }
@@ -231,8 +93,6 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   final let minValueForOARinEBUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -249,8 +109,6 @@ final class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var minValueForPHDdisplayUnit : Int {
     get { return self.minValueForPHDdisplayUnit_property.propval }
     set { self.minValueForPHDdisplayUnit_property.setProp (newValue) }
@@ -261,8 +119,6 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   final let minValueForPHDinEBUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -279,8 +135,6 @@ final class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var minValueForBoardLimitWidthDisplayUnit : Int {
     get { return self.minValueForBoardLimitWidthDisplayUnit_property.propval }
     set { self.minValueForBoardLimitWidthDisplayUnit_property.setProp (newValue) }
@@ -291,8 +145,6 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   final let minValueForBoardLimitWidth_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -309,8 +161,6 @@ final class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var title : String {
     get { return self.title_property.propval }
     set { self.title_property.setProp (newValue) }
@@ -321,8 +171,6 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   final let drillDataFileExtension_property : EBStoredProperty_String
-
-  //····················································································································
 
   //····················································································································
 

@@ -5,417 +5,16 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_selectedPageIndex : AnyObject {
-  var selectedPageIndex : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_selectedInspector : AnyObject {
-  var selectedInspector : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_comments : AnyObject {
-  var comments : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_program : AnyObject {
-  var program : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_horizontalFlip : AnyObject {
-  var horizontalFlip : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_verticalFlip : AnyObject {
-  var verticalFlip : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_gridStyle : AnyObject {
-  var gridStyle : GridStyle { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_gridStep : AnyObject {
-  var gridStep : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_gridStepUnit : AnyObject {
-  var gridStepUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_gridDisplayFactor : AnyObject {
-  var gridDisplayFactor : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_zoom : AnyObject {
-  var zoom : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImageOpacity : AnyObject {
-  var mModelImageOpacity : Double { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImagePageHorizontalFlip : AnyObject {
-  var mModelImagePageHorizontalFlip : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImagePageVerticalFlip : AnyObject {
-  var mModelImagePageVerticalFlip : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImagePageGridStyle : AnyObject {
-  var mModelImagePageGridStyle : GridStyle { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImagePageGridStep : AnyObject {
-  var mModelImagePageGridStep : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImagePageGridStepUnit : AnyObject {
-  var mModelImagePageGridStepUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImagePageGridDisplayFactor : AnyObject {
-  var mModelImagePageGridDisplayFactor : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImagePageZoom : AnyObject {
-  var mModelImagePageZoom : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImagePageXPlacardUnit : AnyObject {
-  var mModelImagePageXPlacardUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImagePageYPlacardUnit : AnyObject {
-  var mModelImagePageYPlacardUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImageSecondPointXUnit : AnyObject {
-  var mModelImageSecondPointXUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImageSecondPointYUnit : AnyObject {
-  var mModelImageSecondPointYUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImageFirstPointXOnLock : AnyObject {
-  var mModelImageFirstPointXOnLock : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImageFirstPointYOnLock : AnyObject {
-  var mModelImageFirstPointYOnLock : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImagePointsDxOnLock : AnyObject {
-  var mModelImagePointsDxOnLock : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImagePointsDyOnLock : AnyObject {
-  var mModelImagePointsDyOnLock : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImageScale : AnyObject {
-  var mModelImageScale : Double { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImageRotationInRadians : AnyObject {
-  var mModelImageRotationInRadians : Double { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelPointsCircleRadius : AnyObject {
-  var mModelPointsCircleRadius : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mPointsAreLocked : AnyObject {
-  var mPointsAreLocked : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mDimensionUnitFirstModelPointX : AnyObject {
-  var mDimensionUnitFirstModelPointX : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mDimensionUnitFirstModelPointY : AnyObject {
-  var mDimensionUnitFirstModelPointY : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mDimensionUnitSecondModelPointDx : AnyObject {
-  var mDimensionUnitSecondModelPointDx : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mDimensionUnitSecondModelPointDy : AnyObject {
-  var mDimensionUnitSecondModelPointDy : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_knobSizeMultpliedByTen : AnyObject {
-  var knobSizeMultpliedByTen : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_padNumbering : AnyObject {
-  var padNumbering : PadNumbering { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_counterClockNumberingStartAngle : AnyObject {
-  var counterClockNumberingStartAngle : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_xPlacardUnit : AnyObject {
-  var xPlacardUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_yPlacardUnit : AnyObject {
-  var yPlacardUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImageData : AnyObject {
-  var mModelImageData : Data { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImageFirstPointX : AnyObject {
-  var mModelImageFirstPointX : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImageFirstPointY : AnyObject {
-  var mModelImageFirstPointY : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImageSecondPointDx : AnyObject {
-  var mModelImageSecondPointDx : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_mModelImageSecondPointDy : AnyObject {
-  var mModelImageSecondPointDy : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_freePadNumbering : AnyObject {
-  var freePadNumbering : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_counterClockNumbering : AnyObject {
-  var counterClockNumbering : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_gridStepMultipliedByDisplayFactor : AnyObject {
-  var gridStepMultipliedByDisplayFactor : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_secondPointX : AnyObject {
-  var secondPointX : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_secondPointY : AnyObject {
-  var secondPointY : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_lockImageView : AnyObject {
-  var lockImageView : NSImage? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_padNumberDisplay : AnyObject {
-  var padNumberDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_backgroundImagePageBackgroundDisplay : AnyObject {
-  var backgroundImagePageBackgroundDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_modelImageSizeString : AnyObject {
-  var modelImageSizeString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_hasModelImage : AnyObject {
-  var hasModelImage : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_masterPadObjectIndexArray : AnyObject {
-  var masterPadObjectIndexArray : IntArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol PackageRoot_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: PackageRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PackageRoot : EBManagedObject,
-         PackageRoot_selectedPageIndex,
-         PackageRoot_selectedInspector,
-         PackageRoot_comments,
-         PackageRoot_program,
-         PackageRoot_horizontalFlip,
-         PackageRoot_verticalFlip,
-         PackageRoot_gridStyle,
-         PackageRoot_gridStep,
-         PackageRoot_gridStepUnit,
-         PackageRoot_gridDisplayFactor,
-         PackageRoot_zoom,
-         PackageRoot_mModelImageOpacity,
-         PackageRoot_mModelImagePageHorizontalFlip,
-         PackageRoot_mModelImagePageVerticalFlip,
-         PackageRoot_mModelImagePageGridStyle,
-         PackageRoot_mModelImagePageGridStep,
-         PackageRoot_mModelImagePageGridStepUnit,
-         PackageRoot_mModelImagePageGridDisplayFactor,
-         PackageRoot_mModelImagePageZoom,
-         PackageRoot_mModelImagePageXPlacardUnit,
-         PackageRoot_mModelImagePageYPlacardUnit,
-         PackageRoot_mModelImageSecondPointXUnit,
-         PackageRoot_mModelImageSecondPointYUnit,
-         PackageRoot_mModelImageFirstPointXOnLock,
-         PackageRoot_mModelImageFirstPointYOnLock,
-         PackageRoot_mModelImagePointsDxOnLock,
-         PackageRoot_mModelImagePointsDyOnLock,
-         PackageRoot_mModelImageScale,
-         PackageRoot_mModelImageRotationInRadians,
-         PackageRoot_mModelPointsCircleRadius,
-         PackageRoot_mPointsAreLocked,
-         PackageRoot_mDimensionUnitFirstModelPointX,
-         PackageRoot_mDimensionUnitFirstModelPointY,
-         PackageRoot_mDimensionUnitSecondModelPointDx,
-         PackageRoot_mDimensionUnitSecondModelPointDy,
-         PackageRoot_knobSizeMultpliedByTen,
-         PackageRoot_padNumbering,
-         PackageRoot_counterClockNumberingStartAngle,
-         PackageRoot_xPlacardUnit,
-         PackageRoot_yPlacardUnit,
-         PackageRoot_mModelImageData,
-         PackageRoot_mModelImageFirstPointX,
-         PackageRoot_mModelImageFirstPointY,
-         PackageRoot_mModelImageSecondPointDx,
-         PackageRoot_mModelImageSecondPointDy,
-         PackageRoot_freePadNumbering,
-         PackageRoot_counterClockNumbering,
-         PackageRoot_gridStepMultipliedByDisplayFactor,
-         PackageRoot_secondPointX,
-         PackageRoot_secondPointY,
-         PackageRoot_lockImageView,
-         PackageRoot_padNumberDisplay,
-         PackageRoot_backgroundImagePageBackgroundDisplay,
-         PackageRoot_modelImageSizeString,
-         PackageRoot_hasModelImage,
-         PackageRoot_masterPadObjectIndexArray,
-         PackageRoot_issues {
+final class PackageRoot : EBManagedObject {
 
   //····················································································································
   //   Atomic property: selectedPageIndex
   //····················································································································
 
   final let selectedPageIndex_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -432,8 +31,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var selectedInspector : Int {
     get { return self.selectedInspector_property.propval }
     set { self.selectedInspector_property.setProp (newValue) }
@@ -444,8 +41,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let comments_property : EBStoredProperty_String
-
-  //····················································································································
 
   //····················································································································
 
@@ -462,8 +57,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var program : String {
     get { return self.program_property.propval }
     set { self.program_property.setProp (newValue) }
@@ -474,8 +67,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let horizontalFlip_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -492,8 +83,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var verticalFlip : Bool {
     get { return self.verticalFlip_property.propval }
     set { self.verticalFlip_property.setProp (newValue) }
@@ -504,8 +93,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let gridStyle_property : EBStoredProperty_GridStyle
-
-  //····················································································································
 
   //····················································································································
 
@@ -522,8 +109,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var gridStep : Int {
     get { return self.gridStep_property.propval }
     set { self.gridStep_property.setProp (newValue) }
@@ -534,8 +119,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let gridStepUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -552,8 +135,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var gridDisplayFactor : Int {
     get { return self.gridDisplayFactor_property.propval }
     set { self.gridDisplayFactor_property.setProp (newValue) }
@@ -564,8 +145,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let zoom_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -582,8 +161,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mModelImageOpacity : Double {
     get { return self.mModelImageOpacity_property.propval }
     set { self.mModelImageOpacity_property.setProp (newValue) }
@@ -594,8 +171,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let mModelImagePageHorizontalFlip_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -612,8 +187,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mModelImagePageVerticalFlip : Bool {
     get { return self.mModelImagePageVerticalFlip_property.propval }
     set { self.mModelImagePageVerticalFlip_property.setProp (newValue) }
@@ -624,8 +197,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let mModelImagePageGridStyle_property : EBStoredProperty_GridStyle
-
-  //····················································································································
 
   //····················································································································
 
@@ -642,8 +213,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mModelImagePageGridStep : Int {
     get { return self.mModelImagePageGridStep_property.propval }
     set { self.mModelImagePageGridStep_property.setProp (newValue) }
@@ -654,8 +223,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let mModelImagePageGridStepUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -672,8 +239,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mModelImagePageGridDisplayFactor : Int {
     get { return self.mModelImagePageGridDisplayFactor_property.propval }
     set { self.mModelImagePageGridDisplayFactor_property.setProp (newValue) }
@@ -684,8 +249,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let mModelImagePageZoom_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -702,8 +265,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mModelImagePageXPlacardUnit : Int {
     get { return self.mModelImagePageXPlacardUnit_property.propval }
     set { self.mModelImagePageXPlacardUnit_property.setProp (newValue) }
@@ -714,8 +275,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let mModelImagePageYPlacardUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -732,8 +291,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mModelImageSecondPointXUnit : Int {
     get { return self.mModelImageSecondPointXUnit_property.propval }
     set { self.mModelImageSecondPointXUnit_property.setProp (newValue) }
@@ -744,8 +301,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let mModelImageSecondPointYUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -800,8 +355,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mModelImagePointsDxOnLock : Int {
     get { return self.mModelImagePointsDxOnLock_property.propval }
     set { self.mModelImagePointsDxOnLock_property.setProp (newValue) }
@@ -812,8 +365,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let mModelImagePointsDyOnLock_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -906,8 +457,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mDimensionUnitFirstModelPointX : Int {
     get { return self.mDimensionUnitFirstModelPointX_property.propval }
     set { self.mDimensionUnitFirstModelPointX_property.setProp (newValue) }
@@ -918,8 +467,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let mDimensionUnitFirstModelPointY_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -936,8 +483,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mDimensionUnitSecondModelPointDx : Int {
     get { return self.mDimensionUnitSecondModelPointDx_property.propval }
     set { self.mDimensionUnitSecondModelPointDx_property.setProp (newValue) }
@@ -948,8 +493,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let mDimensionUnitSecondModelPointDy_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -966,8 +509,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var knobSizeMultpliedByTen : Int {
     get { return self.knobSizeMultpliedByTen_property.propval }
     set { self.knobSizeMultpliedByTen_property.setProp (newValue) }
@@ -978,8 +519,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let padNumbering_property : EBStoredProperty_PadNumbering
-
-  //····················································································································
 
   //····················································································································
 
@@ -996,8 +535,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var counterClockNumberingStartAngle : Int {
     get { return self.counterClockNumberingStartAngle_property.propval }
     set { self.counterClockNumberingStartAngle_property.setProp (newValue) }
@@ -1011,8 +548,6 @@ final class PackageRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var xPlacardUnit : Int {
     get { return self.xPlacardUnit_property.propval }
     set { self.xPlacardUnit_property.setProp (newValue) }
@@ -1023,8 +558,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let yPlacardUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -1104,8 +637,6 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final let mModelImageData_property : EBStoredProperty_Data
-
-  //····················································································································
 
   //····················································································································
 

@@ -18,19 +18,19 @@ typealias EBReadWritePropertyController_Data = EBGenericReadWritePropertyControl
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func values_Data_are_ordered (_ inLeft : Data,
-                              _ inAscending : Bool,
-                              _ inRight : Data) -> Bool {
+/* func values_Data_are_ordered (_ inLeft : Data,
+                                 _ inAscending : Bool,
+                                 _ inRight : Data) -> Bool {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   return left < right
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func compare_Data_properties (_ inLeft : EBReadOnlyProperty_Data,
-                                         _ inAscending : Bool,
-                                         _ inRight : EBReadOnlyProperty_Data) -> ComparisonResult {
+/* @MainActor func compare_Data_properties (_ inLeft : EBReadOnlyProperty_Data,
+                                            _ inAscending : Bool,
+                                            _ inRight : EBReadOnlyProperty_Data) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   switch left.selection {
@@ -64,7 +64,7 @@ func values_Data_are_ordered (_ inLeft : Data,
       }
     }
   }
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -151,8 +151,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mCenterX : Int {
     get { return self.mCenterX_property.propval }
     set { self.mCenterX_property.setProp (newValue) }
@@ -163,8 +161,6 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final let mCenterY_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -181,8 +177,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mRotation : QuadrantRotation {
     get { return self.mRotation_property.propval }
     set { self.mRotation_property.setProp (newValue) }
@@ -193,8 +187,6 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final let mMirror_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -211,8 +203,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mSymbolInstanceName : String {
     get { return self.mSymbolInstanceName_property.propval }
     set { self.mSymbolInstanceName_property.setProp (newValue) }
@@ -223,8 +213,6 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final let mSymbolTypeName_property : EBStoredProperty_String
-
-  //····················································································································
 
   //····················································································································
 
@@ -241,8 +229,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mDisplayComponentNameOffsetX : Int {
     get { return self.mDisplayComponentNameOffsetX_property.propval }
     set { self.mDisplayComponentNameOffsetX_property.setProp (newValue) }
@@ -253,8 +239,6 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final let mDisplayComponentNameOffsetY_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -271,8 +255,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mDisplayComponentValue : Bool {
     get { return self.mDisplayComponentValue_property.propval }
     set { self.mDisplayComponentValue_property.setProp (newValue) }
@@ -286,8 +268,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mDisplayComponentValueOffsetX : Int {
     get { return self.mDisplayComponentValueOffsetX_property.propval }
     set { self.mDisplayComponentValueOffsetX_property.setProp (newValue) }
@@ -298,8 +278,6 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final let mDisplayComponentValueOffsetY_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 

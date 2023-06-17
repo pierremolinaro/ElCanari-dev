@@ -5,269 +5,10 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_selectedPageIndex : AnyObject {
-  var selectedPageIndex : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_zoom : AnyObject {
-  var zoom : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_showDisplaySettingView : AnyObject {
-  var showDisplaySettingView : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_modelInsertionRotation : AnyObject {
-  var modelInsertionRotation : QuadrantRotation { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_automaticBoardSize : AnyObject {
-  var automaticBoardSize : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_boardManualWidth : AnyObject {
-  var boardManualWidth : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_boardManualHeight : AnyObject {
-  var boardManualHeight : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_boardWidthUnit : AnyObject {
-  var boardWidthUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_boardHeightUnit : AnyObject {
-  var boardHeightUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_overlapingArrangment : AnyObject {
-  var overlapingArrangment : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_selectedBoardXUnit : AnyObject {
-  var selectedBoardXUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_selectedBoardYUnit : AnyObject {
-  var selectedBoardYUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_boardLimitWidth : AnyObject {
-  var boardLimitWidth : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_boardLimitWidthUnit : AnyObject {
-  var boardLimitWidthUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_mPDFBoardBackgroundColor : AnyObject {
-  var mPDFBoardBackgroundColor : NSColor { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_mArtworkName : AnyObject {
-  var mArtworkName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_mArtworkVersion : AnyObject {
-  var mArtworkVersion : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_minPPTPTTTWdisplayUnit : AnyObject {
-  var minPPTPTTTWdisplayUnit : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_minPPTPTTTW : AnyObject {
-  var minPPTPTTTW : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_minValueForOARdisplayUnit : AnyObject {
-  var minValueForOARdisplayUnit : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_minValueForOARinEBUnit : AnyObject {
-  var minValueForOARinEBUnit : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_minValueForPHDdisplayUnit : AnyObject {
-  var minValueForPHDdisplayUnit : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_minValueForPHDinEBUnit : AnyObject {
-  var minValueForPHDinEBUnit : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_minValueForBoardLimitWidth : AnyObject {
-  var minValueForBoardLimitWidth : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_minValueForBoardLimitWidthDisplayUnit : AnyObject {
-  var minValueForBoardLimitWidthDisplayUnit : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_drillDataFileExtension : AnyObject {
-  var drillDataFileExtension : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_modelNames : AnyObject {
-  var modelNames : StringTagArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_boardRect : AnyObject {
-  var boardRect : CanariRect? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_boardWidth : AnyObject {
-  var boardWidth : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_boardHeight : AnyObject {
-  var boardHeight : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_comments : AnyObject {
-  var comments : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_layoutLayerWarningMessage : AnyObject {
-  var layoutLayerWarningMessage : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_layerConfigurationString : AnyObject {
-  var layerConfigurationString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_emptyDrillFileExtension : AnyObject {
-  var emptyDrillFileExtension : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_hasInnerElements : AnyObject {
-  var hasInnerElements : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_hasSixLayers : AnyObject {
-  var hasSixLayers : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol MergerRoot_boardOutlineRectDisplay : AnyObject {
-  var boardOutlineRectDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class MergerRoot : EBManagedObject,
-         MergerRoot_selectedPageIndex,
-         MergerRoot_zoom,
-         MergerRoot_showDisplaySettingView,
-         MergerRoot_modelInsertionRotation,
-         MergerRoot_automaticBoardSize,
-         MergerRoot_boardManualWidth,
-         MergerRoot_boardManualHeight,
-         MergerRoot_boardWidthUnit,
-         MergerRoot_boardHeightUnit,
-         MergerRoot_overlapingArrangment,
-         MergerRoot_selectedBoardXUnit,
-         MergerRoot_selectedBoardYUnit,
-         MergerRoot_boardLimitWidth,
-         MergerRoot_boardLimitWidthUnit,
-         MergerRoot_mPDFBoardBackgroundColor,
-         MergerRoot_mArtworkName,
-         MergerRoot_mArtworkVersion,
-         MergerRoot_minPPTPTTTWdisplayUnit,
-         MergerRoot_minPPTPTTTW,
-         MergerRoot_minValueForOARdisplayUnit,
-         MergerRoot_minValueForOARinEBUnit,
-         MergerRoot_minValueForPHDdisplayUnit,
-         MergerRoot_minValueForPHDinEBUnit,
-         MergerRoot_minValueForBoardLimitWidth,
-         MergerRoot_minValueForBoardLimitWidthDisplayUnit,
-         MergerRoot_drillDataFileExtension,
-         MergerRoot_modelNames,
-         MergerRoot_boardRect,
-         MergerRoot_boardWidth,
-         MergerRoot_boardHeight,
-         MergerRoot_comments,
-         MergerRoot_layoutLayerWarningMessage,
-         MergerRoot_layerConfigurationString,
-         MergerRoot_emptyDrillFileExtension,
-         MergerRoot_hasInnerElements,
-         MergerRoot_hasSixLayers,
-         MergerRoot_boardOutlineRectDisplay {
+final class MergerRoot : EBManagedObject {
 
   //····················································································································
   //   To many property: boardModels
@@ -307,8 +48,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var selectedPageIndex : Int {
     get { return self.selectedPageIndex_property.propval }
     set { self.selectedPageIndex_property.setProp (newValue) }
@@ -319,8 +58,6 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final let zoom_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -337,8 +74,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var showDisplaySettingView : Bool {
     get { return self.showDisplaySettingView_property.propval }
     set { self.showDisplaySettingView_property.setProp (newValue) }
@@ -349,8 +84,6 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final let modelInsertionRotation_property : EBStoredProperty_QuadrantRotation
-
-  //····················································································································
 
   //····················································································································
 
@@ -367,8 +100,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var automaticBoardSize : Bool {
     get { return self.automaticBoardSize_property.propval }
     set { self.automaticBoardSize_property.setProp (newValue) }
@@ -379,8 +110,6 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final let boardManualWidth_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -397,8 +126,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var boardManualHeight : Int {
     get { return self.boardManualHeight_property.propval }
     set { self.boardManualHeight_property.setProp (newValue) }
@@ -409,8 +136,6 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final let boardWidthUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -427,8 +152,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var boardHeightUnit : Int {
     get { return self.boardHeightUnit_property.propval }
     set { self.boardHeightUnit_property.setProp (newValue) }
@@ -439,8 +162,6 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final let overlapingArrangment_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -457,8 +178,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var selectedBoardXUnit : Int {
     get { return self.selectedBoardXUnit_property.propval }
     set { self.selectedBoardXUnit_property.setProp (newValue) }
@@ -469,8 +188,6 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final let selectedBoardYUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -487,8 +204,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var boardLimitWidth : Int {
     get { return self.boardLimitWidth_property.propval }
     set { self.boardLimitWidth_property.setProp (newValue) }
@@ -499,8 +214,6 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final let boardLimitWidthUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -517,8 +230,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mPDFBoardBackgroundColor : NSColor {
     get { return self.mPDFBoardBackgroundColor_property.propval }
     set { self.mPDFBoardBackgroundColor_property.setProp (newValue) }
@@ -532,8 +243,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mArtworkName : String {
     get { return self.mArtworkName_property.propval }
     set { self.mArtworkName_property.setProp (newValue) }
@@ -544,8 +253,6 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final let mArtworkVersion_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 

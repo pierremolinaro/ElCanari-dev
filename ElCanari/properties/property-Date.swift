@@ -18,19 +18,19 @@ typealias EBReadWritePropertyController_Date = EBGenericReadWritePropertyControl
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func values_Date_are_ordered (_ inLeft : Date,
-                              _ inAscending : Bool,
-                              _ inRight : Date) -> Bool {
+/* func values_Date_are_ordered (_ inLeft : Date,
+                                 _ inAscending : Bool,
+                                 _ inRight : Date) -> Bool {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   return left < right
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func compare_Date_properties (_ inLeft : EBReadOnlyProperty_Date,
-                                         _ inAscending : Bool,
-                                         _ inRight : EBReadOnlyProperty_Date) -> ComparisonResult {
+/* @MainActor func compare_Date_properties (_ inLeft : EBReadOnlyProperty_Date,
+                                            _ inAscending : Bool,
+                                            _ inRight : EBReadOnlyProperty_Date) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   switch left.selection {
@@ -64,7 +64,7 @@ func values_Date_are_ordered (_ inLeft : Date,
       }
     }
   }
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -14,29 +14,29 @@ extension AutoLayoutTableView {
 
   //····················································································································
 
-  final func addColumn_NSImage_String (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> (String?, NSImage?),
-                                       sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
-                                       title inTitle : String,
-                                       minWidth inMinWidth : Int,
-                                       maxWidth inMaxWidth : Int,
-                                       headerAlignment inHeaderAlignment : TextAlignment,
-                                       contentAlignment inContentAlignment : TextAlignment) {
-    let column = InternalImageStringValueTableColumn (
-      withIdentifierNamed: String (self.columnCount),
-      sortDelegate: inSortDelegate,
-      contentAlignment: inContentAlignment.cocoaAlignment,
-      valueGetterDelegate: inGetterDelegate
-    )
-    column.title = inTitle
-    column.headerCell.controlSize = self.controlSize
-    column.headerCell.font = self.font
-    column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
-    column.minWidth = CGFloat (inMinWidth)
-    column.maxWidth = CGFloat (inMaxWidth)
-    column.width = (column.minWidth + column.maxWidth) / 2.0
-  //--- Add Column
-    self.appendTableColumn (column)
-  }
+//  final func addColumn_NSImage_String (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> (String?, NSImage?),
+//                                       sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+//                                       title inTitle : String,
+//                                       minWidth inMinWidth : Int,
+//                                       maxWidth inMaxWidth : Int,
+//                                       headerAlignment inHeaderAlignment : TextAlignment,
+//                                       contentAlignment inContentAlignment : TextAlignment) {
+//    let column = InternalImageStringValueTableColumn (
+//      withIdentifierNamed: String (self.columnCount),
+//      sortDelegate: inSortDelegate,
+//      contentAlignment: inContentAlignment.cocoaAlignment,
+//      valueGetterDelegate: inGetterDelegate
+//    )
+//    column.title = inTitle
+//    column.headerCell.controlSize = self.controlSize
+//    column.headerCell.font = self.font
+//    column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
+//    column.minWidth = CGFloat (inMinWidth)
+//    column.maxWidth = CGFloat (inMaxWidth)
+//    column.width = (column.minWidth + column.maxWidth) / 2.0
+//  //--- Add Column
+//    self.appendTableColumn (column)
+//  }
 
   //····················································································································
 
@@ -46,74 +46,74 @@ extension AutoLayoutTableView {
 // InternalImageStringValueTableColumn
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class InternalImageStringValueTableColumn : AutoLayoutTableColumn {
-
-  //····················································································································
-
-  private let mValueGetterDelegate : (_ inRow : Int) -> (String?, NSImage?)
-  private let mNumberFormatter = NumberFormatter ()
-
-  //····················································································································
-  // INIT
-  //····················································································································
-
-  init (withIdentifierNamed inName : String,
-        sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
-        contentAlignment inContentAlignment : NSTextAlignment,
-        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> (String?, NSImage?) ) {
-    self.mValueGetterDelegate = inGetterDelegate
-    super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
-    self.isEditable = false
-  //--- Configure number formatter
-    self.mNumberFormatter.formatterBehavior = .behavior10_4
-    self.mNumberFormatter.numberStyle = .decimal
-    self.mNumberFormatter.localizesFormat = true
-    self.mNumberFormatter.minimumFractionDigits = 0
-    self.mNumberFormatter.maximumFractionDigits = 0
-    self.mNumberFormatter.isLenient = true
-  }
-
-  //····················································································································
-
-  required init (coder inCoder : NSCoder) {
-    fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
-    let value : (String?, NSImage?) = self.mValueGetterDelegate (inRowIndex)
-
-    let hStack = AutoLayoutHorizontalStackView ()
-
-    let imageView = AutoLayoutStaticImageView (image: value.1)
-    _ = hStack.appendView (imageView)
-
-    let textField = NSTextField (frame: .zero)
-    textField.translatesAutoresizingMaskIntoConstraints = false
-    _ = hStack.appendView (textField)
-
-    textField.isBezeled = false
-    textField.isBordered = false
-    textField.drawsBackground = false
-    textField.isEnabled = true
-    textField.isEditable = false
-    textField.cell?.sendsActionOnEndEditing = true // Send an action when focus is lost
-//-- DO NOT CHANGE controlSize and font, it makes text field not editable (???)
-//    textField.controlSize = self.mTableView.controlSize
-//    textField.font = self.mTableView.font
-    textField.formatter = self.mNumberFormatter
-    textField.alignment = self.mContentAlignment
-    if let v = value.0 {
-      textField.stringValue = v
-    }
-
-    _ = hStack.appendFlexibleSpace ()
-    return hStack
-  }
-
-  //····················································································································
-
-}
+//fileprivate final class InternalImageStringValueTableColumn : AutoLayoutTableColumn {
+//
+//  //····················································································································
+//
+//  private let mValueGetterDelegate : (_ inRow : Int) -> (String?, NSImage?)
+//  private let mNumberFormatter = NumberFormatter ()
+//
+//  //····················································································································
+//  // INIT
+//  //····················································································································
+//
+//  init (withIdentifierNamed inName : String,
+//        sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+//        contentAlignment inContentAlignment : NSTextAlignment,
+//        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> (String?, NSImage?) ) {
+//    self.mValueGetterDelegate = inGetterDelegate
+//    super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
+//    self.isEditable = false
+//  //--- Configure number formatter
+//    self.mNumberFormatter.formatterBehavior = .behavior10_4
+//    self.mNumberFormatter.numberStyle = .decimal
+//    self.mNumberFormatter.localizesFormat = true
+//    self.mNumberFormatter.minimumFractionDigits = 0
+//    self.mNumberFormatter.maximumFractionDigits = 0
+//    self.mNumberFormatter.isLenient = true
+//  }
+//
+//  //····················································································································
+//
+//  required init (coder inCoder : NSCoder) {
+//    fatalError ("init(coder:) has not been implemented")
+//  }
+//
+//  //····················································································································
+//
+//  override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
+//    let value : (String?, NSImage?) = self.mValueGetterDelegate (inRowIndex)
+//
+//    let hStack = AutoLayoutHorizontalStackView ()
+//
+//    let imageView = AutoLayoutStaticImageView (image: value.1)
+//    _ = hStack.appendView (imageView)
+//
+//    let textField = NSTextField (frame: .zero)
+//    textField.translatesAutoresizingMaskIntoConstraints = false
+//    _ = hStack.appendView (textField)
+//
+//    textField.isBezeled = false
+//    textField.isBordered = false
+//    textField.drawsBackground = false
+//    textField.isEnabled = true
+//    textField.isEditable = false
+//    textField.cell?.sendsActionOnEndEditing = true // Send an action when focus is lost
+////-- DO NOT CHANGE controlSize and font, it makes text field not editable (???)
+////    textField.controlSize = self.mTableView.controlSize
+////    textField.font = self.mTableView.font
+//    textField.formatter = self.mNumberFormatter
+//    textField.alignment = self.mContentAlignment
+//    if let v = value.0 {
+//      textField.stringValue = v
+//    }
+//
+//    _ = hStack.appendFlexibleSpace ()
+//    return hStack
+//  }
+//
+//  //····················································································································
+//
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

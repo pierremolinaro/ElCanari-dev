@@ -5,39 +5,16 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceSymbolTypeInProject_mSymbolTypeName : AnyObject {
-  var mSymbolTypeName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceSymbolTypeInProject_mStrokeBezierPath : AnyObject {
-  var mStrokeBezierPath : NSBezierPath { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DeviceSymbolTypeInProject_mFilledBezierPath : AnyObject {
-  var mFilledBezierPath : NSBezierPath { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: DeviceSymbolTypeInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class DeviceSymbolTypeInProject : EBManagedObject,
-         DeviceSymbolTypeInProject_mSymbolTypeName,
-         DeviceSymbolTypeInProject_mStrokeBezierPath,
-         DeviceSymbolTypeInProject_mFilledBezierPath {
+final class DeviceSymbolTypeInProject : EBManagedObject {
 
   //····················································································································
   //   Atomic property: mSymbolTypeName
   //····················································································································
 
   final let mSymbolTypeName_property : EBStoredProperty_String
-
-  //····················································································································
 
   //····················································································································
 
@@ -54,8 +31,6 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mStrokeBezierPath : NSBezierPath {
     get { return self.mStrokeBezierPath_property.propval }
     set { self.mStrokeBezierPath_property.setProp (newValue) }
@@ -66,8 +41,6 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
   //····················································································································
 
   final let mFilledBezierPath_property : EBStoredProperty_NSBezierPath
-
-  //····················································································································
 
   //····················································································································
 

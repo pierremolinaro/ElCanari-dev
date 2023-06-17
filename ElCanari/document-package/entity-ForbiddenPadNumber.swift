@@ -25,8 +25,6 @@ final class ForbiddenPadNumber : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var padNumber : Int {
     get { return self.padNumber_property.propval }
     set { self.padNumber_property.setProp (newValue) }

@@ -31,6 +31,7 @@ func runCommand (_ cmd : String, _ args : [String]) {
     exit (status)
   }
 }
+
 //--------------------------------------------------------------------------------------------------
 
 //-------------------- Get script absolute path
@@ -41,7 +42,10 @@ fm.changeCurrentDirectoryPath (scriptDir + "/..")
 runCommand ("/opt/homebrew/bin/periphery", ["help", "scan"])
 
 let options = [
-  "scan", "--retain-objc-accessible",
+  "scan",
+  "--retain-objc-accessible",
+  "--retain-assign-only-property-types",
+  "EBObservablePropertyController,HiddenBindingController,EBOutletEvent,Any?",
   "--project", "ElCanari.xcodeproj",
   "--schemes", "ElCanari-Debug",
   "--targets", "ElCanari-Debug"

@@ -39,8 +39,6 @@ final class DevicePadAssignmentInProject : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mPadName : String {
     get { return self.mPadName_property.propval }
     set { self.mPadName_property.setProp (newValue) }

@@ -18,19 +18,19 @@ typealias EBReadWritePropertyController_BezierPathArray = EBGenericReadWriteProp
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func values_BezierPathArray_are_ordered (_ inLeft : BezierPathArray,
-                                         _ inAscending : Bool,
-                                         _ inRight : BezierPathArray) -> Bool {
+/* func values_BezierPathArray_are_ordered (_ inLeft : BezierPathArray,
+                                            _ inAscending : Bool,
+                                            _ inRight : BezierPathArray) -> Bool {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   return left < right
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func compare_BezierPathArray_properties (_ inLeft : EBReadOnlyProperty_BezierPathArray,
-                                                    _ inAscending : Bool,
-                                                    _ inRight : EBReadOnlyProperty_BezierPathArray) -> ComparisonResult {
+/* @MainActor func compare_BezierPathArray_properties (_ inLeft : EBReadOnlyProperty_BezierPathArray,
+                                                       _ inAscending : Bool,
+                                                       _ inRight : EBReadOnlyProperty_BezierPathArray) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   switch left.selection {
@@ -64,7 +64,7 @@ func values_BezierPathArray_are_ordered (_ inLeft : BezierPathArray,
       }
     }
   }
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

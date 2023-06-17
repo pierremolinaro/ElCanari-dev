@@ -5,1229 +5,16 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mArtworkName : AnyObject {
-  var mArtworkName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mArtworkVersion : AnyObject {
-  var mArtworkVersion : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mPDFBoardBackgroundColor : AnyObject {
-  var mPDFBoardBackgroundColor : NSColor { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mCheckClearanceBetweenPadsOfSameNet : AnyObject {
-  var mCheckClearanceBetweenPadsOfSameNet : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mLastERCCheckingIsSuccess : AnyObject {
-  var mLastERCCheckingIsSuccess : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mLastERCCheckingSignature : AnyObject {
-  var mLastERCCheckingSignature : UInt32 { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mLayerConfiguration : AnyObject {
-  var mLayerConfiguration : LayerConfiguration { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardSideForNewTrack : AnyObject {
-  var mBoardSideForNewTrack : TrackSide { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mDirectionForNewTrack : AnyObject {
-  var mDirectionForNewTrack : TrackCreationDirection { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardLayerForNewText : AnyObject {
-  var mBoardLayerForNewText : BoardTextLayer { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardLayerForNewQRCode : AnyObject {
-  var mBoardLayerForNewQRCode : BoardQRCodeLayer { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardLayerForNewImage : AnyObject {
-  var mBoardLayerForNewImage : BoardQRCodeLayer { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardLayerForNewLine : AnyObject {
-  var mBoardLayerForNewLine : BoardLineLayer { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardSideForNewRestrictRectangle : AnyObject {
-  var mBoardSideForNewRestrictRectangle : RestrictRectangleLayer { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mNewRestrictRectangleLayers : AnyObject {
-  var mNewRestrictRectangleLayers : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mAutoRouterPreferredDirections : AnyObject {
-  var mAutoRouterPreferredDirections : AutorouterPreferredDirections { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mAutorouterSnapAngle : AnyObject {
-  var mAutorouterSnapAngle : AutorouterSnapAngle { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mRouteDirection : AnyObject {
-  var mRouteDirection : RouteDirection { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mRouteOrigin : AnyObject {
-  var mRouteOrigin : RouteOrigin { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mAutorouterInterfaceMode : AnyObject {
-  var mAutorouterInterfaceMode : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mExportExistingTracksAndVias : AnyObject {
-  var mExportExistingTracksAndVias : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mExportExistingTracksAndVias2 : AnyObject {
-  var mExportExistingTracksAndVias2 : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mTrackLengthUnit : AnyObject {
-  var mTrackLengthUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mLayoutClearance : AnyObject {
-  var mLayoutClearance : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mLayoutClearanceUnit : AnyObject {
-  var mLayoutClearanceUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardSelectedInspector : AnyObject {
-  var mBoardSelectedInspector : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardHorizontalFlip : AnyObject {
-  var mBoardHorizontalFlip : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardVerticalFlip : AnyObject {
-  var mBoardVerticalFlip : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardGridStyle : AnyObject {
-  var mBoardGridStyle : GridStyle { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardGridDisplayFactor : AnyObject {
-  var mBoardGridDisplayFactor : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardZoom : AnyObject {
-  var mBoardZoom : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardGridStep : AnyObject {
-  var mBoardGridStep : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardGridStepUnit : AnyObject {
-  var mBoardGridStepUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mErrorOrWarningIssueSize : AnyObject {
-  var mErrorOrWarningIssueSize : Double { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mControlKeyHiliteDiameter : AnyObject {
-  var mControlKeyHiliteDiameter : Double { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mDSNFileProposedName : AnyObject {
-  var mDSNFileProposedName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardLimitsWidth : AnyObject {
-  var mBoardLimitsWidth : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardLimitsWidthUnit : AnyObject {
-  var mBoardLimitsWidthUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardClearance : AnyObject {
-  var mBoardClearance : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardClearanceUnit : AnyObject {
-  var mBoardClearanceUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardLimitsSelectedInspector : AnyObject {
-  var mBoardLimitsSelectedInspector : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardLimitsHorizontalFlip : AnyObject {
-  var mBoardLimitsHorizontalFlip : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardLimitsVerticalFlip : AnyObject {
-  var mBoardLimitsVerticalFlip : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardLimitsGridStyle : AnyObject {
-  var mBoardLimitsGridStyle : GridStyle { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardLimitsGridDisplayFactor : AnyObject {
-  var mBoardLimitsGridDisplayFactor : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardLimitsZoom : AnyObject {
-  var mBoardLimitsZoom : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardLimitsGridStep : AnyObject {
-  var mBoardLimitsGridStep : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardLimitsGridStepUnit : AnyObject {
-  var mBoardLimitsGridStepUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardLimitsBoundingBoxUnit : AnyObject {
-  var mBoardLimitsBoundingBoxUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardPointsBoundingBoxUnit : AnyObject {
-  var mBoardPointsBoundingBoxUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardSelectedCurveDisplayUnit : AnyObject {
-  var mBoardSelectedCurveDisplayUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardLimitControlPointsDisplayUnit : AnyObject {
-  var mBoardLimitControlPointsDisplayUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mBoardShape : AnyObject {
-  var mBoardShape : BoardShape { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mContentOpacityInBoardOutline : AnyObject {
-  var mContentOpacityInBoardOutline : Double { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mRectangularBoardWidth : AnyObject {
-  var mRectangularBoardWidth : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mRectangularBoardWidthUnit : AnyObject {
-  var mRectangularBoardWidthUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mRectangularBoardHeight : AnyObject {
-  var mRectangularBoardHeight : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mRectangularBoardHeightUnit : AnyObject {
-  var mRectangularBoardHeightUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mDefaultNetClassName : AnyObject {
-  var mDefaultNetClassName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSchematicHilitedColumnIndex : AnyObject {
-  var mSchematicHilitedColumnIndex : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSchematicHilitedRowIndex : AnyObject {
-  var mSchematicHilitedRowIndex : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSchematicEnableHiliteColumnAndRow : AnyObject {
-  var mSchematicEnableHiliteColumnAndRow : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSelectedPageIndex : AnyObject {
-  var mSelectedPageIndex : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSelectedSchematicInspector : AnyObject {
-  var mSelectedSchematicInspector : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSchematicTitle : AnyObject {
-  var mSchematicTitle : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSchematicVersion : AnyObject {
-  var mSchematicVersion : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSchematicDate : AnyObject {
-  var mSchematicDate : Date { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSchematicHorizontalFlip : AnyObject {
-  var mSchematicHorizontalFlip : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSchematicVerticalFlip : AnyObject {
-  var mSchematicVerticalFlip : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSchematicZoom : AnyObject {
-  var mSchematicZoom : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSchematicGridStyle : AnyObject {
-  var mSchematicGridStyle : GridStyle { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSchematicGridDisplayFactor : AnyObject {
-  var mSchematicGridDisplayFactor : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSchematicCustomWidth : AnyObject {
-  var mSchematicCustomWidth : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSchematicCustomWidthUnit : AnyObject {
-  var mSchematicCustomWidthUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSchematicCustomHeight : AnyObject {
-  var mSchematicCustomHeight : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSchematicCustomHeightUnit : AnyObject {
-  var mSchematicCustomHeightUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_drawErrorBackgroundForBoard : AnyObject {
-  var drawErrorBackgroundForBoard : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayFrontRestrictRectangles : AnyObject {
-  var displayFrontRestrictRectangles : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayBackRestrictRectangles : AnyObject {
-  var displayBackRestrictRectangles : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayInner1RestrictRectangles : AnyObject {
-  var displayInner1RestrictRectangles : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayInner2RestrictRectangles : AnyObject {
-  var displayInner2RestrictRectangles : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayInner3RestrictRectangles : AnyObject {
-  var displayInner3RestrictRectangles : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayInner4RestrictRectangles : AnyObject {
-  var displayInner4RestrictRectangles : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayFrontLegendForBoard : AnyObject {
-  var displayFrontLegendForBoard : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayFrontLayoutForBoard : AnyObject {
-  var displayFrontLayoutForBoard : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayBackLayoutForBoard : AnyObject {
-  var displayBackLayoutForBoard : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayInner1LayoutForBoard : AnyObject {
-  var displayInner1LayoutForBoard : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayInner2LayoutForBoard : AnyObject {
-  var displayInner2LayoutForBoard : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayInner3LayoutForBoard : AnyObject {
-  var displayInner3LayoutForBoard : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayInner4LayoutForBoard : AnyObject {
-  var displayInner4LayoutForBoard : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayBackLegendForBoard : AnyObject {
-  var displayBackLegendForBoard : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayFrontPadsForBoard : AnyObject {
-  var displayFrontPadsForBoard : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayBackPadsForBoard : AnyObject {
-  var displayBackPadsForBoard : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_displayPadNumbersForBoard : AnyObject {
-  var displayPadNumbersForBoard : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_packageDrawingWidthMultpliedByTenForBoard : AnyObject {
-  var packageDrawingWidthMultpliedByTenForBoard : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mSchematicSheetOrientation : AnyObject {
-  var mSchematicSheetOrientation : SchematicSheetOrientation { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mRastnetDisplay : AnyObject {
-  var mRastnetDisplay : RastnetDisplay { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mRastnetDisplayedNetName : AnyObject {
-  var mRastnetDisplayedNetName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_mRastnetDisplayedComponentName : AnyObject {
-  var mRastnetDisplayedComponentName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_minPPTPTTTWdisplayUnit : AnyObject {
-  var minPPTPTTTWdisplayUnit : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_minPPTPTTTW : AnyObject {
-  var minPPTPTTTW : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_minValueForOARdisplayUnit : AnyObject {
-  var minValueForOARdisplayUnit : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_minValueForOARinEBUnit : AnyObject {
-  var minValueForOARinEBUnit : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_minValueForPHDdisplayUnit : AnyObject {
-  var minValueForPHDdisplayUnit : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_minValueForPHDinEBUnit : AnyObject {
-  var minValueForPHDinEBUnit : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_minValueForBoardLimitWidth : AnyObject {
-  var minValueForBoardLimitWidth : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_minValueForBoardLimitWidthDisplayUnit : AnyObject {
-  var minValueForBoardLimitWidthDisplayUnit : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_artworkComments : AnyObject {
-  var artworkComments : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_artworkLayerConfiguration : AnyObject {
-  var artworkLayerConfiguration : LayerConfiguration? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_artworkTitle : AnyObject {
-  var artworkTitle : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_selectedSheetTitle : AnyObject {
-  var selectedSheetTitle : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_drillDataFileExtension : AnyObject {
-  var drillDataFileExtension : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_hasInnerElements : AnyObject {
-  var hasInnerElements : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_layerConfigurationString : AnyObject {
-  var layerConfigurationString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_boardGridStepMultipliedByDisplayFactor : AnyObject {
-  var boardGridStepMultipliedByDisplayFactor : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor : AnyObject {
-  var boardLimitsGridStepMultipliedByDisplayFactor : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_boardShapeIsRectangular : AnyObject {
-  var boardShapeIsRectangular : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_selectedSheetIssues : AnyObject {
-  var selectedSheetIssues : CanariIssueArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_schematicOverDisplay : AnyObject {
-  var schematicOverDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_schematicTooltips : AnyObject {
-  var schematicTooltips : GraphicViewTooltipArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_segmentedControlSheetIssueImage : AnyObject {
-  var segmentedControlSheetIssueImage : NSImage? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_schematicErrorCount : AnyObject {
-  var schematicErrorCount : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_sheetIndexes : AnyObject {
-  var sheetIndexes : IntArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_netsDescription : AnyObject {
-  var netsDescription : NetInfoArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_boardIssues : AnyObject {
-  var boardIssues : CanariIssueArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_hasSixLayers : AnyObject {
-  var hasSixLayers : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_signatureForERCChecking : AnyObject {
-  var signatureForERCChecking : UInt32? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_ercStatusImage : AnyObject {
-  var ercStatusImage : NSImage? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_ercStatusImageOrNoneOnSuccess : AnyObject {
-  var ercStatusImageOrNoneOnSuccess : NSImage? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_ercStatusMessage : AnyObject {
-  var ercStatusMessage : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_viaCountString : AnyObject {
-  var viaCountString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_topSideTrackCountString : AnyObject {
-  var topSideTrackCountString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_backSideTrackCountString : AnyObject {
-  var backSideTrackCountString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_inner1LayerTrackCountString : AnyObject {
-  var inner1LayerTrackCountString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_inner2LayerTrackCountString : AnyObject {
-  var inner2LayerTrackCountString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_inner3LayerTrackCountString : AnyObject {
-  var inner3LayerTrackCountString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_inner4LayerTrackCountString : AnyObject {
-  var inner4LayerTrackCountString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_trackCountString : AnyObject {
-  var trackCountString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_trackLengthString : AnyObject {
-  var trackLengthString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_boardStatusErrorCount : AnyObject {
-  var boardStatusErrorCount : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_interiorBoundBox : AnyObject {
-  var interiorBoundBox : CanariRect? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_boardBoundBox : AnyObject {
-  var boardBoundBox : CanariRect? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_boardInteriorTop : AnyObject {
-  var boardInteriorTop : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_boardInteriorBottom : AnyObject {
-  var boardInteriorBottom : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_boardInteriorLeft : AnyObject {
-  var boardInteriorLeft : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_boardInteriorRight : AnyObject {
-  var boardInteriorRight : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_boardLimitBorderTop : AnyObject {
-  var boardLimitBorderTop : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_boardLimitBorderBottom : AnyObject {
-  var boardLimitBorderBottom : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_boardLimitBorderLeft : AnyObject {
-  var boardLimitBorderLeft : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_boardLimitBorderRight : AnyObject {
-  var boardLimitBorderRight : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_borderElementCountString : AnyObject {
-  var borderElementCountString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_borderOutlineBackground : AnyObject {
-  var borderOutlineBackground : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_borderViewBackground : AnyObject {
-  var borderViewBackground : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_fontNameArray : AnyObject {
-  var fontNameArray : StringArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_deviceNames : AnyObject {
-  var deviceNames : StringArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_allClassNames : AnyObject {
-  var allClassNames : StringArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_sheetGeometry : AnyObject {
-  var sheetGeometry : SchematicSheetGeometry? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_schematicBackgroundDisplay : AnyObject {
-  var schematicBackgroundDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_netWarningCount : AnyObject {
-  var netWarningCount : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_segmentedControlNetListIssueImage : AnyObject {
-  var segmentedControlNetListIssueImage : NSImage? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_netNamesArray : AnyObject {
-  var netNamesArray : StringArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_unplacedSymbols : AnyObject {
-  var unplacedSymbols : StringTagArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_unplacedPackages : AnyObject {
-  var unplacedPackages : StringTagArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_componentsPlacedInBoard : AnyObject {
-  var componentsPlacedInBoard : StringTagArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_boardStatusMessage : AnyObject {
-  var boardStatusMessage : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_boardStatusWarningCount : AnyObject {
-  var boardStatusWarningCount : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_placedComponentNameArray : AnyObject {
-  var placedComponentNameArray : StringArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_schematicHasErrorOrWarning : AnyObject {
-  var schematicHasErrorOrWarning : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_schematicStatusMessage : AnyObject {
-  var schematicStatusMessage : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_segmentedControlSchematicIssueImage : AnyObject {
-  var segmentedControlSchematicIssueImage : NSImage? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_schematicWarningCount : AnyObject {
-  var schematicWarningCount : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_hasSchematicIssue : AnyObject {
-  var hasSchematicIssue : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ProjectRoot_segmentedControlBoardIssueImage : AnyObject {
-  var segmentedControlBoardIssueImage : NSImage? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProjectRoot : EBManagedObject,
-         ProjectRoot_mArtworkName,
-         ProjectRoot_mArtworkVersion,
-         ProjectRoot_mPDFBoardBackgroundColor,
-         ProjectRoot_mCheckClearanceBetweenPadsOfSameNet,
-         ProjectRoot_mLastERCCheckingIsSuccess,
-         ProjectRoot_mLastERCCheckingSignature,
-         ProjectRoot_mLayerConfiguration,
-         ProjectRoot_mBoardSideForNewTrack,
-         ProjectRoot_mDirectionForNewTrack,
-         ProjectRoot_mBoardLayerForNewText,
-         ProjectRoot_mBoardLayerForNewQRCode,
-         ProjectRoot_mBoardLayerForNewImage,
-         ProjectRoot_mBoardLayerForNewLine,
-         ProjectRoot_mBoardSideForNewRestrictRectangle,
-         ProjectRoot_mNewRestrictRectangleLayers,
-         ProjectRoot_mAutoRouterPreferredDirections,
-         ProjectRoot_mAutorouterSnapAngle,
-         ProjectRoot_mRouteDirection,
-         ProjectRoot_mRouteOrigin,
-         ProjectRoot_mAutorouterInterfaceMode,
-         ProjectRoot_mExportExistingTracksAndVias,
-         ProjectRoot_mExportExistingTracksAndVias2,
-         ProjectRoot_mTrackLengthUnit,
-         ProjectRoot_mLayoutClearance,
-         ProjectRoot_mLayoutClearanceUnit,
-         ProjectRoot_mBoardSelectedInspector,
-         ProjectRoot_mBoardHorizontalFlip,
-         ProjectRoot_mBoardVerticalFlip,
-         ProjectRoot_mBoardGridStyle,
-         ProjectRoot_mBoardGridDisplayFactor,
-         ProjectRoot_mBoardZoom,
-         ProjectRoot_mBoardGridStep,
-         ProjectRoot_mBoardGridStepUnit,
-         ProjectRoot_mErrorOrWarningIssueSize,
-         ProjectRoot_mControlKeyHiliteDiameter,
-         ProjectRoot_mDSNFileProposedName,
-         ProjectRoot_mBoardLimitsWidth,
-         ProjectRoot_mBoardLimitsWidthUnit,
-         ProjectRoot_mBoardClearance,
-         ProjectRoot_mBoardClearanceUnit,
-         ProjectRoot_mBoardLimitsSelectedInspector,
-         ProjectRoot_mBoardLimitsHorizontalFlip,
-         ProjectRoot_mBoardLimitsVerticalFlip,
-         ProjectRoot_mBoardLimitsGridStyle,
-         ProjectRoot_mBoardLimitsGridDisplayFactor,
-         ProjectRoot_mBoardLimitsZoom,
-         ProjectRoot_mBoardLimitsGridStep,
-         ProjectRoot_mBoardLimitsGridStepUnit,
-         ProjectRoot_mBoardLimitsBoundingBoxUnit,
-         ProjectRoot_mBoardPointsBoundingBoxUnit,
-         ProjectRoot_mBoardSelectedCurveDisplayUnit,
-         ProjectRoot_mBoardLimitControlPointsDisplayUnit,
-         ProjectRoot_mBoardShape,
-         ProjectRoot_mContentOpacityInBoardOutline,
-         ProjectRoot_mRectangularBoardWidth,
-         ProjectRoot_mRectangularBoardWidthUnit,
-         ProjectRoot_mRectangularBoardHeight,
-         ProjectRoot_mRectangularBoardHeightUnit,
-         ProjectRoot_mDefaultNetClassName,
-         ProjectRoot_mSchematicHilitedColumnIndex,
-         ProjectRoot_mSchematicHilitedRowIndex,
-         ProjectRoot_mSchematicEnableHiliteColumnAndRow,
-         ProjectRoot_mSelectedPageIndex,
-         ProjectRoot_mSelectedSchematicInspector,
-         ProjectRoot_mSchematicTitle,
-         ProjectRoot_mSchematicVersion,
-         ProjectRoot_mSchematicDate,
-         ProjectRoot_mSchematicHorizontalFlip,
-         ProjectRoot_mSchematicVerticalFlip,
-         ProjectRoot_mSchematicZoom,
-         ProjectRoot_mSchematicGridStyle,
-         ProjectRoot_mSchematicGridDisplayFactor,
-         ProjectRoot_mSchematicCustomWidth,
-         ProjectRoot_mSchematicCustomWidthUnit,
-         ProjectRoot_mSchematicCustomHeight,
-         ProjectRoot_mSchematicCustomHeightUnit,
-         ProjectRoot_drawErrorBackgroundForBoard,
-         ProjectRoot_displayFrontRestrictRectangles,
-         ProjectRoot_displayBackRestrictRectangles,
-         ProjectRoot_displayInner1RestrictRectangles,
-         ProjectRoot_displayInner2RestrictRectangles,
-         ProjectRoot_displayInner3RestrictRectangles,
-         ProjectRoot_displayInner4RestrictRectangles,
-         ProjectRoot_displayFrontLegendForBoard,
-         ProjectRoot_displayFrontLayoutForBoard,
-         ProjectRoot_displayBackLayoutForBoard,
-         ProjectRoot_displayInner1LayoutForBoard,
-         ProjectRoot_displayInner2LayoutForBoard,
-         ProjectRoot_displayInner3LayoutForBoard,
-         ProjectRoot_displayInner4LayoutForBoard,
-         ProjectRoot_displayBackLegendForBoard,
-         ProjectRoot_displayFrontPadsForBoard,
-         ProjectRoot_displayBackPadsForBoard,
-         ProjectRoot_displayPadNumbersForBoard,
-         ProjectRoot_packageDrawingWidthMultpliedByTenForBoard,
-         ProjectRoot_mSchematicSheetOrientation,
-         ProjectRoot_mRastnetDisplay,
-         ProjectRoot_mRastnetDisplayedNetName,
-         ProjectRoot_mRastnetDisplayedComponentName,
-         ProjectRoot_minPPTPTTTWdisplayUnit,
-         ProjectRoot_minPPTPTTTW,
-         ProjectRoot_minValueForOARdisplayUnit,
-         ProjectRoot_minValueForOARinEBUnit,
-         ProjectRoot_minValueForPHDdisplayUnit,
-         ProjectRoot_minValueForPHDinEBUnit,
-         ProjectRoot_minValueForBoardLimitWidth,
-         ProjectRoot_minValueForBoardLimitWidthDisplayUnit,
-         ProjectRoot_artworkComments,
-         ProjectRoot_artworkLayerConfiguration,
-         ProjectRoot_artworkTitle,
-         ProjectRoot_selectedSheetTitle,
-         ProjectRoot_drillDataFileExtension,
-         ProjectRoot_hasInnerElements,
-         ProjectRoot_layerConfigurationString,
-         ProjectRoot_boardGridStepMultipliedByDisplayFactor,
-         ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor,
-         ProjectRoot_boardShapeIsRectangular,
-         ProjectRoot_selectedSheetIssues,
-         ProjectRoot_schematicOverDisplay,
-         ProjectRoot_schematicTooltips,
-         ProjectRoot_segmentedControlSheetIssueImage,
-         ProjectRoot_schematicErrorCount,
-         ProjectRoot_sheetIndexes,
-         ProjectRoot_netsDescription,
-         ProjectRoot_boardIssues,
-         ProjectRoot_hasSixLayers,
-         ProjectRoot_signatureForERCChecking,
-         ProjectRoot_ercStatusImage,
-         ProjectRoot_ercStatusImageOrNoneOnSuccess,
-         ProjectRoot_ercStatusMessage,
-         ProjectRoot_viaCountString,
-         ProjectRoot_topSideTrackCountString,
-         ProjectRoot_backSideTrackCountString,
-         ProjectRoot_inner1LayerTrackCountString,
-         ProjectRoot_inner2LayerTrackCountString,
-         ProjectRoot_inner3LayerTrackCountString,
-         ProjectRoot_inner4LayerTrackCountString,
-         ProjectRoot_trackCountString,
-         ProjectRoot_trackLengthString,
-         ProjectRoot_boardStatusErrorCount,
-         ProjectRoot_interiorBoundBox,
-         ProjectRoot_boardBoundBox,
-         ProjectRoot_boardInteriorTop,
-         ProjectRoot_boardInteriorBottom,
-         ProjectRoot_boardInteriorLeft,
-         ProjectRoot_boardInteriorRight,
-         ProjectRoot_boardLimitBorderTop,
-         ProjectRoot_boardLimitBorderBottom,
-         ProjectRoot_boardLimitBorderLeft,
-         ProjectRoot_boardLimitBorderRight,
-         ProjectRoot_borderElementCountString,
-         ProjectRoot_borderOutlineBackground,
-         ProjectRoot_borderViewBackground,
-         ProjectRoot_fontNameArray,
-         ProjectRoot_deviceNames,
-         ProjectRoot_allClassNames,
-         ProjectRoot_sheetGeometry,
-         ProjectRoot_schematicBackgroundDisplay,
-         ProjectRoot_netWarningCount,
-         ProjectRoot_segmentedControlNetListIssueImage,
-         ProjectRoot_netNamesArray,
-         ProjectRoot_unplacedSymbols,
-         ProjectRoot_unplacedPackages,
-         ProjectRoot_componentsPlacedInBoard,
-         ProjectRoot_boardStatusMessage,
-         ProjectRoot_boardStatusWarningCount,
-         ProjectRoot_placedComponentNameArray,
-         ProjectRoot_schematicHasErrorOrWarning,
-         ProjectRoot_schematicStatusMessage,
-         ProjectRoot_segmentedControlSchematicIssueImage,
-         ProjectRoot_schematicWarningCount,
-         ProjectRoot_hasSchematicIssue,
-         ProjectRoot_segmentedControlBoardIssueImage {
+final class ProjectRoot : EBManagedObject {
 
   //····················································································································
   //   Atomic property: mArtworkName
   //····················································································································
 
   final let mArtworkName_property : EBStoredProperty_String
-
-  //····················································································································
 
   //····················································································································
 
@@ -1244,8 +31,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mArtworkVersion : Int {
     get { return self.mArtworkVersion_property.propval }
     set { self.mArtworkVersion_property.setProp (newValue) }
@@ -1256,8 +41,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mPDFBoardBackgroundColor_property : EBStoredProperty_NSColor
-
-  //····················································································································
 
   //····················································································································
 
@@ -1274,8 +57,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mCheckClearanceBetweenPadsOfSameNet : Bool {
     get { return self.mCheckClearanceBetweenPadsOfSameNet_property.propval }
     set { self.mCheckClearanceBetweenPadsOfSameNet_property.setProp (newValue) }
@@ -1286,8 +67,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mLastERCCheckingIsSuccess_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -1304,8 +83,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mLastERCCheckingSignature : UInt32 {
     get { return self.mLastERCCheckingSignature_property.propval }
     set { self.mLastERCCheckingSignature_property.setProp (newValue) }
@@ -1316,8 +93,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mLayerConfiguration_property : EBStoredProperty_LayerConfiguration
-
-  //····················································································································
 
   //····················································································································
 
@@ -1334,8 +109,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mBoardSideForNewTrack : TrackSide {
     get { return self.mBoardSideForNewTrack_property.propval }
     set { self.mBoardSideForNewTrack_property.setProp (newValue) }
@@ -1346,8 +119,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mDirectionForNewTrack_property : EBStoredProperty_TrackCreationDirection
-
-  //····················································································································
 
   //····················································································································
 
@@ -1364,8 +135,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mBoardLayerForNewText : BoardTextLayer {
     get { return self.mBoardLayerForNewText_property.propval }
     set { self.mBoardLayerForNewText_property.setProp (newValue) }
@@ -1376,8 +145,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mBoardLayerForNewQRCode_property : EBStoredProperty_BoardQRCodeLayer
-
-  //····················································································································
 
   //····················································································································
 
@@ -1394,8 +161,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mBoardLayerForNewImage : BoardQRCodeLayer {
     get { return self.mBoardLayerForNewImage_property.propval }
     set { self.mBoardLayerForNewImage_property.setProp (newValue) }
@@ -1406,8 +171,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mBoardLayerForNewLine_property : EBStoredProperty_BoardLineLayer
-
-  //····················································································································
 
   //····················································································································
 
@@ -1424,8 +187,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mBoardSideForNewRestrictRectangle : RestrictRectangleLayer {
     get { return self.mBoardSideForNewRestrictRectangle_property.propval }
     set { self.mBoardSideForNewRestrictRectangle_property.setProp (newValue) }
@@ -1436,8 +197,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mNewRestrictRectangleLayers_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -1454,8 +213,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mAutoRouterPreferredDirections : AutorouterPreferredDirections {
     get { return self.mAutoRouterPreferredDirections_property.propval }
     set { self.mAutoRouterPreferredDirections_property.setProp (newValue) }
@@ -1466,8 +223,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mAutorouterSnapAngle_property : EBStoredProperty_AutorouterSnapAngle
-
-  //····················································································································
 
   //····················································································································
 
@@ -1484,8 +239,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mRouteDirection : RouteDirection {
     get { return self.mRouteDirection_property.propval }
     set { self.mRouteDirection_property.setProp (newValue) }
@@ -1496,8 +249,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mRouteOrigin_property : EBStoredProperty_RouteOrigin
-
-  //····················································································································
 
   //····················································································································
 
@@ -1514,8 +265,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mAutorouterInterfaceMode : Int {
     get { return self.mAutorouterInterfaceMode_property.propval }
     set { self.mAutorouterInterfaceMode_property.setProp (newValue) }
@@ -1526,8 +275,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mExportExistingTracksAndVias_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -1544,8 +291,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mExportExistingTracksAndVias2 : Bool {
     get { return self.mExportExistingTracksAndVias2_property.propval }
     set { self.mExportExistingTracksAndVias2_property.setProp (newValue) }
@@ -1556,8 +301,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mTrackLengthUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -1574,8 +317,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mLayoutClearance : Int {
     get { return self.mLayoutClearance_property.propval }
     set { self.mLayoutClearance_property.setProp (newValue) }
@@ -1586,8 +327,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mLayoutClearanceUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -1604,8 +343,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mBoardSelectedInspector : Int {
     get { return self.mBoardSelectedInspector_property.propval }
     set { self.mBoardSelectedInspector_property.setProp (newValue) }
@@ -1616,8 +353,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mBoardHorizontalFlip_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -1634,8 +369,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mBoardVerticalFlip : Bool {
     get { return self.mBoardVerticalFlip_property.propval }
     set { self.mBoardVerticalFlip_property.setProp (newValue) }
@@ -1646,8 +379,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mBoardGridStyle_property : EBStoredProperty_GridStyle
-
-  //····················································································································
 
   //····················································································································
 
@@ -1664,8 +395,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mBoardGridDisplayFactor : Int {
     get { return self.mBoardGridDisplayFactor_property.propval }
     set { self.mBoardGridDisplayFactor_property.setProp (newValue) }
@@ -1676,8 +405,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mBoardZoom_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -1694,8 +421,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mBoardGridStep : Int {
     get { return self.mBoardGridStep_property.propval }
     set { self.mBoardGridStep_property.setProp (newValue) }
@@ -1706,8 +431,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mBoardGridStepUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -1724,8 +447,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mErrorOrWarningIssueSize : Double {
     get { return self.mErrorOrWarningIssueSize_property.propval }
     set { self.mErrorOrWarningIssueSize_property.setProp (newValue) }
@@ -1736,8 +457,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mControlKeyHiliteDiameter_property : EBStoredProperty_Double
-
-  //····················································································································
 
   //····················································································································
 
@@ -1754,8 +473,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mDSNFileProposedName : String {
     get { return self.mDSNFileProposedName_property.propval }
     set { self.mDSNFileProposedName_property.setProp (newValue) }
@@ -1766,8 +483,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mBoardLimitsWidth_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -1784,8 +499,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mBoardLimitsWidthUnit : Int {
     get { return self.mBoardLimitsWidthUnit_property.propval }
     set { self.mBoardLimitsWidthUnit_property.setProp (newValue) }
@@ -1796,8 +509,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mBoardClearance_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -1814,8 +525,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mBoardClearanceUnit : Int {
     get { return self.mBoardClearanceUnit_property.propval }
     set { self.mBoardClearanceUnit_property.setProp (newValue) }
@@ -1826,8 +535,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mBoardLimitsSelectedInspector_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -1844,8 +551,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mBoardLimitsHorizontalFlip : Bool {
     get { return self.mBoardLimitsHorizontalFlip_property.propval }
     set { self.mBoardLimitsHorizontalFlip_property.setProp (newValue) }
@@ -1856,8 +561,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mBoardLimitsVerticalFlip_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -1874,8 +577,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mBoardLimitsGridStyle : GridStyle {
     get { return self.mBoardLimitsGridStyle_property.propval }
     set { self.mBoardLimitsGridStyle_property.setProp (newValue) }
@@ -1886,8 +587,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mBoardLimitsGridDisplayFactor_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -1904,8 +603,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mBoardLimitsZoom : Int {
     get { return self.mBoardLimitsZoom_property.propval }
     set { self.mBoardLimitsZoom_property.setProp (newValue) }
@@ -1916,8 +613,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mBoardLimitsGridStep_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -1934,8 +629,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mBoardLimitsGridStepUnit : Int {
     get { return self.mBoardLimitsGridStepUnit_property.propval }
     set { self.mBoardLimitsGridStepUnit_property.setProp (newValue) }
@@ -1946,8 +639,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mBoardLimitsBoundingBoxUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -1964,8 +655,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mBoardPointsBoundingBoxUnit : Int {
     get { return self.mBoardPointsBoundingBoxUnit_property.propval }
     set { self.mBoardPointsBoundingBoxUnit_property.setProp (newValue) }
@@ -1976,8 +665,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mBoardSelectedCurveDisplayUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -1994,8 +681,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mBoardLimitControlPointsDisplayUnit : Int {
     get { return self.mBoardLimitControlPointsDisplayUnit_property.propval }
     set { self.mBoardLimitControlPointsDisplayUnit_property.setProp (newValue) }
@@ -2006,8 +691,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mBoardShape_property : EBStoredProperty_BoardShape
-
-  //····················································································································
 
   //····················································································································
 
@@ -2024,8 +707,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mContentOpacityInBoardOutline : Double {
     get { return self.mContentOpacityInBoardOutline_property.propval }
     set { self.mContentOpacityInBoardOutline_property.setProp (newValue) }
@@ -2036,8 +717,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mRectangularBoardWidth_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -2054,8 +733,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mRectangularBoardWidthUnit : Int {
     get { return self.mRectangularBoardWidthUnit_property.propval }
     set { self.mRectangularBoardWidthUnit_property.setProp (newValue) }
@@ -2069,8 +746,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mRectangularBoardHeight : Int {
     get { return self.mRectangularBoardHeight_property.propval }
     set { self.mRectangularBoardHeight_property.setProp (newValue) }
@@ -2081,8 +756,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mRectangularBoardHeightUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -2114,8 +787,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mDefaultNetClassName : String {
     get { return self.mDefaultNetClassName_property.propval }
     set { self.mDefaultNetClassName_property.setProp (newValue) }
@@ -2126,8 +797,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mSchematicHilitedColumnIndex_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -2144,8 +813,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mSchematicHilitedRowIndex : Int {
     get { return self.mSchematicHilitedRowIndex_property.propval }
     set { self.mSchematicHilitedRowIndex_property.setProp (newValue) }
@@ -2156,8 +823,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mSchematicEnableHiliteColumnAndRow_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -2174,8 +839,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mSelectedPageIndex : Int {
     get { return self.mSelectedPageIndex_property.propval }
     set { self.mSelectedPageIndex_property.setProp (newValue) }
@@ -2186,8 +849,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mSelectedSchematicInspector_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -2204,8 +865,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mSchematicTitle : String {
     get { return self.mSchematicTitle_property.propval }
     set { self.mSchematicTitle_property.setProp (newValue) }
@@ -2216,8 +875,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mSchematicVersion_property : EBStoredProperty_String
-
-  //····················································································································
 
   //····················································································································
 
@@ -2234,8 +891,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mSchematicDate : Date {
     get { return self.mSchematicDate_property.propval }
     set { self.mSchematicDate_property.setProp (newValue) }
@@ -2246,8 +901,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mSchematicHorizontalFlip_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -2264,8 +917,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mSchematicVerticalFlip : Bool {
     get { return self.mSchematicVerticalFlip_property.propval }
     set { self.mSchematicVerticalFlip_property.setProp (newValue) }
@@ -2276,8 +927,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mSchematicZoom_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -2294,8 +943,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mSchematicGridStyle : GridStyle {
     get { return self.mSchematicGridStyle_property.propval }
     set { self.mSchematicGridStyle_property.setProp (newValue) }
@@ -2306,8 +953,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mSchematicGridDisplayFactor_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -2324,8 +969,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mSchematicCustomWidth : Int {
     get { return self.mSchematicCustomWidth_property.propval }
     set { self.mSchematicCustomWidth_property.setProp (newValue) }
@@ -2336,8 +979,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mSchematicCustomWidthUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -2354,8 +995,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mSchematicCustomHeight : Int {
     get { return self.mSchematicCustomHeight_property.propval }
     set { self.mSchematicCustomHeight_property.setProp (newValue) }
@@ -2366,8 +1005,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mSchematicCustomHeightUnit_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -2384,8 +1021,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var drawErrorBackgroundForBoard : Bool {
     get { return self.drawErrorBackgroundForBoard_property.propval }
     set { self.drawErrorBackgroundForBoard_property.setProp (newValue) }
@@ -2396,8 +1031,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let displayFrontRestrictRectangles_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -2414,8 +1047,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var displayBackRestrictRectangles : Bool {
     get { return self.displayBackRestrictRectangles_property.propval }
     set { self.displayBackRestrictRectangles_property.setProp (newValue) }
@@ -2426,8 +1057,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let displayInner1RestrictRectangles_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -2444,8 +1073,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var displayInner2RestrictRectangles : Bool {
     get { return self.displayInner2RestrictRectangles_property.propval }
     set { self.displayInner2RestrictRectangles_property.setProp (newValue) }
@@ -2456,8 +1083,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let displayInner3RestrictRectangles_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -2474,8 +1099,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var displayInner4RestrictRectangles : Bool {
     get { return self.displayInner4RestrictRectangles_property.propval }
     set { self.displayInner4RestrictRectangles_property.setProp (newValue) }
@@ -2486,8 +1109,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let displayFrontLegendForBoard_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -2504,8 +1125,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var displayFrontLayoutForBoard : Bool {
     get { return self.displayFrontLayoutForBoard_property.propval }
     set { self.displayFrontLayoutForBoard_property.setProp (newValue) }
@@ -2516,8 +1135,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let displayBackLayoutForBoard_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -2534,8 +1151,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var displayInner1LayoutForBoard : Bool {
     get { return self.displayInner1LayoutForBoard_property.propval }
     set { self.displayInner1LayoutForBoard_property.setProp (newValue) }
@@ -2546,8 +1161,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let displayInner2LayoutForBoard_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -2564,8 +1177,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var displayInner3LayoutForBoard : Bool {
     get { return self.displayInner3LayoutForBoard_property.propval }
     set { self.displayInner3LayoutForBoard_property.setProp (newValue) }
@@ -2576,8 +1187,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let displayInner4LayoutForBoard_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -2594,8 +1203,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var displayBackLegendForBoard : Bool {
     get { return self.displayBackLegendForBoard_property.propval }
     set { self.displayBackLegendForBoard_property.setProp (newValue) }
@@ -2606,8 +1213,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let displayFrontPadsForBoard_property : EBStoredProperty_Bool
-
-  //····················································································································
 
   //····················································································································
 
@@ -2624,8 +1229,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var displayBackPadsForBoard : Bool {
     get { return self.displayBackPadsForBoard_property.propval }
     set { self.displayBackPadsForBoard_property.setProp (newValue) }
@@ -2639,8 +1242,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var displayPadNumbersForBoard : Bool {
     get { return self.displayPadNumbersForBoard_property.propval }
     set { self.displayPadNumbersForBoard_property.setProp (newValue) }
@@ -2651,8 +1252,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let packageDrawingWidthMultpliedByTenForBoard_property : EBStoredProperty_Int
-
-  //····················································································································
 
   //····················································································································
 
@@ -2714,8 +1313,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mSchematicSheetOrientation : SchematicSheetOrientation {
     get { return self.mSchematicSheetOrientation_property.propval }
     set { self.mSchematicSheetOrientation_property.setProp (newValue) }
@@ -2759,8 +1356,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mRastnetDisplay : RastnetDisplay {
     get { return self.mRastnetDisplay_property.propval }
     set { self.mRastnetDisplay_property.setProp (newValue) }
@@ -2774,8 +1369,6 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  //····················································································································
-
   final var mRastnetDisplayedNetName : String {
     get { return self.mRastnetDisplayedNetName_property.propval }
     set { self.mRastnetDisplayedNetName_property.setProp (newValue) }
@@ -2786,8 +1379,6 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final let mRastnetDisplayedComponentName_property : EBStoredProperty_String
-
-  //····················································································································
 
   //····················································································································
 
