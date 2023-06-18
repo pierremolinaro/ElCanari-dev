@@ -36,8 +36,10 @@ let BUGFIXES : [String] = [
   "Package : rétablissement du fonctionnement de la description d'un package par programme."
 ]
 let CHANGES : [String] = [
+  "Utilisation de la version 2.4.2 de Sparkle"
 ]
 let NEWS : [String] = [
+  "Utilisation de 'periphery' pour détecter le code mort"
 ]
 
 //--------------------------------------------------------------------------------------------------
