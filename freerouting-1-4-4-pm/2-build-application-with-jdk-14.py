@@ -102,8 +102,8 @@ runCommand ([
 runCommand ([
   "codesign",
   "--force",
-#  "--sign", "U399CP39LD",
-  "--sign", "Apple Development: pierre@pcmolinaro.name",
+  "--sign", "U399CP39LD",
+#  "--sign", "Apple Development: pierre@pcmolinaro.name",
   "--deep",
   FREE_ROUTING_NAME + ".app"
 ])
