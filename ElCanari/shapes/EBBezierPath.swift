@@ -448,7 +448,11 @@ struct EBBezierPath : Hashable {
       miterLimit: self.mPath.miterLimit
     )
     var path = EBBezierPath ()
-    cgPath.apply (info: &path.mPath, function: pathByStrokingCallback)
+    // https://forums.swift.org/t/handling-the-new-forming-unsaferawpointer-warning/65523/4
+    withUnsafeMutablePointer (to: &path.mPath) {
+      cgPath.apply (info: $0, function: pathByStrokingCallback)
+    }
+//    cgPath.apply (info: &path.mPath, function: pathByStrokingCallback)
     return path
   }
 
