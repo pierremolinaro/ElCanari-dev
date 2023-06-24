@@ -36,6 +36,7 @@ let BUGFIXES : [String] = [
   "Package : rétablissement du fonctionnement de la description d'un package par programme."
 ]
 let CHANGES : [String] = [
+  "Xcode 15.0 beta 2 ",
   "Utilisation de la version 2.4.2 de Sparkle"
 ]
 let NEWS : [String] = [
