@@ -9,10 +9,10 @@ enum QRCodeCorrectionLevel {
 }
 
 func enum QRCodeCorrectionLevel.popupTitles {
-  low : "L" ;
-  medium : "M" ;
-  quality : "Q" ;
-  high : "H" ;
+  low : "Low (7%)" ;
+  medium : "Medium (15%)" ;
+  quality : "Quartile (25%)" ;
+  high : "High (30%)" ;
 }
 
 
