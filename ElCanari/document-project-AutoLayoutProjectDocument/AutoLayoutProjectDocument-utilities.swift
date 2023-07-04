@@ -211,7 +211,7 @@ struct SchematicSheetGeometry : Hashable {
 
   //····················································································································
 
-  func locationString (pointInSheet inPoint : CanariPoint) -> PointLocationInfo {
+  func locationInfo (forPointInSheet inPoint : CanariPoint) -> PointLocationInfo {
     let gutterWidth = cocoaToCanariUnit (PAPER_GUTTER_WIDTH_COCOA_UNIT)
     let gutterHeight = cocoaToCanariUnit (PAPER_GUTTER_HEIGHT_COCOA_UNIT)
     var column = 0
@@ -239,6 +239,7 @@ struct SchematicSheetGeometry : Hashable {
   enum PointInRowOrColumnHeader {
     case inColumHeader (Int)
     case inRowHeader (Int)
+    case inCorner
     case outsideRowOrColumnHeader
   }
 
@@ -247,24 +248,26 @@ struct SchematicSheetGeometry : Hashable {
   func pointInRowOrColumnHeader (_ inPoint : NSPoint) -> PointInRowOrColumnHeader {
     let cocoaSize = self.size.cocoaSize
     var result = PointInRowOrColumnHeader.outsideRowOrColumnHeader
-    var pointInHorizontalGutter = inPoint.y <= PAPER_GUTTER_HEIGHT_COCOA_UNIT // in bottom gutter
-    if !pointInHorizontalGutter {
-      pointInHorizontalGutter = (inPoint.y >= (cocoaSize.height - PAPER_GUTTER_HEIGHT_COCOA_UNIT)) && (inPoint.y < cocoaSize.height)
+    var pointInVerticalGutter = inPoint.y <= PAPER_GUTTER_HEIGHT_COCOA_UNIT // in bottom gutter
+    if !pointInVerticalGutter {
+      pointInVerticalGutter = (inPoint.y >= (cocoaSize.height - PAPER_GUTTER_HEIGHT_COCOA_UNIT)) && (inPoint.y < cocoaSize.height)
     }
-    if pointInHorizontalGutter {
-      let column = Int ((inPoint.x - PAPER_GUTTER_WIDTH_COCOA_UNIT) * CGFloat (self.horizontalDivisions) / (cocoaSize.width - 2.0 * PAPER_GUTTER_WIDTH_COCOA_UNIT))
-      if column >= 0, column < self.horizontalDivisions {
-        result = .inColumHeader (column)
+    if pointInVerticalGutter {
+      let column = (inPoint.x - PAPER_GUTTER_WIDTH_COCOA_UNIT) * CGFloat (self.horizontalDivisions) / (cocoaSize.width - 2.0 * PAPER_GUTTER_WIDTH_COCOA_UNIT)
+      if column >= 0.0, column < CGFloat (self.horizontalDivisions) {
+        result = .inColumHeader (Int (column))
+      }else{
+        result = .inCorner
       }
     }else{
-      var pointInVerticalGutter = inPoint.x <= PAPER_GUTTER_WIDTH_COCOA_UNIT // in left gutter
-      if !pointInVerticalGutter {
-        pointInVerticalGutter = (inPoint.x >= (cocoaSize.width - PAPER_GUTTER_WIDTH_COCOA_UNIT)) && (inPoint.x < cocoaSize.width)
+      var pointInHorizontalGutter = inPoint.x <= PAPER_GUTTER_WIDTH_COCOA_UNIT // in left gutter
+      if !pointInHorizontalGutter {
+        pointInHorizontalGutter = (inPoint.x >= (cocoaSize.width - PAPER_GUTTER_WIDTH_COCOA_UNIT)) && (inPoint.x < cocoaSize.width)
       }
-      if pointInVerticalGutter {
-        let row = Int ((inPoint.y - PAPER_GUTTER_HEIGHT_COCOA_UNIT) * CGFloat (self.verticalDivisions) / (cocoaSize.height - 2.0 * PAPER_GUTTER_HEIGHT_COCOA_UNIT))
-        if row >= 0, row < self.verticalDivisions {
-          result = .inRowHeader (row)
+      if pointInHorizontalGutter {
+        let row = (inPoint.y - PAPER_GUTTER_HEIGHT_COCOA_UNIT) * CGFloat (self.verticalDivisions) / (cocoaSize.height - 2.0 * PAPER_GUTTER_HEIGHT_COCOA_UNIT)
+        if row >= 0.0, row < CGFloat (self.verticalDivisions) {
+          result = .inRowHeader (Int (row))
         }
       }
     }
@@ -283,12 +286,12 @@ struct SchematicSheetDescriptor : Hashable {
 
   //····················································································································
 
-  func sheetLocationString (pointInSheet inPoint : CanariPoint) -> SchematicSheetGeometry.PointLocationInfo {
-    return self.geometry.locationString (pointInSheet: inPoint)
-//    return "\(self.sheetIndex)\(self.geometry.locationString (pointInSheet: inPoint))"
+  func sheetLocationInfo (forPointInSheet inPoint : CanariPoint) -> SchematicSheetGeometry.PointLocationInfo {
+    return self.geometry.locationInfo (forPointInSheet: inPoint)
   }
 
   //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

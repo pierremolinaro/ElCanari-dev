@@ -38,7 +38,7 @@ import AppKit
         let sheetIndex : Int
         if let sheetDescriptor = self_mSheet_sheetDescriptor {
           sheetIndex = sheetDescriptor.sheetIndex
-          locationInfo = sheetDescriptor.sheetLocationString (pointInSheet: self_location)
+          locationInfo = sheetDescriptor.sheetLocationInfo (forPointInSheet: self_location)
         }else{
           sheetIndex = 0
           locationInfo = SchematicSheetGeometry.PointLocationInfo (row: -1, column: -1, string: "(no sheet)")
@@ -60,7 +60,6 @@ import AppKit
             }
           }
           pinName = s
-//          s += " at " + locationInSheetString
         }
         return NetInfoPoint (
           pinName: pinName,

@@ -84,6 +84,9 @@ import AppKit
         switch (sheetGeometry.pointInRowOrColumnHeader (inUnalignedPoint)) {
         case .outsideRowOrColumnHeader :
           ()
+        case .inCorner :
+          self.rootObject.mSchematicHilitedRowIndex = -1
+          self.rootObject.mSchematicHilitedColumnIndex = -1
         case .inRowHeader (let rowIndex) :
           result = true
           if self.rootObject.mSchematicHilitedRowIndex == rowIndex {
