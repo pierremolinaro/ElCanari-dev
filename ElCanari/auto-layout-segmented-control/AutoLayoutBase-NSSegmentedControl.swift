@@ -35,7 +35,7 @@ class AutoLayoutBase_NSSegmentedControl : NSSegmentedControl {
 
   //····················································································································
 
-  required init?(coder inCoder: NSCoder) {
+  required init? (coder inCoder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
