@@ -60,7 +60,7 @@ import AppKit
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
       _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutSegmentedControlWithPages (documentView: prefsPageView, equalWidth: false, size: .regular)
+      let view_0_1 = AutoLayoutSegmentedControlWithPages (documentView: prefsPageView, equalWidth: true, size: .regular)
         .addPage (image: "settings", title: "User Interface", tooltip: "User Interface", pageView: prefsUserInterfacePage)
         .addPage (image: "update", title: "Application Update", tooltip: "Application Update", pageView: prefsAppUpdatePage)
         .addPage (image: "library", title: "Library", tooltip: "Library", pageView: prefsLibraryPage)

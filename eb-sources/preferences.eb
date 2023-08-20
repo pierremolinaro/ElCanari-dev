@@ -9,7 +9,7 @@ prefs {
     newView prefsLibraryPage = \PrefsLibraryPage ()
     hStack {
       space
-      SegmentedControlWithPages (documentView: view prefsPageView, equalWidth: no, size : .regular) {
+      SegmentedControlWithPages (documentView: view prefsPageView, equalWidth: yes, size : .regular) {
         addPage (image: "settings", title: "User Interface", tooltip: "User Interface", pageView: view prefsUserInterfacePage)
         addPage (image: "update", title: "Application Update", tooltip: "Application Update", pageView: view prefsAppUpdatePage)
         addPage (image: "library", title: "Library", tooltip: "Library", pageView: view prefsLibraryPage)
