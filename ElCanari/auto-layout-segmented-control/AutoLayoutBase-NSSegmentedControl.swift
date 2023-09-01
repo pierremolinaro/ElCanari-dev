@@ -25,11 +25,11 @@ class AutoLayoutBase_NSSegmentedControl : NSSegmentedControl {
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
 
     if inEqualWidth {
-      self.segmentDistribution = .fillEqually // #available (OSX 10.13, *)
+      self.segmentDistribution = .fillEqually
     }
     self.setContentCompressionResistancePriority (.required, for: .vertical)
     self.setContentHuggingPriority (.required, for: .vertical)
-    self.setContentCompressionResistancePriority (.required, for: .horizontal)
+    self.setContentCompressionResistancePriority (.defaultLow, for: .horizontal)
     self.setContentHuggingPriority (.defaultHigh, for: .horizontal)
   }
 

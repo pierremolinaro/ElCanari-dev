@@ -79,8 +79,7 @@ final class AutoLayoutEnumSegmentedControl : AutoLayoutBase_NSSegmentedControl {
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     self.mSelectedSegmentController?.updateModel (self.indexOfSelectedItem)
-//    self.mSelectedIndexController?.updateModel (self.indexOfSelectedItem)
-    return super.sendAction (action, to:to)
+    return super.sendAction (action, to: to)
   }
 
   //····················································································································

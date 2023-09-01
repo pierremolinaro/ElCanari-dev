@@ -43,7 +43,6 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
       segmentedCell.setToolTip (inTooltipString, forSegment: self.segmentCount - 1)
     }
     self.mPages.append (inPageView)
- //   self.frame.size = self.intrinsicContentSize
 
     if self.segmentCount == 1 {
       self.setSelectedSegment (atIndex: 0)
