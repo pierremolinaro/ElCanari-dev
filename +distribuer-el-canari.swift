@@ -28,19 +28,17 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.7.7"
+let VERSION_CANARI = "1.7.8"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Package : rétablissement du fonctionnement de la description d'un package par programme."
+  "Signature de l'application : utilisation d'un certificat non révoqué (?)"
 ]
 let CHANGES : [String] = [
-  "Xcode 15.0 beta 2 ",
-  "Utilisation de la version 2.4.2 de Sparkle"
+  "Xcode 15.0 beta 7",
 ]
 let NEWS : [String] = [
-  "Utilisation de 'periphery' pour détecter le code mort"
 ]
 
 //--------------------------------------------------------------------------------------------------
@@ -211,7 +209,7 @@ do{
   let packageFile = PRODUCT_NAME + "-" + VERSION_CANARI + ".pkg"
   runCommand ("/usr/bin/productbuild", ["--component-compression", "auto", "--component", "build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app", "/Applications", packageFile])
   // runCommand ("/usr/sbin/pkgutil", ["--check-signature", packageFile])
-  // /usr/bin/productsign --sign "Developer ID Installer: pierre@pcmolinaro.name (U399CP39LD)" /Users/pierremolinaro/Desktop/ElCanari-1.6.4.pkg /Users/pierremolinaro/Desktop/ElCanari-1.6.4-sign.pkg
+  // /usr/bin/productsign --sign  /Users/pierremolinaro/Desktop/ElCanari-1.6.4.pkg /Users/pierremolinaro/Desktop/ElCanari-1.6.4-sign.pkg
   runCommand ("/bin/cp", [packageFile, DISTRIBUTION_DIR])
 //-------------------- Créer l'archive de Cocoa canari
   let nomArchive = PRODUCT_NAME + "-" + VERSION_CANARI
