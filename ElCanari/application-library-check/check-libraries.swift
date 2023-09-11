@@ -12,22 +12,26 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func checkLibrary (windowForSheet inWindow : NSWindow,
-                              logView inLogView : AutoLayoutStaticTextView) {
+                              logWindow inLogWindow : NSWindow) {
+  let logView = AutoLayoutStaticTextView (drawsBackground: false, horizontalScroller: true, verticalScroller: true)
+    .expandableWidth ()
+    .expandableHeight ()
+  inLogWindow.contentView = logView
 //--- Clear Log
-  inLogView.clear ()
+  logView.clear ()
   var errorCount = 0
 //  var warningCount = 0
   do{
   //--- Checking Symbols
     var symbolDict : [String : PMSymbolDictionaryEntry] = [:]
-    try checkSymbolLibrary (inLogView, symbolDict: &symbolDict, errorCount: &errorCount)
+    try checkSymbolLibrary (logView, symbolDict: &symbolDict, errorCount: &errorCount)
   //--- Checking Packages
     var packageDict : [String : PMPackageDictionaryEntry] = [:]
-    try checkPackageLibrary (inLogView, packageDict: &packageDict, errorCount: &errorCount)
+    try checkPackageLibrary (logView, packageDict: &packageDict, errorCount: &errorCount)
   //--- Checking Devices
     var deviceToUpdateSet = Set <String> ()
     try checkDeviceLibrary (
-      inLogView,
+      logView,
       symbolDict: symbolDict,
       packageDict: packageDict,
       deviceToUpdateSet: &deviceToUpdateSet,
@@ -38,27 +42,27 @@ import AppKit
       ws.open (URL (fileURLWithPath: path))
     }
   //--- Checking Font
-    try checkFontLibrary (inLogView, errorCount: &errorCount)
+    try checkFontLibrary (logView, errorCount: &errorCount)
   //--- Checking Artworks
-    try checkArtworkLibrary (inLogView, errorCount: &errorCount)
+    try checkArtworkLibrary (logView, errorCount: &errorCount)
   //--- Summary
-    inLogView.appendMessageString ("\n")
+    logView.appendMessageString ("\n")
     if errorCount == 0 {
-      inLogView.appendSuccessString ("No error")
+      logView.appendSuccessString ("No error")
     }else if errorCount == 1 {
-      inLogView.appendErrorString ("1 error")
+      logView.appendErrorString ("1 error")
     }else{
-      inLogView.appendErrorString ("\(errorCount) errors")
+      logView.appendErrorString ("\(errorCount) errors")
     }
-//    inLogView.appendMessageString ("; ")
+//    logView.appendMessageString ("; ")
 //    if warningCount == 0 {
-//      inLogView.appendSuccessString ("No warning")
+//      logView.appendSuccessString ("No warning")
 //    }else if (warningCount == 1) {
-//      inLogView.appendWarningString ("1 warning")
+//      logView.appendWarningString ("1 warning")
 //    }else{
-//      inLogView.appendWarningString (String (warningCount) + " warnings")
+//      logView.appendWarningString (String (warningCount) + " warnings")
 //    }
-    inLogView.appendMessageString (".")
+    logView.appendMessageString (".")
     if errorCount > 0 {
       let alert = NSAlert ()
       alert.messageText = "There are inconsistencies in the librairies"
@@ -67,7 +71,7 @@ import AppKit
       alert.informativeText = "Select the 'Show Log Window' button for details."
       alert.beginSheetModal (for: inWindow) { inReturnCode in
         if inReturnCode == .alertSecondButtonReturn {
-          inLogView.window?.makeKeyAndOrderFront (nil)
+          logView.window?.makeKeyAndOrderFront (nil)
         }
       }
     }else{

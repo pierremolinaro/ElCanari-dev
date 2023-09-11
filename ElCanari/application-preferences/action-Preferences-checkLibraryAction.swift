@@ -13,11 +13,9 @@ import AppKit
 extension Preferences {
   @objc func checkLibraryAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-    _ = self.buildLibraryConsistencyLogWindow ()
-    if let button = inSender as? NSButton,
-       let myWindow = button.window,
-       let logView = self.mLibraryConsistencyLogTextView {
-      checkLibrary (windowForSheet: myWindow, logView: logView)
+    let logWindow = self.buildLibraryConsistencyLogWindow ()
+    if let button = inSender as? NSButton, let myWindow = button.window {
+      checkLibrary (windowForSheet: myWindow, logWindow: logWindow)
     }
 //--- END OF USER ZONE 2
   }

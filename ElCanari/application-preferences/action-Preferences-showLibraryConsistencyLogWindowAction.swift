@@ -14,30 +14,6 @@ extension Preferences {
   @objc func showLibraryConsistencyLogWindowAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let window = self.buildLibraryConsistencyLogWindow ()
-//    if inFlag {
-//      window.makeKeyAndOrderFront (nil)
-//    }
-//
-//    let window : CanariWindow
-//    if let w = self.mLibraryConsistencyLogWindow {
-//      window = w
-//    }else{
-//      window = CanariWindow (
-//        contentRect: NSRect (x: 0, y: 0, width: 500, height: 400),
-//        styleMask: [.closable, .resizable, .titled],
-//        backing: .buffered,
-//        defer: false
-//      )
-//      self.mLibraryConsistencyLogWindow = window
-//      window.setFrameAutosaveName ("LibraryConsistencyLogWindowSettings")
-//      window.title = "Library Consistency Log"
-//      window.isReleasedWhenClosed = false
-//      let textView = AutoLayoutStaticTextView (drawsBackground: false, horizontalScroller: true, verticalScroller: true)
-//        .expandableWidth ()
-//        .expandableHeight ()
-//      self.mLibraryConsistencyLogTextView = textView
-//      window.contentView = textView
-//    }
     window.makeKeyAndOrderFront (nil)
 //--- END OF USER ZONE 2
   }
