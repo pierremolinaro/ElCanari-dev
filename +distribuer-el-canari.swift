@@ -28,15 +28,15 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.7.8"
+let VERSION_CANARI = "1.7.9"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Signature de l'application : utilisation d'un certificat non révoqué (?)"
 ]
 let CHANGES : [String] = [
-  "Xcode 15.0 beta 7",
+  "Xcode 15.0",
+  "Amélioration de la présentation des résultats de la vérification des librairies"
 ]
 let NEWS : [String] = [
 ]
