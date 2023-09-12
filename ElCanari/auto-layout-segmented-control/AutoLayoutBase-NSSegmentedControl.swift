@@ -29,7 +29,7 @@ class AutoLayoutBase_NSSegmentedControl : NSSegmentedControl {
     }
     self.setContentCompressionResistancePriority (.required, for: .vertical)
     self.setContentHuggingPriority (.required, for: .vertical)
-    self.setContentCompressionResistancePriority (.defaultLow, for: .horizontal)
+    self.setContentCompressionResistancePriority (.required, for: .horizontal)
     self.setContentHuggingPriority (.defaultHigh, for: .horizontal)
   }
 

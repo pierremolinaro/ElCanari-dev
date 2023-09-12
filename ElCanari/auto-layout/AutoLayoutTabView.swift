@@ -57,10 +57,12 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
   //····················································································································
 
   final func addTab (title inTitle : String,
+                     image inImage : NSImage? = nil,
                      tooltip inTooltipString : String,
                      contentView inPageView : NSView) -> Self {
     self.mSegmentedControl.segmentCount += 1
     self.mSegmentedControl.setLabel (inTitle, forSegment: self.mSegmentedControl.segmentCount - 1)
+    self.mSegmentedControl.setImage (inImage, forSegment: self.mSegmentedControl.segmentCount - 1)
     self.mSegmentedControl.setToolTip (inTooltipString, forSegment: self.mSegmentedControl.segmentCount - 1)
     self.mPages.append (inPageView)
     if self.mPages.count == 1 {
@@ -118,6 +120,12 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
     }else{
       self.selectTab (atIndex: idx)
     }
+  }
+
+  //····················································································································
+
+  var indexOfSelectedItem : Int {
+    return self.mSegmentedControl.indexOfSelectedItem
   }
 
   //····················································································································
