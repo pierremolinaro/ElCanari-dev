@@ -126,6 +126,12 @@ extension AutoLayoutVerticalStackView {
 
   //····················································································································
 
+  func appendInfo (_ inString : String) {
+    _ = self.appendView (AutoLayoutStaticLabel (title: inString, bold: false, size: .regular, alignment: .left).setTextColor (.systemBlue).expandableWidth())
+  }
+
+  //····················································································································
+
   func appendOpenDocumentButton (_ inString : String) {
     let button = AutoLayoutButton (title: inString, size: .regular).expandableWidth ()
     button.setClosureAction {
@@ -165,93 +171,105 @@ fileprivate struct PMDeviceDictionaryEntry {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor fileprivate func checkDeviceLibraryCheck (atPath inDeviceFullPath : String,
-                                                     deviceDict ioDeviceDict : inout [String : PMDeviceDictionaryEntry]) throws {
+@MainActor fileprivate func checkDeviceLibrary (_ inStackView : AutoLayoutVerticalStackView,
+                                                atPath inDeviceFullPath : String,
+                                                deviceDict ioDeviceDict : inout [String : PMDeviceDictionaryEntry],
+                                                errorCount ioErrorCount : inout Int) {
   let deviceName = ((inDeviceFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
 //--- Get metadata dictionary
-  let metadata = try getFileMetadata (atPath: inDeviceFullPath)
-//--- Version number
-  let possibleVersionNumber : Any? = metadata.metadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY]
-  let version : Int
-  if let n = possibleVersionNumber as? NSNumber {
-    version = n.intValue
-  }else{
-    throw badFormatErrorForFileAtPath (inDeviceFullPath, code: #line)
-  }
-//--- Embedded symbol dictionary
-  let possibleSymbolDictionary : Any? = metadata.metadataDictionary [DEVICE_SYMBOL_METADATA_DICTIONARY_KEY]
-  var symbolDictionary : [String : Int] = [:]
-  if let d = possibleSymbolDictionary as? [String : Int] {
-    for (importedSymbolName, symbolDescription) in d {
-      symbolDictionary [importedSymbolName] = symbolDescription
+  if let metadata = try? getFileMetadata (atPath: inDeviceFullPath) {
+  //--- Version number
+    let possibleVersionNumber : Any? = metadata.metadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY]
+    let version : Int
+    if let n = possibleVersionNumber as? NSNumber {
+      version = n.intValue
+    //--- Embedded symbol dictionary
+      let possibleSymbolDictionary : Any? = metadata.metadataDictionary [DEVICE_SYMBOL_METADATA_DICTIONARY_KEY]
+      var symbolDictionary : [String : Int] = [:]
+      if let d = possibleSymbolDictionary as? [String : Int] {
+        for (importedSymbolName, symbolDescription) in d {
+          symbolDictionary [importedSymbolName] = symbolDescription
+        }
+      }else{
+        inStackView.appendError ("Device '\(deviceName)' has no valid symbol dictionary")
+        inStackView.appendOpenDocumentButton (inDeviceFullPath)
+        ioErrorCount += 1
+      }
+    //--- Embedded package dictionary
+      let possiblePackageDictionary : Any? = metadata.metadataDictionary [DEVICE_PACKAGE_METADATA_DICTIONARY_KEY]
+      var packageDictionary : [String : Int] = [:]
+      if let d = possiblePackageDictionary as? [String : Int] {
+        for (importedPackageName, packageDescription) in d {
+          packageDictionary [importedPackageName] = packageDescription
+        }
+      }else{
+        inStackView.appendError ("Device '\(deviceName)' has no valid package dictionary")
+        inStackView.appendOpenDocumentButton (inDeviceFullPath)
+        ioErrorCount += 1
+      }
+    //---
+      let possibleEntry : PMDeviceDictionaryEntry? = ioDeviceDict [deviceName]
+      if let entry = possibleEntry {
+        let newEntry = PMDeviceDictionaryEntry (
+          partStatus: .partIsDuplicated,
+          version: 0,
+          versionStringForDialog: "—",
+          pathArray: entry.pathArray + [inDeviceFullPath],
+          symbolDictionary : symbolDictionary,
+          packageDictionary : packageDictionary
+        )
+        ioDeviceDict [deviceName] = newEntry
+      }else{
+        var partStatus : PartStatus
+        switch metadata.metadataStatus {
+        case .unknown :
+          partStatus = .partHasUnknownStatus
+        case .ok :
+          partStatus = partNameIsValid (deviceName) ? .partIsValid : .partHasInvalidName
+        case .warning :
+          partStatus = .partHasWarning
+        case .error :
+          partStatus = .partHasError
+        }
+        let newEntry = PMDeviceDictionaryEntry (
+          partStatus: partStatus,
+          version: version,
+          versionStringForDialog: String (version),
+          pathArray: [inDeviceFullPath],
+          symbolDictionary: symbolDictionary,
+          packageDictionary: packageDictionary
+        )
+        ioDeviceDict [deviceName] = newEntry
+      }
+    }else{
+      inStackView.appendError ("File '\(deviceName)' has an invalid format")
+      inStackView.appendOpenDocumentButton ((inDeviceFullPath as NSString).deletingLastPathComponent)
+      ioErrorCount += 1
     }
   }else{
-    throw badFormatErrorForFileAtPath (inDeviceFullPath, code: #line)
-  }
-//--- Embedded package dictionary
-  let possiblePackageDictionary : Any? = metadata.metadataDictionary [DEVICE_PACKAGE_METADATA_DICTIONARY_KEY]
-  var packageDictionary : [String : Int] = [:]
-  if let d = possiblePackageDictionary as? [String : Int] {
-    for (importedPackageName, packageDescription) in d {
-      packageDictionary [importedPackageName] = packageDescription
-    }
-  }else{
-    throw badFormatErrorForFileAtPath (inDeviceFullPath, code:#line)
-  }
-//---
-  let possibleEntry : PMDeviceDictionaryEntry? = ioDeviceDict [deviceName]
-  if let entry = possibleEntry {
-    let newEntry = PMDeviceDictionaryEntry (
-      partStatus: .partIsDuplicated,
-      version: 0,
-      versionStringForDialog: "—",
-      pathArray: entry.pathArray + [inDeviceFullPath],
-      symbolDictionary : symbolDictionary,
-      packageDictionary : packageDictionary
-    )
-    ioDeviceDict [deviceName] = newEntry
-  }else{
-    var partStatus : PartStatus
-    switch metadata.metadataStatus {
-    case .unknown :
-      partStatus = .partHasUnknownStatus
-    case .ok :
-      partStatus = partNameIsValid (deviceName) ? .partIsValid : .partHasInvalidName
-    case .warning :
-      partStatus = .partHasWarning
-    case .error :
-      partStatus = .partHasError
-    }
-    let newEntry = PMDeviceDictionaryEntry (
-      partStatus: partStatus,
-      version: version,
-      versionStringForDialog: String (version),
-      pathArray: [inDeviceFullPath],
-      symbolDictionary: symbolDictionary,
-      packageDictionary: packageDictionary
-    )
-    ioDeviceDict [deviceName] = newEntry
+    inStackView.appendError ("File '\(deviceName)' has an invalid format")
+    inStackView.appendOpenDocumentButton ((inDeviceFullPath as NSString).deletingLastPathComponent)
+    ioErrorCount += 1
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor fileprivate func performDeviceLibraryEnumeration (atPath inPackageLibraryPath : String,
-                                                             deviceDict ioDeviceDict : inout [String : PMDeviceDictionaryEntry]) -> Bool {
+@MainActor fileprivate func performDeviceLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackView,
+                                atPath inPackageLibraryPath : String,
+                                deviceDict ioDeviceDict : inout [String : PMDeviceDictionaryEntry],
+                                errorCount ioErrorCount : inout Int) {
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inPackageLibraryPath) {
     for path in unwSubpaths {
       if path.pathExtension.lowercased() == ElCanariDevice_EXTENSION {
         let fullsubpath = inPackageLibraryPath.appendingPathComponent (path)
-        do{
-          try checkDeviceLibraryCheck (atPath: fullsubpath, deviceDict: &ioDeviceDict)
-        }catch _ {
-          return false
-        }
+        checkDeviceLibrary (inStackView, atPath: fullsubpath, deviceDict: &ioDeviceDict, errorCount: &ioErrorCount)
       }
     }
+  }else{
+    inStackView.appendInfo ("\(inPackageLibraryPath) directory does not exist")
   }
-  return true
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -265,11 +283,7 @@ fileprivate struct PMDeviceDictionaryEntry {
   for path in existingLibraryPathArray () {
     let deviceLibraryPath = deviceLibraryPathForPath (path)
     inStackView.appendOpenDocumentButton (deviceLibraryPath)
-    let ok = performDeviceLibraryEnumeration (atPath: deviceLibraryPath, deviceDict: &deviceDict)
-    if !ok {
-      errorCount += 1
-      inStackView.appendError ("  Cannot enumerate \(deviceLibraryPath)")
-    }
+    performDeviceLibraryEnumeration (inStackView, atPath: deviceLibraryPath, deviceDict: &deviceDict, errorCount: &errorCount)
   }
 //--- Display duplicate entries and invalid entries
   var deviceToUpdateSet = Set <String> ()
@@ -364,7 +378,7 @@ fileprivate struct PMSymbolDictionaryEntry {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor fileprivate func checkSymbolLibraryCheck (_ inStackView : AutoLayoutVerticalStackView,
+@MainActor fileprivate func checkSymbolLibrary (_ inStackView : AutoLayoutVerticalStackView,
                                           atPath inSymbolFullPath : String,
                                           symbolDict ioSymbolDict : inout [String : PMSymbolDictionaryEntry],
                                           errorCount ioErrorCount : inout Int) {
@@ -404,12 +418,12 @@ fileprivate struct PMSymbolDictionaryEntry {
         ioSymbolDict [symbolName] = newEntry
       }
     }else{
-      inStackView.appendError ("File '\(symbolName) has an invalid format")
+      inStackView.appendError ("File '\(symbolName)' has an invalid format")
       inStackView.appendOpenDocumentButton ((inSymbolFullPath as NSString).deletingLastPathComponent)
       ioErrorCount += 1
     }
   }else{
-    inStackView.appendError ("File '\(symbolName) has an invalid format")
+    inStackView.appendError ("File '\(symbolName)' has an invalid format")
     inStackView.appendOpenDocumentButton ((inSymbolFullPath as NSString).deletingLastPathComponent)
     ioErrorCount += 1
   }
@@ -426,12 +440,11 @@ fileprivate struct PMSymbolDictionaryEntry {
     for path in unwSubpaths {
       if path.pathExtension.lowercased () == ElCanariSymbol_EXTENSION {
         let fullsubpath = inSymbolLibraryPath.appendingPathComponent (path)
-        checkSymbolLibraryCheck (inStackView, atPath: fullsubpath, symbolDict: &ioSymbolDict, errorCount: &ioErrorCount)
+        checkSymbolLibrary (inStackView, atPath: fullsubpath, symbolDict: &ioSymbolDict, errorCount: &ioErrorCount)
       }
     }
   }else{
-    ioErrorCount += 1
-    inStackView.appendError ("  Cannot enumerate \(inSymbolLibraryPath)")
+    inStackView.appendInfo ("\(inSymbolLibraryPath) directory does not exist")
   }
 }
 
@@ -492,67 +505,74 @@ fileprivate struct PMPackageDictionaryEntry {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func checkPackageLibraryCheck (atPath inPackageFullPath : String,
-                                           packageDict ioPackageDict : inout [String : PMPackageDictionaryEntry]) throws {
+@MainActor fileprivate func checkPackageLibrary (_ inStackView : AutoLayoutVerticalStackView,
+                                           atPath inPackageFullPath : String,
+                                           packageDict ioPackageDict : inout [String : PMPackageDictionaryEntry],
+                                           errorCount ioErrorCount : inout Int) {
   let packageName = ((inPackageFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
-  let metadata = try getFileMetadata (atPath: inPackageFullPath)
-  let possibleVersionNumber : Any? = metadata.metadataDictionary [PMPackageVersion]
-  let version : Int
-  if let n = possibleVersionNumber as? NSNumber {
-    version = n.intValue
-  }else{
-    throw badFormatErrorForFileAtPath (inPackageFullPath, code:#line)
-  }
-  let possibleEntry : PMPackageDictionaryEntry? = ioPackageDict [packageName]
-  if let entry = possibleEntry {
-  
-    let newEntry = PMPackageDictionaryEntry (
-      partStatus: .partIsDuplicated,
-      version: 0,
-      versionStringForDialog: "—",
-      pathArray: entry.pathArray + [inPackageFullPath]
-    )
-    ioPackageDict [packageName] = newEntry
-  }else{
-    var partStatus : PartStatus
-    switch metadata.metadataStatus {
-    case .unknown :
-      partStatus = .partHasUnknownStatus
-    case .ok :
-      partStatus = partNameIsValid (packageName) ? .partIsValid : .partHasInvalidName
-    case .warning :
-      partStatus = .partHasWarning
-    case .error :
-      partStatus = .partHasError
+  if let metadata = try? getFileMetadata (atPath: inPackageFullPath) {
+    let possibleVersionNumber : Any? = metadata.metadataDictionary [PMPackageVersion]
+    let version : Int
+    if let n = possibleVersionNumber as? NSNumber {
+      version = n.intValue
+      let possibleEntry : PMPackageDictionaryEntry? = ioPackageDict [packageName]
+      if let entry = possibleEntry {
+        let newEntry = PMPackageDictionaryEntry (
+          partStatus: .partIsDuplicated,
+          version: 0,
+          versionStringForDialog: "—",
+          pathArray: entry.pathArray + [inPackageFullPath]
+        )
+        ioPackageDict [packageName] = newEntry
+      }else{
+        var partStatus : PartStatus
+        switch metadata.metadataStatus {
+        case .unknown :
+          partStatus = .partHasUnknownStatus
+        case .ok :
+          partStatus = partNameIsValid (packageName) ? .partIsValid : .partHasInvalidName
+        case .warning :
+          partStatus = .partHasWarning
+        case .error :
+          partStatus = .partHasError
+        }
+        let newEntry = PMPackageDictionaryEntry (
+          partStatus: partStatus,
+          version: version,
+          versionStringForDialog: String (version),
+          pathArray: [inPackageFullPath]
+        )
+        ioPackageDict [packageName] = newEntry
+      }
+    }else{
+      inStackView.appendError ("File '\(packageName)' has an invalid format")
+      inStackView.appendOpenDocumentButton ((inPackageFullPath as NSString).deletingLastPathComponent)
+      ioErrorCount += 1
     }
-    let newEntry = PMPackageDictionaryEntry (
-      partStatus: partStatus,
-      version: version,
-      versionStringForDialog: String (version),
-      pathArray: [inPackageFullPath]
-    )
-    ioPackageDict [packageName] = newEntry
+  }else{
+    inStackView.appendError ("File '\(packageName)' has an invalid format")
+    inStackView.appendOpenDocumentButton ((inPackageFullPath as NSString).deletingLastPathComponent)
+    ioErrorCount += 1
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func performPackageLibraryEnumeration (atPath inPackageLibraryPath : String,
-                                                   packageDict ioPackageDict : inout [String : PMPackageDictionaryEntry]) -> Bool {
+@MainActor fileprivate func performPackageLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackView,
+                                                   atPath inPackageLibraryPath : String,
+                                                   packageDict ioPackageDict : inout [String : PMPackageDictionaryEntry],
+                                                   errorCount ioErrorCount : inout Int) {
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inPackageLibraryPath) {
     for path in unwSubpaths {
       if path.pathExtension.lowercased () == ElCanariPackage_EXTENSION {
         let fullsubpath = inPackageLibraryPath.appendingPathComponent (path)
-        do{
-          try checkPackageLibraryCheck (atPath: fullsubpath, packageDict: &ioPackageDict)
-        }catch _ {
-          return false
-        }
+        checkPackageLibrary (inStackView, atPath: fullsubpath, packageDict: &ioPackageDict, errorCount: &ioErrorCount)
       }
     }
+  }else{
+    inStackView.appendInfo ("\(inPackageLibraryPath) directory does not exist")
   }
-  return true
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -564,11 +584,7 @@ fileprivate func performPackageLibraryEnumeration (atPath inPackageLibraryPath :
   for path in existingLibraryPathArray () {
     let packageLibraryPath = packageLibraryPathForPath (path)
     inStackView.appendOpenDocumentButton (packageLibraryPath)
-    let ok = performPackageLibraryEnumeration (atPath: packageLibraryPath, packageDict: &ioPackageDict)
-    if !ok {
-      errorCount += 1
-      inStackView.appendError ("  Cannot enumerate \(packageLibraryPath)")
-    }
+    performPackageLibraryEnumeration (inStackView, atPath: packageLibraryPath, packageDict: &ioPackageDict, errorCount: &errorCount)
   }
 //--- Display duplicate entries for symbols, invalid entries
   for (packageName, entry) in ioPackageDict {
@@ -616,66 +632,74 @@ fileprivate struct PMFontDictionaryEntry {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func checkFontLibraryCheck (atPath inFontFullPath : String,
-                                        fontDict ioFontDict : inout [String : PMFontDictionaryEntry]) throws {
+@MainActor fileprivate func checkFontLibrary (_ inStackView : AutoLayoutVerticalStackView,
+                                        atPath inFontFullPath : String,
+                                        fontDict ioFontDict : inout [String : PMFontDictionaryEntry],
+                                        errorCount ioErrorCount : inout Int) {
   let fontName = ((inFontFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
-  let metadata = try getFileMetadata (atPath: inFontFullPath)
-  let possibleVersionNumber : Any? = metadata.metadataDictionary [PMFontVersion]
-  let version : Int
-  if let n = possibleVersionNumber as? NSNumber {
-    version = n.intValue
-  }else{
-    throw badFormatErrorForFileAtPath (inFontFullPath, code: #line)
-  }
-  let possibleEntry : PMFontDictionaryEntry? = ioFontDict [fontName]
-  if let entry = possibleEntry {
-    let newEntry = PMFontDictionaryEntry (
-      partStatus: .partIsDuplicated,
-      version: 0,
-      versionStringForDialog: "—",
-      pathArray: entry.pathArray + [inFontFullPath]
-    )
-    ioFontDict [fontName] = newEntry
-  }else{
-    let partStatus : PartStatus
-    switch metadata.metadataStatus {
-    case .unknown :
-      partStatus = .partHasUnknownStatus
-    case .ok :
-      partStatus = partNameIsValid (fontName) ? .partIsValid : .partHasInvalidName
-    case .warning :
-      partStatus = .partHasWarning
-    case .error :
-      partStatus = .partHasError
+  if let metadata = try? getFileMetadata (atPath: inFontFullPath) {
+    let possibleVersionNumber : Any? = metadata.metadataDictionary [PMFontVersion]
+    let version : Int
+    if let n = possibleVersionNumber as? NSNumber {
+      version = n.intValue
+      let possibleEntry : PMFontDictionaryEntry? = ioFontDict [fontName]
+      if let entry = possibleEntry {
+        let newEntry = PMFontDictionaryEntry (
+          partStatus: .partIsDuplicated,
+          version: 0,
+          versionStringForDialog: "—",
+          pathArray: entry.pathArray + [inFontFullPath]
+        )
+        ioFontDict [fontName] = newEntry
+      }else{
+        let partStatus : PartStatus
+        switch metadata.metadataStatus {
+        case .unknown :
+          partStatus = .partHasUnknownStatus
+        case .ok :
+          partStatus = partNameIsValid (fontName) ? .partIsValid : .partHasInvalidName
+        case .warning :
+          partStatus = .partHasWarning
+        case .error :
+          partStatus = .partHasError
+        }
+        let newEntry = PMFontDictionaryEntry (
+          partStatus: partStatus,
+          version: version,
+          versionStringForDialog: "\(version)",
+          pathArray: [inFontFullPath]
+        )
+        ioFontDict [fontName] = newEntry
+      }
+    }else{
+      inStackView.appendError ("File '\(fontName)' has an invalid format")
+      inStackView.appendOpenDocumentButton ((inFontFullPath as NSString).deletingLastPathComponent)
+      ioErrorCount += 1
     }
-    let newEntry = PMFontDictionaryEntry (
-      partStatus: partStatus,
-      version: version,
-      versionStringForDialog: "\(version)",
-      pathArray: [inFontFullPath]
-    )
-    ioFontDict [fontName] = newEntry
+  }else{
+    inStackView.appendError ("File '\(fontName)' has an invalid format")
+    inStackView.appendOpenDocumentButton ((inFontFullPath as NSString).deletingLastPathComponent)
+    ioErrorCount += 1
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func performFontLibraryEnumeration (atPath inFontLibraryPath : String,
-                                                fontDict ioFontDict : inout [String : PMFontDictionaryEntry]) -> Bool {
+@MainActor fileprivate func performFontLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackView,
+                                                atPath inFontLibraryPath : String,
+                                                fontDict ioFontDict : inout [String : PMFontDictionaryEntry],
+                                                errorCount ioErrorCount : inout Int) {
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inFontLibraryPath) {
     for path in unwSubpaths {
       if path.pathExtension.lowercased () == ElCanariFont_EXTENSION {
         let fullsubpath = inFontLibraryPath.appendingPathComponent (path)
-        do {
-          try checkFontLibraryCheck (atPath: fullsubpath, fontDict: &ioFontDict)
-        }catch _ {
-          return false
-        }
+        checkFontLibrary (inStackView, atPath: fullsubpath, fontDict: &ioFontDict, errorCount: &ioErrorCount)
       }
     }
+  }else{
+    inStackView.appendInfo ("\(inFontLibraryPath) directory does not exist")
   }
-  return true
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -687,11 +711,7 @@ fileprivate func performFontLibraryEnumeration (atPath inFontLibraryPath : Strin
   for path in existingLibraryPathArray () {
     let fontLibraryPath = fontLibraryPathForPath (path)
     inStackView.appendOpenDocumentButton (fontLibraryPath)
-    let ok = performFontLibraryEnumeration (atPath: fontLibraryPath, fontDict: &fontDict)
-    if !ok {
-      errorCount += 1
-      inStackView.appendError ("  Cannot enumerate \(fontLibraryPath)")
-    }
+    performFontLibraryEnumeration (inStackView, atPath: fontLibraryPath, fontDict: &fontDict, errorCount: &errorCount)
   }
 //--- Display duplicate entries for font, invalid entries
   for (fontName, entry) in fontDict {
@@ -739,57 +759,65 @@ fileprivate struct PMArtworkDictionaryEntry {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func checkArtworkLibraryCheck (atPath inArtworkFullPath : String,
-                                           artworkDict ioArtworkDict : inout [String : PMArtworkDictionaryEntry]) throws {
-  let packageName = ((inArtworkFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
-  let metadata = try getFileMetadata (atPath: inArtworkFullPath)
-  // NSLog ("\(metadataDictionary)")
-  let possibleVersionNumber : Any? = metadata.metadataDictionary [PMArtworkVersion]
-  let version : Int
-  if let n = possibleVersionNumber as? NSNumber {
-    version = n.intValue
+@MainActor fileprivate func checkArtworkLibrary (_ inStackView : AutoLayoutVerticalStackView,
+                                           atPath inArtworkFullPath : String,
+                                           artworkDict ioArtworkDict : inout [String : PMArtworkDictionaryEntry],
+                                           errorCount ioErrorCount : inout Int) {
+  let artworkName = ((inArtworkFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
+  if let metadata = try? getFileMetadata (atPath: inArtworkFullPath) {
+    // NSLog ("\(metadataDictionary)")
+    let possibleVersionNumber : Any? = metadata.metadataDictionary [PMArtworkVersion]
+    let version : Int
+    if let n = possibleVersionNumber as? NSNumber {
+      version = n.intValue
+      let possibleEntry : PMArtworkDictionaryEntry? = ioArtworkDict [artworkName]
+      if let entry = possibleEntry {
+        let newEntry = PMArtworkDictionaryEntry (
+          partStatus: .partIsDuplicated,
+          version:0,
+          versionStringForDialog: "—",
+          pathArray: entry.pathArray + [inArtworkFullPath]
+        )
+        ioArtworkDict [artworkName] = newEntry
+      }else{
+        let partStatus : PartStatus = partNameIsValid (artworkName) ? .partIsValid : .partHasInvalidName
+        let newEntry = PMArtworkDictionaryEntry (
+          partStatus: partStatus,
+          version: version,
+          versionStringForDialog: String (version),
+          pathArray: [inArtworkFullPath]
+        )
+        ioArtworkDict [artworkName] = newEntry
+      }
+    }else{
+      inStackView.appendError ("File '\(artworkName)' has an invalid format")
+      inStackView.appendOpenDocumentButton ((inArtworkFullPath as NSString).deletingLastPathComponent)
+      ioErrorCount += 1
+    }
   }else{
-    throw badFormatErrorForFileAtPath (inArtworkFullPath, code:#line)
-  }
-  let possibleEntry : PMArtworkDictionaryEntry? = ioArtworkDict [packageName]
-  if let entry = possibleEntry {
-    let newEntry = PMArtworkDictionaryEntry (
-      partStatus: .partIsDuplicated,
-      version:0,
-      versionStringForDialog: "—",
-      pathArray: entry.pathArray + [inArtworkFullPath]
-    )
-    ioArtworkDict [packageName] = newEntry
-  }else{
-    let partStatus : PartStatus = partNameIsValid (packageName) ? .partIsValid : .partHasInvalidName
-    let newEntry = PMArtworkDictionaryEntry (
-      partStatus: partStatus,
-      version: version,
-      versionStringForDialog: String (version),
-      pathArray: [inArtworkFullPath]
-    )
-    ioArtworkDict [packageName] = newEntry
+    inStackView.appendError ("File '\(artworkName)' has an invalid format")
+    inStackView.appendOpenDocumentButton ((inArtworkFullPath as NSString).deletingLastPathComponent)
+    ioErrorCount += 1
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func performArtworkLibraryEnumeration (atPath inPackageLibraryPath : String,
-                                                   artworkDict ioArtworkDict : inout [String : PMArtworkDictionaryEntry]) -> Bool {
+@MainActor fileprivate func performArtworkLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackView,
+                                                   atPath inArtworkLibraryPath : String,
+                                                   artworkDict ioArtworkDict : inout [String : PMArtworkDictionaryEntry],
+                                                   errorCount ioErrorCount : inout Int) {
   let fm = FileManager ()
-  if let unwSubpaths = fm.subpaths (atPath: inPackageLibraryPath) {
+  if let unwSubpaths = fm.subpaths (atPath: inArtworkLibraryPath) {
     for path in unwSubpaths {
       if path.pathExtension.lowercased () == ElCanariArtwork_EXTENSION {
-        let fullsubpath = inPackageLibraryPath.appendingPathComponent (path)
-        do{
-          try checkArtworkLibraryCheck (atPath: fullsubpath, artworkDict: &ioArtworkDict)
-        }catch _ {
-          return false
-        }
+        let fullsubpath = inArtworkLibraryPath.appendingPathComponent (path)
+        checkArtworkLibrary (inStackView, atPath: fullsubpath, artworkDict: &ioArtworkDict, errorCount: &ioErrorCount)
       }
     }
+  }else{
+    inStackView.appendInfo ("\(inArtworkLibraryPath) directory does not exist")
   }
-  return true
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -801,11 +829,7 @@ fileprivate func performArtworkLibraryEnumeration (atPath inPackageLibraryPath :
   for path in existingLibraryPathArray () {
     let artworkLibraryPath = artworkLibraryPathForPath (path)
     inStackView.appendOpenDocumentButton (artworkLibraryPath)
-    let ok = performArtworkLibraryEnumeration (atPath: artworkLibraryPath, artworkDict: &artworkDict)
-    if !ok {
-      errorCount += 1
-      inStackView.appendError ("  Cannot enumerate \(artworkLibraryPath)")
-    }
+    performArtworkLibraryEnumeration (inStackView, atPath: artworkLibraryPath, artworkDict: &artworkDict, errorCount: &errorCount)
   }
 //--- Display duplicate entries for symbols, invalid entries
   for (artworkName, entry) in artworkDict {
