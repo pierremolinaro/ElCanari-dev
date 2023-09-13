@@ -16,17 +16,23 @@ import AppKit
 //---------- Previous Tab View selection
   let previousSelectedTab : Int?
   if let stackView = inLogWindow.contentView as? AutoLayoutVerticalStackView,
-     stackView.subviews.count > 0,
-     let tabView = stackView.subviews [0] as? AutoLayoutTabView {
+     stackView.subviews.count > 1,
+     let tabView = stackView.subviews [1] as? AutoLayoutTabView {
     previousSelectedTab = tabView.indexOfSelectedItem
   }else{
     previousSelectedTab = nil
+  }
+//---------- Check library button
+  let button = AutoLayoutButton (title: "Check Library", size: .regular)
+    .expandableWidth ()
+  button.setClosureAction {
+    checkLibrary (windowForSheet: inLogWindow, logWindow: inLogWindow)
   }
 //---------- Tab View
   let tabView = AutoLayoutTabView (size: .regular)
     .expandableWidth ()
     .expandableHeight ()
-  inLogWindow.contentView = AutoLayoutVerticalStackView ().set (margins: 12).appendView (tabView)
+  inLogWindow.contentView = AutoLayoutVerticalStackView ().set (margins: 12).appendView (button).appendView (tabView)
 //---------- Checking Symbols
   let symbolTabContents = AutoLayoutVerticalStackView ().set (margins: 12)
   var symbolDict : [String : PMSymbolDictionaryEntry] = [:]

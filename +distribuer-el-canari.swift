@@ -35,7 +35,7 @@ let NOTES : [String] = [
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
-  "Xcode 15.0",
+  "Xcode 15.0 RC1",
   "Amélioration de la présentation des résultats de la vérification des librairies"
 ]
 let NEWS : [String] = [

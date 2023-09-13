@@ -25,6 +25,19 @@ extension Preferences {
         backing: .buffered,
         defer: false
       )
+      let button = AutoLayoutButton (title: "Check Library", size: .regular)
+        .expandableWidth ()
+      button.setClosureAction {
+        checkLibrary (windowForSheet: window, logWindow: window)
+      }
+    //---------- Tab View
+      let label = AutoLayoutStaticLabel (
+        title: "The check has not yet been run",
+        bold: true,
+        size: .regular,
+        alignment: .center
+      ).expandableWidth ().expandableHeight ()
+      window.contentView = AutoLayoutVerticalStackView ().set (margins: 12).appendView (button).appendView (label)
       self.mLibraryConsistencyLogWindow = window
       _ = window.setFrameAutosaveName ("LibraryConsistencyLogWindowSettings")
       window.title = "Library Consistency Log"
