@@ -103,7 +103,6 @@ runCommand ([
 #   "--mac-signing-key-user-name", "pierre@pcmolinaro.name",
   "--app-version", APP_VERSION
 ])
-runCommand (["cp", "-R", FREE_ROUTING_NAME + ".app", "Freerouting.app"])
 runCommand ([
   "/usr/bin/codesign",
   "--force",

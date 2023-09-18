@@ -17,6 +17,8 @@ extension AutoLayoutProjectDocument {
   func performLaunchFreeRouterWithRouterDocument () {
     if let mainWindow = self.windowForSheet {
       let fm = FileManager ()
+    //---------- Install freeRouter application
+      let optionalFreeRouterApplication = self.installFreeRouter (mainWindow)
     //---------- Get freerouter temporary directory
       let freerouterTemporaryBaseFilePath : String
       if let d = self.mFreerouterTemporaryDocumentDirectory {
@@ -51,7 +53,7 @@ extension AutoLayoutProjectDocument {
       do{
         try s.write (to: URL (fileURLWithPath: dsnFilePath), atomically: true, encoding: .utf8)
       //--- Launch free router with document
-        if let freeRouterApplication : URL = self.uncompressedFreeRouterURL () {
+        if let freeRouterApplication : URL = optionalFreeRouterApplication {
           let openConfiguration = NSWorkspace.OpenConfiguration ()
           openConfiguration.arguments = ["-de", dsnFilePath, "-oit", "0.0"]
           NSWorkspace.shared.openApplication (at: freeRouterApplication, configuration: openConfiguration) { (optionalApplication, optionalError) in

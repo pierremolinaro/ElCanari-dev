@@ -14,7 +14,7 @@ extension AutoLayoutProjectDocument {
   @objc func launchFreeRouterWithoutAnyDocument (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     self.checkSchematicsAndBeforeAndLaunchFreeRouteur {
-      if let freeRouterApplication : URL = self.uncompressedFreeRouterURL () {
+      if let mainWindow = self.windowForSheet, let freeRouterApplication : URL = self.installFreeRouter (mainWindow) {
         let openConfiguration = NSWorkspace.OpenConfiguration ()
         NSWorkspace.shared.openApplication (at: freeRouterApplication, configuration: openConfiguration) { (optionalApplication, optionalError) in
           if optionalApplication == nil {
