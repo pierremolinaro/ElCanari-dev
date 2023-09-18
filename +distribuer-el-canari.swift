@@ -35,8 +35,9 @@ let NOTES : [String] = [
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
-  "Xcode 15.0 RC1",
-  "Amélioration de la présentation des résultats de la vérification des librairies"
+  "Xcode 15.0",
+  "Amélioration de la présentation des résultats de la vérification des librairies",
+  "L'application FreeRouting est maintenant installée dans ~/Library/Application Support/FreeRouterForElCanari"
 ]
 let NEWS : [String] = [
 ]

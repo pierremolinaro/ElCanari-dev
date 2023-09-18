@@ -145,21 +145,22 @@ import AppKit
   final func PrefsUserInterfacePage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 12)
-    let view_0 = AutoLayoutStaticLabel (title: "User Interface", bold: true, size: .regular, alignment: .center)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutFlexibleSpace ()
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutGridView2 ()
-        .addCenterYAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
-        .addCenterYAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutFlexibleSpace ()
-      _ = view_1.appendView (view_1_2)
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      _ = view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutGridView2 ()
+        .add (single: self.computeImplicitView_0 ())
+        .addCenterYAligned (left: self.computeImplicitView_1 (), right: self.computeImplicitView_2 ())
+        .addCenterYAligned (left: self.computeImplicitView_3 (), right: self.computeImplicitView_4 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_5 (), right: self.computeImplicitView_6 ())
+        .add (single: self.computeImplicitView_7 ())
+        .add (single: self.computeImplicitView_8 ())
+      _ = view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      _ = view_0.appendView (view_0_2)
     }
-    _ = vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_0)
     return vStackView
   }
 
@@ -285,7 +286,7 @@ import AppKit
   //····················································································································
 
   fileprivate final func computeImplicitView_0 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Selection Hilite Color", bold: false, size: .regular, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "User Interface", bold: true, size: .regular, alignment: .left)
     return view
   }
 
@@ -294,6 +295,15 @@ import AppKit
   //····················································································································
 
   fileprivate final func computeImplicitView_1 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Selection Hilite Color", bold: false, size: .regular, alignment: .right)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 2
+  //····················································································································
+
+  fileprivate final func computeImplicitView_2 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
@@ -306,19 +316,19 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 2
+  //    IMPLICIT VIEW 3
   //····················································································································
 
-  fileprivate final func computeImplicitView_2 () -> NSView {
+  fileprivate final func computeImplicitView_3 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Selection Width", bold: false, size: .regular, alignment: .right)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 3
+  //    IMPLICIT VIEW 4
   //····················································································································
 
-  fileprivate final func computeImplicitView_3 () -> NSView {
+  fileprivate final func computeImplicitView_4 () -> NSView {
     let view = AutoLayoutTaggedPopUpButton (size: .regular)
       .add (title: "0.5 Point", withTag: 5)
       .add (title: "1.0 Point", withTag: 10)
@@ -330,21 +340,40 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 4
+  //    IMPLICIT VIEW 5
   //····················································································································
 
-  fileprivate final func computeImplicitView_4 () -> NSView {
+  fileprivate final func computeImplicitView_5 () -> NSView {
     let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 5
+  //    IMPLICIT VIEW 6
   //····················································································································
 
-  fileprivate final func computeImplicitView_5 () -> NSView {
+  fileprivate final func computeImplicitView_6 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Show Debug Menu", size: .regular)
       .bind_value (preferences_showDebugMenu_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 7
+  //····················································································································
+
+  fileprivate final func computeImplicitView_7 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "FreeRouting Application Directory", bold: true, size: .regular, alignment: .left)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 8
+  //····················································································································
+
+  fileprivate final func computeImplicitView_8 () -> NSView {
+    let view = AutoLayoutButton (title: "", size: .small)
+    self.configure_configureFreeRoutingPath (view) // Configurator
     return view
   }
 

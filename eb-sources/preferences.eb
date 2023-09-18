@@ -70,10 +70,12 @@ prefs {
   property Int hiliteWidthMultipliedByTen default 15 ; // 1,5 pt
   
   stackView \PrefsUserInterfacePage vStack set (margins: 12) {
-    StaticLabel (title: "User Interface", bold: yes, size: .regular, alignment: .center)
     hStack {
       space
       GridView2 {
+        add (single:
+          StaticLabel (title: "User Interface", bold: yes, size: .regular, alignment: .left)
+        )
         addCenterYAligned (
           left: StaticLabel (title: "Selection Hilite Color", bold: no, size: .regular, alignment: .right),
           right: hStack { ColorWell { $color prefs.selectionHiliteColor } space }
@@ -92,6 +94,13 @@ prefs {
         addFirstBaseLineAligned (
           left: space,
           right: Checkbox (title: "Show Debug Menu", size: .regular) { $value prefs.showDebugMenu }
+        )
+    //    addSeparator ()
+        add (single:
+          StaticLabel (title: "FreeRouting Application Directory", bold: yes, size: .regular, alignment: .left)
+        )
+        add (single:
+          Button (title: "", size: .small) [configurator configureFreeRoutingPath]
         )
       }
       space

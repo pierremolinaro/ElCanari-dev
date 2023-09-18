@@ -10,24 +10,28 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+let FREEROUTING_DIR = NSHomeDirectory () + "/Library/Application Support/FreeRouterForElCanari"
+let FREEROUTING_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting.app"
+let FREEROUTING_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting.app.tar.xz"
+let RELEASE_FILE_PATH = FREEROUTING_DIR + "/release.txt"
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 extension AutoLayoutProjectDocument {
 
   //····················································································································
 
   func installFreeRouter (_ inMainWindow : NSWindow) -> URL? {
     let fm = FileManager ()
-    let freeRouterDirectory = NSHomeDirectory () + "/Library/Application Support/FreeRouterForElCanari"
-    let archivePath = systemLibraryPath () + "/freerouter/Freerouting.app.tar.xz"
-    let releaseFile = freeRouterDirectory + "/release.txt"
   //------------- Create directory
     var ok = true
-    if !fm.fileExists (atPath:freeRouterDirectory) {
+    if !fm.fileExists (atPath: FREEROUTING_DIR) {
       do {
-        try fm.createDirectory (at: URL (fileURLWithPath: freeRouterDirectory), withIntermediateDirectories: false, attributes: nil)
+        try fm.createDirectory (at: URL (fileURLWithPath: FREEROUTING_DIR), withIntermediateDirectories: false, attributes: nil)
       }catch _ {
         let alert = NSAlert ()
         alert.messageText = "Cannot install FreeRouting application"
-        alert.informativeText = "Cannot create \"\(freeRouterDirectory)\" directory"
+        alert.informativeText = "Cannot create \"\(FREEROUTING_DIR)\" directory"
         alert.beginSheetModal (for: inMainWindow) { (NSModalResponse) in }
         ok = false
       }
@@ -35,20 +39,20 @@ extension AutoLayoutProjectDocument {
   //------------- Get archive file size
     var archiveFileSizeData = Data ()
     if ok {
-      if let fileAttributes = try? fm.attributesOfItem (atPath: archivePath),
+      if let fileAttributes = try? fm.attributesOfItem (atPath: FREEROUTING_ARCHIVE_PATH),
          let archiveFileSize = fileAttributes [.size] as? Int64 {
         archiveFileSizeData = "\(archiveFileSize)".data (using: .utf8)!
       }else{
         let alert = NSAlert ()
         alert.messageText = "Cannot install FreeRouting application"
-        alert.informativeText = "Cannot get \"\(archivePath)\" file size"
+        alert.informativeText = "Cannot get \"\(FREEROUTING_ARCHIVE_PATH)\" file size"
         alert.beginSheetModal (for: inMainWindow) { (NSModalResponse) in }
         ok = false
       }
     }
   //------------- Check installed release file
     var needsToInstall = true
-    if fm.fileExists (atPath: releaseFile), let contents = fm.contents (atPath: releaseFile) {
+    if fm.fileExists (atPath: RELEASE_FILE_PATH), let contents = fm.contents (atPath: RELEASE_FILE_PATH) {
       needsToInstall = archiveFileSizeData != contents
     }
   //------------- Install
@@ -56,8 +60,8 @@ extension AutoLayoutProjectDocument {
    //--- Uncompress freerouter archive
       let task = Process ()
       task.launchPath = "/usr/bin/tar"
-      task.arguments = ["-xJf", archivePath]
-      task.currentDirectoryURL = URL (fileURLWithPath: freeRouterDirectory)
+      task.arguments = ["-xJf", FREEROUTING_ARCHIVE_PATH]
+      task.currentDirectoryURL = URL (fileURLWithPath: FREEROUTING_DIR)
       task.launch ()
       task.waitUntilExit ()
       let status = task.terminationStatus
@@ -73,19 +77,19 @@ extension AutoLayoutProjectDocument {
   //--- Uncompress freerouter archive
     if ok && needsToInstall {
       do{
-        try archiveFileSizeData.write (to: URL (fileURLWithPath: releaseFile))
+        try archiveFileSizeData.write (to: URL (fileURLWithPath: RELEASE_FILE_PATH))
        // Swift.print ("INSTALLED")
       }catch _ {
         let alert = NSAlert ()
         alert.messageText = "Cannot launch FreeRouting application"
-        alert.informativeText = "Cannot write \"\(releaseFile)\" file"
+        alert.informativeText = "Cannot write \"\(RELEASE_FILE_PATH)\" file"
         alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
         ok = false
       }
     }
   //---
  //   Swift.print (ok ? "SUCCESS" : "FAILURE")
-    return ok ? URL (fileURLWithPath: freeRouterDirectory + "/FreeRouting.app") : nil
+    return ok ? URL (fileURLWithPath: FREEROUTING_APPLICATION_PATH) : nil
   }
 
   //····················································································································
