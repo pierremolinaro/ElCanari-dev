@@ -90,63 +90,66 @@ else:
     ])
 #--- Build executable
 os.chdir (scriptDir)
-FREE_ROUTING_NAME = "Freerouting-" + APP_VERSION
-runCommand (["rm", "-fr", FREE_ROUTING_NAME + ".app"])
+# FREE_ROUTING_NAME = "Freerouting-" + APP_VERSION
+runCommand (["rm", "-fr", "Freerouting.app"])
 runCommand ([
   JPKG_HOME + "/bin/jpackage",
   "--input", FREEROUTING_DIR + "/build/dist/",
-  "--name", FREE_ROUTING_NAME,
+  "--name", "Freerouting",
   "--main-jar", "freerouting-executable.jar",
   "--type", "app-image",
   "--runtime-image", "jdk14/runtime",
-#  "--mac-sign",
+#   "--mac-sign",
 #   "--mac-signing-key-user-name", "pierre@pcmolinaro.name",
   "--app-version", APP_VERSION
 ])
+runCommand (["cp", "-R", FREE_ROUTING_NAME + ".app", "Freerouting.app"])
 runCommand ([
   "/usr/bin/codesign",
   "--force",
   "--sign", "Apple Development: pierre@pcmolinaro.name",
-  "--deep",
-  FREE_ROUTING_NAME + ".app"
+#   "--deep",
+  "Freerouting.app"
 ])
 runCommand ([
   "/usr/bin/codesign",
   "-dv",
   "--verbose=4",
-  FREE_ROUTING_NAME + ".app"
+  "Freerouting.app"
 ])
 runCommand ([
   "/usr/bin/codesign",
   "--verify",
-  "--deep",
+#   "--deep",
   "--strict",
   "--verbose=2",
-  FREE_ROUTING_NAME + ".app"
+  "Freerouting.app"
 ])
+#--- PRODUCT
+runCommand (["tar", "-a", "-cJf", "Freerouting.app.tar.xz", "Freerouting.app"])
 # runCommand ([
 #   "spctl",
 #   "-a",
-#   FREE_ROUTING_NAME + ".app"
+#   "Freerouting.app"
 # ])
-# runCommand ([
-#   "spctl",
-#   "--assess",
-#   "--verbose=4",
-#   "--type", "execute",
-#   FREE_ROUTING_NAME + ".app"
-# ])
+runCommand ([
+  "spctl",
+  "--assess",
+  "--verbose=4",
+  "--type", "execute",
+  "Freerouting.app"
+])
 #--- Build DMG
-PACKAGE_FILE = FREE_ROUTING_NAME + ".pkg"
-runCommand (["/usr/bin/productbuild", "--component-compression", "auto", "--component", FREE_ROUTING_NAME + ".app", "/Applications", PACKAGE_FILE])
-DISTRIBUTION_DIR = "Freerouting-" + APP_VERSION
-runCommand (["/bin/rm", "-rf", DISTRIBUTION_DIR])
-runCommand (["/bin/rm", "-f", FREE_ROUTING_NAME + ".dmg"])
-runCommand (["/bin/mkdir", DISTRIBUTION_DIR])
-runCommand (["/bin/cp", PACKAGE_FILE, DISTRIBUTION_DIR])
-runCommand (["/usr/bin/hdiutil", "create", "-srcfolder", FREE_ROUTING_NAME, FREE_ROUTING_NAME + ".dmg", "-fs", "HFS+"])
-runCommand (["/bin/rm", PACKAGE_FILE])
-runCommand (["/bin/rm", "-rf", DISTRIBUTION_DIR])
+# PACKAGE_FILE = FREE_ROUTING_NAME + ".pkg"
+# runCommand (["/usr/bin/productbuild", "--component-compression", "auto", "--component", FREE_ROUTING_NAME + ".app", "/Applications", PACKAGE_FILE])
+# DISTRIBUTION_DIR = "Freerouting-" + APP_VERSION
+# runCommand (["/bin/rm", "-rf", DISTRIBUTION_DIR])
+# runCommand (["/bin/rm", "-f", FREE_ROUTING_NAME + ".dmg"])
+# runCommand (["/bin/mkdir", DISTRIBUTION_DIR])
+# runCommand (["/bin/cp", PACKAGE_FILE, DISTRIBUTION_DIR])
+# runCommand (["/usr/bin/hdiutil", "create", "-srcfolder", FREE_ROUTING_NAME, FREE_ROUTING_NAME + ".dmg", "-fs", "HFS+"])
+# runCommand (["/bin/rm", PACKAGE_FILE])
+# runCommand (["/bin/rm", "-rf", DISTRIBUTION_DIR])
 
 
 #------------------------------------------------------------------------------

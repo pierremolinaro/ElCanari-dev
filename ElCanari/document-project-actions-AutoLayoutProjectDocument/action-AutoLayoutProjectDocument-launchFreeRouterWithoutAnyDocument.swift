@@ -18,10 +18,12 @@ extension AutoLayoutProjectDocument {
         let openConfiguration = NSWorkspace.OpenConfiguration ()
         NSWorkspace.shared.openApplication (at: freeRouterApplication, configuration: openConfiguration) { (optionalApplication, optionalError) in
           if optionalApplication == nil {
-            let alert = NSAlert ()
-            alert.messageText = "Cannot launch FreeRouting application"
-            alert.informativeText = "FreeRouting application does not exist."
-            alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+            DispatchQueue.main.async {
+              let alert = NSAlert ()
+              alert.messageText = "Cannot launch FreeRouting application"
+              alert.informativeText = "FreeRouting application does not exist."
+              alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+            }
           }
         }
       }
