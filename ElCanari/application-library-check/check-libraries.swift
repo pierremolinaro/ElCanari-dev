@@ -109,7 +109,7 @@ import AppKit
   }else{
     let alert = NSAlert ()
     alert.messageText = "Librairies are consistent."
-    alert.beginSheetModal (for: inWindow) { (NSModalResponse) in }
+    alert.beginSheetModal (for: inWindow)
   }
 }
 

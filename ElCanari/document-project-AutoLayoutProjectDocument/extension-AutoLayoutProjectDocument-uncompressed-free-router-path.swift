@@ -32,7 +32,7 @@ extension AutoLayoutProjectDocument {
         let alert = NSAlert ()
         alert.messageText = "Cannot install FreeRouting application"
         alert.informativeText = "Cannot create \"\(FREEROUTING_DIR)\" directory"
-        alert.beginSheetModal (for: inMainWindow) { (NSModalResponse) in }
+        alert.beginSheetModal (for: inMainWindow)
         ok = false
       }
     }
@@ -46,7 +46,7 @@ extension AutoLayoutProjectDocument {
         let alert = NSAlert ()
         alert.messageText = "Cannot install FreeRouting application"
         alert.informativeText = "Cannot get \"\(FREEROUTING_ARCHIVE_PATH)\" file size"
-        alert.beginSheetModal (for: inMainWindow) { (NSModalResponse) in }
+        alert.beginSheetModal (for: inMainWindow)
         ok = false
       }
     }
@@ -70,7 +70,7 @@ extension AutoLayoutProjectDocument {
         let alert = NSAlert ()
         alert.messageText = "Cannot launch FreeRouting application"
         alert.informativeText = "Application uncompression returns \"\(status)\" status"
-        alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+        alert.beginSheetModal (for: inMainWindow)
         ok = false
       }
     }
@@ -78,12 +78,11 @@ extension AutoLayoutProjectDocument {
     if ok && needsToInstall {
       do{
         try archiveFileSizeData.write (to: URL (fileURLWithPath: RELEASE_FILE_PATH))
-       // Swift.print ("INSTALLED")
       }catch _ {
         let alert = NSAlert ()
         alert.messageText = "Cannot launch FreeRouting application"
         alert.informativeText = "Cannot write \"\(RELEASE_FILE_PATH)\" file"
-        alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+        alert.beginSheetModal (for: self.windowForSheet!)
         ok = false
       }
     }
@@ -110,7 +109,7 @@ extension AutoLayoutProjectDocument {
 //        let alert = NSAlert ()
 //        alert.messageText = "Cannot launch FreeRouting application"
 //        alert.informativeText = "Cannot create \"\(freerouterTemporaryBaseFilePath)\" directory"
-//        alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+//        alert.beginSheetModal (for: self.windowForSheet!)
 //        return nil
 //      }
 //   //--- Uncompress freerouter archive
@@ -129,7 +128,7 @@ extension AutoLayoutProjectDocument {
 //        let alert = NSAlert ()
 //        alert.messageText = "Cannot launch FreeRouting application"
 //        alert.informativeText = "Application uncompression returns \"\(status)\" status"
-//        alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+//        alert.beginSheetModal (for: self.windowForSheet!)
 //        return nil
 //      }
 //    }

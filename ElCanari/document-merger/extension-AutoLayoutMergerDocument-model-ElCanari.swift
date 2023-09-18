@@ -32,7 +32,7 @@ extension AutoLayoutMergerDocument {
       let alert = NSAlert ()
       alert.messageText = "Cannot read file"
       alert.informativeText = "The file \(inFilePath) cannot be read."
-      alert.beginSheetModal (for: inWindow) { (NSModalResponse) in }
+      alert.beginSheetModal (for: inWindow)
     }
   }
 
@@ -54,7 +54,7 @@ extension AutoLayoutMergerDocument {
       let alert = NSAlert ()
       alert.messageText = "Cannot Analyse file contents"
       alert.informativeText = "\(error)"
-      alert.beginSheetModal (for: self.windowForSheet!) {(NSModalResponse) in}
+      alert.beginSheetModal (for: self.windowForSheet!)
     }
   }
 
@@ -583,7 +583,7 @@ extension AutoLayoutMergerDocument {
       let alert = NSAlert ()
       alert.messageText = "Cannot Analyze file contents"
       alert.informativeText = s
-      alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+      alert.beginSheetModal (for: self.windowForSheet!)
     }
   //--- Return
     if errorArray.isEmpty {

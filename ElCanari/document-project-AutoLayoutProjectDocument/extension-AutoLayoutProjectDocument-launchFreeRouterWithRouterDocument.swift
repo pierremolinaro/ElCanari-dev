@@ -32,7 +32,7 @@ extension AutoLayoutProjectDocument {
           let alert = NSAlert ()
           alert.messageText = "Cannot launch FreeRouting application"
           alert.informativeText = "Cannot create \"\(freerouterTemporaryBaseFilePath)\" directory"
-          alert.beginSheetModal (for: mainWindow) { (NSModalResponse) in }
+          alert.beginSheetModal (for: mainWindow)
           return
         }
         self.mFreerouterTemporaryDocumentDirectory = freerouterTemporaryBaseFilePath
@@ -62,7 +62,7 @@ extension AutoLayoutProjectDocument {
                 let alert = NSAlert ()
                 alert.messageText = "Cannot launch FreeRouting application"
                 alert.informativeText = "FreeRouting application does not exist."
-                alert.beginSheetModal (for: mainWindow) { (NSModalResponse) in }
+                alert.beginSheetModal (for: mainWindow)
               }
             }
           }
@@ -72,7 +72,7 @@ extension AutoLayoutProjectDocument {
           let alert = NSAlert ()
           alert.messageText = "Cannot launch FreeRouting application"
           alert.informativeText = "Cannot write \(dsnFilePath) file"
-          alert.beginSheetModal (for: mainWindow) { (NSModalResponse) in }
+          alert.beginSheetModal (for: mainWindow)
         }
       }
     }

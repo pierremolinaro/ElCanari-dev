@@ -49,7 +49,7 @@ extension AutoLayoutMergerDocument {
             let alert = NSAlert ()
             alert.messageText = "Cannot read file"
             alert.informativeText = "The file \(filePath) cannot be read."
-            alert.beginSheetModal (for: window) { (NSModalResponse) in }
+            alert.beginSheetModal (for: window)
           }
         }
       }

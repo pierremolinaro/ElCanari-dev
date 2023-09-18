@@ -14,19 +14,6 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-//  override func importSESFromBasicTabAction (_ sender : NSObject?) {
-//    if let freerouterTemporaryBaseFilePath = self.mFreerouterTemporaryBaseFilePath {
-//      self.importGuiDefaultFile (fileBasePath: freerouterTemporaryBaseFilePath)
-//    }else{
-//      let alert = NSAlert ()
-//      alert.messageText = "Cannot import SES file"
-//      alert.informativeText = "The SES file does not exist"
-//      alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
-//    }
-//  }
-
-  //····················································································································
-
   func importGuiDefaultFile (fileBasePath inFileBasePath : String) {
     let filePath = inFileBasePath + "gui_defaults.par"
     if let fileContents = try? String (contentsOf: URL (fileURLWithPath: filePath), encoding: .utf8), preferences_mFreeRouterGuiDefaultFileContents_property.propval != fileContents {
@@ -58,7 +45,7 @@ extension AutoLayoutProjectDocument {
       let alert = NSAlert ()
       alert.messageText = "Cannot import SES file"
       alert.informativeText = "The \(filePath) file does not exist"
-      alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+      alert.beginSheetModal (for: self.windowForSheet!)
     }
   }
 

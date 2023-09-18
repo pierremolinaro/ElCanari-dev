@@ -22,7 +22,7 @@ extension AutoLayoutProjectDocument {
               let alert = NSAlert ()
               alert.messageText = "Cannot launch FreeRouting application"
               alert.informativeText = "FreeRouting application does not exist."
-              alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+              alert.beginSheetModal (for: self.windowForSheet!)
             }
           }
         }

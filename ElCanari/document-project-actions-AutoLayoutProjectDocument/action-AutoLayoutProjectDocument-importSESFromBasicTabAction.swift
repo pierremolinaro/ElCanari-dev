@@ -19,7 +19,7 @@ extension AutoLayoutProjectDocument {
       let alert = NSAlert ()
       alert.messageText = "Cannot import SES file"
       alert.informativeText = "The SES file does not exist"
-      alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+      alert.beginSheetModal (for: self.windowForSheet!)
     }
 //--- END OF USER ZONE 2
   }
