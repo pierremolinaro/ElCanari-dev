@@ -68,7 +68,7 @@ final class AutoLayoutMenuButton : AutoLayoutBase_NSView {
       NSBezierPath.fill (self.bounds)
     }
   //---
-    var path = EBBezierPath ()
+    let path = NSBezierPath ()
     let d = AutoLayoutMenuButton.size
     path.move (to: NSPoint (x: self.bounds.minX + d / 5.0, y: self.bounds.maxY - d / 3.0))
     path.line (to: NSPoint (x: self.bounds.maxX - d / 5.0, y: self.bounds.maxY - d / 3.0))

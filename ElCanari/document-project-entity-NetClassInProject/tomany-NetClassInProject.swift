@@ -984,14 +984,14 @@ final class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProje
 
   private var mIsOrderedBefore : Optional < (_ left : NetClassInProject, _ right : NetClassInProject) -> Bool > = nil
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private let mModelEvent = EBModelEvent ()
+//  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
-  override init () {
+/*  override init () {
     super.init ()
     self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  }
+  } */
 
   //····················································································································
   //   Data provider
@@ -1040,8 +1040,14 @@ final class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProje
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.observedObjectDidChange ()
-    self.mModelArrayShouldBeComputed = true
+    if !self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = true
+      DispatchQueue.main.async {
+        self.computeModelArray ()
+      }
+    }
+//    self.mModelArrayShouldBeComputed = true
+//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

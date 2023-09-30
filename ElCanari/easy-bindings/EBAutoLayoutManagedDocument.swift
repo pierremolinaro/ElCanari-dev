@@ -66,14 +66,6 @@ class EBAutoLayoutManagedDocument : NSDocument {
     return (NSImage (named: NSImage.Name ("exclamation"))!, NSPoint ())
   }
 
-//  func dragImageForRows (source inSourceTableView : AutoLayoutCanariDragSourceTableView,
-//                         with dragRows : IndexSet,
-//                         tableColumns : [NSTableColumn],
-//                         event dragEvent : NSEvent,
-//                         offset dragImageOffset : NSPointPointer) -> NSImage {
-//    return NSImage (named: NSImage.Name ("exclamation"))!
-//  }
-
   //····················································································································
   //   Drag destination
   //····················································································································
@@ -209,14 +201,16 @@ class EBAutoLayoutManagedDocument : NSDocument {
       let textField = AutoLayoutLabel (bold: false, size: .small).set (alignment: .center)
       self.mSplashTextField = textField
       textField.stringValue = "Loading File…"
-      let vStackView = AutoLayoutVerticalStackView ().set (margins: 12)
-      _ = vStackView.appendView (AutoLayoutStaticLabel (title: "Opening " + self.displayName + "…", bold: true, size: .small, alignment: .center))
-      _ = vStackView.appendView (textField)
-      let hStackView = AutoLayoutHorizontalStackView ().set (margins: 0)
-      _ = hStackView.appendView (AutoLayoutFlexibleSpace ())
-      _ = hStackView.appendView (AutoLayoutSpinningProgressIndicator (size: .small))
-      _ = hStackView.appendView (AutoLayoutFlexibleSpace ())
-      _ = vStackView.appendView (hStackView)
+      let hStackView = AutoLayoutHorizontalStackView ()
+            .set (margins: 0)
+            .appendView (AutoLayoutFlexibleSpace ())
+            .appendView (AutoLayoutSpinningProgressIndicator (size: .small))
+            .appendView (AutoLayoutFlexibleSpace ())
+      let vStackView = AutoLayoutVerticalStackView ()
+            .set (margins: 12)
+            .appendView (AutoLayoutStaticLabel (title: "Opening " + self.displayName + "…", bold: true, size: .small, alignment: .center))
+            .appendView (textField)
+            .appendView (hStackView)
       window.contentView = vStackView
       window.isReleasedWhenClosed = false
       window.makeKeyAndOrderFront (nil)
@@ -270,43 +264,42 @@ class EBAutoLayoutManagedDocument : NSDocument {
 
   override func makeWindowControllers () {
     DispatchQueue.main.async {
-  //--- Signature observer
-    self.mRootObject.setSignatureObserver (observer: self.mSignatureObserver)
-    self.mSignatureObserver.setRootObject (self.mRootObject)
-  //--- Version did change observer
-    self.mVersionShouldChangeObserver.setSignatureObserverAndUndoManager (self.mSignatureObserver, self.undoManager)
-    self.mSignatureObserver.startsToBeObserved (by: self.mVersionShouldChangeObserver)
-  //--- Create the window and set the content view
-    let s = self.windowDefaultSize ()
-    let windowWidth  = (self.mMetadataDictionary [WINDOW_WIDTH_METADATADICTIONARY_KEY] as? CGFloat) ?? s.width
-    let windowHeight = (self.mMetadataDictionary [WINDOW_HEIGHT_METADATADICTIONARY_KEY] as? CGFloat) ?? s.height
-    let window = NSWindow (
-      contentRect: NSRect(x: 0.0, y: 0.0, width: windowWidth, height: windowHeight),
-      styleMask: self.windowStyleMask (),
-      backing: .buffered,
-      defer: true
-    )
-    window.isReleasedWhenClosed = false
-    window.center ()
-  //---
-    let windowController = NSWindowController (window: window)
-    self.addWindowController (windowController)
-  //--- Build user interface
-    if let textField = self.mSplashTextField {
-      textField.stringValue = "Configuring User Interface…"
-      RunLoop.current.run (until: Date ())
-    }
-    self.ebBuildUserInterface ()
-    self.windowForSheet?.makeKeyAndOrderFront (nil)
-    flushOutletEvents ()
-    if let window = self.mSplashScreenWindow {
-      window.orderOut (nil)
-      self.mSplashTextField = nil
-      self.mSplashScreenWindow = nil
-    }
-    appendDocumentFileOperationInfo ("User Interface Built.")
-    appendTotalDurationDocumentFileOperationInfo ()
-//    self.mManagedDocumentFileFormat = .textual
+    //--- Signature observer
+      self.mRootObject.setSignatureObserver (observer: self.mSignatureObserver)
+      self.mSignatureObserver.setRootObject (self.mRootObject)
+    //--- Version did change observer
+      self.mVersionShouldChangeObserver.setSignatureObserverAndUndoManager (self.mSignatureObserver, self.undoManager)
+      self.mSignatureObserver.startsToBeObserved (by: self.mVersionShouldChangeObserver)
+    //--- Create the window and set the content view
+      let s = self.windowDefaultSize ()
+      let windowWidth  = (self.mMetadataDictionary [WINDOW_WIDTH_METADATADICTIONARY_KEY] as? CGFloat) ?? s.width
+      let windowHeight = (self.mMetadataDictionary [WINDOW_HEIGHT_METADATADICTIONARY_KEY] as? CGFloat) ?? s.height
+      let window = NSWindow (
+        contentRect: NSRect(x: 0.0, y: 0.0, width: windowWidth, height: windowHeight),
+        styleMask: self.windowStyleMask (),
+        backing: .buffered,
+        defer: true
+      )
+      window.isReleasedWhenClosed = false
+      window.center ()
+    //---
+      let windowController = NSWindowController (window: window)
+      self.addWindowController (windowController)
+    //--- Build user interface
+      if let textField = self.mSplashTextField {
+        textField.stringValue = "Configuring User Interface…"
+        RunLoop.current.run (until: Date ())
+      }
+      self.ebBuildUserInterface ()
+      self.windowForSheet?.makeKeyAndOrderFront (nil)
+      flushOutletEvents ()
+      if let window = self.mSplashScreenWindow {
+        window.orderOut (nil)
+        self.mSplashTextField = nil
+        self.mSplashScreenWindow = nil
+      }
+      appendDocumentFileOperationInfo ("User Interface Built.")
+      appendTotalDurationDocumentFileOperationInfo ()
     }
   }
 

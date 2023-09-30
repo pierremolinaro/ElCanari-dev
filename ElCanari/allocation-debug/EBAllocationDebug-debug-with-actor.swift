@@ -56,55 +56,46 @@ nonisolated func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAY
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//@PendingAllocationBufferActor fileprivate var gPendingAllocationBufferActorClass = PendingAllocationBufferActorClass ()
+@PendingAllocationBufferActor fileprivate var mPendingAllocatedObjectClasses = [AnyObject.Type] ()
+@PendingAllocationBufferActor fileprivate var mPendingDeallocatedObjectClasses = [AnyObject.Type] ()
+@PendingAllocationBufferActor fileprivate var mTransmitEventTriggered = false ;
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-// @PendingAllocationBufferActor final fileprivate class PendingAllocationBufferActorClass {
-  @PendingAllocationBufferActor fileprivate var mPendingAllocatedObjectClasses = [AnyObject.Type] ()
-  @PendingAllocationBufferActor fileprivate var mPendingDeallocatedObjectClasses = [AnyObject.Type] ()
-  @PendingAllocationBufferActor fileprivate var mTransmitEventTriggered = false ;
+@PendingAllocationBufferActor fileprivate func serializedNoteObjectAllocation (ofType inType : AnyObject.Type) {
+  mPendingAllocatedObjectClasses.append (inType)
+  triggerTransmit ()
+}
 
-  //····················································································································
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-  @PendingAllocationBufferActor fileprivate func serializedNoteObjectAllocation (ofType inType : AnyObject.Type) {
-    mPendingAllocatedObjectClasses.append (inType)
-    triggerTransmit ()
-  }
+@PendingAllocationBufferActor fileprivate func serializedNoteObjectDeallocation (ofType inType : AnyObject.Type) {
+  mPendingDeallocatedObjectClasses.append (inType)
+  triggerTransmit ()
+}
 
-  //····················································································································
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-  @PendingAllocationBufferActor fileprivate func serializedNoteObjectDeallocation (ofType inType : AnyObject.Type) {
-    mPendingDeallocatedObjectClasses.append (inType)
-    triggerTransmit ()
-  }
-
-  //····················································································································
-
-  @PendingAllocationBufferActor fileprivate func triggerTransmit () {
-    if (!mTransmitEventTriggered) {
-      mTransmitEventTriggered = true
-      Task.detached {
-        try? await Task.sleep (nanoseconds: 100_000_000)
-        let (pendingAllocations, pendingDeallocations) = await getPendingAllocation ()
-        await gAllocationDebugActorClass.transmitPendingAllocations (pendingAllocations, pendingDeallocations)
-      }
+@PendingAllocationBufferActor fileprivate func triggerTransmit () {
+  if (!mTransmitEventTriggered) {
+    mTransmitEventTriggered = true
+    Task.detached {
+      try? await Task.sleep (nanoseconds: 100_000_000)
+      let (pendingAllocations, pendingDeallocations) = await getPendingAllocation ()
+      await gAllocationDebugActorClass.transmitPendingAllocations (pendingAllocations, pendingDeallocations)
     }
   }
+}
 
-  //····················································································································
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-  @PendingAllocationBufferActor fileprivate func getPendingAllocation () -> ([AnyObject.Type], [AnyObject.Type]) {
-    mTransmitEventTriggered = false
-    let result = (mPendingAllocatedObjectClasses, mPendingDeallocatedObjectClasses)
-    mPendingAllocatedObjectClasses.removeAll (keepingCapacity: true)
-    mPendingDeallocatedObjectClasses.removeAll (keepingCapacity: true)
-    return result
-  }
-
-  //····················································································································
-
-// }
+@PendingAllocationBufferActor fileprivate func getPendingAllocation () -> ([AnyObject.Type], [AnyObject.Type]) {
+  mTransmitEventTriggered = false
+  let result = (mPendingAllocatedObjectClasses, mPendingDeallocatedObjectClasses)
+  mPendingAllocatedObjectClasses.removeAll (keepingCapacity: true)
+  mPendingDeallocatedObjectClasses.removeAll (keepingCapacity: true)
+  return result
+}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

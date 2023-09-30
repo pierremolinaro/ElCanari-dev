@@ -35,7 +35,7 @@ import AppKit
   //····················································································································
 
   final var mEventCallBack : Optional < () -> Void > = nil
-  fileprivate final var mEventIsPosted = false
+  private final var mEventIsPosted = false
 
   //····················································································································
   //   observedObjectDidChange
@@ -55,6 +55,11 @@ import AppKit
     }
     if !self.mEventIsPosted {
       self.mEventIsPosted = true
+      if gPendingOutletEvents.count == 0 {
+        DispatchQueue.main.async {
+          flushOutletEvents ()
+        }
+      }
       gPendingOutletEvents.append (self)
     }
   }
@@ -69,14 +74,6 @@ import AppKit
   }
 
   //····················································································································
-  //  unregister
-  //····················································································································
-
-//  func unregister () {
-//    self.mEventCallBack = nil
-//  }
-
-  //····················································································································
 
 }
 
@@ -88,28 +85,28 @@ import AppKit
   if gPendingOutletEvents.count > 0 {
     #if BUILD_OBJECT_EXPLORER
       if logEvents () {
-        appendMessageString ("Flush outlet events\n", color: NSColor.blue)
+        appendMessageString ("Flush outlet events\n", color: .blue)
       }
     #endif
     while gPendingOutletEvents.count > 0 {
       let pendingOutletEvents = gPendingOutletEvents
       gPendingOutletEvents.removeAll ()
-      for event in pendingOutletEvents {
-        event.mEventIsPosted = false
-      }
+//      for event in pendingOutletEvents {
+//        event.mEventIsPosted = false
+//      }
       for event in pendingOutletEvents {
         #if BUILD_OBJECT_EXPLORER
           if logEvents () {
-            let message = "  #\(event.objectIndex)" + String (describing: type (of: event)) + "\n"
-            appendMessageString (message, color: NSColor.blue)
+            let message = "  #\(event.objectIndex) " + String (describing: type (of: event)) + "\n"
+            appendMessageString (message, color: .blue)
           }
         #endif
         event.sendUpdateEvent ()
       }
       #if BUILD_OBJECT_EXPLORER
         if gPendingOutletEvents.count > 0 && logEvents () {
-          let message = String (gPendingOutletEvents.count) +  " outlet event(s) posted during flush\n"
-          appendMessageString (message, color: NSColor.red)
+          let message = "\(gPendingOutletEvents.count) outlet event(s) posted during flush\n"
+          appendMessageString (message, color: .red)
         }
       #endif
     }
@@ -122,13 +119,10 @@ import AppKit
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    A P P E N D    T O    T R A N S I E N T    E V E N T    L O G
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func logEvents () -> Bool {
   #if BUILD_OBJECT_EXPLORER
-    let theApp = NSApplication.shared as! EBApplication
-    return theApp.logEvents ()
+    return gTransientExplorer.logEvents ()
   #else
     return false
   #endif
@@ -136,11 +130,108 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func appendToTransientEventLog (_ message : String) {
+@MainActor func appendToTransientEventLog (_ inMessage : String) {
   #if BUILD_OBJECT_EXPLORER
-    let theApp = NSApplication.shared as! EBApplication
-    theApp.appendToTransientEventLog (message)
+    gTransientExplorer.appendMessage (inMessage, .blue)
   #endif
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor func appendMessageString (_ inMessage : String) {
+  #if BUILD_OBJECT_EXPLORER
+    gTransientExplorer.appendMessage (inMessage, .black)
+  #endif
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor func appendMessageString (_ inMessage : String, color inColor : NSColor) {
+  #if BUILD_OBJECT_EXPLORER
+    gTransientExplorer.appendMessage (inMessage, inColor)
+  #endif
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor func appendShowTransientEventLogWindowMenuItem (_ inMenu : NSMenu) {
+  #if BUILD_OBJECT_EXPLORER
+    let item = NSMenuItem (
+      title: "Show Transient Event Log Window",
+      action: #selector (TransientExplorer.showTransientEventLogWindow (_:)),
+      keyEquivalent: ""
+    )
+    item.keyEquivalentModifierMask = [.command, .control]
+    item.target = gTransientExplorer
+    inMenu.addItem (item)
+  #endif
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#if BUILD_OBJECT_EXPLORER
+  @MainActor fileprivate var gTransientExplorer = TransientExplorer ()
+#endif
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#if BUILD_OBJECT_EXPLORER
+  @MainActor fileprivate final class TransientExplorer {
+
+    //·················································································································
+
+    private var mTransientEventExplorerWindow : NSWindow
+    private var mTransientEventExplorerTextView : AutoLayoutTextObserverView
+
+    //··················································································································
+
+    init () {
+      self.mTransientEventExplorerTextView = AutoLayoutTextObserverView ()
+      self.mTransientEventExplorerWindow = NSWindow (
+        contentRect: NSRect (x: 0.0, y: 0.0, width: 600.0, height: 400.0),
+        styleMask: [.titled, .closable, .resizable, .miniaturizable],
+        backing: .buffered,
+        defer: true
+      )
+      self.mTransientEventExplorerWindow.title = "Transient Event Log"
+      self.mTransientEventExplorerWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
+      let mainVStack = AutoLayoutVerticalStackView ().set (topMargin: 8)
+      let hStack = AutoLayoutHorizontalStackView ()
+      let clearTransientEventLogButton = AutoLayoutButton (title: "Clear Transient Event Log", size: .regular)
+      clearTransientEventLogButton.setClosureAction ({ self.mTransientEventExplorerTextView.string = "" })
+      _ = hStack.appendView (clearTransientEventLogButton)
+                .appendFlexibleSpace ()
+                .set (leftMargin: 8)
+      _ = mainVStack.appendView (hStack)
+                    .appendView (self.mTransientEventExplorerTextView)
+    //--- Assign main view to window
+      self.mTransientEventExplorerWindow.contentView = mainVStack
+    }
+
+    //··················································································································
+
+    @objc func showTransientEventLogWindow (_ inSender : Any?) {
+      self.mTransientEventExplorerTextView.string = ""
+      self.mTransientEventExplorerWindow.makeKeyAndOrderFront (inSender)
+    }
+
+    //··················································································································
+
+    func appendMessage (_ inMessage : String, _ inColor : NSColor) {
+      if logEvents () {
+        self.mTransientEventExplorerTextView.appendMessageString (inMessage, color: inColor)
+      }
+    }
+
+    //··················································································································
+
+    func logEvents () -> Bool {
+      return self.mTransientEventExplorerWindow.isVisible
+    }
+
+    //··················································································································
+
+  }
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

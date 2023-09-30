@@ -93,7 +93,7 @@ let PMFontComment = "PMFontComment"
   //    HANDLING CURRENT CHARACTER: windowControllerDidLoadNib
   //····················································································································
 
-  private var mCurrentCharacterCodePointObserver : EBModelEvent? = nil
+  private var mCurrentCharacterCodePointObserver : EBOutletEvent? = nil // EBModelEvent
 
   //····················································································································
 
@@ -125,23 +125,13 @@ let PMFontComment = "PMFontComment"
   override func ebBuildUserInterface () {
     super.ebBuildUserInterface ()
   //---
-    let currentCharacterCodePointObserver = EBModelEvent ()
+    let currentCharacterCodePointObserver = EBOutletEvent () // EBModelEvent
     currentCharacterCodePointObserver.mEventCallBack = { [weak self] in
       self?.updateCurrentCharacterSelection ()
     }
     self.rootObject.currentCharacterCodePointString_property.startsToBeObserved (by: currentCharacterCodePointObserver)
     self.mCurrentCharacterCodePointObserver = currentCharacterCodePointObserver
   }
-
-  //····················································································································
-
-//  override func removeUserInterface () {
-//    if let currentCharacterCodePointObserver = self.mCurrentCharacterCodePointObserver {
-//      self.rootObject.currentCharacterCodePointString_property.removeEBObserver (currentCharacterCodePointObserver)
-//      self.mCurrentCharacterCodePointObserver = nil
-//    }
-//    super.removeUserInterface ()
-//  }
 
   //····················································································································
 

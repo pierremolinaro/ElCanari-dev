@@ -571,14 +571,14 @@ final class TransientArrayOfSuperOf_SymbolPin <SUPER : EBManagedObject> : ReadOn
   private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-  private let mModelEvent = EBModelEvent ()
+//  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
-  override init () {
+/*  override init () {
     super.init ()
     self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  }
+  } */
 
   //····················································································································
 
@@ -593,8 +593,14 @@ final class TransientArrayOfSuperOf_SymbolPin <SUPER : EBManagedObject> : ReadOn
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.observedObjectDidChange ()
-    self.mModelArrayShouldBeComputed = true
+    if !self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = true
+      DispatchQueue.main.async {
+        self.computeModelArray ()
+      }
+    }
+//    self.mModelArrayShouldBeComputed = true
+//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

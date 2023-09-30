@@ -1684,14 +1684,14 @@ final class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInPro
 
   private var mIsOrderedBefore : Optional < (_ left : ComponentInProject, _ right : ComponentInProject) -> Bool > = nil
   private var mSortObserver : EBModelNotifierEvent? = nil
-  private let mModelEvent = EBModelEvent ()
+//  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
-  override init () {
+/*  override init () {
     super.init ()
     self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  }
+  } */
 
   //····················································································································
   //   Data provider
@@ -1740,8 +1740,14 @@ final class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInPro
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.observedObjectDidChange ()
-    self.mModelArrayShouldBeComputed = true
+    if !self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = true
+      DispatchQueue.main.async {
+        self.computeModelArray ()
+      }
+    }
+//    self.mModelArrayShouldBeComputed = true
+//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 
@@ -1813,14 +1819,14 @@ final class TransientArrayOfSuperOf_ComponentInProject <SUPER : EBManagedObject>
   private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-  private let mModelEvent = EBModelEvent ()
+//  private let mModelEvent = EBModelEvent ()
 
   //····················································································································
 
-  override init () {
+/*  override init () {
     super.init ()
     self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  }
+  } */
 
   //····················································································································
 
@@ -1835,8 +1841,14 @@ final class TransientArrayOfSuperOf_ComponentInProject <SUPER : EBManagedObject>
   //····················································································································
 
   override func notifyModelDidChange () {
-    self.mModelEvent.observedObjectDidChange ()
-    self.mModelArrayShouldBeComputed = true
+    if !self.mModelArrayShouldBeComputed {
+      self.mModelArrayShouldBeComputed = true
+      DispatchQueue.main.async {
+        self.computeModelArray ()
+      }
+    }
+//    self.mModelArrayShouldBeComputed = true
+//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 

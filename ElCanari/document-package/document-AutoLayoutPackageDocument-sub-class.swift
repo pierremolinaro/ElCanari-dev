@@ -138,16 +138,16 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
   //····················································································································
 
   private var mModelImageFirstPointLastX = 0
-  private var mModelImageFirstPointXObserver : EBModelEvent? = nil
+  private var mModelImageFirstPointXObserver : EBOutletEvent? = nil //§ EBModelEvent? = nil
 
   private var mModelImageFirstPointLastY = 0
-  private var mModelImageFirstPointYObserver : EBModelEvent? = nil
+  private var mModelImageFirstPointYObserver : EBOutletEvent? = nil //§ EBModelEvent? = nil
 
   private var mModelImagePointsLastDx = 0
-  private var mModelImagePointsDxObserver : EBModelEvent? = nil
+  private var mModelImagePointsDxObserver : EBOutletEvent? = nil //§ EBModelEvent? = nil
 
   private var mModelImagePointsLastDy = 0
-  private var mModelImagePointsDyObserver : EBModelEvent? = nil
+  private var mModelImagePointsDyObserver : EBOutletEvent? = nil //§ EBModelEvent? = nil
 
   //····················································································································
 
@@ -164,25 +164,25 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
   fileprivate func setupImagePointsAndTheirObservers () {
   //--- Add model observers
     do{
-      let observer = EBModelEvent ()
+      let observer = EBOutletEvent () //§ EBModelEvent ()
       observer.mEventCallBack = { [weak self] in self?.modelImageFirstPointXDidChange () }
       self.rootObject.mModelImageFirstPointX_property.startsToBeObserved (by: observer)
       self.mModelImageFirstPointXObserver = observer
     }
     do{
-      let observer = EBModelEvent ()
+      let observer = EBOutletEvent () //§ EBModelEvent ()
       observer.mEventCallBack = { [weak self] in self?.modelImageFirstPointYDidChange () }
       self.rootObject.mModelImageFirstPointY_property.startsToBeObserved (by: observer)
       self.mModelImageFirstPointYObserver = observer
     }
     do{
-      let observer = EBModelEvent ()
+      let observer = EBOutletEvent () //§ EBModelEvent ()
       observer.mEventCallBack = { [weak self] in self?.modelImagePointsDxDidChange () }
       self.rootObject.mModelImageSecondPointDx_property.startsToBeObserved (by: observer)
       self.mModelImagePointsDxObserver = observer
     }
     do{
-      let observer = EBModelEvent ()
+      let observer = EBOutletEvent () //§ EBModelEvent ()
       observer.mEventCallBack = { [weak self] in self?.modelImagePointsDyDidChange () }
       self.rootObject.mModelImageSecondPointDy_property.startsToBeObserved (by: observer)
       self.mModelImagePointsDyObserver = observer
@@ -286,7 +286,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 
   //····················································································································
 
-  fileprivate var mPadNumberingObserver = EBModelEvent ()
+  fileprivate var mPadNumberingObserver = EBOutletEvent () //§ EBModelEvent ()
 
   //····················································································································
 
