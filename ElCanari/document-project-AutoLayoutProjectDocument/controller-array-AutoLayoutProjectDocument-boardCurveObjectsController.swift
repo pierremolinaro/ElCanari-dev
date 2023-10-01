@@ -523,6 +523,18 @@ final class Controller_AutoLayoutProjectDocument_boardCurveObjectsController : R
   }
 
   //····················································································································
+  //  DOCUMENT  
+  //····················································································································
+
+  private final weak var mDocument : EBAutoLayoutManagedDocument? = nil
+
+  //····················································································································
+
+  final func set (document inDocument : EBAutoLayoutManagedDocument) {
+    self.mDocument = inDocument
+  }
+
+  //····················································································································
   //  SELECTION OPERATIONS
   //····················································································································
 
@@ -646,7 +658,7 @@ final class Controller_AutoLayoutProjectDocument_boardCurveObjectsController : R
         if let object = makeManagedObjectFromDictionary (self.undoManager, dictionary) as? BorderCurve {
           if errorMessage.isEmpty {
             errorMessage = object.operationAfterPasting (additionalDictionary: additionalDictionaryArray [idx],
-                                                         optionalDocument: self.document,
+                                                         optionalDocument: self.mDocument,
                                                          objectArray: self.objectArray.values)
           }
           if errorMessage.isEmpty {

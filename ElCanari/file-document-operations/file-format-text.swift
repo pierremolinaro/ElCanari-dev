@@ -4,13 +4,6 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct RawObject {
-  let object : EBManagedObject
-  let propertyDictionary : [String : NSRange]
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 @MainActor func loadEasyBindingTextFile (_ inUndoManager : UndoManager?,
                                          documentName inDocumentName : String,
                                          from ioDataScanner: inout EBDataScanner) -> EBDocumentReadData {
