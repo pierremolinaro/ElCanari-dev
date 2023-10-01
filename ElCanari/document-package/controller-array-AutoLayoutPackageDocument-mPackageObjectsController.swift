@@ -722,7 +722,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
   // MARK: -
   //····················································································································
 
-  var canBringForward_property = EBTransientProperty_Bool ()
+  var canBringForward_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -754,7 +754,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
   // MARK: -
   //····················································································································
 
-  var canBringToFront_property = EBTransientProperty_Bool ()
+  var canBringToFront_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -791,7 +791,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
    // MARK: -
  //····················································································································
 
-  var canSendBackward_property = EBTransientProperty_Bool ()
+  var canSendBackward_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -823,7 +823,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
   // MARK: -
   //····················································································································
 
-  var canSendToBack_property = EBTransientProperty_Bool ()
+  var canSendToBack_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -886,7 +886,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
   // MARK: -
   //····················································································································
 
-  var canFlipHorizontally_property = EBTransientProperty_Bool ()
+  var canFlipHorizontally_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -912,7 +912,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
   // MARK: -
   //····················································································································
 
-  var canFlipVertically_property = EBTransientProperty_Bool ()
+  var canFlipVertically_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -938,7 +938,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
   // MARK: -
   //····················································································································
 
-  var canRotate90_property = EBTransientProperty_Bool ()
+  var canRotate90_property = EBTransientProperty <Bool> ()
   private var mRotate90PointSet = Set <CanariPoint> ()
 
  //····················································································································

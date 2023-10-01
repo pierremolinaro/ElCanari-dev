@@ -88,11 +88,8 @@ enum HorizontalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_HorizontalAlignment = EBReadOnlyEnumProperty <HorizontalAlignment>
-typealias EBTransientProperty_HorizontalAlignment = EBTransientEnumProperty <HorizontalAlignment>
-typealias EBReadWriteProperty_HorizontalAlignment = EBReadWriteEnumProperty <HorizontalAlignment>
+typealias EBReadWriteProperty_HorizontalAlignment = EBReadWriteEnumProperty <HorizontalAlignment> // EBObservableMutableProperty <HorizontalAlignment>
 typealias EBStoredProperty_HorizontalAlignment = EBStoredEnumProperty <HorizontalAlignment>
 typealias EBComputedProperty_HorizontalAlignment = EBGenericComputedEnumProperty <HorizontalAlignment>
-typealias EBPreferencesProperty_HorizontalAlignment = EBStoredEnumProperty <HorizontalAlignment>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

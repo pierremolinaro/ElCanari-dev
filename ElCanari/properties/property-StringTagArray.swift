@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property StringTagArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_StringTagArray    = EBObservableProperty <StringTagArray>
-typealias EBTransientProperty_StringTagArray   = EBTransientProperty <StringTagArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

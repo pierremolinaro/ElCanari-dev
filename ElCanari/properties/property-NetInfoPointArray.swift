@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property NetInfoPointArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_NetInfoPointArray    = EBObservableProperty <NetInfoPointArray>
-typealias EBTransientProperty_NetInfoPointArray   = EBTransientProperty <NetInfoPointArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

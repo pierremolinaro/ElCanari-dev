@@ -157,7 +157,7 @@ final class NetInProject : EBManagedObject,
   //   Transient property: netClassName
   //····················································································································
 
-  final let netClassName_property = EBTransientProperty_String ()
+  final let netClassName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -169,7 +169,7 @@ final class NetInProject : EBManagedObject,
   //   Transient property: netClassTrackWidth
   //····················································································································
 
-  final let netClassTrackWidth_property = EBTransientProperty_Int ()
+  final let netClassTrackWidth_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -181,7 +181,7 @@ final class NetInProject : EBManagedObject,
   //   Transient property: netClassViaHoleDiameter
   //····················································································································
 
-  final let netClassViaHoleDiameter_property = EBTransientProperty_Int ()
+  final let netClassViaHoleDiameter_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -193,7 +193,7 @@ final class NetInProject : EBManagedObject,
   //   Transient property: netClassViaPadDiameter
   //····················································································································
 
-  final let netClassViaPadDiameter_property = EBTransientProperty_Int ()
+  final let netClassViaPadDiameter_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -205,7 +205,7 @@ final class NetInProject : EBManagedObject,
   //   Transient property: wireColor
   //····················································································································
 
-  final let wireColor_property = EBTransientProperty_NSColor ()
+  final let wireColor_property = EBTransientProperty <NSColor> ()
 
   //····················································································································
 
@@ -217,7 +217,7 @@ final class NetInProject : EBManagedObject,
   //   Transient property: netSchematicPointsInfo
   //····················································································································
 
-  final let netSchematicPointsInfo_property = EBTransientProperty_NetInfoPointArray ()
+  final let netSchematicPointsInfo_property = EBTransientProperty <NetInfoPointArray> ()
 
   //····················································································································
 
@@ -229,7 +229,7 @@ final class NetInProject : EBManagedObject,
   //   Transient property: trackCount
   //····················································································································
 
-  final let trackCount_property = EBTransientProperty_Int ()
+  final let trackCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 

@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final fileprivate func updateOutlet (_ zoom : EBReadOnlyProperty_Int) {
+  final fileprivate func updateOutlet (_ zoom : EBObservableProperty <Int>) {
     switch zoom.selection {
     case .empty, .multiple :
       self.mZoomPropertyCache = 0
@@ -25,7 +25,7 @@ extension EBGraphicView {
   //····················································································································
 
   final func bind_zoom (_ inObject : EBReadWriteProperty_Int) {
-    self.mZoomController = EBReadWritePropertyController_Int (
+    self.mZoomController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateOutlet (inObject) }
     )

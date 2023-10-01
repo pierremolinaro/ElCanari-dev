@@ -464,7 +464,7 @@ final class PackagePad : PackageObject,
   //   Transient property: padNameForDisplay
   //····················································································································
 
-  final let padNameForDisplay_property = EBTransientProperty_String ()
+  final let padNameForDisplay_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -476,7 +476,7 @@ final class PackagePad : PackageObject,
   //   Transient property: padIsTraversing
   //····················································································································
 
-  final let padIsTraversing_property = EBTransientProperty_Bool ()
+  final let padIsTraversing_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -488,7 +488,7 @@ final class PackagePad : PackageObject,
   //   Transient property: annularRing
   //····················································································································
 
-  final let annularRing_property = EBTransientProperty_Int ()
+  final let annularRing_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -500,7 +500,7 @@ final class PackagePad : PackageObject,
   //   Transient property: padNameWithZoneName
   //····················································································································
 
-  final let padNameWithZoneName_property = EBTransientProperty_String ()
+  final let padNameWithZoneName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -512,7 +512,7 @@ final class PackagePad : PackageObject,
   //   Transient property: zoneName
   //····················································································································
 
-  final let zoneName_property = EBTransientProperty_String ()
+  final let zoneName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -524,7 +524,7 @@ final class PackagePad : PackageObject,
   //   Transient property: noZone
   //····················································································································
 
-  final let noZone_property = EBTransientProperty_Bool ()
+  final let noZone_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -536,7 +536,7 @@ final class PackagePad : PackageObject,
   //   Transient property: zoneAllowsManualRenumbering
   //····················································································································
 
-  final let zoneAllowsManualRenumbering_property = EBTransientProperty_Bool ()
+  final let zoneAllowsManualRenumbering_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -548,7 +548,7 @@ final class PackagePad : PackageObject,
   //   Transient property: slavePadCount
   //····················································································································
 
-  final let slavePadCount_property = EBTransientProperty_Int ()
+  final let slavePadCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -560,7 +560,7 @@ final class PackagePad : PackageObject,
   //   Transient property: masterPadObjectIndex
   //····················································································································
 
-  final let masterPadObjectIndex_property = EBTransientProperty_Int ()
+  final let masterPadObjectIndex_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -572,7 +572,7 @@ final class PackagePad : PackageObject,
   //   Transient property: padNumberDisplay
   //····················································································································
 
-  final let padNumberDisplay_property = EBTransientProperty_EBShape ()
+  final let padNumberDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 

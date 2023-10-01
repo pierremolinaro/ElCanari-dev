@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property DeviceSymbolDictionary
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_DeviceSymbolDictionary    = EBObservableProperty <DeviceSymbolDictionary>
-typealias EBTransientProperty_DeviceSymbolDictionary   = EBTransientProperty <DeviceSymbolDictionary>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

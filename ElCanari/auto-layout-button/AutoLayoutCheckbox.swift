@@ -80,7 +80,7 @@ final class AutoLayoutCheckbox : AutoLayoutBase_NSButton {
   //  value binding
   //····················································································································
 
-  fileprivate func updateValue (from inObject : EBReadOnlyProperty_Bool) {
+  fileprivate func updateValue (from inObject : EBObservableProperty <Bool>) {
     switch inObject.selection {
     case .empty :
       self.state = NSControl.StateValue.off
@@ -98,12 +98,12 @@ final class AutoLayoutCheckbox : AutoLayoutBase_NSButton {
 
   //····················································································································
 
-  fileprivate var mValueController : EBReadWritePropertyController_Bool? = nil
+  fileprivate var mValueController : EBGenericReadWritePropertyController <Bool>? = nil
 
   //····················································································································
 
   final func bind_value (_ inObject : EBReadWriteProperty_Bool) -> Self {
-    self.mValueController = EBReadWritePropertyController_Bool (
+    self.mValueController = EBGenericReadWritePropertyController <Bool> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateValue (from: inObject) }
     )

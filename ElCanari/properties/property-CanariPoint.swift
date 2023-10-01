@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property CanariPoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_CanariPoint    = EBObservableProperty <CanariPoint>
-typealias EBTransientProperty_CanariPoint   = EBTransientProperty <CanariPoint>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

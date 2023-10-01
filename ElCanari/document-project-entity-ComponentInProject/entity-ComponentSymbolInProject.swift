@@ -349,7 +349,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //   Transient property: componentName
   //····················································································································
 
-  final let componentName_property = EBTransientProperty_String ()
+  final let componentName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -361,7 +361,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //   Transient property: deviceName
   //····················································································································
 
-  final let deviceName_property = EBTransientProperty_String ()
+  final let deviceName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -373,7 +373,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //   Transient property: symbolInfo
   //····················································································································
 
-  final let symbolInfo_property = EBTransientProperty_ComponentSymbolInfo ()
+  final let symbolInfo_property = EBTransientProperty <ComponentSymbolInfo> ()
 
   //····················································································································
 
@@ -385,7 +385,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //   Transient property: pinPadAssignments
   //····················································································································
 
-  final let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+  final let pinPadAssignments_property = EBTransientProperty <ThreeStringArray> ()
 
   //····················································································································
 
@@ -397,7 +397,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //   Transient property: symbolInSchematic
   //····················································································································
 
-  final let symbolInSchematic_property = EBTransientProperty_Bool ()
+  final let symbolInSchematic_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 

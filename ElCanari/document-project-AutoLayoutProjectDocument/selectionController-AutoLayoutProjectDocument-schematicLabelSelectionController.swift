@@ -32,31 +32,31 @@ import AppKit
   //   Selection observable property: location
   //····················································································································
 
-  final let location_property = EBTransientProperty_CanariPoint ()
+  final let location_property = EBTransientProperty <CanariPoint> ()
 
   //····················································································································
   //   Selection observable property: netName
   //····················································································································
 
-  final let netName_property = EBTransientProperty_String ()
+  final let netName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  final let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: netClassName
   //····················································································································
 
-  final let netClassName_property = EBTransientProperty_String ()
+  final let netClassName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  final let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selected array (not observable)

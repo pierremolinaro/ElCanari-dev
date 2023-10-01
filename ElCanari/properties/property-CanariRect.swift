@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property CanariRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_CanariRect    = EBObservableProperty <CanariRect>
-typealias EBTransientProperty_CanariRect   = EBTransientProperty <CanariRect>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -229,7 +229,7 @@ final class PackageSegment : PackageObject,
   //   Transient property: strokeBezierPath
   //····················································································································
 
-  final let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+  final let strokeBezierPath_property = EBTransientProperty <NSBezierPath> ()
 
   //····················································································································
 
@@ -241,7 +241,7 @@ final class PackageSegment : PackageObject,
   //   Transient property: lengthInCanariUnit
   //····················································································································
 
-  final let lengthInCanariUnit_property = EBTransientProperty_Int ()
+  final let lengthInCanariUnit_property = EBTransientProperty <Int> ()
 
   //····················································································································
 

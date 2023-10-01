@@ -107,7 +107,7 @@ final class AutoLayoutSearchField : NSSearchField, NSSearchFieldDelegate {
   //  value binding
   //····················································································································
 
-  fileprivate func updateOutlet (_ inModel : EBReadOnlyProperty_String) {
+  fileprivate func updateOutlet (_ inModel : EBObservableProperty <String>) {
     switch inModel.selection {
     case .empty :
       self.placeholderString = "No Selection"
@@ -127,14 +127,14 @@ final class AutoLayoutSearchField : NSSearchField, NSSearchFieldDelegate {
 
   //····················································································································
 
-  private var mValueController : EBReadWritePropertyController_String? = nil
+  private var mValueController : EBGenericReadWritePropertyController <String>? = nil
   private var mSendContinously = false
 
   //····················································································································
 
   final func bind_value (_ inModel : EBReadWriteProperty_String, sendContinously inContinuous : Bool) -> Self {
     self.mSendContinously = inContinuous
-    self.mValueController = EBReadWritePropertyController_String (
+    self.mValueController = EBGenericReadWritePropertyController <String> (
       observedObject: inModel,
       callBack: { [weak self] in self?.updateOutlet (inModel) }
     )

@@ -170,7 +170,7 @@ final class DevicePinInProject : EBManagedObject {
   //   Transient property: pinQualifiedName
   //····················································································································
 
-  final let pinQualifiedName_property = EBTransientProperty_PinQualifiedNameStruct ()
+  final let pinQualifiedName_property = EBTransientProperty <PinQualifiedNameStruct> ()
 
   //····················································································································
 
@@ -182,7 +182,7 @@ final class DevicePinInProject : EBManagedObject {
   //   Transient property: descriptor
   //····················································································································
 
-  final let descriptor_property = EBTransientProperty_PinInProjectDescriptor ()
+  final let descriptor_property = EBTransientProperty <PinInProjectDescriptor> ()
 
   //····················································································································
 

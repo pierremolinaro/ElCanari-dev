@@ -106,7 +106,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  final func bind_top (_ inModel : EBReadOnlyProperty_String) -> Self {
+  final func bind_top (_ inModel : EBObservableProperty <String>) -> Self {
     self.mTopController = EBObservablePropertyController (
       observedObjects: [inModel],
       callBack: { [weak self] in self?.updateTop (from: inModel) }
@@ -116,7 +116,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  private func updateTop (from inModel : EBReadOnlyProperty_String) {
+  private func updateTop (from inModel : EBObservableProperty <String>) {
     switch inModel.selection {
     case .empty :
       self.mTopTextField.stringValue = "—"
@@ -135,7 +135,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  final func bind_bottom (_ inModel : EBReadOnlyProperty_String) -> Self {
+  final func bind_bottom (_ inModel : EBObservableProperty <String>) -> Self {
     self.mBottomController = EBObservablePropertyController (
       observedObjects: [inModel],
       callBack: { [weak self] in self?.updateBottom (from: inModel) }
@@ -145,7 +145,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  private func updateBottom (from inModel : EBReadOnlyProperty_String) {
+  private func updateBottom (from inModel : EBObservableProperty <String>) {
     switch inModel.selection {
     case .empty :
       self.mBottomTextField.stringValue = "—"
@@ -164,7 +164,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  final func bind_left (_ inModel : EBReadOnlyProperty_String) -> Self {
+  final func bind_left (_ inModel : EBObservableProperty <String>) -> Self {
     self.mLeftController = EBObservablePropertyController (
       observedObjects: [inModel],
       callBack: { [weak self] in self?.updateLeft (from: inModel) }
@@ -174,7 +174,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  private func updateLeft (from inModel : EBReadOnlyProperty_String) {
+  private func updateLeft (from inModel : EBObservableProperty <String>) {
     switch inModel.selection {
     case .empty :
       self.mLeftTextField.stringValue = "—"
@@ -193,7 +193,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  final func bind_right (_ inModel : EBReadOnlyProperty_String) -> Self {
+  final func bind_right (_ inModel : EBObservableProperty <String>) -> Self {
     self.mRightController = EBObservablePropertyController (
       observedObjects: [inModel],
       callBack: { [weak self] in self?.updateRight (from: inModel) }
@@ -203,7 +203,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  private func updateRight (from inModel : EBReadOnlyProperty_String) {
+  private func updateRight (from inModel : EBObservableProperty <String>) {
     switch inModel.selection {
     case .empty :
       self.mRightTextField.stringValue = "—"

@@ -56,37 +56,37 @@ import AppKit
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  var objectDisplay_property = EBTransientProperty_EBShape ()
+  var objectDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: pinSymbolQualifiedNames
   //····················································································································
 
-  var pinSymbolQualifiedNames_property = EBTransientProperty_StringArray ()
+  var pinSymbolQualifiedNames_property = EBTransientProperty <StringArray> ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  var selectionDisplay_property = EBTransientProperty_EBShape ()
+  var selectionDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: symbolQualifiedName
   //····················································································································
 
-  var symbolQualifiedName_property = EBTransientProperty_String ()
+  var symbolQualifiedName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: symbolTypeName
   //····················································································································
 
-  var symbolTypeName_property = EBTransientProperty_String ()
+  var symbolTypeName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: unconnectedPins
   //····················································································································
 
-  var unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
+  var unconnectedPins_property = EBTransientProperty <UnconnectedSymbolPinsInDevice> ()
 
   //····················································································································
   //   BIND SELECTION

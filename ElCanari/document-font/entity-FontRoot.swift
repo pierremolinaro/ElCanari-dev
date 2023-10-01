@@ -63,7 +63,7 @@ final class FontRoot : EBManagedObject {
   //   Transient property: currentCharacterCodePointString
   //····················································································································
 
-  final let currentCharacterCodePointString_property = EBTransientProperty_String ()
+  final let currentCharacterCodePointString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -75,7 +75,7 @@ final class FontRoot : EBManagedObject {
   //   Transient property: sampleStringBezierPath
   //····················································································································
 
-  final let sampleStringBezierPath_property = EBTransientProperty_NSBezierPath ()
+  final let sampleStringBezierPath_property = EBTransientProperty <NSBezierPath> ()
 
   //····················································································································
 
@@ -87,7 +87,7 @@ final class FontRoot : EBManagedObject {
   //   Transient property: sampleStringBezierPathWidth
   //····················································································································
 
-  final let sampleStringBezierPathWidth_property = EBTransientProperty_String ()
+  final let sampleStringBezierPathWidth_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -99,7 +99,7 @@ final class FontRoot : EBManagedObject {
   //   Transient property: sampleStringBezierPathAscent
   //····················································································································
 
-  final let sampleStringBezierPathAscent_property = EBTransientProperty_String ()
+  final let sampleStringBezierPathAscent_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -111,7 +111,7 @@ final class FontRoot : EBManagedObject {
   //   Transient property: sampleStringBezierPathDescent
   //····················································································································
 
-  final let sampleStringBezierPathDescent_property = EBTransientProperty_String ()
+  final let sampleStringBezierPathDescent_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -123,7 +123,7 @@ final class FontRoot : EBManagedObject {
   //   Transient property: definedCharacters
   //····················································································································
 
-  final let definedCharacters_property = EBTransientProperty_DefinedCharactersInDevice ()
+  final let definedCharacters_property = EBTransientProperty <DefinedCharactersInDevice> ()
 
   //····················································································································
 
@@ -135,7 +135,7 @@ final class FontRoot : EBManagedObject {
   //   Transient property: issues
   //····················································································································
 
-  final let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
 

@@ -223,7 +223,7 @@ final class SlavePadInDevice : EBManagedObject,
   //   Transient property: frontSideFilledBezierPath
   //····················································································································
 
-  final let frontSideFilledBezierPath_property = EBTransientProperty_EBBezierPath ()
+  final let frontSideFilledBezierPath_property = EBTransientProperty <EBBezierPath> ()
 
   //····················································································································
 
@@ -235,7 +235,7 @@ final class SlavePadInDevice : EBManagedObject,
   //   Transient property: backSideFilledBezierPath
   //····················································································································
 
-  final let backSideFilledBezierPath_property = EBTransientProperty_EBBezierPath ()
+  final let backSideFilledBezierPath_property = EBTransientProperty <EBBezierPath> ()
 
   //····················································································································
 
@@ -247,7 +247,7 @@ final class SlavePadInDevice : EBManagedObject,
   //   Transient property: padNumberDisplay
   //····················································································································
 
-  final let padNumberDisplay_property = EBTransientProperty_EBShape ()
+  final let padNumberDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 

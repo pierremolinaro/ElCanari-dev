@@ -122,37 +122,37 @@ import AppKit
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  final let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
-  final let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
   //   Selection observable property: rect
   //····················································································································
 
-  final let rect_property = EBTransientProperty_CanariRect ()
+  final let rect_property = EBTransientProperty <CanariRect> ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  final let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: forbiddenPadArray
   //····················································································································
 
-  final let forbiddenPadArray_property = EBTransientProperty_StringArray ()
+  final let forbiddenPadArray_property = EBTransientProperty <StringArray> ()
 
   //····················································································································
   //   Selection observable property: emptyForbiddenPadArray
   //····················································································································
 
-  final let emptyForbiddenPadArray_property = EBTransientProperty_Bool ()
+  final let emptyForbiddenPadArray_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selected array (not observable)

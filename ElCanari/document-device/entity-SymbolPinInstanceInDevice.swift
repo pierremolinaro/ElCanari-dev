@@ -133,7 +133,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //   Transient property: pinName
   //····················································································································
 
-  final let pinName_property = EBTransientProperty_String ()
+  final let pinName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -145,7 +145,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //   Transient property: symbolName
   //····················································································································
 
-  final let symbolName_property = EBTransientProperty_String ()
+  final let symbolName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -157,7 +157,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //   Transient property: pinQualifiedName
   //····················································································································
 
-  final let pinQualifiedName_property = EBTransientProperty_PinQualifiedNameStruct ()
+  final let pinQualifiedName_property = EBTransientProperty <PinQualifiedNameStruct> ()
 
   //····················································································································
 
@@ -169,7 +169,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //   Transient property: isConnected
   //····················································································································
 
-  final let isConnected_property = EBTransientProperty_Bool ()
+  final let isConnected_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -181,7 +181,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //   Transient property: numberShape
   //····················································································································
 
-  final let numberShape_property = EBTransientProperty_EBShape ()
+  final let numberShape_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 

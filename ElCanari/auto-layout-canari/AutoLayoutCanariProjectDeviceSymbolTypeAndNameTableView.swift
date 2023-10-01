@@ -79,7 +79,7 @@ final class AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView : AutoLayout
 
   private var mArrayController : EBObservablePropertyController? = nil
 
-  final func bind_array (_ model : EBReadOnlyProperty_TwoStringArray) -> Self {
+  final func bind_array (_ model : EBObservableProperty <TwoStringArray>) -> Self {
     self.mArrayController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
@@ -96,7 +96,7 @@ final class AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView : AutoLayout
 
   //····················································································································
 
-  func update (from model : EBReadOnlyProperty_TwoStringArray) {
+  func update (from model : EBObservableProperty <TwoStringArray>) {
     switch model.selection {
     case .empty, .multiple :
       self.setModel ([])

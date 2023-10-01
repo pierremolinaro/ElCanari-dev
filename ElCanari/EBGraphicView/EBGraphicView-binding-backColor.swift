@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func bind_backColor (_ model : EBReadOnlyProperty_NSColor) {
+  final func bind_backColor (_ model : EBObservableProperty <NSColor>) {
     self.mBackColorController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateBackColor (from: model) }
@@ -28,7 +28,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final private func updateBackColor (from model : EBReadOnlyProperty_NSColor) {
+  final private func updateBackColor (from model : EBObservableProperty <NSColor>) {
     switch model.selection {
     case .empty :
       break

@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property SchematicSheetDescriptor
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_SchematicSheetDescriptor    = EBObservableProperty <SchematicSheetDescriptor>
-typealias EBTransientProperty_SchematicSheetDescriptor   = EBTransientProperty <SchematicSheetDescriptor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

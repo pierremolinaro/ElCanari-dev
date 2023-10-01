@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property PackageMasterPadDictionary
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_PackageMasterPadDictionary    = EBObservableProperty <PackageMasterPadDictionary>
-typealias EBTransientProperty_PackageMasterPadDictionary   = EBTransientProperty <PackageMasterPadDictionary>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

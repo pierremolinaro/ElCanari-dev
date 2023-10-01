@@ -395,7 +395,7 @@ final class BoardConnector : BoardObject,
   //   Transient property: isConnectedToSomePad
   //····················································································································
 
-  final let isConnectedToSomePad_property = EBTransientProperty_Bool ()
+  final let isConnectedToSomePad_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -435,7 +435,7 @@ final class BoardConnector : BoardObject,
   //   Transient property: location
   //····················································································································
 
-  final let location_property = EBTransientProperty_CanariPoint ()
+  final let location_property = EBTransientProperty <CanariPoint> ()
 
   //····················································································································
 
@@ -447,7 +447,7 @@ final class BoardConnector : BoardObject,
   //   Transient property: netNameFromComponentPad
   //····················································································································
 
-  final let netNameFromComponentPad_property = EBTransientProperty_String ()
+  final let netNameFromComponentPad_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -459,7 +459,7 @@ final class BoardConnector : BoardObject,
   //   Transient property: side
   //····················································································································
 
-  final let side_property = EBTransientProperty_ConnectorSide ()
+  final let side_property = EBTransientProperty <ConnectorSide> ()
 
   //····················································································································
 
@@ -471,7 +471,7 @@ final class BoardConnector : BoardObject,
   //   Transient property: viaDefaultHoleDiameter
   //····················································································································
 
-  final let viaDefaultHoleDiameter_property = EBTransientProperty_Int ()
+  final let viaDefaultHoleDiameter_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -483,7 +483,7 @@ final class BoardConnector : BoardObject,
   //   Transient property: viaDefaultPadDiameter
   //····················································································································
 
-  final let viaDefaultPadDiameter_property = EBTransientProperty_Int ()
+  final let viaDefaultPadDiameter_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -495,7 +495,7 @@ final class BoardConnector : BoardObject,
   //   Transient property: netNameFromTracks
   //····················································································································
 
-  final let netNameFromTracks_property = EBTransientProperty_String ()
+  final let netNameFromTracks_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -507,7 +507,7 @@ final class BoardConnector : BoardObject,
   //   Transient property: netClassName
   //····················································································································
 
-  final let netClassName_property = EBTransientProperty_String ()
+  final let netClassName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -519,7 +519,7 @@ final class BoardConnector : BoardObject,
   //   Transient property: connectedToComponent
   //····················································································································
 
-  final let connectedToComponent_property = EBTransientProperty_Bool ()
+  final let connectedToComponent_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -531,7 +531,7 @@ final class BoardConnector : BoardObject,
   //   Transient property: actualHoleDiameter
   //····················································································································
 
-  final let actualHoleDiameter_property = EBTransientProperty_Int ()
+  final let actualHoleDiameter_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -543,7 +543,7 @@ final class BoardConnector : BoardObject,
   //   Transient property: actualPadDiameter
   //····················································································································
 
-  final let actualPadDiameter_property = EBTransientProperty_Int ()
+  final let actualPadDiameter_property = EBTransientProperty <Int> ()
 
   //····················································································································
 

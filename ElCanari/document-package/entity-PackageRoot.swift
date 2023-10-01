@@ -541,7 +541,7 @@ final class PackageRoot : EBManagedObject {
   //   Transient property: freePadNumbering
   //····················································································································
 
-  final let freePadNumbering_property = EBTransientProperty_Bool ()
+  final let freePadNumbering_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -553,7 +553,7 @@ final class PackageRoot : EBManagedObject {
   //   Transient property: counterClockNumbering
   //····················································································································
 
-  final let counterClockNumbering_property = EBTransientProperty_Bool ()
+  final let counterClockNumbering_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -565,7 +565,7 @@ final class PackageRoot : EBManagedObject {
   //   Transient property: gridStepMultipliedByDisplayFactor
   //····················································································································
 
-  final let gridStepMultipliedByDisplayFactor_property = EBTransientProperty_Int ()
+  final let gridStepMultipliedByDisplayFactor_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -577,7 +577,7 @@ final class PackageRoot : EBManagedObject {
   //   Transient property: secondPointX
   //····················································································································
 
-  final let secondPointX_property = EBTransientProperty_Int ()
+  final let secondPointX_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -589,7 +589,7 @@ final class PackageRoot : EBManagedObject {
   //   Transient property: secondPointY
   //····················································································································
 
-  final let secondPointY_property = EBTransientProperty_Int ()
+  final let secondPointY_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -601,7 +601,7 @@ final class PackageRoot : EBManagedObject {
   //   Transient property: lockImageView
   //····················································································································
 
-  final let lockImageView_property = EBTransientProperty_NSImage ()
+  final let lockImageView_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -641,7 +641,7 @@ final class PackageRoot : EBManagedObject {
   //   Transient property: padNumberDisplay
   //····················································································································
 
-  final let padNumberDisplay_property = EBTransientProperty_EBShape ()
+  final let padNumberDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 
@@ -653,7 +653,7 @@ final class PackageRoot : EBManagedObject {
   //   Transient property: backgroundImagePageBackgroundDisplay
   //····················································································································
 
-  final let backgroundImagePageBackgroundDisplay_property = EBTransientProperty_EBShape ()
+  final let backgroundImagePageBackgroundDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 
@@ -665,7 +665,7 @@ final class PackageRoot : EBManagedObject {
   //   Transient property: modelImageSizeString
   //····················································································································
 
-  final let modelImageSizeString_property = EBTransientProperty_String ()
+  final let modelImageSizeString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -677,7 +677,7 @@ final class PackageRoot : EBManagedObject {
   //   Transient property: hasModelImage
   //····················································································································
 
-  final let hasModelImage_property = EBTransientProperty_Bool ()
+  final let hasModelImage_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -689,7 +689,7 @@ final class PackageRoot : EBManagedObject {
   //   Transient property: masterPadObjectIndexArray
   //····················································································································
 
-  final let masterPadObjectIndexArray_property = EBTransientProperty_IntArray ()
+  final let masterPadObjectIndexArray_property = EBTransientProperty <IntArray> ()
 
   //····················································································································
 
@@ -701,7 +701,7 @@ final class PackageRoot : EBManagedObject {
   //   Transient property: issues
   //····················································································································
 
-  final let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
 

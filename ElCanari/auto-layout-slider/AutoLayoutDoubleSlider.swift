@@ -55,7 +55,7 @@ final class AutoLayoutDoubleSlider : AutoLayoutBase_NSSlider {
   //  doubleValue binding
   //····················································································································
 
-  fileprivate func update (from object : EBReadOnlyProperty_Double) {
+  fileprivate func update (from object : EBObservableProperty <Double>) {
     switch object.selection {
     case .empty, .multiple :
       self.stringValue = "-"
@@ -68,12 +68,12 @@ final class AutoLayoutDoubleSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
-  private var mValueController : EBReadWritePropertyController_Double? = nil
+  private var mValueController : EBGenericReadWritePropertyController <Double>? = nil
 
   //····················································································································
 
   final func bind_value (_ object : EBReadWriteProperty_Double) -> Self {
-    self.mValueController = EBReadWritePropertyController_Double (
+    self.mValueController = EBGenericReadWritePropertyController <Double> (
       observedObject: object,
       callBack: { [weak self] in self?.update (from: object) }
     )

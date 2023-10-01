@@ -164,7 +164,7 @@ import AppKit
   //   Selection observable property: emptyFileExtensionImage
   //····················································································································
 
-  var emptyFileExtensionImage_property = EBTransientProperty_NSImage ()
+  var emptyFileExtensionImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
   //   Selection observable property: fileExtension
@@ -176,7 +176,7 @@ import AppKit
   //   Selection observable property: hasNoData
   //····················································································································
 
-  var hasNoData_property = EBTransientProperty_Bool ()
+  var hasNoData_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selection observable property: horizontalMirror
@@ -210,7 +210,7 @@ import AppKit
   //   Selection observable property: parameterStatusImage
   //····················································································································
 
-  var parameterStatusImage_property = EBTransientProperty_NSImage ()
+  var parameterStatusImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
   //   BIND SELECTION

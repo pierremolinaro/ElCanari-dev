@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property RastnetInfoArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_RastnetInfoArray    = EBObservableProperty <RastnetInfoArray>
-typealias EBTransientProperty_RastnetInfoArray   = EBTransientProperty <RastnetInfoArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

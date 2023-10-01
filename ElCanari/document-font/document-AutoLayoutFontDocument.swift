@@ -24,7 +24,7 @@ import AppKit
   //   Transient property: documentFileName
   //····················································································································
 
-  final let documentFileName_property = EBTransientProperty_String ()
+  final let documentFileName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -36,7 +36,7 @@ import AppKit
   //   Transient property: statusImage
   //····················································································································
 
-  final let statusImage_property = EBTransientProperty_NSImage ()
+  final let statusImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -48,7 +48,7 @@ import AppKit
   //   Transient property: statusTitle
   //····················································································································
 
-  final let statusTitle_property = EBTransientProperty_String ()
+  final let statusTitle_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -60,7 +60,7 @@ import AppKit
   //   Transient property: statusMessage
   //····················································································································
 
-  final let statusMessage_property = EBTransientProperty_String ()
+  final let statusMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -72,7 +72,7 @@ import AppKit
   //   Transient property: statusWarningCount
   //····················································································································
 
-  final let statusWarningCount_property = EBTransientProperty_Int ()
+  final let statusWarningCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -84,7 +84,7 @@ import AppKit
   //   Transient property: statusErrorCount
   //····················································································································
 
-  final let statusErrorCount_property = EBTransientProperty_Int ()
+  final let statusErrorCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -96,7 +96,7 @@ import AppKit
   //   Transient property: metadataStatus
   //····················································································································
 
-  final let metadataStatus_property = EBTransientProperty_MetadataStatus ()
+  final let metadataStatus_property = EBTransientProperty <MetadataStatus> ()
 
   //····················································································································
 
@@ -108,7 +108,7 @@ import AppKit
   //   Transient property: canDeleteCurrentCharacter
   //····················································································································
 
-  final let canDeleteCurrentCharacter_property = EBTransientProperty_Bool ()
+  final let canDeleteCurrentCharacter_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 

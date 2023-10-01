@@ -128,7 +128,7 @@ final class FontCharacter : EBManagedObject,
   //   Transient property: segmentArrayForDrawing
   //····················································································································
 
-  final let segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentList ()
+  final let segmentArrayForDrawing_property = EBTransientProperty <CharacterSegmentList> ()
 
   //····················································································································
 
@@ -140,7 +140,7 @@ final class FontCharacter : EBManagedObject,
   //   Transient property: gerberCode
   //····················································································································
 
-  final let gerberCode_property = EBTransientProperty_CharacterGerberCode ()
+  final let gerberCode_property = EBTransientProperty <CharacterGerberCode> ()
 
   //····················································································································
 
@@ -152,7 +152,7 @@ final class FontCharacter : EBManagedObject,
   //   Transient property: gerberCodeInstructionCountMessage
   //····················································································································
 
-  final let gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
+  final let gerberCodeInstructionCountMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -164,7 +164,7 @@ final class FontCharacter : EBManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  final let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
 

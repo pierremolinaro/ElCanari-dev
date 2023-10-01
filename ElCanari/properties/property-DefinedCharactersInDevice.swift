@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property DefinedCharactersInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_DefinedCharactersInDevice    = EBObservableProperty <DefinedCharactersInDevice>
-typealias EBTransientProperty_DefinedCharactersInDevice   = EBTransientProperty <DefinedCharactersInDevice>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

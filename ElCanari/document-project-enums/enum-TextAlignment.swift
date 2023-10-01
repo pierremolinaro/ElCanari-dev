@@ -80,11 +80,8 @@ enum TextAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_TextAlignment = EBReadOnlyEnumProperty <TextAlignment>
-typealias EBTransientProperty_TextAlignment = EBTransientEnumProperty <TextAlignment>
-typealias EBReadWriteProperty_TextAlignment = EBReadWriteEnumProperty <TextAlignment>
+typealias EBReadWriteProperty_TextAlignment = EBReadWriteEnumProperty <TextAlignment> // EBObservableMutableProperty <TextAlignment>
 typealias EBStoredProperty_TextAlignment = EBStoredEnumProperty <TextAlignment>
 typealias EBComputedProperty_TextAlignment = EBGenericComputedEnumProperty <TextAlignment>
-typealias EBPreferencesProperty_TextAlignment = EBStoredEnumProperty <TextAlignment>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

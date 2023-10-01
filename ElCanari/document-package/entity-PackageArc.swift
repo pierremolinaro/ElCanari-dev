@@ -301,7 +301,7 @@ final class PackageArc : PackageObject,
   //   Transient property: strokeBezierPath
   //····················································································································
 
-  final let strokeBezierPath_property = EBTransientProperty_EBBezierPath ()
+  final let strokeBezierPath_property = EBTransientProperty <EBBezierPath> ()
 
   //····················································································································
 

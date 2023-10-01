@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property SlavePadDescriptor
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_SlavePadDescriptor    = EBObservableProperty <SlavePadDescriptor>
-typealias EBTransientProperty_SlavePadDescriptor   = EBTransientProperty <SlavePadDescriptor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

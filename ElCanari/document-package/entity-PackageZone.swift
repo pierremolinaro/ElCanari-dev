@@ -387,7 +387,7 @@ final class PackageZone : PackageObject,
   //   Transient property: rect
   //····················································································································
 
-  final let rect_property = EBTransientProperty_CanariRect ()
+  final let rect_property = EBTransientProperty <CanariRect> ()
 
   //····················································································································
 
@@ -399,7 +399,7 @@ final class PackageZone : PackageObject,
   //   Transient property: forbiddenPadArray
   //····················································································································
 
-  final let forbiddenPadArray_property = EBTransientProperty_StringArray ()
+  final let forbiddenPadArray_property = EBTransientProperty <StringArray> ()
 
   //····················································································································
 
@@ -411,7 +411,7 @@ final class PackageZone : PackageObject,
   //   Transient property: emptyForbiddenPadArray
   //····················································································································
 
-  final let emptyForbiddenPadArray_property = EBTransientProperty_Bool ()
+  final let emptyForbiddenPadArray_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 

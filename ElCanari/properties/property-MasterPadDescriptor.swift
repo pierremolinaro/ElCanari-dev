@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property MasterPadDescriptor
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_MasterPadDescriptor    = EBObservableProperty <MasterPadDescriptor>
-typealias EBTransientProperty_MasterPadDescriptor   = EBTransientProperty <MasterPadDescriptor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

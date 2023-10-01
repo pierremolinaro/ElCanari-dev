@@ -47,7 +47,7 @@ final class AutoLayoutCanariBoardFontPopUpButton : AutoLayoutBase_NSPopUpButton 
 
   //····················································································································
 
-  final func bind_currentFontName (_ inObject : EBReadOnlyProperty_String) -> Self {
+  final func bind_currentFontName (_ inObject : EBObservableProperty <String>) -> Self {
     self.mCurrentFontNameController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateCurrentFontName (from: inObject) }
@@ -57,7 +57,7 @@ final class AutoLayoutCanariBoardFontPopUpButton : AutoLayoutBase_NSPopUpButton 
 
   //····················································································································
 
-  fileprivate func updateCurrentFontName (from inObject : EBReadOnlyProperty_String) {
+  fileprivate func updateCurrentFontName (from inObject : EBObservableProperty <String>) {
     switch inObject.selection {
     case .empty, .multiple :
       self.mCurrentFontName = nil
@@ -76,7 +76,7 @@ final class AutoLayoutCanariBoardFontPopUpButton : AutoLayoutBase_NSPopUpButton 
 
   //····················································································································
 
-  final func bind_fontNames (_ inObject : EBReadOnlyProperty_StringArray) -> Self {
+  final func bind_fontNames (_ inObject : EBObservableProperty <StringArray>) -> Self {
     self.mFontNamesController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateFontNames (from: inObject) }
@@ -86,7 +86,7 @@ final class AutoLayoutCanariBoardFontPopUpButton : AutoLayoutBase_NSPopUpButton 
 
   //····················································································································
 
-  fileprivate func updateFontNames (from inObject : EBReadOnlyProperty_StringArray) {
+  fileprivate func updateFontNames (from inObject : EBObservableProperty <StringArray>) {
     switch inObject.selection {
     case .empty, .multiple :
       self.mFontNames = []

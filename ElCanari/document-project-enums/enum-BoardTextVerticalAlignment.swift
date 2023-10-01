@@ -81,11 +81,8 @@ enum BoardTextVerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseItera
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_BoardTextVerticalAlignment = EBReadOnlyEnumProperty <BoardTextVerticalAlignment>
-typealias EBTransientProperty_BoardTextVerticalAlignment = EBTransientEnumProperty <BoardTextVerticalAlignment>
-typealias EBReadWriteProperty_BoardTextVerticalAlignment = EBReadWriteEnumProperty <BoardTextVerticalAlignment>
+typealias EBReadWriteProperty_BoardTextVerticalAlignment = EBReadWriteEnumProperty <BoardTextVerticalAlignment> // EBObservableMutableProperty <BoardTextVerticalAlignment>
 typealias EBStoredProperty_BoardTextVerticalAlignment = EBStoredEnumProperty <BoardTextVerticalAlignment>
 typealias EBComputedProperty_BoardTextVerticalAlignment = EBGenericComputedEnumProperty <BoardTextVerticalAlignment>
-typealias EBPreferencesProperty_BoardTextVerticalAlignment = EBStoredEnumProperty <BoardTextVerticalAlignment>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

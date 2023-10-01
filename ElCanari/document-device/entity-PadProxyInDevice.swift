@@ -116,7 +116,7 @@ final class PadProxyInDevice : EBManagedObject,
   //   Transient property: isConnected
   //····················································································································
 
-  final let isConnected_property = EBTransientProperty_Bool ()
+  final let isConnected_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -128,7 +128,7 @@ final class PadProxyInDevice : EBManagedObject,
   //   Transient property: symbolName
   //····················································································································
 
-  final let symbolName_property = EBTransientProperty_String ()
+  final let symbolName_property = EBTransientProperty <String> ()
 
   //····················································································································
 

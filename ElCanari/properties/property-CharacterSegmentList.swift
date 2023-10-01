@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property CharacterSegmentList
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_CharacterSegmentList    = EBObservableProperty <CharacterSegmentList>
-typealias EBTransientProperty_CharacterSegmentList   = EBTransientProperty <CharacterSegmentList>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

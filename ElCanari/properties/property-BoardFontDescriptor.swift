@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property BoardFontDescriptor
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_BoardFontDescriptor    = EBObservableProperty <BoardFontDescriptor>
-typealias EBTransientProperty_BoardFontDescriptor   = EBTransientProperty <BoardFontDescriptor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

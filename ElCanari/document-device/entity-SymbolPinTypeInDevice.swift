@@ -234,7 +234,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //   Transient property: nameShape
   //····················································································································
 
-  final let nameShape_property = EBTransientProperty_EBShape ()
+  final let nameShape_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 

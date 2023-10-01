@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property PinPadAssignmentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_PinPadAssignmentInProject    = EBObservableProperty <PinPadAssignmentInProject>
-typealias EBTransientProperty_PinPadAssignmentInProject   = EBTransientProperty <PinPadAssignmentInProject>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

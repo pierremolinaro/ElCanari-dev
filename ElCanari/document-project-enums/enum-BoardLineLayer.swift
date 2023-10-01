@@ -87,11 +87,8 @@ enum BoardLineLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_BoardLineLayer = EBReadOnlyEnumProperty <BoardLineLayer>
-typealias EBTransientProperty_BoardLineLayer = EBTransientEnumProperty <BoardLineLayer>
-typealias EBReadWriteProperty_BoardLineLayer = EBReadWriteEnumProperty <BoardLineLayer>
+typealias EBReadWriteProperty_BoardLineLayer = EBReadWriteEnumProperty <BoardLineLayer> // EBObservableMutableProperty <BoardLineLayer>
 typealias EBStoredProperty_BoardLineLayer = EBStoredEnumProperty <BoardLineLayer>
 typealias EBComputedProperty_BoardLineLayer = EBGenericComputedEnumProperty <BoardLineLayer>
-typealias EBPreferencesProperty_BoardLineLayer = EBStoredEnumProperty <BoardLineLayer>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

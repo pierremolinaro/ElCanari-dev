@@ -332,7 +332,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //   Transient property: p2Xvalue
   //····················································································································
 
-  final let p2Xvalue_property = EBTransientProperty_Double ()
+  final let p2Xvalue_property = EBTransientProperty <Double> ()
 
   //····················································································································
 
@@ -344,7 +344,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //   Transient property: p2Yvalue
   //····················································································································
 
-  final let p2Yvalue_property = EBTransientProperty_Double ()
+  final let p2Yvalue_property = EBTransientProperty <Double> ()
 
   //····················································································································
 
@@ -356,7 +356,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //   Transient property: descriptor
   //····················································································································
 
-  final let descriptor_property = EBTransientProperty_BorderCurveDescriptor ()
+  final let descriptor_property = EBTransientProperty <BorderCurveDescriptor> ()
 
   //····················································································································
 
@@ -368,7 +368,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //   Transient property: isLine
   //····················································································································
 
-  final let isLine_property = EBTransientProperty_Bool ()
+  final let isLine_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 

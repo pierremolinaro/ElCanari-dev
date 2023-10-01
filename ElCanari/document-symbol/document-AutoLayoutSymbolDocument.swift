@@ -30,7 +30,7 @@ import AppKit
   //   Transient property: documentFileName
   //····················································································································
 
-  final let documentFileName_property = EBTransientProperty_String ()
+  final let documentFileName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -42,7 +42,7 @@ import AppKit
   //   Transient property: addSegmentButtonImage
   //····················································································································
 
-  final let addSegmentButtonImage_property = EBTransientProperty_NSImage ()
+  final let addSegmentButtonImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -54,7 +54,7 @@ import AppKit
   //   Transient property: addBezierButtonImage
   //····················································································································
 
-  final let addBezierButtonImage_property = EBTransientProperty_NSImage ()
+  final let addBezierButtonImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -66,7 +66,7 @@ import AppKit
   //   Transient property: addOvalButtonImage
   //····················································································································
 
-  final let addOvalButtonImage_property = EBTransientProperty_NSImage ()
+  final let addOvalButtonImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -78,7 +78,7 @@ import AppKit
   //   Transient property: addSolidOvalButtonImage
   //····················································································································
 
-  final let addSolidOvalButtonImage_property = EBTransientProperty_NSImage ()
+  final let addSolidOvalButtonImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -90,7 +90,7 @@ import AppKit
   //   Transient property: addSolidRectButtonImage
   //····················································································································
 
-  final let addSolidRectButtonImage_property = EBTransientProperty_NSImage ()
+  final let addSolidRectButtonImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -102,7 +102,7 @@ import AppKit
   //   Transient property: addTextButtonImage
   //····················································································································
 
-  final let addTextButtonImage_property = EBTransientProperty_NSImage ()
+  final let addTextButtonImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -114,7 +114,7 @@ import AppKit
   //   Transient property: addPinButtonImage
   //····················································································································
 
-  final let addPinButtonImage_property = EBTransientProperty_NSImage ()
+  final let addPinButtonImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -126,7 +126,7 @@ import AppKit
   //   Transient property: symbolIssues
   //····················································································································
 
-  final let symbolIssues_property = EBTransientProperty_CanariIssueArray ()
+  final let symbolIssues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
 
@@ -138,7 +138,7 @@ import AppKit
   //   Transient property: statusMessage
   //····················································································································
 
-  final let statusMessage_property = EBTransientProperty_String ()
+  final let statusMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -150,7 +150,7 @@ import AppKit
   //   Transient property: statusErrorCount
   //····················································································································
 
-  final let statusErrorCount_property = EBTransientProperty_Int ()
+  final let statusErrorCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -162,7 +162,7 @@ import AppKit
   //   Transient property: statusWarningCount
   //····················································································································
 
-  final let statusWarningCount_property = EBTransientProperty_Int ()
+  final let statusWarningCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -174,7 +174,7 @@ import AppKit
   //   Transient property: metadataStatus
   //····················································································································
 
-  final let metadataStatus_property = EBTransientProperty_MetadataStatus ()
+  final let metadataStatus_property = EBTransientProperty <MetadataStatus> ()
 
   //····················································································································
 
@@ -186,7 +186,7 @@ import AppKit
   //   Transient property: noSymbolIssue
   //····················································································································
 
-  final let noSymbolIssue_property = EBTransientProperty_Bool ()
+  final let noSymbolIssue_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -198,7 +198,7 @@ import AppKit
   //   Transient property: segmentedControlSegmentIssueImage
   //····················································································································
 
-  final let segmentedControlSegmentIssueImage_property = EBTransientProperty_NSImage ()
+  final let segmentedControlSegmentIssueImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -210,7 +210,7 @@ import AppKit
   //   Transient property: segmentedControlSegmentIssueString
   //····················································································································
 
-  final let segmentedControlSegmentIssueString_property = EBTransientProperty_String ()
+  final let segmentedControlSegmentIssueString_property = EBTransientProperty <String> ()
 
   //····················································································································
 

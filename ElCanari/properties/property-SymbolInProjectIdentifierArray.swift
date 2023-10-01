@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property SymbolInProjectIdentifierArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_SymbolInProjectIdentifierArray    = EBObservableProperty <SymbolInProjectIdentifierArray>
-typealias EBTransientProperty_SymbolInProjectIdentifierArray   = EBTransientProperty <SymbolInProjectIdentifierArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

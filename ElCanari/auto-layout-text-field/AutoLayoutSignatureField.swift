@@ -48,7 +48,7 @@ final class AutoLayoutSignatureField : NSTextField {
 
   //····················································································································
 
-  final func bind_signature (_ model : EBReadOnlyProperty_UInt32) -> Self {
+  final func bind_signature (_ model : EBObservableProperty <UInt32>) -> Self {
     self.mController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
@@ -58,7 +58,7 @@ final class AutoLayoutSignatureField : NSTextField {
 
   //····················································································································
 
-  private func update (from model : EBReadOnlyProperty_UInt32) {
+  private func update (from model : EBObservableProperty <UInt32>) {
     switch model.selection {
     case .empty, .multiple :
       self.stringValue = "—"

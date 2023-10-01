@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property NetInfo
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_NetInfo    = EBObservableProperty <NetInfo>
-typealias EBTransientProperty_NetInfo   = EBTransientProperty <NetInfo>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -26,13 +26,13 @@ import AppKit
   //   Selection observable property: boardLimitWidth
   //····················································································································
 
-  var boardLimitWidth_property = EBTransientProperty_Int ()
+  var boardLimitWidth_property = EBTransientProperty <Int> ()
 
   //····················································································································
   //   Selection observable property: instanceRect
   //····················································································································
 
-  var instanceRect_property = EBTransientProperty_CanariRect ()
+  var instanceRect_property = EBTransientProperty <CanariRect> ()
 
   //····················································································································
   //   Selection observable property: instanceRotation
@@ -44,7 +44,7 @@ import AppKit
   //   Selection observable property: modelName
   //····················································································································
 
-  var modelName_property = EBTransientProperty_String ()
+  var modelName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: myModel
@@ -58,13 +58,13 @@ import AppKit
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  var objectDisplay_property = EBTransientProperty_EBShape ()
+  var objectDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  var selectionDisplay_property = EBTransientProperty_EBShape ()
+  var selectionDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: x

@@ -50,7 +50,7 @@ final class AutoLayoutAngleCircularSlider : AutoLayoutBase_NSSlider {
   //  doubleValue binding
   //····················································································································
 
-//  fileprivate func updateDoubleValue (_ object : EBReadOnlyProperty_Double) {
+//  fileprivate func updateDoubleValue (_ object : EBObservableProperty <Double>) {
 //    switch object.selection {
 //    case .empty, .multiple :
 //      self.stringValue = "-"
@@ -65,7 +65,7 @@ final class AutoLayoutAngleCircularSlider : AutoLayoutBase_NSSlider {
   //  intValue binding
   //····················································································································
 
-  fileprivate func updateAngleValue (_ object : EBReadOnlyProperty_Int) {
+  fileprivate func updateAngleValue (_ object : EBObservableProperty <Int>) {
     switch object.selection {
     case .empty, .multiple :
       self.enable (fromValueBinding: false, self.enabledBindingController)
@@ -78,12 +78,12 @@ final class AutoLayoutAngleCircularSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
-  private var mAngleController : EBReadWritePropertyController_Int? = nil
+  private var mAngleController : EBGenericReadWritePropertyController <Int>? = nil
 
   //····················································································································
 
   final func bind_angle (_ inObject : EBReadWriteProperty_Int, sendContinously : Bool) -> Self {
-    self.mAngleController = EBReadWritePropertyController_Int (
+    self.mAngleController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateAngleValue (inObject) }
     )

@@ -80,11 +80,8 @@ enum EBControlSize : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_EBControlSize = EBReadOnlyEnumProperty <EBControlSize>
-typealias EBTransientProperty_EBControlSize = EBTransientEnumProperty <EBControlSize>
-typealias EBReadWriteProperty_EBControlSize = EBReadWriteEnumProperty <EBControlSize>
+typealias EBReadWriteProperty_EBControlSize = EBReadWriteEnumProperty <EBControlSize> // EBObservableMutableProperty <EBControlSize>
 typealias EBStoredProperty_EBControlSize = EBStoredEnumProperty <EBControlSize>
 typealias EBComputedProperty_EBControlSize = EBGenericComputedEnumProperty <EBControlSize>
-typealias EBPreferencesProperty_EBControlSize = EBStoredEnumProperty <EBControlSize>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

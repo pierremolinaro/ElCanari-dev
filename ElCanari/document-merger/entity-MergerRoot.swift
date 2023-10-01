@@ -405,7 +405,7 @@ final class MergerRoot : EBManagedObject {
   //   Transient property: modelNames
   //····················································································································
 
-  final let modelNames_property = EBTransientProperty_StringTagArray ()
+  final let modelNames_property = EBTransientProperty <StringTagArray> ()
 
   //····················································································································
 
@@ -417,7 +417,7 @@ final class MergerRoot : EBManagedObject {
   //   Transient property: boardRect
   //····················································································································
 
-  final let boardRect_property = EBTransientProperty_CanariRect ()
+  final let boardRect_property = EBTransientProperty <CanariRect> ()
 
   //····················································································································
 
@@ -429,7 +429,7 @@ final class MergerRoot : EBManagedObject {
   //   Transient property: boardWidth
   //····················································································································
 
-  final let boardWidth_property = EBTransientProperty_Int ()
+  final let boardWidth_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -441,7 +441,7 @@ final class MergerRoot : EBManagedObject {
   //   Transient property: boardHeight
   //····················································································································
 
-  final let boardHeight_property = EBTransientProperty_Int ()
+  final let boardHeight_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -481,7 +481,7 @@ final class MergerRoot : EBManagedObject {
   //   Transient property: comments
   //····················································································································
 
-  final let comments_property = EBTransientProperty_String ()
+  final let comments_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -493,7 +493,7 @@ final class MergerRoot : EBManagedObject {
   //   Transient property: layoutLayerWarningMessage
   //····················································································································
 
-  final let layoutLayerWarningMessage_property = EBTransientProperty_String ()
+  final let layoutLayerWarningMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -505,7 +505,7 @@ final class MergerRoot : EBManagedObject {
   //   Transient property: layerConfigurationString
   //····················································································································
 
-  final let layerConfigurationString_property = EBTransientProperty_String ()
+  final let layerConfigurationString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -517,7 +517,7 @@ final class MergerRoot : EBManagedObject {
   //   Transient property: emptyDrillFileExtension
   //····················································································································
 
-  final let emptyDrillFileExtension_property = EBTransientProperty_Bool ()
+  final let emptyDrillFileExtension_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -529,7 +529,7 @@ final class MergerRoot : EBManagedObject {
   //   Transient property: hasInnerElements
   //····················································································································
 
-  final let hasInnerElements_property = EBTransientProperty_Bool ()
+  final let hasInnerElements_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -541,7 +541,7 @@ final class MergerRoot : EBManagedObject {
   //   Transient property: hasSixLayers
   //····················································································································
 
-  final let hasSixLayers_property = EBTransientProperty_Bool ()
+  final let hasSixLayers_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -553,7 +553,7 @@ final class MergerRoot : EBManagedObject {
   //   Transient property: boardOutlineRectDisplay
   //····················································································································
 
-  final let boardOutlineRectDisplay_property = EBTransientProperty_EBShape ()
+  final let boardOutlineRectDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 

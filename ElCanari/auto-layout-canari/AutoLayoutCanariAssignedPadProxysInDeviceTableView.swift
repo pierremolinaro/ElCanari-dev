@@ -93,7 +93,7 @@ final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerti
 
   //····················································································································
 
-  final func bind_assignedPadProxies (_ inModel : EBReadOnlyProperty_AssignedPadProxiesInDevice) -> Self {
+  final func bind_assignedPadProxies (_ inModel : EBObservableProperty <AssignedPadProxiesInDevice>) -> Self {
     self.mController = EBObservablePropertyController (
       observedObjects: [inModel],
       callBack: { [weak self] in self?.updateUnconnectedPadList (from: inModel) }
@@ -110,7 +110,7 @@ final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerti
 
   //····················································································································
 
-  func updateUnconnectedPadList (from inModel : EBReadOnlyProperty_AssignedPadProxiesInDevice) {
+  func updateUnconnectedPadList (from inModel : EBObservableProperty <AssignedPadProxiesInDevice>) {
     switch inModel.selection {
     case .empty, .multiple :
       self.mDataSource = []

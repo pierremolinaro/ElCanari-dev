@@ -84,7 +84,7 @@ final class AutoLayoutFontButton : AutoLayoutBase_NSButton {
   //  $fontValue binding
   //····················································································································
 
-  fileprivate func updateFont (_ object : EBReadOnlyProperty_NSFont) {
+  fileprivate func updateFont (_ object : EBObservableProperty <NSFont>) {
     switch object.selection {
     case .empty, .multiple :
       self.enable (fromValueBinding: false, self.enabledBindingController)
@@ -97,12 +97,12 @@ final class AutoLayoutFontButton : AutoLayoutBase_NSButton {
 
   //····················································································································
 
-  private var mValueController : EBReadWritePropertyController_NSFont? = nil
+  private var mValueController : EBGenericReadWritePropertyController <NSFont>? = nil
 
   //····················································································································
 
   final func bind_fontValue (_ inObject : EBReadWriteProperty_NSFont) -> Self {
-    self.mValueController = EBReadWritePropertyController_NSFont (
+    self.mValueController = EBGenericReadWritePropertyController <NSFont> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateFont (inObject) }
     )

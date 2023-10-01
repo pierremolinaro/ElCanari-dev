@@ -596,7 +596,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //   Transient property: hasNoData
   //····················································································································
 
-  final let hasNoData_property = EBTransientProperty_Bool ()
+  final let hasNoData_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -608,7 +608,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //   Transient property: parameterStatusImage
   //····················································································································
 
-  final let parameterStatusImage_property = EBTransientProperty_NSImage ()
+  final let parameterStatusImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -620,7 +620,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //   Transient property: emptyFileExtensionImage
   //····················································································································
 
-  final let emptyFileExtensionImage_property = EBTransientProperty_NSImage ()
+  final let emptyFileExtensionImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 

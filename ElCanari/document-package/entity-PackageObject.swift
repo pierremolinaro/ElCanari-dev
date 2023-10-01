@@ -42,7 +42,7 @@ class PackageObject : EBGraphicManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  final let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
 
@@ -82,7 +82,7 @@ class PackageObject : EBGraphicManagedObject,
   //   Transient property: knobSize
   //····················································································································
 
-  final let knobSize_property = EBTransientProperty_Double ()
+  final let knobSize_property = EBTransientProperty <Double> ()
 
   //····················································································································
 

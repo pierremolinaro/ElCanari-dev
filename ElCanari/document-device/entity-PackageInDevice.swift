@@ -224,7 +224,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //   Transient property: versionString
   //····················································································································
 
-  final let versionString_property = EBTransientProperty_String ()
+  final let versionString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -236,7 +236,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //   Transient property: documentSize
   //····················································································································
 
-  final let documentSize_property = EBTransientProperty_Int ()
+  final let documentSize_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -248,7 +248,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //   Transient property: frontSidePadFilledBezierPathArray
   //····················································································································
 
-  final let frontSidePadFilledBezierPathArray_property = EBTransientProperty_BezierPathArray ()
+  final let frontSidePadFilledBezierPathArray_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -260,7 +260,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //   Transient property: backSidePadFilledBezierPathArray
   //····················································································································
 
-  final let backSidePadFilledBezierPathArray_property = EBTransientProperty_BezierPathArray ()
+  final let backSidePadFilledBezierPathArray_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -272,7 +272,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //   Transient property: padNameSet
   //····················································································································
 
-  final let padNameSet_property = EBTransientProperty_StringSet ()
+  final let padNameSet_property = EBTransientProperty <StringSet> ()
 
   //····················································································································
 

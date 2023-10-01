@@ -94,12 +94,12 @@ final class AutoLayoutCanariFontCharacterSelectButton : AutoLayoutBase_NSButton 
   //  $codePoint binding
   //····················································································································
 
-  private var mCodePointController : EBReadWritePropertyController_Int?
+  private var mCodePointController : EBGenericReadWritePropertyController <Int>?
 
   //····················································································································
 
   final func bind_codePoint (_ object : EBReadWriteProperty_Int) -> Self {
-    self.mCodePointController = EBReadWritePropertyController_Int (
+    self.mCodePointController = EBGenericReadWritePropertyController <Int> (
       observedObject: object,
       callBack: { [weak self] in self?.updateCodePoint (object) }
     )
@@ -117,7 +117,7 @@ final class AutoLayoutCanariFontCharacterSelectButton : AutoLayoutBase_NSButton 
   //  $characters binding
   //····················································································································
 
-  fileprivate func updateCodePoint (_ object : EBReadOnlyProperty_Int) {
+  fileprivate func updateCodePoint (_ object : EBObservableProperty <Int>) {
     switch object.selection {
     case .empty :
       self.enable (fromValueBinding: false, self.enabledBindingController)
@@ -139,7 +139,7 @@ final class AutoLayoutCanariFontCharacterSelectButton : AutoLayoutBase_NSButton 
 
   //····················································································································
 
-  final func bind_characters (_ inModel : EBTransientProperty_DefinedCharactersInDevice) -> Self {
+  final func bind_characters (_ inModel : EBTransientProperty <DefinedCharactersInDevice>) -> Self {
     self.mCharactersController = EBObservablePropertyController (
       observedObjects: [inModel],
       callBack: { [weak self] in

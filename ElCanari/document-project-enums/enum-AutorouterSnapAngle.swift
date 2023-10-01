@@ -88,11 +88,8 @@ enum AutorouterSnapAngle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_AutorouterSnapAngle = EBReadOnlyEnumProperty <AutorouterSnapAngle>
-typealias EBTransientProperty_AutorouterSnapAngle = EBTransientEnumProperty <AutorouterSnapAngle>
-typealias EBReadWriteProperty_AutorouterSnapAngle = EBReadWriteEnumProperty <AutorouterSnapAngle>
+typealias EBReadWriteProperty_AutorouterSnapAngle = EBReadWriteEnumProperty <AutorouterSnapAngle> // EBObservableMutableProperty <AutorouterSnapAngle>
 typealias EBStoredProperty_AutorouterSnapAngle = EBStoredEnumProperty <AutorouterSnapAngle>
 typealias EBComputedProperty_AutorouterSnapAngle = EBGenericComputedEnumProperty <AutorouterSnapAngle>
-typealias EBPreferencesProperty_AutorouterSnapAngle = EBStoredEnumProperty <AutorouterSnapAngle>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

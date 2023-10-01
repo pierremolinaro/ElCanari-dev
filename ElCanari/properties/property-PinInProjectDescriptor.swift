@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property PinInProjectDescriptor
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_PinInProjectDescriptor    = EBObservableProperty <PinInProjectDescriptor>
-typealias EBTransientProperty_PinInProjectDescriptor   = EBTransientProperty <PinInProjectDescriptor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

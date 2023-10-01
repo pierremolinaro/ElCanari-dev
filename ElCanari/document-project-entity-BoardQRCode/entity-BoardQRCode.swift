@@ -288,7 +288,7 @@ final class BoardQRCode : BoardObject,
   //   Transient property: qrCodeDescriptor
   //····················································································································
 
-  final let qrCodeDescriptor_property = EBTransientProperty_QRCodeDescriptor ()
+  final let qrCodeDescriptor_property = EBTransientProperty <QRCodeDescriptor> ()
 
   //····················································································································
 
@@ -300,7 +300,7 @@ final class BoardQRCode : BoardObject,
   //   Transient property: moduleCount
   //····················································································································
 
-  final let moduleCount_property = EBTransientProperty_Int ()
+  final let moduleCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -312,7 +312,7 @@ final class BoardQRCode : BoardObject,
   //   Transient property: actualImageSize
   //····················································································································
 
-  final let actualImageSize_property = EBTransientProperty_Int ()
+  final let actualImageSize_property = EBTransientProperty <Int> ()
 
   //····················································································································
 

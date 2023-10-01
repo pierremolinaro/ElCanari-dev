@@ -227,7 +227,7 @@ final class MasterPadInDevice : EBManagedObject,
   //   Transient property: padNumberDisplay
   //····················································································································
 
-  final let padNumberDisplay_property = EBTransientProperty_EBShape ()
+  final let padNumberDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 
@@ -239,7 +239,7 @@ final class MasterPadInDevice : EBManagedObject,
   //   Transient property: frontSideFilledBezierPathArray
   //····················································································································
 
-  final let frontSideFilledBezierPathArray_property = EBTransientProperty_BezierPathArray ()
+  final let frontSideFilledBezierPathArray_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -251,7 +251,7 @@ final class MasterPadInDevice : EBManagedObject,
   //   Transient property: backSideFilledBezierPathArray
   //····················································································································
 
-  final let backSideFilledBezierPathArray_property = EBTransientProperty_BezierPathArray ()
+  final let backSideFilledBezierPathArray_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 

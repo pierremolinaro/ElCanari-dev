@@ -45,7 +45,7 @@ final class AutoLayoutCanariObservedDimensionField : AutoLayoutBase_NSTextField 
   //  value binding
   //····················································································································
 
-  fileprivate func updateOutlet (dimension : EBReadOnlyProperty_Int, unit : EBReadOnlyProperty_Int) {
+  fileprivate func updateOutlet (dimension : EBObservableProperty <Int>, unit : EBObservableProperty <Int>) {
     switch combine (dimension.selection, unit: unit.selection) {
     case .empty :
       self.placeholderString = "No Selection"
@@ -68,8 +68,8 @@ final class AutoLayoutCanariObservedDimensionField : AutoLayoutBase_NSTextField 
 
   //····················································································································
 
-  final func bind_dimensionAndUnit (_ object : EBReadOnlyProperty_Int,
-                                    _ unit : EBReadOnlyProperty_Int) -> Self {
+  final func bind_dimensionAndUnit (_ object : EBObservableProperty <Int>,
+                                    _ unit : EBObservableProperty <Int>) -> Self {
     self.mController = Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit (dimension: object, unit: unit, outlet: self)
     return self
   }
@@ -84,13 +84,13 @@ final class AutoLayoutCanariObservedDimensionField : AutoLayoutBase_NSTextField 
 
 final class Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit : EBObservablePropertyController {
 
-  private var mDimension : EBReadOnlyProperty_Int
-  private var mUnit : EBReadOnlyProperty_Int
+  private var mDimension : EBObservableProperty <Int>
+  private var mUnit : EBObservableProperty <Int>
 
   //····················································································································
 
-  init (dimension : EBReadOnlyProperty_Int,
-        unit : EBReadOnlyProperty_Int,
+  init (dimension : EBObservableProperty <Int>,
+        unit : EBObservableProperty <Int>,
         outlet inOutlet : AutoLayoutCanariObservedDimensionField) {
     self.mDimension = dimension
     self.mUnit = unit

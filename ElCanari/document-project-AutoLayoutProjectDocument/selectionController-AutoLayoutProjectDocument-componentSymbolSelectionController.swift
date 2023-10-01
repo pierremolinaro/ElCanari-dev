@@ -98,43 +98,43 @@ import AppKit
   //   Selection observable property: componentName
   //····················································································································
 
-  final let componentName_property = EBTransientProperty_String ()
+  final let componentName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: deviceName
   //····················································································································
 
-  final let deviceName_property = EBTransientProperty_String ()
+  final let deviceName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: symbolInfo
   //····················································································································
 
-  final let symbolInfo_property = EBTransientProperty_ComponentSymbolInfo ()
+  final let symbolInfo_property = EBTransientProperty <ComponentSymbolInfo> ()
 
   //····················································································································
   //   Selection observable property: pinPadAssignments
   //····················································································································
 
-  final let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+  final let pinPadAssignments_property = EBTransientProperty <ThreeStringArray> ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  final let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  final let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: symbolInSchematic
   //····················································································································
 
-  final let symbolInSchematic_property = EBTransientProperty_Bool ()
+  final let symbolInSchematic_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selected array (not observable)

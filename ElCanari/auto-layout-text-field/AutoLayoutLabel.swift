@@ -74,7 +74,7 @@ final class AutoLayoutLabel : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  final func bind_textColor (_ inObject : EBReadOnlyProperty_NSColor) -> Self {
+  final func bind_textColor (_ inObject : EBObservableProperty <NSColor>) -> Self {
     self.mColorController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateColor (from: inObject.selection) }
@@ -101,7 +101,7 @@ final class AutoLayoutLabel : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  final func bind_size (_ inObject : EBReadOnlyProperty_EBControlSize) -> Self {
+  final func bind_size (_ inObject : EBObservableProperty <EBControlSize>) -> Self {
     self.mSizeController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateSize (from: inObject.selection) }
@@ -130,7 +130,7 @@ final class AutoLayoutLabel : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  final func bind_title (_ inObject : EBReadOnlyProperty_String) -> Self {
+  final func bind_title (_ inObject : EBObservableProperty <String>) -> Self {
     self.mTitleController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.update (from: inObject.selection) }

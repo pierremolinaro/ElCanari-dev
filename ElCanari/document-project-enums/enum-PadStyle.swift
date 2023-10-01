@@ -87,11 +87,8 @@ enum PadStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_PadStyle = EBReadOnlyEnumProperty <PadStyle>
-typealias EBTransientProperty_PadStyle = EBTransientEnumProperty <PadStyle>
-typealias EBReadWriteProperty_PadStyle = EBReadWriteEnumProperty <PadStyle>
+typealias EBReadWriteProperty_PadStyle = EBReadWriteEnumProperty <PadStyle> // EBObservableMutableProperty <PadStyle>
 typealias EBStoredProperty_PadStyle = EBStoredEnumProperty <PadStyle>
 typealias EBComputedProperty_PadStyle = EBGenericComputedEnumProperty <PadStyle>
-typealias EBPreferencesProperty_PadStyle = EBStoredEnumProperty <PadStyle>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

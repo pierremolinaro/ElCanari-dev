@@ -28,8 +28,8 @@ final class AutoLayoutCanariSelectionPopUpButton : AutoLayoutBase_NSPopUpButton 
   //  format binding
   //····················································································································
 
-  fileprivate func updateOutlet (_ inOptionalSelectedName : EBReadOnlyProperty_String?,
-                                 _ inOptionalNameArray : EBReadOnlyProperty_StringArray?) {
+  fileprivate func updateOutlet (_ inOptionalSelectedName : EBObservableProperty <String>?,
+                                 _ inOptionalNameArray : EBObservableProperty <StringArray>?) {
     if let selectedName = inOptionalSelectedName, let nameArray = inOptionalNameArray {
       switch (selectedName.selection, nameArray.selection) {
       case (.single (let selectedName), .single (let netArray)) :
@@ -73,7 +73,7 @@ final class AutoLayoutCanariSelectionPopUpButton : AutoLayoutBase_NSPopUpButton 
 
   //····················································································································
 
-  final func bind_selectedNameInArray (_ inSelectedName : EBReadWriteProperty_String, _ inNameArray : EBReadOnlyProperty_StringArray) -> Self {
+  final func bind_selectedNameInArray (_ inSelectedName : EBReadWriteProperty_String, _ inNameArray : EBObservableProperty <StringArray>) -> Self {
     self.mController = Controller_ElCanariSelectionPopUpButton_selectedNameInArray (
       inSelectedName,
       inNameArray,
@@ -100,7 +100,7 @@ final class Controller_ElCanariSelectionPopUpButton_selectedNameInArray : EBObse
   //····················································································································
 
   init (_ inSelectedName : EBReadWriteProperty_String,
-        _ inNameArray : EBReadOnlyProperty_StringArray,
+        _ inNameArray : EBObservableProperty <StringArray>,
         _ inOutlet : AutoLayoutCanariSelectionPopUpButton,
         callBack inCallBack : @escaping () -> Void) {
     self.mSelectedName = inSelectedName

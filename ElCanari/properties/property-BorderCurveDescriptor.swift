@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property BorderCurveDescriptor
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_BorderCurveDescriptor    = EBObservableProperty <BorderCurveDescriptor>
-typealias EBTransientProperty_BorderCurveDescriptor   = EBTransientProperty <BorderCurveDescriptor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property MergerRectangleArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_MergerRectangleArray    = EBObservableProperty <MergerRectangleArray>
-typealias EBTransientProperty_MergerRectangleArray   = EBTransientProperty <MergerRectangleArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

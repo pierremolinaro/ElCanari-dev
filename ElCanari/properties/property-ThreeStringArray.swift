@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property ThreeStringArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_ThreeStringArray    = EBObservableProperty <ThreeStringArray>
-typealias EBTransientProperty_ThreeStringArray   = EBTransientProperty <ThreeStringArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

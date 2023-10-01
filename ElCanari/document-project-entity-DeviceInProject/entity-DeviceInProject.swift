@@ -208,7 +208,7 @@ final class DeviceInProject : EBManagedObject,
   //   Transient property: versionString
   //····················································································································
 
-  final let versionString_property = EBTransientProperty_String ()
+  final let versionString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -220,7 +220,7 @@ final class DeviceInProject : EBManagedObject,
   //   Transient property: sizeString
   //····················································································································
 
-  final let sizeString_property = EBTransientProperty_String ()
+  final let sizeString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -232,7 +232,7 @@ final class DeviceInProject : EBManagedObject,
   //   Transient property: canExport
   //····················································································································
 
-  final let canExport_property = EBTransientProperty_Bool ()
+  final let canExport_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -244,7 +244,7 @@ final class DeviceInProject : EBManagedObject,
   //   Transient property: packageNames
   //····················································································································
 
-  final let packageNames_property = EBTransientProperty_StringArray ()
+  final let packageNames_property = EBTransientProperty <StringArray> ()
 
   //····················································································································
 
@@ -256,7 +256,7 @@ final class DeviceInProject : EBManagedObject,
   //   Transient property: deviceComponentCountString
   //····················································································································
 
-  final let deviceComponentCountString_property = EBTransientProperty_String ()
+  final let deviceComponentCountString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -268,7 +268,7 @@ final class DeviceInProject : EBManagedObject,
   //   Transient property: canRemove
   //····················································································································
 
-  final let canRemove_property = EBTransientProperty_Bool ()
+  final let canRemove_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -280,7 +280,7 @@ final class DeviceInProject : EBManagedObject,
   //   Transient property: symbolAndTypesNames
   //····················································································································
 
-  final let symbolAndTypesNames_property = EBTransientProperty_SymbolInProjectIdentifierArray ()
+  final let symbolAndTypesNames_property = EBTransientProperty <SymbolInProjectIdentifierArray> ()
 
   //····················································································································
 
@@ -292,7 +292,7 @@ final class DeviceInProject : EBManagedObject,
   //   Transient property: pinPadAssignments
   //····················································································································
 
-  final let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+  final let pinPadAssignments_property = EBTransientProperty <ThreeStringArray> ()
 
   //····················································································································
 
@@ -304,7 +304,7 @@ final class DeviceInProject : EBManagedObject,
   //   Transient property: deviceSymbolDictionary
   //····················································································································
 
-  final let deviceSymbolDictionary_property = EBTransientProperty_DeviceSymbolDictionary ()
+  final let deviceSymbolDictionary_property = EBTransientProperty <DeviceSymbolDictionary> ()
 
   //····················································································································
 

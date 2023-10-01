@@ -94,7 +94,7 @@ final class AutoLayoutImageObserverView : NSImageView {
 
   //····················································································································
 
-  final func bind_image (_ inObject : EBReadOnlyProperty_NSImage) -> Self {
+  final func bind_image (_ inObject : EBObservableProperty <NSImage>) -> Self {
     self.mImageController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateImage (inObject.selection) ; }
@@ -123,7 +123,7 @@ final class AutoLayoutImageObserverView : NSImageView {
 
   //····················································································································
 
-  final func bind_tooltip (_ inObject : EBReadOnlyProperty_String) -> Self {
+  final func bind_tooltip (_ inObject : EBObservableProperty <String>) -> Self {
     self.mTooltipController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateTooltip (inObject.selection) }

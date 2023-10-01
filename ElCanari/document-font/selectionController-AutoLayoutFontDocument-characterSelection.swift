@@ -38,19 +38,19 @@ import AppKit
   //   Selection observable property: gerberCode
   //····················································································································
 
-  var gerberCode_property = EBTransientProperty_CharacterGerberCode ()
+  var gerberCode_property = EBTransientProperty <CharacterGerberCode> ()
 
   //····················································································································
   //   Selection observable property: gerberCodeInstructionCountMessage
   //····················································································································
 
-  var gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
+  var gerberCodeInstructionCountMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
-  var issues_property = EBTransientProperty_CanariIssueArray ()
+  var issues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
   //   Selection observable property: mWarnsWhenAdvanceIsZero
@@ -68,7 +68,7 @@ import AppKit
   //   Selection observable property: segmentArrayForDrawing
   //····················································································································
 
-  var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentList ()
+  var segmentArrayForDrawing_property = EBTransientProperty <CharacterSegmentList> ()
 
   //····················································································································
   //   Selection observable property: segments

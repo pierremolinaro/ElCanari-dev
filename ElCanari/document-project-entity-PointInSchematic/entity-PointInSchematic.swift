@@ -281,7 +281,7 @@ final class PointInSchematic : EBManagedObject,
   //   Transient property: location
   //····················································································································
 
-  final let location_property = EBTransientProperty_CanariPoint ()
+  final let location_property = EBTransientProperty <CanariPoint> ()
 
   //····················································································································
 
@@ -293,7 +293,7 @@ final class PointInSchematic : EBManagedObject,
   //   Transient property: netName
   //····················································································································
 
-  final let netName_property = EBTransientProperty_String ()
+  final let netName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -305,7 +305,7 @@ final class PointInSchematic : EBManagedObject,
   //   Transient property: netClassName
   //····················································································································
 
-  final let netClassName_property = EBTransientProperty_String ()
+  final let netClassName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -317,7 +317,7 @@ final class PointInSchematic : EBManagedObject,
   //   Transient property: hasNet
   //····················································································································
 
-  final let hasNet_property = EBTransientProperty_Bool ()
+  final let hasNet_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -329,7 +329,7 @@ final class PointInSchematic : EBManagedObject,
   //   Transient property: canMove
   //····················································································································
 
-  final let canMove_property = EBTransientProperty_Bool ()
+  final let canMove_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -341,7 +341,7 @@ final class PointInSchematic : EBManagedObject,
   //   Transient property: wireColor
   //····················································································································
 
-  final let wireColor_property = EBTransientProperty_NSColor ()
+  final let wireColor_property = EBTransientProperty <NSColor> ()
 
   //····················································································································
 
@@ -353,7 +353,7 @@ final class PointInSchematic : EBManagedObject,
   //   Transient property: symbolRotation
   //····················································································································
 
-  final let symbolRotation_property = EBTransientProperty_QuadrantRotation ()
+  final let symbolRotation_property = EBTransientProperty <QuadrantRotation> ()
 
   //····················································································································
 
@@ -393,7 +393,7 @@ final class PointInSchematic : EBManagedObject,
   //   Transient property: symbolNameNetName
   //····················································································································
 
-  final let symbolNameNetName_property = EBTransientProperty_TwoStrings ()
+  final let symbolNameNetName_property = EBTransientProperty <TwoStrings> ()
 
   //····················································································································
 
@@ -405,7 +405,7 @@ final class PointInSchematic : EBManagedObject,
   //   Transient property: isConnected
   //····················································································································
 
-  final let isConnected_property = EBTransientProperty_Bool ()
+  final let isConnected_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -417,7 +417,7 @@ final class PointInSchematic : EBManagedObject,
   //   Transient property: status
   //····················································································································
 
-  final let status_property = EBTransientProperty_SchematicPointStatus ()
+  final let status_property = EBTransientProperty <SchematicPointStatus> ()
 
   //····················································································································
 
@@ -429,7 +429,7 @@ final class PointInSchematic : EBManagedObject,
   //   Transient property: connectedPoints
   //····················································································································
 
-  final let connectedPoints_property = EBTransientProperty_CanariPointArray ()
+  final let connectedPoints_property = EBTransientProperty <CanariPointArray> ()
 
   //····················································································································
 
@@ -441,7 +441,7 @@ final class PointInSchematic : EBManagedObject,
   //   Transient property: netInfoForPoint
   //····················································································································
 
-  final let netInfoForPoint_property = EBTransientProperty_NetInfoPoint ()
+  final let netInfoForPoint_property = EBTransientProperty <NetInfoPoint> ()
 
   //····················································································································
 

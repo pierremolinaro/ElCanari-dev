@@ -8,53 +8,7 @@ import AppKit
 //   Property class NSFont
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_NSFont    = EBObservableProperty <NSFont>
-typealias EBTransientProperty_NSFont   = EBTransientProperty <NSFont>
 typealias EBReadWriteProperty_NSFont   = EBObservableMutableProperty <NSFont>
 typealias EBComputedProperty_NSFont    = EBComputedProperty <NSFont>
 typealias EBStoredProperty_NSFont      = EBStoredProperty <NSFont>
-typealias EBPreferencesProperty_NSFont = EBPreferenceProperty <NSFont>
-typealias EBReadWritePropertyController_NSFont = EBGenericReadWritePropertyController <NSFont>
 
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/*final class EBReadWritePropertyController_NSFont : EBObservablePropertyController {
-
-  //····················································································································
-
-  private weak var mObject : EBReadWriteProperty_NSFont?
-
-  //····················································································································
-
-  init (observedObject inObject : EBReadWriteProperty_NSFont, callBack inCallBack : @escaping () -> Void) {
-    self.mObject = inObject
-    super.init (observedObjects : [inObject], callBack : inCallBack)
-  }
-
-  //····················································································································
-
-  func updateModel (withValue inValue : NSFont) {
-    self.mObject?.setProp (inValue)
-  }
-
-  //····················································································································
-
-  var value : NSFont? {
-    if let s = self.mObject?.selection {
-      switch s {
-      case .empty, .multiple :
-        return nil
-      case .single (let v) :
-        return v
-      }
-    }else{
-      return nil
-    }
-  }
-
-  //····················································································································
-
-}*/
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

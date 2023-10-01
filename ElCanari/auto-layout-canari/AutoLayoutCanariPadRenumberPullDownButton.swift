@@ -50,7 +50,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : AutoLayoutBase_NSPopUpBu
 
   //····················································································································
 
-  final func bind_currentNumber (_ model : EBReadOnlyProperty_Int) -> Self {
+  final func bind_currentNumber (_ model : EBObservableProperty <Int>) -> Self {
     self.mCurrentNumberController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (fromPadNumber: model) }
@@ -60,7 +60,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : AutoLayoutBase_NSPopUpBu
 
   //····················································································································
 
-  private func update (fromPadNumber model : EBReadOnlyProperty_Int) {
+  private func update (fromPadNumber model : EBObservableProperty <Int>) {
     switch model.selection {
     case .empty, .multiple :
       self.enable (fromValueBinding: false, self.enabledBindingController)
@@ -127,7 +127,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : AutoLayoutBase_NSPopUpBu
 
   //····················································································································
 
-  final func bind_currentZoneName (_ model : EBReadOnlyProperty_String) -> Self {
+  final func bind_currentZoneName (_ model : EBObservableProperty <String>) -> Self {
     self.mCurrentZoneController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (fromZoneName: model) }
@@ -137,7 +137,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : AutoLayoutBase_NSPopUpBu
 
   //····················································································································
 
-  private func update (fromZoneName model : EBReadOnlyProperty_String) {
+  private func update (fromZoneName model : EBObservableProperty <String>) {
     switch model.selection {
     case .empty, .multiple :
       self.mCurrentZoneName = ""

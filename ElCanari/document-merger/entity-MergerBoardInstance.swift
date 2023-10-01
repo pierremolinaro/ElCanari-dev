@@ -137,7 +137,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //   Transient property: instanceRect
   //····················································································································
 
-  final let instanceRect_property = EBTransientProperty_CanariRect ()
+  final let instanceRect_property = EBTransientProperty <CanariRect> ()
 
   //····················································································································
 
@@ -149,7 +149,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //   Transient property: modelName
   //····················································································································
 
-  final let modelName_property = EBTransientProperty_String ()
+  final let modelName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -161,7 +161,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //   Transient property: boardLimitWidth
   //····················································································································
 
-  final let boardLimitWidth_property = EBTransientProperty_Int ()
+  final let boardLimitWidth_property = EBTransientProperty <Int> ()
 
   //····················································································································
 

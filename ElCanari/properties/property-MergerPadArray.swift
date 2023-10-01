@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property MergerPadArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_MergerPadArray    = EBObservableProperty <MergerPadArray>
-typealias EBTransientProperty_MergerPadArray   = EBTransientProperty <MergerPadArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

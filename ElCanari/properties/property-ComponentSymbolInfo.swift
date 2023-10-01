@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property ComponentSymbolInfo
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_ComponentSymbolInfo    = EBObservableProperty <ComponentSymbolInfo>
-typealias EBTransientProperty_ComponentSymbolInfo   = EBTransientProperty <ComponentSymbolInfo>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

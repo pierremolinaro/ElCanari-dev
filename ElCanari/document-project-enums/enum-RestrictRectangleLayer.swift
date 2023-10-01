@@ -80,11 +80,8 @@ enum RestrictRectangleLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_RestrictRectangleLayer = EBReadOnlyEnumProperty <RestrictRectangleLayer>
-typealias EBTransientProperty_RestrictRectangleLayer = EBTransientEnumProperty <RestrictRectangleLayer>
-typealias EBReadWriteProperty_RestrictRectangleLayer = EBReadWriteEnumProperty <RestrictRectangleLayer>
+typealias EBReadWriteProperty_RestrictRectangleLayer = EBReadWriteEnumProperty <RestrictRectangleLayer> // EBObservableMutableProperty <RestrictRectangleLayer>
 typealias EBStoredProperty_RestrictRectangleLayer = EBStoredEnumProperty <RestrictRectangleLayer>
 typealias EBComputedProperty_RestrictRectangleLayer = EBGenericComputedEnumProperty <RestrictRectangleLayer>
-typealias EBPreferencesProperty_RestrictRectangleLayer = EBStoredEnumProperty <RestrictRectangleLayer>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func bind_underObjectsDisplay (_ model : EBReadOnlyProperty_EBShape) {
+  final func bind_underObjectsDisplay (_ model : EBObservableProperty <EBShape>) {
     self.mUnderObjectsDisplayController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateUnderObjectsDisplay (from: model) }
@@ -28,7 +28,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final private func updateUnderObjectsDisplay (from model : EBReadOnlyProperty_EBShape) {
+  final private func updateUnderObjectsDisplay (from model : EBObservableProperty <EBShape>) {
     switch model.selection {
     case .empty, .multiple :
       self.mUnderObjectsDisplay = EBShape ()

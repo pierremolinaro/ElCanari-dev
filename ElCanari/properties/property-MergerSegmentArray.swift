@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property MergerSegmentArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_MergerSegmentArray    = EBObservableProperty <MergerSegmentArray>
-typealias EBTransientProperty_MergerSegmentArray   = EBTransientProperty <MergerSegmentArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

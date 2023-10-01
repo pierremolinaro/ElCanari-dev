@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func bind_arrowKeyMagnitude (_ model : EBReadOnlyProperty_Int) {
+  final func bind_arrowKeyMagnitude (_ model : EBObservableProperty <Int>) {
     self.mArrowKeyMagnitudeController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateArrowKeyMagnitude (from: model) }
@@ -28,7 +28,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final private func updateArrowKeyMagnitude (from model : EBReadOnlyProperty_Int) {
+  final private func updateArrowKeyMagnitude (from model : EBObservableProperty <Int>) {
     switch model.selection {
     case .empty :
       break

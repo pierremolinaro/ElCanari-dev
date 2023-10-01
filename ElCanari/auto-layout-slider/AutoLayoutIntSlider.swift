@@ -57,7 +57,7 @@ final class AutoLayoutIntSlider : AutoLayoutBase_NSSlider {
   //  $value binding
   //····················································································································
 
-  fileprivate func update (from object : EBReadOnlyProperty_Int) {
+  fileprivate func update (from object : EBObservableProperty <Int>) {
     switch object.selection {
     case .empty, .multiple :
       self.stringValue = "-"
@@ -70,12 +70,12 @@ final class AutoLayoutIntSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
-  private var mValueController : EBReadWritePropertyController_Int? = nil
+  private var mValueController : EBGenericReadWritePropertyController <Int>? = nil
 
   //····················································································································
 
   final func bind_value (_ object : EBReadWriteProperty_Int) -> Self {
-    self.mValueController = EBReadWritePropertyController_Int (
+    self.mValueController = EBGenericReadWritePropertyController <Int> (
       observedObject: object,
       callBack: { [weak self] in self?.update (from: object) }
     )

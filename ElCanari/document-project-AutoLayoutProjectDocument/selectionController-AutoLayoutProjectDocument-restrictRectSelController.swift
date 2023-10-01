@@ -110,19 +110,19 @@ import AppKit
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  final let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  final let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: signatureForERCChecking
   //····················································································································
 
-  final let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+  final let signatureForERCChecking_property = EBTransientProperty <UInt32> ()
 
   //····················································································································
   //   Selected array (not observable)

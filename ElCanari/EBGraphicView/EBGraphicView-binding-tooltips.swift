@@ -18,7 +18,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func bind_tooltips (_ inModel : EBReadOnlyProperty_GraphicViewTooltipArray) {
+  final func bind_tooltips (_ inModel : EBObservableProperty <GraphicViewTooltipArray>) {
     self.mTooltipsController = EBObservablePropertyController (
       observedObjects: [inModel],
       callBack: { [weak self] in self?.updateTooltips (from: inModel) }
@@ -27,7 +27,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final private func updateTooltips (from inModel : EBReadOnlyProperty_GraphicViewTooltipArray) {
+  final private func updateTooltips (from inModel : EBObservableProperty <GraphicViewTooltipArray>) {
     self.removeAllToolTips ()
     switch inModel.selection {
     case .empty, .multiple :

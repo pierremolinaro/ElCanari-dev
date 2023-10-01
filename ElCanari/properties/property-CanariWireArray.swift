@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property CanariWireArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_CanariWireArray    = EBObservableProperty <CanariWireArray>
-typealias EBTransientProperty_CanariWireArray   = EBTransientProperty <CanariWireArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property UnconnectedSymbolPinsInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_UnconnectedSymbolPinsInDevice    = EBObservableProperty <UnconnectedSymbolPinsInDevice>
-typealias EBTransientProperty_UnconnectedSymbolPinsInDevice   = EBTransientProperty <UnconnectedSymbolPinsInDevice>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

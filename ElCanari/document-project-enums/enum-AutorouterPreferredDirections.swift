@@ -87,11 +87,8 @@ enum AutorouterPreferredDirections : Int, EnumPropertyProtocol, Hashable, CaseIt
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_AutorouterPreferredDirections = EBReadOnlyEnumProperty <AutorouterPreferredDirections>
-typealias EBTransientProperty_AutorouterPreferredDirections = EBTransientEnumProperty <AutorouterPreferredDirections>
-typealias EBReadWriteProperty_AutorouterPreferredDirections = EBReadWriteEnumProperty <AutorouterPreferredDirections>
+typealias EBReadWriteProperty_AutorouterPreferredDirections = EBReadWriteEnumProperty <AutorouterPreferredDirections> // EBObservableMutableProperty <AutorouterPreferredDirections>
 typealias EBStoredProperty_AutorouterPreferredDirections = EBStoredEnumProperty <AutorouterPreferredDirections>
 typealias EBComputedProperty_AutorouterPreferredDirections = EBGenericComputedEnumProperty <AutorouterPreferredDirections>
-typealias EBPreferencesProperty_AutorouterPreferredDirections = EBStoredEnumProperty <AutorouterPreferredDirections>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

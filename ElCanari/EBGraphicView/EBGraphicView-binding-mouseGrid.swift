@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func bind_mouseGrid (_ model : EBReadOnlyProperty_Int) {
+  final func bind_mouseGrid (_ model : EBObservableProperty <Int>) {
     self.mMouseGridController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateMouseGrid (from: model) }
@@ -28,7 +28,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final private func updateMouseGrid (from model : EBReadOnlyProperty_Int) {
+  final private func updateMouseGrid (from model : EBObservableProperty <Int>) {
     switch model.selection {
     case .empty, .multiple :
       self.set (mouseGridInCanariUnit: 1)

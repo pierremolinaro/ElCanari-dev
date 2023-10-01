@@ -74,7 +74,7 @@ final class DevicePackageInProject : EBManagedObject,
   //   Transient property: packagePadDictionary
   //····················································································································
 
-  final let packagePadDictionary_property = EBTransientProperty_PackageMasterPadDictionary ()
+  final let packagePadDictionary_property = EBTransientProperty <PackageMasterPadDictionary> ()
 
   //····················································································································
 

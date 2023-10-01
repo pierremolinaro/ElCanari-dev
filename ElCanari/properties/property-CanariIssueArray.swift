@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property CanariIssueArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_CanariIssueArray    = EBObservableProperty <CanariIssueArray>
-typealias EBTransientProperty_CanariIssueArray   = EBTransientProperty <CanariIssueArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

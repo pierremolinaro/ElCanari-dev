@@ -298,7 +298,7 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  final func bind_angle (_ inObject : EBReadOnlyProperty_Int) -> Self {
+  final func bind_angle (_ inObject : EBObservableProperty <Int>) -> Self {
     self.mAngleController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateAngle (inObject) }
@@ -308,7 +308,7 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  fileprivate func updateAngle (_ inObject : EBReadOnlyProperty_Int) {
+  fileprivate func updateAngle (_ inObject : EBObservableProperty <Int>) {
     switch inObject.selection {
     case .empty, .multiple :
       self.mDirectionInDegrees = 0.0
@@ -321,12 +321,12 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
   //   MANUAL LOCK FOR P1 CONTROLLER
   //····················································································································
 
-  private var mManualLockP1Controller : EBReadWritePropertyController_Bool? = nil
+  private var mManualLockP1Controller : EBGenericReadWritePropertyController <Bool>? = nil
 
   //····················································································································
 
   final func bind_manualLockP1 (_ inObject : EBReadWriteProperty_Bool) -> Self {
-    self.mManualLockP1Controller = EBReadWritePropertyController_Bool (
+    self.mManualLockP1Controller = EBGenericReadWritePropertyController <Bool> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateLockP1 (inObject) }
     )
@@ -348,12 +348,12 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
   //   MANUAL LOCK FOR P2 CONTROLLER
   //····················································································································
 
-  private var mManualLockP2Controller : EBReadWritePropertyController_Bool? = nil
+  private var mManualLockP2Controller : EBGenericReadWritePropertyController <Bool>? = nil
 
   //····················································································································
 
   final func bind_manualLockP2 (_ inObject : EBReadWriteProperty_Bool) -> Self {
-    self.mManualLockP2Controller = EBReadWritePropertyController_Bool (
+    self.mManualLockP2Controller = EBGenericReadWritePropertyController <Bool> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateLockP2 (inObject) }
     )
@@ -379,7 +379,7 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  final func bind_p1ConnectedToSomePad (_ inObject : EBReadOnlyProperty_Bool) -> Self {
+  final func bind_p1ConnectedToSomePad (_ inObject : EBObservableProperty <Bool>) -> Self {
     self.mP1ConnectedToPadController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateP1ConnectedToSomePad (inObject) }
@@ -389,7 +389,7 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  fileprivate func updateP1ConnectedToSomePad (_ inObject : EBReadOnlyProperty_Bool) {
+  fileprivate func updateP1ConnectedToSomePad (_ inObject : EBObservableProperty <Bool>) {
     switch inObject.selection {
     case .empty, .multiple :
       self.mSomePadConnectedToP1 = false
@@ -406,7 +406,7 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  final func bind_p2ConnectedToSomePad (_ inObject : EBReadOnlyProperty_Bool) -> Self {
+  final func bind_p2ConnectedToSomePad (_ inObject : EBObservableProperty <Bool>) -> Self {
     self.mP2ConnectedToPadController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateP2ConnectedToSomePad (inObject) }
@@ -416,7 +416,7 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  fileprivate func updateP2ConnectedToSomePad (_ inObject : EBReadOnlyProperty_Bool) {
+  fileprivate func updateP2ConnectedToSomePad (_ inObject : EBObservableProperty <Bool>) {
     switch inObject.selection {
     case .empty, .multiple :
       self.mSomePadConnectedToP2 = false

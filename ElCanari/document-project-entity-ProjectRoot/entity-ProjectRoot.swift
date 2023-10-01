@@ -1300,7 +1300,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: hasInnerElements
   //····················································································································
 
-  final let hasInnerElements_property = EBTransientProperty_Bool ()
+  final let hasInnerElements_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -1312,7 +1312,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: layerConfigurationString
   //····················································································································
 
-  final let layerConfigurationString_property = EBTransientProperty_String ()
+  final let layerConfigurationString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1324,7 +1324,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: boardGridStepMultipliedByDisplayFactor
   //····················································································································
 
-  final let boardGridStepMultipliedByDisplayFactor_property = EBTransientProperty_Int ()
+  final let boardGridStepMultipliedByDisplayFactor_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -1336,7 +1336,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: boardLimitsGridStepMultipliedByDisplayFactor
   //····················································································································
 
-  final let boardLimitsGridStepMultipliedByDisplayFactor_property = EBTransientProperty_Int ()
+  final let boardLimitsGridStepMultipliedByDisplayFactor_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -1348,7 +1348,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: boardShapeIsRectangular
   //····················································································································
 
-  final let boardShapeIsRectangular_property = EBTransientProperty_Bool ()
+  final let boardShapeIsRectangular_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -1388,7 +1388,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: selectedSheetIssues
   //····················································································································
 
-  final let selectedSheetIssues_property = EBTransientProperty_CanariIssueArray ()
+  final let selectedSheetIssues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
 
@@ -1400,7 +1400,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: schematicOverDisplay
   //····················································································································
 
-  final let schematicOverDisplay_property = EBTransientProperty_EBShape ()
+  final let schematicOverDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 
@@ -1412,7 +1412,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: schematicTooltips
   //····················································································································
 
-  final let schematicTooltips_property = EBTransientProperty_GraphicViewTooltipArray ()
+  final let schematicTooltips_property = EBTransientProperty <GraphicViewTooltipArray> ()
 
   //····················································································································
 
@@ -1424,7 +1424,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: segmentedControlSheetIssueImage
   //····················································································································
 
-  final let segmentedControlSheetIssueImage_property = EBTransientProperty_NSImage ()
+  final let segmentedControlSheetIssueImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -1436,7 +1436,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: schematicErrorCount
   //····················································································································
 
-  final let schematicErrorCount_property = EBTransientProperty_Int ()
+  final let schematicErrorCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -1448,7 +1448,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: sheetIndexes
   //····················································································································
 
-  final let sheetIndexes_property = EBTransientProperty_IntArray ()
+  final let sheetIndexes_property = EBTransientProperty <IntArray> ()
 
   //····················································································································
 
@@ -1460,7 +1460,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: netsDescription
   //····················································································································
 
-  final let netsDescription_property = EBTransientProperty_NetInfoArray ()
+  final let netsDescription_property = EBTransientProperty <NetInfoArray> ()
 
   //····················································································································
 
@@ -1472,7 +1472,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: boardIssues
   //····················································································································
 
-  final let boardIssues_property = EBTransientProperty_CanariIssueArray ()
+  final let boardIssues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
 
@@ -1484,7 +1484,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: hasSixLayers
   //····················································································································
 
-  final let hasSixLayers_property = EBTransientProperty_Bool ()
+  final let hasSixLayers_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -1496,7 +1496,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: signatureForERCChecking
   //····················································································································
 
-  final let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+  final let signatureForERCChecking_property = EBTransientProperty <UInt32> ()
 
   //····················································································································
 
@@ -1508,7 +1508,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: ercStatusImage
   //····················································································································
 
-  final let ercStatusImage_property = EBTransientProperty_NSImage ()
+  final let ercStatusImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -1520,7 +1520,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: ercStatusImageOrNoneOnSuccess
   //····················································································································
 
-  final let ercStatusImageOrNoneOnSuccess_property = EBTransientProperty_NSImage ()
+  final let ercStatusImageOrNoneOnSuccess_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -1532,7 +1532,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: ercStatusMessage
   //····················································································································
 
-  final let ercStatusMessage_property = EBTransientProperty_String ()
+  final let ercStatusMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1544,7 +1544,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: viaCountString
   //····················································································································
 
-  final let viaCountString_property = EBTransientProperty_String ()
+  final let viaCountString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1556,7 +1556,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: topSideTrackCountString
   //····················································································································
 
-  final let topSideTrackCountString_property = EBTransientProperty_String ()
+  final let topSideTrackCountString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1568,7 +1568,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: backSideTrackCountString
   //····················································································································
 
-  final let backSideTrackCountString_property = EBTransientProperty_String ()
+  final let backSideTrackCountString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1580,7 +1580,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: inner1LayerTrackCountString
   //····················································································································
 
-  final let inner1LayerTrackCountString_property = EBTransientProperty_String ()
+  final let inner1LayerTrackCountString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1592,7 +1592,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: inner2LayerTrackCountString
   //····················································································································
 
-  final let inner2LayerTrackCountString_property = EBTransientProperty_String ()
+  final let inner2LayerTrackCountString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1604,7 +1604,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: inner3LayerTrackCountString
   //····················································································································
 
-  final let inner3LayerTrackCountString_property = EBTransientProperty_String ()
+  final let inner3LayerTrackCountString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1616,7 +1616,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: inner4LayerTrackCountString
   //····················································································································
 
-  final let inner4LayerTrackCountString_property = EBTransientProperty_String ()
+  final let inner4LayerTrackCountString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1628,7 +1628,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: trackCountString
   //····················································································································
 
-  final let trackCountString_property = EBTransientProperty_String ()
+  final let trackCountString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1640,7 +1640,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: trackLengthString
   //····················································································································
 
-  final let trackLengthString_property = EBTransientProperty_String ()
+  final let trackLengthString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1652,7 +1652,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: boardStatusErrorCount
   //····················································································································
 
-  final let boardStatusErrorCount_property = EBTransientProperty_Int ()
+  final let boardStatusErrorCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -1664,7 +1664,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: interiorBoundBox
   //····················································································································
 
-  final let interiorBoundBox_property = EBTransientProperty_CanariRect ()
+  final let interiorBoundBox_property = EBTransientProperty <CanariRect> ()
 
   //····················································································································
 
@@ -1676,7 +1676,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: boardBoundBox
   //····················································································································
 
-  final let boardBoundBox_property = EBTransientProperty_CanariRect ()
+  final let boardBoundBox_property = EBTransientProperty <CanariRect> ()
 
   //····················································································································
 
@@ -1688,7 +1688,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: boardInteriorTop
   //····················································································································
 
-  final let boardInteriorTop_property = EBTransientProperty_String ()
+  final let boardInteriorTop_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1700,7 +1700,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: boardInteriorBottom
   //····················································································································
 
-  final let boardInteriorBottom_property = EBTransientProperty_String ()
+  final let boardInteriorBottom_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1712,7 +1712,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: boardInteriorLeft
   //····················································································································
 
-  final let boardInteriorLeft_property = EBTransientProperty_String ()
+  final let boardInteriorLeft_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1724,7 +1724,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: boardInteriorRight
   //····················································································································
 
-  final let boardInteriorRight_property = EBTransientProperty_String ()
+  final let boardInteriorRight_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1736,7 +1736,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: boardLimitBorderTop
   //····················································································································
 
-  final let boardLimitBorderTop_property = EBTransientProperty_String ()
+  final let boardLimitBorderTop_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1748,7 +1748,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: boardLimitBorderBottom
   //····················································································································
 
-  final let boardLimitBorderBottom_property = EBTransientProperty_String ()
+  final let boardLimitBorderBottom_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1760,7 +1760,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: boardLimitBorderLeft
   //····················································································································
 
-  final let boardLimitBorderLeft_property = EBTransientProperty_String ()
+  final let boardLimitBorderLeft_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1772,7 +1772,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: boardLimitBorderRight
   //····················································································································
 
-  final let boardLimitBorderRight_property = EBTransientProperty_String ()
+  final let boardLimitBorderRight_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1784,7 +1784,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: borderElementCountString
   //····················································································································
 
-  final let borderElementCountString_property = EBTransientProperty_String ()
+  final let borderElementCountString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1796,7 +1796,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: borderOutlineBackground
   //····················································································································
 
-  final let borderOutlineBackground_property = EBTransientProperty_EBShape ()
+  final let borderOutlineBackground_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 
@@ -1808,7 +1808,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: borderViewBackground
   //····················································································································
 
-  final let borderViewBackground_property = EBTransientProperty_EBShape ()
+  final let borderViewBackground_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 
@@ -1820,7 +1820,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: fontNameArray
   //····················································································································
 
-  final let fontNameArray_property = EBTransientProperty_StringArray ()
+  final let fontNameArray_property = EBTransientProperty <StringArray> ()
 
   //····················································································································
 
@@ -1832,7 +1832,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: deviceNames
   //····················································································································
 
-  final let deviceNames_property = EBTransientProperty_StringArray ()
+  final let deviceNames_property = EBTransientProperty <StringArray> ()
 
   //····················································································································
 
@@ -1844,7 +1844,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: allClassNames
   //····················································································································
 
-  final let allClassNames_property = EBTransientProperty_StringArray ()
+  final let allClassNames_property = EBTransientProperty <StringArray> ()
 
   //····················································································································
 
@@ -1856,7 +1856,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: sheetGeometry
   //····················································································································
 
-  final let sheetGeometry_property = EBTransientProperty_SchematicSheetGeometry ()
+  final let sheetGeometry_property = EBTransientProperty <SchematicSheetGeometry> ()
 
   //····················································································································
 
@@ -1868,7 +1868,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: schematicBackgroundDisplay
   //····················································································································
 
-  final let schematicBackgroundDisplay_property = EBTransientProperty_EBShape ()
+  final let schematicBackgroundDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 
@@ -1880,7 +1880,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: netWarningCount
   //····················································································································
 
-  final let netWarningCount_property = EBTransientProperty_Int ()
+  final let netWarningCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -1892,7 +1892,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: segmentedControlNetListIssueImage
   //····················································································································
 
-  final let segmentedControlNetListIssueImage_property = EBTransientProperty_NSImage ()
+  final let segmentedControlNetListIssueImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -1904,7 +1904,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: netNamesArray
   //····················································································································
 
-  final let netNamesArray_property = EBTransientProperty_StringArray ()
+  final let netNamesArray_property = EBTransientProperty <StringArray> ()
 
   //····················································································································
 
@@ -1916,7 +1916,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: unplacedSymbols
   //····················································································································
 
-  final let unplacedSymbols_property = EBTransientProperty_StringTagArray ()
+  final let unplacedSymbols_property = EBTransientProperty <StringTagArray> ()
 
   //····················································································································
 
@@ -1928,7 +1928,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: unplacedPackages
   //····················································································································
 
-  final let unplacedPackages_property = EBTransientProperty_StringTagArray ()
+  final let unplacedPackages_property = EBTransientProperty <StringTagArray> ()
 
   //····················································································································
 
@@ -1940,7 +1940,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: componentsPlacedInBoard
   //····················································································································
 
-  final let componentsPlacedInBoard_property = EBTransientProperty_StringTagArray ()
+  final let componentsPlacedInBoard_property = EBTransientProperty <StringTagArray> ()
 
   //····················································································································
 
@@ -1952,7 +1952,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: boardStatusMessage
   //····················································································································
 
-  final let boardStatusMessage_property = EBTransientProperty_String ()
+  final let boardStatusMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1964,7 +1964,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: boardStatusWarningCount
   //····················································································································
 
-  final let boardStatusWarningCount_property = EBTransientProperty_Int ()
+  final let boardStatusWarningCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -1976,7 +1976,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: placedComponentNameArray
   //····················································································································
 
-  final let placedComponentNameArray_property = EBTransientProperty_StringArray ()
+  final let placedComponentNameArray_property = EBTransientProperty <StringArray> ()
 
   //····················································································································
 
@@ -1988,7 +1988,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: schematicHasErrorOrWarning
   //····················································································································
 
-  final let schematicHasErrorOrWarning_property = EBTransientProperty_Bool ()
+  final let schematicHasErrorOrWarning_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -2000,7 +2000,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: schematicStatusMessage
   //····················································································································
 
-  final let schematicStatusMessage_property = EBTransientProperty_String ()
+  final let schematicStatusMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -2012,7 +2012,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: segmentedControlSchematicIssueImage
   //····················································································································
 
-  final let segmentedControlSchematicIssueImage_property = EBTransientProperty_NSImage ()
+  final let segmentedControlSchematicIssueImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -2024,7 +2024,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: schematicWarningCount
   //····················································································································
 
-  final let schematicWarningCount_property = EBTransientProperty_Int ()
+  final let schematicWarningCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -2036,7 +2036,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: hasSchematicIssue
   //····················································································································
 
-  final let hasSchematicIssue_property = EBTransientProperty_Bool ()
+  final let hasSchematicIssue_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -2048,7 +2048,7 @@ final class ProjectRoot : EBManagedObject {
   //   Transient property: segmentedControlBoardIssueImage
   //····················································································································
 
-  final let segmentedControlBoardIssueImage_property = EBTransientProperty_NSImage ()
+  final let segmentedControlBoardIssueImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 

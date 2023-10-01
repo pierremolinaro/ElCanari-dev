@@ -88,11 +88,8 @@ enum SchematicSheetOrientation : Int, EnumPropertyProtocol, Hashable, CaseIterab
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_SchematicSheetOrientation = EBReadOnlyEnumProperty <SchematicSheetOrientation>
-typealias EBTransientProperty_SchematicSheetOrientation = EBTransientEnumProperty <SchematicSheetOrientation>
-typealias EBReadWriteProperty_SchematicSheetOrientation = EBReadWriteEnumProperty <SchematicSheetOrientation>
+typealias EBReadWriteProperty_SchematicSheetOrientation = EBReadWriteEnumProperty <SchematicSheetOrientation> // EBObservableMutableProperty <SchematicSheetOrientation>
 typealias EBStoredProperty_SchematicSheetOrientation = EBStoredEnumProperty <SchematicSheetOrientation>
 typealias EBComputedProperty_SchematicSheetOrientation = EBGenericComputedEnumProperty <SchematicSheetOrientation>
-typealias EBPreferencesProperty_SchematicSheetOrientation = EBStoredEnumProperty <SchematicSheetOrientation>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

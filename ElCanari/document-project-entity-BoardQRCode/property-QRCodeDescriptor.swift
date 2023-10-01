@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property QRCodeDescriptor
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_QRCodeDescriptor    = EBObservableProperty <QRCodeDescriptor>
-typealias EBTransientProperty_QRCodeDescriptor   = EBTransientProperty <QRCodeDescriptor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

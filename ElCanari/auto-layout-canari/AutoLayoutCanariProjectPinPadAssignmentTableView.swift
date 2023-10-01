@@ -91,7 +91,7 @@ final class AutoLayoutCanariProjectPinPadAssignmentTableView : AutoLayoutTableVi
 
   private var mArrayController : EBObservablePropertyController? = nil
 
-  final func bind_array (_ model : EBReadOnlyProperty_ThreeStringArray) -> Self {
+  final func bind_array (_ model : EBObservableProperty <ThreeStringArray>) -> Self {
     self.mArrayController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
@@ -108,7 +108,7 @@ final class AutoLayoutCanariProjectPinPadAssignmentTableView : AutoLayoutTableVi
 
   //····················································································································
 
-  func update (from model : EBReadOnlyProperty_ThreeStringArray) {
+  func update (from model : EBObservableProperty <ThreeStringArray>) {
     switch model.selection {
     case .empty, .multiple :
       self.setModel ([])

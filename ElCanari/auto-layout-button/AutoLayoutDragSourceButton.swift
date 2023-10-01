@@ -101,7 +101,7 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
   //  image binding
   //····················································································································
 
-  fileprivate func updateValue (from inObject : EBReadOnlyProperty_NSImage) {
+  fileprivate func updateValue (from inObject : EBObservableProperty <NSImage>) {
     switch inObject.selection {
     case .empty :
       self.image = nil
@@ -121,7 +121,7 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
 
   //····················································································································
 
-  final func bind_image (_ inObject : EBReadOnlyProperty_NSImage) -> Self {
+  final func bind_image (_ inObject : EBObservableProperty <NSImage>) -> Self {
     self.mImageController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateValue (from: inObject) }

@@ -69,7 +69,7 @@ final class AutoLayoutPullDownButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 
-  final func bind_items (_ inObject : EBReadOnlyProperty_StringArray) -> Self {
+  final func bind_items (_ inObject : EBObservableProperty <StringArray>) -> Self {
     self.mItemsController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.update (from: inObject) }
@@ -79,7 +79,7 @@ final class AutoLayoutPullDownButton : AutoLayoutBase_NSPopUpButton {
 
   //····················································································································
 
-  private func update (from model : EBReadOnlyProperty_StringArray) {
+  private func update (from model : EBObservableProperty <StringArray>) {
     switch model.selection {
     case .empty, .multiple :
       self.enable (fromValueBinding: false, self.enabledBindingController)

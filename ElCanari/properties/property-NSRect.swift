@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property NSRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_NSRect    = EBObservableProperty <NSRect>
-typealias EBTransientProperty_NSRect   = EBTransientProperty <NSRect>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

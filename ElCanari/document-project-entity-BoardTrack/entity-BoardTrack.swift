@@ -465,7 +465,7 @@ final class BoardTrack : BoardObject,
   //   Transient property: actualTrackWidth
   //····················································································································
 
-  final let actualTrackWidth_property = EBTransientProperty_Int ()
+  final let actualTrackWidth_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -477,7 +477,7 @@ final class BoardTrack : BoardObject,
   //   Transient property: netName
   //····················································································································
 
-  final let netName_property = EBTransientProperty_String ()
+  final let netName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -489,7 +489,7 @@ final class BoardTrack : BoardObject,
   //   Transient property: netClassName
   //····················································································································
 
-  final let netClassName_property = EBTransientProperty_String ()
+  final let netClassName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -501,7 +501,7 @@ final class BoardTrack : BoardObject,
   //   Transient property: netClassTrackWidth
   //····················································································································
 
-  final let netClassTrackWidth_property = EBTransientProperty_Int ()
+  final let netClassTrackWidth_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -513,7 +513,7 @@ final class BoardTrack : BoardObject,
   //   Transient property: netClassViaHoleDiameter
   //····················································································································
 
-  final let netClassViaHoleDiameter_property = EBTransientProperty_Int ()
+  final let netClassViaHoleDiameter_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -525,7 +525,7 @@ final class BoardTrack : BoardObject,
   //   Transient property: netClassViaPadDiameter
   //····················································································································
 
-  final let netClassViaPadDiameter_property = EBTransientProperty_Int ()
+  final let netClassViaPadDiameter_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -537,7 +537,7 @@ final class BoardTrack : BoardObject,
   //   Transient property: p1ConnectedToSomePad
   //····················································································································
 
-  final let p1ConnectedToSomePad_property = EBTransientProperty_Bool ()
+  final let p1ConnectedToSomePad_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -549,7 +549,7 @@ final class BoardTrack : BoardObject,
   //   Transient property: p2ConnectedToSomePad
   //····················································································································
 
-  final let p2ConnectedToSomePad_property = EBTransientProperty_Bool ()
+  final let p2ConnectedToSomePad_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -591,7 +591,7 @@ final class BoardTrack : BoardObject,
   //   Transient property: p1CanMove
   //····················································································································
 
-  final let p1CanMove_property = EBTransientProperty_Bool ()
+  final let p1CanMove_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -603,7 +603,7 @@ final class BoardTrack : BoardObject,
   //   Transient property: p2CanMove
   //····················································································································
 
-  final let p2CanMove_property = EBTransientProperty_Bool ()
+  final let p2CanMove_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -615,7 +615,7 @@ final class BoardTrack : BoardObject,
   //   Transient property: trackCanRotate
   //····················································································································
 
-  final let trackCanRotate_property = EBTransientProperty_Bool ()
+  final let trackCanRotate_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 

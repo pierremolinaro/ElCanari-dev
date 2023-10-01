@@ -69,7 +69,7 @@ final class AutoLayoutCanariUnconnectedSymbolPadsInDeviceTableView : AutoLayoutV
 
   //····················································································································
 
-  final func bind_unconnectedPads (_ model : EBReadOnlyProperty_StringArray) -> Self {
+  final func bind_unconnectedPads (_ model : EBObservableProperty <StringArray>) -> Self {
     self.mController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateUnconnectedPadList (from: model) }
@@ -79,7 +79,7 @@ final class AutoLayoutCanariUnconnectedSymbolPadsInDeviceTableView : AutoLayoutV
 
   //····················································································································
 
-  func updateUnconnectedPadList (from inModel : EBReadOnlyProperty_StringArray) {
+  func updateUnconnectedPadList (from inModel : EBObservableProperty <StringArray>) {
     switch inModel.selection {
     case .empty, .multiple :
       self.mDataSource = []

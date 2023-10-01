@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property AssignedPadProxiesInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_AssignedPadProxiesInDevice    = EBObservableProperty <AssignedPadProxiesInDevice>
-typealias EBTransientProperty_AssignedPadProxiesInDevice   = EBTransientProperty <AssignedPadProxiesInDevice>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

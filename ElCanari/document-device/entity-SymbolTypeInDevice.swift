@@ -167,7 +167,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //   Transient property: versionString
   //····················································································································
 
-  final let versionString_property = EBTransientProperty_String ()
+  final let versionString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -179,7 +179,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //   Transient property: instanceCount
   //····················································································································
 
-  final let instanceCount_property = EBTransientProperty_Int ()
+  final let instanceCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -191,7 +191,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //   Transient property: documentSize
   //····················································································································
 
-  final let documentSize_property = EBTransientProperty_Int ()
+  final let documentSize_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -203,7 +203,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //   Transient property: pinNameShape
   //····················································································································
 
-  final let pinNameShape_property = EBTransientProperty_EBShape ()
+  final let pinNameShape_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 

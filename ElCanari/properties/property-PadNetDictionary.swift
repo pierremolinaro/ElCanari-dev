@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property PadNetDictionary
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_PadNetDictionary    = EBObservableProperty <PadNetDictionary>
-typealias EBTransientProperty_PadNetDictionary   = EBTransientProperty <PadNetDictionary>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

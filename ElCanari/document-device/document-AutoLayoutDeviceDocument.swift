@@ -54,7 +54,7 @@ import AppKit
   //   Transient property: documentFileName
   //····················································································································
 
-  final let documentFileName_property = EBTransientProperty_String ()
+  final let documentFileName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -66,7 +66,7 @@ import AppKit
   //   Transient property: hasUnconnectedPin
   //····················································································································
 
-  final let hasUnconnectedPin_property = EBTransientProperty_Bool ()
+  final let hasUnconnectedPin_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -78,7 +78,7 @@ import AppKit
   //   Transient property: assignmentInhibitionMessage
   //····················································································································
 
-  final let assignmentInhibitionMessage_property = EBTransientProperty_String ()
+  final let assignmentInhibitionMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -90,7 +90,7 @@ import AppKit
   //   Transient property: hasUnconnectedPad
   //····················································································································
 
-  final let hasUnconnectedPad_property = EBTransientProperty_Bool ()
+  final let hasUnconnectedPad_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -102,7 +102,7 @@ import AppKit
   //   Transient property: hasAssignedPadProxies
   //····················································································································
 
-  final let hasAssignedPadProxies_property = EBTransientProperty_Bool ()
+  final let hasAssignedPadProxies_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -114,7 +114,7 @@ import AppKit
   //   Transient property: issues
   //····················································································································
 
-  final let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
 
@@ -126,7 +126,7 @@ import AppKit
   //   Transient property: statusWarningCount
   //····················································································································
 
-  final let statusWarningCount_property = EBTransientProperty_Int ()
+  final let statusWarningCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -138,7 +138,7 @@ import AppKit
   //   Transient property: statusErrorCount
   //····················································································································
 
-  final let statusErrorCount_property = EBTransientProperty_Int ()
+  final let statusErrorCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -150,7 +150,7 @@ import AppKit
   //   Transient property: statusMessage
   //····················································································································
 
-  final let statusMessage_property = EBTransientProperty_String ()
+  final let statusMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -162,7 +162,7 @@ import AppKit
   //   Transient property: metadataStatus
   //····················································································································
 
-  final let metadataStatus_property = EBTransientProperty_MetadataStatus ()
+  final let metadataStatus_property = EBTransientProperty <MetadataStatus> ()
 
   //····················································································································
 

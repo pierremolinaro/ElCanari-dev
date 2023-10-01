@@ -88,11 +88,8 @@ enum BoardImageDisplay : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_BoardImageDisplay = EBReadOnlyEnumProperty <BoardImageDisplay>
-typealias EBTransientProperty_BoardImageDisplay = EBTransientEnumProperty <BoardImageDisplay>
-typealias EBReadWriteProperty_BoardImageDisplay = EBReadWriteEnumProperty <BoardImageDisplay>
+typealias EBReadWriteProperty_BoardImageDisplay = EBReadWriteEnumProperty <BoardImageDisplay> // EBObservableMutableProperty <BoardImageDisplay>
 typealias EBStoredProperty_BoardImageDisplay = EBStoredEnumProperty <BoardImageDisplay>
 typealias EBComputedProperty_BoardImageDisplay = EBGenericComputedEnumProperty <BoardImageDisplay>
-typealias EBPreferencesProperty_BoardImageDisplay = EBStoredEnumProperty <BoardImageDisplay>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

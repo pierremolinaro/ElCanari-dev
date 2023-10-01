@@ -76,7 +76,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //   Transient property: pinPadAssignment
   //····················································································································
 
-  final let pinPadAssignment_property = EBTransientProperty_ThreeStrings ()
+  final let pinPadAssignment_property = EBTransientProperty <ThreeStrings> ()
 
   //····················································································································
 
@@ -88,7 +88,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //   Transient property: descriptor
   //····················································································································
 
-  final let descriptor_property = EBTransientProperty_PinPadAssignmentInProject ()
+  final let descriptor_property = EBTransientProperty <PinPadAssignmentInProject> ()
 
   //····················································································································
 

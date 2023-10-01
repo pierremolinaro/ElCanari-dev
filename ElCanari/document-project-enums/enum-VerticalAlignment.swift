@@ -89,11 +89,8 @@ enum VerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_VerticalAlignment = EBReadOnlyEnumProperty <VerticalAlignment>
-typealias EBTransientProperty_VerticalAlignment = EBTransientEnumProperty <VerticalAlignment>
-typealias EBReadWriteProperty_VerticalAlignment = EBReadWriteEnumProperty <VerticalAlignment>
+typealias EBReadWriteProperty_VerticalAlignment = EBReadWriteEnumProperty <VerticalAlignment> // EBObservableMutableProperty <VerticalAlignment>
 typealias EBStoredProperty_VerticalAlignment = EBStoredEnumProperty <VerticalAlignment>
 typealias EBComputedProperty_VerticalAlignment = EBGenericComputedEnumProperty <VerticalAlignment>
-typealias EBPreferencesProperty_VerticalAlignment = EBStoredEnumProperty <VerticalAlignment>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

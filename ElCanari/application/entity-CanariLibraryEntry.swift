@@ -101,7 +101,7 @@ final class CanariLibraryEntry : EBManagedObject,
   //   Transient property: mStatusImage
   //····················································································································
 
-  final let mStatusImage_property = EBTransientProperty_NSImage ()
+  final let mStatusImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 

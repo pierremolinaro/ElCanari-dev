@@ -67,7 +67,7 @@ final class AutoLayoutTextField : AutoLayoutBase_NSTextField {
   //  value binding
   //····················································································································
 
-  fileprivate func updateOutlet (_ inModel : EBReadOnlyProperty_String) {
+  fileprivate func updateOutlet (_ inModel : EBObservableProperty <String>) {
     switch inModel.selection {
     case .empty :
       self.placeholderString = "No Selection"
@@ -87,13 +87,13 @@ final class AutoLayoutTextField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  private var mValueController : EBReadWritePropertyController_String? = nil
+  private var mValueController : EBGenericReadWritePropertyController <String>? = nil
 
   //····················································································································
 
   final func bind_value (_ inModel : EBReadWriteProperty_String, sendContinously inContinuous : Bool) -> Self {
     self.isContinuous = inContinuous
-    self.mValueController = EBReadWritePropertyController_String (
+    self.mValueController = EBGenericReadWritePropertyController <String> (
       observedObject: inModel,
       callBack: { [weak self] in self?.updateOutlet (inModel) }
     )

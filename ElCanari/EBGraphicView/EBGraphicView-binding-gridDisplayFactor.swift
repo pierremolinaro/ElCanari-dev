@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func bind_gridDisplayFactor (_ model : EBReadOnlyProperty_Int) {
+  final func bind_gridDisplayFactor (_ model : EBObservableProperty <Int>) {
     self.mGridDisplayFactorController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateGridDisplayFactor (from: model) }
@@ -28,7 +28,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final private func updateGridDisplayFactor (from model : EBReadOnlyProperty_Int) {
+  final private func updateGridDisplayFactor (from model : EBObservableProperty <Int>) {
     switch model.selection {
     case .empty, .multiple :
       self.mGridDisplayFactor = 4

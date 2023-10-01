@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property PinQualifiedNameStruct
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_PinQualifiedNameStruct    = EBObservableProperty <PinQualifiedNameStruct>
-typealias EBTransientProperty_PinQualifiedNameStruct   = EBTransientProperty <PinQualifiedNameStruct>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

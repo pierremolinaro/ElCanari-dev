@@ -94,11 +94,8 @@ enum RouteOrigin : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_RouteOrigin = EBReadOnlyEnumProperty <RouteOrigin>
-typealias EBTransientProperty_RouteOrigin = EBTransientEnumProperty <RouteOrigin>
-typealias EBReadWriteProperty_RouteOrigin = EBReadWriteEnumProperty <RouteOrigin>
+typealias EBReadWriteProperty_RouteOrigin = EBReadWriteEnumProperty <RouteOrigin> // EBObservableMutableProperty <RouteOrigin>
 typealias EBStoredProperty_RouteOrigin = EBStoredEnumProperty <RouteOrigin>
 typealias EBComputedProperty_RouteOrigin = EBGenericComputedEnumProperty <RouteOrigin>
-typealias EBPreferencesProperty_RouteOrigin = EBStoredEnumProperty <RouteOrigin>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

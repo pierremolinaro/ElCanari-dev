@@ -84,7 +84,7 @@ final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField {
   //····················································································································
 
   final func bind_dimensionAndUnit (_ object : EBReadWriteProperty_Int,
-                                    _ unit : EBReadOnlyProperty_Int) -> Self {
+                                    _ unit : EBObservableProperty <Int>) -> Self {
     self.mValueController = Controller_AutoLayoutCanariDimensionField_dimensionAndUnit (dimension: object, unit: unit, outlet: self)
     return self
   }
@@ -101,12 +101,12 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
 
   private weak var mOutlet : AutoLayoutCanariDimensionField? = nil
   private var mDimension : EBReadWriteProperty_Int
-  private var mUnit : EBReadOnlyProperty_Int
+  private var mUnit : EBObservableProperty <Int>
 
   //····················································································································
 
   init (dimension : EBReadWriteProperty_Int,
-        unit : EBReadOnlyProperty_Int,
+        unit : EBObservableProperty <Int>,
         outlet inOutlet : AutoLayoutCanariDimensionField) {
     self.mDimension = dimension
     self.mUnit = unit

@@ -26,13 +26,13 @@ import AppKit
   //   Selection observable property: documentSize
   //····················································································································
 
-  var documentSize_property = EBTransientProperty_Int ()
+  var documentSize_property = EBTransientProperty <Int> ()
 
   //····················································································································
   //   Selection observable property: instanceCount
   //····················································································································
 
-  var instanceCount_property = EBTransientProperty_Int ()
+  var instanceCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
   //   Selection observable property: mFileData
@@ -76,13 +76,13 @@ import AppKit
   //   Selection observable property: pinNameShape
   //····················································································································
 
-  var pinNameShape_property = EBTransientProperty_EBShape ()
+  var pinNameShape_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: versionString
   //····················································································································
 
-  var versionString_property = EBTransientProperty_String ()
+  var versionString_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   BIND SELECTION

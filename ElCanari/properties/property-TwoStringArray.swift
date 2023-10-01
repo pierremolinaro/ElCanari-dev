@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property TwoStringArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_TwoStringArray    = EBObservableProperty <TwoStringArray>
-typealias EBTransientProperty_TwoStringArray   = EBTransientProperty <TwoStringArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

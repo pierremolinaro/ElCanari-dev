@@ -90,7 +90,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //   Transient property: symbolAndTypeName
   //····················································································································
 
-  final let symbolAndTypeName_property = EBTransientProperty_SymbolInProjectIdentifier ()
+  final let symbolAndTypeName_property = EBTransientProperty <SymbolInProjectIdentifier> ()
 
   //····················································································································
 
@@ -102,7 +102,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //   Transient property: symbolTypeName
   //····················································································································
 
-  final let symbolTypeName_property = EBTransientProperty_String ()
+  final let symbolTypeName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -114,7 +114,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //   Transient property: filledBezierPath
   //····················································································································
 
-  final let filledBezierPath_property = EBTransientProperty_NSBezierPath ()
+  final let filledBezierPath_property = EBTransientProperty <NSBezierPath> ()
 
   //····················································································································
 
@@ -126,7 +126,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //   Transient property: strokeBezierPath
   //····················································································································
 
-  final let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+  final let strokeBezierPath_property = EBTransientProperty <NSBezierPath> ()
 
   //····················································································································
 

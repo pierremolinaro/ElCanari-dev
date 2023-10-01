@@ -150,7 +150,7 @@ import AppKit
   //   Transient property: netCount
   //····················································································································
 
-  final let netCount_property = EBTransientProperty_Int ()
+  final let netCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -162,7 +162,7 @@ import AppKit
   //   Transient property: rastnetDisplayOneNet
   //····················································································································
 
-  final let rastnetDisplayOneNet_property = EBTransientProperty_Bool ()
+  final let rastnetDisplayOneNet_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -174,7 +174,7 @@ import AppKit
   //   Transient property: rastnetDisplayComponentNet
   //····················································································································
 
-  final let rastnetDisplayComponentNet_property = EBTransientProperty_Bool ()
+  final let rastnetDisplayComponentNet_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -186,7 +186,7 @@ import AppKit
   //   Transient property: documentFileName
   //····················································································································
 
-  final let documentFileName_property = EBTransientProperty_String ()
+  final let documentFileName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -198,7 +198,7 @@ import AppKit
   //   Transient property: incorrectDocumentFileDetailedErrorMessage
   //····················································································································
 
-  final let incorrectDocumentFileDetailedErrorMessage_property = EBTransientProperty_String ()
+  final let incorrectDocumentFileDetailedErrorMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -210,7 +210,7 @@ import AppKit
   //   Transient property: documentFileShouldBeRenamedErrorMessage
   //····················································································································
 
-  final let documentFileShouldBeRenamedErrorMessage_property = EBTransientProperty_String ()
+  final let documentFileShouldBeRenamedErrorMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -222,7 +222,7 @@ import AppKit
   //   Transient property: pinPadAssignments
   //····················································································································
 
-  final let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+  final let pinPadAssignments_property = EBTransientProperty <ThreeStringArray> ()
 
   //····················································································································
 
@@ -234,7 +234,7 @@ import AppKit
   //   Transient property: selectedDeviceSymbolNames
   //····················································································································
 
-  final let selectedDeviceSymbolNames_property = EBTransientProperty_TwoStringArray ()
+  final let selectedDeviceSymbolNames_property = EBTransientProperty <TwoStringArray> ()
 
   //····················································································································
 
@@ -246,7 +246,7 @@ import AppKit
   //   Transient property: selectedDevicePackageNames
   //····················································································································
 
-  final let selectedDevicePackageNames_property = EBTransientProperty_StringArray ()
+  final let selectedDevicePackageNames_property = EBTransientProperty <StringArray> ()
 
   //····················································································································
 
@@ -258,7 +258,7 @@ import AppKit
   //   Transient property: selectedDeviceNames
   //····················································································································
 
-  final let selectedDeviceNames_property = EBTransientProperty_StringArray ()
+  final let selectedDeviceNames_property = EBTransientProperty <StringArray> ()
 
   //····················································································································
 
@@ -270,7 +270,7 @@ import AppKit
   //   Transient property: canRemoveNetClasses
   //····················································································································
 
-  final let canRemoveNetClasses_property = EBTransientProperty_Bool ()
+  final let canRemoveNetClasses_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -282,7 +282,7 @@ import AppKit
   //   Transient property: netCountString
   //····················································································································
 
-  final let netCountString_property = EBTransientProperty_String ()
+  final let netCountString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -294,7 +294,7 @@ import AppKit
   //   Transient property: schematicSheetOrientationIsCustom
   //····················································································································
 
-  final let schematicSheetOrientationIsCustom_property = EBTransientProperty_Bool ()
+  final let schematicSheetOrientationIsCustom_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -306,7 +306,7 @@ import AppKit
   //   Transient property: rastnetShape
   //····················································································································
 
-  final let rastnetShape_property = EBTransientProperty_EBShape ()
+  final let rastnetShape_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 
@@ -318,7 +318,7 @@ import AppKit
   //   Transient property: documentIsUnnamed
   //····················································································································
 
-  final let documentIsUnnamed_property = EBTransientProperty_Bool ()
+  final let documentIsUnnamed_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -330,7 +330,7 @@ import AppKit
   //   Transient property: emptyDrillFileExtension
   //····················································································································
 
-  final let emptyDrillFileExtension_property = EBTransientProperty_Bool ()
+  final let emptyDrillFileExtension_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -342,7 +342,7 @@ import AppKit
   //   Transient property: componentCount
   //····················································································································
 
-  final let componentCount_property = EBTransientProperty_String ()
+  final let componentCount_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -354,7 +354,7 @@ import AppKit
   //   Transient property: canChangePackage
   //····················································································································
 
-  final let canChangePackage_property = EBTransientProperty_Bool ()
+  final let canChangePackage_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -366,7 +366,7 @@ import AppKit
   //   Transient property: canRemoveSelectedFonts
   //····················································································································
 
-  final let canRemoveSelectedFonts_property = EBTransientProperty_Bool ()
+  final let canRemoveSelectedFonts_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -378,7 +378,7 @@ import AppKit
   //   Transient property: canRemoveSelectedDevices
   //····················································································································
 
-  final let canRemoveSelectedDevices_property = EBTransientProperty_Bool ()
+  final let canRemoveSelectedDevices_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -390,7 +390,7 @@ import AppKit
   //   Transient property: unplacedSymbolsCount
   //····················································································································
 
-  final let unplacedSymbolsCount_property = EBTransientProperty_Int ()
+  final let unplacedSymbolsCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -402,7 +402,7 @@ import AppKit
   //   Transient property: unplacedSymbolsCountString
   //····················································································································
 
-  final let unplacedSymbolsCountString_property = EBTransientProperty_String ()
+  final let unplacedSymbolsCountString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -414,7 +414,7 @@ import AppKit
   //   Transient property: unplacedSymbolsSegmentImage
   //····················································································································
 
-  final let unplacedSymbolsSegmentImage_property = EBTransientProperty_NSImage ()
+  final let unplacedSymbolsSegmentImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -426,7 +426,7 @@ import AppKit
   //   Transient property: boardOutlineOverDisplay
   //····················································································································
 
-  final let boardOutlineOverDisplay_property = EBTransientProperty_EBShape ()
+  final let boardOutlineOverDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 
@@ -438,7 +438,7 @@ import AppKit
   //   Transient property: unplacedPackageCount
   //····················································································································
 
-  final let unplacedPackageCount_property = EBTransientProperty_Int ()
+  final let unplacedPackageCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -450,7 +450,7 @@ import AppKit
   //   Transient property: unplacedPackagesCountString
   //····················································································································
 
-  final let unplacedPackagesCountString_property = EBTransientProperty_String ()
+  final let unplacedPackagesCountString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -462,7 +462,7 @@ import AppKit
   //   Transient property: unplacedPackagesSegmentImage
   //····················································································································
 
-  final let unplacedPackagesSegmentImage_property = EBTransientProperty_NSImage ()
+  final let unplacedPackagesSegmentImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -474,7 +474,7 @@ import AppKit
   //   Transient property: unplacedPackagesMessageString
   //····················································································································
 
-  final let unplacedPackagesMessageString_property = EBTransientProperty_String ()
+  final let unplacedPackagesMessageString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -486,7 +486,7 @@ import AppKit
   //   Transient property: emptyDrillFileExtensionImage
   //····················································································································
 
-  final let emptyDrillFileExtensionImage_property = EBTransientProperty_NSImage ()
+  final let emptyDrillFileExtensionImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -498,7 +498,7 @@ import AppKit
   //   Transient property: generatedFileCountString
   //····················································································································
 
-  final let generatedFileCountString_property = EBTransientProperty_String ()
+  final let generatedFileCountString_property = EBTransientProperty <String> ()
 
   //····················································································································
 

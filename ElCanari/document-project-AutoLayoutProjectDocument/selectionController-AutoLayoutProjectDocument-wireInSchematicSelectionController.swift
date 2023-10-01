@@ -26,37 +26,37 @@ import AppKit
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  final let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  final let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: netName
   //····················································································································
 
-  final let netName_property = EBTransientProperty_String ()
+  final let netName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: netClassName
   //····················································································································
 
-  final let netClassName_property = EBTransientProperty_String ()
+  final let netClassName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: hasNet
   //····················································································································
 
-  final let hasNet_property = EBTransientProperty_Bool ()
+  final let hasNet_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selection observable property: wires
   //····················································································································
 
-  final let wires_property = EBTransientProperty_CanariWireArray ()
+  final let wires_property = EBTransientProperty <CanariWireArray> ()
 
   //····················································································································
   //   Selected array (not observable)

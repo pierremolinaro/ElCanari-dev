@@ -140,67 +140,67 @@ import AppKit
   //   Selection observable property: imageDataByteCount
   //····················································································································
 
-  final let imageDataByteCount_property = EBTransientProperty_String ()
+  final let imageDataByteCount_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: boardImageCodeDescriptor
   //····················································································································
 
-  final let boardImageCodeDescriptor_property = EBTransientProperty_BoardImageDescriptor ()
+  final let boardImageCodeDescriptor_property = EBTransientProperty <BoardImageDescriptor> ()
 
   //····················································································································
   //   Selection observable property: boardOriginalImageWidth
   //····················································································································
 
-  final let boardOriginalImageWidth_property = EBTransientProperty_String ()
+  final let boardOriginalImageWidth_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: boardOriginalImageHeight
   //····················································································································
 
-  final let boardOriginalImageHeight_property = EBTransientProperty_String ()
+  final let boardOriginalImageHeight_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: boardScaledImageWidth
   //····················································································································
 
-  final let boardScaledImageWidth_property = EBTransientProperty_String ()
+  final let boardScaledImageWidth_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: boardScaledImageHeight
   //····················································································································
 
-  final let boardScaledImageHeight_property = EBTransientProperty_String ()
+  final let boardScaledImageHeight_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: boardActualImageWidth
   //····················································································································
 
-  final let boardActualImageWidth_property = EBTransientProperty_Int ()
+  final let boardActualImageWidth_property = EBTransientProperty <Int> ()
 
   //····················································································································
   //   Selection observable property: boardActualImageHeight
   //····················································································································
 
-  final let boardActualImageHeight_property = EBTransientProperty_Int ()
+  final let boardActualImageHeight_property = EBTransientProperty <Int> ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  final let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  final let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: signatureForERCChecking
   //····················································································································
 
-  final let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+  final let signatureForERCChecking_property = EBTransientProperty <UInt32> ()
 
   //····················································································································
   //   Selected array (not observable)

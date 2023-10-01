@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property CGFloat
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_CGFloat    = EBObservableProperty <CGFloat>
-typealias EBTransientProperty_CGFloat   = EBTransientProperty <CGFloat>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

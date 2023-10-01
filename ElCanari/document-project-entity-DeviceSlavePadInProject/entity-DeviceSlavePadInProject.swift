@@ -181,7 +181,7 @@ final class DeviceSlavePadInProject : EBManagedObject,
   //   Transient property: descriptor
   //····················································································································
 
-  final let descriptor_property = EBTransientProperty_SlavePadDescriptor ()
+  final let descriptor_property = EBTransientProperty <SlavePadDescriptor> ()
 
   //····················································································································
 

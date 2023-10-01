@@ -81,7 +81,7 @@ final class AutoLayoutCanariSampleFontStringView : AutoLayoutBase_NSView {
   //  $bezierPath binding
   //····················································································································
 
-  final private func updateBezierPath (_ object : EBReadOnlyProperty_NSBezierPath) {
+  final private func updateBezierPath (_ object : EBObservableProperty <NSBezierPath>) {
     switch object.selection {
     case .empty, .multiple :
       break ;
@@ -94,7 +94,7 @@ final class AutoLayoutCanariSampleFontStringView : AutoLayoutBase_NSView {
 
   private var mBezierPathBindingController : EBObservablePropertyController?
 
-  final func bind_bezierPath (_ object : EBReadOnlyProperty_NSBezierPath) -> Self {
+  final func bind_bezierPath (_ object : EBObservableProperty <NSBezierPath>) -> Self {
     self.mBezierPathBindingController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateBezierPath (object) }

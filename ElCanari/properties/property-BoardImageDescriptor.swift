@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property BoardImageDescriptor
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_BoardImageDescriptor    = EBObservableProperty <BoardImageDescriptor>
-typealias EBTransientProperty_BoardImageDescriptor   = EBTransientProperty <BoardImageDescriptor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

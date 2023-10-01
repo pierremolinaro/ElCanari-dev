@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property CharacterGerberCode
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_CharacterGerberCode    = EBObservableProperty <CharacterGerberCode>
-typealias EBTransientProperty_CharacterGerberCode   = EBTransientProperty <CharacterGerberCode>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

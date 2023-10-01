@@ -114,13 +114,13 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
   //MARK:  $value binding
   //····················································································································
 
-  private var mValueController : EBReadWritePropertyController_Int? = nil
+  private var mValueController : EBGenericReadWritePropertyController <Int>? = nil
 
   //····················································································································
 
   final func bind_value (_ inObject : EBReadWriteProperty_Int, sendContinously : Bool) -> Self {
     self.isContinuous = sendContinously
-    self.mValueController = EBReadWritePropertyController_Int (
+    self.mValueController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack:  { [weak self] in self?.update (from: inObject) }
     )
@@ -129,7 +129,7 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  private func update (from inObject : EBReadOnlyProperty_Int) {
+  private func update (from inObject : EBObservableProperty <Int>) {
     let selection = inObject.selection // TOUJOURS lire la sélection
     if self.currentEditor() == nil {
       self.mInputIsValid = true

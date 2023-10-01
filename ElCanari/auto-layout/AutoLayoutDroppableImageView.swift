@@ -116,7 +116,7 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
   //  $imageData binding
   //····················································································································
 
-  func updateImageData (_ object : EBReadOnlyProperty_Data) {
+  func updateImageData (_ object : EBObservableProperty <Data>) {
     switch object.selection {
     case .empty, .multiple :
       self.mImageView.image = nil

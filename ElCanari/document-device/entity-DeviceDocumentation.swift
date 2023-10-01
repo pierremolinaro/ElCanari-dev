@@ -61,7 +61,7 @@ final class DeviceDocumentation : EBManagedObject,
   //   Transient property: fileSize
   //····················································································································
 
-  final let fileSize_property = EBTransientProperty_Int ()
+  final let fileSize_property = EBTransientProperty <Int> ()
 
   //····················································································································
 

@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property EBBezierPath
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_EBBezierPath    = EBObservableProperty <EBBezierPath>
-typealias EBTransientProperty_EBBezierPath   = EBTransientProperty <EBBezierPath>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

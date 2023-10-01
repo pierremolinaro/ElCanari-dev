@@ -78,7 +78,7 @@ import AppKit
   //  $layers binding
   //····················································································································
 
-  private func updateOutlet (_ object : EBReadOnlyProperty_Int) {
+  private func updateOutlet (_ object : EBObservableProperty <Int>) {
     switch object.selection {
     case .empty, .multiple :
       for item in self.items {
@@ -103,12 +103,12 @@ import AppKit
 
   //····················································································································
 
-  private var mLayersController : EBReadWritePropertyController_Int? = nil
+  private var mLayersController : EBGenericReadWritePropertyController <Int>? = nil
 
   //····················································································································
 
   final func bind_layers (_ object : EBReadWriteProperty_Int) {
-    self.mLayersController = EBReadWritePropertyController_Int (
+    self.mLayersController = EBGenericReadWritePropertyController <Int> (
       observedObject: object,
       callBack: { [weak self] in self?.updateOutlet (object) }
     )

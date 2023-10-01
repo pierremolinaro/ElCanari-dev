@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property MergerViaShapeArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_MergerViaShapeArray    = EBObservableProperty <MergerViaShapeArray>
-typealias EBTransientProperty_MergerViaShapeArray   = EBTransientProperty <MergerViaShapeArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

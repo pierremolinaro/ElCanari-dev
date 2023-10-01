@@ -76,7 +76,7 @@ final class AutoLayoutColorWell : NSColorWell {
   //  color binding
   //····················································································································
 
-  fileprivate func updateColor (from inObject : EBReadOnlyProperty_NSColor) {
+  fileprivate func updateColor (from inObject : EBObservableProperty <NSColor>) {
     switch inObject.selection {
     case .empty, .multiple :
       self.enable (fromValueBinding: false, self.mEnabledBindingController)
@@ -88,13 +88,13 @@ final class AutoLayoutColorWell : NSColorWell {
 
   //····················································································································
 
-  private var mColorController : EBReadWritePropertyController_NSColor? = nil
+  private var mColorController : EBGenericReadWritePropertyController <NSColor>? = nil
 
   //····················································································································
 
   final func bind_color (_ inObject : EBReadWriteProperty_NSColor) -> Self {
     NSColorPanel.shared.showsAlpha = true
-    self.mColorController = EBReadWritePropertyController_NSColor (
+    self.mColorController = EBGenericReadWritePropertyController <NSColor> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateColor (from: inObject)  }
     )

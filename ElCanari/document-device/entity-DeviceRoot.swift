@@ -176,7 +176,7 @@ final class DeviceRoot : EBManagedObject {
   //   Transient property: imageIsValid
   //····················································································································
 
-  final let imageIsValid_property = EBTransientProperty_Bool ()
+  final let imageIsValid_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -188,7 +188,7 @@ final class DeviceRoot : EBManagedObject {
   //   Transient property: unconnectedPins
   //····················································································································
 
-  final let unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
+  final let unconnectedPins_property = EBTransientProperty <UnconnectedSymbolPinsInDevice> ()
 
   //····················································································································
 
@@ -200,7 +200,7 @@ final class DeviceRoot : EBManagedObject {
   //   Transient property: inconsistentPackagePadNameSetsMessage
   //····················································································································
 
-  final let inconsistentPackagePadNameSetsMessage_property = EBTransientProperty_String ()
+  final let inconsistentPackagePadNameSetsMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -212,7 +212,7 @@ final class DeviceRoot : EBManagedObject {
   //   Transient property: inconsistentSymbolNameSetMessage
   //····················································································································
 
-  final let inconsistentSymbolNameSetMessage_property = EBTransientProperty_String ()
+  final let inconsistentSymbolNameSetMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -224,7 +224,7 @@ final class DeviceRoot : EBManagedObject {
   //   Transient property: packagePadNameSetsAreConsistent
   //····················································································································
 
-  final let packagePadNameSetsAreConsistent_property = EBTransientProperty_Bool ()
+  final let packagePadNameSetsAreConsistent_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -236,7 +236,7 @@ final class DeviceRoot : EBManagedObject {
   //   Transient property: symbolNameAreConsistent
   //····················································································································
 
-  final let symbolNameAreConsistent_property = EBTransientProperty_Bool ()
+  final let symbolNameAreConsistent_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -248,7 +248,7 @@ final class DeviceRoot : EBManagedObject {
   //   Transient property: symbolTypeNames
   //····················································································································
 
-  final let symbolTypeNames_property = EBTransientProperty_StringArray ()
+  final let symbolTypeNames_property = EBTransientProperty <StringArray> ()
 
   //····················································································································
 
@@ -260,7 +260,7 @@ final class DeviceRoot : EBManagedObject {
   //   Transient property: unconnectedPads
   //····················································································································
 
-  final let unconnectedPads_property = EBTransientProperty_StringArray ()
+  final let unconnectedPads_property = EBTransientProperty <StringArray> ()
 
   //····················································································································
 
@@ -272,7 +272,7 @@ final class DeviceRoot : EBManagedObject {
   //   Transient property: assignedPadProxies
   //····················································································································
 
-  final let assignedPadProxies_property = EBTransientProperty_AssignedPadProxiesInDevice ()
+  final let assignedPadProxies_property = EBTransientProperty <AssignedPadProxiesInDevice> ()
 
   //····················································································································
 
@@ -284,7 +284,7 @@ final class DeviceRoot : EBManagedObject {
   //   Transient property: issues
   //····················································································································
 
-  final let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
 

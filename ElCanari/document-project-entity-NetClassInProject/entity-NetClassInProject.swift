@@ -397,7 +397,7 @@ final class NetClassInProject : EBManagedObject,
   //   Transient property: trackWidthString
   //····················································································································
 
-  final let trackWidthString_property = EBTransientProperty_String ()
+  final let trackWidthString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -409,7 +409,7 @@ final class NetClassInProject : EBManagedObject,
   //   Transient property: viaHoleDiameter
   //····················································································································
 
-  final let viaHoleDiameter_property = EBTransientProperty_String ()
+  final let viaHoleDiameter_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -421,7 +421,7 @@ final class NetClassInProject : EBManagedObject,
   //   Transient property: viaPadDiameter
   //····················································································································
 
-  final let viaPadDiameter_property = EBTransientProperty_String ()
+  final let viaPadDiameter_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -433,7 +433,7 @@ final class NetClassInProject : EBManagedObject,
   //   Transient property: allowTracksOnFrontSideString
   //····················································································································
 
-  final let allowTracksOnFrontSideString_property = EBTransientProperty_String ()
+  final let allowTracksOnFrontSideString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -445,7 +445,7 @@ final class NetClassInProject : EBManagedObject,
   //   Transient property: allowTracksOnBackSideString
   //····················································································································
 
-  final let allowTracksOnBackSideString_property = EBTransientProperty_String ()
+  final let allowTracksOnBackSideString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -457,7 +457,7 @@ final class NetClassInProject : EBManagedObject,
   //   Transient property: allowTracksOnInner1LayerString
   //····················································································································
 
-  final let allowTracksOnInner1LayerString_property = EBTransientProperty_String ()
+  final let allowTracksOnInner1LayerString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -469,7 +469,7 @@ final class NetClassInProject : EBManagedObject,
   //   Transient property: allowTracksOnInner2LayerString
   //····················································································································
 
-  final let allowTracksOnInner2LayerString_property = EBTransientProperty_String ()
+  final let allowTracksOnInner2LayerString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -481,7 +481,7 @@ final class NetClassInProject : EBManagedObject,
   //   Transient property: allowTracksOnInner3LayerString
   //····················································································································
 
-  final let allowTracksOnInner3LayerString_property = EBTransientProperty_String ()
+  final let allowTracksOnInner3LayerString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -493,7 +493,7 @@ final class NetClassInProject : EBManagedObject,
   //   Transient property: allowTracksOnInner4LayerString
   //····················································································································
 
-  final let allowTracksOnInner4LayerString_property = EBTransientProperty_String ()
+  final let allowTracksOnInner4LayerString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -505,7 +505,7 @@ final class NetClassInProject : EBManagedObject,
   //   Transient property: canRemove
   //····················································································································
 
-  final let canRemove_property = EBTransientProperty_Bool ()
+  final let canRemove_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -517,7 +517,7 @@ final class NetClassInProject : EBManagedObject,
   //   Transient property: netUsage
   //····················································································································
 
-  final let netUsage_property = EBTransientProperty_String ()
+  final let netUsage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -529,7 +529,7 @@ final class NetClassInProject : EBManagedObject,
   //   Transient property: netsDescription
   //····················································································································
 
-  final let netsDescription_property = EBTransientProperty_NetInfoArray ()
+  final let netsDescription_property = EBTransientProperty <NetInfoArray> ()
 
   //····················································································································
 
@@ -541,7 +541,7 @@ final class NetClassInProject : EBManagedObject,
   //   Transient property: netWarningCount
   //····················································································································
 
-  final let netWarningCount_property = EBTransientProperty_Int ()
+  final let netWarningCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 

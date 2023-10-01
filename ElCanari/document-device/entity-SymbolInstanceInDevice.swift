@@ -183,7 +183,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   Transient property: symbolQualifiedName
   //····················································································································
 
-  final let symbolQualifiedName_property = EBTransientProperty_String ()
+  final let symbolQualifiedName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -195,7 +195,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   Transient property: symbolTypeName
   //····················································································································
 
-  final let symbolTypeName_property = EBTransientProperty_String ()
+  final let symbolTypeName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -207,7 +207,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   Transient property: pinSymbolQualifiedNames
   //····················································································································
 
-  final let pinSymbolQualifiedNames_property = EBTransientProperty_StringArray ()
+  final let pinSymbolQualifiedNames_property = EBTransientProperty <StringArray> ()
 
   //····················································································································
 
@@ -219,7 +219,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   Transient property: unconnectedPins
   //····················································································································
 
-  final let unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
+  final let unconnectedPins_property = EBTransientProperty <UnconnectedSymbolPinsInDevice> ()
 
   //····················································································································
 

@@ -81,7 +81,7 @@ final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutV
 
   //····················································································································
 
-  final func bind_unconnectedPins (_ model : EBReadOnlyProperty_UnconnectedSymbolPinsInDevice) -> Self {
+  final func bind_unconnectedPins (_ model : EBObservableProperty <UnconnectedSymbolPinsInDevice>) -> Self {
     self.mController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateUnconnectedPinList (from: model) }
@@ -91,7 +91,7 @@ final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutV
 
   //····················································································································
 
-  func updateUnconnectedPinList (from inModel : EBReadOnlyProperty_UnconnectedSymbolPinsInDevice) {
+  func updateUnconnectedPinList (from inModel : EBObservableProperty <UnconnectedSymbolPinsInDevice>) {
     switch inModel.selection {
     case .empty, .multiple :
       self.mDataSource = []

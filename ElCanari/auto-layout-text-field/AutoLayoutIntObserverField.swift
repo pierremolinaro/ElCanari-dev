@@ -58,7 +58,7 @@ final class AutoLayoutIntObserverField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  final func bind_observedValue (_ inObject : EBReadOnlyProperty_Int) -> Self {
+  final func bind_observedValue (_ inObject : EBObservableProperty <Int>) -> Self {
     self.mController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack:  { [weak self] in self?.update (from: inObject) }
@@ -68,7 +68,7 @@ final class AutoLayoutIntObserverField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  private func update (from model : EBReadOnlyProperty_Int) {
+  private func update (from model : EBObservableProperty <Int>) {
     switch model.selection {
     case .empty :
       self.enable (fromValueBinding: false, self.enabledBindingController)

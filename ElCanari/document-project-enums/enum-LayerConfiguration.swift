@@ -88,11 +88,8 @@ enum LayerConfiguration : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_LayerConfiguration = EBReadOnlyEnumProperty <LayerConfiguration>
-typealias EBTransientProperty_LayerConfiguration = EBTransientEnumProperty <LayerConfiguration>
-typealias EBReadWriteProperty_LayerConfiguration = EBReadWriteEnumProperty <LayerConfiguration>
+typealias EBReadWriteProperty_LayerConfiguration = EBReadWriteEnumProperty <LayerConfiguration> // EBObservableMutableProperty <LayerConfiguration>
 typealias EBStoredProperty_LayerConfiguration = EBStoredEnumProperty <LayerConfiguration>
 typealias EBComputedProperty_LayerConfiguration = EBGenericComputedEnumProperty <LayerConfiguration>
-typealias EBPreferencesProperty_LayerConfiguration = EBStoredEnumProperty <LayerConfiguration>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

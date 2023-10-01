@@ -302,7 +302,7 @@ final class BoardText : BoardObject,
   //   Transient property: fontName
   //····················································································································
 
-  final let fontName_property = EBTransientProperty_String ()
+  final let fontName_property = EBTransientProperty <String> ()
 
   //····················································································································
 

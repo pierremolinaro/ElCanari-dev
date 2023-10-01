@@ -27,9 +27,9 @@ extension Int {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func compare_Int_properties (_ inLeft : EBReadOnlyProperty_Int,
+@MainActor func compare_Int_properties (_ inLeft : EBObservableProperty <Int>,
                                         _ inAscending : Bool,
-                                        _ inRight : EBReadOnlyProperty_Int) -> ComparisonResult {
+                                        _ inRight : EBObservableProperty <Int>) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   switch left.selection {

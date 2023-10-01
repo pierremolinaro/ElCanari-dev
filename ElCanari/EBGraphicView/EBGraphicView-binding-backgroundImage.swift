@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func bind_backgroundImageData (_ model : EBReadOnlyProperty_Data) {
+  final func bind_backgroundImageData (_ model : EBObservableProperty <Data>) {
     self.mBackgroundImageDataController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateBackgroundImageData (from: model) }
@@ -28,7 +28,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final private func updateBackgroundImageData (from model : EBReadOnlyProperty_Data) {
+  final private func updateBackgroundImageData (from model : EBObservableProperty <Data>) {
     if self.mBackgroundImage != nil {
       self.mBackgroundImage = nil
       self.setNeedsDisplayAndUpdateViewBounds ()

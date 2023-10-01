@@ -210,7 +210,7 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
 
   //····················································································································
 
-  final func bind_issues (_ inModel : EBReadOnlyProperty_CanariIssueArray) -> Self {
+  final func bind_issues (_ inModel : EBObservableProperty <CanariIssueArray>) -> Self {
     self.mIssueController = EBObservablePropertyController (
       observedObjects: [inModel],
       callBack: { [weak self] in self?.update (from: inModel) }
@@ -220,7 +220,7 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
 
   //····················································································································
 
-  private func update (from inModel : EBReadOnlyProperty_CanariIssueArray) {
+  private func update (from inModel : EBObservableProperty <CanariIssueArray>) {
     switch inModel.selection {
     case .empty :
       self.mModelArray = []

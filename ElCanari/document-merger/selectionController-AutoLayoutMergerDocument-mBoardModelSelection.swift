@@ -32,7 +32,7 @@ import AppKit
   //   Selection observable property: backComponentNameSegments
   //····················································································································
 
-  var backComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var backComponentNameSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: backComponentNames
@@ -42,13 +42,13 @@ import AppKit
   //   Selection observable property: backComponentNamesBezierPaths
   //····················································································································
 
-  var backComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var backComponentNamesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: backComponentValueSegments
   //····················································································································
 
-  var backComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var backComponentValueSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: backComponentValues
@@ -58,7 +58,7 @@ import AppKit
   //   Selection observable property: backComponentValuesBezierPaths
   //····················································································································
 
-  var backComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var backComponentValuesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: backLayoutTexts
@@ -68,19 +68,19 @@ import AppKit
   //   Selection observable property: backLayoutTextsBezierPaths
   //····················································································································
 
-  var backLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var backLayoutTextsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: backLayoutTextsSegments
   //····················································································································
 
-  var backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var backLayoutTextsSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: backLegendBoardImageRectangles
   //····················································································································
 
-  var backLegendBoardImageRectangles_property = EBTransientProperty_MergerRectangleArray ()
+  var backLegendBoardImageRectangles_property = EBTransientProperty <MergerRectangleArray> ()
 
   //····················································································································
   //   Selection observable property: backLegendLines
@@ -90,19 +90,19 @@ import AppKit
   //   Selection observable property: backLegendLinesBezierPaths
   //····················································································································
 
-  var backLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var backLegendLinesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: backLegendLinesSegments
   //····················································································································
 
-  var backLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var backLegendLinesSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: backLegendQRCodeRectangles
   //····················································································································
 
-  var backLegendQRCodeRectangles_property = EBTransientProperty_MergerRectangleArray ()
+  var backLegendQRCodeRectangles_property = EBTransientProperty <MergerRectangleArray> ()
 
   //····················································································································
   //   Selection observable property: backLegendTexts
@@ -112,13 +112,13 @@ import AppKit
   //   Selection observable property: backLegendTextsBezierPaths
   //····················································································································
 
-  var backLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var backLegendTextsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: backLegendTextsSegments
   //····················································································································
 
-  var backLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var backLegendTextsSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: backPackages
@@ -128,19 +128,19 @@ import AppKit
   //   Selection observable property: backPackagesBezierPaths
   //····················································································································
 
-  var backPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var backPackagesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: backPackagesSegments
   //····················································································································
 
-  var backPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var backPackagesSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: backPadArray
   //····················································································································
 
-  var backPadArray_property = EBTransientProperty_MergerPadArray ()
+  var backPadArray_property = EBTransientProperty <MergerPadArray> ()
 
   //····················································································································
   //   Selection observable property: backPads
@@ -150,13 +150,13 @@ import AppKit
   //   Selection observable property: backPadsBezierPaths
   //····················································································································
 
-  var backPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var backPadsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: backTrackSegments
   //····················································································································
 
-  var backTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var backTrackSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: backTracks
@@ -166,19 +166,19 @@ import AppKit
   //   Selection observable property: backTracksBezierPaths
   //····················································································································
 
-  var backTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var backTracksBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: boardLimitsBezierPaths
   //····················································································································
 
-  var boardLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var boardLimitsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: drillSegments
   //····················································································································
 
-  var drillSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var drillSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: drills
@@ -188,31 +188,31 @@ import AppKit
   //   Selection observable property: errorArchiveLabelColor
   //····················································································································
 
-  var errorArchiveLabelColor_property = EBTransientProperty_NSColor ()
+  var errorArchiveLabelColor_property = EBTransientProperty <NSColor> ()
 
   //····················································································································
   //   Selection observable property: errorArchiveLabelSize
   //····················································································································
 
-  var errorArchiveLabelSize_property = EBTransientProperty_EBControlSize ()
+  var errorArchiveLabelSize_property = EBTransientProperty <EBControlSize> ()
 
   //····················································································································
   //   Selection observable property: errorArchiveVersionMessage
   //····················································································································
 
-  var errorArchiveVersionMessage_property = EBTransientProperty_String ()
+  var errorArchiveVersionMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: errorArchiveVersionMessageIsHidden
   //····················································································································
 
-  var errorArchiveVersionMessageIsHidden_property = EBTransientProperty_Bool ()
+  var errorArchiveVersionMessageIsHidden_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selection observable property: frontComponentNameSegments
   //····················································································································
 
-  var frontComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var frontComponentNameSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: frontComponentNames
@@ -222,13 +222,13 @@ import AppKit
   //   Selection observable property: frontComponentNamesBezierPaths
   //····················································································································
 
-  var frontComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var frontComponentNamesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: frontComponentValueSegments
   //····················································································································
 
-  var frontComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var frontComponentValueSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: frontComponentValues
@@ -238,7 +238,7 @@ import AppKit
   //   Selection observable property: frontComponentValuesBezierPaths
   //····················································································································
 
-  var frontComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var frontComponentValuesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: frontLayoutTexts
@@ -248,19 +248,19 @@ import AppKit
   //   Selection observable property: frontLayoutTextsBezierPaths
   //····················································································································
 
-  var frontLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var frontLayoutTextsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: frontLayoutTextsSegments
   //····················································································································
 
-  var frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var frontLayoutTextsSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: frontLegendBoardImageRectangles
   //····················································································································
 
-  var frontLegendBoardImageRectangles_property = EBTransientProperty_MergerRectangleArray ()
+  var frontLegendBoardImageRectangles_property = EBTransientProperty <MergerRectangleArray> ()
 
   //····················································································································
   //   Selection observable property: frontLegendLines
@@ -270,19 +270,19 @@ import AppKit
   //   Selection observable property: frontLegendLinesBezierPaths
   //····················································································································
 
-  var frontLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var frontLegendLinesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: frontLegendLinesSegments
   //····················································································································
 
-  var frontLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var frontLegendLinesSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: frontLegendQRCodeRectangles
   //····················································································································
 
-  var frontLegendQRCodeRectangles_property = EBTransientProperty_MergerRectangleArray ()
+  var frontLegendQRCodeRectangles_property = EBTransientProperty <MergerRectangleArray> ()
 
   //····················································································································
   //   Selection observable property: frontLegendTexts
@@ -292,13 +292,13 @@ import AppKit
   //   Selection observable property: frontLegendTextsBezierPaths
   //····················································································································
 
-  var frontLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var frontLegendTextsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: frontLegendTextsSegments
   //····················································································································
 
-  var frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var frontLegendTextsSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: frontPackages
@@ -308,19 +308,19 @@ import AppKit
   //   Selection observable property: frontPackagesBezierPaths
   //····················································································································
 
-  var frontPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var frontPackagesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: frontPackagesSegments
   //····················································································································
 
-  var frontPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var frontPackagesSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: frontPadArray
   //····················································································································
 
-  var frontPadArray_property = EBTransientProperty_MergerPadArray ()
+  var frontPadArray_property = EBTransientProperty <MergerPadArray> ()
 
   //····················································································································
   //   Selection observable property: frontPads
@@ -330,13 +330,13 @@ import AppKit
   //   Selection observable property: frontPadsBezierPaths
   //····················································································································
 
-  var frontPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var frontPadsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: frontTrackSegments
   //····················································································································
 
-  var frontTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var frontTrackSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: frontTracks
@@ -346,13 +346,13 @@ import AppKit
   //   Selection observable property: frontTracksBezierPaths
   //····················································································································
 
-  var frontTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var frontTracksBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: holesBezierPaths
   //····················································································································
 
-  var holesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var holesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: ignoreModelVersionError
@@ -364,13 +364,13 @@ import AppKit
   //   Selection observable property: imageForInstances
   //····················································································································
 
-  var imageForInstances_property = EBTransientProperty_EBShape ()
+  var imageForInstances_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: imageForModel
   //····················································································································
 
-  var imageForModel_property = EBTransientProperty_EBShape ()
+  var imageForModel_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: inner1Tracks
@@ -380,13 +380,13 @@ import AppKit
   //   Selection observable property: inner1TracksBezierPaths
   //····················································································································
 
-  var inner1TracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var inner1TracksBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: inner1TracksSegments
   //····················································································································
 
-  var inner1TracksSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var inner1TracksSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: inner2Tracks
@@ -396,13 +396,13 @@ import AppKit
   //   Selection observable property: inner2TracksBezierPaths
   //····················································································································
 
-  var inner2TracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var inner2TracksBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: inner2TracksSegments
   //····················································································································
 
-  var inner2TracksSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var inner2TracksSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: inner3Tracks
@@ -412,13 +412,13 @@ import AppKit
   //   Selection observable property: inner3TracksBezierPaths
   //····················································································································
 
-  var inner3TracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var inner3TracksBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: inner3TracksSegments
   //····················································································································
 
-  var inner3TracksSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var inner3TracksSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: inner4Tracks
@@ -428,19 +428,19 @@ import AppKit
   //   Selection observable property: inner4TracksBezierPaths
   //····················································································································
 
-  var inner4TracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var inner4TracksBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: inner4TracksSegments
   //····················································································································
 
-  var inner4TracksSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var inner4TracksSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: instanceCount
   //····················································································································
 
-  var instanceCount_property = EBTransientProperty_Int ()
+  var instanceCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
   //   Selection observable property: internalBoardsLimits
@@ -450,13 +450,13 @@ import AppKit
   //   Selection observable property: internalBoardsLimitsBezierPaths
   //····················································································································
 
-  var internalBoardsLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var internalBoardsLimitsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: internalBoardsLimitsSegments
   //····················································································································
 
-  var internalBoardsLimitsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var internalBoardsLimitsSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
   //   Selection observable property: layerConfiguration
@@ -468,7 +468,7 @@ import AppKit
   //   Selection observable property: layerConfigurationString
   //····················································································································
 
-  var layerConfigurationString_property = EBTransientProperty_String ()
+  var layerConfigurationString_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: legendBackImages
@@ -542,7 +542,7 @@ import AppKit
   //   Selection observable property: traversingPadArray
   //····················································································································
 
-  var traversingPadArray_property = EBTransientProperty_MergerPadArray ()
+  var traversingPadArray_property = EBTransientProperty <MergerPadArray> ()
 
   //····················································································································
   //   Selection observable property: traversingPads
@@ -552,13 +552,13 @@ import AppKit
   //   Selection observable property: traversingPadsBezierPaths
   //····················································································································
 
-  var traversingPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var traversingPadsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: viaShapes
   //····················································································································
 
-  var viaShapes_property = EBTransientProperty_MergerViaShapeArray ()
+  var viaShapes_property = EBTransientProperty <MergerViaShapeArray> ()
 
   //····················································································································
   //   Selection observable property: vias
@@ -568,7 +568,7 @@ import AppKit
   //   Selection observable property: viasBezierPaths
   //····················································································································
 
-  var viasBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var viasBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: zoom

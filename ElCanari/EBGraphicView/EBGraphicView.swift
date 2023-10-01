@@ -544,7 +544,7 @@ final class EBGraphicView : NSView {
   // MARK: -
   //····················································································································
 
-  var mZoomController : EBReadWritePropertyController_Int? = nil
+  var mZoomController : EBGenericReadWritePropertyController <Int>? = nil
 
   //····················································································································
   // MARK: -

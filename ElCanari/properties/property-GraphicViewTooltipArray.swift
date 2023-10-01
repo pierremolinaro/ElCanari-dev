@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property GraphicViewTooltipArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_GraphicViewTooltipArray    = EBObservableProperty <GraphicViewTooltipArray>
-typealias EBTransientProperty_GraphicViewTooltipArray   = EBTransientProperty <GraphicViewTooltipArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

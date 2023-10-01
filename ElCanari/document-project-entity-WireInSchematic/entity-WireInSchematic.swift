@@ -112,7 +112,7 @@ final class WireInSchematic : SchematicObject,
   //   Transient property: netName
   //····················································································································
 
-  final let netName_property = EBTransientProperty_String ()
+  final let netName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -124,7 +124,7 @@ final class WireInSchematic : SchematicObject,
   //   Transient property: netClassName
   //····················································································································
 
-  final let netClassName_property = EBTransientProperty_String ()
+  final let netClassName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -136,7 +136,7 @@ final class WireInSchematic : SchematicObject,
   //   Transient property: hasNet
   //····················································································································
 
-  final let hasNet_property = EBTransientProperty_Bool ()
+  final let hasNet_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 

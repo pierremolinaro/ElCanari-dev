@@ -66,7 +66,7 @@ final class SymbolSolidRect : SymbolObject {
   //   Transient property: filledBezierPath
   //····················································································································
 
-  final let filledBezierPath_property = EBTransientProperty_NSBezierPath ()
+  final let filledBezierPath_property = EBTransientProperty <NSBezierPath> ()
 
   //····················································································································
 

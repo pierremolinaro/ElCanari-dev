@@ -46,7 +46,7 @@ class ReadOnlyAbstractObjectProperty <T : AnyObject> : ReadOnlyAbstractGenericRe
   //  none property
   //····················································································································
 
-  final let none_property = EBTransientProperty_Bool ()
+  final let none_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //  init

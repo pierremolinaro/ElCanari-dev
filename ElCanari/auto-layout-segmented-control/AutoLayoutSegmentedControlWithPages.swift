@@ -108,12 +108,12 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
   //  $selectedPage binding
   //····················································································································
 
-  private var mSelectedTabIndexController : EBReadWritePropertyController_Int? = nil
+  private var mSelectedTabIndexController : EBGenericReadWritePropertyController <Int>? = nil
 
   //····················································································································
 
   final func bind_selectedPage (_ inObject : EBObservableMutableProperty <Int>) -> Self {
-    self.mSelectedTabIndexController = EBReadWritePropertyController_Int (
+    self.mSelectedTabIndexController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.update (from: inObject) }
     )

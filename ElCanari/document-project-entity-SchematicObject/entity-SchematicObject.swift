@@ -91,7 +91,7 @@ class SchematicObject : EBGraphicManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  final let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
 
@@ -103,7 +103,7 @@ class SchematicObject : EBGraphicManagedObject,
   //   Transient property: connectedPoints
   //····················································································································
 
-  final let connectedPoints_property = EBTransientProperty_CanariPointArray ()
+  final let connectedPoints_property = EBTransientProperty <CanariPointArray> ()
 
   //····················································································································
 
@@ -115,7 +115,7 @@ class SchematicObject : EBGraphicManagedObject,
   //   Transient property: wires
   //····················································································································
 
-  final let wires_property = EBTransientProperty_CanariWireArray ()
+  final let wires_property = EBTransientProperty <CanariWireArray> ()
 
   //····················································································································
 
@@ -127,7 +127,7 @@ class SchematicObject : EBGraphicManagedObject,
   //   Transient property: sheetDescriptor
   //····················································································································
 
-  final let sheetDescriptor_property = EBTransientProperty_SchematicSheetDescriptor ()
+  final let sheetDescriptor_property = EBTransientProperty <SchematicSheetDescriptor> ()
 
   //····················································································································
 
@@ -139,7 +139,7 @@ class SchematicObject : EBGraphicManagedObject,
   //   Transient property: isPlacedInSchematic
   //····················································································································
 
-  final let isPlacedInSchematic_property = EBTransientProperty_Bool ()
+  final let isPlacedInSchematic_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 

@@ -26,13 +26,13 @@ import AppKit
   //   Selection observable property: descriptor
   //····················································································································
 
-  var descriptor_property = EBTransientProperty_BorderCurveDescriptor ()
+  var descriptor_property = EBTransientProperty <BorderCurveDescriptor> ()
 
   //····················································································································
   //   Selection observable property: isLine
   //····················································································································
 
-  var isLine_property = EBTransientProperty_Bool ()
+  var isLine_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selection observable property: mCPX1
@@ -104,25 +104,25 @@ import AppKit
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  var objectDisplay_property = EBTransientProperty_EBShape ()
+  var objectDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: p2Xvalue
   //····················································································································
 
-  var p2Xvalue_property = EBTransientProperty_Double ()
+  var p2Xvalue_property = EBTransientProperty <Double> ()
 
   //····················································································································
   //   Selection observable property: p2Yvalue
   //····················································································································
 
-  var p2Yvalue_property = EBTransientProperty_Double ()
+  var p2Yvalue_property = EBTransientProperty <Double> ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  var selectionDisplay_property = EBTransientProperty_EBShape ()
+  var selectionDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   BIND SELECTION

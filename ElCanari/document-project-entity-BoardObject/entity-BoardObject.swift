@@ -245,7 +245,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: isPlacedInBoard
   //····················································································································
 
-  final let isPlacedInBoard_property = EBTransientProperty_Bool ()
+  final let isPlacedInBoard_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -257,7 +257,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  final let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
 
@@ -269,7 +269,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: isVia
   //····················································································································
 
-  final let isVia_property = EBTransientProperty_Bool ()
+  final let isVia_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -281,7 +281,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: trackLengthInCanariUnit
   //····················································································································
 
-  final let trackLengthInCanariUnit_property = EBTransientProperty_Double ()
+  final let trackLengthInCanariUnit_property = EBTransientProperty <Double> ()
 
   //····················································································································
 
@@ -293,7 +293,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: signatureForERCChecking
   //····················································································································
 
-  final let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+  final let signatureForERCChecking_property = EBTransientProperty <UInt32> ()
 
   //····················································································································
 
@@ -305,7 +305,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: netNameAndPadLocation
   //····················································································································
 
-  final let netNameAndPadLocation_property = EBTransientProperty_RastnetInfoArray ()
+  final let netNameAndPadLocation_property = EBTransientProperty <RastnetInfoArray> ()
 
   //····················································································································
 
@@ -317,7 +317,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: componentName
   //····················································································································
 
-  final let componentName_property = EBTransientProperty_String ()
+  final let componentName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -329,7 +329,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayFrontLegendForBoard
   //····················································································································
 
-  final let displayFrontLegendForBoard_property = EBTransientProperty_Bool ()
+  final let displayFrontLegendForBoard_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -341,7 +341,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayBackLegendForBoard
   //····················································································································
 
-  final let displayBackLegendForBoard_property = EBTransientProperty_Bool ()
+  final let displayBackLegendForBoard_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -353,7 +353,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayFrontLayoutForBoard
   //····················································································································
 
-  final let displayFrontLayoutForBoard_property = EBTransientProperty_Bool ()
+  final let displayFrontLayoutForBoard_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -365,7 +365,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayBackLayoutForBoard
   //····················································································································
 
-  final let displayBackLayoutForBoard_property = EBTransientProperty_Bool ()
+  final let displayBackLayoutForBoard_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -377,7 +377,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayInner1LayoutForBoard
   //····················································································································
 
-  final let displayInner1LayoutForBoard_property = EBTransientProperty_Bool ()
+  final let displayInner1LayoutForBoard_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -389,7 +389,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayInner2LayoutForBoard
   //····················································································································
 
-  final let displayInner2LayoutForBoard_property = EBTransientProperty_Bool ()
+  final let displayInner2LayoutForBoard_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -401,7 +401,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayInner3LayoutForBoard
   //····················································································································
 
-  final let displayInner3LayoutForBoard_property = EBTransientProperty_Bool ()
+  final let displayInner3LayoutForBoard_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -413,7 +413,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayInner4LayoutForBoard
   //····················································································································
 
-  final let displayInner4LayoutForBoard_property = EBTransientProperty_Bool ()
+  final let displayInner4LayoutForBoard_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -425,7 +425,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayFrontPadsForBoard
   //····················································································································
 
-  final let displayFrontPadsForBoard_property = EBTransientProperty_Bool ()
+  final let displayFrontPadsForBoard_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -437,7 +437,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayBackPadsForBoard
   //····················································································································
 
-  final let displayBackPadsForBoard_property = EBTransientProperty_Bool ()
+  final let displayBackPadsForBoard_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -449,7 +449,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayPadNumbersForBoard
   //····················································································································
 
-  final let displayPadNumbersForBoard_property = EBTransientProperty_Bool ()
+  final let displayPadNumbersForBoard_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -461,7 +461,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayFrontRestrictRectangles
   //····················································································································
 
-  final let displayFrontRestrictRectangles_property = EBTransientProperty_Bool ()
+  final let displayFrontRestrictRectangles_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -473,7 +473,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayBackRestrictRectangles
   //····················································································································
 
-  final let displayBackRestrictRectangles_property = EBTransientProperty_Bool ()
+  final let displayBackRestrictRectangles_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -485,7 +485,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayInner1RestrictRectangles
   //····················································································································
 
-  final let displayInner1RestrictRectangles_property = EBTransientProperty_Bool ()
+  final let displayInner1RestrictRectangles_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -497,7 +497,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayInner2RestrictRectangles
   //····················································································································
 
-  final let displayInner2RestrictRectangles_property = EBTransientProperty_Bool ()
+  final let displayInner2RestrictRectangles_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -509,7 +509,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayInner3RestrictRectangles
   //····················································································································
 
-  final let displayInner3RestrictRectangles_property = EBTransientProperty_Bool ()
+  final let displayInner3RestrictRectangles_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -521,7 +521,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: displayInner4RestrictRectangles
   //····················································································································
 
-  final let displayInner4RestrictRectangles_property = EBTransientProperty_Bool ()
+  final let displayInner4RestrictRectangles_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -533,7 +533,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: packageDrawingWidthMultpliedByTenForBoard
   //····················································································································
 
-  final let packageDrawingWidthMultpliedByTenForBoard_property = EBTransientProperty_Int ()
+  final let packageDrawingWidthMultpliedByTenForBoard_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -545,7 +545,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: errorOrWarningIssueSize
   //····················································································································
 
-  final let errorOrWarningIssueSize_property = EBTransientProperty_Double ()
+  final let errorOrWarningIssueSize_property = EBTransientProperty <Double> ()
 
   //····················································································································
 
@@ -557,7 +557,7 @@ class BoardObject : EBGraphicManagedObject,
   //   Transient property: trackSide
   //····················································································································
 
-  final let trackSide_property = EBTransientProperty_TrackSide ()
+  final let trackSide_property = EBTransientProperty <TrackSide> ()
 
   //····················································································································
 

@@ -87,11 +87,8 @@ enum ComponentSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_ComponentSide = EBReadOnlyEnumProperty <ComponentSide>
-typealias EBTransientProperty_ComponentSide = EBTransientEnumProperty <ComponentSide>
-typealias EBReadWriteProperty_ComponentSide = EBReadWriteEnumProperty <ComponentSide>
+typealias EBReadWriteProperty_ComponentSide = EBReadWriteEnumProperty <ComponentSide> // EBObservableMutableProperty <ComponentSide>
 typealias EBStoredProperty_ComponentSide = EBStoredEnumProperty <ComponentSide>
 typealias EBComputedProperty_ComponentSide = EBGenericComputedEnumProperty <ComponentSide>
-typealias EBPreferencesProperty_ComponentSide = EBStoredEnumProperty <ComponentSide>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

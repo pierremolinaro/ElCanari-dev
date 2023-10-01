@@ -122,79 +122,79 @@ import AppKit
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  final let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  final let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: padNameForDisplay
   //····················································································································
 
-  final let padNameForDisplay_property = EBTransientProperty_String ()
+  final let padNameForDisplay_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
-  final let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
   //   Selection observable property: padIsTraversing
   //····················································································································
 
-  final let padIsTraversing_property = EBTransientProperty_Bool ()
+  final let padIsTraversing_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selection observable property: annularRing
   //····················································································································
 
-  final let annularRing_property = EBTransientProperty_Int ()
+  final let annularRing_property = EBTransientProperty <Int> ()
 
   //····················································································································
   //   Selection observable property: padNameWithZoneName
   //····················································································································
 
-  final let padNameWithZoneName_property = EBTransientProperty_String ()
+  final let padNameWithZoneName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: zoneName
   //····················································································································
 
-  final let zoneName_property = EBTransientProperty_String ()
+  final let zoneName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: noZone
   //····················································································································
 
-  final let noZone_property = EBTransientProperty_Bool ()
+  final let noZone_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selection observable property: zoneAllowsManualRenumbering
   //····················································································································
 
-  final let zoneAllowsManualRenumbering_property = EBTransientProperty_Bool ()
+  final let zoneAllowsManualRenumbering_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selection observable property: slavePadCount
   //····················································································································
 
-  final let slavePadCount_property = EBTransientProperty_Int ()
+  final let slavePadCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
   //   Selection observable property: masterPadObjectIndex
   //····················································································································
 
-  final let masterPadObjectIndex_property = EBTransientProperty_Int ()
+  final let masterPadObjectIndex_property = EBTransientProperty <Int> ()
 
   //····················································································································
   //   Selection observable property: padNumberDisplay
   //····················································································································
 
-  final let padNumberDisplay_property = EBTransientProperty_EBShape ()
+  final let padNumberDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selected array (not observable)

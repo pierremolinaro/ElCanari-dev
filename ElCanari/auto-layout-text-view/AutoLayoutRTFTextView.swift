@@ -85,7 +85,7 @@ final class AutoLayoutRTFTextView : NSScrollView {
   //  value binding
   //····················································································································
 
-  fileprivate func update (from inObject : EBReadOnlyProperty_String) {
+  fileprivate func update (from inObject : EBObservableProperty <String>) {
     switch inObject.selection {
     case .empty, .multiple :
       self.mTextView.string = ""
@@ -102,12 +102,12 @@ final class AutoLayoutRTFTextView : NSScrollView {
 
   //····················································································································
 
-  private var mValueController : EBReadWritePropertyController_String? = nil
+  private var mValueController : EBGenericReadWritePropertyController <String>? = nil
 
   //····················································································································
 
   final func bind_value (_ inObject : EBReadWriteProperty_String) -> Self {
-    self.mValueController = EBReadWritePropertyController_String (
+    self.mValueController = EBGenericReadWritePropertyController <String> (
       observedObject: inObject,
       callBack: { [weak self] in self?.update (from: inObject) }
     )

@@ -253,7 +253,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  final func bind_gridStyle (_ inObject : EBReadOnlyProperty_GridStyle) -> Self {
+  final func bind_gridStyle (_ inObject : EBObservableProperty <GridStyle>) -> Self {
     self.mGraphicView.bind_gridStyle (inObject)
     return self
   }

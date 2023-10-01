@@ -53,7 +53,7 @@ final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
   //  doubleValue binding
   //····················································································································
 
-  fileprivate func updateDoubleValue (_ object : EBReadOnlyProperty_Double) {
+  fileprivate func updateDoubleValue (_ object : EBObservableProperty <Double>) {
     switch object.selection {
     case .empty, .multiple :
       self.stringValue = "-"
@@ -66,12 +66,12 @@ final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
-  private var mDoubleValueController : EBReadWritePropertyController_Double? = nil
+  private var mDoubleValueController : EBGenericReadWritePropertyController <Double>? = nil
 
   //····················································································································
 
   final func bind_doubleValue (_ inObject : EBReadWriteProperty_Double, sendContinously : Bool) -> Self {
-    self.mDoubleValueController = EBReadWritePropertyController_Double (
+    self.mDoubleValueController = EBGenericReadWritePropertyController <Double> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateDoubleValue (inObject) }
     )
@@ -83,7 +83,7 @@ final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
   //  intValue binding
   //····················································································································
 
-  fileprivate func updateIntValue (_ object : EBReadOnlyProperty_Int) {
+  fileprivate func updateIntValue (_ object : EBObservableProperty <Int>) {
     switch object.selection {
     case .empty, .multiple :
       self.stringValue = "-"
@@ -96,12 +96,12 @@ final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
-  private var mIntValueController : EBReadWritePropertyController_Int? = nil
+  private var mIntValueController : EBGenericReadWritePropertyController <Int>? = nil
 
   //····················································································································
 
   final func bind_intValue (_ inObject : EBReadWriteProperty_Int, sendContinously : Bool) -> Self {
-    self.mIntValueController = EBReadWritePropertyController_Int (
+    self.mIntValueController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateIntValue (inObject) }
     )

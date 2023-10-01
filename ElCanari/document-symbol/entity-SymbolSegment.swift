@@ -66,7 +66,7 @@ final class SymbolSegment : SymbolObject {
   //   Transient property: strokeBezierPath
   //····················································································································
 
-  final let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+  final let strokeBezierPath_property = EBTransientProperty <NSBezierPath> ()
 
   //····················································································································
 

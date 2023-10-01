@@ -91,7 +91,7 @@ final class AutoLayoutStatusBadgeView : NSView {
 
   //····················································································································
 
-  final func bind_warningCount (_ inObject : EBReadOnlyProperty_Int) -> Self {
+  final func bind_warningCount (_ inObject : EBObservableProperty <Int>) -> Self {
     self.mWarningCountController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateWarningCount (inObject.selection) }
@@ -119,7 +119,7 @@ final class AutoLayoutStatusBadgeView : NSView {
 
   //····················································································································
 
-  final func bind_errorCount (_ inObject : EBReadOnlyProperty_Int) -> Self {
+  final func bind_errorCount (_ inObject : EBObservableProperty <Int>) -> Self {
     self.mErrorCountController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateErrorCount (inObject.selection) }
@@ -158,7 +158,7 @@ final class AutoLayoutStatusBadgeView : NSView {
 
   //····················································································································
 
-  final func bind_tooltip (_ inObject : EBReadOnlyProperty_String) -> Self {
+  final func bind_tooltip (_ inObject : EBObservableProperty <String>) -> Self {
     self.mTooltipController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateTooltip (inObject.selection) }

@@ -158,7 +158,7 @@ final class ArtworkRoot : EBManagedObject {
   //   Transient property: hasInnerElements
   //····················································································································
 
-  final let hasInnerElements_property = EBTransientProperty_Bool ()
+  final let hasInnerElements_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -170,7 +170,7 @@ final class ArtworkRoot : EBManagedObject {
   //   Transient property: hasSixLayers
   //····················································································································
 
-  final let hasSixLayers_property = EBTransientProperty_Bool ()
+  final let hasSixLayers_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -182,7 +182,7 @@ final class ArtworkRoot : EBManagedObject {
   //   Transient property: hasDataWarning
   //····················································································································
 
-  final let hasDataWarning_property = EBTransientProperty_Bool ()
+  final let hasDataWarning_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -194,7 +194,7 @@ final class ArtworkRoot : EBManagedObject {
   //   Transient property: emptyDrillFileExtension
   //····················································································································
 
-  final let emptyDrillFileExtension_property = EBTransientProperty_Bool ()
+  final let emptyDrillFileExtension_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -206,7 +206,7 @@ final class ArtworkRoot : EBManagedObject {
   //   Transient property: signatureForERCChecking
   //····················································································································
 
-  final let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+  final let signatureForERCChecking_property = EBTransientProperty <UInt32> ()
 
   //····················································································································
 

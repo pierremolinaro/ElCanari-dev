@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property SchematicPointStatus
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_SchematicPointStatus    = EBObservableProperty <SchematicPointStatus>
-typealias EBTransientProperty_SchematicPointStatus   = EBTransientProperty <SchematicPointStatus>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

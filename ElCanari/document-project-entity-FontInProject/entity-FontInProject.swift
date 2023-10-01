@@ -161,7 +161,7 @@ final class FontInProject : EBManagedObject,
   //   Transient property: versionString
   //····················································································································
 
-  final let versionString_property = EBTransientProperty_String ()
+  final let versionString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -173,7 +173,7 @@ final class FontInProject : EBManagedObject,
   //   Transient property: sizeString
   //····················································································································
 
-  final let sizeString_property = EBTransientProperty_String ()
+  final let sizeString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -185,7 +185,7 @@ final class FontInProject : EBManagedObject,
   //   Transient property: descriptor
   //····················································································································
 
-  final let descriptor_property = EBTransientProperty_BoardFontDescriptor ()
+  final let descriptor_property = EBTransientProperty <BoardFontDescriptor> ()
 
   //····················································································································
 
@@ -197,7 +197,7 @@ final class FontInProject : EBManagedObject,
   //   Transient property: textCount
   //····················································································································
 
-  final let textCount_property = EBTransientProperty_Int ()
+  final let textCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -209,7 +209,7 @@ final class FontInProject : EBManagedObject,
   //   Transient property: canRemoveFont
   //····················································································································
 
-  final let canRemoveFont_property = EBTransientProperty_Bool ()
+  final let canRemoveFont_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -221,7 +221,7 @@ final class FontInProject : EBManagedObject,
   //   Transient property: componentNamesCount
   //····················································································································
 
-  final let componentNamesCount_property = EBTransientProperty_Int ()
+  final let componentNamesCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -233,7 +233,7 @@ final class FontInProject : EBManagedObject,
   //   Transient property: componentValuesCount
   //····················································································································
 
-  final let componentValuesCount_property = EBTransientProperty_Int ()
+  final let componentValuesCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 

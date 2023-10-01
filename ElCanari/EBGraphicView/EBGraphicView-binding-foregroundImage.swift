@@ -10,7 +10,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func bind_foregroundImageData (_ model : EBReadOnlyProperty_Data) {
+  final func bind_foregroundImageData (_ model : EBObservableProperty <Data>) {
     self.mForegroundImageDataController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateForegroundImageData (from: model) }
@@ -26,7 +26,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final private func updateForegroundImageData (from model : EBReadOnlyProperty_Data) {
+  final private func updateForegroundImageData (from model : EBObservableProperty <Data>) {
     if self.mForegroundImage != nil {
       self.mForegroundImage = nil
       self.setNeedsDisplayAndUpdateViewBounds ()
@@ -46,7 +46,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func bind_foregroundImageOpacity (_ model : EBReadOnlyProperty_Double) {
+  final func bind_foregroundImageOpacity (_ model : EBObservableProperty <Double>) {
     self.mForegroundImageOpacityController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateForegroundImageOpacity (from: model) }
@@ -62,7 +62,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final private func updateForegroundImageOpacity (from model : EBReadOnlyProperty_Double) {
+  final private func updateForegroundImageOpacity (from model : EBObservableProperty <Double>) {
     switch model.selection {
     case .empty :
       break

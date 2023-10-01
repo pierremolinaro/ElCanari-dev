@@ -8,53 +8,7 @@ import AppKit
 //   Property class NSColor
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_NSColor    = EBObservableProperty <NSColor>
-typealias EBTransientProperty_NSColor   = EBTransientProperty <NSColor>
 typealias EBReadWriteProperty_NSColor   = EBObservableMutableProperty <NSColor>
 typealias EBComputedProperty_NSColor    = EBComputedProperty <NSColor>
 typealias EBStoredProperty_NSColor      = EBStoredProperty <NSColor>
-typealias EBPreferencesProperty_NSColor = EBPreferenceProperty <NSColor>
-typealias EBReadWritePropertyController_NSColor = EBGenericReadWritePropertyController <NSColor>
 
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/*final class EBReadWritePropertyController_NSColor : EBObservablePropertyController {
-
-  //····················································································································
-
-  private weak var mObject : EBReadWriteProperty_NSColor?
-
-  //····················································································································
-
-  init (observedObject inObject : EBReadWriteProperty_NSColor, callBack inCallBack : @escaping () -> Void) {
-    self.mObject = inObject
-    super.init (observedObjects : [inObject], callBack : inCallBack)
-  }
-
-  //····················································································································
-
-  func updateModel (withValue inValue : NSColor) {
-    self.mObject?.setProp (inValue)
-  }
-
-  //····················································································································
-
-  var value : NSColor? {
-    if let s = self.mObject?.selection {
-      switch s {
-      case .empty, .multiple :
-        return nil
-      case .single (let v) :
-        return v
-      }
-    }else{
-      return nil
-    }
-  }
-
-  //····················································································································
-
-}*/
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

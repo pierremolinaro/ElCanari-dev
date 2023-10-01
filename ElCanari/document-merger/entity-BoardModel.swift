@@ -1050,7 +1050,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: errorArchiveVersionMessage
   //····················································································································
 
-  final let errorArchiveVersionMessage_property = EBTransientProperty_String ()
+  final let errorArchiveVersionMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1062,7 +1062,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: errorArchiveLabelSize
   //····················································································································
 
-  final let errorArchiveLabelSize_property = EBTransientProperty_EBControlSize ()
+  final let errorArchiveLabelSize_property = EBTransientProperty <EBControlSize> ()
 
   //····················································································································
 
@@ -1074,7 +1074,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: errorArchiveLabelColor
   //····················································································································
 
-  final let errorArchiveLabelColor_property = EBTransientProperty_NSColor ()
+  final let errorArchiveLabelColor_property = EBTransientProperty <NSColor> ()
 
   //····················································································································
 
@@ -1086,7 +1086,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: errorArchiveVersionMessageIsHidden
   //····················································································································
 
-  final let errorArchiveVersionMessageIsHidden_property = EBTransientProperty_Bool ()
+  final let errorArchiveVersionMessageIsHidden_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -1098,7 +1098,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontLegendBoardImageRectangles
   //····················································································································
 
-  final let frontLegendBoardImageRectangles_property = EBTransientProperty_MergerRectangleArray ()
+  final let frontLegendBoardImageRectangles_property = EBTransientProperty <MergerRectangleArray> ()
 
   //····················································································································
 
@@ -1110,7 +1110,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backLegendBoardImageRectangles
   //····················································································································
 
-  final let backLegendBoardImageRectangles_property = EBTransientProperty_MergerRectangleArray ()
+  final let backLegendBoardImageRectangles_property = EBTransientProperty <MergerRectangleArray> ()
 
   //····················································································································
 
@@ -1122,7 +1122,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontLegendQRCodeRectangles
   //····················································································································
 
-  final let frontLegendQRCodeRectangles_property = EBTransientProperty_MergerRectangleArray ()
+  final let frontLegendQRCodeRectangles_property = EBTransientProperty <MergerRectangleArray> ()
 
   //····················································································································
 
@@ -1134,7 +1134,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backLegendQRCodeRectangles
   //····················································································································
 
-  final let backLegendQRCodeRectangles_property = EBTransientProperty_MergerRectangleArray ()
+  final let backLegendQRCodeRectangles_property = EBTransientProperty <MergerRectangleArray> ()
 
   //····················································································································
 
@@ -1146,7 +1146,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: layerConfigurationString
   //····················································································································
 
-  final let layerConfigurationString_property = EBTransientProperty_String ()
+  final let layerConfigurationString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -1158,7 +1158,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontLegendLinesSegments
   //····················································································································
 
-  final let frontLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let frontLegendLinesSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1170,7 +1170,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backLegendLinesSegments
   //····················································································································
 
-  final let backLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let backLegendLinesSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1182,7 +1182,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backLegendLinesBezierPaths
   //····················································································································
 
-  final let backLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let backLegendLinesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1194,7 +1194,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontLegendTextsSegments
   //····················································································································
 
-  final let frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let frontLegendTextsSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1206,7 +1206,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontLegendTextsBezierPaths
   //····················································································································
 
-  final let frontLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let frontLegendTextsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1218,7 +1218,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontLayoutTextsSegments
   //····················································································································
 
-  final let frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let frontLayoutTextsSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1230,7 +1230,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontLayoutTextsBezierPaths
   //····················································································································
 
-  final let frontLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let frontLayoutTextsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1242,7 +1242,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backLegendTextsSegments
   //····················································································································
 
-  final let backLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let backLegendTextsSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1254,7 +1254,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backLegendTextsBezierPaths
   //····················································································································
 
-  final let backLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let backLegendTextsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1266,7 +1266,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backLayoutTextsSegments
   //····················································································································
 
-  final let backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let backLayoutTextsSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1278,7 +1278,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backLayoutTextsBezierPaths
   //····················································································································
 
-  final let backLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let backLayoutTextsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1290,7 +1290,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: internalBoardsLimitsSegments
   //····················································································································
 
-  final let internalBoardsLimitsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let internalBoardsLimitsSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1302,7 +1302,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: internalBoardsLimitsBezierPaths
   //····················································································································
 
-  final let internalBoardsLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let internalBoardsLimitsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1314,7 +1314,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: drillSegments
   //····················································································································
 
-  final let drillSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let drillSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1326,7 +1326,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: holesBezierPaths
   //····················································································································
 
-  final let holesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let holesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1338,7 +1338,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: viaShapes
   //····················································································································
 
-  final let viaShapes_property = EBTransientProperty_MergerViaShapeArray ()
+  final let viaShapes_property = EBTransientProperty <MergerViaShapeArray> ()
 
   //····················································································································
 
@@ -1350,7 +1350,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: viasBezierPaths
   //····················································································································
 
-  final let viasBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let viasBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1362,7 +1362,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontPadArray
   //····················································································································
 
-  final let frontPadArray_property = EBTransientProperty_MergerPadArray ()
+  final let frontPadArray_property = EBTransientProperty <MergerPadArray> ()
 
   //····················································································································
 
@@ -1374,7 +1374,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontPadsBezierPaths
   //····················································································································
 
-  final let frontPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let frontPadsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1386,7 +1386,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backPadArray
   //····················································································································
 
-  final let backPadArray_property = EBTransientProperty_MergerPadArray ()
+  final let backPadArray_property = EBTransientProperty <MergerPadArray> ()
 
   //····················································································································
 
@@ -1398,7 +1398,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backPadsBezierPaths
   //····················································································································
 
-  final let backPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let backPadsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1410,7 +1410,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: traversingPadArray
   //····················································································································
 
-  final let traversingPadArray_property = EBTransientProperty_MergerPadArray ()
+  final let traversingPadArray_property = EBTransientProperty <MergerPadArray> ()
 
   //····················································································································
 
@@ -1422,7 +1422,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: traversingPadsBezierPaths
   //····················································································································
 
-  final let traversingPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let traversingPadsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1434,7 +1434,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: boardLimitsBezierPaths
   //····················································································································
 
-  final let boardLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let boardLimitsBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1446,7 +1446,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backComponentNameSegments
   //····················································································································
 
-  final let backComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let backComponentNameSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1458,7 +1458,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backComponentNamesBezierPaths
   //····················································································································
 
-  final let backComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let backComponentNamesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1470,7 +1470,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontComponentNameSegments
   //····················································································································
 
-  final let frontComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let frontComponentNameSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1482,7 +1482,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontComponentNamesBezierPaths
   //····················································································································
 
-  final let frontComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let frontComponentNamesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1494,7 +1494,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontComponentValueSegments
   //····················································································································
 
-  final let frontComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let frontComponentValueSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1506,7 +1506,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontComponentValuesBezierPaths
   //····················································································································
 
-  final let frontComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let frontComponentValuesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1518,7 +1518,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backComponentValueSegments
   //····················································································································
 
-  final let backComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let backComponentValueSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1530,7 +1530,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backComponentValuesBezierPaths
   //····················································································································
 
-  final let backComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let backComponentValuesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1542,7 +1542,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backTrackSegments
   //····················································································································
 
-  final let backTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let backTrackSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1554,7 +1554,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backTracksBezierPaths
   //····················································································································
 
-  final let backTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let backTracksBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1566,7 +1566,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontTrackSegments
   //····················································································································
 
-  final let frontTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let frontTrackSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1578,7 +1578,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontTracksBezierPaths
   //····················································································································
 
-  final let frontTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let frontTracksBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1590,7 +1590,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: inner1TracksSegments
   //····················································································································
 
-  final let inner1TracksSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let inner1TracksSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1602,7 +1602,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: inner1TracksBezierPaths
   //····················································································································
 
-  final let inner1TracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let inner1TracksBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1614,7 +1614,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: inner2TracksSegments
   //····················································································································
 
-  final let inner2TracksSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let inner2TracksSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1626,7 +1626,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: inner2TracksBezierPaths
   //····················································································································
 
-  final let inner2TracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let inner2TracksBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1638,7 +1638,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: inner3TracksSegments
   //····················································································································
 
-  final let inner3TracksSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let inner3TracksSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1650,7 +1650,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: inner3TracksBezierPaths
   //····················································································································
 
-  final let inner3TracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let inner3TracksBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1662,7 +1662,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: inner4TracksSegments
   //····················································································································
 
-  final let inner4TracksSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let inner4TracksSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1674,7 +1674,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: inner4TracksBezierPaths
   //····················································································································
 
-  final let inner4TracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let inner4TracksBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1686,7 +1686,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontPackagesSegments
   //····················································································································
 
-  final let frontPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let frontPackagesSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1698,7 +1698,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontPackagesBezierPaths
   //····················································································································
 
-  final let frontPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let frontPackagesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1710,7 +1710,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backPackagesSegments
   //····················································································································
 
-  final let backPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  final let backPackagesSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
 
@@ -1722,7 +1722,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: backPackagesBezierPaths
   //····················································································································
 
-  final let backPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let backPackagesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1734,7 +1734,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: instanceCount
   //····················································································································
 
-  final let instanceCount_property = EBTransientProperty_Int ()
+  final let instanceCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -1746,7 +1746,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: frontLegendLinesBezierPaths
   //····················································································································
 
-  final let frontLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  final let frontLegendLinesBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
 
@@ -1758,7 +1758,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: imageForModel
   //····················································································································
 
-  final let imageForModel_property = EBTransientProperty_EBShape ()
+  final let imageForModel_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 
@@ -1770,7 +1770,7 @@ final class BoardModel : EBManagedObject,
   //   Transient property: imageForInstances
   //····················································································································
 
-  final let imageForInstances_property = EBTransientProperty_EBShape ()
+  final let imageForInstances_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 

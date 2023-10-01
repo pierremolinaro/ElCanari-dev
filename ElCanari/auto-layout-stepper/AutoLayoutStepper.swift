@@ -46,7 +46,7 @@ final class AutoLayoutStepper : AutoLayoutBase_NSStepper {
   //  $value binding
   //····················································································································
 
-  fileprivate func updateStepper (from inObject : EBReadOnlyProperty_Int) {
+  fileprivate func updateStepper (from inObject : EBObservableProperty <Int>) {
     switch inObject.selection {
     case .empty, .multiple :
       self.enable (fromValueBinding: false, self.enabledBindingController)
@@ -58,13 +58,13 @@ final class AutoLayoutStepper : AutoLayoutBase_NSStepper {
 
   //····················································································································
 
-  private var mValueController : EBReadWritePropertyController_Int? = nil
+  private var mValueController : EBGenericReadWritePropertyController <Int>? = nil
 
   //····················································································································
 
   final func bind_value (_ inObject : EBReadWriteProperty_Int) -> Self {
     NSColorPanel.shared.showsAlpha = true
-    self.mValueController = EBReadWritePropertyController_Int (
+    self.mValueController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateStepper (from: inObject)  }
     )

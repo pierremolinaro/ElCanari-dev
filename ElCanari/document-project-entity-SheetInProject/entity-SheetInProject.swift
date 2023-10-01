@@ -129,7 +129,7 @@ final class SheetInProject : EBManagedObject,
   //   Transient property: schematicIssues
   //····················································································································
 
-  final let schematicIssues_property = EBTransientProperty_GraphicViewTooltipArray ()
+  final let schematicIssues_property = EBTransientProperty <GraphicViewTooltipArray> ()
 
   //····················································································································
 
@@ -141,7 +141,7 @@ final class SheetInProject : EBManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  final let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
 
@@ -153,7 +153,7 @@ final class SheetInProject : EBManagedObject,
   //   Transient property: connectedPoints
   //····················································································································
 
-  final let connectedPoints_property = EBTransientProperty_EBShape ()
+  final let connectedPoints_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
 
@@ -165,7 +165,7 @@ final class SheetInProject : EBManagedObject,
   //   Transient property: schematicConnexionWarnings
   //····················································································································
 
-  final let schematicConnexionWarnings_property = EBTransientProperty_Int ()
+  final let schematicConnexionWarnings_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -177,7 +177,7 @@ final class SheetInProject : EBManagedObject,
   //   Transient property: schematicConnexionErrors
   //····················································································································
 
-  final let schematicConnexionErrors_property = EBTransientProperty_Int ()
+  final let schematicConnexionErrors_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -189,7 +189,7 @@ final class SheetInProject : EBManagedObject,
   //   Transient property: sheetDescriptor
   //····················································································································
 
-  final let sheetDescriptor_property = EBTransientProperty_SchematicSheetDescriptor ()
+  final let sheetDescriptor_property = EBTransientProperty <SchematicSheetDescriptor> ()
 
   //····················································································································
 

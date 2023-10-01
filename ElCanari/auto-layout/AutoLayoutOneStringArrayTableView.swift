@@ -171,7 +171,7 @@ final class AutoLayoutOneStringArrayTableView : NSScrollView, NSTableViewDataSou
 
   //····················································································································
 
-  func update (from inModel : EBReadOnlyProperty_StringArray) {
+  func update (from inModel : EBObservableProperty <StringArray>) {
     switch inModel.selection {
     case .empty, .multiple :
       self.reloadDataSource ([])
@@ -188,7 +188,7 @@ final class AutoLayoutOneStringArrayTableView : NSScrollView, NSTableViewDataSou
 
   //····················································································································
 
-  final func bind_array (_ model : EBReadOnlyProperty_StringArray) -> Self {
+  final func bind_array (_ model : EBObservableProperty <StringArray>) -> Self {
     self.mController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }

@@ -104,67 +104,67 @@ import AppKit
   //   Selection observable property: actualTrackWidth
   //····················································································································
 
-  final let actualTrackWidth_property = EBTransientProperty_Int ()
+  final let actualTrackWidth_property = EBTransientProperty <Int> ()
 
   //····················································································································
   //   Selection observable property: netName
   //····················································································································
 
-  final let netName_property = EBTransientProperty_String ()
+  final let netName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: netClassName
   //····················································································································
 
-  final let netClassName_property = EBTransientProperty_String ()
+  final let netClassName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: netClassTrackWidth
   //····················································································································
 
-  final let netClassTrackWidth_property = EBTransientProperty_Int ()
+  final let netClassTrackWidth_property = EBTransientProperty <Int> ()
 
   //····················································································································
   //   Selection observable property: netClassViaHoleDiameter
   //····················································································································
 
-  final let netClassViaHoleDiameter_property = EBTransientProperty_Int ()
+  final let netClassViaHoleDiameter_property = EBTransientProperty <Int> ()
 
   //····················································································································
   //   Selection observable property: netClassViaPadDiameter
   //····················································································································
 
-  final let netClassViaPadDiameter_property = EBTransientProperty_Int ()
+  final let netClassViaPadDiameter_property = EBTransientProperty <Int> ()
 
   //····················································································································
   //   Selection observable property: trackLengthInCanariUnit
   //····················································································································
 
-  final let trackLengthInCanariUnit_property = EBTransientProperty_Double ()
+  final let trackLengthInCanariUnit_property = EBTransientProperty <Double> ()
 
   //····················································································································
   //   Selection observable property: trackSide
   //····················································································································
 
-  final let trackSide_property = EBTransientProperty_TrackSide ()
+  final let trackSide_property = EBTransientProperty <TrackSide> ()
 
   //····················································································································
   //   Selection observable property: signatureForERCChecking
   //····················································································································
 
-  final let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+  final let signatureForERCChecking_property = EBTransientProperty <UInt32> ()
 
   //····················································································································
   //   Selection observable property: p1ConnectedToSomePad
   //····················································································································
 
-  final let p1ConnectedToSomePad_property = EBTransientProperty_Bool ()
+  final let p1ConnectedToSomePad_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selection observable property: p2ConnectedToSomePad
   //····················································································································
 
-  final let p2ConnectedToSomePad_property = EBTransientProperty_Bool ()
+  final let p2ConnectedToSomePad_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selection observable property: trackDirectionInDegrees
@@ -200,31 +200,31 @@ import AppKit
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  final let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: p1CanMove
   //····················································································································
 
-  final let p1CanMove_property = EBTransientProperty_Bool ()
+  final let p1CanMove_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selection observable property: p2CanMove
   //····················································································································
 
-  final let p2CanMove_property = EBTransientProperty_Bool ()
+  final let p2CanMove_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selection observable property: trackCanRotate
   //····················································································································
 
-  final let trackCanRotate_property = EBTransientProperty_Bool ()
+  final let trackCanRotate_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  final let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selected array (not observable)

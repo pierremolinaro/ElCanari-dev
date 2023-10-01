@@ -61,7 +61,7 @@ final class AutoLayoutDateLabel : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  final func bind_date (_ model : EBReadOnlyProperty_Date) -> Self {
+  final func bind_date (_ model : EBObservableProperty <Date>) -> Self {
     self.mDateController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.update (from: model) }
@@ -71,7 +71,7 @@ final class AutoLayoutDateLabel : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  private func update (from model : EBReadOnlyProperty_Date) {
+  private func update (from model : EBObservableProperty <Date>) {
     switch model.selection {
     case .empty :
       self.stringValue = "—"

@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func bind_gridStyle (_ model : EBReadOnlyProperty_GridStyle) {
+  final func bind_gridStyle (_ model : EBObservableProperty <GridStyle>) {
     self.mGridStyleController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateGridStyle (from: model) }
@@ -28,7 +28,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final private func updateGridStyle (from model : EBReadOnlyProperty_GridStyle) {
+  final private func updateGridStyle (from model : EBObservableProperty <GridStyle>) {
     switch model.selection {
     case .empty, .multiple :
       self.mGridStyle = .noGrid

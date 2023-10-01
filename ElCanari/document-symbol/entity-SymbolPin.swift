@@ -245,7 +245,7 @@ final class SymbolPin : SymbolObject,
   //   Transient property: filledBezierPath
   //····················································································································
 
-  final let filledBezierPath_property = EBTransientProperty_NSBezierPath ()
+  final let filledBezierPath_property = EBTransientProperty <NSBezierPath> ()
 
   //····················································································································
 
@@ -257,7 +257,7 @@ final class SymbolPin : SymbolObject,
   //   Transient property: nameRect
   //····················································································································
 
-  final let nameRect_property = EBTransientProperty_NSRect ()
+  final let nameRect_property = EBTransientProperty <NSRect> ()
 
   //····················································································································
 

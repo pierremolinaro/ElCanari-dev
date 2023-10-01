@@ -97,7 +97,7 @@ final class LabelInSchematic : SchematicObject,
   //   Transient property: location
   //····················································································································
 
-  final let location_property = EBTransientProperty_CanariPoint ()
+  final let location_property = EBTransientProperty <CanariPoint> ()
 
   //····················································································································
 
@@ -109,7 +109,7 @@ final class LabelInSchematic : SchematicObject,
   //   Transient property: netName
   //····················································································································
 
-  final let netName_property = EBTransientProperty_String ()
+  final let netName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -121,7 +121,7 @@ final class LabelInSchematic : SchematicObject,
   //   Transient property: netClassName
   //····················································································································
 
-  final let netClassName_property = EBTransientProperty_String ()
+  final let netClassName_property = EBTransientProperty <String> ()
 
   //····················································································································
 

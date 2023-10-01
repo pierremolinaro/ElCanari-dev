@@ -8,7 +8,5 @@ import AppKit
 //   Scalar property SchematicSheetGeometry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_SchematicSheetGeometry    = EBObservableProperty <SchematicSheetGeometry>
-typealias EBTransientProperty_SchematicSheetGeometry   = EBTransientProperty <SchematicSheetGeometry>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

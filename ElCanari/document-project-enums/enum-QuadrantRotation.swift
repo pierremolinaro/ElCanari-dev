@@ -97,11 +97,8 @@ enum QuadrantRotation : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_QuadrantRotation = EBReadOnlyEnumProperty <QuadrantRotation>
-typealias EBTransientProperty_QuadrantRotation = EBTransientEnumProperty <QuadrantRotation>
-typealias EBReadWriteProperty_QuadrantRotation = EBReadWriteEnumProperty <QuadrantRotation>
+typealias EBReadWriteProperty_QuadrantRotation = EBReadWriteEnumProperty <QuadrantRotation> // EBObservableMutableProperty <QuadrantRotation>
 typealias EBStoredProperty_QuadrantRotation = EBStoredEnumProperty <QuadrantRotation>
 typealias EBComputedProperty_QuadrantRotation = EBGenericComputedEnumProperty <QuadrantRotation>
-typealias EBPreferencesProperty_QuadrantRotation = EBStoredEnumProperty <QuadrantRotation>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

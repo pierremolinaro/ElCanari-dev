@@ -99,7 +99,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
   //  value binding
   //····················································································································
 
-  fileprivate func update (from inObject : EBReadOnlyProperty_String) {
+  fileprivate func update (from inObject : EBObservableProperty <String>) {
     switch inObject.selection {
     case .empty, .multiple :
       self.mTextView.string = ""
@@ -118,7 +118,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
 
   //····················································································································
 
-  final func bind_observedValue (_ inObject : EBReadOnlyProperty_String) -> Self {
+  final func bind_observedValue (_ inObject : EBObservableProperty <String>) -> Self {
     self.mValueController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.update (from: inObject) }

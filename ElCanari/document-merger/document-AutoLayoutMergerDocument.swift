@@ -48,7 +48,7 @@ import AppKit
   //   Transient property: issues
   //····················································································································
 
-  final let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
 
@@ -60,7 +60,7 @@ import AppKit
   //   Transient property: statusWarningCount
   //····················································································································
 
-  final let statusWarningCount_property = EBTransientProperty_Int ()
+  final let statusWarningCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -72,7 +72,7 @@ import AppKit
   //   Transient property: boardDispositionStatusTitle
   //····················································································································
 
-  final let boardDispositionStatusTitle_property = EBTransientProperty_String ()
+  final let boardDispositionStatusTitle_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -84,7 +84,7 @@ import AppKit
   //   Transient property: documentFileName
   //····················································································································
 
-  final let documentFileName_property = EBTransientProperty_String ()
+  final let documentFileName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -96,7 +96,7 @@ import AppKit
   //   Transient property: incorrectDocumentFileDetailedErrorMessage
   //····················································································································
 
-  final let incorrectDocumentFileDetailedErrorMessage_property = EBTransientProperty_String ()
+  final let incorrectDocumentFileDetailedErrorMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -108,7 +108,7 @@ import AppKit
   //   Transient property: documentFileShouldBeRenamedErrorMessage
   //····················································································································
 
-  final let documentFileShouldBeRenamedErrorMessage_property = EBTransientProperty_String ()
+  final let documentFileShouldBeRenamedErrorMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -120,7 +120,7 @@ import AppKit
   //   Transient property: emptyDrillFileExtension
   //····················································································································
 
-  final let emptyDrillFileExtension_property = EBTransientProperty_Bool ()
+  final let emptyDrillFileExtension_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -132,7 +132,7 @@ import AppKit
   //   Transient property: modelVersionErrorMessage
   //····················································································································
 
-  final let modelVersionErrorMessage_property = EBTransientProperty_String ()
+  final let modelVersionErrorMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -144,7 +144,7 @@ import AppKit
   //   Transient property: statusImage
   //····················································································································
 
-  final let statusImage_property = EBTransientProperty_NSImage ()
+  final let statusImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -156,7 +156,7 @@ import AppKit
   //   Transient property: statusMessage
   //····················································································································
 
-  final let statusMessage_property = EBTransientProperty_String ()
+  final let statusMessage_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -168,7 +168,7 @@ import AppKit
   //   Transient property: statusErrorCount
   //····················································································································
 
-  final let statusErrorCount_property = EBTransientProperty_Int ()
+  final let statusErrorCount_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -180,7 +180,7 @@ import AppKit
   //   Transient property: documentIsUnnamed
   //····················································································································
 
-  final let documentIsUnnamed_property = EBTransientProperty_Bool ()
+  final let documentIsUnnamed_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -192,7 +192,7 @@ import AppKit
   //   Transient property: emptyDrillFileExtensionImage
   //····················································································································
 
-  final let emptyDrillFileExtensionImage_property = EBTransientProperty_NSImage ()
+  final let emptyDrillFileExtensionImage_property = EBTransientProperty <NSImage> ()
 
   //····················································································································
 
@@ -204,7 +204,7 @@ import AppKit
   //   Transient property: generatedFileCountString
   //····················································································································
 
-  final let generatedFileCountString_property = EBTransientProperty_String ()
+  final let generatedFileCountString_property = EBTransientProperty <String> ()
 
   //····················································································································
 

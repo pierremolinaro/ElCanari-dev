@@ -741,7 +741,7 @@ final class ComponentInProject : BoardObject,
   //   Transient property: deviceName
   //····················································································································
 
-  final let deviceName_property = EBTransientProperty_String ()
+  final let deviceName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -781,7 +781,7 @@ final class ComponentInProject : BoardObject,
   //   Transient property: packagePadDictionary
   //····················································································································
 
-  final let packagePadDictionary_property = EBTransientProperty_PackageMasterPadDictionary ()
+  final let packagePadDictionary_property = EBTransientProperty <PackageMasterPadDictionary> ()
 
   //····················································································································
 
@@ -793,7 +793,7 @@ final class ComponentInProject : BoardObject,
   //   Transient property: selectedPackageName
   //····················································································································
 
-  final let selectedPackageName_property = EBTransientProperty_String ()
+  final let selectedPackageName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -805,7 +805,7 @@ final class ComponentInProject : BoardObject,
   //   Transient property: availablePackages
   //····················································································································
 
-  final let availablePackages_property = EBTransientProperty_StringArray ()
+  final let availablePackages_property = EBTransientProperty <StringArray> ()
 
   //····················································································································
 
@@ -817,7 +817,7 @@ final class ComponentInProject : BoardObject,
   //   Transient property: componentIsPlacedInBoard
   //····················································································································
 
-  final let componentIsPlacedInBoard_property = EBTransientProperty_Bool ()
+  final let componentIsPlacedInBoard_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -829,7 +829,7 @@ final class ComponentInProject : BoardObject,
   //   Transient property: componentIsPlacedInBoardString
   //····················································································································
 
-  final let componentIsPlacedInBoardString_property = EBTransientProperty_String ()
+  final let componentIsPlacedInBoardString_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -841,7 +841,7 @@ final class ComponentInProject : BoardObject,
   //   Transient property: strokeBezierPath
   //····················································································································
 
-  final let strokeBezierPath_property = EBTransientProperty_EBBezierPath ()
+  final let strokeBezierPath_property = EBTransientProperty <EBBezierPath> ()
 
   //····················································································································
 
@@ -909,7 +909,7 @@ final class ComponentInProject : BoardObject,
   //   Transient property: pinPadAssignments
   //····················································································································
 
-  final let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+  final let pinPadAssignments_property = EBTransientProperty <ThreeStringArray> ()
 
   //····················································································································
 
@@ -921,7 +921,7 @@ final class ComponentInProject : BoardObject,
   //   Transient property: hasSlavePads
   //····················································································································
 
-  final let hasSlavePads_property = EBTransientProperty_Bool ()
+  final let hasSlavePads_property = EBTransientProperty <Bool> ()
 
   //····················································································································
 
@@ -933,7 +933,7 @@ final class ComponentInProject : BoardObject,
   //   Transient property: placementInSchematic
   //····················································································································
 
-  final let placementInSchematic_property = EBTransientProperty_String ()
+  final let placementInSchematic_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -945,7 +945,7 @@ final class ComponentInProject : BoardObject,
   //   Transient property: deviceSymbolDictionary
   //····················································································································
 
-  final let deviceSymbolDictionary_property = EBTransientProperty_DeviceSymbolDictionary ()
+  final let deviceSymbolDictionary_property = EBTransientProperty <DeviceSymbolDictionary> ()
 
   //····················································································································
 
@@ -957,7 +957,7 @@ final class ComponentInProject : BoardObject,
   //   Transient property: componentNameFontName
   //····················································································································
 
-  final let componentNameFontName_property = EBTransientProperty_String ()
+  final let componentNameFontName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -969,7 +969,7 @@ final class ComponentInProject : BoardObject,
   //   Transient property: componentValueFontName
   //····················································································································
 
-  final let componentValueFontName_property = EBTransientProperty_String ()
+  final let componentValueFontName_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -981,7 +981,7 @@ final class ComponentInProject : BoardObject,
   //   Transient property: componentPadDictionary
   //····················································································································
 
-  final let componentPadDictionary_property = EBTransientProperty_ComponentPadDescriptorDictionary ()
+  final let componentPadDictionary_property = EBTransientProperty <ComponentPadDescriptorDictionary> ()
 
   //····················································································································
 
@@ -993,7 +993,7 @@ final class ComponentInProject : BoardObject,
   //   Transient property: padNetDictionary
   //····················································································································
 
-  final let padNetDictionary_property = EBTransientProperty_PadNetDictionary ()
+  final let padNetDictionary_property = EBTransientProperty <PadNetDictionary> ()
 
   //····················································································································
 
@@ -1005,7 +1005,7 @@ final class ComponentInProject : BoardObject,
   //   Transient property: unplacedSymbols
   //····················································································································
 
-  final let unplacedSymbols_property = EBTransientProperty_StringTagArray ()
+  final let unplacedSymbols_property = EBTransientProperty <StringTagArray> ()
 
   //····················································································································
 

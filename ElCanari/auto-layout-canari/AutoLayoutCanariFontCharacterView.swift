@@ -251,7 +251,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
   //  advance binding
   //····················································································································
 
-  final private func updateAdvance (_ object : EBReadOnlyProperty_Int) {
+  final private func updateAdvance (_ object : EBObservableProperty <Int>) {
     switch object.selection {
     case .empty, .multiple :
       break ;
@@ -266,7 +266,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
 
   //····················································································································
 
-  final func bind_advance (_ object : EBReadOnlyProperty_Int) -> Self {
+  final func bind_advance (_ object : EBObservableProperty <Int>) -> Self {
     self.mAdvanceController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateAdvance (object) }
@@ -298,7 +298,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
 
   private var mCharacterSegmentListController : EBObservablePropertyController? = nil
 
-  final func bind_characterSegmentList (_ object : EBReadOnlyProperty_CharacterSegmentList) -> Self {
+  final func bind_characterSegmentList (_ object : EBObservableProperty <CharacterSegmentList>) -> Self {
     self.mCharacterSegmentListController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateSegmentDrawingsFromCharacterSegmentListController (object) }
@@ -315,7 +315,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
 
   //····················································································································
 
-  private func updateSegmentDrawingsFromCharacterSegmentListController (_ inSegments : EBReadOnlyProperty_CharacterSegmentList) {
+  private func updateSegmentDrawingsFromCharacterSegmentListController (_ inSegments : EBObservableProperty <CharacterSegmentList>) {
     switch inSegments.selection {
     case .empty, .multiple :
       ()
@@ -341,7 +341,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
   //  transparency binding
   //····················································································································
 
-  final private func updateTransparency (_ object : EBReadOnlyProperty_Double) {
+  final private func updateTransparency (_ object : EBObservableProperty <Double>) {
     switch object.selection {
     case .empty, .multiple :
       break
@@ -354,7 +354,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
 
   private var mTransparencyController : EBObservablePropertyController? = nil
 
-  final func bind_transparency (_ object : EBReadOnlyProperty_Double) -> Self {
+  final func bind_transparency (_ object : EBObservableProperty <Double>) -> Self {
     self.mTransparencyController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateTransparency (object) }
@@ -384,7 +384,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
   //  display flow binding
   //····················································································································
 
-  final private func updateDisplayFlow (_ object : EBReadOnlyProperty_Bool) {
+  final private func updateDisplayFlow (_ object : EBObservableProperty <Bool>) {
     switch object.selection {
     case .empty, .multiple :
       break
@@ -397,7 +397,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
 
   private var mDisplayFlowController : EBObservablePropertyController? = nil
 
-  final func bind_displayFlow (_ object : EBReadOnlyProperty_Bool) -> Self {
+  final func bind_displayFlow (_ object : EBObservableProperty <Bool>) -> Self {
     self.mDisplayFlowController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateDisplayFlow (object) }
@@ -427,7 +427,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
   //  index drawing binding
   //····················································································································
 
-  final private func updateIndexDrawing (_ object : EBReadOnlyProperty_Bool) {
+  final private func updateIndexDrawing (_ object : EBObservableProperty <Bool>) {
     switch object.selection {
     case .empty, .multiple :
       break
@@ -440,7 +440,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
 
   private var mDisplayDrawingIndexesController : EBObservablePropertyController? = nil
 
-  final func bind_displayDrawingIndexes (_ object : EBReadOnlyProperty_Bool) -> Self {
+  final func bind_displayDrawingIndexes (_ object : EBObservableProperty <Bool>) -> Self {
     self.mDisplayDrawingIndexesController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateIndexDrawing (object) }

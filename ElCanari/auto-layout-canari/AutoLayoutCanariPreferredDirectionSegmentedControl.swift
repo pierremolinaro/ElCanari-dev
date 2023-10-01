@@ -67,12 +67,12 @@ final class AutoLayoutCanariPreferredDirectionSegmentedControl : AutoLayoutBase_
   //  $angle binding
   //····················································································································
 
-  private var mAngleController : EBReadWritePropertyController_Int? = nil
+  private var mAngleController : EBGenericReadWritePropertyController <Int>? = nil
 
   //····················································································································
 
   final func bind_angle (_ inObject : EBReadWriteProperty_Int) -> Self {
-    self.mAngleController = EBReadWritePropertyController_Int (
+    self.mAngleController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateTag (from: inObject) }
     )

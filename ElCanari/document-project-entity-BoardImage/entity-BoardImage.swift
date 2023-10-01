@@ -444,7 +444,7 @@ final class BoardImage : BoardObject,
   //   Transient property: imageDataByteCount
   //····················································································································
 
-  final let imageDataByteCount_property = EBTransientProperty_String ()
+  final let imageDataByteCount_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -456,7 +456,7 @@ final class BoardImage : BoardObject,
   //   Transient property: boardImageCodeDescriptor
   //····················································································································
 
-  final let boardImageCodeDescriptor_property = EBTransientProperty_BoardImageDescriptor ()
+  final let boardImageCodeDescriptor_property = EBTransientProperty <BoardImageDescriptor> ()
 
   //····················································································································
 
@@ -468,7 +468,7 @@ final class BoardImage : BoardObject,
   //   Transient property: boardOriginalImageWidth
   //····················································································································
 
-  final let boardOriginalImageWidth_property = EBTransientProperty_String ()
+  final let boardOriginalImageWidth_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -480,7 +480,7 @@ final class BoardImage : BoardObject,
   //   Transient property: boardOriginalImageHeight
   //····················································································································
 
-  final let boardOriginalImageHeight_property = EBTransientProperty_String ()
+  final let boardOriginalImageHeight_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -492,7 +492,7 @@ final class BoardImage : BoardObject,
   //   Transient property: boardScaledImageWidth
   //····················································································································
 
-  final let boardScaledImageWidth_property = EBTransientProperty_String ()
+  final let boardScaledImageWidth_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -504,7 +504,7 @@ final class BoardImage : BoardObject,
   //   Transient property: boardScaledImageHeight
   //····················································································································
 
-  final let boardScaledImageHeight_property = EBTransientProperty_String ()
+  final let boardScaledImageHeight_property = EBTransientProperty <String> ()
 
   //····················································································································
 
@@ -516,7 +516,7 @@ final class BoardImage : BoardObject,
   //   Transient property: boardActualImageWidth
   //····················································································································
 
-  final let boardActualImageWidth_property = EBTransientProperty_Int ()
+  final let boardActualImageWidth_property = EBTransientProperty <Int> ()
 
   //····················································································································
 
@@ -528,7 +528,7 @@ final class BoardImage : BoardObject,
   //   Transient property: boardActualImageHeight
   //····················································································································
 
-  final let boardActualImageHeight_property = EBTransientProperty_Int ()
+  final let boardActualImageHeight_property = EBTransientProperty <Int> ()
 
   //····················································································································
 

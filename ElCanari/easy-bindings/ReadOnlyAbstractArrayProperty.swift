@@ -97,7 +97,7 @@ class ReadOnlyAbstractArrayProperty <T : AnyObject> : ReadOnlyAbstractGenericRel
   //  count property
   //····················································································································
 
-  final let count_property = EBTransientProperty_Int ()
+  final let count_property = EBTransientProperty <Int> ()
 
   //····················································································································
   //  init

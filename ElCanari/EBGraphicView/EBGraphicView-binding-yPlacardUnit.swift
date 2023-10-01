@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func bind_yPlacardUnit (_ model : EBReadOnlyProperty_Int) {
+  final func bind_yPlacardUnit (_ model : EBObservableProperty <Int>) {
     self.mYPlacardUnitController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateYPlacardUnit (from: model) }
@@ -28,7 +28,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final private func updateYPlacardUnit (from model : EBReadOnlyProperty_Int) {
+  final private func updateYPlacardUnit (from model : EBObservableProperty <Int>) {
     switch model.selection {
     case .empty, .multiple :
       self.set (YPlacardUnit: 2286) // mils

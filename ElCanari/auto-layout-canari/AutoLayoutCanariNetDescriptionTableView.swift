@@ -225,7 +225,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
 
   //····················································································································
 
-  final func bind_netInfo (_ model : EBReadOnlyProperty_NetInfoArray) -> Self {
+  final func bind_netInfo (_ model : EBObservableProperty <NetInfoArray>) -> Self {
     self.mController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateUnconnectedPadList (from: model) }
@@ -235,7 +235,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
 
   //····················································································································
 
-  func updateUnconnectedPadList (from inModel : EBReadOnlyProperty_NetInfoArray) {
+  func updateUnconnectedPadList (from inModel : EBObservableProperty <NetInfoArray>) {
     switch inModel.selection {
     case .empty, .multiple :
       self.mDataSource = []

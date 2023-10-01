@@ -322,7 +322,7 @@ final class PackageDimension : PackageObject,
   //   Transient property: distanceInCanariUnit
   //····················································································································
 
-  final let distanceInCanariUnit_property = EBTransientProperty_Int ()
+  final let distanceInCanariUnit_property = EBTransientProperty <Int> ()
 
   //····················································································································
 

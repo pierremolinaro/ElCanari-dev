@@ -214,7 +214,7 @@ final class DeviceMasterPadInProject : EBManagedObject,
   //   Transient property: descriptor
   //····················································································································
 
-  final let descriptor_property = EBTransientProperty_MasterPadDescriptor ()
+  final let descriptor_property = EBTransientProperty <MasterPadDescriptor> ()
 
   //····················································································································
 

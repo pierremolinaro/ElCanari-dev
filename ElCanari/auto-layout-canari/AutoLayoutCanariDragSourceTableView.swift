@@ -264,7 +264,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
 
   private var mModelsController : EBObservablePropertyController? = nil
 
-  final func bind_models (_ inModel : EBReadOnlyProperty_StringTagArray) -> Self {
+  final func bind_models (_ inModel : EBObservableProperty <StringTagArray>) -> Self {
     self.mModelsController = EBObservablePropertyController (
       observedObjects: [inModel],
       callBack: { [weak self] in self?.update (from: inModel) }
@@ -281,7 +281,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
 
   //····················································································································
 
-  func update (from model : EBReadOnlyProperty_StringTagArray) {
+  func update (from model : EBObservableProperty <StringTagArray>) {
     switch model.selection {
     case .empty, .multiple :
       self.setModel ([])

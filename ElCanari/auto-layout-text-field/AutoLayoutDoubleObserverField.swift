@@ -51,7 +51,7 @@ final class AutoLayoutDoubleObserverField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  final func bind_observedValue (_ inObject : EBReadOnlyProperty_Double) -> Self {
+  final func bind_observedValue (_ inObject : EBObservableProperty <Double>) -> Self {
     self.mValueController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.update (from: inObject) }
@@ -61,7 +61,7 @@ final class AutoLayoutDoubleObserverField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  private func update (from inObject : EBReadOnlyProperty_Double) {
+  private func update (from inObject : EBObservableProperty <Double>) {
     let selection = inObject.selection // TOUJOURS lire la sélection
     switch selection {
     case .empty :

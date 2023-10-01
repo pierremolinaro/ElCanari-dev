@@ -87,11 +87,8 @@ enum BorderCurveShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_BorderCurveShape = EBReadOnlyEnumProperty <BorderCurveShape>
-typealias EBTransientProperty_BorderCurveShape = EBTransientEnumProperty <BorderCurveShape>
-typealias EBReadWriteProperty_BorderCurveShape = EBReadWriteEnumProperty <BorderCurveShape>
+typealias EBReadWriteProperty_BorderCurveShape = EBReadWriteEnumProperty <BorderCurveShape> // EBObservableMutableProperty <BorderCurveShape>
 typealias EBStoredProperty_BorderCurveShape = EBStoredEnumProperty <BorderCurveShape>
 typealias EBComputedProperty_BorderCurveShape = EBGenericComputedEnumProperty <BorderCurveShape>
-typealias EBPreferencesProperty_BorderCurveShape = EBStoredEnumProperty <BorderCurveShape>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -71,7 +71,7 @@ final class AutoLayoutCanariAddSymbolInstancePullDownButton : AutoLayoutBase_NSP
 
   //····················································································································
 
-  func updateItemList (from inModel : EBReadOnlyProperty_StringArray) {
+  func updateItemList (from inModel : EBObservableProperty <StringArray>) {
     while self.numberOfItems > 1 {
       self.removeItem (at: self.numberOfItems - 1)
     }
@@ -95,7 +95,7 @@ final class AutoLayoutCanariAddSymbolInstancePullDownButton : AutoLayoutBase_NSP
 
   //····················································································································
 
-  final func bind_symbolTypeNames (_ model : EBReadOnlyProperty_StringArray) -> Self {
+  final func bind_symbolTypeNames (_ model : EBObservableProperty <StringArray>) -> Self {
     self.mSymbolTypeNamesController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateItemList (from: model) }

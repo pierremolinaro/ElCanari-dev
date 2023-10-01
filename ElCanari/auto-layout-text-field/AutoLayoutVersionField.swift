@@ -41,7 +41,7 @@ final class AutoLayoutVersionField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  final func bind_version (_ inObject : EBReadOnlyProperty_Int) -> Self {
+  final func bind_version (_ inObject : EBObservableProperty <Int>) -> Self {
     self.mVersionController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateVersion (from: inObject) }
@@ -51,7 +51,7 @@ final class AutoLayoutVersionField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  private func updateVersion (from inObject : EBReadOnlyProperty_Int) {
+  private func updateVersion (from inObject : EBObservableProperty <Int>) {
     switch inObject.selection {
     case .empty, .multiple :
       self.enable (fromValueBinding: false, self.enabledBindingController)
@@ -70,7 +70,7 @@ final class AutoLayoutVersionField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  final func bind_versionShouldChange (_ inObject : EBReadOnlyProperty_Bool) -> Self {
+  final func bind_versionShouldChange (_ inObject : EBObservableProperty <Bool>) -> Self {
     self.mVersionShouldChangeController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateVersionShouldChange (from: inObject) }
@@ -82,7 +82,7 @@ final class AutoLayoutVersionField : AutoLayoutBase_NSTextField {
   // NSColor.systemBlue is not defined in 10.9
   //····················································································································
 
-  private func updateVersionShouldChange (from inObject : EBReadOnlyProperty_Bool) {
+  private func updateVersionShouldChange (from inObject : EBObservableProperty <Bool>) {
     switch inObject.selection {
     case .empty, .multiple :
       break

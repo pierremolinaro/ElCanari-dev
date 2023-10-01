@@ -205,17 +205,17 @@ fileprivate struct EBAllocationItemDisplay {
 
   //····················································································································
 
-  private var mAllocationStatsDisplayFilterIndex = EBPreferencesProperty_Int (
+  private var mAllocationStatsDisplayFilterIndex = EBPreferenceProperty <Int> (
     defaultValue: 0,
     prefKey: prefsEnableObjectAllocationStatsDisplayFilter
   )
 
-  private var mAllocationStatsWindowVisibleAtLaunch = EBPreferencesProperty_Bool (
+  private var mAllocationStatsWindowVisibleAtLaunch = EBPreferenceProperty <Bool> (
     defaultValue: false,
     prefKey: prefsEnableObjectAllocationStatsWindowVisible
   )
 
-  private var mEnableAllocationDebug = EBPreferencesProperty_Bool (
+  private var mEnableAllocationDebug = EBPreferenceProperty <Bool> (
     defaultValue: false,
     prefKey: prefsEnableObjectAllocationDebugString
   )

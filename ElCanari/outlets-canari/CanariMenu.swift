@@ -38,7 +38,7 @@ import AppKit
 
   //····················································································································
 
-  private func updateOutlet (_ object : EBReadOnlyProperty_StringArray) {
+  private func updateOutlet (_ object : EBObservableProperty <StringArray>) {
     switch object.selection {
     case .empty, .multiple :
       self.removeAllItems ()
@@ -57,7 +57,7 @@ import AppKit
 
   //····················································································································
 
-  final func bind_populateSubmenus (_ object : EBReadOnlyProperty_StringArray) {
+  final func bind_populateSubmenus (_ object : EBObservableProperty <StringArray>) {
     self.mValueController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { self.updateOutlet (object) }

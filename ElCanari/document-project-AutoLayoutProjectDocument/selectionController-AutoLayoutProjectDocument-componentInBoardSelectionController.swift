@@ -182,127 +182,127 @@ import AppKit
   //   Selection observable property: deviceName
   //····················································································································
 
-  final let deviceName_property = EBTransientProperty_String ()
+  final let deviceName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: signatureForERCChecking
   //····················································································································
 
-  final let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+  final let signatureForERCChecking_property = EBTransientProperty <UInt32> ()
 
   //····················································································································
   //   Selection observable property: packagePadDictionary
   //····················································································································
 
-  final let packagePadDictionary_property = EBTransientProperty_PackageMasterPadDictionary ()
+  final let packagePadDictionary_property = EBTransientProperty <PackageMasterPadDictionary> ()
 
   //····················································································································
   //   Selection observable property: selectedPackageName
   //····················································································································
 
-  final let selectedPackageName_property = EBTransientProperty_String ()
+  final let selectedPackageName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: availablePackages
   //····················································································································
 
-  final let availablePackages_property = EBTransientProperty_StringArray ()
+  final let availablePackages_property = EBTransientProperty <StringArray> ()
 
   //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
-  final let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty <CanariIssueArray> ()
 
   //····················································································································
   //   Selection observable property: componentIsPlacedInBoard
   //····················································································································
 
-  final let componentIsPlacedInBoard_property = EBTransientProperty_Bool ()
+  final let componentIsPlacedInBoard_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selection observable property: componentIsPlacedInBoardString
   //····················································································································
 
-  final let componentIsPlacedInBoardString_property = EBTransientProperty_String ()
+  final let componentIsPlacedInBoardString_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: strokeBezierPath
   //····················································································································
 
-  final let strokeBezierPath_property = EBTransientProperty_EBBezierPath ()
+  final let strokeBezierPath_property = EBTransientProperty <EBBezierPath> ()
 
   //····················································································································
   //   Selection observable property: pinPadAssignments
   //····················································································································
 
-  final let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+  final let pinPadAssignments_property = EBTransientProperty <ThreeStringArray> ()
 
   //····················································································································
   //   Selection observable property: hasSlavePads
   //····················································································································
 
-  final let hasSlavePads_property = EBTransientProperty_Bool ()
+  final let hasSlavePads_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selection observable property: placementInSchematic
   //····················································································································
 
-  final let placementInSchematic_property = EBTransientProperty_String ()
+  final let placementInSchematic_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: deviceSymbolDictionary
   //····················································································································
 
-  final let deviceSymbolDictionary_property = EBTransientProperty_DeviceSymbolDictionary ()
+  final let deviceSymbolDictionary_property = EBTransientProperty <DeviceSymbolDictionary> ()
 
   //····················································································································
   //   Selection observable property: componentNameFontName
   //····················································································································
 
-  final let componentNameFontName_property = EBTransientProperty_String ()
+  final let componentNameFontName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: componentValueFontName
   //····················································································································
 
-  final let componentValueFontName_property = EBTransientProperty_String ()
+  final let componentValueFontName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: componentPadDictionary
   //····················································································································
 
-  final let componentPadDictionary_property = EBTransientProperty_ComponentPadDescriptorDictionary ()
+  final let componentPadDictionary_property = EBTransientProperty <ComponentPadDescriptorDictionary> ()
 
   //····················································································································
   //   Selection observable property: padNetDictionary
   //····················································································································
 
-  final let padNetDictionary_property = EBTransientProperty_PadNetDictionary ()
+  final let padNetDictionary_property = EBTransientProperty <PadNetDictionary> ()
 
   //····················································································································
   //   Selection observable property: componentName
   //····················································································································
 
-  final let componentName_property = EBTransientProperty_String ()
+  final let componentName_property = EBTransientProperty <String> ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  final let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selection observable property: unplacedSymbols
   //····················································································································
 
-  final let unplacedSymbols_property = EBTransientProperty_StringTagArray ()
+  final let unplacedSymbols_property = EBTransientProperty <StringTagArray> ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  final let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selected array (not observable)

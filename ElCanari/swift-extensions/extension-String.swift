@@ -141,9 +141,9 @@ func values_String_are_ordered (_ inLeft : String,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func compare_String_properties (_ inLeft : EBReadOnlyProperty_String,
+@MainActor func compare_String_properties (_ inLeft : EBObservableProperty <String>,
                                            _ inAscending : Bool,
-                                           _ inRight : EBReadOnlyProperty_String) -> ComparisonResult {
+                                           _ inRight : EBObservableProperty <String>) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   switch left.selection {
