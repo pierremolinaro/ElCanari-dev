@@ -274,3 +274,27 @@ struct CanariPoint : Equatable, Hashable {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension NSPoint {
+
+  //····················································································································
+
+  func canariPointAligned (onCanariGrid inCanariGrid : Int) -> CanariPoint {
+    let p = CanariPoint (
+     x: ((cocoaToCanariUnit (self.x) + inCanariGrid / 2) / inCanariGrid) * inCanariGrid,
+     y: ((cocoaToCanariUnit (self.y) + inCanariGrid / 2) / inCanariGrid) * inCanariGrid
+    )
+    return p
+  }
+
+  //····················································································································
+
+  var canariPoint : CanariPoint {
+    return CanariPoint (x: cocoaToCanariUnit (self.x), y: cocoaToCanariUnit (self.y))
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
