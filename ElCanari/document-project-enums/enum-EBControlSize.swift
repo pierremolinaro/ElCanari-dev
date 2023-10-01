@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum EBControlSize : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+enum EBControlSize : Int, EnumPropertyProtocol, Hashable {
   case mini = 0
   case small = 1
   case regular = 2

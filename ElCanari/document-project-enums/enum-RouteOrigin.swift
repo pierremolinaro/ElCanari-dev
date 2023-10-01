@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum RouteOrigin : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+enum RouteOrigin : Int, EnumPropertyProtocol, Hashable {
   case center = 0
   case bottomLeft = 1
   case middleBottom = 2

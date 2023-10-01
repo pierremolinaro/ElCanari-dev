@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum LayerConfiguration : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+enum LayerConfiguration : Int, EnumPropertyProtocol, Hashable {
   case twoLayers = 0
   case fourLayers = 1
   case sixLayers = 2

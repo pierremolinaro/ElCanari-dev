@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum PadSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+enum PadSide : Int, EnumPropertyProtocol, Hashable {
   case traversing = 0
   case front = 1
   case back = 2

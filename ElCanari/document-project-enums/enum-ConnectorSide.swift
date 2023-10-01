@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum ConnectorSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+enum ConnectorSide : Int, EnumPropertyProtocol, Hashable {
   case front = 0
   case back = 1
   case inner1 = 2

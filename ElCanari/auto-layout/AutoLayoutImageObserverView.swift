@@ -53,6 +53,8 @@ final class AutoLayoutImageObserverView : NSImageView {
       case .mini : s = 15.0 // ???
       case .small : s = 17.0
       case .regular : s =  24.0
+//      case .large : s =  28.0 // ???
+//      @unknown default: s =  28.0
       }
       return NSSize (width: s, height: s)
     }else{

@@ -1,5 +1,9 @@
 //——————————————————————————————————————————————————————————————————————————————
 
+enum EBControlSize {
+  mini, small, regular
+}
+
 enum TextAlignment {
   left, right, center
 }
@@ -13,11 +17,6 @@ func enum QRCodeCorrectionLevel.popupTitles {
   medium : "Medium (15%)" ;
   quality : "Quartile (25%)" ;
   high : "High (30%)" ;
-}
-
-
-enum EBControlSize {
-  mini, small, regular
 }
 
 

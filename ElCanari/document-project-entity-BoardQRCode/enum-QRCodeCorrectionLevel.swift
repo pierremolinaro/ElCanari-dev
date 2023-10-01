@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum QRCodeCorrectionLevel : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+enum QRCodeCorrectionLevel : Int, EnumPropertyProtocol, Hashable {
   case low = 0
   case medium = 1
   case quality = 2

@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum BoardImageDisplay : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+enum BoardImageDisplay : Int, EnumPropertyProtocol, Hashable {
   case original = 0
   case gray = 1
   case histogram = 2

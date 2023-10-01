@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum ComponentSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+enum ComponentSide : Int, EnumPropertyProtocol, Hashable {
   case front = 0
   case back = 1
 

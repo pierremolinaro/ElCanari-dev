@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum PadNumbering : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+enum PadNumbering : Int, EnumPropertyProtocol, Hashable {
   case noNumbering = 0
   case counterClock = 1
   case upRight = 2

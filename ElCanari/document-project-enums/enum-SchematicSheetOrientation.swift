@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum SchematicSheetOrientation : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+enum SchematicSheetOrientation : Int, EnumPropertyProtocol, Hashable {
   case a4Vertical = 0
   case a4Horizontal = 1
   case custom = 2

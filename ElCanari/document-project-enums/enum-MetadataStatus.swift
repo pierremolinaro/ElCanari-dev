@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+enum MetadataStatus : Int, EnumPropertyProtocol, Hashable {
   case unknown = 0
   case ok = 1
   case warning = 2

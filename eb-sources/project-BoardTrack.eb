@@ -2,7 +2,7 @@
 //   BoardTrack
 //——————————————————————————————————————————————————————————————————————————————
 
-enum TrackSide {
+enum TrackSide @CaseIterable {
   front, back, inner1, inner2, inner3, inner4
 }
 

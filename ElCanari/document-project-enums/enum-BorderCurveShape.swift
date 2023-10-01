@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum BorderCurveShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+enum BorderCurveShape : Int, EnumPropertyProtocol, Hashable {
   case line = 0
   case bezier = 1
 
