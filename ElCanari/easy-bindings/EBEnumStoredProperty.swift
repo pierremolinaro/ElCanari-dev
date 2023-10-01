@@ -5,10 +5,10 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBStoredEnumProperty <T>
+//   EBEnumStoredProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T>, DocumentStorablePropertyProtocol {
+final class EBEnumStoredProperty <T : EnumPropertyProtocol> : EBEnumReadWriteProperty <T>, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

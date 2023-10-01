@@ -130,7 +130,7 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
   //····················································································································
 
   private var mImageDataController : EBObservablePropertyController? = nil
-  private weak var mModel : EBReadWriteProperty_Data? = nil
+  private weak var mModel : EBObservableMutableProperty <Data>? = nil
 
   //····················································································································
 
@@ -140,7 +140,7 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  final func bind_imageData (_ inModel : EBReadWriteProperty_Data) -> Self {
+  final func bind_imageData (_ inModel : EBObservableMutableProperty <Data>) -> Self {
     self.mModel = inModel
     self.mImageDataController = EBObservablePropertyController (
       observedObjects: [inModel],

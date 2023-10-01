@@ -88,8 +88,8 @@ enum PadShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadWriteProperty_PadShape = EBReadWriteEnumProperty <PadShape> // EBObservableMutableProperty <PadShape>
-typealias EBStoredProperty_PadShape = EBStoredEnumProperty <PadShape>
-typealias EBComputedProperty_PadShape = EBGenericComputedEnumProperty <PadShape>
+typealias EBReadWriteProperty_PadShape = EBEnumReadWriteProperty <PadShape> // EBObservableMutableProperty <PadShape>
+typealias EBStoredProperty_PadShape = EBEnumStoredProperty <PadShape>
+typealias EBComputedProperty_PadShape = EBEnumGenericComputedProperty <PadShape>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

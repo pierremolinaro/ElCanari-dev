@@ -218,7 +218,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
   //  $unit binding
   //····················································································································
 
-  final func bind_unit (_ inModel : EBReadWriteProperty_Int) -> Self {
+  final func bind_unit (_ inModel : EBObservableMutableProperty <Int>) -> Self {
     _ = self.mUnitPopUpButton.bind_unit (inModel)
     return self
   }

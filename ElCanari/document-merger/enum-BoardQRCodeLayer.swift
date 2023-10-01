@@ -87,8 +87,8 @@ enum BoardQRCodeLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadWriteProperty_BoardQRCodeLayer = EBReadWriteEnumProperty <BoardQRCodeLayer> // EBObservableMutableProperty <BoardQRCodeLayer>
-typealias EBStoredProperty_BoardQRCodeLayer = EBStoredEnumProperty <BoardQRCodeLayer>
-typealias EBComputedProperty_BoardQRCodeLayer = EBGenericComputedEnumProperty <BoardQRCodeLayer>
+typealias EBReadWriteProperty_BoardQRCodeLayer = EBEnumReadWriteProperty <BoardQRCodeLayer> // EBObservableMutableProperty <BoardQRCodeLayer>
+typealias EBStoredProperty_BoardQRCodeLayer = EBEnumStoredProperty <BoardQRCodeLayer>
+typealias EBComputedProperty_BoardQRCodeLayer = EBEnumGenericComputedProperty <BoardQRCodeLayer>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

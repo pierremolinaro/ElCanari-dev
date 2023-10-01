@@ -79,8 +79,8 @@ enum BoardShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadWriteProperty_BoardShape = EBReadWriteEnumProperty <BoardShape> // EBObservableMutableProperty <BoardShape>
-typealias EBStoredProperty_BoardShape = EBStoredEnumProperty <BoardShape>
-typealias EBComputedProperty_BoardShape = EBGenericComputedEnumProperty <BoardShape>
+typealias EBReadWriteProperty_BoardShape = EBEnumReadWriteProperty <BoardShape> // EBObservableMutableProperty <BoardShape>
+typealias EBStoredProperty_BoardShape = EBEnumStoredProperty <BoardShape>
+typealias EBComputedProperty_BoardShape = EBEnumGenericComputedProperty <BoardShape>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

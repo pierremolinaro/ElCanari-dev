@@ -87,8 +87,8 @@ enum RouteDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadWriteProperty_RouteDirection = EBReadWriteEnumProperty <RouteDirection> // EBObservableMutableProperty <RouteDirection>
-typealias EBStoredProperty_RouteDirection = EBStoredEnumProperty <RouteDirection>
-typealias EBComputedProperty_RouteDirection = EBGenericComputedEnumProperty <RouteDirection>
+typealias EBReadWriteProperty_RouteDirection = EBEnumReadWriteProperty <RouteDirection> // EBObservableMutableProperty <RouteDirection>
+typealias EBStoredProperty_RouteDirection = EBEnumStoredProperty <RouteDirection>
+typealias EBComputedProperty_RouteDirection = EBEnumGenericComputedProperty <RouteDirection>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -48,7 +48,7 @@ import AppKit
 
   //····················································································································
 
-  final func bind_netClasses (_ inSelectedNetClassName : EBReadWriteProperty_String,
+  final func bind_netClasses (_ inSelectedNetClassName : EBObservableMutableProperty <String>,
                               _ inNetClassNames : EBObservableProperty <StringArray>) -> Self {
     self.mController = Controller_CanariDefaultNetClassMenu (inSelectedNetClassName, inNetClassNames, self)
     return self
@@ -64,12 +64,12 @@ import AppKit
 
 fileprivate final class Controller_CanariDefaultNetClassMenu : EBObservablePropertyController {
 
-  private let mObject : EBReadWriteProperty_String
+  private let mObject : EBObservableMutableProperty <String>
   private weak var mOutlet : CanariSelectDefaultNetClassMenu? = nil
 
   //····················································································································
 
-  init (_ inSelectedNetClassName : EBReadWriteProperty_String,
+  init (_ inSelectedNetClassName : EBObservableMutableProperty <String>,
         _ inNetClassNames : EBObservableProperty <StringArray>,
         _ inOutlet : CanariSelectDefaultNetClassMenu) {
     self.mObject = inSelectedNetClassName
@@ -83,7 +83,7 @@ fileprivate final class Controller_CanariDefaultNetClassMenu : EBObservablePrope
 
   //····················································································································
 
-  fileprivate func updateOutlet (_ inSelectedNetClassName : EBReadWriteProperty_String,
+  fileprivate func updateOutlet (_ inSelectedNetClassName : EBObservableMutableProperty <String>,
                                  _ inNetClassNames : EBObservableProperty <StringArray>) {
     if let outlet = self.mOutlet {
       outlet.removeAllItems ()

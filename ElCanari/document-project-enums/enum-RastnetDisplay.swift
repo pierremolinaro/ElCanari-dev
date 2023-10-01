@@ -90,8 +90,8 @@ enum RastnetDisplay : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadWriteProperty_RastnetDisplay = EBReadWriteEnumProperty <RastnetDisplay> // EBObservableMutableProperty <RastnetDisplay>
-typealias EBStoredProperty_RastnetDisplay = EBStoredEnumProperty <RastnetDisplay>
-typealias EBComputedProperty_RastnetDisplay = EBGenericComputedEnumProperty <RastnetDisplay>
+typealias EBReadWriteProperty_RastnetDisplay = EBEnumReadWriteProperty <RastnetDisplay> // EBObservableMutableProperty <RastnetDisplay>
+typealias EBStoredProperty_RastnetDisplay = EBEnumStoredProperty <RastnetDisplay>
+typealias EBComputedProperty_RastnetDisplay = EBEnumGenericComputedProperty <RastnetDisplay>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

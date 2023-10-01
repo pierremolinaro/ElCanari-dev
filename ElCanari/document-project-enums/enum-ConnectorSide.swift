@@ -84,8 +84,8 @@ enum ConnectorSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadWriteProperty_ConnectorSide = EBReadWriteEnumProperty <ConnectorSide> // EBObservableMutableProperty <ConnectorSide>
-typealias EBStoredProperty_ConnectorSide = EBStoredEnumProperty <ConnectorSide>
-typealias EBComputedProperty_ConnectorSide = EBGenericComputedEnumProperty <ConnectorSide>
+typealias EBReadWriteProperty_ConnectorSide = EBEnumReadWriteProperty <ConnectorSide> // EBObservableMutableProperty <ConnectorSide>
+typealias EBStoredProperty_ConnectorSide = EBEnumStoredProperty <ConnectorSide>
+typealias EBComputedProperty_ConnectorSide = EBEnumGenericComputedProperty <ConnectorSide>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

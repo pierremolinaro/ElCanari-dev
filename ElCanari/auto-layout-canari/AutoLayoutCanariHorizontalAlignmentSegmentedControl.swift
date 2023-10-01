@@ -66,7 +66,7 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : AutoLayoutBase
 
   //····················································································································
 
-  final func bind_alignment (_ inObject : EBReadWriteEnumProperty <HorizontalAlignment>) -> Self {
+  final func bind_alignment (_ inObject : EBEnumReadWriteProperty <HorizontalAlignment>) -> Self {
     self.mObject = inObject
     self.mAlignmentController = EBObservablePropertyController (
       observedObjects: [inObject],
@@ -77,7 +77,7 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : AutoLayoutBase
 
   //····················································································································
 
-  fileprivate func update (from inObject : EBReadWriteEnumProperty <HorizontalAlignment>) {
+  fileprivate func update (from inObject : EBEnumReadWriteProperty <HorizontalAlignment>) {
     if let rawValue = inObject.rawValue () {
       self.selectedSegment = rawValue
       self.selectedSegmentDidChange (nil)

@@ -107,7 +107,7 @@ import AppKit
 
   //····················································································································
 
-  final func bind_layers (_ object : EBReadWriteProperty_Int) {
+  final func bind_layers (_ object : EBObservableMutableProperty <Int>) {
     self.mLayersController = EBGenericReadWritePropertyController <Int> (
       observedObject: object,
       callBack: { [weak self] in self?.updateOutlet (object) }

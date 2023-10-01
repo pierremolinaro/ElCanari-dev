@@ -37,7 +37,7 @@ final class AutoLayoutCanariAngleFieldAndSlider : AutoLayoutHorizontalStackView 
 
   //····················································································································
 
-  final func bind_angle (_ inModel : EBReadWriteProperty_Int) -> Self {
+  final func bind_angle (_ inModel : EBObservableMutableProperty <Int>) -> Self {
     _ = self.mAngleTextField.bind_angle (inModel)
     _ = self.mAngleSlider.bind_angle (inModel, sendContinously: true)
     return self

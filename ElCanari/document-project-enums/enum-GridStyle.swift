@@ -88,8 +88,8 @@ enum GridStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadWriteProperty_GridStyle = EBReadWriteEnumProperty <GridStyle> // EBObservableMutableProperty <GridStyle>
-typealias EBStoredProperty_GridStyle = EBStoredEnumProperty <GridStyle>
-typealias EBComputedProperty_GridStyle = EBGenericComputedEnumProperty <GridStyle>
+typealias EBReadWriteProperty_GridStyle = EBEnumReadWriteProperty <GridStyle> // EBObservableMutableProperty <GridStyle>
+typealias EBStoredProperty_GridStyle = EBEnumStoredProperty <GridStyle>
+typealias EBComputedProperty_GridStyle = EBEnumGenericComputedProperty <GridStyle>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -5,47 +5,24 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBGenericComputedEnumProperty <T : EnumPropertyProtocol>
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBGenericComputedEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T> {
+final class EBEnumGenericReadWritePropertyController <T : EBEnumProtocol> : EBObservablePropertyController where T : Equatable {
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
-  var mWriteModelFunction : Optional < (T) -> Void > = nil
-  private var mCachedValue : Optional < EBSelection <T> > = nil
+  private let mObject : EBEnumReadWriteProperty <T>
 
   //····················································································································
 
-  override func observedObjectDidChange () {
-    if self.mCachedValue != nil {
-      self.mCachedValue = nil
-      if logEvents () {
-        appendMessageString ("Proxy #\(self.objectIndex) propagation\n")
-      }
-      super.observedObjectDidChange ()
-    }else if logEvents () {
-      appendMessageString ("Proxy #\(self.objectIndex) nil\n")
-    }
+  init (observedObject inObject : EBEnumReadWriteProperty <T>, callBack inCallBack : @escaping () -> Void) {
+    self.mObject = inObject
+    super.init (observedObjects : [inObject], callBack : inCallBack)
   }
 
   //····················································································································
 
-  override var selection : EBSelection <T> {
-    if self.mCachedValue == nil {
-      self.mCachedValue = self.mReadModelFunction? ()
-    }
-    if self.mCachedValue == nil {
-      self.mCachedValue = .empty
-    }
-    return self.mCachedValue!
-  }
-
-  //····················································································································
-
-  override func setProp (_ inValue : T) {
-    self.mWriteModelFunction? (inValue)
+  final func updateModel (withCandidateValue inValue : T) {
+    return self.mObject.setProp (inValue)
   }
 
   //····················································································································

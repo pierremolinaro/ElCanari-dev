@@ -5,6 +5,8 @@ digraph G {
   EBObservableObjectProtocol ;
   EBObserverProtocol ;
   DocumentStorablePropertyProtocol ;
+  EBReadObservableEnumProtocol;
+  EBReadWriteObservableEnumProtocol;
 
   node [shape=box fontname=helvetica style="rounded,filled" fillcolor=yellow] ;
 
@@ -14,13 +16,16 @@ digraph G {
   "EBObservableProperty<T>" -> EBObservedObserver ;
   ReadOnlyAbstractGenericRelationshipProperty -> EBObservedObject ;
   "EBTransientProperty<T>" -> "EBObservableProperty<T>" ;
-  "EBReadOnlyEnumProperty<T>" -> "EBObservableProperty<T>" ;
+  "EBEnumReadOnlyProperty<T>" -> "EBObservableProperty<T>" ;
+  "EBEnumReadOnlyProperty<T>" -> EBReadObservableEnumProtocol ;
   "EBObservableMutableProperty<T>" -> "EBObservableProperty<T>" ;
   "EBComputedProperty<T>" -> "EBObservableMutableProperty<T>" ;
   "EBPreferenceProperty<T>" -> "EBObservableMutableProperty<T>" ;
   "EBStoredProperty<T>" -> "EBObservableMutableProperty<T>" ;
   "EBStoredProperty<T>" -> DocumentStorablePropertyProtocol ;
-  "EBReadWriteEnumProperty<T>" -> "EBReadOnlyEnumProperty<T>" ;
-  "EBTransientEnumProperty<T>" -> "EBReadOnlyEnumProperty<T>" ;
-  "EBStoredEnumProxy<T>" -> "EBReadWriteEnumProperty<T>" ;
+  "EBEnumReadWriteProperty<T>" -> "EBEnumReadOnlyProperty<T>" ;
+  "EBEnumReadWriteProperty<T>" -> EBReadWriteObservableEnumProtocol ;
+  "EBEnumTransientProperty<T>" -> "EBEnumReadOnlyProperty<T>" ;
+  "EBEnumStoredProperty<T>" -> "EBEnumReadWriteProperty<T>" ;
+  "EBEnumStoredProperty<T>" -> DocumentStorablePropertyProtocol ;
  }

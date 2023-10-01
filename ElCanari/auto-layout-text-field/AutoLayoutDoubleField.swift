@@ -115,7 +115,7 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  final func bind_value (_ inObject : EBReadWriteProperty_Double, sendContinously : Bool) -> Self {
+  final func bind_value (_ inObject : EBObservableMutableProperty <Double>, sendContinously : Bool) -> Self {
     self.isContinuous = sendContinously
     self.mValueController = EBGenericReadWritePropertyController <Double> (
       observedObject: inObject,
@@ -126,7 +126,7 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  private func update (from inObject : EBReadWriteProperty_Double) {
+  private func update (from inObject : EBObservableMutableProperty <Double>) {
     let selection = inObject.selection // TOUJOURS lire la sélection
     if self.currentEditor () == nil {
       self.mInputIsValid = true

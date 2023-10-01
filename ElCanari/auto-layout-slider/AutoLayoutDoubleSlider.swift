@@ -72,7 +72,7 @@ final class AutoLayoutDoubleSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
-  final func bind_value (_ object : EBReadWriteProperty_Double) -> Self {
+  final func bind_value (_ object : EBObservableMutableProperty <Double>) -> Self {
     self.mValueController = EBGenericReadWritePropertyController <Double> (
       observedObject: object,
       callBack: { [weak self] in self?.update (from: object) }

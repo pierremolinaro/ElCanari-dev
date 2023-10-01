@@ -8,6 +8,4 @@ import AppKit
 //   Transient property class NSImage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyPropertyArray_NSImage  = EBObservableProperty <[NSImage]>
-typealias EBTransientPropertyArray_NSImage = EBTransientProperty <[NSImage]>
 

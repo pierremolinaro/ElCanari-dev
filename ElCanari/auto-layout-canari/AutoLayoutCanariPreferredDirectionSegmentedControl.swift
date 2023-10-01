@@ -32,7 +32,7 @@ final class AutoLayoutCanariPreferredDirectionSegmentedControl : AutoLayoutBase_
 
   //····················································································································
 
-  func updateTag (from inObject : EBReadWriteProperty_Int) {
+  func updateTag (from inObject : EBObservableMutableProperty <Int>) {
     switch inObject.selection {
     case .single (let v) :
       self.enable (fromValueBinding: true, self.enabledBindingController)
@@ -71,7 +71,7 @@ final class AutoLayoutCanariPreferredDirectionSegmentedControl : AutoLayoutBase_
 
   //····················································································································
 
-  final func bind_angle (_ inObject : EBReadWriteProperty_Int) -> Self {
+  final func bind_angle (_ inObject : EBObservableMutableProperty <Int>) -> Self {
     self.mAngleController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateTag (from: inObject) }

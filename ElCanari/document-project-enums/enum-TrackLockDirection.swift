@@ -89,8 +89,8 @@ enum TrackLockDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadWriteProperty_TrackLockDirection = EBReadWriteEnumProperty <TrackLockDirection> // EBObservableMutableProperty <TrackLockDirection>
-typealias EBStoredProperty_TrackLockDirection = EBStoredEnumProperty <TrackLockDirection>
-typealias EBComputedProperty_TrackLockDirection = EBGenericComputedEnumProperty <TrackLockDirection>
+typealias EBReadWriteProperty_TrackLockDirection = EBEnumReadWriteProperty <TrackLockDirection> // EBObservableMutableProperty <TrackLockDirection>
+typealias EBStoredProperty_TrackLockDirection = EBEnumStoredProperty <TrackLockDirection>
+typealias EBComputedProperty_TrackLockDirection = EBEnumGenericComputedProperty <TrackLockDirection>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

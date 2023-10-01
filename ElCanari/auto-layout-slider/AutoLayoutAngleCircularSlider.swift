@@ -82,7 +82,7 @@ final class AutoLayoutAngleCircularSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
-  final func bind_angle (_ inObject : EBReadWriteProperty_Int, sendContinously : Bool) -> Self {
+  final func bind_angle (_ inObject : EBObservableMutableProperty <Int>, sendContinously : Bool) -> Self {
     self.mAngleController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateAngleValue (inObject) }

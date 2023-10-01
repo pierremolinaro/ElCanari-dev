@@ -80,8 +80,8 @@ enum TrackCreationDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadWriteProperty_TrackCreationDirection = EBReadWriteEnumProperty <TrackCreationDirection> // EBObservableMutableProperty <TrackCreationDirection>
-typealias EBStoredProperty_TrackCreationDirection = EBStoredEnumProperty <TrackCreationDirection>
-typealias EBComputedProperty_TrackCreationDirection = EBGenericComputedEnumProperty <TrackCreationDirection>
+typealias EBReadWriteProperty_TrackCreationDirection = EBEnumReadWriteProperty <TrackCreationDirection> // EBObservableMutableProperty <TrackCreationDirection>
+typealias EBStoredProperty_TrackCreationDirection = EBEnumStoredProperty <TrackCreationDirection>
+typealias EBComputedProperty_TrackCreationDirection = EBEnumGenericComputedProperty <TrackCreationDirection>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -325,7 +325,7 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  final func bind_manualLockP1 (_ inObject : EBReadWriteProperty_Bool) -> Self {
+  final func bind_manualLockP1 (_ inObject : EBObservableMutableProperty <Bool>) -> Self {
     self.mManualLockP1Controller = EBGenericReadWritePropertyController <Bool> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateLockP1 (inObject) }
@@ -335,7 +335,7 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  fileprivate func updateLockP1 (_ inObject : EBReadWriteProperty_Bool) {
+  fileprivate func updateLockP1 (_ inObject : EBObservableMutableProperty <Bool>) {
     switch inObject.selection {
     case .empty, .multiple :
       self.mManualLockForP1 = false
@@ -352,7 +352,7 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  final func bind_manualLockP2 (_ inObject : EBReadWriteProperty_Bool) -> Self {
+  final func bind_manualLockP2 (_ inObject : EBObservableMutableProperty <Bool>) -> Self {
     self.mManualLockP2Controller = EBGenericReadWritePropertyController <Bool> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateLockP2 (inObject) }
@@ -362,7 +362,7 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  fileprivate func updateLockP2 (_ inObject : EBReadWriteProperty_Bool) {
+  fileprivate func updateLockP2 (_ inObject : EBObservableMutableProperty <Bool>) {
     switch inObject.selection {
     case .empty, .multiple :
       self.mManualLockForP2 = false

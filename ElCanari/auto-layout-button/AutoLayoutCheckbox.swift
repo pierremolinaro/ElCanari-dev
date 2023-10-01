@@ -102,7 +102,7 @@ final class AutoLayoutCheckbox : AutoLayoutBase_NSButton {
 
   //····················································································································
 
-  final func bind_value (_ inObject : EBReadWriteProperty_Bool) -> Self {
+  final func bind_value (_ inObject : EBObservableMutableProperty <Bool>) -> Self {
     self.mValueController = EBGenericReadWritePropertyController <Bool> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateValue (from: inObject) }

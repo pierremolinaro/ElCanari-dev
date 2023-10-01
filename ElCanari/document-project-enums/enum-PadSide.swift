@@ -80,8 +80,8 @@ enum PadSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadWriteProperty_PadSide = EBReadWriteEnumProperty <PadSide> // EBObservableMutableProperty <PadSide>
-typealias EBStoredProperty_PadSide = EBStoredEnumProperty <PadSide>
-typealias EBComputedProperty_PadSide = EBGenericComputedEnumProperty <PadSide>
+typealias EBReadWriteProperty_PadSide = EBEnumReadWriteProperty <PadSide> // EBObservableMutableProperty <PadSide>
+typealias EBStoredProperty_PadSide = EBEnumStoredProperty <PadSide>
+typealias EBComputedProperty_PadSide = EBEnumGenericComputedProperty <PadSide>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

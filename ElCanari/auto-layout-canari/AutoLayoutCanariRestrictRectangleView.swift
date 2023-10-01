@@ -42,12 +42,12 @@ final class AutoLayoutCanariRestrictRectangleView : AutoLayoutVerticalStackView 
 
   //····················································································································
 
-  func bind_frontBackInner1Inner2Inner3Inner4 (_ inFrontModel : EBReadWriteProperty_Bool,
-                                               _ inBackModel : EBReadWriteProperty_Bool,
-                                               _ inInner1Model : EBReadWriteProperty_Bool,
-                                               _ inInner2Model : EBReadWriteProperty_Bool,
-                                               _ inInner3Model : EBReadWriteProperty_Bool,
-                                               _ inInner4Model : EBReadWriteProperty_Bool) -> Self {
+  func bind_frontBackInner1Inner2Inner3Inner4 (_ inFrontModel : EBObservableMutableProperty <Bool>,
+                                               _ inBackModel : EBObservableMutableProperty <Bool>,
+                                               _ inInner1Model : EBObservableMutableProperty <Bool>,
+                                               _ inInner2Model : EBObservableMutableProperty <Bool>,
+                                               _ inInner3Model : EBObservableMutableProperty <Bool>,
+                                               _ inInner4Model : EBObservableMutableProperty <Bool>) -> Self {
     self.mModelObserver = EBObservablePropertyController (
       observedObjects: [inFrontModel, inBackModel, inInner1Model, inInner2Model, inInner3Model, inInner4Model],
       callBack: { [weak self] in self?.deferredUpdateCheckboxes (nil) }

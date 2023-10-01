@@ -92,7 +92,7 @@ final class AutoLayoutColorWell : NSColorWell {
 
   //····················································································································
 
-  final func bind_color (_ inObject : EBReadWriteProperty_NSColor) -> Self {
+  final func bind_color (_ inObject : EBObservableMutableProperty <NSColor>) -> Self {
     NSColorPanel.shared.showsAlpha = true
     self.mColorController = EBGenericReadWritePropertyController <NSColor> (
       observedObject: inObject,

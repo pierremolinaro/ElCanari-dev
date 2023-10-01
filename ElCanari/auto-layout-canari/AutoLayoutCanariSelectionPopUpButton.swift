@@ -73,7 +73,7 @@ final class AutoLayoutCanariSelectionPopUpButton : AutoLayoutBase_NSPopUpButton 
 
   //····················································································································
 
-  final func bind_selectedNameInArray (_ inSelectedName : EBReadWriteProperty_String, _ inNameArray : EBObservableProperty <StringArray>) -> Self {
+  final func bind_selectedNameInArray (_ inSelectedName : EBObservableMutableProperty <String>, _ inNameArray : EBObservableProperty <StringArray>) -> Self {
     self.mController = Controller_ElCanariSelectionPopUpButton_selectedNameInArray (
       inSelectedName,
       inNameArray,
@@ -95,11 +95,11 @@ final class Controller_ElCanariSelectionPopUpButton_selectedNameInArray : EBObse
 
   //····················································································································
 
-  private weak var mSelectedName : EBReadWriteProperty_String?
+  private weak var mSelectedName : EBObservableMutableProperty <String>?
 
   //····················································································································
 
-  init (_ inSelectedName : EBReadWriteProperty_String,
+  init (_ inSelectedName : EBObservableMutableProperty <String>,
         _ inNameArray : EBObservableProperty <StringArray>,
         _ inOutlet : AutoLayoutCanariSelectionPopUpButton,
         callBack inCallBack : @escaping () -> Void) {

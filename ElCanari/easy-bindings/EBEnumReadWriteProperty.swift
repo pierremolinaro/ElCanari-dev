@@ -5,10 +5,10 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBReadWriteEnumProperty <T> (abstract class)
+//   EBEnumReadWriteProperty <T> (abstract class)
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBReadWriteEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T>, EBReadWriteObservableEnumProtocol where T : Equatable {
+class EBEnumReadWriteProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T>, EBReadWriteObservableEnumProtocol where T : Equatable {
 
   //····················································································································
 

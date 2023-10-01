@@ -95,8 +95,8 @@ enum PadNumbering : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadWriteProperty_PadNumbering = EBReadWriteEnumProperty <PadNumbering> // EBObservableMutableProperty <PadNumbering>
-typealias EBStoredProperty_PadNumbering = EBStoredEnumProperty <PadNumbering>
-typealias EBComputedProperty_PadNumbering = EBGenericComputedEnumProperty <PadNumbering>
+typealias EBReadWriteProperty_PadNumbering = EBEnumReadWriteProperty <PadNumbering> // EBObservableMutableProperty <PadNumbering>
+typealias EBStoredProperty_PadNumbering = EBEnumStoredProperty <PadNumbering>
+typealias EBComputedProperty_PadNumbering = EBEnumGenericComputedProperty <PadNumbering>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

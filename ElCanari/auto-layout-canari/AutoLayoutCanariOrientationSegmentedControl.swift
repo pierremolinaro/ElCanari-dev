@@ -58,12 +58,12 @@ final class AutoLayoutCanariOrientationSegmentedControl : AutoLayoutBase_NSSegme
   //  $orientation binding
   //····················································································································
 
-  private var mSelectedOrientationController : EBGenericEnumReadWritePropertyController <QuadrantRotation>? = nil
+  private var mSelectedOrientationController : EBEnumGenericReadWritePropertyController <QuadrantRotation>? = nil
 
   //····················································································································
 
   final func bind_orientation (_ inObject : EBReadWriteProperty_QuadrantRotation) -> Self {
-    self.mSelectedOrientationController = EBGenericEnumReadWritePropertyController <QuadrantRotation> (
+    self.mSelectedOrientationController = EBEnumGenericReadWritePropertyController <QuadrantRotation> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateTag (from: inObject) }
     )

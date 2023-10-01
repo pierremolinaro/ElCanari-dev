@@ -88,8 +88,8 @@ enum SlavePadStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadWriteProperty_SlavePadStyle = EBReadWriteEnumProperty <SlavePadStyle> // EBObservableMutableProperty <SlavePadStyle>
-typealias EBStoredProperty_SlavePadStyle = EBStoredEnumProperty <SlavePadStyle>
-typealias EBComputedProperty_SlavePadStyle = EBGenericComputedEnumProperty <SlavePadStyle>
+typealias EBReadWriteProperty_SlavePadStyle = EBEnumReadWriteProperty <SlavePadStyle> // EBObservableMutableProperty <SlavePadStyle>
+typealias EBStoredProperty_SlavePadStyle = EBEnumStoredProperty <SlavePadStyle>
+typealias EBComputedProperty_SlavePadStyle = EBEnumGenericComputedProperty <SlavePadStyle>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

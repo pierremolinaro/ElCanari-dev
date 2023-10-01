@@ -62,7 +62,7 @@ final class AutoLayoutStepper : AutoLayoutBase_NSStepper {
 
   //····················································································································
 
-  final func bind_value (_ inObject : EBReadWriteProperty_Int) -> Self {
+  final func bind_value (_ inObject : EBObservableMutableProperty <Int>) -> Self {
     NSColorPanel.shared.showsAlpha = true
     self.mValueController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,

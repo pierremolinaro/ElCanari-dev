@@ -8,6 +8,4 @@ import AppKit
 //   Transient property class EBShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyPropertyArray_EBShape  = EBObservableProperty <[EBShape]>
-typealias EBTransientPropertyArray_EBShape = EBTransientProperty <[EBShape]>
 

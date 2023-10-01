@@ -81,8 +81,8 @@ enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadWriteProperty_MetadataStatus = EBReadWriteEnumProperty <MetadataStatus> // EBObservableMutableProperty <MetadataStatus>
-typealias EBStoredProperty_MetadataStatus = EBStoredEnumProperty <MetadataStatus>
-typealias EBComputedProperty_MetadataStatus = EBGenericComputedEnumProperty <MetadataStatus>
+typealias EBReadWriteProperty_MetadataStatus = EBEnumReadWriteProperty <MetadataStatus> // EBObservableMutableProperty <MetadataStatus>
+typealias EBStoredProperty_MetadataStatus = EBEnumStoredProperty <MetadataStatus>
+typealias EBComputedProperty_MetadataStatus = EBEnumGenericComputedProperty <MetadataStatus>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

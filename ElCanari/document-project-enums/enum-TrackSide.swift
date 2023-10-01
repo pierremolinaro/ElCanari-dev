@@ -91,8 +91,8 @@ enum TrackSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadWriteProperty_TrackSide = EBReadWriteEnumProperty <TrackSide> // EBObservableMutableProperty <TrackSide>
-typealias EBStoredProperty_TrackSide = EBStoredEnumProperty <TrackSide>
-typealias EBComputedProperty_TrackSide = EBGenericComputedEnumProperty <TrackSide>
+typealias EBReadWriteProperty_TrackSide = EBEnumReadWriteProperty <TrackSide> // EBObservableMutableProperty <TrackSide>
+typealias EBStoredProperty_TrackSide = EBEnumStoredProperty <TrackSide>
+typealias EBComputedProperty_TrackSide = EBEnumGenericComputedProperty <TrackSide>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -89,8 +89,8 @@ enum BoardTextLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadWriteProperty_BoardTextLayer = EBReadWriteEnumProperty <BoardTextLayer> // EBObservableMutableProperty <BoardTextLayer>
-typealias EBStoredProperty_BoardTextLayer = EBStoredEnumProperty <BoardTextLayer>
-typealias EBComputedProperty_BoardTextLayer = EBGenericComputedEnumProperty <BoardTextLayer>
+typealias EBReadWriteProperty_BoardTextLayer = EBEnumReadWriteProperty <BoardTextLayer> // EBObservableMutableProperty <BoardTextLayer>
+typealias EBStoredProperty_BoardTextLayer = EBEnumStoredProperty <BoardTextLayer>
+typealias EBComputedProperty_BoardTextLayer = EBEnumGenericComputedProperty <BoardTextLayer>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

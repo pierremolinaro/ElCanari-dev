@@ -67,7 +67,7 @@ final class AutoLayoutCanariVerticalAlignmentSegmentedControl : AutoLayoutBase_N
 
   //····················································································································
 
-  final func bind_alignment (_ inObject : EBReadWriteEnumProperty <BoardTextVerticalAlignment>) -> Self {
+  final func bind_alignment (_ inObject : EBEnumReadWriteProperty <BoardTextVerticalAlignment>) -> Self {
     self.mObject = inObject
     self.mAlignmentController = EBObservablePropertyController (
       observedObjects: [inObject],
@@ -78,7 +78,7 @@ final class AutoLayoutCanariVerticalAlignmentSegmentedControl : AutoLayoutBase_N
 
   //····················································································································
 
-  fileprivate func update (from inObject : EBReadWriteEnumProperty <BoardTextVerticalAlignment>) {
+  fileprivate func update (from inObject : EBEnumReadWriteProperty <BoardTextVerticalAlignment>) {
     if let rawValue = inObject.rawValue () {
       self.selectedSegment = rawValue
       self.selectedSegmentDidChange (nil)

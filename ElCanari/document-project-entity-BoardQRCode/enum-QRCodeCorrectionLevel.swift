@@ -89,8 +89,8 @@ enum QRCodeCorrectionLevel : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadWriteProperty_QRCodeCorrectionLevel = EBReadWriteEnumProperty <QRCodeCorrectionLevel> // EBObservableMutableProperty <QRCodeCorrectionLevel>
-typealias EBStoredProperty_QRCodeCorrectionLevel = EBStoredEnumProperty <QRCodeCorrectionLevel>
-typealias EBComputedProperty_QRCodeCorrectionLevel = EBGenericComputedEnumProperty <QRCodeCorrectionLevel>
+typealias EBReadWriteProperty_QRCodeCorrectionLevel = EBEnumReadWriteProperty <QRCodeCorrectionLevel> // EBObservableMutableProperty <QRCodeCorrectionLevel>
+typealias EBStoredProperty_QRCodeCorrectionLevel = EBEnumStoredProperty <QRCodeCorrectionLevel>
+typealias EBComputedProperty_QRCodeCorrectionLevel = EBEnumGenericComputedProperty <QRCodeCorrectionLevel>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

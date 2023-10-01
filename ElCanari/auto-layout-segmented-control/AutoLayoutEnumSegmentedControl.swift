@@ -43,7 +43,7 @@ final class AutoLayoutEnumSegmentedControl : AutoLayoutBase_NSSegmentedControl {
 
   //····················································································································
 
-  func updateIndex (fromInteger inObject : EBReadWriteProperty_Int) {
+  func updateIndex (fromInteger inObject : EBObservableMutableProperty <Int>) {
     switch inObject.selection {
     case .single (let v) :
       self.enable (fromValueBinding: true, self.enabledBindingController)
@@ -106,7 +106,7 @@ final class AutoLayoutEnumSegmentedControl : AutoLayoutBase_NSSegmentedControl {
 
   //····················································································································
 
-//  final func bind_selectedIndex (_ inObject : EBReadWriteProperty_Int) -> Self {
+//  final func bind_selectedIndex (_ inObject : EBObservableMutableProperty <Int>) -> Self {
 //    self.mSelectedIndexController = Controller_AutoLayoutSegmentedControl_Index (
 //      object: inObject,
 //      outlet: self
@@ -156,11 +156,11 @@ fileprivate final class Controller_AutoLayoutEnumSegmentedControl_Index : EBObse
 //
 //  //····················································································································
 //
-//  private let mObject : EBReadWriteProperty_Int
+//  private let mObject : EBObservableMutableProperty <Int>
 //
 //  //····················································································································
 //
-//  init (object inObject : EBReadWriteProperty_Int, outlet inOutlet : AutoLayoutEnumSegmentedControl) {
+//  init (object inObject : EBObservableMutableProperty <Int>, outlet inOutlet : AutoLayoutEnumSegmentedControl) {
 //    self.mObject = inObject
 //    super.init (observedObjects: [inObject], callBack: { [weak inOutlet] in inOutlet?.updateIndex (fromInteger: inObject) } )
 //  }
