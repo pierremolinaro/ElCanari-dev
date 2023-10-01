@@ -23,9 +23,9 @@ extension AutoLayoutTableView {
                          headerAlignment inHeaderAlignment : TextAlignment,
                          contentAlignment inContentAlignment : TextAlignment) {
     let column = InternalStringValueTableColumn (
-      withIdentifierNamed: String (self.columnCount),
+      withIdentifierNamed: self.columnCount,
       sortDelegate: inSortDelegate,
-      contentAlignment: inContentAlignment.cocoaAlignment,
+      contentAlignment: inContentAlignment,
       valueSetterDelegate: inSetterDelegate,
       valueGetterDelegate: inGetterDelegate
     )
@@ -59,9 +59,9 @@ fileprivate final class InternalStringValueTableColumn : AutoLayoutTableColumn {
   // INIT
   //····················································································································
 
-  init (withIdentifierNamed inName : String,
+  init (withIdentifierNamed inName : Int,
         sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
-        contentAlignment inContentAlignment : NSTextAlignment,
+        contentAlignment inContentAlignment : TextAlignment,
         valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : String) -> Void >,
         valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> String?) {
     self.mValueGetterDelegate = inGetterDelegate
@@ -99,14 +99,14 @@ fileprivate final class InternalStringValueTableColumn : AutoLayoutTableColumn {
     textField.isEditable = editable
     if editable {
       textField.target = self
-      textField.action = #selector (Self.ebAction (_:))
+      textField.action = #selector (Self.setterAction (_:))
     }
     return textField
   }
 
   //····················································································································
 
-  @objc func ebAction (_ inSender : Any?) {
+  @objc func setterAction (_ inSender : Any?) {
     if let textField = inSender as? NSTextField {
       let rowIndex = textField.tag
       let newValue = textField.stringValue

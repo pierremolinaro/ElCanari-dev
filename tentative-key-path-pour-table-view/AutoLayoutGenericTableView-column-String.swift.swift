@@ -1,8 +1,8 @@
 //
-//  AutoLayoutTableView-column-Bool.swift
+//  AutoLayoutGenericTableView-column-String.swift.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 13/01/2022.
+//  Created by Pierre Molinaro on 01/10/2023.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -10,28 +10,27 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension AutoLayoutTableView {
+extension AutoLayoutGenericTableView {
 
   //····················································································································
 
-  func addColumn_Bool (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> Bool?,
-                       valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Bool) -> Void >,
-                       sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
-                       title inTitle : String,
-                       minWidth inMinWidth : Int,
-                       maxWidth inMaxWidth : Int,
-                       headerAlignment inHeaderAlignment : TextAlignment,
-                       contentAlignment inContentAlignment : TextAlignment) {
-    let column = InternalBoolValueTableColumn (
-      withIdentifierNamed: self.columnCount,
+  func addColumn_String (propertyKeyPath inKeyPath : KeyPath <ELEMENT, EBTransientProperty <String>>,
+                         sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+                         title inTitle : String,
+                         minWidth inMinWidth : Int,
+                         maxWidth inMaxWidth : Int,
+                         headerAlignment inHeaderAlignment : TextAlignment,
+                         contentAlignment inContentAlignment : TextAlignment) {
+    let column = InternalStringTableColumn (
+      withIdentifierNamed: String (self.columnCount),
+      propertyKeyPath: inKeyPath,
+      sourceArray: self.mSourceArray,
       sortDelegate: inSortDelegate,
-      contentAlignment: inContentAlignment,
-      valueSetterDelegate: inSetterDelegate,
-      valueGetterDelegate: inGetterDelegate
+      contentAlignment: inContentAlignment.cocoaAlignment
     )
     column.title = inTitle
-    column.headerCell.controlSize = self.controlSize
     column.headerCell.font = self.font
+    column.headerCell.controlSize = self.controlSize
     column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
     column.minWidth = CGFloat (inMinWidth)
     column.maxWidth = CGFloat (inMaxWidth)
@@ -45,29 +44,27 @@ extension AutoLayoutTableView {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// InternalBoolValueTableColumn
+// InternalStringTableColumn
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class InternalBoolValueTableColumn : AutoLayoutTableColumn {
+fileprivate final class InternalStringTableColumn <ELEMENT : EBManagedObject> : AutoLayoutGenericTableColumn <ELEMENT> {
 
   //····················································································································
 
-  private let mValueGetterDelegate : (_ inRow : Int) -> Bool?
-  private let mValueSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Bool) -> Void >
+  private let mKeyPath : KeyPath <ELEMENT, EBTransientProperty <String>>
 
   //····················································································································
   // INIT
   //····················································································································
 
-  init (withIdentifierNamed inName : Int,
+  init (withIdentifierNamed inName : String,
+        propertyKeyPath inKeyPath : KeyPath <ELEMENT, EBTransientProperty <String>>,
+        sourceArray inSourceArray : ReadOnlyAbstractArrayProperty <ELEMENT>?,
         sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
-        contentAlignment inContentAlignment : TextAlignment,
-        valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Bool) -> Void >,
-        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> Bool?) {
-    self.mValueGetterDelegate = inGetterDelegate
-    self.mValueSetterDelegate = inSetterDelegate
-    super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
-    self.isEditable = inSetterDelegate != nil
+        contentAlignment inContentAlignment : NSTextAlignment) {
+    self.mKeyPath = inKeyPath
+    super.init (withIdentifierNamed: inName, sourceArray: inSourceArray, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
+    self.isEditable = false
   }
 
   //····················································································································
@@ -79,35 +76,33 @@ fileprivate final class InternalBoolValueTableColumn : AutoLayoutTableColumn {
   //····················································································································
 
   override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
-    let checkbox = AutoLayoutBase_NSButton (title: "", size: .small)
-    checkbox.setContentHuggingPriority (.defaultLow, for: .horizontal)
-    checkbox.setContentHuggingPriority (.defaultLow, for: .vertical)
-    checkbox.setButtonType (.switch)
+    let textField = NSTextField (frame: .zero)
+    textField.translatesAutoresizingMaskIntoConstraints = false
 
-    let editable = self.mValueSetterDelegate != nil
-    if let value = self.mValueGetterDelegate (inRowIndex) {
-      checkbox.state = value ? .on : .off
-      checkbox.isEnabled = editable
+    textField.tag = inRowIndex
+    textField.isBezeled = false
+    textField.isBordered = false
+    textField.drawsBackground = false
+    textField.isEnabled = true
+    textField.cell?.sendsActionOnEndEditing = true // Send an action when focus is lost
+//-- DO NOT CHANGE controlSize and font, it makes text field not editable (???)
+//    textField.controlSize = self.mTableView.controlSize
+//    textField.font = self.mTableView.font
+
+    textField.alignment = self.mContentAlignment
+    if let objectArray : EBReferenceArray<ELEMENT> = self.mSourceArray?.propval, inRowIndex < objectArray.count {
+      let property = objectArray [inRowIndex] [keyPath: self.mKeyPath]
+      switch property.selection {
+      case .single (let v) :
+        textField.stringValue = v
+        textField.isEditable = true
+      case .empty, .multiple :
+        textField.isEditable = false
+      }
     }else{
-      checkbox.isEnabled = false
+      textField.isEditable = false
     }
-    if editable {
-      checkbox.tag = inRowIndex
-      checkbox.target = self
-      checkbox.action = #selector (Self.setterAction(_:))
-    }
-    return checkbox
-  }
-
-  //····················································································································
-
-  @objc func setterAction (_ inSender : Any?) {
-    if let checkbox = inSender as? NSButton {
-      let newValue = checkbox.state == .on
-      let rowIndex = checkbox.tag
-      self.tableView?.selectRowIndexes (IndexSet (integer: rowIndex), byExtendingSelection: false)
-      self.mValueSetterDelegate? (rowIndex, newValue)
-    }
+    return textField
   }
 
   //····················································································································

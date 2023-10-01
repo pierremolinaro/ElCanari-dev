@@ -23,9 +23,9 @@ extension AutoLayoutTableView {
                           headerAlignment inHeaderAlignment : TextAlignment,
                           contentAlignment inContentAlignment : TextAlignment) {
     let column = InternalImageValueTableColumn (
-      withIdentifierNamed: String (self.columnCount),
+      withIdentifierNamed: self.columnCount,
       sortDelegate: inSortDelegate,
-      contentAlignment: inContentAlignment.cocoaAlignment,
+      contentAlignment: inContentAlignment,
       valueGetterDelegate: inGetterDelegate
     )
     column.title = inTitle
@@ -55,9 +55,9 @@ fileprivate final class InternalImageValueTableColumn : AutoLayoutTableColumn {
   // INIT
   //····················································································································
 
-  init (withIdentifierNamed inName : String,
+  init (withIdentifierNamed inName : Int,
         sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
-        contentAlignment inContentAlignment : NSTextAlignment,
+        contentAlignment inContentAlignment : TextAlignment,
         valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSImage?) {
     self.mValueGetterDelegate = inGetterDelegate
     super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)

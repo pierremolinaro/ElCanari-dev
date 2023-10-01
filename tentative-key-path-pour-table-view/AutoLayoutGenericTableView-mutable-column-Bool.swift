@@ -1,8 +1,8 @@
 //
-//  AutoLayoutTableView-column-Bool.swift
+//  AutoLayoutGenericTableView-value-column-Bool.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 13/01/2022.
+//  Created by Pierre Molinaro on 01/10/2023.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -10,24 +10,23 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension AutoLayoutTableView {
+extension AutoLayoutGenericTableView {
 
   //····················································································································
 
-  func addColumn_Bool (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> Bool?,
-                       valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Bool) -> Void >,
+  func addColumn_Bool (mutablePropertyKeyPath inKeyPath : KeyPath <ELEMENT, EBObservableMutableProperty <Bool>>,
                        sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
                        title inTitle : String,
                        minWidth inMinWidth : Int,
                        maxWidth inMaxWidth : Int,
                        headerAlignment inHeaderAlignment : TextAlignment,
                        contentAlignment inContentAlignment : TextAlignment) {
-    let column = InternalBoolValueTableColumn (
-      withIdentifierNamed: self.columnCount,
+    let column = InternalMutableBoolTableColumn (
+      withIdentifierNamed: String (self.columnCount),
+      mutablePropertyKeyPath: inKeyPath,
+      sourceArray: self.mSourceArray,
       sortDelegate: inSortDelegate,
-      contentAlignment: inContentAlignment,
-      valueSetterDelegate: inSetterDelegate,
-      valueGetterDelegate: inGetterDelegate
+      contentAlignment: inContentAlignment.cocoaAlignment
     )
     column.title = inTitle
     column.headerCell.controlSize = self.controlSize
@@ -48,26 +47,24 @@ extension AutoLayoutTableView {
 // InternalBoolValueTableColumn
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class InternalBoolValueTableColumn : AutoLayoutTableColumn {
+fileprivate final class InternalMutableBoolTableColumn <ELEMENT : EBManagedObject> : AutoLayoutGenericTableColumn <ELEMENT> {
 
   //····················································································································
 
-  private let mValueGetterDelegate : (_ inRow : Int) -> Bool?
-  private let mValueSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Bool) -> Void >
+  private let mKeyPath : KeyPath <ELEMENT, EBObservableMutableProperty <Bool>>
 
   //····················································································································
   // INIT
   //····················································································································
 
-  init (withIdentifierNamed inName : Int,
+  init (withIdentifierNamed inName : String,
+        mutablePropertyKeyPath inKeyPath : KeyPath <ELEMENT, EBObservableMutableProperty <Bool>>,
+        sourceArray inSourceArray : ReadOnlyAbstractArrayProperty <ELEMENT>?,
         sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
-        contentAlignment inContentAlignment : TextAlignment,
-        valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Bool) -> Void >,
-        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> Bool?) {
-    self.mValueGetterDelegate = inGetterDelegate
-    self.mValueSetterDelegate = inSetterDelegate
-    super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
-    self.isEditable = inSetterDelegate != nil
+        contentAlignment inContentAlignment : NSTextAlignment) {
+    self.mKeyPath = inKeyPath
+    super.init (withIdentifierNamed: inName, sourceArray: inSourceArray, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
+    self.isEditable = true // inSetterDelegate != nil
   }
 
   //····················································································································
@@ -84,10 +81,16 @@ fileprivate final class InternalBoolValueTableColumn : AutoLayoutTableColumn {
     checkbox.setContentHuggingPriority (.defaultLow, for: .vertical)
     checkbox.setButtonType (.switch)
 
-    let editable = self.mValueSetterDelegate != nil
-    if let value = self.mValueGetterDelegate (inRowIndex) {
-      checkbox.state = value ? .on : .off
-      checkbox.isEnabled = editable
+    let editable = true // self.mValueSetterDelegate != nil
+    if let objectArray : EBReferenceArray<ELEMENT> = self.mSourceArray?.propval, inRowIndex < objectArray.count {
+      let property = objectArray [inRowIndex] [keyPath: self.mKeyPath]
+      switch property.selection {
+      case .single (let v) :
+        checkbox.state = v ? .on : .off
+        checkbox.isEnabled = editable
+      case .empty, .multiple :
+        checkbox.isEnabled = false
+      }
     }else{
       checkbox.isEnabled = false
     }
@@ -106,7 +109,10 @@ fileprivate final class InternalBoolValueTableColumn : AutoLayoutTableColumn {
       let newValue = checkbox.state == .on
       let rowIndex = checkbox.tag
       self.tableView?.selectRowIndexes (IndexSet (integer: rowIndex), byExtendingSelection: false)
-      self.mValueSetterDelegate? (rowIndex, newValue)
+      if let objectArray : EBReferenceArray<ELEMENT> = self.mSourceArray?.propval, rowIndex < objectArray.count {
+        let property = objectArray [rowIndex] [keyPath: self.mKeyPath]
+        property.setProp (newValue)
+      }
     }
   }
 

@@ -1,8 +1,8 @@
 //
-//  AutoLayoutTableView.swift
+//  AutoLayoutGenericTableView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 25/06/2021.
+//  Created by Pierre Molinaro on 01/10/2023.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, NSTableViewDelegate {
+class AutoLayoutGenericTableView <ELEMENT : EBManagedObject> : AutoLayoutVerticalStackView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 
@@ -18,6 +18,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   private final let mTableView : InternalAutoLayoutTableView
   private final var mAddButton : AutoLayoutButton? = nil
   private final var mRemoveButton : AutoLayoutButton? = nil
+  private(set) final weak var mSourceArray : ReadOnlyAbstractArrayProperty <ELEMENT>? = nil // SHOULD BE WEAK
   private final weak var mDelegate : AutoLayoutTableViewDelegate? = nil // SHOULD BE WEAK
   private final var mRowCountCallBack : Optional < () -> Int > = nil
 
@@ -80,13 +81,23 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   final func configure (allowsEmptySelection inAllowsEmptySelection : Bool,
                         allowsMultipleSelection inAllowsMultipleSelection : Bool,
+                        source inSourceArray : ReadOnlyAbstractArrayProperty <ELEMENT>,
                         rowCountCallBack inRowCountCallBack : @escaping () -> Int,
-                        delegate inDelegate : AutoLayoutTableViewDelegate?) {
+                        delegate inDelegate : AutoLayoutTableViewDelegate) {
     // Swift.print ("inAllowsEmptySelection \(inAllowsEmptySelection) inAllowsMultipleSelection \(inAllowsMultipleSelection)")
     self.mTableView.allowsEmptySelection = inAllowsEmptySelection
     self.mTableView.allowsMultipleSelection = inAllowsMultipleSelection
-    self.mRowCountCallBack = inRowCountCallBack
+    self.mSourceArray = inSourceArray
     self.mDelegate = inDelegate
+    self.mRowCountCallBack = inRowCountCallBack
+  }
+
+  func setModel (_ inModel : ReadOnlyAbstractArrayProperty <ELEMENT>) {
+    for tableColumn in self.mTableView.tableColumns {
+      if let t = tableColumn as? AutoLayoutGenericTableColumn <ELEMENT> {
+        t.setModel (inModel)
+      }
+    }
   }
 
   //····················································································································
@@ -123,6 +134,14 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   }
 
   //····················································································································
+  //   NSTableViewDataSource protocol
+  //····················································································································
+
+  @MainActor final func numberOfRows (in tableView: NSTableView) -> Int {
+    return self.mRowCountCallBack? () ?? 0
+  }
+
+  //····················································································································
 
   @objc final func addEntryAction (_ _ : Any?) {
     self.mDelegate?.tableViewDelegate_addEntry ()
@@ -154,7 +173,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   //····················································································································
 
-  final func appendTableColumn (_ inColumn : AutoLayoutTableColumn) {
+  final func appendTableColumn (_ inColumn : AutoLayoutGenericTableColumn <ELEMENT>) {
   //--- Add Column
     self.mTableView.addTableColumn (inColumn)
   //--- Update table view sort descriptors
@@ -221,14 +240,6 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   //····················································································································
 
   final var selectedRow : Int { return self.mTableView.selectedRow }
-
-  //····················································································································
-  //   NSTableViewDataSource protocol
-  //····················································································································
-
-  @MainActor final func numberOfRows (in tableView: NSTableView) -> Int {
-    return self.mRowCountCallBack? () ?? 0
-  }
 
   //····················································································································
   //   NSTableViewDelegate protocol
