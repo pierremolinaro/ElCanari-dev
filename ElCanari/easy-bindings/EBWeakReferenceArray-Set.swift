@@ -112,11 +112,11 @@ struct EBWeakReferenceArray <Element : AnyObject> {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate struct EBWeakElement <Element : AnyObject> {
+struct EBWeakElement <Element : AnyObject> {
 
   //····················································································································
 
-  private weak var mWeakElement : Element?
+  private weak var mWeakElement : Element? // SHOULD BE Weak
 
   //····················································································································
 
