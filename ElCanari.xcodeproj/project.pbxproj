@@ -2566,8 +2566,6 @@
 		CFB82C21276B904700BAD56E /* AutoLayoutTableView-value-column-NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB82C1F276B904700BAD56E /* AutoLayoutTableView-value-column-NSImage.swift */; };
 		CFB82C24276B918100BAD56E /* AutoLayoutTableView-value-column-NSImage-Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB82C23276B918100BAD56E /* AutoLayoutTableView-value-column-NSImage-Int.swift */; };
 		CFB82C25276B918100BAD56E /* AutoLayoutTableView-value-column-NSImage-Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB82C23276B918100BAD56E /* AutoLayoutTableView-value-column-NSImage-Int.swift */; };
-		CFB82C28276B922400BAD56E /* AutoLayoutTableView-value-column-NSImage-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB82C27276B922400BAD56E /* AutoLayoutTableView-value-column-NSImage-String.swift */; };
-		CFB82C29276B922400BAD56E /* AutoLayoutTableView-value-column-NSImage-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB82C27276B922400BAD56E /* AutoLayoutTableView-value-column-NSImage-String.swift */; };
 		CFB8DDB227A6CFF20097DF9A /* Preferences-SuperClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DDB127A6CFF20097DF9A /* Preferences-SuperClass.swift */; };
 		CFB8DDB327A6CFF20097DF9A /* Preferences-SuperClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DDB127A6CFF20097DF9A /* Preferences-SuperClass.swift */; };
 		CFB8DDBA27A6DE030097DF9A /* AutoLayoutDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DDB927A6DE030097DF9A /* AutoLayoutDateLabel.swift */; };
@@ -4677,7 +4675,6 @@
 		CFB82C1B276B8EE400BAD56E /* AutoLayoutTableView-value-column-Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoLayoutTableView-value-column-Int.swift"; sourceTree = "<group>"; };
 		CFB82C1F276B904700BAD56E /* AutoLayoutTableView-value-column-NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoLayoutTableView-value-column-NSImage.swift"; sourceTree = "<group>"; };
 		CFB82C23276B918100BAD56E /* AutoLayoutTableView-value-column-NSImage-Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoLayoutTableView-value-column-NSImage-Int.swift"; sourceTree = "<group>"; };
-		CFB82C27276B922400BAD56E /* AutoLayoutTableView-value-column-NSImage-String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoLayoutTableView-value-column-NSImage-String.swift"; sourceTree = "<group>"; };
 		CFB8DDB127A6CFF20097DF9A /* Preferences-SuperClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preferences-SuperClass.swift"; sourceTree = "<group>"; };
 		CFB8DDB927A6DE030097DF9A /* AutoLayoutDateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutDateLabel.swift; sourceTree = "<group>"; };
 		CFB8DDBD27A6E4430097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-Preferences-showLibraryConsistencyLogWindowAction.swift"; sourceTree = "<group>"; };
@@ -6517,7 +6514,6 @@
 				CFB82C1B276B8EE400BAD56E /* AutoLayoutTableView-value-column-Int.swift */,
 				CF3B26A027808F010084F07C /* AutoLayoutTableView-value-column-NSColor.swift */,
 				CFB82C23276B918100BAD56E /* AutoLayoutTableView-value-column-NSImage-Int.swift */,
-				CFB82C27276B922400BAD56E /* AutoLayoutTableView-value-column-NSImage-String.swift */,
 				CFB82C1F276B904700BAD56E /* AutoLayoutTableView-value-column-NSImage.swift */,
 				CFB82C13276B8A4F00BAD56E /* AutoLayoutTableView-value-column-String.swift */,
 				CFB82C17276B8C5800BAD56E /* AutoLayoutTableView-column.swift */,
@@ -9116,7 +9112,6 @@
 				CF9F8BF32852689400E313C7 /* action-AutoLayoutMergerDocument-stackSelectionUpAction.swift in Sources */,
 				CF3494DC29EB2EE2006AB1EB /* tomany-RectangleEntity.swift in Sources */,
 				CF711D78275E1B0F00280069 /* extension-LabelInSchematic.swift in Sources */,
-				CFB82C28276B922400BAD56E /* AutoLayoutTableView-value-column-NSImage-String.swift in Sources */,
 				CFB7D8E02683A61D007B9D3B /* configurator-AutoLayoutPackageDocument-addPackageBezier.swift in Sources */,
 				CF5632B821A2C2550026B7B7 /* transient-SymbolSegment-selectionDisplay.swift in Sources */,
 				CFB7D8DD2683A61D007B9D3B /* action-AutoLayoutPackageDocument-resetModelImagePointsAction.swift in Sources */,
@@ -10763,7 +10758,6 @@
 				CF22F1BA275A73ED009C6FAC /* transient-BoardModel-backComponentNameSegments.swift in Sources */,
 				CFB1F9222940EDDB00C1E120 /* action-AutoLayoutProjectDocument-appendNewSchematicDisplayInspectorAction.swift in Sources */,
 				CFEB7C05233A282D0060A97A /* transient-NetInProject-netSchematicPointsInfo.swift in Sources */,
-				CFB82C29276B922400BAD56E /* AutoLayoutTableView-value-column-NSImage-String.swift in Sources */,
 				CF9F8BF12852689400E313C7 /* action-AutoLayoutMergerDocument-stackSelectionRightAction.swift in Sources */,
 				CFB7D76E26839B90007B9D3B /* transient-AutoLayoutSymbolDocument-statusMessage.swift in Sources */,
 				CF9F8BF42852689400E313C7 /* action-AutoLayoutMergerDocument-stackSelectionUpAction.swift in Sources */,
@@ -11043,6 +11037,7 @@
 				SWIFT_DISABLE_SAFETY_CHECKS = NO;
 				SWIFT_ENABLE_BARE_SLASH_REGEX = NO;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
+				SWIFT_INSTALL_MODULE = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_REFLECTION_METADATA_LEVEL = "without-names";
@@ -11195,6 +11190,7 @@
 				SWIFT_DISABLE_SAFETY_CHECKS = NO;
 				SWIFT_ENABLE_BARE_SLASH_REGEX = NO;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
+				SWIFT_INSTALL_MODULE = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_REFLECTION_METADATA_LEVEL = "without-names";
