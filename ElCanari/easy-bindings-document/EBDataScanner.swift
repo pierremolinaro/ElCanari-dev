@@ -23,15 +23,15 @@ struct EBDataScanner {
   //····················································································································
 
   var data : Data { return self.mData }
-  var index : Int { return self.mReadIndex }
+//  var index : Int { return self.mReadIndex }
 
   //····················································································································
 
-  mutating func ignoreBytes (inLengthToIgnore : Int) {
-    if self.mReadOk {
-      self.mReadIndex += inLengthToIgnore
-    }
-  }
+//  mutating func ignoreBytes (inLengthToIgnore : Int) {
+//    if self.mReadOk {
+//      self.mReadIndex += inLengthToIgnore
+//    }
+//  }
 
   //····················································································································
 
@@ -67,30 +67,30 @@ struct EBDataScanner {
 
   //····················································································································
 
-  mutating func testAcceptFromByte (lowerBound : UInt8,
-                                    upperBound : UInt8,
-                                    value : inout UInt8) -> Bool {
-    var result = self.mReadOk
-    if result {
-      if self.mReadIndex >= self.mData.count {
-         NSLog ("Read beyond end of data")
-         self.mReadOk = false
-       }else{
-        let byte = self.mData [self.mReadIndex]
-        result = (byte >= lowerBound) && (byte <= upperBound)
-        if (result) {
-          value = byte
-          self.mReadIndex += 1
-          self.mExpectedBytes = []
-        }else{
-          for i in lowerBound ..< upperBound + 1 {
-            self.mExpectedBytes.append (i)
-          }
-        }
-      }
-    }
-    return result ;
-  }
+//  mutating func testAcceptFromByte (lowerBound : UInt8,
+//                                    upperBound : UInt8,
+//                                    value : inout UInt8) -> Bool {
+//    var result = self.mReadOk
+//    if result {
+//      if self.mReadIndex >= self.mData.count {
+//         NSLog ("Read beyond end of data")
+//         self.mReadOk = false
+//       }else{
+//        let byte = self.mData [self.mReadIndex]
+//        result = (byte >= lowerBound) && (byte <= upperBound)
+//        if (result) {
+//          value = byte
+//          self.mReadIndex += 1
+//          self.mExpectedBytes = []
+//        }else{
+//          for i in lowerBound ..< upperBound + 1 {
+//            self.mExpectedBytes.append (i)
+//          }
+//        }
+//      }
+//    }
+//    return result ;
+//  }
 
   //····················································································································
 
@@ -189,29 +189,29 @@ struct EBDataScanner {
 
   //····················································································································
 
-  mutating func parseAutosizedString () -> String {
-    var result : String = ""
-    var stringLength = 0
-    var loop = true
-    while loop && mReadOk {
-      if (mReadIndex + stringLength) >= mData.count {
-        mReadOk = false
-      }else{
-        loop = mData [mReadIndex + stringLength] != 0
-        stringLength += 1
-      }
-    }
-    if (mReadOk) {
-      let d = mData.subdata (in: mReadIndex ..< mReadIndex + stringLength - 1)
-      if let r = String (data:d, encoding:String.Encoding.utf8) {
-        result = r
-      }else{
-        mReadOk = false
-      }
-      mReadIndex += stringLength
-    }
-    return result
-  }
+//  mutating func parseAutosizedString () -> String {
+//    var result : String = ""
+//    var stringLength = 0
+//    var loop = true
+//    while loop && mReadOk {
+//      if (mReadIndex + stringLength) >= mData.count {
+//        mReadOk = false
+//      }else{
+//        loop = mData [mReadIndex + stringLength] != 0
+//        stringLength += 1
+//      }
+//    }
+//    if (mReadOk) {
+//      let d = mData.subdata (in: mReadIndex ..< mReadIndex + stringLength - 1)
+//      if let r = String (data:d, encoding:String.Encoding.utf8) {
+//        result = r
+//      }else{
+//        mReadOk = false
+//      }
+//      mReadIndex += stringLength
+//    }
+//    return result
+//  }
 
   //····················································································································
   // TEXTUAL FORMAT
@@ -291,22 +291,22 @@ struct EBDataScanner {
 
   //····················································································································
 
-  mutating func parseStringAsData () throws -> Data {
-    var result = Data ()
-    var loop = true
-    while self.mReadOk, loop {
-      if self.mReadIndex >= self.mData.count {
-        self.mReadOk = false
-      }else if self.mData [self.mReadIndex] == ASCII.lineFeed.rawValue {
-        self.mReadIndex += 1
-        loop = false
-      }else{
-        result.append (self.mData [self.mReadIndex])
-        self.mReadIndex += 1
-      }
-    }
-    return result
-  }
+//  mutating func parseStringAsData () throws -> Data {
+//    var result = Data ()
+//    var loop = true
+//    while self.mReadOk, loop {
+//      if self.mReadIndex >= self.mData.count {
+//        self.mReadOk = false
+//      }else if self.mData [self.mReadIndex] == ASCII.lineFeed.rawValue {
+//        self.mReadIndex += 1
+//        loop = false
+//      }else{
+//        result.append (self.mData [self.mReadIndex])
+//        self.mReadIndex += 1
+//      }
+//    }
+//    return result
+//  }
 
   //····················································································································
 

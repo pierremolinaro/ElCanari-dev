@@ -2317,7 +2317,7 @@ final class StoredObject_ProjectRoot : ReadOnlyObject_ProjectRoot, EBSignatureOb
 
   //····················································································································
 
-  override var propval : ProjectRoot? { return self.mWeakInternalValue }
+  var propval : ProjectRoot? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

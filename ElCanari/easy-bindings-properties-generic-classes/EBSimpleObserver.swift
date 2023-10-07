@@ -19,11 +19,11 @@ final class EBSimpleObserver : EBObserverProtocol {
 
   //····················································································································
 
-  init (model inModel : EBObservedObject, _ inCallBack : @escaping () -> Void) {
-    self.mObservedObject = inModel
+  init (object inObject : EBObservedObject, _ inCallBack : @escaping () -> Void) {
+    self.mObservedObject = inObject
     self.mCallBack = inCallBack
     noteObjectAllocation (self)
-    inModel.startsBeingObserved (by: self)
+    inObject.startsBeingObserved (by: self)
   }
 
   //····················································································································
@@ -42,7 +42,7 @@ final class EBSimpleObserver : EBObserverProtocol {
 
   //····················································································································
 
-  func observedObjectDidChange() {
+  func observedObjectDidChange () {
     self.mCallBack? ()
   }
 

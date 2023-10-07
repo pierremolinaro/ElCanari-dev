@@ -401,7 +401,7 @@ final class StoredObject_FontInProject : ReadOnlyObject_FontInProject, EBSignatu
 
   //····················································································································
 
-  override var propval : FontInProject? { return self.mWeakInternalValue }
+  var propval : FontInProject? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

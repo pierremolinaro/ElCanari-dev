@@ -14,7 +14,8 @@ final class EBEnumGenericReadWritePropertyController <T : EBEnumProtocol> : EBOb
 
   //····················································································································
 
-  init (observedObject inObject : EBEnumReadWriteProperty <T>, callBack inCallBack : @escaping () -> Void) {
+  init (observedObject inObject : EBEnumReadWriteProperty <T>,
+        callBack inCallBack : @escaping () -> Void) {
     self.mObject = inObject
     super.init (observedObjects : [inObject], callBack : inCallBack)
   }
@@ -22,7 +23,7 @@ final class EBEnumGenericReadWritePropertyController <T : EBEnumProtocol> : EBOb
   //····················································································································
 
   final func updateModel (withCandidateValue inValue : T) {
-    return self.mObject.setProp (inValue)
+    self.mObject.setProp (inValue)
   }
 
   //····················································································································

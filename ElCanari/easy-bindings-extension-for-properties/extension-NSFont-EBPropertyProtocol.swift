@@ -40,13 +40,6 @@ extension NSFont : EBStoredPropertyProtocol {
 
   //····················································································································
 
-  static func unarchiveFromData (data : Data) -> NSObject? {
- //   return NSKeyedUnarchiver.unarchiveObject (with: data) as? NSFont
-    return try? NSKeyedUnarchiver.unarchivedObject (ofClass: NSFont.self, from: data)
-  }
-
-  //····················································································································
-
   static func unarchiveFromString (string : String) -> NSObject? {
     let components = string.components (separatedBy: ":")
     if components.count == 2, let fontSize = Double (components [1]) {

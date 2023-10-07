@@ -421,7 +421,7 @@ final class StoredObject_ComponentSymbolInProject : ReadOnlyObject_ComponentSymb
 
   //····················································································································
 
-  override var propval : ComponentSymbolInProject? { return self.mWeakInternalValue }
+  var propval : ComponentSymbolInProject? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

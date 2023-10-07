@@ -349,7 +349,7 @@ final class StoredObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice, E
 
   //····················································································································
 
-  override var propval : MasterPadInDevice? { return self.mWeakInternalValue }
+  var propval : MasterPadInDevice? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

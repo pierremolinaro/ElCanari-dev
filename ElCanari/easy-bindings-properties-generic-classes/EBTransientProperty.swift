@@ -18,13 +18,17 @@ class EBTransientProperty <T : Equatable> : EBObservableProperty <T> {
   //····················································································································
 
   override final var selection : EBSelection <T> {
-    if self.mValueCache == nil {
+    if let valueCache = self.mValueCache {
+      return valueCache
+    }else{
       self.mValueCache = self.mReadModelFunction? ()
-      if self.mValueCache == nil {
+      if let valueCache = self.mValueCache {
+        return valueCache
+      }else{
         self.mValueCache = .empty
+        return .empty
       }
     }
-    return self.mValueCache!
   }
 
   //····················································································································

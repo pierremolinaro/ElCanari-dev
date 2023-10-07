@@ -16,7 +16,7 @@ class EBEnumReadWriteProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T>,
 
   //····················································································································
 
-  override final func setFrom (rawValue inRawValue : Int) {
+  final func setFrom (rawValue inRawValue : Int) {
     if let v = T.buildfromRawValue (rawValue: inRawValue) {
       self.setProp (v)
     }

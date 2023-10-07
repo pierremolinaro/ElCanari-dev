@@ -329,7 +329,7 @@ final class StoredObject_BorderCurve : ReadOnlyObject_BorderCurve, EBSignatureOb
 
   //····················································································································
 
-  override var propval : BorderCurve? { return self.mWeakInternalValue }
+  var propval : BorderCurve? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

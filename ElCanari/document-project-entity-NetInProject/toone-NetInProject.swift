@@ -345,7 +345,7 @@ final class StoredObject_NetInProject : ReadOnlyObject_NetInProject, EBSignature
 
   //····················································································································
 
-  override var propval : NetInProject? { return self.mWeakInternalValue }
+  var propval : NetInProject? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

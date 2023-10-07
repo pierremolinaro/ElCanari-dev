@@ -269,7 +269,7 @@ final class StoredObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageMo
 
   //····················································································································
 
-  override var propval : PackageModelImageDoublePoint? { return self.mWeakInternalValue }
+  var propval : PackageModelImageDoublePoint? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

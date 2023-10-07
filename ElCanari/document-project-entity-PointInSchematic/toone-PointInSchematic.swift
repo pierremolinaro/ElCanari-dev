@@ -449,7 +449,7 @@ final class StoredObject_PointInSchematic : ReadOnlyObject_PointInSchematic, EBS
 
   //····················································································································
 
-  override var propval : PointInSchematic? { return self.mWeakInternalValue }
+  var propval : PointInSchematic? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

@@ -12,10 +12,6 @@ class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBObservableProperty <T>, EB
 
   //····················································································································
 
-  func setFrom (rawValue inRawValue : Int) {}  // Abstract method
-
-  //····················································································································
-
   final func rawValue () -> Int? {
     switch self.selection {
     case .empty, .multiple :

@@ -313,7 +313,7 @@ final class StoredObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstanceI
 
   //····················································································································
 
-  override var propval : SymbolInstanceInDevice? { return self.mWeakInternalValue }
+  var propval : SymbolInstanceInDevice? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

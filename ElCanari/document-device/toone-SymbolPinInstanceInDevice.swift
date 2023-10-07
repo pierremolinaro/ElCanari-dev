@@ -233,7 +233,7 @@ final class StoredObject_SymbolPinInstanceInDevice : ReadOnlyObject_SymbolPinIns
 
   //····················································································································
 
-  override var propval : SymbolPinInstanceInDevice? { return self.mWeakInternalValue }
+  var propval : SymbolPinInstanceInDevice? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

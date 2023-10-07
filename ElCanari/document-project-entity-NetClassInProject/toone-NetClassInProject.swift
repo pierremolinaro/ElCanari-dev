@@ -529,7 +529,7 @@ final class StoredObject_NetClassInProject : ReadOnlyObject_NetClassInProject, E
 
   //····················································································································
 
-  override var propval : NetClassInProject? { return self.mWeakInternalValue }
+  var propval : NetClassInProject? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

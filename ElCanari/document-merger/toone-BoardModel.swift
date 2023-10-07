@@ -1977,7 +1977,7 @@ final class StoredObject_BoardModel : ReadOnlyObject_BoardModel, EBSignatureObse
 
   //····················································································································
 
-  override var propval : BoardModel? { return self.mWeakInternalValue }
+  var propval : BoardModel? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

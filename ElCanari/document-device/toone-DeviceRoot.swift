@@ -633,7 +633,7 @@ final class StoredObject_DeviceRoot : ReadOnlyObject_DeviceRoot, EBSignatureObse
 
   //····················································································································
 
-  override var propval : DeviceRoot? { return self.mWeakInternalValue }
+  var propval : DeviceRoot? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

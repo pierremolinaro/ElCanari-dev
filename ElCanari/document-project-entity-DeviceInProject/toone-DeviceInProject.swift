@@ -457,7 +457,7 @@ final class StoredObject_DeviceInProject : ReadOnlyObject_DeviceInProject, EBSig
 
   //····················································································································
 
-  override var propval : DeviceInProject? { return self.mWeakInternalValue }
+  var propval : DeviceInProject? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

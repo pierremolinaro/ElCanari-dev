@@ -345,7 +345,7 @@ final class StoredObject_SymbolTypeInDevice : ReadOnlyObject_SymbolTypeInDevice,
 
   //····················································································································
 
-  override var propval : SymbolTypeInDevice? { return self.mWeakInternalValue }
+  var propval : SymbolTypeInDevice? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

@@ -33,13 +33,17 @@ final class EBEnumGenericComputedProperty <T : EBEnumPropertyProtocol> : EBEnumR
   //····················································································································
 
   override var selection : EBSelection <T> {
-    if self.mCachedValue == nil {
+    if let cachedValue = self.mCachedValue {
+      return cachedValue
+    }else{
       self.mCachedValue = self.mReadModelFunction? ()
+      if let cachedValue = self.mCachedValue {
+        return cachedValue
+      }else{
+        self.mCachedValue = .empty
+        return .empty
+      }
     }
-    if self.mCachedValue == nil {
-      self.mCachedValue = .empty
-    }
-    return self.mCachedValue!
   }
 
   //····················································································································

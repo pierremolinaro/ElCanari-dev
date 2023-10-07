@@ -969,7 +969,7 @@ final class StoredObject_PackageRoot : ReadOnlyObject_PackageRoot, EBSignatureOb
 
   //····················································································································
 
-  override var propval : PackageRoot? { return self.mWeakInternalValue }
+  var propval : PackageRoot? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

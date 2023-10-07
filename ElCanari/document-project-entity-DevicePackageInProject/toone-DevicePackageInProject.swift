@@ -224,7 +224,7 @@ final class StoredObject_DevicePackageInProject : ReadOnlyObject_DevicePackageIn
 
   //····················································································································
 
-  override var propval : DevicePackageInProject? { return self.mWeakInternalValue }
+  var propval : DevicePackageInProject? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

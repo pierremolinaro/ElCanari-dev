@@ -233,7 +233,7 @@ final class StoredObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice, EBS
 
   //····················································································································
 
-  override var propval : PadProxyInDevice? { return self.mWeakInternalValue }
+  var propval : PadProxyInDevice? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

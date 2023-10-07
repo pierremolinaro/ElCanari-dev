@@ -66,7 +66,9 @@ final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteP
 
   //····················································································································
 
-  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inManagedObjectArray : [RawObject]) {
+  func initialize (fromRange inRange : NSRange,
+                   ofData inData : Data,
+                   _ inManagedObjectArray : [RawObject]) {
     if let value = T.unarchiveFromDataRange (inData, inRange) {
       self.setProp (value)
     }

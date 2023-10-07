@@ -17,15 +17,11 @@ class ReadOnlyAbstractObjectProperty <T : AnyObject> : ReadOnlyAbstractGenericRe
   var selection : EBSelection < T? > { get { return .empty } }  // Abstract method
 
   //····················································································································
-
-  var propval : T? { return nil } // Abstract method
-
-  //····················································································································
   //  Internal value
   //····················································································································
 
   final weak var mWeakInternalValue : T? = nil {
-     didSet {
+    didSet {
       if self.mWeakInternalValue !== oldValue {
         if (self.mWeakInternalValue == nil) != (oldValue == nil) {
           self.none_property.observedObjectDidChange ()

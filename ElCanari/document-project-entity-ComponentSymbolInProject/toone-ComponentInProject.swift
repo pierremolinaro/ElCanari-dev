@@ -789,7 +789,7 @@ final class StoredObject_ComponentInProject : ReadOnlyObject_ComponentInProject,
 
   //····················································································································
 
-  override var propval : ComponentInProject? { return self.mWeakInternalValue }
+  var propval : ComponentInProject? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

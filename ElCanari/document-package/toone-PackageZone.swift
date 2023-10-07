@@ -452,7 +452,7 @@ final class StoredObject_PackageZone : ReadOnlyObject_PackageZone, EBSignatureOb
 
   //····················································································································
 
-  override var propval : PackageZone? { return self.mWeakInternalValue }
+  var propval : PackageZone? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

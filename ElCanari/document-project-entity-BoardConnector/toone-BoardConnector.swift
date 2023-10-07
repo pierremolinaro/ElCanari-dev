@@ -585,7 +585,7 @@ final class StoredObject_BoardConnector : ReadOnlyObject_BoardConnector, EBSigna
 
   //····················································································································
 
-  override var propval : BoardConnector? { return self.mWeakInternalValue }
+  var propval : BoardConnector? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

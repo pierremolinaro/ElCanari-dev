@@ -209,7 +209,7 @@ final class StoredObject_NCInSchematic : ReadOnlyObject_NCInSchematic, EBSignatu
 
   //····················································································································
 
-  override var propval : NCInSchematic? { return self.mWeakInternalValue }
+  var propval : NCInSchematic? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

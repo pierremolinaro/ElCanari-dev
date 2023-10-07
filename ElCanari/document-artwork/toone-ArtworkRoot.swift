@@ -421,7 +421,7 @@ final class StoredObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot, EBSignatureOb
 
   //····················································································································
 
-  override var propval : ArtworkRoot? { return self.mWeakInternalValue }
+  var propval : ArtworkRoot? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

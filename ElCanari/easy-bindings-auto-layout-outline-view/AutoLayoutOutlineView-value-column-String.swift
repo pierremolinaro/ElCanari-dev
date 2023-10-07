@@ -23,9 +23,9 @@ extension AutoLayoutOutlineView {
                          headerAlignment inHeaderAlignment : TextAlignment,
                          contentAlignment inContentAlignment : TextAlignment) {
     let column = InternalStringValueOutlineViewTableColumn (
-      withIdentifierNamed: String (self.columnCount),
+      withIdentifierNamed: self.columnCount,
       sortDelegate: inSortDelegate,
-      contentAlignment: inContentAlignment.cocoaAlignment,
+      contentAlignment: inContentAlignment,
       valueSetterDelegate: inSetterDelegate,
       valueGetterDelegate: inGetterDelegate
     )
@@ -59,9 +59,9 @@ fileprivate final class InternalStringValueOutlineViewTableColumn : AutoLayoutTa
   // INIT
   //····················································································································
 
-  init (withIdentifierNamed inName : String,
+  init (withIdentifierNamed inName : Int,
         sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
-        contentAlignment inContentAlignment : NSTextAlignment,
+        contentAlignment inContentAlignment : TextAlignment,
         valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : String) -> Void >,
         valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> String?) {
     self.mValueGetterDelegate = inGetterDelegate

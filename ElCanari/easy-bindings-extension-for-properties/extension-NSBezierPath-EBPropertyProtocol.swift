@@ -64,12 +64,6 @@ extension NSBezierPath : EBStoredPropertyProtocol {
 
   //····················································································································
 
-  static func unarchiveFromData (data : Data) -> NSObject? {
-    return try? NSKeyedUnarchiver.unarchivedObject (ofClass: NSBezierPath.self, from: data)
-  }
-
-  //····················································································································
-
   static func unarchiveFromString (string : String) -> NSObject? {
     let bp = NSBezierPath ()
     let scanner = Scanner (string: string)

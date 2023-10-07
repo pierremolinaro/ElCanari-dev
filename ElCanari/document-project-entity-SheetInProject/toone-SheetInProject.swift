@@ -321,7 +321,7 @@ final class StoredObject_SheetInProject : ReadOnlyObject_SheetInProject, EBSigna
 
   //····················································································································
 
-  override var propval : SheetInProject? { return self.mWeakInternalValue }
+  var propval : SheetInProject? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

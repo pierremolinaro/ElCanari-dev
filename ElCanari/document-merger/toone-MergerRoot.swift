@@ -573,7 +573,7 @@ final class StoredObject_MergerRoot : ReadOnlyObject_MergerRoot, EBSignatureObse
 
   //····················································································································
 
-  override var propval : MergerRoot? { return self.mWeakInternalValue }
+  var propval : MergerRoot? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

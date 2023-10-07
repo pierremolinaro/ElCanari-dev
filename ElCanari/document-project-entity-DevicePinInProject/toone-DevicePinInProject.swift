@@ -324,7 +324,7 @@ final class StoredObject_DevicePinInProject : ReadOnlyObject_DevicePinInProject,
 
   //····················································································································
 
-  override var propval : DevicePinInProject? { return self.mWeakInternalValue }
+  var propval : DevicePinInProject? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

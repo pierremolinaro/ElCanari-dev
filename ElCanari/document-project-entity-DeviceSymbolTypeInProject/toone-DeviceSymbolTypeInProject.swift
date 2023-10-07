@@ -192,7 +192,7 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadOnlyObject_DeviceSymbol
 
   //····················································································································
 
-  override var propval : DeviceSymbolTypeInProject? { return self.mWeakInternalValue }
+  var propval : DeviceSymbolTypeInProject? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp

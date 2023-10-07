@@ -54,12 +54,6 @@ extension NSColor : EBStoredPropertyProtocol {
 
   //····················································································································
 
-  static func unarchiveFromData (data : Data) -> NSObject? {
-    return try? NSKeyedUnarchiver.unarchivedObject (ofClass: NSColor.self, from: data)
-  }
-
-  //····················································································································
-
   static func unarchiveFromString (string : String) -> NSObject? {
     let scanner = Scanner (string: string)
     if let red = scanner.scanDouble (),

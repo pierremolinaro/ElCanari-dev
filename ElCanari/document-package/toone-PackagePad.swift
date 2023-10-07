@@ -553,7 +553,7 @@ final class StoredObject_PackagePad : ReadOnlyObject_PackagePad, EBSignatureObse
 
   //····················································································································
 
-  override var propval : PackagePad? { return self.mWeakInternalValue }
+  var propval : PackagePad? { return self.mWeakInternalValue }
 
   //····················································································································
   //   setProp
