@@ -62,7 +62,7 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : AutoLayoutBase
   //····················································································································
 
   private var mAlignmentController : EBObservablePropertyController? = nil
-  private var mObject : EBReadWriteObservableEnumProtocol? = nil
+  private var mObject : EBEnumReadWriteObservableProtocol? = nil
 
   //····················································································································
 

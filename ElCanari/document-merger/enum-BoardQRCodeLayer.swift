@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum BoardQRCodeLayer : Int, EnumPropertyProtocol, Hashable {
+enum BoardQRCodeLayer : Int, EBEnumPropertyProtocol, Hashable {
   case legendFront = 0
   case legendBack = 1
 

@@ -13,9 +13,10 @@ final class AutoLayoutTextView : NSScrollView {
   //····················································································································
 
   init () {
-    super.init (frame: NSRect (x: 0, y: 0, width: 100, height: 100))
+    super.init (frame: .zero)
+//    super.init (frame: NSRect (x: 0, y: 0, width: 100, height: 100))
     noteObjectAllocation (self)
-//    self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
+    self.translatesAutoresizingMaskIntoConstraints = false
 
     self.mTextView.isEditable = true
     self.mTextView.isSelectable = true

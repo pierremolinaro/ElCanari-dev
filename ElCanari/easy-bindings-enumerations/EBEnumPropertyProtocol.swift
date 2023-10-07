@@ -5,28 +5,8 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBReadOnlyEnumProperty <T>
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBObservableProperty <T>, EBReadObservableEnumProtocol where T : Equatable {
-
-  //····················································································································
-
-  func setFrom (rawValue inRawValue : Int) {}  // Abstract method
-
-  //····················································································································
-
-  final func rawValue () -> Int? {
-    switch self.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v.rawValue
-    }
-  }
-
-  //····················································································································
-
+protocol EBEnumPropertyProtocol : EBStoredPropertyProtocol, EBEnumProtocol {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

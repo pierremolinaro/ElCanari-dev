@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum ComponentSide : Int, EnumPropertyProtocol, Hashable {
+enum ComponentSide : Int, EBEnumPropertyProtocol, Hashable {
   case front = 0
   case back = 1
 

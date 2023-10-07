@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum BoardLineLayer : Int, EnumPropertyProtocol, Hashable {
+enum BoardLineLayer : Int, EBEnumPropertyProtocol, Hashable {
   case legendFront = 0
   case legendBack = 1
 

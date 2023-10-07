@@ -5,22 +5,25 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol EBObservableObjectProtocol : AnyObject {
-  func startsToBeObserved (by inObserver : EBObserverProtocol)
-  func stopsBeingObserved (by inObserver : EBObserverProtocol)
-}
-
+//   EBEnumReadWriteProperty <T> (abstract class)
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol EBReadObservableEnumProtocol : EBObservableObjectProtocol {
-  func rawValue () -> Int?
-}
+class EBEnumReadWriteProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T>, EBEnumReadWriteObservableProtocol where T : Equatable {
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+  //····················································································································
 
-@MainActor protocol EBReadWriteObservableEnumProtocol : EBReadObservableEnumProtocol {
-  func setFrom (rawValue : Int)
+  func setProp (_ inValue : T) { } // Abstract method
+
+  //····················································································································
+
+  override final func setFrom (rawValue inRawValue : Int) {
+    if let v = T.buildfromRawValue (rawValue: inRawValue) {
+      self.setProp (v)
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

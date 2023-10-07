@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum SlavePadStyle : Int, EnumPropertyProtocol, Hashable {
+enum SlavePadStyle : Int, EBEnumPropertyProtocol, Hashable {
   case traversing = 0
   case componentSide = 1
   case oppositeSide = 2

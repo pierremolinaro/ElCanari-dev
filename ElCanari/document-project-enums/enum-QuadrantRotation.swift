@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum QuadrantRotation : Int, EnumPropertyProtocol, Hashable {
+enum QuadrantRotation : Int, EBEnumPropertyProtocol, Hashable {
   case rotation0 = 0
   case rotation90 = 1
   case rotation180 = 2

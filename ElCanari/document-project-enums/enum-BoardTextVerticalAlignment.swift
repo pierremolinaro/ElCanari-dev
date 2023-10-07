@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum BoardTextVerticalAlignment : Int, EnumPropertyProtocol, Hashable {
+enum BoardTextVerticalAlignment : Int, EBEnumPropertyProtocol, Hashable {
   case above = 0
   case base = 1
   case center = 2

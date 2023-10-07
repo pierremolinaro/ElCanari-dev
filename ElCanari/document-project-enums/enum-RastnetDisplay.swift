@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum RastnetDisplay : Int, EnumPropertyProtocol, Hashable {
+enum RastnetDisplay : Int, EBEnumPropertyProtocol, Hashable {
   case hidden = 0
   case allNets = 1
   case oneNet = 2

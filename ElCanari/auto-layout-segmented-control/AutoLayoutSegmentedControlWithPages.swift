@@ -195,7 +195,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
 
   //····················································································································
 
-  final func bind_selectedSegment (_ inObject : EBReadWriteObservableEnumProtocol) -> Self {
+  final func bind_selectedSegment (_ inObject : EBEnumReadWriteObservableProtocol) -> Self {
     self.mSelectedSegmentController = Controller_AutoLayoutSegmentedControl_selectedSegment (
       object: inObject,
       outlet: self
@@ -205,7 +205,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
 
   //····················································································································
 
-  fileprivate func updateSelectedSegment (_ inObject : EBReadWriteObservableEnumProtocol) {
+  fileprivate func updateSelectedSegment (_ inObject : EBEnumReadWriteObservableProtocol) {
     self.selectedSegment = inObject.rawValue () ?? 0
   }
 
@@ -219,12 +219,12 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
 
 fileprivate final class Controller_AutoLayoutSegmentedControl_selectedSegment : EBObservablePropertyController {
 
-  private let mObject : EBReadWriteObservableEnumProtocol
+  private let mObject : EBEnumReadWriteObservableProtocol
   private weak var mOutlet : AutoLayoutSegmentedControlWithPages? = nil
 
   //····················································································································
 
-  init (object : EBReadWriteObservableEnumProtocol, outlet inOutlet : AutoLayoutSegmentedControlWithPages) {
+  init (object : EBEnumReadWriteObservableProtocol, outlet inOutlet : AutoLayoutSegmentedControlWithPages) {
     self.mObject = object
     self.mOutlet = inOutlet
     super.init (observedObjects: [object], callBack: { [weak inOutlet] in inOutlet?.updateSelectedSegment (object) })

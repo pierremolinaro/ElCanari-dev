@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum BoardShape : Int, EnumPropertyProtocol, Hashable {
+enum BoardShape : Int, EBEnumPropertyProtocol, Hashable {
   case rectangular = 0
   case bezierPathes = 1
 

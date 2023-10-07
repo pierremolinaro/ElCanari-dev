@@ -5,71 +5,51 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    extension Bool : EBStoredPropertyProtocol
+//   EBEnumGenericComputedProperty <T : EnumPropertyProtocol>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension Bool : EBStoredPropertyProtocol {
+final class EBEnumGenericComputedProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteProperty <T> {
 
   //····················································································································
 
-  func ebHashValue () -> UInt32 {
-    var crc : UInt32 = 0
-    crc.accumulate (u8: self ? 1 : 0)
-    return crc
-  }
+  var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
+  var mWriteModelFunction : Optional < (T) -> Void > = nil
+  private var mCachedValue : Optional < EBSelection <T> > = nil
 
   //····················································································································
 
-  func convertToNSObject () -> NSObject {
-    return NSNumber (value: self)
-  }
-
-  //····················································································································
-
-  static func convertFromNSObject (object : NSObject) -> Bool {
-    let number = object as! NSNumber
-    return number.boolValue
-  }
-
-  //····················································································································
-
-  func appendPropertyValueTo (_ ioData : inout Data) {
-    let v : ASCII = self ? .T : .F
-    ioData.append (v.rawValue)
-//    ioData.append (ascii: self ? .T : .F)
-  }
-
-  //····················································································································
-
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Bool? {
-    if inRange.length == 1 {
-      let c = inData [inRange.location]
-      if c == ASCII.T.rawValue {
-        return true
-      }else if c == ASCII.F.rawValue {
-        return false
-      }else{
-        return nil
+  override func observedObjectDidChange () {
+    if self.mCachedValue != nil {
+      self.mCachedValue = nil
+      if logEvents () {
+        appendMessageString ("Proxy #\(self.objectIndex) propagation\n")
       }
-    }else{
-      return nil
+      super.observedObjectDidChange ()
+    }else if logEvents () {
+      appendMessageString ("Proxy #\(self.objectIndex) nil\n")
     }
   }
 
   //····················································································································
 
-}
+  override var selection : EBSelection <T> {
+    if self.mCachedValue == nil {
+      self.mCachedValue = self.mReadModelFunction? ()
+    }
+    if self.mCachedValue == nil {
+      self.mCachedValue = .empty
+    }
+    return self.mCachedValue!
+  }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+  //····················································································································
 
-func < (left : Bool, right : Bool) -> Bool {
-  return !left && right
-}
+  override func setProp (_ inValue : T) {
+    self.mWriteModelFunction? (inValue)
+  }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+  //····················································································································
 
-func > (left : Bool, right : Bool) -> Bool {
-  return left && !right
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

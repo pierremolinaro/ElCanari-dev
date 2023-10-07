@@ -31,7 +31,8 @@ final class AutoLayoutBase_NSTextView : NSTextView {
     self.mTextStorage.addLayoutManager (self.mLayoutManager)
     self.mLayoutManager.addTextContainer (textContainer)
 
-    super.init (frame: NSRect (x: 0, y: 0, width: 50, height: 50), textContainer: textContainer)
+    super.init (frame: .zero, textContainer: textContainer)
+//    super.init (frame: NSRect (x: 0, y: 0, width: 50, height: 50), textContainer: textContainer)
     noteObjectAllocation (self)
  //   self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
 //    Swift.print ("init () \(self)")

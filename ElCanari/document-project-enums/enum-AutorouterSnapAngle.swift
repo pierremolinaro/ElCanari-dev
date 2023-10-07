@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum AutorouterSnapAngle : Int, EnumPropertyProtocol, Hashable {
+enum AutorouterSnapAngle : Int, EBEnumPropertyProtocol, Hashable {
   case rectilinear = 0
   case octolinear = 1
   case anyAngle = 2

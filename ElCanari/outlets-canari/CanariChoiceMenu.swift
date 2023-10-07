@@ -53,7 +53,7 @@ import AppKit
   //  selectedIndex binding
   //····················································································································
 
-  fileprivate func updateOutletFromSelectedIndexController (_ inObject : EBReadWriteObservableEnumProtocol) {
+  fileprivate func updateOutletFromSelectedIndexController (_ inObject : EBEnumReadWriteObservableProtocol) {
     if let v = inObject.rawValue () {
       self.enableItems (true)
       self.checkItemAtIndex (v)
@@ -68,7 +68,7 @@ import AppKit
 
   //····················································································································
 
-  final func bind_selectedIndex (_ object : EBReadWriteObservableEnumProtocol) {
+  final func bind_selectedIndex (_ object : EBEnumReadWriteObservableProtocol) {
     self.mSelectedIndexController = Controller_CanariChoiceMenu_selectedIndex (object: object, outlet: self)
   }
 
@@ -91,11 +91,11 @@ final class Controller_CanariChoiceMenu_selectedIndex : EBObservablePropertyCont
 
   //····················································································································
 
-  private let mObject : EBReadWriteObservableEnumProtocol
+  private let mObject : EBEnumReadWriteObservableProtocol
 
   //····················································································································
 
-  init (object : EBReadWriteObservableEnumProtocol, outlet inOutlet : CanariChoiceMenu) {
+  init (object : EBEnumReadWriteObservableProtocol, outlet inOutlet : CanariChoiceMenu) {
     self.mObject = object
     super.init (observedObjects: [object], callBack: { [weak inOutlet] in inOutlet?.updateOutletFromSelectedIndexController (object) } )
     var idx = 0

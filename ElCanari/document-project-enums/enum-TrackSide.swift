@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum TrackSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+enum TrackSide : Int, EBEnumPropertyProtocol, Hashable, CaseIterable {
   case front = 0
   case back = 1
   case inner1 = 2

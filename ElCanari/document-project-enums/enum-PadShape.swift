@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum PadShape : Int, EnumPropertyProtocol, Hashable {
+enum PadShape : Int, EBEnumPropertyProtocol, Hashable {
   case rect = 0
   case round = 1
   case octo = 2

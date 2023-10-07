@@ -5,10 +5,10 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBEnumStoredProperty <T>
+//   EBStoredProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBEnumStoredProperty <T : EnumPropertyProtocol> : EBEnumReadWriteProperty <T>, DocumentStorablePropertyProtocol {
+final class EBStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutableProperty <T>, DocumentStorablePropertyProtocol {
 
   //····················································································································
 
@@ -16,15 +16,15 @@ final class EBEnumStoredProperty <T : EnumPropertyProtocol> : EBEnumReadWritePro
 
   //····················································································································
 
-  private var mKey : String?
+  private let mKey : String?
   var key : String? { return self.mKey }
 
   //····················································································································
 
-  init (defaultValue inValue : T, undoManager inEBUndoManager : UndoManager?, key inKey : String?) {
+  init (defaultValue inValue : T, undoManager inUndoManager : UndoManager?, key inKey : String?) {
     self.mValue = inValue
+    self.mUndoManager = inUndoManager
     self.mKey = inKey
-    self.mUndoManager = inEBUndoManager
     super.init ()
   }
 
@@ -45,7 +45,7 @@ final class EBEnumStoredProperty <T : EnumPropertyProtocol> : EBEnumReadWritePro
 
   //····················································································································
 
-  override var selection : EBSelection <T> { return .single (mValue) }
+  override var selection : EBSelection <T> { return .single (self.mValue) }
 
   //····················································································································
 
@@ -53,7 +53,26 @@ final class EBEnumStoredProperty <T : EnumPropertyProtocol> : EBEnumReadWritePro
 
   //····················································································································
 
-  override func setProp (_ value : T) { self.mValue = value }
+  override func setProp (_ inValue : T) { self.mValue = inValue }
+
+  //····················································································································
+
+  func store (inDictionary ioDictionary : inout [String : Any]) {
+    if let key = self.mKey {
+      ioDictionary [key] = self.mValue.convertToNSObject ()
+    }
+  }
+
+  //····················································································································
+
+  func appendValueTo (data ioData : inout Data) {
+    return self.propval.appendPropertyValueTo (&ioData)
+  }
+
+  //····················································································································
+
+  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+  }
 
   //····················································································································
 
@@ -73,34 +92,15 @@ final class EBEnumStoredProperty <T : EnumPropertyProtocol> : EBEnumReadWritePro
   }
 
   //····················································································································
-
-  func store (inDictionary ioDictionary : inout [String : Any]) {
-    if let key = self.mKey {
-      ioDictionary [key] = self.mValue.convertToNSObject ()
-    }
-  }
-
-  //····················································································································
-
-  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
-  }
-
-  //····················································································································
-
-  func appendValueTo (data ioData : inout Data) {
-    self.mValue.appendPropertyValueTo (&ioData)
-  }
-
-  //····················································································································
   //    SIGNATURE
   //····················································································································
 
-  final private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
-  final private var mSignatureCache : UInt32? = nil
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private var mSignatureCache : UInt32? = nil
 
   //····················································································································
 
-  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()
@@ -109,7 +109,7 @@ final class EBEnumStoredProperty <T : EnumPropertyProtocol> : EBEnumReadWritePro
 
   //····················································································································
 
-  final private func clearSignatureCache () {
+  private func clearSignatureCache () {
     if self.mSignatureCache != nil {
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()

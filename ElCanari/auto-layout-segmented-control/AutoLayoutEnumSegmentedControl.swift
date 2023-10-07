@@ -32,7 +32,7 @@ final class AutoLayoutEnumSegmentedControl : AutoLayoutBase_NSSegmentedControl {
 
   //····················································································································
 
-  func updateIndex (fromEnumeration inObject : EBReadWriteObservableEnumProtocol) {
+  func updateIndex (fromEnumeration inObject : EBEnumReadWriteObservableProtocol) {
     if let v = inObject.rawValue () {
       self.enable (fromValueBinding: true, self.enabledBindingController)
       self.setSelectedSegment (atIndex: v)
@@ -90,7 +90,7 @@ final class AutoLayoutEnumSegmentedControl : AutoLayoutBase_NSSegmentedControl {
 
   //····················································································································
 
-  final func bind_selectedSegment (_ inObject : EBReadWriteObservableEnumProtocol) -> Self {
+  final func bind_selectedSegment (_ inObject : EBEnumReadWriteObservableProtocol) -> Self {
     self.mSelectedSegmentController = Controller_AutoLayoutEnumSegmentedControl_Index (
       object: inObject,
       outlet: self
@@ -126,11 +126,11 @@ fileprivate final class Controller_AutoLayoutEnumSegmentedControl_Index : EBObse
 
   //····················································································································
 
-  private let mObject : EBReadWriteObservableEnumProtocol
+  private let mObject : EBEnumReadWriteObservableProtocol
 
   //····················································································································
 
-  init (object inObject : EBReadWriteObservableEnumProtocol, outlet inOutlet : AutoLayoutEnumSegmentedControl) {
+  init (object inObject : EBEnumReadWriteObservableProtocol, outlet inOutlet : AutoLayoutEnumSegmentedControl) {
     self.mObject = inObject
     super.init (
       observedObjects: [inObject],

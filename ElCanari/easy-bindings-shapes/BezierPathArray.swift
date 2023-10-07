@@ -28,29 +28,9 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
 
   //····················································································································
 
-//  mutating func append (_ inBezierPathArray : [EBBezierPath]) {
-//    for bp in inBezierPathArray {
-//      if !bp.isEmpty {
-//        self.mPathes.append (bp)
-//      }
-//    }
-//  }
-
-   //····················································································································
-
   mutating func append (_ inBezierPathArray : BezierPathArray) {
     self.mPathes += inBezierPathArray.mPathes
   }
-
- //····················································································································
-
-//  var bounds : NSRect {
-//    var r = NSRect.null
-//    for path in self.mPathes {
-//      r = r.union (path.bounds)
-//    }
-//    return r
-//  }
 
   //····················································································································
 

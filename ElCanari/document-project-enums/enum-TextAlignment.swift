@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum TextAlignment : Int, EnumPropertyProtocol, Hashable {
+enum TextAlignment : Int, EBEnumPropertyProtocol, Hashable {
   case left = 0
   case right = 1
   case center = 2

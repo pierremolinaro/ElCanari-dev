@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum GridStyle : Int, EnumPropertyProtocol, Hashable {
+enum GridStyle : Int, EBEnumPropertyProtocol, Hashable {
   case noGrid = 0
   case cross = 1
   case line = 2

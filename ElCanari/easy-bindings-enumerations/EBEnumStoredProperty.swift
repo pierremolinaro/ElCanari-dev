@@ -5,26 +5,26 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBStoredProperty <T>
+//   EBEnumStoredProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutableProperty <T>, DocumentStorablePropertyProtocol {
+final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteProperty <T>, DocumentStorablePropertyProtocol {
 
   //····················································································································
 
-  weak private var mUndoManager : UndoManager? // SOULD BE WEAK
+  weak private var mUndoManager : UndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private let mKey : String?
+  private var mKey : String?
   var key : String? { return self.mKey }
 
   //····················································································································
 
-  init (defaultValue inValue : T, undoManager inUndoManager : UndoManager?, key inKey : String?) {
+  init (defaultValue inValue : T, undoManager inEBUndoManager : UndoManager?, key inKey : String?) {
     self.mValue = inValue
-    self.mUndoManager = inUndoManager
     self.mKey = inKey
+    self.mUndoManager = inEBUndoManager
     super.init ()
   }
 
@@ -45,7 +45,7 @@ final class EBStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutabl
 
   //····················································································································
 
-  override var selection : EBSelection <T> { return .single (self.mValue) }
+  override var selection : EBSelection <T> { return .single (mValue) }
 
   //····················································································································
 
@@ -53,26 +53,7 @@ final class EBStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutabl
 
   //····················································································································
 
-  override func setProp (_ inValue : T) { self.mValue = inValue }
-
-  //····················································································································
-
-  func store (inDictionary ioDictionary : inout [String : Any]) {
-    if let key = self.mKey {
-      ioDictionary [key] = self.mValue.convertToNSObject ()
-    }
-  }
-
-  //····················································································································
-
-  func appendValueTo (data ioData : inout Data) {
-    return self.propval.appendPropertyValueTo (&ioData)
-  }
-
-  //····················································································································
-
-  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
-  }
+  override func setProp (_ value : T) { self.mValue = value }
 
   //····················································································································
 
@@ -92,15 +73,34 @@ final class EBStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutabl
   }
 
   //····················································································································
+
+  func store (inDictionary ioDictionary : inout [String : Any]) {
+    if let key = self.mKey {
+      ioDictionary [key] = self.mValue.convertToNSObject ()
+    }
+  }
+
+  //····················································································································
+
+  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+  }
+
+  //····················································································································
+
+  func appendValueTo (data ioData : inout Data) {
+    self.mValue.appendPropertyValueTo (&ioData)
+  }
+
+  //····················································································································
   //    SIGNATURE
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
-  private var mSignatureCache : UInt32? = nil
+  final private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  final private var mSignatureCache : UInt32? = nil
 
   //····················································································································
 
-  func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()
@@ -109,7 +109,7 @@ final class EBStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutabl
 
   //····················································································································
 
-  private func clearSignatureCache () {
+  final private func clearSignatureCache () {
     if self.mSignatureCache != nil {
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()

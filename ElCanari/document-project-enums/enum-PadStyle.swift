@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum PadStyle : Int, EnumPropertyProtocol, Hashable {
+enum PadStyle : Int, EBEnumPropertyProtocol, Hashable {
   case traversing = 0
   case surface = 1
 

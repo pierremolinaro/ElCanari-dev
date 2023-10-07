@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum AutorouterPreferredDirections : Int, EnumPropertyProtocol, Hashable {
+enum AutorouterPreferredDirections : Int, EBEnumPropertyProtocol, Hashable {
   case vFrontHback = 0
   case hFrontVback = 1
 

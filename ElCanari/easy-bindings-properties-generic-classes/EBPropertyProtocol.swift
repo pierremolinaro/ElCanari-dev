@@ -5,25 +5,20 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBEnumReadWriteProperty <T> (abstract class)
+//   Protocol EBStoredPropertyProtocol
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBEnumReadWriteProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T>, EBReadWriteObservableEnumProtocol where T : Equatable {
+protocol EBStoredPropertyProtocol : Equatable {
 
-  //····················································································································
+  func ebHashValue () -> UInt32
 
-  func setProp (_ inValue : T) { } // Abstract method
+  func convertToNSObject () -> NSObject
 
-  //····················································································································
+  static func convertFromNSObject (object : NSObject) -> Self
 
-  override final func setFrom (rawValue inRawValue : Int) {
-    if let v = T.buildfromRawValue (rawValue: inRawValue) {
-      self.setProp (v)
-    }
-  }
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Self?
 
-  //····················································································································
-
+  func appendPropertyValueTo (_ ioData : inout Data)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

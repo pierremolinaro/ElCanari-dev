@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum TrackCreationDirection : Int, EnumPropertyProtocol, Hashable {
+enum TrackCreationDirection : Int, EBEnumPropertyProtocol, Hashable {
   case anyAngle = 0
   case octolinear = 1
   case rectilinear = 2

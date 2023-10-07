@@ -5,21 +5,46 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Data extension: comparable
+//    extension Double : EBStoredPropertyProtocol
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension Data : Comparable {
+extension Double : EBStoredPropertyProtocol {
 
   //····················································································································
 
-  static public func < (_ left : Data, _ right : Data) -> Bool {
-    var result = left.count < right.count
-    if left.count == right.count {
-      var idx = 0
-      while (idx < right.count) && !result {
-        result = left [idx] < right [idx]
-        idx += 1
-      }
+  func ebHashValue () -> UInt32 {
+    var value = self.bitPattern.bigEndian
+    let array = withUnsafeBytes (of: &value) { Array ($0) }
+    return array.ebHashValue ()
+  }
+
+  //····················································································································
+
+  func convertToNSObject () -> NSObject {
+    return NSNumber (value: self)
+  }
+
+  //····················································································································
+
+  static func convertFromNSObject (object : NSObject) -> Double {
+    let number = object as! NSNumber
+    return number.doubleValue
+  }
+
+  //····················································································································
+
+  func appendPropertyValueTo (_ ioData : inout Data) {
+    let s = String (self.bitPattern, radix: 16)
+    ioData.append (s.data (using: .utf8)!)
+  }
+
+  //····················································································································
+
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Double? {
+    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
+    var result : Double? = nil
+    if let s = String (data: dataSlice, encoding: .utf8), let v = UInt64 (s, radix: 16) {
+      result = Double (bitPattern: v)
     }
     return result
   }

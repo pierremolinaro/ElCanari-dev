@@ -21,9 +21,9 @@ final class AutoLayoutStaticTextView : NSScrollView {
   init (drawsBackground inDrawsBackground : Bool,
         horizontalScroller inHorizontalScroller : Bool,
         verticalScroller inVerticalScroller : Bool) {
-    super.init (frame: NSRect (x: 0, y: 0, width: 100, height: 100))
+    super.init (frame: .zero) //  NSRect (x: 0, y: 0, width: 100, height: 100))
     noteObjectAllocation (self)
-//    self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
+    self.translatesAutoresizingMaskIntoConstraints = false
 
     self.mTextView.isEditable = false
     self.mTextView.isSelectable = true

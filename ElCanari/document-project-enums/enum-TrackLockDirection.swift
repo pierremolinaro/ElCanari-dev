@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum TrackLockDirection : Int, EnumPropertyProtocol, Hashable {
+enum TrackLockDirection : Int, EBEnumPropertyProtocol, Hashable {
   case unlocked = 0
   case locked = 1
   case octolinear = 2

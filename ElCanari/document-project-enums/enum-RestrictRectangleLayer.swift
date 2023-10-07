@@ -6,7 +6,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum RestrictRectangleLayer : Int, EnumPropertyProtocol, Hashable {
+enum RestrictRectangleLayer : Int, EBEnumPropertyProtocol, Hashable {
   case frontSide = 0
   case backSide = 1
   case bothSides = 2

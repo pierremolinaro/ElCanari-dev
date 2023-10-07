@@ -5,17 +5,17 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    extension Double : EBStoredPropertyProtocol
+//    extension Bool : EBStoredPropertyProtocol
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension Double : EBStoredPropertyProtocol {
+extension Bool : EBStoredPropertyProtocol {
 
   //····················································································································
 
   func ebHashValue () -> UInt32 {
-    var value = self.bitPattern.bigEndian
-    let array = withUnsafeBytes (of: &value) { Array($0) }
-    return array.ebHashValue ()
+    var crc : UInt32 = 0
+    crc.accumulate (u8: self ? 1 : 0)
+    return crc
   }
 
   //····················································································································
@@ -26,31 +26,49 @@ extension Double : EBStoredPropertyProtocol {
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> Double {
+  static func convertFromNSObject (object : NSObject) -> Bool {
     let number = object as! NSNumber
-    return number.doubleValue
+    return number.boolValue
   }
 
   //····················································································································
 
   func appendPropertyValueTo (_ ioData : inout Data) {
-    let s = String (self.bitPattern, radix: 16)
-    ioData.append (s.data (using: .utf8)!)
+    let v : ASCII = self ? .T : .F
+    ioData.append (v.rawValue)
   }
 
   //····················································································································
 
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Double? {
-    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
-    var result : Double? = nil
-    if let s = String (data: dataSlice, encoding: .utf8), let v = UInt64 (s, radix: 16) {
-      result = Double (bitPattern: v)
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Bool? {
+    if inRange.length == 1 {
+      let c = inData [inRange.location]
+      if c == ASCII.T.rawValue {
+        return true
+      }else if c == ASCII.F.rawValue {
+        return false
+      }else{
+        return nil
+      }
+    }else{
+      return nil
     }
-    return result
   }
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func < (left : Bool, right : Bool) -> Bool {
+  return !left && right
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func > (left : Bool, right : Bool) -> Bool {
+  return left && !right
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
