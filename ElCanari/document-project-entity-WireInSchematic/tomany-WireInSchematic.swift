@@ -39,22 +39,22 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_objectDisplay { // Transient property
-        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_selectionDisplay { // Transient property
-        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+        managedObject.selectionDisplay_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_netName { // Transient property
-        managedObject.netName_property.startsToBeObserved (by: relay)
+        managedObject.netName_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_netClassName { // Transient property
-        managedObject.netClassName_property.startsToBeObserved (by: relay)
+        managedObject.netClassName_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_hasNet { // Transient property
-        managedObject.hasNet_property.startsToBeObserved (by: relay)
+        managedObject.hasNet_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_wires { // Transient property
-        managedObject.wires_property.startsToBeObserved (by: relay)
+        managedObject.wires_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -67,19 +67,19 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_objectDisplay = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -96,19 +96,19 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+        managedObject.selectionDisplay_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_selectionDisplay = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -125,19 +125,19 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func toMany_netName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netName {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.netName_property.startsToBeObserved (by: relay)
+        managedObject.netName_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_netName = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -154,19 +154,19 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func toMany_netClassName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netClassName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassName {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.netClassName_property.startsToBeObserved (by: relay)
+        managedObject.netClassName_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_netClassName = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -183,19 +183,19 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func toMany_hasNet_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_hasNet_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_hasNet {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.hasNet_property.startsToBeObserved (by: relay)
+        managedObject.hasNet_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_hasNet = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -212,19 +212,19 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func toMany_wires_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_wires_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_wires {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.wires_property.startsToBeObserved (by: relay)
+        managedObject.wires_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_wires = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································

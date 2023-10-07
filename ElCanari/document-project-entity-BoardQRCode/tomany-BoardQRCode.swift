@@ -75,58 +75,58 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_mXUnit { // Stored property
-        managedObject.mXUnit_property.startsToBeObserved (by: relay)
+        managedObject.mXUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mCenterY { // Stored property
-        managedObject.mCenterY_property.startsToBeObserved (by: relay)
+        managedObject.mCenterY_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mYUnit { // Stored property
-        managedObject.mYUnit_property.startsToBeObserved (by: relay)
+        managedObject.mYUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mDrawFrame { // Stored property
-        managedObject.mDrawFrame_property.startsToBeObserved (by: relay)
+        managedObject.mDrawFrame_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mModuleSize { // Stored property
-        managedObject.mModuleSize_property.startsToBeObserved (by: relay)
+        managedObject.mModuleSize_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mModuleSizeUnit { // Stored property
-        managedObject.mModuleSizeUnit_property.startsToBeObserved (by: relay)
+        managedObject.mModuleSizeUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mActualSizeUnit { // Stored property
-        managedObject.mActualSizeUnit_property.startsToBeObserved (by: relay)
+        managedObject.mActualSizeUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mLayer { // Stored property
-        managedObject.mLayer_property.startsToBeObserved (by: relay)
+        managedObject.mLayer_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mText { // Stored property
-        managedObject.mText_property.startsToBeObserved (by: relay)
+        managedObject.mText_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mCorrectionLevel { // Stored property
-        managedObject.mCorrectionLevel_property.startsToBeObserved (by: relay)
+        managedObject.mCorrectionLevel_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mRotation { // Stored property
-        managedObject.mRotation_property.startsToBeObserved (by: relay)
+        managedObject.mRotation_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mCenterX { // Stored property
-        managedObject.mCenterX_property.startsToBeObserved (by: relay)
+        managedObject.mCenterX_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_qrCodeDescriptor { // Transient property
-        managedObject.qrCodeDescriptor_property.startsToBeObserved (by: relay)
+        managedObject.qrCodeDescriptor_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_moduleCount { // Transient property
-        managedObject.moduleCount_property.startsToBeObserved (by: relay)
+        managedObject.moduleCount_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_actualImageSize { // Transient property
-        managedObject.actualImageSize_property.startsToBeObserved (by: relay)
+        managedObject.actualImageSize_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_objectDisplay { // Transient property
-        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_selectionDisplay { // Transient property
-        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+        managedObject.selectionDisplay_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_signatureForERCChecking { // Transient property
-        managedObject.signatureForERCChecking_property.startsToBeObserved (by: relay)
+        managedObject.signatureForERCChecking_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -139,19 +139,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_mXUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mXUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mXUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mXUnit_property.startsToBeObserved (by: relay)
+        managedObject.mXUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mXUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -168,19 +168,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_mCenterY_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mCenterY_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mCenterY {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mCenterY_property.startsToBeObserved (by: relay)
+        managedObject.mCenterY_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mCenterY = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -197,19 +197,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_mYUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mYUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mYUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mYUnit_property.startsToBeObserved (by: relay)
+        managedObject.mYUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mYUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -226,19 +226,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_mDrawFrame_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mDrawFrame_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mDrawFrame {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mDrawFrame_property.startsToBeObserved (by: relay)
+        managedObject.mDrawFrame_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mDrawFrame = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -255,19 +255,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_mModuleSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mModuleSize_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mModuleSize {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mModuleSize_property.startsToBeObserved (by: relay)
+        managedObject.mModuleSize_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mModuleSize = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -284,19 +284,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_mModuleSizeUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mModuleSizeUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mModuleSizeUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mModuleSizeUnit_property.startsToBeObserved (by: relay)
+        managedObject.mModuleSizeUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mModuleSizeUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -313,19 +313,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_mActualSizeUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mActualSizeUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mActualSizeUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mActualSizeUnit_property.startsToBeObserved (by: relay)
+        managedObject.mActualSizeUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mActualSizeUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -342,19 +342,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_mLayer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mLayer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mLayer {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mLayer_property.startsToBeObserved (by: relay)
+        managedObject.mLayer_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mLayer = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -371,19 +371,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_mText_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mText_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mText {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mText_property.startsToBeObserved (by: relay)
+        managedObject.mText_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mText = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -400,19 +400,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_mCorrectionLevel_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mCorrectionLevel_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mCorrectionLevel {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mCorrectionLevel_property.startsToBeObserved (by: relay)
+        managedObject.mCorrectionLevel_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mCorrectionLevel = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -429,19 +429,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_mRotation_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mRotation_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mRotation {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mRotation_property.startsToBeObserved (by: relay)
+        managedObject.mRotation_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mRotation = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -458,19 +458,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_mCenterX_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mCenterX_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mCenterX {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mCenterX_property.startsToBeObserved (by: relay)
+        managedObject.mCenterX_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mCenterX = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -487,19 +487,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_qrCodeDescriptor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_qrCodeDescriptor_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_qrCodeDescriptor {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.qrCodeDescriptor_property.startsToBeObserved (by: relay)
+        managedObject.qrCodeDescriptor_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_qrCodeDescriptor = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -516,19 +516,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_moduleCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_moduleCount_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_moduleCount {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.moduleCount_property.startsToBeObserved (by: relay)
+        managedObject.moduleCount_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_moduleCount = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -545,19 +545,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_actualImageSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_actualImageSize_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_actualImageSize {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.actualImageSize_property.startsToBeObserved (by: relay)
+        managedObject.actualImageSize_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_actualImageSize = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -574,19 +574,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_objectDisplay = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -603,19 +603,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+        managedObject.selectionDisplay_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_selectionDisplay = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -632,19 +632,19 @@ class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> 
 
   //····················································································································
 
-  final func toMany_signatureForERCChecking_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_signatureForERCChecking_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_signatureForERCChecking {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.signatureForERCChecking_property.startsToBeObserved (by: relay)
+        managedObject.signatureForERCChecking_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_signatureForERCChecking = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································

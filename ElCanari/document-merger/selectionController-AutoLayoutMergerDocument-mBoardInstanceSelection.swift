@@ -137,7 +137,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_boardLimitWidth (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.toMany_boardLimitWidth_StartsToBeObserved (by: self.boardLimitWidth_property)
+    model.toMany_boardLimitWidth_StartsBeingObserved (by: self.boardLimitWidth_property)
     self.boardLimitWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -177,7 +177,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_instanceRect (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.toMany_instanceRect_StartsToBeObserved (by: self.instanceRect_property)
+    model.toMany_instanceRect_StartsBeingObserved (by: self.instanceRect_property)
     self.instanceRect_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -217,7 +217,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_instanceRotation (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.toMany_instanceRotation_StartsToBeObserved (by: self.instanceRotation_property)
+    model.toMany_instanceRotation_StartsBeingObserved (by: self.instanceRotation_property)
     self.instanceRotation_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -269,7 +269,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_modelName (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.toMany_modelName_StartsToBeObserved (by: self.modelName_property)
+    model.toMany_modelName_StartsBeingObserved (by: self.modelName_property)
     self.modelName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -309,7 +309,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
+    model.toMany_objectDisplay_StartsBeingObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -349,7 +349,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
+    model.toMany_selectionDisplay_StartsBeingObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -389,7 +389,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_x (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.toMany_x_StartsToBeObserved (by: self.x_property)
+    model.toMany_x_StartsBeingObserved (by: self.x_property)
     self.x_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -441,7 +441,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_y (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.toMany_y_StartsToBeObserved (by: self.y_property)
+    model.toMany_y_StartsBeingObserved (by: self.y_property)
     self.y_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {

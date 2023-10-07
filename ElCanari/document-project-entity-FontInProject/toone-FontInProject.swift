@@ -39,25 +39,25 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mNominalSize_property.startsToBeObserved (by: self.mNominalSize_property) // Stored property
-      newValue.mFontName_property.startsToBeObserved (by: self.mFontName_property) // Stored property
-      newValue.mFontVersion_property.startsToBeObserved (by: self.mFontVersion_property) // Stored property
-      newValue.mDescriptiveString_property.startsToBeObserved (by: self.mDescriptiveString_property) // Stored property
-      newValue.versionString_property.startsToBeObserved (by: self.versionString_property) // Transient property
-      newValue.sizeString_property.startsToBeObserved (by: self.sizeString_property) // Transient property
-      newValue.descriptor_property.startsToBeObserved (by: self.descriptor_property) // Transient property
-      newValue.textCount_property.startsToBeObserved (by: self.textCount_property) // Transient property
-      newValue.canRemoveFont_property.startsToBeObserved (by: self.canRemoveFont_property) // Transient property
-      newValue.componentNamesCount_property.startsToBeObserved (by: self.componentNamesCount_property) // Transient property
-      newValue.componentValuesCount_property.startsToBeObserved (by: self.componentValuesCount_property) // Transient property
+      newValue.mNominalSize_property.startsBeingObserved (by: self.mNominalSize_property) // Stored property
+      newValue.mFontName_property.startsBeingObserved (by: self.mFontName_property) // Stored property
+      newValue.mFontVersion_property.startsBeingObserved (by: self.mFontVersion_property) // Stored property
+      newValue.mDescriptiveString_property.startsBeingObserved (by: self.mDescriptiveString_property) // Stored property
+      newValue.versionString_property.startsBeingObserved (by: self.versionString_property) // Transient property
+      newValue.sizeString_property.startsBeingObserved (by: self.sizeString_property) // Transient property
+      newValue.descriptor_property.startsBeingObserved (by: self.descriptor_property) // Transient property
+      newValue.textCount_property.startsBeingObserved (by: self.textCount_property) // Transient property
+      newValue.canRemoveFont_property.startsBeingObserved (by: self.canRemoveFont_property) // Transient property
+      newValue.componentNamesCount_property.startsBeingObserved (by: self.componentNamesCount_property) // Transient property
+      newValue.componentValuesCount_property.startsBeingObserved (by: self.componentValuesCount_property) // Transient property
       if let relay = self.mObserversOf_mTexts { // to Many
-        newValue.mTexts_property.startsToBeObserved (by: relay)
+        newValue.mTexts_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mComponentNames { // to Many
-        newValue.mComponentNames_property.startsToBeObserved (by: relay)
+        newValue.mComponentNames_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mComponentValues { // to Many
-        newValue.mComponentValues_property.startsToBeObserved (by: relay)
+        newValue.mComponentValues_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -136,16 +136,16 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func toMany_mTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mTexts_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mTexts {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mTexts_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mTexts_property.startsBeingObserved (by: relay)
       self.mObserversOf_mTexts = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -162,16 +162,16 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func toMany_mComponentNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mComponentNames_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mComponentNames {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mComponentNames_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mComponentNames_property.startsBeingObserved (by: relay)
       self.mObserversOf_mComponentNames = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -188,16 +188,16 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func toMany_mComponentValues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mComponentValues_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mComponentValues {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mComponentValues_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mComponentValues_property.startsBeingObserved (by: relay)
       self.mObserversOf_mComponentValues = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

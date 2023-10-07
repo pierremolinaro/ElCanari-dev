@@ -109,10 +109,10 @@ final class SymbolOval : SymbolObject {
         return .empty
       }
     }
-    self.x_property.startsToBeObserved (by: self.strokeBezierPath_property)
-    self.y_property.startsToBeObserved (by: self.strokeBezierPath_property)
-    self.width_property.startsToBeObserved (by: self.strokeBezierPath_property)
-    self.height_property.startsToBeObserved (by: self.strokeBezierPath_property)
+    self.x_property.startsBeingObserved (by: self.strokeBezierPath_property)
+    self.y_property.startsBeingObserved (by: self.strokeBezierPath_property)
+    self.width_property.startsBeingObserved (by: self.strokeBezierPath_property)
+    self.height_property.startsBeingObserved (by: self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -144,12 +144,12 @@ final class SymbolOval : SymbolObject {
         return .empty
       }
     }
-    self.x_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.y_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.width_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.height_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_symbolColor_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_symbolDrawingWidthMultipliedByTen_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.x_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.y_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.width_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.height_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_symbolColor_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_symbolDrawingWidthMultipliedByTen_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -175,10 +175,10 @@ final class SymbolOval : SymbolObject {
         return .empty
       }
     }
-    self.x_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.y_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.width_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.height_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.x_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.y_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.width_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.height_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -204,10 +204,10 @@ final class SymbolOval : SymbolObject {
         return .empty
       }
     }
-    self.x_property.startsToBeObserved (by: self.issues_property)
-    self.y_property.startsToBeObserved (by: self.issues_property)
-    self.width_property.startsToBeObserved (by: self.issues_property)
-    self.height_property.startsToBeObserved (by: self.issues_property)
+    self.x_property.startsBeingObserved (by: self.issues_property)
+    self.y_property.startsBeingObserved (by: self.issues_property)
+    self.width_property.startsBeingObserved (by: self.issues_property)
+    self.height_property.startsBeingObserved (by: self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.height_property.setSignatureObserver (observer: self)

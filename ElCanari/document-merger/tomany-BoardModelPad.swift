@@ -39,22 +39,22 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_y { // Stored property
-        managedObject.y_property.startsToBeObserved (by: relay)
+        managedObject.y_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_width { // Stored property
-        managedObject.width_property.startsToBeObserved (by: relay)
+        managedObject.width_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_height { // Stored property
-        managedObject.height_property.startsToBeObserved (by: relay)
+        managedObject.height_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_shape { // Stored property
-        managedObject.shape_property.startsToBeObserved (by: relay)
+        managedObject.shape_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_rotation { // Stored property
-        managedObject.rotation_property.startsToBeObserved (by: relay)
+        managedObject.rotation_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_x { // Stored property
-        managedObject.x_property.startsToBeObserved (by: relay)
+        managedObject.x_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -67,19 +67,19 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   //····················································································································
 
-  final func toMany_y_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_y {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.y_property.startsToBeObserved (by: relay)
+        managedObject.y_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_y = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -96,19 +96,19 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   //····················································································································
 
-  final func toMany_width_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_width_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_width {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.width_property.startsToBeObserved (by: relay)
+        managedObject.width_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_width = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -125,19 +125,19 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   //····················································································································
 
-  final func toMany_height_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_height_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_height {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.height_property.startsToBeObserved (by: relay)
+        managedObject.height_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_height = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -154,19 +154,19 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   //····················································································································
 
-  final func toMany_shape_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_shape_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_shape {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.shape_property.startsToBeObserved (by: relay)
+        managedObject.shape_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_shape = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -183,19 +183,19 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   //····················································································································
 
-  final func toMany_rotation_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_rotation_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_rotation {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.rotation_property.startsToBeObserved (by: relay)
+        managedObject.rotation_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_rotation = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -212,19 +212,19 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   //····················································································································
 
-  final func toMany_x_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_x {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.x_property.startsToBeObserved (by: relay)
+        managedObject.x_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_x = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

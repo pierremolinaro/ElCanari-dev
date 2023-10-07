@@ -299,7 +299,7 @@ final class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.startsToBeObserved (by: self.mRoot_none)
+    self.mRoot_property.startsBeingObserved (by: self.mRoot_none)
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.undoManager = inUndoManager
   //--- To one property: mRoot (has opposite to many relationship: mPackages)
@@ -324,7 +324,7 @@ final class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mVersion_property.startsToBeObserved (by: self.versionString_property)
+    self.mVersion_property.startsBeingObserved (by: self.versionString_property)
   //--- Atomic property: documentSize
     self.documentSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -341,7 +341,7 @@ final class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mFileData_property.startsToBeObserved (by: self.documentSize_property)
+    self.mFileData_property.startsBeingObserved (by: self.documentSize_property)
   //--- Atomic property: frontSidePadFilledBezierPathArray
     self.frontSidePadFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -358,7 +358,7 @@ final class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.toMany_frontSideFilledBezierPathArray_StartsToBeObserved (by: self.frontSidePadFilledBezierPathArray_property)
+    self.mMasterPads_property.toMany_frontSideFilledBezierPathArray_StartsBeingObserved (by: self.frontSidePadFilledBezierPathArray_property)
   //--- Atomic property: backSidePadFilledBezierPathArray
     self.backSidePadFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -375,7 +375,7 @@ final class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.toMany_backSideFilledBezierPathArray_StartsToBeObserved (by: self.backSidePadFilledBezierPathArray_property)
+    self.mMasterPads_property.toMany_backSideFilledBezierPathArray_StartsBeingObserved (by: self.backSidePadFilledBezierPathArray_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -434,21 +434,21 @@ final class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.toMany_padNumberDisplay_StartsToBeObserved (by: self.objectDisplay_property)
-    self.mRoot_property.mShowPackagePadNumbers_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mRoot_property.mShowPackages_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mRoot_property.mShowPackageFrontPads_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mRoot_property.mShowPackageBackPads_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mStrokeBezierPath_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_packageColor_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_packageDrawingWidthMultipliedByTen_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.frontSidePadFilledBezierPathArray_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_frontSidePadColor_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.backSidePadFilledBezierPathArray_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_backSidePadColor_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mName_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mX_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mY_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.mMasterPads_property.toMany_padNumberDisplay_StartsBeingObserved (by: self.objectDisplay_property)
+    self.mRoot_property.mShowPackagePadNumbers_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mRoot_property.mShowPackages_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mRoot_property.mShowPackageFrontPads_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mRoot_property.mShowPackageBackPads_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mStrokeBezierPath_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_packageColor_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_packageDrawingWidthMultipliedByTen_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.frontSidePadFilledBezierPathArray_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_frontSidePadColor_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.backSidePadFilledBezierPathArray_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_backSidePadColor_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mName_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mX_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mY_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -498,18 +498,18 @@ final class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.toMany_padNumberDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
-    self.mRoot_property.mShowPackagePadNumbers_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mRoot_property.mShowPackages_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mRoot_property.mShowPackageFrontPads_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mRoot_property.mShowPackageBackPads_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mStrokeBezierPath_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_packageDrawingWidthMultipliedByTen_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.frontSidePadFilledBezierPathArray_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.backSidePadFilledBezierPathArray_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mName_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mX_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mY_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mMasterPads_property.toMany_padNumberDisplay_StartsBeingObserved (by: self.selectionDisplay_property)
+    self.mRoot_property.mShowPackagePadNumbers_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mRoot_property.mShowPackages_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mRoot_property.mShowPackageFrontPads_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mRoot_property.mShowPackageBackPads_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mStrokeBezierPath_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_packageDrawingWidthMultipliedByTen_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.frontSidePadFilledBezierPathArray_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.backSidePadFilledBezierPathArray_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mName_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mX_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mY_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: padNameSet
     self.padNameSet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -526,7 +526,7 @@ final class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.toMany_mName_StartsToBeObserved (by: self.padNameSet_property)
+    self.mMasterPads_property.toMany_mName_StartsBeingObserved (by: self.padNameSet_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)

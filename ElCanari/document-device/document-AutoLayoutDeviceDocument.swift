@@ -1477,7 +1477,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.unconnectedPins_property.startsToBeObserved (by: self.hasUnconnectedPin_property)
+    self.rootObject.unconnectedPins_property.startsBeingObserved (by: self.hasUnconnectedPin_property)
 
   //--- Atomic property: assignmentInhibitionMessage
     self.assignmentInhibitionMessage_property.mReadModelFunction = { [weak self] in
@@ -1498,8 +1498,8 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.inconsistentPackagePadNameSetsMessage_property.startsToBeObserved (by: self.assignmentInhibitionMessage_property)
-    self.rootObject.inconsistentSymbolNameSetMessage_property.startsToBeObserved (by: self.assignmentInhibitionMessage_property)
+    self.rootObject.inconsistentPackagePadNameSetsMessage_property.startsBeingObserved (by: self.assignmentInhibitionMessage_property)
+    self.rootObject.inconsistentSymbolNameSetMessage_property.startsBeingObserved (by: self.assignmentInhibitionMessage_property)
 
   //--- Atomic property: hasUnconnectedPad
     self.hasUnconnectedPad_property.mReadModelFunction = { [weak self] in
@@ -1517,7 +1517,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.unconnectedPads_property.startsToBeObserved (by: self.hasUnconnectedPad_property)
+    self.rootObject.unconnectedPads_property.startsBeingObserved (by: self.hasUnconnectedPad_property)
 
   //--- Atomic property: hasAssignedPadProxies
     self.hasAssignedPadProxies_property.mReadModelFunction = { [weak self] in
@@ -1535,7 +1535,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.assignedPadProxies_property.startsToBeObserved (by: self.hasAssignedPadProxies_property)
+    self.rootObject.assignedPadProxies_property.startsBeingObserved (by: self.hasAssignedPadProxies_property)
 
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
@@ -1556,8 +1556,8 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.issues_property.startsToBeObserved (by: self.issues_property)
-    self.documentFileName_property.startsToBeObserved (by: self.issues_property)
+    self.rootObject.issues_property.startsBeingObserved (by: self.issues_property)
+    self.documentFileName_property.startsBeingObserved (by: self.issues_property)
 
   //--- Atomic property: statusWarningCount
     self.statusWarningCount_property.mReadModelFunction = { [weak self] in
@@ -1575,7 +1575,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.statusWarningCount_property)
+    self.issues_property.startsBeingObserved (by: self.statusWarningCount_property)
 
   //--- Atomic property: statusErrorCount
     self.statusErrorCount_property.mReadModelFunction = { [weak self] in
@@ -1593,7 +1593,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.statusErrorCount_property)
+    self.issues_property.startsBeingObserved (by: self.statusErrorCount_property)
 
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
@@ -1611,7 +1611,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.statusMessage_property)
+    self.issues_property.startsBeingObserved (by: self.statusMessage_property)
 
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
@@ -1629,7 +1629,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.metadataStatus_property)
+    self.issues_property.startsBeingObserved (by: self.metadataStatus_property)
 
   }
 

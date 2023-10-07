@@ -396,7 +396,7 @@ final class BorderCurve : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.startsToBeObserved (by: self.mRoot_none)
+    self.mRoot_property.startsBeingObserved (by: self.mRoot_none)
     self.mNext_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mNext_property.propval == nil)
@@ -404,7 +404,7 @@ final class BorderCurve : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mNext_property.startsToBeObserved (by: self.mNext_none)
+    self.mNext_property.startsBeingObserved (by: self.mNext_none)
     self.mPrevious_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mPrevious_property.propval == nil)
@@ -412,7 +412,7 @@ final class BorderCurve : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mPrevious_property.startsToBeObserved (by: self.mPrevious_none)
+    self.mPrevious_property.startsBeingObserved (by: self.mPrevious_none)
   //--- Atomic proxy property: mNextX
     self.mNextX_property.mReadModelFunction = { [weak self] in
       if let object = self?.mNext_property {
@@ -435,7 +435,7 @@ final class BorderCurve : EBGraphicManagedObject,
     self.mNextX_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mNext?.mX_property.setProp (inValue)
     }
-    self.mNext_property.mX_property.startsToBeObserved (by: self.mNextX_property)
+    self.mNext_property.mX_property.startsBeingObserved (by: self.mNextX_property)
   //--- Atomic proxy property: mNextY
     self.mNextY_property.mReadModelFunction = { [weak self] in
       if let object = self?.mNext_property {
@@ -458,7 +458,7 @@ final class BorderCurve : EBGraphicManagedObject,
     self.mNextY_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mNext?.mY_property.setProp (inValue)
     }
-    self.mNext_property.mY_property.startsToBeObserved (by: self.mNextY_property)
+    self.mNext_property.mY_property.startsBeingObserved (by: self.mNextY_property)
   //--- To one property: mRoot (has opposite to many relationship: mBorderCurves)
     self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -496,8 +496,8 @@ final class BorderCurve : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mNext_property.mX_property.startsToBeObserved (by: self.p2Xvalue_property)
-    self.mRoot_property.mBoardSelectedCurveDisplayUnit_property.startsToBeObserved (by: self.p2Xvalue_property)
+    self.mNext_property.mX_property.startsBeingObserved (by: self.p2Xvalue_property)
+    self.mRoot_property.mBoardSelectedCurveDisplayUnit_property.startsBeingObserved (by: self.p2Xvalue_property)
   //--- Atomic property: p2Yvalue
     self.p2Yvalue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -517,8 +517,8 @@ final class BorderCurve : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mNext_property.mY_property.startsToBeObserved (by: self.p2Yvalue_property)
-    self.mRoot_property.mBoardSelectedCurveDisplayUnit_property.startsToBeObserved (by: self.p2Yvalue_property)
+    self.mNext_property.mY_property.startsBeingObserved (by: self.p2Yvalue_property)
+    self.mRoot_property.mBoardSelectedCurveDisplayUnit_property.startsBeingObserved (by: self.p2Yvalue_property)
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -559,15 +559,15 @@ final class BorderCurve : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mX_property.startsToBeObserved (by: self.descriptor_property)
-    self.mY_property.startsToBeObserved (by: self.descriptor_property)
-    self.mNext_property.mX_property.startsToBeObserved (by: self.descriptor_property)
-    self.mNext_property.mY_property.startsToBeObserved (by: self.descriptor_property)
-    self.mCPX1_property.startsToBeObserved (by: self.descriptor_property)
-    self.mCPY1_property.startsToBeObserved (by: self.descriptor_property)
-    self.mCPX2_property.startsToBeObserved (by: self.descriptor_property)
-    self.mCPY2_property.startsToBeObserved (by: self.descriptor_property)
-    self.mShape_property.startsToBeObserved (by: self.descriptor_property)
+    self.mX_property.startsBeingObserved (by: self.descriptor_property)
+    self.mY_property.startsBeingObserved (by: self.descriptor_property)
+    self.mNext_property.mX_property.startsBeingObserved (by: self.descriptor_property)
+    self.mNext_property.mY_property.startsBeingObserved (by: self.descriptor_property)
+    self.mCPX1_property.startsBeingObserved (by: self.descriptor_property)
+    self.mCPY1_property.startsBeingObserved (by: self.descriptor_property)
+    self.mCPX2_property.startsBeingObserved (by: self.descriptor_property)
+    self.mCPY2_property.startsBeingObserved (by: self.descriptor_property)
+    self.mShape_property.startsBeingObserved (by: self.descriptor_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -617,18 +617,18 @@ final class BorderCurve : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mX_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mY_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mNext_property.mX_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mNext_property.mY_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mCPX1_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mCPY1_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mCPX2_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mCPY2_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mShape_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mRoot_property.mBoardLimitsWidth_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mRoot_property.mBoardClearance_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mRoot_property.mBoardShape_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.mX_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mY_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mNext_property.mX_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mNext_property.mY_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mCPX1_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mCPY1_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mCPX2_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mCPY2_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mShape_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mRoot_property.mBoardLimitsWidth_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mRoot_property.mBoardClearance_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mRoot_property.mBoardShape_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: isLine
     self.isLine_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -645,7 +645,7 @@ final class BorderCurve : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mShape_property.startsToBeObserved (by: self.isLine_property)
+    self.mShape_property.startsBeingObserved (by: self.isLine_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -689,16 +689,16 @@ final class BorderCurve : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mX_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mY_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mNext_property.mX_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mNext_property.mY_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mCPX1_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mCPY1_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mCPX2_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mCPY2_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mShape_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mRoot_property.mBoardShape_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mX_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mY_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mNext_property.mX_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mNext_property.mY_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mCPX1_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mCPY1_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mCPX2_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mCPY2_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mShape_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mRoot_property.mBoardShape_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

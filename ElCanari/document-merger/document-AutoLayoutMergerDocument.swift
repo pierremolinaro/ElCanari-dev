@@ -3075,11 +3075,11 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.overlapingArrangment_property.startsToBeObserved (by: self.issues_property)
-    self.rootObject.boardRect_property.startsToBeObserved (by: self.issues_property)
-    self.rootObject.boardLimitWidth_property.startsToBeObserved (by: self.issues_property)
-    self.rootObject.boardInstances_property.toMany_instanceRect_StartsToBeObserved (by: self.issues_property)
-    self.rootObject.boardInstances_property.toMany_boardLimitWidth_StartsToBeObserved (by: self.issues_property)
+    self.rootObject.overlapingArrangment_property.startsBeingObserved (by: self.issues_property)
+    self.rootObject.boardRect_property.startsBeingObserved (by: self.issues_property)
+    self.rootObject.boardLimitWidth_property.startsBeingObserved (by: self.issues_property)
+    self.rootObject.boardInstances_property.toMany_instanceRect_StartsBeingObserved (by: self.issues_property)
+    self.rootObject.boardInstances_property.toMany_boardLimitWidth_StartsBeingObserved (by: self.issues_property)
 
   //--- Atomic property: statusWarningCount
     self.statusWarningCount_property.mReadModelFunction = { [weak self] in
@@ -3097,7 +3097,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.statusWarningCount_property)
+    self.issues_property.startsBeingObserved (by: self.statusWarningCount_property)
 
   //--- Atomic property: boardDispositionStatusTitle
     self.boardDispositionStatusTitle_property.mReadModelFunction = { [weak self] in
@@ -3115,7 +3115,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.boardDispositionStatusTitle_property)
+    self.issues_property.startsBeingObserved (by: self.boardDispositionStatusTitle_property)
 
 
   //--- Atomic property: incorrectDocumentFileDetailedErrorMessage
@@ -3134,7 +3134,7 @@ import AppKit
         return .empty
       }
     }
-    self.documentFileName_property.startsToBeObserved (by: self.incorrectDocumentFileDetailedErrorMessage_property)
+    self.documentFileName_property.startsBeingObserved (by: self.incorrectDocumentFileDetailedErrorMessage_property)
 
   //--- Atomic property: documentFileShouldBeRenamedErrorMessage
     self.documentFileShouldBeRenamedErrorMessage_property.mReadModelFunction = { [weak self] in
@@ -3152,7 +3152,7 @@ import AppKit
         return .empty
       }
     }
-    self.documentFileName_property.startsToBeObserved (by: self.documentFileShouldBeRenamedErrorMessage_property)
+    self.documentFileName_property.startsBeingObserved (by: self.documentFileShouldBeRenamedErrorMessage_property)
 
   //--- Atomic property: emptyDrillFileExtension
     self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
@@ -3170,7 +3170,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.drillDataFileExtension_property.startsToBeObserved (by: self.emptyDrillFileExtension_property)
+    self.rootObject.drillDataFileExtension_property.startsBeingObserved (by: self.emptyDrillFileExtension_property)
 
   //--- Atomic property: modelVersionErrorMessage
     self.modelVersionErrorMessage_property.mReadModelFunction = { [weak self] in
@@ -3194,9 +3194,9 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.boardModels_property.toMany_name_StartsToBeObserved (by: self.modelVersionErrorMessage_property)
-    self.rootObject.boardModels_property.toMany_modelVersion_StartsToBeObserved (by: self.modelVersionErrorMessage_property)
-    self.rootObject.boardModels_property.toMany_ignoreModelVersionError_StartsToBeObserved (by: self.modelVersionErrorMessage_property)
+    self.rootObject.boardModels_property.toMany_name_StartsBeingObserved (by: self.modelVersionErrorMessage_property)
+    self.rootObject.boardModels_property.toMany_modelVersion_StartsBeingObserved (by: self.modelVersionErrorMessage_property)
+    self.rootObject.boardModels_property.toMany_ignoreModelVersionError_StartsBeingObserved (by: self.modelVersionErrorMessage_property)
 
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
@@ -3217,8 +3217,8 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.statusImage_property)
-    self.modelVersionErrorMessage_property.startsToBeObserved (by: self.statusImage_property)
+    self.issues_property.startsBeingObserved (by: self.statusImage_property)
+    self.modelVersionErrorMessage_property.startsBeingObserved (by: self.statusImage_property)
 
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
@@ -3239,8 +3239,8 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.statusMessage_property)
-    self.modelVersionErrorMessage_property.startsToBeObserved (by: self.statusMessage_property)
+    self.issues_property.startsBeingObserved (by: self.statusMessage_property)
+    self.modelVersionErrorMessage_property.startsBeingObserved (by: self.statusMessage_property)
 
   //--- Atomic property: statusErrorCount
     self.statusErrorCount_property.mReadModelFunction = { [weak self] in
@@ -3261,8 +3261,8 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.statusErrorCount_property)
-    self.modelVersionErrorMessage_property.startsToBeObserved (by: self.statusErrorCount_property)
+    self.issues_property.startsBeingObserved (by: self.statusErrorCount_property)
+    self.modelVersionErrorMessage_property.startsBeingObserved (by: self.statusErrorCount_property)
 
   //--- Atomic property: documentIsUnnamed
     self.documentIsUnnamed_property.mReadModelFunction = { [weak self] in
@@ -3280,7 +3280,7 @@ import AppKit
         return .empty
       }
     }
-    self.documentFileName_property.startsToBeObserved (by: self.documentIsUnnamed_property)
+    self.documentFileName_property.startsBeingObserved (by: self.documentIsUnnamed_property)
 
   //--- Atomic property: emptyDrillFileExtensionImage
     self.emptyDrillFileExtensionImage_property.mReadModelFunction = { [weak self] in
@@ -3298,7 +3298,7 @@ import AppKit
         return .empty
       }
     }
-    self.emptyDrillFileExtension_property.startsToBeObserved (by: self.emptyDrillFileExtensionImage_property)
+    self.emptyDrillFileExtension_property.startsBeingObserved (by: self.emptyDrillFileExtensionImage_property)
 
   //--- Atomic property: generatedFileCountString
     self.generatedFileCountString_property.mReadModelFunction = { [weak self] in
@@ -3316,7 +3316,7 @@ import AppKit
         return .empty
       }
     }
-    self.mDataController.sortedArray_property.count_property.startsToBeObserved (by: self.generatedFileCountString_property)
+    self.mDataController.sortedArray_property.count_property.startsBeingObserved (by: self.generatedFileCountString_property)
 
   }
 

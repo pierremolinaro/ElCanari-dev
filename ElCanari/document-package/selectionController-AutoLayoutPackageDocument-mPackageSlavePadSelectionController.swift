@@ -306,7 +306,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_xCenter () {
-    self.selectedArray_property.toMany_xCenter_StartsToBeObserved (by: self.xCenter_property)
+    self.selectedArray_property.toMany_xCenter_StartsBeingObserved (by: self.xCenter_property)
     self.xCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -357,7 +357,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_yCenter () {
-    self.selectedArray_property.toMany_yCenter_StartsToBeObserved (by: self.yCenter_property)
+    self.selectedArray_property.toMany_yCenter_StartsBeingObserved (by: self.yCenter_property)
     self.yCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -408,7 +408,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_width () {
-    self.selectedArray_property.toMany_width_StartsToBeObserved (by: self.width_property)
+    self.selectedArray_property.toMany_width_StartsBeingObserved (by: self.width_property)
     self.width_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -459,7 +459,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_height () {
-    self.selectedArray_property.toMany_height_StartsToBeObserved (by: self.height_property)
+    self.selectedArray_property.toMany_height_StartsBeingObserved (by: self.height_property)
     self.height_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -510,7 +510,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_holeWidth () {
-    self.selectedArray_property.toMany_holeWidth_StartsToBeObserved (by: self.holeWidth_property)
+    self.selectedArray_property.toMany_holeWidth_StartsBeingObserved (by: self.holeWidth_property)
     self.holeWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -561,7 +561,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_holeHeight () {
-    self.selectedArray_property.toMany_holeHeight_StartsToBeObserved (by: self.holeHeight_property)
+    self.selectedArray_property.toMany_holeHeight_StartsBeingObserved (by: self.holeHeight_property)
     self.holeHeight_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -612,7 +612,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_padShape () {
-    self.selectedArray_property.toMany_padShape_StartsToBeObserved (by: self.padShape_property)
+    self.selectedArray_property.toMany_padShape_StartsBeingObserved (by: self.padShape_property)
     self.padShape_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -663,7 +663,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_padStyle () {
-    self.selectedArray_property.toMany_padStyle_StartsToBeObserved (by: self.padStyle_property)
+    self.selectedArray_property.toMany_padStyle_StartsBeingObserved (by: self.padStyle_property)
     self.padStyle_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -714,7 +714,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_xCenterUnit () {
-    self.selectedArray_property.toMany_xCenterUnit_StartsToBeObserved (by: self.xCenterUnit_property)
+    self.selectedArray_property.toMany_xCenterUnit_StartsBeingObserved (by: self.xCenterUnit_property)
     self.xCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -765,7 +765,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_yCenterUnit () {
-    self.selectedArray_property.toMany_yCenterUnit_StartsToBeObserved (by: self.yCenterUnit_property)
+    self.selectedArray_property.toMany_yCenterUnit_StartsBeingObserved (by: self.yCenterUnit_property)
     self.yCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -816,7 +816,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_widthUnit () {
-    self.selectedArray_property.toMany_widthUnit_StartsToBeObserved (by: self.widthUnit_property)
+    self.selectedArray_property.toMany_widthUnit_StartsBeingObserved (by: self.widthUnit_property)
     self.widthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -867,7 +867,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_heightUnit () {
-    self.selectedArray_property.toMany_heightUnit_StartsToBeObserved (by: self.heightUnit_property)
+    self.selectedArray_property.toMany_heightUnit_StartsBeingObserved (by: self.heightUnit_property)
     self.heightUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -918,7 +918,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_holeWidthUnit () {
-    self.selectedArray_property.toMany_holeWidthUnit_StartsToBeObserved (by: self.holeWidthUnit_property)
+    self.selectedArray_property.toMany_holeWidthUnit_StartsBeingObserved (by: self.holeWidthUnit_property)
     self.holeWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -969,7 +969,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_holeHeightUnit () {
-    self.selectedArray_property.toMany_holeHeightUnit_StartsToBeObserved (by: self.holeHeightUnit_property)
+    self.selectedArray_property.toMany_holeHeightUnit_StartsBeingObserved (by: self.holeHeightUnit_property)
     self.holeHeightUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1020,7 +1020,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_annularRingUnit () {
-    self.selectedArray_property.toMany_annularRingUnit_StartsToBeObserved (by: self.annularRingUnit_property)
+    self.selectedArray_property.toMany_annularRingUnit_StartsBeingObserved (by: self.annularRingUnit_property)
     self.annularRingUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1071,7 +1071,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StartsBeingObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1110,7 +1110,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StartsBeingObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1149,7 +1149,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_issues () {
-    self.selectedArray_property.toMany_issues_StartsToBeObserved (by: self.issues_property)
+    self.selectedArray_property.toMany_issues_StartsBeingObserved (by: self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1188,7 +1188,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_padIsTraversing () {
-    self.selectedArray_property.toMany_padIsTraversing_StartsToBeObserved (by: self.padIsTraversing_property)
+    self.selectedArray_property.toMany_padIsTraversing_StartsBeingObserved (by: self.padIsTraversing_property)
     self.padIsTraversing_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1227,7 +1227,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_annularRing () {
-    self.selectedArray_property.toMany_annularRing_StartsToBeObserved (by: self.annularRing_property)
+    self.selectedArray_property.toMany_annularRing_StartsBeingObserved (by: self.annularRing_property)
     self.annularRing_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1266,7 +1266,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_padNameWithZoneName () {
-    self.selectedArray_property.toMany_padNameWithZoneName_StartsToBeObserved (by: self.padNameWithZoneName_property)
+    self.selectedArray_property.toMany_padNameWithZoneName_StartsBeingObserved (by: self.padNameWithZoneName_property)
     self.padNameWithZoneName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1305,7 +1305,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_masterPadNameWithZoneName () {
-    self.selectedArray_property.toMany_masterPadNameWithZoneName_StartsToBeObserved (by: self.masterPadNameWithZoneName_property)
+    self.selectedArray_property.toMany_masterPadNameWithZoneName_StartsBeingObserved (by: self.masterPadNameWithZoneName_property)
     self.masterPadNameWithZoneName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1344,7 +1344,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_padNameForDisplay () {
-    self.selectedArray_property.toMany_padNameForDisplay_StartsToBeObserved (by: self.padNameForDisplay_property)
+    self.selectedArray_property.toMany_padNameForDisplay_StartsBeingObserved (by: self.padNameForDisplay_property)
     self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1383,7 +1383,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_padNumberDisplay () {
-    self.selectedArray_property.toMany_padNumberDisplay_StartsToBeObserved (by: self.padNumberDisplay_property)
+    self.selectedArray_property.toMany_padNumberDisplay_StartsBeingObserved (by: self.padNumberDisplay_property)
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {

@@ -31,17 +31,17 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mInstanceName_property.startsToBeObserved (by: self.mInstanceName_property) // Stored property
-      newValue.mX_property.startsToBeObserved (by: self.mX_property) // Stored property
-      newValue.mY_property.startsToBeObserved (by: self.mY_property) // Stored property
-      newValue.symbolQualifiedName_property.startsToBeObserved (by: self.symbolQualifiedName_property) // Transient property
-      newValue.symbolTypeName_property.startsToBeObserved (by: self.symbolTypeName_property) // Transient property
-      newValue.pinSymbolQualifiedNames_property.startsToBeObserved (by: self.pinSymbolQualifiedNames_property) // Transient property
-      newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
-      newValue.unconnectedPins_property.startsToBeObserved (by: self.unconnectedPins_property) // Transient property
-      newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
+      newValue.mInstanceName_property.startsBeingObserved (by: self.mInstanceName_property) // Stored property
+      newValue.mX_property.startsBeingObserved (by: self.mX_property) // Stored property
+      newValue.mY_property.startsBeingObserved (by: self.mY_property) // Stored property
+      newValue.symbolQualifiedName_property.startsBeingObserved (by: self.symbolQualifiedName_property) // Transient property
+      newValue.symbolTypeName_property.startsBeingObserved (by: self.symbolTypeName_property) // Transient property
+      newValue.pinSymbolQualifiedNames_property.startsBeingObserved (by: self.pinSymbolQualifiedNames_property) // Transient property
+      newValue.selectionDisplay_property.startsBeingObserved (by: self.selectionDisplay_property) // Transient property
+      newValue.unconnectedPins_property.startsBeingObserved (by: self.unconnectedPins_property) // Transient property
+      newValue.objectDisplay_property.startsBeingObserved (by: self.objectDisplay_property) // Transient property
       if let relay = self.mObserversOf_mPinInstances { // to Many
-        newValue.mPinInstances_property.startsToBeObserved (by: relay)
+        newValue.mPinInstances_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -108,16 +108,16 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
 
   //····················································································································
 
-  final func toMany_mPinInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPinInstances_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPinInstances {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mPinInstances_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mPinInstances_property.startsBeingObserved (by: relay)
       self.mObserversOf_mPinInstances = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

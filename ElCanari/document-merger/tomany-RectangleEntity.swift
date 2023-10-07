@@ -45,28 +45,28 @@ class ReadOnlyArrayOf_RectangleEntity : ReadOnlyAbstractArrayProperty <Rectangle
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_p0y { // Stored property
-        managedObject.p0y_property.startsToBeObserved (by: relay)
+        managedObject.p0y_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_p1x { // Stored property
-        managedObject.p1x_property.startsToBeObserved (by: relay)
+        managedObject.p1x_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_p1y { // Stored property
-        managedObject.p1y_property.startsToBeObserved (by: relay)
+        managedObject.p1y_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_p2x { // Stored property
-        managedObject.p2x_property.startsToBeObserved (by: relay)
+        managedObject.p2x_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_p2y { // Stored property
-        managedObject.p2y_property.startsToBeObserved (by: relay)
+        managedObject.p2y_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_p3x { // Stored property
-        managedObject.p3x_property.startsToBeObserved (by: relay)
+        managedObject.p3x_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_p3y { // Stored property
-        managedObject.p3y_property.startsToBeObserved (by: relay)
+        managedObject.p3y_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_p0x { // Stored property
-        managedObject.p0x_property.startsToBeObserved (by: relay)
+        managedObject.p0x_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -79,19 +79,19 @@ class ReadOnlyArrayOf_RectangleEntity : ReadOnlyAbstractArrayProperty <Rectangle
 
   //····················································································································
 
-  final func toMany_p0y_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p0y_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_p0y {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.p0y_property.startsToBeObserved (by: relay)
+        managedObject.p0y_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_p0y = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -108,19 +108,19 @@ class ReadOnlyArrayOf_RectangleEntity : ReadOnlyAbstractArrayProperty <Rectangle
 
   //····················································································································
 
-  final func toMany_p1x_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p1x_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_p1x {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.p1x_property.startsToBeObserved (by: relay)
+        managedObject.p1x_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_p1x = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -137,19 +137,19 @@ class ReadOnlyArrayOf_RectangleEntity : ReadOnlyAbstractArrayProperty <Rectangle
 
   //····················································································································
 
-  final func toMany_p1y_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p1y_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_p1y {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.p1y_property.startsToBeObserved (by: relay)
+        managedObject.p1y_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_p1y = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -166,19 +166,19 @@ class ReadOnlyArrayOf_RectangleEntity : ReadOnlyAbstractArrayProperty <Rectangle
 
   //····················································································································
 
-  final func toMany_p2x_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p2x_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_p2x {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.p2x_property.startsToBeObserved (by: relay)
+        managedObject.p2x_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_p2x = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -195,19 +195,19 @@ class ReadOnlyArrayOf_RectangleEntity : ReadOnlyAbstractArrayProperty <Rectangle
 
   //····················································································································
 
-  final func toMany_p2y_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p2y_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_p2y {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.p2y_property.startsToBeObserved (by: relay)
+        managedObject.p2y_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_p2y = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -224,19 +224,19 @@ class ReadOnlyArrayOf_RectangleEntity : ReadOnlyAbstractArrayProperty <Rectangle
 
   //····················································································································
 
-  final func toMany_p3x_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p3x_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_p3x {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.p3x_property.startsToBeObserved (by: relay)
+        managedObject.p3x_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_p3x = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -253,19 +253,19 @@ class ReadOnlyArrayOf_RectangleEntity : ReadOnlyAbstractArrayProperty <Rectangle
 
   //····················································································································
 
-  final func toMany_p3y_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p3y_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_p3y {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.p3y_property.startsToBeObserved (by: relay)
+        managedObject.p3y_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_p3y = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -282,19 +282,19 @@ class ReadOnlyArrayOf_RectangleEntity : ReadOnlyAbstractArrayProperty <Rectangle
 
   //····················································································································
 
-  final func toMany_p0x_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p0x_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_p0x {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.p0x_property.startsToBeObserved (by: relay)
+        managedObject.p0x_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_p0x = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

@@ -465,7 +465,7 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbol_property.startsToBeObserved (by: self.mSymbol_none)
+    self.mSymbol_property.startsBeingObserved (by: self.mSymbol_none)
     self.mNet_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mNet_property.propval == nil)
@@ -473,7 +473,7 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mNet_property.startsToBeObserved (by: self.mNet_none)
+    self.mNet_property.startsBeingObserved (by: self.mNet_none)
     self.mNC_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mNC_property.propval == nil)
@@ -481,7 +481,7 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mNC_property.startsToBeObserved (by: self.mNC_none)
+    self.mNC_property.startsBeingObserved (by: self.mNC_none)
     self.mSheet_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mSheet_property.propval == nil)
@@ -489,7 +489,7 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mSheet_property.startsToBeObserved (by: self.mSheet_none)
+    self.mSheet_property.startsBeingObserved (by: self.mSheet_none)
   //--- To many property: mLabels (has opposite relationship)
     self.mLabels_property.undoManager = inUndoManager
     self.mLabels_property.setOppositeRelationShipFunctions (
@@ -554,11 +554,11 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mX_property.startsToBeObserved (by: self.location_property)
-    self.mY_property.startsToBeObserved (by: self.location_property)
-    self.mSymbolPinName_property.startsToBeObserved (by: self.location_property)
-    self.mSymbol_property.symbolInfo_property.startsToBeObserved (by: self.location_property)
-    self.mSymbol_property.mSymbolInstanceName_property.startsToBeObserved (by: self.location_property)
+    self.mX_property.startsBeingObserved (by: self.location_property)
+    self.mY_property.startsBeingObserved (by: self.location_property)
+    self.mSymbolPinName_property.startsBeingObserved (by: self.location_property)
+    self.mSymbol_property.symbolInfo_property.startsBeingObserved (by: self.location_property)
+    self.mSymbol_property.mSymbolInstanceName_property.startsBeingObserved (by: self.location_property)
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -575,7 +575,7 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mNet_property.mNetName_property.startsToBeObserved (by: self.netName_property)
+    self.mNet_property.mNetName_property.startsBeingObserved (by: self.netName_property)
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -592,7 +592,7 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mNet_property.netClassName_property.startsToBeObserved (by: self.netClassName_property)
+    self.mNet_property.netClassName_property.startsBeingObserved (by: self.netClassName_property)
   //--- Atomic property: hasNet
     self.hasNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -609,7 +609,7 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mNet_property.startsToBeObserved (by: self.hasNet_property)
+    self.mNet_property.startsBeingObserved (by: self.hasNet_property)
   //--- Atomic property: canMove
     self.canMove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -626,7 +626,7 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbol_property.startsToBeObserved (by: self.canMove_property)
+    self.mSymbol_property.startsBeingObserved (by: self.canMove_property)
   //--- Atomic property: wireColor
     self.wireColor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -643,7 +643,7 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mNet_property.wireColor_property.startsToBeObserved (by: self.wireColor_property)
+    self.mNet_property.wireColor_property.startsBeingObserved (by: self.wireColor_property)
   //--- Atomic property: symbolRotation
     self.symbolRotation_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -663,8 +663,8 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbol_property.mRotation_property.startsToBeObserved (by: self.symbolRotation_property)
-    self.mSymbol_property.mMirror_property.startsToBeObserved (by: self.symbolRotation_property)
+    self.mSymbol_property.mRotation_property.startsBeingObserved (by: self.symbolRotation_property)
+    self.mSymbol_property.mMirror_property.startsBeingObserved (by: self.symbolRotation_property)
   //--- To one property: mSheet (has opposite to many relationship: mPoints)
     self.mSheet_property.undoManager = inUndoManager
     self.mSheet_property.setOppositeRelationShipFunctions (
@@ -690,8 +690,8 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolPinName_property.startsToBeObserved (by: self.symbolNameNetName_property)
-    self.netName_property.startsToBeObserved (by: self.symbolNameNetName_property)
+    self.mSymbolPinName_property.startsBeingObserved (by: self.symbolNameNetName_property)
+    self.netName_property.startsBeingObserved (by: self.symbolNameNetName_property)
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -720,11 +720,11 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mNC_property.startsToBeObserved (by: self.isConnected_property)
-    self.mSymbol_property.startsToBeObserved (by: self.isConnected_property)
-    self.mWiresP1s_property.startsToBeObserved (by: self.isConnected_property)
-    self.mWiresP2s_property.startsToBeObserved (by: self.isConnected_property)
-    self.mLabels_property.startsToBeObserved (by: self.isConnected_property)
+    self.mNC_property.startsBeingObserved (by: self.isConnected_property)
+    self.mSymbol_property.startsBeingObserved (by: self.isConnected_property)
+    self.mWiresP1s_property.startsBeingObserved (by: self.isConnected_property)
+    self.mWiresP2s_property.startsBeingObserved (by: self.isConnected_property)
+    self.mLabels_property.startsBeingObserved (by: self.isConnected_property)
   //--- Atomic property: status
     self.status_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -744,8 +744,8 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.location_property.startsToBeObserved (by: self.status_property)
-    self.isConnected_property.startsToBeObserved (by: self.status_property)
+    self.location_property.startsBeingObserved (by: self.status_property)
+    self.isConnected_property.startsBeingObserved (by: self.status_property)
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -765,8 +765,8 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.location_property.startsToBeObserved (by: self.connectedPoints_property)
-    self.isConnected_property.startsToBeObserved (by: self.connectedPoints_property)
+    self.location_property.startsBeingObserved (by: self.connectedPoints_property)
+    self.isConnected_property.startsBeingObserved (by: self.connectedPoints_property)
   //--- Atomic property: netInfoForPoint
     self.netInfoForPoint_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -807,15 +807,15 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mLabels_property.startsToBeObserved (by: self.netInfoForPoint_property)
-    self.mSymbol_property.componentName_property.startsToBeObserved (by: self.netInfoForPoint_property)
-    self.mSymbol_property.mSymbolInstanceName_property.startsToBeObserved (by: self.netInfoForPoint_property)
-    self.mSymbolPinName_property.startsToBeObserved (by: self.netInfoForPoint_property)
-    self.mSymbol_property.pinPadAssignments_property.startsToBeObserved (by: self.netInfoForPoint_property)
-    self.mWiresP1s_property.startsToBeObserved (by: self.netInfoForPoint_property)
-    self.mWiresP2s_property.startsToBeObserved (by: self.netInfoForPoint_property)
-    self.location_property.startsToBeObserved (by: self.netInfoForPoint_property)
-    self.mSheet_property.sheetDescriptor_property.startsToBeObserved (by: self.netInfoForPoint_property)
+    self.mLabels_property.startsBeingObserved (by: self.netInfoForPoint_property)
+    self.mSymbol_property.componentName_property.startsBeingObserved (by: self.netInfoForPoint_property)
+    self.mSymbol_property.mSymbolInstanceName_property.startsBeingObserved (by: self.netInfoForPoint_property)
+    self.mSymbolPinName_property.startsBeingObserved (by: self.netInfoForPoint_property)
+    self.mSymbol_property.pinPadAssignments_property.startsBeingObserved (by: self.netInfoForPoint_property)
+    self.mWiresP1s_property.startsBeingObserved (by: self.netInfoForPoint_property)
+    self.mWiresP2s_property.startsBeingObserved (by: self.netInfoForPoint_property)
+    self.location_property.startsBeingObserved (by: self.netInfoForPoint_property)
+    self.mSheet_property.sheetDescriptor_property.startsBeingObserved (by: self.netInfoForPoint_property)
   //--- Install undoers and opposite setter for relationships
     self.mLabels_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },

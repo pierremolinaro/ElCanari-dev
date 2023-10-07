@@ -287,11 +287,11 @@ final class BoardLine : BoardObject,
         return .empty
       }
     }
-    self.mX1_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mY1_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mX2_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mY2_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_hiliteWidthMultipliedByTen_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mX1_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mY1_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mX2_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mY2_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_hiliteWidthMultipliedByTen_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -329,14 +329,14 @@ final class BoardLine : BoardObject,
         return .empty
       }
     }
-    self.mX1_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mY1_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mX2_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mY2_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mWidth_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mLayer_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_frontSideLegendColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_backSideLegendColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.mX1_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mY1_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mX2_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mY2_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mWidth_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mLayer_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_frontSideLegendColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_backSideLegendColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

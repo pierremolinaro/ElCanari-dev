@@ -40,26 +40,26 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mCenterX_property.startsToBeObserved (by: self.mCenterX_property) // Stored property
-      newValue.mCenterY_property.startsToBeObserved (by: self.mCenterY_property) // Stored property
-      newValue.mRotation_property.startsToBeObserved (by: self.mRotation_property) // Stored property
-      newValue.mMirror_property.startsToBeObserved (by: self.mMirror_property) // Stored property
-      newValue.mSymbolInstanceName_property.startsToBeObserved (by: self.mSymbolInstanceName_property) // Stored property
-      newValue.mSymbolTypeName_property.startsToBeObserved (by: self.mSymbolTypeName_property) // Stored property
-      newValue.mDisplayComponentNameOffsetX_property.startsToBeObserved (by: self.mDisplayComponentNameOffsetX_property) // Stored property
-      newValue.mDisplayComponentNameOffsetY_property.startsToBeObserved (by: self.mDisplayComponentNameOffsetY_property) // Stored property
-      newValue.mDisplayComponentValue_property.startsToBeObserved (by: self.mDisplayComponentValue_property) // Stored property
-      newValue.mDisplayComponentValueOffsetX_property.startsToBeObserved (by: self.mDisplayComponentValueOffsetX_property) // Stored property
-      newValue.mDisplayComponentValueOffsetY_property.startsToBeObserved (by: self.mDisplayComponentValueOffsetY_property) // Stored property
-      newValue.componentName_property.startsToBeObserved (by: self.componentName_property) // Transient property
-      newValue.deviceName_property.startsToBeObserved (by: self.deviceName_property) // Transient property
-      newValue.symbolInfo_property.startsToBeObserved (by: self.symbolInfo_property) // Transient property
-      newValue.pinPadAssignments_property.startsToBeObserved (by: self.pinPadAssignments_property) // Transient property
-      newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
-      newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
-      newValue.symbolInSchematic_property.startsToBeObserved (by: self.symbolInSchematic_property) // Transient property
+      newValue.mCenterX_property.startsBeingObserved (by: self.mCenterX_property) // Stored property
+      newValue.mCenterY_property.startsBeingObserved (by: self.mCenterY_property) // Stored property
+      newValue.mRotation_property.startsBeingObserved (by: self.mRotation_property) // Stored property
+      newValue.mMirror_property.startsBeingObserved (by: self.mMirror_property) // Stored property
+      newValue.mSymbolInstanceName_property.startsBeingObserved (by: self.mSymbolInstanceName_property) // Stored property
+      newValue.mSymbolTypeName_property.startsBeingObserved (by: self.mSymbolTypeName_property) // Stored property
+      newValue.mDisplayComponentNameOffsetX_property.startsBeingObserved (by: self.mDisplayComponentNameOffsetX_property) // Stored property
+      newValue.mDisplayComponentNameOffsetY_property.startsBeingObserved (by: self.mDisplayComponentNameOffsetY_property) // Stored property
+      newValue.mDisplayComponentValue_property.startsBeingObserved (by: self.mDisplayComponentValue_property) // Stored property
+      newValue.mDisplayComponentValueOffsetX_property.startsBeingObserved (by: self.mDisplayComponentValueOffsetX_property) // Stored property
+      newValue.mDisplayComponentValueOffsetY_property.startsBeingObserved (by: self.mDisplayComponentValueOffsetY_property) // Stored property
+      newValue.componentName_property.startsBeingObserved (by: self.componentName_property) // Transient property
+      newValue.deviceName_property.startsBeingObserved (by: self.deviceName_property) // Transient property
+      newValue.symbolInfo_property.startsBeingObserved (by: self.symbolInfo_property) // Transient property
+      newValue.pinPadAssignments_property.startsBeingObserved (by: self.pinPadAssignments_property) // Transient property
+      newValue.objectDisplay_property.startsBeingObserved (by: self.objectDisplay_property) // Transient property
+      newValue.selectionDisplay_property.startsBeingObserved (by: self.selectionDisplay_property) // Transient property
+      newValue.symbolInSchematic_property.startsBeingObserved (by: self.symbolInSchematic_property) // Transient property
       if let relay = self.mObserversOf_mPoints { // to Many
-        newValue.mPoints_property.startsToBeObserved (by: relay)
+        newValue.mPoints_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -180,16 +180,16 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func toMany_mPoints_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPoints_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPoints {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mPoints_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mPoints_property.startsBeingObserved (by: relay)
       self.mObserversOf_mPoints = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

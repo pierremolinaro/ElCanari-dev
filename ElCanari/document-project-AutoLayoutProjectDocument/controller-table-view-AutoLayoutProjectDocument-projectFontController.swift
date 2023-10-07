@@ -59,12 +59,12 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : NSObjec
       inModel,
       sortCallback: { [weak self] (left, right) in self?.isOrderedBefore (left, right) ?? true },
       addSortObserversCallback: { (observer) in
-        inModel.toMany_componentNamesCount_StartsToBeObserved (by: observer)
-        inModel.toMany_componentValuesCount_StartsToBeObserved (by: observer)
-        inModel.toMany_mFontName_StartsToBeObserved (by: observer)
-        inModel.toMany_sizeString_StartsToBeObserved (by: observer)
-        inModel.toMany_textCount_StartsToBeObserved (by: observer)
-        inModel.toMany_versionString_StartsToBeObserved (by: observer)
+        inModel.toMany_componentNamesCount_StartsBeingObserved (by: observer)
+        inModel.toMany_componentValuesCount_StartsBeingObserved (by: observer)
+        inModel.toMany_mFontName_StartsBeingObserved (by: observer)
+        inModel.toMany_sizeString_StartsBeingObserved (by: observer)
+        inModel.toMany_textCount_StartsBeingObserved (by: observer)
+        inModel.toMany_versionString_StartsBeingObserved (by: observer)
       },
       removeSortObserversCallback: {(observer) in
         inModel.toMany_componentNamesCount_StopsBeingObserved (by: observer)
@@ -149,19 +149,19 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : NSObjec
 
   override init () {
     super.init ()
-    self.sortedArray_property.startsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mFontName' column
-    self.sortedArray_property.toMany_mFontName_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mFontName_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'versionString' column
-    self.sortedArray_property.toMany_versionString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_versionString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'sizeString' column
-    self.sortedArray_property.toMany_sizeString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_sizeString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'textCount' column
-    self.sortedArray_property.toMany_textCount_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_textCount_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'componentNamesCount' column
-    self.sortedArray_property.toMany_componentNamesCount_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_componentNamesCount_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'componentValuesCount' column
-    self.sortedArray_property.toMany_componentValuesCount_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_componentValuesCount_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {

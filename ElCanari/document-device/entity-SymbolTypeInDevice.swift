@@ -246,7 +246,7 @@ final class SymbolTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mVersion_property.startsToBeObserved (by: self.versionString_property)
+    self.mVersion_property.startsBeingObserved (by: self.versionString_property)
   //--- Atomic property: instanceCount
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -263,7 +263,7 @@ final class SymbolTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mInstances_property.startsToBeObserved (by: self.instanceCount_property)
+    self.mInstances_property.startsBeingObserved (by: self.instanceCount_property)
   //--- Atomic property: documentSize
     self.documentSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -280,7 +280,7 @@ final class SymbolTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mFileData_property.startsToBeObserved (by: self.documentSize_property)
+    self.mFileData_property.startsBeingObserved (by: self.documentSize_property)
   //--- Atomic property: pinNameShape
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -297,7 +297,7 @@ final class SymbolTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mPinTypes_property.toMany_nameShape_StartsToBeObserved (by: self.pinNameShape_property)
+    self.mPinTypes_property.toMany_nameShape_StartsBeingObserved (by: self.pinNameShape_property)
   //--- Install undoers and opposite setter for relationships
     self.mInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },

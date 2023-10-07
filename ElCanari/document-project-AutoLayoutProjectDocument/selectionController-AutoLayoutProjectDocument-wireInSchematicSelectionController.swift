@@ -111,7 +111,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StartsBeingObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -150,7 +150,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StartsBeingObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -189,7 +189,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_netName () {
-    self.selectedArray_property.toMany_netName_StartsToBeObserved (by: self.netName_property)
+    self.selectedArray_property.toMany_netName_StartsBeingObserved (by: self.netName_property)
     self.netName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -228,7 +228,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_netClassName () {
-    self.selectedArray_property.toMany_netClassName_StartsToBeObserved (by: self.netClassName_property)
+    self.selectedArray_property.toMany_netClassName_StartsBeingObserved (by: self.netClassName_property)
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -267,7 +267,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_hasNet () {
-    self.selectedArray_property.toMany_hasNet_StartsToBeObserved (by: self.hasNet_property)
+    self.selectedArray_property.toMany_hasNet_StartsBeingObserved (by: self.hasNet_property)
     self.hasNet_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -306,7 +306,7 @@ import AppKit
   //····················································································································
 
   private final func bind_property_wires () {
-    self.selectedArray_property.toMany_wires_StartsToBeObserved (by: self.wires_property)
+    self.selectedArray_property.toMany_wires_StartsBeingObserved (by: self.wires_property)
     self.wires_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {

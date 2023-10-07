@@ -25,11 +25,11 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mPackageName_property.startsToBeObserved (by: self.mPackageName_property) // Stored property
-      newValue.mStrokeBezierPath_property.startsToBeObserved (by: self.mStrokeBezierPath_property) // Stored property
-      newValue.packagePadDictionary_property.startsToBeObserved (by: self.packagePadDictionary_property) // Transient property
+      newValue.mPackageName_property.startsBeingObserved (by: self.mPackageName_property) // Stored property
+      newValue.mStrokeBezierPath_property.startsBeingObserved (by: self.mStrokeBezierPath_property) // Stored property
+      newValue.packagePadDictionary_property.startsBeingObserved (by: self.packagePadDictionary_property) // Transient property
       if let relay = self.mObserversOf_mMasterPads { // to Many
-        newValue.mMasterPads_property.startsToBeObserved (by: relay)
+        newValue.mMasterPads_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -60,16 +60,16 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
 
   //····················································································································
 
-  final func toMany_mMasterPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mMasterPads_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mMasterPads {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mMasterPads_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mMasterPads_property.startsBeingObserved (by: relay)
       self.mObserversOf_mMasterPads = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

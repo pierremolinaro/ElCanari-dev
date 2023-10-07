@@ -160,7 +160,7 @@ class SchematicObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mSheet_property.startsToBeObserved (by: self.mSheet_none)
+    self.mSheet_property.startsBeingObserved (by: self.mSheet_none)
   //--- To one property: mSheet (has opposite to many relationship: mObjects)
     self.mSheet_property.undoManager = inUndoManager
     self.mSheet_property.setOppositeRelationShipFunctions (
@@ -183,7 +183,7 @@ class SchematicObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mSheet_property.sheetDescriptor_property.startsToBeObserved (by: self.sheetDescriptor_property)
+    self.mSheet_property.sheetDescriptor_property.startsBeingObserved (by: self.sheetDescriptor_property)
   //--- Atomic property: isPlacedInSchematic
     self.isPlacedInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -200,7 +200,7 @@ class SchematicObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mSheet_property.startsToBeObserved (by: self.isPlacedInSchematic_property)
+    self.mSheet_property.startsBeingObserved (by: self.isPlacedInSchematic_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

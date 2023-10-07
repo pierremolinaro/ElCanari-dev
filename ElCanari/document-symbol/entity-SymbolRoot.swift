@@ -158,11 +158,11 @@ final class SymbolRoot : EBManagedObject {
         return .empty
       }
     }
-    self.symbolObjects_property.toMany_issues_StartsToBeObserved (by: self.issues_property)
-    self.symbolPins_property.toMany_name_StartsToBeObserved (by: self.issues_property)
-    self.symbolPins_property.toMany_nameRect_StartsToBeObserved (by: self.issues_property)
-    self.symbolPins_property.toMany_xPin_StartsToBeObserved (by: self.issues_property)
-    self.symbolPins_property.toMany_yPin_StartsToBeObserved (by: self.issues_property)
+    self.symbolObjects_property.toMany_issues_StartsBeingObserved (by: self.issues_property)
+    self.symbolPins_property.toMany_name_StartsBeingObserved (by: self.issues_property)
+    self.symbolPins_property.toMany_nameRect_StartsBeingObserved (by: self.issues_property)
+    self.symbolPins_property.toMany_xPin_StartsBeingObserved (by: self.issues_property)
+    self.symbolPins_property.toMany_yPin_StartsBeingObserved (by: self.issues_property)
   //--- Install undoers and opposite setter for relationships
     self.symbolPins_property.setDataProvider (self.symbolObjects_property)
   //--- Register properties for handling signature

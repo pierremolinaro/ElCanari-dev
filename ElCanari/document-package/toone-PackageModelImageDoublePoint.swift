@@ -27,14 +27,14 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mFirstX_property.startsToBeObserved (by: self.mFirstX_property) // Stored property
-      newValue.mFirstY_property.startsToBeObserved (by: self.mFirstY_property) // Stored property
-      newValue.mFirstColor_property.startsToBeObserved (by: self.mFirstColor_property) // Stored property
-      newValue.mSecondDx_property.startsToBeObserved (by: self.mSecondDx_property) // Stored property
-      newValue.mSecondDy_property.startsToBeObserved (by: self.mSecondDy_property) // Stored property
-      newValue.mSecondColor_property.startsToBeObserved (by: self.mSecondColor_property) // Stored property
-      newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
-      newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
+      newValue.mFirstX_property.startsBeingObserved (by: self.mFirstX_property) // Stored property
+      newValue.mFirstY_property.startsBeingObserved (by: self.mFirstY_property) // Stored property
+      newValue.mFirstColor_property.startsBeingObserved (by: self.mFirstColor_property) // Stored property
+      newValue.mSecondDx_property.startsBeingObserved (by: self.mSecondDx_property) // Stored property
+      newValue.mSecondDy_property.startsBeingObserved (by: self.mSecondDy_property) // Stored property
+      newValue.mSecondColor_property.startsBeingObserved (by: self.mSecondColor_property) // Stored property
+      newValue.objectDisplay_property.startsBeingObserved (by: self.objectDisplay_property) // Transient property
+      newValue.selectionDisplay_property.startsBeingObserved (by: self.selectionDisplay_property) // Transient property
     }
   }
 

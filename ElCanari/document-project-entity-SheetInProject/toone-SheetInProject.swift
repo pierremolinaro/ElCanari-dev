@@ -32,18 +32,18 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mSheetTitle_property.startsToBeObserved (by: self.mSheetTitle_property) // Stored property
-      newValue.schematicIssues_property.startsToBeObserved (by: self.schematicIssues_property) // Transient property
-      newValue.issues_property.startsToBeObserved (by: self.issues_property) // Transient property
-      newValue.connectedPoints_property.startsToBeObserved (by: self.connectedPoints_property) // Transient property
-      newValue.schematicConnexionWarnings_property.startsToBeObserved (by: self.schematicConnexionWarnings_property) // Transient property
-      newValue.schematicConnexionErrors_property.startsToBeObserved (by: self.schematicConnexionErrors_property) // Transient property
-      newValue.sheetDescriptor_property.startsToBeObserved (by: self.sheetDescriptor_property) // Transient property
+      newValue.mSheetTitle_property.startsBeingObserved (by: self.mSheetTitle_property) // Stored property
+      newValue.schematicIssues_property.startsBeingObserved (by: self.schematicIssues_property) // Transient property
+      newValue.issues_property.startsBeingObserved (by: self.issues_property) // Transient property
+      newValue.connectedPoints_property.startsBeingObserved (by: self.connectedPoints_property) // Transient property
+      newValue.schematicConnexionWarnings_property.startsBeingObserved (by: self.schematicConnexionWarnings_property) // Transient property
+      newValue.schematicConnexionErrors_property.startsBeingObserved (by: self.schematicConnexionErrors_property) // Transient property
+      newValue.sheetDescriptor_property.startsBeingObserved (by: self.sheetDescriptor_property) // Transient property
       if let relay = self.mObserversOf_mObjects { // to Many
-        newValue.mObjects_property.startsToBeObserved (by: relay)
+        newValue.mObjects_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mPoints { // to Many
-        newValue.mPoints_property.startsToBeObserved (by: relay)
+        newValue.mPoints_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -98,16 +98,16 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func toMany_mObjects_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mObjects_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mObjects {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mObjects_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mObjects_property.startsBeingObserved (by: relay)
       self.mObserversOf_mObjects = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -124,16 +124,16 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func toMany_mPoints_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPoints_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPoints {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mPoints_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mPoints_property.startsBeingObserved (by: relay)
       self.mObserversOf_mPoints = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

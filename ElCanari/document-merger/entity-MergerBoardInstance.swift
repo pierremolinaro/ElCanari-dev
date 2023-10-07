@@ -213,7 +213,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.myModel_property.startsToBeObserved (by: self.myModel_none)
+    self.myModel_property.startsBeingObserved (by: self.myModel_none)
     self.myRoot_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.myRoot_property.propval == nil)
@@ -221,7 +221,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.myRoot_property.startsToBeObserved (by: self.myRoot_none)
+    self.myRoot_property.startsBeingObserved (by: self.myRoot_none)
   //--- To one property: myModel (has opposite to many relationship: myInstances)
     self.myModel_property.undoManager = inUndoManager
     self.myModel_property.setOppositeRelationShipFunctions (
@@ -256,11 +256,11 @@ final class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.x_property.startsToBeObserved (by: self.instanceRect_property)
-    self.y_property.startsToBeObserved (by: self.instanceRect_property)
-    self.myModel_property.modelWidth_property.startsToBeObserved (by: self.instanceRect_property)
-    self.myModel_property.modelHeight_property.startsToBeObserved (by: self.instanceRect_property)
-    self.instanceRotation_property.startsToBeObserved (by: self.instanceRect_property)
+    self.x_property.startsBeingObserved (by: self.instanceRect_property)
+    self.y_property.startsBeingObserved (by: self.instanceRect_property)
+    self.myModel_property.modelWidth_property.startsBeingObserved (by: self.instanceRect_property)
+    self.myModel_property.modelHeight_property.startsBeingObserved (by: self.instanceRect_property)
+    self.instanceRotation_property.startsBeingObserved (by: self.instanceRect_property)
   //--- Atomic property: modelName
     self.modelName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -277,7 +277,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.myModel_property.name_property.startsToBeObserved (by: self.modelName_property)
+    self.myModel_property.name_property.startsBeingObserved (by: self.modelName_property)
   //--- Atomic property: boardLimitWidth
     self.boardLimitWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -294,7 +294,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.myModel_property.modelLimitWidth_property.startsToBeObserved (by: self.boardLimitWidth_property)
+    self.myModel_property.modelLimitWidth_property.startsBeingObserved (by: self.boardLimitWidth_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -311,7 +311,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.instanceRect_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.instanceRect_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -343,12 +343,12 @@ final class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.x_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.y_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.myModel_property.modelWidth_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.myModel_property.modelHeight_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.instanceRotation_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.myModel_property.imageForInstances_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.x_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.y_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.myModel_property.modelWidth_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.myModel_property.modelHeight_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.instanceRotation_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.myModel_property.imageForInstances_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- To one property: myRoot (has opposite to many relationship: boardInstances)
     self.myRoot_property.undoManager = inUndoManager
     self.myRoot_property.setOppositeRelationShipFunctions (

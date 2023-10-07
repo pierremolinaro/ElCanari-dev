@@ -227,8 +227,8 @@ final class DevicePinInProject : EBManagedObject {
         return .empty
       }
     }
-    self.mSymbolInstanceName_property.startsToBeObserved (by: self.pinQualifiedName_property)
-    self.mPinName_property.startsToBeObserved (by: self.pinQualifiedName_property)
+    self.mSymbolInstanceName_property.startsBeingObserved (by: self.pinQualifiedName_property)
+    self.mPinName_property.startsBeingObserved (by: self.pinQualifiedName_property)
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -278,18 +278,18 @@ final class DevicePinInProject : EBManagedObject {
         return .empty
       }
     }
-    self.mPinName_property.startsToBeObserved (by: self.descriptor_property)
-    self.mSymbolInstanceName_property.startsToBeObserved (by: self.descriptor_property)
-    self.mSymbolTypeName_property.startsToBeObserved (by: self.descriptor_property)
-    self.mPinX_property.startsToBeObserved (by: self.descriptor_property)
-    self.mPinY_property.startsToBeObserved (by: self.descriptor_property)
-    self.mXName_property.startsToBeObserved (by: self.descriptor_property)
-    self.mYName_property.startsToBeObserved (by: self.descriptor_property)
-    self.mNameHorizontalAlignment_property.startsToBeObserved (by: self.descriptor_property)
-    self.mPinNameIsDisplayedInSchematic_property.startsToBeObserved (by: self.descriptor_property)
-    self.mXNumber_property.startsToBeObserved (by: self.descriptor_property)
-    self.mYNumber_property.startsToBeObserved (by: self.descriptor_property)
-    self.mNumberHorizontalAlignment_property.startsToBeObserved (by: self.descriptor_property)
+    self.mPinName_property.startsBeingObserved (by: self.descriptor_property)
+    self.mSymbolInstanceName_property.startsBeingObserved (by: self.descriptor_property)
+    self.mSymbolTypeName_property.startsBeingObserved (by: self.descriptor_property)
+    self.mPinX_property.startsBeingObserved (by: self.descriptor_property)
+    self.mPinY_property.startsBeingObserved (by: self.descriptor_property)
+    self.mXName_property.startsBeingObserved (by: self.descriptor_property)
+    self.mYName_property.startsBeingObserved (by: self.descriptor_property)
+    self.mNameHorizontalAlignment_property.startsBeingObserved (by: self.descriptor_property)
+    self.mPinNameIsDisplayedInSchematic_property.startsBeingObserved (by: self.descriptor_property)
+    self.mXNumber_property.startsBeingObserved (by: self.descriptor_property)
+    self.mYNumber_property.startsBeingObserved (by: self.descriptor_property)
+    self.mNumberHorizontalAlignment_property.startsBeingObserved (by: self.descriptor_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

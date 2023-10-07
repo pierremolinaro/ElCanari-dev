@@ -3496,7 +3496,7 @@ import AppKit
           return .empty
         }
     }
-    preferences_packageColor_property.startsToBeObserved (by: self.addSegmentButtonImage_property)
+    preferences_packageColor_property.startsBeingObserved (by: self.addSegmentButtonImage_property)
 
   //--- Atomic property: addBezierButtonImage
     self.addBezierButtonImage_property.mReadModelFunction = {
@@ -3510,7 +3510,7 @@ import AppKit
           return .empty
         }
     }
-    preferences_packageColor_property.startsToBeObserved (by: self.addBezierButtonImage_property)
+    preferences_packageColor_property.startsBeingObserved (by: self.addBezierButtonImage_property)
 
   //--- Atomic property: addOvalButtonImage
     self.addOvalButtonImage_property.mReadModelFunction = {
@@ -3524,7 +3524,7 @@ import AppKit
           return .empty
         }
     }
-    preferences_packageColor_property.startsToBeObserved (by: self.addOvalButtonImage_property)
+    preferences_packageColor_property.startsBeingObserved (by: self.addOvalButtonImage_property)
 
   //--- Atomic property: addArcButtonImage
     self.addArcButtonImage_property.mReadModelFunction = {
@@ -3538,7 +3538,7 @@ import AppKit
           return .empty
         }
     }
-    preferences_packageColor_property.startsToBeObserved (by: self.addArcButtonImage_property)
+    preferences_packageColor_property.startsBeingObserved (by: self.addArcButtonImage_property)
 
   //--- Atomic property: addMasterPadButtonImage
     self.addMasterPadButtonImage_property.mReadModelFunction = {
@@ -3552,7 +3552,7 @@ import AppKit
           return .empty
         }
     }
-    preferences_frontSidePadColor_property.startsToBeObserved (by: self.addMasterPadButtonImage_property)
+    preferences_frontSidePadColor_property.startsBeingObserved (by: self.addMasterPadButtonImage_property)
 
   //--- Atomic property: addSlavePadButtonImage
     self.addSlavePadButtonImage_property.mReadModelFunction = {
@@ -3566,7 +3566,7 @@ import AppKit
           return .empty
         }
     }
-    preferences_frontSidePadColor_property.startsToBeObserved (by: self.addSlavePadButtonImage_property)
+    preferences_frontSidePadColor_property.startsBeingObserved (by: self.addSlavePadButtonImage_property)
 
   //--- Atomic property: addGuideButtonImage
     self.addGuideButtonImage_property.mReadModelFunction = {
@@ -3580,7 +3580,7 @@ import AppKit
           return .empty
         }
     }
-    preferences_packageGuideColor_property.startsToBeObserved (by: self.addGuideButtonImage_property)
+    preferences_packageGuideColor_property.startsBeingObserved (by: self.addGuideButtonImage_property)
 
   //--- Atomic property: addDimensionButtonImage
     self.addDimensionButtonImage_property.mReadModelFunction = {
@@ -3594,7 +3594,7 @@ import AppKit
           return .empty
         }
     }
-    preferences_packageDimensionColor_property.startsToBeObserved (by: self.addDimensionButtonImage_property)
+    preferences_packageDimensionColor_property.startsBeingObserved (by: self.addDimensionButtonImage_property)
 
   //--- Atomic property: addZoneButtonImage
     self.addZoneButtonImage_property.mReadModelFunction = {
@@ -3608,7 +3608,7 @@ import AppKit
           return .empty
         }
     }
-    preferences_padZoneColor_property.startsToBeObserved (by: self.addZoneButtonImage_property)
+    preferences_padZoneColor_property.startsBeingObserved (by: self.addZoneButtonImage_property)
 
 
   //--- Atomic property: issues
@@ -3630,8 +3630,8 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.issues_property.startsToBeObserved (by: self.issues_property)
-    self.documentFileName_property.startsToBeObserved (by: self.issues_property)
+    self.rootObject.issues_property.startsBeingObserved (by: self.issues_property)
+    self.documentFileName_property.startsBeingObserved (by: self.issues_property)
 
   //--- Atomic property: statusWarningCount
     self.statusWarningCount_property.mReadModelFunction = { [weak self] in
@@ -3649,7 +3649,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.statusWarningCount_property)
+    self.issues_property.startsBeingObserved (by: self.statusWarningCount_property)
 
   //--- Atomic property: statusErrorCount
     self.statusErrorCount_property.mReadModelFunction = { [weak self] in
@@ -3667,7 +3667,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.statusErrorCount_property)
+    self.issues_property.startsBeingObserved (by: self.statusErrorCount_property)
 
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
@@ -3685,7 +3685,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.metadataStatus_property)
+    self.issues_property.startsBeingObserved (by: self.metadataStatus_property)
 
   //--- Atomic property: segmentedControlPackageIssueImage
     self.segmentedControlPackageIssueImage_property.mReadModelFunction = { [weak self] in
@@ -3703,7 +3703,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.segmentedControlPackageIssueImage_property)
+    self.issues_property.startsBeingObserved (by: self.segmentedControlPackageIssueImage_property)
 
   //--- Atomic property: noIssue
     self.noIssue_property.mReadModelFunction = { [weak self] in
@@ -3721,7 +3721,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.noIssue_property)
+    self.issues_property.startsBeingObserved (by: self.noIssue_property)
 
   //--- Atomic property: segmentedControlSegmentIssueImage
     self.segmentedControlSegmentIssueImage_property.mReadModelFunction = { [weak self] in
@@ -3739,7 +3739,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.segmentedControlSegmentIssueImage_property)
+    self.issues_property.startsBeingObserved (by: self.segmentedControlSegmentIssueImage_property)
 
   //--- Atomic property: segmentedControlSegmentIssueString
     self.segmentedControlSegmentIssueString_property.mReadModelFunction = { [weak self] in
@@ -3757,7 +3757,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.segmentedControlSegmentIssueString_property)
+    self.issues_property.startsBeingObserved (by: self.segmentedControlSegmentIssueString_property)
 
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
@@ -3775,7 +3775,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.statusMessage_property)
+    self.issues_property.startsBeingObserved (by: self.statusMessage_property)
 
   }
 

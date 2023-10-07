@@ -166,25 +166,25 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     do{
       let observer = EBOutletEvent () //§ EBModelEvent ()
       observer.mEventCallBack = { [weak self] in self?.modelImageFirstPointXDidChange () }
-      self.rootObject.mModelImageFirstPointX_property.startsToBeObserved (by: observer)
+      self.rootObject.mModelImageFirstPointX_property.startsBeingObserved (by: observer)
       self.mModelImageFirstPointXObserver = observer
     }
     do{
       let observer = EBOutletEvent () //§ EBModelEvent ()
       observer.mEventCallBack = { [weak self] in self?.modelImageFirstPointYDidChange () }
-      self.rootObject.mModelImageFirstPointY_property.startsToBeObserved (by: observer)
+      self.rootObject.mModelImageFirstPointY_property.startsBeingObserved (by: observer)
       self.mModelImageFirstPointYObserver = observer
     }
     do{
       let observer = EBOutletEvent () //§ EBModelEvent ()
       observer.mEventCallBack = { [weak self] in self?.modelImagePointsDxDidChange () }
-      self.rootObject.mModelImageSecondPointDx_property.startsToBeObserved (by: observer)
+      self.rootObject.mModelImageSecondPointDx_property.startsBeingObserved (by: observer)
       self.mModelImagePointsDxObserver = observer
     }
     do{
       let observer = EBOutletEvent () //§ EBModelEvent ()
       observer.mEventCallBack = { [weak self] in self?.modelImagePointsDyDidChange () }
-      self.rootObject.mModelImageSecondPointDy_property.startsToBeObserved (by: observer)
+      self.rootObject.mModelImageSecondPointDy_property.startsBeingObserved (by: observer)
       self.mModelImagePointsDyObserver = observer
     }
   }
@@ -292,13 +292,13 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 
   final func addPadNumberingObservers () {
     self.mPadNumberingObserver.mEventCallBack = { [weak self] in self?.handlePadNumbering () }
-    self.rootObject.packagePads_property.toMany_xCenter_StartsToBeObserved (by: self.mPadNumberingObserver)
-    self.rootObject.packagePads_property.toMany_yCenter_StartsToBeObserved (by: self.mPadNumberingObserver)
-    self.rootObject.padNumbering_property.startsToBeObserved (by: self.mPadNumberingObserver)
-    self.rootObject.packageZones_property.toMany_rect_StartsToBeObserved (by: self.mPadNumberingObserver)
-    self.rootObject.packageZones_property.toMany_zoneNumbering_StartsToBeObserved (by: self.mPadNumberingObserver)
-    self.rootObject.packageZones_property.startsToBeObserved (by: self.mPadNumberingObserver)
-    self.rootObject.counterClockNumberingStartAngle_property.startsToBeObserved (by: self.mPadNumberingObserver)
+    self.rootObject.packagePads_property.toMany_xCenter_StartsBeingObserved (by: self.mPadNumberingObserver)
+    self.rootObject.packagePads_property.toMany_yCenter_StartsBeingObserved (by: self.mPadNumberingObserver)
+    self.rootObject.padNumbering_property.startsBeingObserved (by: self.mPadNumberingObserver)
+    self.rootObject.packageZones_property.toMany_rect_StartsBeingObserved (by: self.mPadNumberingObserver)
+    self.rootObject.packageZones_property.toMany_zoneNumbering_StartsBeingObserved (by: self.mPadNumberingObserver)
+    self.rootObject.packageZones_property.startsBeingObserved (by: self.mPadNumberingObserver)
+    self.rootObject.counterClockNumberingStartAngle_property.startsBeingObserved (by: self.mPadNumberingObserver)
   }
 
   //····················································································································

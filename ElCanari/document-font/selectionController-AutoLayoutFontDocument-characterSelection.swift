@@ -134,7 +134,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_advance (model : ReadOnlyArrayOf_FontCharacter) {
-    model.toMany_advance_StartsToBeObserved (by: self.advance_property)
+    model.toMany_advance_StartsBeingObserved (by: self.advance_property)
     self.advance_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -186,7 +186,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_codePoint (model : ReadOnlyArrayOf_FontCharacter) {
-    model.toMany_codePoint_StartsToBeObserved (by: self.codePoint_property)
+    model.toMany_codePoint_StartsBeingObserved (by: self.codePoint_property)
     self.codePoint_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -238,7 +238,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_gerberCode (model : ReadOnlyArrayOf_FontCharacter) {
-    model.toMany_gerberCode_StartsToBeObserved (by: self.gerberCode_property)
+    model.toMany_gerberCode_StartsBeingObserved (by: self.gerberCode_property)
     self.gerberCode_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -278,7 +278,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_gerberCodeInstructionCountMessage (model : ReadOnlyArrayOf_FontCharacter) {
-    model.toMany_gerberCodeInstructionCountMessage_StartsToBeObserved (by: self.gerberCodeInstructionCountMessage_property)
+    model.toMany_gerberCodeInstructionCountMessage_StartsBeingObserved (by: self.gerberCodeInstructionCountMessage_property)
     self.gerberCodeInstructionCountMessage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -318,7 +318,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_issues (model : ReadOnlyArrayOf_FontCharacter) {
-    model.toMany_issues_StartsToBeObserved (by: self.issues_property)
+    model.toMany_issues_StartsBeingObserved (by: self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -358,7 +358,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_mWarnsWhenAdvanceIsZero (model : ReadOnlyArrayOf_FontCharacter) {
-    model.toMany_mWarnsWhenAdvanceIsZero_StartsToBeObserved (by: self.mWarnsWhenAdvanceIsZero_property)
+    model.toMany_mWarnsWhenAdvanceIsZero_StartsBeingObserved (by: self.mWarnsWhenAdvanceIsZero_property)
     self.mWarnsWhenAdvanceIsZero_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -410,7 +410,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_mWarnsWhenNoSegment (model : ReadOnlyArrayOf_FontCharacter) {
-    model.toMany_mWarnsWhenNoSegment_StartsToBeObserved (by: self.mWarnsWhenNoSegment_property)
+    model.toMany_mWarnsWhenNoSegment_StartsBeingObserved (by: self.mWarnsWhenNoSegment_property)
     self.mWarnsWhenNoSegment_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -462,7 +462,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_segmentArrayForDrawing (model : ReadOnlyArrayOf_FontCharacter) {
-    model.toMany_segmentArrayForDrawing_StartsToBeObserved (by: self.segmentArrayForDrawing_property)
+    model.toMany_segmentArrayForDrawing_StartsBeingObserved (by: self.segmentArrayForDrawing_property)
     self.segmentArrayForDrawing_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {

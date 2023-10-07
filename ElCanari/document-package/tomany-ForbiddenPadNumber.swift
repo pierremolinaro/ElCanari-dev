@@ -24,7 +24,7 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_padNumber { // Stored property
-        managedObject.padNumber_property.startsToBeObserved (by: relay)
+        managedObject.padNumber_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -37,19 +37,19 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
 
   //····················································································································
 
-  final func toMany_padNumber_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_padNumber_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_padNumber {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.padNumber_property.startsToBeObserved (by: relay)
+        managedObject.padNumber_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_padNumber = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

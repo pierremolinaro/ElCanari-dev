@@ -149,7 +149,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_documentSize (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.toMany_documentSize_StartsToBeObserved (by: self.documentSize_property)
+    model.toMany_documentSize_StartsBeingObserved (by: self.documentSize_property)
     self.documentSize_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -189,7 +189,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_instanceCount (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.toMany_instanceCount_StartsToBeObserved (by: self.instanceCount_property)
+    model.toMany_instanceCount_StartsBeingObserved (by: self.instanceCount_property)
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -229,7 +229,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_mFileData (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.toMany_mFileData_StartsToBeObserved (by: self.mFileData_property)
+    model.toMany_mFileData_StartsBeingObserved (by: self.mFileData_property)
     self.mFileData_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -281,7 +281,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_mFilledBezierPath (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.toMany_mFilledBezierPath_StartsToBeObserved (by: self.mFilledBezierPath_property)
+    model.toMany_mFilledBezierPath_StartsBeingObserved (by: self.mFilledBezierPath_property)
     self.mFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -333,7 +333,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_mStrokeBezierPath (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.toMany_mStrokeBezierPath_StartsToBeObserved (by: self.mStrokeBezierPath_property)
+    model.toMany_mStrokeBezierPath_StartsBeingObserved (by: self.mStrokeBezierPath_property)
     self.mStrokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -385,7 +385,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_mTypeName (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.toMany_mTypeName_StartsToBeObserved (by: self.mTypeName_property)
+    model.toMany_mTypeName_StartsBeingObserved (by: self.mTypeName_property)
     self.mTypeName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -437,7 +437,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_mVersion (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.toMany_mVersion_StartsToBeObserved (by: self.mVersion_property)
+    model.toMany_mVersion_StartsBeingObserved (by: self.mVersion_property)
     self.mVersion_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -489,7 +489,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_pinNameShape (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.toMany_pinNameShape_StartsToBeObserved (by: self.pinNameShape_property)
+    model.toMany_pinNameShape_StartsBeingObserved (by: self.pinNameShape_property)
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -529,7 +529,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_versionString (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.toMany_versionString_StartsToBeObserved (by: self.versionString_property)
+    model.toMany_versionString_StartsBeingObserved (by: self.versionString_property)
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {

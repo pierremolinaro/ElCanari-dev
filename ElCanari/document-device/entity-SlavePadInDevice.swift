@@ -276,7 +276,7 @@ final class SlavePadInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mMasterPad_property.startsToBeObserved (by: self.mMasterPad_none)
+    self.mMasterPad_property.startsBeingObserved (by: self.mMasterPad_none)
   //--- To one property: mMasterPad (has opposite to many relationship: mSlavePads)
     self.mMasterPad_property.undoManager = inUndoManager
     self.mMasterPad_property.setOppositeRelationShipFunctions (
@@ -320,14 +320,14 @@ final class SlavePadInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mCenterX_property.startsToBeObserved (by: self.frontSideFilledBezierPath_property)
-    self.mCenterY_property.startsToBeObserved (by: self.frontSideFilledBezierPath_property)
-    self.mWidth_property.startsToBeObserved (by: self.frontSideFilledBezierPath_property)
-    self.mHeight_property.startsToBeObserved (by: self.frontSideFilledBezierPath_property)
-    self.mHoleWidth_property.startsToBeObserved (by: self.frontSideFilledBezierPath_property)
-    self.mHoleHeight_property.startsToBeObserved (by: self.frontSideFilledBezierPath_property)
-    self.mShape_property.startsToBeObserved (by: self.frontSideFilledBezierPath_property)
-    self.mStyle_property.startsToBeObserved (by: self.frontSideFilledBezierPath_property)
+    self.mCenterX_property.startsBeingObserved (by: self.frontSideFilledBezierPath_property)
+    self.mCenterY_property.startsBeingObserved (by: self.frontSideFilledBezierPath_property)
+    self.mWidth_property.startsBeingObserved (by: self.frontSideFilledBezierPath_property)
+    self.mHeight_property.startsBeingObserved (by: self.frontSideFilledBezierPath_property)
+    self.mHoleWidth_property.startsBeingObserved (by: self.frontSideFilledBezierPath_property)
+    self.mHoleHeight_property.startsBeingObserved (by: self.frontSideFilledBezierPath_property)
+    self.mShape_property.startsBeingObserved (by: self.frontSideFilledBezierPath_property)
+    self.mStyle_property.startsBeingObserved (by: self.frontSideFilledBezierPath_property)
   //--- Atomic property: backSideFilledBezierPath
     self.backSideFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -365,14 +365,14 @@ final class SlavePadInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mCenterX_property.startsToBeObserved (by: self.backSideFilledBezierPath_property)
-    self.mCenterY_property.startsToBeObserved (by: self.backSideFilledBezierPath_property)
-    self.mWidth_property.startsToBeObserved (by: self.backSideFilledBezierPath_property)
-    self.mHeight_property.startsToBeObserved (by: self.backSideFilledBezierPath_property)
-    self.mHoleWidth_property.startsToBeObserved (by: self.backSideFilledBezierPath_property)
-    self.mHoleHeight_property.startsToBeObserved (by: self.backSideFilledBezierPath_property)
-    self.mShape_property.startsToBeObserved (by: self.backSideFilledBezierPath_property)
-    self.mStyle_property.startsToBeObserved (by: self.backSideFilledBezierPath_property)
+    self.mCenterX_property.startsBeingObserved (by: self.backSideFilledBezierPath_property)
+    self.mCenterY_property.startsBeingObserved (by: self.backSideFilledBezierPath_property)
+    self.mWidth_property.startsBeingObserved (by: self.backSideFilledBezierPath_property)
+    self.mHeight_property.startsBeingObserved (by: self.backSideFilledBezierPath_property)
+    self.mHoleWidth_property.startsBeingObserved (by: self.backSideFilledBezierPath_property)
+    self.mHoleHeight_property.startsBeingObserved (by: self.backSideFilledBezierPath_property)
+    self.mShape_property.startsBeingObserved (by: self.backSideFilledBezierPath_property)
+    self.mStyle_property.startsBeingObserved (by: self.backSideFilledBezierPath_property)
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -401,11 +401,11 @@ final class SlavePadInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mCenterX_property.startsToBeObserved (by: self.padNumberDisplay_property)
-    self.mCenterY_property.startsToBeObserved (by: self.padNumberDisplay_property)
-    preferences_padNumberFont_property.startsToBeObserved (by: self.padNumberDisplay_property)
-    preferences_padNumberColor_property.startsToBeObserved (by: self.padNumberDisplay_property)
-    self.mMasterPad_property.mName_property.startsToBeObserved (by: self.padNumberDisplay_property)
+    self.mCenterX_property.startsBeingObserved (by: self.padNumberDisplay_property)
+    self.mCenterY_property.startsBeingObserved (by: self.padNumberDisplay_property)
+    preferences_padNumberFont_property.startsBeingObserved (by: self.padNumberDisplay_property)
+    preferences_padNumberColor_property.startsBeingObserved (by: self.padNumberDisplay_property)
+    self.mMasterPad_property.mName_property.startsBeingObserved (by: self.padNumberDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mCenterX_property.setSignatureObserver (observer: self)

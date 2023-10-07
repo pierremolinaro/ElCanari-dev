@@ -72,55 +72,55 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_mXUnit { // Stored property
-        managedObject.mXUnit_property.startsToBeObserved (by: relay)
+        managedObject.mXUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mY { // Stored property
-        managedObject.mY_property.startsToBeObserved (by: relay)
+        managedObject.mY_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mYUnit { // Stored property
-        managedObject.mYUnit_property.startsToBeObserved (by: relay)
+        managedObject.mYUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mWidth { // Stored property
-        managedObject.mWidth_property.startsToBeObserved (by: relay)
+        managedObject.mWidth_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mWidthUnit { // Stored property
-        managedObject.mWidthUnit_property.startsToBeObserved (by: relay)
+        managedObject.mWidthUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mHeight { // Stored property
-        managedObject.mHeight_property.startsToBeObserved (by: relay)
+        managedObject.mHeight_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mHeightUnit { // Stored property
-        managedObject.mHeightUnit_property.startsToBeObserved (by: relay)
+        managedObject.mHeightUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mIsInFrontLayer { // Stored property
-        managedObject.mIsInFrontLayer_property.startsToBeObserved (by: relay)
+        managedObject.mIsInFrontLayer_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mIsInBackLayer { // Stored property
-        managedObject.mIsInBackLayer_property.startsToBeObserved (by: relay)
+        managedObject.mIsInBackLayer_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mIsInInner1Layer { // Stored property
-        managedObject.mIsInInner1Layer_property.startsToBeObserved (by: relay)
+        managedObject.mIsInInner1Layer_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mIsInInner2Layer { // Stored property
-        managedObject.mIsInInner2Layer_property.startsToBeObserved (by: relay)
+        managedObject.mIsInInner2Layer_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mIsInInner3Layer { // Stored property
-        managedObject.mIsInInner3Layer_property.startsToBeObserved (by: relay)
+        managedObject.mIsInInner3Layer_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mIsInInner4Layer { // Stored property
-        managedObject.mIsInInner4Layer_property.startsToBeObserved (by: relay)
+        managedObject.mIsInInner4Layer_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mX { // Stored property
-        managedObject.mX_property.startsToBeObserved (by: relay)
+        managedObject.mX_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_objectDisplay { // Transient property
-        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_selectionDisplay { // Transient property
-        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+        managedObject.selectionDisplay_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_signatureForERCChecking { // Transient property
-        managedObject.signatureForERCChecking_property.startsToBeObserved (by: relay)
+        managedObject.signatureForERCChecking_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -133,19 +133,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_mXUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mXUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mXUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mXUnit_property.startsToBeObserved (by: relay)
+        managedObject.mXUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mXUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -162,19 +162,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_mY_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mY_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mY {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mY_property.startsToBeObserved (by: relay)
+        managedObject.mY_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mY = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -191,19 +191,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_mYUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mYUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mYUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mYUnit_property.startsToBeObserved (by: relay)
+        managedObject.mYUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mYUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -220,19 +220,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_mWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWidth_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWidth {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mWidth_property.startsToBeObserved (by: relay)
+        managedObject.mWidth_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mWidth = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -249,19 +249,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_mWidthUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWidthUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWidthUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mWidthUnit_property.startsToBeObserved (by: relay)
+        managedObject.mWidthUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mWidthUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -278,19 +278,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_mHeight_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mHeight_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mHeight {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mHeight_property.startsToBeObserved (by: relay)
+        managedObject.mHeight_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mHeight = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -307,19 +307,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_mHeightUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mHeightUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mHeightUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mHeightUnit_property.startsToBeObserved (by: relay)
+        managedObject.mHeightUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mHeightUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -336,19 +336,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_mIsInFrontLayer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInFrontLayer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mIsInFrontLayer {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mIsInFrontLayer_property.startsToBeObserved (by: relay)
+        managedObject.mIsInFrontLayer_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mIsInFrontLayer = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -365,19 +365,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_mIsInBackLayer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInBackLayer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mIsInBackLayer {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mIsInBackLayer_property.startsToBeObserved (by: relay)
+        managedObject.mIsInBackLayer_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mIsInBackLayer = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -394,19 +394,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_mIsInInner1Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInInner1Layer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mIsInInner1Layer {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mIsInInner1Layer_property.startsToBeObserved (by: relay)
+        managedObject.mIsInInner1Layer_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mIsInInner1Layer = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -423,19 +423,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_mIsInInner2Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInInner2Layer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mIsInInner2Layer {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mIsInInner2Layer_property.startsToBeObserved (by: relay)
+        managedObject.mIsInInner2Layer_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mIsInInner2Layer = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -452,19 +452,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_mIsInInner3Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInInner3Layer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mIsInInner3Layer {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mIsInInner3Layer_property.startsToBeObserved (by: relay)
+        managedObject.mIsInInner3Layer_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mIsInInner3Layer = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -481,19 +481,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_mIsInInner4Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInInner4Layer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mIsInInner4Layer {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mIsInInner4Layer_property.startsToBeObserved (by: relay)
+        managedObject.mIsInInner4Layer_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mIsInInner4Layer = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -510,19 +510,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_mX_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mX_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mX {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mX_property.startsToBeObserved (by: relay)
+        managedObject.mX_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mX = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -539,19 +539,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_objectDisplay = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -568,19 +568,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+        managedObject.selectionDisplay_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_selectionDisplay = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -597,19 +597,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func toMany_signatureForERCChecking_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_signatureForERCChecking_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_signatureForERCChecking {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.signatureForERCChecking_property.startsToBeObserved (by: relay)
+        managedObject.signatureForERCChecking_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_signatureForERCChecking = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································

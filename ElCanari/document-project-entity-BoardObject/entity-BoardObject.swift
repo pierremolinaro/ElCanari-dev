@@ -578,7 +578,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.startsToBeObserved (by: self.mRoot_none)
+    self.mRoot_property.startsBeingObserved (by: self.mRoot_none)
   //--- To one property: mRoot (has opposite to many relationship: mBoardObjects)
     self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -601,7 +601,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.startsToBeObserved (by: self.isPlacedInBoard_property)
+    self.mRoot_property.startsBeingObserved (by: self.isPlacedInBoard_property)
   //--- Atomic property: displayFrontLegendForBoard
     self.displayFrontLegendForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -618,7 +618,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayFrontLegendForBoard_property.startsToBeObserved (by: self.displayFrontLegendForBoard_property)
+    self.mRoot_property.displayFrontLegendForBoard_property.startsBeingObserved (by: self.displayFrontLegendForBoard_property)
   //--- Atomic property: displayBackLegendForBoard
     self.displayBackLegendForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -635,7 +635,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayBackLegendForBoard_property.startsToBeObserved (by: self.displayBackLegendForBoard_property)
+    self.mRoot_property.displayBackLegendForBoard_property.startsBeingObserved (by: self.displayBackLegendForBoard_property)
   //--- Atomic property: displayFrontLayoutForBoard
     self.displayFrontLayoutForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -652,7 +652,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayFrontLayoutForBoard_property.startsToBeObserved (by: self.displayFrontLayoutForBoard_property)
+    self.mRoot_property.displayFrontLayoutForBoard_property.startsBeingObserved (by: self.displayFrontLayoutForBoard_property)
   //--- Atomic property: displayBackLayoutForBoard
     self.displayBackLayoutForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -669,7 +669,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayBackLayoutForBoard_property.startsToBeObserved (by: self.displayBackLayoutForBoard_property)
+    self.mRoot_property.displayBackLayoutForBoard_property.startsBeingObserved (by: self.displayBackLayoutForBoard_property)
   //--- Atomic property: displayInner1LayoutForBoard
     self.displayInner1LayoutForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -686,7 +686,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayInner1LayoutForBoard_property.startsToBeObserved (by: self.displayInner1LayoutForBoard_property)
+    self.mRoot_property.displayInner1LayoutForBoard_property.startsBeingObserved (by: self.displayInner1LayoutForBoard_property)
   //--- Atomic property: displayInner2LayoutForBoard
     self.displayInner2LayoutForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -703,7 +703,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayInner2LayoutForBoard_property.startsToBeObserved (by: self.displayInner2LayoutForBoard_property)
+    self.mRoot_property.displayInner2LayoutForBoard_property.startsBeingObserved (by: self.displayInner2LayoutForBoard_property)
   //--- Atomic property: displayInner3LayoutForBoard
     self.displayInner3LayoutForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -720,7 +720,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayInner3LayoutForBoard_property.startsToBeObserved (by: self.displayInner3LayoutForBoard_property)
+    self.mRoot_property.displayInner3LayoutForBoard_property.startsBeingObserved (by: self.displayInner3LayoutForBoard_property)
   //--- Atomic property: displayInner4LayoutForBoard
     self.displayInner4LayoutForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -737,7 +737,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayInner4LayoutForBoard_property.startsToBeObserved (by: self.displayInner4LayoutForBoard_property)
+    self.mRoot_property.displayInner4LayoutForBoard_property.startsBeingObserved (by: self.displayInner4LayoutForBoard_property)
   //--- Atomic property: displayFrontPadsForBoard
     self.displayFrontPadsForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -754,7 +754,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayFrontPadsForBoard_property.startsToBeObserved (by: self.displayFrontPadsForBoard_property)
+    self.mRoot_property.displayFrontPadsForBoard_property.startsBeingObserved (by: self.displayFrontPadsForBoard_property)
   //--- Atomic property: displayBackPadsForBoard
     self.displayBackPadsForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -771,7 +771,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayBackPadsForBoard_property.startsToBeObserved (by: self.displayBackPadsForBoard_property)
+    self.mRoot_property.displayBackPadsForBoard_property.startsBeingObserved (by: self.displayBackPadsForBoard_property)
   //--- Atomic property: displayPadNumbersForBoard
     self.displayPadNumbersForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -788,7 +788,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayPadNumbersForBoard_property.startsToBeObserved (by: self.displayPadNumbersForBoard_property)
+    self.mRoot_property.displayPadNumbersForBoard_property.startsBeingObserved (by: self.displayPadNumbersForBoard_property)
   //--- Atomic property: displayFrontRestrictRectangles
     self.displayFrontRestrictRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -805,7 +805,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayFrontRestrictRectangles_property.startsToBeObserved (by: self.displayFrontRestrictRectangles_property)
+    self.mRoot_property.displayFrontRestrictRectangles_property.startsBeingObserved (by: self.displayFrontRestrictRectangles_property)
   //--- Atomic property: displayBackRestrictRectangles
     self.displayBackRestrictRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -822,7 +822,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayBackRestrictRectangles_property.startsToBeObserved (by: self.displayBackRestrictRectangles_property)
+    self.mRoot_property.displayBackRestrictRectangles_property.startsBeingObserved (by: self.displayBackRestrictRectangles_property)
   //--- Atomic property: displayInner1RestrictRectangles
     self.displayInner1RestrictRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -839,7 +839,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayInner1RestrictRectangles_property.startsToBeObserved (by: self.displayInner1RestrictRectangles_property)
+    self.mRoot_property.displayInner1RestrictRectangles_property.startsBeingObserved (by: self.displayInner1RestrictRectangles_property)
   //--- Atomic property: displayInner2RestrictRectangles
     self.displayInner2RestrictRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -856,7 +856,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayInner2RestrictRectangles_property.startsToBeObserved (by: self.displayInner2RestrictRectangles_property)
+    self.mRoot_property.displayInner2RestrictRectangles_property.startsBeingObserved (by: self.displayInner2RestrictRectangles_property)
   //--- Atomic property: displayInner3RestrictRectangles
     self.displayInner3RestrictRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -873,7 +873,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayInner3RestrictRectangles_property.startsToBeObserved (by: self.displayInner3RestrictRectangles_property)
+    self.mRoot_property.displayInner3RestrictRectangles_property.startsBeingObserved (by: self.displayInner3RestrictRectangles_property)
   //--- Atomic property: displayInner4RestrictRectangles
     self.displayInner4RestrictRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -890,7 +890,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.displayInner4RestrictRectangles_property.startsToBeObserved (by: self.displayInner4RestrictRectangles_property)
+    self.mRoot_property.displayInner4RestrictRectangles_property.startsBeingObserved (by: self.displayInner4RestrictRectangles_property)
   //--- Atomic property: packageDrawingWidthMultpliedByTenForBoard
     self.packageDrawingWidthMultpliedByTenForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -907,7 +907,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.packageDrawingWidthMultpliedByTenForBoard_property.startsToBeObserved (by: self.packageDrawingWidthMultpliedByTenForBoard_property)
+    self.mRoot_property.packageDrawingWidthMultpliedByTenForBoard_property.startsBeingObserved (by: self.packageDrawingWidthMultpliedByTenForBoard_property)
   //--- Atomic property: errorOrWarningIssueSize
     self.errorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -924,7 +924,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.mErrorOrWarningIssueSize_property.startsToBeObserved (by: self.errorOrWarningIssueSize_property)
+    self.mRoot_property.mErrorOrWarningIssueSize_property.startsBeingObserved (by: self.errorOrWarningIssueSize_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

@@ -904,7 +904,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_artworkName (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_artworkName_StartsToBeObserved (by: self.artworkName_property)
+    model.toMany_artworkName_StartsBeingObserved (by: self.artworkName_property)
     self.artworkName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -956,7 +956,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backComponentNameSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backComponentNameSegments_StartsToBeObserved (by: self.backComponentNameSegments_property)
+    model.toMany_backComponentNameSegments_StartsBeingObserved (by: self.backComponentNameSegments_property)
     self.backComponentNameSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -996,7 +996,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backComponentNamesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backComponentNamesBezierPaths_StartsToBeObserved (by: self.backComponentNamesBezierPaths_property)
+    model.toMany_backComponentNamesBezierPaths_StartsBeingObserved (by: self.backComponentNamesBezierPaths_property)
     self.backComponentNamesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1036,7 +1036,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backComponentValueSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backComponentValueSegments_StartsToBeObserved (by: self.backComponentValueSegments_property)
+    model.toMany_backComponentValueSegments_StartsBeingObserved (by: self.backComponentValueSegments_property)
     self.backComponentValueSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1076,7 +1076,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backComponentValuesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backComponentValuesBezierPaths_StartsToBeObserved (by: self.backComponentValuesBezierPaths_property)
+    model.toMany_backComponentValuesBezierPaths_StartsBeingObserved (by: self.backComponentValuesBezierPaths_property)
     self.backComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1116,7 +1116,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backLayoutTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backLayoutTextsBezierPaths_StartsToBeObserved (by: self.backLayoutTextsBezierPaths_property)
+    model.toMany_backLayoutTextsBezierPaths_StartsBeingObserved (by: self.backLayoutTextsBezierPaths_property)
     self.backLayoutTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1156,7 +1156,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backLayoutTextsSegments_StartsToBeObserved (by: self.backLayoutTextsSegments_property)
+    model.toMany_backLayoutTextsSegments_StartsBeingObserved (by: self.backLayoutTextsSegments_property)
     self.backLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1196,7 +1196,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backLegendBoardImageRectangles (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backLegendBoardImageRectangles_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
+    model.toMany_backLegendBoardImageRectangles_StartsBeingObserved (by: self.backLegendBoardImageRectangles_property)
     self.backLegendBoardImageRectangles_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1236,7 +1236,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backLegendLinesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backLegendLinesBezierPaths_StartsToBeObserved (by: self.backLegendLinesBezierPaths_property)
+    model.toMany_backLegendLinesBezierPaths_StartsBeingObserved (by: self.backLegendLinesBezierPaths_property)
     self.backLegendLinesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1276,7 +1276,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backLegendLinesSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backLegendLinesSegments_StartsToBeObserved (by: self.backLegendLinesSegments_property)
+    model.toMany_backLegendLinesSegments_StartsBeingObserved (by: self.backLegendLinesSegments_property)
     self.backLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1316,7 +1316,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backLegendQRCodeRectangles (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backLegendQRCodeRectangles_StartsToBeObserved (by: self.backLegendQRCodeRectangles_property)
+    model.toMany_backLegendQRCodeRectangles_StartsBeingObserved (by: self.backLegendQRCodeRectangles_property)
     self.backLegendQRCodeRectangles_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1356,7 +1356,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backLegendTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backLegendTextsBezierPaths_StartsToBeObserved (by: self.backLegendTextsBezierPaths_property)
+    model.toMany_backLegendTextsBezierPaths_StartsBeingObserved (by: self.backLegendTextsBezierPaths_property)
     self.backLegendTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1396,7 +1396,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backLegendTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backLegendTextsSegments_StartsToBeObserved (by: self.backLegendTextsSegments_property)
+    model.toMany_backLegendTextsSegments_StartsBeingObserved (by: self.backLegendTextsSegments_property)
     self.backLegendTextsSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1436,7 +1436,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backPackagesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backPackagesBezierPaths_StartsToBeObserved (by: self.backPackagesBezierPaths_property)
+    model.toMany_backPackagesBezierPaths_StartsBeingObserved (by: self.backPackagesBezierPaths_property)
     self.backPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1476,7 +1476,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backPackagesSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backPackagesSegments_StartsToBeObserved (by: self.backPackagesSegments_property)
+    model.toMany_backPackagesSegments_StartsBeingObserved (by: self.backPackagesSegments_property)
     self.backPackagesSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1516,7 +1516,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backPadArray (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backPadArray_StartsToBeObserved (by: self.backPadArray_property)
+    model.toMany_backPadArray_StartsBeingObserved (by: self.backPadArray_property)
     self.backPadArray_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1556,7 +1556,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backPadsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backPadsBezierPaths_StartsToBeObserved (by: self.backPadsBezierPaths_property)
+    model.toMany_backPadsBezierPaths_StartsBeingObserved (by: self.backPadsBezierPaths_property)
     self.backPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1596,7 +1596,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backTrackSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backTrackSegments_StartsToBeObserved (by: self.backTrackSegments_property)
+    model.toMany_backTrackSegments_StartsBeingObserved (by: self.backTrackSegments_property)
     self.backTrackSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1636,7 +1636,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_backTracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_backTracksBezierPaths_StartsToBeObserved (by: self.backTracksBezierPaths_property)
+    model.toMany_backTracksBezierPaths_StartsBeingObserved (by: self.backTracksBezierPaths_property)
     self.backTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1676,7 +1676,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_boardLimitsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_boardLimitsBezierPaths_StartsToBeObserved (by: self.boardLimitsBezierPaths_property)
+    model.toMany_boardLimitsBezierPaths_StartsBeingObserved (by: self.boardLimitsBezierPaths_property)
     self.boardLimitsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1716,7 +1716,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drillSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_drillSegments_StartsToBeObserved (by: self.drillSegments_property)
+    model.toMany_drillSegments_StartsBeingObserved (by: self.drillSegments_property)
     self.drillSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1756,7 +1756,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_errorArchiveLabelColor (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_errorArchiveLabelColor_StartsToBeObserved (by: self.errorArchiveLabelColor_property)
+    model.toMany_errorArchiveLabelColor_StartsBeingObserved (by: self.errorArchiveLabelColor_property)
     self.errorArchiveLabelColor_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1796,7 +1796,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_errorArchiveLabelSize (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_errorArchiveLabelSize_StartsToBeObserved (by: self.errorArchiveLabelSize_property)
+    model.toMany_errorArchiveLabelSize_StartsBeingObserved (by: self.errorArchiveLabelSize_property)
     self.errorArchiveLabelSize_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1836,7 +1836,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_errorArchiveVersionMessage (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_errorArchiveVersionMessage_StartsToBeObserved (by: self.errorArchiveVersionMessage_property)
+    model.toMany_errorArchiveVersionMessage_StartsBeingObserved (by: self.errorArchiveVersionMessage_property)
     self.errorArchiveVersionMessage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1876,7 +1876,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_errorArchiveVersionMessageIsHidden (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_errorArchiveVersionMessageIsHidden_StartsToBeObserved (by: self.errorArchiveVersionMessageIsHidden_property)
+    model.toMany_errorArchiveVersionMessageIsHidden_StartsBeingObserved (by: self.errorArchiveVersionMessageIsHidden_property)
     self.errorArchiveVersionMessageIsHidden_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1916,7 +1916,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontComponentNameSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontComponentNameSegments_StartsToBeObserved (by: self.frontComponentNameSegments_property)
+    model.toMany_frontComponentNameSegments_StartsBeingObserved (by: self.frontComponentNameSegments_property)
     self.frontComponentNameSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1956,7 +1956,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontComponentNamesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontComponentNamesBezierPaths_StartsToBeObserved (by: self.frontComponentNamesBezierPaths_property)
+    model.toMany_frontComponentNamesBezierPaths_StartsBeingObserved (by: self.frontComponentNamesBezierPaths_property)
     self.frontComponentNamesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1996,7 +1996,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontComponentValueSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontComponentValueSegments_StartsToBeObserved (by: self.frontComponentValueSegments_property)
+    model.toMany_frontComponentValueSegments_StartsBeingObserved (by: self.frontComponentValueSegments_property)
     self.frontComponentValueSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2036,7 +2036,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontComponentValuesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontComponentValuesBezierPaths_StartsToBeObserved (by: self.frontComponentValuesBezierPaths_property)
+    model.toMany_frontComponentValuesBezierPaths_StartsBeingObserved (by: self.frontComponentValuesBezierPaths_property)
     self.frontComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2076,7 +2076,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontLayoutTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontLayoutTextsBezierPaths_StartsToBeObserved (by: self.frontLayoutTextsBezierPaths_property)
+    model.toMany_frontLayoutTextsBezierPaths_StartsBeingObserved (by: self.frontLayoutTextsBezierPaths_property)
     self.frontLayoutTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2116,7 +2116,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontLayoutTextsSegments_StartsToBeObserved (by: self.frontLayoutTextsSegments_property)
+    model.toMany_frontLayoutTextsSegments_StartsBeingObserved (by: self.frontLayoutTextsSegments_property)
     self.frontLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2156,7 +2156,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontLegendBoardImageRectangles (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontLegendBoardImageRectangles_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
+    model.toMany_frontLegendBoardImageRectangles_StartsBeingObserved (by: self.frontLegendBoardImageRectangles_property)
     self.frontLegendBoardImageRectangles_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2196,7 +2196,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontLegendLinesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontLegendLinesBezierPaths_StartsToBeObserved (by: self.frontLegendLinesBezierPaths_property)
+    model.toMany_frontLegendLinesBezierPaths_StartsBeingObserved (by: self.frontLegendLinesBezierPaths_property)
     self.frontLegendLinesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2236,7 +2236,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontLegendLinesSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontLegendLinesSegments_StartsToBeObserved (by: self.frontLegendLinesSegments_property)
+    model.toMany_frontLegendLinesSegments_StartsBeingObserved (by: self.frontLegendLinesSegments_property)
     self.frontLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2276,7 +2276,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontLegendQRCodeRectangles (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontLegendQRCodeRectangles_StartsToBeObserved (by: self.frontLegendQRCodeRectangles_property)
+    model.toMany_frontLegendQRCodeRectangles_StartsBeingObserved (by: self.frontLegendQRCodeRectangles_property)
     self.frontLegendQRCodeRectangles_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2316,7 +2316,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontLegendTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontLegendTextsBezierPaths_StartsToBeObserved (by: self.frontLegendTextsBezierPaths_property)
+    model.toMany_frontLegendTextsBezierPaths_StartsBeingObserved (by: self.frontLegendTextsBezierPaths_property)
     self.frontLegendTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2356,7 +2356,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontLegendTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontLegendTextsSegments_StartsToBeObserved (by: self.frontLegendTextsSegments_property)
+    model.toMany_frontLegendTextsSegments_StartsBeingObserved (by: self.frontLegendTextsSegments_property)
     self.frontLegendTextsSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2396,7 +2396,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontPackagesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontPackagesBezierPaths_StartsToBeObserved (by: self.frontPackagesBezierPaths_property)
+    model.toMany_frontPackagesBezierPaths_StartsBeingObserved (by: self.frontPackagesBezierPaths_property)
     self.frontPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2436,7 +2436,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontPackagesSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontPackagesSegments_StartsToBeObserved (by: self.frontPackagesSegments_property)
+    model.toMany_frontPackagesSegments_StartsBeingObserved (by: self.frontPackagesSegments_property)
     self.frontPackagesSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2476,7 +2476,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontPadArray (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontPadArray_StartsToBeObserved (by: self.frontPadArray_property)
+    model.toMany_frontPadArray_StartsBeingObserved (by: self.frontPadArray_property)
     self.frontPadArray_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2516,7 +2516,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontPadsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontPadsBezierPaths_StartsToBeObserved (by: self.frontPadsBezierPaths_property)
+    model.toMany_frontPadsBezierPaths_StartsBeingObserved (by: self.frontPadsBezierPaths_property)
     self.frontPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2556,7 +2556,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontTrackSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontTrackSegments_StartsToBeObserved (by: self.frontTrackSegments_property)
+    model.toMany_frontTrackSegments_StartsBeingObserved (by: self.frontTrackSegments_property)
     self.frontTrackSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2596,7 +2596,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_frontTracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_frontTracksBezierPaths_StartsToBeObserved (by: self.frontTracksBezierPaths_property)
+    model.toMany_frontTracksBezierPaths_StartsBeingObserved (by: self.frontTracksBezierPaths_property)
     self.frontTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2636,7 +2636,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_holesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_holesBezierPaths_StartsToBeObserved (by: self.holesBezierPaths_property)
+    model.toMany_holesBezierPaths_StartsBeingObserved (by: self.holesBezierPaths_property)
     self.holesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2676,7 +2676,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_ignoreModelVersionError (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_ignoreModelVersionError_StartsToBeObserved (by: self.ignoreModelVersionError_property)
+    model.toMany_ignoreModelVersionError_StartsBeingObserved (by: self.ignoreModelVersionError_property)
     self.ignoreModelVersionError_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2728,7 +2728,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_imageForInstances (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_imageForInstances_StartsToBeObserved (by: self.imageForInstances_property)
+    model.toMany_imageForInstances_StartsBeingObserved (by: self.imageForInstances_property)
     self.imageForInstances_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2768,7 +2768,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_imageForModel (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_imageForModel_StartsToBeObserved (by: self.imageForModel_property)
+    model.toMany_imageForModel_StartsBeingObserved (by: self.imageForModel_property)
     self.imageForModel_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2808,7 +2808,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_inner1TracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_inner1TracksBezierPaths_StartsToBeObserved (by: self.inner1TracksBezierPaths_property)
+    model.toMany_inner1TracksBezierPaths_StartsBeingObserved (by: self.inner1TracksBezierPaths_property)
     self.inner1TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2848,7 +2848,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_inner1TracksSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_inner1TracksSegments_StartsToBeObserved (by: self.inner1TracksSegments_property)
+    model.toMany_inner1TracksSegments_StartsBeingObserved (by: self.inner1TracksSegments_property)
     self.inner1TracksSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2888,7 +2888,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_inner2TracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_inner2TracksBezierPaths_StartsToBeObserved (by: self.inner2TracksBezierPaths_property)
+    model.toMany_inner2TracksBezierPaths_StartsBeingObserved (by: self.inner2TracksBezierPaths_property)
     self.inner2TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2928,7 +2928,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_inner2TracksSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_inner2TracksSegments_StartsToBeObserved (by: self.inner2TracksSegments_property)
+    model.toMany_inner2TracksSegments_StartsBeingObserved (by: self.inner2TracksSegments_property)
     self.inner2TracksSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -2968,7 +2968,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_inner3TracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_inner3TracksBezierPaths_StartsToBeObserved (by: self.inner3TracksBezierPaths_property)
+    model.toMany_inner3TracksBezierPaths_StartsBeingObserved (by: self.inner3TracksBezierPaths_property)
     self.inner3TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3008,7 +3008,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_inner3TracksSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_inner3TracksSegments_StartsToBeObserved (by: self.inner3TracksSegments_property)
+    model.toMany_inner3TracksSegments_StartsBeingObserved (by: self.inner3TracksSegments_property)
     self.inner3TracksSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3048,7 +3048,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_inner4TracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_inner4TracksBezierPaths_StartsToBeObserved (by: self.inner4TracksBezierPaths_property)
+    model.toMany_inner4TracksBezierPaths_StartsBeingObserved (by: self.inner4TracksBezierPaths_property)
     self.inner4TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3088,7 +3088,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_inner4TracksSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_inner4TracksSegments_StartsToBeObserved (by: self.inner4TracksSegments_property)
+    model.toMany_inner4TracksSegments_StartsBeingObserved (by: self.inner4TracksSegments_property)
     self.inner4TracksSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3128,7 +3128,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_instanceCount (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_instanceCount_StartsToBeObserved (by: self.instanceCount_property)
+    model.toMany_instanceCount_StartsBeingObserved (by: self.instanceCount_property)
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3168,7 +3168,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_internalBoardsLimitsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_internalBoardsLimitsBezierPaths_StartsToBeObserved (by: self.internalBoardsLimitsBezierPaths_property)
+    model.toMany_internalBoardsLimitsBezierPaths_StartsBeingObserved (by: self.internalBoardsLimitsBezierPaths_property)
     self.internalBoardsLimitsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3208,7 +3208,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_internalBoardsLimitsSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_internalBoardsLimitsSegments_StartsToBeObserved (by: self.internalBoardsLimitsSegments_property)
+    model.toMany_internalBoardsLimitsSegments_StartsBeingObserved (by: self.internalBoardsLimitsSegments_property)
     self.internalBoardsLimitsSegments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3248,7 +3248,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_layerConfiguration (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_layerConfiguration_StartsToBeObserved (by: self.layerConfiguration_property)
+    model.toMany_layerConfiguration_StartsBeingObserved (by: self.layerConfiguration_property)
     self.layerConfiguration_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3300,7 +3300,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_layerConfigurationString (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_layerConfigurationString_StartsToBeObserved (by: self.layerConfigurationString_property)
+    model.toMany_layerConfigurationString_StartsBeingObserved (by: self.layerConfigurationString_property)
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3340,7 +3340,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_modelHeight (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_modelHeight_StartsToBeObserved (by: self.modelHeight_property)
+    model.toMany_modelHeight_StartsBeingObserved (by: self.modelHeight_property)
     self.modelHeight_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3392,7 +3392,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_modelHeightUnit (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_modelHeightUnit_StartsToBeObserved (by: self.modelHeightUnit_property)
+    model.toMany_modelHeightUnit_StartsBeingObserved (by: self.modelHeightUnit_property)
     self.modelHeightUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3444,7 +3444,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_modelLimitWidth (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_modelLimitWidth_StartsToBeObserved (by: self.modelLimitWidth_property)
+    model.toMany_modelLimitWidth_StartsBeingObserved (by: self.modelLimitWidth_property)
     self.modelLimitWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3496,7 +3496,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_modelLimitWidthUnit (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_modelLimitWidthUnit_StartsToBeObserved (by: self.modelLimitWidthUnit_property)
+    model.toMany_modelLimitWidthUnit_StartsBeingObserved (by: self.modelLimitWidthUnit_property)
     self.modelLimitWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3548,7 +3548,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_modelVersion (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_modelVersion_StartsToBeObserved (by: self.modelVersion_property)
+    model.toMany_modelVersion_StartsBeingObserved (by: self.modelVersion_property)
     self.modelVersion_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3600,7 +3600,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_modelWidth (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_modelWidth_StartsToBeObserved (by: self.modelWidth_property)
+    model.toMany_modelWidth_StartsBeingObserved (by: self.modelWidth_property)
     self.modelWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3652,7 +3652,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_modelWidthUnit (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_modelWidthUnit_StartsToBeObserved (by: self.modelWidthUnit_property)
+    model.toMany_modelWidthUnit_StartsBeingObserved (by: self.modelWidthUnit_property)
     self.modelWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3704,7 +3704,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_name (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_name_StartsToBeObserved (by: self.name_property)
+    model.toMany_name_StartsBeingObserved (by: self.name_property)
     self.name_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3756,7 +3756,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_traversingPadArray (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_traversingPadArray_StartsToBeObserved (by: self.traversingPadArray_property)
+    model.toMany_traversingPadArray_StartsBeingObserved (by: self.traversingPadArray_property)
     self.traversingPadArray_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3796,7 +3796,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_traversingPadsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_traversingPadsBezierPaths_StartsToBeObserved (by: self.traversingPadsBezierPaths_property)
+    model.toMany_traversingPadsBezierPaths_StartsBeingObserved (by: self.traversingPadsBezierPaths_property)
     self.traversingPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3836,7 +3836,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_viaShapes (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_viaShapes_StartsToBeObserved (by: self.viaShapes_property)
+    model.toMany_viaShapes_StartsBeingObserved (by: self.viaShapes_property)
     self.viaShapes_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3876,7 +3876,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_viasBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_viasBezierPaths_StartsToBeObserved (by: self.viasBezierPaths_property)
+    model.toMany_viasBezierPaths_StartsBeingObserved (by: self.viasBezierPaths_property)
     self.viasBezierPaths_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -3916,7 +3916,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_zoom (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_zoom_StartsToBeObserved (by: self.zoom_property)
+    model.toMany_zoom_StartsBeingObserved (by: self.zoom_property)
     self.zoom_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {

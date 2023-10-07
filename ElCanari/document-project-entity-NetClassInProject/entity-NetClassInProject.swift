@@ -594,8 +594,8 @@ final class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mTrackWidth_property.startsToBeObserved (by: self.trackWidthString_property)
-    self.mTrackWidthUnit_property.startsToBeObserved (by: self.trackWidthString_property)
+    self.mTrackWidth_property.startsBeingObserved (by: self.trackWidthString_property)
+    self.mTrackWidthUnit_property.startsBeingObserved (by: self.trackWidthString_property)
   //--- Atomic property: viaHoleDiameter
     self.viaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -615,8 +615,8 @@ final class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mViaHoleDiameter_property.startsToBeObserved (by: self.viaHoleDiameter_property)
-    self.mViaHoleDiameterUnit_property.startsToBeObserved (by: self.viaHoleDiameter_property)
+    self.mViaHoleDiameter_property.startsBeingObserved (by: self.viaHoleDiameter_property)
+    self.mViaHoleDiameterUnit_property.startsBeingObserved (by: self.viaHoleDiameter_property)
   //--- Atomic property: viaPadDiameter
     self.viaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -636,8 +636,8 @@ final class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mViaPadDiameter_property.startsToBeObserved (by: self.viaPadDiameter_property)
-    self.mViaPadDiameterUnit_property.startsToBeObserved (by: self.viaPadDiameter_property)
+    self.mViaPadDiameter_property.startsBeingObserved (by: self.viaPadDiameter_property)
+    self.mViaPadDiameterUnit_property.startsBeingObserved (by: self.viaPadDiameter_property)
   //--- Atomic property: allowTracksOnFrontSideString
     self.allowTracksOnFrontSideString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -654,7 +654,7 @@ final class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mAllowTracksOnFrontSide_property.startsToBeObserved (by: self.allowTracksOnFrontSideString_property)
+    self.mAllowTracksOnFrontSide_property.startsBeingObserved (by: self.allowTracksOnFrontSideString_property)
   //--- Atomic property: allowTracksOnBackSideString
     self.allowTracksOnBackSideString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -671,7 +671,7 @@ final class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mAllowTracksOnBackSide_property.startsToBeObserved (by: self.allowTracksOnBackSideString_property)
+    self.mAllowTracksOnBackSide_property.startsBeingObserved (by: self.allowTracksOnBackSideString_property)
   //--- Atomic property: allowTracksOnInner1LayerString
     self.allowTracksOnInner1LayerString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -688,7 +688,7 @@ final class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mAllowTracksOnInner1Layer_property.startsToBeObserved (by: self.allowTracksOnInner1LayerString_property)
+    self.mAllowTracksOnInner1Layer_property.startsBeingObserved (by: self.allowTracksOnInner1LayerString_property)
   //--- Atomic property: allowTracksOnInner2LayerString
     self.allowTracksOnInner2LayerString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -705,7 +705,7 @@ final class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mAllowTracksOnInner2Layer_property.startsToBeObserved (by: self.allowTracksOnInner2LayerString_property)
+    self.mAllowTracksOnInner2Layer_property.startsBeingObserved (by: self.allowTracksOnInner2LayerString_property)
   //--- Atomic property: allowTracksOnInner3LayerString
     self.allowTracksOnInner3LayerString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -722,7 +722,7 @@ final class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mAllowTracksOnInner3Layer_property.startsToBeObserved (by: self.allowTracksOnInner3LayerString_property)
+    self.mAllowTracksOnInner3Layer_property.startsBeingObserved (by: self.allowTracksOnInner3LayerString_property)
   //--- Atomic property: allowTracksOnInner4LayerString
     self.allowTracksOnInner4LayerString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -739,7 +739,7 @@ final class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mAllowTracksOnInner4Layer_property.startsToBeObserved (by: self.allowTracksOnInner4LayerString_property)
+    self.mAllowTracksOnInner4Layer_property.startsBeingObserved (by: self.allowTracksOnInner4LayerString_property)
   //--- Atomic property: canRemove
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -756,7 +756,7 @@ final class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNets_property.startsToBeObserved (by: self.canRemove_property)
+    self.mNets_property.startsBeingObserved (by: self.canRemove_property)
   //--- Atomic property: netUsage
     self.netUsage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -773,7 +773,7 @@ final class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNets_property.startsToBeObserved (by: self.netUsage_property)
+    self.mNets_property.startsBeingObserved (by: self.netUsage_property)
   //--- Atomic property: netsDescription
     self.netsDescription_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -805,12 +805,12 @@ final class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNets_property.startsToBeObserved (by: self.netsDescription_property)
-    self.mNets_property.toMany_trackCount_StartsToBeObserved (by: self.netsDescription_property)
-    self.mNets_property.toMany_mNetName_StartsToBeObserved (by: self.netsDescription_property)
-    self.mNets_property.toMany_netSchematicPointsInfo_StartsToBeObserved (by: self.netsDescription_property)
-    self.mNets_property.toMany_mWarnsExactlyOneLabel_StartsToBeObserved (by: self.netsDescription_property)
-    self.mNetClassName_property.startsToBeObserved (by: self.netsDescription_property)
+    self.mNets_property.startsBeingObserved (by: self.netsDescription_property)
+    self.mNets_property.toMany_trackCount_StartsBeingObserved (by: self.netsDescription_property)
+    self.mNets_property.toMany_mNetName_StartsBeingObserved (by: self.netsDescription_property)
+    self.mNets_property.toMany_netSchematicPointsInfo_StartsBeingObserved (by: self.netsDescription_property)
+    self.mNets_property.toMany_mWarnsExactlyOneLabel_StartsBeingObserved (by: self.netsDescription_property)
+    self.mNetClassName_property.startsBeingObserved (by: self.netsDescription_property)
   //--- Atomic property: netWarningCount
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -827,7 +827,7 @@ final class NetClassInProject : EBManagedObject,
         return .empty
       }
     }
-    self.netsDescription_property.startsToBeObserved (by: self.netWarningCount_property)
+    self.netsDescription_property.startsBeingObserved (by: self.netWarningCount_property)
   //--- Install undoers and opposite setter for relationships
     self.mNets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNetClass_property.setProp (me) } },

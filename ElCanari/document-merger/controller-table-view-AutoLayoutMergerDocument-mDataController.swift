@@ -59,7 +59,7 @@ final class Controller_AutoLayoutMergerDocument_mDataController : NSObject, Auto
       inModel,
       sortCallback: { [weak self] (left, right) in self?.isOrderedBefore (left, right) ?? true },
       addSortObserversCallback: { (observer) in
-        inModel.toMany_name_StartsToBeObserved (by: observer)
+        inModel.toMany_name_StartsBeingObserved (by: observer)
       },
       removeSortObserversCallback: {(observer) in
         inModel.toMany_name_StopsBeingObserved (by: observer)
@@ -139,11 +139,11 @@ final class Controller_AutoLayoutMergerDocument_mDataController : NSObject, Auto
 
   override init () {
     super.init ()
-    self.sortedArray_property.startsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'name' column
-    self.sortedArray_property.toMany_name_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_name_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'parameterStatusImage' column
-    self.sortedArray_property.toMany_parameterStatusImage_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_parameterStatusImage_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {

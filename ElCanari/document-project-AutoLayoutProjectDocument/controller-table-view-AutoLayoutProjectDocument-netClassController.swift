@@ -59,16 +59,16 @@ final class Controller_AutoLayoutProjectDocument_netClassController : NSObject, 
       inModel,
       sortCallback: { [weak self] (left, right) in self?.isOrderedBefore (left, right) ?? true },
       addSortObserversCallback: { (observer) in
-        inModel.toMany_allowTracksOnBackSideString_StartsToBeObserved (by: observer)
-        inModel.toMany_allowTracksOnFrontSideString_StartsToBeObserved (by: observer)
-        inModel.toMany_allowTracksOnInner1LayerString_StartsToBeObserved (by: observer)
-        inModel.toMany_allowTracksOnInner3LayerString_StartsToBeObserved (by: observer)
-        inModel.toMany_allowTracksOnInner4LayerString_StartsToBeObserved (by: observer)
-        inModel.toMany_mNetClassName_StartsToBeObserved (by: observer)
-        inModel.toMany_netUsage_StartsToBeObserved (by: observer)
-        inModel.toMany_trackWidthString_StartsToBeObserved (by: observer)
-        inModel.toMany_viaHoleDiameter_StartsToBeObserved (by: observer)
-        inModel.toMany_viaPadDiameter_StartsToBeObserved (by: observer)
+        inModel.toMany_allowTracksOnBackSideString_StartsBeingObserved (by: observer)
+        inModel.toMany_allowTracksOnFrontSideString_StartsBeingObserved (by: observer)
+        inModel.toMany_allowTracksOnInner1LayerString_StartsBeingObserved (by: observer)
+        inModel.toMany_allowTracksOnInner3LayerString_StartsBeingObserved (by: observer)
+        inModel.toMany_allowTracksOnInner4LayerString_StartsBeingObserved (by: observer)
+        inModel.toMany_mNetClassName_StartsBeingObserved (by: observer)
+        inModel.toMany_netUsage_StartsBeingObserved (by: observer)
+        inModel.toMany_trackWidthString_StartsBeingObserved (by: observer)
+        inModel.toMany_viaHoleDiameter_StartsBeingObserved (by: observer)
+        inModel.toMany_viaPadDiameter_StartsBeingObserved (by: observer)
       },
       removeSortObserversCallback: {(observer) in
         inModel.toMany_allowTracksOnBackSideString_StopsBeingObserved (by: observer)
@@ -157,33 +157,33 @@ final class Controller_AutoLayoutProjectDocument_netClassController : NSObject, 
 
   override init () {
     super.init ()
-    self.sortedArray_property.startsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mNetClassName' column
-    self.sortedArray_property.toMany_mNetClassName_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mNetClassName_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mNetClassColor' column
-    self.sortedArray_property.toMany_mNetClassColor_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mNetClassColor_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'trackWidthString' column
-    self.sortedArray_property.toMany_trackWidthString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_trackWidthString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'viaHoleDiameter' column
-    self.sortedArray_property.toMany_viaHoleDiameter_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_viaHoleDiameter_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'viaPadDiameter' column
-    self.sortedArray_property.toMany_viaPadDiameter_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_viaPadDiameter_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'allowTracksOnFrontSideString' column
-    self.sortedArray_property.toMany_allowTracksOnFrontSideString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_allowTracksOnFrontSideString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'allowTracksOnBackSideString' column
-    self.sortedArray_property.toMany_allowTracksOnBackSideString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_allowTracksOnBackSideString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'allowTracksOnInner1LayerString' column
-    self.sortedArray_property.toMany_allowTracksOnInner1LayerString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_allowTracksOnInner1LayerString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'allowTracksOnInner2LayerString' column
-    self.sortedArray_property.toMany_allowTracksOnInner2LayerString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
-     self.sortedArray_property.toMany_allowTracksOnInner3LayerString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_allowTracksOnInner2LayerString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
+     self.sortedArray_property.toMany_allowTracksOnInner3LayerString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'allowTracksOnInner1LayerString' column
-    self.sortedArray_property.toMany_allowTracksOnInner1LayerString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
-     self.sortedArray_property.toMany_allowTracksOnInner3LayerString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_allowTracksOnInner1LayerString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
+     self.sortedArray_property.toMany_allowTracksOnInner3LayerString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'allowTracksOnInner4LayerString' column
-    self.sortedArray_property.toMany_allowTracksOnInner4LayerString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_allowTracksOnInner4LayerString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'netUsage' column
-    self.sortedArray_property.toMany_netUsage_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_netUsage_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {

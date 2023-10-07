@@ -200,186 +200,186 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mArtworkName_property.startsToBeObserved (by: self.mArtworkName_property) // Stored property
-      newValue.mArtworkVersion_property.startsToBeObserved (by: self.mArtworkVersion_property) // Stored property
-      newValue.mPDFBoardBackgroundColor_property.startsToBeObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
-      newValue.mCheckClearanceBetweenPadsOfSameNet_property.startsToBeObserved (by: self.mCheckClearanceBetweenPadsOfSameNet_property) // Stored property
-      newValue.mLastERCCheckingIsSuccess_property.startsToBeObserved (by: self.mLastERCCheckingIsSuccess_property) // Stored property
-      newValue.mLastERCCheckingSignature_property.startsToBeObserved (by: self.mLastERCCheckingSignature_property) // Stored property
-      newValue.mLayerConfiguration_property.startsToBeObserved (by: self.mLayerConfiguration_property) // Stored property
-      newValue.mBoardSideForNewTrack_property.startsToBeObserved (by: self.mBoardSideForNewTrack_property) // Stored property
-      newValue.mDirectionForNewTrack_property.startsToBeObserved (by: self.mDirectionForNewTrack_property) // Stored property
-      newValue.mBoardLayerForNewText_property.startsToBeObserved (by: self.mBoardLayerForNewText_property) // Stored property
-      newValue.mBoardLayerForNewQRCode_property.startsToBeObserved (by: self.mBoardLayerForNewQRCode_property) // Stored property
-      newValue.mBoardLayerForNewImage_property.startsToBeObserved (by: self.mBoardLayerForNewImage_property) // Stored property
-      newValue.mBoardLayerForNewLine_property.startsToBeObserved (by: self.mBoardLayerForNewLine_property) // Stored property
-      newValue.mBoardSideForNewRestrictRectangle_property.startsToBeObserved (by: self.mBoardSideForNewRestrictRectangle_property) // Stored property
-      newValue.mNewRestrictRectangleLayers_property.startsToBeObserved (by: self.mNewRestrictRectangleLayers_property) // Stored property
-      newValue.mAutoRouterPreferredDirections_property.startsToBeObserved (by: self.mAutoRouterPreferredDirections_property) // Stored property
-      newValue.mAutorouterSnapAngle_property.startsToBeObserved (by: self.mAutorouterSnapAngle_property) // Stored property
-      newValue.mRouteDirection_property.startsToBeObserved (by: self.mRouteDirection_property) // Stored property
-      newValue.mRouteOrigin_property.startsToBeObserved (by: self.mRouteOrigin_property) // Stored property
-      newValue.mAutorouterInterfaceMode_property.startsToBeObserved (by: self.mAutorouterInterfaceMode_property) // Stored property
-      newValue.mExportExistingTracksAndVias_property.startsToBeObserved (by: self.mExportExistingTracksAndVias_property) // Stored property
-      newValue.mExportExistingTracksAndVias2_property.startsToBeObserved (by: self.mExportExistingTracksAndVias2_property) // Stored property
-      newValue.mTrackLengthUnit_property.startsToBeObserved (by: self.mTrackLengthUnit_property) // Stored property
-      newValue.mLayoutClearance_property.startsToBeObserved (by: self.mLayoutClearance_property) // Stored property
-      newValue.mLayoutClearanceUnit_property.startsToBeObserved (by: self.mLayoutClearanceUnit_property) // Stored property
-      newValue.mBoardSelectedInspector_property.startsToBeObserved (by: self.mBoardSelectedInspector_property) // Stored property
-      newValue.mBoardHorizontalFlip_property.startsToBeObserved (by: self.mBoardHorizontalFlip_property) // Stored property
-      newValue.mBoardVerticalFlip_property.startsToBeObserved (by: self.mBoardVerticalFlip_property) // Stored property
-      newValue.mBoardGridStyle_property.startsToBeObserved (by: self.mBoardGridStyle_property) // Stored property
-      newValue.mBoardGridDisplayFactor_property.startsToBeObserved (by: self.mBoardGridDisplayFactor_property) // Stored property
-      newValue.mBoardZoom_property.startsToBeObserved (by: self.mBoardZoom_property) // Stored property
-      newValue.mBoardGridStep_property.startsToBeObserved (by: self.mBoardGridStep_property) // Stored property
-      newValue.mBoardGridStepUnit_property.startsToBeObserved (by: self.mBoardGridStepUnit_property) // Stored property
-      newValue.mErrorOrWarningIssueSize_property.startsToBeObserved (by: self.mErrorOrWarningIssueSize_property) // Stored property
-      newValue.mControlKeyHiliteDiameter_property.startsToBeObserved (by: self.mControlKeyHiliteDiameter_property) // Stored property
-      newValue.mDSNFileProposedName_property.startsToBeObserved (by: self.mDSNFileProposedName_property) // Stored property
-      newValue.mBoardLimitsWidth_property.startsToBeObserved (by: self.mBoardLimitsWidth_property) // Stored property
-      newValue.mBoardLimitsWidthUnit_property.startsToBeObserved (by: self.mBoardLimitsWidthUnit_property) // Stored property
-      newValue.mBoardClearance_property.startsToBeObserved (by: self.mBoardClearance_property) // Stored property
-      newValue.mBoardClearanceUnit_property.startsToBeObserved (by: self.mBoardClearanceUnit_property) // Stored property
-      newValue.mBoardLimitsSelectedInspector_property.startsToBeObserved (by: self.mBoardLimitsSelectedInspector_property) // Stored property
-      newValue.mBoardLimitsHorizontalFlip_property.startsToBeObserved (by: self.mBoardLimitsHorizontalFlip_property) // Stored property
-      newValue.mBoardLimitsVerticalFlip_property.startsToBeObserved (by: self.mBoardLimitsVerticalFlip_property) // Stored property
-      newValue.mBoardLimitsGridStyle_property.startsToBeObserved (by: self.mBoardLimitsGridStyle_property) // Stored property
-      newValue.mBoardLimitsGridDisplayFactor_property.startsToBeObserved (by: self.mBoardLimitsGridDisplayFactor_property) // Stored property
-      newValue.mBoardLimitsZoom_property.startsToBeObserved (by: self.mBoardLimitsZoom_property) // Stored property
-      newValue.mBoardLimitsGridStep_property.startsToBeObserved (by: self.mBoardLimitsGridStep_property) // Stored property
-      newValue.mBoardLimitsGridStepUnit_property.startsToBeObserved (by: self.mBoardLimitsGridStepUnit_property) // Stored property
-      newValue.mBoardLimitsBoundingBoxUnit_property.startsToBeObserved (by: self.mBoardLimitsBoundingBoxUnit_property) // Stored property
-      newValue.mBoardPointsBoundingBoxUnit_property.startsToBeObserved (by: self.mBoardPointsBoundingBoxUnit_property) // Stored property
-      newValue.mBoardSelectedCurveDisplayUnit_property.startsToBeObserved (by: self.mBoardSelectedCurveDisplayUnit_property) // Stored property
-      newValue.mBoardLimitControlPointsDisplayUnit_property.startsToBeObserved (by: self.mBoardLimitControlPointsDisplayUnit_property) // Stored property
-      newValue.mBoardShape_property.startsToBeObserved (by: self.mBoardShape_property) // Stored property
-      newValue.mContentOpacityInBoardOutline_property.startsToBeObserved (by: self.mContentOpacityInBoardOutline_property) // Stored property
-      newValue.mRectangularBoardWidth_property.startsToBeObserved (by: self.mRectangularBoardWidth_property) // Stored property
-      newValue.mRectangularBoardWidthUnit_property.startsToBeObserved (by: self.mRectangularBoardWidthUnit_property) // Stored property
-      newValue.mRectangularBoardHeight_property.startsToBeObserved (by: self.mRectangularBoardHeight_property) // Stored property
-      newValue.mRectangularBoardHeightUnit_property.startsToBeObserved (by: self.mRectangularBoardHeightUnit_property) // Stored property
-      newValue.mDefaultNetClassName_property.startsToBeObserved (by: self.mDefaultNetClassName_property) // Stored property
-      newValue.mSchematicHilitedColumnIndex_property.startsToBeObserved (by: self.mSchematicHilitedColumnIndex_property) // Stored property
-      newValue.mSchematicHilitedRowIndex_property.startsToBeObserved (by: self.mSchematicHilitedRowIndex_property) // Stored property
-      newValue.mSchematicEnableHiliteColumnAndRow_property.startsToBeObserved (by: self.mSchematicEnableHiliteColumnAndRow_property) // Stored property
-      newValue.mSelectedPageIndex_property.startsToBeObserved (by: self.mSelectedPageIndex_property) // Stored property
-      newValue.mSelectedSchematicInspector_property.startsToBeObserved (by: self.mSelectedSchematicInspector_property) // Stored property
-      newValue.mSchematicTitle_property.startsToBeObserved (by: self.mSchematicTitle_property) // Stored property
-      newValue.mSchematicVersion_property.startsToBeObserved (by: self.mSchematicVersion_property) // Stored property
-      newValue.mSchematicDate_property.startsToBeObserved (by: self.mSchematicDate_property) // Stored property
-      newValue.mSchematicHorizontalFlip_property.startsToBeObserved (by: self.mSchematicHorizontalFlip_property) // Stored property
-      newValue.mSchematicVerticalFlip_property.startsToBeObserved (by: self.mSchematicVerticalFlip_property) // Stored property
-      newValue.mSchematicZoom_property.startsToBeObserved (by: self.mSchematicZoom_property) // Stored property
-      newValue.mSchematicGridStyle_property.startsToBeObserved (by: self.mSchematicGridStyle_property) // Stored property
-      newValue.mSchematicGridDisplayFactor_property.startsToBeObserved (by: self.mSchematicGridDisplayFactor_property) // Stored property
-      newValue.mSchematicCustomWidth_property.startsToBeObserved (by: self.mSchematicCustomWidth_property) // Stored property
-      newValue.mSchematicCustomWidthUnit_property.startsToBeObserved (by: self.mSchematicCustomWidthUnit_property) // Stored property
-      newValue.mSchematicCustomHeight_property.startsToBeObserved (by: self.mSchematicCustomHeight_property) // Stored property
-      newValue.mSchematicCustomHeightUnit_property.startsToBeObserved (by: self.mSchematicCustomHeightUnit_property) // Stored property
-      newValue.drawErrorBackgroundForBoard_property.startsToBeObserved (by: self.drawErrorBackgroundForBoard_property) // Stored property
-      newValue.displayFrontRestrictRectangles_property.startsToBeObserved (by: self.displayFrontRestrictRectangles_property) // Stored property
-      newValue.displayBackRestrictRectangles_property.startsToBeObserved (by: self.displayBackRestrictRectangles_property) // Stored property
-      newValue.displayInner1RestrictRectangles_property.startsToBeObserved (by: self.displayInner1RestrictRectangles_property) // Stored property
-      newValue.displayInner2RestrictRectangles_property.startsToBeObserved (by: self.displayInner2RestrictRectangles_property) // Stored property
-      newValue.displayInner3RestrictRectangles_property.startsToBeObserved (by: self.displayInner3RestrictRectangles_property) // Stored property
-      newValue.displayInner4RestrictRectangles_property.startsToBeObserved (by: self.displayInner4RestrictRectangles_property) // Stored property
-      newValue.displayFrontLegendForBoard_property.startsToBeObserved (by: self.displayFrontLegendForBoard_property) // Stored property
-      newValue.displayFrontLayoutForBoard_property.startsToBeObserved (by: self.displayFrontLayoutForBoard_property) // Stored property
-      newValue.displayBackLayoutForBoard_property.startsToBeObserved (by: self.displayBackLayoutForBoard_property) // Stored property
-      newValue.displayInner1LayoutForBoard_property.startsToBeObserved (by: self.displayInner1LayoutForBoard_property) // Stored property
-      newValue.displayInner2LayoutForBoard_property.startsToBeObserved (by: self.displayInner2LayoutForBoard_property) // Stored property
-      newValue.displayInner3LayoutForBoard_property.startsToBeObserved (by: self.displayInner3LayoutForBoard_property) // Stored property
-      newValue.displayInner4LayoutForBoard_property.startsToBeObserved (by: self.displayInner4LayoutForBoard_property) // Stored property
-      newValue.displayBackLegendForBoard_property.startsToBeObserved (by: self.displayBackLegendForBoard_property) // Stored property
-      newValue.displayFrontPadsForBoard_property.startsToBeObserved (by: self.displayFrontPadsForBoard_property) // Stored property
-      newValue.displayBackPadsForBoard_property.startsToBeObserved (by: self.displayBackPadsForBoard_property) // Stored property
-      newValue.displayPadNumbersForBoard_property.startsToBeObserved (by: self.displayPadNumbersForBoard_property) // Stored property
-      newValue.packageDrawingWidthMultpliedByTenForBoard_property.startsToBeObserved (by: self.packageDrawingWidthMultpliedByTenForBoard_property) // Stored property
-      newValue.mSchematicSheetOrientation_property.startsToBeObserved (by: self.mSchematicSheetOrientation_property) // Stored property
-      newValue.mRastnetDisplay_property.startsToBeObserved (by: self.mRastnetDisplay_property) // Stored property
-      newValue.mRastnetDisplayedNetName_property.startsToBeObserved (by: self.mRastnetDisplayedNetName_property) // Stored property
-      newValue.mRastnetDisplayedComponentName_property.startsToBeObserved (by: self.mRastnetDisplayedComponentName_property) // Stored property
-      newValue.hasInnerElements_property.startsToBeObserved (by: self.hasInnerElements_property) // Transient property
-      newValue.layerConfigurationString_property.startsToBeObserved (by: self.layerConfigurationString_property) // Transient property
-      newValue.boardGridStepMultipliedByDisplayFactor_property.startsToBeObserved (by: self.boardGridStepMultipliedByDisplayFactor_property) // Transient property
-      newValue.boardLimitsGridStepMultipliedByDisplayFactor_property.startsToBeObserved (by: self.boardLimitsGridStepMultipliedByDisplayFactor_property) // Transient property
-      newValue.boardShapeIsRectangular_property.startsToBeObserved (by: self.boardShapeIsRectangular_property) // Transient property
-      newValue.selectedSheetIssues_property.startsToBeObserved (by: self.selectedSheetIssues_property) // Transient property
-      newValue.schematicOverDisplay_property.startsToBeObserved (by: self.schematicOverDisplay_property) // Transient property
-      newValue.schematicTooltips_property.startsToBeObserved (by: self.schematicTooltips_property) // Transient property
-      newValue.segmentedControlSheetIssueImage_property.startsToBeObserved (by: self.segmentedControlSheetIssueImage_property) // Transient property
-      newValue.schematicErrorCount_property.startsToBeObserved (by: self.schematicErrorCount_property) // Transient property
-      newValue.sheetIndexes_property.startsToBeObserved (by: self.sheetIndexes_property) // Transient property
-      newValue.netsDescription_property.startsToBeObserved (by: self.netsDescription_property) // Transient property
-      newValue.boardIssues_property.startsToBeObserved (by: self.boardIssues_property) // Transient property
-      newValue.hasSixLayers_property.startsToBeObserved (by: self.hasSixLayers_property) // Transient property
-      newValue.signatureForERCChecking_property.startsToBeObserved (by: self.signatureForERCChecking_property) // Transient property
-      newValue.ercStatusImage_property.startsToBeObserved (by: self.ercStatusImage_property) // Transient property
-      newValue.ercStatusImageOrNoneOnSuccess_property.startsToBeObserved (by: self.ercStatusImageOrNoneOnSuccess_property) // Transient property
-      newValue.ercStatusMessage_property.startsToBeObserved (by: self.ercStatusMessage_property) // Transient property
-      newValue.viaCountString_property.startsToBeObserved (by: self.viaCountString_property) // Transient property
-      newValue.topSideTrackCountString_property.startsToBeObserved (by: self.topSideTrackCountString_property) // Transient property
-      newValue.backSideTrackCountString_property.startsToBeObserved (by: self.backSideTrackCountString_property) // Transient property
-      newValue.inner1LayerTrackCountString_property.startsToBeObserved (by: self.inner1LayerTrackCountString_property) // Transient property
-      newValue.inner2LayerTrackCountString_property.startsToBeObserved (by: self.inner2LayerTrackCountString_property) // Transient property
-      newValue.inner3LayerTrackCountString_property.startsToBeObserved (by: self.inner3LayerTrackCountString_property) // Transient property
-      newValue.inner4LayerTrackCountString_property.startsToBeObserved (by: self.inner4LayerTrackCountString_property) // Transient property
-      newValue.trackCountString_property.startsToBeObserved (by: self.trackCountString_property) // Transient property
-      newValue.trackLengthString_property.startsToBeObserved (by: self.trackLengthString_property) // Transient property
-      newValue.boardStatusErrorCount_property.startsToBeObserved (by: self.boardStatusErrorCount_property) // Transient property
-      newValue.interiorBoundBox_property.startsToBeObserved (by: self.interiorBoundBox_property) // Transient property
-      newValue.boardBoundBox_property.startsToBeObserved (by: self.boardBoundBox_property) // Transient property
-      newValue.boardInteriorTop_property.startsToBeObserved (by: self.boardInteriorTop_property) // Transient property
-      newValue.boardInteriorBottom_property.startsToBeObserved (by: self.boardInteriorBottom_property) // Transient property
-      newValue.boardInteriorLeft_property.startsToBeObserved (by: self.boardInteriorLeft_property) // Transient property
-      newValue.boardInteriorRight_property.startsToBeObserved (by: self.boardInteriorRight_property) // Transient property
-      newValue.boardLimitBorderTop_property.startsToBeObserved (by: self.boardLimitBorderTop_property) // Transient property
-      newValue.boardLimitBorderBottom_property.startsToBeObserved (by: self.boardLimitBorderBottom_property) // Transient property
-      newValue.boardLimitBorderLeft_property.startsToBeObserved (by: self.boardLimitBorderLeft_property) // Transient property
-      newValue.boardLimitBorderRight_property.startsToBeObserved (by: self.boardLimitBorderRight_property) // Transient property
-      newValue.borderElementCountString_property.startsToBeObserved (by: self.borderElementCountString_property) // Transient property
-      newValue.borderOutlineBackground_property.startsToBeObserved (by: self.borderOutlineBackground_property) // Transient property
-      newValue.borderViewBackground_property.startsToBeObserved (by: self.borderViewBackground_property) // Transient property
-      newValue.fontNameArray_property.startsToBeObserved (by: self.fontNameArray_property) // Transient property
-      newValue.deviceNames_property.startsToBeObserved (by: self.deviceNames_property) // Transient property
-      newValue.allClassNames_property.startsToBeObserved (by: self.allClassNames_property) // Transient property
-      newValue.sheetGeometry_property.startsToBeObserved (by: self.sheetGeometry_property) // Transient property
-      newValue.schematicBackgroundDisplay_property.startsToBeObserved (by: self.schematicBackgroundDisplay_property) // Transient property
-      newValue.netWarningCount_property.startsToBeObserved (by: self.netWarningCount_property) // Transient property
-      newValue.segmentedControlNetListIssueImage_property.startsToBeObserved (by: self.segmentedControlNetListIssueImage_property) // Transient property
-      newValue.netNamesArray_property.startsToBeObserved (by: self.netNamesArray_property) // Transient property
-      newValue.unplacedSymbols_property.startsToBeObserved (by: self.unplacedSymbols_property) // Transient property
-      newValue.unplacedPackages_property.startsToBeObserved (by: self.unplacedPackages_property) // Transient property
-      newValue.componentsPlacedInBoard_property.startsToBeObserved (by: self.componentsPlacedInBoard_property) // Transient property
-      newValue.boardStatusMessage_property.startsToBeObserved (by: self.boardStatusMessage_property) // Transient property
-      newValue.boardStatusWarningCount_property.startsToBeObserved (by: self.boardStatusWarningCount_property) // Transient property
-      newValue.placedComponentNameArray_property.startsToBeObserved (by: self.placedComponentNameArray_property) // Transient property
-      newValue.schematicHasErrorOrWarning_property.startsToBeObserved (by: self.schematicHasErrorOrWarning_property) // Transient property
-      newValue.schematicStatusMessage_property.startsToBeObserved (by: self.schematicStatusMessage_property) // Transient property
-      newValue.segmentedControlSchematicIssueImage_property.startsToBeObserved (by: self.segmentedControlSchematicIssueImage_property) // Transient property
-      newValue.schematicWarningCount_property.startsToBeObserved (by: self.schematicWarningCount_property) // Transient property
-      newValue.hasSchematicIssue_property.startsToBeObserved (by: self.hasSchematicIssue_property) // Transient property
-      newValue.segmentedControlBoardIssueImage_property.startsToBeObserved (by: self.segmentedControlBoardIssueImage_property) // Transient property
+      newValue.mArtworkName_property.startsBeingObserved (by: self.mArtworkName_property) // Stored property
+      newValue.mArtworkVersion_property.startsBeingObserved (by: self.mArtworkVersion_property) // Stored property
+      newValue.mPDFBoardBackgroundColor_property.startsBeingObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
+      newValue.mCheckClearanceBetweenPadsOfSameNet_property.startsBeingObserved (by: self.mCheckClearanceBetweenPadsOfSameNet_property) // Stored property
+      newValue.mLastERCCheckingIsSuccess_property.startsBeingObserved (by: self.mLastERCCheckingIsSuccess_property) // Stored property
+      newValue.mLastERCCheckingSignature_property.startsBeingObserved (by: self.mLastERCCheckingSignature_property) // Stored property
+      newValue.mLayerConfiguration_property.startsBeingObserved (by: self.mLayerConfiguration_property) // Stored property
+      newValue.mBoardSideForNewTrack_property.startsBeingObserved (by: self.mBoardSideForNewTrack_property) // Stored property
+      newValue.mDirectionForNewTrack_property.startsBeingObserved (by: self.mDirectionForNewTrack_property) // Stored property
+      newValue.mBoardLayerForNewText_property.startsBeingObserved (by: self.mBoardLayerForNewText_property) // Stored property
+      newValue.mBoardLayerForNewQRCode_property.startsBeingObserved (by: self.mBoardLayerForNewQRCode_property) // Stored property
+      newValue.mBoardLayerForNewImage_property.startsBeingObserved (by: self.mBoardLayerForNewImage_property) // Stored property
+      newValue.mBoardLayerForNewLine_property.startsBeingObserved (by: self.mBoardLayerForNewLine_property) // Stored property
+      newValue.mBoardSideForNewRestrictRectangle_property.startsBeingObserved (by: self.mBoardSideForNewRestrictRectangle_property) // Stored property
+      newValue.mNewRestrictRectangleLayers_property.startsBeingObserved (by: self.mNewRestrictRectangleLayers_property) // Stored property
+      newValue.mAutoRouterPreferredDirections_property.startsBeingObserved (by: self.mAutoRouterPreferredDirections_property) // Stored property
+      newValue.mAutorouterSnapAngle_property.startsBeingObserved (by: self.mAutorouterSnapAngle_property) // Stored property
+      newValue.mRouteDirection_property.startsBeingObserved (by: self.mRouteDirection_property) // Stored property
+      newValue.mRouteOrigin_property.startsBeingObserved (by: self.mRouteOrigin_property) // Stored property
+      newValue.mAutorouterInterfaceMode_property.startsBeingObserved (by: self.mAutorouterInterfaceMode_property) // Stored property
+      newValue.mExportExistingTracksAndVias_property.startsBeingObserved (by: self.mExportExistingTracksAndVias_property) // Stored property
+      newValue.mExportExistingTracksAndVias2_property.startsBeingObserved (by: self.mExportExistingTracksAndVias2_property) // Stored property
+      newValue.mTrackLengthUnit_property.startsBeingObserved (by: self.mTrackLengthUnit_property) // Stored property
+      newValue.mLayoutClearance_property.startsBeingObserved (by: self.mLayoutClearance_property) // Stored property
+      newValue.mLayoutClearanceUnit_property.startsBeingObserved (by: self.mLayoutClearanceUnit_property) // Stored property
+      newValue.mBoardSelectedInspector_property.startsBeingObserved (by: self.mBoardSelectedInspector_property) // Stored property
+      newValue.mBoardHorizontalFlip_property.startsBeingObserved (by: self.mBoardHorizontalFlip_property) // Stored property
+      newValue.mBoardVerticalFlip_property.startsBeingObserved (by: self.mBoardVerticalFlip_property) // Stored property
+      newValue.mBoardGridStyle_property.startsBeingObserved (by: self.mBoardGridStyle_property) // Stored property
+      newValue.mBoardGridDisplayFactor_property.startsBeingObserved (by: self.mBoardGridDisplayFactor_property) // Stored property
+      newValue.mBoardZoom_property.startsBeingObserved (by: self.mBoardZoom_property) // Stored property
+      newValue.mBoardGridStep_property.startsBeingObserved (by: self.mBoardGridStep_property) // Stored property
+      newValue.mBoardGridStepUnit_property.startsBeingObserved (by: self.mBoardGridStepUnit_property) // Stored property
+      newValue.mErrorOrWarningIssueSize_property.startsBeingObserved (by: self.mErrorOrWarningIssueSize_property) // Stored property
+      newValue.mControlKeyHiliteDiameter_property.startsBeingObserved (by: self.mControlKeyHiliteDiameter_property) // Stored property
+      newValue.mDSNFileProposedName_property.startsBeingObserved (by: self.mDSNFileProposedName_property) // Stored property
+      newValue.mBoardLimitsWidth_property.startsBeingObserved (by: self.mBoardLimitsWidth_property) // Stored property
+      newValue.mBoardLimitsWidthUnit_property.startsBeingObserved (by: self.mBoardLimitsWidthUnit_property) // Stored property
+      newValue.mBoardClearance_property.startsBeingObserved (by: self.mBoardClearance_property) // Stored property
+      newValue.mBoardClearanceUnit_property.startsBeingObserved (by: self.mBoardClearanceUnit_property) // Stored property
+      newValue.mBoardLimitsSelectedInspector_property.startsBeingObserved (by: self.mBoardLimitsSelectedInspector_property) // Stored property
+      newValue.mBoardLimitsHorizontalFlip_property.startsBeingObserved (by: self.mBoardLimitsHorizontalFlip_property) // Stored property
+      newValue.mBoardLimitsVerticalFlip_property.startsBeingObserved (by: self.mBoardLimitsVerticalFlip_property) // Stored property
+      newValue.mBoardLimitsGridStyle_property.startsBeingObserved (by: self.mBoardLimitsGridStyle_property) // Stored property
+      newValue.mBoardLimitsGridDisplayFactor_property.startsBeingObserved (by: self.mBoardLimitsGridDisplayFactor_property) // Stored property
+      newValue.mBoardLimitsZoom_property.startsBeingObserved (by: self.mBoardLimitsZoom_property) // Stored property
+      newValue.mBoardLimitsGridStep_property.startsBeingObserved (by: self.mBoardLimitsGridStep_property) // Stored property
+      newValue.mBoardLimitsGridStepUnit_property.startsBeingObserved (by: self.mBoardLimitsGridStepUnit_property) // Stored property
+      newValue.mBoardLimitsBoundingBoxUnit_property.startsBeingObserved (by: self.mBoardLimitsBoundingBoxUnit_property) // Stored property
+      newValue.mBoardPointsBoundingBoxUnit_property.startsBeingObserved (by: self.mBoardPointsBoundingBoxUnit_property) // Stored property
+      newValue.mBoardSelectedCurveDisplayUnit_property.startsBeingObserved (by: self.mBoardSelectedCurveDisplayUnit_property) // Stored property
+      newValue.mBoardLimitControlPointsDisplayUnit_property.startsBeingObserved (by: self.mBoardLimitControlPointsDisplayUnit_property) // Stored property
+      newValue.mBoardShape_property.startsBeingObserved (by: self.mBoardShape_property) // Stored property
+      newValue.mContentOpacityInBoardOutline_property.startsBeingObserved (by: self.mContentOpacityInBoardOutline_property) // Stored property
+      newValue.mRectangularBoardWidth_property.startsBeingObserved (by: self.mRectangularBoardWidth_property) // Stored property
+      newValue.mRectangularBoardWidthUnit_property.startsBeingObserved (by: self.mRectangularBoardWidthUnit_property) // Stored property
+      newValue.mRectangularBoardHeight_property.startsBeingObserved (by: self.mRectangularBoardHeight_property) // Stored property
+      newValue.mRectangularBoardHeightUnit_property.startsBeingObserved (by: self.mRectangularBoardHeightUnit_property) // Stored property
+      newValue.mDefaultNetClassName_property.startsBeingObserved (by: self.mDefaultNetClassName_property) // Stored property
+      newValue.mSchematicHilitedColumnIndex_property.startsBeingObserved (by: self.mSchematicHilitedColumnIndex_property) // Stored property
+      newValue.mSchematicHilitedRowIndex_property.startsBeingObserved (by: self.mSchematicHilitedRowIndex_property) // Stored property
+      newValue.mSchematicEnableHiliteColumnAndRow_property.startsBeingObserved (by: self.mSchematicEnableHiliteColumnAndRow_property) // Stored property
+      newValue.mSelectedPageIndex_property.startsBeingObserved (by: self.mSelectedPageIndex_property) // Stored property
+      newValue.mSelectedSchematicInspector_property.startsBeingObserved (by: self.mSelectedSchematicInspector_property) // Stored property
+      newValue.mSchematicTitle_property.startsBeingObserved (by: self.mSchematicTitle_property) // Stored property
+      newValue.mSchematicVersion_property.startsBeingObserved (by: self.mSchematicVersion_property) // Stored property
+      newValue.mSchematicDate_property.startsBeingObserved (by: self.mSchematicDate_property) // Stored property
+      newValue.mSchematicHorizontalFlip_property.startsBeingObserved (by: self.mSchematicHorizontalFlip_property) // Stored property
+      newValue.mSchematicVerticalFlip_property.startsBeingObserved (by: self.mSchematicVerticalFlip_property) // Stored property
+      newValue.mSchematicZoom_property.startsBeingObserved (by: self.mSchematicZoom_property) // Stored property
+      newValue.mSchematicGridStyle_property.startsBeingObserved (by: self.mSchematicGridStyle_property) // Stored property
+      newValue.mSchematicGridDisplayFactor_property.startsBeingObserved (by: self.mSchematicGridDisplayFactor_property) // Stored property
+      newValue.mSchematicCustomWidth_property.startsBeingObserved (by: self.mSchematicCustomWidth_property) // Stored property
+      newValue.mSchematicCustomWidthUnit_property.startsBeingObserved (by: self.mSchematicCustomWidthUnit_property) // Stored property
+      newValue.mSchematicCustomHeight_property.startsBeingObserved (by: self.mSchematicCustomHeight_property) // Stored property
+      newValue.mSchematicCustomHeightUnit_property.startsBeingObserved (by: self.mSchematicCustomHeightUnit_property) // Stored property
+      newValue.drawErrorBackgroundForBoard_property.startsBeingObserved (by: self.drawErrorBackgroundForBoard_property) // Stored property
+      newValue.displayFrontRestrictRectangles_property.startsBeingObserved (by: self.displayFrontRestrictRectangles_property) // Stored property
+      newValue.displayBackRestrictRectangles_property.startsBeingObserved (by: self.displayBackRestrictRectangles_property) // Stored property
+      newValue.displayInner1RestrictRectangles_property.startsBeingObserved (by: self.displayInner1RestrictRectangles_property) // Stored property
+      newValue.displayInner2RestrictRectangles_property.startsBeingObserved (by: self.displayInner2RestrictRectangles_property) // Stored property
+      newValue.displayInner3RestrictRectangles_property.startsBeingObserved (by: self.displayInner3RestrictRectangles_property) // Stored property
+      newValue.displayInner4RestrictRectangles_property.startsBeingObserved (by: self.displayInner4RestrictRectangles_property) // Stored property
+      newValue.displayFrontLegendForBoard_property.startsBeingObserved (by: self.displayFrontLegendForBoard_property) // Stored property
+      newValue.displayFrontLayoutForBoard_property.startsBeingObserved (by: self.displayFrontLayoutForBoard_property) // Stored property
+      newValue.displayBackLayoutForBoard_property.startsBeingObserved (by: self.displayBackLayoutForBoard_property) // Stored property
+      newValue.displayInner1LayoutForBoard_property.startsBeingObserved (by: self.displayInner1LayoutForBoard_property) // Stored property
+      newValue.displayInner2LayoutForBoard_property.startsBeingObserved (by: self.displayInner2LayoutForBoard_property) // Stored property
+      newValue.displayInner3LayoutForBoard_property.startsBeingObserved (by: self.displayInner3LayoutForBoard_property) // Stored property
+      newValue.displayInner4LayoutForBoard_property.startsBeingObserved (by: self.displayInner4LayoutForBoard_property) // Stored property
+      newValue.displayBackLegendForBoard_property.startsBeingObserved (by: self.displayBackLegendForBoard_property) // Stored property
+      newValue.displayFrontPadsForBoard_property.startsBeingObserved (by: self.displayFrontPadsForBoard_property) // Stored property
+      newValue.displayBackPadsForBoard_property.startsBeingObserved (by: self.displayBackPadsForBoard_property) // Stored property
+      newValue.displayPadNumbersForBoard_property.startsBeingObserved (by: self.displayPadNumbersForBoard_property) // Stored property
+      newValue.packageDrawingWidthMultpliedByTenForBoard_property.startsBeingObserved (by: self.packageDrawingWidthMultpliedByTenForBoard_property) // Stored property
+      newValue.mSchematicSheetOrientation_property.startsBeingObserved (by: self.mSchematicSheetOrientation_property) // Stored property
+      newValue.mRastnetDisplay_property.startsBeingObserved (by: self.mRastnetDisplay_property) // Stored property
+      newValue.mRastnetDisplayedNetName_property.startsBeingObserved (by: self.mRastnetDisplayedNetName_property) // Stored property
+      newValue.mRastnetDisplayedComponentName_property.startsBeingObserved (by: self.mRastnetDisplayedComponentName_property) // Stored property
+      newValue.hasInnerElements_property.startsBeingObserved (by: self.hasInnerElements_property) // Transient property
+      newValue.layerConfigurationString_property.startsBeingObserved (by: self.layerConfigurationString_property) // Transient property
+      newValue.boardGridStepMultipliedByDisplayFactor_property.startsBeingObserved (by: self.boardGridStepMultipliedByDisplayFactor_property) // Transient property
+      newValue.boardLimitsGridStepMultipliedByDisplayFactor_property.startsBeingObserved (by: self.boardLimitsGridStepMultipliedByDisplayFactor_property) // Transient property
+      newValue.boardShapeIsRectangular_property.startsBeingObserved (by: self.boardShapeIsRectangular_property) // Transient property
+      newValue.selectedSheetIssues_property.startsBeingObserved (by: self.selectedSheetIssues_property) // Transient property
+      newValue.schematicOverDisplay_property.startsBeingObserved (by: self.schematicOverDisplay_property) // Transient property
+      newValue.schematicTooltips_property.startsBeingObserved (by: self.schematicTooltips_property) // Transient property
+      newValue.segmentedControlSheetIssueImage_property.startsBeingObserved (by: self.segmentedControlSheetIssueImage_property) // Transient property
+      newValue.schematicErrorCount_property.startsBeingObserved (by: self.schematicErrorCount_property) // Transient property
+      newValue.sheetIndexes_property.startsBeingObserved (by: self.sheetIndexes_property) // Transient property
+      newValue.netsDescription_property.startsBeingObserved (by: self.netsDescription_property) // Transient property
+      newValue.boardIssues_property.startsBeingObserved (by: self.boardIssues_property) // Transient property
+      newValue.hasSixLayers_property.startsBeingObserved (by: self.hasSixLayers_property) // Transient property
+      newValue.signatureForERCChecking_property.startsBeingObserved (by: self.signatureForERCChecking_property) // Transient property
+      newValue.ercStatusImage_property.startsBeingObserved (by: self.ercStatusImage_property) // Transient property
+      newValue.ercStatusImageOrNoneOnSuccess_property.startsBeingObserved (by: self.ercStatusImageOrNoneOnSuccess_property) // Transient property
+      newValue.ercStatusMessage_property.startsBeingObserved (by: self.ercStatusMessage_property) // Transient property
+      newValue.viaCountString_property.startsBeingObserved (by: self.viaCountString_property) // Transient property
+      newValue.topSideTrackCountString_property.startsBeingObserved (by: self.topSideTrackCountString_property) // Transient property
+      newValue.backSideTrackCountString_property.startsBeingObserved (by: self.backSideTrackCountString_property) // Transient property
+      newValue.inner1LayerTrackCountString_property.startsBeingObserved (by: self.inner1LayerTrackCountString_property) // Transient property
+      newValue.inner2LayerTrackCountString_property.startsBeingObserved (by: self.inner2LayerTrackCountString_property) // Transient property
+      newValue.inner3LayerTrackCountString_property.startsBeingObserved (by: self.inner3LayerTrackCountString_property) // Transient property
+      newValue.inner4LayerTrackCountString_property.startsBeingObserved (by: self.inner4LayerTrackCountString_property) // Transient property
+      newValue.trackCountString_property.startsBeingObserved (by: self.trackCountString_property) // Transient property
+      newValue.trackLengthString_property.startsBeingObserved (by: self.trackLengthString_property) // Transient property
+      newValue.boardStatusErrorCount_property.startsBeingObserved (by: self.boardStatusErrorCount_property) // Transient property
+      newValue.interiorBoundBox_property.startsBeingObserved (by: self.interiorBoundBox_property) // Transient property
+      newValue.boardBoundBox_property.startsBeingObserved (by: self.boardBoundBox_property) // Transient property
+      newValue.boardInteriorTop_property.startsBeingObserved (by: self.boardInteriorTop_property) // Transient property
+      newValue.boardInteriorBottom_property.startsBeingObserved (by: self.boardInteriorBottom_property) // Transient property
+      newValue.boardInteriorLeft_property.startsBeingObserved (by: self.boardInteriorLeft_property) // Transient property
+      newValue.boardInteriorRight_property.startsBeingObserved (by: self.boardInteriorRight_property) // Transient property
+      newValue.boardLimitBorderTop_property.startsBeingObserved (by: self.boardLimitBorderTop_property) // Transient property
+      newValue.boardLimitBorderBottom_property.startsBeingObserved (by: self.boardLimitBorderBottom_property) // Transient property
+      newValue.boardLimitBorderLeft_property.startsBeingObserved (by: self.boardLimitBorderLeft_property) // Transient property
+      newValue.boardLimitBorderRight_property.startsBeingObserved (by: self.boardLimitBorderRight_property) // Transient property
+      newValue.borderElementCountString_property.startsBeingObserved (by: self.borderElementCountString_property) // Transient property
+      newValue.borderOutlineBackground_property.startsBeingObserved (by: self.borderOutlineBackground_property) // Transient property
+      newValue.borderViewBackground_property.startsBeingObserved (by: self.borderViewBackground_property) // Transient property
+      newValue.fontNameArray_property.startsBeingObserved (by: self.fontNameArray_property) // Transient property
+      newValue.deviceNames_property.startsBeingObserved (by: self.deviceNames_property) // Transient property
+      newValue.allClassNames_property.startsBeingObserved (by: self.allClassNames_property) // Transient property
+      newValue.sheetGeometry_property.startsBeingObserved (by: self.sheetGeometry_property) // Transient property
+      newValue.schematicBackgroundDisplay_property.startsBeingObserved (by: self.schematicBackgroundDisplay_property) // Transient property
+      newValue.netWarningCount_property.startsBeingObserved (by: self.netWarningCount_property) // Transient property
+      newValue.segmentedControlNetListIssueImage_property.startsBeingObserved (by: self.segmentedControlNetListIssueImage_property) // Transient property
+      newValue.netNamesArray_property.startsBeingObserved (by: self.netNamesArray_property) // Transient property
+      newValue.unplacedSymbols_property.startsBeingObserved (by: self.unplacedSymbols_property) // Transient property
+      newValue.unplacedPackages_property.startsBeingObserved (by: self.unplacedPackages_property) // Transient property
+      newValue.componentsPlacedInBoard_property.startsBeingObserved (by: self.componentsPlacedInBoard_property) // Transient property
+      newValue.boardStatusMessage_property.startsBeingObserved (by: self.boardStatusMessage_property) // Transient property
+      newValue.boardStatusWarningCount_property.startsBeingObserved (by: self.boardStatusWarningCount_property) // Transient property
+      newValue.placedComponentNameArray_property.startsBeingObserved (by: self.placedComponentNameArray_property) // Transient property
+      newValue.schematicHasErrorOrWarning_property.startsBeingObserved (by: self.schematicHasErrorOrWarning_property) // Transient property
+      newValue.schematicStatusMessage_property.startsBeingObserved (by: self.schematicStatusMessage_property) // Transient property
+      newValue.segmentedControlSchematicIssueImage_property.startsBeingObserved (by: self.segmentedControlSchematicIssueImage_property) // Transient property
+      newValue.schematicWarningCount_property.startsBeingObserved (by: self.schematicWarningCount_property) // Transient property
+      newValue.hasSchematicIssue_property.startsBeingObserved (by: self.hasSchematicIssue_property) // Transient property
+      newValue.segmentedControlBoardIssueImage_property.startsBeingObserved (by: self.segmentedControlBoardIssueImage_property) // Transient property
       if let relay = self.mObserversOf_mSheets { // to Many
-        newValue.mSheets_property.startsToBeObserved (by: relay)
+        newValue.mSheets_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mFonts { // to Many
-        newValue.mFonts_property.startsToBeObserved (by: relay)
+        newValue.mFonts_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mDevices { // to Many
-        newValue.mDevices_property.startsToBeObserved (by: relay)
+        newValue.mDevices_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mNetClasses { // to Many
-        newValue.mNetClasses_property.startsToBeObserved (by: relay)
+        newValue.mNetClasses_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mBorderCurves { // to Many
-        newValue.mBorderCurves_property.startsToBeObserved (by: relay)
+        newValue.mBorderCurves_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mBoardObjects { // to Many
-        newValue.mBoardObjects_property.startsToBeObserved (by: relay)
+        newValue.mBoardObjects_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mComponents { // to Many
-        newValue.mComponents_property.startsToBeObserved (by: relay)
+        newValue.mComponents_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -1352,16 +1352,16 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func toMany_mSheets_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSheets_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSheets {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mSheets_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mSheets_property.startsBeingObserved (by: relay)
       self.mObserversOf_mSheets = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1378,16 +1378,16 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func toMany_mFonts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mFonts_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mFonts {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mFonts_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mFonts_property.startsBeingObserved (by: relay)
       self.mObserversOf_mFonts = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1404,16 +1404,16 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func toMany_mDevices_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mDevices_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mDevices {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mDevices_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mDevices_property.startsBeingObserved (by: relay)
       self.mObserversOf_mDevices = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1430,16 +1430,16 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func toMany_mNetClasses_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mNetClasses_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mNetClasses {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mNetClasses_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mNetClasses_property.startsBeingObserved (by: relay)
       self.mObserversOf_mNetClasses = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1456,16 +1456,16 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func toMany_mBorderCurves_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mBorderCurves_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mBorderCurves {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mBorderCurves_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mBorderCurves_property.startsBeingObserved (by: relay)
       self.mObserversOf_mBorderCurves = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1482,16 +1482,16 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func toMany_mBoardObjects_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mBoardObjects_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mBoardObjects {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mBoardObjects_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mBoardObjects_property.startsBeingObserved (by: relay)
       self.mObserversOf_mBoardObjects = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1508,16 +1508,16 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func toMany_mComponents_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mComponents_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mComponents {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mComponents_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mComponents_property.startsBeingObserved (by: relay)
       self.mObserversOf_mComponents = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

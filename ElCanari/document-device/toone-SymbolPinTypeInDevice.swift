@@ -33,19 +33,19 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mPinX_property.startsToBeObserved (by: self.mPinX_property) // Stored property
-      newValue.mPinY_property.startsToBeObserved (by: self.mPinY_property) // Stored property
-      newValue.mXName_property.startsToBeObserved (by: self.mXName_property) // Stored property
-      newValue.mYName_property.startsToBeObserved (by: self.mYName_property) // Stored property
-      newValue.mName_property.startsToBeObserved (by: self.mName_property) // Stored property
-      newValue.mNameHorizontalAlignment_property.startsToBeObserved (by: self.mNameHorizontalAlignment_property) // Stored property
-      newValue.mPinNameIsDisplayedInSchematics_property.startsToBeObserved (by: self.mPinNameIsDisplayedInSchematics_property) // Stored property
-      newValue.mXNumber_property.startsToBeObserved (by: self.mXNumber_property) // Stored property
-      newValue.mYNumber_property.startsToBeObserved (by: self.mYNumber_property) // Stored property
-      newValue.mNumberHorizontalAlignment_property.startsToBeObserved (by: self.mNumberHorizontalAlignment_property) // Stored property
-      newValue.nameShape_property.startsToBeObserved (by: self.nameShape_property) // Transient property
+      newValue.mPinX_property.startsBeingObserved (by: self.mPinX_property) // Stored property
+      newValue.mPinY_property.startsBeingObserved (by: self.mPinY_property) // Stored property
+      newValue.mXName_property.startsBeingObserved (by: self.mXName_property) // Stored property
+      newValue.mYName_property.startsBeingObserved (by: self.mYName_property) // Stored property
+      newValue.mName_property.startsBeingObserved (by: self.mName_property) // Stored property
+      newValue.mNameHorizontalAlignment_property.startsBeingObserved (by: self.mNameHorizontalAlignment_property) // Stored property
+      newValue.mPinNameIsDisplayedInSchematics_property.startsBeingObserved (by: self.mPinNameIsDisplayedInSchematics_property) // Stored property
+      newValue.mXNumber_property.startsBeingObserved (by: self.mXNumber_property) // Stored property
+      newValue.mYNumber_property.startsBeingObserved (by: self.mYNumber_property) // Stored property
+      newValue.mNumberHorizontalAlignment_property.startsBeingObserved (by: self.mNumberHorizontalAlignment_property) // Stored property
+      newValue.nameShape_property.startsBeingObserved (by: self.nameShape_property) // Transient property
       if let relay = self.mObserversOf_mInstances { // to Many
-        newValue.mInstances_property.startsToBeObserved (by: relay)
+        newValue.mInstances_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -124,16 +124,16 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
 
   //····················································································································
 
-  final func toMany_mInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mInstances_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mInstances {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mInstances_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mInstances_property.startsBeingObserved (by: relay)
       self.mObserversOf_mInstances = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

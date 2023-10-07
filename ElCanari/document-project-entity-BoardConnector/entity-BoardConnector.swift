@@ -576,7 +576,7 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.startsToBeObserved (by: self.mComponent_none)
+    self.mComponent_property.startsBeingObserved (by: self.mComponent_none)
   //--- To many property: mTracksP2 (has opposite relationship)
     self.mTracksP2_property.undoManager = inUndoManager
     self.mTracksP2_property.setOppositeRelationShipFunctions (
@@ -605,7 +605,7 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponentPadName_property.startsToBeObserved (by: self.isConnectedToSomePad_property)
+    self.mComponentPadName_property.startsBeingObserved (by: self.isConnectedToSomePad_property)
   //--- To one property: mComponent (has opposite to many relationship: mConnectors)
     self.mComponent_property.undoManager = inUndoManager
     self.mComponent_property.setOppositeRelationShipFunctions (
@@ -640,11 +640,11 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.componentPadDictionary_property.startsToBeObserved (by: self.location_property)
-    self.mComponentPadName_property.startsToBeObserved (by: self.location_property)
-    self.mPadIndex_property.startsToBeObserved (by: self.location_property)
-    self.mX_property.startsToBeObserved (by: self.location_property)
-    self.mY_property.startsToBeObserved (by: self.location_property)
+    self.mComponent_property.componentPadDictionary_property.startsBeingObserved (by: self.location_property)
+    self.mComponentPadName_property.startsBeingObserved (by: self.location_property)
+    self.mPadIndex_property.startsBeingObserved (by: self.location_property)
+    self.mX_property.startsBeingObserved (by: self.location_property)
+    self.mY_property.startsBeingObserved (by: self.location_property)
   //--- Atomic property: netNameFromComponentPad
     self.netNameFromComponentPad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -664,8 +664,8 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.padNetDictionary_property.startsToBeObserved (by: self.netNameFromComponentPad_property)
-    self.mComponentPadName_property.startsToBeObserved (by: self.netNameFromComponentPad_property)
+    self.mComponent_property.padNetDictionary_property.startsBeingObserved (by: self.netNameFromComponentPad_property)
+    self.mComponentPadName_property.startsBeingObserved (by: self.netNameFromComponentPad_property)
   //--- Atomic property: netNameAndPadLocation
     self.netNameAndPadLocation_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -691,10 +691,10 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.padNetDictionary_property.startsToBeObserved (by: self.netNameAndPadLocation_property)
-    self.mComponentPadName_property.startsToBeObserved (by: self.netNameAndPadLocation_property)
-    self.location_property.startsToBeObserved (by: self.netNameAndPadLocation_property)
-    self.mComponent_property.componentName_property.startsToBeObserved (by: self.netNameAndPadLocation_property)
+    self.mComponent_property.padNetDictionary_property.startsBeingObserved (by: self.netNameAndPadLocation_property)
+    self.mComponentPadName_property.startsBeingObserved (by: self.netNameAndPadLocation_property)
+    self.location_property.startsBeingObserved (by: self.netNameAndPadLocation_property)
+    self.mComponent_property.componentName_property.startsBeingObserved (by: self.netNameAndPadLocation_property)
   //--- Atomic property: side
     self.side_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -723,11 +723,11 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.componentPadDictionary_property.startsToBeObserved (by: self.side_property)
-    self.mComponentPadName_property.startsToBeObserved (by: self.side_property)
-    self.mPadIndex_property.startsToBeObserved (by: self.side_property)
-    self.mTracksP1_property.toMany_mSide_StartsToBeObserved (by: self.side_property)
-    self.mTracksP2_property.toMany_mSide_StartsToBeObserved (by: self.side_property)
+    self.mComponent_property.componentPadDictionary_property.startsBeingObserved (by: self.side_property)
+    self.mComponentPadName_property.startsBeingObserved (by: self.side_property)
+    self.mPadIndex_property.startsBeingObserved (by: self.side_property)
+    self.mTracksP1_property.toMany_mSide_StartsBeingObserved (by: self.side_property)
+    self.mTracksP2_property.toMany_mSide_StartsBeingObserved (by: self.side_property)
   //--- Atomic property: isVia
     self.isVia_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -750,9 +750,9 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mTracksP1_property.toMany_mSide_StartsToBeObserved (by: self.isVia_property)
-    self.mTracksP2_property.toMany_mSide_StartsToBeObserved (by: self.isVia_property)
-    self.mComponent_property.startsToBeObserved (by: self.isVia_property)
+    self.mTracksP1_property.toMany_mSide_StartsBeingObserved (by: self.isVia_property)
+    self.mTracksP2_property.toMany_mSide_StartsBeingObserved (by: self.isVia_property)
+    self.mComponent_property.startsBeingObserved (by: self.isVia_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -793,15 +793,15 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.location_property.startsToBeObserved (by: self.issues_property)
-    self.mComponent_property.startsToBeObserved (by: self.issues_property)
-    self.mComponentPadName_property.startsToBeObserved (by: self.issues_property)
-    self.mTracksP1_property.startsToBeObserved (by: self.issues_property)
-    self.mTracksP2_property.startsToBeObserved (by: self.issues_property)
-    self.errorOrWarningIssueSize_property.startsToBeObserved (by: self.issues_property)
-    self.mPadIndex_property.startsToBeObserved (by: self.issues_property)
-    self.mComponent_property.mSlavePadsShouldBeRouted_property.startsToBeObserved (by: self.issues_property)
-    self.mComponent_property.padNetDictionary_property.startsToBeObserved (by: self.issues_property)
+    self.location_property.startsBeingObserved (by: self.issues_property)
+    self.mComponent_property.startsBeingObserved (by: self.issues_property)
+    self.mComponentPadName_property.startsBeingObserved (by: self.issues_property)
+    self.mTracksP1_property.startsBeingObserved (by: self.issues_property)
+    self.mTracksP2_property.startsBeingObserved (by: self.issues_property)
+    self.errorOrWarningIssueSize_property.startsBeingObserved (by: self.issues_property)
+    self.mPadIndex_property.startsBeingObserved (by: self.issues_property)
+    self.mComponent_property.mSlavePadsShouldBeRouted_property.startsBeingObserved (by: self.issues_property)
+    self.mComponent_property.padNetDictionary_property.startsBeingObserved (by: self.issues_property)
   //--- Atomic property: viaDefaultHoleDiameter
     self.viaDefaultHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -821,8 +821,8 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mTracksP1_property.toMany_netClassViaHoleDiameter_StartsToBeObserved (by: self.viaDefaultHoleDiameter_property)
-    self.mTracksP2_property.toMany_netClassViaHoleDiameter_StartsToBeObserved (by: self.viaDefaultHoleDiameter_property)
+    self.mTracksP1_property.toMany_netClassViaHoleDiameter_StartsBeingObserved (by: self.viaDefaultHoleDiameter_property)
+    self.mTracksP2_property.toMany_netClassViaHoleDiameter_StartsBeingObserved (by: self.viaDefaultHoleDiameter_property)
   //--- Atomic property: viaDefaultPadDiameter
     self.viaDefaultPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -842,8 +842,8 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mTracksP1_property.toMany_netClassViaPadDiameter_StartsToBeObserved (by: self.viaDefaultPadDiameter_property)
-    self.mTracksP2_property.toMany_netClassViaPadDiameter_StartsToBeObserved (by: self.viaDefaultPadDiameter_property)
+    self.mTracksP1_property.toMany_netClassViaPadDiameter_StartsBeingObserved (by: self.viaDefaultPadDiameter_property)
+    self.mTracksP2_property.toMany_netClassViaPadDiameter_StartsBeingObserved (by: self.viaDefaultPadDiameter_property)
   //--- Atomic property: netNameFromTracks
     self.netNameFromTracks_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -863,8 +863,8 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mTracksP1_property.toMany_netName_StartsToBeObserved (by: self.netNameFromTracks_property)
-    self.mTracksP2_property.toMany_netName_StartsToBeObserved (by: self.netNameFromTracks_property)
+    self.mTracksP1_property.toMany_netName_StartsBeingObserved (by: self.netNameFromTracks_property)
+    self.mTracksP2_property.toMany_netName_StartsBeingObserved (by: self.netNameFromTracks_property)
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -884,8 +884,8 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mTracksP1_property.toMany_netClassName_StartsToBeObserved (by: self.netClassName_property)
-    self.mTracksP2_property.toMany_netClassName_StartsToBeObserved (by: self.netClassName_property)
+    self.mTracksP1_property.toMany_netClassName_StartsBeingObserved (by: self.netClassName_property)
+    self.mTracksP2_property.toMany_netClassName_StartsBeingObserved (by: self.netClassName_property)
   //--- Atomic property: connectedToComponent
     self.connectedToComponent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -902,7 +902,7 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.mComponent_property.startsToBeObserved (by: self.connectedToComponent_property)
+    self.mComponent_property.startsBeingObserved (by: self.connectedToComponent_property)
   //--- Atomic property: actualHoleDiameter
     self.actualHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -925,9 +925,9 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.viaDefaultHoleDiameter_property.startsToBeObserved (by: self.actualHoleDiameter_property)
-    self.mUsesCustomHoleDiameter_property.startsToBeObserved (by: self.actualHoleDiameter_property)
-    self.mCustomHoleDiameter_property.startsToBeObserved (by: self.actualHoleDiameter_property)
+    self.viaDefaultHoleDiameter_property.startsBeingObserved (by: self.actualHoleDiameter_property)
+    self.mUsesCustomHoleDiameter_property.startsBeingObserved (by: self.actualHoleDiameter_property)
+    self.mCustomHoleDiameter_property.startsBeingObserved (by: self.actualHoleDiameter_property)
   //--- Atomic property: actualPadDiameter
     self.actualPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -950,9 +950,9 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.viaDefaultPadDiameter_property.startsToBeObserved (by: self.actualPadDiameter_property)
-    self.mUsesCustomPadDiameter_property.startsToBeObserved (by: self.actualPadDiameter_property)
-    self.mCustomPadDiameter_property.startsToBeObserved (by: self.actualPadDiameter_property)
+    self.viaDefaultPadDiameter_property.startsBeingObserved (by: self.actualPadDiameter_property)
+    self.mUsesCustomPadDiameter_property.startsBeingObserved (by: self.actualPadDiameter_property)
+    self.mCustomPadDiameter_property.startsBeingObserved (by: self.actualPadDiameter_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -981,11 +981,11 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.isVia_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.location_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.actualHoleDiameter_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.actualPadDiameter_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_frontSidePadColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.isVia_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.location_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.actualHoleDiameter_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.actualPadDiameter_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_frontSidePadColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1005,8 +1005,8 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.isVia_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.location_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.isVia_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.location_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1029,9 +1029,9 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.location_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.isVia_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.actualPadDiameter_property.startsToBeObserved (by: self.signatureForERCChecking_property)
+    self.location_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.isVia_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.actualPadDiameter_property.startsBeingObserved (by: self.signatureForERCChecking_property)
   //--- Install undoers and opposite setter for relationships
     self.mTracksP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mConnectorP2_property.setProp (me) } },

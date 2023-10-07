@@ -30,13 +30,13 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_mFileName { // Stored property
-        managedObject.mFileName_property.startsToBeObserved (by: relay)
+        managedObject.mFileName_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mFileData { // Stored property
-        managedObject.mFileData_property.startsToBeObserved (by: relay)
+        managedObject.mFileData_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_fileSize { // Transient property
-        managedObject.fileSize_property.startsToBeObserved (by: relay)
+        managedObject.fileSize_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -49,19 +49,19 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func toMany_mFileName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mFileName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mFileName {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mFileName_property.startsToBeObserved (by: relay)
+        managedObject.mFileName_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mFileName = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -78,19 +78,19 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func toMany_mFileData_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mFileData_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mFileData {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mFileData_property.startsToBeObserved (by: relay)
+        managedObject.mFileData_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mFileData = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -107,19 +107,19 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func toMany_fileSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_fileSize_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_fileSize {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.fileSize_property.startsToBeObserved (by: relay)
+        managedObject.fileSize_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_fileSize = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································

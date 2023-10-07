@@ -72,55 +72,55 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_yCenter { // Stored property
-        managedObject.yCenter_property.startsToBeObserved (by: relay)
+        managedObject.yCenter_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_radius { // Stored property
-        managedObject.radius_property.startsToBeObserved (by: relay)
+        managedObject.radius_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_startAngle { // Stored property
-        managedObject.startAngle_property.startsToBeObserved (by: relay)
+        managedObject.startAngle_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_arcAngle { // Stored property
-        managedObject.arcAngle_property.startsToBeObserved (by: relay)
+        managedObject.arcAngle_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_startTangent { // Stored property
-        managedObject.startTangent_property.startsToBeObserved (by: relay)
+        managedObject.startTangent_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_endTangent { // Stored property
-        managedObject.endTangent_property.startsToBeObserved (by: relay)
+        managedObject.endTangent_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_pathIsClosed { // Stored property
-        managedObject.pathIsClosed_property.startsToBeObserved (by: relay)
+        managedObject.pathIsClosed_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_xCenterUnit { // Stored property
-        managedObject.xCenterUnit_property.startsToBeObserved (by: relay)
+        managedObject.xCenterUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_yCenterUnit { // Stored property
-        managedObject.yCenterUnit_property.startsToBeObserved (by: relay)
+        managedObject.yCenterUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_radiusUnit { // Stored property
-        managedObject.radiusUnit_property.startsToBeObserved (by: relay)
+        managedObject.radiusUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_startTangentUnit { // Stored property
-        managedObject.startTangentUnit_property.startsToBeObserved (by: relay)
+        managedObject.startTangentUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_endTangentUnit { // Stored property
-        managedObject.endTangentUnit_property.startsToBeObserved (by: relay)
+        managedObject.endTangentUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_xCenter { // Stored property
-        managedObject.xCenter_property.startsToBeObserved (by: relay)
+        managedObject.xCenter_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_strokeBezierPath { // Transient property
-        managedObject.strokeBezierPath_property.startsToBeObserved (by: relay)
+        managedObject.strokeBezierPath_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_objectDisplay { // Transient property
-        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_selectionDisplay { // Transient property
-        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+        managedObject.selectionDisplay_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_issues { // Transient property
-        managedObject.issues_property.startsToBeObserved (by: relay)
+        managedObject.issues_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -133,19 +133,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_yCenter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_yCenter_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_yCenter {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.yCenter_property.startsToBeObserved (by: relay)
+        managedObject.yCenter_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_yCenter = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -162,19 +162,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_radius_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_radius_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_radius {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.radius_property.startsToBeObserved (by: relay)
+        managedObject.radius_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_radius = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -191,19 +191,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_startAngle_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_startAngle_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_startAngle {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.startAngle_property.startsToBeObserved (by: relay)
+        managedObject.startAngle_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_startAngle = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -220,19 +220,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_arcAngle_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_arcAngle_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_arcAngle {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.arcAngle_property.startsToBeObserved (by: relay)
+        managedObject.arcAngle_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_arcAngle = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -249,19 +249,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_startTangent_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_startTangent_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_startTangent {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.startTangent_property.startsToBeObserved (by: relay)
+        managedObject.startTangent_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_startTangent = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -278,19 +278,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_endTangent_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_endTangent_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_endTangent {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.endTangent_property.startsToBeObserved (by: relay)
+        managedObject.endTangent_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_endTangent = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -307,19 +307,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_pathIsClosed_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_pathIsClosed_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_pathIsClosed {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.pathIsClosed_property.startsToBeObserved (by: relay)
+        managedObject.pathIsClosed_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_pathIsClosed = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -336,19 +336,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_xCenterUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_xCenterUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_xCenterUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.xCenterUnit_property.startsToBeObserved (by: relay)
+        managedObject.xCenterUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_xCenterUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -365,19 +365,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_yCenterUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_yCenterUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_yCenterUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.yCenterUnit_property.startsToBeObserved (by: relay)
+        managedObject.yCenterUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_yCenterUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -394,19 +394,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_radiusUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_radiusUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_radiusUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.radiusUnit_property.startsToBeObserved (by: relay)
+        managedObject.radiusUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_radiusUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -423,19 +423,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_startTangentUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_startTangentUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_startTangentUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.startTangentUnit_property.startsToBeObserved (by: relay)
+        managedObject.startTangentUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_startTangentUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -452,19 +452,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_endTangentUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_endTangentUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_endTangentUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.endTangentUnit_property.startsToBeObserved (by: relay)
+        managedObject.endTangentUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_endTangentUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -481,19 +481,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_xCenter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_xCenter_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_xCenter {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.xCenter_property.startsToBeObserved (by: relay)
+        managedObject.xCenter_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_xCenter = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -510,19 +510,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_strokeBezierPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_strokeBezierPath_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_strokeBezierPath {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.strokeBezierPath_property.startsToBeObserved (by: relay)
+        managedObject.strokeBezierPath_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_strokeBezierPath = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -539,19 +539,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_objectDisplay = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -568,19 +568,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+        managedObject.selectionDisplay_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_selectionDisplay = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -597,19 +597,19 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func toMany_issues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_issues_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_issues {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.issues_property.startsToBeObserved (by: relay)
+        managedObject.issues_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_issues = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································

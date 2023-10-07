@@ -442,28 +442,28 @@ final class BoardRestrictRectangle : BoardObject,
         return .empty
       }
     }
-    self.mX_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mY_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mWidth_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mHeight_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mIsInFrontLayer_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mIsInBackLayer_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mIsInInner1Layer_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mIsInInner2Layer_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mIsInInner3Layer_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mIsInInner4Layer_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayFrontRestrictRectangles_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayBackRestrictRectangles_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayInner1RestrictRectangles_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayInner2RestrictRectangles_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayInner3RestrictRectangles_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayInner4RestrictRectangles_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_frontSideRestrictRectangleColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_inner1SideRestrictRectangleColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_inner2SideRestrictRectangleColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_inner3SideRestrictRectangleColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_inner4SideRestrictRectangleColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_backSideRestrictRectangleColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.mX_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mY_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mWidth_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mHeight_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mIsInFrontLayer_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mIsInBackLayer_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mIsInInner1Layer_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mIsInInner2Layer_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mIsInInner3Layer_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mIsInInner4Layer_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayFrontRestrictRectangles_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayBackRestrictRectangles_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayInner1RestrictRectangles_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayInner2RestrictRectangles_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayInner3RestrictRectangles_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayInner4RestrictRectangles_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_frontSideRestrictRectangleColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_inner1SideRestrictRectangleColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_inner2SideRestrictRectangleColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_inner3SideRestrictRectangleColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_inner4SideRestrictRectangleColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_backSideRestrictRectangleColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -492,11 +492,11 @@ final class BoardRestrictRectangle : BoardObject,
         return .empty
       }
     }
-    self.mX_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mY_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mWidth_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mHeight_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_hiliteWidthMultipliedByTen_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mX_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mY_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mWidth_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mHeight_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_hiliteWidthMultipliedByTen_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -540,16 +540,16 @@ final class BoardRestrictRectangle : BoardObject,
         return .empty
       }
     }
-    self.mX_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mY_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mWidth_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mHeight_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mIsInFrontLayer_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mIsInBackLayer_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mIsInInner1Layer_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mIsInInner2Layer_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mIsInInner3Layer_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mIsInInner4Layer_property.startsToBeObserved (by: self.signatureForERCChecking_property)
+    self.mX_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mY_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mWidth_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mHeight_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mIsInFrontLayer_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mIsInBackLayer_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mIsInInner1Layer_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mIsInInner2Layer_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mIsInInner3Layer_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mIsInInner4Layer_property.startsBeingObserved (by: self.signatureForERCChecking_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

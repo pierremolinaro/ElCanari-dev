@@ -30,13 +30,13 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_mPadName { // Stored property
-        managedObject.mPadName_property.startsToBeObserved (by: relay)
+        managedObject.mPadName_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_pinPadAssignment { // Transient property
-        managedObject.pinPadAssignment_property.startsToBeObserved (by: relay)
+        managedObject.pinPadAssignment_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_descriptor { // Transient property
-        managedObject.descriptor_property.startsToBeObserved (by: relay)
+        managedObject.descriptor_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -49,19 +49,19 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func toMany_mPadName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPadName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPadName {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mPadName_property.startsToBeObserved (by: relay)
+        managedObject.mPadName_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mPadName = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -78,19 +78,19 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func toMany_pinPadAssignment_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_pinPadAssignment_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_pinPadAssignment {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.pinPadAssignment_property.startsToBeObserved (by: relay)
+        managedObject.pinPadAssignment_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_pinPadAssignment = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -107,19 +107,19 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func toMany_descriptor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_descriptor_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_descriptor {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.descriptor_property.startsToBeObserved (by: relay)
+        managedObject.descriptor_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_descriptor = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································

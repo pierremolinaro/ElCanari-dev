@@ -125,13 +125,13 @@ final class Controller_Preferences_userLibraryArrayController : NSObject, AutoLa
 
   override init () {
     super.init ()
-    self.sortedArray_property.startsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mPath' column
-    self.sortedArray_property.toMany_mPath_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mPath_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mStatusImage' column
-    self.sortedArray_property.toMany_mStatusImage_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mStatusImage_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mUses' column
-    self.sortedArray_property.toMany_mUses_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mUses_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {

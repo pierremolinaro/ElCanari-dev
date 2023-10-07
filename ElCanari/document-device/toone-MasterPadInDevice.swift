@@ -34,20 +34,20 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mCenterX_property.startsToBeObserved (by: self.mCenterX_property) // Stored property
-      newValue.mCenterY_property.startsToBeObserved (by: self.mCenterY_property) // Stored property
-      newValue.mWidth_property.startsToBeObserved (by: self.mWidth_property) // Stored property
-      newValue.mHeight_property.startsToBeObserved (by: self.mHeight_property) // Stored property
-      newValue.mHoleWidth_property.startsToBeObserved (by: self.mHoleWidth_property) // Stored property
-      newValue.mHoleHeight_property.startsToBeObserved (by: self.mHoleHeight_property) // Stored property
-      newValue.mShape_property.startsToBeObserved (by: self.mShape_property) // Stored property
-      newValue.mStyle_property.startsToBeObserved (by: self.mStyle_property) // Stored property
-      newValue.mName_property.startsToBeObserved (by: self.mName_property) // Stored property
-      newValue.padNumberDisplay_property.startsToBeObserved (by: self.padNumberDisplay_property) // Transient property
-      newValue.frontSideFilledBezierPathArray_property.startsToBeObserved (by: self.frontSideFilledBezierPathArray_property) // Transient property
-      newValue.backSideFilledBezierPathArray_property.startsToBeObserved (by: self.backSideFilledBezierPathArray_property) // Transient property
+      newValue.mCenterX_property.startsBeingObserved (by: self.mCenterX_property) // Stored property
+      newValue.mCenterY_property.startsBeingObserved (by: self.mCenterY_property) // Stored property
+      newValue.mWidth_property.startsBeingObserved (by: self.mWidth_property) // Stored property
+      newValue.mHeight_property.startsBeingObserved (by: self.mHeight_property) // Stored property
+      newValue.mHoleWidth_property.startsBeingObserved (by: self.mHoleWidth_property) // Stored property
+      newValue.mHoleHeight_property.startsBeingObserved (by: self.mHoleHeight_property) // Stored property
+      newValue.mShape_property.startsBeingObserved (by: self.mShape_property) // Stored property
+      newValue.mStyle_property.startsBeingObserved (by: self.mStyle_property) // Stored property
+      newValue.mName_property.startsBeingObserved (by: self.mName_property) // Stored property
+      newValue.padNumberDisplay_property.startsBeingObserved (by: self.padNumberDisplay_property) // Transient property
+      newValue.frontSideFilledBezierPathArray_property.startsBeingObserved (by: self.frontSideFilledBezierPathArray_property) // Transient property
+      newValue.backSideFilledBezierPathArray_property.startsBeingObserved (by: self.backSideFilledBezierPathArray_property) // Transient property
       if let relay = self.mObserversOf_mSlavePads { // to Many
-        newValue.mSlavePads_property.startsToBeObserved (by: relay)
+        newValue.mSlavePads_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -132,16 +132,16 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
 
   //····················································································································
 
-  final func toMany_mSlavePads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSlavePads_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSlavePads {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mSlavePads_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mSlavePads_property.startsBeingObserved (by: relay)
       self.mObserversOf_mSlavePads = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

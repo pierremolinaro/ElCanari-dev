@@ -1874,7 +1874,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.modelVersion_property.startsToBeObserved (by: self.errorArchiveVersionMessage_property)
+    self.modelVersion_property.startsBeingObserved (by: self.errorArchiveVersionMessage_property)
   //--- Atomic property: errorArchiveLabelSize
     self.errorArchiveLabelSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1891,7 +1891,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.ignoreModelVersionError_property.startsToBeObserved (by: self.errorArchiveLabelSize_property)
+    self.ignoreModelVersionError_property.startsBeingObserved (by: self.errorArchiveLabelSize_property)
   //--- Atomic property: errorArchiveLabelColor
     self.errorArchiveLabelColor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1908,7 +1908,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.ignoreModelVersionError_property.startsToBeObserved (by: self.errorArchiveLabelColor_property)
+    self.ignoreModelVersionError_property.startsBeingObserved (by: self.errorArchiveLabelColor_property)
   //--- Atomic property: errorArchiveVersionMessageIsHidden
     self.errorArchiveVersionMessageIsHidden_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1925,7 +1925,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.modelVersion_property.startsToBeObserved (by: self.errorArchiveVersionMessageIsHidden_property)
+    self.modelVersion_property.startsBeingObserved (by: self.errorArchiveVersionMessageIsHidden_property)
   //--- Atomic property: frontLegendBoardImageRectangles
     self.frontLegendBoardImageRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1963,14 +1963,14 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.legendFrontImages_property.toMany_p0x_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
-    self.legendFrontImages_property.toMany_p0y_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
-    self.legendFrontImages_property.toMany_p1x_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
-    self.legendFrontImages_property.toMany_p1y_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
-    self.legendFrontImages_property.toMany_p2x_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
-    self.legendFrontImages_property.toMany_p2y_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
-    self.legendFrontImages_property.toMany_p3x_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
-    self.legendFrontImages_property.toMany_p3y_StartsToBeObserved (by: self.frontLegendBoardImageRectangles_property)
+    self.legendFrontImages_property.toMany_p0x_StartsBeingObserved (by: self.frontLegendBoardImageRectangles_property)
+    self.legendFrontImages_property.toMany_p0y_StartsBeingObserved (by: self.frontLegendBoardImageRectangles_property)
+    self.legendFrontImages_property.toMany_p1x_StartsBeingObserved (by: self.frontLegendBoardImageRectangles_property)
+    self.legendFrontImages_property.toMany_p1y_StartsBeingObserved (by: self.frontLegendBoardImageRectangles_property)
+    self.legendFrontImages_property.toMany_p2x_StartsBeingObserved (by: self.frontLegendBoardImageRectangles_property)
+    self.legendFrontImages_property.toMany_p2y_StartsBeingObserved (by: self.frontLegendBoardImageRectangles_property)
+    self.legendFrontImages_property.toMany_p3x_StartsBeingObserved (by: self.frontLegendBoardImageRectangles_property)
+    self.legendFrontImages_property.toMany_p3y_StartsBeingObserved (by: self.frontLegendBoardImageRectangles_property)
   //--- Atomic property: backLegendBoardImageRectangles
     self.backLegendBoardImageRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2008,14 +2008,14 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.legendBackImages_property.toMany_p0x_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
-    self.legendBackImages_property.toMany_p0y_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
-    self.legendBackImages_property.toMany_p1x_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
-    self.legendBackImages_property.toMany_p1y_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
-    self.legendBackImages_property.toMany_p2x_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
-    self.legendBackImages_property.toMany_p2y_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
-    self.legendBackImages_property.toMany_p3x_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
-    self.legendBackImages_property.toMany_p3y_StartsToBeObserved (by: self.backLegendBoardImageRectangles_property)
+    self.legendBackImages_property.toMany_p0x_StartsBeingObserved (by: self.backLegendBoardImageRectangles_property)
+    self.legendBackImages_property.toMany_p0y_StartsBeingObserved (by: self.backLegendBoardImageRectangles_property)
+    self.legendBackImages_property.toMany_p1x_StartsBeingObserved (by: self.backLegendBoardImageRectangles_property)
+    self.legendBackImages_property.toMany_p1y_StartsBeingObserved (by: self.backLegendBoardImageRectangles_property)
+    self.legendBackImages_property.toMany_p2x_StartsBeingObserved (by: self.backLegendBoardImageRectangles_property)
+    self.legendBackImages_property.toMany_p2y_StartsBeingObserved (by: self.backLegendBoardImageRectangles_property)
+    self.legendBackImages_property.toMany_p3x_StartsBeingObserved (by: self.backLegendBoardImageRectangles_property)
+    self.legendBackImages_property.toMany_p3y_StartsBeingObserved (by: self.backLegendBoardImageRectangles_property)
   //--- Atomic property: frontLegendQRCodeRectangles
     self.frontLegendQRCodeRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2053,14 +2053,14 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.legendFrontQRCodes_property.toMany_p0x_StartsToBeObserved (by: self.frontLegendQRCodeRectangles_property)
-    self.legendFrontQRCodes_property.toMany_p0y_StartsToBeObserved (by: self.frontLegendQRCodeRectangles_property)
-    self.legendFrontQRCodes_property.toMany_p1x_StartsToBeObserved (by: self.frontLegendQRCodeRectangles_property)
-    self.legendFrontQRCodes_property.toMany_p1y_StartsToBeObserved (by: self.frontLegendQRCodeRectangles_property)
-    self.legendFrontQRCodes_property.toMany_p2x_StartsToBeObserved (by: self.frontLegendQRCodeRectangles_property)
-    self.legendFrontQRCodes_property.toMany_p2y_StartsToBeObserved (by: self.frontLegendQRCodeRectangles_property)
-    self.legendFrontQRCodes_property.toMany_p3x_StartsToBeObserved (by: self.frontLegendQRCodeRectangles_property)
-    self.legendFrontQRCodes_property.toMany_p3y_StartsToBeObserved (by: self.frontLegendQRCodeRectangles_property)
+    self.legendFrontQRCodes_property.toMany_p0x_StartsBeingObserved (by: self.frontLegendQRCodeRectangles_property)
+    self.legendFrontQRCodes_property.toMany_p0y_StartsBeingObserved (by: self.frontLegendQRCodeRectangles_property)
+    self.legendFrontQRCodes_property.toMany_p1x_StartsBeingObserved (by: self.frontLegendQRCodeRectangles_property)
+    self.legendFrontQRCodes_property.toMany_p1y_StartsBeingObserved (by: self.frontLegendQRCodeRectangles_property)
+    self.legendFrontQRCodes_property.toMany_p2x_StartsBeingObserved (by: self.frontLegendQRCodeRectangles_property)
+    self.legendFrontQRCodes_property.toMany_p2y_StartsBeingObserved (by: self.frontLegendQRCodeRectangles_property)
+    self.legendFrontQRCodes_property.toMany_p3x_StartsBeingObserved (by: self.frontLegendQRCodeRectangles_property)
+    self.legendFrontQRCodes_property.toMany_p3y_StartsBeingObserved (by: self.frontLegendQRCodeRectangles_property)
   //--- Atomic property: backLegendQRCodeRectangles
     self.backLegendQRCodeRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2098,14 +2098,14 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.legendBackQRCodes_property.toMany_p0x_StartsToBeObserved (by: self.backLegendQRCodeRectangles_property)
-    self.legendBackQRCodes_property.toMany_p0y_StartsToBeObserved (by: self.backLegendQRCodeRectangles_property)
-    self.legendBackQRCodes_property.toMany_p1x_StartsToBeObserved (by: self.backLegendQRCodeRectangles_property)
-    self.legendBackQRCodes_property.toMany_p1y_StartsToBeObserved (by: self.backLegendQRCodeRectangles_property)
-    self.legendBackQRCodes_property.toMany_p2x_StartsToBeObserved (by: self.backLegendQRCodeRectangles_property)
-    self.legendBackQRCodes_property.toMany_p2y_StartsToBeObserved (by: self.backLegendQRCodeRectangles_property)
-    self.legendBackQRCodes_property.toMany_p3x_StartsToBeObserved (by: self.backLegendQRCodeRectangles_property)
-    self.legendBackQRCodes_property.toMany_p3y_StartsToBeObserved (by: self.backLegendQRCodeRectangles_property)
+    self.legendBackQRCodes_property.toMany_p0x_StartsBeingObserved (by: self.backLegendQRCodeRectangles_property)
+    self.legendBackQRCodes_property.toMany_p0y_StartsBeingObserved (by: self.backLegendQRCodeRectangles_property)
+    self.legendBackQRCodes_property.toMany_p1x_StartsBeingObserved (by: self.backLegendQRCodeRectangles_property)
+    self.legendBackQRCodes_property.toMany_p1y_StartsBeingObserved (by: self.backLegendQRCodeRectangles_property)
+    self.legendBackQRCodes_property.toMany_p2x_StartsBeingObserved (by: self.backLegendQRCodeRectangles_property)
+    self.legendBackQRCodes_property.toMany_p2y_StartsBeingObserved (by: self.backLegendQRCodeRectangles_property)
+    self.legendBackQRCodes_property.toMany_p3x_StartsBeingObserved (by: self.backLegendQRCodeRectangles_property)
+    self.legendBackQRCodes_property.toMany_p3y_StartsBeingObserved (by: self.backLegendQRCodeRectangles_property)
   //--- Atomic property: layerConfigurationString
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2122,7 +2122,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.layerConfiguration_property.startsToBeObserved (by: self.layerConfigurationString_property)
+    self.layerConfiguration_property.startsBeingObserved (by: self.layerConfigurationString_property)
   //--- Atomic property: frontLegendLinesSegments
     self.frontLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2151,11 +2151,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontLegendLines_property.toMany_x1_StartsToBeObserved (by: self.frontLegendLinesSegments_property)
-    self.frontLegendLines_property.toMany_y1_StartsToBeObserved (by: self.frontLegendLinesSegments_property)
-    self.frontLegendLines_property.toMany_x2_StartsToBeObserved (by: self.frontLegendLinesSegments_property)
-    self.frontLegendLines_property.toMany_y2_StartsToBeObserved (by: self.frontLegendLinesSegments_property)
-    self.frontLegendLines_property.toMany_width_StartsToBeObserved (by: self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.toMany_x1_StartsBeingObserved (by: self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.toMany_y1_StartsBeingObserved (by: self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.toMany_x2_StartsBeingObserved (by: self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.toMany_y2_StartsBeingObserved (by: self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.toMany_width_StartsBeingObserved (by: self.frontLegendLinesSegments_property)
   //--- Atomic property: backLegendLinesSegments
     self.backLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2184,11 +2184,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backLegendLines_property.toMany_x1_StartsToBeObserved (by: self.backLegendLinesSegments_property)
-    self.backLegendLines_property.toMany_y1_StartsToBeObserved (by: self.backLegendLinesSegments_property)
-    self.backLegendLines_property.toMany_x2_StartsToBeObserved (by: self.backLegendLinesSegments_property)
-    self.backLegendLines_property.toMany_y2_StartsToBeObserved (by: self.backLegendLinesSegments_property)
-    self.backLegendLines_property.toMany_width_StartsToBeObserved (by: self.backLegendLinesSegments_property)
+    self.backLegendLines_property.toMany_x1_StartsBeingObserved (by: self.backLegendLinesSegments_property)
+    self.backLegendLines_property.toMany_y1_StartsBeingObserved (by: self.backLegendLinesSegments_property)
+    self.backLegendLines_property.toMany_x2_StartsBeingObserved (by: self.backLegendLinesSegments_property)
+    self.backLegendLines_property.toMany_y2_StartsBeingObserved (by: self.backLegendLinesSegments_property)
+    self.backLegendLines_property.toMany_width_StartsBeingObserved (by: self.backLegendLinesSegments_property)
   //--- Atomic property: backLegendLinesBezierPaths
     self.backLegendLinesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2205,7 +2205,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backLegendLinesSegments_property.startsToBeObserved (by: self.backLegendLinesBezierPaths_property)
+    self.backLegendLinesSegments_property.startsBeingObserved (by: self.backLegendLinesBezierPaths_property)
   //--- Atomic property: frontLegendTextsSegments
     self.frontLegendTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2234,11 +2234,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontLegendTexts_property.toMany_x1_StartsToBeObserved (by: self.frontLegendTextsSegments_property)
-    self.frontLegendTexts_property.toMany_y1_StartsToBeObserved (by: self.frontLegendTextsSegments_property)
-    self.frontLegendTexts_property.toMany_x2_StartsToBeObserved (by: self.frontLegendTextsSegments_property)
-    self.frontLegendTexts_property.toMany_y2_StartsToBeObserved (by: self.frontLegendTextsSegments_property)
-    self.frontLegendTexts_property.toMany_width_StartsToBeObserved (by: self.frontLegendTextsSegments_property)
+    self.frontLegendTexts_property.toMany_x1_StartsBeingObserved (by: self.frontLegendTextsSegments_property)
+    self.frontLegendTexts_property.toMany_y1_StartsBeingObserved (by: self.frontLegendTextsSegments_property)
+    self.frontLegendTexts_property.toMany_x2_StartsBeingObserved (by: self.frontLegendTextsSegments_property)
+    self.frontLegendTexts_property.toMany_y2_StartsBeingObserved (by: self.frontLegendTextsSegments_property)
+    self.frontLegendTexts_property.toMany_width_StartsBeingObserved (by: self.frontLegendTextsSegments_property)
   //--- Atomic property: frontLegendTextsBezierPaths
     self.frontLegendTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2255,7 +2255,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontLegendTextsSegments_property.startsToBeObserved (by: self.frontLegendTextsBezierPaths_property)
+    self.frontLegendTextsSegments_property.startsBeingObserved (by: self.frontLegendTextsBezierPaths_property)
   //--- Atomic property: frontLayoutTextsSegments
     self.frontLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2284,11 +2284,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontLayoutTexts_property.toMany_x1_StartsToBeObserved (by: self.frontLayoutTextsSegments_property)
-    self.frontLayoutTexts_property.toMany_y1_StartsToBeObserved (by: self.frontLayoutTextsSegments_property)
-    self.frontLayoutTexts_property.toMany_x2_StartsToBeObserved (by: self.frontLayoutTextsSegments_property)
-    self.frontLayoutTexts_property.toMany_y2_StartsToBeObserved (by: self.frontLayoutTextsSegments_property)
-    self.frontLayoutTexts_property.toMany_width_StartsToBeObserved (by: self.frontLayoutTextsSegments_property)
+    self.frontLayoutTexts_property.toMany_x1_StartsBeingObserved (by: self.frontLayoutTextsSegments_property)
+    self.frontLayoutTexts_property.toMany_y1_StartsBeingObserved (by: self.frontLayoutTextsSegments_property)
+    self.frontLayoutTexts_property.toMany_x2_StartsBeingObserved (by: self.frontLayoutTextsSegments_property)
+    self.frontLayoutTexts_property.toMany_y2_StartsBeingObserved (by: self.frontLayoutTextsSegments_property)
+    self.frontLayoutTexts_property.toMany_width_StartsBeingObserved (by: self.frontLayoutTextsSegments_property)
   //--- Atomic property: frontLayoutTextsBezierPaths
     self.frontLayoutTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2305,7 +2305,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontLayoutTextsSegments_property.startsToBeObserved (by: self.frontLayoutTextsBezierPaths_property)
+    self.frontLayoutTextsSegments_property.startsBeingObserved (by: self.frontLayoutTextsBezierPaths_property)
   //--- Atomic property: backLegendTextsSegments
     self.backLegendTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2334,11 +2334,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backLegendTexts_property.toMany_x1_StartsToBeObserved (by: self.backLegendTextsSegments_property)
-    self.backLegendTexts_property.toMany_y1_StartsToBeObserved (by: self.backLegendTextsSegments_property)
-    self.backLegendTexts_property.toMany_x2_StartsToBeObserved (by: self.backLegendTextsSegments_property)
-    self.backLegendTexts_property.toMany_y2_StartsToBeObserved (by: self.backLegendTextsSegments_property)
-    self.backLegendTexts_property.toMany_width_StartsToBeObserved (by: self.backLegendTextsSegments_property)
+    self.backLegendTexts_property.toMany_x1_StartsBeingObserved (by: self.backLegendTextsSegments_property)
+    self.backLegendTexts_property.toMany_y1_StartsBeingObserved (by: self.backLegendTextsSegments_property)
+    self.backLegendTexts_property.toMany_x2_StartsBeingObserved (by: self.backLegendTextsSegments_property)
+    self.backLegendTexts_property.toMany_y2_StartsBeingObserved (by: self.backLegendTextsSegments_property)
+    self.backLegendTexts_property.toMany_width_StartsBeingObserved (by: self.backLegendTextsSegments_property)
   //--- Atomic property: backLegendTextsBezierPaths
     self.backLegendTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2355,7 +2355,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backLegendTextsSegments_property.startsToBeObserved (by: self.backLegendTextsBezierPaths_property)
+    self.backLegendTextsSegments_property.startsBeingObserved (by: self.backLegendTextsBezierPaths_property)
   //--- Atomic property: backLayoutTextsSegments
     self.backLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2384,11 +2384,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backLayoutTexts_property.toMany_x1_StartsToBeObserved (by: self.backLayoutTextsSegments_property)
-    self.backLayoutTexts_property.toMany_y1_StartsToBeObserved (by: self.backLayoutTextsSegments_property)
-    self.backLayoutTexts_property.toMany_x2_StartsToBeObserved (by: self.backLayoutTextsSegments_property)
-    self.backLayoutTexts_property.toMany_y2_StartsToBeObserved (by: self.backLayoutTextsSegments_property)
-    self.backLayoutTexts_property.toMany_width_StartsToBeObserved (by: self.backLayoutTextsSegments_property)
+    self.backLayoutTexts_property.toMany_x1_StartsBeingObserved (by: self.backLayoutTextsSegments_property)
+    self.backLayoutTexts_property.toMany_y1_StartsBeingObserved (by: self.backLayoutTextsSegments_property)
+    self.backLayoutTexts_property.toMany_x2_StartsBeingObserved (by: self.backLayoutTextsSegments_property)
+    self.backLayoutTexts_property.toMany_y2_StartsBeingObserved (by: self.backLayoutTextsSegments_property)
+    self.backLayoutTexts_property.toMany_width_StartsBeingObserved (by: self.backLayoutTextsSegments_property)
   //--- Atomic property: backLayoutTextsBezierPaths
     self.backLayoutTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2405,7 +2405,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backLayoutTextsSegments_property.startsToBeObserved (by: self.backLayoutTextsBezierPaths_property)
+    self.backLayoutTextsSegments_property.startsBeingObserved (by: self.backLayoutTextsBezierPaths_property)
   //--- Atomic property: internalBoardsLimitsSegments
     self.internalBoardsLimitsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2434,11 +2434,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.internalBoardsLimits_property.toMany_x1_StartsToBeObserved (by: self.internalBoardsLimitsSegments_property)
-    self.internalBoardsLimits_property.toMany_y1_StartsToBeObserved (by: self.internalBoardsLimitsSegments_property)
-    self.internalBoardsLimits_property.toMany_x2_StartsToBeObserved (by: self.internalBoardsLimitsSegments_property)
-    self.internalBoardsLimits_property.toMany_y2_StartsToBeObserved (by: self.internalBoardsLimitsSegments_property)
-    self.internalBoardsLimits_property.toMany_width_StartsToBeObserved (by: self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.toMany_x1_StartsBeingObserved (by: self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.toMany_y1_StartsBeingObserved (by: self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.toMany_x2_StartsBeingObserved (by: self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.toMany_y2_StartsBeingObserved (by: self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.toMany_width_StartsBeingObserved (by: self.internalBoardsLimitsSegments_property)
   //--- Atomic property: internalBoardsLimitsBezierPaths
     self.internalBoardsLimitsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2455,7 +2455,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.internalBoardsLimitsSegments_property.startsToBeObserved (by: self.internalBoardsLimitsBezierPaths_property)
+    self.internalBoardsLimitsSegments_property.startsBeingObserved (by: self.internalBoardsLimitsBezierPaths_property)
   //--- Atomic property: drillSegments
     self.drillSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2484,11 +2484,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.drills_property.toMany_x1_StartsToBeObserved (by: self.drillSegments_property)
-    self.drills_property.toMany_y1_StartsToBeObserved (by: self.drillSegments_property)
-    self.drills_property.toMany_x2_StartsToBeObserved (by: self.drillSegments_property)
-    self.drills_property.toMany_y2_StartsToBeObserved (by: self.drillSegments_property)
-    self.drills_property.toMany_width_StartsToBeObserved (by: self.drillSegments_property)
+    self.drills_property.toMany_x1_StartsBeingObserved (by: self.drillSegments_property)
+    self.drills_property.toMany_y1_StartsBeingObserved (by: self.drillSegments_property)
+    self.drills_property.toMany_x2_StartsBeingObserved (by: self.drillSegments_property)
+    self.drills_property.toMany_y2_StartsBeingObserved (by: self.drillSegments_property)
+    self.drills_property.toMany_width_StartsBeingObserved (by: self.drillSegments_property)
   //--- Atomic property: holesBezierPaths
     self.holesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2505,7 +2505,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.drillSegments_property.startsToBeObserved (by: self.holesBezierPaths_property)
+    self.drillSegments_property.startsBeingObserved (by: self.holesBezierPaths_property)
   //--- Atomic property: viaShapes
     self.viaShapes_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2528,9 +2528,9 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.vias_property.toMany_x_StartsToBeObserved (by: self.viaShapes_property)
-    self.vias_property.toMany_y_StartsToBeObserved (by: self.viaShapes_property)
-    self.vias_property.toMany_padDiameter_StartsToBeObserved (by: self.viaShapes_property)
+    self.vias_property.toMany_x_StartsBeingObserved (by: self.viaShapes_property)
+    self.vias_property.toMany_y_StartsBeingObserved (by: self.viaShapes_property)
+    self.vias_property.toMany_padDiameter_StartsBeingObserved (by: self.viaShapes_property)
   //--- Atomic property: viasBezierPaths
     self.viasBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2547,7 +2547,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.viaShapes_property.startsToBeObserved (by: self.viasBezierPaths_property)
+    self.viaShapes_property.startsBeingObserved (by: self.viasBezierPaths_property)
   //--- Atomic property: frontPadArray
     self.frontPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2579,12 +2579,12 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontPads_property.toMany_x_StartsToBeObserved (by: self.frontPadArray_property)
-    self.frontPads_property.toMany_y_StartsToBeObserved (by: self.frontPadArray_property)
-    self.frontPads_property.toMany_width_StartsToBeObserved (by: self.frontPadArray_property)
-    self.frontPads_property.toMany_height_StartsToBeObserved (by: self.frontPadArray_property)
-    self.frontPads_property.toMany_shape_StartsToBeObserved (by: self.frontPadArray_property)
-    self.frontPads_property.toMany_rotation_StartsToBeObserved (by: self.frontPadArray_property)
+    self.frontPads_property.toMany_x_StartsBeingObserved (by: self.frontPadArray_property)
+    self.frontPads_property.toMany_y_StartsBeingObserved (by: self.frontPadArray_property)
+    self.frontPads_property.toMany_width_StartsBeingObserved (by: self.frontPadArray_property)
+    self.frontPads_property.toMany_height_StartsBeingObserved (by: self.frontPadArray_property)
+    self.frontPads_property.toMany_shape_StartsBeingObserved (by: self.frontPadArray_property)
+    self.frontPads_property.toMany_rotation_StartsBeingObserved (by: self.frontPadArray_property)
   //--- Atomic property: frontPadsBezierPaths
     self.frontPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2601,7 +2601,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontPadArray_property.startsToBeObserved (by: self.frontPadsBezierPaths_property)
+    self.frontPadArray_property.startsBeingObserved (by: self.frontPadsBezierPaths_property)
   //--- Atomic property: backPadArray
     self.backPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2633,12 +2633,12 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backPads_property.toMany_x_StartsToBeObserved (by: self.backPadArray_property)
-    self.backPads_property.toMany_y_StartsToBeObserved (by: self.backPadArray_property)
-    self.backPads_property.toMany_width_StartsToBeObserved (by: self.backPadArray_property)
-    self.backPads_property.toMany_height_StartsToBeObserved (by: self.backPadArray_property)
-    self.backPads_property.toMany_shape_StartsToBeObserved (by: self.backPadArray_property)
-    self.backPads_property.toMany_rotation_StartsToBeObserved (by: self.backPadArray_property)
+    self.backPads_property.toMany_x_StartsBeingObserved (by: self.backPadArray_property)
+    self.backPads_property.toMany_y_StartsBeingObserved (by: self.backPadArray_property)
+    self.backPads_property.toMany_width_StartsBeingObserved (by: self.backPadArray_property)
+    self.backPads_property.toMany_height_StartsBeingObserved (by: self.backPadArray_property)
+    self.backPads_property.toMany_shape_StartsBeingObserved (by: self.backPadArray_property)
+    self.backPads_property.toMany_rotation_StartsBeingObserved (by: self.backPadArray_property)
   //--- Atomic property: backPadsBezierPaths
     self.backPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2655,7 +2655,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backPadArray_property.startsToBeObserved (by: self.backPadsBezierPaths_property)
+    self.backPadArray_property.startsBeingObserved (by: self.backPadsBezierPaths_property)
   //--- Atomic property: traversingPadArray
     self.traversingPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2687,12 +2687,12 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.traversingPads_property.toMany_x_StartsToBeObserved (by: self.traversingPadArray_property)
-    self.traversingPads_property.toMany_y_StartsToBeObserved (by: self.traversingPadArray_property)
-    self.traversingPads_property.toMany_width_StartsToBeObserved (by: self.traversingPadArray_property)
-    self.traversingPads_property.toMany_height_StartsToBeObserved (by: self.traversingPadArray_property)
-    self.traversingPads_property.toMany_shape_StartsToBeObserved (by: self.traversingPadArray_property)
-    self.traversingPads_property.toMany_rotation_StartsToBeObserved (by: self.traversingPadArray_property)
+    self.traversingPads_property.toMany_x_StartsBeingObserved (by: self.traversingPadArray_property)
+    self.traversingPads_property.toMany_y_StartsBeingObserved (by: self.traversingPadArray_property)
+    self.traversingPads_property.toMany_width_StartsBeingObserved (by: self.traversingPadArray_property)
+    self.traversingPads_property.toMany_height_StartsBeingObserved (by: self.traversingPadArray_property)
+    self.traversingPads_property.toMany_shape_StartsBeingObserved (by: self.traversingPadArray_property)
+    self.traversingPads_property.toMany_rotation_StartsBeingObserved (by: self.traversingPadArray_property)
   //--- Atomic property: traversingPadsBezierPaths
     self.traversingPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2709,7 +2709,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.traversingPadArray_property.startsToBeObserved (by: self.traversingPadsBezierPaths_property)
+    self.traversingPadArray_property.startsBeingObserved (by: self.traversingPadsBezierPaths_property)
   //--- Atomic property: boardLimitsBezierPaths
     self.boardLimitsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2732,9 +2732,9 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.modelWidth_property.startsToBeObserved (by: self.boardLimitsBezierPaths_property)
-    self.modelHeight_property.startsToBeObserved (by: self.boardLimitsBezierPaths_property)
-    self.modelLimitWidth_property.startsToBeObserved (by: self.boardLimitsBezierPaths_property)
+    self.modelWidth_property.startsBeingObserved (by: self.boardLimitsBezierPaths_property)
+    self.modelHeight_property.startsBeingObserved (by: self.boardLimitsBezierPaths_property)
+    self.modelLimitWidth_property.startsBeingObserved (by: self.boardLimitsBezierPaths_property)
   //--- Atomic property: backComponentNameSegments
     self.backComponentNameSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2763,11 +2763,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backComponentNames_property.toMany_x1_StartsToBeObserved (by: self.backComponentNameSegments_property)
-    self.backComponentNames_property.toMany_y1_StartsToBeObserved (by: self.backComponentNameSegments_property)
-    self.backComponentNames_property.toMany_x2_StartsToBeObserved (by: self.backComponentNameSegments_property)
-    self.backComponentNames_property.toMany_y2_StartsToBeObserved (by: self.backComponentNameSegments_property)
-    self.backComponentNames_property.toMany_width_StartsToBeObserved (by: self.backComponentNameSegments_property)
+    self.backComponentNames_property.toMany_x1_StartsBeingObserved (by: self.backComponentNameSegments_property)
+    self.backComponentNames_property.toMany_y1_StartsBeingObserved (by: self.backComponentNameSegments_property)
+    self.backComponentNames_property.toMany_x2_StartsBeingObserved (by: self.backComponentNameSegments_property)
+    self.backComponentNames_property.toMany_y2_StartsBeingObserved (by: self.backComponentNameSegments_property)
+    self.backComponentNames_property.toMany_width_StartsBeingObserved (by: self.backComponentNameSegments_property)
   //--- Atomic property: backComponentNamesBezierPaths
     self.backComponentNamesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2784,7 +2784,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backComponentNameSegments_property.startsToBeObserved (by: self.backComponentNamesBezierPaths_property)
+    self.backComponentNameSegments_property.startsBeingObserved (by: self.backComponentNamesBezierPaths_property)
   //--- Atomic property: frontComponentNameSegments
     self.frontComponentNameSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2813,11 +2813,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontComponentNames_property.toMany_x1_StartsToBeObserved (by: self.frontComponentNameSegments_property)
-    self.frontComponentNames_property.toMany_y1_StartsToBeObserved (by: self.frontComponentNameSegments_property)
-    self.frontComponentNames_property.toMany_x2_StartsToBeObserved (by: self.frontComponentNameSegments_property)
-    self.frontComponentNames_property.toMany_y2_StartsToBeObserved (by: self.frontComponentNameSegments_property)
-    self.frontComponentNames_property.toMany_width_StartsToBeObserved (by: self.frontComponentNameSegments_property)
+    self.frontComponentNames_property.toMany_x1_StartsBeingObserved (by: self.frontComponentNameSegments_property)
+    self.frontComponentNames_property.toMany_y1_StartsBeingObserved (by: self.frontComponentNameSegments_property)
+    self.frontComponentNames_property.toMany_x2_StartsBeingObserved (by: self.frontComponentNameSegments_property)
+    self.frontComponentNames_property.toMany_y2_StartsBeingObserved (by: self.frontComponentNameSegments_property)
+    self.frontComponentNames_property.toMany_width_StartsBeingObserved (by: self.frontComponentNameSegments_property)
   //--- Atomic property: frontComponentNamesBezierPaths
     self.frontComponentNamesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2834,7 +2834,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontComponentNameSegments_property.startsToBeObserved (by: self.frontComponentNamesBezierPaths_property)
+    self.frontComponentNameSegments_property.startsBeingObserved (by: self.frontComponentNamesBezierPaths_property)
   //--- Atomic property: frontComponentValueSegments
     self.frontComponentValueSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2863,11 +2863,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontComponentValues_property.toMany_x1_StartsToBeObserved (by: self.frontComponentValueSegments_property)
-    self.frontComponentValues_property.toMany_y1_StartsToBeObserved (by: self.frontComponentValueSegments_property)
-    self.frontComponentValues_property.toMany_x2_StartsToBeObserved (by: self.frontComponentValueSegments_property)
-    self.frontComponentValues_property.toMany_y2_StartsToBeObserved (by: self.frontComponentValueSegments_property)
-    self.frontComponentValues_property.toMany_width_StartsToBeObserved (by: self.frontComponentValueSegments_property)
+    self.frontComponentValues_property.toMany_x1_StartsBeingObserved (by: self.frontComponentValueSegments_property)
+    self.frontComponentValues_property.toMany_y1_StartsBeingObserved (by: self.frontComponentValueSegments_property)
+    self.frontComponentValues_property.toMany_x2_StartsBeingObserved (by: self.frontComponentValueSegments_property)
+    self.frontComponentValues_property.toMany_y2_StartsBeingObserved (by: self.frontComponentValueSegments_property)
+    self.frontComponentValues_property.toMany_width_StartsBeingObserved (by: self.frontComponentValueSegments_property)
   //--- Atomic property: frontComponentValuesBezierPaths
     self.frontComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2884,7 +2884,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontComponentValueSegments_property.startsToBeObserved (by: self.frontComponentValuesBezierPaths_property)
+    self.frontComponentValueSegments_property.startsBeingObserved (by: self.frontComponentValuesBezierPaths_property)
   //--- Atomic property: backComponentValueSegments
     self.backComponentValueSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2913,11 +2913,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backComponentValues_property.toMany_x1_StartsToBeObserved (by: self.backComponentValueSegments_property)
-    self.backComponentValues_property.toMany_y1_StartsToBeObserved (by: self.backComponentValueSegments_property)
-    self.backComponentValues_property.toMany_x2_StartsToBeObserved (by: self.backComponentValueSegments_property)
-    self.backComponentValues_property.toMany_y2_StartsToBeObserved (by: self.backComponentValueSegments_property)
-    self.backComponentValues_property.toMany_width_StartsToBeObserved (by: self.backComponentValueSegments_property)
+    self.backComponentValues_property.toMany_x1_StartsBeingObserved (by: self.backComponentValueSegments_property)
+    self.backComponentValues_property.toMany_y1_StartsBeingObserved (by: self.backComponentValueSegments_property)
+    self.backComponentValues_property.toMany_x2_StartsBeingObserved (by: self.backComponentValueSegments_property)
+    self.backComponentValues_property.toMany_y2_StartsBeingObserved (by: self.backComponentValueSegments_property)
+    self.backComponentValues_property.toMany_width_StartsBeingObserved (by: self.backComponentValueSegments_property)
   //--- Atomic property: backComponentValuesBezierPaths
     self.backComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2934,7 +2934,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backComponentValueSegments_property.startsToBeObserved (by: self.backComponentValuesBezierPaths_property)
+    self.backComponentValueSegments_property.startsBeingObserved (by: self.backComponentValuesBezierPaths_property)
   //--- Atomic property: backTrackSegments
     self.backTrackSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2963,11 +2963,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backTracks_property.toMany_x1_StartsToBeObserved (by: self.backTrackSegments_property)
-    self.backTracks_property.toMany_y1_StartsToBeObserved (by: self.backTrackSegments_property)
-    self.backTracks_property.toMany_x2_StartsToBeObserved (by: self.backTrackSegments_property)
-    self.backTracks_property.toMany_y2_StartsToBeObserved (by: self.backTrackSegments_property)
-    self.backTracks_property.toMany_width_StartsToBeObserved (by: self.backTrackSegments_property)
+    self.backTracks_property.toMany_x1_StartsBeingObserved (by: self.backTrackSegments_property)
+    self.backTracks_property.toMany_y1_StartsBeingObserved (by: self.backTrackSegments_property)
+    self.backTracks_property.toMany_x2_StartsBeingObserved (by: self.backTrackSegments_property)
+    self.backTracks_property.toMany_y2_StartsBeingObserved (by: self.backTrackSegments_property)
+    self.backTracks_property.toMany_width_StartsBeingObserved (by: self.backTrackSegments_property)
   //--- Atomic property: backTracksBezierPaths
     self.backTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2984,7 +2984,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backTrackSegments_property.startsToBeObserved (by: self.backTracksBezierPaths_property)
+    self.backTrackSegments_property.startsBeingObserved (by: self.backTracksBezierPaths_property)
   //--- Atomic property: frontTrackSegments
     self.frontTrackSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3013,11 +3013,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontTracks_property.toMany_x1_StartsToBeObserved (by: self.frontTrackSegments_property)
-    self.frontTracks_property.toMany_y1_StartsToBeObserved (by: self.frontTrackSegments_property)
-    self.frontTracks_property.toMany_x2_StartsToBeObserved (by: self.frontTrackSegments_property)
-    self.frontTracks_property.toMany_y2_StartsToBeObserved (by: self.frontTrackSegments_property)
-    self.frontTracks_property.toMany_width_StartsToBeObserved (by: self.frontTrackSegments_property)
+    self.frontTracks_property.toMany_x1_StartsBeingObserved (by: self.frontTrackSegments_property)
+    self.frontTracks_property.toMany_y1_StartsBeingObserved (by: self.frontTrackSegments_property)
+    self.frontTracks_property.toMany_x2_StartsBeingObserved (by: self.frontTrackSegments_property)
+    self.frontTracks_property.toMany_y2_StartsBeingObserved (by: self.frontTrackSegments_property)
+    self.frontTracks_property.toMany_width_StartsBeingObserved (by: self.frontTrackSegments_property)
   //--- Atomic property: frontTracksBezierPaths
     self.frontTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3034,7 +3034,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontTrackSegments_property.startsToBeObserved (by: self.frontTracksBezierPaths_property)
+    self.frontTrackSegments_property.startsBeingObserved (by: self.frontTracksBezierPaths_property)
   //--- Atomic property: inner1TracksSegments
     self.inner1TracksSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3063,11 +3063,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.inner1Tracks_property.toMany_x1_StartsToBeObserved (by: self.inner1TracksSegments_property)
-    self.inner1Tracks_property.toMany_y1_StartsToBeObserved (by: self.inner1TracksSegments_property)
-    self.inner1Tracks_property.toMany_x2_StartsToBeObserved (by: self.inner1TracksSegments_property)
-    self.inner1Tracks_property.toMany_y2_StartsToBeObserved (by: self.inner1TracksSegments_property)
-    self.inner1Tracks_property.toMany_width_StartsToBeObserved (by: self.inner1TracksSegments_property)
+    self.inner1Tracks_property.toMany_x1_StartsBeingObserved (by: self.inner1TracksSegments_property)
+    self.inner1Tracks_property.toMany_y1_StartsBeingObserved (by: self.inner1TracksSegments_property)
+    self.inner1Tracks_property.toMany_x2_StartsBeingObserved (by: self.inner1TracksSegments_property)
+    self.inner1Tracks_property.toMany_y2_StartsBeingObserved (by: self.inner1TracksSegments_property)
+    self.inner1Tracks_property.toMany_width_StartsBeingObserved (by: self.inner1TracksSegments_property)
   //--- Atomic property: inner1TracksBezierPaths
     self.inner1TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3084,7 +3084,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.inner1TracksSegments_property.startsToBeObserved (by: self.inner1TracksBezierPaths_property)
+    self.inner1TracksSegments_property.startsBeingObserved (by: self.inner1TracksBezierPaths_property)
   //--- Atomic property: inner2TracksSegments
     self.inner2TracksSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3113,11 +3113,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.inner2Tracks_property.toMany_x1_StartsToBeObserved (by: self.inner2TracksSegments_property)
-    self.inner2Tracks_property.toMany_y1_StartsToBeObserved (by: self.inner2TracksSegments_property)
-    self.inner2Tracks_property.toMany_x2_StartsToBeObserved (by: self.inner2TracksSegments_property)
-    self.inner2Tracks_property.toMany_y2_StartsToBeObserved (by: self.inner2TracksSegments_property)
-    self.inner2Tracks_property.toMany_width_StartsToBeObserved (by: self.inner2TracksSegments_property)
+    self.inner2Tracks_property.toMany_x1_StartsBeingObserved (by: self.inner2TracksSegments_property)
+    self.inner2Tracks_property.toMany_y1_StartsBeingObserved (by: self.inner2TracksSegments_property)
+    self.inner2Tracks_property.toMany_x2_StartsBeingObserved (by: self.inner2TracksSegments_property)
+    self.inner2Tracks_property.toMany_y2_StartsBeingObserved (by: self.inner2TracksSegments_property)
+    self.inner2Tracks_property.toMany_width_StartsBeingObserved (by: self.inner2TracksSegments_property)
   //--- Atomic property: inner2TracksBezierPaths
     self.inner2TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3134,7 +3134,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.inner2TracksSegments_property.startsToBeObserved (by: self.inner2TracksBezierPaths_property)
+    self.inner2TracksSegments_property.startsBeingObserved (by: self.inner2TracksBezierPaths_property)
   //--- Atomic property: inner3TracksSegments
     self.inner3TracksSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3163,11 +3163,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.inner3Tracks_property.toMany_x1_StartsToBeObserved (by: self.inner3TracksSegments_property)
-    self.inner3Tracks_property.toMany_y1_StartsToBeObserved (by: self.inner3TracksSegments_property)
-    self.inner3Tracks_property.toMany_x2_StartsToBeObserved (by: self.inner3TracksSegments_property)
-    self.inner3Tracks_property.toMany_y2_StartsToBeObserved (by: self.inner3TracksSegments_property)
-    self.inner3Tracks_property.toMany_width_StartsToBeObserved (by: self.inner3TracksSegments_property)
+    self.inner3Tracks_property.toMany_x1_StartsBeingObserved (by: self.inner3TracksSegments_property)
+    self.inner3Tracks_property.toMany_y1_StartsBeingObserved (by: self.inner3TracksSegments_property)
+    self.inner3Tracks_property.toMany_x2_StartsBeingObserved (by: self.inner3TracksSegments_property)
+    self.inner3Tracks_property.toMany_y2_StartsBeingObserved (by: self.inner3TracksSegments_property)
+    self.inner3Tracks_property.toMany_width_StartsBeingObserved (by: self.inner3TracksSegments_property)
   //--- Atomic property: inner3TracksBezierPaths
     self.inner3TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3184,7 +3184,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.inner3TracksSegments_property.startsToBeObserved (by: self.inner3TracksBezierPaths_property)
+    self.inner3TracksSegments_property.startsBeingObserved (by: self.inner3TracksBezierPaths_property)
   //--- Atomic property: inner4TracksSegments
     self.inner4TracksSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3213,11 +3213,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.inner4Tracks_property.toMany_x1_StartsToBeObserved (by: self.inner4TracksSegments_property)
-    self.inner4Tracks_property.toMany_y1_StartsToBeObserved (by: self.inner4TracksSegments_property)
-    self.inner4Tracks_property.toMany_x2_StartsToBeObserved (by: self.inner4TracksSegments_property)
-    self.inner4Tracks_property.toMany_y2_StartsToBeObserved (by: self.inner4TracksSegments_property)
-    self.inner4Tracks_property.toMany_width_StartsToBeObserved (by: self.inner4TracksSegments_property)
+    self.inner4Tracks_property.toMany_x1_StartsBeingObserved (by: self.inner4TracksSegments_property)
+    self.inner4Tracks_property.toMany_y1_StartsBeingObserved (by: self.inner4TracksSegments_property)
+    self.inner4Tracks_property.toMany_x2_StartsBeingObserved (by: self.inner4TracksSegments_property)
+    self.inner4Tracks_property.toMany_y2_StartsBeingObserved (by: self.inner4TracksSegments_property)
+    self.inner4Tracks_property.toMany_width_StartsBeingObserved (by: self.inner4TracksSegments_property)
   //--- Atomic property: inner4TracksBezierPaths
     self.inner4TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3234,7 +3234,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.inner4TracksSegments_property.startsToBeObserved (by: self.inner4TracksBezierPaths_property)
+    self.inner4TracksSegments_property.startsBeingObserved (by: self.inner4TracksBezierPaths_property)
   //--- Atomic property: frontPackagesSegments
     self.frontPackagesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3263,11 +3263,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontPackages_property.toMany_x1_StartsToBeObserved (by: self.frontPackagesSegments_property)
-    self.frontPackages_property.toMany_y1_StartsToBeObserved (by: self.frontPackagesSegments_property)
-    self.frontPackages_property.toMany_x2_StartsToBeObserved (by: self.frontPackagesSegments_property)
-    self.frontPackages_property.toMany_y2_StartsToBeObserved (by: self.frontPackagesSegments_property)
-    self.frontPackages_property.toMany_width_StartsToBeObserved (by: self.frontPackagesSegments_property)
+    self.frontPackages_property.toMany_x1_StartsBeingObserved (by: self.frontPackagesSegments_property)
+    self.frontPackages_property.toMany_y1_StartsBeingObserved (by: self.frontPackagesSegments_property)
+    self.frontPackages_property.toMany_x2_StartsBeingObserved (by: self.frontPackagesSegments_property)
+    self.frontPackages_property.toMany_y2_StartsBeingObserved (by: self.frontPackagesSegments_property)
+    self.frontPackages_property.toMany_width_StartsBeingObserved (by: self.frontPackagesSegments_property)
   //--- Atomic property: frontPackagesBezierPaths
     self.frontPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3284,7 +3284,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontPackagesSegments_property.startsToBeObserved (by: self.frontPackagesBezierPaths_property)
+    self.frontPackagesSegments_property.startsBeingObserved (by: self.frontPackagesBezierPaths_property)
   //--- Atomic property: backPackagesSegments
     self.backPackagesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3313,11 +3313,11 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backPackages_property.toMany_x1_StartsToBeObserved (by: self.backPackagesSegments_property)
-    self.backPackages_property.toMany_y1_StartsToBeObserved (by: self.backPackagesSegments_property)
-    self.backPackages_property.toMany_x2_StartsToBeObserved (by: self.backPackagesSegments_property)
-    self.backPackages_property.toMany_y2_StartsToBeObserved (by: self.backPackagesSegments_property)
-    self.backPackages_property.toMany_width_StartsToBeObserved (by: self.backPackagesSegments_property)
+    self.backPackages_property.toMany_x1_StartsBeingObserved (by: self.backPackagesSegments_property)
+    self.backPackages_property.toMany_y1_StartsBeingObserved (by: self.backPackagesSegments_property)
+    self.backPackages_property.toMany_x2_StartsBeingObserved (by: self.backPackagesSegments_property)
+    self.backPackages_property.toMany_y2_StartsBeingObserved (by: self.backPackagesSegments_property)
+    self.backPackages_property.toMany_width_StartsBeingObserved (by: self.backPackagesSegments_property)
   //--- Atomic property: backPackagesBezierPaths
     self.backPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3334,7 +3334,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backPackagesSegments_property.startsToBeObserved (by: self.backPackagesBezierPaths_property)
+    self.backPackagesSegments_property.startsBeingObserved (by: self.backPackagesBezierPaths_property)
   //--- Atomic property: instanceCount
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3351,7 +3351,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.myInstances_property.startsToBeObserved (by: self.instanceCount_property)
+    self.myInstances_property.startsBeingObserved (by: self.instanceCount_property)
   //--- Atomic property: frontLegendLinesBezierPaths
     self.frontLegendLinesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3368,7 +3368,7 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontLegendLinesSegments_property.startsToBeObserved (by: self.frontLegendLinesBezierPaths_property)
+    self.frontLegendLinesSegments_property.startsBeingObserved (by: self.frontLegendLinesBezierPaths_property)
   //--- Atomic property: imageForModel
     self.imageForModel_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3622,86 +3622,86 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    preferences_mergerColorBackground_property.startsToBeObserved (by: self.imageForModel_property)
-    self.modelWidth_property.startsToBeObserved (by: self.imageForModel_property)
-    self.modelHeight_property.startsToBeObserved (by: self.imageForModel_property)
-    self.boardLimitsBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayModelBoardLimits_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorInternalBoardsLimits_property.startsToBeObserved (by: self.imageForModel_property)
-    self.internalBoardsLimitsBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    self.frontTracksBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayFrontTracks_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorFrontTracks_property.startsToBeObserved (by: self.imageForModel_property)
-    self.inner1TracksBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayInner1Tracks_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorInner1Tracks_property.startsToBeObserved (by: self.imageForModel_property)
-    self.inner2TracksBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayInner2Tracks_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorInner2Tracks_property.startsToBeObserved (by: self.imageForModel_property)
-    self.inner3TracksBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayInner3Tracks_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorInner3Tracks_property.startsToBeObserved (by: self.imageForModel_property)
-    self.inner4TracksBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayInner4Tracks_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorInner4Tracks_property.startsToBeObserved (by: self.imageForModel_property)
-    self.backTracksBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayBackTracks_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorBackTracks_property.startsToBeObserved (by: self.imageForModel_property)
-    self.frontPadsBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayFrontPads_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorFrontPads_property.startsToBeObserved (by: self.imageForModel_property)
-    self.backPadsBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayBackPads_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorBackPads_property.startsToBeObserved (by: self.imageForModel_property)
-    self.traversingPadsBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayTraversingPads_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorTraversingPads_property.startsToBeObserved (by: self.imageForModel_property)
-    self.viasBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayVias_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorVias_property.startsToBeObserved (by: self.imageForModel_property)
-    self.holesBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayHoles_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorHoles_property.startsToBeObserved (by: self.imageForModel_property)
-    self.frontLegendBoardImageRectangles_property.startsToBeObserved (by: self.imageForModel_property)
-    self.frontLegendQRCodeRectangles_property.startsToBeObserved (by: self.imageForModel_property)
-    self.frontLegendLinesBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayFrontLegendLines_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorFrontLegendLines_property.startsToBeObserved (by: self.imageForModel_property)
-    self.backLegendBoardImageRectangles_property.startsToBeObserved (by: self.imageForModel_property)
-    self.backLegendQRCodeRectangles_property.startsToBeObserved (by: self.imageForModel_property)
-    self.backLegendLinesBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayBackLegendLines_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorBackLegendLines_property.startsToBeObserved (by: self.imageForModel_property)
-    self.frontLegendTextsBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayFrontLegendTexts_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorFrontLegendTexts_property.startsToBeObserved (by: self.imageForModel_property)
-    self.frontLayoutTextsBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayFrontLayoutTexts_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorFrontLayoutTexts_property.startsToBeObserved (by: self.imageForModel_property)
-    self.backLegendTextsBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayBackLegendTexts_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorBackLegendTexts_property.startsToBeObserved (by: self.imageForModel_property)
-    self.backLayoutTextsBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayBackLayoutTexts_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorBackLayoutTexts_property.startsToBeObserved (by: self.imageForModel_property)
-    self.backComponentNamesBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayBackComponentNames_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorBackComponentNames_property.startsToBeObserved (by: self.imageForModel_property)
-    self.frontComponentNamesBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayFrontComponentNames_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorFrontComponentNames_property.startsToBeObserved (by: self.imageForModel_property)
-    self.frontComponentValuesBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayFrontComponentValues_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorFrontComponentValues_property.startsToBeObserved (by: self.imageForModel_property)
-    self.backComponentValuesBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayBackComponentValues_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorBackComponentValues_property.startsToBeObserved (by: self.imageForModel_property)
-    self.frontPackagesBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayFrontPackages_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorFrontPackages_property.startsToBeObserved (by: self.imageForModel_property)
-    self.backPackagesBezierPaths_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerModelViewDisplayBackPackages_property.startsToBeObserved (by: self.imageForModel_property)
-    preferences_mergerColorBackPackages_property.startsToBeObserved (by: self.imageForModel_property)
+    preferences_mergerColorBackground_property.startsBeingObserved (by: self.imageForModel_property)
+    self.modelWidth_property.startsBeingObserved (by: self.imageForModel_property)
+    self.modelHeight_property.startsBeingObserved (by: self.imageForModel_property)
+    self.boardLimitsBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayModelBoardLimits_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorInternalBoardsLimits_property.startsBeingObserved (by: self.imageForModel_property)
+    self.internalBoardsLimitsBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    self.frontTracksBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayFrontTracks_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorFrontTracks_property.startsBeingObserved (by: self.imageForModel_property)
+    self.inner1TracksBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayInner1Tracks_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorInner1Tracks_property.startsBeingObserved (by: self.imageForModel_property)
+    self.inner2TracksBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayInner2Tracks_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorInner2Tracks_property.startsBeingObserved (by: self.imageForModel_property)
+    self.inner3TracksBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayInner3Tracks_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorInner3Tracks_property.startsBeingObserved (by: self.imageForModel_property)
+    self.inner4TracksBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayInner4Tracks_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorInner4Tracks_property.startsBeingObserved (by: self.imageForModel_property)
+    self.backTracksBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayBackTracks_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorBackTracks_property.startsBeingObserved (by: self.imageForModel_property)
+    self.frontPadsBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayFrontPads_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorFrontPads_property.startsBeingObserved (by: self.imageForModel_property)
+    self.backPadsBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayBackPads_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorBackPads_property.startsBeingObserved (by: self.imageForModel_property)
+    self.traversingPadsBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayTraversingPads_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorTraversingPads_property.startsBeingObserved (by: self.imageForModel_property)
+    self.viasBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayVias_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorVias_property.startsBeingObserved (by: self.imageForModel_property)
+    self.holesBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayHoles_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorHoles_property.startsBeingObserved (by: self.imageForModel_property)
+    self.frontLegendBoardImageRectangles_property.startsBeingObserved (by: self.imageForModel_property)
+    self.frontLegendQRCodeRectangles_property.startsBeingObserved (by: self.imageForModel_property)
+    self.frontLegendLinesBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayFrontLegendLines_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorFrontLegendLines_property.startsBeingObserved (by: self.imageForModel_property)
+    self.backLegendBoardImageRectangles_property.startsBeingObserved (by: self.imageForModel_property)
+    self.backLegendQRCodeRectangles_property.startsBeingObserved (by: self.imageForModel_property)
+    self.backLegendLinesBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayBackLegendLines_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorBackLegendLines_property.startsBeingObserved (by: self.imageForModel_property)
+    self.frontLegendTextsBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayFrontLegendTexts_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorFrontLegendTexts_property.startsBeingObserved (by: self.imageForModel_property)
+    self.frontLayoutTextsBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayFrontLayoutTexts_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorFrontLayoutTexts_property.startsBeingObserved (by: self.imageForModel_property)
+    self.backLegendTextsBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayBackLegendTexts_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorBackLegendTexts_property.startsBeingObserved (by: self.imageForModel_property)
+    self.backLayoutTextsBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayBackLayoutTexts_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorBackLayoutTexts_property.startsBeingObserved (by: self.imageForModel_property)
+    self.backComponentNamesBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayBackComponentNames_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorBackComponentNames_property.startsBeingObserved (by: self.imageForModel_property)
+    self.frontComponentNamesBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayFrontComponentNames_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorFrontComponentNames_property.startsBeingObserved (by: self.imageForModel_property)
+    self.frontComponentValuesBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayFrontComponentValues_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorFrontComponentValues_property.startsBeingObserved (by: self.imageForModel_property)
+    self.backComponentValuesBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayBackComponentValues_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorBackComponentValues_property.startsBeingObserved (by: self.imageForModel_property)
+    self.frontPackagesBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayFrontPackages_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorFrontPackages_property.startsBeingObserved (by: self.imageForModel_property)
+    self.backPackagesBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerModelViewDisplayBackPackages_property.startsBeingObserved (by: self.imageForModel_property)
+    preferences_mergerColorBackPackages_property.startsBeingObserved (by: self.imageForModel_property)
   //--- Atomic property: imageForInstances
     self.imageForInstances_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3955,86 +3955,86 @@ final class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    preferences_mergerColorBackground_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.modelWidth_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.modelHeight_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.frontTracksBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayFrontTracks_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorFrontTracks_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.inner1TracksBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayInner1Tracks_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorInner1Tracks_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.inner2TracksBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayInner2Tracks_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorInner2Tracks_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.inner3TracksBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayInner3Tracks_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorInner3Tracks_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.inner4TracksBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayInner4Tracks_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorInner4Tracks_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.backTracksBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayBackTracks_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorBackTracks_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.internalBoardsLimitsBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.boardLimitsBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayModelBoardsLimits_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorInternalBoardsLimits_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.frontPadsBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayFrontPads_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorFrontPads_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.traversingPadsBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayTraversingPads_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorTraversingPads_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.backPadsBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayBackPads_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorBackPads_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.viasBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayVias_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorVias_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.holesBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayHoles_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorHoles_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.frontLegendBoardImageRectangles_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.frontLegendQRCodeRectangles_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.frontLegendLinesBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayFrontLegendLines_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorFrontLegendLines_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.backLegendBoardImageRectangles_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.backLegendQRCodeRectangles_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.backLegendLinesBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayBackLegendLines_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorBackLegendLines_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.frontLegendTextsBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayFrontLegendTexts_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorFrontLegendTexts_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.frontLayoutTextsBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayFrontLayoutTexts_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorFrontLayoutTexts_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.backLegendTextsBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayBackLegendTexts_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorBackLegendTexts_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.backLayoutTextsBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayBackLayoutTexts_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorBackLayoutTexts_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.backComponentNamesBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayBackComponentNames_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorBackComponentNames_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.frontComponentNamesBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayFrontComponentNames_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorFrontComponentNames_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.frontComponentValuesBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayFrontComponentValues_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorFrontComponentValues_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.backComponentValuesBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayBackComponentValues_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorBackComponentValues_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.frontPackagesBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayFrontPackages_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorFrontPackages_property.startsToBeObserved (by: self.imageForInstances_property)
-    self.backPackagesBezierPaths_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerBoardViewDisplayBackPackages_property.startsToBeObserved (by: self.imageForInstances_property)
-    preferences_mergerColorBackPackages_property.startsToBeObserved (by: self.imageForInstances_property)
+    preferences_mergerColorBackground_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.modelWidth_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.modelHeight_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.frontTracksBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayFrontTracks_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorFrontTracks_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.inner1TracksBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayInner1Tracks_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorInner1Tracks_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.inner2TracksBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayInner2Tracks_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorInner2Tracks_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.inner3TracksBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayInner3Tracks_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorInner3Tracks_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.inner4TracksBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayInner4Tracks_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorInner4Tracks_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.backTracksBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayBackTracks_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorBackTracks_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.internalBoardsLimitsBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.boardLimitsBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayModelBoardsLimits_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorInternalBoardsLimits_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.frontPadsBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayFrontPads_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorFrontPads_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.traversingPadsBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayTraversingPads_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorTraversingPads_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.backPadsBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayBackPads_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorBackPads_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.viasBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayVias_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorVias_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.holesBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayHoles_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorHoles_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.frontLegendBoardImageRectangles_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.frontLegendQRCodeRectangles_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.frontLegendLinesBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayFrontLegendLines_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorFrontLegendLines_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.backLegendBoardImageRectangles_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.backLegendQRCodeRectangles_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.backLegendLinesBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayBackLegendLines_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorBackLegendLines_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.frontLegendTextsBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayFrontLegendTexts_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorFrontLegendTexts_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.frontLayoutTextsBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayFrontLayoutTexts_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorFrontLayoutTexts_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.backLegendTextsBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayBackLegendTexts_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorBackLegendTexts_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.backLayoutTextsBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayBackLayoutTexts_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorBackLayoutTexts_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.backComponentNamesBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayBackComponentNames_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorBackComponentNames_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.frontComponentNamesBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayFrontComponentNames_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorFrontComponentNames_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.frontComponentValuesBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayFrontComponentValues_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorFrontComponentValues_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.backComponentValuesBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayBackComponentValues_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorBackComponentValues_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.frontPackagesBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayFrontPackages_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorFrontPackages_property.startsBeingObserved (by: self.imageForInstances_property)
+    self.backPackagesBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerBoardViewDisplayBackPackages_property.startsBeingObserved (by: self.imageForInstances_property)
+    preferences_mergerColorBackPackages_property.startsBeingObserved (by: self.imageForInstances_property)
   //--- Install undoers and opposite setter for relationships
     self.myInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myModel_property.setProp (me) } },

@@ -59,45 +59,45 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mSelectedPageIndex_property.startsToBeObserved (by: self.mSelectedPageIndex_property) // Stored property
-      newValue.mSelectedSymbolInspectorIndex_property.startsToBeObserved (by: self.mSelectedSymbolInspectorIndex_property) // Stored property
-      newValue.mSelectedPackageInspectorIndex_property.startsToBeObserved (by: self.mSelectedPackageInspectorIndex_property) // Stored property
-      newValue.mTitle_property.startsToBeObserved (by: self.mTitle_property) // Stored property
-      newValue.mImageData_property.startsToBeObserved (by: self.mImageData_property) // Stored property
-      newValue.mPrefix_property.startsToBeObserved (by: self.mPrefix_property) // Stored property
-      newValue.mComments_property.startsToBeObserved (by: self.mComments_property) // Stored property
-      newValue.mPackageDisplayZoom_property.startsToBeObserved (by: self.mPackageDisplayZoom_property) // Stored property
-      newValue.mPackageDisplayHorizontalFlip_property.startsToBeObserved (by: self.mPackageDisplayHorizontalFlip_property) // Stored property
-      newValue.mPackageDisplayVerticalFlip_property.startsToBeObserved (by: self.mPackageDisplayVerticalFlip_property) // Stored property
-      newValue.mShowPackages_property.startsToBeObserved (by: self.mShowPackages_property) // Stored property
-      newValue.mShowPackagePadNumbers_property.startsToBeObserved (by: self.mShowPackagePadNumbers_property) // Stored property
-      newValue.mShowPackageFrontPads_property.startsToBeObserved (by: self.mShowPackageFrontPads_property) // Stored property
-      newValue.mShowPackageBackPads_property.startsToBeObserved (by: self.mShowPackageBackPads_property) // Stored property
-      newValue.mSymbolDisplayZoom_property.startsToBeObserved (by: self.mSymbolDisplayZoom_property) // Stored property
-      newValue.imageIsValid_property.startsToBeObserved (by: self.imageIsValid_property) // Transient property
-      newValue.unconnectedPins_property.startsToBeObserved (by: self.unconnectedPins_property) // Transient property
-      newValue.inconsistentPackagePadNameSetsMessage_property.startsToBeObserved (by: self.inconsistentPackagePadNameSetsMessage_property) // Transient property
-      newValue.inconsistentSymbolNameSetMessage_property.startsToBeObserved (by: self.inconsistentSymbolNameSetMessage_property) // Transient property
-      newValue.packagePadNameSetsAreConsistent_property.startsToBeObserved (by: self.packagePadNameSetsAreConsistent_property) // Transient property
-      newValue.symbolNameAreConsistent_property.startsToBeObserved (by: self.symbolNameAreConsistent_property) // Transient property
-      newValue.symbolTypeNames_property.startsToBeObserved (by: self.symbolTypeNames_property) // Transient property
-      newValue.unconnectedPads_property.startsToBeObserved (by: self.unconnectedPads_property) // Transient property
-      newValue.assignedPadProxies_property.startsToBeObserved (by: self.assignedPadProxies_property) // Transient property
-      newValue.issues_property.startsToBeObserved (by: self.issues_property) // Transient property
+      newValue.mSelectedPageIndex_property.startsBeingObserved (by: self.mSelectedPageIndex_property) // Stored property
+      newValue.mSelectedSymbolInspectorIndex_property.startsBeingObserved (by: self.mSelectedSymbolInspectorIndex_property) // Stored property
+      newValue.mSelectedPackageInspectorIndex_property.startsBeingObserved (by: self.mSelectedPackageInspectorIndex_property) // Stored property
+      newValue.mTitle_property.startsBeingObserved (by: self.mTitle_property) // Stored property
+      newValue.mImageData_property.startsBeingObserved (by: self.mImageData_property) // Stored property
+      newValue.mPrefix_property.startsBeingObserved (by: self.mPrefix_property) // Stored property
+      newValue.mComments_property.startsBeingObserved (by: self.mComments_property) // Stored property
+      newValue.mPackageDisplayZoom_property.startsBeingObserved (by: self.mPackageDisplayZoom_property) // Stored property
+      newValue.mPackageDisplayHorizontalFlip_property.startsBeingObserved (by: self.mPackageDisplayHorizontalFlip_property) // Stored property
+      newValue.mPackageDisplayVerticalFlip_property.startsBeingObserved (by: self.mPackageDisplayVerticalFlip_property) // Stored property
+      newValue.mShowPackages_property.startsBeingObserved (by: self.mShowPackages_property) // Stored property
+      newValue.mShowPackagePadNumbers_property.startsBeingObserved (by: self.mShowPackagePadNumbers_property) // Stored property
+      newValue.mShowPackageFrontPads_property.startsBeingObserved (by: self.mShowPackageFrontPads_property) // Stored property
+      newValue.mShowPackageBackPads_property.startsBeingObserved (by: self.mShowPackageBackPads_property) // Stored property
+      newValue.mSymbolDisplayZoom_property.startsBeingObserved (by: self.mSymbolDisplayZoom_property) // Stored property
+      newValue.imageIsValid_property.startsBeingObserved (by: self.imageIsValid_property) // Transient property
+      newValue.unconnectedPins_property.startsBeingObserved (by: self.unconnectedPins_property) // Transient property
+      newValue.inconsistentPackagePadNameSetsMessage_property.startsBeingObserved (by: self.inconsistentPackagePadNameSetsMessage_property) // Transient property
+      newValue.inconsistentSymbolNameSetMessage_property.startsBeingObserved (by: self.inconsistentSymbolNameSetMessage_property) // Transient property
+      newValue.packagePadNameSetsAreConsistent_property.startsBeingObserved (by: self.packagePadNameSetsAreConsistent_property) // Transient property
+      newValue.symbolNameAreConsistent_property.startsBeingObserved (by: self.symbolNameAreConsistent_property) // Transient property
+      newValue.symbolTypeNames_property.startsBeingObserved (by: self.symbolTypeNames_property) // Transient property
+      newValue.unconnectedPads_property.startsBeingObserved (by: self.unconnectedPads_property) // Transient property
+      newValue.assignedPadProxies_property.startsBeingObserved (by: self.assignedPadProxies_property) // Transient property
+      newValue.issues_property.startsBeingObserved (by: self.issues_property) // Transient property
       if let relay = self.mObserversOf_mDocs { // to Many
-        newValue.mDocs_property.startsToBeObserved (by: relay)
+        newValue.mDocs_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mSymbolInstances { // to Many
-        newValue.mSymbolInstances_property.startsToBeObserved (by: relay)
+        newValue.mSymbolInstances_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mPackages { // to Many
-        newValue.mPackages_property.startsToBeObserved (by: relay)
+        newValue.mPackages_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mSymbolTypes { // to Many
-        newValue.mSymbolTypes_property.startsToBeObserved (by: relay)
+        newValue.mSymbolTypes_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mPadProxies { // to Many
-        newValue.mPadProxies_property.startsToBeObserved (by: relay)
+        newValue.mPadProxies_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -260,16 +260,16 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func toMany_mDocs_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mDocs_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mDocs {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mDocs_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mDocs_property.startsBeingObserved (by: relay)
       self.mObserversOf_mDocs = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -286,16 +286,16 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func toMany_mSymbolInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSymbolInstances_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSymbolInstances {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mSymbolInstances_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mSymbolInstances_property.startsBeingObserved (by: relay)
       self.mObserversOf_mSymbolInstances = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -312,16 +312,16 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func toMany_mPackages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPackages_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPackages {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mPackages_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mPackages_property.startsBeingObserved (by: relay)
       self.mObserversOf_mPackages = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -338,16 +338,16 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func toMany_mSymbolTypes_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSymbolTypes_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSymbolTypes {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mSymbolTypes_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mSymbolTypes_property.startsBeingObserved (by: relay)
       self.mObserversOf_mSymbolTypes = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -364,16 +364,16 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   //····················································································································
 
-  final func toMany_mPadProxies_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPadProxies_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPadProxies {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mPadProxies_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mPadProxies_property.startsBeingObserved (by: relay)
       self.mObserversOf_mPadProxies = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

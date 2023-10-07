@@ -360,9 +360,9 @@ final class BoardQRCode : BoardObject,
         return .empty
       }
     }
-    self.mText_property.startsToBeObserved (by: self.qrCodeDescriptor_property)
-    self.mCorrectionLevel_property.startsToBeObserved (by: self.qrCodeDescriptor_property)
-    self.mDrawFrame_property.startsToBeObserved (by: self.qrCodeDescriptor_property)
+    self.mText_property.startsBeingObserved (by: self.qrCodeDescriptor_property)
+    self.mCorrectionLevel_property.startsBeingObserved (by: self.qrCodeDescriptor_property)
+    self.mDrawFrame_property.startsBeingObserved (by: self.qrCodeDescriptor_property)
   //--- Atomic property: moduleCount
     self.moduleCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -379,7 +379,7 @@ final class BoardQRCode : BoardObject,
         return .empty
       }
     }
-    self.qrCodeDescriptor_property.startsToBeObserved (by: self.moduleCount_property)
+    self.qrCodeDescriptor_property.startsBeingObserved (by: self.moduleCount_property)
   //--- Atomic property: actualImageSize
     self.actualImageSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -399,8 +399,8 @@ final class BoardQRCode : BoardObject,
         return .empty
       }
     }
-    self.moduleCount_property.startsToBeObserved (by: self.actualImageSize_property)
-    self.mModuleSize_property.startsToBeObserved (by: self.actualImageSize_property)
+    self.moduleCount_property.startsBeingObserved (by: self.actualImageSize_property)
+    self.mModuleSize_property.startsBeingObserved (by: self.actualImageSize_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -456,16 +456,16 @@ final class BoardQRCode : BoardObject,
         return .empty
       }
     }
-    self.mCenterX_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mCenterY_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.qrCodeDescriptor_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mLayer_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mRotation_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mModuleSize_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayFrontLegendForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayBackLegendForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_frontSideLegendColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_backSideLegendColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.mCenterX_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mCenterY_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.qrCodeDescriptor_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mLayer_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mRotation_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mModuleSize_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayFrontLegendForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayBackLegendForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_frontSideLegendColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_backSideLegendColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -509,16 +509,16 @@ final class BoardQRCode : BoardObject,
         return .empty
       }
     }
-    self.mCenterX_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mCenterY_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.qrCodeDescriptor_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mLayer_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mRotation_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mModuleSize_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_frontSideLegendColorForBoard_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_backSideLegendColorForBoard_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_hiliteWidthMultipliedByTen_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_mShowTextRotationKnobInBoard_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mCenterX_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mCenterY_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.qrCodeDescriptor_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mLayer_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mRotation_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mModuleSize_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_frontSideLegendColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_backSideLegendColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_hiliteWidthMultipliedByTen_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_mShowTextRotationKnobInBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -553,13 +553,13 @@ final class BoardQRCode : BoardObject,
         return .empty
       }
     }
-    self.mLayer_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mCenterX_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mCenterY_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mText_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mCorrectionLevel_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mRotation_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mDrawFrame_property.startsToBeObserved (by: self.signatureForERCChecking_property)
+    self.mLayer_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mCenterX_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mCenterY_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mText_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mCorrectionLevel_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mRotation_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mDrawFrame_property.startsBeingObserved (by: self.signatureForERCChecking_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

@@ -1084,7 +1084,7 @@ import AppKit
           return .empty
         }
     }
-    preferences_symbolColor_property.startsToBeObserved (by: self.addSegmentButtonImage_property)
+    preferences_symbolColor_property.startsBeingObserved (by: self.addSegmentButtonImage_property)
 
   //--- Atomic property: addBezierButtonImage
     self.addBezierButtonImage_property.mReadModelFunction = {
@@ -1098,7 +1098,7 @@ import AppKit
           return .empty
         }
     }
-    preferences_symbolColor_property.startsToBeObserved (by: self.addBezierButtonImage_property)
+    preferences_symbolColor_property.startsBeingObserved (by: self.addBezierButtonImage_property)
 
   //--- Atomic property: addOvalButtonImage
     self.addOvalButtonImage_property.mReadModelFunction = {
@@ -1112,7 +1112,7 @@ import AppKit
           return .empty
         }
     }
-    preferences_symbolColor_property.startsToBeObserved (by: self.addOvalButtonImage_property)
+    preferences_symbolColor_property.startsBeingObserved (by: self.addOvalButtonImage_property)
 
   //--- Atomic property: addSolidOvalButtonImage
     self.addSolidOvalButtonImage_property.mReadModelFunction = {
@@ -1126,7 +1126,7 @@ import AppKit
           return .empty
         }
     }
-    preferences_symbolColor_property.startsToBeObserved (by: self.addSolidOvalButtonImage_property)
+    preferences_symbolColor_property.startsBeingObserved (by: self.addSolidOvalButtonImage_property)
 
   //--- Atomic property: addSolidRectButtonImage
     self.addSolidRectButtonImage_property.mReadModelFunction = {
@@ -1140,7 +1140,7 @@ import AppKit
           return .empty
         }
     }
-    preferences_symbolColor_property.startsToBeObserved (by: self.addSolidRectButtonImage_property)
+    preferences_symbolColor_property.startsBeingObserved (by: self.addSolidRectButtonImage_property)
 
   //--- Atomic property: addTextButtonImage
     self.addTextButtonImage_property.mReadModelFunction = {
@@ -1154,7 +1154,7 @@ import AppKit
           return .empty
         }
     }
-    preferences_symbolColor_property.startsToBeObserved (by: self.addTextButtonImage_property)
+    preferences_symbolColor_property.startsBeingObserved (by: self.addTextButtonImage_property)
 
   //--- Atomic property: addPinButtonImage
     self.addPinButtonImage_property.mReadModelFunction = {
@@ -1168,7 +1168,7 @@ import AppKit
           return .empty
         }
     }
-    preferences_symbolColor_property.startsToBeObserved (by: self.addPinButtonImage_property)
+    preferences_symbolColor_property.startsBeingObserved (by: self.addPinButtonImage_property)
 
   //--- Atomic property: symbolIssues
     self.symbolIssues_property.mReadModelFunction = { [weak self] in
@@ -1189,8 +1189,8 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.issues_property.startsToBeObserved (by: self.symbolIssues_property)
-    self.documentFileName_property.startsToBeObserved (by: self.symbolIssues_property)
+    self.rootObject.issues_property.startsBeingObserved (by: self.symbolIssues_property)
+    self.documentFileName_property.startsBeingObserved (by: self.symbolIssues_property)
 
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
@@ -1208,7 +1208,7 @@ import AppKit
         return .empty
       }
     }
-    self.symbolIssues_property.startsToBeObserved (by: self.statusMessage_property)
+    self.symbolIssues_property.startsBeingObserved (by: self.statusMessage_property)
 
   //--- Atomic property: statusErrorCount
     self.statusErrorCount_property.mReadModelFunction = { [weak self] in
@@ -1226,7 +1226,7 @@ import AppKit
         return .empty
       }
     }
-    self.symbolIssues_property.startsToBeObserved (by: self.statusErrorCount_property)
+    self.symbolIssues_property.startsBeingObserved (by: self.statusErrorCount_property)
 
   //--- Atomic property: statusWarningCount
     self.statusWarningCount_property.mReadModelFunction = { [weak self] in
@@ -1244,7 +1244,7 @@ import AppKit
         return .empty
       }
     }
-    self.symbolIssues_property.startsToBeObserved (by: self.statusWarningCount_property)
+    self.symbolIssues_property.startsBeingObserved (by: self.statusWarningCount_property)
 
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
@@ -1262,7 +1262,7 @@ import AppKit
         return .empty
       }
     }
-    self.symbolIssues_property.startsToBeObserved (by: self.metadataStatus_property)
+    self.symbolIssues_property.startsBeingObserved (by: self.metadataStatus_property)
 
   //--- Atomic property: noSymbolIssue
     self.noSymbolIssue_property.mReadModelFunction = { [weak self] in
@@ -1280,7 +1280,7 @@ import AppKit
         return .empty
       }
     }
-    self.symbolIssues_property.startsToBeObserved (by: self.noSymbolIssue_property)
+    self.symbolIssues_property.startsBeingObserved (by: self.noSymbolIssue_property)
 
   //--- Atomic property: segmentedControlSegmentIssueImage
     self.segmentedControlSegmentIssueImage_property.mReadModelFunction = { [weak self] in
@@ -1298,7 +1298,7 @@ import AppKit
         return .empty
       }
     }
-    self.symbolIssues_property.startsToBeObserved (by: self.segmentedControlSegmentIssueImage_property)
+    self.symbolIssues_property.startsBeingObserved (by: self.segmentedControlSegmentIssueImage_property)
 
   //--- Atomic property: segmentedControlSegmentIssueString
     self.segmentedControlSegmentIssueString_property.mReadModelFunction = { [weak self] in
@@ -1316,7 +1316,7 @@ import AppKit
         return .empty
       }
     }
-    self.symbolIssues_property.startsToBeObserved (by: self.segmentedControlSegmentIssueString_property)
+    self.symbolIssues_property.startsBeingObserved (by: self.segmentedControlSegmentIssueString_property)
 
   }
 

@@ -669,7 +669,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
         return .empty
       }
     }
-    self.mArtwork_property.startsToBeObserved (by: self.mArtwork_none)
+    self.mArtwork_property.startsBeingObserved (by: self.mArtwork_none)
   //--- To one property: mArtwork (has opposite to many relationship: fileGenerationParameterArray)
     self.mArtwork_property.undoManager = inUndoManager
     self.mArtwork_property.setOppositeRelationShipFunctions (
@@ -761,30 +761,30 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
         return .empty
       }
     }
-    self.mArtwork_property.layerConfiguration_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawBoardLimits_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawInternalBoardLimits_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawComponentNamesTopSide_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawComponentNamesBottomSide_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawComponentValuesTopSide_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawComponentValuesBottomSide_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawPackageLegendTopSide_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawPackageLegendBottomSide_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawPadHolesInPDF_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawPadsTopSide_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawPadsBottomSide_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawTextsLayoutTopSide_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawTextsLayoutBottomSide_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawTextsLegendTopSide_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawTextsLegendBottomSide_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawTracksTopSide_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawTracksInner1Layer_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawTracksInner2Layer_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawTracksInner3Layer_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawTracksInner4Layer_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawTracksBottomSide_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawTraversingPads_property.startsToBeObserved (by: self.hasNoData_property)
-    self.drawVias_property.startsToBeObserved (by: self.hasNoData_property)
+    self.mArtwork_property.layerConfiguration_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawBoardLimits_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawInternalBoardLimits_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawComponentNamesTopSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawComponentNamesBottomSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawComponentValuesTopSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawComponentValuesBottomSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawPackageLegendTopSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawPackageLegendBottomSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawPadHolesInPDF_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawPadsTopSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawPadsBottomSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawTextsLayoutTopSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawTextsLayoutBottomSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawTextsLegendTopSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawTextsLegendBottomSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawTracksTopSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawTracksInner1Layer_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawTracksInner2Layer_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawTracksInner3Layer_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawTracksInner4Layer_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawTracksBottomSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawTraversingPads_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawVias_property.startsBeingObserved (by: self.hasNoData_property)
   //--- Atomic property: parameterStatusImage
     self.parameterStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -807,9 +807,9 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
         return .empty
       }
     }
-    self.name_property.startsToBeObserved (by: self.parameterStatusImage_property)
-    self.fileExtension_property.startsToBeObserved (by: self.parameterStatusImage_property)
-    self.hasNoData_property.startsToBeObserved (by: self.parameterStatusImage_property)
+    self.name_property.startsBeingObserved (by: self.parameterStatusImage_property)
+    self.fileExtension_property.startsBeingObserved (by: self.parameterStatusImage_property)
+    self.hasNoData_property.startsBeingObserved (by: self.parameterStatusImage_property)
   //--- Atomic property: emptyFileExtensionImage
     self.emptyFileExtensionImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -826,7 +826,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
         return .empty
       }
     }
-    self.fileExtension_property.startsToBeObserved (by: self.emptyFileExtensionImage_property)
+    self.fileExtension_property.startsBeingObserved (by: self.emptyFileExtensionImage_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.drawBoardLimits_property.setSignatureObserver (observer: self)

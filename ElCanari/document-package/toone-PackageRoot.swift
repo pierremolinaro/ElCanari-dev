@@ -87,73 +87,73 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.selectedPageIndex_property.startsToBeObserved (by: self.selectedPageIndex_property) // Stored property
-      newValue.selectedInspector_property.startsToBeObserved (by: self.selectedInspector_property) // Stored property
-      newValue.comments_property.startsToBeObserved (by: self.comments_property) // Stored property
-      newValue.program_property.startsToBeObserved (by: self.program_property) // Stored property
-      newValue.horizontalFlip_property.startsToBeObserved (by: self.horizontalFlip_property) // Stored property
-      newValue.verticalFlip_property.startsToBeObserved (by: self.verticalFlip_property) // Stored property
-      newValue.gridStyle_property.startsToBeObserved (by: self.gridStyle_property) // Stored property
-      newValue.gridStep_property.startsToBeObserved (by: self.gridStep_property) // Stored property
-      newValue.gridStepUnit_property.startsToBeObserved (by: self.gridStepUnit_property) // Stored property
-      newValue.gridDisplayFactor_property.startsToBeObserved (by: self.gridDisplayFactor_property) // Stored property
-      newValue.zoom_property.startsToBeObserved (by: self.zoom_property) // Stored property
-      newValue.mModelImageOpacity_property.startsToBeObserved (by: self.mModelImageOpacity_property) // Stored property
-      newValue.mModelImagePageHorizontalFlip_property.startsToBeObserved (by: self.mModelImagePageHorizontalFlip_property) // Stored property
-      newValue.mModelImagePageVerticalFlip_property.startsToBeObserved (by: self.mModelImagePageVerticalFlip_property) // Stored property
-      newValue.mModelImagePageGridStyle_property.startsToBeObserved (by: self.mModelImagePageGridStyle_property) // Stored property
-      newValue.mModelImagePageGridStep_property.startsToBeObserved (by: self.mModelImagePageGridStep_property) // Stored property
-      newValue.mModelImagePageGridStepUnit_property.startsToBeObserved (by: self.mModelImagePageGridStepUnit_property) // Stored property
-      newValue.mModelImagePageGridDisplayFactor_property.startsToBeObserved (by: self.mModelImagePageGridDisplayFactor_property) // Stored property
-      newValue.mModelImagePageZoom_property.startsToBeObserved (by: self.mModelImagePageZoom_property) // Stored property
-      newValue.mModelImagePageXPlacardUnit_property.startsToBeObserved (by: self.mModelImagePageXPlacardUnit_property) // Stored property
-      newValue.mModelImagePageYPlacardUnit_property.startsToBeObserved (by: self.mModelImagePageYPlacardUnit_property) // Stored property
-      newValue.mModelImageSecondPointXUnit_property.startsToBeObserved (by: self.mModelImageSecondPointXUnit_property) // Stored property
-      newValue.mModelImageSecondPointYUnit_property.startsToBeObserved (by: self.mModelImageSecondPointYUnit_property) // Stored property
-      newValue.mModelImageFirstPointXOnLock_property.startsToBeObserved (by: self.mModelImageFirstPointXOnLock_property) // Stored property
-      newValue.mModelImageFirstPointYOnLock_property.startsToBeObserved (by: self.mModelImageFirstPointYOnLock_property) // Stored property
-      newValue.mModelImagePointsDxOnLock_property.startsToBeObserved (by: self.mModelImagePointsDxOnLock_property) // Stored property
-      newValue.mModelImagePointsDyOnLock_property.startsToBeObserved (by: self.mModelImagePointsDyOnLock_property) // Stored property
-      newValue.mModelImageScale_property.startsToBeObserved (by: self.mModelImageScale_property) // Stored property
-      newValue.mModelImageRotationInRadians_property.startsToBeObserved (by: self.mModelImageRotationInRadians_property) // Stored property
-      newValue.mModelPointsCircleRadius_property.startsToBeObserved (by: self.mModelPointsCircleRadius_property) // Stored property
-      newValue.mPointsAreLocked_property.startsToBeObserved (by: self.mPointsAreLocked_property) // Stored property
-      newValue.mDimensionUnitFirstModelPointX_property.startsToBeObserved (by: self.mDimensionUnitFirstModelPointX_property) // Stored property
-      newValue.mDimensionUnitFirstModelPointY_property.startsToBeObserved (by: self.mDimensionUnitFirstModelPointY_property) // Stored property
-      newValue.mDimensionUnitSecondModelPointDx_property.startsToBeObserved (by: self.mDimensionUnitSecondModelPointDx_property) // Stored property
-      newValue.mDimensionUnitSecondModelPointDy_property.startsToBeObserved (by: self.mDimensionUnitSecondModelPointDy_property) // Stored property
-      newValue.knobSizeMultpliedByTen_property.startsToBeObserved (by: self.knobSizeMultpliedByTen_property) // Stored property
-      newValue.padNumbering_property.startsToBeObserved (by: self.padNumbering_property) // Stored property
-      newValue.counterClockNumberingStartAngle_property.startsToBeObserved (by: self.counterClockNumberingStartAngle_property) // Stored property
-      newValue.xPlacardUnit_property.startsToBeObserved (by: self.xPlacardUnit_property) // Stored property
-      newValue.yPlacardUnit_property.startsToBeObserved (by: self.yPlacardUnit_property) // Stored property
-      newValue.mModelImageData_property.startsToBeObserved (by: self.mModelImageData_property) // Stored property
-      newValue.freePadNumbering_property.startsToBeObserved (by: self.freePadNumbering_property) // Transient property
-      newValue.counterClockNumbering_property.startsToBeObserved (by: self.counterClockNumbering_property) // Transient property
-      newValue.gridStepMultipliedByDisplayFactor_property.startsToBeObserved (by: self.gridStepMultipliedByDisplayFactor_property) // Transient property
-      newValue.secondPointX_property.startsToBeObserved (by: self.secondPointX_property) // Transient property
-      newValue.secondPointY_property.startsToBeObserved (by: self.secondPointY_property) // Transient property
-      newValue.lockImageView_property.startsToBeObserved (by: self.lockImageView_property) // Transient property
-      newValue.padNumberDisplay_property.startsToBeObserved (by: self.padNumberDisplay_property) // Transient property
-      newValue.backgroundImagePageBackgroundDisplay_property.startsToBeObserved (by: self.backgroundImagePageBackgroundDisplay_property) // Transient property
-      newValue.modelImageSizeString_property.startsToBeObserved (by: self.modelImageSizeString_property) // Transient property
-      newValue.hasModelImage_property.startsToBeObserved (by: self.hasModelImage_property) // Transient property
-      newValue.masterPadObjectIndexArray_property.startsToBeObserved (by: self.masterPadObjectIndexArray_property) // Transient property
-      newValue.issues_property.startsToBeObserved (by: self.issues_property) // Transient property
+      newValue.selectedPageIndex_property.startsBeingObserved (by: self.selectedPageIndex_property) // Stored property
+      newValue.selectedInspector_property.startsBeingObserved (by: self.selectedInspector_property) // Stored property
+      newValue.comments_property.startsBeingObserved (by: self.comments_property) // Stored property
+      newValue.program_property.startsBeingObserved (by: self.program_property) // Stored property
+      newValue.horizontalFlip_property.startsBeingObserved (by: self.horizontalFlip_property) // Stored property
+      newValue.verticalFlip_property.startsBeingObserved (by: self.verticalFlip_property) // Stored property
+      newValue.gridStyle_property.startsBeingObserved (by: self.gridStyle_property) // Stored property
+      newValue.gridStep_property.startsBeingObserved (by: self.gridStep_property) // Stored property
+      newValue.gridStepUnit_property.startsBeingObserved (by: self.gridStepUnit_property) // Stored property
+      newValue.gridDisplayFactor_property.startsBeingObserved (by: self.gridDisplayFactor_property) // Stored property
+      newValue.zoom_property.startsBeingObserved (by: self.zoom_property) // Stored property
+      newValue.mModelImageOpacity_property.startsBeingObserved (by: self.mModelImageOpacity_property) // Stored property
+      newValue.mModelImagePageHorizontalFlip_property.startsBeingObserved (by: self.mModelImagePageHorizontalFlip_property) // Stored property
+      newValue.mModelImagePageVerticalFlip_property.startsBeingObserved (by: self.mModelImagePageVerticalFlip_property) // Stored property
+      newValue.mModelImagePageGridStyle_property.startsBeingObserved (by: self.mModelImagePageGridStyle_property) // Stored property
+      newValue.mModelImagePageGridStep_property.startsBeingObserved (by: self.mModelImagePageGridStep_property) // Stored property
+      newValue.mModelImagePageGridStepUnit_property.startsBeingObserved (by: self.mModelImagePageGridStepUnit_property) // Stored property
+      newValue.mModelImagePageGridDisplayFactor_property.startsBeingObserved (by: self.mModelImagePageGridDisplayFactor_property) // Stored property
+      newValue.mModelImagePageZoom_property.startsBeingObserved (by: self.mModelImagePageZoom_property) // Stored property
+      newValue.mModelImagePageXPlacardUnit_property.startsBeingObserved (by: self.mModelImagePageXPlacardUnit_property) // Stored property
+      newValue.mModelImagePageYPlacardUnit_property.startsBeingObserved (by: self.mModelImagePageYPlacardUnit_property) // Stored property
+      newValue.mModelImageSecondPointXUnit_property.startsBeingObserved (by: self.mModelImageSecondPointXUnit_property) // Stored property
+      newValue.mModelImageSecondPointYUnit_property.startsBeingObserved (by: self.mModelImageSecondPointYUnit_property) // Stored property
+      newValue.mModelImageFirstPointXOnLock_property.startsBeingObserved (by: self.mModelImageFirstPointXOnLock_property) // Stored property
+      newValue.mModelImageFirstPointYOnLock_property.startsBeingObserved (by: self.mModelImageFirstPointYOnLock_property) // Stored property
+      newValue.mModelImagePointsDxOnLock_property.startsBeingObserved (by: self.mModelImagePointsDxOnLock_property) // Stored property
+      newValue.mModelImagePointsDyOnLock_property.startsBeingObserved (by: self.mModelImagePointsDyOnLock_property) // Stored property
+      newValue.mModelImageScale_property.startsBeingObserved (by: self.mModelImageScale_property) // Stored property
+      newValue.mModelImageRotationInRadians_property.startsBeingObserved (by: self.mModelImageRotationInRadians_property) // Stored property
+      newValue.mModelPointsCircleRadius_property.startsBeingObserved (by: self.mModelPointsCircleRadius_property) // Stored property
+      newValue.mPointsAreLocked_property.startsBeingObserved (by: self.mPointsAreLocked_property) // Stored property
+      newValue.mDimensionUnitFirstModelPointX_property.startsBeingObserved (by: self.mDimensionUnitFirstModelPointX_property) // Stored property
+      newValue.mDimensionUnitFirstModelPointY_property.startsBeingObserved (by: self.mDimensionUnitFirstModelPointY_property) // Stored property
+      newValue.mDimensionUnitSecondModelPointDx_property.startsBeingObserved (by: self.mDimensionUnitSecondModelPointDx_property) // Stored property
+      newValue.mDimensionUnitSecondModelPointDy_property.startsBeingObserved (by: self.mDimensionUnitSecondModelPointDy_property) // Stored property
+      newValue.knobSizeMultpliedByTen_property.startsBeingObserved (by: self.knobSizeMultpliedByTen_property) // Stored property
+      newValue.padNumbering_property.startsBeingObserved (by: self.padNumbering_property) // Stored property
+      newValue.counterClockNumberingStartAngle_property.startsBeingObserved (by: self.counterClockNumberingStartAngle_property) // Stored property
+      newValue.xPlacardUnit_property.startsBeingObserved (by: self.xPlacardUnit_property) // Stored property
+      newValue.yPlacardUnit_property.startsBeingObserved (by: self.yPlacardUnit_property) // Stored property
+      newValue.mModelImageData_property.startsBeingObserved (by: self.mModelImageData_property) // Stored property
+      newValue.freePadNumbering_property.startsBeingObserved (by: self.freePadNumbering_property) // Transient property
+      newValue.counterClockNumbering_property.startsBeingObserved (by: self.counterClockNumbering_property) // Transient property
+      newValue.gridStepMultipliedByDisplayFactor_property.startsBeingObserved (by: self.gridStepMultipliedByDisplayFactor_property) // Transient property
+      newValue.secondPointX_property.startsBeingObserved (by: self.secondPointX_property) // Transient property
+      newValue.secondPointY_property.startsBeingObserved (by: self.secondPointY_property) // Transient property
+      newValue.lockImageView_property.startsBeingObserved (by: self.lockImageView_property) // Transient property
+      newValue.padNumberDisplay_property.startsBeingObserved (by: self.padNumberDisplay_property) // Transient property
+      newValue.backgroundImagePageBackgroundDisplay_property.startsBeingObserved (by: self.backgroundImagePageBackgroundDisplay_property) // Transient property
+      newValue.modelImageSizeString_property.startsBeingObserved (by: self.modelImageSizeString_property) // Transient property
+      newValue.hasModelImage_property.startsBeingObserved (by: self.hasModelImage_property) // Transient property
+      newValue.masterPadObjectIndexArray_property.startsBeingObserved (by: self.masterPadObjectIndexArray_property) // Transient property
+      newValue.issues_property.startsBeingObserved (by: self.issues_property) // Transient property
       if let relay = self.mObserversOf_mModelImageObjects { // to Many
-        newValue.mModelImageObjects_property.startsToBeObserved (by: relay)
+        newValue.mModelImageObjects_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_packageObjects { // to Many
-        newValue.packageObjects_property.startsToBeObserved (by: relay)
+        newValue.packageObjects_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_packagePads { // to Many
-        newValue.packagePads_property.startsToBeObserved (by: relay)
+        newValue.packagePads_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_packageSlavePads { // to Many
-        newValue.packageSlavePads_property.startsToBeObserved (by: relay)
+        newValue.packageSlavePads_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_packageZones { // to Many
-        newValue.packageZones_property.startsToBeObserved (by: relay)
+        newValue.packageZones_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -484,16 +484,16 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func toMany_mModelImageObjects_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mModelImageObjects_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mModelImageObjects {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mModelImageObjects_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mModelImageObjects_property.startsBeingObserved (by: relay)
       self.mObserversOf_mModelImageObjects = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -510,16 +510,16 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func toMany_packageObjects_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_packageObjects_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_packageObjects {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.packageObjects_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.packageObjects_property.startsBeingObserved (by: relay)
       self.mObserversOf_packageObjects = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -536,16 +536,16 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func toMany_packagePads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_packagePads_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_packagePads {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.packagePads_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.packagePads_property.startsBeingObserved (by: relay)
       self.mObserversOf_packagePads = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -562,16 +562,16 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func toMany_packageSlavePads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_packageSlavePads_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_packageSlavePads {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.packageSlavePads_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.packageSlavePads_property.startsBeingObserved (by: relay)
       self.mObserversOf_packageSlavePads = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -588,16 +588,16 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func toMany_packageZones_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_packageZones_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_packageZones {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.packageZones_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.packageZones_property.startsBeingObserved (by: relay)
       self.mObserversOf_packageZones = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

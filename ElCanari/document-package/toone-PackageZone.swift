@@ -44,30 +44,30 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.x_property.startsToBeObserved (by: self.x_property) // Stored property
-      newValue.y_property.startsToBeObserved (by: self.y_property) // Stored property
-      newValue.width_property.startsToBeObserved (by: self.width_property) // Stored property
-      newValue.height_property.startsToBeObserved (by: self.height_property) // Stored property
-      newValue.xUnit_property.startsToBeObserved (by: self.xUnit_property) // Stored property
-      newValue.yUnit_property.startsToBeObserved (by: self.yUnit_property) // Stored property
-      newValue.widthUnit_property.startsToBeObserved (by: self.widthUnit_property) // Stored property
-      newValue.heightUnit_property.startsToBeObserved (by: self.heightUnit_property) // Stored property
-      newValue.zoneName_property.startsToBeObserved (by: self.zoneName_property) // Stored property
-      newValue.displayZoneName_property.startsToBeObserved (by: self.displayZoneName_property) // Stored property
-      newValue.displayZoneNameWithPadNumbers_property.startsToBeObserved (by: self.displayZoneNameWithPadNumbers_property) // Stored property
-      newValue.xName_property.startsToBeObserved (by: self.xName_property) // Stored property
-      newValue.yName_property.startsToBeObserved (by: self.yName_property) // Stored property
-      newValue.xNameUnit_property.startsToBeObserved (by: self.xNameUnit_property) // Stored property
-      newValue.yNameUnit_property.startsToBeObserved (by: self.yNameUnit_property) // Stored property
-      newValue.zoneNumbering_property.startsToBeObserved (by: self.zoneNumbering_property) // Stored property
-      newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
-      newValue.issues_property.startsToBeObserved (by: self.issues_property) // Transient property
-      newValue.rect_property.startsToBeObserved (by: self.rect_property) // Transient property
-      newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
-      newValue.forbiddenPadArray_property.startsToBeObserved (by: self.forbiddenPadArray_property) // Transient property
-      newValue.emptyForbiddenPadArray_property.startsToBeObserved (by: self.emptyForbiddenPadArray_property) // Transient property
+      newValue.x_property.startsBeingObserved (by: self.x_property) // Stored property
+      newValue.y_property.startsBeingObserved (by: self.y_property) // Stored property
+      newValue.width_property.startsBeingObserved (by: self.width_property) // Stored property
+      newValue.height_property.startsBeingObserved (by: self.height_property) // Stored property
+      newValue.xUnit_property.startsBeingObserved (by: self.xUnit_property) // Stored property
+      newValue.yUnit_property.startsBeingObserved (by: self.yUnit_property) // Stored property
+      newValue.widthUnit_property.startsBeingObserved (by: self.widthUnit_property) // Stored property
+      newValue.heightUnit_property.startsBeingObserved (by: self.heightUnit_property) // Stored property
+      newValue.zoneName_property.startsBeingObserved (by: self.zoneName_property) // Stored property
+      newValue.displayZoneName_property.startsBeingObserved (by: self.displayZoneName_property) // Stored property
+      newValue.displayZoneNameWithPadNumbers_property.startsBeingObserved (by: self.displayZoneNameWithPadNumbers_property) // Stored property
+      newValue.xName_property.startsBeingObserved (by: self.xName_property) // Stored property
+      newValue.yName_property.startsBeingObserved (by: self.yName_property) // Stored property
+      newValue.xNameUnit_property.startsBeingObserved (by: self.xNameUnit_property) // Stored property
+      newValue.yNameUnit_property.startsBeingObserved (by: self.yNameUnit_property) // Stored property
+      newValue.zoneNumbering_property.startsBeingObserved (by: self.zoneNumbering_property) // Stored property
+      newValue.objectDisplay_property.startsBeingObserved (by: self.objectDisplay_property) // Transient property
+      newValue.issues_property.startsBeingObserved (by: self.issues_property) // Transient property
+      newValue.rect_property.startsBeingObserved (by: self.rect_property) // Transient property
+      newValue.selectionDisplay_property.startsBeingObserved (by: self.selectionDisplay_property) // Transient property
+      newValue.forbiddenPadArray_property.startsBeingObserved (by: self.forbiddenPadArray_property) // Transient property
+      newValue.emptyForbiddenPadArray_property.startsBeingObserved (by: self.emptyForbiddenPadArray_property) // Transient property
       if let relay = self.mObserversOf_forbiddenPadNumbers { // to Many
-        newValue.forbiddenPadNumbers_property.startsToBeObserved (by: relay)
+        newValue.forbiddenPadNumbers_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -212,16 +212,16 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_forbiddenPadNumbers_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_forbiddenPadNumbers_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_forbiddenPadNumbers {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.forbiddenPadNumbers_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.forbiddenPadNumbers_property.startsBeingObserved (by: relay)
       self.mObserversOf_forbiddenPadNumbers = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

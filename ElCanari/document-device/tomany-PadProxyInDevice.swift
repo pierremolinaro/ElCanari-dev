@@ -36,19 +36,19 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_mPinInstanceName { // Stored property
-        managedObject.mPinInstanceName_property.startsToBeObserved (by: relay)
+        managedObject.mPinInstanceName_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mPadName { // Stored property
-        managedObject.mPadName_property.startsToBeObserved (by: relay)
+        managedObject.mPadName_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mIsNC { // Stored property
-        managedObject.mIsNC_property.startsToBeObserved (by: relay)
+        managedObject.mIsNC_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_isConnected { // Transient property
-        managedObject.isConnected_property.startsToBeObserved (by: relay)
+        managedObject.isConnected_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_symbolName { // Transient property
-        managedObject.symbolName_property.startsToBeObserved (by: relay)
+        managedObject.symbolName_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -61,19 +61,19 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func toMany_mPinInstanceName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPinInstanceName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPinInstanceName {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mPinInstanceName_property.startsToBeObserved (by: relay)
+        managedObject.mPinInstanceName_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mPinInstanceName = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -90,19 +90,19 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func toMany_mPadName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPadName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPadName {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mPadName_property.startsToBeObserved (by: relay)
+        managedObject.mPadName_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mPadName = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -119,19 +119,19 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func toMany_mIsNC_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsNC_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mIsNC {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mIsNC_property.startsToBeObserved (by: relay)
+        managedObject.mIsNC_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mIsNC = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -148,19 +148,19 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func toMany_isConnected_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_isConnected_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_isConnected {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.isConnected_property.startsToBeObserved (by: relay)
+        managedObject.isConnected_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_isConnected = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -177,19 +177,19 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func toMany_symbolName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_symbolName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_symbolName {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.symbolName_property.startsToBeObserved (by: relay)
+        managedObject.symbolName_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_symbolName = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································

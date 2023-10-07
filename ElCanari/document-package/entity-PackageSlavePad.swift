@@ -500,7 +500,7 @@ final class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.master_property.startsToBeObserved (by: self.master_none)
+    self.master_property.startsBeingObserved (by: self.master_none)
   //--- To one property: master (has opposite to many relationship: slaves)
     self.master_property.undoManager = inUndoManager
     self.master_property.setOppositeRelationShipFunctions (
@@ -556,18 +556,18 @@ final class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.yCenter_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.width_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.height_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.holeWidth_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.holeHeight_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.padShape_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.padStyle_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_frontSidePadColor_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_displayPackageFrontSidePads_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_backSidePadColor_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_displayPackageBackSidePads_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.xCenter_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.yCenter_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.width_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.height_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.holeWidth_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.holeHeight_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.padShape_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.padStyle_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_frontSidePadColor_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_displayPackageFrontSidePads_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_backSidePadColor_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_displayPackageBackSidePads_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -596,11 +596,11 @@ final class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.yCenter_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.width_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.height_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.padShape_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.xCenter_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.yCenter_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.width_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.height_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.padShape_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -632,12 +632,12 @@ final class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.startsToBeObserved (by: self.issues_property)
-    self.yCenter_property.startsToBeObserved (by: self.issues_property)
-    self.width_property.startsToBeObserved (by: self.issues_property)
-    self.height_property.startsToBeObserved (by: self.issues_property)
-    self.holeWidth_property.startsToBeObserved (by: self.issues_property)
-    self.holeHeight_property.startsToBeObserved (by: self.issues_property)
+    self.xCenter_property.startsBeingObserved (by: self.issues_property)
+    self.yCenter_property.startsBeingObserved (by: self.issues_property)
+    self.width_property.startsBeingObserved (by: self.issues_property)
+    self.height_property.startsBeingObserved (by: self.issues_property)
+    self.holeWidth_property.startsBeingObserved (by: self.issues_property)
+    self.holeHeight_property.startsBeingObserved (by: self.issues_property)
   //--- Atomic property: padIsTraversing
     self.padIsTraversing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -654,7 +654,7 @@ final class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.padStyle_property.startsToBeObserved (by: self.padIsTraversing_property)
+    self.padStyle_property.startsBeingObserved (by: self.padIsTraversing_property)
   //--- Atomic property: annularRing
     self.annularRing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -680,10 +680,10 @@ final class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.width_property.startsToBeObserved (by: self.annularRing_property)
-    self.height_property.startsToBeObserved (by: self.annularRing_property)
-    self.holeWidth_property.startsToBeObserved (by: self.annularRing_property)
-    self.holeHeight_property.startsToBeObserved (by: self.annularRing_property)
+    self.width_property.startsBeingObserved (by: self.annularRing_property)
+    self.height_property.startsBeingObserved (by: self.annularRing_property)
+    self.holeWidth_property.startsBeingObserved (by: self.annularRing_property)
+    self.holeHeight_property.startsBeingObserved (by: self.annularRing_property)
   //--- Atomic property: padNameWithZoneName
     self.padNameWithZoneName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -700,7 +700,7 @@ final class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.master_property.padNameWithZoneName_property.startsToBeObserved (by: self.padNameWithZoneName_property)
+    self.master_property.padNameWithZoneName_property.startsBeingObserved (by: self.padNameWithZoneName_property)
   //--- Atomic property: masterPadNameWithZoneName
     self.masterPadNameWithZoneName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -717,7 +717,7 @@ final class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.master_property.padNameWithZoneName_property.startsToBeObserved (by: self.masterPadNameWithZoneName_property)
+    self.master_property.padNameWithZoneName_property.startsBeingObserved (by: self.masterPadNameWithZoneName_property)
   //--- Atomic property: padNameForDisplay
     self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -734,7 +734,7 @@ final class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.master_property.padNameForDisplay_property.startsToBeObserved (by: self.padNameForDisplay_property)
+    self.master_property.padNameForDisplay_property.startsBeingObserved (by: self.padNameForDisplay_property)
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -763,11 +763,11 @@ final class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.startsToBeObserved (by: self.padNumberDisplay_property)
-    self.yCenter_property.startsToBeObserved (by: self.padNumberDisplay_property)
-    preferences_padNumberFont_property.startsToBeObserved (by: self.padNumberDisplay_property)
-    preferences_padNumberColor_property.startsToBeObserved (by: self.padNumberDisplay_property)
-    self.padNameForDisplay_property.startsToBeObserved (by: self.padNumberDisplay_property)
+    self.xCenter_property.startsBeingObserved (by: self.padNumberDisplay_property)
+    self.yCenter_property.startsBeingObserved (by: self.padNumberDisplay_property)
+    preferences_padNumberFont_property.startsBeingObserved (by: self.padNumberDisplay_property)
+    preferences_padNumberColor_property.startsBeingObserved (by: self.padNumberDisplay_property)
+    self.padNameForDisplay_property.startsBeingObserved (by: self.padNumberDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.annularRingUnit_property.setSignatureObserver (observer: self)

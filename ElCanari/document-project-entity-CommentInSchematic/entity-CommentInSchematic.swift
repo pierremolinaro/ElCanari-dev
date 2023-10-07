@@ -206,13 +206,13 @@ final class CommentInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mComment_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mColor_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mSize_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mHorizontalAlignment_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mVerticalAlignment_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mX_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mY_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.mComment_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mColor_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mSize_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mHorizontalAlignment_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mVerticalAlignment_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mX_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mY_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -250,14 +250,14 @@ final class CommentInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mComment_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mColor_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mSize_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mHorizontalAlignment_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mVerticalAlignment_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_schematicBackColor_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mX_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mY_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mComment_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mColor_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mSize_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mHorizontalAlignment_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mVerticalAlignment_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_schematicBackColor_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mX_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mY_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

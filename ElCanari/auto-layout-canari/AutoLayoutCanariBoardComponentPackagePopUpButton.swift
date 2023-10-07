@@ -41,9 +41,9 @@ final class AutoLayoutCanariBoardComponentPackagePopUpButton : AutoLayoutBase_NS
     let observer = EBOutletEvent ()
     self.mObserver = observer
     observer.mEventCallBack = { [weak self] in self?.buildPopUpButton () }
-    inSelectedObjects.startsToBeObserved (by: observer)
-    inSelectedObjects.toMany_selectedPackageName_StartsToBeObserved (by: observer)
-    inSelectedObjects.toMany_mPackages_StartsToBeObserved (by: observer)
+    inSelectedObjects.startsBeingObserved (by: observer)
+    inSelectedObjects.toMany_selectedPackageName_StartsBeingObserved (by: observer)
+    inSelectedObjects.toMany_mPackages_StartsBeingObserved (by: observer)
   }
 
   //····················································································································

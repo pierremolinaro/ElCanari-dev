@@ -34,20 +34,20 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mNetName_property.startsToBeObserved (by: self.mNetName_property) // Stored property
-      newValue.mWarnsExactlyOneLabel_property.startsToBeObserved (by: self.mWarnsExactlyOneLabel_property) // Stored property
-      newValue.netClassName_property.startsToBeObserved (by: self.netClassName_property) // Transient property
-      newValue.netClassTrackWidth_property.startsToBeObserved (by: self.netClassTrackWidth_property) // Transient property
-      newValue.netClassViaHoleDiameter_property.startsToBeObserved (by: self.netClassViaHoleDiameter_property) // Transient property
-      newValue.netClassViaPadDiameter_property.startsToBeObserved (by: self.netClassViaPadDiameter_property) // Transient property
-      newValue.wireColor_property.startsToBeObserved (by: self.wireColor_property) // Transient property
-      newValue.netSchematicPointsInfo_property.startsToBeObserved (by: self.netSchematicPointsInfo_property) // Transient property
-      newValue.trackCount_property.startsToBeObserved (by: self.trackCount_property) // Transient property
+      newValue.mNetName_property.startsBeingObserved (by: self.mNetName_property) // Stored property
+      newValue.mWarnsExactlyOneLabel_property.startsBeingObserved (by: self.mWarnsExactlyOneLabel_property) // Stored property
+      newValue.netClassName_property.startsBeingObserved (by: self.netClassName_property) // Transient property
+      newValue.netClassTrackWidth_property.startsBeingObserved (by: self.netClassTrackWidth_property) // Transient property
+      newValue.netClassViaHoleDiameter_property.startsBeingObserved (by: self.netClassViaHoleDiameter_property) // Transient property
+      newValue.netClassViaPadDiameter_property.startsBeingObserved (by: self.netClassViaPadDiameter_property) // Transient property
+      newValue.wireColor_property.startsBeingObserved (by: self.wireColor_property) // Transient property
+      newValue.netSchematicPointsInfo_property.startsBeingObserved (by: self.netSchematicPointsInfo_property) // Transient property
+      newValue.trackCount_property.startsBeingObserved (by: self.trackCount_property) // Transient property
       if let relay = self.mObserversOf_mPoints { // to Many
-        newValue.mPoints_property.startsToBeObserved (by: relay)
+        newValue.mPoints_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mTracks { // to Many
-        newValue.mTracks_property.startsToBeObserved (by: relay)
+        newValue.mTracks_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -114,16 +114,16 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
-  final func toMany_mPoints_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPoints_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPoints {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mPoints_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mPoints_property.startsBeingObserved (by: relay)
       self.mObserversOf_mPoints = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -140,16 +140,16 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
-  final func toMany_mTracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mTracks_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mTracks {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mTracks_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mTracks_property.startsBeingObserved (by: relay)
       self.mObserversOf_mTracks = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

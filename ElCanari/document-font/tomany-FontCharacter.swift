@@ -45,28 +45,28 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_codePoint { // Stored property
-        managedObject.codePoint_property.startsToBeObserved (by: relay)
+        managedObject.codePoint_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_advance { // Stored property
-        managedObject.advance_property.startsToBeObserved (by: relay)
+        managedObject.advance_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mWarnsWhenNoSegment { // Stored property
-        managedObject.mWarnsWhenNoSegment_property.startsToBeObserved (by: relay)
+        managedObject.mWarnsWhenNoSegment_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mWarnsWhenAdvanceIsZero { // Stored property
-        managedObject.mWarnsWhenAdvanceIsZero_property.startsToBeObserved (by: relay)
+        managedObject.mWarnsWhenAdvanceIsZero_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_segmentArrayForDrawing { // Transient property
-        managedObject.segmentArrayForDrawing_property.startsToBeObserved (by: relay)
+        managedObject.segmentArrayForDrawing_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_gerberCode { // Transient property
-        managedObject.gerberCode_property.startsToBeObserved (by: relay)
+        managedObject.gerberCode_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_gerberCodeInstructionCountMessage { // Transient property
-        managedObject.gerberCodeInstructionCountMessage_property.startsToBeObserved (by: relay)
+        managedObject.gerberCodeInstructionCountMessage_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_issues { // Transient property
-        managedObject.issues_property.startsToBeObserved (by: relay)
+        managedObject.issues_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -79,19 +79,19 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func toMany_codePoint_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_codePoint_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_codePoint {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.codePoint_property.startsToBeObserved (by: relay)
+        managedObject.codePoint_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_codePoint = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -108,19 +108,19 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func toMany_advance_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_advance_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_advance {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.advance_property.startsToBeObserved (by: relay)
+        managedObject.advance_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_advance = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -137,19 +137,19 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func toMany_mWarnsWhenNoSegment_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWarnsWhenNoSegment_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWarnsWhenNoSegment {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mWarnsWhenNoSegment_property.startsToBeObserved (by: relay)
+        managedObject.mWarnsWhenNoSegment_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mWarnsWhenNoSegment = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -166,19 +166,19 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func toMany_mWarnsWhenAdvanceIsZero_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWarnsWhenAdvanceIsZero_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWarnsWhenAdvanceIsZero {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mWarnsWhenAdvanceIsZero_property.startsToBeObserved (by: relay)
+        managedObject.mWarnsWhenAdvanceIsZero_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mWarnsWhenAdvanceIsZero = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -195,19 +195,19 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func toMany_segmentArrayForDrawing_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_segmentArrayForDrawing_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_segmentArrayForDrawing {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.segmentArrayForDrawing_property.startsToBeObserved (by: relay)
+        managedObject.segmentArrayForDrawing_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_segmentArrayForDrawing = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -224,19 +224,19 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func toMany_gerberCode_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_gerberCode_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_gerberCode {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.gerberCode_property.startsToBeObserved (by: relay)
+        managedObject.gerberCode_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_gerberCode = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -253,19 +253,19 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func toMany_gerberCodeInstructionCountMessage_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_gerberCodeInstructionCountMessage_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_gerberCodeInstructionCountMessage {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.gerberCodeInstructionCountMessage_property.startsToBeObserved (by: relay)
+        managedObject.gerberCodeInstructionCountMessage_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_gerberCodeInstructionCountMessage = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -282,19 +282,19 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   //····················································································································
 
-  final func toMany_issues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_issues_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_issues {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.issues_property.startsToBeObserved (by: relay)
+        managedObject.issues_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_issues = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································

@@ -3210,6 +3210,7 @@
 		CFEDE5B61B4677C500036ACF /* EBDataScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDE5B11B4677C500036ACF /* EBDataScanner.swift */; };
 		CFEDE5B81B4677C500036ACF /* EBManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDE5B31B4677C500036ACF /* EBManagedObject.swift */; };
 		CFEDE5BA1B4677C500036ACF /* EBUndoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDE5B51B4677C500036ACF /* EBUndoManager.swift */; };
+		CFEEE6AD2AD186A7005B44FB /* EBSimpleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEE6AC2AD186A7005B44FB /* EBSimpleObserver.swift */; };
 		CFF2A1F121B2D18E00945D01 /* transient-SymbolSolidOval-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2A1ED21B2D18D00945D01 /* transient-SymbolSolidOval-issues.swift */; };
 		CFF2A1F221B2D18E00945D01 /* transient-SymbolSolidOval-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2A1ED21B2D18D00945D01 /* transient-SymbolSolidOval-issues.swift */; };
 		CFF2A1F321B2D18E00945D01 /* transient-SymbolSolidOval-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2A1EE21B2D18E00945D01 /* transient-SymbolSolidOval-objectDisplay.swift */; };
@@ -5019,6 +5020,7 @@
 		CFEDE5B11B4677C500036ACF /* EBDataScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBDataScanner.swift; sourceTree = "<group>"; };
 		CFEDE5B31B4677C500036ACF /* EBManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBManagedObject.swift; sourceTree = "<group>"; };
 		CFEDE5B51B4677C500036ACF /* EBUndoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBUndoManager.swift; sourceTree = "<group>"; };
+		CFEEE6AC2AD186A7005B44FB /* EBSimpleObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBSimpleObserver.swift; sourceTree = "<group>"; };
 		CFF2A1ED21B2D18D00945D01 /* transient-SymbolSolidOval-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolSolidOval-issues.swift"; sourceTree = "<group>"; };
 		CFF2A1EE21B2D18E00945D01 /* transient-SymbolSolidOval-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolSolidOval-objectDisplay.swift"; sourceTree = "<group>"; };
 		CFF2A1EF21B2D18E00945D01 /* transient-SymbolSolidOval-selectionDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolSolidOval-selectionDisplay.swift"; sourceTree = "<group>"; };
@@ -5654,6 +5656,7 @@
 				CF3DAD112AD096CA003830F4 /* EBPropertyProtocol.swift */,
 				CF3DAD2E2AD098BF003830F4 /* EBStoredProperty.swift */,
 				CF3DAD152AD096CA003830F4 /* EBTransientProperty.swift */,
+				CFEEE6AC2AD186A7005B44FB /* EBSimpleObserver.swift */,
 			);
 			name = "EB — property generic classes";
 			path = "ElCanari/easy-bindings-properties-generic-classes";
@@ -8758,6 +8761,7 @@
 				CFEB7AF0233A247F0060A97A /* transient-BoardRestrictRectangle-selectionDisplay.swift in Sources */,
 				CF07780723521A4E00F56EAB /* EBEnumPropertyProtocol.swift in Sources */,
 				CFB1F9632940EDDC00C1E120 /* action-AutoLayoutProjectDocument-setBoardTextFontAction.swift in Sources */,
+				CFEEE6AD2AD186A7005B44FB /* EBSimpleObserver.swift in Sources */,
 				CFB8DEB227A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift in Sources */,
 				CFEB7B0D233A24BF0060A97A /* transient-BoardTrack-signatureForERCChecking.swift in Sources */,
 				CF711E0D275E1C8D00280069 /* extension-PackageSegment.swift in Sources */,

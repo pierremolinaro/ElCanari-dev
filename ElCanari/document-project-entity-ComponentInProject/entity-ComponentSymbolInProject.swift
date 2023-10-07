@@ -429,7 +429,7 @@ final class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    self.mComponent_property.startsToBeObserved (by: self.mComponent_none)
+    self.mComponent_property.startsBeingObserved (by: self.mComponent_none)
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.undoManager = inUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (
@@ -458,7 +458,7 @@ final class ComponentSymbolInProject : SchematicObject,
     self.componentValueProxy_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
       self?.mComponent?.mComponentValue_property.setProp (inValue)
     }
-    self.mComponent_property.mComponentValue_property.startsToBeObserved (by: self.componentValueProxy_property)
+    self.mComponent_property.mComponentValue_property.startsBeingObserved (by: self.componentValueProxy_property)
   //--- To one property: mComponent (has opposite to many relationship: mSymbols)
     self.mComponent_property.undoManager = inUndoManager
     self.mComponent_property.setOppositeRelationShipFunctions (
@@ -481,7 +481,7 @@ final class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    self.mComponent_property.componentName_property.startsToBeObserved (by: self.componentName_property)
+    self.mComponent_property.componentName_property.startsBeingObserved (by: self.componentName_property)
   //--- Atomic property: deviceName
     self.deviceName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -498,7 +498,7 @@ final class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    self.mComponent_property.deviceName_property.startsToBeObserved (by: self.deviceName_property)
+    self.mComponent_property.deviceName_property.startsBeingObserved (by: self.deviceName_property)
   //--- Atomic property: symbolInfo
     self.symbolInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -554,20 +554,20 @@ final class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    preferences_pinNameColorForSchematic_property.startsToBeObserved (by: self.symbolInfo_property)
-    preferences_pinNameFontForSchematic_property.startsToBeObserved (by: self.symbolInfo_property)
-    preferences_pinNumberColorForSchematic_property.startsToBeObserved (by: self.symbolInfo_property)
-    preferences_pinNumberFontForSchematic_property.startsToBeObserved (by: self.symbolInfo_property)
-    self.mRotation_property.startsToBeObserved (by: self.symbolInfo_property)
-    self.mMirror_property.startsToBeObserved (by: self.symbolInfo_property)
-    self.componentName_property.startsToBeObserved (by: self.symbolInfo_property)
-    self.mComponent_property.mComponentValue_property.startsToBeObserved (by: self.symbolInfo_property)
-    self.mComponent_property.deviceSymbolDictionary_property.startsToBeObserved (by: self.symbolInfo_property)
-    self.mSymbolInstanceName_property.startsToBeObserved (by: self.symbolInfo_property)
-    self.mSymbolTypeName_property.startsToBeObserved (by: self.symbolInfo_property)
-    self.mCenterX_property.startsToBeObserved (by: self.symbolInfo_property)
-    self.mCenterY_property.startsToBeObserved (by: self.symbolInfo_property)
-    self.mPoints_property.toMany_symbolNameNetName_StartsToBeObserved (by: self.symbolInfo_property)
+    preferences_pinNameColorForSchematic_property.startsBeingObserved (by: self.symbolInfo_property)
+    preferences_pinNameFontForSchematic_property.startsBeingObserved (by: self.symbolInfo_property)
+    preferences_pinNumberColorForSchematic_property.startsBeingObserved (by: self.symbolInfo_property)
+    preferences_pinNumberFontForSchematic_property.startsBeingObserved (by: self.symbolInfo_property)
+    self.mRotation_property.startsBeingObserved (by: self.symbolInfo_property)
+    self.mMirror_property.startsBeingObserved (by: self.symbolInfo_property)
+    self.componentName_property.startsBeingObserved (by: self.symbolInfo_property)
+    self.mComponent_property.mComponentValue_property.startsBeingObserved (by: self.symbolInfo_property)
+    self.mComponent_property.deviceSymbolDictionary_property.startsBeingObserved (by: self.symbolInfo_property)
+    self.mSymbolInstanceName_property.startsBeingObserved (by: self.symbolInfo_property)
+    self.mSymbolTypeName_property.startsBeingObserved (by: self.symbolInfo_property)
+    self.mCenterX_property.startsBeingObserved (by: self.symbolInfo_property)
+    self.mCenterY_property.startsBeingObserved (by: self.symbolInfo_property)
+    self.mPoints_property.toMany_symbolNameNetName_StartsBeingObserved (by: self.symbolInfo_property)
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -584,7 +584,7 @@ final class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    self.mComponent_property.pinPadAssignments_property.startsToBeObserved (by: self.pinPadAssignments_property)
+    self.mComponent_property.pinPadAssignments_property.startsBeingObserved (by: self.pinPadAssignments_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -640,20 +640,20 @@ final class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    preferences_pinNameFont_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_componentNameColorForSchematic_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_componentNameFontForSchematic_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_componentValueColorForSchematic_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_componentValueFontForSchematic_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_symbolColorForSchematic_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mDisplayComponentNameOffsetX_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mDisplayComponentNameOffsetY_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mDisplayComponentValue_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mDisplayComponentValueOffsetX_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mDisplayComponentValueOffsetY_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.symbolInfo_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mSymbolInstanceName_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mSymbolTypeName_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_pinNameFont_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_componentNameColorForSchematic_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_componentNameFontForSchematic_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_componentValueColorForSchematic_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_componentValueFontForSchematic_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_symbolColorForSchematic_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mDisplayComponentNameOffsetX_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mDisplayComponentNameOffsetY_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mDisplayComponentValue_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mDisplayComponentValueOffsetX_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mDisplayComponentValueOffsetY_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.symbolInfo_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mSymbolInstanceName_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mSymbolTypeName_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -694,15 +694,15 @@ final class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    preferences_pinNameFont_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_schematicBackColor_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mDisplayComponentNameOffsetX_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mDisplayComponentNameOffsetY_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mDisplayComponentValue_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mDisplayComponentValueOffsetX_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mDisplayComponentValueOffsetY_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.symbolInfo_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mRotation_property.startsToBeObserved (by: self.selectionDisplay_property)
+    preferences_pinNameFont_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_schematicBackColor_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mDisplayComponentNameOffsetX_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mDisplayComponentNameOffsetY_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mDisplayComponentValue_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mDisplayComponentValueOffsetX_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mDisplayComponentValueOffsetY_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.symbolInfo_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mRotation_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: symbolInSchematic
     self.symbolInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -719,7 +719,7 @@ final class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
-    self.isPlacedInSchematic_property.startsToBeObserved (by: self.symbolInSchematic_property)
+    self.isPlacedInSchematic_property.startsBeingObserved (by: self.symbolInSchematic_property)
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbol_property.setProp (me) } },

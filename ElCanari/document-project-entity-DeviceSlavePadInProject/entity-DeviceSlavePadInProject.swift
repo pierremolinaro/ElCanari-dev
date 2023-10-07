@@ -240,14 +240,14 @@ final class DeviceSlavePadInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mCenterX_property.startsToBeObserved (by: self.descriptor_property)
-    self.mCenterY_property.startsToBeObserved (by: self.descriptor_property)
-    self.mWidth_property.startsToBeObserved (by: self.descriptor_property)
-    self.mHeight_property.startsToBeObserved (by: self.descriptor_property)
-    self.mHoleWidth_property.startsToBeObserved (by: self.descriptor_property)
-    self.mHoleHeight_property.startsToBeObserved (by: self.descriptor_property)
-    self.mShape_property.startsToBeObserved (by: self.descriptor_property)
-    self.mStyle_property.startsToBeObserved (by: self.descriptor_property)
+    self.mCenterX_property.startsBeingObserved (by: self.descriptor_property)
+    self.mCenterY_property.startsBeingObserved (by: self.descriptor_property)
+    self.mWidth_property.startsBeingObserved (by: self.descriptor_property)
+    self.mHeight_property.startsBeingObserved (by: self.descriptor_property)
+    self.mHoleWidth_property.startsBeingObserved (by: self.descriptor_property)
+    self.mHoleHeight_property.startsBeingObserved (by: self.descriptor_property)
+    self.mShape_property.startsBeingObserved (by: self.descriptor_property)
+    self.mStyle_property.startsBeingObserved (by: self.descriptor_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

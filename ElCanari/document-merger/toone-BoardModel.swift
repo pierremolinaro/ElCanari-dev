@@ -179,165 +179,165 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.name_property.startsToBeObserved (by: self.name_property) // Stored property
-      newValue.modelWidth_property.startsToBeObserved (by: self.modelWidth_property) // Stored property
-      newValue.modelWidthUnit_property.startsToBeObserved (by: self.modelWidthUnit_property) // Stored property
-      newValue.modelHeight_property.startsToBeObserved (by: self.modelHeight_property) // Stored property
-      newValue.modelHeightUnit_property.startsToBeObserved (by: self.modelHeightUnit_property) // Stored property
-      newValue.zoom_property.startsToBeObserved (by: self.zoom_property) // Stored property
-      newValue.modelVersion_property.startsToBeObserved (by: self.modelVersion_property) // Stored property
-      newValue.ignoreModelVersionError_property.startsToBeObserved (by: self.ignoreModelVersionError_property) // Stored property
-      newValue.layerConfiguration_property.startsToBeObserved (by: self.layerConfiguration_property) // Stored property
-      newValue.modelLimitWidth_property.startsToBeObserved (by: self.modelLimitWidth_property) // Stored property
-      newValue.modelLimitWidthUnit_property.startsToBeObserved (by: self.modelLimitWidthUnit_property) // Stored property
-      newValue.artworkName_property.startsToBeObserved (by: self.artworkName_property) // Stored property
-      newValue.errorArchiveVersionMessage_property.startsToBeObserved (by: self.errorArchiveVersionMessage_property) // Transient property
-      newValue.errorArchiveLabelSize_property.startsToBeObserved (by: self.errorArchiveLabelSize_property) // Transient property
-      newValue.errorArchiveLabelColor_property.startsToBeObserved (by: self.errorArchiveLabelColor_property) // Transient property
-      newValue.errorArchiveVersionMessageIsHidden_property.startsToBeObserved (by: self.errorArchiveVersionMessageIsHidden_property) // Transient property
-      newValue.frontLegendBoardImageRectangles_property.startsToBeObserved (by: self.frontLegendBoardImageRectangles_property) // Transient property
-      newValue.backLegendBoardImageRectangles_property.startsToBeObserved (by: self.backLegendBoardImageRectangles_property) // Transient property
-      newValue.frontLegendQRCodeRectangles_property.startsToBeObserved (by: self.frontLegendQRCodeRectangles_property) // Transient property
-      newValue.backLegendQRCodeRectangles_property.startsToBeObserved (by: self.backLegendQRCodeRectangles_property) // Transient property
-      newValue.layerConfigurationString_property.startsToBeObserved (by: self.layerConfigurationString_property) // Transient property
-      newValue.frontLegendLinesSegments_property.startsToBeObserved (by: self.frontLegendLinesSegments_property) // Transient property
-      newValue.backLegendLinesSegments_property.startsToBeObserved (by: self.backLegendLinesSegments_property) // Transient property
-      newValue.backLegendLinesBezierPaths_property.startsToBeObserved (by: self.backLegendLinesBezierPaths_property) // Transient property
-      newValue.frontLegendTextsSegments_property.startsToBeObserved (by: self.frontLegendTextsSegments_property) // Transient property
-      newValue.frontLegendTextsBezierPaths_property.startsToBeObserved (by: self.frontLegendTextsBezierPaths_property) // Transient property
-      newValue.frontLayoutTextsSegments_property.startsToBeObserved (by: self.frontLayoutTextsSegments_property) // Transient property
-      newValue.frontLayoutTextsBezierPaths_property.startsToBeObserved (by: self.frontLayoutTextsBezierPaths_property) // Transient property
-      newValue.backLegendTextsSegments_property.startsToBeObserved (by: self.backLegendTextsSegments_property) // Transient property
-      newValue.backLegendTextsBezierPaths_property.startsToBeObserved (by: self.backLegendTextsBezierPaths_property) // Transient property
-      newValue.backLayoutTextsSegments_property.startsToBeObserved (by: self.backLayoutTextsSegments_property) // Transient property
-      newValue.backLayoutTextsBezierPaths_property.startsToBeObserved (by: self.backLayoutTextsBezierPaths_property) // Transient property
-      newValue.internalBoardsLimitsSegments_property.startsToBeObserved (by: self.internalBoardsLimitsSegments_property) // Transient property
-      newValue.internalBoardsLimitsBezierPaths_property.startsToBeObserved (by: self.internalBoardsLimitsBezierPaths_property) // Transient property
-      newValue.drillSegments_property.startsToBeObserved (by: self.drillSegments_property) // Transient property
-      newValue.holesBezierPaths_property.startsToBeObserved (by: self.holesBezierPaths_property) // Transient property
-      newValue.viaShapes_property.startsToBeObserved (by: self.viaShapes_property) // Transient property
-      newValue.viasBezierPaths_property.startsToBeObserved (by: self.viasBezierPaths_property) // Transient property
-      newValue.frontPadArray_property.startsToBeObserved (by: self.frontPadArray_property) // Transient property
-      newValue.frontPadsBezierPaths_property.startsToBeObserved (by: self.frontPadsBezierPaths_property) // Transient property
-      newValue.backPadArray_property.startsToBeObserved (by: self.backPadArray_property) // Transient property
-      newValue.backPadsBezierPaths_property.startsToBeObserved (by: self.backPadsBezierPaths_property) // Transient property
-      newValue.traversingPadArray_property.startsToBeObserved (by: self.traversingPadArray_property) // Transient property
-      newValue.traversingPadsBezierPaths_property.startsToBeObserved (by: self.traversingPadsBezierPaths_property) // Transient property
-      newValue.boardLimitsBezierPaths_property.startsToBeObserved (by: self.boardLimitsBezierPaths_property) // Transient property
-      newValue.backComponentNameSegments_property.startsToBeObserved (by: self.backComponentNameSegments_property) // Transient property
-      newValue.backComponentNamesBezierPaths_property.startsToBeObserved (by: self.backComponentNamesBezierPaths_property) // Transient property
-      newValue.frontComponentNameSegments_property.startsToBeObserved (by: self.frontComponentNameSegments_property) // Transient property
-      newValue.frontComponentNamesBezierPaths_property.startsToBeObserved (by: self.frontComponentNamesBezierPaths_property) // Transient property
-      newValue.frontComponentValueSegments_property.startsToBeObserved (by: self.frontComponentValueSegments_property) // Transient property
-      newValue.frontComponentValuesBezierPaths_property.startsToBeObserved (by: self.frontComponentValuesBezierPaths_property) // Transient property
-      newValue.backComponentValueSegments_property.startsToBeObserved (by: self.backComponentValueSegments_property) // Transient property
-      newValue.backComponentValuesBezierPaths_property.startsToBeObserved (by: self.backComponentValuesBezierPaths_property) // Transient property
-      newValue.backTrackSegments_property.startsToBeObserved (by: self.backTrackSegments_property) // Transient property
-      newValue.backTracksBezierPaths_property.startsToBeObserved (by: self.backTracksBezierPaths_property) // Transient property
-      newValue.frontTrackSegments_property.startsToBeObserved (by: self.frontTrackSegments_property) // Transient property
-      newValue.frontTracksBezierPaths_property.startsToBeObserved (by: self.frontTracksBezierPaths_property) // Transient property
-      newValue.inner1TracksSegments_property.startsToBeObserved (by: self.inner1TracksSegments_property) // Transient property
-      newValue.inner1TracksBezierPaths_property.startsToBeObserved (by: self.inner1TracksBezierPaths_property) // Transient property
-      newValue.inner2TracksSegments_property.startsToBeObserved (by: self.inner2TracksSegments_property) // Transient property
-      newValue.inner2TracksBezierPaths_property.startsToBeObserved (by: self.inner2TracksBezierPaths_property) // Transient property
-      newValue.inner3TracksSegments_property.startsToBeObserved (by: self.inner3TracksSegments_property) // Transient property
-      newValue.inner3TracksBezierPaths_property.startsToBeObserved (by: self.inner3TracksBezierPaths_property) // Transient property
-      newValue.inner4TracksSegments_property.startsToBeObserved (by: self.inner4TracksSegments_property) // Transient property
-      newValue.inner4TracksBezierPaths_property.startsToBeObserved (by: self.inner4TracksBezierPaths_property) // Transient property
-      newValue.frontPackagesSegments_property.startsToBeObserved (by: self.frontPackagesSegments_property) // Transient property
-      newValue.frontPackagesBezierPaths_property.startsToBeObserved (by: self.frontPackagesBezierPaths_property) // Transient property
-      newValue.backPackagesSegments_property.startsToBeObserved (by: self.backPackagesSegments_property) // Transient property
-      newValue.backPackagesBezierPaths_property.startsToBeObserved (by: self.backPackagesBezierPaths_property) // Transient property
-      newValue.instanceCount_property.startsToBeObserved (by: self.instanceCount_property) // Transient property
-      newValue.frontLegendLinesBezierPaths_property.startsToBeObserved (by: self.frontLegendLinesBezierPaths_property) // Transient property
-      newValue.imageForModel_property.startsToBeObserved (by: self.imageForModel_property) // Transient property
-      newValue.imageForInstances_property.startsToBeObserved (by: self.imageForInstances_property) // Transient property
+      newValue.name_property.startsBeingObserved (by: self.name_property) // Stored property
+      newValue.modelWidth_property.startsBeingObserved (by: self.modelWidth_property) // Stored property
+      newValue.modelWidthUnit_property.startsBeingObserved (by: self.modelWidthUnit_property) // Stored property
+      newValue.modelHeight_property.startsBeingObserved (by: self.modelHeight_property) // Stored property
+      newValue.modelHeightUnit_property.startsBeingObserved (by: self.modelHeightUnit_property) // Stored property
+      newValue.zoom_property.startsBeingObserved (by: self.zoom_property) // Stored property
+      newValue.modelVersion_property.startsBeingObserved (by: self.modelVersion_property) // Stored property
+      newValue.ignoreModelVersionError_property.startsBeingObserved (by: self.ignoreModelVersionError_property) // Stored property
+      newValue.layerConfiguration_property.startsBeingObserved (by: self.layerConfiguration_property) // Stored property
+      newValue.modelLimitWidth_property.startsBeingObserved (by: self.modelLimitWidth_property) // Stored property
+      newValue.modelLimitWidthUnit_property.startsBeingObserved (by: self.modelLimitWidthUnit_property) // Stored property
+      newValue.artworkName_property.startsBeingObserved (by: self.artworkName_property) // Stored property
+      newValue.errorArchiveVersionMessage_property.startsBeingObserved (by: self.errorArchiveVersionMessage_property) // Transient property
+      newValue.errorArchiveLabelSize_property.startsBeingObserved (by: self.errorArchiveLabelSize_property) // Transient property
+      newValue.errorArchiveLabelColor_property.startsBeingObserved (by: self.errorArchiveLabelColor_property) // Transient property
+      newValue.errorArchiveVersionMessageIsHidden_property.startsBeingObserved (by: self.errorArchiveVersionMessageIsHidden_property) // Transient property
+      newValue.frontLegendBoardImageRectangles_property.startsBeingObserved (by: self.frontLegendBoardImageRectangles_property) // Transient property
+      newValue.backLegendBoardImageRectangles_property.startsBeingObserved (by: self.backLegendBoardImageRectangles_property) // Transient property
+      newValue.frontLegendQRCodeRectangles_property.startsBeingObserved (by: self.frontLegendQRCodeRectangles_property) // Transient property
+      newValue.backLegendQRCodeRectangles_property.startsBeingObserved (by: self.backLegendQRCodeRectangles_property) // Transient property
+      newValue.layerConfigurationString_property.startsBeingObserved (by: self.layerConfigurationString_property) // Transient property
+      newValue.frontLegendLinesSegments_property.startsBeingObserved (by: self.frontLegendLinesSegments_property) // Transient property
+      newValue.backLegendLinesSegments_property.startsBeingObserved (by: self.backLegendLinesSegments_property) // Transient property
+      newValue.backLegendLinesBezierPaths_property.startsBeingObserved (by: self.backLegendLinesBezierPaths_property) // Transient property
+      newValue.frontLegendTextsSegments_property.startsBeingObserved (by: self.frontLegendTextsSegments_property) // Transient property
+      newValue.frontLegendTextsBezierPaths_property.startsBeingObserved (by: self.frontLegendTextsBezierPaths_property) // Transient property
+      newValue.frontLayoutTextsSegments_property.startsBeingObserved (by: self.frontLayoutTextsSegments_property) // Transient property
+      newValue.frontLayoutTextsBezierPaths_property.startsBeingObserved (by: self.frontLayoutTextsBezierPaths_property) // Transient property
+      newValue.backLegendTextsSegments_property.startsBeingObserved (by: self.backLegendTextsSegments_property) // Transient property
+      newValue.backLegendTextsBezierPaths_property.startsBeingObserved (by: self.backLegendTextsBezierPaths_property) // Transient property
+      newValue.backLayoutTextsSegments_property.startsBeingObserved (by: self.backLayoutTextsSegments_property) // Transient property
+      newValue.backLayoutTextsBezierPaths_property.startsBeingObserved (by: self.backLayoutTextsBezierPaths_property) // Transient property
+      newValue.internalBoardsLimitsSegments_property.startsBeingObserved (by: self.internalBoardsLimitsSegments_property) // Transient property
+      newValue.internalBoardsLimitsBezierPaths_property.startsBeingObserved (by: self.internalBoardsLimitsBezierPaths_property) // Transient property
+      newValue.drillSegments_property.startsBeingObserved (by: self.drillSegments_property) // Transient property
+      newValue.holesBezierPaths_property.startsBeingObserved (by: self.holesBezierPaths_property) // Transient property
+      newValue.viaShapes_property.startsBeingObserved (by: self.viaShapes_property) // Transient property
+      newValue.viasBezierPaths_property.startsBeingObserved (by: self.viasBezierPaths_property) // Transient property
+      newValue.frontPadArray_property.startsBeingObserved (by: self.frontPadArray_property) // Transient property
+      newValue.frontPadsBezierPaths_property.startsBeingObserved (by: self.frontPadsBezierPaths_property) // Transient property
+      newValue.backPadArray_property.startsBeingObserved (by: self.backPadArray_property) // Transient property
+      newValue.backPadsBezierPaths_property.startsBeingObserved (by: self.backPadsBezierPaths_property) // Transient property
+      newValue.traversingPadArray_property.startsBeingObserved (by: self.traversingPadArray_property) // Transient property
+      newValue.traversingPadsBezierPaths_property.startsBeingObserved (by: self.traversingPadsBezierPaths_property) // Transient property
+      newValue.boardLimitsBezierPaths_property.startsBeingObserved (by: self.boardLimitsBezierPaths_property) // Transient property
+      newValue.backComponentNameSegments_property.startsBeingObserved (by: self.backComponentNameSegments_property) // Transient property
+      newValue.backComponentNamesBezierPaths_property.startsBeingObserved (by: self.backComponentNamesBezierPaths_property) // Transient property
+      newValue.frontComponentNameSegments_property.startsBeingObserved (by: self.frontComponentNameSegments_property) // Transient property
+      newValue.frontComponentNamesBezierPaths_property.startsBeingObserved (by: self.frontComponentNamesBezierPaths_property) // Transient property
+      newValue.frontComponentValueSegments_property.startsBeingObserved (by: self.frontComponentValueSegments_property) // Transient property
+      newValue.frontComponentValuesBezierPaths_property.startsBeingObserved (by: self.frontComponentValuesBezierPaths_property) // Transient property
+      newValue.backComponentValueSegments_property.startsBeingObserved (by: self.backComponentValueSegments_property) // Transient property
+      newValue.backComponentValuesBezierPaths_property.startsBeingObserved (by: self.backComponentValuesBezierPaths_property) // Transient property
+      newValue.backTrackSegments_property.startsBeingObserved (by: self.backTrackSegments_property) // Transient property
+      newValue.backTracksBezierPaths_property.startsBeingObserved (by: self.backTracksBezierPaths_property) // Transient property
+      newValue.frontTrackSegments_property.startsBeingObserved (by: self.frontTrackSegments_property) // Transient property
+      newValue.frontTracksBezierPaths_property.startsBeingObserved (by: self.frontTracksBezierPaths_property) // Transient property
+      newValue.inner1TracksSegments_property.startsBeingObserved (by: self.inner1TracksSegments_property) // Transient property
+      newValue.inner1TracksBezierPaths_property.startsBeingObserved (by: self.inner1TracksBezierPaths_property) // Transient property
+      newValue.inner2TracksSegments_property.startsBeingObserved (by: self.inner2TracksSegments_property) // Transient property
+      newValue.inner2TracksBezierPaths_property.startsBeingObserved (by: self.inner2TracksBezierPaths_property) // Transient property
+      newValue.inner3TracksSegments_property.startsBeingObserved (by: self.inner3TracksSegments_property) // Transient property
+      newValue.inner3TracksBezierPaths_property.startsBeingObserved (by: self.inner3TracksBezierPaths_property) // Transient property
+      newValue.inner4TracksSegments_property.startsBeingObserved (by: self.inner4TracksSegments_property) // Transient property
+      newValue.inner4TracksBezierPaths_property.startsBeingObserved (by: self.inner4TracksBezierPaths_property) // Transient property
+      newValue.frontPackagesSegments_property.startsBeingObserved (by: self.frontPackagesSegments_property) // Transient property
+      newValue.frontPackagesBezierPaths_property.startsBeingObserved (by: self.frontPackagesBezierPaths_property) // Transient property
+      newValue.backPackagesSegments_property.startsBeingObserved (by: self.backPackagesSegments_property) // Transient property
+      newValue.backPackagesBezierPaths_property.startsBeingObserved (by: self.backPackagesBezierPaths_property) // Transient property
+      newValue.instanceCount_property.startsBeingObserved (by: self.instanceCount_property) // Transient property
+      newValue.frontLegendLinesBezierPaths_property.startsBeingObserved (by: self.frontLegendLinesBezierPaths_property) // Transient property
+      newValue.imageForModel_property.startsBeingObserved (by: self.imageForModel_property) // Transient property
+      newValue.imageForInstances_property.startsBeingObserved (by: self.imageForInstances_property) // Transient property
       if let relay = self.mObserversOf_legendFrontImages { // to Many
-        newValue.legendFrontImages_property.startsToBeObserved (by: relay)
+        newValue.legendFrontImages_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_legendBackImages { // to Many
-        newValue.legendBackImages_property.startsToBeObserved (by: relay)
+        newValue.legendBackImages_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_legendFrontQRCodes { // to Many
-        newValue.legendFrontQRCodes_property.startsToBeObserved (by: relay)
+        newValue.legendFrontQRCodes_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_legendBackQRCodes { // to Many
-        newValue.legendBackQRCodes_property.startsToBeObserved (by: relay)
+        newValue.legendBackQRCodes_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_frontLegendLines { // to Many
-        newValue.frontLegendLines_property.startsToBeObserved (by: relay)
+        newValue.frontLegendLines_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_backLegendLines { // to Many
-        newValue.backLegendLines_property.startsToBeObserved (by: relay)
+        newValue.backLegendLines_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_frontLegendTexts { // to Many
-        newValue.frontLegendTexts_property.startsToBeObserved (by: relay)
+        newValue.frontLegendTexts_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_frontLayoutTexts { // to Many
-        newValue.frontLayoutTexts_property.startsToBeObserved (by: relay)
+        newValue.frontLayoutTexts_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_backLegendTexts { // to Many
-        newValue.backLegendTexts_property.startsToBeObserved (by: relay)
+        newValue.backLegendTexts_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_backLayoutTexts { // to Many
-        newValue.backLayoutTexts_property.startsToBeObserved (by: relay)
+        newValue.backLayoutTexts_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_internalBoardsLimits { // to Many
-        newValue.internalBoardsLimits_property.startsToBeObserved (by: relay)
+        newValue.internalBoardsLimits_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_drills { // to Many
-        newValue.drills_property.startsToBeObserved (by: relay)
+        newValue.drills_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_vias { // to Many
-        newValue.vias_property.startsToBeObserved (by: relay)
+        newValue.vias_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_frontPads { // to Many
-        newValue.frontPads_property.startsToBeObserved (by: relay)
+        newValue.frontPads_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_backPads { // to Many
-        newValue.backPads_property.startsToBeObserved (by: relay)
+        newValue.backPads_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_traversingPads { // to Many
-        newValue.traversingPads_property.startsToBeObserved (by: relay)
+        newValue.traversingPads_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_backComponentNames { // to Many
-        newValue.backComponentNames_property.startsToBeObserved (by: relay)
+        newValue.backComponentNames_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_frontComponentNames { // to Many
-        newValue.frontComponentNames_property.startsToBeObserved (by: relay)
+        newValue.frontComponentNames_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_frontComponentValues { // to Many
-        newValue.frontComponentValues_property.startsToBeObserved (by: relay)
+        newValue.frontComponentValues_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_backComponentValues { // to Many
-        newValue.backComponentValues_property.startsToBeObserved (by: relay)
+        newValue.backComponentValues_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_backTracks { // to Many
-        newValue.backTracks_property.startsToBeObserved (by: relay)
+        newValue.backTracks_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_frontTracks { // to Many
-        newValue.frontTracks_property.startsToBeObserved (by: relay)
+        newValue.frontTracks_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_inner1Tracks { // to Many
-        newValue.inner1Tracks_property.startsToBeObserved (by: relay)
+        newValue.inner1Tracks_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_inner2Tracks { // to Many
-        newValue.inner2Tracks_property.startsToBeObserved (by: relay)
+        newValue.inner2Tracks_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_inner3Tracks { // to Many
-        newValue.inner3Tracks_property.startsToBeObserved (by: relay)
+        newValue.inner3Tracks_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_inner4Tracks { // to Many
-        newValue.inner4Tracks_property.startsToBeObserved (by: relay)
+        newValue.inner4Tracks_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_frontPackages { // to Many
-        newValue.frontPackages_property.startsToBeObserved (by: relay)
+        newValue.frontPackages_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_backPackages { // to Many
-        newValue.backPackages_property.startsToBeObserved (by: relay)
+        newValue.backPackages_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_myInstances { // to Many
-        newValue.myInstances_property.startsToBeObserved (by: relay)
+        newValue.myInstances_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -788,16 +788,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_legendFrontImages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_legendFrontImages_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_legendFrontImages {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.legendFrontImages_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.legendFrontImages_property.startsBeingObserved (by: relay)
       self.mObserversOf_legendFrontImages = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -814,16 +814,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_legendBackImages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_legendBackImages_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_legendBackImages {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.legendBackImages_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.legendBackImages_property.startsBeingObserved (by: relay)
       self.mObserversOf_legendBackImages = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -840,16 +840,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_legendFrontQRCodes_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_legendFrontQRCodes_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_legendFrontQRCodes {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.legendFrontQRCodes_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.legendFrontQRCodes_property.startsBeingObserved (by: relay)
       self.mObserversOf_legendFrontQRCodes = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -866,16 +866,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_legendBackQRCodes_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_legendBackQRCodes_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_legendBackQRCodes {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.legendBackQRCodes_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.legendBackQRCodes_property.startsBeingObserved (by: relay)
       self.mObserversOf_legendBackQRCodes = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -892,16 +892,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_frontLegendLines_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_frontLegendLines_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_frontLegendLines {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.frontLegendLines_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.frontLegendLines_property.startsBeingObserved (by: relay)
       self.mObserversOf_frontLegendLines = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -918,16 +918,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_backLegendLines_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_backLegendLines_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_backLegendLines {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.backLegendLines_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.backLegendLines_property.startsBeingObserved (by: relay)
       self.mObserversOf_backLegendLines = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -944,16 +944,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_frontLegendTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_frontLegendTexts_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_frontLegendTexts {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.frontLegendTexts_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.frontLegendTexts_property.startsBeingObserved (by: relay)
       self.mObserversOf_frontLegendTexts = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -970,16 +970,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_frontLayoutTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_frontLayoutTexts_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_frontLayoutTexts {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.frontLayoutTexts_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.frontLayoutTexts_property.startsBeingObserved (by: relay)
       self.mObserversOf_frontLayoutTexts = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -996,16 +996,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_backLegendTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_backLegendTexts_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_backLegendTexts {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.backLegendTexts_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.backLegendTexts_property.startsBeingObserved (by: relay)
       self.mObserversOf_backLegendTexts = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1022,16 +1022,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_backLayoutTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_backLayoutTexts_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_backLayoutTexts {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.backLayoutTexts_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.backLayoutTexts_property.startsBeingObserved (by: relay)
       self.mObserversOf_backLayoutTexts = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1048,16 +1048,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_internalBoardsLimits_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_internalBoardsLimits_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_internalBoardsLimits {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.internalBoardsLimits_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.internalBoardsLimits_property.startsBeingObserved (by: relay)
       self.mObserversOf_internalBoardsLimits = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1074,16 +1074,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_drills_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_drills_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drills {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.drills_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.drills_property.startsBeingObserved (by: relay)
       self.mObserversOf_drills = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1100,16 +1100,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_vias_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_vias_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_vias {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.vias_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.vias_property.startsBeingObserved (by: relay)
       self.mObserversOf_vias = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1126,16 +1126,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_frontPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_frontPads_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_frontPads {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.frontPads_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.frontPads_property.startsBeingObserved (by: relay)
       self.mObserversOf_frontPads = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1152,16 +1152,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_backPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_backPads_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_backPads {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.backPads_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.backPads_property.startsBeingObserved (by: relay)
       self.mObserversOf_backPads = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1178,16 +1178,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_traversingPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_traversingPads_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_traversingPads {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.traversingPads_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.traversingPads_property.startsBeingObserved (by: relay)
       self.mObserversOf_traversingPads = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1204,16 +1204,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_backComponentNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_backComponentNames_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_backComponentNames {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.backComponentNames_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.backComponentNames_property.startsBeingObserved (by: relay)
       self.mObserversOf_backComponentNames = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1230,16 +1230,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_frontComponentNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_frontComponentNames_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_frontComponentNames {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.frontComponentNames_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.frontComponentNames_property.startsBeingObserved (by: relay)
       self.mObserversOf_frontComponentNames = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1256,16 +1256,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_frontComponentValues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_frontComponentValues_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_frontComponentValues {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.frontComponentValues_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.frontComponentValues_property.startsBeingObserved (by: relay)
       self.mObserversOf_frontComponentValues = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1282,16 +1282,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_backComponentValues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_backComponentValues_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_backComponentValues {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.backComponentValues_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.backComponentValues_property.startsBeingObserved (by: relay)
       self.mObserversOf_backComponentValues = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1308,16 +1308,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_backTracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_backTracks_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_backTracks {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.backTracks_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.backTracks_property.startsBeingObserved (by: relay)
       self.mObserversOf_backTracks = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1334,16 +1334,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_frontTracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_frontTracks_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_frontTracks {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.frontTracks_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.frontTracks_property.startsBeingObserved (by: relay)
       self.mObserversOf_frontTracks = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1360,16 +1360,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_inner1Tracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_inner1Tracks_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_inner1Tracks {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.inner1Tracks_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.inner1Tracks_property.startsBeingObserved (by: relay)
       self.mObserversOf_inner1Tracks = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1386,16 +1386,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_inner2Tracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_inner2Tracks_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_inner2Tracks {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.inner2Tracks_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.inner2Tracks_property.startsBeingObserved (by: relay)
       self.mObserversOf_inner2Tracks = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1412,16 +1412,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_inner3Tracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_inner3Tracks_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_inner3Tracks {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.inner3Tracks_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.inner3Tracks_property.startsBeingObserved (by: relay)
       self.mObserversOf_inner3Tracks = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1438,16 +1438,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_inner4Tracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_inner4Tracks_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_inner4Tracks {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.inner4Tracks_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.inner4Tracks_property.startsBeingObserved (by: relay)
       self.mObserversOf_inner4Tracks = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1464,16 +1464,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_frontPackages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_frontPackages_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_frontPackages {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.frontPackages_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.frontPackages_property.startsBeingObserved (by: relay)
       self.mObserversOf_frontPackages = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1490,16 +1490,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_backPackages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_backPackages_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_backPackages {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.backPackages_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.backPackages_property.startsBeingObserved (by: relay)
       self.mObserversOf_backPackages = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -1516,16 +1516,16 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func toMany_myInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_myInstances_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_myInstances {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.myInstances_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.myInstances_property.startsBeingObserved (by: relay)
       self.mObserversOf_myInstances = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

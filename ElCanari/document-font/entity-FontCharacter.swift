@@ -209,10 +209,10 @@ final class FontCharacter : EBManagedObject,
         return .empty
       }
     }
-    self.segments_property.toMany_x1_StartsToBeObserved (by: self.segmentArrayForDrawing_property)
-    self.segments_property.toMany_y1_StartsToBeObserved (by: self.segmentArrayForDrawing_property)
-    self.segments_property.toMany_x2_StartsToBeObserved (by: self.segmentArrayForDrawing_property)
-    self.segments_property.toMany_y2_StartsToBeObserved (by: self.segmentArrayForDrawing_property)
+    self.segments_property.toMany_x1_StartsBeingObserved (by: self.segmentArrayForDrawing_property)
+    self.segments_property.toMany_y1_StartsBeingObserved (by: self.segmentArrayForDrawing_property)
+    self.segments_property.toMany_x2_StartsBeingObserved (by: self.segmentArrayForDrawing_property)
+    self.segments_property.toMany_y2_StartsBeingObserved (by: self.segmentArrayForDrawing_property)
   //--- Atomic property: gerberCode
     self.gerberCode_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -229,7 +229,7 @@ final class FontCharacter : EBManagedObject,
         return .empty
       }
     }
-    self.segmentArrayForDrawing_property.startsToBeObserved (by: self.gerberCode_property)
+    self.segmentArrayForDrawing_property.startsBeingObserved (by: self.gerberCode_property)
   //--- Atomic property: gerberCodeInstructionCountMessage
     self.gerberCodeInstructionCountMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -246,7 +246,7 @@ final class FontCharacter : EBManagedObject,
         return .empty
       }
     }
-    self.gerberCode_property.startsToBeObserved (by: self.gerberCodeInstructionCountMessage_property)
+    self.gerberCode_property.startsBeingObserved (by: self.gerberCodeInstructionCountMessage_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -275,11 +275,11 @@ final class FontCharacter : EBManagedObject,
         return .empty
       }
     }
-    self.codePoint_property.startsToBeObserved (by: self.issues_property)
-    self.advance_property.startsToBeObserved (by: self.issues_property)
-    self.mWarnsWhenNoSegment_property.startsToBeObserved (by: self.issues_property)
-    self.mWarnsWhenAdvanceIsZero_property.startsToBeObserved (by: self.issues_property)
-    self.segments_property.startsToBeObserved (by: self.issues_property)
+    self.codePoint_property.startsBeingObserved (by: self.issues_property)
+    self.advance_property.startsBeingObserved (by: self.issues_property)
+    self.mWarnsWhenNoSegment_property.startsBeingObserved (by: self.issues_property)
+    self.mWarnsWhenAdvanceIsZero_property.startsBeingObserved (by: self.issues_property)
+    self.segments_property.startsBeingObserved (by: self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.advance_property.setSignatureObserver (observer: self)

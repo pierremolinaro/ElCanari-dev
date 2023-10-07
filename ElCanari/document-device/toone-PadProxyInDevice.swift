@@ -24,11 +24,11 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mPinInstanceName_property.startsToBeObserved (by: self.mPinInstanceName_property) // Stored property
-      newValue.mPadName_property.startsToBeObserved (by: self.mPadName_property) // Stored property
-      newValue.mIsNC_property.startsToBeObserved (by: self.mIsNC_property) // Stored property
-      newValue.isConnected_property.startsToBeObserved (by: self.isConnected_property) // Transient property
-      newValue.symbolName_property.startsToBeObserved (by: self.symbolName_property) // Transient property
+      newValue.mPinInstanceName_property.startsBeingObserved (by: self.mPinInstanceName_property) // Stored property
+      newValue.mPadName_property.startsBeingObserved (by: self.mPadName_property) // Stored property
+      newValue.mIsNC_property.startsBeingObserved (by: self.mIsNC_property) // Stored property
+      newValue.isConnected_property.startsBeingObserved (by: self.isConnected_property) // Transient property
+      newValue.symbolName_property.startsBeingObserved (by: self.symbolName_property) // Transient property
     }
   }
 

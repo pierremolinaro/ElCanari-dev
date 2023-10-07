@@ -37,9 +37,9 @@ final class CanariPopUpButtonControllerForNetClassFromSelectedLabels : EBOutletE
                        _ inSelection : SelectionController_AutoLayoutProjectDocument_schematicLabelSelectionController,
                        popUpButton inPopUpButton : NSPopUpButton) {
     self.mArrayModel = inArrayModel
-    inArrayModel.toMany_mNetClassName_StartsToBeObserved (by: self)
+    inArrayModel.toMany_mNetClassName_StartsBeingObserved (by: self)
     self.mSelection = inSelection
-    inSelection.selectedArray_property.toMany_netClassName_StartsToBeObserved (by: self)
+    inSelection.selectedArray_property.toMany_netClassName_StartsBeingObserved (by: self)
     self.mOutlet = inPopUpButton
     self.modelDidChange ()
   }

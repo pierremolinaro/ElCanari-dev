@@ -295,12 +295,12 @@ final class SymbolPinTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mXName_property.startsToBeObserved (by: self.nameShape_property)
-    self.mYName_property.startsToBeObserved (by: self.nameShape_property)
-    self.mName_property.startsToBeObserved (by: self.nameShape_property)
-    self.mNameHorizontalAlignment_property.startsToBeObserved (by: self.nameShape_property)
-    self.mPinNameIsDisplayedInSchematics_property.startsToBeObserved (by: self.nameShape_property)
-    preferences_pinNameFont_property.startsToBeObserved (by: self.nameShape_property)
+    self.mXName_property.startsBeingObserved (by: self.nameShape_property)
+    self.mYName_property.startsBeingObserved (by: self.nameShape_property)
+    self.mName_property.startsBeingObserved (by: self.nameShape_property)
+    self.mNameHorizontalAlignment_property.startsBeingObserved (by: self.nameShape_property)
+    self.mPinNameIsDisplayedInSchematics_property.startsBeingObserved (by: self.nameShape_property)
+    preferences_pinNameFont_property.startsBeingObserved (by: self.nameShape_property)
   //--- Install undoers and opposite setter for relationships
     self.mInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },

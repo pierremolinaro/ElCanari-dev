@@ -108,7 +108,7 @@ final class DevicePackageInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.toMany_descriptor_StartsToBeObserved (by: self.packagePadDictionary_property)
+    self.mMasterPads_property.toMany_descriptor_StartsBeingObserved (by: self.packagePadDictionary_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

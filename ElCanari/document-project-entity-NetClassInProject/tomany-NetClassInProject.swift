@@ -102,85 +102,85 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_mNetClassName { // Stored property
-        managedObject.mNetClassName_property.startsToBeObserved (by: relay)
+        managedObject.mNetClassName_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mNetClassColor { // Stored property
-        managedObject.mNetClassColor_property.startsToBeObserved (by: relay)
+        managedObject.mNetClassColor_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mTrackWidth { // Stored property
-        managedObject.mTrackWidth_property.startsToBeObserved (by: relay)
+        managedObject.mTrackWidth_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mTrackWidthUnit { // Stored property
-        managedObject.mTrackWidthUnit_property.startsToBeObserved (by: relay)
+        managedObject.mTrackWidthUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mViaHoleDiameter { // Stored property
-        managedObject.mViaHoleDiameter_property.startsToBeObserved (by: relay)
+        managedObject.mViaHoleDiameter_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mViaHoleDiameterUnit { // Stored property
-        managedObject.mViaHoleDiameterUnit_property.startsToBeObserved (by: relay)
+        managedObject.mViaHoleDiameterUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mViaPadDiameter { // Stored property
-        managedObject.mViaPadDiameter_property.startsToBeObserved (by: relay)
+        managedObject.mViaPadDiameter_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mViaPadDiameterUnit { // Stored property
-        managedObject.mViaPadDiameterUnit_property.startsToBeObserved (by: relay)
+        managedObject.mViaPadDiameterUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mAllowTracksOnFrontSide { // Stored property
-        managedObject.mAllowTracksOnFrontSide_property.startsToBeObserved (by: relay)
+        managedObject.mAllowTracksOnFrontSide_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mAllowTracksOnBackSide { // Stored property
-        managedObject.mAllowTracksOnBackSide_property.startsToBeObserved (by: relay)
+        managedObject.mAllowTracksOnBackSide_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mAllowTracksOnInner1Layer { // Stored property
-        managedObject.mAllowTracksOnInner1Layer_property.startsToBeObserved (by: relay)
+        managedObject.mAllowTracksOnInner1Layer_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mAllowTracksOnInner2Layer { // Stored property
-        managedObject.mAllowTracksOnInner2Layer_property.startsToBeObserved (by: relay)
+        managedObject.mAllowTracksOnInner2Layer_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mAllowTracksOnInner3Layer { // Stored property
-        managedObject.mAllowTracksOnInner3Layer_property.startsToBeObserved (by: relay)
+        managedObject.mAllowTracksOnInner3Layer_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mAllowTracksOnInner4Layer { // Stored property
-        managedObject.mAllowTracksOnInner4Layer_property.startsToBeObserved (by: relay)
+        managedObject.mAllowTracksOnInner4Layer_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_trackWidthString { // Transient property
-        managedObject.trackWidthString_property.startsToBeObserved (by: relay)
+        managedObject.trackWidthString_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_viaHoleDiameter { // Transient property
-        managedObject.viaHoleDiameter_property.startsToBeObserved (by: relay)
+        managedObject.viaHoleDiameter_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_viaPadDiameter { // Transient property
-        managedObject.viaPadDiameter_property.startsToBeObserved (by: relay)
+        managedObject.viaPadDiameter_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_allowTracksOnFrontSideString { // Transient property
-        managedObject.allowTracksOnFrontSideString_property.startsToBeObserved (by: relay)
+        managedObject.allowTracksOnFrontSideString_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_allowTracksOnBackSideString { // Transient property
-        managedObject.allowTracksOnBackSideString_property.startsToBeObserved (by: relay)
+        managedObject.allowTracksOnBackSideString_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_allowTracksOnInner1LayerString { // Transient property
-        managedObject.allowTracksOnInner1LayerString_property.startsToBeObserved (by: relay)
+        managedObject.allowTracksOnInner1LayerString_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_allowTracksOnInner2LayerString { // Transient property
-        managedObject.allowTracksOnInner2LayerString_property.startsToBeObserved (by: relay)
+        managedObject.allowTracksOnInner2LayerString_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_allowTracksOnInner3LayerString { // Transient property
-        managedObject.allowTracksOnInner3LayerString_property.startsToBeObserved (by: relay)
+        managedObject.allowTracksOnInner3LayerString_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_allowTracksOnInner4LayerString { // Transient property
-        managedObject.allowTracksOnInner4LayerString_property.startsToBeObserved (by: relay)
+        managedObject.allowTracksOnInner4LayerString_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_canRemove { // Transient property
-        managedObject.canRemove_property.startsToBeObserved (by: relay)
+        managedObject.canRemove_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_netUsage { // Transient property
-        managedObject.netUsage_property.startsToBeObserved (by: relay)
+        managedObject.netUsage_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_netsDescription { // Transient property
-        managedObject.netsDescription_property.startsToBeObserved (by: relay)
+        managedObject.netsDescription_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_netWarningCount { // Transient property
-        managedObject.netWarningCount_property.startsToBeObserved (by: relay)
+        managedObject.netWarningCount_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -193,19 +193,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_mNetClassName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mNetClassName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mNetClassName {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mNetClassName_property.startsToBeObserved (by: relay)
+        managedObject.mNetClassName_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mNetClassName = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -222,19 +222,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_mNetClassColor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mNetClassColor_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mNetClassColor {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mNetClassColor_property.startsToBeObserved (by: relay)
+        managedObject.mNetClassColor_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mNetClassColor = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -251,19 +251,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_mTrackWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mTrackWidth_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mTrackWidth {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mTrackWidth_property.startsToBeObserved (by: relay)
+        managedObject.mTrackWidth_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mTrackWidth = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -280,19 +280,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_mTrackWidthUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mTrackWidthUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mTrackWidthUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mTrackWidthUnit_property.startsToBeObserved (by: relay)
+        managedObject.mTrackWidthUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mTrackWidthUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -309,19 +309,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_mViaHoleDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mViaHoleDiameter_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mViaHoleDiameter {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mViaHoleDiameter_property.startsToBeObserved (by: relay)
+        managedObject.mViaHoleDiameter_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mViaHoleDiameter = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -338,19 +338,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_mViaHoleDiameterUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mViaHoleDiameterUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mViaHoleDiameterUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mViaHoleDiameterUnit_property.startsToBeObserved (by: relay)
+        managedObject.mViaHoleDiameterUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mViaHoleDiameterUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -367,19 +367,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_mViaPadDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mViaPadDiameter_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mViaPadDiameter {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mViaPadDiameter_property.startsToBeObserved (by: relay)
+        managedObject.mViaPadDiameter_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mViaPadDiameter = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -396,19 +396,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_mViaPadDiameterUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mViaPadDiameterUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mViaPadDiameterUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mViaPadDiameterUnit_property.startsToBeObserved (by: relay)
+        managedObject.mViaPadDiameterUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mViaPadDiameterUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -425,19 +425,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_mAllowTracksOnFrontSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnFrontSide_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mAllowTracksOnFrontSide {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mAllowTracksOnFrontSide_property.startsToBeObserved (by: relay)
+        managedObject.mAllowTracksOnFrontSide_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mAllowTracksOnFrontSide = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -454,19 +454,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_mAllowTracksOnBackSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnBackSide_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mAllowTracksOnBackSide {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mAllowTracksOnBackSide_property.startsToBeObserved (by: relay)
+        managedObject.mAllowTracksOnBackSide_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mAllowTracksOnBackSide = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -483,19 +483,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_mAllowTracksOnInner1Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnInner1Layer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mAllowTracksOnInner1Layer {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mAllowTracksOnInner1Layer_property.startsToBeObserved (by: relay)
+        managedObject.mAllowTracksOnInner1Layer_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mAllowTracksOnInner1Layer = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -512,19 +512,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_mAllowTracksOnInner2Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnInner2Layer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mAllowTracksOnInner2Layer {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mAllowTracksOnInner2Layer_property.startsToBeObserved (by: relay)
+        managedObject.mAllowTracksOnInner2Layer_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mAllowTracksOnInner2Layer = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -541,19 +541,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_mAllowTracksOnInner3Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnInner3Layer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mAllowTracksOnInner3Layer {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mAllowTracksOnInner3Layer_property.startsToBeObserved (by: relay)
+        managedObject.mAllowTracksOnInner3Layer_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mAllowTracksOnInner3Layer = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -570,19 +570,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_mAllowTracksOnInner4Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnInner4Layer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mAllowTracksOnInner4Layer {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mAllowTracksOnInner4Layer_property.startsToBeObserved (by: relay)
+        managedObject.mAllowTracksOnInner4Layer_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mAllowTracksOnInner4Layer = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -599,19 +599,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_trackWidthString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_trackWidthString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_trackWidthString {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.trackWidthString_property.startsToBeObserved (by: relay)
+        managedObject.trackWidthString_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_trackWidthString = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -628,19 +628,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_viaHoleDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_viaHoleDiameter_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_viaHoleDiameter {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.viaHoleDiameter_property.startsToBeObserved (by: relay)
+        managedObject.viaHoleDiameter_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_viaHoleDiameter = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -657,19 +657,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_viaPadDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_viaPadDiameter_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_viaPadDiameter {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.viaPadDiameter_property.startsToBeObserved (by: relay)
+        managedObject.viaPadDiameter_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_viaPadDiameter = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -686,19 +686,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_allowTracksOnFrontSideString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnFrontSideString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_allowTracksOnFrontSideString {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.allowTracksOnFrontSideString_property.startsToBeObserved (by: relay)
+        managedObject.allowTracksOnFrontSideString_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_allowTracksOnFrontSideString = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -715,19 +715,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_allowTracksOnBackSideString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnBackSideString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_allowTracksOnBackSideString {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.allowTracksOnBackSideString_property.startsToBeObserved (by: relay)
+        managedObject.allowTracksOnBackSideString_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_allowTracksOnBackSideString = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -744,19 +744,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_allowTracksOnInner1LayerString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnInner1LayerString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_allowTracksOnInner1LayerString {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.allowTracksOnInner1LayerString_property.startsToBeObserved (by: relay)
+        managedObject.allowTracksOnInner1LayerString_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_allowTracksOnInner1LayerString = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -773,19 +773,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_allowTracksOnInner2LayerString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnInner2LayerString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_allowTracksOnInner2LayerString {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.allowTracksOnInner2LayerString_property.startsToBeObserved (by: relay)
+        managedObject.allowTracksOnInner2LayerString_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_allowTracksOnInner2LayerString = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -802,19 +802,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_allowTracksOnInner3LayerString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnInner3LayerString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_allowTracksOnInner3LayerString {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.allowTracksOnInner3LayerString_property.startsToBeObserved (by: relay)
+        managedObject.allowTracksOnInner3LayerString_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_allowTracksOnInner3LayerString = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -831,19 +831,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_allowTracksOnInner4LayerString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnInner4LayerString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_allowTracksOnInner4LayerString {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.allowTracksOnInner4LayerString_property.startsToBeObserved (by: relay)
+        managedObject.allowTracksOnInner4LayerString_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_allowTracksOnInner4LayerString = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -860,19 +860,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_canRemove_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_canRemove_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_canRemove {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.canRemove_property.startsToBeObserved (by: relay)
+        managedObject.canRemove_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_canRemove = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -889,19 +889,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_netUsage_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netUsage_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netUsage {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.netUsage_property.startsToBeObserved (by: relay)
+        managedObject.netUsage_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_netUsage = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -918,19 +918,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_netsDescription_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netsDescription_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netsDescription {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.netsDescription_property.startsToBeObserved (by: relay)
+        managedObject.netsDescription_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_netsDescription = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -947,19 +947,19 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func toMany_netWarningCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netWarningCount_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netWarningCount {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.netWarningCount_property.startsToBeObserved (by: relay)
+        managedObject.netWarningCount_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_netWarningCount = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································

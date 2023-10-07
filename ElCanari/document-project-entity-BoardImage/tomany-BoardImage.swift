@@ -111,94 +111,94 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_mXUnit { // Stored property
-        managedObject.mXUnit_property.startsToBeObserved (by: relay)
+        managedObject.mXUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mCenterY { // Stored property
-        managedObject.mCenterY_property.startsToBeObserved (by: relay)
+        managedObject.mCenterY_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mYUnit { // Stored property
-        managedObject.mYUnit_property.startsToBeObserved (by: relay)
+        managedObject.mYUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mThreshold { // Stored property
-        managedObject.mThreshold_property.startsToBeObserved (by: relay)
+        managedObject.mThreshold_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mImageData { // Stored property
-        managedObject.mImageData_property.startsToBeObserved (by: relay)
+        managedObject.mImageData_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mInvert { // Stored property
-        managedObject.mInvert_property.startsToBeObserved (by: relay)
+        managedObject.mInvert_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mHorizontalFlip { // Stored property
-        managedObject.mHorizontalFlip_property.startsToBeObserved (by: relay)
+        managedObject.mHorizontalFlip_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mVerticalFlip { // Stored property
-        managedObject.mVerticalFlip_property.startsToBeObserved (by: relay)
+        managedObject.mVerticalFlip_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mScale { // Stored property
-        managedObject.mScale_property.startsToBeObserved (by: relay)
+        managedObject.mScale_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mPixelSize { // Stored property
-        managedObject.mPixelSize_property.startsToBeObserved (by: relay)
+        managedObject.mPixelSize_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mPixelSizeUnit { // Stored property
-        managedObject.mPixelSizeUnit_property.startsToBeObserved (by: relay)
+        managedObject.mPixelSizeUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mActualWidthUnit { // Stored property
-        managedObject.mActualWidthUnit_property.startsToBeObserved (by: relay)
+        managedObject.mActualWidthUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mActualHeightUnit { // Stored property
-        managedObject.mActualHeightUnit_property.startsToBeObserved (by: relay)
+        managedObject.mActualHeightUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mImageDisplay { // Stored property
-        managedObject.mImageDisplay_property.startsToBeObserved (by: relay)
+        managedObject.mImageDisplay_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mLayer { // Stored property
-        managedObject.mLayer_property.startsToBeObserved (by: relay)
+        managedObject.mLayer_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mText { // Stored property
-        managedObject.mText_property.startsToBeObserved (by: relay)
+        managedObject.mText_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mRotation { // Stored property
-        managedObject.mRotation_property.startsToBeObserved (by: relay)
+        managedObject.mRotation_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mCenterX { // Stored property
-        managedObject.mCenterX_property.startsToBeObserved (by: relay)
+        managedObject.mCenterX_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_imageDataByteCount { // Transient property
-        managedObject.imageDataByteCount_property.startsToBeObserved (by: relay)
+        managedObject.imageDataByteCount_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_boardImageCodeDescriptor { // Transient property
-        managedObject.boardImageCodeDescriptor_property.startsToBeObserved (by: relay)
+        managedObject.boardImageCodeDescriptor_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_boardOriginalImageWidth { // Transient property
-        managedObject.boardOriginalImageWidth_property.startsToBeObserved (by: relay)
+        managedObject.boardOriginalImageWidth_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_boardOriginalImageHeight { // Transient property
-        managedObject.boardOriginalImageHeight_property.startsToBeObserved (by: relay)
+        managedObject.boardOriginalImageHeight_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_boardScaledImageWidth { // Transient property
-        managedObject.boardScaledImageWidth_property.startsToBeObserved (by: relay)
+        managedObject.boardScaledImageWidth_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_boardScaledImageHeight { // Transient property
-        managedObject.boardScaledImageHeight_property.startsToBeObserved (by: relay)
+        managedObject.boardScaledImageHeight_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_boardActualImageWidth { // Transient property
-        managedObject.boardActualImageWidth_property.startsToBeObserved (by: relay)
+        managedObject.boardActualImageWidth_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_boardActualImageHeight { // Transient property
-        managedObject.boardActualImageHeight_property.startsToBeObserved (by: relay)
+        managedObject.boardActualImageHeight_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_objectDisplay { // Transient property
-        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_selectionDisplay { // Transient property
-        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+        managedObject.selectionDisplay_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_signatureForERCChecking { // Transient property
-        managedObject.signatureForERCChecking_property.startsToBeObserved (by: relay)
+        managedObject.signatureForERCChecking_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_computedDataImage { // Computed property
-        managedObject.computedDataImage_property.startsToBeObserved (by: relay)
+        managedObject.computedDataImage_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -211,19 +211,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mXUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mXUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mXUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mXUnit_property.startsToBeObserved (by: relay)
+        managedObject.mXUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mXUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -240,19 +240,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mCenterY_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mCenterY_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mCenterY {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mCenterY_property.startsToBeObserved (by: relay)
+        managedObject.mCenterY_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mCenterY = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -269,19 +269,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mYUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mYUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mYUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mYUnit_property.startsToBeObserved (by: relay)
+        managedObject.mYUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mYUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -298,19 +298,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mThreshold_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mThreshold_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mThreshold {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mThreshold_property.startsToBeObserved (by: relay)
+        managedObject.mThreshold_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mThreshold = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -327,19 +327,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mImageData_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mImageData_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mImageData {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mImageData_property.startsToBeObserved (by: relay)
+        managedObject.mImageData_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mImageData = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -356,19 +356,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mInvert_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mInvert_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mInvert {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mInvert_property.startsToBeObserved (by: relay)
+        managedObject.mInvert_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mInvert = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -385,19 +385,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mHorizontalFlip_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mHorizontalFlip_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mHorizontalFlip {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mHorizontalFlip_property.startsToBeObserved (by: relay)
+        managedObject.mHorizontalFlip_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mHorizontalFlip = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -414,19 +414,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mVerticalFlip_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mVerticalFlip_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mVerticalFlip {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mVerticalFlip_property.startsToBeObserved (by: relay)
+        managedObject.mVerticalFlip_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mVerticalFlip = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -443,19 +443,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mScale_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mScale_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mScale {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mScale_property.startsToBeObserved (by: relay)
+        managedObject.mScale_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mScale = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -472,19 +472,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mPixelSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPixelSize_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPixelSize {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mPixelSize_property.startsToBeObserved (by: relay)
+        managedObject.mPixelSize_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mPixelSize = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -501,19 +501,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mPixelSizeUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPixelSizeUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPixelSizeUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mPixelSizeUnit_property.startsToBeObserved (by: relay)
+        managedObject.mPixelSizeUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mPixelSizeUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -530,19 +530,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mActualWidthUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mActualWidthUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mActualWidthUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mActualWidthUnit_property.startsToBeObserved (by: relay)
+        managedObject.mActualWidthUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mActualWidthUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -559,19 +559,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mActualHeightUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mActualHeightUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mActualHeightUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mActualHeightUnit_property.startsToBeObserved (by: relay)
+        managedObject.mActualHeightUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mActualHeightUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -588,19 +588,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mImageDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mImageDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mImageDisplay {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mImageDisplay_property.startsToBeObserved (by: relay)
+        managedObject.mImageDisplay_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mImageDisplay = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -617,19 +617,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mLayer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mLayer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mLayer {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mLayer_property.startsToBeObserved (by: relay)
+        managedObject.mLayer_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mLayer = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -646,19 +646,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mText_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mText_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mText {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mText_property.startsToBeObserved (by: relay)
+        managedObject.mText_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mText = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -675,19 +675,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mRotation_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mRotation_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mRotation {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mRotation_property.startsToBeObserved (by: relay)
+        managedObject.mRotation_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mRotation = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -704,19 +704,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_mCenterX_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mCenterX_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mCenterX {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mCenterX_property.startsToBeObserved (by: relay)
+        managedObject.mCenterX_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mCenterX = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -733,19 +733,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_imageDataByteCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_imageDataByteCount_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_imageDataByteCount {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.imageDataByteCount_property.startsToBeObserved (by: relay)
+        managedObject.imageDataByteCount_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_imageDataByteCount = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -762,19 +762,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_boardImageCodeDescriptor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardImageCodeDescriptor_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_boardImageCodeDescriptor {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.boardImageCodeDescriptor_property.startsToBeObserved (by: relay)
+        managedObject.boardImageCodeDescriptor_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_boardImageCodeDescriptor = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -791,19 +791,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_boardOriginalImageWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardOriginalImageWidth_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_boardOriginalImageWidth {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.boardOriginalImageWidth_property.startsToBeObserved (by: relay)
+        managedObject.boardOriginalImageWidth_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_boardOriginalImageWidth = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -820,19 +820,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_boardOriginalImageHeight_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardOriginalImageHeight_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_boardOriginalImageHeight {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.boardOriginalImageHeight_property.startsToBeObserved (by: relay)
+        managedObject.boardOriginalImageHeight_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_boardOriginalImageHeight = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -849,19 +849,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_boardScaledImageWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardScaledImageWidth_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_boardScaledImageWidth {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.boardScaledImageWidth_property.startsToBeObserved (by: relay)
+        managedObject.boardScaledImageWidth_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_boardScaledImageWidth = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -878,19 +878,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_boardScaledImageHeight_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardScaledImageHeight_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_boardScaledImageHeight {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.boardScaledImageHeight_property.startsToBeObserved (by: relay)
+        managedObject.boardScaledImageHeight_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_boardScaledImageHeight = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -907,19 +907,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_boardActualImageWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardActualImageWidth_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_boardActualImageWidth {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.boardActualImageWidth_property.startsToBeObserved (by: relay)
+        managedObject.boardActualImageWidth_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_boardActualImageWidth = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -936,19 +936,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_boardActualImageHeight_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardActualImageHeight_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_boardActualImageHeight {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.boardActualImageHeight_property.startsToBeObserved (by: relay)
+        managedObject.boardActualImageHeight_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_boardActualImageHeight = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -965,19 +965,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_objectDisplay = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -994,19 +994,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+        managedObject.selectionDisplay_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_selectionDisplay = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -1023,19 +1023,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_signatureForERCChecking_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_signatureForERCChecking_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_signatureForERCChecking {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.signatureForERCChecking_property.startsToBeObserved (by: relay)
+        managedObject.signatureForERCChecking_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_signatureForERCChecking = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -1052,19 +1052,19 @@ class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
-  final func toMany_computedDataImage_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_computedDataImage_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_computedDataImage {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.computedDataImage_property.startsToBeObserved (by: relay)
+        managedObject.computedDataImage_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_computedDataImage = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

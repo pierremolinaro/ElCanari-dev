@@ -243,7 +243,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mDeviceRoot_property.startsToBeObserved (by: self.mDeviceRoot_none)
+    self.mDeviceRoot_property.startsBeingObserved (by: self.mDeviceRoot_none)
     self.mType_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mType_property.propval == nil)
@@ -251,7 +251,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mType_property.startsToBeObserved (by: self.mType_none)
+    self.mType_property.startsBeingObserved (by: self.mType_none)
   //--- To many property: mPinInstances (has opposite relationship)
     self.mPinInstances_property.undoManager = inUndoManager
     self.mPinInstances_property.setOppositeRelationShipFunctions (
@@ -289,8 +289,8 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mInstanceName_property.startsToBeObserved (by: self.symbolQualifiedName_property)
-    self.mType_property.mTypeName_property.startsToBeObserved (by: self.symbolQualifiedName_property)
+    self.mInstanceName_property.startsBeingObserved (by: self.symbolQualifiedName_property)
+    self.mType_property.mTypeName_property.startsBeingObserved (by: self.symbolQualifiedName_property)
   //--- Atomic property: symbolTypeName
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -307,7 +307,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mType_property.mTypeName_property.startsToBeObserved (by: self.symbolTypeName_property)
+    self.mType_property.mTypeName_property.startsBeingObserved (by: self.symbolTypeName_property)
   //--- Atomic property: pinSymbolQualifiedNames
     self.pinSymbolQualifiedNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -327,8 +327,8 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mInstanceName_property.startsToBeObserved (by: self.pinSymbolQualifiedNames_property)
-    self.mPinInstances_property.toMany_pinName_StartsToBeObserved (by: self.pinSymbolQualifiedNames_property)
+    self.mInstanceName_property.startsBeingObserved (by: self.pinSymbolQualifiedNames_property)
+    self.mPinInstances_property.toMany_pinName_StartsBeingObserved (by: self.pinSymbolQualifiedNames_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -366,14 +366,14 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mType_property.mStrokeBezierPath_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mType_property.mFilledBezierPath_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mType_property.pinNameShape_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mPinInstances_property.toMany_numberShape_StartsToBeObserved (by: self.selectionDisplay_property)
-    self.symbolQualifiedName_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_symbolDrawingWidthMultipliedByTen_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mX_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mY_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mType_property.mStrokeBezierPath_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mType_property.mFilledBezierPath_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mType_property.pinNameShape_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mPinInstances_property.toMany_numberShape_StartsBeingObserved (by: self.selectionDisplay_property)
+    self.symbolQualifiedName_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_symbolDrawingWidthMultipliedByTen_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mX_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mY_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: unconnectedPins
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -396,9 +396,9 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mPinInstances_property.toMany_pinName_StartsToBeObserved (by: self.unconnectedPins_property)
-    self.mPinInstances_property.toMany_isConnected_StartsToBeObserved (by: self.unconnectedPins_property)
-    self.mInstanceName_property.startsToBeObserved (by: self.unconnectedPins_property)
+    self.mPinInstances_property.toMany_pinName_StartsBeingObserved (by: self.unconnectedPins_property)
+    self.mPinInstances_property.toMany_isConnected_StartsBeingObserved (by: self.unconnectedPins_property)
+    self.mInstanceName_property.startsBeingObserved (by: self.unconnectedPins_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -439,15 +439,15 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mType_property.mStrokeBezierPath_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mType_property.mFilledBezierPath_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mType_property.pinNameShape_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mPinInstances_property.toMany_numberShape_StartsToBeObserved (by: self.objectDisplay_property)
-    self.symbolQualifiedName_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mX_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mY_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_symbolDrawingWidthMultipliedByTen_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_symbolColor_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.mType_property.mStrokeBezierPath_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mType_property.mFilledBezierPath_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mType_property.pinNameShape_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mPinInstances_property.toMany_numberShape_StartsBeingObserved (by: self.objectDisplay_property)
+    self.symbolQualifiedName_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mX_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mY_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_symbolDrawingWidthMultipliedByTen_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_symbolColor_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
     self.mPinInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbolInstance_property.setProp (me) } },

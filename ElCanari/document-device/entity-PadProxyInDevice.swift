@@ -152,7 +152,7 @@ final class PadProxyInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mPinInstance_property.startsToBeObserved (by: self.mPinInstance_none)
+    self.mPinInstance_property.startsBeingObserved (by: self.mPinInstance_none)
   //--- To one property: mPinInstance (has opposite to one relationship: mPadProxy)
     self.mPinInstance_property.undoManager = inUndoManager
     self.mPinInstance_property.setOppositeRelationShipFunctions (
@@ -178,8 +178,8 @@ final class PadProxyInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mIsNC_property.startsToBeObserved (by: self.isConnected_property)
-    self.mPinInstance_property.startsToBeObserved (by: self.isConnected_property)
+    self.mIsNC_property.startsBeingObserved (by: self.isConnected_property)
+    self.mPinInstance_property.startsBeingObserved (by: self.isConnected_property)
   //--- Atomic property: symbolName
     self.symbolName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -196,7 +196,7 @@ final class PadProxyInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mPinInstance_property.symbolName_property.startsToBeObserved (by: self.symbolName_property)
+    self.mPinInstance_property.symbolName_property.startsBeingObserved (by: self.symbolName_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mIsNC_property.setSignatureObserver (observer: self)

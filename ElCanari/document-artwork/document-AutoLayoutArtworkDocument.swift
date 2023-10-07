@@ -922,11 +922,11 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsToBeObserved (by: self.statusErrorCount_property)
-    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsToBeObserved (by: self.statusErrorCount_property)
-    self.rootObject.fileGenerationParameterArray_property.toMany_hasNoData_StartsToBeObserved (by: self.statusErrorCount_property)
-    self.rootObject.emptyDrillFileExtension_property.startsToBeObserved (by: self.statusErrorCount_property)
-    self.documentFileName_property.startsToBeObserved (by: self.statusErrorCount_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsBeingObserved (by: self.statusErrorCount_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsBeingObserved (by: self.statusErrorCount_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_hasNoData_StartsBeingObserved (by: self.statusErrorCount_property)
+    self.rootObject.emptyDrillFileExtension_property.startsBeingObserved (by: self.statusErrorCount_property)
+    self.documentFileName_property.startsBeingObserved (by: self.statusErrorCount_property)
 
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
@@ -956,11 +956,11 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsToBeObserved (by: self.statusMessage_property)
-    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsToBeObserved (by: self.statusMessage_property)
-    self.rootObject.fileGenerationParameterArray_property.toMany_hasNoData_StartsToBeObserved (by: self.statusMessage_property)
-    self.rootObject.emptyDrillFileExtension_property.startsToBeObserved (by: self.statusMessage_property)
-    self.documentFileName_property.startsToBeObserved (by: self.statusMessage_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsBeingObserved (by: self.statusMessage_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsBeingObserved (by: self.statusMessage_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_hasNoData_StartsBeingObserved (by: self.statusMessage_property)
+    self.rootObject.emptyDrillFileExtension_property.startsBeingObserved (by: self.statusMessage_property)
+    self.documentFileName_property.startsBeingObserved (by: self.statusMessage_property)
 
   //--- Atomic property: emptyDrillFileExtensionImage
     self.emptyDrillFileExtensionImage_property.mReadModelFunction = { [weak self] in
@@ -978,7 +978,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.emptyDrillFileExtension_property.startsToBeObserved (by: self.emptyDrillFileExtensionImage_property)
+    self.rootObject.emptyDrillFileExtension_property.startsBeingObserved (by: self.emptyDrillFileExtensionImage_property)
 
   //--- Atomic property: generatedFileCountString
     self.generatedFileCountString_property.mReadModelFunction = { [weak self] in
@@ -996,7 +996,7 @@ import AppKit
         return .empty
       }
     }
-    self.mDataController.sortedArray_property.count_property.startsToBeObserved (by: self.generatedFileCountString_property)
+    self.mDataController.sortedArray_property.count_property.startsBeingObserved (by: self.generatedFileCountString_property)
 
   //--- Atomic property: segmentedControlDataIssueImage
     self.segmentedControlDataIssueImage_property.mReadModelFunction = { [weak self] in
@@ -1023,10 +1023,10 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsToBeObserved (by: self.segmentedControlDataIssueImage_property)
-    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsToBeObserved (by: self.segmentedControlDataIssueImage_property)
-    self.rootObject.hasDataWarning_property.startsToBeObserved (by: self.segmentedControlDataIssueImage_property)
-    self.rootObject.emptyDrillFileExtension_property.startsToBeObserved (by: self.segmentedControlDataIssueImage_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsBeingObserved (by: self.segmentedControlDataIssueImage_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsBeingObserved (by: self.segmentedControlDataIssueImage_property)
+    self.rootObject.hasDataWarning_property.startsBeingObserved (by: self.segmentedControlDataIssueImage_property)
+    self.rootObject.emptyDrillFileExtension_property.startsBeingObserved (by: self.segmentedControlDataIssueImage_property)
 
   //--- Atomic property: statusWarningCount
     self.statusWarningCount_property.mReadModelFunction = { [weak self] in
@@ -1056,11 +1056,11 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsToBeObserved (by: self.statusWarningCount_property)
-    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsToBeObserved (by: self.statusWarningCount_property)
-    self.rootObject.fileGenerationParameterArray_property.toMany_hasNoData_StartsToBeObserved (by: self.statusWarningCount_property)
-    self.rootObject.emptyDrillFileExtension_property.startsToBeObserved (by: self.statusWarningCount_property)
-    self.documentFileName_property.startsToBeObserved (by: self.statusWarningCount_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsBeingObserved (by: self.statusWarningCount_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsBeingObserved (by: self.statusWarningCount_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_hasNoData_StartsBeingObserved (by: self.statusWarningCount_property)
+    self.rootObject.emptyDrillFileExtension_property.startsBeingObserved (by: self.statusWarningCount_property)
+    self.documentFileName_property.startsBeingObserved (by: self.statusWarningCount_property)
 
   }
 

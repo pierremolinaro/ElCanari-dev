@@ -59,8 +59,8 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : NSObje
       inModel,
       sortCallback: { [weak self] (left, right) in self?.isOrderedBefore (left, right) ?? true },
       addSortObserversCallback: { (observer) in
-        inModel.toMany_fileSize_StartsToBeObserved (by: observer)
-        inModel.toMany_mFileName_StartsToBeObserved (by: observer)
+        inModel.toMany_fileSize_StartsBeingObserved (by: observer)
+        inModel.toMany_mFileName_StartsBeingObserved (by: observer)
       },
       removeSortObserversCallback: {(observer) in
         inModel.toMany_fileSize_StopsBeingObserved (by: observer)
@@ -141,11 +141,11 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : NSObje
 
   override init () {
     super.init ()
-    self.sortedArray_property.startsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mFileName' column
-    self.sortedArray_property.toMany_mFileName_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mFileName_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'fileSize' column
-    self.sortedArray_property.toMany_fileSize_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_fileSize_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {

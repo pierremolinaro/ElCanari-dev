@@ -43,29 +43,29 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mSymbolPinName_property.startsToBeObserved (by: self.mSymbolPinName_property) // Stored property
-      newValue.mX_property.startsToBeObserved (by: self.mX_property) // Stored property
-      newValue.mY_property.startsToBeObserved (by: self.mY_property) // Stored property
-      newValue.location_property.startsToBeObserved (by: self.location_property) // Transient property
-      newValue.netName_property.startsToBeObserved (by: self.netName_property) // Transient property
-      newValue.netClassName_property.startsToBeObserved (by: self.netClassName_property) // Transient property
-      newValue.hasNet_property.startsToBeObserved (by: self.hasNet_property) // Transient property
-      newValue.canMove_property.startsToBeObserved (by: self.canMove_property) // Transient property
-      newValue.wireColor_property.startsToBeObserved (by: self.wireColor_property) // Transient property
-      newValue.symbolRotation_property.startsToBeObserved (by: self.symbolRotation_property) // Transient property
-      newValue.symbolNameNetName_property.startsToBeObserved (by: self.symbolNameNetName_property) // Transient property
-      newValue.isConnected_property.startsToBeObserved (by: self.isConnected_property) // Transient property
-      newValue.status_property.startsToBeObserved (by: self.status_property) // Transient property
-      newValue.connectedPoints_property.startsToBeObserved (by: self.connectedPoints_property) // Transient property
-      newValue.netInfoForPoint_property.startsToBeObserved (by: self.netInfoForPoint_property) // Transient property
+      newValue.mSymbolPinName_property.startsBeingObserved (by: self.mSymbolPinName_property) // Stored property
+      newValue.mX_property.startsBeingObserved (by: self.mX_property) // Stored property
+      newValue.mY_property.startsBeingObserved (by: self.mY_property) // Stored property
+      newValue.location_property.startsBeingObserved (by: self.location_property) // Transient property
+      newValue.netName_property.startsBeingObserved (by: self.netName_property) // Transient property
+      newValue.netClassName_property.startsBeingObserved (by: self.netClassName_property) // Transient property
+      newValue.hasNet_property.startsBeingObserved (by: self.hasNet_property) // Transient property
+      newValue.canMove_property.startsBeingObserved (by: self.canMove_property) // Transient property
+      newValue.wireColor_property.startsBeingObserved (by: self.wireColor_property) // Transient property
+      newValue.symbolRotation_property.startsBeingObserved (by: self.symbolRotation_property) // Transient property
+      newValue.symbolNameNetName_property.startsBeingObserved (by: self.symbolNameNetName_property) // Transient property
+      newValue.isConnected_property.startsBeingObserved (by: self.isConnected_property) // Transient property
+      newValue.status_property.startsBeingObserved (by: self.status_property) // Transient property
+      newValue.connectedPoints_property.startsBeingObserved (by: self.connectedPoints_property) // Transient property
+      newValue.netInfoForPoint_property.startsBeingObserved (by: self.netInfoForPoint_property) // Transient property
       if let relay = self.mObserversOf_mLabels { // to Many
-        newValue.mLabels_property.startsToBeObserved (by: relay)
+        newValue.mLabels_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mWiresP2s { // to Many
-        newValue.mWiresP2s_property.startsToBeObserved (by: relay)
+        newValue.mWiresP2s_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mWiresP1s { // to Many
-        newValue.mWiresP1s_property.startsToBeObserved (by: relay)
+        newValue.mWiresP1s_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -168,16 +168,16 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func toMany_mLabels_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mLabels_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mLabels {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mLabels_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mLabels_property.startsBeingObserved (by: relay)
       self.mObserversOf_mLabels = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -194,16 +194,16 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func toMany_mWiresP2s_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWiresP2s_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWiresP2s {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mWiresP2s_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mWiresP2s_property.startsBeingObserved (by: relay)
       self.mObserversOf_mWiresP2s = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -220,16 +220,16 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func toMany_mWiresP1s_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWiresP1s_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWiresP1s {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mWiresP1s_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mWiresP1s_property.startsBeingObserved (by: relay)
       self.mObserversOf_mWiresP1s = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

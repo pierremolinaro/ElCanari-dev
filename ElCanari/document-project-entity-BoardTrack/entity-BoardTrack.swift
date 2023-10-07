@@ -649,7 +649,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.startsToBeObserved (by: self.mConnectorP1_none)
+    self.mConnectorP1_property.startsBeingObserved (by: self.mConnectorP1_none)
     self.mConnectorP2_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mConnectorP2_property.propval == nil)
@@ -657,7 +657,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP2_property.startsToBeObserved (by: self.mConnectorP2_none)
+    self.mConnectorP2_property.startsBeingObserved (by: self.mConnectorP2_none)
     self.mNet_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mNet_property.propval == nil)
@@ -665,7 +665,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.startsToBeObserved (by: self.mNet_none)
+    self.mNet_property.startsBeingObserved (by: self.mNet_none)
   //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
     self.mConnectorP1_property.undoManager = inUndoManager
     self.mConnectorP1_property.setOppositeRelationShipFunctions (
@@ -706,9 +706,9 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.netClassTrackWidth_property.startsToBeObserved (by: self.actualTrackWidth_property)
-    self.mUsesCustomTrackWidth_property.startsToBeObserved (by: self.actualTrackWidth_property)
-    self.mCustomTrackWidth_property.startsToBeObserved (by: self.actualTrackWidth_property)
+    self.mNet_property.netClassTrackWidth_property.startsBeingObserved (by: self.actualTrackWidth_property)
+    self.mUsesCustomTrackWidth_property.startsBeingObserved (by: self.actualTrackWidth_property)
+    self.mCustomTrackWidth_property.startsBeingObserved (by: self.actualTrackWidth_property)
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -725,7 +725,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.mNetName_property.startsToBeObserved (by: self.netName_property)
+    self.mNet_property.mNetName_property.startsBeingObserved (by: self.netName_property)
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -742,7 +742,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.netClassName_property.startsToBeObserved (by: self.netClassName_property)
+    self.mNet_property.netClassName_property.startsBeingObserved (by: self.netClassName_property)
   //--- Atomic property: netClassTrackWidth
     self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -759,7 +759,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.netClassTrackWidth_property.startsToBeObserved (by: self.netClassTrackWidth_property)
+    self.mNet_property.netClassTrackWidth_property.startsBeingObserved (by: self.netClassTrackWidth_property)
   //--- Atomic property: netClassViaHoleDiameter
     self.netClassViaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -776,7 +776,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.netClassViaHoleDiameter_property.startsToBeObserved (by: self.netClassViaHoleDiameter_property)
+    self.mNet_property.netClassViaHoleDiameter_property.startsBeingObserved (by: self.netClassViaHoleDiameter_property)
   //--- Atomic property: netClassViaPadDiameter
     self.netClassViaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -793,7 +793,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.netClassViaPadDiameter_property.startsToBeObserved (by: self.netClassViaPadDiameter_property)
+    self.mNet_property.netClassViaPadDiameter_property.startsBeingObserved (by: self.netClassViaPadDiameter_property)
   //--- Atomic property: trackLengthInCanariUnit
     self.trackLengthInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -813,8 +813,8 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.location_property.startsToBeObserved (by: self.trackLengthInCanariUnit_property)
-    self.mConnectorP2_property.location_property.startsToBeObserved (by: self.trackLengthInCanariUnit_property)
+    self.mConnectorP1_property.location_property.startsBeingObserved (by: self.trackLengthInCanariUnit_property)
+    self.mConnectorP2_property.location_property.startsBeingObserved (by: self.trackLengthInCanariUnit_property)
   //--- Atomic property: trackSide
     self.trackSide_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -831,7 +831,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mSide_property.startsToBeObserved (by: self.trackSide_property)
+    self.mSide_property.startsBeingObserved (by: self.trackSide_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -851,8 +851,8 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mSide_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.actualTrackWidth_property.startsToBeObserved (by: self.signatureForERCChecking_property)
+    self.mSide_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.actualTrackWidth_property.startsBeingObserved (by: self.signatureForERCChecking_property)
   //--- Atomic property: p1ConnectedToSomePad
     self.p1ConnectedToSomePad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -869,7 +869,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.isConnectedToSomePad_property.startsToBeObserved (by: self.p1ConnectedToSomePad_property)
+    self.mConnectorP1_property.isConnectedToSomePad_property.startsBeingObserved (by: self.p1ConnectedToSomePad_property)
   //--- Atomic property: p2ConnectedToSomePad
     self.p2ConnectedToSomePad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -886,7 +886,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP2_property.isConnectedToSomePad_property.startsToBeObserved (by: self.p2ConnectedToSomePad_property)
+    self.mConnectorP2_property.isConnectedToSomePad_property.startsBeingObserved (by: self.p2ConnectedToSomePad_property)
   //--- Computed property: trackDirectionInDegrees
     self.trackDirectionInDegrees_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -907,8 +907,8 @@ final class BoardTrack : BoardObject,
       }
     }
     self.trackDirectionInDegrees_property.mWriteModelFunction = { [weak self] in self?.compute_trackDirectionInDegrees_property ($0) }
-    self.mConnectorP1_property.location_property.startsToBeObserved (by: self.trackDirectionInDegrees_property)
-    self.mConnectorP2_property.location_property.startsToBeObserved (by: self.trackDirectionInDegrees_property)
+    self.mConnectorP1_property.location_property.startsBeingObserved (by: self.trackDirectionInDegrees_property)
+    self.mConnectorP2_property.location_property.startsBeingObserved (by: self.trackDirectionInDegrees_property)
   //--- Computed property: computedP1X
     self.computedP1X_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -926,7 +926,7 @@ final class BoardTrack : BoardObject,
       }
     }
     self.computedP1X_property.mWriteModelFunction = { [weak self] in self?.compute_computedP1X_property ($0) }
-    self.mConnectorP1_property.location_property.startsToBeObserved (by: self.computedP1X_property)
+    self.mConnectorP1_property.location_property.startsBeingObserved (by: self.computedP1X_property)
   //--- Computed property: computedP1Y
     self.computedP1Y_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -944,7 +944,7 @@ final class BoardTrack : BoardObject,
       }
     }
     self.computedP1Y_property.mWriteModelFunction = { [weak self] in self?.compute_computedP1Y_property ($0) }
-    self.mConnectorP1_property.location_property.startsToBeObserved (by: self.computedP1Y_property)
+    self.mConnectorP1_property.location_property.startsBeingObserved (by: self.computedP1Y_property)
   //--- Computed property: computedP2X
     self.computedP2X_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -962,7 +962,7 @@ final class BoardTrack : BoardObject,
       }
     }
     self.computedP2X_property.mWriteModelFunction = { [weak self] in self?.compute_computedP2X_property ($0) }
-    self.mConnectorP2_property.location_property.startsToBeObserved (by: self.computedP2X_property)
+    self.mConnectorP2_property.location_property.startsBeingObserved (by: self.computedP2X_property)
   //--- Computed property: computedP2Y
     self.computedP2Y_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -980,7 +980,7 @@ final class BoardTrack : BoardObject,
       }
     }
     self.computedP2Y_property.mWriteModelFunction = { [weak self] in self?.compute_computedP2Y_property ($0) }
-    self.mConnectorP2_property.location_property.startsToBeObserved (by: self.computedP2Y_property)
+    self.mConnectorP2_property.location_property.startsBeingObserved (by: self.computedP2Y_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1078,22 +1078,22 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.location_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mConnectorP2_property.location_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayFrontLayoutForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_frontSideLayoutColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayBackLayoutForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_backSideLayoutColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayInner1LayoutForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_inner1LayoutColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayInner2LayoutForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_inner2LayoutColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayInner3LayoutForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_inner3LayoutColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayInner4LayoutForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_inner4LayoutColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.actualTrackWidth_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mSide_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.mConnectorP1_property.location_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mConnectorP2_property.location_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayFrontLayoutForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_frontSideLayoutColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayBackLayoutForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_backSideLayoutColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayInner1LayoutForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_inner1LayoutColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayInner2LayoutForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_inner2LayoutColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayInner3LayoutForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_inner3LayoutColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayInner4LayoutForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_inner4LayoutColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.actualTrackWidth_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mSide_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: p1CanMove
     self.p1CanMove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1113,8 +1113,8 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mManualLockP1_property.startsToBeObserved (by: self.p1CanMove_property)
-    self.p1ConnectedToSomePad_property.startsToBeObserved (by: self.p1CanMove_property)
+    self.mManualLockP1_property.startsBeingObserved (by: self.p1CanMove_property)
+    self.p1ConnectedToSomePad_property.startsBeingObserved (by: self.p1CanMove_property)
   //--- Atomic property: p2CanMove
     self.p2CanMove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1134,8 +1134,8 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mManualLockP2_property.startsToBeObserved (by: self.p2CanMove_property)
-    self.p2ConnectedToSomePad_property.startsToBeObserved (by: self.p2CanMove_property)
+    self.mManualLockP2_property.startsBeingObserved (by: self.p2CanMove_property)
+    self.p2ConnectedToSomePad_property.startsBeingObserved (by: self.p2CanMove_property)
   //--- Atomic property: trackCanRotate
     self.trackCanRotate_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1155,8 +1155,8 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.p1CanMove_property.startsToBeObserved (by: self.trackCanRotate_property)
-    self.p2CanMove_property.startsToBeObserved (by: self.trackCanRotate_property)
+    self.p1CanMove_property.startsBeingObserved (by: self.trackCanRotate_property)
+    self.p2CanMove_property.startsBeingObserved (by: self.trackCanRotate_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1206,18 +1206,18 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.location_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.p1CanMove_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mConnectorP2_property.location_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.p2CanMove_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_frontSideLayoutColorForBoard_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_inner1LayoutColorForBoard_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_inner2LayoutColorForBoard_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_inner3LayoutColorForBoard_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_inner4LayoutColorForBoard_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_backSideLayoutColorForBoard_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mSide_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.actualTrackWidth_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mConnectorP1_property.location_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.p1CanMove_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mConnectorP2_property.location_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.p2CanMove_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_frontSideLayoutColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_inner1LayoutColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_inner2LayoutColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_inner3LayoutColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_inner4LayoutColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_backSideLayoutColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mSide_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.actualTrackWidth_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

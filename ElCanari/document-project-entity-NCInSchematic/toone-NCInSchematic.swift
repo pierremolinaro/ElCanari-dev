@@ -22,9 +22,9 @@ class ReadOnlyObject_NCInSchematic : ReadOnlyAbstractObjectProperty <NCInSchemat
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mOrientation_property.startsToBeObserved (by: self.mOrientation_property) // Stored property
-      newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
-      newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
+      newValue.mOrientation_property.startsBeingObserved (by: self.mOrientation_property) // Stored property
+      newValue.objectDisplay_property.startsBeingObserved (by: self.objectDisplay_property) // Transient property
+      newValue.selectionDisplay_property.startsBeingObserved (by: self.selectionDisplay_property) // Transient property
     }
   }
 

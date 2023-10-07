@@ -24,11 +24,11 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.pinName_property.startsToBeObserved (by: self.pinName_property) // Transient property
-      newValue.symbolName_property.startsToBeObserved (by: self.symbolName_property) // Transient property
-      newValue.pinQualifiedName_property.startsToBeObserved (by: self.pinQualifiedName_property) // Transient property
-      newValue.isConnected_property.startsToBeObserved (by: self.isConnected_property) // Transient property
-      newValue.numberShape_property.startsToBeObserved (by: self.numberShape_property) // Transient property
+      newValue.pinName_property.startsBeingObserved (by: self.pinName_property) // Transient property
+      newValue.symbolName_property.startsBeingObserved (by: self.symbolName_property) // Transient property
+      newValue.pinQualifiedName_property.startsBeingObserved (by: self.pinQualifiedName_property) // Transient property
+      newValue.isConnected_property.startsBeingObserved (by: self.isConnected_property) // Transient property
+      newValue.numberShape_property.startsBeingObserved (by: self.numberShape_property) // Transient property
     }
   }
 

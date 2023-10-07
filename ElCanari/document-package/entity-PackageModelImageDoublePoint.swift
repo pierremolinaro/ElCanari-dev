@@ -189,7 +189,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.startsToBeObserved (by: self.mRoot_none)
+    self.mRoot_property.startsBeingObserved (by: self.mRoot_none)
   //--- To one property: mRoot (has opposite to many relationship: mModelImageObjects)
     self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -233,14 +233,14 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mFirstX_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mFirstY_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mFirstColor_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mSecondDx_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mSecondDy_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mSecondColor_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mRoot_property.mModelPointsCircleRadius_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mRoot_property.mPointsAreLocked_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.mFirstX_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mFirstY_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mFirstColor_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mSecondDx_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mSecondDy_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mSecondColor_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mRoot_property.mModelPointsCircleRadius_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mRoot_property.mPointsAreLocked_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -269,11 +269,11 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mFirstX_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mFirstY_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mSecondDx_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mSecondDy_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mRoot_property.mModelPointsCircleRadius_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mFirstX_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mFirstY_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mSecondDx_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mSecondDy_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mRoot_property.mModelPointsCircleRadius_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

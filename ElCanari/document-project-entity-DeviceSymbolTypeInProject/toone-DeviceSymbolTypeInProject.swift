@@ -22,9 +22,9 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mSymbolTypeName_property.startsToBeObserved (by: self.mSymbolTypeName_property) // Stored property
-      newValue.mStrokeBezierPath_property.startsToBeObserved (by: self.mStrokeBezierPath_property) // Stored property
-      newValue.mFilledBezierPath_property.startsToBeObserved (by: self.mFilledBezierPath_property) // Stored property
+      newValue.mSymbolTypeName_property.startsBeingObserved (by: self.mSymbolTypeName_property) // Stored property
+      newValue.mStrokeBezierPath_property.startsBeingObserved (by: self.mStrokeBezierPath_property) // Stored property
+      newValue.mFilledBezierPath_property.startsBeingObserved (by: self.mFilledBezierPath_property) // Stored property
     }
   }
 

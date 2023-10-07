@@ -54,40 +54,40 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mComponentPadName_property.startsToBeObserved (by: self.mComponentPadName_property) // Stored property
-      newValue.mPadIndex_property.startsToBeObserved (by: self.mPadIndex_property) // Stored property
-      newValue.mX_property.startsToBeObserved (by: self.mX_property) // Stored property
-      newValue.mY_property.startsToBeObserved (by: self.mY_property) // Stored property
-      newValue.mDefaultHoleDiameterUnit_property.startsToBeObserved (by: self.mDefaultHoleDiameterUnit_property) // Stored property
-      newValue.mCustomHoleDiameter_property.startsToBeObserved (by: self.mCustomHoleDiameter_property) // Stored property
-      newValue.mCustomHoleDiameterUnit_property.startsToBeObserved (by: self.mCustomHoleDiameterUnit_property) // Stored property
-      newValue.mUsesCustomHoleDiameter_property.startsToBeObserved (by: self.mUsesCustomHoleDiameter_property) // Stored property
-      newValue.mDefaultPadDiameterUnit_property.startsToBeObserved (by: self.mDefaultPadDiameterUnit_property) // Stored property
-      newValue.mCustomPadDiameter_property.startsToBeObserved (by: self.mCustomPadDiameter_property) // Stored property
-      newValue.mCustomPadDiameterUnit_property.startsToBeObserved (by: self.mCustomPadDiameterUnit_property) // Stored property
-      newValue.mUsesCustomPadDiameter_property.startsToBeObserved (by: self.mUsesCustomPadDiameter_property) // Stored property
-      newValue.isConnectedToSomePad_property.startsToBeObserved (by: self.isConnectedToSomePad_property) // Transient property
-      newValue.location_property.startsToBeObserved (by: self.location_property) // Transient property
-      newValue.netNameFromComponentPad_property.startsToBeObserved (by: self.netNameFromComponentPad_property) // Transient property
-      newValue.netNameAndPadLocation_property.startsToBeObserved (by: self.netNameAndPadLocation_property) // Transient property
-      newValue.side_property.startsToBeObserved (by: self.side_property) // Transient property
-      newValue.isVia_property.startsToBeObserved (by: self.isVia_property) // Transient property
-      newValue.issues_property.startsToBeObserved (by: self.issues_property) // Transient property
-      newValue.viaDefaultHoleDiameter_property.startsToBeObserved (by: self.viaDefaultHoleDiameter_property) // Transient property
-      newValue.viaDefaultPadDiameter_property.startsToBeObserved (by: self.viaDefaultPadDiameter_property) // Transient property
-      newValue.netNameFromTracks_property.startsToBeObserved (by: self.netNameFromTracks_property) // Transient property
-      newValue.netClassName_property.startsToBeObserved (by: self.netClassName_property) // Transient property
-      newValue.connectedToComponent_property.startsToBeObserved (by: self.connectedToComponent_property) // Transient property
-      newValue.actualHoleDiameter_property.startsToBeObserved (by: self.actualHoleDiameter_property) // Transient property
-      newValue.actualPadDiameter_property.startsToBeObserved (by: self.actualPadDiameter_property) // Transient property
-      newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
-      newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
-      newValue.signatureForERCChecking_property.startsToBeObserved (by: self.signatureForERCChecking_property) // Transient property
+      newValue.mComponentPadName_property.startsBeingObserved (by: self.mComponentPadName_property) // Stored property
+      newValue.mPadIndex_property.startsBeingObserved (by: self.mPadIndex_property) // Stored property
+      newValue.mX_property.startsBeingObserved (by: self.mX_property) // Stored property
+      newValue.mY_property.startsBeingObserved (by: self.mY_property) // Stored property
+      newValue.mDefaultHoleDiameterUnit_property.startsBeingObserved (by: self.mDefaultHoleDiameterUnit_property) // Stored property
+      newValue.mCustomHoleDiameter_property.startsBeingObserved (by: self.mCustomHoleDiameter_property) // Stored property
+      newValue.mCustomHoleDiameterUnit_property.startsBeingObserved (by: self.mCustomHoleDiameterUnit_property) // Stored property
+      newValue.mUsesCustomHoleDiameter_property.startsBeingObserved (by: self.mUsesCustomHoleDiameter_property) // Stored property
+      newValue.mDefaultPadDiameterUnit_property.startsBeingObserved (by: self.mDefaultPadDiameterUnit_property) // Stored property
+      newValue.mCustomPadDiameter_property.startsBeingObserved (by: self.mCustomPadDiameter_property) // Stored property
+      newValue.mCustomPadDiameterUnit_property.startsBeingObserved (by: self.mCustomPadDiameterUnit_property) // Stored property
+      newValue.mUsesCustomPadDiameter_property.startsBeingObserved (by: self.mUsesCustomPadDiameter_property) // Stored property
+      newValue.isConnectedToSomePad_property.startsBeingObserved (by: self.isConnectedToSomePad_property) // Transient property
+      newValue.location_property.startsBeingObserved (by: self.location_property) // Transient property
+      newValue.netNameFromComponentPad_property.startsBeingObserved (by: self.netNameFromComponentPad_property) // Transient property
+      newValue.netNameAndPadLocation_property.startsBeingObserved (by: self.netNameAndPadLocation_property) // Transient property
+      newValue.side_property.startsBeingObserved (by: self.side_property) // Transient property
+      newValue.isVia_property.startsBeingObserved (by: self.isVia_property) // Transient property
+      newValue.issues_property.startsBeingObserved (by: self.issues_property) // Transient property
+      newValue.viaDefaultHoleDiameter_property.startsBeingObserved (by: self.viaDefaultHoleDiameter_property) // Transient property
+      newValue.viaDefaultPadDiameter_property.startsBeingObserved (by: self.viaDefaultPadDiameter_property) // Transient property
+      newValue.netNameFromTracks_property.startsBeingObserved (by: self.netNameFromTracks_property) // Transient property
+      newValue.netClassName_property.startsBeingObserved (by: self.netClassName_property) // Transient property
+      newValue.connectedToComponent_property.startsBeingObserved (by: self.connectedToComponent_property) // Transient property
+      newValue.actualHoleDiameter_property.startsBeingObserved (by: self.actualHoleDiameter_property) // Transient property
+      newValue.actualPadDiameter_property.startsBeingObserved (by: self.actualPadDiameter_property) // Transient property
+      newValue.objectDisplay_property.startsBeingObserved (by: self.objectDisplay_property) // Transient property
+      newValue.selectionDisplay_property.startsBeingObserved (by: self.selectionDisplay_property) // Transient property
+      newValue.signatureForERCChecking_property.startsBeingObserved (by: self.signatureForERCChecking_property) // Transient property
       if let relay = self.mObserversOf_mTracksP2 { // to Many
-        newValue.mTracksP2_property.startsToBeObserved (by: relay)
+        newValue.mTracksP2_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mTracksP1 { // to Many
-        newValue.mTracksP1_property.startsToBeObserved (by: relay)
+        newValue.mTracksP1_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -274,16 +274,16 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func toMany_mTracksP2_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mTracksP2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mTracksP2 {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mTracksP2_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mTracksP2_property.startsBeingObserved (by: relay)
       self.mObserversOf_mTracksP2 = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -300,16 +300,16 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   //····················································································································
 
-  final func toMany_mTracksP1_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mTracksP1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mTracksP1 {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mTracksP1_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mTracksP1_property.startsBeingObserved (by: relay)
       self.mObserversOf_mTracksP1 = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

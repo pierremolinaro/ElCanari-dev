@@ -42,25 +42,25 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_mSheetTitle { // Stored property
-        managedObject.mSheetTitle_property.startsToBeObserved (by: relay)
+        managedObject.mSheetTitle_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_schematicIssues { // Transient property
-        managedObject.schematicIssues_property.startsToBeObserved (by: relay)
+        managedObject.schematicIssues_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_issues { // Transient property
-        managedObject.issues_property.startsToBeObserved (by: relay)
+        managedObject.issues_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_connectedPoints { // Transient property
-        managedObject.connectedPoints_property.startsToBeObserved (by: relay)
+        managedObject.connectedPoints_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_schematicConnexionWarnings { // Transient property
-        managedObject.schematicConnexionWarnings_property.startsToBeObserved (by: relay)
+        managedObject.schematicConnexionWarnings_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_schematicConnexionErrors { // Transient property
-        managedObject.schematicConnexionErrors_property.startsToBeObserved (by: relay)
+        managedObject.schematicConnexionErrors_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_sheetDescriptor { // Transient property
-        managedObject.sheetDescriptor_property.startsToBeObserved (by: relay)
+        managedObject.sheetDescriptor_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -73,19 +73,19 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func toMany_mSheetTitle_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSheetTitle_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSheetTitle {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mSheetTitle_property.startsToBeObserved (by: relay)
+        managedObject.mSheetTitle_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mSheetTitle = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -102,19 +102,19 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func toMany_schematicIssues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_schematicIssues_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_schematicIssues {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.schematicIssues_property.startsToBeObserved (by: relay)
+        managedObject.schematicIssues_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_schematicIssues = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -131,19 +131,19 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func toMany_issues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_issues_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_issues {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.issues_property.startsToBeObserved (by: relay)
+        managedObject.issues_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_issues = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -160,19 +160,19 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func toMany_connectedPoints_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_connectedPoints_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_connectedPoints {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.connectedPoints_property.startsToBeObserved (by: relay)
+        managedObject.connectedPoints_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_connectedPoints = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -189,19 +189,19 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func toMany_schematicConnexionWarnings_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_schematicConnexionWarnings_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_schematicConnexionWarnings {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.schematicConnexionWarnings_property.startsToBeObserved (by: relay)
+        managedObject.schematicConnexionWarnings_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_schematicConnexionWarnings = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -218,19 +218,19 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func toMany_schematicConnexionErrors_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_schematicConnexionErrors_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_schematicConnexionErrors {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.schematicConnexionErrors_property.startsToBeObserved (by: relay)
+        managedObject.schematicConnexionErrors_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_schematicConnexionErrors = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -247,19 +247,19 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func toMany_sheetDescriptor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_sheetDescriptor_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_sheetDescriptor {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.sheetDescriptor_property.startsToBeObserved (by: relay)
+        managedObject.sheetDescriptor_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_sheetDescriptor = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································

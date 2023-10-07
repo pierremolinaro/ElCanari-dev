@@ -32,19 +32,19 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mX_property.startsToBeObserved (by: self.mX_property) // Stored property
-      newValue.mY_property.startsToBeObserved (by: self.mY_property) // Stored property
-      newValue.mCPX1_property.startsToBeObserved (by: self.mCPX1_property) // Stored property
-      newValue.mCPY1_property.startsToBeObserved (by: self.mCPY1_property) // Stored property
-      newValue.mCPX2_property.startsToBeObserved (by: self.mCPX2_property) // Stored property
-      newValue.mCPY2_property.startsToBeObserved (by: self.mCPY2_property) // Stored property
-      newValue.mShape_property.startsToBeObserved (by: self.mShape_property) // Stored property
-      newValue.p2Xvalue_property.startsToBeObserved (by: self.p2Xvalue_property) // Transient property
-      newValue.p2Yvalue_property.startsToBeObserved (by: self.p2Yvalue_property) // Transient property
-      newValue.descriptor_property.startsToBeObserved (by: self.descriptor_property) // Transient property
-      newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
-      newValue.isLine_property.startsToBeObserved (by: self.isLine_property) // Transient property
-      newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
+      newValue.mX_property.startsBeingObserved (by: self.mX_property) // Stored property
+      newValue.mY_property.startsBeingObserved (by: self.mY_property) // Stored property
+      newValue.mCPX1_property.startsBeingObserved (by: self.mCPX1_property) // Stored property
+      newValue.mCPY1_property.startsBeingObserved (by: self.mCPY1_property) // Stored property
+      newValue.mCPX2_property.startsBeingObserved (by: self.mCPX2_property) // Stored property
+      newValue.mCPY2_property.startsBeingObserved (by: self.mCPY2_property) // Stored property
+      newValue.mShape_property.startsBeingObserved (by: self.mShape_property) // Stored property
+      newValue.p2Xvalue_property.startsBeingObserved (by: self.p2Xvalue_property) // Transient property
+      newValue.p2Yvalue_property.startsBeingObserved (by: self.p2Yvalue_property) // Transient property
+      newValue.descriptor_property.startsBeingObserved (by: self.descriptor_property) // Transient property
+      newValue.objectDisplay_property.startsBeingObserved (by: self.objectDisplay_property) // Transient property
+      newValue.isLine_property.startsBeingObserved (by: self.isLine_property) // Transient property
+      newValue.selectionDisplay_property.startsBeingObserved (by: self.selectionDisplay_property) // Transient property
     }
   }
 

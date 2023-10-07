@@ -33,7 +33,7 @@ extension NSView : HiddenEBProtocol {
 //    var modelArray = [EBObservableObjectProtocol] ()
 //    inExpression.addModelsTo (&modelArray)
 //    for observedModel in modelArray {
-//      observedModel.startsToBeObserved (by: self)
+//      observedModel.startsBeingObserved (by: self)
 //    }
 //  }
 //
@@ -75,7 +75,7 @@ extension NSView : HiddenEBProtocol {
 //    var modelArray = [EBObservableObjectProtocol] ()
 //    inExpression.addModelsTo (&modelArray)
 //    for observedModel in modelArray {
-//      observedModel.startsToBeObserved (by: self)
+//      observedModel.startsBeingObserved (by: self)
 //    }
 //    self.mEventCallBack = { [weak self] in self?.updateOutlet (inExpression.compute ()) }
 //  }

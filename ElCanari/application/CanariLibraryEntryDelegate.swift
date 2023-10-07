@@ -22,7 +22,7 @@ final class CanariLibraryEntryDelegate : EBObserverProtocol {
 
   init (object inObject : CanariLibraryEntry) {
     self.mObject = inObject
-    inObject.mPath_property.startsToBeObserved (by: self)
+    inObject.mPath_property.startsBeingObserved (by: self)
     noteObjectAllocation (self)
   }
 

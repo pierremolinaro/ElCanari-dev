@@ -60,7 +60,7 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
 
   final func bind_graphic_controller (_ inController : EBGraphicViewControllerProtocol) -> Self {
     self.mGraphicController = inController
-    inController.selectedArrayDidChange_property.startsToBeObserved (by: self.mObserver)
+    inController.selectedArrayDidChange_property.startsBeingObserved (by: self.mObserver)
     return self
   }
 

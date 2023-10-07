@@ -151,7 +151,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_mInstanceName (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.toMany_mInstanceName_StartsToBeObserved (by: self.mInstanceName_property)
+    model.toMany_mInstanceName_StartsBeingObserved (by: self.mInstanceName_property)
     self.mInstanceName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -203,7 +203,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_mX (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.toMany_mX_StartsToBeObserved (by: self.mX_property)
+    model.toMany_mX_StartsBeingObserved (by: self.mX_property)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -255,7 +255,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_mY (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.toMany_mY_StartsToBeObserved (by: self.mY_property)
+    model.toMany_mY_StartsBeingObserved (by: self.mY_property)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -307,7 +307,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
+    model.toMany_objectDisplay_StartsBeingObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -347,7 +347,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_pinSymbolQualifiedNames (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.toMany_pinSymbolQualifiedNames_StartsToBeObserved (by: self.pinSymbolQualifiedNames_property)
+    model.toMany_pinSymbolQualifiedNames_StartsBeingObserved (by: self.pinSymbolQualifiedNames_property)
     self.pinSymbolQualifiedNames_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -387,7 +387,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
+    model.toMany_selectionDisplay_StartsBeingObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -427,7 +427,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_symbolQualifiedName (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.toMany_symbolQualifiedName_StartsToBeObserved (by: self.symbolQualifiedName_property)
+    model.toMany_symbolQualifiedName_StartsBeingObserved (by: self.symbolQualifiedName_property)
     self.symbolQualifiedName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -467,7 +467,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_symbolTypeName (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.toMany_symbolTypeName_StartsToBeObserved (by: self.symbolTypeName_property)
+    model.toMany_symbolTypeName_StartsBeingObserved (by: self.symbolTypeName_property)
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -507,7 +507,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_unconnectedPins (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
-    model.toMany_unconnectedPins_StartsToBeObserved (by: self.unconnectedPins_property)
+    model.toMany_unconnectedPins_StartsBeingObserved (by: self.unconnectedPins_property)
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {

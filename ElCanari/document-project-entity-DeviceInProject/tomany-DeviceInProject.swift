@@ -60,43 +60,43 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_mDeviceName { // Stored property
-        managedObject.mDeviceName_property.startsToBeObserved (by: relay)
+        managedObject.mDeviceName_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mPrefix { // Stored property
-        managedObject.mPrefix_property.startsToBeObserved (by: relay)
+        managedObject.mPrefix_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mDeviceVersion { // Stored property
-        managedObject.mDeviceVersion_property.startsToBeObserved (by: relay)
+        managedObject.mDeviceVersion_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mDeviceFileData { // Stored property
-        managedObject.mDeviceFileData_property.startsToBeObserved (by: relay)
+        managedObject.mDeviceFileData_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_versionString { // Transient property
-        managedObject.versionString_property.startsToBeObserved (by: relay)
+        managedObject.versionString_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_sizeString { // Transient property
-        managedObject.sizeString_property.startsToBeObserved (by: relay)
+        managedObject.sizeString_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_canExport { // Transient property
-        managedObject.canExport_property.startsToBeObserved (by: relay)
+        managedObject.canExport_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_packageNames { // Transient property
-        managedObject.packageNames_property.startsToBeObserved (by: relay)
+        managedObject.packageNames_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_deviceComponentCountString { // Transient property
-        managedObject.deviceComponentCountString_property.startsToBeObserved (by: relay)
+        managedObject.deviceComponentCountString_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_canRemove { // Transient property
-        managedObject.canRemove_property.startsToBeObserved (by: relay)
+        managedObject.canRemove_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_symbolAndTypesNames { // Transient property
-        managedObject.symbolAndTypesNames_property.startsToBeObserved (by: relay)
+        managedObject.symbolAndTypesNames_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_pinPadAssignments { // Transient property
-        managedObject.pinPadAssignments_property.startsToBeObserved (by: relay)
+        managedObject.pinPadAssignments_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_deviceSymbolDictionary { // Transient property
-        managedObject.deviceSymbolDictionary_property.startsToBeObserved (by: relay)
+        managedObject.deviceSymbolDictionary_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -109,19 +109,19 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_mDeviceName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mDeviceName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mDeviceName {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mDeviceName_property.startsToBeObserved (by: relay)
+        managedObject.mDeviceName_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mDeviceName = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -138,19 +138,19 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_mPrefix_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPrefix_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPrefix {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mPrefix_property.startsToBeObserved (by: relay)
+        managedObject.mPrefix_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mPrefix = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -167,19 +167,19 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_mDeviceVersion_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mDeviceVersion_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mDeviceVersion {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mDeviceVersion_property.startsToBeObserved (by: relay)
+        managedObject.mDeviceVersion_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mDeviceVersion = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -196,19 +196,19 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_mDeviceFileData_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mDeviceFileData_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mDeviceFileData {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mDeviceFileData_property.startsToBeObserved (by: relay)
+        managedObject.mDeviceFileData_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mDeviceFileData = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -225,19 +225,19 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_versionString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_versionString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_versionString {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.versionString_property.startsToBeObserved (by: relay)
+        managedObject.versionString_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_versionString = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -254,19 +254,19 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_sizeString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_sizeString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_sizeString {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.sizeString_property.startsToBeObserved (by: relay)
+        managedObject.sizeString_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_sizeString = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -283,19 +283,19 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_canExport_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_canExport_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_canExport {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.canExport_property.startsToBeObserved (by: relay)
+        managedObject.canExport_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_canExport = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -312,19 +312,19 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_packageNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_packageNames_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_packageNames {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.packageNames_property.startsToBeObserved (by: relay)
+        managedObject.packageNames_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_packageNames = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -341,19 +341,19 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_deviceComponentCountString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_deviceComponentCountString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_deviceComponentCountString {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.deviceComponentCountString_property.startsToBeObserved (by: relay)
+        managedObject.deviceComponentCountString_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_deviceComponentCountString = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -370,19 +370,19 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_canRemove_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_canRemove_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_canRemove {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.canRemove_property.startsToBeObserved (by: relay)
+        managedObject.canRemove_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_canRemove = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -399,19 +399,19 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_symbolAndTypesNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_symbolAndTypesNames_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_symbolAndTypesNames {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.symbolAndTypesNames_property.startsToBeObserved (by: relay)
+        managedObject.symbolAndTypesNames_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_symbolAndTypesNames = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -428,19 +428,19 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_pinPadAssignments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_pinPadAssignments_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_pinPadAssignments {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.pinPadAssignments_property.startsToBeObserved (by: relay)
+        managedObject.pinPadAssignments_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_pinPadAssignments = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -457,19 +457,19 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_deviceSymbolDictionary_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_deviceSymbolDictionary_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_deviceSymbolDictionary {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.deviceSymbolDictionary_property.startsToBeObserved (by: relay)
+        managedObject.deviceSymbolDictionary_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_deviceSymbolDictionary = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································

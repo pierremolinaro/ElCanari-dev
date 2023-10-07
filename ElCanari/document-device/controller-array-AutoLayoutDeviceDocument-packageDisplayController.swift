@@ -39,7 +39,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
     set {
     //--- Add observers to newly selected set
       for object in newValue.subtracting (self.mPrivateSelectedSet).values {
-        object.selectionDisplay_property.startsToBeObserved (by: self.mObjectSelectionObserver)
+        object.selectionDisplay_property.startsBeingObserved (by: self.mObjectSelectionObserver)
       }
     //--- Remove observers to deselected set
       let deselectedSet = self.mPrivateSelectedSet.subtracting (newValue)
@@ -95,7 +95,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
         return .empty
       }
     }
-    self.selectedArray_property.startsToBeObserved (by: self.canBringToFront_property)
+    self.selectedArray_property.startsBeingObserved (by: self.canBringToFront_property)
   //---
     self.canBringToFront_property.mReadModelFunction = { [weak self] in
       if let me = self {
@@ -104,7 +104,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
         return .empty
       }
     }
-    self.selectedArray_property.startsToBeObserved (by: self.canBringToFront_property)
+    self.selectedArray_property.startsBeingObserved (by: self.canBringToFront_property)
   //---
     self.canSendBackward_property.mReadModelFunction = { [weak self] in
       if let me = self {
@@ -113,7 +113,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
         return .empty
       }
     }
-    self.selectedArray_property.startsToBeObserved (by: self.canSendBackward_property)
+    self.selectedArray_property.startsBeingObserved (by: self.canSendBackward_property)
   //---
     self.canSendToBack_property.mReadModelFunction = { [weak self] in
       if let me = self {
@@ -122,7 +122,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
         return .empty
       }
     }
-    self.selectedArray_property.startsToBeObserved (by: self.canSendToBack_property)
+    self.selectedArray_property.startsBeingObserved (by: self.canSendToBack_property)
   //---
     self.canFlipHorizontally_property.mReadModelFunction = { [weak self] in
       if let me = self {
@@ -131,7 +131,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
         return .empty
       }
     }
-    self.selectedArray_property.startsToBeObserved (by: self.canFlipHorizontally_property)
+    self.selectedArray_property.startsBeingObserved (by: self.canFlipHorizontally_property)
   //---
     self.canFlipVertically_property.mReadModelFunction = { [weak self] in
       if let me = self {
@@ -140,7 +140,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
         return .empty
       }
     }
-    self.selectedArray_property.startsToBeObserved (by: self.canFlipVertically_property)
+    self.selectedArray_property.startsBeingObserved (by: self.canFlipVertically_property)
   //---
     self.canRotate90_property.mReadModelFunction = { [weak self] in
       if let me = self {
@@ -149,7 +149,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
         return .empty
       }
     }
-    self.selectedArray_property.startsToBeObserved (by: self.canRotate90_property)
+    self.selectedArray_property.startsBeingObserved (by: self.canRotate90_property)
   }
 
   //····················································································································
@@ -260,7 +260,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
   //····················································································································
 
   private func startObservingSelectionShape () {
-    self.mModel?.toMany_selectionDisplay_StartsToBeObserved (by: self.mObjectSelectionObserver)
+    self.mModel?.toMany_selectionDisplay_StartsBeingObserved (by: self.mObjectSelectionObserver)
     self.mObjectSelectionObserver.mEventCallBack = { [weak self] in self?.computeSelectionShape () }
   }
 
@@ -299,7 +299,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
   //····················································································································
 
   private func startObservingObjectShape () {
-    self.mModel?.toMany_objectDisplay_StartsToBeObserved (by: self.mObjectDisplayObserver)
+    self.mModel?.toMany_objectDisplay_StartsBeingObserved (by: self.mObjectDisplayObserver)
     self.mObjectDisplayObserver.mEventCallBack = { [weak self] in self?.updateObjectDisplay () }
   }
 
@@ -1072,7 +1072,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
   //····················································································································
 
   private func inspectorViewManagerStartsObservingSelection () {
-    self.selectedArray_property.startsToBeObserved (by: self.mInspectorObserver)
+    self.selectedArray_property.startsBeingObserved (by: self.mInspectorObserver)
     self.mInspectorObserver.mEventCallBack = { [weak self] in self?.updateInspectorViews () }
   }
 

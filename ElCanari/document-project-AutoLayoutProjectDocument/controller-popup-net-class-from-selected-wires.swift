@@ -37,9 +37,9 @@ final class CanariPopUpButtonControllerForNetClassFromSelectedWires : EBOutletEv
                        _ inSelection : SelectionController_AutoLayoutProjectDocument_wireInSchematicSelectionController,
                        popUpButton inPopUpButton : NSPopUpButton) {
     self.mArrayModel = inArrayModel
-    inArrayModel.toMany_mNetClassName_StartsToBeObserved (by: self)
+    inArrayModel.toMany_mNetClassName_StartsBeingObserved (by: self)
     self.mSelection = inSelection
-    inSelection.selectedArray_property.toMany_netClassName_StartsToBeObserved (by: self)
+    inSelection.selectedArray_property.toMany_netClassName_StartsBeingObserved (by: self)
     self.mOutlet = inPopUpButton
     self.modelDidChange ()
   }

@@ -48,31 +48,31 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_mNetName { // Stored property
-        managedObject.mNetName_property.startsToBeObserved (by: relay)
+        managedObject.mNetName_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mWarnsExactlyOneLabel { // Stored property
-        managedObject.mWarnsExactlyOneLabel_property.startsToBeObserved (by: relay)
+        managedObject.mWarnsExactlyOneLabel_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_netClassName { // Transient property
-        managedObject.netClassName_property.startsToBeObserved (by: relay)
+        managedObject.netClassName_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_netClassTrackWidth { // Transient property
-        managedObject.netClassTrackWidth_property.startsToBeObserved (by: relay)
+        managedObject.netClassTrackWidth_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_netClassViaHoleDiameter { // Transient property
-        managedObject.netClassViaHoleDiameter_property.startsToBeObserved (by: relay)
+        managedObject.netClassViaHoleDiameter_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_netClassViaPadDiameter { // Transient property
-        managedObject.netClassViaPadDiameter_property.startsToBeObserved (by: relay)
+        managedObject.netClassViaPadDiameter_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_wireColor { // Transient property
-        managedObject.wireColor_property.startsToBeObserved (by: relay)
+        managedObject.wireColor_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_netSchematicPointsInfo { // Transient property
-        managedObject.netSchematicPointsInfo_property.startsToBeObserved (by: relay)
+        managedObject.netSchematicPointsInfo_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_trackCount { // Transient property
-        managedObject.trackCount_property.startsToBeObserved (by: relay)
+        managedObject.trackCount_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -85,19 +85,19 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func toMany_mNetName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mNetName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mNetName {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mNetName_property.startsToBeObserved (by: relay)
+        managedObject.mNetName_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mNetName = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -114,19 +114,19 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func toMany_mWarnsExactlyOneLabel_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWarnsExactlyOneLabel_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWarnsExactlyOneLabel {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mWarnsExactlyOneLabel_property.startsToBeObserved (by: relay)
+        managedObject.mWarnsExactlyOneLabel_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_mWarnsExactlyOneLabel = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -143,19 +143,19 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func toMany_netClassName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netClassName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassName {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.netClassName_property.startsToBeObserved (by: relay)
+        managedObject.netClassName_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_netClassName = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -172,19 +172,19 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func toMany_netClassTrackWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netClassTrackWidth_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassTrackWidth {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.netClassTrackWidth_property.startsToBeObserved (by: relay)
+        managedObject.netClassTrackWidth_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_netClassTrackWidth = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -201,19 +201,19 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func toMany_netClassViaHoleDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netClassViaHoleDiameter_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassViaHoleDiameter {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.netClassViaHoleDiameter_property.startsToBeObserved (by: relay)
+        managedObject.netClassViaHoleDiameter_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_netClassViaHoleDiameter = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -230,19 +230,19 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func toMany_netClassViaPadDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netClassViaPadDiameter_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassViaPadDiameter {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.netClassViaPadDiameter_property.startsToBeObserved (by: relay)
+        managedObject.netClassViaPadDiameter_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_netClassViaPadDiameter = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -259,19 +259,19 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func toMany_wireColor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_wireColor_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_wireColor {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.wireColor_property.startsToBeObserved (by: relay)
+        managedObject.wireColor_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_wireColor = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -288,19 +288,19 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func toMany_netSchematicPointsInfo_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netSchematicPointsInfo_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netSchematicPointsInfo {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.netSchematicPointsInfo_property.startsToBeObserved (by: relay)
+        managedObject.netSchematicPointsInfo_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_netSchematicPointsInfo = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -317,19 +317,19 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func toMany_trackCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_trackCount_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_trackCount {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.trackCount_property.startsToBeObserved (by: relay)
+        managedObject.trackCount_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_trackCount = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································

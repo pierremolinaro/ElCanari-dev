@@ -33,20 +33,20 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mPinName_property.startsToBeObserved (by: self.mPinName_property) // Stored property
-      newValue.mSymbolInstanceName_property.startsToBeObserved (by: self.mSymbolInstanceName_property) // Stored property
-      newValue.mSymbolTypeName_property.startsToBeObserved (by: self.mSymbolTypeName_property) // Stored property
-      newValue.mPinX_property.startsToBeObserved (by: self.mPinX_property) // Stored property
-      newValue.mPinY_property.startsToBeObserved (by: self.mPinY_property) // Stored property
-      newValue.mXName_property.startsToBeObserved (by: self.mXName_property) // Stored property
-      newValue.mYName_property.startsToBeObserved (by: self.mYName_property) // Stored property
-      newValue.mNameHorizontalAlignment_property.startsToBeObserved (by: self.mNameHorizontalAlignment_property) // Stored property
-      newValue.mPinNameIsDisplayedInSchematic_property.startsToBeObserved (by: self.mPinNameIsDisplayedInSchematic_property) // Stored property
-      newValue.mXNumber_property.startsToBeObserved (by: self.mXNumber_property) // Stored property
-      newValue.mYNumber_property.startsToBeObserved (by: self.mYNumber_property) // Stored property
-      newValue.mNumberHorizontalAlignment_property.startsToBeObserved (by: self.mNumberHorizontalAlignment_property) // Stored property
-      newValue.pinQualifiedName_property.startsToBeObserved (by: self.pinQualifiedName_property) // Transient property
-      newValue.descriptor_property.startsToBeObserved (by: self.descriptor_property) // Transient property
+      newValue.mPinName_property.startsBeingObserved (by: self.mPinName_property) // Stored property
+      newValue.mSymbolInstanceName_property.startsBeingObserved (by: self.mSymbolInstanceName_property) // Stored property
+      newValue.mSymbolTypeName_property.startsBeingObserved (by: self.mSymbolTypeName_property) // Stored property
+      newValue.mPinX_property.startsBeingObserved (by: self.mPinX_property) // Stored property
+      newValue.mPinY_property.startsBeingObserved (by: self.mPinY_property) // Stored property
+      newValue.mXName_property.startsBeingObserved (by: self.mXName_property) // Stored property
+      newValue.mYName_property.startsBeingObserved (by: self.mYName_property) // Stored property
+      newValue.mNameHorizontalAlignment_property.startsBeingObserved (by: self.mNameHorizontalAlignment_property) // Stored property
+      newValue.mPinNameIsDisplayedInSchematic_property.startsBeingObserved (by: self.mPinNameIsDisplayedInSchematic_property) // Stored property
+      newValue.mXNumber_property.startsBeingObserved (by: self.mXNumber_property) // Stored property
+      newValue.mYNumber_property.startsBeingObserved (by: self.mYNumber_property) // Stored property
+      newValue.mNumberHorizontalAlignment_property.startsBeingObserved (by: self.mNumberHorizontalAlignment_property) // Stored property
+      newValue.pinQualifiedName_property.startsBeingObserved (by: self.pinQualifiedName_property) // Transient property
+      newValue.descriptor_property.startsBeingObserved (by: self.descriptor_property) // Transient property
     }
   }
 

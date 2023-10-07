@@ -211,7 +211,7 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.startsToBeObserved (by: self.mRoot_none)
+    self.mRoot_property.startsBeingObserved (by: self.mRoot_none)
   //--- To many property: mObjects (has opposite relationship)
     self.mObjects_property.undoManager = inUndoManager
     self.mObjects_property.setOppositeRelationShipFunctions (
@@ -252,9 +252,9 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPoints_property.toMany_status_StartsToBeObserved (by: self.schematicIssues_property)
-    self.mObjects_property.toMany_wires_StartsToBeObserved (by: self.schematicIssues_property)
-    preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.startsToBeObserved (by: self.schematicIssues_property)
+    self.mPoints_property.toMany_status_StartsBeingObserved (by: self.schematicIssues_property)
+    self.mObjects_property.toMany_wires_StartsBeingObserved (by: self.schematicIssues_property)
+    preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.startsBeingObserved (by: self.schematicIssues_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -271,7 +271,7 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.schematicIssues_property.startsToBeObserved (by: self.issues_property)
+    self.schematicIssues_property.startsBeingObserved (by: self.issues_property)
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -291,8 +291,8 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    preferences_connectionColorForSchematic_property.startsToBeObserved (by: self.connectedPoints_property)
-    self.mPoints_property.toMany_connectedPoints_StartsToBeObserved (by: self.connectedPoints_property)
+    preferences_connectionColorForSchematic_property.startsBeingObserved (by: self.connectedPoints_property)
+    self.mPoints_property.toMany_connectedPoints_StartsBeingObserved (by: self.connectedPoints_property)
   //--- Atomic property: schematicConnexionWarnings
     self.schematicConnexionWarnings_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -309,7 +309,7 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.schematicConnexionWarnings_property)
+    self.issues_property.startsBeingObserved (by: self.schematicConnexionWarnings_property)
   //--- Atomic property: schematicConnexionErrors
     self.schematicConnexionErrors_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -326,7 +326,7 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.issues_property.startsToBeObserved (by: self.schematicConnexionErrors_property)
+    self.issues_property.startsBeingObserved (by: self.schematicConnexionErrors_property)
   //--- Atomic property: sheetDescriptor
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -349,8 +349,8 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.sheetGeometry_property.startsToBeObserved (by: self.sheetDescriptor_property)
-    self.mRoot_property.sheetIndexes_property.startsToBeObserved (by: self.sheetDescriptor_property)
+    self.mRoot_property.sheetGeometry_property.startsBeingObserved (by: self.sheetDescriptor_property)
+    self.mRoot_property.sheetIndexes_property.startsBeingObserved (by: self.sheetDescriptor_property)
   //--- Install undoers and opposite setter for relationships
     self.mObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },

@@ -388,7 +388,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawBoardLimits (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawBoardLimits_StartsToBeObserved (by: self.drawBoardLimits_property)
+    model.toMany_drawBoardLimits_StartsBeingObserved (by: self.drawBoardLimits_property)
     self.drawBoardLimits_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -440,7 +440,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawComponentNamesBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawComponentNamesBottomSide_StartsToBeObserved (by: self.drawComponentNamesBottomSide_property)
+    model.toMany_drawComponentNamesBottomSide_StartsBeingObserved (by: self.drawComponentNamesBottomSide_property)
     self.drawComponentNamesBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -492,7 +492,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawComponentNamesTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawComponentNamesTopSide_StartsToBeObserved (by: self.drawComponentNamesTopSide_property)
+    model.toMany_drawComponentNamesTopSide_StartsBeingObserved (by: self.drawComponentNamesTopSide_property)
     self.drawComponentNamesTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -544,7 +544,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawComponentValuesBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawComponentValuesBottomSide_StartsToBeObserved (by: self.drawComponentValuesBottomSide_property)
+    model.toMany_drawComponentValuesBottomSide_StartsBeingObserved (by: self.drawComponentValuesBottomSide_property)
     self.drawComponentValuesBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -596,7 +596,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawComponentValuesTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawComponentValuesTopSide_StartsToBeObserved (by: self.drawComponentValuesTopSide_property)
+    model.toMany_drawComponentValuesTopSide_StartsBeingObserved (by: self.drawComponentValuesTopSide_property)
     self.drawComponentValuesTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -648,7 +648,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawInternalBoardLimits (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawInternalBoardLimits_StartsToBeObserved (by: self.drawInternalBoardLimits_property)
+    model.toMany_drawInternalBoardLimits_StartsBeingObserved (by: self.drawInternalBoardLimits_property)
     self.drawInternalBoardLimits_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -700,7 +700,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawPackageLegendBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawPackageLegendBottomSide_StartsToBeObserved (by: self.drawPackageLegendBottomSide_property)
+    model.toMany_drawPackageLegendBottomSide_StartsBeingObserved (by: self.drawPackageLegendBottomSide_property)
     self.drawPackageLegendBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -752,7 +752,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawPackageLegendTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawPackageLegendTopSide_StartsToBeObserved (by: self.drawPackageLegendTopSide_property)
+    model.toMany_drawPackageLegendTopSide_StartsBeingObserved (by: self.drawPackageLegendTopSide_property)
     self.drawPackageLegendTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -804,7 +804,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawPadHolesInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawPadHolesInPDF_StartsToBeObserved (by: self.drawPadHolesInPDF_property)
+    model.toMany_drawPadHolesInPDF_StartsBeingObserved (by: self.drawPadHolesInPDF_property)
     self.drawPadHolesInPDF_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -856,7 +856,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawPadsBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawPadsBottomSide_StartsToBeObserved (by: self.drawPadsBottomSide_property)
+    model.toMany_drawPadsBottomSide_StartsBeingObserved (by: self.drawPadsBottomSide_property)
     self.drawPadsBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -908,7 +908,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawPadsTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawPadsTopSide_StartsToBeObserved (by: self.drawPadsTopSide_property)
+    model.toMany_drawPadsTopSide_StartsBeingObserved (by: self.drawPadsTopSide_property)
     self.drawPadsTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -960,7 +960,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawTextsLayoutBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawTextsLayoutBottomSide_StartsToBeObserved (by: self.drawTextsLayoutBottomSide_property)
+    model.toMany_drawTextsLayoutBottomSide_StartsBeingObserved (by: self.drawTextsLayoutBottomSide_property)
     self.drawTextsLayoutBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1012,7 +1012,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawTextsLayoutTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawTextsLayoutTopSide_StartsToBeObserved (by: self.drawTextsLayoutTopSide_property)
+    model.toMany_drawTextsLayoutTopSide_StartsBeingObserved (by: self.drawTextsLayoutTopSide_property)
     self.drawTextsLayoutTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1064,7 +1064,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawTextsLegendBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawTextsLegendBottomSide_StartsToBeObserved (by: self.drawTextsLegendBottomSide_property)
+    model.toMany_drawTextsLegendBottomSide_StartsBeingObserved (by: self.drawTextsLegendBottomSide_property)
     self.drawTextsLegendBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1116,7 +1116,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawTextsLegendTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawTextsLegendTopSide_StartsToBeObserved (by: self.drawTextsLegendTopSide_property)
+    model.toMany_drawTextsLegendTopSide_StartsBeingObserved (by: self.drawTextsLegendTopSide_property)
     self.drawTextsLegendTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1168,7 +1168,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawTracksBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawTracksBottomSide_StartsToBeObserved (by: self.drawTracksBottomSide_property)
+    model.toMany_drawTracksBottomSide_StartsBeingObserved (by: self.drawTracksBottomSide_property)
     self.drawTracksBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1220,7 +1220,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawTracksInner1Layer (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawTracksInner1Layer_StartsToBeObserved (by: self.drawTracksInner1Layer_property)
+    model.toMany_drawTracksInner1Layer_StartsBeingObserved (by: self.drawTracksInner1Layer_property)
     self.drawTracksInner1Layer_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1272,7 +1272,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawTracksInner2Layer (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawTracksInner2Layer_StartsToBeObserved (by: self.drawTracksInner2Layer_property)
+    model.toMany_drawTracksInner2Layer_StartsBeingObserved (by: self.drawTracksInner2Layer_property)
     self.drawTracksInner2Layer_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1324,7 +1324,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawTracksInner3Layer (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawTracksInner3Layer_StartsToBeObserved (by: self.drawTracksInner3Layer_property)
+    model.toMany_drawTracksInner3Layer_StartsBeingObserved (by: self.drawTracksInner3Layer_property)
     self.drawTracksInner3Layer_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1376,7 +1376,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawTracksInner4Layer (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawTracksInner4Layer_StartsToBeObserved (by: self.drawTracksInner4Layer_property)
+    model.toMany_drawTracksInner4Layer_StartsBeingObserved (by: self.drawTracksInner4Layer_property)
     self.drawTracksInner4Layer_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1428,7 +1428,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawTracksTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawTracksTopSide_StartsToBeObserved (by: self.drawTracksTopSide_property)
+    model.toMany_drawTracksTopSide_StartsBeingObserved (by: self.drawTracksTopSide_property)
     self.drawTracksTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1480,7 +1480,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawTraversingPads (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawTraversingPads_StartsToBeObserved (by: self.drawTraversingPads_property)
+    model.toMany_drawTraversingPads_StartsBeingObserved (by: self.drawTraversingPads_property)
     self.drawTraversingPads_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1532,7 +1532,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_drawVias (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawVias_StartsToBeObserved (by: self.drawVias_property)
+    model.toMany_drawVias_StartsBeingObserved (by: self.drawVias_property)
     self.drawVias_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1584,7 +1584,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_emptyFileExtensionImage (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_emptyFileExtensionImage_StartsToBeObserved (by: self.emptyFileExtensionImage_property)
+    model.toMany_emptyFileExtensionImage_StartsBeingObserved (by: self.emptyFileExtensionImage_property)
     self.emptyFileExtensionImage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1624,7 +1624,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_fileExtension (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_fileExtension_StartsToBeObserved (by: self.fileExtension_property)
+    model.toMany_fileExtension_StartsBeingObserved (by: self.fileExtension_property)
     self.fileExtension_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1676,7 +1676,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_hasNoData (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_hasNoData_StartsToBeObserved (by: self.hasNoData_property)
+    model.toMany_hasNoData_StartsBeingObserved (by: self.hasNoData_property)
     self.hasNoData_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1716,7 +1716,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_horizontalMirror (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_horizontalMirror_StartsToBeObserved (by: self.horizontalMirror_property)
+    model.toMany_horizontalMirror_StartsBeingObserved (by: self.horizontalMirror_property)
     self.horizontalMirror_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1768,7 +1768,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_measurementUnitForPadHoleInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_measurementUnitForPadHoleInPDF_StartsToBeObserved (by: self.measurementUnitForPadHoleInPDF_property)
+    model.toMany_measurementUnitForPadHoleInPDF_StartsBeingObserved (by: self.measurementUnitForPadHoleInPDF_property)
     self.measurementUnitForPadHoleInPDF_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1820,7 +1820,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_name (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_name_StartsToBeObserved (by: self.name_property)
+    model.toMany_name_StartsBeingObserved (by: self.name_property)
     self.name_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1872,7 +1872,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_padHoleDiameterInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_padHoleDiameterInPDF_StartsToBeObserved (by: self.padHoleDiameterInPDF_property)
+    model.toMany_padHoleDiameterInPDF_StartsBeingObserved (by: self.padHoleDiameterInPDF_property)
     self.padHoleDiameterInPDF_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1924,7 +1924,7 @@ import AppKit
   //···················································································································*
 
   private final func bind_property_parameterStatusImage (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_parameterStatusImage_StartsToBeObserved (by: self.parameterStatusImage_property)
+    model.toMany_parameterStatusImage_StartsBeingObserved (by: self.parameterStatusImage_property)
     self.parameterStatusImage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {

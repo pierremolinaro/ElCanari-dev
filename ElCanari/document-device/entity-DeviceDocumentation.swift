@@ -93,7 +93,7 @@ final class DeviceDocumentation : EBManagedObject,
         return .empty
       }
     }
-    self.mFileData_property.startsToBeObserved (by: self.fileSize_property)
+    self.mFileData_property.startsBeingObserved (by: self.fileSize_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)

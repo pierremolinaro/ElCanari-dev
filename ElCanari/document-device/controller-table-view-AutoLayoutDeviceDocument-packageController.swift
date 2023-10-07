@@ -59,9 +59,9 @@ final class Controller_AutoLayoutDeviceDocument_packageController : NSObject, Au
       inModel,
       sortCallback: { [weak self] (left, right) in self?.isOrderedBefore (left, right) ?? true },
       addSortObserversCallback: { (observer) in
-        inModel.toMany_documentSize_StartsToBeObserved (by: observer)
-        inModel.toMany_mName_StartsToBeObserved (by: observer)
-        inModel.toMany_versionString_StartsToBeObserved (by: observer)
+        inModel.toMany_documentSize_StartsBeingObserved (by: observer)
+        inModel.toMany_mName_StartsBeingObserved (by: observer)
+        inModel.toMany_versionString_StartsBeingObserved (by: observer)
       },
       removeSortObserversCallback: {(observer) in
         inModel.toMany_documentSize_StopsBeingObserved (by: observer)
@@ -143,13 +143,13 @@ final class Controller_AutoLayoutDeviceDocument_packageController : NSObject, Au
 
   override init () {
     super.init ()
-    self.sortedArray_property.startsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'versionString' column
-    self.sortedArray_property.toMany_versionString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_versionString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mName' column
-    self.sortedArray_property.toMany_mName_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mName_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'documentSize' column
-    self.sortedArray_property.toMany_documentSize_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_documentSize_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {

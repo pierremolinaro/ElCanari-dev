@@ -143,7 +143,7 @@ final class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.startsToBeObserved (by: self.mPoint_none)
+    self.mPoint_property.startsBeingObserved (by: self.mPoint_none)
   //--- To one property: mPoint (has opposite to many relationship: mLabels)
     self.mPoint_property.undoManager = inUndoManager
     self.mPoint_property.setOppositeRelationShipFunctions (
@@ -166,7 +166,7 @@ final class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.location_property.startsToBeObserved (by: self.location_property)
+    self.mPoint_property.location_property.startsBeingObserved (by: self.location_property)
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -183,7 +183,7 @@ final class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.netName_property.startsToBeObserved (by: self.netName_property)
+    self.mPoint_property.netName_property.startsBeingObserved (by: self.netName_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -209,10 +209,10 @@ final class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.location_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.netName_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_pinNameFont_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mOrientation_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mPoint_property.location_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.netName_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_pinNameFont_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mOrientation_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -229,7 +229,7 @@ final class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.netClassName_property.startsToBeObserved (by: self.netClassName_property)
+    self.mPoint_property.netClassName_property.startsBeingObserved (by: self.netClassName_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -264,13 +264,13 @@ final class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    preferences_symbolColorForSchematic_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_schematicFrameColor_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mPoint_property.location_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.netName_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_pinNameFont_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mOrientation_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_symbolColorForSchematic_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_schematicFrameColor_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mPoint_property.location_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.netName_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_pinNameFont_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mOrientation_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

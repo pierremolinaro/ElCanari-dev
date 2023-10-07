@@ -59,12 +59,12 @@ final class Controller_AutoLayoutProjectDocument_componentController : NSObject,
       inModel,
       sortCallback: { [weak self] (left, right) in self?.isOrderedBefore (left, right) ?? true },
       addSortObserversCallback: { (observer) in
-        inModel.toMany_componentIsPlacedInBoardString_StartsToBeObserved (by: observer)
-        inModel.toMany_componentName_StartsToBeObserved (by: observer)
-        inModel.toMany_deviceName_StartsToBeObserved (by: observer)
-        inModel.toMany_mComponentValue_StartsToBeObserved (by: observer)
-        inModel.toMany_placementInSchematic_StartsToBeObserved (by: observer)
-        inModel.toMany_selectedPackageName_StartsToBeObserved (by: observer)
+        inModel.toMany_componentIsPlacedInBoardString_StartsBeingObserved (by: observer)
+        inModel.toMany_componentName_StartsBeingObserved (by: observer)
+        inModel.toMany_deviceName_StartsBeingObserved (by: observer)
+        inModel.toMany_mComponentValue_StartsBeingObserved (by: observer)
+        inModel.toMany_placementInSchematic_StartsBeingObserved (by: observer)
+        inModel.toMany_selectedPackageName_StartsBeingObserved (by: observer)
       },
       removeSortObserversCallback: {(observer) in
         inModel.toMany_componentIsPlacedInBoardString_StopsBeingObserved (by: observer)
@@ -149,19 +149,19 @@ final class Controller_AutoLayoutProjectDocument_componentController : NSObject,
 
   override init () {
     super.init ()
-    self.sortedArray_property.startsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'componentName' column
-    self.sortedArray_property.toMany_componentName_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_componentName_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'deviceName' column
-    self.sortedArray_property.toMany_deviceName_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_deviceName_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'selectedPackageName' column
-    self.sortedArray_property.toMany_selectedPackageName_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_selectedPackageName_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mComponentValue' column
-    self.sortedArray_property.toMany_mComponentValue_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mComponentValue_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'placementInSchematic' column
-    self.sortedArray_property.toMany_placementInSchematic_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_placementInSchematic_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'componentIsPlacedInBoardString' column
-    self.sortedArray_property.toMany_componentIsPlacedInBoardString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_componentIsPlacedInBoardString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {

@@ -375,10 +375,10 @@ final class PackageDimension : PackageObject,
         return .empty
       }
     }
-    self.x1_property.startsToBeObserved (by: self.distanceInCanariUnit_property)
-    self.y1_property.startsToBeObserved (by: self.distanceInCanariUnit_property)
-    self.x2_property.startsToBeObserved (by: self.distanceInCanariUnit_property)
-    self.y2_property.startsToBeObserved (by: self.distanceInCanariUnit_property)
+    self.x1_property.startsBeingObserved (by: self.distanceInCanariUnit_property)
+    self.y1_property.startsBeingObserved (by: self.distanceInCanariUnit_property)
+    self.x2_property.startsBeingObserved (by: self.distanceInCanariUnit_property)
+    self.y2_property.startsBeingObserved (by: self.distanceInCanariUnit_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -428,18 +428,18 @@ final class PackageDimension : PackageObject,
         return .empty
       }
     }
-    self.x1_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.y1_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.x2_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.y2_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.xDimension_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.yDimension_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.distanceInCanariUnit_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.distanceUnit_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_dimensionFont_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.drawDimensionBackground_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_packageBackgroundColor_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_packageDimensionColor_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.x1_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.y1_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.x2_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.y2_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.xDimension_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.yDimension_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.distanceInCanariUnit_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.distanceUnit_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_dimensionFont_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.drawDimensionBackground_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_packageBackgroundColor_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_packageDimensionColor_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -492,19 +492,19 @@ final class PackageDimension : PackageObject,
         return .empty
       }
     }
-    self.x1_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.y1_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.x2_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.y2_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_packageBackgroundColor_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_packageDimensionColor_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.drawDimensionBackground_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.xDimension_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.yDimension_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.distanceInCanariUnit_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.distanceUnit_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_dimensionFont_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.knobSize_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.x1_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.y1_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.x2_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.y2_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_packageBackgroundColor_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_packageDimensionColor_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.drawDimensionBackground_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.xDimension_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.yDimension_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.distanceInCanariUnit_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.distanceUnit_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_dimensionFont_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.knobSize_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -530,10 +530,10 @@ final class PackageDimension : PackageObject,
         return .empty
       }
     }
-    self.x1_property.startsToBeObserved (by: self.issues_property)
-    self.y1_property.startsToBeObserved (by: self.issues_property)
-    self.x2_property.startsToBeObserved (by: self.issues_property)
-    self.y2_property.startsToBeObserved (by: self.issues_property)
+    self.x1_property.startsBeingObserved (by: self.issues_property)
+    self.y1_property.startsBeingObserved (by: self.issues_property)
+    self.x2_property.startsBeingObserved (by: self.issues_property)
+    self.y2_property.startsBeingObserved (by: self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.distanceUnit_property.setSignatureObserver (observer: self)

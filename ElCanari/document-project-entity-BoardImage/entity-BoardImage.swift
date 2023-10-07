@@ -583,9 +583,9 @@ final class BoardImage : BoardObject,
       }
     }
     self.computedDataImage_property.mWriteModelFunction = { [weak self] in self?.compute_computedDataImage_property ($0) }
-    self.mImageData_property.startsToBeObserved (by: self.computedDataImage_property)
-    self.mScale_property.startsToBeObserved (by: self.computedDataImage_property)
-    self.mImageDisplay_property.startsToBeObserved (by: self.computedDataImage_property)
+    self.mImageData_property.startsBeingObserved (by: self.computedDataImage_property)
+    self.mScale_property.startsBeingObserved (by: self.computedDataImage_property)
+    self.mImageDisplay_property.startsBeingObserved (by: self.computedDataImage_property)
   //--- Atomic property: imageDataByteCount
     self.imageDataByteCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -602,7 +602,7 @@ final class BoardImage : BoardObject,
         return .empty
       }
     }
-    self.mImageData_property.startsToBeObserved (by: self.imageDataByteCount_property)
+    self.mImageData_property.startsBeingObserved (by: self.imageDataByteCount_property)
   //--- Atomic property: boardImageCodeDescriptor
     self.boardImageCodeDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -634,12 +634,12 @@ final class BoardImage : BoardObject,
         return .empty
       }
     }
-    self.mImageData_property.startsToBeObserved (by: self.boardImageCodeDescriptor_property)
-    self.mThreshold_property.startsToBeObserved (by: self.boardImageCodeDescriptor_property)
-    self.mInvert_property.startsToBeObserved (by: self.boardImageCodeDescriptor_property)
-    self.mScale_property.startsToBeObserved (by: self.boardImageCodeDescriptor_property)
-    self.mHorizontalFlip_property.startsToBeObserved (by: self.boardImageCodeDescriptor_property)
-    self.mVerticalFlip_property.startsToBeObserved (by: self.boardImageCodeDescriptor_property)
+    self.mImageData_property.startsBeingObserved (by: self.boardImageCodeDescriptor_property)
+    self.mThreshold_property.startsBeingObserved (by: self.boardImageCodeDescriptor_property)
+    self.mInvert_property.startsBeingObserved (by: self.boardImageCodeDescriptor_property)
+    self.mScale_property.startsBeingObserved (by: self.boardImageCodeDescriptor_property)
+    self.mHorizontalFlip_property.startsBeingObserved (by: self.boardImageCodeDescriptor_property)
+    self.mVerticalFlip_property.startsBeingObserved (by: self.boardImageCodeDescriptor_property)
   //--- Atomic property: boardOriginalImageWidth
     self.boardOriginalImageWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -656,7 +656,7 @@ final class BoardImage : BoardObject,
         return .empty
       }
     }
-    self.boardImageCodeDescriptor_property.startsToBeObserved (by: self.boardOriginalImageWidth_property)
+    self.boardImageCodeDescriptor_property.startsBeingObserved (by: self.boardOriginalImageWidth_property)
   //--- Atomic property: boardOriginalImageHeight
     self.boardOriginalImageHeight_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -673,7 +673,7 @@ final class BoardImage : BoardObject,
         return .empty
       }
     }
-    self.boardImageCodeDescriptor_property.startsToBeObserved (by: self.boardOriginalImageHeight_property)
+    self.boardImageCodeDescriptor_property.startsBeingObserved (by: self.boardOriginalImageHeight_property)
   //--- Atomic property: boardScaledImageWidth
     self.boardScaledImageWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -690,7 +690,7 @@ final class BoardImage : BoardObject,
         return .empty
       }
     }
-    self.boardImageCodeDescriptor_property.startsToBeObserved (by: self.boardScaledImageWidth_property)
+    self.boardImageCodeDescriptor_property.startsBeingObserved (by: self.boardScaledImageWidth_property)
   //--- Atomic property: boardScaledImageHeight
     self.boardScaledImageHeight_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -707,7 +707,7 @@ final class BoardImage : BoardObject,
         return .empty
       }
     }
-    self.boardImageCodeDescriptor_property.startsToBeObserved (by: self.boardScaledImageHeight_property)
+    self.boardImageCodeDescriptor_property.startsBeingObserved (by: self.boardScaledImageHeight_property)
   //--- Atomic property: boardActualImageWidth
     self.boardActualImageWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -727,8 +727,8 @@ final class BoardImage : BoardObject,
         return .empty
       }
     }
-    self.boardImageCodeDescriptor_property.startsToBeObserved (by: self.boardActualImageWidth_property)
-    self.mPixelSize_property.startsToBeObserved (by: self.boardActualImageWidth_property)
+    self.boardImageCodeDescriptor_property.startsBeingObserved (by: self.boardActualImageWidth_property)
+    self.mPixelSize_property.startsBeingObserved (by: self.boardActualImageWidth_property)
   //--- Atomic property: boardActualImageHeight
     self.boardActualImageHeight_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -748,8 +748,8 @@ final class BoardImage : BoardObject,
         return .empty
       }
     }
-    self.boardImageCodeDescriptor_property.startsToBeObserved (by: self.boardActualImageHeight_property)
-    self.mPixelSize_property.startsToBeObserved (by: self.boardActualImageHeight_property)
+    self.boardImageCodeDescriptor_property.startsBeingObserved (by: self.boardActualImageHeight_property)
+    self.mPixelSize_property.startsBeingObserved (by: self.boardActualImageHeight_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -805,16 +805,16 @@ final class BoardImage : BoardObject,
         return .empty
       }
     }
-    self.mCenterX_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mCenterY_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.boardImageCodeDescriptor_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mLayer_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mRotation_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.mPixelSize_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayFrontLegendForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayBackLegendForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_frontSideLegendColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_backSideLegendColorForBoard_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.mCenterX_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mCenterY_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.boardImageCodeDescriptor_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mLayer_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mRotation_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mPixelSize_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayFrontLegendForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayBackLegendForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_frontSideLegendColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_backSideLegendColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -858,16 +858,16 @@ final class BoardImage : BoardObject,
         return .empty
       }
     }
-    self.mCenterX_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mCenterY_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.boardImageCodeDescriptor_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mLayer_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mRotation_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.mPixelSize_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_frontSideLegendColorForBoard_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_backSideLegendColorForBoard_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_hiliteWidthMultipliedByTen_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_mShowTextRotationKnobInBoard_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mCenterX_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mCenterY_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.boardImageCodeDescriptor_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mLayer_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mRotation_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mPixelSize_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_frontSideLegendColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_backSideLegendColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_hiliteWidthMultipliedByTen_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_mShowTextRotationKnobInBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -896,11 +896,11 @@ final class BoardImage : BoardObject,
         return .empty
       }
     }
-    self.mLayer_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mCenterX_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mCenterY_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mImageData_property.startsToBeObserved (by: self.signatureForERCChecking_property)
-    self.mRotation_property.startsToBeObserved (by: self.signatureForERCChecking_property)
+    self.mLayer_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mCenterX_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mCenterY_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mImageData_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mRotation_property.startsBeingObserved (by: self.signatureForERCChecking_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

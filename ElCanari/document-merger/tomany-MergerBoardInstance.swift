@@ -45,28 +45,28 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_x { // Stored property
-        managedObject.x_property.startsToBeObserved (by: relay)
+        managedObject.x_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_y { // Stored property
-        managedObject.y_property.startsToBeObserved (by: relay)
+        managedObject.y_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_instanceRotation { // Stored property
-        managedObject.instanceRotation_property.startsToBeObserved (by: relay)
+        managedObject.instanceRotation_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_instanceRect { // Transient property
-        managedObject.instanceRect_property.startsToBeObserved (by: relay)
+        managedObject.instanceRect_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_modelName { // Transient property
-        managedObject.modelName_property.startsToBeObserved (by: relay)
+        managedObject.modelName_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_boardLimitWidth { // Transient property
-        managedObject.boardLimitWidth_property.startsToBeObserved (by: relay)
+        managedObject.boardLimitWidth_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_selectionDisplay { // Transient property
-        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+        managedObject.selectionDisplay_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_objectDisplay { // Transient property
-        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -79,19 +79,19 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  final func toMany_x_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_x {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.x_property.startsToBeObserved (by: relay)
+        managedObject.x_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_x = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -108,19 +108,19 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  final func toMany_y_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_y {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.y_property.startsToBeObserved (by: relay)
+        managedObject.y_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_y = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -137,19 +137,19 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  final func toMany_instanceRotation_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_instanceRotation_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_instanceRotation {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.instanceRotation_property.startsToBeObserved (by: relay)
+        managedObject.instanceRotation_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_instanceRotation = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -166,19 +166,19 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  final func toMany_instanceRect_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_instanceRect_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_instanceRect {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.instanceRect_property.startsToBeObserved (by: relay)
+        managedObject.instanceRect_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_instanceRect = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -195,19 +195,19 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  final func toMany_modelName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_modelName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_modelName {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.modelName_property.startsToBeObserved (by: relay)
+        managedObject.modelName_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_modelName = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -224,19 +224,19 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  final func toMany_boardLimitWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardLimitWidth_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_boardLimitWidth {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.boardLimitWidth_property.startsToBeObserved (by: relay)
+        managedObject.boardLimitWidth_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_boardLimitWidth = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -253,19 +253,19 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+        managedObject.selectionDisplay_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_selectionDisplay = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -282,19 +282,19 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_objectDisplay = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································

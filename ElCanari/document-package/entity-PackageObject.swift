@@ -103,7 +103,7 @@ class PackageObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.startsToBeObserved (by: self.mRoot_none)
+    self.mRoot_property.startsBeingObserved (by: self.mRoot_none)
   //--- To one property: mRoot (has opposite to many relationship: packageObjects)
     self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -126,7 +126,7 @@ class PackageObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.knobSizeMultpliedByTen_property.startsToBeObserved (by: self.knobSize_property)
+    self.mRoot_property.knobSizeMultpliedByTen_property.startsBeingObserved (by: self.knobSize_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

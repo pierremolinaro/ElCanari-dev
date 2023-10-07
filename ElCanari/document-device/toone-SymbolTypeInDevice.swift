@@ -34,20 +34,20 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mTypeName_property.startsToBeObserved (by: self.mTypeName_property) // Stored property
-      newValue.mVersion_property.startsToBeObserved (by: self.mVersion_property) // Stored property
-      newValue.mFileData_property.startsToBeObserved (by: self.mFileData_property) // Stored property
-      newValue.mStrokeBezierPath_property.startsToBeObserved (by: self.mStrokeBezierPath_property) // Stored property
-      newValue.mFilledBezierPath_property.startsToBeObserved (by: self.mFilledBezierPath_property) // Stored property
-      newValue.versionString_property.startsToBeObserved (by: self.versionString_property) // Transient property
-      newValue.instanceCount_property.startsToBeObserved (by: self.instanceCount_property) // Transient property
-      newValue.documentSize_property.startsToBeObserved (by: self.documentSize_property) // Transient property
-      newValue.pinNameShape_property.startsToBeObserved (by: self.pinNameShape_property) // Transient property
+      newValue.mTypeName_property.startsBeingObserved (by: self.mTypeName_property) // Stored property
+      newValue.mVersion_property.startsBeingObserved (by: self.mVersion_property) // Stored property
+      newValue.mFileData_property.startsBeingObserved (by: self.mFileData_property) // Stored property
+      newValue.mStrokeBezierPath_property.startsBeingObserved (by: self.mStrokeBezierPath_property) // Stored property
+      newValue.mFilledBezierPath_property.startsBeingObserved (by: self.mFilledBezierPath_property) // Stored property
+      newValue.versionString_property.startsBeingObserved (by: self.versionString_property) // Transient property
+      newValue.instanceCount_property.startsBeingObserved (by: self.instanceCount_property) // Transient property
+      newValue.documentSize_property.startsBeingObserved (by: self.documentSize_property) // Transient property
+      newValue.pinNameShape_property.startsBeingObserved (by: self.pinNameShape_property) // Transient property
       if let relay = self.mObserversOf_mInstances { // to Many
-        newValue.mInstances_property.startsToBeObserved (by: relay)
+        newValue.mInstances_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mPinTypes { // to Many
-        newValue.mPinTypes_property.startsToBeObserved (by: relay)
+        newValue.mPinTypes_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -114,16 +114,16 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
 
   //····················································································································
 
-  final func toMany_mInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mInstances_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mInstances {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mInstances_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mInstances_property.startsBeingObserved (by: relay)
       self.mObserversOf_mInstances = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -140,16 +140,16 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
 
   //····················································································································
 
-  final func toMany_mPinTypes_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPinTypes_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPinTypes {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mPinTypes_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mPinTypes_property.startsBeingObserved (by: relay)
       self.mObserversOf_mPinTypes = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

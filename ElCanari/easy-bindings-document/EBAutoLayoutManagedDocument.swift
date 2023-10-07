@@ -269,7 +269,7 @@ class EBAutoLayoutManagedDocument : NSDocument {
       self.mSignatureObserver.setRootObject (self.mRootObject)
     //--- Version did change observer
       self.mVersionShouldChangeObserver.setSignatureObserverAndUndoManager (self.mSignatureObserver, self.undoManager)
-      self.mSignatureObserver.startsToBeObserved (by: self.mVersionShouldChangeObserver)
+      self.mSignatureObserver.startsBeingObserved (by: self.mVersionShouldChangeObserver)
     //--- Create the window and set the content view
       let s = self.windowDefaultSize ()
       let windowWidth  = (self.mMetadataDictionary [WINDOW_WIDTH_METADATADICTIONARY_KEY] as? CGFloat) ?? s.width

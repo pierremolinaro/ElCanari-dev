@@ -486,16 +486,16 @@ final class PackageZone : PackageObject,
         return .empty
       }
     }
-    self.x_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.y_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.width_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.height_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.xName_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.yName_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.zoneName_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_padZoneFont_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_padZoneColor_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.displayZoneName_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.x_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.y_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.width_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.height_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.xName_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.yName_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.zoneName_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_padZoneFont_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_padZoneColor_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayZoneName_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -530,13 +530,13 @@ final class PackageZone : PackageObject,
         return .empty
       }
     }
-    self.x_property.startsToBeObserved (by: self.issues_property)
-    self.y_property.startsToBeObserved (by: self.issues_property)
-    self.width_property.startsToBeObserved (by: self.issues_property)
-    self.height_property.startsToBeObserved (by: self.issues_property)
-    self.xName_property.startsToBeObserved (by: self.issues_property)
-    self.yName_property.startsToBeObserved (by: self.issues_property)
-    self.zoneName_property.startsToBeObserved (by: self.issues_property)
+    self.x_property.startsBeingObserved (by: self.issues_property)
+    self.y_property.startsBeingObserved (by: self.issues_property)
+    self.width_property.startsBeingObserved (by: self.issues_property)
+    self.height_property.startsBeingObserved (by: self.issues_property)
+    self.xName_property.startsBeingObserved (by: self.issues_property)
+    self.yName_property.startsBeingObserved (by: self.issues_property)
+    self.zoneName_property.startsBeingObserved (by: self.issues_property)
   //--- Atomic property: rect
     self.rect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -562,10 +562,10 @@ final class PackageZone : PackageObject,
         return .empty
       }
     }
-    self.x_property.startsToBeObserved (by: self.rect_property)
-    self.y_property.startsToBeObserved (by: self.rect_property)
-    self.width_property.startsToBeObserved (by: self.rect_property)
-    self.height_property.startsToBeObserved (by: self.rect_property)
+    self.x_property.startsBeingObserved (by: self.rect_property)
+    self.y_property.startsBeingObserved (by: self.rect_property)
+    self.width_property.startsBeingObserved (by: self.rect_property)
+    self.height_property.startsBeingObserved (by: self.rect_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -615,18 +615,18 @@ final class PackageZone : PackageObject,
         return .empty
       }
     }
-    self.x_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.y_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.width_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.height_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.xName_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.yName_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.zoneName_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_padZoneFont_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_packageBackgroundColor_property.startsToBeObserved (by: self.selectionDisplay_property)
-    preferences_padZoneColor_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.knobSize_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.displayZoneName_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.x_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.y_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.width_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.height_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.xName_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.yName_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.zoneName_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_padZoneFont_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_packageBackgroundColor_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_padZoneColor_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.knobSize_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.displayZoneName_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: forbiddenPadArray
     self.forbiddenPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -643,7 +643,7 @@ final class PackageZone : PackageObject,
         return .empty
       }
     }
-    self.forbiddenPadNumbers_property.toMany_padNumber_StartsToBeObserved (by: self.forbiddenPadArray_property)
+    self.forbiddenPadNumbers_property.toMany_padNumber_StartsBeingObserved (by: self.forbiddenPadArray_property)
   //--- Atomic property: emptyForbiddenPadArray
     self.emptyForbiddenPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -660,7 +660,7 @@ final class PackageZone : PackageObject,
         return .empty
       }
     }
-    self.forbiddenPadNumbers_property.startsToBeObserved (by: self.emptyForbiddenPadArray_property)
+    self.forbiddenPadNumbers_property.startsBeingObserved (by: self.emptyForbiddenPadArray_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.forbiddenPadNumbers_property.setSignatureObserver (observer: self)

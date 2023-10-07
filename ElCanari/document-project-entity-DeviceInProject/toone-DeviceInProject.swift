@@ -44,30 +44,30 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mDeviceName_property.startsToBeObserved (by: self.mDeviceName_property) // Stored property
-      newValue.mPrefix_property.startsToBeObserved (by: self.mPrefix_property) // Stored property
-      newValue.mDeviceVersion_property.startsToBeObserved (by: self.mDeviceVersion_property) // Stored property
-      newValue.mDeviceFileData_property.startsToBeObserved (by: self.mDeviceFileData_property) // Stored property
-      newValue.versionString_property.startsToBeObserved (by: self.versionString_property) // Transient property
-      newValue.sizeString_property.startsToBeObserved (by: self.sizeString_property) // Transient property
-      newValue.canExport_property.startsToBeObserved (by: self.canExport_property) // Transient property
-      newValue.packageNames_property.startsToBeObserved (by: self.packageNames_property) // Transient property
-      newValue.deviceComponentCountString_property.startsToBeObserved (by: self.deviceComponentCountString_property) // Transient property
-      newValue.canRemove_property.startsToBeObserved (by: self.canRemove_property) // Transient property
-      newValue.symbolAndTypesNames_property.startsToBeObserved (by: self.symbolAndTypesNames_property) // Transient property
-      newValue.pinPadAssignments_property.startsToBeObserved (by: self.pinPadAssignments_property) // Transient property
-      newValue.deviceSymbolDictionary_property.startsToBeObserved (by: self.deviceSymbolDictionary_property) // Transient property
+      newValue.mDeviceName_property.startsBeingObserved (by: self.mDeviceName_property) // Stored property
+      newValue.mPrefix_property.startsBeingObserved (by: self.mPrefix_property) // Stored property
+      newValue.mDeviceVersion_property.startsBeingObserved (by: self.mDeviceVersion_property) // Stored property
+      newValue.mDeviceFileData_property.startsBeingObserved (by: self.mDeviceFileData_property) // Stored property
+      newValue.versionString_property.startsBeingObserved (by: self.versionString_property) // Transient property
+      newValue.sizeString_property.startsBeingObserved (by: self.sizeString_property) // Transient property
+      newValue.canExport_property.startsBeingObserved (by: self.canExport_property) // Transient property
+      newValue.packageNames_property.startsBeingObserved (by: self.packageNames_property) // Transient property
+      newValue.deviceComponentCountString_property.startsBeingObserved (by: self.deviceComponentCountString_property) // Transient property
+      newValue.canRemove_property.startsBeingObserved (by: self.canRemove_property) // Transient property
+      newValue.symbolAndTypesNames_property.startsBeingObserved (by: self.symbolAndTypesNames_property) // Transient property
+      newValue.pinPadAssignments_property.startsBeingObserved (by: self.pinPadAssignments_property) // Transient property
+      newValue.deviceSymbolDictionary_property.startsBeingObserved (by: self.deviceSymbolDictionary_property) // Transient property
       if let relay = self.mObserversOf_mPackages { // to Many
-        newValue.mPackages_property.startsToBeObserved (by: relay)
+        newValue.mPackages_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mSymbols { // to Many
-        newValue.mSymbols_property.startsToBeObserved (by: relay)
+        newValue.mSymbols_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mComponents { // to Many
-        newValue.mComponents_property.startsToBeObserved (by: relay)
+        newValue.mComponents_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mPadAssignments { // to Many
-        newValue.mPadAssignments_property.startsToBeObserved (by: relay)
+        newValue.mPadAssignments_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -158,16 +158,16 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_mPackages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPackages_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPackages {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mPackages_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mPackages_property.startsBeingObserved (by: relay)
       self.mObserversOf_mPackages = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -184,16 +184,16 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_mSymbols_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSymbols_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSymbols {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mSymbols_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mSymbols_property.startsBeingObserved (by: relay)
       self.mObserversOf_mSymbols = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -210,16 +210,16 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_mComponents_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mComponents_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mComponents {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mComponents_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mComponents_property.startsBeingObserved (by: relay)
       self.mObserversOf_mComponents = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -236,16 +236,16 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func toMany_mPadAssignments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPadAssignments_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPadAssignments {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mPadAssignments_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mPadAssignments_property.startsBeingObserved (by: relay)
       self.mObserversOf_mPadAssignments = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

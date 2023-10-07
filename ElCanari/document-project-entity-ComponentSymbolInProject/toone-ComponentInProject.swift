@@ -71,57 +71,57 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mSlavePadsShouldBeRouted_property.startsToBeObserved (by: self.mSlavePadsShouldBeRouted_property) // Stored property
-      newValue.mX_property.startsToBeObserved (by: self.mX_property) // Stored property
-      newValue.mY_property.startsToBeObserved (by: self.mY_property) // Stored property
-      newValue.mRotation_property.startsToBeObserved (by: self.mRotation_property) // Stored property
-      newValue.mSide_property.startsToBeObserved (by: self.mSide_property) // Stored property
-      newValue.mDisplayLegend_property.startsToBeObserved (by: self.mDisplayLegend_property) // Stored property
-      newValue.mNameIsVisibleInBoard_property.startsToBeObserved (by: self.mNameIsVisibleInBoard_property) // Stored property
-      newValue.mXName_property.startsToBeObserved (by: self.mXName_property) // Stored property
-      newValue.mYName_property.startsToBeObserved (by: self.mYName_property) // Stored property
-      newValue.mNameFontSize_property.startsToBeObserved (by: self.mNameFontSize_property) // Stored property
-      newValue.mNameRotation_property.startsToBeObserved (by: self.mNameRotation_property) // Stored property
-      newValue.mValueIsVisibleInBoard_property.startsToBeObserved (by: self.mValueIsVisibleInBoard_property) // Stored property
-      newValue.mXValue_property.startsToBeObserved (by: self.mXValue_property) // Stored property
-      newValue.mYValue_property.startsToBeObserved (by: self.mYValue_property) // Stored property
-      newValue.mValueFontSize_property.startsToBeObserved (by: self.mValueFontSize_property) // Stored property
-      newValue.mValueRotation_property.startsToBeObserved (by: self.mValueRotation_property) // Stored property
-      newValue.mComponentValue_property.startsToBeObserved (by: self.mComponentValue_property) // Stored property
-      newValue.mNamePrefix_property.startsToBeObserved (by: self.mNamePrefix_property) // Stored property
-      newValue.mNameIndex_property.startsToBeObserved (by: self.mNameIndex_property) // Stored property
-      newValue.mXUnit_property.startsToBeObserved (by: self.mXUnit_property) // Stored property
-      newValue.mYUnit_property.startsToBeObserved (by: self.mYUnit_property) // Stored property
-      newValue.mXNameUnit_property.startsToBeObserved (by: self.mXNameUnit_property) // Stored property
-      newValue.mYNameUnit_property.startsToBeObserved (by: self.mYNameUnit_property) // Stored property
-      newValue.mXValueUnit_property.startsToBeObserved (by: self.mXValueUnit_property) // Stored property
-      newValue.mYValueUnit_property.startsToBeObserved (by: self.mYValueUnit_property) // Stored property
-      newValue.deviceName_property.startsToBeObserved (by: self.deviceName_property) // Transient property
-      newValue.signatureForERCChecking_property.startsToBeObserved (by: self.signatureForERCChecking_property) // Transient property
-      newValue.packagePadDictionary_property.startsToBeObserved (by: self.packagePadDictionary_property) // Transient property
-      newValue.selectedPackageName_property.startsToBeObserved (by: self.selectedPackageName_property) // Transient property
-      newValue.availablePackages_property.startsToBeObserved (by: self.availablePackages_property) // Transient property
-      newValue.issues_property.startsToBeObserved (by: self.issues_property) // Transient property
-      newValue.componentIsPlacedInBoard_property.startsToBeObserved (by: self.componentIsPlacedInBoard_property) // Transient property
-      newValue.componentIsPlacedInBoardString_property.startsToBeObserved (by: self.componentIsPlacedInBoardString_property) // Transient property
-      newValue.strokeBezierPath_property.startsToBeObserved (by: self.strokeBezierPath_property) // Transient property
-      newValue.pinPadAssignments_property.startsToBeObserved (by: self.pinPadAssignments_property) // Transient property
-      newValue.hasSlavePads_property.startsToBeObserved (by: self.hasSlavePads_property) // Transient property
-      newValue.placementInSchematic_property.startsToBeObserved (by: self.placementInSchematic_property) // Transient property
-      newValue.deviceSymbolDictionary_property.startsToBeObserved (by: self.deviceSymbolDictionary_property) // Transient property
-      newValue.componentNameFontName_property.startsToBeObserved (by: self.componentNameFontName_property) // Transient property
-      newValue.componentValueFontName_property.startsToBeObserved (by: self.componentValueFontName_property) // Transient property
-      newValue.componentPadDictionary_property.startsToBeObserved (by: self.componentPadDictionary_property) // Transient property
-      newValue.padNetDictionary_property.startsToBeObserved (by: self.padNetDictionary_property) // Transient property
-      newValue.componentName_property.startsToBeObserved (by: self.componentName_property) // Transient property
-      newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
-      newValue.unplacedSymbols_property.startsToBeObserved (by: self.unplacedSymbols_property) // Transient property
-      newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
+      newValue.mSlavePadsShouldBeRouted_property.startsBeingObserved (by: self.mSlavePadsShouldBeRouted_property) // Stored property
+      newValue.mX_property.startsBeingObserved (by: self.mX_property) // Stored property
+      newValue.mY_property.startsBeingObserved (by: self.mY_property) // Stored property
+      newValue.mRotation_property.startsBeingObserved (by: self.mRotation_property) // Stored property
+      newValue.mSide_property.startsBeingObserved (by: self.mSide_property) // Stored property
+      newValue.mDisplayLegend_property.startsBeingObserved (by: self.mDisplayLegend_property) // Stored property
+      newValue.mNameIsVisibleInBoard_property.startsBeingObserved (by: self.mNameIsVisibleInBoard_property) // Stored property
+      newValue.mXName_property.startsBeingObserved (by: self.mXName_property) // Stored property
+      newValue.mYName_property.startsBeingObserved (by: self.mYName_property) // Stored property
+      newValue.mNameFontSize_property.startsBeingObserved (by: self.mNameFontSize_property) // Stored property
+      newValue.mNameRotation_property.startsBeingObserved (by: self.mNameRotation_property) // Stored property
+      newValue.mValueIsVisibleInBoard_property.startsBeingObserved (by: self.mValueIsVisibleInBoard_property) // Stored property
+      newValue.mXValue_property.startsBeingObserved (by: self.mXValue_property) // Stored property
+      newValue.mYValue_property.startsBeingObserved (by: self.mYValue_property) // Stored property
+      newValue.mValueFontSize_property.startsBeingObserved (by: self.mValueFontSize_property) // Stored property
+      newValue.mValueRotation_property.startsBeingObserved (by: self.mValueRotation_property) // Stored property
+      newValue.mComponentValue_property.startsBeingObserved (by: self.mComponentValue_property) // Stored property
+      newValue.mNamePrefix_property.startsBeingObserved (by: self.mNamePrefix_property) // Stored property
+      newValue.mNameIndex_property.startsBeingObserved (by: self.mNameIndex_property) // Stored property
+      newValue.mXUnit_property.startsBeingObserved (by: self.mXUnit_property) // Stored property
+      newValue.mYUnit_property.startsBeingObserved (by: self.mYUnit_property) // Stored property
+      newValue.mXNameUnit_property.startsBeingObserved (by: self.mXNameUnit_property) // Stored property
+      newValue.mYNameUnit_property.startsBeingObserved (by: self.mYNameUnit_property) // Stored property
+      newValue.mXValueUnit_property.startsBeingObserved (by: self.mXValueUnit_property) // Stored property
+      newValue.mYValueUnit_property.startsBeingObserved (by: self.mYValueUnit_property) // Stored property
+      newValue.deviceName_property.startsBeingObserved (by: self.deviceName_property) // Transient property
+      newValue.signatureForERCChecking_property.startsBeingObserved (by: self.signatureForERCChecking_property) // Transient property
+      newValue.packagePadDictionary_property.startsBeingObserved (by: self.packagePadDictionary_property) // Transient property
+      newValue.selectedPackageName_property.startsBeingObserved (by: self.selectedPackageName_property) // Transient property
+      newValue.availablePackages_property.startsBeingObserved (by: self.availablePackages_property) // Transient property
+      newValue.issues_property.startsBeingObserved (by: self.issues_property) // Transient property
+      newValue.componentIsPlacedInBoard_property.startsBeingObserved (by: self.componentIsPlacedInBoard_property) // Transient property
+      newValue.componentIsPlacedInBoardString_property.startsBeingObserved (by: self.componentIsPlacedInBoardString_property) // Transient property
+      newValue.strokeBezierPath_property.startsBeingObserved (by: self.strokeBezierPath_property) // Transient property
+      newValue.pinPadAssignments_property.startsBeingObserved (by: self.pinPadAssignments_property) // Transient property
+      newValue.hasSlavePads_property.startsBeingObserved (by: self.hasSlavePads_property) // Transient property
+      newValue.placementInSchematic_property.startsBeingObserved (by: self.placementInSchematic_property) // Transient property
+      newValue.deviceSymbolDictionary_property.startsBeingObserved (by: self.deviceSymbolDictionary_property) // Transient property
+      newValue.componentNameFontName_property.startsBeingObserved (by: self.componentNameFontName_property) // Transient property
+      newValue.componentValueFontName_property.startsBeingObserved (by: self.componentValueFontName_property) // Transient property
+      newValue.componentPadDictionary_property.startsBeingObserved (by: self.componentPadDictionary_property) // Transient property
+      newValue.padNetDictionary_property.startsBeingObserved (by: self.padNetDictionary_property) // Transient property
+      newValue.componentName_property.startsBeingObserved (by: self.componentName_property) // Transient property
+      newValue.selectionDisplay_property.startsBeingObserved (by: self.selectionDisplay_property) // Transient property
+      newValue.unplacedSymbols_property.startsBeingObserved (by: self.unplacedSymbols_property) // Transient property
+      newValue.objectDisplay_property.startsBeingObserved (by: self.objectDisplay_property) // Transient property
       if let relay = self.mObserversOf_mConnectors { // to Many
-        newValue.mConnectors_property.startsToBeObserved (by: relay)
+        newValue.mConnectors_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mSymbols { // to Many
-        newValue.mSymbols_property.startsToBeObserved (by: relay)
+        newValue.mSymbols_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -410,16 +410,16 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func toMany_mConnectors_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mConnectors_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mConnectors {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mConnectors_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mConnectors_property.startsBeingObserved (by: relay)
       self.mObserversOf_mConnectors = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -436,16 +436,16 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func toMany_mSymbols_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSymbols_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSymbols {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.mSymbols_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.mSymbols_property.startsBeingObserved (by: relay)
       self.mObserversOf_mSymbols = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

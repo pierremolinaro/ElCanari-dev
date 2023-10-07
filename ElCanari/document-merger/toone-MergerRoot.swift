@@ -53,39 +53,39 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.selectedPageIndex_property.startsToBeObserved (by: self.selectedPageIndex_property) // Stored property
-      newValue.zoom_property.startsToBeObserved (by: self.zoom_property) // Stored property
-      newValue.showDisplaySettingView_property.startsToBeObserved (by: self.showDisplaySettingView_property) // Stored property
-      newValue.modelInsertionRotation_property.startsToBeObserved (by: self.modelInsertionRotation_property) // Stored property
-      newValue.automaticBoardSize_property.startsToBeObserved (by: self.automaticBoardSize_property) // Stored property
-      newValue.boardManualWidth_property.startsToBeObserved (by: self.boardManualWidth_property) // Stored property
-      newValue.boardManualHeight_property.startsToBeObserved (by: self.boardManualHeight_property) // Stored property
-      newValue.boardWidthUnit_property.startsToBeObserved (by: self.boardWidthUnit_property) // Stored property
-      newValue.boardHeightUnit_property.startsToBeObserved (by: self.boardHeightUnit_property) // Stored property
-      newValue.overlapingArrangment_property.startsToBeObserved (by: self.overlapingArrangment_property) // Stored property
-      newValue.selectedBoardXUnit_property.startsToBeObserved (by: self.selectedBoardXUnit_property) // Stored property
-      newValue.selectedBoardYUnit_property.startsToBeObserved (by: self.selectedBoardYUnit_property) // Stored property
-      newValue.boardLimitWidth_property.startsToBeObserved (by: self.boardLimitWidth_property) // Stored property
-      newValue.boardLimitWidthUnit_property.startsToBeObserved (by: self.boardLimitWidthUnit_property) // Stored property
-      newValue.mPDFBoardBackgroundColor_property.startsToBeObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
-      newValue.mArtworkName_property.startsToBeObserved (by: self.mArtworkName_property) // Stored property
-      newValue.mArtworkVersion_property.startsToBeObserved (by: self.mArtworkVersion_property) // Stored property
-      newValue.modelNames_property.startsToBeObserved (by: self.modelNames_property) // Transient property
-      newValue.boardRect_property.startsToBeObserved (by: self.boardRect_property) // Transient property
-      newValue.boardWidth_property.startsToBeObserved (by: self.boardWidth_property) // Transient property
-      newValue.boardHeight_property.startsToBeObserved (by: self.boardHeight_property) // Transient property
-      newValue.comments_property.startsToBeObserved (by: self.comments_property) // Transient property
-      newValue.layoutLayerWarningMessage_property.startsToBeObserved (by: self.layoutLayerWarningMessage_property) // Transient property
-      newValue.layerConfigurationString_property.startsToBeObserved (by: self.layerConfigurationString_property) // Transient property
-      newValue.emptyDrillFileExtension_property.startsToBeObserved (by: self.emptyDrillFileExtension_property) // Transient property
-      newValue.hasInnerElements_property.startsToBeObserved (by: self.hasInnerElements_property) // Transient property
-      newValue.hasSixLayers_property.startsToBeObserved (by: self.hasSixLayers_property) // Transient property
-      newValue.boardOutlineRectDisplay_property.startsToBeObserved (by: self.boardOutlineRectDisplay_property) // Transient property
+      newValue.selectedPageIndex_property.startsBeingObserved (by: self.selectedPageIndex_property) // Stored property
+      newValue.zoom_property.startsBeingObserved (by: self.zoom_property) // Stored property
+      newValue.showDisplaySettingView_property.startsBeingObserved (by: self.showDisplaySettingView_property) // Stored property
+      newValue.modelInsertionRotation_property.startsBeingObserved (by: self.modelInsertionRotation_property) // Stored property
+      newValue.automaticBoardSize_property.startsBeingObserved (by: self.automaticBoardSize_property) // Stored property
+      newValue.boardManualWidth_property.startsBeingObserved (by: self.boardManualWidth_property) // Stored property
+      newValue.boardManualHeight_property.startsBeingObserved (by: self.boardManualHeight_property) // Stored property
+      newValue.boardWidthUnit_property.startsBeingObserved (by: self.boardWidthUnit_property) // Stored property
+      newValue.boardHeightUnit_property.startsBeingObserved (by: self.boardHeightUnit_property) // Stored property
+      newValue.overlapingArrangment_property.startsBeingObserved (by: self.overlapingArrangment_property) // Stored property
+      newValue.selectedBoardXUnit_property.startsBeingObserved (by: self.selectedBoardXUnit_property) // Stored property
+      newValue.selectedBoardYUnit_property.startsBeingObserved (by: self.selectedBoardYUnit_property) // Stored property
+      newValue.boardLimitWidth_property.startsBeingObserved (by: self.boardLimitWidth_property) // Stored property
+      newValue.boardLimitWidthUnit_property.startsBeingObserved (by: self.boardLimitWidthUnit_property) // Stored property
+      newValue.mPDFBoardBackgroundColor_property.startsBeingObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
+      newValue.mArtworkName_property.startsBeingObserved (by: self.mArtworkName_property) // Stored property
+      newValue.mArtworkVersion_property.startsBeingObserved (by: self.mArtworkVersion_property) // Stored property
+      newValue.modelNames_property.startsBeingObserved (by: self.modelNames_property) // Transient property
+      newValue.boardRect_property.startsBeingObserved (by: self.boardRect_property) // Transient property
+      newValue.boardWidth_property.startsBeingObserved (by: self.boardWidth_property) // Transient property
+      newValue.boardHeight_property.startsBeingObserved (by: self.boardHeight_property) // Transient property
+      newValue.comments_property.startsBeingObserved (by: self.comments_property) // Transient property
+      newValue.layoutLayerWarningMessage_property.startsBeingObserved (by: self.layoutLayerWarningMessage_property) // Transient property
+      newValue.layerConfigurationString_property.startsBeingObserved (by: self.layerConfigurationString_property) // Transient property
+      newValue.emptyDrillFileExtension_property.startsBeingObserved (by: self.emptyDrillFileExtension_property) // Transient property
+      newValue.hasInnerElements_property.startsBeingObserved (by: self.hasInnerElements_property) // Transient property
+      newValue.hasSixLayers_property.startsBeingObserved (by: self.hasSixLayers_property) // Transient property
+      newValue.boardOutlineRectDisplay_property.startsBeingObserved (by: self.boardOutlineRectDisplay_property) // Transient property
       if let relay = self.mObserversOf_boardModels { // to Many
-        newValue.boardModels_property.startsToBeObserved (by: relay)
+        newValue.boardModels_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_boardInstances { // to Many
-        newValue.boardInstances_property.startsToBeObserved (by: relay)
+        newValue.boardInstances_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -266,16 +266,16 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func toMany_boardModels_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardModels_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_boardModels {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.boardModels_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.boardModels_property.startsBeingObserved (by: relay)
       self.mObserversOf_boardModels = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -292,16 +292,16 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func toMany_boardInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardInstances_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_boardInstances {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.mWeakInternalValue?.boardInstances_property.startsToBeObserved (by: relay)
+      self.mWeakInternalValue?.boardInstances_property.startsBeingObserved (by: relay)
       self.mObserversOf_boardInstances = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································

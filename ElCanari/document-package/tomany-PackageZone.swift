@@ -87,70 +87,70 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_x { // Stored property
-        managedObject.x_property.startsToBeObserved (by: relay)
+        managedObject.x_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_y { // Stored property
-        managedObject.y_property.startsToBeObserved (by: relay)
+        managedObject.y_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_width { // Stored property
-        managedObject.width_property.startsToBeObserved (by: relay)
+        managedObject.width_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_height { // Stored property
-        managedObject.height_property.startsToBeObserved (by: relay)
+        managedObject.height_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_xUnit { // Stored property
-        managedObject.xUnit_property.startsToBeObserved (by: relay)
+        managedObject.xUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_yUnit { // Stored property
-        managedObject.yUnit_property.startsToBeObserved (by: relay)
+        managedObject.yUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_widthUnit { // Stored property
-        managedObject.widthUnit_property.startsToBeObserved (by: relay)
+        managedObject.widthUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_heightUnit { // Stored property
-        managedObject.heightUnit_property.startsToBeObserved (by: relay)
+        managedObject.heightUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_zoneName { // Stored property
-        managedObject.zoneName_property.startsToBeObserved (by: relay)
+        managedObject.zoneName_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_displayZoneName { // Stored property
-        managedObject.displayZoneName_property.startsToBeObserved (by: relay)
+        managedObject.displayZoneName_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_displayZoneNameWithPadNumbers { // Stored property
-        managedObject.displayZoneNameWithPadNumbers_property.startsToBeObserved (by: relay)
+        managedObject.displayZoneNameWithPadNumbers_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_xName { // Stored property
-        managedObject.xName_property.startsToBeObserved (by: relay)
+        managedObject.xName_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_yName { // Stored property
-        managedObject.yName_property.startsToBeObserved (by: relay)
+        managedObject.yName_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_xNameUnit { // Stored property
-        managedObject.xNameUnit_property.startsToBeObserved (by: relay)
+        managedObject.xNameUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_yNameUnit { // Stored property
-        managedObject.yNameUnit_property.startsToBeObserved (by: relay)
+        managedObject.yNameUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_zoneNumbering { // Stored property
-        managedObject.zoneNumbering_property.startsToBeObserved (by: relay)
+        managedObject.zoneNumbering_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_objectDisplay { // Transient property
-        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_issues { // Transient property
-        managedObject.issues_property.startsToBeObserved (by: relay)
+        managedObject.issues_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_rect { // Transient property
-        managedObject.rect_property.startsToBeObserved (by: relay)
+        managedObject.rect_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_selectionDisplay { // Transient property
-        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+        managedObject.selectionDisplay_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_forbiddenPadArray { // Transient property
-        managedObject.forbiddenPadArray_property.startsToBeObserved (by: relay)
+        managedObject.forbiddenPadArray_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_emptyForbiddenPadArray { // Transient property
-        managedObject.emptyForbiddenPadArray_property.startsToBeObserved (by: relay)
+        managedObject.emptyForbiddenPadArray_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -163,19 +163,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_x_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_x {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.x_property.startsToBeObserved (by: relay)
+        managedObject.x_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_x = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -192,19 +192,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_y_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_y {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.y_property.startsToBeObserved (by: relay)
+        managedObject.y_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_y = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -221,19 +221,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_width_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_width_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_width {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.width_property.startsToBeObserved (by: relay)
+        managedObject.width_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_width = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -250,19 +250,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_height_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_height_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_height {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.height_property.startsToBeObserved (by: relay)
+        managedObject.height_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_height = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -279,19 +279,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_xUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_xUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_xUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.xUnit_property.startsToBeObserved (by: relay)
+        managedObject.xUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_xUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -308,19 +308,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_yUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_yUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_yUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.yUnit_property.startsToBeObserved (by: relay)
+        managedObject.yUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_yUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -337,19 +337,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_widthUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_widthUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_widthUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.widthUnit_property.startsToBeObserved (by: relay)
+        managedObject.widthUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_widthUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -366,19 +366,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_heightUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_heightUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_heightUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.heightUnit_property.startsToBeObserved (by: relay)
+        managedObject.heightUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_heightUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -395,19 +395,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_zoneName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_zoneName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_zoneName {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.zoneName_property.startsToBeObserved (by: relay)
+        managedObject.zoneName_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_zoneName = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -424,19 +424,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_displayZoneName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_displayZoneName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayZoneName {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.displayZoneName_property.startsToBeObserved (by: relay)
+        managedObject.displayZoneName_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_displayZoneName = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -453,19 +453,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_displayZoneNameWithPadNumbers_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_displayZoneNameWithPadNumbers_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayZoneNameWithPadNumbers {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.displayZoneNameWithPadNumbers_property.startsToBeObserved (by: relay)
+        managedObject.displayZoneNameWithPadNumbers_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_displayZoneNameWithPadNumbers = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -482,19 +482,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_xName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_xName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_xName {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.xName_property.startsToBeObserved (by: relay)
+        managedObject.xName_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_xName = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -511,19 +511,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_yName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_yName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_yName {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.yName_property.startsToBeObserved (by: relay)
+        managedObject.yName_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_yName = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -540,19 +540,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_xNameUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_xNameUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_xNameUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.xNameUnit_property.startsToBeObserved (by: relay)
+        managedObject.xNameUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_xNameUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -569,19 +569,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_yNameUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_yNameUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_yNameUnit {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.yNameUnit_property.startsToBeObserved (by: relay)
+        managedObject.yNameUnit_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_yNameUnit = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -598,19 +598,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_zoneNumbering_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_zoneNumbering_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_zoneNumbering {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.zoneNumbering_property.startsToBeObserved (by: relay)
+        managedObject.zoneNumbering_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_zoneNumbering = relay
     }
-    relay.startsToBeObserved (by: inObserver)
+    relay.startsBeingObserved (by: inObserver)
   }
 
   //····················································································································
@@ -627,19 +627,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.objectDisplay_property.startsToBeObserved (by: relay)
+        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_objectDisplay = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -656,19 +656,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_issues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_issues_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_issues {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.issues_property.startsToBeObserved (by: relay)
+        managedObject.issues_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_issues = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -685,19 +685,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_rect_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_rect_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_rect {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.rect_property.startsToBeObserved (by: relay)
+        managedObject.rect_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_rect = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -714,19 +714,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
+        managedObject.selectionDisplay_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_selectionDisplay = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -743,19 +743,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_forbiddenPadArray_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_forbiddenPadArray_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_forbiddenPadArray {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.forbiddenPadArray_property.startsToBeObserved (by: relay)
+        managedObject.forbiddenPadArray_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_forbiddenPadArray = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································
@@ -772,19 +772,19 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  final func toMany_emptyForbiddenPadArray_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_emptyForbiddenPadArray_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_emptyForbiddenPadArray {
       relay = r
     }else{
       relay = EBObservedObserver ()
-      self.startsToBeObserved (by: relay)
+      self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.emptyForbiddenPadArray_property.startsToBeObserved (by: relay)
+        managedObject.emptyForbiddenPadArray_property.startsBeingObserved (by: relay)
       }
       self.mObserversOf_emptyForbiddenPadArray = relay
     }
-    relay.startsToBeObserved (by:  inObserver)
+    relay.startsBeingObserved (by:  inObserver)
   }
 
   //····················································································································

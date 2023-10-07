@@ -36,7 +36,7 @@ import AppKit
 
   //····················································································································
 
-  final func startsToBeObserved (by inObserver : EBObserverProtocol) {
+  final func startsBeingObserved (by inObserver : EBObserverProtocol) {
     let key = ObjectIdentifier (inObserver)
     self.mDictionary [key] = EBWeakObserverSetElement (observer: inObserver)
     inObserver.observedObjectDidChange ()

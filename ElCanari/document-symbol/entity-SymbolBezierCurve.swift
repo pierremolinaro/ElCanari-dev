@@ -177,14 +177,14 @@ final class SymbolBezierCurve : SymbolObject {
         return .empty
       }
     }
-    self.x1_property.startsToBeObserved (by: self.strokeBezierPath_property)
-    self.y1_property.startsToBeObserved (by: self.strokeBezierPath_property)
-    self.x2_property.startsToBeObserved (by: self.strokeBezierPath_property)
-    self.y2_property.startsToBeObserved (by: self.strokeBezierPath_property)
-    self.cpx1_property.startsToBeObserved (by: self.strokeBezierPath_property)
-    self.cpy1_property.startsToBeObserved (by: self.strokeBezierPath_property)
-    self.cpx2_property.startsToBeObserved (by: self.strokeBezierPath_property)
-    self.cpy2_property.startsToBeObserved (by: self.strokeBezierPath_property)
+    self.x1_property.startsBeingObserved (by: self.strokeBezierPath_property)
+    self.y1_property.startsBeingObserved (by: self.strokeBezierPath_property)
+    self.x2_property.startsBeingObserved (by: self.strokeBezierPath_property)
+    self.y2_property.startsBeingObserved (by: self.strokeBezierPath_property)
+    self.cpx1_property.startsBeingObserved (by: self.strokeBezierPath_property)
+    self.cpy1_property.startsBeingObserved (by: self.strokeBezierPath_property)
+    self.cpx2_property.startsBeingObserved (by: self.strokeBezierPath_property)
+    self.cpy2_property.startsBeingObserved (by: self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -228,16 +228,16 @@ final class SymbolBezierCurve : SymbolObject {
         return .empty
       }
     }
-    self.x1_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.y1_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.x2_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.y2_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.cpx1_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.cpy1_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.cpx2_property.startsToBeObserved (by: self.objectDisplay_property)
-    self.cpy2_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_symbolColor_property.startsToBeObserved (by: self.objectDisplay_property)
-    preferences_symbolDrawingWidthMultipliedByTen_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.x1_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.y1_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.x2_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.y2_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.cpx1_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.cpy1_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.cpx2_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.cpy2_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_symbolColor_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_symbolDrawingWidthMultipliedByTen_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -275,14 +275,14 @@ final class SymbolBezierCurve : SymbolObject {
         return .empty
       }
     }
-    self.x1_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.y1_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.x2_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.y2_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.cpx1_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.cpy1_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.cpx2_property.startsToBeObserved (by: self.selectionDisplay_property)
-    self.cpy2_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.x1_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.y1_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.x2_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.y2_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.cpx1_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.cpy1_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.cpx2_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.cpy2_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -320,14 +320,14 @@ final class SymbolBezierCurve : SymbolObject {
         return .empty
       }
     }
-    self.x1_property.startsToBeObserved (by: self.issues_property)
-    self.y1_property.startsToBeObserved (by: self.issues_property)
-    self.x2_property.startsToBeObserved (by: self.issues_property)
-    self.y2_property.startsToBeObserved (by: self.issues_property)
-    self.cpx1_property.startsToBeObserved (by: self.issues_property)
-    self.cpy1_property.startsToBeObserved (by: self.issues_property)
-    self.cpx2_property.startsToBeObserved (by: self.issues_property)
-    self.cpy2_property.startsToBeObserved (by: self.issues_property)
+    self.x1_property.startsBeingObserved (by: self.issues_property)
+    self.y1_property.startsBeingObserved (by: self.issues_property)
+    self.x2_property.startsBeingObserved (by: self.issues_property)
+    self.y2_property.startsBeingObserved (by: self.issues_property)
+    self.cpx1_property.startsBeingObserved (by: self.issues_property)
+    self.cpy1_property.startsBeingObserved (by: self.issues_property)
+    self.cpx2_property.startsBeingObserved (by: self.issues_property)
+    self.cpy2_property.startsBeingObserved (by: self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.cpx1_property.setSignatureObserver (observer: self)

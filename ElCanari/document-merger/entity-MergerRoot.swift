@@ -591,7 +591,7 @@ final class MergerRoot : EBManagedObject {
         return .empty
       }
     }
-    self.mArtwork_property.startsToBeObserved (by: self.mArtwork_none)
+    self.mArtwork_property.startsBeingObserved (by: self.mArtwork_none)
   //--- To many property: boardModels (no option)
     self.boardModels_property.undoManager = inUndoManager
   //--- To many property: boardInstances (has opposite relationship)
@@ -622,7 +622,7 @@ final class MergerRoot : EBManagedObject {
     self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minPPTPTTTWdisplayUnit_property.setProp (inValue)
     }
-    self.mArtwork_property.minPPTPTTTWdisplayUnit_property.startsToBeObserved (by: self.minPPTPTTTWdisplayUnit_property)
+    self.mArtwork_property.minPPTPTTTWdisplayUnit_property.startsBeingObserved (by: self.minPPTPTTTWdisplayUnit_property)
   //--- Atomic proxy property: minPPTPTTTW
     self.minPPTPTTTW_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork_property {
@@ -645,7 +645,7 @@ final class MergerRoot : EBManagedObject {
     self.minPPTPTTTW_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minPPTPTTTW_property.setProp (inValue)
     }
-    self.mArtwork_property.minPPTPTTTW_property.startsToBeObserved (by: self.minPPTPTTTW_property)
+    self.mArtwork_property.minPPTPTTTW_property.startsBeingObserved (by: self.minPPTPTTTW_property)
   //--- Atomic proxy property: minValueForOARdisplayUnit
     self.minValueForOARdisplayUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork_property {
@@ -668,7 +668,7 @@ final class MergerRoot : EBManagedObject {
     self.minValueForOARdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForOARdisplayUnit_property.setProp (inValue)
     }
-    self.mArtwork_property.minValueForOARdisplayUnit_property.startsToBeObserved (by: self.minValueForOARdisplayUnit_property)
+    self.mArtwork_property.minValueForOARdisplayUnit_property.startsBeingObserved (by: self.minValueForOARdisplayUnit_property)
   //--- Atomic proxy property: minValueForOARinEBUnit
     self.minValueForOARinEBUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork_property {
@@ -691,7 +691,7 @@ final class MergerRoot : EBManagedObject {
     self.minValueForOARinEBUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForOARinEBUnit_property.setProp (inValue)
     }
-    self.mArtwork_property.minValueForOARinEBUnit_property.startsToBeObserved (by: self.minValueForOARinEBUnit_property)
+    self.mArtwork_property.minValueForOARinEBUnit_property.startsBeingObserved (by: self.minValueForOARinEBUnit_property)
   //--- Atomic proxy property: minValueForPHDdisplayUnit
     self.minValueForPHDdisplayUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork_property {
@@ -714,7 +714,7 @@ final class MergerRoot : EBManagedObject {
     self.minValueForPHDdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForPHDdisplayUnit_property.setProp (inValue)
     }
-    self.mArtwork_property.minValueForPHDdisplayUnit_property.startsToBeObserved (by: self.minValueForPHDdisplayUnit_property)
+    self.mArtwork_property.minValueForPHDdisplayUnit_property.startsBeingObserved (by: self.minValueForPHDdisplayUnit_property)
   //--- Atomic proxy property: minValueForPHDinEBUnit
     self.minValueForPHDinEBUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork_property {
@@ -737,7 +737,7 @@ final class MergerRoot : EBManagedObject {
     self.minValueForPHDinEBUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForPHDinEBUnit_property.setProp (inValue)
     }
-    self.mArtwork_property.minValueForPHDinEBUnit_property.startsToBeObserved (by: self.minValueForPHDinEBUnit_property)
+    self.mArtwork_property.minValueForPHDinEBUnit_property.startsBeingObserved (by: self.minValueForPHDinEBUnit_property)
   //--- Atomic proxy property: minValueForBoardLimitWidth
     self.minValueForBoardLimitWidth_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork_property {
@@ -760,7 +760,7 @@ final class MergerRoot : EBManagedObject {
     self.minValueForBoardLimitWidth_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForBoardLimitWidth_property.setProp (inValue)
     }
-    self.mArtwork_property.minValueForBoardLimitWidth_property.startsToBeObserved (by: self.minValueForBoardLimitWidth_property)
+    self.mArtwork_property.minValueForBoardLimitWidth_property.startsBeingObserved (by: self.minValueForBoardLimitWidth_property)
   //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
     self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork_property {
@@ -783,7 +783,7 @@ final class MergerRoot : EBManagedObject {
     self.minValueForBoardLimitWidthDisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mArtwork?.minValueForBoardLimitWidthDisplayUnit_property.setProp (inValue)
     }
-    self.mArtwork_property.minValueForBoardLimitWidthDisplayUnit_property.startsToBeObserved (by: self.minValueForBoardLimitWidthDisplayUnit_property)
+    self.mArtwork_property.minValueForBoardLimitWidthDisplayUnit_property.startsBeingObserved (by: self.minValueForBoardLimitWidthDisplayUnit_property)
   //--- Atomic proxy property: drillDataFileExtension
     self.drillDataFileExtension_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork_property {
@@ -806,7 +806,7 @@ final class MergerRoot : EBManagedObject {
     self.drillDataFileExtension_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
       self?.mArtwork?.drillDataFileExtension_property.setProp (inValue)
     }
-    self.mArtwork_property.drillDataFileExtension_property.startsToBeObserved (by: self.drillDataFileExtension_property)
+    self.mArtwork_property.drillDataFileExtension_property.startsBeingObserved (by: self.drillDataFileExtension_property)
   //--- ToMany proxy: fileGenerationParameterArray
     do{
       let controller = EBObservablePropertyController (
@@ -817,7 +817,7 @@ final class MergerRoot : EBManagedObject {
           }
         }
       )
-      self.mArtwork_property.toMany_fileGenerationParameterArray_StartsToBeObserved (by: controller)
+      self.mArtwork_property.toMany_fileGenerationParameterArray_StartsBeingObserved (by: controller)
       self.fileGenerationParameterArray_modelDidChangeController = controller
     }
   //--- Atomic property: modelNames
@@ -839,8 +839,8 @@ final class MergerRoot : EBManagedObject {
         return .empty
       }
     }
-    self.boardModels_property.toMany_name_StartsToBeObserved (by: self.modelNames_property)
-    self.boardModels_property.startsToBeObserved (by: self.modelNames_property)
+    self.boardModels_property.toMany_name_StartsBeingObserved (by: self.modelNames_property)
+    self.boardModels_property.startsBeingObserved (by: self.modelNames_property)
   //--- Atomic property: boardRect
     self.boardRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -872,12 +872,12 @@ final class MergerRoot : EBManagedObject {
         return .empty
       }
     }
-    self.automaticBoardSize_property.startsToBeObserved (by: self.boardRect_property)
-    self.boardLimitWidth_property.startsToBeObserved (by: self.boardRect_property)
-    self.boardManualWidth_property.startsToBeObserved (by: self.boardRect_property)
-    self.boardManualHeight_property.startsToBeObserved (by: self.boardRect_property)
-    self.boardInstances_property.toMany_instanceRect_StartsToBeObserved (by: self.boardRect_property)
-    self.boardInstances_property.toMany_boardLimitWidth_StartsToBeObserved (by: self.boardRect_property)
+    self.automaticBoardSize_property.startsBeingObserved (by: self.boardRect_property)
+    self.boardLimitWidth_property.startsBeingObserved (by: self.boardRect_property)
+    self.boardManualWidth_property.startsBeingObserved (by: self.boardRect_property)
+    self.boardManualHeight_property.startsBeingObserved (by: self.boardRect_property)
+    self.boardInstances_property.toMany_instanceRect_StartsBeingObserved (by: self.boardRect_property)
+    self.boardInstances_property.toMany_boardLimitWidth_StartsBeingObserved (by: self.boardRect_property)
   //--- Atomic property: boardWidth
     self.boardWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -894,7 +894,7 @@ final class MergerRoot : EBManagedObject {
         return .empty
       }
     }
-    self.boardRect_property.startsToBeObserved (by: self.boardWidth_property)
+    self.boardRect_property.startsBeingObserved (by: self.boardWidth_property)
   //--- Atomic property: boardHeight
     self.boardHeight_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -911,7 +911,7 @@ final class MergerRoot : EBManagedObject {
         return .empty
       }
     }
-    self.boardRect_property.startsToBeObserved (by: self.boardHeight_property)
+    self.boardRect_property.startsBeingObserved (by: self.boardHeight_property)
   //--- To one property: mArtwork
     self.mArtwork_property.undoManager = inUndoManager
   //--- Atomic property: comments
@@ -930,7 +930,7 @@ final class MergerRoot : EBManagedObject {
         return .empty
       }
     }
-    self.mArtwork_property.comments_property.startsToBeObserved (by: self.comments_property)
+    self.mArtwork_property.comments_property.startsBeingObserved (by: self.comments_property)
   //--- Atomic property: layoutLayerWarningMessage
     self.layoutLayerWarningMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -950,8 +950,8 @@ final class MergerRoot : EBManagedObject {
         return .empty
       }
     }
-    self.mArtwork_property.layerConfiguration_property.startsToBeObserved (by: self.layoutLayerWarningMessage_property)
-    self.boardModels_property.toMany_layerConfiguration_StartsToBeObserved (by: self.layoutLayerWarningMessage_property)
+    self.mArtwork_property.layerConfiguration_property.startsBeingObserved (by: self.layoutLayerWarningMessage_property)
+    self.boardModels_property.toMany_layerConfiguration_StartsBeingObserved (by: self.layoutLayerWarningMessage_property)
   //--- Atomic property: layerConfigurationString
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -968,7 +968,7 @@ final class MergerRoot : EBManagedObject {
         return .empty
       }
     }
-    self.mArtwork_property.layerConfiguration_property.startsToBeObserved (by: self.layerConfigurationString_property)
+    self.mArtwork_property.layerConfiguration_property.startsBeingObserved (by: self.layerConfigurationString_property)
   //--- Atomic property: emptyDrillFileExtension
     self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -985,7 +985,7 @@ final class MergerRoot : EBManagedObject {
         return .empty
       }
     }
-    self.mArtwork_property.drillDataFileExtension_property.startsToBeObserved (by: self.emptyDrillFileExtension_property)
+    self.mArtwork_property.drillDataFileExtension_property.startsBeingObserved (by: self.emptyDrillFileExtension_property)
   //--- Atomic property: hasInnerElements
     self.hasInnerElements_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1002,7 +1002,7 @@ final class MergerRoot : EBManagedObject {
         return .empty
       }
     }
-    self.mArtwork_property.hasInnerElements_property.startsToBeObserved (by: self.hasInnerElements_property)
+    self.mArtwork_property.hasInnerElements_property.startsBeingObserved (by: self.hasInnerElements_property)
   //--- Atomic property: hasSixLayers
     self.hasSixLayers_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1019,7 +1019,7 @@ final class MergerRoot : EBManagedObject {
         return .empty
       }
     }
-    self.mArtwork_property.hasSixLayers_property.startsToBeObserved (by: self.hasSixLayers_property)
+    self.mArtwork_property.hasSixLayers_property.startsBeingObserved (by: self.hasSixLayers_property)
   //--- Atomic property: boardOutlineRectDisplay
     self.boardOutlineRectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1045,10 +1045,10 @@ final class MergerRoot : EBManagedObject {
         return .empty
       }
     }
-    self.boardRect_property.startsToBeObserved (by: self.boardOutlineRectDisplay_property)
-    self.boardLimitWidth_property.startsToBeObserved (by: self.boardOutlineRectDisplay_property)
-    preferences_mergerBoardViewDisplayBoardLimits_property.startsToBeObserved (by: self.boardOutlineRectDisplay_property)
-    preferences_mergerColorBoardLimits_property.startsToBeObserved (by: self.boardOutlineRectDisplay_property)
+    self.boardRect_property.startsBeingObserved (by: self.boardOutlineRectDisplay_property)
+    self.boardLimitWidth_property.startsBeingObserved (by: self.boardOutlineRectDisplay_property)
+    preferences_mergerBoardViewDisplayBoardLimits_property.startsBeingObserved (by: self.boardOutlineRectDisplay_property)
+    preferences_mergerColorBoardLimits_property.startsBeingObserved (by: self.boardOutlineRectDisplay_property)
   //--- Install undoers and opposite setter for relationships
     self.boardInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myRoot_property.setProp (me) } },

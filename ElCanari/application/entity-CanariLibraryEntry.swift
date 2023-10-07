@@ -135,7 +135,7 @@ final class CanariLibraryEntry : EBManagedObject,
         return .empty
       }
     }
-    self.mPath_property.startsToBeObserved (by: self.mStatusImage_property)
+    self.mPath_property.startsBeingObserved (by: self.mStatusImage_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
