@@ -137,11 +137,16 @@ extension AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  func appendOpenDocumentButton (_ inString : String) {
-    let button = AutoLayoutButton (title: inString, size: .regular).expandableWidth ()
-    button.setClosureAction {
-      let ws = NSWorkspace.shared
-      ws.open (URL (fileURLWithPath: inString))
+  func appendOpenDocumentButton (_ inDocumentPath : String) {
+    let button = AutoLayoutButton (title: inDocumentPath, size: .regular).expandableWidth ()
+    let fm = FileManager ()
+    if fm.fileExists (atPath: inDocumentPath) {
+      button.setClosureAction {
+        let ws = NSWorkspace.shared
+        ws.open (URL (fileURLWithPath: inDocumentPath))
+      }
+    }else{
+      button.isEnabled = false
     }
     _ = self.appendView (button)
   }
