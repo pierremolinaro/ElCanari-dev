@@ -178,7 +178,7 @@ class ReadOnlyObject_SymbolInstanceInDevice : EBReadOnlyAbstractObjectProperty <
 //    StoredObject_SymbolInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstanceInDevice, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+final class StoredObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstanceInDevice, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

@@ -314,7 +314,7 @@ class ReadOnlyObject_PointInSchematic : EBReadOnlyAbstractObjectProperty <PointI
 //    StoredObject_PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PointInSchematic : ReadOnlyObject_PointInSchematic, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+final class StoredObject_PointInSchematic : ReadOnlyObject_PointInSchematic, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

@@ -498,7 +498,7 @@ class ReadOnlyObject_DeviceRoot : EBReadOnlyAbstractObjectProperty <DeviceRoot> 
 //    StoredObject_DeviceRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_DeviceRoot : ReadOnlyObject_DeviceRoot, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+final class StoredObject_DeviceRoot : ReadOnlyObject_DeviceRoot, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

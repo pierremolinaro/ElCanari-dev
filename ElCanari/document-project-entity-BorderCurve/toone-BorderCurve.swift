@@ -194,7 +194,7 @@ class ReadOnlyObject_BorderCurve : EBReadOnlyAbstractObjectProperty <BorderCurve
 //    StoredObject_BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_BorderCurve : ReadOnlyObject_BorderCurve, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+final class StoredObject_BorderCurve : ReadOnlyObject_BorderCurve, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

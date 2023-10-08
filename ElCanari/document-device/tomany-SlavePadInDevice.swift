@@ -448,7 +448,7 @@ class ReadWriteArrayOf_SlavePadInDevice : ReadOnlyArrayOf_SlavePadInDevice {
 //    Stored Array: SlavePadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

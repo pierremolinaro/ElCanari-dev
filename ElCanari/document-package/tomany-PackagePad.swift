@@ -1175,7 +1175,7 @@ class ReadWriteArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
 //    Stored Array: PackagePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

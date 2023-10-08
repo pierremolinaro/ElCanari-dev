@@ -450,7 +450,7 @@ class ReadOnlyObject_BoardConnector : EBReadOnlyAbstractObjectProperty <BoardCon
 //    StoredObject_BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_BoardConnector : ReadOnlyObject_BoardConnector, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+final class StoredObject_BoardConnector : ReadOnlyObject_BoardConnector, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

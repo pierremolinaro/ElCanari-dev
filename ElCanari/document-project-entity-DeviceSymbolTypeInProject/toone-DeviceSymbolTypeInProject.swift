@@ -74,7 +74,7 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : EBReadOnlyAbstractObjectPropert
 //    StoredObject_DeviceSymbolTypeInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_DeviceSymbolTypeInProject : ReadOnlyObject_DeviceSymbolTypeInProject, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+final class StoredObject_DeviceSymbolTypeInProject : ReadOnlyObject_DeviceSymbolTypeInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

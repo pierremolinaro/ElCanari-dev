@@ -210,7 +210,7 @@ class ReadOnlyObject_SymbolTypeInDevice : EBReadOnlyAbstractObjectProperty <Symb
 //    StoredObject_SymbolTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_SymbolTypeInDevice : ReadOnlyObject_SymbolTypeInDevice, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+final class StoredObject_SymbolTypeInDevice : ReadOnlyObject_SymbolTypeInDevice, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol DocumentStorablePropertyAndRelationshipProtocol : AnyObject {
+@MainActor protocol EBDocumentStorablePropertyAndRelationshipProtocol : AnyObject {
 
   var key : String? { get }
 
@@ -28,7 +28,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DocumentStorablePropertyProtocol : DocumentStorablePropertyAndRelationshipProtocol {
+protocol EBDocumentStorablePropertyProtocol : EBDocumentStorablePropertyAndRelationshipProtocol {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

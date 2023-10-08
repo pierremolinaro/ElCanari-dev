@@ -206,7 +206,7 @@ class ReadOnlyObject_DevicePinInProject : EBReadOnlyAbstractObjectProperty <Devi
 //    StoredObject_DevicePinInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_DevicePinInProject : ReadOnlyObject_DevicePinInProject, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+final class StoredObject_DevicePinInProject : ReadOnlyObject_DevicePinInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

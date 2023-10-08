@@ -186,7 +186,7 @@ class ReadOnlyObject_SheetInProject : EBReadOnlyAbstractObjectProperty <SheetInP
 //    StoredObject_SheetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_SheetInProject : ReadOnlyObject_SheetInProject, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+final class StoredObject_SheetInProject : ReadOnlyObject_SheetInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

@@ -74,7 +74,7 @@ class ReadOnlyObject_NCInSchematic : EBReadOnlyAbstractObjectProperty <NCInSchem
 //    StoredObject_NCInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_NCInSchematic : ReadOnlyObject_NCInSchematic, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+final class StoredObject_NCInSchematic : ReadOnlyObject_NCInSchematic, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

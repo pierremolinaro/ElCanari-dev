@@ -370,7 +370,7 @@ class ReadWriteArrayOf_WireInSchematic : ReadOnlyArrayOf_WireInSchematic {
 //    Stored Array: WireInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

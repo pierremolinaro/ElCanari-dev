@@ -81,7 +81,7 @@ struct RawObject {
                               managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
+      if let storedProperty = property.value as? EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
         storedProperty.initialize (fromDictionary: inDictionary, managedObjectArray: inManagedObjectArray)
       }
     }
@@ -94,7 +94,7 @@ struct RawObject {
                                                 _ inData : Data) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorablePropertyAndRelationshipProtocol,
+      if let storedProperty = property.value as? EBDocumentStorablePropertyAndRelationshipProtocol,
          let key = storedProperty.key,
          let range = inRangeDictionary [key] {
         storedProperty.initialize (fromRange: range, ofData: inData, inRawObjectArray)
@@ -109,7 +109,7 @@ struct RawObject {
   final func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
+      if let storedProperty = property.value as? EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
         storedProperty.enterRelationshipObjects (intoArray: &ioObjectArray)
       }
     }
@@ -124,7 +124,7 @@ struct RawObject {
 //    Swift.print ("Object of class \(self.className)")
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
+      if let storedProperty = property.value as? EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
         storedProperty.store (inDictionary: &ioDictionary)
         // Swift.print ("  \(key)")
       }
@@ -138,7 +138,7 @@ struct RawObject {
 //    Swift.print ("Object of class \(self.className)")
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorablePropertyProtocol, storedProperty.key != nil {
+      if let storedProperty = property.value as? EBDocumentStorablePropertyProtocol, storedProperty.key != nil {
         storedProperty.store (inDictionary: &ioDictionary)
         // Swift.print ("  \(key)")
       }
@@ -152,7 +152,7 @@ struct RawObject {
   final func appendPropertyNamesTo (string ioString : inout String) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorablePropertyAndRelationshipProtocol, let key = storedProperty.key {
+      if let storedProperty = property.value as? EBDocumentStorablePropertyAndRelationshipProtocol, let key = storedProperty.key {
         ioString += key + "\n"
       }
     }
@@ -165,7 +165,7 @@ struct RawObject {
   final func appendPropertyValuesTo (data ioData : inout Data) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
+      if let storedProperty = property.value as? EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
         storedProperty.appendValueTo (data: &ioData)
         ioData.append (ascii: .lineFeed)
       }

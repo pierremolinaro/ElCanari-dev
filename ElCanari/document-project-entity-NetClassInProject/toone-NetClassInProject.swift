@@ -394,7 +394,7 @@ class ReadOnlyObject_NetClassInProject : EBReadOnlyAbstractObjectProperty <NetCl
 //    StoredObject_NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_NetClassInProject : ReadOnlyObject_NetClassInProject, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+final class StoredObject_NetClassInProject : ReadOnlyObject_NetClassInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

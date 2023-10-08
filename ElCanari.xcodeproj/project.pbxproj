@@ -3271,8 +3271,8 @@
 		CFF79DFA28461CA900C7BEE3 /* transient-BoardObject-packageDrawingWidthMultpliedByTenForBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF79DF828461CA900C7BEE3 /* transient-BoardObject-packageDrawingWidthMultpliedByTenForBoard.swift */; };
 		CFF83D4521ADAA310084BDA9 /* utilities-symbol-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF83D4121ADAA300084BDA9 /* utilities-symbol-issues.swift */; };
 		CFF83D4621ADAA310084BDA9 /* utilities-symbol-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF83D4121ADAA300084BDA9 /* utilities-symbol-issues.swift */; };
-		CFF85809295C8E5600444543 /* DocumentStorablePropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF85808295C8E5600444543 /* DocumentStorablePropertyProtocol.swift */; };
-		CFF8580A295C8E5600444543 /* DocumentStorablePropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF85808295C8E5600444543 /* DocumentStorablePropertyProtocol.swift */; };
+		CFF85809295C8E5600444543 /* EBDocumentStorablePropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF85808295C8E5600444543 /* EBDocumentStorablePropertyProtocol.swift */; };
+		CFF8580A295C8E5600444543 /* EBDocumentStorablePropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF85808295C8E5600444543 /* EBDocumentStorablePropertyProtocol.swift */; };
 		CFF8588C2687C201001B868C /* document-AutoLayoutArtworkDocument-sub-class.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF858842687C200001B868C /* document-AutoLayoutArtworkDocument-sub-class.swift */; };
 		CFF8588D2687C201001B868C /* document-AutoLayoutArtworkDocument-sub-class.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF858842687C200001B868C /* document-AutoLayoutArtworkDocument-sub-class.swift */; };
 		CFF8588F2687C201001B868C /* action-AutoLayoutArtworkDocument-resetVersionAndSignatureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF858852687C200001B868C /* action-AutoLayoutArtworkDocument-resetVersionAndSignatureAction.swift */; };
@@ -5049,7 +5049,7 @@
 		CFF79DEE2846177400C7BEE3 /* transient-BoardObject-displayBackRestrictRectangles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardObject-displayBackRestrictRectangles.swift"; sourceTree = "<group>"; };
 		CFF79DF828461CA900C7BEE3 /* transient-BoardObject-packageDrawingWidthMultpliedByTenForBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardObject-packageDrawingWidthMultpliedByTenForBoard.swift"; sourceTree = "<group>"; };
 		CFF83D4121ADAA300084BDA9 /* utilities-symbol-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "utilities-symbol-issues.swift"; sourceTree = "<group>"; };
-		CFF85808295C8E5600444543 /* DocumentStorablePropertyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentStorablePropertyProtocol.swift; sourceTree = "<group>"; };
+		CFF85808295C8E5600444543 /* EBDocumentStorablePropertyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBDocumentStorablePropertyProtocol.swift; sourceTree = "<group>"; };
 		CFF858842687C200001B868C /* document-AutoLayoutArtworkDocument-sub-class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "document-AutoLayoutArtworkDocument-sub-class.swift"; sourceTree = "<group>"; };
 		CFF858852687C200001B868C /* action-AutoLayoutArtworkDocument-resetVersionAndSignatureAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutArtworkDocument-resetVersionAndSignatureAction.swift"; sourceTree = "<group>"; };
 		CFF858862687C200001B868C /* document-AutoLayoutArtworkDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "document-AutoLayoutArtworkDocument.swift"; sourceTree = "<group>"; };
@@ -5199,7 +5199,7 @@
 		CF217C0825015ED3003E322E /* EB — document */ = {
 			isa = PBXGroup;
 			children = (
-				CFF85808295C8E5600444543 /* DocumentStorablePropertyProtocol.swift */,
+				CFF85808295C8E5600444543 /* EBDocumentStorablePropertyProtocol.swift */,
 				CF9C602425CAB19700A00D5C /* EBAutoLayoutManagedDocument.swift */,
 				CFEDE5B11B4677C500036ACF /* EBDataScanner.swift */,
 				CFEDE5B31B4677C500036ACF /* EBManagedObject.swift */,
@@ -8762,7 +8762,7 @@
 				CFB8DEB227A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift in Sources */,
 				CFEB7B0D233A24BF0060A97A /* transient-BoardTrack-signatureForERCChecking.swift in Sources */,
 				CF711E0D275E1C8D00280069 /* extension-PackageSegment.swift in Sources */,
-				CFF85809295C8E5600444543 /* DocumentStorablePropertyProtocol.swift in Sources */,
+				CFF85809295C8E5600444543 /* EBDocumentStorablePropertyProtocol.swift in Sources */,
 				CF711DB5275E1B4000280069 /* toone-PointInSchematic.swift in Sources */,
 				CF2285CF276678E900804193 /* transient-FontInProject-textCount.swift in Sources */,
 				CFEB7C2A233A284A0060A97A /* transient-PointInSchematic-netInfoForPoint.swift in Sources */,
@@ -10417,7 +10417,7 @@
 				CFEB7C2B233A284A0060A97A /* transient-PointInSchematic-netInfoForPoint.swift in Sources */,
 				CFB8DEB327A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift in Sources */,
 				CF5C4D5D219F04D600EAC52A /* CanariLibraryEntryDelegate.swift in Sources */,
-				CFF8580A295C8E5600444543 /* DocumentStorablePropertyProtocol.swift in Sources */,
+				CFF8580A295C8E5600444543 /* EBDocumentStorablePropertyProtocol.swift in Sources */,
 				CF92C3C122BEC30900C221B2 /* EBBezierPath.swift in Sources */,
 				CF2285D0276678E900804193 /* transient-FontInProject-textCount.swift in Sources */,
 				CF711DB6275E1B4000280069 /* toone-PointInSchematic.swift in Sources */,

@@ -8,7 +8,7 @@ import AppKit
 //   EBStoredProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutableProperty <T>, DocumentStorablePropertyProtocol {
+final class EBStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutableProperty <T>, EBDocumentStorablePropertyProtocol {
 
   //····················································································································
 

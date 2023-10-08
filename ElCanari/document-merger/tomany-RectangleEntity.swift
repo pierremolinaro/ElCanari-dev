@@ -343,7 +343,7 @@ class ReadWriteArrayOf_RectangleEntity : ReadOnlyArrayOf_RectangleEntity {
 //    Stored Array: RectangleEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_RectangleEntity : ReadWriteArrayOf_RectangleEntity, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_RectangleEntity : ReadWriteArrayOf_RectangleEntity, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
   //····················································································································
 

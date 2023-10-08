@@ -8,7 +8,7 @@ import AppKit
 //   EBEnumStoredProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteProperty <T>, DocumentStorablePropertyProtocol {
+final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteProperty <T>, EBDocumentStorablePropertyProtocol {
 
   //····················································································································
 

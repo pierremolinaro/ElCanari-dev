@@ -286,7 +286,7 @@ class ReadOnlyObject_ComponentSymbolInProject : EBReadOnlyAbstractObjectProperty
 //    StoredObject_ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_ComponentSymbolInProject : ReadOnlyObject_ComponentSymbolInProject, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+final class StoredObject_ComponentSymbolInProject : ReadOnlyObject_ComponentSymbolInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

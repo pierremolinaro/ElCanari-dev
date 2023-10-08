@@ -98,7 +98,7 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : EBReadOnlyAbstractObjectPropert
 //    StoredObject_SymbolPinInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_SymbolPinInstanceInDevice : ReadOnlyObject_SymbolPinInstanceInDevice, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+final class StoredObject_SymbolPinInstanceInDevice : ReadOnlyObject_SymbolPinInstanceInDevice, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

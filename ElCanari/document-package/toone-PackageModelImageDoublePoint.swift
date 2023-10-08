@@ -134,7 +134,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : EBReadOnlyAbstractObjectProp
 //    StoredObject_PackageModelImageDoublePoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageModelImageDoublePoint, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+final class StoredObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageModelImageDoublePoint, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 

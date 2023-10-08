@@ -214,7 +214,7 @@ class ReadOnlyObject_MasterPadInDevice : EBReadOnlyAbstractObjectProperty <Maste
 //    StoredObject_MasterPadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice, EBSignatureObserverProtocol, DocumentStorablePropertyAndRelationshipProtocol {
+final class StoredObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
  //····················································································································
 
