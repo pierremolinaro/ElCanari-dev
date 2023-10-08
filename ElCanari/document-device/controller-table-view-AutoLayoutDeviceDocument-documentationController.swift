@@ -289,7 +289,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : NSObje
   //····················································································································
   // IMPLEMENTATION OF AutoLayoutTableViewDelegate
   //····················································································································
-
+  
   final func tableViewDelegate_selectionDidChange (selectedRows inSelectedRows : IndexSet) {
     switch self.sortedArray_property.selection {
     case .empty, .multiple :

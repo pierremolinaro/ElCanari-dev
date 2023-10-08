@@ -357,7 +357,7 @@ final class Controller_AutoLayoutProjectDocument_componentController : NSObject,
   //····················································································································
   // IMPLEMENTATION OF AutoLayoutTableViewDelegate
   //····················································································································
-
+  
   final func tableViewDelegate_selectionDidChange (selectedRows inSelectedRows : IndexSet) {
     switch self.sortedArray_property.selection {
     case .empty, .multiple :

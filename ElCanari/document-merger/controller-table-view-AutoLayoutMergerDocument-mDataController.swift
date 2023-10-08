@@ -285,7 +285,7 @@ final class Controller_AutoLayoutMergerDocument_mDataController : NSObject, Auto
   //····················································································································
   // IMPLEMENTATION OF AutoLayoutTableViewDelegate
   //····················································································································
-
+  
   final func tableViewDelegate_selectionDidChange (selectedRows inSelectedRows : IndexSet) {
     switch self.sortedArray_property.selection {
     case .empty, .multiple :
