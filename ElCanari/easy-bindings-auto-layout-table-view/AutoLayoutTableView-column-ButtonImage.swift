@@ -24,7 +24,6 @@ extension AutoLayoutTableView {
                                     headerAlignment inHeaderAlignment : NSTextAlignment,
                                     contentAlignment inContentAlignment : TextAlignment) {
     let column = InternalButtonImageTableColumn (
-      withIdentifierNamed: self.columnCount,
       sortDelegate: inSortDelegate,
       contentAlignment: inContentAlignment,
       valueGetterDelegate: inGetterDelegate,
@@ -64,14 +63,13 @@ fileprivate class InternalButtonImageTableColumn : AutoLayoutTableColumn {
   // INIT
   //····················································································································
 
-  init (withIdentifierNamed inName : Int,
-        sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+  init (sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
         contentAlignment inContentAlignment : TextAlignment,
         valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSImage?,
         actionDelegate inActionDelegate : @escaping (_ inRow : Int) -> Void) {
     self.mValueGetterDelegate = inGetterDelegate
     self.mActionDelegate = inActionDelegate
-    super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
+    super.init (sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
     self.isEditable = false
   }
 

@@ -23,7 +23,6 @@ extension AutoLayoutTableView {
                                    headerAlignment inHeaderAlignment : NSTextAlignment,
                                    contentAlignment inContentAlignment : TextAlignment) {
     let column = InternalAttributedStringTableColumn (
-      withIdentifierNamed: self.columnCount,
       sortDelegate: inSortDelegate,
       contentAlignment: inContentAlignment,
       valueSetterDelegate: inSetterDelegate,
@@ -36,10 +35,6 @@ extension AutoLayoutTableView {
     column.width = (column.minWidth + column.maxWidth) / 2.0
   //--- Add Column
     self.appendTableColumn (column)
-  //--- Update table view sort descriptors
-//    if let s = column.sortDescriptorPrototype {
-//      self.mTableView.sortDescriptors.append (s)
-//    }
   }
 
   //····················································································································
@@ -61,14 +56,13 @@ fileprivate class InternalAttributedStringTableColumn : AutoLayoutTableColumn {
   // INIT
   //····················································································································
 
-  init (withIdentifierNamed inName : Int,
-        sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+  init (sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
         contentAlignment inContentAlignment : TextAlignment,
         valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : NSAttributedString) -> Void >,
         valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSAttributedString?) {
     self.mValueGetterDelegate = inGetterDelegate
     self.mValueSetterDelegate = inSetterDelegate
-    super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
+    super.init (sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
     self.isEditable = inSetterDelegate != nil
   }
 
@@ -102,21 +96,14 @@ fileprivate class InternalAttributedStringTableColumn : AutoLayoutTableColumn {
     textField.isEditable = editable
     if editable {
       textField.target = self
-      textField.action = #selector (Self.ebAction (_:))
+      textField.action = #selector (Self.setterAction (_:))
     }
     return textField
   }
 
   //····················································································································
 
-//  override func validateProposedFirstResponder (_ responder: NSResponder, for event: NSEvent?) -> Bool {
-//    Swift.print ("validateProposedFirstResponder")
-//    return false
-//  }
-
-  //····················································································································
-
-  @objc func ebAction (_ inSender : Any?) {
+  @objc private func setterAction (_ inSender : Any?) {
     if let textField = inSender as? NSTextField {
       let rowIndex = textField.tag
       let newValue = textField.attributedStringValue
@@ -128,3 +115,4 @@ fileprivate class InternalAttributedStringTableColumn : AutoLayoutTableColumn {
 
 }
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

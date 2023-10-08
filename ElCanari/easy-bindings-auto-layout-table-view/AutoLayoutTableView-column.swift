@@ -23,15 +23,15 @@ import AppKit
   // INIT
   //····················································································································
 
-  init (withIdentifierNamed inName : Int,
-        sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+  init (sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
         contentAlignment inContentAlignment : TextAlignment) {
     self.mContentAlignment = inContentAlignment.cocoaAlignment
     self.mSortDelegate = inSortDelegate
-    let name = String (inName)
-    super.init (identifier: NSUserInterfaceItemIdentifier (rawValue: name))
+    super.init (identifier: NSUserInterfaceItemIdentifier (rawValue: ""))
     noteObjectAllocation (self)
 
+    let name : String = "\(ObjectIdentifier (self))"
+    self.identifier =  NSUserInterfaceItemIdentifier (rawValue: name)
     if inSortDelegate != nil {
       self.sortDescriptorPrototype = NSSortDescriptor (key: name, ascending: true)
     }

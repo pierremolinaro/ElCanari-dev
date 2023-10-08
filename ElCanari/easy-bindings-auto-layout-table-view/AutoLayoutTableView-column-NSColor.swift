@@ -22,10 +22,7 @@ extension AutoLayoutTableView {
                           maxWidth inMaxWidth : Int,
                           headerAlignment inHeaderAlignment : TextAlignment,
                           contentAlignment _ : TextAlignment) {
-    let column = InternalColorValueTableColumn (
-      withIdentifierNamed: self.columnCount,
-      valueGetterDelegate: inGetterDelegate
-    )
+    let column = InternalColorValueTableColumn (valueGetterDelegate: inGetterDelegate)
     column.title = inTitle
     column.headerCell.controlSize = self.controlSize
     column.headerCell.font = self.font
@@ -55,10 +52,9 @@ fileprivate final class InternalColorValueTableColumn : AutoLayoutTableColumn {
   // INIT
   //····················································································································
 
-  init (withIdentifierNamed inName : Int,
-        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSColor?) {
+  init (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSColor?) {
     self.mValueGetterDelegate = inGetterDelegate
-    super.init (withIdentifierNamed: inName, sortDelegate: nil, contentAlignment: .center)
+    super.init (sortDelegate: nil, contentAlignment: .center)
     self.isEditable = false
   }
 

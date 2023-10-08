@@ -91,6 +91,16 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   //····················································································································
 
+  final var selectedRow : Int { return self.mTableView.selectedRow }
+
+  //····················································································································
+
+  final func selectRowIndexes (_ inIndexes : IndexSet, byExtendingSelection extend : Bool) {
+    self.mTableView.selectRowIndexes (inIndexes, byExtendingSelection: extend)
+  }
+
+  //····················································································································
+
   final func noHeaderView () -> Self {
     self.mTableView.headerView = nil
     self.mTableView.cornerView = nil
@@ -117,9 +127,32 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   
   //····················································································································
 
+  final func set (hasVerticalGrid inFlag : Bool) -> Self {
+    if inFlag {
+      self.mTableView.gridStyleMask.insert (.solidVerticalGridLineMask)
+    }else{
+      self.mTableView.gridStyleMask.remove (.solidVerticalGridLineMask)
+    }
+    return self
+  }
+
+  //····················································································································
+
   final func set (usesAlternatingRowBackgroundColors inFlag : Bool) -> Self {
     self.mTableView.usesAlternatingRowBackgroundColors = inFlag
     return self
+  }
+
+  //····················································································································
+
+  final func beginUpdates () {
+    self.mTableView.beginUpdates ()
+  }
+
+  //····················································································································
+
+  final func endUpdates () {
+    self.mTableView.endUpdates ()
   }
 
   //····················································································································
@@ -156,6 +189,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   final func appendTableColumn (_ inColumn : AutoLayoutTableColumn) {
   //--- Add Column
+//    inColumn.identifier = NSUserInterfaceItemIdentifier (rawValue: "\(self.columnCount)")
     self.mTableView.addTableColumn (inColumn)
   //--- Update table view sort descriptors
     if let s = inColumn.sortDescriptorPrototype {
@@ -217,10 +251,6 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
       self.mTableView.scrollRowToVisible (self.mTableView.selectedRow)
     }
   }
-
-  //····················································································································
-
-  final var selectedRow : Int { return self.mTableView.selectedRow }
 
   //····················································································································
   //   NSTableViewDataSource protocol
