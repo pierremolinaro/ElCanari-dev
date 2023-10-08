@@ -58,6 +58,40 @@ final class AutoLayoutTextObserverView : NSScrollView {
 
   //····················································································································
 
+  private var mHeight : Int? = nil
+  private var mMaxWidth : CGFloat? = nil
+
+  //····················································································································
+
+  func set (height inHeight : Int) -> Self {
+    self.mHeight = inHeight
+    self.mTextView.invalidateIntrinsicContentSize ()
+    return self
+  }
+
+  //····················································································································
+
+  func set (maxWidth inMaxWidth : Int) -> Self {
+    self.mMaxWidth = CGFloat (inMaxWidth)
+    self.mTextView.invalidateIntrinsicContentSize ()
+    return self
+  }
+
+  //····················································································································
+
+  override var intrinsicContentSize : NSSize {
+    var s = super.intrinsicContentSize
+    if let h = self.mHeight {
+      s.height = CGFloat (h)
+    }
+    if let w = self.mMaxWidth, s.width > w {
+      s.width = w
+    }
+    return s
+  }
+
+  //····················································································································
+
   final func setNoBackground () -> Self {
     self.mTextView.drawsBackground = false
     return self
