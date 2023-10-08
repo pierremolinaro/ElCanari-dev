@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_BoardModelPad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelPad> {
+class ReadOnlyArrayOf_BoardModelPad : EBReadOnlyAbstractArrayProperty <BoardModelPad> {
 
   //····················································································································
 

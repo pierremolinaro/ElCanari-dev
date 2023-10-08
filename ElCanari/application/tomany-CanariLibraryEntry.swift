@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_CanariLibraryEntry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <CanariLibraryEntry> {
+class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <CanariLibraryEntry> {
 
   //····················································································································
 

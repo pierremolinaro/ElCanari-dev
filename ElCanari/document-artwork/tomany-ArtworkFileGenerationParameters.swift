@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_ArtworkFileGenerationParameters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayProperty <ArtworkFileGenerationParameters> {
+class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayProperty <ArtworkFileGenerationParameters> {
 
   //····················································································································
 

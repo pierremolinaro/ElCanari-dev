@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_BoardImage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_BoardImage : ReadOnlyAbstractArrayProperty <BoardImage> {
+class ReadOnlyArrayOf_BoardImage : EBReadOnlyAbstractArrayProperty <BoardImage> {
 
   //····················································································································
 
@@ -1093,7 +1093,7 @@ final class TransientArrayOfSuperOf_BoardImage <SUPER : EBManagedObject> : ReadO
   //   Data provider
   //····················································································································
 
-  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
+  private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 //  private let mModelEvent = EBModelEvent ()
@@ -1107,7 +1107,7 @@ final class TransientArrayOfSuperOf_BoardImage <SUPER : EBManagedObject> : ReadO
 
   //····················································································································
 
-  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
+  func setDataProvider (_ inProvider : EBReadOnlyAbstractArrayProperty <SUPER>?) {
     if self.mDataProvider !== inProvider {
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = inProvider

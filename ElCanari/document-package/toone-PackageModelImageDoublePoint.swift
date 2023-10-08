@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyObject_PackageModelImageDoublePoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProperty <PackageModelImageDoublePoint> {
+class ReadOnlyObject_PackageModelImageDoublePoint : EBReadOnlyAbstractObjectProperty <PackageModelImageDoublePoint> {
 
   //····················································································································
 

@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyObject_PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInSchematic> {
+class ReadOnlyObject_PointInSchematic : EBReadOnlyAbstractObjectProperty <PointInSchematic> {
 
   //····················································································································
 

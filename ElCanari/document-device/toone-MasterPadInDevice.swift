@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyObject_MasterPadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterPadInDevice> {
+class ReadOnlyObject_MasterPadInDevice : EBReadOnlyAbstractObjectProperty <MasterPadInDevice> {
 
   //····················································································································
 

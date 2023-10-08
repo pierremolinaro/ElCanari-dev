@@ -1882,16 +1882,16 @@
 		CF8A8A84275A44A700825DF9 /* customStore-characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A8A81275A44A700825DF9 /* customStore-characters.swift */; };
 		CF8A8A86275A44A700825DF9 /* SegmentForFontCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A8A82275A44A700825DF9 /* SegmentForFontCharacter.swift */; };
 		CF8A8A87275A44A700825DF9 /* SegmentForFontCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A8A82275A44A700825DF9 /* SegmentForFontCharacter.swift */; };
-		CF8BE747235112CC00F95B3A /* ReadOnlyAbstractGenericRelationshipProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE742235112CB00F95B3A /* ReadOnlyAbstractGenericRelationshipProperty.swift */; };
-		CF8BE748235112CC00F95B3A /* ReadOnlyAbstractGenericRelationshipProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE742235112CB00F95B3A /* ReadOnlyAbstractGenericRelationshipProperty.swift */; };
+		CF8BE747235112CC00F95B3A /* EBReadOnlyAbstractGenericRelationshipProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE742235112CB00F95B3A /* EBReadOnlyAbstractGenericRelationshipProperty.swift */; };
+		CF8BE748235112CC00F95B3A /* EBReadOnlyAbstractGenericRelationshipProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE742235112CB00F95B3A /* EBReadOnlyAbstractGenericRelationshipProperty.swift */; };
 		CF8BE749235112CC00F95B3A /* func-checkOutletConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE743235112CB00F95B3A /* func-checkOutletConnection.swift */; };
 		CF8BE74A235112CC00F95B3A /* func-checkOutletConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE743235112CB00F95B3A /* func-checkOutletConnection.swift */; };
 		CF8BE74B235112CC00F95B3A /* func-presentErrorWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE744235112CB00F95B3A /* func-presentErrorWindow.swift */; };
 		CF8BE74C235112CC00F95B3A /* func-presentErrorWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE744235112CB00F95B3A /* func-presentErrorWindow.swift */; };
-		CF8BE74F235112CC00F95B3A /* ReadOnlyAbstractArrayProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE746235112CC00F95B3A /* ReadOnlyAbstractArrayProperty.swift */; };
-		CF8BE750235112CC00F95B3A /* ReadOnlyAbstractArrayProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE746235112CC00F95B3A /* ReadOnlyAbstractArrayProperty.swift */; };
-		CF8BE752235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE751235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift */; };
-		CF8BE753235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE751235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift */; };
+		CF8BE74F235112CC00F95B3A /* EBReadOnlyAbstractArrayProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE746235112CC00F95B3A /* EBReadOnlyAbstractArrayProperty.swift */; };
+		CF8BE750235112CC00F95B3A /* EBReadOnlyAbstractArrayProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE746235112CC00F95B3A /* EBReadOnlyAbstractArrayProperty.swift */; };
+		CF8BE752235114CA00F95B3A /* EBReadOnlyAbstractObjectProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE751235114CA00F95B3A /* EBReadOnlyAbstractObjectProperty.swift */; };
+		CF8BE753235114CA00F95B3A /* EBReadOnlyAbstractObjectProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE751235114CA00F95B3A /* EBReadOnlyAbstractObjectProperty.swift */; };
 		CF8BE7562351166A00F95B3A /* EBObservablePropertyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */; };
 		CF8BE7572351166A00F95B3A /* EBObservablePropertyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */; };
 		CF8C300E29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8C300D29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift */; };
@@ -4283,11 +4283,11 @@
 		CF8A8A81275A44A700825DF9 /* customStore-characters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "customStore-characters.swift"; sourceTree = "<group>"; };
 		CF8A8A82275A44A700825DF9 /* SegmentForFontCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentForFontCharacter.swift; sourceTree = "<group>"; };
 		CF8BE73823510FEC00F95B3A /* EBModelNotifierEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBModelNotifierEvent.swift; sourceTree = "<group>"; };
-		CF8BE742235112CB00F95B3A /* ReadOnlyAbstractGenericRelationshipProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOnlyAbstractGenericRelationshipProperty.swift; sourceTree = "<group>"; };
+		CF8BE742235112CB00F95B3A /* EBReadOnlyAbstractGenericRelationshipProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBReadOnlyAbstractGenericRelationshipProperty.swift; sourceTree = "<group>"; };
 		CF8BE743235112CB00F95B3A /* func-checkOutletConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "func-checkOutletConnection.swift"; sourceTree = "<group>"; };
 		CF8BE744235112CB00F95B3A /* func-presentErrorWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "func-presentErrorWindow.swift"; sourceTree = "<group>"; };
-		CF8BE746235112CC00F95B3A /* ReadOnlyAbstractArrayProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOnlyAbstractArrayProperty.swift; sourceTree = "<group>"; };
-		CF8BE751235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOnlyAbstractObjectProperty.swift; sourceTree = "<group>"; };
+		CF8BE746235112CC00F95B3A /* EBReadOnlyAbstractArrayProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBReadOnlyAbstractArrayProperty.swift; sourceTree = "<group>"; };
+		CF8BE751235114CA00F95B3A /* EBReadOnlyAbstractObjectProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBReadOnlyAbstractObjectProperty.swift; sourceTree = "<group>"; };
 		CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBObservablePropertyController.swift; sourceTree = "<group>"; };
 		CF8C300D29F00EFA00F911C9 /* transient-BoardQRCode-actualImageSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardQRCode-actualImageSize.swift"; sourceTree = "<group>"; };
 		CF8C301129F0133300F911C9 /* ZoomInToolbarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZoomInToolbarImage.png; sourceTree = "<group>"; };
@@ -5199,10 +5199,11 @@
 		CF217C0825015ED3003E322E /* EB — document */ = {
 			isa = PBXGroup;
 			children = (
-				CF9C602425CAB19700A00D5C /* EBAutoLayoutManagedDocument.swift */,
 				CFF85808295C8E5600444543 /* DocumentStorablePropertyProtocol.swift */,
+				CF9C602425CAB19700A00D5C /* EBAutoLayoutManagedDocument.swift */,
 				CFEDE5B11B4677C500036ACF /* EBDataScanner.swift */,
 				CFEDE5B31B4677C500036ACF /* EBManagedObject.swift */,
+				CF3DAD2E2AD098BF003830F4 /* EBStoredProperty.swift */,
 				CF217C1325016A46003E322E /* file-format-binary.swift */,
 				CF217C0F250165BD003E322E /* file-format-text.swift */,
 				CF217C1925017D6B003E322E /* file-format-utilities.swift */,
@@ -5652,7 +5653,6 @@
 				CF3DAD182AD096CA003830F4 /* EBObserverProtocol.swift */,
 				CF3DAD142AD096CA003830F4 /* EBPreferenceProperty.swift */,
 				CF3DAD112AD096CA003830F4 /* EBPropertyProtocol.swift */,
-				CF3DAD2E2AD098BF003830F4 /* EBStoredProperty.swift */,
 				CF3DAD152AD096CA003830F4 /* EBTransientProperty.swift */,
 				CFEEE6AC2AD186A7005B44FB /* EBSimpleObserver.swift */,
 			);
@@ -6216,13 +6216,13 @@
 		CF8B9D272AD18271002169DC /* EB — collections */ = {
 			isa = PBXGroup;
 			children = (
+				CF8BE746235112CC00F95B3A /* EBReadOnlyAbstractArrayProperty.swift */,
+				CF8BE742235112CB00F95B3A /* EBReadOnlyAbstractGenericRelationshipProperty.swift */,
+				CF8BE751235114CA00F95B3A /* EBReadOnlyAbstractObjectProperty.swift */,
 				CF171D8926FB999A00A1BCB2 /* EBReferenceArray.swift */,
 				CF04F00027046EC200CAFAE0 /* EBReferenceDictionary.swift */,
 				CFC1325E26FB4EBB0027AC93 /* EBReferenceSet.swift */,
 				CFAE4B212927893D00458900 /* EBWeakReferenceArray-Set.swift */,
-				CF8BE746235112CC00F95B3A /* ReadOnlyAbstractArrayProperty.swift */,
-				CF8BE742235112CB00F95B3A /* ReadOnlyAbstractGenericRelationshipProperty.swift */,
-				CF8BE751235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift */,
 			);
 			name = "EB — collections";
 			path = "ElCanari/easy-bindings-collections";
@@ -7972,7 +7972,7 @@
 				CF99E37521AE920F002AB233 /* CanariIssue.swift in Sources */,
 				CFBC202F275E14D40076697D /* extension-SegmentForFontCharacter.swift in Sources */,
 				CFDD6D4C26A1B0F20050CB78 /* AutoLayoutCanariObservedDimensionField.swift in Sources */,
-				CF8BE747235112CC00F95B3A /* ReadOnlyAbstractGenericRelationshipProperty.swift in Sources */,
+				CF8BE747235112CC00F95B3A /* EBReadOnlyAbstractGenericRelationshipProperty.swift in Sources */,
 				CF355A49279D9F8D000BFC9B /* AutoLayoutCanariVerticalAlignmentSegmentedControl.swift in Sources */,
 				CFFEC1CF280483E200E5E8DD /* toone-ForbiddenPadNumber.swift in Sources */,
 				CF59C44629BE36AB004CA404 /* property-NetInfoPointArray.swift in Sources */,
@@ -8119,7 +8119,7 @@
 				CF89B5DF29C4885600762595 /* action-AutoLayoutMergerDocument-stackAllRightAction.swift in Sources */,
 				CFB1F95A2940EDDC00C1E120 /* action-AutoLayoutProjectDocument-editFontAction.swift in Sources */,
 				CFB7D76126839B90007B9D3B /* transient-AutoLayoutSymbolDocument-addBezierButtonImage.swift in Sources */,
-				CF8BE74F235112CC00F95B3A /* ReadOnlyAbstractArrayProperty.swift in Sources */,
+				CF8BE74F235112CC00F95B3A /* EBReadOnlyAbstractArrayProperty.swift in Sources */,
 				CF711E04275E1C8D00280069 /* extension-PackageModelImageDoublePoint.swift in Sources */,
 				CF8A78CB268B988B00B819DE /* AutoLayoutDroppableImageView.swift in Sources */,
 				CFA42F83229AEACF000AA8C8 /* toone-SymbolInstanceInDevice.swift in Sources */,
@@ -9141,7 +9141,7 @@
 				CF40D15329CF888A00B94422 /* transient-AutoLayoutArtworkDocument-statusWarningCount.swift in Sources */,
 				CFFEC1DB280483F000E5E8DD /* toone-SymbolPin.swift in Sources */,
 				CF22F11E275A7029009C6FAC /* func-clippedSegmentEntity.swift in Sources */,
-				CF8BE752235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift in Sources */,
+				CF8BE752235114CA00F95B3A /* EBReadOnlyAbstractObjectProperty.swift in Sources */,
 				CF9F8BED2852689400E313C7 /* action-AutoLayoutMergerDocument-stackSelectionLeftAction.swift in Sources */,
 				CFEB7BC2233A27AF0060A97A /* transient-FontInProject-sizeString.swift in Sources */,
 				CFB7D8802683A61C007B9D3B /* configurator-AutoLayoutPackageDocument-addPackageGuide.swift in Sources */,
@@ -9639,7 +9639,7 @@
 				CF4B39D721D4E8B1001217C6 /* transient-PackagePad-zoneAllowsManualRenumbering.swift in Sources */,
 				CFCD46C72A0573F800DC1D63 /* transient-WireInSchematic-wires.swift in Sources */,
 				CF3DAD1E2AD096CA003830F4 /* EBObservableMutableProperty.swift in Sources */,
-				CF8BE748235112CC00F95B3A /* ReadOnlyAbstractGenericRelationshipProperty.swift in Sources */,
+				CF8BE748235112CC00F95B3A /* EBReadOnlyAbstractGenericRelationshipProperty.swift in Sources */,
 				CFEB7AF8233A249E0060A97A /* transient-BoardText-fontName.swift in Sources */,
 				CF22F241275A73EE009C6FAC /* transient-BoardModel-inner4TracksBezierPaths.swift in Sources */,
 				CFFC7AE323EA049300EBADD9 /* transient-PackageSlavePad-padNameForDisplay.swift in Sources */,
@@ -9761,7 +9761,7 @@
 				CF3DAD2D2AD09785003830F4 /* EBObservableObjectProtocol.swift in Sources */,
 				CF49913828D8C9430099F871 /* enum-VerticalAlignment.swift in Sources */,
 				CFB1F9912940F43200C1E120 /* action-AutoLayoutProjectDocument-appendNewBoardERCCheckingInspectorAction.swift in Sources */,
-				CF8BE750235112CC00F95B3A /* ReadOnlyAbstractArrayProperty.swift in Sources */,
+				CF8BE750235112CC00F95B3A /* EBReadOnlyAbstractArrayProperty.swift in Sources */,
 				CF49914128D8C9430099F871 /* enum-LayerConfiguration.swift in Sources */,
 				CF8A78CC268B988B00B819DE /* AutoLayoutDroppableImageView.swift in Sources */,
 				CFEB7CD4233A28860060A97A /* transient-ProjectRoot-trackCountString.swift in Sources */,
@@ -10790,7 +10790,7 @@
 				CFB7D8BA2683A61D007B9D3B /* action-AutoLayoutPackageDocument-removeModelImageAction.swift in Sources */,
 				CFA42F80229AEACF000AA8C8 /* toone-PadProxyInDevice.swift in Sources */,
 				CFF79DF02846177400C7BEE3 /* transient-BoardObject-displayInner4RestrictRectangles.swift in Sources */,
-				CF8BE753235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift in Sources */,
+				CF8BE753235114CA00F95B3A /* EBReadOnlyAbstractObjectProperty.swift in Sources */,
 				CF711DBC275E1B6500280069 /* toone-ProjectRoot.swift in Sources */,
 				CF40D15429CF888A00B94422 /* transient-AutoLayoutArtworkDocument-statusWarningCount.swift in Sources */,
 				CF22F11F275A7029009C6FAC /* func-clippedSegmentEntity.swift in Sources */,

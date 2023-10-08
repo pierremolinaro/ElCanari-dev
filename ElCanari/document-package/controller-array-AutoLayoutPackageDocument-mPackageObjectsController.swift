@@ -8,7 +8,7 @@ import AppKit
 //    Array controller AutoLayoutPackageDocument mPackageObjectsController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol, HiddenEBProtocol {
+final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : EBReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol, HiddenEBProtocol {
 
   //····················································································································
   //    Undo manager

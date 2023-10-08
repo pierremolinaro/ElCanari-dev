@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_PadProxyInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxyInDevice> {
+class ReadOnlyArrayOf_PadProxyInDevice : EBReadOnlyAbstractArrayProperty <PadProxyInDevice> {
 
   //····················································································································
 

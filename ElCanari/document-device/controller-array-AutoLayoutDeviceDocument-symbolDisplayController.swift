@@ -8,7 +8,7 @@ import AppKit
 //    Array controller AutoLayoutDeviceDocument symbolDisplayController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutDeviceDocument_symbolDisplayController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol, HiddenEBProtocol {
+final class Controller_AutoLayoutDeviceDocument_symbolDisplayController : EBReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol, HiddenEBProtocol {
 
   //····················································································································
   //    Undo manager

@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_BoardModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
+class ReadOnlyArrayOf_BoardModel : EBReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
 

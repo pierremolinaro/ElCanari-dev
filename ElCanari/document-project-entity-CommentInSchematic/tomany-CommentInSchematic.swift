@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_CommentInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <CommentInSchematic> {
+class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <CommentInSchematic> {
 
   //····················································································································
 
@@ -358,7 +358,7 @@ final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject>
   //   Data provider
   //····················································································································
 
-  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
+  private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 //  private let mModelEvent = EBModelEvent ()
@@ -372,7 +372,7 @@ final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject>
 
   //····················································································································
 
-  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
+  func setDataProvider (_ inProvider : EBReadOnlyAbstractArrayProperty <SUPER>?) {
     if self.mDataProvider !== inProvider {
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = inProvider

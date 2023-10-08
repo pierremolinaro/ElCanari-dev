@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProject> {
+class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInProject> {
 
   //····················································································································
 

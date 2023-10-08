@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_DeviceMasterPadInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_DeviceMasterPadInProject : ReadOnlyAbstractArrayProperty <DeviceMasterPadInProject> {
+class ReadOnlyArrayOf_DeviceMasterPadInProject : EBReadOnlyAbstractArrayProperty <DeviceMasterPadInProject> {
 
   //····················································································································
 

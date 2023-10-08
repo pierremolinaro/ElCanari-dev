@@ -8,7 +8,7 @@ import AppKit
 //    Array controller AutoLayoutProjectDocument boardCurveObjectsController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutProjectDocument_boardCurveObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol, HiddenEBProtocol {
+final class Controller_AutoLayoutProjectDocument_boardCurveObjectsController : EBReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol, HiddenEBProtocol {
 
   //····················································································································
   //    Undo manager

@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> {
+class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve> {
 
   //····················································································································
 

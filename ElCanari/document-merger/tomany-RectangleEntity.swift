@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_RectangleEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_RectangleEntity : ReadOnlyAbstractArrayProperty <RectangleEntity> {
+class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <RectangleEntity> {
 
   //····················································································································
 

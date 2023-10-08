@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_SegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEntity> {
+class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEntity> {
 
   //····················································································································
 

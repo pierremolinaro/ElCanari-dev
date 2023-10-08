@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyObject_NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject> {
+class ReadOnlyObject_NetInProject : EBReadOnlyAbstractObjectProperty <NetInProject> {
 
   //····················································································································
 

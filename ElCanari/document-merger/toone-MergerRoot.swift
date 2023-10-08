@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyObject_MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
+class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 

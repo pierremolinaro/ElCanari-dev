@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_SchematicObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <SchematicObject> {
+class ReadOnlyArrayOf_SchematicObject : EBReadOnlyAbstractArrayProperty <SchematicObject> {
 
   //····················································································································
 

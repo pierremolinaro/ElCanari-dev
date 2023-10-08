@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyObject_SymbolPinTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <SymbolPinTypeInDevice> {
+class ReadOnlyObject_SymbolPinTypeInDevice : EBReadOnlyAbstractObjectProperty <SymbolPinTypeInDevice> {
 
   //····················································································································
 

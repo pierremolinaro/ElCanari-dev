@@ -8,7 +8,7 @@ import AppKit
 //    Array controller AutoLayoutPackageDocument mModelImageObjectsController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol, HiddenEBProtocol {
+final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : EBReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol, HiddenEBProtocol {
 
   //····················································································································
   //    Undo manager

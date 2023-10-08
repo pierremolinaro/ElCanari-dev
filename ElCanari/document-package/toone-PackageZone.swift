@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyObject_PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> {
+class ReadOnlyObject_PackageZone : EBReadOnlyAbstractObjectProperty <PackageZone> {
 
   //····················································································································
 

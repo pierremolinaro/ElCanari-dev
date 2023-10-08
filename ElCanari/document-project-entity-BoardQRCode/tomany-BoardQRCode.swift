@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_BoardQRCode
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_BoardQRCode : ReadOnlyAbstractArrayProperty <BoardQRCode> {
+class ReadOnlyArrayOf_BoardQRCode : EBReadOnlyAbstractArrayProperty <BoardQRCode> {
 
   //····················································································································
 
@@ -673,7 +673,7 @@ final class TransientArrayOfSuperOf_BoardQRCode <SUPER : EBManagedObject> : Read
   //   Data provider
   //····················································································································
 
-  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
+  private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 //  private let mModelEvent = EBModelEvent ()
@@ -687,7 +687,7 @@ final class TransientArrayOfSuperOf_BoardQRCode <SUPER : EBManagedObject> : Read
 
   //····················································································································
 
-  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
+  func setDataProvider (_ inProvider : EBReadOnlyAbstractArrayProperty <SUPER>?) {
     if self.mDataProvider !== inProvider {
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = inProvider

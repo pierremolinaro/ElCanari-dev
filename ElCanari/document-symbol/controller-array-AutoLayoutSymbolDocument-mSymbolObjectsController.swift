@@ -8,7 +8,7 @@ import AppKit
 //    Array controller AutoLayoutSymbolDocument mSymbolObjectsController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol, HiddenEBProtocol {
+final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : EBReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol, HiddenEBProtocol {
 
   //····················································································································
   //    Undo manager

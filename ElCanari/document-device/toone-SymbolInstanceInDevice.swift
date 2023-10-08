@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyObject_SymbolInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <SymbolInstanceInDevice> {
+class ReadOnlyObject_SymbolInstanceInDevice : EBReadOnlyAbstractObjectProperty <SymbolInstanceInDevice> {
 
   //····················································································································
 

@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyObject_DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <DevicePackageInProject> {
+class ReadOnlyObject_DevicePackageInProject : EBReadOnlyAbstractObjectProperty <DevicePackageInProject> {
 
   //····················································································································
 

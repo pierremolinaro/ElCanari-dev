@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_SymbolPinInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty <SymbolPinInstanceInDevice> {
+class ReadOnlyArrayOf_SymbolPinInstanceInDevice : EBReadOnlyAbstractArrayProperty <SymbolPinInstanceInDevice> {
 
   //····················································································································
 

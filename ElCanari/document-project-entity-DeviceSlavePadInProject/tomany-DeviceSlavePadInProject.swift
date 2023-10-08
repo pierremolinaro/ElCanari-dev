@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_DeviceSlavePadInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <DeviceSlavePadInProject> {
+class ReadOnlyArrayOf_DeviceSlavePadInProject : EBReadOnlyAbstractArrayProperty <DeviceSlavePadInProject> {
 
   //····················································································································
 

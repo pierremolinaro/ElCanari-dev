@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <MergerBoardInstance> {
+class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <MergerBoardInstance> {
 
   //····················································································································
 

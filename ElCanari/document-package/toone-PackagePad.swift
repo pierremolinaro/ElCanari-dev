@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyObject_PackagePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
+class ReadOnlyObject_PackagePad : EBReadOnlyAbstractObjectProperty <PackagePad> {
 
   //····················································································································
 

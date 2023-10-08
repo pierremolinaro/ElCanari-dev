@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_DeviceSymbolInstanceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayProperty <DeviceSymbolInstanceInProject> {
+class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : EBReadOnlyAbstractArrayProperty <DeviceSymbolInstanceInProject> {
 
   //····················································································································
 

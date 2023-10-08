@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_SheetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInProject> {
+class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInProject> {
 
   //····················································································································
 

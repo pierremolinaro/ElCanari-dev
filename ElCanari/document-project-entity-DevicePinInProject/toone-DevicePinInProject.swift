@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyObject_DevicePinInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <DevicePinInProject> {
+class ReadOnlyObject_DevicePinInProject : EBReadOnlyAbstractObjectProperty <DevicePinInProject> {
 
   //····················································································································
 

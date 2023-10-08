@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyObject_BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConnector> {
+class ReadOnlyObject_BoardConnector : EBReadOnlyAbstractObjectProperty <BoardConnector> {
 
   //····················································································································
 

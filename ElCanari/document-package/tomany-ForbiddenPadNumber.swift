@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_ForbiddenPadNumber
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <ForbiddenPadNumber> {
+class ReadOnlyArrayOf_ForbiddenPadNumber : EBReadOnlyAbstractArrayProperty <ForbiddenPadNumber> {
 
   //····················································································································
 

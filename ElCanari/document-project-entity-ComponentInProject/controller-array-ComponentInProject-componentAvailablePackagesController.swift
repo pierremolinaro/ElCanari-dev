@@ -8,7 +8,7 @@ import AppKit
 //    Array controller ComponentInProject componentAvailablePackagesController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_ComponentInProject_componentAvailablePackagesController : ReadOnlyAbstractGenericRelationshipProperty, HiddenEBProtocol {
+final class Controller_ComponentInProject_componentAvailablePackagesController : EBReadOnlyAbstractGenericRelationshipProperty, HiddenEBProtocol {
 
   //····················································································································
   //    Undo manager

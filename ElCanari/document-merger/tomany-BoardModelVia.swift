@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_BoardModelVia
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelVia> {
+class ReadOnlyArrayOf_BoardModelVia : EBReadOnlyAbstractArrayProperty <BoardModelVia> {
 
   //····················································································································
 

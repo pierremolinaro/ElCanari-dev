@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyObject_NCInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_NCInSchematic : ReadOnlyAbstractObjectProperty <NCInSchematic> {
+class ReadOnlyObject_NCInSchematic : EBReadOnlyAbstractObjectProperty <NCInSchematic> {
 
   //····················································································································
 

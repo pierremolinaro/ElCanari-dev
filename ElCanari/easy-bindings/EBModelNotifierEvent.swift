@@ -14,14 +14,14 @@ import AppKit
   //   Properties
   //····················································································································
 
-  private weak var mClient : ReadOnlyAbstractGenericRelationshipProperty? // SHOULD BE WEAK
+  private weak var mClient : EBReadOnlyAbstractGenericRelationshipProperty? // SHOULD BE WEAK
   private let mRemoveSortObserversCallback : (EBModelNotifierEvent) -> Void
 
   //····················································································································
   //   Properties
   //····················································································································
 
-  init (_ inClient : ReadOnlyAbstractGenericRelationshipProperty,
+  init (_ inClient : EBReadOnlyAbstractGenericRelationshipProperty,
         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
         removeSortObserversCallback inRemoveSortObserversCallback : @escaping (EBModelNotifierEvent) -> Void) {
     self.mClient = inClient

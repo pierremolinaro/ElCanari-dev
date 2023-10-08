@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_PackageObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObject> {
+class ReadOnlyArrayOf_PackageObject : EBReadOnlyAbstractArrayProperty <PackageObject> {
 
   //····················································································································
 

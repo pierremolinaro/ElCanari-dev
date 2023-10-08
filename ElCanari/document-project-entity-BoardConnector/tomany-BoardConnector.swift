@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConnector> {
+class ReadOnlyArrayOf_BoardConnector : EBReadOnlyAbstractArrayProperty <BoardConnector> {
 
   //····················································································································
 
@@ -1058,7 +1058,7 @@ final class TransientArrayOfSuperOf_BoardConnector <SUPER : EBManagedObject> : R
   //   Data provider
   //····················································································································
 
-  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
+  private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 //  private let mModelEvent = EBModelEvent ()
@@ -1072,7 +1072,7 @@ final class TransientArrayOfSuperOf_BoardConnector <SUPER : EBManagedObject> : R
 
   //····················································································································
 
-  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
+  func setDataProvider (_ inProvider : EBReadOnlyAbstractArrayProperty <SUPER>?) {
     if self.mDataProvider !== inProvider {
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = inProvider

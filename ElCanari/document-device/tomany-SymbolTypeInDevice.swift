@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_SymbolTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <SymbolTypeInDevice> {
+class ReadOnlyArrayOf_SymbolTypeInDevice : EBReadOnlyAbstractArrayProperty <SymbolTypeInDevice> {
 
   //····················································································································
 

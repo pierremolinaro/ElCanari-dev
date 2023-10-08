@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyObject_ComponentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <ComponentInProject> {
+class ReadOnlyObject_ComponentInProject : EBReadOnlyAbstractObjectProperty <ComponentInProject> {
 
   //····················································································································
 

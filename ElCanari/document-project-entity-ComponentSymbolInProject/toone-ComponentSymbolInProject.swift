@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyObject_ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <ComponentSymbolInProject> {
+class ReadOnlyObject_ComponentSymbolInProject : EBReadOnlyAbstractObjectProperty <ComponentSymbolInProject> {
 
   //····················································································································
 

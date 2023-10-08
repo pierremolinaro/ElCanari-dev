@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_PackageBezier
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezier> {
+class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBezier> {
 
   //····················································································································
 
@@ -743,7 +743,7 @@ final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : Re
   //   Data provider
   //····················································································································
 
-  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
+  private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 //  private let mModelEvent = EBModelEvent ()
@@ -757,7 +757,7 @@ final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
+  func setDataProvider (_ inProvider : EBReadOnlyAbstractArrayProperty <SUPER>?) {
     if self.mDataProvider !== inProvider {
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = inProvider

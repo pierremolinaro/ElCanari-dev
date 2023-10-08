@@ -5,64 +5,35 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyAbstractObjectProperty
+//    EBReadOnlyAbstractGenericRelationshipProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyAbstractObjectProperty <T : AnyObject> : ReadOnlyAbstractGenericRelationshipProperty {
+class EBReadOnlyAbstractGenericRelationshipProperty : EBObservedObserver {
 
   //····················································································································
-  // Abstract methods
+  //  Data clients
   //····················································································································
 
-  var selection : EBSelection < T? > { get { return .empty } }  // Abstract method
+  private final var mClients = EBWeakReferenceSet <EBReadOnlyAbstractGenericRelationshipProperty> ()
 
   //····················································································································
-  //  Internal value
-  //····················································································································
 
-  final weak var mWeakInternalValue : T? = nil {
-    didSet {
-      if self.mWeakInternalValue !== oldValue {
-        if (self.mWeakInternalValue == nil) != (oldValue == nil) {
-          self.none_property.observedObjectDidChange ()
-        }
-        self.observedObjectDidChange ()
-        self.notifyModelDidChangeFrom (oldValue: oldValue)
-        self.notifyModelDidChange ()
-      }
-    }
+  final func attachClient (_ inClient : EBReadOnlyAbstractGenericRelationshipProperty) {
+    self.mClients.insert (inClient)
+    inClient.notifyModelDidChange ()
   }
 
   //····················································································································
 
-  func notifyModelDidChangeFrom (oldValue inOldValue : T?) {
+  final func detachClient (_ inClient : EBReadOnlyAbstractGenericRelationshipProperty) {
+    self.mClients.remove (inClient)
   }
 
   //····················································································································
-  //  none property
-  //····················································································································
 
-  final let none_property = EBTransientProperty <Bool> ()
-
-  //····················································································································
-  //  init
-  //····················································································································
-
-  override init () {
-    super.init ()
-    self.none_property.mReadModelFunction = { [weak self] in
-      if let me = self {
-        switch me.selection {
-        case .empty :
-          return .single (false)
-        case .multiple :
-          return .multiple
-        case .single :
-          return .single (true)
-        }
-      }else{
-        return .empty
-      }
+  func notifyModelDidChange () {
+    for client in self.mClients.values () {
+      client.notifyModelDidChange ()
     }
   }
 

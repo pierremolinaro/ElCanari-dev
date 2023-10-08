@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInSchematic> {
+class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointInSchematic> {
 
   //····················································································································
 

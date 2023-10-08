@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyObject_ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> {
+class ReadOnlyObject_ArtworkRoot : EBReadOnlyAbstractObjectProperty <ArtworkRoot> {
 
   //····················································································································
 

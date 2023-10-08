@@ -5,99 +5,44 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor fileprivate func update <T : AnyObject> (currentSet ioCurrentSet : inout EBReferenceSet <T>,
-                fromNewArray inNewArray : EBReferenceArray <T>,
-                oldArray inOldArray : EBReferenceArray <T>) -> (Bool, EBReferenceSet <T>, EBReferenceSet <T>) {
-  var addedSet = EBReferenceSet <T> ()
-  var removedSet = EBReferenceSet <T> ()
-//--- Model did change ?
-  var modelsAreEqual = inNewArray.count == inOldArray.count
-  var idx = 0
-  while modelsAreEqual && (idx < inNewArray.count) {
-    modelsAreEqual = inNewArray [idx] === inOldArray [idx]
-    idx += 1
-  }
-//---
-  if !modelsAreEqual {
-    var setAreEqual = ioCurrentSet.count == inNewArray.count
-    var newSet = EBReferenceSet <T> (minimumCapacity: inNewArray.count)
-    for object in inNewArray.values {
-      newSet.insert (object)
-      if !ioCurrentSet.contains (object) {
-        setAreEqual = false
-        addedSet.insert (object)
-      }
-    }
-    if !setAreEqual {
-      let oldSet = ioCurrentSet
-      ioCurrentSet = newSet
-      removedSet = oldSet.subtracting (newSet)
-    }
-  }
-  return (modelsAreEqual, addedSet, removedSet)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyAbstractArrayProperty
+//    EBReadOnlyAbstractObjectProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyAbstractArrayProperty <T : AnyObject> : ReadOnlyAbstractGenericRelationshipProperty {
+class EBReadOnlyAbstractObjectProperty <T : AnyObject> : EBReadOnlyAbstractGenericRelationshipProperty {
 
   //····················································································································
   // Abstract methods
   //····················································································································
 
-  var selection : EBSelection < [T] > { return .empty }  // Abstract method
-
-  //····················································································································
-
-  var propval : EBReferenceArray <T> { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  final var propset : EBReferenceSet <T> { return self.mInternalSetValue }
+  var selection : EBSelection < T? > { get { return .empty } }  // Abstract method
 
   //····················································································································
   //  Internal value
   //····················································································································
 
-  final var internalSetValue : EBReferenceSet <T> { return self.mInternalSetValue }
-
-  private final var mInternalSetValue = EBReferenceSet <T> ()
-
-  final var mInternalArrayValue = EBReferenceArray <T> () {
+  final weak var mWeakInternalValue : T? = nil {
     didSet {
-      let (equalModels, addedSet, removedSet) = update (currentSet: &self.mInternalSetValue, fromNewArray: self.mInternalArrayValue, oldArray: oldValue)
-      if !equalModels {
-        if self.mInternalArrayValue.count != oldValue.count {
-          self.count_property.observedObjectDidChange ()
+      if self.mWeakInternalValue !== oldValue {
+        if (self.mWeakInternalValue == nil) != (oldValue == nil) {
+          self.none_property.observedObjectDidChange ()
         }
         self.observedObjectDidChange ()
         self.notifyModelDidChangeFrom (oldValue: oldValue)
         self.notifyModelDidChange ()
-        if !addedSet.isEmpty || !removedSet.isEmpty {
-          self.updateObservers (removedSet: removedSet, addedSet: addedSet)
-        }
       }
     }
   }
 
   //····················································································································
 
-  func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <T>) {
+  func notifyModelDidChangeFrom (oldValue inOldValue : T?) {
   }
 
   //····················································································································
-
-  func updateObservers (removedSet inRemovedSet : EBReferenceSet <T>, addedSet inAddedSet : EBReferenceSet <T>) {
-  }
-
-  //····················································································································
-  //  count property
+  //  none property
   //····················································································································
 
-  final let count_property = EBTransientProperty <Int> ()
+  final let none_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //  init
@@ -105,15 +50,15 @@ class ReadOnlyAbstractArrayProperty <T : AnyObject> : ReadOnlyAbstractGenericRel
 
   override init () {
     super.init ()
-    self.count_property.mReadModelFunction = { [weak self] in
+    self.none_property.mReadModelFunction = { [weak self] in
       if let me = self {
         switch me.selection {
         case .empty :
-          return .empty
+          return .single (false)
         case .multiple :
           return .multiple
-        case .single (let v) :
-          return .single (v.count)
+        case .single :
+          return .single (true)
         }
       }else{
         return .empty

@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_DeviceDocumentation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <DeviceDocumentation> {
+class ReadOnlyArrayOf_DeviceDocumentation : EBReadOnlyAbstractArrayProperty <DeviceDocumentation> {
 
   //····················································································································
 

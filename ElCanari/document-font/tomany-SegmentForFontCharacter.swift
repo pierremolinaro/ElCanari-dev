@@ -8,7 +8,7 @@ import AppKit
 //    ReadOnlyArrayOf_SegmentForFontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <SegmentForFontCharacter> {
+class ReadOnlyArrayOf_SegmentForFontCharacter : EBReadOnlyAbstractArrayProperty <SegmentForFontCharacter> {
 
   //····················································································································
 
