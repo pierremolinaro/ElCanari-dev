@@ -82,15 +82,10 @@ fileprivate final class InternalImageIntValueTableColumn : AutoLayoutTableColumn
   override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
     let value : (Int?, NSImage?) = self.mValueGetterDelegate (inRowIndex)
 
-    let hStack = AutoLayoutHorizontalStackView ()
-
     let imageView = AutoLayoutStaticImageView (image: value.1)
-    _ = hStack.appendView (imageView)
 
     let textField = NSTextField (frame: .zero)
     textField.translatesAutoresizingMaskIntoConstraints = false
-    _ = hStack.appendView (textField)
-
     textField.isBezeled = false
     textField.isBordered = false
     textField.drawsBackground = false
@@ -106,7 +101,10 @@ fileprivate final class InternalImageIntValueTableColumn : AutoLayoutTableColumn
       textField.integerValue = v
     }
 
-    _ = hStack.appendFlexibleSpace ()
+    let hStack = AutoLayoutHorizontalStackView ()
+      .appendView (imageView)
+      .appendView (textField)
+      .appendFlexibleSpace ()
     return hStack
   }
 
