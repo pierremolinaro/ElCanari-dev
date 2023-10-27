@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -1139,7 +1139,7 @@
 		CF4EAA0726F684B600F01746 /* transient-ArtworkRoot-hasSixLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EAA0526F684B600F01746 /* transient-ArtworkRoot-hasSixLayers.swift */; };
 		CF501FE829EFE9370015760A /* board-image-default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF501FE729EFE9370015760A /* board-image-default.png */; };
 		CF501FE929EFE9370015760A /* board-image-default.png in Resources */ = {isa = PBXBuildFile; fileRef = CF501FE729EFE9370015760A /* board-image-default.png */; };
-		CF50656727490E7F009A99B6 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = CF50656627490E7F009A99B6 /* Sparkle */; };
+		CF50656727490E7F009A99B6 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; platformFilters = (macos, ); productRef = CF50656627490E7F009A99B6 /* Sparkle */; };
 		CF5123EE222A877500FA4364 /* transient-PackageSegment-strokeBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5123ED222A877500FA4364 /* transient-PackageSegment-strokeBezierPath.swift */; };
 		CF5123EF222A877500FA4364 /* transient-PackageSegment-strokeBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5123ED222A877500FA4364 /* transient-PackageSegment-strokeBezierPath.swift */; };
 		CF5123F1222A889400FA4364 /* transient-PackageBezier-strokeBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5123F0222A889400FA4364 /* transient-PackageBezier-strokeBezierPath.swift */; };
@@ -1447,6 +1447,7 @@
 		CF6E148521CD1F90008E2180 /* transient-PackageZone-rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E148321CD1F90008E2180 /* transient-PackageZone-rect.swift */; };
 		CF6E148721CD32CA008E2180 /* transient-PackagePad-zoneName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E148621CD32CA008E2180 /* transient-PackagePad-zoneName.swift */; };
 		CF6E148821CD32CA008E2180 /* transient-PackagePad-zoneName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E148621CD32CA008E2180 /* transient-PackagePad-zoneName.swift */; };
+		CF70296B2AD4254F00B7EA72 /* periphery in Frameworks */ = {isa = PBXBuildFile; productRef = CF70296A2AD4254F00B7EA72 /* periphery */; };
 		CF7034C02353ABD100F4D2C7 /* alignmentTop.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7034BB2353ABD000F4D2C7 /* alignmentTop.png */; };
 		CF7034C12353ABD100F4D2C7 /* alignmentTop.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7034BB2353ABD000F4D2C7 /* alignmentTop.png */; };
 		CF7034C42353ABD100F4D2C7 /* alignmentBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7034BD2353ABD100F4D2C7 /* alignmentBottom.png */; };
@@ -2593,7 +2594,6 @@
 		CFB9E20222D344EE00D681BF /* enum-TrackSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */; };
 		CFB9E20322D344EE00D681BF /* enum-TrackSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */; };
 		CFBAB0B420DE786C00476FB7 /* canari-conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBAB0B320DE786C00476FB7 /* canari-conversions.swift */; };
-		CFBB380C2AD0687900992C97 /* periphery in Frameworks */ = {isa = PBXBuildFile; productRef = CFBB380B2AD0687900992C97 /* periphery */; };
 		CFBC202B275E14B60076697D /* extension-MergerBoardInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC202A275E14B60076697D /* extension-MergerBoardInstance.swift */; };
 		CFBC202C275E14B60076697D /* extension-MergerBoardInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC202A275E14B60076697D /* extension-MergerBoardInstance.swift */; };
 		CFBC202F275E14D40076697D /* extension-SegmentForFontCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC202E275E14D30076697D /* extension-SegmentForFontCharacter.swift */; };
@@ -5113,7 +5113,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF50656727490E7F009A99B6 /* Sparkle in Frameworks */,
-				CFBB380C2AD0687900992C97 /* periphery in Frameworks */,
+				CF70296B2AD4254F00B7EA72 /* periphery in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7528,7 +7528,7 @@
 			name = "ElCanari-Debug";
 			packageProductDependencies = (
 				CF50656627490E7F009A99B6 /* Sparkle */,
-				CFBB380B2AD0687900992C97 /* periphery */,
+				CF70296A2AD4254F00B7EA72 /* periphery */,
 			);
 			productInstallPath = "$(HOME)/bin";
 			productName = canari;
@@ -7598,7 +7598,7 @@
 			mainGroup = 4B5CE2FE28308FD9F2A7BAF3;
 			packageReferences = (
 				CF50656527490E7F009A99B6 /* XCRemoteSwiftPackageReference "Sparkle" */,
-				CFBB380A2AD0687900992C97 /* XCRemoteSwiftPackageReference "periphery" */,
+				CF7029692AD4254F00B7EA72 /* XCRemoteSwiftPackageReference "periphery" */,
 			);
 			productRefGroup = CF747FB01B3C3D8D00140C49 /* Products */;
 			projectDirPath = "";
@@ -11389,7 +11389,7 @@
 				minimumVersion = 2.3.2;
 			};
 		};
-		CFBB380A2AD0687900992C97 /* XCRemoteSwiftPackageReference "periphery" */ = {
+		CF7029692AD4254F00B7EA72 /* XCRemoteSwiftPackageReference "periphery" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/peripheryapp/periphery";
 			requirement = {
@@ -11405,15 +11405,15 @@
 			package = CF50656527490E7F009A99B6 /* XCRemoteSwiftPackageReference "Sparkle" */;
 			productName = Sparkle;
 		};
+		CF70296A2AD4254F00B7EA72 /* periphery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF7029692AD4254F00B7EA72 /* XCRemoteSwiftPackageReference "periphery" */;
+			productName = periphery;
+		};
 		CF935B682749127D00C0F42D /* Sparkle */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CF50656527490E7F009A99B6 /* XCRemoteSwiftPackageReference "Sparkle" */;
 			productName = Sparkle;
-		};
-		CFBB380B2AD0687900992C97 /* periphery */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFBB380A2AD0687900992C97 /* XCRemoteSwiftPackageReference "periphery" */;
-			productName = periphery;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
