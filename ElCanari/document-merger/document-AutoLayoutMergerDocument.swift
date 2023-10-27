@@ -297,7 +297,6 @@ import AppKit
       }
       _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()
-        .setCenterAlignment ()
       do{
         let view_0_1_0 = AutoLayoutCheckbox (title: "Show Display Settings", size: .regular)
           .bind_value (self.rootObject.showDisplaySettingView_property)

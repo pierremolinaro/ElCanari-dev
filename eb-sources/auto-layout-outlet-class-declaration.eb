@@ -11,7 +11,6 @@ vStack func set (bottomMargin: Int) ;
 vStack func set (width: Int) ;
 vStack func set (minWidth: Int) ;
 vStack func equalHeight () ;
-vStack func setCenterAlignment () ;
 vStack func expandableWidth () ;
  
 hStack func set (spacing: Int) ;

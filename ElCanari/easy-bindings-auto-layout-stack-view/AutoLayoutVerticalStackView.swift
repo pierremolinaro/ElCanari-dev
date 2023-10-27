@@ -58,13 +58,6 @@ class AutoLayoutVerticalStackView : AutoLayoutBase_NSStackView {
   }
 
   //····················································································································
-
-  final func setCenterAlignment () -> Self {
-    self.alignment = .centerX
-    return self
-  }
-
-  //····················································································································
   // Flipped
   // https://stackoverflow.com/questions/4697583/setting-nsscrollview-contents-to-top-left-instead-of-bottom-left-when-document-s
   //····················································································································

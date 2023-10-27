@@ -21,14 +21,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         }
         StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
       }
-//      vStack setCenterAlignment () {
-//        Button (title: "Display Settings", size : .regular) {
-//          $enabled root.selectedPageIndex <= 1
-//          $run showPrefsForSettingMergerDisplayAction
-//        }
-//        StaticLabel (title: "for Model and Board Views", bold: no, size : .small, alignment: .center)
-//      }
-      vStack setCenterAlignment () {
+      vStack {
         Checkbox (title: "Show Display Settings", size : .regular) {
           $enabled root.selectedPageIndex <= 1
           $value root.showDisplaySettingView
