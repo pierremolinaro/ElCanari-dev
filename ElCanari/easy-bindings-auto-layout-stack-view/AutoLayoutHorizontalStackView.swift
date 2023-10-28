@@ -103,19 +103,25 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
   override func updateConstraints () {
     self.removeConstraints (self.mConstraints)
     self.mConstraints.removeAll ()
-    var spaceViewArray = [AutoLayoutFlexibleSpace] ()
+ //   var optionalLastViewWithLastBaselineAlignment : NSView? = nil
+    var optionalLastFlexibleSpace : AutoLayoutFlexibleSpace? = nil
+
     for view in self.subviews {
-      if let spaceView = view as? AutoLayoutFlexibleSpace {
-        spaceViewArray.append (spaceView)
+//      if !view.isHidden && (view.lastBaselineOffsetFromBottom != 0) {
+//        if let lastViewWithLastBaselineAlignment = optionalLastViewWithLastBaselineAlignment {
+//          let c = NSLayoutConstraint (item: lastViewWithLastBaselineAlignment, attribute: .lastBaseline, relatedBy: .equal, toItem: view, attribute: .lastBaseline, multiplier: 1.0, constant: 0.0)
+//          self.mConstraints.append (c)
+//        }
+//        optionalLastViewWithLastBaselineAlignment = view
+//      }
+      if !view.isHidden, let spaceView = view as? AutoLayoutFlexibleSpace {
+        if let lastFlexibleSpace = optionalLastFlexibleSpace {
+          self.mConstraints.append (equalWidth: lastFlexibleSpace, spaceView)
+        }
+        optionalLastFlexibleSpace = spaceView
       }
     }
-    if let oneSpaceView = spaceViewArray.popLast () {
-      for spaceView in spaceViewArray {
-        let c = NSLayoutConstraint (item: oneSpaceView, attribute: .width, relatedBy: .equal, toItem: spaceView, attribute: .width, multiplier: 1.0, constant: 0.0)
-        self.mConstraints.append (c)
-      }
-      self.addConstraints (self.mConstraints)
-    }
+    self.addConstraints (self.mConstraints)
     super.updateConstraints ()
   }
 

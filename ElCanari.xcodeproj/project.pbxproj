@@ -863,6 +863,8 @@
 		CF3DD5F9250236A400163A12 /* file-metadata-get.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DD5F7250236A400163A12 /* file-metadata-get.swift */; };
 		CF3E658A21BECB7A0041FA2A /* EBGraphicView-issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E658921BECB7A0041FA2A /* EBGraphicView-issue.swift */; };
 		CF3E658B21BECB7A0041FA2A /* EBGraphicView-issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E658921BECB7A0041FA2A /* EBGraphicView-issue.swift */; };
+		CF3FCA162AEC3E1B004A36E7 /* NSLayoutConstraint-array-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3FCA152AEC3E1B004A36E7 /* NSLayoutConstraint-array-extensions.swift */; };
+		CF3FCA172AEC3E1B004A36E7 /* NSLayoutConstraint-array-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3FCA152AEC3E1B004A36E7 /* NSLayoutConstraint-array-extensions.swift */; };
 		CF40D13329CF7E9500B94422 /* transient-AutoLayoutSymbolDocument-statusWarningCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40D13129CF7E9500B94422 /* transient-AutoLayoutSymbolDocument-statusWarningCount.swift */; };
 		CF40D13429CF7E9500B94422 /* transient-AutoLayoutSymbolDocument-statusWarningCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40D13129CF7E9500B94422 /* transient-AutoLayoutSymbolDocument-statusWarningCount.swift */; };
 		CF40D13629CF7E9500B94422 /* transient-AutoLayoutSymbolDocument-statusErrorCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40D13229CF7E9500B94422 /* transient-AutoLayoutSymbolDocument-statusErrorCount.swift */; };
@@ -3781,6 +3783,7 @@
 		CF3DAD342AD0A2D6003830F4 /* EBEnumReadObservableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBEnumReadObservableProtocol.swift; sourceTree = "<group>"; };
 		CF3DD5F7250236A400163A12 /* file-metadata-get.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "file-metadata-get.swift"; sourceTree = "<group>"; };
 		CF3E658921BECB7A0041FA2A /* EBGraphicView-issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-issue.swift"; sourceTree = "<group>"; };
+		CF3FCA152AEC3E1B004A36E7 /* NSLayoutConstraint-array-extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint-array-extensions.swift"; sourceTree = "<group>"; };
 		CF40D13129CF7E9500B94422 /* transient-AutoLayoutSymbolDocument-statusWarningCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutSymbolDocument-statusWarningCount.swift"; sourceTree = "<group>"; };
 		CF40D13229CF7E9500B94422 /* transient-AutoLayoutSymbolDocument-statusErrorCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutSymbolDocument-statusErrorCount.swift"; sourceTree = "<group>"; };
 		CF40D13929CF81B600B94422 /* transient-AutoLayoutPackageDocument-statusErrorCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutPackageDocument-statusErrorCount.swift"; sourceTree = "<group>"; };
@@ -6290,6 +6293,7 @@
 				CF4990EE28D8C9400099F871 /* enum-EBControlSize.swift */,
 				CF4990F428D8C9410099F871 /* enum-TextAlignment-extension.swift */,
 				CF4990E728D8C93F0099F871 /* enum-TextAlignment.swift */,
+				CF3FCA152AEC3E1B004A36E7 /* NSLayoutConstraint-array-extensions.swift */,
 			);
 			name = "EB — Auto Layout";
 			path = "ElCanari/easy-bindings-auto-layout";
@@ -9241,6 +9245,7 @@
 				CFA5BD2125C5FFED00714CF0 /* transient-ComponentInProject-hasSlavePads.swift in Sources */,
 				CF711D51275E1AD400280069 /* toone-DevicePinInProject.swift in Sources */,
 				CF4915C82AC8AE4A0028D6C5 /* CanariRect.swift in Sources */,
+				CF3FCA162AEC3E1B004A36E7 /* NSLayoutConstraint-array-extensions.swift in Sources */,
 				CFB7D74F26839B90007B9D3B /* document-AutoLayoutSymbolDocument-sub-class.swift in Sources */,
 				CF3DAD1B2AD096CA003830F4 /* EBPropertyProtocol.swift in Sources */,
 				CF26AE1D2AD178870041763B /* extension-Data-base62.swift in Sources */,
@@ -9757,6 +9762,7 @@
 				CF7FC47E29EDB2870045DD14 /* toone-BoardImage.swift in Sources */,
 				CF379169269CBAFD00FA083F /* transient-AutoLayoutPackageDocument-issues.swift in Sources */,
 				CF6B32E321C8F75000E3B985 /* entity-PackageGuide.swift in Sources */,
+				CF3FCA172AEC3E1B004A36E7 /* NSLayoutConstraint-array-extensions.swift in Sources */,
 				CF39CD1E268CC0B4004971F9 /* controller-array-AutoLayoutDeviceDocument-packageDisplayController.swift in Sources */,
 				CF711D0A275E1A7900280069 /* entity-ComponentSymbolInProject.swift in Sources */,
 				CF711CE1275E1A6200280069 /* tomany-BorderCurve.swift in Sources */,

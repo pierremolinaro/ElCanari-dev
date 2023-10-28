@@ -122,6 +122,77 @@ final class AutoLayoutWindowContentView : NSView {
   }
 
   //····················································································································
+  //   TRACKING AREA
+  //····················································································································
+
+//  final var mTrackingArea : NSTrackingArea? = nil
+//  final var mCurrentTrackedView : NSView? = nil
+//
+//  //····················································································································
+//
+//  final override func updateTrackingAreas () { // This is required for receiving mouse moved and mouseExited events
+//  //--- Remove current tracking area
+//    if let trackingArea = self.mTrackingArea {
+//      self.removeTrackingArea (trackingArea)
+//    }
+//  //--- Add Updated tracking area (.activeInKeyWindow is required, otherwise crash)
+//    let trackingArea = NSTrackingArea (
+//      rect: self.bounds,
+//      options: [.mouseEnteredAndExited, .mouseMoved, .activeInKeyWindow],
+//      owner: self,
+//      userInfo: nil
+//    )
+//    self.addTrackingArea (trackingArea)
+//    self.mTrackingArea = trackingArea
+//  //---
+//    super.updateTrackingAreas ()
+//  }
+//
+//  //····················································································································
+//
+//  private func findSubView (in inView: NSView, at inPoint : NSPoint) -> NSView? {
+//    for view in inView.subviews {
+//     let p = view.convert (inPoint, from: inView)
+//     let v = self.findSubView (in: view, at: p) ;
+//      if v != nil {
+//        return v
+//      }
+//    }
+//    if inView.bounds.contains (inPoint) {
+//      return inView
+//    }else{
+//      return nil
+//    }
+//  }
+//
+//  //····················································································································
+//
+//  final override func mouseMoved (with inEvent : NSEvent) {
+//    let windowContentView = self.subviews [0]
+//    let mouseLocation = windowContentView.convert (inEvent.locationInWindow, from: nil)
+//    let optionalView = self.findSubView (in: windowContentView, at: mouseLocation)
+//    if optionalView != self.mCurrentTrackedView {
+//      self.mCurrentTrackedView = optionalView
+//      if let view = optionalView {
+//        Swift.print ("Class: \(view.className)")
+//        Swift.print ("  Bounds: \(view.bounds)")
+//        Swift.print ("  Frame: \(view.frame)")
+//        Swift.print ("  firstBaselineOffsetFromTop: \(view.firstBaselineOffsetFromTop)")
+//        Swift.print ("  lastBaselineOffsetFromBottom: \(view.lastBaselineOffsetFromBottom)")
+//        Swift.print ("  baselineOffsetFromBottom: \(view.baselineOffsetFromBottom)")
+//      }
+//    }
+//    super.mouseMoved (with: inEvent)
+//  }
+//
+//  //····················································································································
+//
+//  final override func mouseExited (with inEvent : NSEvent) {
+//    self.mCurrentTrackedView = nil
+//    super.mouseExited (with: inEvent)
+//  }
+
+  //····················································································································
 
 }
 
