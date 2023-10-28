@@ -13,7 +13,7 @@ import AppKit
 let DEBUG_FLEXIBLE_SPACE_FILL_COLOR       = NSColor.systemGreen.withAlphaComponent (0.25)
 let DEBUG_HORIZONTAL_SEPARATOR_FILL_COLOR = NSColor.systemPurple.withAlphaComponent (0.5)
 let DEBUG_VERTICAL_SEPARATOR_FILL_COLOR   = NSColor.systemPink.withAlphaComponent (0.25)
-let DEBUG_KEY_CHAIN_STROKE_COLOR          = NSColor.systemBrown
+let DEBUG_KEY_CHAIN_STROKE_COLOR          = NSColor.black
 let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
 //let DEBUG_FILL_COLOR                      = NSColor.systemGray.withAlphaComponent (0.07)
 
@@ -24,6 +24,7 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
 @MainActor func appendDebugAutoLayoutMenuItem (_ inMenu : NSMenu) {
   inMenu.addItem (gDebugAutoLayout.menuItem)
   inMenu.addItem (gDebugAutoLayout.responderKeyChainItem)
+  inMenu.addItem (gDebugAutoLayout.showViewCurrentValuesItem)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -36,6 +37,12 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
 
 @MainActor func showKeyResponderChain () -> Bool {
   return gDebugAutoLayout.mShowKeyResponderChain
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor func showViewCurrentValues () -> Bool {
+  return gDebugAutoLayout.mShowViewCurrentValues
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -62,11 +69,21 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
 
   //····················································································································
 
-  var mShowKeyResponderChain = false
+  private(set) var mShowKeyResponderChain = false
 
-  let responderKeyChainItem = NSMenuItem (
+  fileprivate let responderKeyChainItem = NSMenuItem (
     title: "Show Responder Key Chain",
     action: #selector (Self.toggleShowKeyResponderChain (_:)),
+    keyEquivalent: ""
+  )
+
+  //····················································································································
+
+  private(set) var mShowViewCurrentValues = false
+
+  fileprivate let showViewCurrentValuesItem = NSMenuItem (
+    title: "Show View Current Settings",
+    action: #selector (Self.toggleViewCurrentValues (_:)),
     keyEquivalent: ""
   )
 
@@ -77,6 +94,7 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
   init () {
     self.menuItem.target = self
     self.responderKeyChainItem.target = self
+    self.showViewCurrentValuesItem.target = self
     noteObjectAllocation (self)
   }
 
@@ -106,6 +124,18 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
     for window in NSApplication.shared.windows {
       if let mainView = window.contentView {
         self.propagateNeedsDisplay (mainView)
+      }
+    }
+  }
+
+  //····················································································································
+
+  @objc func toggleViewCurrentValues (_ _ : Any?) {
+    self.mShowViewCurrentValues.toggle ()
+    self.showViewCurrentValuesItem.state = self.mShowViewCurrentValues ? .on : .off
+    for window in NSApplication.shared.windows {
+      if let mainView = window.contentView as? AutoLayoutWindowContentView {
+        mainView.set (displayViewCurrentSettings: self.mShowViewCurrentValues)
       }
     }
   }

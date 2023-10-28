@@ -155,8 +155,6 @@
 		CF1D9C7C21BBEB2200FFF459 /* EBGraphicView-binding-overObjectsDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C7A21BBEB2200FFF459 /* EBGraphicView-binding-overObjectsDisplay.swift */; };
 		CF1D9C7E21BBEE3400FFF459 /* EBGraphicView-menu-actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C7D21BBEE3400FFF459 /* EBGraphicView-menu-actions.swift */; };
 		CF1D9C7F21BBEE3400FFF459 /* EBGraphicView-menu-actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C7D21BBEE3400FFF459 /* EBGraphicView-menu-actions.swift */; };
-		CF1D9C8121BBF13900FFF459 /* EBGraphicView-tracking-areas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C8021BBF13900FFF459 /* EBGraphicView-tracking-areas.swift */; };
-		CF1D9C8221BBF13900FFF459 /* EBGraphicView-tracking-areas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C8021BBF13900FFF459 /* EBGraphicView-tracking-areas.swift */; };
 		CF1D9C8421BBF4EE00FFF459 /* EBGraphicView-helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C8321BBF4EE00FFF459 /* EBGraphicView-helpers.swift */; };
 		CF1D9C8521BBF4EE00FFF459 /* EBGraphicView-helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C8321BBF4EE00FFF459 /* EBGraphicView-helpers.swift */; };
 		CF1D9C8721BBFBB100FFF459 /* EBGraphicView-key-down.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D9C8621BBFBB100FFF459 /* EBGraphicView-key-down.swift */; };
@@ -3502,7 +3500,6 @@
 		CF1D9C7721BBEA6400FFF459 /* EBGraphicView-binding-underObjectsDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-binding-underObjectsDisplay.swift"; sourceTree = "<group>"; };
 		CF1D9C7A21BBEB2200FFF459 /* EBGraphicView-binding-overObjectsDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-binding-overObjectsDisplay.swift"; sourceTree = "<group>"; };
 		CF1D9C7D21BBEE3400FFF459 /* EBGraphicView-menu-actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-menu-actions.swift"; sourceTree = "<group>"; };
-		CF1D9C8021BBF13900FFF459 /* EBGraphicView-tracking-areas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-tracking-areas.swift"; sourceTree = "<group>"; };
 		CF1D9C8321BBF4EE00FFF459 /* EBGraphicView-helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-helpers.swift"; sourceTree = "<group>"; };
 		CF1D9C8621BBFBB100FFF459 /* EBGraphicView-key-down.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-key-down.swift"; sourceTree = "<group>"; };
 		CF1D9C8921BBFD7900FFF459 /* EBGraphicView-mouse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-mouse.swift"; sourceTree = "<group>"; };
@@ -6852,7 +6849,6 @@
 				CFFF32BA248E27BD0008EC34 /* EBGraphicView-mouse-moved-exited.swift */,
 				CF1D9C8921BBFD7900FFF459 /* EBGraphicView-mouse.swift */,
 				CF6B571D22CAA828006910BF /* EBGraphicView-tool-tips.swift */,
-				CF1D9C8021BBF13900FFF459 /* EBGraphicView-tracking-areas.swift */,
 				CFDDD4D921BB1529007D2F14 /* EBGraphicView.swift */,
 				CFDDD4D421BB1529007D2F14 /* EBGraphicViewControllerProtocol.swift */,
 				CF604DC621BC1BC1004F2311 /* EBScrollView.swift */,
@@ -9252,7 +9248,6 @@
 				CF571D93295DCC8B0063E7AB /* TwoStrings.swift in Sources */,
 				CFEB7AC2233A235F0060A97A /* transient-BorderCurve-descriptor.swift in Sources */,
 				CF6B32F621C91FA100E3B985 /* transient-PackageDimension-objectDisplay.swift in Sources */,
-				CF1D9C8121BBF13900FFF459 /* EBGraphicView-tracking-areas.swift in Sources */,
 				CF59C41929BE36AB004CA404 /* property-NSFont.swift in Sources */,
 				CF40D15629CF888A00B94422 /* transient-AutoLayoutArtworkDocument-statusErrorCount.swift in Sources */,
 				CF4EA9FB26F671C500F01746 /* transient-NetClassInProject-allowTracksOnInner2LayerString.swift in Sources */,
@@ -10909,7 +10904,6 @@
 				CFA5BD2225C5FFED00714CF0 /* transient-ComponentInProject-hasSlavePads.swift in Sources */,
 				CF3DAD1C2AD096CA003830F4 /* EBPropertyProtocol.swift in Sources */,
 				CF26AE1E2AD178870041763B /* extension-Data-base62.swift in Sources */,
-				CF1D9C8221BBF13900FFF459 /* EBGraphicView-tracking-areas.swift in Sources */,
 				CF571D94295DCC8B0063E7AB /* TwoStrings.swift in Sources */,
 				CFB7D75026839B90007B9D3B /* document-AutoLayoutSymbolDocument-sub-class.swift in Sources */,
 				CFEB7AC3233A235F0060A97A /* transient-BorderCurve-descriptor.swift in Sources */,

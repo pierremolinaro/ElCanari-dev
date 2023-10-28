@@ -113,9 +113,13 @@ final class AutoLayoutOneStringArrayTableView : NSScrollView, NSTableViewDataSou
     textField.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: textField.controlSize))
     result.addSubview (textField)
     result.textField = textField
-    let c1 = NSLayoutConstraint (item: textField, attribute: .width, relatedBy: .equal, toItem: result, attribute: .width, multiplier: 1.0, constant: 0.0)
-    let c2 = NSLayoutConstraint (item: textField, attribute: .height, relatedBy: .equal, toItem: result, attribute: .height, multiplier: 1.0, constant: 0.0)
-    result.addConstraints ([c1, c2])
+//    let c1 = NSLayoutConstraint (item: textField, attribute: .width, relatedBy: .equal, toItem: result, attribute: .width, multiplier: 1.0, constant: 0.0)
+//    let c2 = NSLayoutConstraint (item: textField, attribute: .height, relatedBy: .equal, toItem: result, attribute: .height, multiplier: 1.0, constant: 0.0)
+//    result.addConstraints ([c1, c2])
+    var constraints = [NSLayoutConstraint] ()
+    constraints.append (makeWidthOf: textField, equalToWidthOf: result)
+    constraints.append (makeHeightOf: textField, equalToHeightOf: result)
+    result.addConstraints (constraints)
     return result
   }
 

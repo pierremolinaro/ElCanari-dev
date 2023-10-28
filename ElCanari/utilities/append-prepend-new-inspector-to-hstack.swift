@@ -24,9 +24,7 @@ import AppKit
   let vStack = AutoLayoutVerticalStackView ()
     .appendView (header)
     .appendView (inInspector)
-//    .appendFlexibleSpace ()
-  _ = inBaseHorizontalStack.appendView (verticalSeparator)
-  _ = inBaseHorizontalStack.appendView (vStack)
+  _ = inBaseHorizontalStack.appendView (verticalSeparator).appendView (vStack)
   closeButton.setClosureAction { [weak inBaseHorizontalStack, weak vStack] in
     if let s = vStack {
       inBaseHorizontalStack?.removeView (s)
@@ -51,9 +49,7 @@ import AppKit
   let vStack = AutoLayoutVerticalStackView ()
     .appendView (header)
     .appendView (inInspector)
- //   .appendFlexibleSpace ()
-  _ = inBaseHorizontalStack.prependView (verticalSeparator)
-  _ = inBaseHorizontalStack.prependView (vStack)
+  _ = inBaseHorizontalStack.prependView (verticalSeparator).prependView (vStack)
   closeButton.setClosureAction { [weak inBaseHorizontalStack, weak vStack] in
     if let s = vStack {
       inBaseHorizontalStack?.removeView (s)

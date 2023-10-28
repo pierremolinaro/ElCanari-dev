@@ -45,30 +45,20 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
 
     var constraints = [NSLayoutConstraint] ()
   //--- Left
-    var c = NSLayoutConstraint (item: self, attribute: .left, relatedBy: .equal, toItem: self.mLeftTextField, attribute: .left, multiplier: 1.0, constant: 0.0)
-    constraints.append (c)
-    c = NSLayoutConstraint (item: self, attribute: .centerY, relatedBy: .equal, toItem: self.mLeftTextField, attribute: .centerY, multiplier: 1.0, constant: 0.0)
-    constraints.append (c)
+    constraints.append (setLeftOf: self, equalToLeftOf: self.mLeftTextField)
+    constraints.append (alignYCenterOf: self, self.mLeftTextField)
   //--- Right
-    c = NSLayoutConstraint (item: self, attribute: .right, relatedBy: .equal, toItem: self.mRightTextField, attribute: .right, multiplier: 1.0, constant: 0.0)
-    constraints.append (c)
-    c = NSLayoutConstraint (item: self, attribute: .centerY, relatedBy: .equal, toItem: self.mRightTextField, attribute: .centerY, multiplier: 1.0, constant: 0.0)
-    constraints.append (c)
+    constraints.append (setRightOf: self, equalToRightOf: self.mRightTextField)
+    constraints.append (alignYCenterOf: self, self.mRightTextField)
   //--- Top
-    c = NSLayoutConstraint (item: self, attribute: .top, relatedBy: .equal, toItem: self.mTopTextField, attribute: .top, multiplier: 1.0, constant: 0.0)
-    constraints.append (c)
-    c = NSLayoutConstraint (item: self, attribute: .centerX, relatedBy: .equal, toItem: self.mTopTextField, attribute: .centerX, multiplier: 1.0, constant: 0.0)
-    constraints.append (c)
+    constraints.append (setTopOf: self, equalToTopOf: self.mTopTextField)
+    constraints.append (alignXCenterOf: self, self.mTopTextField)
   //--- Bottom
-    c = NSLayoutConstraint (item: self, attribute: .bottom, relatedBy: .equal, toItem: self.mBottomTextField, attribute: .bottom, multiplier: 1.0, constant: 0.0)
-    constraints.append (c)
-    c = NSLayoutConstraint (item: self, attribute: .centerX, relatedBy: .equal, toItem: self.mBottomTextField, attribute: .centerX, multiplier: 1.0, constant: 0.0)
-    constraints.append (c)
+    constraints.append (setBottomOf: self, equalToBottomOf: self.mBottomTextField)
+    constraints.append (alignXCenterOf: self, self.mBottomTextField)
   //--- Unit pop up
-    c = NSLayoutConstraint (item: self, attribute: .centerY, relatedBy: .equal, toItem: self.mUnitPopUpButton, attribute: .centerY, multiplier: 1.0, constant: 0.0)
-    constraints.append (c)
-    c = NSLayoutConstraint (item: self, attribute: .centerX, relatedBy: .equal, toItem: self.mUnitPopUpButton, attribute: .centerX, multiplier: 1.0, constant: 0.0)
-    constraints.append (c)
+    constraints.append (alignYCenterOf: self, self.mUnitPopUpButton)
+    constraints.append (alignXCenterOf: self, self.mUnitPopUpButton)
   //---
     self.addConstraints (constraints)
   }

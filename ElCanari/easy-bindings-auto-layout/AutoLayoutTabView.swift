@@ -31,18 +31,14 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
     self.mSegmentedControl.action = #selector (Self.selectedItemDidChange (_:))
 
   //--- Permanent tab view constraints
-    var c = NSLayoutConstraint (item: self, attribute: .top, relatedBy: .equal, toItem: self.mSegmentedControl, attribute: .top, multiplier: 1.0, constant: 0.0)
-    var permanentConstraints = [c]
-    c = NSLayoutConstraint (item: self, attribute: .centerX, relatedBy: .equal, toItem: self.mSegmentedControl, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+    var permanentConstraints = [NSLayoutConstraint] ()
+    permanentConstraints.append (setTopOf: self, equalToTopOf: self.mSegmentedControl)
+    permanentConstraints.append (alignXCenterOf: self, self.mSegmentedControl)
+    let c = NSLayoutConstraint (item: self.mDocumentView, attribute: .top, relatedBy: .equal, toItem: self.mSegmentedControl, attribute: .centerY, multiplier: 1.0, constant: 0.0)
     permanentConstraints.append (c)
-    c = NSLayoutConstraint (item: self.mDocumentView, attribute: .top, relatedBy: .equal, toItem: self.mSegmentedControl, attribute: .centerY, multiplier: 1.0, constant: 0.0)
-    permanentConstraints.append (c)
-    c = NSLayoutConstraint (item: self.mDocumentView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0)
-    permanentConstraints.append (c)
-    c = NSLayoutConstraint (item: self.mDocumentView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0)
-    permanentConstraints.append (c)
-    c = NSLayoutConstraint (item: self.mDocumentView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0.0)
-    permanentConstraints.append (c)
+    permanentConstraints.append (setBottomOf: self, equalToBottomOf: self.mDocumentView)
+    permanentConstraints.append (setLeftOf: self, equalToLeftOf: self.mDocumentView)
+    permanentConstraints.append (setRightOf: self, equalToRightOf: self.mDocumentView)
     self.addConstraints (permanentConstraints)
   }
 

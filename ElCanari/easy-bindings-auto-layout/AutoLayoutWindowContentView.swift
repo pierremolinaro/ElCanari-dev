@@ -26,24 +26,22 @@ final class AutoLayoutWindowContentView : NSView {
     self.setContentCompressionResistancePriority (.defaultLow, for: .horizontal)
     self.setContentCompressionResistancePriority (.defaultLow, for: .vertical)
 
-    do{
-      self.addSubview (inView)
-      let c0 = NSLayoutConstraint (item: self, attribute: .left,  relatedBy: .equal, toItem: inView, attribute: .left,  multiplier: 1.0, constant: 0.0)
-      let c1 = NSLayoutConstraint (item: self, attribute: .right, relatedBy: .equal, toItem: inView, attribute: .right, multiplier: 1.0, constant: 0.0)
-      let c2 = NSLayoutConstraint (item: self, attribute: .top,   relatedBy: .equal, toItem: inView, attribute: .top,  multiplier: 1.0, constant: 0.0)
-      let c3 = NSLayoutConstraint (item: self, attribute: .bottom, relatedBy: .equal, toItem: inView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
-      self.addConstraints ([c0, c1, c2, c3])
-    }
+    var constraints = [NSLayoutConstraint] ()
 
-    do{
-      let view = HiliteView ()
-      self.addSubview (view)
-      let c0 = NSLayoutConstraint (item: self, attribute: .left,  relatedBy: .equal, toItem: view, attribute: .left,  multiplier: 1.0, constant: 0.0)
-      let c1 = NSLayoutConstraint (item: self, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0.0)
-      let c2 = NSLayoutConstraint (item: self, attribute: .top,   relatedBy: .equal, toItem: view, attribute: .top,  multiplier: 1.0, constant: 0.0)
-      let c3 = NSLayoutConstraint (item: self, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
-      self.addConstraints ([c0, c1, c2, c3])
-    }
+    self.addSubview (inView)
+    constraints.append (setLeftOf: self, equalToLeftOf: inView)
+    constraints.append (setTopOf: self, equalToTopOf: inView)
+    constraints.append (setRightOf: self, equalToRightOf: inView)
+    constraints.append (setBottomOf: self, equalToBottomOf: inView)
+
+    let hiliteWiew = HiliteView ()
+    self.addSubview (hiliteWiew)
+    constraints.append (setLeftOf: self, equalToLeftOf: hiliteWiew)
+    constraints.append (setTopOf: self, equalToTopOf: hiliteWiew)
+    constraints.append (setRightOf: self, equalToRightOf: hiliteWiew)
+    constraints.append (setBottomOf: self, equalToBottomOf: hiliteWiew)
+
+    self.addConstraints (constraints)
   }
 
   //····················································································································
@@ -122,75 +120,157 @@ final class AutoLayoutWindowContentView : NSView {
   }
 
   //····················································································································
-  //   TRACKING AREA
+  //   DISPLAY VIEW CURRENT SETTINGS
   //····················································································································
 
-//  final var mTrackingArea : NSTrackingArea? = nil
-//  final var mCurrentTrackedView : NSView? = nil
-//
-//  //····················································································································
-//
-//  final override func updateTrackingAreas () { // This is required for receiving mouse moved and mouseExited events
-//  //--- Remove current tracking area
-//    if let trackingArea = self.mTrackingArea {
-//      self.removeTrackingArea (trackingArea)
-//    }
-//  //--- Add Updated tracking area (.activeInKeyWindow is required, otherwise crash)
-//    let trackingArea = NSTrackingArea (
-//      rect: self.bounds,
-//      options: [.mouseEnteredAndExited, .mouseMoved, .activeInKeyWindow],
-//      owner: self,
-//      userInfo: nil
-//    )
-//    self.addTrackingArea (trackingArea)
-//    self.mTrackingArea = trackingArea
-//  //---
-//    super.updateTrackingAreas ()
-//  }
-//
-//  //····················································································································
-//
-//  private func findSubView (in inView: NSView, at inPoint : NSPoint) -> NSView? {
-//    for view in inView.subviews {
-//     let p = view.convert (inPoint, from: inView)
-//     let v = self.findSubView (in: view, at: p) ;
-//      if v != nil {
-//        return v
-//      }
-//    }
-//    if inView.bounds.contains (inPoint) {
-//      return inView
-//    }else{
-//      return nil
-//    }
-//  }
-//
-//  //····················································································································
-//
-//  final override func mouseMoved (with inEvent : NSEvent) {
-//    let windowContentView = self.subviews [0]
-//    let mouseLocation = windowContentView.convert (inEvent.locationInWindow, from: nil)
-//    let optionalView = self.findSubView (in: windowContentView, at: mouseLocation)
-//    if optionalView != self.mCurrentTrackedView {
-//      self.mCurrentTrackedView = optionalView
-//      if let view = optionalView {
-//        Swift.print ("Class: \(view.className)")
-//        Swift.print ("  Bounds: \(view.bounds)")
-//        Swift.print ("  Frame: \(view.frame)")
-//        Swift.print ("  firstBaselineOffsetFromTop: \(view.firstBaselineOffsetFromTop)")
-//        Swift.print ("  lastBaselineOffsetFromBottom: \(view.lastBaselineOffsetFromBottom)")
-//        Swift.print ("  baselineOffsetFromBottom: \(view.baselineOffsetFromBottom)")
-//      }
-//    }
-//    super.mouseMoved (with: inEvent)
-//  }
-//
-//  //····················································································································
-//
-//  final override func mouseExited (with inEvent : NSEvent) {
-//    self.mCurrentTrackedView = nil
-//    super.mouseExited (with: inEvent)
-//  }
+  var mTrackingArea : NSTrackingArea? = nil
+  var mCurrentTrackedView : NSView? = nil
+  var mDisplayWindow : NSWindow? = nil
+  var mDisplayViewCurrentSettings = showViewCurrentValues ()
+
+  //····················································································································
+
+  func set (displayViewCurrentSettings inFlag : Bool) {
+    self.mDisplayViewCurrentSettings = inFlag
+    self.updateTrackingAreas ()
+  }
+
+  //····················································································································
+
+  override func updateTrackingAreas () { // This is required for receiving mouse moved and mouseExited events
+  //--- Remove current tracking area
+    if let trackingArea = self.mTrackingArea {
+      self.removeTrackingArea (trackingArea)
+    }
+  //--- Add Updated tracking area (.activeInKeyWindow is required, otherwise crash)
+    if self.mDisplayViewCurrentSettings {
+      let trackingArea = NSTrackingArea (
+        rect: self.bounds,
+        options: [.mouseEnteredAndExited, .mouseMoved, .activeInKeyWindow],
+        owner: self,
+        userInfo: nil
+      )
+      self.addTrackingArea (trackingArea)
+      self.mTrackingArea = trackingArea
+    }
+  //---
+    super.updateTrackingAreas ()
+  }
+
+  //····················································································································
+
+  private func findSubView (in inView: NSView, at inPoint : NSPoint) -> NSView? {
+    for view in inView.subviews {
+     let p = view.convert (inPoint, from: inView)
+     let v = self.findSubView (in: view, at: p) ;
+      if v != nil {
+        return v
+      }
+    }
+    if inView.bounds.contains (inPoint) {
+      return inView
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
+  override func mouseMoved (with inEvent : NSEvent) {
+    if self.mDisplayViewCurrentSettings {
+      let windowContentView = self.subviews [0]
+      let mouseLocation = windowContentView.convert (inEvent.locationInWindow, from: nil)
+      let optionalView = self.findSubView (in: windowContentView, at: mouseLocation)
+      if optionalView != self.mCurrentTrackedView {
+        self.mCurrentTrackedView = optionalView
+        self.mDisplayWindow?.orderOut (nil)
+        self.mDisplayWindow = nil
+        if let view = optionalView {
+          self.mDisplayWindow = buildHelperWindow (forView: view)
+          self.mDisplayWindow?.orderFront (nil)
+        }
+      }
+      var p = self.window!.convertPoint (toScreen: inEvent.locationInWindow)
+      p.x += 10.0
+      p.y += 10.0
+      self.mDisplayWindow?.setFrameOrigin (p)
+    }
+    super.mouseMoved (with: inEvent)
+  }
+
+  //····················································································································
+
+  override func mouseExited (with inEvent : NSEvent) {
+    self.mCurrentTrackedView = nil
+    self.mDisplayWindow?.orderOut (nil)
+    self.mDisplayWindow = nil
+    super.mouseExited (with: inEvent)
+  }
+
+  //····················································································································
+
+  private func buildHelperWindow (forView inView : NSView) -> NSWindow {
+    let window = NSPanel (
+      contentRect: NSRect (x: 0, y: 0, width: 10, height: 10),
+      styleMask: [.utilityWindow, .borderless],
+      backing: .buffered,
+      defer: false,
+      screen: self.window?.screen
+    )
+ //   Swift.print ("Screen \(self.window?.screen?.visibleFrame)")
+    window.backgroundColor = NSColor.white
+    window.isOpaque = true
+    window.isExcludedFromWindowsMenu = true
+    let mainView = NSView ()
+    mainView.translatesAutoresizingMaskIntoConstraints = false
+    mainView.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    mainView.setContentHuggingPriority (.defaultLow, for: .vertical)
+    mainView.setContentCompressionResistancePriority (.defaultLow, for: .horizontal)
+    mainView.setContentCompressionResistancePriority (.defaultLow, for: .vertical)
+    var constraints = [NSLayoutConstraint] ()
+    self.appendTextField (titled: "Class: \(inView.className)", toMainView: mainView, &constraints)
+    self.appendTextField (titled: "Bounds: \(inView.bounds)", toMainView: mainView, &constraints)
+    self.appendTextField (titled: "Frame: \(inView.frame)", toMainView: mainView, &constraints)
+    self.appendTextField (titled: "Intrinsic Size: \(inView.intrinsicContentSize)", toMainView: mainView, &constraints)
+    self.appendTextField (titled: "firstBaselineOffsetFromTop: \(inView.firstBaselineOffsetFromTop)", toMainView: mainView, &constraints)
+    self.appendTextField (titled: "lastBaselineOffsetFromBottom: \(inView.lastBaselineOffsetFromBottom)", toMainView: mainView, &constraints)
+    self.appendTextField (titled: "baselineOffsetFromBottom: \(inView.baselineOffsetFromBottom)", toMainView: mainView, &constraints)
+    if let lastView = mainView.subviews.last {
+      constraints.append (setBottomOf: lastView, equalToBottomOf: mainView, plus: 8.0)
+    }
+    mainView.addConstraints (constraints)
+    window.contentView = mainView
+    return window
+  }
+
+  //····················································································································
+
+  private func appendTextField (titled inString : String,
+                                toMainView inMainView : NSView,
+                                _ ioConstraints : inout [NSLayoutConstraint]) {
+    let view = NSTextField (frame: .zero)
+    view.translatesAutoresizingMaskIntoConstraints = false
+    view.isBezeled = false
+    view.isBordered = false
+    view.drawsBackground = true
+    view.isEnabled = true
+    view.isEditable = false
+    view.alignment = .left
+    view.font = NSFont.systemFont (ofSize: NSFont.systemFontSize)
+    view.stringValue = inString
+    let s = view.intrinsicContentSize
+    ioConstraints.append (makeWidthOf: view, greaterThanOrEqual: s.width)
+    ioConstraints.append (makeHeightOf: view, equalTo: s.height)
+    let optionalLastView = inMainView.subviews.last
+    inMainView.addSubview (view)
+    ioConstraints.append (setLeftOf: view, equalToLeftOf: inMainView, plus: 8.0)
+    ioConstraints.append (setRightOf: inMainView, equalToRightOf: view, plus: 8.0)
+    if let lastView = optionalLastView {
+      ioConstraints.append (setBottomOf: lastView, equalToTopOf: view, plus: 4.0)
+    }else{
+      ioConstraints.append (setTopOf: inMainView, equalToTopOf: view, plus: 8.0)
+    }
+  }
 
   //····················································································································
 
@@ -241,16 +321,11 @@ fileprivate final class HiliteView : NSView {
 
   override func draw (_ inDirtyRect : NSRect) {
     if showKeyResponderChain () {
-      DEBUG_KEY_CHAIN_STROKE_COLOR.setStroke ()
-      DEBUG_KEY_CHAIN_STROKE_COLOR.setFill ()
       let strokeBP = NSBezierPath ()
       let filledBP = NSBezierPath ()
-      strokeBP.lineWidth = 1.0
       var optionalResponder = self.window?.initialFirstResponder
       var loop = true
-      // var n = 0
       while let responder = optionalResponder, loop {
-        // n += 1
         let r = responder.convert (responder.bounds, to: self)
         strokeBP.appendRect (r)
         let optionalNextResponder = responder.nextKeyView
@@ -262,9 +337,14 @@ fileprivate final class HiliteView : NSView {
         optionalResponder = optionalNextResponder
         loop = optionalResponder !== self.window?.initialFirstResponder
       }
+      NSColor.yellow.setStroke ()
+      strokeBP.lineWidth = 7.0
       strokeBP.stroke ()
+      DEBUG_KEY_CHAIN_STROKE_COLOR.setStroke ()
+      strokeBP.lineWidth = 1.0
+      strokeBP.stroke ()
+      DEBUG_KEY_CHAIN_STROKE_COLOR.setFill ()
       filledBP.fill ()
-      // Swift.print ("SHOW \(n)")
     }
   }
 
