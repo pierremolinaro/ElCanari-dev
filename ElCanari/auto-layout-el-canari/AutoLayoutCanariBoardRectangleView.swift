@@ -45,20 +45,20 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
 
     var constraints = [NSLayoutConstraint] ()
   //--- Left
-    constraints.append (setLeftOf: self, equalToLeftOf: self.mLeftTextField)
-    constraints.append (alignYCenterOf: self, self.mLeftTextField)
+    constraints.add (leftOf: self, equalToLeftOf: self.mLeftTextField)
+    constraints.add (centerYOf: self, equalToCenterYOf: self.mLeftTextField)
   //--- Right
-    constraints.append (setRightOf: self, equalToRightOf: self.mRightTextField)
-    constraints.append (alignYCenterOf: self, self.mRightTextField)
+    constraints.add (rightOf: self, equalToRightOf: self.mRightTextField)
+    constraints.add (centerYOf: self, equalToCenterYOf: self.mRightTextField)
   //--- Top
-    constraints.append (setTopOf: self, equalToTopOf: self.mTopTextField)
-    constraints.append (alignXCenterOf: self, self.mTopTextField)
+    constraints.add (topOf: self, equalToTopOf: self.mTopTextField)
+    constraints.add (centerXOf: self, equalToCenterXOf: self.mTopTextField)
   //--- Bottom
-    constraints.append (setBottomOf: self, equalToBottomOf: self.mBottomTextField)
-    constraints.append (alignXCenterOf: self, self.mBottomTextField)
+    constraints.add (bottomOf: self, equalToBottomOf: self.mBottomTextField)
+    constraints.add (centerXOf: self, equalToCenterXOf: self.mBottomTextField)
   //--- Unit pop up
-    constraints.append (alignYCenterOf: self, self.mUnitPopUpButton)
-    constraints.append (alignXCenterOf: self, self.mUnitPopUpButton)
+    constraints.add (centerYOf: self, equalToCenterYOf: self.mUnitPopUpButton)
+    constraints.add (centerXOf: self, equalToCenterXOf: self.mUnitPopUpButton)
   //---
     self.addConstraints (constraints)
   }

@@ -117,8 +117,8 @@ final class AutoLayoutOneStringArrayTableView : NSScrollView, NSTableViewDataSou
 //    let c2 = NSLayoutConstraint (item: textField, attribute: .height, relatedBy: .equal, toItem: result, attribute: .height, multiplier: 1.0, constant: 0.0)
 //    result.addConstraints ([c1, c2])
     var constraints = [NSLayoutConstraint] ()
-    constraints.append (makeWidthOf: textField, equalToWidthOf: result)
-    constraints.append (makeHeightOf: textField, equalToHeightOf: result)
+    constraints.add (widthOf: textField, equalToWidthOf: result)
+    constraints.add (heightOf: textField, equalToHeightOf: result)
     result.addConstraints (constraints)
     return result
   }

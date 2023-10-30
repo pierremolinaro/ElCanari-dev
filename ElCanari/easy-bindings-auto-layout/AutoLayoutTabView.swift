@@ -32,13 +32,13 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
 
   //--- Permanent tab view constraints
     var permanentConstraints = [NSLayoutConstraint] ()
-    permanentConstraints.append (setTopOf: self, equalToTopOf: self.mSegmentedControl)
-    permanentConstraints.append (alignXCenterOf: self, self.mSegmentedControl)
+    permanentConstraints.add (topOf: self, equalToTopOf: self.mSegmentedControl)
+    permanentConstraints.add (centerXOf: self, equalToCenterXOf: self.mSegmentedControl)
     let c = NSLayoutConstraint (item: self.mDocumentView, attribute: .top, relatedBy: .equal, toItem: self.mSegmentedControl, attribute: .centerY, multiplier: 1.0, constant: 0.0)
     permanentConstraints.append (c)
-    permanentConstraints.append (setBottomOf: self, equalToBottomOf: self.mDocumentView)
-    permanentConstraints.append (setLeftOf: self, equalToLeftOf: self.mDocumentView)
-    permanentConstraints.append (setRightOf: self, equalToRightOf: self.mDocumentView)
+    permanentConstraints.add (bottomOf: self, equalToBottomOf: self.mDocumentView)
+    permanentConstraints.add (leftOf: self, equalToLeftOf: self.mDocumentView)
+    permanentConstraints.add (rightOf: self, equalToRightOf: self.mDocumentView)
     self.addConstraints (permanentConstraints)
   }
 

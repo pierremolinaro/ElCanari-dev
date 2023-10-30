@@ -29,17 +29,17 @@ final class AutoLayoutWindowContentView : NSView {
     var constraints = [NSLayoutConstraint] ()
 
     self.addSubview (inView)
-    constraints.append (setLeftOf: self, equalToLeftOf: inView)
-    constraints.append (setTopOf: self, equalToTopOf: inView)
-    constraints.append (setRightOf: self, equalToRightOf: inView)
-    constraints.append (setBottomOf: self, equalToBottomOf: inView)
+    constraints.add (leftOf: self, equalToLeftOf: inView)
+    constraints.add (topOf: self, equalToTopOf: inView)
+    constraints.add (rightOf: self, equalToRightOf: inView)
+    constraints.add (bottomOf: self, equalToBottomOf: inView)
 
     let hiliteWiew = HiliteView ()
     self.addSubview (hiliteWiew)
-    constraints.append (setLeftOf: self, equalToLeftOf: hiliteWiew)
-    constraints.append (setTopOf: self, equalToTopOf: hiliteWiew)
-    constraints.append (setRightOf: self, equalToRightOf: hiliteWiew)
-    constraints.append (setBottomOf: self, equalToBottomOf: hiliteWiew)
+    constraints.add (leftOf: self, equalToLeftOf: hiliteWiew)
+    constraints.add (topOf: self, equalToTopOf: hiliteWiew)
+    constraints.add (rightOf: self, equalToRightOf: hiliteWiew)
+    constraints.add (bottomOf: self, equalToBottomOf: hiliteWiew)
 
     self.addConstraints (constraints)
   }
@@ -236,7 +236,7 @@ final class AutoLayoutWindowContentView : NSView {
     self.appendTextField (titled: "lastBaselineOffsetFromBottom: \(inView.lastBaselineOffsetFromBottom)", toMainView: mainView, &constraints)
     self.appendTextField (titled: "baselineOffsetFromBottom: \(inView.baselineOffsetFromBottom)", toMainView: mainView, &constraints)
     if let lastView = mainView.subviews.last {
-      constraints.append (setBottomOf: lastView, equalToBottomOf: mainView, plus: 8.0)
+      constraints.add (bottomOf: lastView, equalToBottomOf: mainView, plus: 8.0)
     }
     mainView.addConstraints (constraints)
     window.contentView = mainView
@@ -259,16 +259,16 @@ final class AutoLayoutWindowContentView : NSView {
     view.font = NSFont.systemFont (ofSize: NSFont.systemFontSize)
     view.stringValue = inString
     let s = view.intrinsicContentSize
-    ioConstraints.append (makeWidthOf: view, greaterThanOrEqual: s.width)
-    ioConstraints.append (makeHeightOf: view, equalTo: s.height)
+    ioConstraints.add (widthOf: view, greaterThanOrEqualTo: s.width)
+    ioConstraints.add (heightOf: view, equalTo: s.height)
     let optionalLastView = inMainView.subviews.last
     inMainView.addSubview (view)
-    ioConstraints.append (setLeftOf: view, equalToLeftOf: inMainView, plus: 8.0)
-    ioConstraints.append (setRightOf: inMainView, equalToRightOf: view, plus: 8.0)
+    ioConstraints.add (leftOf: view, equalToLeftOf: inMainView, plus: 8.0)
+    ioConstraints.add (rightOf: inMainView, equalToRightOf: view, plus: 8.0)
     if let lastView = optionalLastView {
-      ioConstraints.append (setBottomOf: lastView, equalToTopOf: view, plus: 4.0)
+      ioConstraints.add (bottomOf: lastView, equalToTopOf: view, plus: 4.0)
     }else{
-      ioConstraints.append (setTopOf: inMainView, equalToTopOf: view, plus: 8.0)
+      ioConstraints.add (topOf: inMainView, equalToTopOf: view, plus: 8.0)
     }
   }
 

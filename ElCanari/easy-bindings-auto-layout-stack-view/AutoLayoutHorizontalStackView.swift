@@ -116,7 +116,7 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
 //      }
       if !view.isHidden, let spaceView = view as? AutoLayoutFlexibleSpace {
         if let lastFlexibleSpace = optionalLastFlexibleSpace {
-          self.mConstraints.append (makeWidthOf: lastFlexibleSpace, equalToWidthOf: spaceView)
+          self.mConstraints.add (widthOf: lastFlexibleSpace, equalToWidthOf: spaceView)
         }
         optionalLastFlexibleSpace = spaceView
       }

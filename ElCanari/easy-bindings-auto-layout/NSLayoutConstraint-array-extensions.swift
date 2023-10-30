@@ -13,8 +13,12 @@ import AppKit
 extension Array where Element == NSLayoutConstraint {
 
   //--------------------------------------------------------------------------------------------------------------------
+  //MARK: Width
+  //--------------------------------------------------------------------------------------------------------------------
 
-  mutating func append (makeWidthOf inView1 : NSView, equalToWidthOf inView2 : NSView) {
+  mutating func add (widthOf inView1 : NSView,
+                     equalToWidthOf inView2 : NSView,
+                     plus inOffset : CGFloat = 0.0) {
     let c = NSLayoutConstraint (
       item: inView1,
       attribute: .width,
@@ -22,16 +26,35 @@ extension Array where Element == NSLayoutConstraint {
       toItem: inView2,
       attribute: .width,
       multiplier: 1.0,
-      constant: 0.0
+      constant: inOffset
     )
     self.append (c)
   }
 
   //--------------------------------------------------------------------------------------------------------------------
 
-  mutating func append (makeWidthOf inView : NSView, greaterThanOrEqual inWidth : CGFloat) {
+  mutating func add (widthOf inView : NSView,
+                     equalTo inWidth : CGFloat,
+                     priority inPriority : NSLayoutConstraint.Priority = .required) {
     let c = NSLayoutConstraint (
       item: inView,
+      attribute: .width,
+      relatedBy: .equal,
+      toItem: nil,
+      attribute: .notAnAttribute,
+      multiplier: 1.0,
+      constant: inWidth
+    )
+    c.priority = inPriority
+    self.append (c)
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+
+  mutating func add (widthOf inView1 : NSView,
+                     greaterThanOrEqualTo inWidth : CGFloat) {
+    let c = NSLayoutConstraint (
+      item: inView1,
       attribute: .width,
       relatedBy: .greaterThanOrEqual,
       toItem: nil,
@@ -43,23 +66,44 @@ extension Array where Element == NSLayoutConstraint {
   }
 
   //--------------------------------------------------------------------------------------------------------------------
+  //MARK: Height
+  //--------------------------------------------------------------------------------------------------------------------
 
-  mutating func append (makeWidthOf inView : NSView, equalTo inWidth : CGFloat) {
+  mutating func add (heightOf inView1 : NSView,
+                     equalToHeightOf inView2 : NSView) {
     let c = NSLayoutConstraint (
-      item: inView,
-      attribute: .width,
+      item: inView1,
+      attribute: .height,
       relatedBy: .equal,
-      toItem: nil,
-      attribute: .notAnAttribute,
+      toItem: inView2,
+      attribute: .height,
       multiplier: 1.0,
-      constant: inWidth
+      constant: 0.0
     )
     self.append (c)
   }
 
   //--------------------------------------------------------------------------------------------------------------------
 
-  mutating func append (makeHeightOf inView : NSView, equalTo inHeight : CGFloat) {
+  mutating func add (heightOf inView1 : NSView,
+                     equalToHalfHeightOf inView2 : NSView) {
+    let c = NSLayoutConstraint (
+      item: inView1,
+      attribute: .height,
+      relatedBy: .equal,
+      toItem: inView2,
+      attribute: .height,
+      multiplier: 0.5,
+      constant: 0.0
+    )
+    self.append (c)
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+
+  mutating func add (heightOf inView : NSView,
+                     equalTo inHeight : CGFloat,
+                     priority inPriority : NSLayoutConstraint.Priority = .required) {
     let c = NSLayoutConstraint (
       item: inView,
       attribute: .height,
@@ -69,29 +113,17 @@ extension Array where Element == NSLayoutConstraint {
       multiplier: 1.0,
       constant: inHeight
     )
+    c.priority = inPriority
     self.append (c)
   }
 
   //--------------------------------------------------------------------------------------------------------------------
-
-  mutating func append (makeHeightOf inView1 : NSView, equalToHeightOf inView2 : NSView) {
-    let c = NSLayoutConstraint (
-      item: inView1,
-      attribute: .height,
-      relatedBy: .equal,
-      toItem: inView2,
-      attribute: .height,
-      multiplier: 1.0,
-      constant: 0.0
-    )
-    self.append (c)
-  }
-
+  //MARK: Left
   //--------------------------------------------------------------------------------------------------------------------
 
-  mutating func append (setLeftOf inView1 : NSView,
-                        equalToLeftOf inView2 : NSView,
-                        plus inOffset : CGFloat = 0.0) {
+  mutating func add (leftOf inView1 : NSView,
+                     equalToLeftOf inView2 : NSView,
+                     plus inOffset : CGFloat = 0.0) {
     let c = NSLayoutConstraint (
       item: inView1,
       attribute: .left,
@@ -106,9 +138,28 @@ extension Array where Element == NSLayoutConstraint {
 
   //--------------------------------------------------------------------------------------------------------------------
 
-  mutating func append (setRightOf inView1 : NSView,
-                        equalToRightOf inView2 : NSView,
-                        plus inOffset : CGFloat = 0.0) {
+  mutating func add (leftOf inView1 : NSView,
+                     equalToRightOf inView2 : NSView,
+                     plus inOffset : CGFloat = 0.0) {
+    let c = NSLayoutConstraint (
+      item: inView1,
+      attribute: .left,
+      relatedBy: .equal,
+      toItem: inView2,
+      attribute: .right,
+      multiplier: 1.0,
+      constant: inOffset
+    )
+    self.append (c)
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  //MARK: Right
+  //--------------------------------------------------------------------------------------------------------------------
+
+  mutating func add (rightOf inView1 : NSView,
+                     equalToRightOf inView2 : NSView,
+                     plus inOffset : CGFloat = 0.0) {
     let c = NSLayoutConstraint (
       item: inView1,
       attribute: .right,
@@ -122,10 +173,12 @@ extension Array where Element == NSLayoutConstraint {
   }
 
   //--------------------------------------------------------------------------------------------------------------------
+  //MARK: Top
+  //--------------------------------------------------------------------------------------------------------------------
 
-  mutating func append (setTopOf inView1 : NSView,
-                        equalToTopOf inView2 : NSView,
-                        plus inOffset : CGFloat = 0.0) {
+  mutating func add (topOf inView1 : NSView,
+                     equalToTopOf inView2 : NSView,
+                     plus inOffset : CGFloat = 0.0) {
     let c = NSLayoutConstraint (
       item: inView1,
       attribute: .top,
@@ -139,10 +192,12 @@ extension Array where Element == NSLayoutConstraint {
   }
 
   //--------------------------------------------------------------------------------------------------------------------
+  //MARK: Bottom
+  //--------------------------------------------------------------------------------------------------------------------
 
-  mutating func append (setBottomOf inView1 : NSView,
-                        equalToTopOf inView2 : NSView,
-                        plus inOffset : CGFloat = 0.0) {
+  mutating func add (bottomOf inView1 : NSView,
+                     equalToTopOf inView2 : NSView,
+                     plus inOffset : CGFloat = 0.0) {
     let c = NSLayoutConstraint (
       item: inView1,
       attribute: .bottom,
@@ -157,9 +212,9 @@ extension Array where Element == NSLayoutConstraint {
 
   //--------------------------------------------------------------------------------------------------------------------
 
-  mutating func append (setBottomOf inView1 : NSView,
-                        equalToBottomOf inView2 : NSView,
-                        plus inOffset : CGFloat = 0.0) {
+  mutating func add (bottomOf inView1 : NSView,
+                     equalToBottomOf inView2 : NSView,
+                     plus inOffset : CGFloat = 0.0) {
     let c = NSLayoutConstraint (
       item: inView1,
       attribute: .bottom,
@@ -173,23 +228,28 @@ extension Array where Element == NSLayoutConstraint {
   }
 
   //--------------------------------------------------------------------------------------------------------------------
+  //MARK: Last Baseline
+  //--------------------------------------------------------------------------------------------------------------------
 
-  mutating func append (alignBottomOf inView1 : NSView, toBottomOf inView2 : NSView, plus inOffset : CGFloat) {
+  mutating func add (lastBaselineOf inView1 : NSView,
+                     equalToLastBaselineOf inView2 : NSView) {
     let c = NSLayoutConstraint (
       item: inView1,
-      attribute: .bottom,
+      attribute: .lastBaseline,
       relatedBy: .equal,
       toItem: inView2,
-      attribute: .bottom,
+      attribute: .lastBaseline,
       multiplier: 1.0,
-      constant: -inOffset // Vertical Axis is from to top to bottom
+      constant: 0.0
     )
     self.append (c)
   }
 
   //--------------------------------------------------------------------------------------------------------------------
+  //MARK: Center X
+  //--------------------------------------------------------------------------------------------------------------------
 
-  mutating func append (alignXCenterOf inView1 : NSView, _ inView2 : NSView) {
+  mutating func add (centerXOf inView1 : NSView, equalToCenterXOf inView2 : NSView) {
     let c = NSLayoutConstraint (
       item: inView1,
       attribute: .centerX,
@@ -203,8 +263,10 @@ extension Array where Element == NSLayoutConstraint {
   }
 
   //--------------------------------------------------------------------------------------------------------------------
+  //MARK: Center Y
+  //--------------------------------------------------------------------------------------------------------------------
 
-  mutating func append (alignYCenterOf inView1 : NSView, _ inView2 : NSView) {
+  mutating func add (centerYOf inView1 : NSView, equalToCenterYOf inView2 : NSView) {
     let c = NSLayoutConstraint (
       item: inView1,
       attribute: .centerY,
