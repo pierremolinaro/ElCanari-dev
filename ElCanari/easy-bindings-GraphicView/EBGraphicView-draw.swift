@@ -113,9 +113,17 @@ extension EBGraphicView {
     if !self.mIssueBezierPathes.isEmpty {
       switch self.mIssueKind {
       case .error :
-        NSColor.red.withAlphaComponent (0.25).setFill ()
+        NSColor.red.withAlphaComponent (0.5).setFill ()
         for bp in self.mIssueBezierPathes {
           bp.fill ()
+        }
+        let box = self.mIssueBezierPathes.boundingBox
+        if !box.isEmpty {
+          let bp = NSBezierPath (roundedRect: box.insetBy(dx: -4.0, dy: -4.0), xRadius: 4.0, yRadius: 4.0)
+          bp.lineWidth = 2.0
+          bp.lineJoinStyle = .round
+          NSColor.red.setStroke ()
+          bp.stroke ()
         }
         if self.mDrawFrameIssue {
           NSColor.red.setStroke ()
@@ -124,7 +132,7 @@ extension EBGraphicView {
           }
         }
       case .warning :
-        NSColor.orange.withAlphaComponent (0.25).setFill ()
+        NSColor.orange.withAlphaComponent (0.5).setFill ()
         for bp in self.mIssueBezierPathes {
           bp.fill ()
         }

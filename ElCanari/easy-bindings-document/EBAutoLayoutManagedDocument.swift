@@ -193,7 +193,7 @@ class EBAutoLayoutManagedDocument : NSDocument {
     if inData.count > 300_000 {
       let window = CanariWindow (
         contentRect: .zero,
-        styleMask: [.docModalWindow],
+        styleMask: [.docModalWindow, .titled],
         backing: .buffered,
         defer: true
       )

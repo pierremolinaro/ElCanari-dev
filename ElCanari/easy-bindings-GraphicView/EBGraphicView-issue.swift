@@ -12,27 +12,15 @@ extension EBGraphicView {
 
   final func setIssue (_ inBezierPathes : [EBBezierPath], _ issueKind : CanariIssueKind) {
     if self.mIssueBezierPathes != inBezierPathes {
-      if !self.issueBoundingBox.isEmpty {
-        self.setNeedsDisplay (self.issueBoundingBox.insetBy (dx: -1.0, dy: -1.0))
-      }
+      let box = self.mIssueBezierPathes.boundingBox
       self.mIssueBezierPathes = inBezierPathes
       self.mIssueKind = issueKind
       self.setNeedsDisplayAndUpdateViewBounds ()
-      if !self.issueBoundingBox.isEmpty {
-        _ = self.scrollToVisible (self.issueBoundingBox)
-//        self.setNeedsDisplay (self.issueBoundingBox.insetBy (dx: -1.0, dy: -1.0))
+      if !box.isEmpty {
+        self.setNeedsDisplay (box.insetBy (dx: -1.0, dy: -1.0))
+        _ = self.scrollToVisible (box)
       }
     }
-  }
-
-  //····················································································································
-
-  final var issueBoundingBox : NSRect {
-    var box = NSRect.null
-    for bp in self.mIssueBezierPathes {
-      box = box.union (bp.bounds)
-    }
-    return box
   }
 
   //····················································································································

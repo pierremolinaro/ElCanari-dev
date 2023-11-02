@@ -382,7 +382,7 @@ final class EBGraphicView : NSView {
   var contentsBoundingBox : NSRect {
     var r = NSRect () // For including (0, 0)
     r = r.union (self.objectDisplayBounds)
-    r = r.union (self.issueBoundingBox)
+    r = r.union (self.mIssueBezierPathes.boundingBox)
     r = r.union (self.mUnderObjectsDisplay.boundingBox)
     r = r.union (self.mOverObjectsDisplay.boundingBox)
     r = r.union (self.selectionShapeBoundingBox)
