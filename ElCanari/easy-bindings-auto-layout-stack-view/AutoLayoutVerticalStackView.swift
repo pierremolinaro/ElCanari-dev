@@ -30,8 +30,8 @@ class AutoLayoutVerticalStackView : AutoLayoutBase_NSStackView {
 
   final func appendViewPreceededByFlexibleSpace (_ inView : NSView) -> Self {
     let hStack = AutoLayoutHorizontalStackView ()
-    _ = hStack.appendFlexibleSpace ()
-    _ = hStack.appendView (inView)
+      .appendFlexibleSpace ()
+      .appendView (inView)
     self.addView (hStack, in: .leading)
     return self
   }
