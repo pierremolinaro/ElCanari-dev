@@ -189,35 +189,35 @@ class EBAutoLayoutManagedDocument : NSDocument {
 
   override final func read (from inData : Data, ofType inTypeName : String) throws {
     DispatchQueue.main.async {
-  //--- Show "Opening xxx…" splash window ?
-    if inData.count > 300_000 {
-      let window = CanariWindow (
-        contentRect: .zero,
-        styleMask: [.docModalWindow, .titled],
-        backing: .buffered,
-        defer: true
-      )
-      self.mSplashScreenWindow = window
-      let textField = AutoLayoutLabel (bold: false, size: .small).set (alignment: .center)
-      self.mSplashTextField = textField
-      textField.stringValue = "Loading File…"
-      let hStackView = AutoLayoutHorizontalStackView ()
-            .set (margins: 0)
-            .appendView (AutoLayoutFlexibleSpace ())
-            .appendView (AutoLayoutSpinningProgressIndicator (size: .small))
-            .appendView (AutoLayoutFlexibleSpace ())
-      let vStackView = AutoLayoutVerticalStackView ()
-            .set (margins: 12)
-            .appendView (AutoLayoutStaticLabel (title: "Opening " + self.displayName + "…", bold: true, size: .small, alignment: .center))
-            .appendView (textField)
-            .appendView (hStackView)
-      window.contentView = vStackView
-      window.isReleasedWhenClosed = false
-      window.makeKeyAndOrderFront (nil)
-      window.center ()
-      RunLoop.current.run (until: Date ())
-    }
-    self.undoManager?.disableUndoRegistration ()
+    //--- Show "Opening xxx…" splash window ?
+      if inData.count > 300_000 {
+        let window = CanariWindow (
+          contentRect: NSRect (x: 0, y: 0, width: 200, height: 50),
+          styleMask: [.docModalWindow],
+          backing: .buffered,
+          defer: true
+        )
+        window.isReleasedWhenClosed = false
+        self.mSplashScreenWindow = window
+        let textField = AutoLayoutLabel (bold: false, size: .small).set (alignment: .center)
+        self.mSplashTextField = textField
+        textField.stringValue = "Loading File…"
+        let hStackView = AutoLayoutHorizontalStackView ()
+          .set (margins: 0)
+          .appendView (AutoLayoutFlexibleSpace ())
+          .appendView (AutoLayoutSpinningProgressIndicator (size: .small))
+          .appendView (AutoLayoutFlexibleSpace ())
+        let vStackView = AutoLayoutVerticalStackView ()
+          .set (margins: 16)
+          .appendView (AutoLayoutStaticLabel (title: "Opening " + self.displayName + "…", bold: true, size: .small, alignment: .center))
+          .appendView (textField)
+          .appendView (hStackView)
+        window.contentView = vStackView
+        window.orderFront (nil)
+        window.center ()
+        RunLoop.current.run (until: Date ())
+      }
+      self.undoManager?.disableUndoRegistration ()
     //--- Load file
       let documentReadData = loadEasyBindingFile (fromData: inData, documentName: self.displayName, undoManager: self.undoManager)
       switch documentReadData {
