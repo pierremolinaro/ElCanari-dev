@@ -60,40 +60,32 @@ extension AutoLayoutVerticalStackView {
     //   Mouse
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-    private var mDividerConstraint : NSLayoutConstraint? = nil
-    private var mMouseDownDy : CGFloat = 0.0
+    private var mDividerConstraints = [NSLayoutConstraint] ()
+    private var mDividerInitialTopLocationY : CGFloat = 0.0 // In vStack coordinates
+    private var mInitialMouseDownLocationY : CGFloat = 0.0 // In vStack coordinates
+    private var mCurrentMouseDraggedLocationY : CGFloat = 0.0  // In vStack coordinates
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-    override func mouseDown (with inEvent: NSEvent) {
+    override func mouseDown (with inEvent : NSEvent) {
       if let vStack = self.superview as? AutoLayoutVerticalStackView {
-        let p1 = vStack.convert (inEvent.locationInWindow, from: nil)
-        let p2 = vStack.convert (NSPoint (), from: self)
-        self.mMouseDownDy = p1.y - p2.y
-        //Swift.print ("dy \(dy)")
+        if vStack.isFlipped {
+          self.mDividerInitialTopLocationY = NSMinY (vStack.bounds) + vStack.convert (self.bounds.origin, from: self).y
+        }else{
+          self.mDividerInitialTopLocationY = NSMaxY (vStack.bounds) - vStack.convert (NSPoint (), from: self).y
+        }
+        self.mInitialMouseDownLocationY = vStack.convert (inEvent.locationInWindow, from: nil).y
+        self.mCurrentMouseDraggedLocationY = self.mInitialMouseDownLocationY
       }
+      super.mouseDown (with: inEvent)
     }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     override func mouseDragged (with inEvent: NSEvent) {
+      NSCursor.resizeUpDown.set ()
       if let vStack = self.superview as? AutoLayoutVerticalStackView {
-        if let c = self.mDividerConstraint {
-          vStack.removeConstraint (c)
-        }
-        let p = vStack.convert (inEvent.locationInWindow, from: nil)
-        let c = NSLayoutConstraint (
-          item: self,
-          attribute: .bottom,
-          relatedBy: .equal,
-          toItem: vStack,
-          attribute: .bottom,
-          multiplier: 1.0,
-          constant: self.mMouseDownDy - p.y
-        )
-        c.priority = NSLayoutConstraint.Priority.dragThatCannotResizeWindow
-        self.mDividerConstraint = c
-        vStack.addConstraint (c)
+        self.mCurrentMouseDraggedLocationY = vStack.convert (inEvent.locationInWindow, from: nil).y
         self.needsUpdateConstraints = true
       }
     }
@@ -106,10 +98,55 @@ extension AutoLayoutVerticalStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-     override func updateConstraints () {
-       super.updateConstraints ()
-       DispatchQueue.main.async { self.updateCursor () }
-     }
+    override func updateConstraints () {
+      if let vStack = self.superview as? AutoLayoutVerticalStackView {
+        vStack.removeConstraints (self.mDividerConstraints)
+        self.mDividerConstraints.removeAll (keepingCapacity: true)
+        let priority = NSLayoutConstraint.Priority.dragThatCannotResizeWindow
+        let dY = self.mCurrentMouseDraggedLocationY - self.mInitialMouseDownLocationY
+        let newTop = self.mDividerInitialTopLocationY + (vStack.isFlipped ? dY : -dY)
+        //Swift.print ("newBottom \(newBottom), dY \(dY)")
+        self.mDividerConstraints.add (topOf: vStack, equalToTopOf: self, plus: newTop, priority: priority)
+        vStack.addConstraints (self.mDividerConstraints)
+      }
+      super.updateConstraints ()
+    }
+
+
+//    override func mouseDragged (with inEvent: NSEvent) {
+//      if let vStack = self.superview as? AutoLayoutVerticalStackView {
+//        if let c = self.mDividerConstraint {
+//          vStack.removeConstraint (c)
+//        }
+//        let p = vStack.convert (inEvent.locationInWindow, from: nil)
+//        let c = NSLayoutConstraint (
+//          item: self,
+//          attribute: .bottom,
+//          relatedBy: .equal,
+//          toItem: vStack,
+//          attribute: .bottom,
+//          multiplier: 1.0,
+//          constant: self.mMouseDownDy - p.y
+//        )
+//        c.priority = NSLayoutConstraint.Priority.dragThatCannotResizeWindow
+//        self.mDividerConstraint = c
+//        vStack.addConstraint (c)
+//        self.needsUpdateConstraints = true
+//      }
+//    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+//    override func mouseUp (with inEvent: NSEvent) {
+//      NSCursor.arrow.set ()
+//    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+//     override func updateConstraints () {
+//       super.updateConstraints ()
+//       DispatchQueue.main.async { self.updateCursor () }
+//     }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
     // Mouse moved events, cursor display
@@ -139,18 +176,19 @@ extension AutoLayoutVerticalStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-    private func updateCursor () {
-      if self.constraintIsSatisfied () {
-        NSCursor.resizeUpDown.set ()
-      }else{
-        NSCursor.resizeDown.set ()
-      }
-    }
+//    private func updateCursor () {
+//      if self.constraintIsSatisfied () {
+//        NSCursor.resizeUpDown.set ()
+//      }else{
+//        NSCursor.resizeDown.set ()
+//      }
+//    }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     override func mouseEntered (with inEvent : NSEvent) {
-      self.updateCursor ()
+      NSCursor.resizeUpDown.set ()
+//      self.updateCursor ()
     }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
@@ -161,17 +199,17 @@ extension AutoLayoutVerticalStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-    private func constraintIsSatisfied () -> Bool {
-       if let constraint = self.mDividerConstraint, let vStack = self.superview as? AutoLayoutVerticalStackView {
-         let p = vStack.convert (NSPoint (), from: self)
-         let constant = constraint.constant
-         let satisfied = (constant + p.y) > 0.0
-         // Swift.print ("\(constant), p.y \(p.y) satisfied \(satisfied)")
-         return satisfied
-       }else{
-         return true
-       }
-    }
+//    private func constraintIsSatisfied () -> Bool {
+//       if let constraint = self.mDividerConstraint, let vStack = self.superview as? AutoLayoutVerticalStackView {
+//         let p = vStack.convert (NSPoint (), from: self)
+//         let constant = constraint.constant
+//         let satisfied = (constant + p.y) > 0.0
+//         // Swift.print ("\(constant), p.y \(p.y) satisfied \(satisfied)")
+//         return satisfied
+//       }else{
+//         return true
+//       }
+//    }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 

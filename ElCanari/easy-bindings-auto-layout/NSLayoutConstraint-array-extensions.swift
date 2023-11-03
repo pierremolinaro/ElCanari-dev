@@ -178,7 +178,8 @@ extension Array where Element == NSLayoutConstraint {
 
   mutating func add (topOf inView1 : NSView,
                      equalToTopOf inView2 : NSView,
-                     plus inOffset : CGFloat = 0.0) {
+                     plus inOffset : CGFloat = 0.0,
+                     priority inPriority : NSLayoutConstraint.Priority = .required) {
     let c = NSLayoutConstraint (
       item: inView1,
       attribute: .top,
@@ -188,6 +189,7 @@ extension Array where Element == NSLayoutConstraint {
       multiplier: 1.0,
       constant: -inOffset // Vertical Axis is from to top to bottom
     )
+    c.priority = inPriority
     self.append (c)
   }
 

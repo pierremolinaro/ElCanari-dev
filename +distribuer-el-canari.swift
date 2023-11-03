@@ -28,16 +28,15 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.7.9"
+let VERSION_CANARI = "1.7.10"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Rétablissement du fonctionnement des diviseurs horizontaux"
 ]
 let CHANGES : [String] = [
-  "Xcode 15.0",
-  "Amélioration de la présentation des résultats de la vérification des librairies",
-  "L'application FreeRouting est maintenant installée dans ~/Library/Application Support/FreeRouterForElCanari"
+  "Amélioration de l'affichage des erreurs ERC dans board"
 ]
 let NEWS : [String] = [
 ]
