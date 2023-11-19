@@ -20,7 +20,7 @@ extension EBGraphicView {
 
   final override func draw (_ inDirtyRect : NSRect) {
     self.mBackColor.setFill ()
-    NSBezierPath.fill (inDirtyRect)
+    NSBezierPath.fill (self.bounds)
     if let ciImage = self.mBackgroundImage {
       let graphicContext = NSGraphicsContext.current
       graphicContext?.saveGraphicsState ()

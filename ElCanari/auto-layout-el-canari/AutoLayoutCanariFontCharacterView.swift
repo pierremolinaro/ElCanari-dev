@@ -110,7 +110,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
   override func draw (_ inDirtyRect : NSRect) {
   //--- Background
     NSColor.white.setFill ()
-    NSBezierPath.fill (inDirtyRect)
+    NSBezierPath.fill (self.bounds)
   //--- Border
     let r = self.bounds.insetBy (dx: 0.5, dy: 0.5)
     var bp = NSBezierPath (rect: r)

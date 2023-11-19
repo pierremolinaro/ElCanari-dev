@@ -37,7 +37,7 @@ final class AutoLayoutFlexibleSpace : NSView {
   override func draw (_ inDirtyRect : NSRect) {
     if debugAutoLayout () {
       DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
-      NSBezierPath.fill (inDirtyRect)
+      NSBezierPath.fill (self.bounds)
       let bp = NSBezierPath (rect: self.bounds)
       bp.lineWidth = 1.0
       bp.lineJoinStyle = .round

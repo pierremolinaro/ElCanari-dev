@@ -60,7 +60,7 @@ final class AutoLayoutCanariSampleFontStringView : AutoLayoutBase_NSView {
 
   override func draw (_ inDirtyRect: NSRect) {
     NSColor.white.setFill ()
-    NSBezierPath.fill (inDirtyRect)
+    NSBezierPath.fill (self.bounds)
     NSColor.black.setStroke ()
     var bp = NSBezierPath (rect: self.bounds.insetBy(dx: 0.5, dy: 0.5))
     bp.lineWidth = 1.0

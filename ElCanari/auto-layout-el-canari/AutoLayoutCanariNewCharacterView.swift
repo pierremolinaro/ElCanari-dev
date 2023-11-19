@@ -169,7 +169,7 @@ private class InternalNewCharacterView : NSView {
   override func draw (_ inDirtyRect: NSRect) {
   //--- Draw background
     NSColor.white.setFill ()
-    NSBezierPath.fill (inDirtyRect)
+    NSBezierPath.fill (self.bounds)
   //--- Draw lines
     var line = Int ((PLACEMENT_GRID * CGFloat (LINE_COUNT) - inDirtyRect.maxY) / PLACEMENT_GRID)
     var y = PLACEMENT_GRID * CGFloat (LINE_COUNT - line)

@@ -25,7 +25,7 @@ final class AutoLayoutViewWithBackground : AutoLayoutBase_NSView {
   override func draw (_ inDirtyRect : NSRect) {
     if let color = self.mBackGroundColor {
       color.setFill ()
-      NSBezierPath.fill (inDirtyRect)
+      NSBezierPath.fill (self.bounds)
     }
   }
 
