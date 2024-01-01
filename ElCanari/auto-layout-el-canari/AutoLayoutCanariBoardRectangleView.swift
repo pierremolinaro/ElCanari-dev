@@ -25,7 +25,6 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
   override init () {
     super.init ()
 
-  //  self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
     self.setContentHuggingPriority (.defaultLow, for: .horizontal)
 
     self.mTopTextField.backgroundColor = NSColor.textBackgroundColor

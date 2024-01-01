@@ -5,10 +5,6 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate let GRID_WIDTH : CGFloat = 0.0
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EBGraphicView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -57,6 +53,7 @@ extension EBGraphicView {
   //····················································································································
 
   final fileprivate func drawGrid (_ inDirtyRect : NSRect) {
+    let gridWidth = 1.0 / self.actualScale
     let r = inDirtyRect
     let gridDisplayStep = canariUnitToCocoa (self.mGridStepInCanariUnit) * CGFloat (self.mGridDisplayFactor)
     let startX = (r.origin.x / gridDisplayStep).rounded (.down) * gridDisplayStep
@@ -68,7 +65,7 @@ extension EBGraphicView {
       ()
     case .cross :
       let bp = NSBezierPath ()
-      bp.lineWidth = GRID_WIDTH
+      bp.lineWidth = gridWidth
       bp.lineCapStyle = .round
       var x = startX
       while x <= endX {
@@ -86,7 +83,7 @@ extension EBGraphicView {
       bp.stroke ()
     case .line :
       let bp = NSBezierPath ()
-      bp.lineWidth = GRID_WIDTH
+      bp.lineWidth = gridWidth
       bp.lineCapStyle = .round
       var x = startX
       while x <= r.maxX {

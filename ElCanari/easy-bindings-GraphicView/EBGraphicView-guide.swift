@@ -60,7 +60,7 @@ extension EBGraphicView {
     if bp.isEmpty {
       self.mGuideBezierPath = nil
     }else{
-      bp.lineWidth = 0.0
+      bp.lineWidth = 1.0 / self.actualScale
       self.mGuideBezierPath = bp
     }
   }
