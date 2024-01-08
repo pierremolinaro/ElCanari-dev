@@ -91,7 +91,7 @@ extension AutoLayoutProjectDocument {
     try self.removeAndCreateDirectory (atPath: gerberDirPath)
   //--- Write gerber files
     try self.writeGerberDrillFile (atPath: generatedGerberFilePath + inArtwork.drillDataFileExtension, productData)
-    for productDescriptor in inArtwork.fileGenerationParameterArray.values{
+    for productDescriptor in inArtwork.fileGenerationParameterArray.values {
       try self.writeGerberProductFile (atPath: generatedGerberFilePath,
                                        productDescriptor,
                                        inArtwork.layerConfiguration,

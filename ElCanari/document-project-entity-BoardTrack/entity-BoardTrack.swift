@@ -78,6 +78,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol BoardTrack_mCoveredBySilkScreen : AnyObject {
+  var mCoveredBySilkScreen : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol BoardTrack_mDirectionLockOnKnobDragging : AnyObject {
   var mDirectionLockOnKnobDragging : TrackLockDirection { get }
 }
@@ -128,6 +134,12 @@ import AppKit
 
 @MainActor protocol BoardTrack_trackSide : AnyObject {
   var trackSide : TrackSide? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol BoardTrack_trackIsOnFrontOrBackLayer : AnyObject {
+  var trackIsOnFrontOrBackLayer : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -195,6 +207,7 @@ final class BoardTrack : BoardObject,
          BoardTrack_mP2YUnit,
          BoardTrack_mManualLockP1,
          BoardTrack_mManualLockP2,
+         BoardTrack_mCoveredBySilkScreen,
          BoardTrack_mDirectionLockOnKnobDragging,
          BoardTrack_actualTrackWidth,
          BoardTrack_netName,
@@ -204,6 +217,7 @@ final class BoardTrack : BoardObject,
          BoardTrack_netClassViaPadDiameter,
          BoardTrack_trackLengthInCanariUnit,
          BoardTrack_trackSide,
+         BoardTrack_trackIsOnFrontOrBackLayer,
          BoardTrack_signatureForERCChecking,
          BoardTrack_p1ConnectedToSomePad,
          BoardTrack_p2ConnectedToSomePad,
@@ -363,6 +377,18 @@ final class BoardTrack : BoardObject,
 
   final var mManualLockP2 : Bool {
     get { return self.mManualLockP2_property.propval }
+  }
+
+  //····················································································································
+  //   Atomic property: mCoveredBySilkScreen
+  //····················································································································
+
+  final let mCoveredBySilkScreen_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final var mCoveredBySilkScreen : Bool {
+    get { return self.mCoveredBySilkScreen_property.propval }
   }
 
   //····················································································································
@@ -534,6 +560,18 @@ final class BoardTrack : BoardObject,
   }
 
   //····················································································································
+  //   Transient property: trackIsOnFrontOrBackLayer
+  //····················································································································
+
+  final let trackIsOnFrontOrBackLayer_property = EBTransientProperty <Bool> ()
+
+  //····················································································································
+
+  final var trackIsOnFrontOrBackLayer : Bool? {
+    return self.trackIsOnFrontOrBackLayer_property.optionalValue
+  }
+
+  //····················································································································
   //   Transient property: p1ConnectedToSomePad
   //····················································································································
 
@@ -640,6 +678,7 @@ final class BoardTrack : BoardObject,
     self.mP2YUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mP2YUnit")
     self.mManualLockP1_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mManualLockP1")
     self.mManualLockP2_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mManualLockP2")
+    self.mCoveredBySilkScreen_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mCoveredBySilkScreen")
     self.mDirectionLockOnKnobDragging_property = EBStoredProperty_TrackLockDirection (defaultValue: TrackLockDirection.unlocked, undoManager: inUndoManager, key: "mDirectionLockOnKnobDragging")
     super.init (inUndoManager)
     self.mConnectorP1_none.mReadModelFunction = { [weak self] in
@@ -832,6 +871,23 @@ final class BoardTrack : BoardObject,
       }
     }
     self.mSide_property.startsBeingObserved (by: self.trackSide_property)
+  //--- Atomic property: trackIsOnFrontOrBackLayer
+    self.trackIsOnFrontOrBackLayer_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mSide_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_BoardTrack_trackIsOnFrontOrBackLayer (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSide_property.startsBeingObserved (by: self.trackIsOnFrontOrBackLayer_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

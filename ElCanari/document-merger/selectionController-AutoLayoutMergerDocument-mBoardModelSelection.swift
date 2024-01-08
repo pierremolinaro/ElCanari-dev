@@ -159,6 +159,12 @@ import AppKit
   var backTrackSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
+  //   Selection observable property: backTrackSegmentsNoSilkScreen
+  //····················································································································
+
+  var backTrackSegmentsNoSilkScreen_property = EBTransientProperty <MergerSegmentArray> ()
+
+  //····················································································································
   //   Selection observable property: backTracks
   //····················································································································
 
@@ -167,6 +173,16 @@ import AppKit
   //····················································································································
 
   var backTracksBezierPaths_property = EBTransientProperty <BezierPathArray> ()
+
+  //····················································································································
+  //   Selection observable property: backTracksNoSilkScreen
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: backTracksNoSilkScreenBezierPaths
+  //····················································································································
+
+  var backTracksNoSilkScreenBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: boardLimitsBezierPaths
@@ -339,6 +355,12 @@ import AppKit
   var frontTrackSegments_property = EBTransientProperty <MergerSegmentArray> ()
 
   //····················································································································
+  //   Selection observable property: frontTrackSegmentsNoSilkScreen
+  //····················································································································
+
+  var frontTrackSegmentsNoSilkScreen_property = EBTransientProperty <MergerSegmentArray> ()
+
+  //····················································································································
   //   Selection observable property: frontTracks
   //····················································································································
 
@@ -347,6 +369,16 @@ import AppKit
   //····················································································································
 
   var frontTracksBezierPaths_property = EBTransientProperty <BezierPathArray> ()
+
+  //····················································································································
+  //   Selection observable property: frontTracksNoSilkScreen
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: frontTracksNoSilkScreenBezierPaths
+  //····················································································································
+
+  var frontTracksNoSilkScreenBezierPaths_property = EBTransientProperty <BezierPathArray> ()
 
   //····················································································································
   //   Selection observable property: holesBezierPaths
@@ -604,7 +636,9 @@ import AppKit
     self.bind_property_backPadArray (model: model)
     self.bind_property_backPadsBezierPaths (model: model)
     self.bind_property_backTrackSegments (model: model)
+    self.bind_property_backTrackSegmentsNoSilkScreen (model: model)
     self.bind_property_backTracksBezierPaths (model: model)
+    self.bind_property_backTracksNoSilkScreenBezierPaths (model: model)
     self.bind_property_boardLimitsBezierPaths (model: model)
     self.bind_property_drillSegments (model: model)
     self.bind_property_errorArchiveLabelColor (model: model)
@@ -628,7 +662,9 @@ import AppKit
     self.bind_property_frontPadArray (model: model)
     self.bind_property_frontPadsBezierPaths (model: model)
     self.bind_property_frontTrackSegments (model: model)
+    self.bind_property_frontTrackSegmentsNoSilkScreen (model: model)
     self.bind_property_frontTracksBezierPaths (model: model)
+    self.bind_property_frontTracksNoSilkScreenBezierPaths (model: model)
     self.bind_property_holesBezierPaths (model: model)
     self.bind_property_ignoreModelVersionError (model: model)
     self.bind_property_imageForInstances (model: model)
@@ -721,9 +757,15 @@ import AppKit
   //--- backTrackSegments
     self.backTrackSegments_property.mReadModelFunction = nil 
     self.mModel?.toMany_backTrackSegments_StopsBeingObserved (by: self.backTrackSegments_property)
+  //--- backTrackSegmentsNoSilkScreen
+    self.backTrackSegmentsNoSilkScreen_property.mReadModelFunction = nil 
+    self.mModel?.toMany_backTrackSegmentsNoSilkScreen_StopsBeingObserved (by: self.backTrackSegmentsNoSilkScreen_property)
   //--- backTracksBezierPaths
     self.backTracksBezierPaths_property.mReadModelFunction = nil 
     self.mModel?.toMany_backTracksBezierPaths_StopsBeingObserved (by: self.backTracksBezierPaths_property)
+  //--- backTracksNoSilkScreenBezierPaths
+    self.backTracksNoSilkScreenBezierPaths_property.mReadModelFunction = nil 
+    self.mModel?.toMany_backTracksNoSilkScreenBezierPaths_StopsBeingObserved (by: self.backTracksNoSilkScreenBezierPaths_property)
   //--- boardLimitsBezierPaths
     self.boardLimitsBezierPaths_property.mReadModelFunction = nil 
     self.mModel?.toMany_boardLimitsBezierPaths_StopsBeingObserved (by: self.boardLimitsBezierPaths_property)
@@ -793,9 +835,15 @@ import AppKit
   //--- frontTrackSegments
     self.frontTrackSegments_property.mReadModelFunction = nil 
     self.mModel?.toMany_frontTrackSegments_StopsBeingObserved (by: self.frontTrackSegments_property)
+  //--- frontTrackSegmentsNoSilkScreen
+    self.frontTrackSegmentsNoSilkScreen_property.mReadModelFunction = nil 
+    self.mModel?.toMany_frontTrackSegmentsNoSilkScreen_StopsBeingObserved (by: self.frontTrackSegmentsNoSilkScreen_property)
   //--- frontTracksBezierPaths
     self.frontTracksBezierPaths_property.mReadModelFunction = nil 
     self.mModel?.toMany_frontTracksBezierPaths_StopsBeingObserved (by: self.frontTracksBezierPaths_property)
+  //--- frontTracksNoSilkScreenBezierPaths
+    self.frontTracksNoSilkScreenBezierPaths_property.mReadModelFunction = nil 
+    self.mModel?.toMany_frontTracksNoSilkScreenBezierPaths_StopsBeingObserved (by: self.frontTracksNoSilkScreenBezierPaths_property)
   //--- holesBezierPaths
     self.holesBezierPaths_property.mReadModelFunction = nil 
     self.mModel?.toMany_holesBezierPaths_StopsBeingObserved (by: self.holesBezierPaths_property)
@@ -1635,6 +1683,46 @@ import AppKit
 
   //···················································································································*
 
+  private final func bind_property_backTrackSegmentsNoSilkScreen (model : ReadOnlyArrayOf_BoardModel) {
+    model.toMany_backTrackSegmentsNoSilkScreen_StartsBeingObserved (by: self.backTrackSegmentsNoSilkScreen_property)
+    self.backTrackSegmentsNoSilkScreen_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backTrackSegmentsNoSilkScreen_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_backTracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backTracksBezierPaths_StartsBeingObserved (by: self.backTracksBezierPaths_property)
     self.backTracksBezierPaths_property.mReadModelFunction = { [weak self] in
@@ -1649,6 +1737,46 @@ import AppKit
           var isMultipleSelection = false
           for object in v {
             switch object.backTracksBezierPaths_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backTracksNoSilkScreenBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.toMany_backTracksNoSilkScreenBezierPaths_StartsBeingObserved (by: self.backTracksNoSilkScreenBezierPaths_property)
+    self.backTracksNoSilkScreenBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backTracksNoSilkScreenBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2595,6 +2723,46 @@ import AppKit
 
   //···················································································································*
 
+  private final func bind_property_frontTrackSegmentsNoSilkScreen (model : ReadOnlyArrayOf_BoardModel) {
+    model.toMany_frontTrackSegmentsNoSilkScreen_StartsBeingObserved (by: self.frontTrackSegmentsNoSilkScreen_property)
+    self.frontTrackSegmentsNoSilkScreen_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontTrackSegmentsNoSilkScreen_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_frontTracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontTracksBezierPaths_StartsBeingObserved (by: self.frontTracksBezierPaths_property)
     self.frontTracksBezierPaths_property.mReadModelFunction = { [weak self] in
@@ -2609,6 +2777,46 @@ import AppKit
           var isMultipleSelection = false
           for object in v {
             switch object.frontTracksBezierPaths_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontTracksNoSilkScreenBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.toMany_frontTracksNoSilkScreenBezierPaths_StartsBeingObserved (by: self.frontTracksNoSilkScreenBezierPaths_property)
+    self.frontTracksNoSilkScreenBezierPaths_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontTracksNoSilkScreenBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :

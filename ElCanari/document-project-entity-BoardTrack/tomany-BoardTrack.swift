@@ -53,6 +53,9 @@ class ReadOnlyArrayOf_BoardTrack : EBReadOnlyAbstractArrayProperty <BoardTrack> 
       if let relay = self.mObserversOf_mManualLockP2 { // Stored property
         managedObject.mManualLockP2_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mCoveredBySilkScreen { // Stored property
+        managedObject.mCoveredBySilkScreen_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_mDirectionLockOnKnobDragging { // Stored property
         managedObject.mDirectionLockOnKnobDragging_property.stopsBeingObserved (by: relay)
       }
@@ -79,6 +82,9 @@ class ReadOnlyArrayOf_BoardTrack : EBReadOnlyAbstractArrayProperty <BoardTrack> 
       }
       if let relay = self.mObserversOf_trackSide { // Transient property
         managedObject.trackSide_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_trackIsOnFrontOrBackLayer { // Transient property
+        managedObject.trackIsOnFrontOrBackLayer_property.stopsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_signatureForERCChecking { // Transient property
         managedObject.signatureForERCChecking_property.stopsBeingObserved (by: relay)
@@ -158,6 +164,9 @@ class ReadOnlyArrayOf_BoardTrack : EBReadOnlyAbstractArrayProperty <BoardTrack> 
       if let relay = self.mObserversOf_mManualLockP2 { // Stored property
         managedObject.mManualLockP2_property.startsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mCoveredBySilkScreen { // Stored property
+        managedObject.mCoveredBySilkScreen_property.startsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_mDirectionLockOnKnobDragging { // Stored property
         managedObject.mDirectionLockOnKnobDragging_property.startsBeingObserved (by: relay)
       }
@@ -184,6 +193,9 @@ class ReadOnlyArrayOf_BoardTrack : EBReadOnlyAbstractArrayProperty <BoardTrack> 
       }
       if let relay = self.mObserversOf_trackSide { // Transient property
         managedObject.trackSide_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_trackIsOnFrontOrBackLayer { // Transient property
+        managedObject.trackIsOnFrontOrBackLayer_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_signatureForERCChecking { // Transient property
         managedObject.signatureForERCChecking_property.startsBeingObserved (by: relay)
@@ -576,6 +588,35 @@ class ReadOnlyArrayOf_BoardTrack : EBReadOnlyAbstractArrayProperty <BoardTrack> 
   }
 
   //····················································································································
+  //   Observers of 'mCoveredBySilkScreen' stored property
+  //····················································································································
+
+  private final var mObserversOf_mCoveredBySilkScreen : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_mCoveredBySilkScreen_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mCoveredBySilkScreen {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mCoveredBySilkScreen_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_mCoveredBySilkScreen = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mCoveredBySilkScreen_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mCoveredBySilkScreen?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
   //   Observers of 'mDirectionLockOnKnobDragging' stored property
   //····················································································································
 
@@ -834,6 +875,35 @@ class ReadOnlyArrayOf_BoardTrack : EBReadOnlyAbstractArrayProperty <BoardTrack> 
 
   final func toMany_trackSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_trackSide?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'trackIsOnFrontOrBackLayer' transient property
+  //····················································································································
+
+  private final var mObserversOf_trackIsOnFrontOrBackLayer : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_trackIsOnFrontOrBackLayer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_trackIsOnFrontOrBackLayer {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.trackIsOnFrontOrBackLayer_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_trackIsOnFrontOrBackLayer = relay
+    }
+    relay.startsBeingObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_trackIsOnFrontOrBackLayer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_trackIsOnFrontOrBackLayer?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

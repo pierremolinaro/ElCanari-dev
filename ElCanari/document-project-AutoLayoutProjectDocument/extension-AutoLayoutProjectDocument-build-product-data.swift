@@ -26,7 +26,7 @@ extension AutoLayoutProjectDocument {
     let (legendFrontQRCodes, legendBackQRCodes) = self.buildQRCodePathes ()
     let (legendFrontImages, legendBackImages) = self.buildBoardImagesPathes ()
     let viaPads = self.buildViaPads ()
-    let tracks = self.buildTracks ()
+    let (tracks, frontTracksWithNoSilkScreen, backTracksWithNoSilkScreen) = self.buildTracks ()
     let (frontLines, backLines) = self.buildLines ()
     let circularPads = self.buildCircularPads ()
     let oblongPads = self.buildOblongPads ()
@@ -53,6 +53,8 @@ extension AutoLayoutProjectDocument {
       legendBackImages: legendBackImages,
       viaPads: viaPads,
       tracks: tracks,
+      frontTracksWithNoSilkScreen: frontTracksWithNoSilkScreen,
+      backTracksWithNoSilkScreen: backTracksWithNoSilkScreen,
       frontLines: frontLines,
       backLines: backLines,
       circularPads: circularPads,
@@ -418,7 +420,9 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  private func buildTracks () -> [TrackSide : [ProductOblong]] {
+  private func buildTracks () -> ([TrackSide : [ProductOblong]], [ProductOblong], [ProductOblong]) {
+    var frontTracksWithNoSilkScreen = [ProductOblong] ()
+    var backTracksWithNoSilkScreen = [ProductOblong] ()
     var tracks = [TrackSide : [ProductOblong]] ()
     for object in self.rootObject.mBoardObjects.values {
       if let track = object as? BoardTrack {
@@ -427,9 +431,16 @@ extension AutoLayoutProjectDocument {
         let width = canariUnitToCocoa (track.actualTrackWidth!)
         let t = ProductOblong (p1: p1, p2: p2, width: width)
         tracks [track.mSide] = tracks [track.mSide, default: []] + [t]
+        if !track.mCoveredBySilkScreen_property.propval {
+          if track.mSide == .front {
+            frontTracksWithNoSilkScreen.append (t)
+          }else if track.mSide == .back {
+            backTracksWithNoSilkScreen.append (t)
+          }
+        }
       }
     }
-    return tracks
+    return (tracks, frontTracksWithNoSilkScreen, backTracksWithNoSilkScreen)
   }
 
   //····················································································································
@@ -1023,6 +1034,8 @@ struct ProductData { // All in Cocoa Unit
   let legendBackImages : [ProductRectangle]
   let viaPads : [ProductCircle]
   let tracks : [TrackSide : [ProductOblong]]
+  let frontTracksWithNoSilkScreen : [ProductOblong]
+  let backTracksWithNoSilkScreen : [ProductOblong]
   let frontLines : [ProductOblong]
   let backLines : [ProductOblong]
   let circularPads : [PadLayer : [ProductCircle]]

@@ -49,6 +49,7 @@ graphic handlingOpposite entity BoardTrack : BoardObject {
   property @generateDirectAccess Int mP2YUnit default 2_286 ; // mil
   property Bool mManualLockP1 default no ;
   property Bool mManualLockP2 default no ;
+  property Bool mCoveredBySilkScreen default yes ;
   
   property TrackLockDirection mDirectionLockOnKnobDragging default unlocked ;
 
@@ -98,6 +99,8 @@ graphic handlingOpposite entity BoardTrack : BoardObject {
     dependsFrom self.mConnectorP1.one.location, self.mConnectorP2.one.location ;
 
   override transient TrackSide trackSide dependsFrom self.mSide ;
+
+  transient Bool trackIsOnFrontOrBackLayer dependsFrom self.mSide ;
 
   override transient UInt32 signatureForERCChecking dependsFrom self.mSide, self.actualTrackWidth ;
 

@@ -1766,6 +1766,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       add (
+        single: Checkbox (title: "Covered by Silk Screen", size : .small) {
+          $enabled #boardTrackSelectionController.trackIsOnFrontOrBackLayer
+          $value #boardTrackSelectionController.mCoveredBySilkScreen
+        }
+      )
+      add (
         single: Checkbox (title: "Is Preserved by Auto Router", size : .small) { $value #boardTrackSelectionController.mIsPreservedByAutoRouter }
       )
       addSeparator ()

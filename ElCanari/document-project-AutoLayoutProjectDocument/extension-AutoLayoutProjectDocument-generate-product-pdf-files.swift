@@ -111,11 +111,13 @@ extension AutoLayoutProjectDocument {
       strokePathes.append (oblongs: inProductData.tracks [.back], transformedBy: af)
     }
     if inDescriptor.drawPadsTopSide {
+      strokePathes.append (oblongs: inProductData.frontTracksWithNoSilkScreen, transformedBy: af)
       strokePathes.append (circles: inProductData.circularPads [.frontLayer], transformedBy: af)
       strokePathes.append (oblongs: inProductData.oblongPads [.frontLayer], transformedBy: af)
       filledPathes.append (polygons: inProductData.polygonPads [.frontLayer], transformedBy: af)
     }
     if inDescriptor.drawPadsBottomSide {
+      strokePathes.append (oblongs: inProductData.backTracksWithNoSilkScreen, transformedBy: af)
       strokePathes.append (circles: inProductData.circularPads [.backLayer], transformedBy: af)
       strokePathes.append (oblongs: inProductData.oblongPads [.backLayer], transformedBy: af)
       filledPathes.append (polygons: inProductData.polygonPads [.backLayer], transformedBy: af)

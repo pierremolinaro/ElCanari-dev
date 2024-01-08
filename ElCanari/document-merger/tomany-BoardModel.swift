@@ -176,6 +176,18 @@ class ReadOnlyArrayOf_BoardModel : EBReadOnlyAbstractArrayProperty <BoardModel> 
       if let relay = self.mObserversOf_backComponentValuesBezierPaths { // Transient property
         managedObject.backComponentValuesBezierPaths_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_backTrackSegmentsNoSilkScreen { // Transient property
+        managedObject.backTrackSegmentsNoSilkScreen_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backTracksNoSilkScreenBezierPaths { // Transient property
+        managedObject.backTracksNoSilkScreenBezierPaths_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontTrackSegmentsNoSilkScreen { // Transient property
+        managedObject.frontTrackSegmentsNoSilkScreen_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontTracksNoSilkScreenBezierPaths { // Transient property
+        managedObject.frontTracksNoSilkScreenBezierPaths_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_backTrackSegments { // Transient property
         managedObject.backTrackSegments_property.stopsBeingObserved (by: relay)
       }
@@ -397,6 +409,18 @@ class ReadOnlyArrayOf_BoardModel : EBReadOnlyAbstractArrayProperty <BoardModel> 
       }
       if let relay = self.mObserversOf_backComponentValuesBezierPaths { // Transient property
         managedObject.backComponentValuesBezierPaths_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backTrackSegmentsNoSilkScreen { // Transient property
+        managedObject.backTrackSegmentsNoSilkScreen_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backTracksNoSilkScreenBezierPaths { // Transient property
+        managedObject.backTracksNoSilkScreenBezierPaths_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontTrackSegmentsNoSilkScreen { // Transient property
+        managedObject.frontTrackSegmentsNoSilkScreen_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontTracksNoSilkScreenBezierPaths { // Transient property
+        managedObject.frontTracksNoSilkScreenBezierPaths_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_backTrackSegments { // Transient property
         managedObject.backTrackSegments_property.startsBeingObserved (by: relay)
@@ -1996,6 +2020,122 @@ class ReadOnlyArrayOf_BoardModel : EBReadOnlyAbstractArrayProperty <BoardModel> 
 
   final func toMany_backComponentValuesBezierPaths_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backComponentValuesBezierPaths?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'backTrackSegmentsNoSilkScreen' transient property
+  //····················································································································
+
+  private final var mObserversOf_backTrackSegmentsNoSilkScreen : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_backTrackSegmentsNoSilkScreen_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_backTrackSegmentsNoSilkScreen {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.backTrackSegmentsNoSilkScreen_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_backTrackSegmentsNoSilkScreen = relay
+    }
+    relay.startsBeingObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_backTrackSegmentsNoSilkScreen_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_backTrackSegmentsNoSilkScreen?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'backTracksNoSilkScreenBezierPaths' transient property
+  //····················································································································
+
+  private final var mObserversOf_backTracksNoSilkScreenBezierPaths : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_backTracksNoSilkScreenBezierPaths_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_backTracksNoSilkScreenBezierPaths {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.backTracksNoSilkScreenBezierPaths_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_backTracksNoSilkScreenBezierPaths = relay
+    }
+    relay.startsBeingObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_backTracksNoSilkScreenBezierPaths_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_backTracksNoSilkScreenBezierPaths?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'frontTrackSegmentsNoSilkScreen' transient property
+  //····················································································································
+
+  private final var mObserversOf_frontTrackSegmentsNoSilkScreen : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_frontTrackSegmentsNoSilkScreen_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_frontTrackSegmentsNoSilkScreen {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.frontTrackSegmentsNoSilkScreen_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_frontTrackSegmentsNoSilkScreen = relay
+    }
+    relay.startsBeingObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_frontTrackSegmentsNoSilkScreen_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_frontTrackSegmentsNoSilkScreen?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'frontTracksNoSilkScreenBezierPaths' transient property
+  //····················································································································
+
+  private final var mObserversOf_frontTracksNoSilkScreenBezierPaths : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_frontTracksNoSilkScreenBezierPaths_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_frontTracksNoSilkScreenBezierPaths {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.frontTracksNoSilkScreenBezierPaths_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_frontTracksNoSilkScreenBezierPaths = relay
+    }
+    relay.startsBeingObserved (by:  inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_frontTracksNoSilkScreenBezierPaths_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_frontTracksNoSilkScreenBezierPaths?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

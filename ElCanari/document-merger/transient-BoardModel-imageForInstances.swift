@@ -17,6 +17,8 @@ import AppKit
        _ prefs_mergerColorBackground : NSColor,         
        _ self_modelWidth : Int,                         
        _ self_modelHeight : Int,                        
+       _ self_frontTracksNoSilkScreenBezierPaths : BezierPathArray,
+       _ self_backTracksNoSilkScreenBezierPaths : BezierPathArray,
        _ self_frontTracksBezierPaths : BezierPathArray, 
        _ prefs_mergerBoardViewDisplayFrontTracks : Bool,
        _ prefs_mergerColorFrontTracks : NSColor,        
@@ -133,6 +135,7 @@ import AppKit
 //--- Back pads
   if (prefs_mergerBoardViewDisplayBackPads) {
     shapes.add (filled: self_backPadsBezierPaths.array, prefs_mergerColorBackPads)
+    shapes.add (stroke: self_backTracksNoSilkScreenBezierPaths.array, prefs_mergerColorBackPads)
   }
 //--- Inner 4 tracks
   if (prefs_mergerBoardViewDisplayInner4Tracks) {
@@ -187,6 +190,7 @@ import AppKit
 //--- Front pads
   if (prefs_mergerBoardViewDisplayFrontPads) {
     shapes.add (filled: self_frontPadsBezierPaths.array, prefs_mergerColorFrontPads)
+    shapes.add (stroke: self_frontTracksNoSilkScreenBezierPaths.array, prefs_mergerColorFrontPads)
   }
 //--- Vias
   if (prefs_mergerBoardViewDisplayVias) {

@@ -131,6 +131,7 @@ extension AutoLayoutProjectDocument {
       apertureDictionary.append (tracks: inProductData.tracks [.back], af)
     }
     if inDescriptor.drawPadsTopSide {
+      apertureDictionary.append (oblongs: inProductData.frontTracksWithNoSilkScreen, af)
       apertureDictionary.append (circles: inProductData.circularPads [.frontLayer], af)
       apertureDictionary.append (oblongs: inProductData.oblongPads [.frontLayer], af)
       if let pp = inProductData.polygonPads [.frontLayer] {
@@ -138,6 +139,7 @@ extension AutoLayoutProjectDocument {
       }
     }
     if inDescriptor.drawPadsBottomSide {
+      apertureDictionary.append (oblongs: inProductData.backTracksWithNoSilkScreen, af)
       apertureDictionary.append (circles: inProductData.circularPads [.backLayer], af)
       apertureDictionary.append (oblongs: inProductData.oblongPads [.backLayer], af)
       if let pp = inProductData.polygonPads [.backLayer] {

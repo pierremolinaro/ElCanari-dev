@@ -10,10 +10,6 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let MERGER_ARCHIVE_VERSION = 2
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 extension AutoLayoutProjectDocument {
 
   //····················································································································
@@ -38,6 +34,8 @@ extension AutoLayoutProjectDocument {
     addLinePathes (&boardArchive, inProductData.frontPackageLegend, ARCHIVE_PACKAGES_FRONT_KEY, af)
     addDrills (&boardArchive, inProductData.holeDictionary, af)
     self.addPadsToArchive (&boardArchive, af)
+    addTracks (&boardArchive, inProductData.frontTracksWithNoSilkScreen, ARCHIVE_FRONT_TRACKS_WITH_NO_SILK_SCREEN_KEY, af)
+    addTracks (&boardArchive, inProductData.backTracksWithNoSilkScreen, ARCHIVE_BACK_TRACKS_WITH_NO_SILK_SCREEN_KEY, af)
     addLinePathes (&boardArchive, inProductData.layoutBackTexts, ARCHIVE_TEXTS_LAYOUT_BACK_KEY, af)
     addLinePathes (&boardArchive, inProductData.layoutFrontTexts, ARCHIVE_TEXTS_LAYOUT_FRONT_KEY, af)
     addLinePathes (&boardArchive, inProductData.legendBackTexts, ARCHIVE_TEXTS_LEGEND_BACK_KEY, af)

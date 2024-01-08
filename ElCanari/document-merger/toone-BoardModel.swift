@@ -69,6 +69,10 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
       oldValue.frontComponentValuesBezierPaths_property.stopsBeingObserved (by: self.frontComponentValuesBezierPaths_property) // Transient property
       oldValue.backComponentValueSegments_property.stopsBeingObserved (by: self.backComponentValueSegments_property) // Transient property
       oldValue.backComponentValuesBezierPaths_property.stopsBeingObserved (by: self.backComponentValuesBezierPaths_property) // Transient property
+      oldValue.backTrackSegmentsNoSilkScreen_property.stopsBeingObserved (by: self.backTrackSegmentsNoSilkScreen_property) // Transient property
+      oldValue.backTracksNoSilkScreenBezierPaths_property.stopsBeingObserved (by: self.backTracksNoSilkScreenBezierPaths_property) // Transient property
+      oldValue.frontTrackSegmentsNoSilkScreen_property.stopsBeingObserved (by: self.frontTrackSegmentsNoSilkScreen_property) // Transient property
+      oldValue.frontTracksNoSilkScreenBezierPaths_property.stopsBeingObserved (by: self.frontTracksNoSilkScreenBezierPaths_property) // Transient property
       oldValue.backTrackSegments_property.stopsBeingObserved (by: self.backTrackSegments_property) // Transient property
       oldValue.backTracksBezierPaths_property.stopsBeingObserved (by: self.backTracksBezierPaths_property) // Transient property
       oldValue.frontTrackSegments_property.stopsBeingObserved (by: self.frontTrackSegments_property) // Transient property
@@ -148,6 +152,12 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
       }
       if let relay = self.mObserversOf_backComponentValues { // to Many
         oldValue.backComponentValues_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backTracksNoSilkScreen { // to Many
+        oldValue.backTracksNoSilkScreen_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontTracksNoSilkScreen { // to Many
+        oldValue.frontTracksNoSilkScreen_property.stopsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_backTracks { // to Many
         oldValue.backTracks_property.stopsBeingObserved (by: relay)
@@ -232,6 +242,10 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
       newValue.frontComponentValuesBezierPaths_property.startsBeingObserved (by: self.frontComponentValuesBezierPaths_property) // Transient property
       newValue.backComponentValueSegments_property.startsBeingObserved (by: self.backComponentValueSegments_property) // Transient property
       newValue.backComponentValuesBezierPaths_property.startsBeingObserved (by: self.backComponentValuesBezierPaths_property) // Transient property
+      newValue.backTrackSegmentsNoSilkScreen_property.startsBeingObserved (by: self.backTrackSegmentsNoSilkScreen_property) // Transient property
+      newValue.backTracksNoSilkScreenBezierPaths_property.startsBeingObserved (by: self.backTracksNoSilkScreenBezierPaths_property) // Transient property
+      newValue.frontTrackSegmentsNoSilkScreen_property.startsBeingObserved (by: self.frontTrackSegmentsNoSilkScreen_property) // Transient property
+      newValue.frontTracksNoSilkScreenBezierPaths_property.startsBeingObserved (by: self.frontTracksNoSilkScreenBezierPaths_property) // Transient property
       newValue.backTrackSegments_property.startsBeingObserved (by: self.backTrackSegments_property) // Transient property
       newValue.backTracksBezierPaths_property.startsBeingObserved (by: self.backTracksBezierPaths_property) // Transient property
       newValue.frontTrackSegments_property.startsBeingObserved (by: self.frontTrackSegments_property) // Transient property
@@ -311,6 +325,12 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
       }
       if let relay = self.mObserversOf_backComponentValues { // to Many
         newValue.backComponentValues_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_backTracksNoSilkScreen { // to Many
+        newValue.backTracksNoSilkScreen_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_frontTracksNoSilkScreen { // to Many
+        newValue.frontTracksNoSilkScreen_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_backTracks { // to Many
         newValue.backTracks_property.startsBeingObserved (by: relay)
@@ -659,6 +679,30 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
   //····················································································································
 
   final let backComponentValuesBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
+
+  //····················································································································
+  //   Observers of 'backTrackSegmentsNoSilkScreen' transient property
+  //····················································································································
+
+  final let backTrackSegmentsNoSilkScreen_property = EBTransientProperty <MergerSegmentArray?> ()
+
+  //····················································································································
+  //   Observers of 'backTracksNoSilkScreenBezierPaths' transient property
+  //····················································································································
+
+  final let backTracksNoSilkScreenBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
+
+  //····················································································································
+  //   Observers of 'frontTrackSegmentsNoSilkScreen' transient property
+  //····················································································································
+
+  final let frontTrackSegmentsNoSilkScreen_property = EBTransientProperty <MergerSegmentArray?> ()
+
+  //····················································································································
+  //   Observers of 'frontTracksNoSilkScreenBezierPaths' transient property
+  //····················································································································
+
+  final let frontTracksNoSilkScreenBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
 
   //····················································································································
   //   Observers of 'backTrackSegments' transient property
@@ -1301,6 +1345,58 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
   }
 
   //····················································································································
+  //   Observable toMany property: backTracksNoSilkScreen
+  //····················································································································
+
+  private final var mObserversOf_backTracksNoSilkScreen : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_backTracksNoSilkScreen_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_backTracksNoSilkScreen {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.mWeakInternalValue?.backTracksNoSilkScreen_property.startsBeingObserved (by: relay)
+      self.mObserversOf_backTracksNoSilkScreen = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_backTracksNoSilkScreen_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_backTracksNoSilkScreen?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observable toMany property: frontTracksNoSilkScreen
+  //····················································································································
+
+  private final var mObserversOf_frontTracksNoSilkScreen : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_frontTracksNoSilkScreen_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_frontTracksNoSilkScreen {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.mWeakInternalValue?.frontTracksNoSilkScreen_property.startsBeingObserved (by: relay)
+      self.mObserversOf_frontTracksNoSilkScreen = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_frontTracksNoSilkScreen_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_frontTracksNoSilkScreen?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
   //   Observable toMany property: backTracks
   //····················································································································
 
@@ -1751,6 +1847,22 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
   //--- Configure backComponentValuesBezierPaths transient property
     self.backComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backComponentValuesBezierPaths_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure backTrackSegmentsNoSilkScreen transient property
+    self.backTrackSegmentsNoSilkScreen_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.backTrackSegmentsNoSilkScreen_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure backTracksNoSilkScreenBezierPaths transient property
+    self.backTracksNoSilkScreenBezierPaths_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.backTracksNoSilkScreenBezierPaths_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure frontTrackSegmentsNoSilkScreen transient property
+    self.frontTrackSegmentsNoSilkScreen_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.frontTrackSegmentsNoSilkScreen_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure frontTracksNoSilkScreenBezierPaths transient property
+    self.frontTracksNoSilkScreenBezierPaths_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.frontTracksNoSilkScreenBezierPaths_property.optionalSelection ?? .single (nil)
     }
   //--- Configure backTrackSegments transient property
     self.backTrackSegments_property.mReadModelFunction = { [weak self] in

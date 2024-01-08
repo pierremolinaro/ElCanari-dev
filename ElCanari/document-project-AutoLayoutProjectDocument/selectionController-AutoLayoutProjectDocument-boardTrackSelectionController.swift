@@ -95,6 +95,12 @@ import AppKit
   final let mManualLockP2_property = EBComputedProperty_Bool ()
 
   //····················································································································
+  //   Selection observable property: mCoveredBySilkScreen
+  //····················································································································
+
+  final let mCoveredBySilkScreen_property = EBComputedProperty_Bool ()
+
+  //····················································································································
   //   Selection observable property: mDirectionLockOnKnobDragging
   //····················································································································
 
@@ -147,6 +153,12 @@ import AppKit
   //····················································································································
 
   final let trackSide_property = EBTransientProperty <TrackSide> ()
+
+  //····················································································································
+  //   Selection observable property: trackIsOnFrontOrBackLayer
+  //····················································································································
+
+  final let trackIsOnFrontOrBackLayer_property = EBTransientProperty <Bool> ()
 
   //····················································································································
   //   Selection observable property: signatureForERCChecking
@@ -254,6 +266,7 @@ import AppKit
     self.bind_property_mP2YUnit ()
     self.bind_property_mManualLockP1 ()
     self.bind_property_mManualLockP2 ()
+    self.bind_property_mCoveredBySilkScreen ()
     self.bind_property_mDirectionLockOnKnobDragging ()
     self.bind_property_actualTrackWidth ()
     self.bind_property_netName ()
@@ -263,6 +276,7 @@ import AppKit
     self.bind_property_netClassViaPadDiameter ()
     self.bind_property_trackLengthInCanariUnit ()
     self.bind_property_trackSide ()
+    self.bind_property_trackIsOnFrontOrBackLayer ()
     self.bind_property_signatureForERCChecking ()
     self.bind_property_p1ConnectedToSomePad ()
     self.bind_property_p2ConnectedToSomePad ()
@@ -332,6 +346,10 @@ import AppKit
     self.mManualLockP2_property.mReadModelFunction = nil 
     self.mManualLockP2_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_mManualLockP2_StopsBeingObserved (by: self.mManualLockP2_property)
+  //--- mCoveredBySilkScreen
+    self.mCoveredBySilkScreen_property.mReadModelFunction = nil 
+    self.mCoveredBySilkScreen_property.mWriteModelFunction = nil 
+    self.selectedArray_property.toMany_mCoveredBySilkScreen_StopsBeingObserved (by: self.mCoveredBySilkScreen_property)
   //--- mDirectionLockOnKnobDragging
     self.mDirectionLockOnKnobDragging_property.mReadModelFunction = nil 
     self.mDirectionLockOnKnobDragging_property.mWriteModelFunction = nil 
@@ -360,6 +378,9 @@ import AppKit
   //--- trackSide
     self.trackSide_property.mReadModelFunction = nil 
     self.selectedArray_property.toMany_trackSide_StopsBeingObserved (by: self.trackSide_property)
+  //--- trackIsOnFrontOrBackLayer
+    self.trackIsOnFrontOrBackLayer_property.mReadModelFunction = nil 
+    self.selectedArray_property.toMany_trackIsOnFrontOrBackLayer_StopsBeingObserved (by: self.trackIsOnFrontOrBackLayer_property)
   //--- signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = nil 
     self.selectedArray_property.toMany_signatureForERCChecking_StopsBeingObserved (by: self.signatureForERCChecking_property)
@@ -1020,6 +1041,57 @@ import AppKit
   }
   //····················································································································
 
+  private final func bind_property_mCoveredBySilkScreen () {
+    self.selectedArray_property.toMany_mCoveredBySilkScreen_StartsBeingObserved (by: self.mCoveredBySilkScreen_property)
+    self.mCoveredBySilkScreen_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mCoveredBySilkScreen_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mCoveredBySilkScreen_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mCoveredBySilkScreen_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+  //····················································································································
+
   private final func bind_property_mDirectionLockOnKnobDragging () {
     self.selectedArray_property.toMany_mDirectionLockOnKnobDragging_StartsBeingObserved (by: self.mDirectionLockOnKnobDragging_property)
     self.mDirectionLockOnKnobDragging_property.mReadModelFunction = { [weak self] in
@@ -1358,6 +1430,45 @@ import AppKit
           var isMultipleSelection = false
           for object in v {
             switch object.trackSide_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_trackIsOnFrontOrBackLayer () {
+    self.selectedArray_property.toMany_trackIsOnFrontOrBackLayer_StartsBeingObserved (by: self.trackIsOnFrontOrBackLayer_property)
+    self.trackIsOnFrontOrBackLayer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.trackIsOnFrontOrBackLayer_property.selection {
             case .empty :
               return .empty
             case .multiple :
