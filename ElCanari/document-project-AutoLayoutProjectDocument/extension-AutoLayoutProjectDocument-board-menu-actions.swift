@@ -123,11 +123,124 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  @objc func selectAllTracksAction (_ inSender : Any?) {
+  @objc func selectAllTracksOfFrontLayerAction (_ inSender : Any?) {
+    self.rootObject.displayFrontLayoutForBoard_property.setProp (true)
     var newSelection = [BoardObject] ()
     for object in self.rootObject.mBoardObjects.values {
       if let track = object as? BoardTrack {
-        newSelection.append (track)
+        if track.mSide == .front {
+          newSelection.append (track)
+        }
+      }
+    }
+    self.boardObjectsController.setSelection (newSelection)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+  }
+
+  //····················································································································
+
+  @objc func selectAllTracksOfBackLayerAction (_ inSender : Any?) {
+    self.rootObject.displayBackLayoutForBoard_property.setProp (true)
+    var newSelection = [BoardObject] ()
+    for object in self.rootObject.mBoardObjects.values {
+      if let track = object as? BoardTrack {
+        if track.mSide == .back {
+          newSelection.append (track)
+        }
+      }
+    }
+    self.boardObjectsController.setSelection (newSelection)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+  }
+
+  //····················································································································
+
+  @objc func selectAllTracksOfInner1LayerAction (_ inSender : Any?) {
+    self.rootObject.displayInner1LayoutForBoard_property.setProp (true)
+    var newSelection = [BoardObject] ()
+    for object in self.rootObject.mBoardObjects.values {
+      if let track = object as? BoardTrack {
+        if track.mSide == .inner1 {
+          newSelection.append (track)
+        }
+      }
+    }
+    self.boardObjectsController.setSelection (newSelection)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+  }
+
+  //····················································································································
+
+  @objc func selectAllTracksOfInner2LayerAction (_ inSender : Any?) {
+    self.rootObject.displayInner2LayoutForBoard_property.setProp (true)
+    var newSelection = [BoardObject] ()
+    for object in self.rootObject.mBoardObjects.values {
+      if let track = object as? BoardTrack {
+        if track.mSide == .inner2 {
+          newSelection.append (track)
+        }
+      }
+    }
+    self.boardObjectsController.setSelection (newSelection)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+  }
+
+  //····················································································································
+
+  @objc func selectAllTracksOfInner3LayerAction (_ inSender : Any?) {
+    self.rootObject.displayInner3LayoutForBoard_property.setProp (true)
+    var newSelection = [BoardObject] ()
+    for object in self.rootObject.mBoardObjects.values {
+      if let track = object as? BoardTrack {
+        if track.mSide == .inner3 {
+          newSelection.append (track)
+        }
+      }
+    }
+    self.boardObjectsController.setSelection (newSelection)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+  }
+
+  //····················································································································
+
+  @objc func selectAllTracksOfInner4LayerAction (_ inSender : Any?) {
+    self.rootObject.displayInner4LayoutForBoard_property.setProp (true)
+    var newSelection = [BoardObject] ()
+    for object in self.rootObject.mBoardObjects.values {
+      if let track = object as? BoardTrack {
+        if track.mSide == .inner4 {
+          newSelection.append (track)
+        }
+      }
+    }
+    self.boardObjectsController.setSelection (newSelection)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+  }
+
+  //····················································································································
+
+  @objc func selectAllTracksOfVisibleLayersAction (_ inSender : Any?) {
+    var newSelection = [BoardObject] ()
+    for object in self.rootObject.mBoardObjects.values {
+      if let track = object as? BoardTrack {
+        let isVisible : Bool
+        switch track.mSide {
+        case .front :
+          isVisible = self.rootObject.displayFrontLayoutForBoard_property.propval
+        case .inner1 :
+          isVisible = self.rootObject.displayInner1LayoutForBoard_property.propval
+        case .inner2 :
+          isVisible = self.rootObject.displayInner2LayoutForBoard_property.propval
+        case .inner3 :
+          isVisible = self.rootObject.displayInner3LayoutForBoard_property.propval
+        case .inner4 :
+          isVisible = self.rootObject.displayInner4LayoutForBoard_property.propval
+        case .back :
+          isVisible = self.rootObject.displayBackLayoutForBoard_property.propval
+        }
+        if isVisible {
+          newSelection.append (track)
+        }
       }
     }
     self.boardObjectsController.setSelection (newSelection)

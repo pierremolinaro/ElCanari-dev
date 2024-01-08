@@ -49,9 +49,47 @@ final class AutoLayoutCanariBoardOperationPullDownButton : AutoLayoutBase_NSPopU
     self.addItem (withTitle: "Select Component")
     self.lastItem?.submenu = self.mSelectComponentSubMenu
   //--- Select All Tracks
-    self.addItem (withTitle: "Select all Tracks")
-    self.lastItem?.target = inDocument
-    self.lastItem?.action = #selector (AutoLayoutProjectDocument.selectAllTracksAction (_:))
+    self.addItem (withTitle: "Select all Tracks of")
+    let submenu = NSMenu ()
+    submenu.addItem (
+      withTitle: "Visible Layers",
+      action: #selector (AutoLayoutProjectDocument.selectAllTracksOfVisibleLayersAction (_:)),
+      keyEquivalent: ""
+    )
+    submenu.addItem (
+      withTitle: "Front Side Layer",
+      action: #selector (AutoLayoutProjectDocument.selectAllTracksOfFrontLayerAction (_:)),
+      keyEquivalent: ""
+    )
+    submenu.addItem (
+      withTitle: "Back Side Layer",
+      action: #selector (AutoLayoutProjectDocument.selectAllTracksOfBackLayerAction (_:)),
+      keyEquivalent: ""
+    )
+    submenu.addItem (
+      withTitle: "Inner 1 Layer",
+      action: #selector (AutoLayoutProjectDocument.selectAllTracksOfInner1LayerAction (_:)),
+      keyEquivalent: ""
+    )
+    submenu.addItem (
+      withTitle: "Inner 2 Layer",
+      action: #selector (AutoLayoutProjectDocument.selectAllTracksOfInner2LayerAction (_:)),
+      keyEquivalent: ""
+    )
+    submenu.addItem (
+      withTitle: "Inner 3 Layer",
+      action: #selector (AutoLayoutProjectDocument.selectAllTracksOfInner3LayerAction (_:)),
+      keyEquivalent: ""
+    )
+    submenu.addItem (
+      withTitle: "Inner 4 Layer",
+      action: #selector (AutoLayoutProjectDocument.selectAllTracksOfInner4LayerAction (_:)),
+      keyEquivalent: ""
+    )
+    for item in submenu.items {
+      item.target = inDocument
+    }
+    self.lastItem?.submenu = submenu
   //--- Select Tracks from Selected Track Net
     self.addItem (withTitle: "Select Tracks from Selected Track Nets")
     self.lastItem?.target = inDocument
