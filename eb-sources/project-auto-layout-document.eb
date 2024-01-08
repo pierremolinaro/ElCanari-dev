@@ -1766,7 +1766,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       add (
-        single: Checkbox (title: "Added to Solder Mask", size : .small) {
+        single: Checkbox (title: "Add Track to Solder Mask", size : .small) {
           $enabled #boardTrackSelectionController.trackIsOnFrontOrBackLayer
           $value #boardTrackSelectionController.mAddedToSolderMask
         }
