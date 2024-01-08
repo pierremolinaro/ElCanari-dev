@@ -49,7 +49,7 @@ graphic handlingOpposite entity BoardTrack : BoardObject {
   property @generateDirectAccess Int mP2YUnit default 2_286 ; // mil
   property Bool mManualLockP1 default no ;
   property Bool mManualLockP2 default no ;
-  property Bool mCoveredBySilkScreen default yes ;
+  property Bool mAddedToSolderMask default no ;
   
   property TrackLockDirection mDirectionLockOnKnobDragging default unlocked ;
 

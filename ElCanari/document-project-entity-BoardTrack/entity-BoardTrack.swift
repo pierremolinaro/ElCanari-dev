@@ -78,8 +78,8 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol BoardTrack_mCoveredBySilkScreen : AnyObject {
-  var mCoveredBySilkScreen : Bool { get }
+@MainActor protocol BoardTrack_mAddedToSolderMask : AnyObject {
+  var mAddedToSolderMask : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -207,7 +207,7 @@ final class BoardTrack : BoardObject,
          BoardTrack_mP2YUnit,
          BoardTrack_mManualLockP1,
          BoardTrack_mManualLockP2,
-         BoardTrack_mCoveredBySilkScreen,
+         BoardTrack_mAddedToSolderMask,
          BoardTrack_mDirectionLockOnKnobDragging,
          BoardTrack_actualTrackWidth,
          BoardTrack_netName,
@@ -380,15 +380,15 @@ final class BoardTrack : BoardObject,
   }
 
   //····················································································································
-  //   Atomic property: mCoveredBySilkScreen
+  //   Atomic property: mAddedToSolderMask
   //····················································································································
 
-  final let mCoveredBySilkScreen_property : EBStoredProperty_Bool
+  final let mAddedToSolderMask_property : EBStoredProperty_Bool
 
   //····················································································································
 
-  final var mCoveredBySilkScreen : Bool {
-    get { return self.mCoveredBySilkScreen_property.propval }
+  final var mAddedToSolderMask : Bool {
+    get { return self.mAddedToSolderMask_property.propval }
   }
 
   //····················································································································
@@ -678,7 +678,7 @@ final class BoardTrack : BoardObject,
     self.mP2YUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mP2YUnit")
     self.mManualLockP1_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mManualLockP1")
     self.mManualLockP2_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mManualLockP2")
-    self.mCoveredBySilkScreen_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mCoveredBySilkScreen")
+    self.mAddedToSolderMask_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mAddedToSolderMask")
     self.mDirectionLockOnKnobDragging_property = EBStoredProperty_TrackLockDirection (defaultValue: TrackLockDirection.unlocked, undoManager: inUndoManager, key: "mDirectionLockOnKnobDragging")
     super.init (inUndoManager)
     self.mConnectorP1_none.mReadModelFunction = { [weak self] in

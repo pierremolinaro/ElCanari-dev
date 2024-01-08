@@ -1766,9 +1766,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       add (
-        single: Checkbox (title: "Covered by Silk Screen", size : .small) {
+        single: Checkbox (title: "Added to Solder Mask", size : .small) {
           $enabled #boardTrackSelectionController.trackIsOnFrontOrBackLayer
-          $value #boardTrackSelectionController.mCoveredBySilkScreen
+          $value #boardTrackSelectionController.mAddedToSolderMask
         }
       )
       add (

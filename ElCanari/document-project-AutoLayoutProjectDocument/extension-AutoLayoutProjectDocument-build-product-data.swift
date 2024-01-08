@@ -431,7 +431,7 @@ extension AutoLayoutProjectDocument {
         let width = canariUnitToCocoa (track.actualTrackWidth!)
         let t = ProductOblong (p1: p1, p2: p2, width: width)
         tracks [track.mSide] = tracks [track.mSide, default: []] + [t]
-        if !track.mCoveredBySilkScreen_property.propval {
+        if track.mAddedToSolderMask_property.propval {
           if track.mSide == .front {
             frontTracksWithNoSilkScreen.append (t)
           }else if track.mSide == .back {

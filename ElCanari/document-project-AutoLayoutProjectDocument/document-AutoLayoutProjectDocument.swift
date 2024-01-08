@@ -5502,8 +5502,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_210 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Covered by Silk Screen", size: .small)
-      .bind_value (self.boardTrackSelectionController.mCoveredBySilkScreen_property)
+    let view = AutoLayoutCheckbox (title: "Added to Solder Mask", size: .small)
+      .bind_value (self.boardTrackSelectionController.mAddedToSolderMask_property)
       .bind_enabled (.prop (self.boardTrackSelectionController.trackIsOnFrontOrBackLayer_property))
     return view
   }

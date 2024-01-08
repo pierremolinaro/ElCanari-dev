@@ -95,10 +95,10 @@ import AppKit
   final let mManualLockP2_property = EBComputedProperty_Bool ()
 
   //····················································································································
-  //   Selection observable property: mCoveredBySilkScreen
+  //   Selection observable property: mAddedToSolderMask
   //····················································································································
 
-  final let mCoveredBySilkScreen_property = EBComputedProperty_Bool ()
+  final let mAddedToSolderMask_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: mDirectionLockOnKnobDragging
@@ -266,7 +266,7 @@ import AppKit
     self.bind_property_mP2YUnit ()
     self.bind_property_mManualLockP1 ()
     self.bind_property_mManualLockP2 ()
-    self.bind_property_mCoveredBySilkScreen ()
+    self.bind_property_mAddedToSolderMask ()
     self.bind_property_mDirectionLockOnKnobDragging ()
     self.bind_property_actualTrackWidth ()
     self.bind_property_netName ()
@@ -346,10 +346,10 @@ import AppKit
     self.mManualLockP2_property.mReadModelFunction = nil 
     self.mManualLockP2_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_mManualLockP2_StopsBeingObserved (by: self.mManualLockP2_property)
-  //--- mCoveredBySilkScreen
-    self.mCoveredBySilkScreen_property.mReadModelFunction = nil 
-    self.mCoveredBySilkScreen_property.mWriteModelFunction = nil 
-    self.selectedArray_property.toMany_mCoveredBySilkScreen_StopsBeingObserved (by: self.mCoveredBySilkScreen_property)
+  //--- mAddedToSolderMask
+    self.mAddedToSolderMask_property.mReadModelFunction = nil 
+    self.mAddedToSolderMask_property.mWriteModelFunction = nil 
+    self.selectedArray_property.toMany_mAddedToSolderMask_StopsBeingObserved (by: self.mAddedToSolderMask_property)
   //--- mDirectionLockOnKnobDragging
     self.mDirectionLockOnKnobDragging_property.mReadModelFunction = nil 
     self.mDirectionLockOnKnobDragging_property.mWriteModelFunction = nil 
@@ -1041,9 +1041,9 @@ import AppKit
   }
   //····················································································································
 
-  private final func bind_property_mCoveredBySilkScreen () {
-    self.selectedArray_property.toMany_mCoveredBySilkScreen_StartsBeingObserved (by: self.mCoveredBySilkScreen_property)
-    self.mCoveredBySilkScreen_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_mAddedToSolderMask () {
+    self.selectedArray_property.toMany_mAddedToSolderMask_StartsBeingObserved (by: self.mAddedToSolderMask_property)
+    self.mAddedToSolderMask_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty :
@@ -1054,7 +1054,7 @@ import AppKit
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mCoveredBySilkScreen_property.selection {
+            switch object.mAddedToSolderMask_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1077,14 +1077,14 @@ import AppKit
         return .empty
       }
     }
-    self.mCoveredBySilkScreen_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+    self.mAddedToSolderMask_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.mCoveredBySilkScreen_property.setProp (inValue)
+            object.mAddedToSolderMask_property.setProp (inValue)
           }
         }
       }
