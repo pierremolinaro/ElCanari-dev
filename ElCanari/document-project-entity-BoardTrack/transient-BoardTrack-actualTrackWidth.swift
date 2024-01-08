@@ -19,13 +19,15 @@ import AppKit
        _ self_mCustomTrackWidth : Int
 ) -> Int {
 //--- START OF USER ZONE 2
+        let width : Int
         if self_mUsesCustomTrackWidth {
-          return self_mCustomTrackWidth
+          width = self_mCustomTrackWidth
         }else if let w = self_mNet_netClassTrackWidth {
-          return w
+          width = w
         }else{
-          return 0
+          width = 0
         }
+        return width
 //--- END OF USER ZONE 2
 }
 

@@ -1426,74 +1426,80 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             $selectedTag root.packageDrawingWidthMultpliedByTenForBoard
           }
         )
-        add (single: StaticLabel (title: "Display", bold: yes, size: .small, alignment: .left))
+        add (single: StaticLabel (title: "Front side Display", bold: yes, size: .small, alignment: .left))
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColorForBoard } },
-          right: Checkbox (title: "Front Side Pads", size : .small)  { expandableHeight  () $value root.displayFrontPadsForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColorForBoard } },
-          right: Checkbox (title: "Back Side Pads", size : .small)  { expandableHeight  () $value root.displayBackPadsForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColorForBoard } },
-          right: Checkbox (title: "Pad Numbers", size : .small)  { expandableHeight  () $value root.displayPadNumbersForBoard }
+          right: Checkbox (title: "Pads", size : .small)  { expandableHeight  () $value root.displayFrontPadsForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLegendColorForBoard } },
-          right: Checkbox (title: "Front Side Legend", size : .small)  { expandableHeight  () $value root.displayFrontLegendForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLegendColorForBoard } },
-          right: Checkbox (title: "Back Side Legend", size : .small)  { expandableHeight  () $value root.displayBackLegendForBoard }
+          right: Checkbox (title: "Legend", size : .small)  { expandableHeight  () $value root.displayFrontLegendForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLayoutColorForBoard } },
-          right: Checkbox (title: "Front Side Layout", size : .small)  { expandableHeight  () $value root.displayFrontLayoutForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner1LayoutColorForBoard } },
-          right: Checkbox (title: "Inner 1 Layout", size : .small)  { expandableHeight  () $value root.displayInner1LayoutForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2LayoutColorForBoard } },
-          right: Checkbox (title: "Inner 2 Layout", size : .small)  { expandableHeight  () $value root.displayInner2LayoutForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3LayoutColorForBoard } },
-          right: Checkbox (title: "Inner 3 Layout", size : .small)  { expandableHeight  () $value root.displayInner3LayoutForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4LayoutColorForBoard } },
-          right: Checkbox (title: "Inner 4 Layout", size : .small)  { expandableHeight  () $value root.displayInner4LayoutForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLayoutColorForBoard } },
-          right: Checkbox (title: "Back Side Layout", size : .small)  { expandableHeight  () $value root.displayBackLayoutForBoard }
+          right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayFrontLayoutForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideRestrictRectangleColorForBoard } },
-          right: Checkbox (title: "Front Layer Restrict Rect.", size : .small)  { expandableHeight  () $value root.displayFrontRestrictRectangles }
+          right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayFrontRestrictRectangles }
+        )
+        add (single: StaticLabel (title: "Back Side Display", bold: yes, size: .small, alignment: .left))
+        addFirstBaseLineAligned (
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColorForBoard } },
+          right: Checkbox (title: "Pads", size : .small)  { expandableHeight  () $value root.displayBackPadsForBoard }
+        )
+        addFirstBaseLineAligned (
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLegendColorForBoard } },
+          right: Checkbox (title: "Legend", size : .small)  { expandableHeight  () $value root.displayBackLegendForBoard }
+        )
+        addFirstBaseLineAligned (
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLayoutColorForBoard } },
+          right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayBackLayoutForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideRestrictRectangleColorForBoard } },
-          right: Checkbox (title: "Back Layer Restrict Rect.", size : .small)  { expandableHeight  () $value root.displayBackRestrictRectangles }
+          right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayBackRestrictRectangles }
+        )
+        add (single: StaticLabel (title: "Inner 1 Layer Display", bold: yes, size: .small, alignment: .left))
+        addFirstBaseLineAligned (
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner1LayoutColorForBoard } },
+          right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner1LayoutForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner1SideRestrictRectangleColorForBoard } },
-          right: Checkbox (title: "Inner1 Layer Restrict Rect.", size : .small)  { expandableHeight  () $value root.displayInner1RestrictRectangles }
+          right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner1RestrictRectangles }
         )
+        add (single: StaticLabel (title: "Inner 2 Layer Display", bold: yes, size: .small, alignment: .left))
         addFirstBaseLineAligned (
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2LayoutColorForBoard } },
+          right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner2LayoutForBoard }
+        )
+         addFirstBaseLineAligned (
           left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2SideRestrictRectangleColorForBoard } },
-          right: Checkbox (title: "Inner2 Layer Restrict Rect.", size : .small)  { expandableHeight  () $value root.displayInner2RestrictRectangles }
+          right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner2RestrictRectangles }
+        )
+        add (single: StaticLabel (title: "Inner 3 Layer Display", bold: yes, size: .small, alignment: .left))
+       addFirstBaseLineAligned (
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3LayoutColorForBoard } },
+          right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner3LayoutForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3SideRestrictRectangleColorForBoard } },
-          right: Checkbox (title: "Inner3 Layer Restrict Rect.", size : .small)  { expandableHeight  () $value root.displayInner3RestrictRectangles }
+          right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner3RestrictRectangles }
+        )
+        add (single: StaticLabel (title: "Inner 4 Layer Display", bold: yes, size: .small, alignment: .left))
+        addFirstBaseLineAligned (
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4LayoutColorForBoard } },
+          right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner4LayoutForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4SideRestrictRectangleColorForBoard } },
-          right: Checkbox (title: "Inner4 Layer Restrict Rect.", size : .small)  { expandableHeight  () $value root.displayInner4RestrictRectangles }
+          right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner4RestrictRectangles }
+        )
+        add (single: StaticLabel (title: "Other", bold: yes, size: .small, alignment: .left))
+        addFirstBaseLineAligned (
+          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColorForBoard } },
+          right: Checkbox (title: "Pad Numbers", size : .small)  { expandableHeight  () $value root.displayPadNumbersForBoard }
         )
         addCenterYAligned (
           left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardLimitsColorForBoard } },

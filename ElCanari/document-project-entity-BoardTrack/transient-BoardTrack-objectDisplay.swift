@@ -57,7 +57,8 @@ import AppKit
            color = prefs_inner4LayoutColorForBoard
          }
          if display {
-           let w = canariUnitToCocoa ((self_actualTrackWidth == 0) ? milsToCanariUnit (fromInt: 10) : self_actualTrackWidth)
+      //     let w = canariUnitToCocoa ((self_actualTrackWidth == 0) ? milsToCanariUnit (fromInt: 10) : self_actualTrackWidth)
+           let w = canariUnitToCocoa (max (self_actualTrackWidth, milsToCanariUnit (fromInt: 10)))
            var bp = EBBezierPath ()
            bp.lineWidth = w
            bp.lineCapStyle = .round

@@ -54,6 +54,7 @@ extension AutoLayoutProjectDocument {
     }
   //--- Build Track
     let track = BoardTrack (self.undoManager)
+    track.mUsesCustomTrackWidth = connector1Net == nil
     track.mNet = connector1Net
     track.mSide = side
     track.mConnectorP1 = connector1
@@ -90,10 +91,12 @@ extension AutoLayoutProjectDocument {
     self.rootObject.mBoardObjects.append (connector2)
   //--- Build Track
     let track = BoardTrack (self.undoManager)
+    let connector1Net = connector1.connectedTracksNet ()
+    track.mUsesCustomTrackWidth = connector1Net == nil
     track.mSide = side
     track.mConnectorP1 = connector1
     track.mConnectorP2 = connector2
-    track.mNet = connector1.connectedTracksNet ()
+    track.mNet = connector1Net
     self.rootObject.mBoardObjects.append (track)
     self.boardObjectsController.setSelection ([track])
     self.mTrackCreatedByOptionClick = track
