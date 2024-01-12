@@ -30,6 +30,18 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol CommentInSchematic_mRotation : AnyObject {
+  var mRotation : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol CommentInSchematic_mBold : AnyObject {
+  var mBold : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol CommentInSchematic_mX : AnyObject {
   var mX : Int { get }
 }
@@ -67,6 +79,8 @@ final class CommentInSchematic : SchematicObject,
          CommentInSchematic_mSize,
          CommentInSchematic_mHorizontalAlignment,
          CommentInSchematic_mVerticalAlignment,
+         CommentInSchematic_mRotation,
+         CommentInSchematic_mBold,
          CommentInSchematic_mX,
          CommentInSchematic_mY,
          CommentInSchematic_mComment,
@@ -122,6 +136,30 @@ final class CommentInSchematic : SchematicObject,
   }
 
   //····················································································································
+  //   Atomic property: mRotation
+  //····················································································································
+
+  final let mRotation_property : EBStoredProperty_Int
+
+  //····················································································································
+
+  final var mRotation : Int {
+    get { return self.mRotation_property.propval }
+  }
+
+  //····················································································································
+  //   Atomic property: mBold
+  //····················································································································
+
+  final let mBold_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final var mBold : Bool {
+    get { return self.mBold_property.propval }
+  }
+
+  //····················································································································
   //   Atomic property: mX
   //····················································································································
 
@@ -168,6 +206,8 @@ final class CommentInSchematic : SchematicObject,
     self.mSize_property = EBStoredProperty_Double (defaultValue: 11, undoManager: inUndoManager, key: "mSize")
     self.mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "mHorizontalAlignment")
     self.mVerticalAlignment_property = EBStoredProperty_VerticalAlignment (defaultValue: VerticalAlignment.center, undoManager: inUndoManager, key: "mVerticalAlignment")
+    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
+    self.mBold_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mBold")
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
     self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
     self.mComment_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mComment")
@@ -180,18 +220,24 @@ final class CommentInSchematic : SchematicObject,
         let s2 = unwSelf.mSize_property.selection
         let s3 = unwSelf.mHorizontalAlignment_property.selection
         let s4 = unwSelf.mVerticalAlignment_property.selection
-        let s5 = unwSelf.mX_property.selection
-        let s6 = unwSelf.mY_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6) {
+        let s5 = unwSelf.mRotation_property.selection
+        let s6 = unwSelf.mBold_property.selection
+        let s7 = unwSelf.mX_property.selection
+        let s8 = unwSelf.mY_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
               .single (let v4),
               .single (let v5),
-              .single (let v6)) :
-          return .single (transient_CommentInSchematic_objectDisplay (v0, v1, v2, v3, v4, v5, v6))
+              .single (let v6),
+              .single (let v7),
+              .single (let v8)) :
+          return .single (transient_CommentInSchematic_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
         case (.multiple,
+              .multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -211,6 +257,8 @@ final class CommentInSchematic : SchematicObject,
     self.mSize_property.startsBeingObserved (by: self.objectDisplay_property)
     self.mHorizontalAlignment_property.startsBeingObserved (by: self.objectDisplay_property)
     self.mVerticalAlignment_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mRotation_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mBold_property.startsBeingObserved (by: self.objectDisplay_property)
     self.mX_property.startsBeingObserved (by: self.objectDisplay_property)
     self.mY_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
@@ -222,9 +270,11 @@ final class CommentInSchematic : SchematicObject,
         let s3 = unwSelf.mHorizontalAlignment_property.selection
         let s4 = unwSelf.mVerticalAlignment_property.selection
         let s5 = preferences_schematicBackColor_property.selection
-        let s6 = unwSelf.mX_property.selection
-        let s7 = unwSelf.mY_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7) {
+        let s6 = unwSelf.mRotation_property.selection
+        let s7 = unwSelf.mBold_property.selection
+        let s8 = unwSelf.mX_property.selection
+        let s9 = unwSelf.mY_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -232,9 +282,13 @@ final class CommentInSchematic : SchematicObject,
               .single (let v4),
               .single (let v5),
               .single (let v6),
-              .single (let v7)) :
-          return .single (transient_CommentInSchematic_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+              .single (let v7),
+              .single (let v8),
+              .single (let v9)) :
+          return .single (transient_CommentInSchematic_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
         case (.multiple,
+              .multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -256,6 +310,8 @@ final class CommentInSchematic : SchematicObject,
     self.mHorizontalAlignment_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mVerticalAlignment_property.startsBeingObserved (by: self.selectionDisplay_property)
     preferences_schematicBackColor_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mRotation_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mBold_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mX_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mY_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships

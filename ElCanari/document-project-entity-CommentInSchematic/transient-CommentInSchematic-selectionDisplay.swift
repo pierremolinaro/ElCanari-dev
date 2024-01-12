@@ -20,17 +20,23 @@ import AppKit
        _ self_mHorizontalAlignment : HorizontalAlignment,      
        _ self_mVerticalAlignment : VerticalAlignment,          
        _ prefs_schematicBackColor : NSColor,                   
+       _ self_mRotation : Int,                                 
+       _ self_mBold : Bool,                                    
        _ self_mX : Int,                                        
        _ self_mY : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let s = CGFloat (self_mSize)
-        let font = NSFont (name: "LucidaGrande", size: s)!
+        let font = self_mBold ? NSFont.boldSystemFont (ofSize: s) : NSFont.systemFont (ofSize: s)
+//        let font = NSFont (name: "LucidaGrande", size: s)!
         let p = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
+        var af = AffineTransform ()
+        af.translate (x: p.x, y: p.y)
+        af.rotate (byDegrees: CGFloat (self_mRotation) / 1000.0)
         var shape = EBShape ()
         shape.add (
           textKnob: (self_mComment.isEmpty) ? "Empty comment" : self_mComment,
-          p,
+          NSPoint (),
           font,
           foreColor: self_mColor,
           backColor: prefs_schematicBackColor,
@@ -39,8 +45,10 @@ import AppKit
           .rect,
           knobIndex: 0
         )
-        shape.add (knobAt: p, knobIndex: 0, .rect, SCHEMATIC_KNOB_SIZE)
-        return shape
+        shape.add (knobAt: NSPoint (), knobIndex: COMMENT_IN_SCHEMATIC_DRAG_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
+        shape.add (knobAt: NSPoint (x: shape.boundingBox.width / 2.0, y: 0.0), knobIndex: COMMENT_IN_SCHEMATIC_ROTATION_KNOB, .circ, SCHEMATIC_KNOB_SIZE)
+        let rotatedShape = shape.transformed (by: af)
+        return rotatedShape
 //--- END OF USER ZONE 2
 }
 

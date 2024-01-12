@@ -29,6 +29,12 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
       if let relay = self.mObserversOf_mVerticalAlignment { // Stored property
         managedObject.mVerticalAlignment_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mRotation { // Stored property
+        managedObject.mRotation_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mBold { // Stored property
+        managedObject.mBold_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_mX { // Stored property
         managedObject.mX_property.stopsBeingObserved (by: relay)
       }
@@ -58,6 +64,12 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
       }
       if let relay = self.mObserversOf_mVerticalAlignment { // Stored property
         managedObject.mVerticalAlignment_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mRotation { // Stored property
+        managedObject.mRotation_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mBold { // Stored property
+        managedObject.mBold_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mX { // Stored property
         managedObject.mX_property.startsBeingObserved (by: relay)
@@ -191,6 +203,64 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   final func toMany_mVerticalAlignment_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mVerticalAlignment?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'mRotation' stored property
+  //····················································································································
+
+  private final var mObserversOf_mRotation : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_mRotation_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mRotation {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mRotation_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_mRotation = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mRotation_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mRotation?.stopsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+  //   Observers of 'mBold' stored property
+  //····················································································································
+
+  private final var mObserversOf_mBold : EBObservedObserver? = nil
+
+  //····················································································································
+
+  final func toMany_mBold_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mBold {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mBold_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_mBold = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  //····················································································································
+
+  final func toMany_mBold_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mBold?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

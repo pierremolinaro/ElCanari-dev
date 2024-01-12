@@ -10,6 +10,8 @@ graphic entity CommentInSchematic : SchematicObject {
   property Double mSize default 11.0 ;
   property HorizontalAlignment mHorizontalAlignment default center ;
   property VerticalAlignment mVerticalAlignment default center ;
+  property Int mRotation default 0 ; // 1000 -> 1°
+  property Bool mBold default no ;
 
   property @generateDirectAccess Int mX default 0 ;
   property @generateDirectAccess Int mY default 0 ;
@@ -20,6 +22,8 @@ graphic entity CommentInSchematic : SchematicObject {
     self.mSize,
     self.mHorizontalAlignment,
     self.mVerticalAlignment,
+    self.mRotation,
+    self.mBold,
     self.mX,
     self.mY
   ;
@@ -31,6 +35,8 @@ graphic entity CommentInSchematic : SchematicObject {
     self.mHorizontalAlignment,
     self.mVerticalAlignment,
     prefs.schematicBackColor,
+    self.mRotation,
+    self.mBold,
     self.mX,
     self.mY
   ;

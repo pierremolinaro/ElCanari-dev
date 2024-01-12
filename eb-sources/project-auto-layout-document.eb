@@ -906,20 +906,31 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       automaticallyAdjustHeight (maxWidth: 210)
       $value #commentInSchematicSelectionController.mComment (sendContinously : yes)
     }
+    Checkbox (title: "Bold", size : .small) { $value #commentInSchematicSelectionController.mBold }
     GridView2 {
+      addSeparator ()
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Color", bold: no, size: .small, alignment: .right),
+        left: StaticLabel (title: "Color", bold: yes, size: .small, alignment: .left),
         right: ColorWell { $color #commentInSchematicSelectionController.mColor }
       )
       addSeparator ()
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
+        left: StaticLabel (title: "Rotation", bold: yes, size: .small, alignment: .left),
+        right: CanariPreferredDirectionSegmentedControl { $angle #commentInSchematicSelectionController.mRotation }
+      )
+      addFirstBaseLineAligned (
+        left: space, // StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
+        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #commentInSchematicSelectionController.mRotation }
+      )
+      addSeparator ()
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Size", bold: yes, size: .small, alignment: .left),
         right: DoubleField (width: 64, size: .small) { $value #commentInSchematicSelectionController.mSize (sendContinously:yes) }
       )
     }
     LinearSlider (min: 4, max: 20, ticks: 17) { setAllowsTickMarkValuesOnly () $doubleValue #commentInSchematicSelectionController.mSize (sendContinously:yes) }
     separator
-    StaticLabel (title: "Alignment", bold: no, size: .small, alignment: .left)
+    StaticLabel (title: "Alignment", bold: yes, size: .small, alignment: .left)
     EnumSegmentedControl (titles: enum HorizontalAlignment.popupTitles, equalWidth: yes, size: .small) [configurator labelHAlignmentSegmendControlConfigurator] {
       $selectedSegment #commentInSchematicSelectionController.mHorizontalAlignment
     }
@@ -1766,7 +1777,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       add (
-        single: Checkbox (title: "Add Track to Solder Mask", size : .small) {
+        single: Checkbox (title: "Add Track to Solder Mask (as Pad)", size : .small) {
           $enabled #boardTrackSelectionController.trackIsOnFrontOrBackLayer
           $value #boardTrackSelectionController.mAddedToSolderMask
         }

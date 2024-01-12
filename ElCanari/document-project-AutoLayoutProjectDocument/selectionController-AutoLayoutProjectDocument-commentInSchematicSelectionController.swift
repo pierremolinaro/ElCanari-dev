@@ -47,6 +47,18 @@ import AppKit
   final let mVerticalAlignment_property = EBComputedProperty_VerticalAlignment ()
 
   //····················································································································
+  //   Selection observable property: mRotation
+  //····················································································································
+
+  final let mRotation_property = EBComputedProperty_Int ()
+
+  //····················································································································
+  //   Selection observable property: mBold
+  //····················································································································
+
+  final let mBold_property = EBComputedProperty_Bool ()
+
+  //····················································································································
   //   Selection observable property: mX
   //····················································································································
 
@@ -96,6 +108,8 @@ import AppKit
     self.bind_property_mSize ()
     self.bind_property_mHorizontalAlignment ()
     self.bind_property_mVerticalAlignment ()
+    self.bind_property_mRotation ()
+    self.bind_property_mBold ()
     self.bind_property_mX ()
     self.bind_property_mY ()
     self.bind_property_mComment ()
@@ -125,6 +139,14 @@ import AppKit
     self.mVerticalAlignment_property.mReadModelFunction = nil 
     self.mVerticalAlignment_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_mVerticalAlignment_StopsBeingObserved (by: self.mVerticalAlignment_property)
+  //--- mRotation
+    self.mRotation_property.mReadModelFunction = nil 
+    self.mRotation_property.mWriteModelFunction = nil 
+    self.selectedArray_property.toMany_mRotation_StopsBeingObserved (by: self.mRotation_property)
+  //--- mBold
+    self.mBold_property.mReadModelFunction = nil 
+    self.mBold_property.mWriteModelFunction = nil 
+    self.selectedArray_property.toMany_mBold_StopsBeingObserved (by: self.mBold_property)
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
@@ -344,6 +366,108 @@ import AppKit
         case .single (let v) :
           for object in v {
             object.mVerticalAlignment_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mRotation () {
+    self.selectedArray_property.toMany_mRotation_StartsBeingObserved (by: self.mRotation_property)
+    self.mRotation_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mRotation_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRotation_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mRotation_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_mBold () {
+    self.selectedArray_property.toMany_mBold_StartsBeingObserved (by: self.mBold_property)
+    self.mBold_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mBold_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBold_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mBold_property.setProp (inValue)
           }
         }
       }

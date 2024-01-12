@@ -1664,27 +1664,34 @@ import AppKit
       .automaticallyAdjustHeight (maxWidth: 210)
       .bind_value (self.commentInSchematicSelectionController.mComment_property, sendContinously:true)
     _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutGridView2 ()
+    let view_2 = AutoLayoutCheckbox (title: "Bold", size: .small)
+      .bind_value (self.commentInSchematicSelectionController.mBold_property)
+    _ = vStackView.appendView (view_2)
+    let view_3 = AutoLayoutGridView2 ()
+      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_52 (), right: self.computeImplicitView_53 ())
       .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_54 (), right: self.computeImplicitView_55 ())
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutLinearSlider (min: 4, max: 20, ticks: 17)
+      .addFirstBaseLineAligned (left: self.computeImplicitView_56 (), right: self.computeImplicitView_57 ())
+      .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_58 (), right: self.computeImplicitView_59 ())
+    _ = vStackView.appendView (view_3)
+    let view_4 = AutoLayoutLinearSlider (min: 4, max: 20, ticks: 17)
       .setAllowsTickMarkValuesOnly ()
       .bind_doubleValue (self.commentInSchematicSelectionController.mSize_property, sendContinously:true)
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutStaticLabel (title: "Alignment", bold: false, size: .small, alignment: .left)
+    let view_5 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutEnumSegmentedControl (titles: HorizontalAlignment.popupTitles (), equalWidth: true, size: .small)
-      .bind_selectedSegment (self.commentInSchematicSelectionController.mHorizontalAlignment_property)
-    self.configure_labelHAlignmentSegmendControlConfigurator (view_6) // Configurator
+    let view_6 = AutoLayoutStaticLabel (title: "Alignment", bold: true, size: .small, alignment: .left)
     _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutEnumSegmentedControl (titles: VerticalAlignment.popupTitles (), equalWidth: true, size: .small)
-      .bind_selectedSegment (self.commentInSchematicSelectionController.mVerticalAlignment_property)
-    self.configure_labelVAlignmentSegmendControlConfigurator (view_7) // Configurator
+    let view_7 = AutoLayoutEnumSegmentedControl (titles: HorizontalAlignment.popupTitles (), equalWidth: true, size: .small)
+      .bind_selectedSegment (self.commentInSchematicSelectionController.mHorizontalAlignment_property)
+    self.configure_labelHAlignmentSegmendControlConfigurator (view_7) // Configurator
     _ = vStackView.appendView (view_7)
+    let view_8 = AutoLayoutEnumSegmentedControl (titles: VerticalAlignment.popupTitles (), equalWidth: true, size: .small)
+      .bind_selectedSegment (self.commentInSchematicSelectionController.mVerticalAlignment_property)
+    self.configure_labelVAlignmentSegmendControlConfigurator (view_8) // Configurator
+    _ = vStackView.appendView (view_8)
     return vStackView
   }
 
@@ -1697,8 +1704,8 @@ import AppKit
     let view_0 = AutoLayoutStaticLabel (title: "Symbol Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_56 (), right: self.computeImplicitView_57 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_58 (), right: self.computeImplicitView_59 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_60 (), right: self.computeImplicitView_61 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_62 (), right: self.computeImplicitView_63 ())
     _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     _ = vStackView.appendView (view_2)
@@ -1770,7 +1777,7 @@ import AppKit
   final func boardOutlinePage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
       .set (spacing: 0)
-    let view_0 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_74 ())
+    let view_0 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_78 ())
     _ = hStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
     _ = hStackView.appendView (view_1)
@@ -1812,8 +1819,8 @@ import AppKit
   final func BoardRectangularOutlineView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_75 (), right: self.computeImplicitView_76 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_77 (), right: self.computeImplicitView_78 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_79 (), right: self.computeImplicitView_80 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_81 (), right: self.computeImplicitView_82 ())
     _ = vStackView.appendView (view_0)
     return vStackView
   }
@@ -1831,14 +1838,14 @@ import AppKit
       .expandableHeight ()
     _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutGridView2 ()
-      .add (single: self.computeImplicitView_79 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_80 (), right: self.computeImplicitView_81 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_82 (), right: self.computeImplicitView_83 ())
+      .add (single: self.computeImplicitView_83 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_84 (), right: self.computeImplicitView_85 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_86 (), right: self.computeImplicitView_87 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_88 (), right: self.computeImplicitView_89 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_90 (), right: self.computeImplicitView_91 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_92 (), right: self.computeImplicitView_93 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_94 (), right: self.computeImplicitView_95 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_96 (), right: self.computeImplicitView_97 ())
       .bind_hidden (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)))
     _ = vStackView.appendView (view_2)
     return vStackView
@@ -2029,7 +2036,7 @@ import AppKit
       _ = view_0.appendView (view_0_4)
     }
     _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_172 ())
+    let view_1 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_176 ())
     _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_2)
@@ -2065,7 +2072,7 @@ import AppKit
       _ = view_0.appendView (view_0_4)
     }
     _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_203 ())
+    let view_1 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_207 ())
     _ = vStackView.appendView (view_1)
     return vStackView
   }
@@ -2144,26 +2151,26 @@ import AppKit
     let view_0 = AutoLayoutStaticLabel (title: "Board Track", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_204 (), right: self.computeImplicitView_205 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_206 (), right: self.computeImplicitView_207 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_208 (), right: self.computeImplicitView_209 ())
-      .add (single: self.computeImplicitView_210 ())
-      .add (single: self.computeImplicitView_211 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_210 (), right: self.computeImplicitView_211 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_212 (), right: self.computeImplicitView_213 ())
+      .add (single: self.computeImplicitView_214 ())
+      .add (single: self.computeImplicitView_215 ())
       .addSeparator ()
-      .add (single: self.computeImplicitView_212 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_213 (), right: self.computeImplicitView_214 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_215 (), right: self.computeImplicitView_216 ())
+      .add (single: self.computeImplicitView_216 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_217 (), right: self.computeImplicitView_218 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_219 (), right: self.computeImplicitView_220 ())
       .addSeparator ()
-      .add (single: self.computeImplicitView_217 ())
+      .add (single: self.computeImplicitView_221 ())
       .addSeparator ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_218 (), right: self.computeImplicitView_219 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_220 (), right: self.computeImplicitView_221 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_222 (), right: self.computeImplicitView_223 ())
-      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_224 (), right: self.computeImplicitView_225 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_226 (), right: self.computeImplicitView_227 ())
+      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_228 (), right: self.computeImplicitView_229 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_230 (), right: self.computeImplicitView_231 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_232 (), right: self.computeImplicitView_233 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_234 (), right: self.computeImplicitView_235 ())
     _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_2)
@@ -2179,16 +2186,16 @@ import AppKit
     let view_0 = AutoLayoutStaticLabel (title: "Via Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_232 (), right: self.computeImplicitView_233 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_234 (), right: self.computeImplicitView_235 ())
-      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_236 (), right: self.computeImplicitView_237 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_238 (), right: self.computeImplicitView_239 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_240 (), right: self.computeImplicitView_241 ())
       .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_240 (), right: self.computeImplicitView_241 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_242 (), right: self.computeImplicitView_243 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_244 (), right: self.computeImplicitView_245 ())
+      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_246 (), right: self.computeImplicitView_247 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_248 (), right: self.computeImplicitView_249 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_250 (), right: self.computeImplicitView_251 ())
     _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_2)
@@ -2204,13 +2211,13 @@ import AppKit
     let view_0 = AutoLayoutStaticLabel (title: "Line Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_248 (), right: self.computeImplicitView_249 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_250 (), right: self.computeImplicitView_251 ())
-      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_252 (), right: self.computeImplicitView_253 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_254 (), right: self.computeImplicitView_255 ())
+      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_256 (), right: self.computeImplicitView_257 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_258 (), right: self.computeImplicitView_259 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_260 (), right: self.computeImplicitView_261 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_262 (), right: self.computeImplicitView_263 ())
     _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_2)
@@ -2232,10 +2239,10 @@ import AppKit
       .bind_setter4 (self.restrictRectSelController.mXUnit_property, self.restrictRectSelController.mYUnit_property, self.restrictRectSelController.mWidthUnit_property, self.restrictRectSelController.mHeightUnit_property)
     _ = vStackView.appendView (view_2)
     let view_3 = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_260 (), right: self.computeImplicitView_261 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_262 (), right: self.computeImplicitView_263 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_264 (), right: self.computeImplicitView_265 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_266 (), right: self.computeImplicitView_267 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_268 (), right: self.computeImplicitView_269 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_270 (), right: self.computeImplicitView_271 ())
     _ = vStackView.appendView (view_3)
     let view_4 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_4)
@@ -2266,27 +2273,27 @@ import AppKit
       .bind_imageData (self.boardImageSelectionController.computedDataImage_property)
     _ = vStackView.appendView (view_2)
     let view_3 = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_268 (), right: self.computeImplicitView_269 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_270 (), right: self.computeImplicitView_271 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_272 (), right: self.computeImplicitView_273 ())
-      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_274 (), right: self.computeImplicitView_275 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_276 (), right: self.computeImplicitView_277 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_278 (), right: self.computeImplicitView_279 ())
       .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_278 (), right: self.computeImplicitView_279 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_280 (), right: self.computeImplicitView_281 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_282 (), right: self.computeImplicitView_283 ())
+      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_284 (), right: self.computeImplicitView_285 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_286 (), right: self.computeImplicitView_287 ())
-      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_288 (), right: self.computeImplicitView_289 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_290 (), right: self.computeImplicitView_291 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_292 (), right: self.computeImplicitView_293 ())
       .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_292 (), right: self.computeImplicitView_293 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_294 (), right: self.computeImplicitView_295 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_296 (), right: self.computeImplicitView_297 ())
+      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_298 (), right: self.computeImplicitView_299 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_300 (), right: self.computeImplicitView_301 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_302 (), right: self.computeImplicitView_303 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_304 (), right: self.computeImplicitView_305 ())
     _ = vStackView.appendView (view_3)
     let view_4 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_4)
@@ -2308,18 +2315,18 @@ import AppKit
       .bind_value (self.boardQRCodeSelectionController.mText_property, sendContinously:true)
     _ = vStackView.appendView (view_2)
     let view_3 = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_302 (), right: self.computeImplicitView_303 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_304 (), right: self.computeImplicitView_305 ())
-      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_306 (), right: self.computeImplicitView_307 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_308 (), right: self.computeImplicitView_309 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_310 (), right: self.computeImplicitView_311 ())
       .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_310 (), right: self.computeImplicitView_311 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_312 (), right: self.computeImplicitView_313 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_314 (), right: self.computeImplicitView_315 ())
       .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_316 (), right: self.computeImplicitView_317 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_318 (), right: self.computeImplicitView_319 ())
+      .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_320 (), right: self.computeImplicitView_321 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_322 (), right: self.computeImplicitView_323 ())
     _ = vStackView.appendView (view_3)
     let view_4 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_4)
@@ -2335,22 +2342,22 @@ import AppKit
     let view_0 = AutoLayoutStaticLabel (title: "Text Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_320 (), right: self.computeImplicitView_321 ())
-      .addSeparator ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_322 (), right: self.computeImplicitView_323 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_324 (), right: self.computeImplicitView_325 ())
       .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_326 (), right: self.computeImplicitView_327 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_328 (), right: self.computeImplicitView_329 ())
+      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_330 (), right: self.computeImplicitView_331 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_332 (), right: self.computeImplicitView_333 ())
-      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_334 (), right: self.computeImplicitView_335 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_336 (), right: self.computeImplicitView_337 ())
       .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_338 (), right: self.computeImplicitView_339 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_340 (), right: self.computeImplicitView_341 ())
-      .add (single: self.computeImplicitView_342 ())
+      .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_342 (), right: self.computeImplicitView_343 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_344 (), right: self.computeImplicitView_345 ())
+      .add (single: self.computeImplicitView_346 ())
     _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_2)
@@ -2387,7 +2394,7 @@ import AppKit
     _ = vStackView.appendView (view_5)
     let view_6 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_385 ())
+    let view_7 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_389 ())
     _ = vStackView.appendView (view_7)
     return vStackView
   }
@@ -2510,9 +2517,9 @@ import AppKit
   final func ArtworkDescriptionPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_386 (), right: self.computeImplicitView_387 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_388 (), right: self.computeImplicitView_389 ())
-      .addCenterYAligned (left: self.computeImplicitView_390 (), right: self.computeImplicitView_391 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_390 (), right: self.computeImplicitView_391 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_392 (), right: self.computeImplicitView_393 ())
+      .addCenterYAligned (left: self.computeImplicitView_394 (), right: self.computeImplicitView_395 ())
     _ = vStackView.appendView (view_0)
     return vStackView
   }
@@ -2597,8 +2604,8 @@ import AppKit
         do{
           let view_1_3_2_0 = AutoLayoutGridView2 ()
             .set (leftMargin: 20)
-            .addFirstBaseLineAligned (left: self.computeImplicitView_392 (), right: self.computeImplicitView_393 ())
-            .addFirstBaseLineAligned (left: self.computeImplicitView_394 (), right: self.computeImplicitView_395 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_396 (), right: self.computeImplicitView_397 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_398 (), right: self.computeImplicitView_399 ())
           _ = view_1_3_2.appendView (view_1_3_2_0)
           let view_1_3_2_1 = AutoLayoutFlexibleSpace ()
           _ = view_1_3_2.appendView (view_1_3_2_1)
@@ -2640,12 +2647,12 @@ import AppKit
         do{
           let view_1_3_7_0 = AutoLayoutGridView2 ()
             .set (leftMargin: 20)
-            .addFirstBaseLineAligned (left: self.computeImplicitView_396 (), right: self.computeImplicitView_397 ())
-            .addFirstBaseLineAligned (left: self.computeImplicitView_398 (), right: self.computeImplicitView_399 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_400 (), right: self.computeImplicitView_401 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_402 (), right: self.computeImplicitView_403 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_404 (), right: self.computeImplicitView_405 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_406 (), right: self.computeImplicitView_407 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_408 (), right: self.computeImplicitView_409 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_410 (), right: self.computeImplicitView_411 ())
           _ = view_1_3_7.appendView (view_1_3_7_0)
           let view_1_3_7_1 = AutoLayoutFlexibleSpace ()
           _ = view_1_3_7.appendView (view_1_3_7_1)
@@ -2657,8 +2664,8 @@ import AppKit
         do{
           let view_1_3_9_0 = AutoLayoutGridView2 ()
             .set (leftMargin: 20)
-            .addFirstBaseLineAligned (left: self.computeImplicitView_408 (), right: self.computeImplicitView_409 ())
-            .addFirstBaseLineAligned (left: self.computeImplicitView_410 (), right: self.computeImplicitView_411 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_412 (), right: self.computeImplicitView_413 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_414 (), right: self.computeImplicitView_415 ())
           _ = view_1_3_9.appendView (view_1_3_9_0)
           let view_1_3_9_1 = AutoLayoutFlexibleSpace ()
           _ = view_1_3_9.appendView (view_1_3_9_1)
@@ -2795,10 +2802,10 @@ import AppKit
         .set (leftMargin: 20)
         .set (rightMargin: 20)
         .set (topMargin: 8)
-        .addFirstBaseLineAligned (left: self.computeImplicitView_412 (), right: self.computeImplicitView_413 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_414 (), right: self.computeImplicitView_415 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_416 (), right: self.computeImplicitView_417 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_418 (), right: self.computeImplicitView_419 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_420 (), right: self.computeImplicitView_421 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_422 (), right: self.computeImplicitView_423 ())
       _ = view_1.appendView (view_1_1)
       let view_1_2 = AutoLayoutFlexibleSpace ()
       _ = view_1.appendView (view_1_2)
@@ -3443,7 +3450,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_52 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Color", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Color", bold: true, size: .small, alignment: .left)
     return view
   }
 
@@ -3462,7 +3469,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_54 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Rotation", bold: true, size: .small, alignment: .left)
     return view
   }
 
@@ -3471,8 +3478,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_55 () -> NSView {
-    let view = AutoLayoutDoubleField (width: 64, size: .small)
-      .bind_value (self.commentInSchematicSelectionController.mSize_property, sendContinously:true)
+    let view = AutoLayoutCanariPreferredDirectionSegmentedControl ()
+      .bind_angle (self.commentInSchematicSelectionController.mRotation_property)
     return view
   }
 
@@ -3481,7 +3488,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_56 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Orientation", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -3490,8 +3497,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_57 () -> NSView {
-    let view = AutoLayoutEnumSegmentedControl (titles: QuadrantRotation.degreesTitles (), equalWidth: false, size: .small)
-      .bind_selectedSegment (self.componentSymbolSelectionController.mRotation_property)
+    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+      .bind_angle (self.commentInSchematicSelectionController.mRotation_property)
     return view
   }
 
@@ -3500,7 +3507,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_58 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
+    let view = AutoLayoutStaticLabel (title: "Size", bold: true, size: .small, alignment: .left)
     return view
   }
 
@@ -3509,8 +3516,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_59 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Mirror", size: .small)
-      .bind_value (self.componentSymbolSelectionController.mMirror_property)
+    let view = AutoLayoutDoubleField (width: 64, size: .small)
+      .bind_value (self.commentInSchematicSelectionController.mSize_property, sendContinously:true)
     return view
   }
 
@@ -3519,7 +3526,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_60 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Board Limit Width", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Orientation", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -3528,8 +3535,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_61 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.mBoardLimitsWidth_property, self.rootObject.mBoardLimitsWidthUnit_property)
+    let view = AutoLayoutEnumSegmentedControl (titles: QuadrantRotation.degreesTitles (), equalWidth: false, size: .small)
+      .bind_selectedSegment (self.componentSymbolSelectionController.mRotation_property)
     return view
   }
 
@@ -3538,7 +3545,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_62 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Board Clearance", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -3547,8 +3554,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_63 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.mBoardClearance_property, self.rootObject.mBoardClearanceUnit_property)
+    let view = AutoLayoutCheckbox (title: "Mirror", size: .small)
+      .bind_value (self.componentSymbolSelectionController.mMirror_property)
     return view
   }
 
@@ -3557,7 +3564,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_64 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Board Limit Width", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -3567,7 +3574,7 @@ import AppKit
 
   private final func computeImplicitView_65 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.mBoardLimitsGridStep_property, self.rootObject.mBoardLimitsGridStepUnit_property)
+      .bind_dimensionAndUnit (self.rootObject.mBoardLimitsWidth_property, self.rootObject.mBoardLimitsWidthUnit_property)
     return view
   }
 
@@ -3576,7 +3583,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_66 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Display Grid", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Board Clearance", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -3585,9 +3592,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_67 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles (), size: .small)
-      .expandableWidth ()
-      .bind_selectedIndex (self.rootObject.mBoardLimitsGridStyle_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.mBoardClearance_property, self.rootObject.mBoardClearanceUnit_property)
     return view
   }
 
@@ -3596,7 +3602,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_68 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Grid Display", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -3605,6 +3611,45 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_69 () -> NSView {
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.mBoardLimitsGridStep_property, self.rootObject.mBoardLimitsGridStepUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 70
+  //····················································································································
+
+  private final func computeImplicitView_70 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Display Grid", bold: false, size: .small, alignment: .right)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 71
+  //····················································································································
+
+  private final func computeImplicitView_71 () -> NSView {
+    let view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles (), size: .small)
+      .expandableWidth ()
+      .bind_selectedIndex (self.rootObject.mBoardLimitsGridStyle_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 72
+  //····················································································································
+
+  private final func computeImplicitView_72 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Grid Display", bold: false, size: .small, alignment: .right)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 73
+  //····················································································································
+
+  private final func computeImplicitView_73 () -> NSView {
     let view = AutoLayoutTaggedPopUpButton (size: .small)
       .expandableWidth ()
       .add (title: "1 Step", withTag: 1)
@@ -3618,19 +3663,19 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 70
+  //    IMPLICIT VIEW 74
   //····················································································································
 
-  private final func computeImplicitView_70 () -> NSView {
+  private final func computeImplicitView_74 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 71
+  //    IMPLICIT VIEW 75
   //····················································································································
 
-  private final func computeImplicitView_71 () -> NSView {
+  private final func computeImplicitView_75 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
       .expandableWidth ()
       .bind_value (self.rootObject.mBoardLimitsHorizontalFlip_property)
@@ -3638,19 +3683,19 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 72
+  //    IMPLICIT VIEW 76
   //····················································································································
 
-  private final func computeImplicitView_72 () -> NSView {
+  private final func computeImplicitView_76 () -> NSView {
     let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 73
+  //    IMPLICIT VIEW 77
   //····················································································································
 
-  private final func computeImplicitView_73 () -> NSView {
+  private final func computeImplicitView_77 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
       .expandableWidth ()
       .bind_value (self.rootObject.mBoardLimitsVerticalFlip_property)
@@ -3658,10 +3703,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 74
+  //    IMPLICIT VIEW 78
   //····················································································································
 
-  private final func computeImplicitView_74 () -> NSView {
+  private final func computeImplicitView_78 () -> NSView {
     let view = AutoLayoutVerticalStackView ()
       .set (margins: 8)
       .set (width: 250)
@@ -3683,8 +3728,8 @@ import AppKit
       let view_4 = AutoLayoutStaticLabel (title: "Outlines", bold: true, size: .small, alignment: .center)
       _ = view.appendView (view_4)
       let view_5 = AutoLayoutGridView2 ()
-        .addFirstBaseLineAligned (left: self.computeImplicitView_60 (), right: self.computeImplicitView_61 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_62 (), right: self.computeImplicitView_63 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_64 (), right: self.computeImplicitView_65 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_66 (), right: self.computeImplicitView_67 ())
       _ = view.appendView (view_5)
       let view_6 = AutoLayoutVerticalStackView.HorizontalSeparator ()
       _ = view.appendView (view_6)
@@ -3713,11 +3758,11 @@ import AppKit
       let view_13 = AutoLayoutStaticLabel (title: "Grid and Flip Inspector", bold: true, size: .small, alignment: .center)
       _ = view.appendView (view_13)
       let view_14 = AutoLayoutGridView2 ()
-        .addFirstBaseLineAligned (left: self.computeImplicitView_64 (), right: self.computeImplicitView_65 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_66 (), right: self.computeImplicitView_67 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_68 (), right: self.computeImplicitView_69 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_70 (), right: self.computeImplicitView_71 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_72 (), right: self.computeImplicitView_73 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_74 (), right: self.computeImplicitView_75 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_76 (), right: self.computeImplicitView_77 ())
       _ = view.appendView (view_14)
       let view_15 = AutoLayoutVerticalStackView.HorizontalSeparator ()
       _ = view.appendView (view_15)
@@ -3733,49 +3778,11 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 75
-  //····················································································································
-
-  private final func computeImplicitView_75 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Board Width", bold: false, size: .small, alignment: .right)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 76
-  //····················································································································
-
-  private final func computeImplicitView_76 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.mRectangularBoardWidth_property, self.rootObject.mRectangularBoardWidthUnit_property)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 77
-  //····················································································································
-
-  private final func computeImplicitView_77 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Board Height", bold: false, size: .small, alignment: .right)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 78
-  //····················································································································
-
-  private final func computeImplicitView_78 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.mRectangularBoardHeight_property, self.rootObject.mRectangularBoardHeightUnit_property)
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 79
   //····················································································································
 
   private final func computeImplicitView_79 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Selected Board Limit Element", bold: true, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Board Width", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -3784,7 +3791,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_80 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Shape", bold: true, size: .small, alignment: .left)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.mRectangularBoardWidth_property, self.rootObject.mRectangularBoardWidthUnit_property)
     return view
   }
 
@@ -3793,8 +3801,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_81 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: BorderCurveShape.popupTitles (), size: .small)
-      .bind_selectedIndex (self.boardCurveSelectionController.mShape_property)
+    let view = AutoLayoutStaticLabel (title: "Board Height", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -3803,7 +3810,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_82 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "End Points", bold: true, size: .small, alignment: .left)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.mRectangularBoardHeight_property, self.rootObject.mRectangularBoardHeightUnit_property)
     return view
   }
 
@@ -3812,8 +3820,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_83 () -> NSView {
-    let view = AutoLayoutCanariUnitPopUpButton (size: .small)
-      .bind_unit (self.rootObject.mBoardSelectedCurveDisplayUnit_property)
+    let view = AutoLayoutStaticLabel (title: "Selected Board Limit Element", bold: true, size: .small, alignment: .center)
     return view
   }
 
@@ -3822,6 +3829,44 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_84 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Shape", bold: true, size: .small, alignment: .left)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 85
+  //····················································································································
+
+  private final func computeImplicitView_85 () -> NSView {
+    let view = AutoLayoutEnumPopUpButton (titles: BorderCurveShape.popupTitles (), size: .small)
+      .bind_selectedIndex (self.boardCurveSelectionController.mShape_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 86
+  //····················································································································
+
+  private final func computeImplicitView_86 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "End Points", bold: true, size: .small, alignment: .left)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 87
+  //····················································································································
+
+  private final func computeImplicitView_87 () -> NSView {
+    let view = AutoLayoutCanariUnitPopUpButton (size: .small)
+      .bind_unit (self.rootObject.mBoardSelectedCurveDisplayUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 88
+  //····················································································································
+
+  private final func computeImplicitView_88 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
@@ -3835,10 +3880,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 85
+  //    IMPLICIT VIEW 89
   //····················································································································
 
-  private final func computeImplicitView_85 () -> NSView {
+  private final func computeImplicitView_89 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
@@ -3852,10 +3897,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 86
+  //    IMPLICIT VIEW 90
   //····················································································································
 
-  private final func computeImplicitView_86 () -> NSView {
+  private final func computeImplicitView_90 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
@@ -3869,10 +3914,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 87
+  //    IMPLICIT VIEW 91
   //····················································································································
 
-  private final func computeImplicitView_87 () -> NSView {
+  private final func computeImplicitView_91 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
@@ -3886,20 +3931,20 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 88
+  //    IMPLICIT VIEW 92
   //····················································································································
 
-  private final func computeImplicitView_88 () -> NSView {
+  private final func computeImplicitView_92 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Control Points", bold: true, size: .small, alignment: .left)
       .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 89
+  //    IMPLICIT VIEW 93
   //····················································································································
 
-  private final func computeImplicitView_89 () -> NSView {
+  private final func computeImplicitView_93 () -> NSView {
     let view = AutoLayoutCanariUnitPopUpButton (size: .small)
       .bind_unit (self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
       .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
@@ -3907,10 +3952,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 90
+  //    IMPLICIT VIEW 94
   //····················································································································
 
-  private final func computeImplicitView_90 () -> NSView {
+  private final func computeImplicitView_94 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
@@ -3928,10 +3973,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 91
+  //    IMPLICIT VIEW 95
   //····················································································································
 
-  private final func computeImplicitView_91 () -> NSView {
+  private final func computeImplicitView_95 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
@@ -3949,10 +3994,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 92
+  //    IMPLICIT VIEW 96
   //····················································································································
 
-  private final func computeImplicitView_92 () -> NSView {
+  private final func computeImplicitView_96 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
@@ -3970,10 +4015,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 93
+  //    IMPLICIT VIEW 97
   //····················································································································
 
-  private final func computeImplicitView_93 () -> NSView {
+  private final func computeImplicitView_97 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
@@ -3991,49 +4036,11 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 94
-  //····················································································································
-
-  private final func computeImplicitView_94 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Grid and Flip", bold: true, size: .small, alignment: .left)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 95
-  //····················································································································
-
-  private final func computeImplicitView_95 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .right)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 96
-  //····················································································································
-
-  private final func computeImplicitView_96 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.mBoardGridStep_property, self.rootObject.mBoardGridStepUnit_property)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 97
-  //····················································································································
-
-  private final func computeImplicitView_97 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Display", bold: false, size: .small, alignment: .right)
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 98
   //····················································································································
 
   private final func computeImplicitView_98 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles (), size: .small)
-      .bind_selectedIndex (self.rootObject.mBoardGridStyle_property)
+    let view = AutoLayoutStaticLabel (title: "Grid and Flip", bold: true, size: .small, alignment: .left)
     return view
   }
 
@@ -4042,7 +4049,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_99 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Every", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -4051,6 +4058,44 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_100 () -> NSView {
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.mBoardGridStep_property, self.rootObject.mBoardGridStepUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 101
+  //····················································································································
+
+  private final func computeImplicitView_101 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Display", bold: false, size: .small, alignment: .right)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 102
+  //····················································································································
+
+  private final func computeImplicitView_102 () -> NSView {
+    let view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles (), size: .small)
+      .bind_selectedIndex (self.rootObject.mBoardGridStyle_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 103
+  //····················································································································
+
+  private final func computeImplicitView_103 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Every", bold: false, size: .small, alignment: .right)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 104
+  //····················································································································
+
+  private final func computeImplicitView_104 () -> NSView {
     let view = AutoLayoutTaggedPopUpButton (size: .small)
       .add (title: "1 Step", withTag: 1)
       .add (title: "2 Steps", withTag: 2)
@@ -4063,49 +4108,11 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 101
-  //····················································································································
-
-  private final func computeImplicitView_101 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 102
-  //····················································································································
-
-  private final func computeImplicitView_102 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
-      .bind_value (self.rootObject.mBoardHorizontalFlip_property)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 103
-  //····················································································································
-
-  private final func computeImplicitView_103 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 104
-  //····················································································································
-
-  private final func computeImplicitView_104 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
-      .bind_value (self.rootObject.mBoardVerticalFlip_property)
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 105
   //····················································································································
 
   private final func computeImplicitView_105 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Cross Grid", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -4114,10 +4121,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_106 () -> NSView {
-    let view = AutoLayoutColorWell ()
-      .expandableWidth ()
-      .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_crossColorGridForBoard_property)
+    let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
+      .bind_value (self.rootObject.mBoardHorizontalFlip_property)
     return view
   }
 
@@ -4126,7 +4131,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_107 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Line Grid", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -4135,10 +4140,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_108 () -> NSView {
-    let view = AutoLayoutColorWell ()
-      .expandableWidth ()
-      .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_lineColorGridForBoard_property)
+    let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
+      .bind_value (self.rootObject.mBoardVerticalFlip_property)
     return view
   }
 
@@ -4147,7 +4150,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_109 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Rastnet", bold: true, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "Cross Grid", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -4156,8 +4159,10 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_110 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: RastnetDisplay.popupTitles (), size: .small)
-      .bind_selectedIndex (self.rootObject.mRastnetDisplay_property)
+    let view = AutoLayoutColorWell ()
+      .expandableWidth ()
+      .set (toolTip: "Stored in Preferences")
+      .bind_color (preferences_crossColorGridForBoard_property)
     return view
   }
 
@@ -4166,9 +4171,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_111 () -> NSView {
-    let view = AutoLayoutCanariSelectionPopUpButton (size: .small)
-      .bind_selectedNameInArray (self.rootObject.mRastnetDisplayedNetName_property, self.rootObject.netNamesArray_property)
-      .bind_hidden (.not (.prop (self.rastnetDisplayOneNet_property)))
+    let view = AutoLayoutStaticLabel (title: "Line Grid", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -4177,9 +4180,10 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_112 () -> NSView {
-    let view = AutoLayoutCanariSelectionPopUpButton (size: .small)
-      .bind_selectedNameInArray (self.rootObject.mRastnetDisplayedComponentName_property, self.rootObject.placedComponentNameArray_property)
-      .bind_hidden (.not (.prop (self.rastnetDisplayComponentNet_property)))
+    let view = AutoLayoutColorWell ()
+      .expandableWidth ()
+      .set (toolTip: "Stored in Preferences")
+      .bind_color (preferences_lineColorGridForBoard_property)
     return view
   }
 
@@ -4188,7 +4192,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_113 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Warning and Error Circle", bold: true, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Rastnet", bold: true, size: .small, alignment: .left)
     return view
   }
 
@@ -4197,8 +4201,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_114 () -> NSView {
-    let view = AutoLayoutLinearSlider (min: 0, max: 24, ticks: 13)
-      .bind_doubleValue (self.rootObject.mErrorOrWarningIssueSize_property, sendContinously:true)
+    let view = AutoLayoutEnumPopUpButton (titles: RastnetDisplay.popupTitles (), size: .small)
+      .bind_selectedIndex (self.rootObject.mRastnetDisplay_property)
     return view
   }
 
@@ -4207,7 +4211,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_115 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Contextual Click Diameter", bold: true, size: .small, alignment: .center)
+    let view = AutoLayoutCanariSelectionPopUpButton (size: .small)
+      .bind_selectedNameInArray (self.rootObject.mRastnetDisplayedNetName_property, self.rootObject.netNamesArray_property)
+      .bind_hidden (.not (.prop (self.rastnetDisplayOneNet_property)))
     return view
   }
 
@@ -4216,8 +4222,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_116 () -> NSView {
-    let view = AutoLayoutLinearSlider (min: 10, max: 200, ticks: 10)
-      .bind_doubleValue (self.rootObject.mControlKeyHiliteDiameter_property, sendContinously:true)
+    let view = AutoLayoutCanariSelectionPopUpButton (size: .small)
+      .bind_selectedNameInArray (self.rootObject.mRastnetDisplayedComponentName_property, self.rootObject.placedComponentNameArray_property)
+      .bind_hidden (.not (.prop (self.rastnetDisplayComponentNet_property)))
     return view
   }
 
@@ -4226,7 +4233,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_117 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Pad Number", bold: true, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "Warning and Error Circle", bold: true, size: .small, alignment: .center)
     return view
   }
 
@@ -4235,8 +4242,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_118 () -> NSView {
-    let view = AutoLayoutFontButton (width: 125, size: .small)
-      .bind_fontValue (preferences_padNumberFontForBoard_property)
+    let view = AutoLayoutLinearSlider (min: 0, max: 24, ticks: 13)
+      .bind_doubleValue (self.rootObject.mErrorOrWarningIssueSize_property, sendContinously:true)
     return view
   }
 
@@ -4245,7 +4252,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_119 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Package Width", bold: true, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "Contextual Click Diameter", bold: true, size: .small, alignment: .center)
     return view
   }
 
@@ -4254,6 +4261,44 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_120 () -> NSView {
+    let view = AutoLayoutLinearSlider (min: 10, max: 200, ticks: 10)
+      .bind_doubleValue (self.rootObject.mControlKeyHiliteDiameter_property, sendContinously:true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 121
+  //····················································································································
+
+  private final func computeImplicitView_121 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Pad Number", bold: true, size: .small, alignment: .left)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 122
+  //····················································································································
+
+  private final func computeImplicitView_122 () -> NSView {
+    let view = AutoLayoutFontButton (width: 125, size: .small)
+      .bind_fontValue (preferences_padNumberFontForBoard_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 123
+  //····················································································································
+
+  private final func computeImplicitView_123 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Package Width", bold: true, size: .small, alignment: .left)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 124
+  //····················································································································
+
+  private final func computeImplicitView_124 () -> NSView {
     let view = AutoLayoutTaggedPopUpButton (size: .small)
       .add (title: "0.5 Point", withTag: 5)
       .add (title: "1.0 Point", withTag: 10)
@@ -4265,67 +4310,11 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 121
-  //····················································································································
-
-  private final func computeImplicitView_121 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Front side Display", bold: true, size: .small, alignment: .left)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 122
-  //····················································································································
-
-  private final func computeImplicitView_122 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutFlexibleSpace ()
-      _ = view.appendView (view_0)
-      let view_1 = AutoLayoutColorWell ()
-        .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_frontSidePadColorForBoard_property)
-      _ = view.appendView (view_1)
-    }
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 123
-  //····················································································································
-
-  private final func computeImplicitView_123 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Pads", size: .small)
-      .expandableHeight ()
-      .bind_value (self.rootObject.displayFrontPadsForBoard_property)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 124
-  //····················································································································
-
-  private final func computeImplicitView_124 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutFlexibleSpace ()
-      _ = view.appendView (view_0)
-      let view_1 = AutoLayoutColorWell ()
-        .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_frontSideLegendColorForBoard_property)
-      _ = view.appendView (view_1)
-    }
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 125
   //····················································································································
 
   private final func computeImplicitView_125 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Legend", size: .small)
-      .expandableHeight ()
-      .bind_value (self.rootObject.displayFrontLegendForBoard_property)
+    let view = AutoLayoutStaticLabel (title: "Front side Display", bold: true, size: .small, alignment: .left)
     return view
   }
 
@@ -4340,7 +4329,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_frontSideLayoutColorForBoard_property)
+        .bind_color (preferences_frontSidePadColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4351,9 +4340,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_127 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Layout", size: .small)
+    let view = AutoLayoutCheckbox (title: "Pads", size: .small)
       .expandableHeight ()
-      .bind_value (self.rootObject.displayFrontLayoutForBoard_property)
+      .bind_value (self.rootObject.displayFrontPadsForBoard_property)
     return view
   }
 
@@ -4368,7 +4357,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_frontSideRestrictRectangleColorForBoard_property)
+        .bind_color (preferences_frontSideLegendColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4379,9 +4368,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_129 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
+    let view = AutoLayoutCheckbox (title: "Legend", size: .small)
       .expandableHeight ()
-      .bind_value (self.rootObject.displayFrontRestrictRectangles_property)
+      .bind_value (self.rootObject.displayFrontLegendForBoard_property)
     return view
   }
 
@@ -4390,7 +4379,15 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_130 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Back Side Display", bold: true, size: .small, alignment: .left)
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutFlexibleSpace ()
+      _ = view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
+        .bind_color (preferences_frontSideLayoutColorForBoard_property)
+      _ = view.appendView (view_1)
+    }
     return view
   }
 
@@ -4399,15 +4396,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_131 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutFlexibleSpace ()
-      _ = view.appendView (view_0)
-      let view_1 = AutoLayoutColorWell ()
-        .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_backSidePadColorForBoard_property)
-      _ = view.appendView (view_1)
-    }
+    let view = AutoLayoutCheckbox (title: "Layout", size: .small)
+      .expandableHeight ()
+      .bind_value (self.rootObject.displayFrontLayoutForBoard_property)
     return view
   }
 
@@ -4416,9 +4407,15 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_132 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Pads", size: .small)
-      .expandableHeight ()
-      .bind_value (self.rootObject.displayBackPadsForBoard_property)
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutFlexibleSpace ()
+      _ = view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
+        .bind_color (preferences_frontSideRestrictRectangleColorForBoard_property)
+      _ = view.appendView (view_1)
+    }
     return view
   }
 
@@ -4427,15 +4424,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_133 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutFlexibleSpace ()
-      _ = view.appendView (view_0)
-      let view_1 = AutoLayoutColorWell ()
-        .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_backSideLegendColorForBoard_property)
-      _ = view.appendView (view_1)
-    }
+    let view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
+      .expandableHeight ()
+      .bind_value (self.rootObject.displayFrontRestrictRectangles_property)
     return view
   }
 
@@ -4444,9 +4435,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_134 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Legend", size: .small)
-      .expandableHeight ()
-      .bind_value (self.rootObject.displayBackLegendForBoard_property)
+    let view = AutoLayoutStaticLabel (title: "Back Side Display", bold: true, size: .small, alignment: .left)
     return view
   }
 
@@ -4461,7 +4450,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_backSideLayoutColorForBoard_property)
+        .bind_color (preferences_backSidePadColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4472,9 +4461,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_136 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Layout", size: .small)
+    let view = AutoLayoutCheckbox (title: "Pads", size: .small)
       .expandableHeight ()
-      .bind_value (self.rootObject.displayBackLayoutForBoard_property)
+      .bind_value (self.rootObject.displayBackPadsForBoard_property)
     return view
   }
 
@@ -4489,7 +4478,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_backSideRestrictRectangleColorForBoard_property)
+        .bind_color (preferences_backSideLegendColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4500,9 +4489,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_138 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
+    let view = AutoLayoutCheckbox (title: "Legend", size: .small)
       .expandableHeight ()
-      .bind_value (self.rootObject.displayBackRestrictRectangles_property)
+      .bind_value (self.rootObject.displayBackLegendForBoard_property)
     return view
   }
 
@@ -4511,7 +4500,15 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_139 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Inner 1 Layer Display", bold: true, size: .small, alignment: .left)
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutFlexibleSpace ()
+      _ = view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
+        .bind_color (preferences_backSideLayoutColorForBoard_property)
+      _ = view.appendView (view_1)
+    }
     return view
   }
 
@@ -4520,6 +4517,54 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_140 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Layout", size: .small)
+      .expandableHeight ()
+      .bind_value (self.rootObject.displayBackLayoutForBoard_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 141
+  //····················································································································
+
+  private final func computeImplicitView_141 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutFlexibleSpace ()
+      _ = view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
+        .bind_color (preferences_backSideRestrictRectangleColorForBoard_property)
+      _ = view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 142
+  //····················································································································
+
+  private final func computeImplicitView_142 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
+      .expandableHeight ()
+      .bind_value (self.rootObject.displayBackRestrictRectangles_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 143
+  //····················································································································
+
+  private final func computeImplicitView_143 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Inner 1 Layer Display", bold: true, size: .small, alignment: .left)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 144
+  //····················································································································
+
+  private final func computeImplicitView_144 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutFlexibleSpace ()
@@ -4533,10 +4578,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 141
+  //    IMPLICIT VIEW 145
   //····················································································································
 
-  private final func computeImplicitView_141 () -> NSView {
+  private final func computeImplicitView_145 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Layout", size: .small)
       .expandableHeight ()
       .bind_value (self.rootObject.displayInner1LayoutForBoard_property)
@@ -4544,10 +4589,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 142
+  //    IMPLICIT VIEW 146
   //····················································································································
 
-  private final func computeImplicitView_142 () -> NSView {
+  private final func computeImplicitView_146 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutFlexibleSpace ()
@@ -4561,10 +4606,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 143
+  //    IMPLICIT VIEW 147
   //····················································································································
 
-  private final func computeImplicitView_143 () -> NSView {
+  private final func computeImplicitView_147 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
       .expandableHeight ()
       .bind_value (self.rootObject.displayInner1RestrictRectangles_property)
@@ -4572,19 +4617,19 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 144
+  //    IMPLICIT VIEW 148
   //····················································································································
 
-  private final func computeImplicitView_144 () -> NSView {
+  private final func computeImplicitView_148 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Inner 2 Layer Display", bold: true, size: .small, alignment: .left)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 145
+  //    IMPLICIT VIEW 149
   //····················································································································
 
-  private final func computeImplicitView_145 () -> NSView {
+  private final func computeImplicitView_149 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutFlexibleSpace ()
@@ -4598,10 +4643,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 146
+  //    IMPLICIT VIEW 150
   //····················································································································
 
-  private final func computeImplicitView_146 () -> NSView {
+  private final func computeImplicitView_150 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Layout", size: .small)
       .expandableHeight ()
       .bind_value (self.rootObject.displayInner2LayoutForBoard_property)
@@ -4609,10 +4654,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 147
+  //    IMPLICIT VIEW 151
   //····················································································································
 
-  private final func computeImplicitView_147 () -> NSView {
+  private final func computeImplicitView_151 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutFlexibleSpace ()
@@ -4626,10 +4671,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 148
+  //    IMPLICIT VIEW 152
   //····················································································································
 
-  private final func computeImplicitView_148 () -> NSView {
+  private final func computeImplicitView_152 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
       .expandableHeight ()
       .bind_value (self.rootObject.displayInner2RestrictRectangles_property)
@@ -4637,19 +4682,19 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 149
+  //    IMPLICIT VIEW 153
   //····················································································································
 
-  private final func computeImplicitView_149 () -> NSView {
+  private final func computeImplicitView_153 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Inner 3 Layer Display", bold: true, size: .small, alignment: .left)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 150
+  //    IMPLICIT VIEW 154
   //····················································································································
 
-  private final func computeImplicitView_150 () -> NSView {
+  private final func computeImplicitView_154 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutFlexibleSpace ()
@@ -4663,10 +4708,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 151
+  //    IMPLICIT VIEW 155
   //····················································································································
 
-  private final func computeImplicitView_151 () -> NSView {
+  private final func computeImplicitView_155 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Layout", size: .small)
       .expandableHeight ()
       .bind_value (self.rootObject.displayInner3LayoutForBoard_property)
@@ -4674,10 +4719,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 152
+  //    IMPLICIT VIEW 156
   //····················································································································
 
-  private final func computeImplicitView_152 () -> NSView {
+  private final func computeImplicitView_156 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutFlexibleSpace ()
@@ -4691,10 +4736,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 153
+  //    IMPLICIT VIEW 157
   //····················································································································
 
-  private final func computeImplicitView_153 () -> NSView {
+  private final func computeImplicitView_157 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
       .expandableHeight ()
       .bind_value (self.rootObject.displayInner3RestrictRectangles_property)
@@ -4702,19 +4747,19 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 154
+  //    IMPLICIT VIEW 158
   //····················································································································
 
-  private final func computeImplicitView_154 () -> NSView {
+  private final func computeImplicitView_158 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Inner 4 Layer Display", bold: true, size: .small, alignment: .left)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 155
+  //    IMPLICIT VIEW 159
   //····················································································································
 
-  private final func computeImplicitView_155 () -> NSView {
+  private final func computeImplicitView_159 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutFlexibleSpace ()
@@ -4728,10 +4773,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 156
+  //    IMPLICIT VIEW 160
   //····················································································································
 
-  private final func computeImplicitView_156 () -> NSView {
+  private final func computeImplicitView_160 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Layout", size: .small)
       .expandableHeight ()
       .bind_value (self.rootObject.displayInner4LayoutForBoard_property)
@@ -4739,10 +4784,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 157
+  //    IMPLICIT VIEW 161
   //····················································································································
 
-  private final func computeImplicitView_157 () -> NSView {
+  private final func computeImplicitView_161 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutFlexibleSpace ()
@@ -4756,67 +4801,13 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 158
-  //····················································································································
-
-  private final func computeImplicitView_158 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
-      .expandableHeight ()
-      .bind_value (self.rootObject.displayInner4RestrictRectangles_property)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 159
-  //····················································································································
-
-  private final func computeImplicitView_159 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Other", bold: true, size: .small, alignment: .left)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 160
-  //····················································································································
-
-  private final func computeImplicitView_160 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutFlexibleSpace ()
-      _ = view.appendView (view_0)
-      let view_1 = AutoLayoutColorWell ()
-        .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_padNumberColorForBoard_property)
-      _ = view.appendView (view_1)
-    }
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 161
-  //····················································································································
-
-  private final func computeImplicitView_161 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Pad Numbers", size: .small)
-      .expandableHeight ()
-      .bind_value (self.rootObject.displayPadNumbersForBoard_property)
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 162
   //····················································································································
 
   private final func computeImplicitView_162 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutFlexibleSpace ()
-      _ = view.appendView (view_0)
-      let view_1 = AutoLayoutColorWell ()
-        .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_boardLimitsColorForBoard_property)
-      _ = view.appendView (view_1)
-    }
+    let view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
+      .expandableHeight ()
+      .bind_value (self.rootObject.displayInner4RestrictRectangles_property)
     return view
   }
 
@@ -4825,7 +4816,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_163 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Board Limits", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "Other", bold: true, size: .small, alignment: .left)
     return view
   }
 
@@ -4840,7 +4831,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_boardClearanceColorForBoard_property)
+        .bind_color (preferences_padNumberColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4851,7 +4842,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_165 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Board Clearance", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutCheckbox (title: "Pad Numbers", size: .small)
+      .expandableHeight ()
+      .bind_value (self.rootObject.displayPadNumbersForBoard_property)
     return view
   }
 
@@ -4866,7 +4859,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_boardBackgroundColorForBoard_property)
+        .bind_color (preferences_boardLimitsColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4877,7 +4870,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_167 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "Board Limits", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -4892,7 +4885,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_errorBackgroundColorForBoard_property)
+        .bind_color (preferences_boardClearanceColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4903,9 +4896,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_169 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Error Background", size: .small)
-      .expandableHeight ()
-      .bind_value (self.rootObject.drawErrorBackgroundForBoard_property)
+    let view = AutoLayoutStaticLabel (title: "Board Clearance", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -4920,7 +4911,7 @@ import AppKit
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_warningBackgroundColorForBoard_property)
+        .bind_color (preferences_boardBackgroundColorForBoard_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -4931,9 +4922,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_171 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Warning Background", size: .small)
-      .expandableHeight ()
-      .bind_value (preferences_drawWarningBackgroundForBoard_property)
+    let view = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -4942,19 +4931,71 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_172 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutFlexibleSpace ()
+      _ = view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
+        .bind_color (preferences_errorBackgroundColorForBoard_property)
+      _ = view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 173
+  //····················································································································
+
+  private final func computeImplicitView_173 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Error Background", size: .small)
+      .expandableHeight ()
+      .bind_value (self.rootObject.drawErrorBackgroundForBoard_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 174
+  //····················································································································
+
+  private final func computeImplicitView_174 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutFlexibleSpace ()
+      _ = view.appendView (view_0)
+      let view_1 = AutoLayoutColorWell ()
+        .set (toolTip: "Stored in Preferences")
+        .bind_color (preferences_warningBackgroundColorForBoard_property)
+      _ = view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 175
+  //····················································································································
+
+  private final func computeImplicitView_175 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Warning Background", size: .small)
+      .expandableHeight ()
+      .bind_value (preferences_drawWarningBackgroundForBoard_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 176
+  //····················································································································
+
+  private final func computeImplicitView_176 () -> NSView {
     let view = AutoLayoutGridView2 ()
-      .add (single: self.computeImplicitView_94 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_95 (), right: self.computeImplicitView_96 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_97 (), right: self.computeImplicitView_98 ())
+      .add (single: self.computeImplicitView_98 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_99 (), right: self.computeImplicitView_100 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_101 (), right: self.computeImplicitView_102 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_103 (), right: self.computeImplicitView_104 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_105 (), right: self.computeImplicitView_106 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_107 (), right: self.computeImplicitView_108 ())
-      .add (single: self.computeImplicitView_109 ())
-      .add (single: self.computeImplicitView_110 ())
-      .add (single: self.computeImplicitView_111 ())
-      .add (single: self.computeImplicitView_112 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_109 (), right: self.computeImplicitView_110 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_111 (), right: self.computeImplicitView_112 ())
       .add (single: self.computeImplicitView_113 ())
       .add (single: self.computeImplicitView_114 ())
       .add (single: self.computeImplicitView_115 ())
@@ -4964,51 +5005,55 @@ import AppKit
       .add (single: self.computeImplicitView_119 ())
       .add (single: self.computeImplicitView_120 ())
       .add (single: self.computeImplicitView_121 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_122 (), right: self.computeImplicitView_123 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_124 (), right: self.computeImplicitView_125 ())
+      .add (single: self.computeImplicitView_122 ())
+      .add (single: self.computeImplicitView_123 ())
+      .add (single: self.computeImplicitView_124 ())
+      .add (single: self.computeImplicitView_125 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_126 (), right: self.computeImplicitView_127 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_128 (), right: self.computeImplicitView_129 ())
-      .add (single: self.computeImplicitView_130 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_131 (), right: self.computeImplicitView_132 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_133 (), right: self.computeImplicitView_134 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_130 (), right: self.computeImplicitView_131 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_132 (), right: self.computeImplicitView_133 ())
+      .add (single: self.computeImplicitView_134 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_135 (), right: self.computeImplicitView_136 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_137 (), right: self.computeImplicitView_138 ())
-      .add (single: self.computeImplicitView_139 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_140 (), right: self.computeImplicitView_141 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_142 (), right: self.computeImplicitView_143 ())
-      .add (single: self.computeImplicitView_144 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_145 (), right: self.computeImplicitView_146 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_147 (), right: self.computeImplicitView_148 ())
-      .add (single: self.computeImplicitView_149 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_150 (), right: self.computeImplicitView_151 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_152 (), right: self.computeImplicitView_153 ())
-      .add (single: self.computeImplicitView_154 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_155 (), right: self.computeImplicitView_156 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_157 (), right: self.computeImplicitView_158 ())
-      .add (single: self.computeImplicitView_159 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_160 (), right: self.computeImplicitView_161 ())
-      .addCenterYAligned (left: self.computeImplicitView_162 (), right: self.computeImplicitView_163 ())
-      .addCenterYAligned (left: self.computeImplicitView_164 (), right: self.computeImplicitView_165 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_139 (), right: self.computeImplicitView_140 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_141 (), right: self.computeImplicitView_142 ())
+      .add (single: self.computeImplicitView_143 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_144 (), right: self.computeImplicitView_145 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_146 (), right: self.computeImplicitView_147 ())
+      .add (single: self.computeImplicitView_148 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_149 (), right: self.computeImplicitView_150 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_151 (), right: self.computeImplicitView_152 ())
+      .add (single: self.computeImplicitView_153 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_154 (), right: self.computeImplicitView_155 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_156 (), right: self.computeImplicitView_157 ())
+      .add (single: self.computeImplicitView_158 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_159 (), right: self.computeImplicitView_160 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_161 (), right: self.computeImplicitView_162 ())
+      .add (single: self.computeImplicitView_163 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_164 (), right: self.computeImplicitView_165 ())
       .addCenterYAligned (left: self.computeImplicitView_166 (), right: self.computeImplicitView_167 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_168 (), right: self.computeImplicitView_169 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_170 (), right: self.computeImplicitView_171 ())
+      .addCenterYAligned (left: self.computeImplicitView_168 (), right: self.computeImplicitView_169 ())
+      .addCenterYAligned (left: self.computeImplicitView_170 (), right: self.computeImplicitView_171 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_172 (), right: self.computeImplicitView_173 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_174 (), right: self.computeImplicitView_175 ())
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 173
+  //    IMPLICIT VIEW 177
   //····················································································································
 
-  private final func computeImplicitView_173 () -> NSView {
+  private final func computeImplicitView_177 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Layers", bold: false, size: .small, alignment: .right)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 174
+  //    IMPLICIT VIEW 178
   //····················································································································
 
-  private final func computeImplicitView_174 () -> NSView {
+  private final func computeImplicitView_178 () -> NSView {
     let view = AutoLayoutEnumPopUpButton (titles: LayerConfiguration.popupTitles (), size: .small)
       .bind_selectedIndex (self.rootObject.mLayerConfiguration_property)
       .bind_run (
@@ -5019,49 +5064,49 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 175
+  //    IMPLICIT VIEW 179
   //····················································································································
 
-  private final func computeImplicitView_175 () -> NSView {
+  private final func computeImplicitView_179 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Clearance", bold: false, size: .small, alignment: .right)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 176
+  //    IMPLICIT VIEW 180
   //····················································································································
 
-  private final func computeImplicitView_176 () -> NSView {
+  private final func computeImplicitView_180 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.rootObject.mLayoutClearance_property, self.rootObject.mLayoutClearanceUnit_property)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 177
+  //    IMPLICIT VIEW 181
   //····················································································································
 
-  private final func computeImplicitView_177 () -> NSView {
+  private final func computeImplicitView_181 () -> NSView {
     let view = AutoLayoutEnumPopUpButton (titles: AutorouterPreferredDirections.popupTitles (), size: .small)
       .bind_selectedIndex (self.rootObject.mAutoRouterPreferredDirections_property)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 178
+  //    IMPLICIT VIEW 182
   //····················································································································
 
-  private final func computeImplicitView_178 () -> NSView {
+  private final func computeImplicitView_182 () -> NSView {
     let view = AutoLayoutEnumPopUpButton (titles: AutorouterSnapAngle.popupTitles (), size: .small)
       .bind_selectedIndex (self.rootObject.mAutorouterSnapAngle_property)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 179
+  //    IMPLICIT VIEW 183
   //····················································································································
 
-  private final func computeImplicitView_179 () -> NSView {
+  private final func computeImplicitView_183 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutStaticLabel (title: "Route", bold: false, size: .small, alignment: .center)
@@ -5081,10 +5126,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 180
+  //    IMPLICIT VIEW 184
   //····················································································································
 
-  private final func computeImplicitView_180 () -> NSView {
+  private final func computeImplicitView_184 () -> NSView {
     let view = AutoLayoutVerticalStackView ()
       .set (margins: 12)
     do{
@@ -5132,10 +5177,10 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 181
+  //    IMPLICIT VIEW 185
   //····················································································································
 
-  private final func computeImplicitView_181 () -> NSView {
+  private final func computeImplicitView_185 () -> NSView {
     let view = AutoLayoutVerticalStackView ()
       .set (margins: 12)
     do{
@@ -5197,51 +5242,14 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 182
-  //····················································································································
-
-  private final func computeImplicitView_182 () -> NSView {
-    let view = AutoLayoutTabView (size: .small)
-      .addTab (title: "Basic", tooltip: "Autorouter Basic Configuration", contentView: self.computeImplicitView_180 ())
-      .addTab (title: "Advanced", tooltip: "Autorouter Advanced Configuration", contentView: self.computeImplicitView_181 ())
-      .bind_selectedPage (self.rootObject.mAutorouterInterfaceMode_property)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 183
-  //····················································································································
-
-  private final func computeImplicitView_183 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Tracks", bold: true, size: .small, alignment: .left)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 184
-  //····················································································································
-
-  private final func computeImplicitView_184 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Top Layer Tracks", bold: false, size: .small, alignment: .right)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 185
-  //····················································································································
-
-  private final func computeImplicitView_185 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .bind_title (self.rootObject.topSideTrackCountString_property)
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 186
   //····················································································································
 
   private final func computeImplicitView_186 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Inner 1 Layer Tracks", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutTabView (size: .small)
+      .addTab (title: "Basic", tooltip: "Autorouter Basic Configuration", contentView: self.computeImplicitView_184 ())
+      .addTab (title: "Advanced", tooltip: "Autorouter Advanced Configuration", contentView: self.computeImplicitView_185 ())
+      .bind_selectedPage (self.rootObject.mAutorouterInterfaceMode_property)
     return view
   }
 
@@ -5250,8 +5258,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_187 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .bind_title (self.rootObject.inner1LayerTrackCountString_property)
+    let view = AutoLayoutStaticLabel (title: "Tracks", bold: true, size: .small, alignment: .left)
     return view
   }
 
@@ -5260,7 +5267,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_188 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Inner 2 Layer Tracks", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Top Layer Tracks", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -5270,7 +5277,7 @@ import AppKit
 
   private final func computeImplicitView_189 () -> NSView {
     let view = AutoLayoutLabel (bold: true, size: .small)
-      .bind_title (self.rootObject.inner2LayerTrackCountString_property)
+      .bind_title (self.rootObject.topSideTrackCountString_property)
     return view
   }
 
@@ -5279,7 +5286,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_190 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Inner 3 Layer Tracks", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Inner 1 Layer Tracks", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -5289,7 +5296,7 @@ import AppKit
 
   private final func computeImplicitView_191 () -> NSView {
     let view = AutoLayoutLabel (bold: true, size: .small)
-      .bind_title (self.rootObject.inner3LayerTrackCountString_property)
+      .bind_title (self.rootObject.inner1LayerTrackCountString_property)
     return view
   }
 
@@ -5298,7 +5305,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_192 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Inner 4 Layer Tracks", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Inner 2 Layer Tracks", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -5308,7 +5315,7 @@ import AppKit
 
   private final func computeImplicitView_193 () -> NSView {
     let view = AutoLayoutLabel (bold: true, size: .small)
-      .bind_title (self.rootObject.inner4LayerTrackCountString_property)
+      .bind_title (self.rootObject.inner2LayerTrackCountString_property)
     return view
   }
 
@@ -5317,7 +5324,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_194 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Back Layer Tracks", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Inner 3 Layer Tracks", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -5327,7 +5334,7 @@ import AppKit
 
   private final func computeImplicitView_195 () -> NSView {
     let view = AutoLayoutLabel (bold: true, size: .small)
-      .bind_title (self.rootObject.backSideTrackCountString_property)
+      .bind_title (self.rootObject.inner3LayerTrackCountString_property)
     return view
   }
 
@@ -5336,7 +5343,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_196 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Total", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Inner 4 Layer Tracks", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -5346,7 +5353,7 @@ import AppKit
 
   private final func computeImplicitView_197 () -> NSView {
     let view = AutoLayoutLabel (bold: true, size: .small)
-      .bind_title (self.rootObject.trackCountString_property)
+      .bind_title (self.rootObject.inner4LayerTrackCountString_property)
     return view
   }
 
@@ -5355,7 +5362,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_198 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Trace Length", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Back Layer Tracks", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -5364,6 +5371,44 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_199 () -> NSView {
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .bind_title (self.rootObject.backSideTrackCountString_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 200
+  //····················································································································
+
+  private final func computeImplicitView_200 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Total", bold: false, size: .small, alignment: .right)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 201
+  //····················································································································
+
+  private final func computeImplicitView_201 () -> NSView {
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .bind_title (self.rootObject.trackCountString_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 202
+  //····················································································································
+
+  private final func computeImplicitView_202 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Trace Length", bold: false, size: .small, alignment: .right)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 203
+  //····················································································································
+
+  private final func computeImplicitView_203 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutLabel (bold: true, size: .small)
@@ -5379,69 +5424,11 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 200
-  //····················································································································
-
-  private final func computeImplicitView_200 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Via Count", bold: false, size: .small, alignment: .right)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 201
-  //····················································································································
-
-  private final func computeImplicitView_201 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .bind_title (self.rootObject.viaCountString_property)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 202
-  //····················································································································
-
-  private final func computeImplicitView_202 () -> NSView {
-    let view = AutoLayoutButton (title: "Design Rule Check", size: .small)
-      .bind_run (
-        target: self,
-        selector: #selector (AutoLayoutProjectDocument.performERCCheckingAction (_:))
-      )
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 203
-  //····················································································································
-
-  private final func computeImplicitView_203 () -> NSView {
-    let view = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_173 (), right: self.computeImplicitView_174 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_175 (), right: self.computeImplicitView_176 ())
-      .add (single: self.computeImplicitView_177 ())
-      .add (single: self.computeImplicitView_178 ())
-      .add (single: self.computeImplicitView_179 ())
-      .add (single: self.computeImplicitView_182 ())
-      .add (single: self.computeImplicitView_183 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_184 (), right: self.computeImplicitView_185 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_186 (), right: self.computeImplicitView_187 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_188 (), right: self.computeImplicitView_189 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_190 (), right: self.computeImplicitView_191 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_192 (), right: self.computeImplicitView_193 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_194 (), right: self.computeImplicitView_195 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_196 (), right: self.computeImplicitView_197 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_198 (), right: self.computeImplicitView_199 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_200 (), right: self.computeImplicitView_201 ())
-      .add (single: self.computeImplicitView_202 ())
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 204
   //····················································································································
 
   private final func computeImplicitView_204 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Net Name", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "Via Count", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -5451,9 +5438,7 @@ import AppKit
 
   private final func computeImplicitView_205 () -> NSView {
     let view = AutoLayoutLabel (bold: true, size: .small)
-      .set (alignment: .left)
-      .expandableWidth ()
-      .bind_title (self.boardTrackSelectionController.netName_property)
+      .bind_title (self.rootObject.viaCountString_property)
     return view
   }
 
@@ -5462,7 +5447,11 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_206 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Net Class Name", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutButton (title: "Design Rule Check", size: .small)
+      .bind_run (
+        target: self,
+        selector: #selector (AutoLayoutProjectDocument.performERCCheckingAction (_:))
+      )
     return view
   }
 
@@ -5471,10 +5460,24 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_207 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .set (alignment: .left)
-      .expandableWidth ()
-      .bind_title (self.boardTrackSelectionController.netClassName_property)
+    let view = AutoLayoutGridView2 ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_177 (), right: self.computeImplicitView_178 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_179 (), right: self.computeImplicitView_180 ())
+      .add (single: self.computeImplicitView_181 ())
+      .add (single: self.computeImplicitView_182 ())
+      .add (single: self.computeImplicitView_183 ())
+      .add (single: self.computeImplicitView_186 ())
+      .add (single: self.computeImplicitView_187 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_188 (), right: self.computeImplicitView_189 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_190 (), right: self.computeImplicitView_191 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_192 (), right: self.computeImplicitView_193 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_194 (), right: self.computeImplicitView_195 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_196 (), right: self.computeImplicitView_197 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_198 (), right: self.computeImplicitView_199 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_200 (), right: self.computeImplicitView_201 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_202 (), right: self.computeImplicitView_203 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_204 (), right: self.computeImplicitView_205 ())
+      .add (single: self.computeImplicitView_206 ())
     return view
   }
 
@@ -5483,7 +5486,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_208 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Side", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "Net Name", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -5492,8 +5495,10 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_209 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: TrackSide.popupTitles (), size: .small)
-      .bind_selectedIndex (self.boardTrackSelectionController.mSide_property)
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .set (alignment: .left)
+      .expandableWidth ()
+      .bind_title (self.boardTrackSelectionController.netName_property)
     return view
   }
 
@@ -5502,9 +5507,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_210 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Add Track to Solder Mask", size: .small)
-      .bind_value (self.boardTrackSelectionController.mAddedToSolderMask_property)
-      .bind_enabled (.prop (self.boardTrackSelectionController.trackIsOnFrontOrBackLayer_property))
+    let view = AutoLayoutStaticLabel (title: "Net Class Name", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -5513,8 +5516,10 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_211 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Is Preserved by Auto Router", size: .small)
-      .bind_value (self.boardTrackSelectionController.mIsPreservedByAutoRouter_property)
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .set (alignment: .left)
+      .expandableWidth ()
+      .bind_title (self.boardTrackSelectionController.netClassName_property)
     return view
   }
 
@@ -5523,6 +5528,46 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_212 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Side", bold: false, size: .small, alignment: .left)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 213
+  //····················································································································
+
+  private final func computeImplicitView_213 () -> NSView {
+    let view = AutoLayoutEnumPopUpButton (titles: TrackSide.popupTitles (), size: .small)
+      .bind_selectedIndex (self.boardTrackSelectionController.mSide_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 214
+  //····················································································································
+
+  private final func computeImplicitView_214 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Add Track to Solder Mask (as Pad)", size: .small)
+      .bind_value (self.boardTrackSelectionController.mAddedToSolderMask_property)
+      .bind_enabled (.prop (self.boardTrackSelectionController.trackIsOnFrontOrBackLayer_property))
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 215
+  //····················································································································
+
+  private final func computeImplicitView_215 () -> NSView {
+    let view = AutoLayoutCheckbox (title: "Is Preserved by Auto Router", size: .small)
+      .bind_value (self.boardTrackSelectionController.mIsPreservedByAutoRouter_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 216
+  //····················································································································
+
+  private final func computeImplicitView_216 () -> NSView {
     let view = AutoLayoutCanariTrackLockView ()
       .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
       .bind_manualLockP1 (self.boardTrackSelectionController.mManualLockP1_property)
@@ -5533,51 +5578,11 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 213
-  //····················································································································
-
-  private final func computeImplicitView_213 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "On Knob Dragging", bold: false, size: .small, alignment: .left)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 214
-  //····················································································································
-
-  private final func computeImplicitView_214 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: TrackLockDirection.popupTitles (), size: .small)
-      .bind_selectedIndex (self.boardTrackSelectionController.mDirectionLockOnKnobDragging_property)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 215
-  //····················································································································
-
-  private final func computeImplicitView_215 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Track Angle", bold: false, size: .small, alignment: .left)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 216
-  //····················································································································
-
-  private final func computeImplicitView_216 () -> NSView {
-    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
-      .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
-      .bind_enabled (.prop (self.boardTrackSelectionController.trackCanRotate_property))
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 217
   //····················································································································
 
   private final func computeImplicitView_217 () -> NSView {
-    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
-      .bind_setter6 (self.boardTrackSelectionController.mP1XUnit_property, self.boardTrackSelectionController.mP1YUnit_property, self.boardTrackSelectionController.mP2XUnit_property, self.boardTrackSelectionController.mP2YUnit_property, self.boardTrackSelectionController.mDefaultTrackWidthUnit_property, self.boardTrackSelectionController.mCustomTrackWidthUnit_property)
+    let view = AutoLayoutStaticLabel (title: "On Knob Dragging", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -5586,7 +5591,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_218 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Track Width", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutEnumPopUpButton (titles: TrackLockDirection.popupTitles (), size: .small)
+      .bind_selectedIndex (self.boardTrackSelectionController.mDirectionLockOnKnobDragging_property)
     return view
   }
 
@@ -5595,8 +5601,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_219 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Use Custom", size: .small)
-      .bind_value (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)
+    let view = AutoLayoutStaticLabel (title: "Track Angle", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -5605,8 +5610,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_220 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small, alignment: .center)
-      .bind_hidden (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property))
+    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+      .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
+      .bind_enabled (.prop (self.boardTrackSelectionController.trackCanRotate_property))
     return view
   }
 
@@ -5615,9 +5621,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_221 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardTrackSelectionController.netClassTrackWidth_property, self.boardTrackSelectionController.mDefaultTrackWidthUnit_property)
-      .bind_hidden (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property))
+    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
+      .bind_setter6 (self.boardTrackSelectionController.mP1XUnit_property, self.boardTrackSelectionController.mP1YUnit_property, self.boardTrackSelectionController.mP2XUnit_property, self.boardTrackSelectionController.mP2YUnit_property, self.boardTrackSelectionController.mDefaultTrackWidthUnit_property, self.boardTrackSelectionController.mCustomTrackWidthUnit_property)
     return view
   }
 
@@ -5626,8 +5631,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_222 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Custom Width", bold: false, size: .small, alignment: .left)
-      .bind_hidden (.not (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)))
+    let view = AutoLayoutStaticLabel (title: "Track Width", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -5636,9 +5640,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_223 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardTrackSelectionController.mCustomTrackWidth_property, self.boardTrackSelectionController.mCustomTrackWidthUnit_property)
-      .bind_hidden (.not (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)))
+    let view = AutoLayoutCheckbox (title: "Use Custom", size: .small)
+      .bind_value (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)
     return view
   }
 
@@ -5647,7 +5650,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_224 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "P1", right: "X", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small, alignment: .center)
+      .bind_hidden (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property))
     return view
   }
 
@@ -5656,9 +5660,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_225 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP1X_property, self.boardTrackSelectionController.mP1XUnit_property)
-      .bind_enabled (.prop (self.boardTrackSelectionController.p1CanMove_property))
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardTrackSelectionController.netClassTrackWidth_property, self.boardTrackSelectionController.mDefaultTrackWidthUnit_property)
+      .bind_hidden (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property))
     return view
   }
 
@@ -5667,7 +5671,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_226 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Custom Width", bold: false, size: .small, alignment: .left)
+      .bind_hidden (.not (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)))
     return view
   }
 
@@ -5677,8 +5682,8 @@ import AppKit
 
   private final func computeImplicitView_227 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP1Y_property, self.boardTrackSelectionController.mP1YUnit_property)
-      .bind_enabled (.prop (self.boardTrackSelectionController.p1CanMove_property))
+      .bind_dimensionAndUnit (self.boardTrackSelectionController.mCustomTrackWidth_property, self.boardTrackSelectionController.mCustomTrackWidthUnit_property)
+      .bind_hidden (.not (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)))
     return view
   }
 
@@ -5687,7 +5692,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_228 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "P2", right: "X", bold: false, size: .small)
+    let view = AutoLayoutStaticLabels (left: "P1", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -5697,8 +5702,8 @@ import AppKit
 
   private final func computeImplicitView_229 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP2X_property, self.boardTrackSelectionController.mP2XUnit_property)
-      .bind_enabled (.prop (self.boardTrackSelectionController.p2CanMove_property))
+      .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP1X_property, self.boardTrackSelectionController.mP1XUnit_property)
+      .bind_enabled (.prop (self.boardTrackSelectionController.p1CanMove_property))
     return view
   }
 
@@ -5717,8 +5722,8 @@ import AppKit
 
   private final func computeImplicitView_231 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP2Y_property, self.boardTrackSelectionController.mP2YUnit_property)
-      .bind_enabled (.prop (self.boardTrackSelectionController.p2CanMove_property))
+      .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP1Y_property, self.boardTrackSelectionController.mP1YUnit_property)
+      .bind_enabled (.prop (self.boardTrackSelectionController.p1CanMove_property))
     return view
   }
 
@@ -5727,7 +5732,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_232 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Net Name", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "P2", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -5736,10 +5741,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_233 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .set (alignment: .left)
-      .expandableWidth ()
-      .bind_title (self.boardConnectorSelectionController.netNameFromTracks_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP2X_property, self.boardTrackSelectionController.mP2XUnit_property)
+      .bind_enabled (.prop (self.boardTrackSelectionController.p2CanMove_property))
     return view
   }
 
@@ -5748,7 +5752,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_234 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Net Class Name", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -5757,10 +5761,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_235 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .set (alignment: .left)
-      .expandableWidth ()
-      .bind_title (self.boardConnectorSelectionController.netClassName_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP2Y_property, self.boardTrackSelectionController.mP2YUnit_property)
+      .bind_enabled (.prop (self.boardTrackSelectionController.p2CanMove_property))
     return view
   }
 
@@ -5769,7 +5772,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_236 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Hole Diameter", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "Net Name", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -5778,8 +5781,10 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_237 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Use Custom", size: .small)
-      .bind_value (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property)
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .set (alignment: .left)
+      .expandableWidth ()
+      .bind_title (self.boardConnectorSelectionController.netNameFromTracks_property)
     return view
   }
 
@@ -5788,8 +5793,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_238 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small, alignment: .center)
-      .bind_hidden (.prop (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property))
+    let view = AutoLayoutStaticLabel (title: "Net Class Name", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -5798,9 +5802,10 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_239 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardConnectorSelectionController.viaDefaultHoleDiameter_property, self.boardConnectorSelectionController.mDefaultHoleDiameterUnit_property)
-      .bind_hidden (.prop (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property))
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .set (alignment: .left)
+      .expandableWidth ()
+      .bind_title (self.boardConnectorSelectionController.netClassName_property)
     return view
   }
 
@@ -5809,8 +5814,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_240 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Custom", bold: false, size: .small, alignment: .center)
-      .bind_hidden (.not (.prop (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property)))
+    let view = AutoLayoutStaticLabel (title: "Hole Diameter", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -5819,9 +5823,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_241 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardConnectorSelectionController.mCustomHoleDiameter_property, self.boardConnectorSelectionController.mCustomHoleDiameterUnit_property)
-      .bind_hidden (.not (.prop (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property)))
+    let view = AutoLayoutCheckbox (title: "Use Custom", size: .small)
+      .bind_value (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property)
     return view
   }
 
@@ -5830,7 +5833,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_242 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Pad Diameter", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small, alignment: .center)
+      .bind_hidden (.prop (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property))
     return view
   }
 
@@ -5839,8 +5843,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_243 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Use Custom", size: .small)
-      .bind_value (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property)
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardConnectorSelectionController.viaDefaultHoleDiameter_property, self.boardConnectorSelectionController.mDefaultHoleDiameterUnit_property)
+      .bind_hidden (.prop (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property))
     return view
   }
 
@@ -5849,8 +5854,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_244 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small, alignment: .center)
-      .bind_hidden (.prop (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property))
+    let view = AutoLayoutStaticLabel (title: "Custom", bold: false, size: .small, alignment: .center)
+      .bind_hidden (.not (.prop (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property)))
     return view
   }
 
@@ -5859,9 +5864,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_245 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardConnectorSelectionController.viaDefaultPadDiameter_property, self.boardConnectorSelectionController.mDefaultPadDiameterUnit_property)
-      .bind_hidden (.prop (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property))
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardConnectorSelectionController.mCustomHoleDiameter_property, self.boardConnectorSelectionController.mCustomHoleDiameterUnit_property)
+      .bind_hidden (.not (.prop (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property)))
     return view
   }
 
@@ -5870,8 +5875,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_246 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Custom", bold: false, size: .small, alignment: .center)
-      .bind_hidden (.not (.prop (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property)))
+    let view = AutoLayoutStaticLabel (title: "Pad Diameter", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -5880,9 +5884,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_247 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardConnectorSelectionController.mCustomPadDiameter_property, self.boardConnectorSelectionController.mCustomPadDiameterUnit_property)
-      .bind_hidden (.not (.prop (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property)))
+    let view = AutoLayoutCheckbox (title: "Use Custom", size: .small)
+      .bind_value (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property)
     return view
   }
 
@@ -5891,7 +5894,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_248 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small, alignment: .center)
+      .bind_hidden (.prop (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property))
     return view
   }
 
@@ -5900,8 +5904,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_249 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardLineSelectionController.mWidth_property, self.boardLineSelectionController.mWidthUnit_property)
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardConnectorSelectionController.viaDefaultPadDiameter_property, self.boardConnectorSelectionController.mDefaultPadDiameterUnit_property)
+      .bind_hidden (.prop (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property))
     return view
   }
 
@@ -5910,7 +5915,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_250 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Side", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Custom", bold: false, size: .small, alignment: .center)
+      .bind_hidden (.not (.prop (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property)))
     return view
   }
 
@@ -5919,8 +5925,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_251 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: BoardLineLayer.popupTitles (), size: .small)
-      .bind_selectedIndex (self.boardLineSelectionController.mLayer_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardConnectorSelectionController.mCustomPadDiameter_property, self.boardConnectorSelectionController.mCustomPadDiameterUnit_property)
+      .bind_hidden (.not (.prop (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property)))
     return view
   }
 
@@ -5929,7 +5936,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_252 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "P1", right: "X", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -5939,7 +5946,7 @@ import AppKit
 
   private final func computeImplicitView_253 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardLineSelectionController.mX1_property, self.boardLineSelectionController.mX1Unit_property)
+      .bind_dimensionAndUnit (self.boardLineSelectionController.mWidth_property, self.boardLineSelectionController.mWidthUnit_property)
     return view
   }
 
@@ -5948,7 +5955,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_254 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Side", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -5957,8 +5964,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_255 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardLineSelectionController.mY1_property, self.boardLineSelectionController.mY1Unit_property)
+    let view = AutoLayoutEnumPopUpButton (titles: BoardLineLayer.popupTitles (), size: .small)
+      .bind_selectedIndex (self.boardLineSelectionController.mLayer_property)
     return view
   }
 
@@ -5967,7 +5974,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_256 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "P2", right: "X", bold: false, size: .small)
+    let view = AutoLayoutStaticLabels (left: "P1", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -5977,7 +5984,7 @@ import AppKit
 
   private final func computeImplicitView_257 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardLineSelectionController.mX2_property, self.boardLineSelectionController.mX2Unit_property)
+      .bind_dimensionAndUnit (self.boardLineSelectionController.mX1_property, self.boardLineSelectionController.mX1Unit_property)
     return view
   }
 
@@ -5996,7 +6003,7 @@ import AppKit
 
   private final func computeImplicitView_259 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardLineSelectionController.mY2_property, self.boardLineSelectionController.mY2Unit_property)
+      .bind_dimensionAndUnit (self.boardLineSelectionController.mY1_property, self.boardLineSelectionController.mY1Unit_property)
     return view
   }
 
@@ -6005,7 +6012,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_260 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Left", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabels (left: "P2", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -6015,7 +6022,7 @@ import AppKit
 
   private final func computeImplicitView_261 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.restrictRectSelController.mX_property, self.restrictRectSelController.mXUnit_property)
+      .bind_dimensionAndUnit (self.boardLineSelectionController.mX2_property, self.boardLineSelectionController.mX2Unit_property)
     return view
   }
 
@@ -6024,7 +6031,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_262 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Bottom", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6034,7 +6041,7 @@ import AppKit
 
   private final func computeImplicitView_263 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.restrictRectSelController.mY_property, self.restrictRectSelController.mYUnit_property)
+      .bind_dimensionAndUnit (self.boardLineSelectionController.mY2_property, self.boardLineSelectionController.mY2Unit_property)
     return view
   }
 
@@ -6043,7 +6050,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_264 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "Left", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -6053,7 +6060,7 @@ import AppKit
 
   private final func computeImplicitView_265 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.restrictRectSelController.mWidth_property, self.restrictRectSelController.mWidthUnit_property)
+      .bind_dimensionAndUnit (self.restrictRectSelController.mX_property, self.restrictRectSelController.mXUnit_property)
     return view
   }
 
@@ -6062,7 +6069,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_266 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "Bottom", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -6072,7 +6079,7 @@ import AppKit
 
   private final func computeImplicitView_267 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.restrictRectSelController.mHeight_property, self.restrictRectSelController.mHeightUnit_property)
+      .bind_dimensionAndUnit (self.restrictRectSelController.mY_property, self.restrictRectSelController.mYUnit_property)
     return view
   }
 
@@ -6081,7 +6088,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_268 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Image Data", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -6090,9 +6097,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_269 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .set (alignment: .left)
-      .bind_title (self.boardImageSelectionController.imageDataByteCount_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.restrictRectSelController.mWidth_property, self.restrictRectSelController.mWidthUnit_property)
     return view
   }
 
@@ -6101,7 +6107,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_270 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Image Width", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -6110,9 +6116,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_271 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .set (alignment: .left)
-      .bind_title (self.boardImageSelectionController.boardOriginalImageWidth_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.restrictRectSelController.mHeight_property, self.restrictRectSelController.mHeightUnit_property)
     return view
   }
 
@@ -6121,7 +6126,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_272 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Image Height", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Image Data", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6132,7 +6137,7 @@ import AppKit
   private final func computeImplicitView_273 () -> NSView {
     let view = AutoLayoutLabel (bold: true, size: .small)
       .set (alignment: .left)
-      .bind_title (self.boardImageSelectionController.boardOriginalImageHeight_property)
+      .bind_title (self.boardImageSelectionController.imageDataByteCount_property)
     return view
   }
 
@@ -6141,7 +6146,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_274 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Scale", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Image Width", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6150,8 +6155,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_275 () -> NSView {
-    let view = AutoLayoutDoubleField (width: 64, size: .small)
-      .bind_value (self.boardImageSelectionController.mScale_property, sendContinously:false)
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .set (alignment: .left)
+      .bind_title (self.boardImageSelectionController.boardOriginalImageWidth_property)
     return view
   }
 
@@ -6160,7 +6166,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_276 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Scaled Image Width", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Image Height", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6171,7 +6177,7 @@ import AppKit
   private final func computeImplicitView_277 () -> NSView {
     let view = AutoLayoutLabel (bold: true, size: .small)
       .set (alignment: .left)
-      .bind_title (self.boardImageSelectionController.boardScaledImageWidth_property)
+      .bind_title (self.boardImageSelectionController.boardOriginalImageHeight_property)
     return view
   }
 
@@ -6180,7 +6186,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_278 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Scaled Image Height", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Scale", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6189,9 +6195,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_279 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .set (alignment: .left)
-      .bind_title (self.boardImageSelectionController.boardScaledImageHeight_property)
+    let view = AutoLayoutDoubleField (width: 64, size: .small)
+      .bind_value (self.boardImageSelectionController.mScale_property, sendContinously:false)
     return view
   }
 
@@ -6200,7 +6205,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_280 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Threshold", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Scaled Image Width", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6209,8 +6214,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_281 () -> NSView {
-    let view = AutoLayoutLinearSlider (min: 0, max: 255, ticks: 9)
-      .bind_intValue (self.boardImageSelectionController.mThreshold_property, sendContinously:true)
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .set (alignment: .left)
+      .bind_title (self.boardImageSelectionController.boardScaledImageWidth_property)
     return view
   }
 
@@ -6219,7 +6225,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_282 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
+    let view = AutoLayoutStaticLabel (title: "Scaled Image Height", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6228,8 +6234,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_283 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Invert", size: .small)
-      .bind_value (self.boardImageSelectionController.mInvert_property)
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .set (alignment: .left)
+      .bind_title (self.boardImageSelectionController.boardScaledImageHeight_property)
     return view
   }
 
@@ -6238,7 +6245,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_284 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Threshold", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6247,8 +6254,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_285 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
-      .bind_value (self.boardImageSelectionController.mHorizontalFlip_property)
+    let view = AutoLayoutLinearSlider (min: 0, max: 255, ticks: 9)
+      .bind_intValue (self.boardImageSelectionController.mThreshold_property, sendContinously:true)
     return view
   }
 
@@ -6266,8 +6273,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_287 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
-      .bind_value (self.boardImageSelectionController.mVerticalFlip_property)
+    let view = AutoLayoutCheckbox (title: "Invert", size: .small)
+      .bind_value (self.boardImageSelectionController.mInvert_property)
     return view
   }
 
@@ -6276,7 +6283,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_288 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Pixel Size", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6285,8 +6292,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_289 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardImageSelectionController.mPixelSize_property, self.boardImageSelectionController.mPixelSizeUnit_property)
+    let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
+      .bind_value (self.boardImageSelectionController.mHorizontalFlip_property)
     return view
   }
 
@@ -6295,7 +6302,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_290 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Actual Image Width", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -6304,8 +6311,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_291 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardImageSelectionController.boardActualImageWidth_property, self.boardImageSelectionController.mActualWidthUnit_property)
+    let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
+      .bind_value (self.boardImageSelectionController.mVerticalFlip_property)
     return view
   }
 
@@ -6314,7 +6321,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_292 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Actual Image Height", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Pixel Size", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6323,8 +6330,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_293 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardImageSelectionController.boardActualImageHeight_property, self.boardImageSelectionController.mActualHeightUnit_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardImageSelectionController.mPixelSize_property, self.boardImageSelectionController.mPixelSizeUnit_property)
     return view
   }
 
@@ -6333,7 +6340,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_294 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Layer", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Actual Image Width", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6342,8 +6349,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_295 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: BoardQRCodeLayer.popupTitles (), size: .small)
-      .bind_selectedIndex (self.boardImageSelectionController.mLayer_property)
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardImageSelectionController.boardActualImageWidth_property, self.boardImageSelectionController.mActualWidthUnit_property)
     return view
   }
 
@@ -6352,7 +6359,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_296 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Actual Image Height", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6361,8 +6368,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_297 () -> NSView {
-    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
-      .bind_angle (self.boardImageSelectionController.mRotation_property)
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardImageSelectionController.boardActualImageHeight_property, self.boardImageSelectionController.mActualHeightUnit_property)
     return view
   }
 
@@ -6371,7 +6378,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_298 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Center X", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Layer", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6380,8 +6387,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_299 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardImageSelectionController.mCenterX_property, self.boardImageSelectionController.mXUnit_property)
+    let view = AutoLayoutEnumPopUpButton (titles: BoardQRCodeLayer.popupTitles (), size: .small)
+      .bind_selectedIndex (self.boardImageSelectionController.mLayer_property)
     return view
   }
 
@@ -6390,7 +6397,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_300 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Center Y", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6399,8 +6406,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_301 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardImageSelectionController.mCenterY_property, self.boardImageSelectionController.mYUnit_property)
+    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+      .bind_angle (self.boardImageSelectionController.mRotation_property)
     return view
   }
 
@@ -6409,7 +6416,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_302 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Correction Level", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Center X", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6418,8 +6425,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_303 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: QRCodeCorrectionLevel.popupTitles (), size: .small)
-      .bind_selectedIndex (self.boardQRCodeSelectionController.mCorrectionLevel_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardImageSelectionController.mCenterX_property, self.boardImageSelectionController.mXUnit_property)
     return view
   }
 
@@ -6428,7 +6435,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_304 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
+    let view = AutoLayoutStaticLabel (title: "Center Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6437,8 +6444,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_305 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Draw Frame", size: .small)
-      .bind_value (self.boardQRCodeSelectionController.mDrawFrame_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardImageSelectionController.mCenterY_property, self.boardImageSelectionController.mYUnit_property)
     return view
   }
 
@@ -6447,7 +6454,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_306 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Module Count", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Correction Level", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6456,8 +6463,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_307 () -> NSView {
-    let view = AutoLayoutIntObserverField (bold: true, size: .small)
-      .bind_observedValue (self.boardQRCodeSelectionController.moduleCount_property)
+    let view = AutoLayoutEnumPopUpButton (titles: QRCodeCorrectionLevel.popupTitles (), size: .small)
+      .bind_selectedIndex (self.boardQRCodeSelectionController.mCorrectionLevel_property)
     return view
   }
 
@@ -6466,7 +6473,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_308 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Module Size", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -6475,8 +6482,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_309 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardQRCodeSelectionController.mModuleSize_property, self.boardQRCodeSelectionController.mModuleSizeUnit_property)
+    let view = AutoLayoutCheckbox (title: "Draw Frame", size: .small)
+      .bind_value (self.boardQRCodeSelectionController.mDrawFrame_property)
     return view
   }
 
@@ -6485,7 +6492,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_310 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Actual Image Size", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Module Count", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6494,8 +6501,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_311 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardQRCodeSelectionController.actualImageSize_property, self.boardQRCodeSelectionController.mActualSizeUnit_property)
+    let view = AutoLayoutIntObserverField (bold: true, size: .small)
+      .bind_observedValue (self.boardQRCodeSelectionController.moduleCount_property)
     return view
   }
 
@@ -6504,7 +6511,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_312 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Layer", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Module Size", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6513,8 +6520,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_313 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: BoardQRCodeLayer.popupTitles (), size: .small)
-      .bind_selectedIndex (self.boardQRCodeSelectionController.mLayer_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardQRCodeSelectionController.mModuleSize_property, self.boardQRCodeSelectionController.mModuleSizeUnit_property)
     return view
   }
 
@@ -6523,7 +6530,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_314 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Actual Image Size", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6532,8 +6539,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_315 () -> NSView {
-    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
-      .bind_angle (self.boardQRCodeSelectionController.mRotation_property)
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardQRCodeSelectionController.actualImageSize_property, self.boardQRCodeSelectionController.mActualSizeUnit_property)
     return view
   }
 
@@ -6542,7 +6549,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_316 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Center X", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Layer", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6551,8 +6558,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_317 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardQRCodeSelectionController.mCenterX_property, self.boardQRCodeSelectionController.mXUnit_property)
+    let view = AutoLayoutEnumPopUpButton (titles: BoardQRCodeLayer.popupTitles (), size: .small)
+      .bind_selectedIndex (self.boardQRCodeSelectionController.mLayer_property)
     return view
   }
 
@@ -6561,7 +6568,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_318 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Center Y", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6570,8 +6577,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_319 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardQRCodeSelectionController.mCenterY_property, self.boardQRCodeSelectionController.mYUnit_property)
+    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+      .bind_angle (self.boardQRCodeSelectionController.mRotation_property)
     return view
   }
 
@@ -6580,8 +6587,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_320 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Text", bold: false, size: .small, alignment: .right)
-      .expandableHeight ()
+    let view = AutoLayoutStaticLabel (title: "Center X", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6590,9 +6596,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_321 () -> NSView {
-    let view = AutoLayoutTextField (minWidth: 150, size: .small)
-      .automaticallyAdjustHeight (maxWidth: 150)
-      .bind_value (self.boardTextSelectionController.mText_property, sendContinously:true)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardQRCodeSelectionController.mCenterX_property, self.boardQRCodeSelectionController.mXUnit_property)
     return view
   }
 
@@ -6601,7 +6606,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_322 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Origin", right: "X", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "Center Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6611,7 +6616,7 @@ import AppKit
 
   private final func computeImplicitView_323 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardTextSelectionController.mX_property, self.boardTextSelectionController.mXUnit_property)
+      .bind_dimensionAndUnit (self.boardQRCodeSelectionController.mCenterY_property, self.boardQRCodeSelectionController.mYUnit_property)
     return view
   }
 
@@ -6620,7 +6625,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_324 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Text", bold: false, size: .small, alignment: .right)
+      .expandableHeight ()
     return view
   }
 
@@ -6629,8 +6635,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_325 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardTextSelectionController.mY_property, self.boardTextSelectionController.mYUnit_property)
+    let view = AutoLayoutTextField (minWidth: 150, size: .small)
+      .automaticallyAdjustHeight (maxWidth: 150)
+      .bind_value (self.boardTextSelectionController.mText_property, sendContinously:true)
     return view
   }
 
@@ -6639,7 +6646,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_326 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Font", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabels (left: "Origin", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -6648,6 +6655,44 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_327 () -> NSView {
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardTextSelectionController.mX_property, self.boardTextSelectionController.mXUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 328
+  //····················································································································
+
+  private final func computeImplicitView_328 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 329
+  //····················································································································
+
+  private final func computeImplicitView_329 () -> NSView {
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardTextSelectionController.mY_property, self.boardTextSelectionController.mYUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 330
+  //····················································································································
+
+  private final func computeImplicitView_330 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Font", bold: false, size: .small, alignment: .right)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 331
+  //····················································································································
+
+  private final func computeImplicitView_331 () -> NSView {
     let view = AutoLayoutCanariBoardFontPopUpButton ()
       .bind_currentFontName (self.boardTextSelectionController.fontName_property)
       .bind_fontNames (self.rootObject.fontNameArray_property)
@@ -6659,49 +6704,11 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 328
-  //····················································································································
-
-  private final func computeImplicitView_328 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .right)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 329
-  //····················································································································
-
-  private final func computeImplicitView_329 () -> NSView {
-    let view = AutoLayoutDoubleField (width: 64, size: .small)
-      .bind_value (self.boardTextSelectionController.mFontSize_property, sendContinously:true)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 330
-  //····················································································································
-
-  private final func computeImplicitView_330 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Weight", bold: false, size: .small, alignment: .right)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 331
-  //····················································································································
-
-  private final func computeImplicitView_331 () -> NSView {
-    let view = AutoLayoutDoubleField (width: 64, size: .small)
-      .bind_value (self.boardTextSelectionController.mWeight_property, sendContinously:true)
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 332
   //····················································································································
 
   private final func computeImplicitView_332 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
+    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6710,8 +6717,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_333 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Oblique", size: .small)
-      .bind_value (self.boardTextSelectionController.mOblique_property)
+    let view = AutoLayoutDoubleField (width: 64, size: .small)
+      .bind_value (self.boardTextSelectionController.mFontSize_property, sendContinously:true)
     return view
   }
 
@@ -6720,7 +6727,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_334 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Horizontal", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Weight", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6729,8 +6736,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_335 () -> NSView {
-    let view = AutoLayoutCanariHorizontalAlignmentSegmentedControl (size: .small)
-      .bind_alignment (self.boardTextSelectionController.mHorizontalAlignment_property)
+    let view = AutoLayoutDoubleField (width: 64, size: .small)
+      .bind_value (self.boardTextSelectionController.mWeight_property, sendContinously:true)
     return view
   }
 
@@ -6739,7 +6746,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_336 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Vertical", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -6748,8 +6755,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_337 () -> NSView {
-    let view = AutoLayoutCanariVerticalAlignmentSegmentedControl (size: .small)
-      .bind_alignment (self.boardTextSelectionController.mVerticalAlignment_property)
+    let view = AutoLayoutCheckbox (title: "Oblique", size: .small)
+      .bind_value (self.boardTextSelectionController.mOblique_property)
     return view
   }
 
@@ -6758,7 +6765,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_338 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Horizontal", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6767,8 +6774,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_339 () -> NSView {
-    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
-      .bind_angle (self.boardTextSelectionController.mRotation_property)
+    let view = AutoLayoutCanariHorizontalAlignmentSegmentedControl (size: .small)
+      .bind_alignment (self.boardTextSelectionController.mHorizontalAlignment_property)
     return view
   }
 
@@ -6777,7 +6784,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_340 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Side", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Vertical", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6786,8 +6793,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_341 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: BoardTextLayer.popupTitles (), size: .small)
-      .bind_selectedIndex (self.boardTextSelectionController.mLayer_property)
+    let view = AutoLayoutCanariVerticalAlignmentSegmentedControl (size: .small)
+      .bind_alignment (self.boardTextSelectionController.mVerticalAlignment_property)
     return view
   }
 
@@ -6796,9 +6803,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_342 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Show Rotation Knob", size: .small)
-      .set (toolTip: "Common to all texts, stored in Preferences")
-      .bind_value (preferences_mShowTextRotationKnobInBoard_property)
+    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6807,7 +6812,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_343 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Package", bold: true, size: .small, alignment: .left)
+    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+      .bind_angle (self.boardTextSelectionController.mRotation_property)
     return view
   }
 
@@ -6816,7 +6822,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_344 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Center", right: "X", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "Side", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6825,8 +6831,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_345 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.componentInBoardSelectionController.mX_property, self.componentInBoardSelectionController.mXUnit_property)
+    let view = AutoLayoutEnumPopUpButton (titles: BoardTextLayer.popupTitles (), size: .small)
+      .bind_selectedIndex (self.boardTextSelectionController.mLayer_property)
     return view
   }
 
@@ -6835,7 +6841,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_346 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutCheckbox (title: "Show Rotation Knob", size: .small)
+      .set (toolTip: "Common to all texts, stored in Preferences")
+      .bind_value (preferences_mShowTextRotationKnobInBoard_property)
     return view
   }
 
@@ -6844,8 +6852,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_347 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.componentInBoardSelectionController.mY_property, self.componentInBoardSelectionController.mYUnit_property)
+    let view = AutoLayoutStaticLabel (title: "Package", bold: true, size: .small, alignment: .left)
     return view
   }
 
@@ -6854,8 +6861,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_348 () -> NSView {
-    let view = AutoLayoutCanariBoardComponentPackagePopUpButton ()
-    self.configure_componentPackagePopUpButtonConfigurator (view) // Configurator
+    let view = AutoLayoutStaticLabels (left: "Center", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -6864,7 +6870,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_349 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.componentInBoardSelectionController.mX_property, self.componentInBoardSelectionController.mXUnit_property)
     return view
   }
 
@@ -6873,8 +6880,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_350 () -> NSView {
-    let view = AutoLayoutCanariPreferredDirectionSegmentedControl ()
-      .bind_angle (self.componentInBoardSelectionController.mRotation_property)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6883,7 +6889,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_351 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.componentInBoardSelectionController.mY_property, self.componentInBoardSelectionController.mYUnit_property)
     return view
   }
 
@@ -6892,8 +6899,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_352 () -> NSView {
-    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
-      .bind_angle (self.componentInBoardSelectionController.mRotation_property)
+    let view = AutoLayoutCanariBoardComponentPackagePopUpButton ()
+    self.configure_componentPackagePopUpButtonConfigurator (view) // Configurator
     return view
   }
 
@@ -6902,7 +6909,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_353 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Name", bold: true, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6911,9 +6918,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_354 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .set (alignment: .left)
-      .bind_title (self.componentInBoardSelectionController.componentName_property)
+    let view = AutoLayoutCanariPreferredDirectionSegmentedControl ()
+      .bind_angle (self.componentInBoardSelectionController.mRotation_property)
     return view
   }
 
@@ -6922,7 +6928,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_355 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Center", right: "∆X", bold: false, size: .small)
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -6931,8 +6937,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_356 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.componentInBoardSelectionController.mXName_property, self.componentInBoardSelectionController.mXNameUnit_property)
+    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+      .bind_angle (self.componentInBoardSelectionController.mRotation_property)
     return view
   }
 
@@ -6941,7 +6947,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_357 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "∆Y", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Name", bold: true, size: .small, alignment: .left)
     return view
   }
 
@@ -6950,8 +6956,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_358 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.componentInBoardSelectionController.mYName_property, self.componentInBoardSelectionController.mYNameUnit_property)
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .set (alignment: .left)
+      .bind_title (self.componentInBoardSelectionController.componentName_property)
     return view
   }
 
@@ -6960,7 +6967,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_359 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabels (left: "Center", right: "∆X", bold: false, size: .small)
     return view
   }
 
@@ -6969,8 +6976,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_360 () -> NSView {
-    let view = AutoLayoutDoubleField (width: 64, size: .small)
-      .bind_value (self.componentInBoardSelectionController.mNameFontSize_property, sendContinously:false)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.componentInBoardSelectionController.mXName_property, self.componentInBoardSelectionController.mXNameUnit_property)
     return view
   }
 
@@ -6979,7 +6986,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_361 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Font", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "∆Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6988,6 +6995,44 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_362 () -> NSView {
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.componentInBoardSelectionController.mYName_property, self.componentInBoardSelectionController.mYNameUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 363
+  //····················································································································
+
+  private final func computeImplicitView_363 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .right)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 364
+  //····················································································································
+
+  private final func computeImplicitView_364 () -> NSView {
+    let view = AutoLayoutDoubleField (width: 64, size: .small)
+      .bind_value (self.componentInBoardSelectionController.mNameFontSize_property, sendContinously:false)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 365
+  //····················································································································
+
+  private final func computeImplicitView_365 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Font", bold: false, size: .small, alignment: .right)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 366
+  //····················································································································
+
+  private final func computeImplicitView_366 () -> NSView {
     let view = AutoLayoutCanariBoardFontPopUpButton ()
       .bind_currentFontName (self.componentInBoardSelectionController.componentNameFontName_property)
       .bind_fontNames (self.rootObject.fontNameArray_property)
@@ -6999,50 +7044,11 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 363
-  //····················································································································
-
-  private final func computeImplicitView_363 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 364
-  //····················································································································
-
-  private final func computeImplicitView_364 () -> NSView {
-    let view = AutoLayoutCanariPreferredDirectionSegmentedControl ()
-      .bind_angle (self.componentInBoardSelectionController.mNameRotation_property)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 365
-  //····················································································································
-
-  private final func computeImplicitView_365 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 366
-  //····················································································································
-
-  private final func computeImplicitView_366 () -> NSView {
-    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
-      .bind_angle (self.componentInBoardSelectionController.mNameRotation_property)
-      .bind_enabled (.prop (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property))
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 367
   //····················································································································
 
   private final func computeImplicitView_367 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Value", bold: true, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -7051,9 +7057,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_368 () -> NSView {
-    let view = AutoLayoutTextField (minWidth: 150, size: .small)
-      .automaticallyAdjustHeight (maxWidth: 150)
-      .bind_value (self.componentInBoardSelectionController.mComponentValue_property, sendContinously:true)
+    let view = AutoLayoutCanariPreferredDirectionSegmentedControl ()
+      .bind_angle (self.componentInBoardSelectionController.mNameRotation_property)
     return view
   }
 
@@ -7062,7 +7067,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_369 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Center", right: "∆X", bold: false, size: .small)
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -7071,8 +7076,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_370 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.componentInBoardSelectionController.mXValue_property, self.componentInBoardSelectionController.mXValueUnit_property)
+    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+      .bind_angle (self.componentInBoardSelectionController.mNameRotation_property)
+      .bind_enabled (.prop (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property))
     return view
   }
 
@@ -7081,7 +7087,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_371 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "∆Y", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Value", bold: true, size: .small, alignment: .left)
     return view
   }
 
@@ -7090,8 +7096,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_372 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.componentInBoardSelectionController.mYValue_property, self.componentInBoardSelectionController.mYValueUnit_property)
+    let view = AutoLayoutTextField (minWidth: 150, size: .small)
+      .automaticallyAdjustHeight (maxWidth: 150)
+      .bind_value (self.componentInBoardSelectionController.mComponentValue_property, sendContinously:true)
     return view
   }
 
@@ -7100,7 +7107,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_373 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabels (left: "Center", right: "∆X", bold: false, size: .small)
     return view
   }
 
@@ -7109,8 +7116,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_374 () -> NSView {
-    let view = AutoLayoutDoubleField (width: 64, size: .small)
-      .bind_value (self.componentInBoardSelectionController.mValueFontSize_property, sendContinously:false)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.componentInBoardSelectionController.mXValue_property, self.componentInBoardSelectionController.mXValueUnit_property)
     return view
   }
 
@@ -7119,7 +7126,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_375 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Font", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "∆Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -7128,6 +7135,44 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_376 () -> NSView {
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.componentInBoardSelectionController.mYValue_property, self.componentInBoardSelectionController.mYValueUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 377
+  //····················································································································
+
+  private final func computeImplicitView_377 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .right)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 378
+  //····················································································································
+
+  private final func computeImplicitView_378 () -> NSView {
+    let view = AutoLayoutDoubleField (width: 64, size: .small)
+      .bind_value (self.componentInBoardSelectionController.mValueFontSize_property, sendContinously:false)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 379
+  //····················································································································
+
+  private final func computeImplicitView_379 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Font", bold: false, size: .small, alignment: .right)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 380
+  //····················································································································
+
+  private final func computeImplicitView_380 () -> NSView {
     let view = AutoLayoutCanariBoardFontPopUpButton ()
       .bind_currentFontName (self.componentInBoardSelectionController.componentValueFontName_property)
       .bind_fontNames (self.rootObject.fontNameArray_property)
@@ -7139,50 +7184,11 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 377
-  //····················································································································
-
-  private final func computeImplicitView_377 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 378
-  //····················································································································
-
-  private final func computeImplicitView_378 () -> NSView {
-    let view = AutoLayoutCanariPreferredDirectionSegmentedControl ()
-      .bind_angle (self.componentInBoardSelectionController.mValueRotation_property)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 379
-  //····················································································································
-
-  private final func computeImplicitView_379 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 380
-  //····················································································································
-
-  private final func computeImplicitView_380 () -> NSView {
-    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
-      .bind_angle (self.componentInBoardSelectionController.mValueRotation_property)
-      .bind_enabled (.prop (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property))
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 381
   //····················································································································
 
   private final func computeImplicitView_381 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Slave Pads", bold: true, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -7191,9 +7197,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_382 () -> NSView {
-    let view = AutoLayoutBoolPopUpButton (title0: "should be insulated", title1: "should be routed")
-      .bind_value (self.componentInBoardSelectionController.mSlavePadsShouldBeRouted_property)
-      .bind_enabled (.prop (self.componentInBoardSelectionController.hasSlavePads_property))
+    let view = AutoLayoutCanariPreferredDirectionSegmentedControl ()
+      .bind_angle (self.componentInBoardSelectionController.mValueRotation_property)
     return view
   }
 
@@ -7202,7 +7207,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_383 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Side", bold: true, size: .small, alignment: .left)
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -7211,8 +7216,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_384 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: ComponentSide.popupTitles (), size: .small)
-      .bind_selectedIndex (self.componentInBoardSelectionController.mSide_property)
+    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+      .bind_angle (self.componentInBoardSelectionController.mValueRotation_property)
+      .bind_enabled (.prop (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property))
     return view
   }
 
@@ -7221,33 +7227,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_385 () -> NSView {
-    let view = AutoLayoutGridView2 ()
-      .add (single: self.computeImplicitView_343 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_344 (), right: self.computeImplicitView_345 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_346 (), right: self.computeImplicitView_347 ())
-      .add (single: self.computeImplicitView_348 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_349 (), right: self.computeImplicitView_350 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_351 (), right: self.computeImplicitView_352 ())
-      .addSeparator ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_353 (), right: self.computeImplicitView_354 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_355 (), right: self.computeImplicitView_356 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_357 (), right: self.computeImplicitView_358 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_359 (), right: self.computeImplicitView_360 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_361 (), right: self.computeImplicitView_362 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_363 (), right: self.computeImplicitView_364 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_365 (), right: self.computeImplicitView_366 ())
-      .addSeparator ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_367 (), right: self.computeImplicitView_368 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_369 (), right: self.computeImplicitView_370 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_371 (), right: self.computeImplicitView_372 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_373 (), right: self.computeImplicitView_374 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_375 (), right: self.computeImplicitView_376 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_377 (), right: self.computeImplicitView_378 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_379 (), right: self.computeImplicitView_380 ())
-      .addSeparator ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_381 (), right: self.computeImplicitView_382 ())
-      .addSeparator ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_383 (), right: self.computeImplicitView_384 ())
+    let view = AutoLayoutStaticLabel (title: "Slave Pads", bold: true, size: .small, alignment: .left)
     return view
   }
 
@@ -7256,7 +7236,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_386 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Layer Description", bold: false, size: .regular, alignment: .center)
+    let view = AutoLayoutBoolPopUpButton (title0: "should be insulated", title1: "should be routed")
+      .bind_value (self.componentInBoardSelectionController.mSlavePadsShouldBeRouted_property)
+      .bind_enabled (.prop (self.componentInBoardSelectionController.hasSlavePads_property))
     return view
   }
 
@@ -7265,10 +7247,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_387 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .regular)
-      .set (alignment: .left)
-      .expandableWidth ()
-      .bind_title (self.rootObject.layerConfigurationString_property)
+    let view = AutoLayoutStaticLabel (title: "Side", bold: true, size: .small, alignment: .left)
     return view
   }
 
@@ -7277,7 +7256,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_388 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Artwork Version", bold: false, size: .regular, alignment: .center)
+    let view = AutoLayoutEnumPopUpButton (titles: ComponentSide.popupTitles (), size: .small)
+      .bind_selectedIndex (self.componentInBoardSelectionController.mSide_property)
     return view
   }
 
@@ -7286,10 +7266,33 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_389 () -> NSView {
-    let view = AutoLayoutIntObserverField (bold: true, size: .regular)
-      .set (alignment: .left)
-      .expandableWidth ()
-      .bind_observedValue (self.rootObject.mArtworkVersion_property)
+    let view = AutoLayoutGridView2 ()
+      .add (single: self.computeImplicitView_347 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_348 (), right: self.computeImplicitView_349 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_350 (), right: self.computeImplicitView_351 ())
+      .add (single: self.computeImplicitView_352 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_353 (), right: self.computeImplicitView_354 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_355 (), right: self.computeImplicitView_356 ())
+      .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_357 (), right: self.computeImplicitView_358 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_359 (), right: self.computeImplicitView_360 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_361 (), right: self.computeImplicitView_362 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_363 (), right: self.computeImplicitView_364 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_365 (), right: self.computeImplicitView_366 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_367 (), right: self.computeImplicitView_368 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_369 (), right: self.computeImplicitView_370 ())
+      .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_371 (), right: self.computeImplicitView_372 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_373 (), right: self.computeImplicitView_374 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_375 (), right: self.computeImplicitView_376 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_377 (), right: self.computeImplicitView_378 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_379 (), right: self.computeImplicitView_380 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_381 (), right: self.computeImplicitView_382 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_383 (), right: self.computeImplicitView_384 ())
+      .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_385 (), right: self.computeImplicitView_386 ())
+      .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_387 (), right: self.computeImplicitView_388 ())
     return view
   }
 
@@ -7298,6 +7301,48 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_390 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Layer Description", bold: false, size: .regular, alignment: .center)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 391
+  //····················································································································
+
+  private final func computeImplicitView_391 () -> NSView {
+    let view = AutoLayoutLabel (bold: true, size: .regular)
+      .set (alignment: .left)
+      .expandableWidth ()
+      .bind_title (self.rootObject.layerConfigurationString_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 392
+  //····················································································································
+
+  private final func computeImplicitView_392 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Artwork Version", bold: false, size: .regular, alignment: .center)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 393
+  //····················································································································
+
+  private final func computeImplicitView_393 () -> NSView {
+    let view = AutoLayoutIntObserverField (bold: true, size: .regular)
+      .set (alignment: .left)
+      .expandableWidth ()
+      .bind_observedValue (self.rootObject.mArtworkVersion_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 394
+  //····················································································································
+
+  private final func computeImplicitView_394 () -> NSView {
     let view = AutoLayoutVerticalStackView ()
     do{
       let view_0 = AutoLayoutStaticLabel (title: "Comment", bold: false, size: .regular, alignment: .center)
@@ -7309,53 +7354,13 @@ import AppKit
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 391
-  //····················································································································
-
-  private final func computeImplicitView_391 () -> NSView {
-    let view = AutoLayoutTextObserverView ()
-      .expandableWidth ()
-      .bind_observedValue (self.rootObject.artworkComments_property)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 392
-  //····················································································································
-
-  private final func computeImplicitView_392 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Legend Front Side Texts", size: .small)
-      .bind_value (self.mDataSelection.drawTextsLegendTopSide_property)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 393
-  //····················································································································
-
-  private final func computeImplicitView_393 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Layout Front Side Texts", size: .small)
-      .bind_value (self.mDataSelection.drawTextsLayoutTopSide_property)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 394
-  //····················································································································
-
-  private final func computeImplicitView_394 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Front Side Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksTopSide_property)
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 395
   //····················································································································
 
   private final func computeImplicitView_395 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Front Side Pads", size: .small)
-      .bind_value (self.mDataSelection.drawPadsTopSide_property)
+    let view = AutoLayoutTextObserverView ()
+      .expandableWidth ()
+      .bind_observedValue (self.rootObject.artworkComments_property)
     return view
   }
 
@@ -7364,9 +7369,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_396 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
-      .bind_value (self.mDataSelection.drawTraversingPads_property)
-      .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
+    let view = AutoLayoutCheckbox (title: "Legend Front Side Texts", size: .small)
+      .bind_value (self.mDataSelection.drawTextsLegendTopSide_property)
     return view
   }
 
@@ -7375,7 +7379,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_397 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
+    let view = AutoLayoutCheckbox (title: "Layout Front Side Texts", size: .small)
+      .bind_value (self.mDataSelection.drawTextsLayoutTopSide_property)
     return view
   }
 
@@ -7384,9 +7389,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_398 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
-      .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
-      .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
+    let view = AutoLayoutCheckbox (title: "Front Side Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksTopSide_property)
     return view
   }
 
@@ -7395,7 +7399,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_399 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
+    let view = AutoLayoutCheckbox (title: "Front Side Pads", size: .small)
+      .bind_value (self.mDataSelection.drawPadsTopSide_property)
     return view
   }
 
@@ -7404,8 +7409,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_400 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
+    let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
+      .bind_value (self.mDataSelection.drawTraversingPads_property)
       .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
     return view
   }
@@ -7415,9 +7420,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_401 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
-      .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -7426,7 +7429,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_402 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
+    let view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
       .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
       .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
     return view
@@ -7437,9 +7440,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_403 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
-      .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
-      .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -7448,9 +7449,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_404 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
-      .bind_hidden (.not (.prop (self.rootObject.hasSixLayers_property)))
+    let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
+      .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -7459,9 +7460,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_405 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
-      .bind_hidden (.not (.prop (self.rootObject.hasSixLayers_property)))
+    let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
+      .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -7470,9 +7471,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_406 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
-      .bind_enabled (.prop (self.rootObject.hasSixLayers_property))
-      .bind_hidden (.prop (self.rootObject.hasSixLayers_property))
+    let view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
+      .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -7481,9 +7482,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_407 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
-      .bind_enabled (.prop (self.rootObject.hasSixLayers_property))
-      .bind_hidden (.prop (self.rootObject.hasSixLayers_property))
+    let view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
+      .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -7492,8 +7493,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_408 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Legend Back Side Texts", size: .small)
-      .bind_value (self.mDataSelection.drawTextsLegendBottomSide_property)
+    let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
+      .bind_hidden (.not (.prop (self.rootObject.hasSixLayers_property)))
     return view
   }
 
@@ -7502,8 +7504,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_409 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Layout Back Side Texts", size: .small)
-      .bind_value (self.mDataSelection.drawTextsLayoutBottomSide_property)
+    let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
+      .bind_hidden (.not (.prop (self.rootObject.hasSixLayers_property)))
     return view
   }
 
@@ -7512,8 +7515,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_410 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Back Side Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksBottomSide_property)
+    let view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
+      .bind_enabled (.prop (self.rootObject.hasSixLayers_property))
+      .bind_hidden (.prop (self.rootObject.hasSixLayers_property))
     return view
   }
 
@@ -7522,8 +7526,9 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_411 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Back Side Pads", size: .small)
-      .bind_value (self.mDataSelection.drawPadsBottomSide_property)
+    let view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
+      .bind_enabled (.prop (self.rootObject.hasSixLayers_property))
+      .bind_hidden (.prop (self.rootObject.hasSixLayers_property))
     return view
   }
 
@@ -7532,7 +7537,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_412 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: false, size: .regular, alignment: .center)
+    let view = AutoLayoutCheckbox (title: "Legend Back Side Texts", size: .small)
+      .bind_value (self.mDataSelection.drawTextsLegendBottomSide_property)
     return view
   }
 
@@ -7541,8 +7547,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_413 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property)
+    let view = AutoLayoutCheckbox (title: "Layout Back Side Texts", size: .small)
+      .bind_value (self.mDataSelection.drawTextsLayoutBottomSide_property)
     return view
   }
 
@@ -7551,7 +7557,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_414 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Minimum Value for PHD", bold: false, size: .regular, alignment: .center)
+    let view = AutoLayoutCheckbox (title: "Back Side Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksBottomSide_property)
     return view
   }
 
@@ -7560,8 +7567,8 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_415 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property)
+    let view = AutoLayoutCheckbox (title: "Back Side Pads", size: .small)
+      .bind_value (self.mDataSelection.drawPadsBottomSide_property)
     return view
   }
 
@@ -7570,7 +7577,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_416 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Minimum Value for OAR", bold: false, size: .regular, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: false, size: .regular, alignment: .center)
     return view
   }
 
@@ -7580,7 +7587,7 @@ import AppKit
 
   private final func computeImplicitView_417 () -> NSView {
     let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property)
+      .bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property)
     return view
   }
 
@@ -7589,7 +7596,7 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_418 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Minimum Value for Board Limit Width", bold: false, size: .regular, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for PHD", bold: false, size: .regular, alignment: .center)
     return view
   }
 
@@ -7598,6 +7605,44 @@ import AppKit
   //····················································································································
 
   private final func computeImplicitView_419 () -> NSView {
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 420
+  //····················································································································
+
+  private final func computeImplicitView_420 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for OAR", bold: false, size: .regular, alignment: .center)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 421
+  //····················································································································
+
+  private final func computeImplicitView_421 () -> NSView {
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 422
+  //····················································································································
+
+  private final func computeImplicitView_422 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for Board Limit Width", bold: false, size: .regular, alignment: .center)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 423
+  //····················································································································
+
+  private final func computeImplicitView_423 () -> NSView {
     let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.rootObject.minValueForBoardLimitWidth_property, self.rootObject.minValueForBoardLimitWidthDisplayUnit_property)
     return view

@@ -16,6 +16,11 @@ import AppKit
 @MainActor func transient_BoardTrack_objectDisplay (
        _ self_mConnectorP1_location : CanariPoint?, 
        _ self_mConnectorP2_location : CanariPoint?, 
+       _ self_mAddedToSolderMask : Bool,            
+       _ prefs_frontSidePadColorForBoard : NSColor, 
+       _ self_BoardObject_displayFrontPadsForBoard : Bool,
+       _ prefs_backSidePadColorForBoard : NSColor,  
+       _ self_BoardObject_displayBackPadsForBoard : Bool,
        _ self_BoardObject_displayFrontLayoutForBoard : Bool,
        _ prefs_frontSideLayoutColorForBoard : NSColor,
        _ self_BoardObject_displayBackLayoutForBoard : Bool,
@@ -38,11 +43,21 @@ import AppKit
          let display : Bool
          switch self_mSide {
          case .front :
-           color = prefs_frontSideLayoutColorForBoard
-           display = self_BoardObject_displayFrontLayoutForBoard
+           if self_mAddedToSolderMask {
+             color = prefs_frontSidePadColorForBoard
+             display = self_BoardObject_displayFrontPadsForBoard
+           }else{
+             color = prefs_frontSideLayoutColorForBoard
+             display = self_BoardObject_displayFrontLayoutForBoard
+           }
          case .back :
-           display = self_BoardObject_displayBackLayoutForBoard
-           color = prefs_backSideLayoutColorForBoard
+           if self_mAddedToSolderMask {
+             display = self_BoardObject_displayBackPadsForBoard
+             color = prefs_backSidePadColorForBoard
+           }else{
+             display = self_BoardObject_displayBackLayoutForBoard
+             color = prefs_backSideLayoutColorForBoard
+           }
          case .inner1 :
            display = self_BoardObject_displayInner1LayoutForBoard
            color = prefs_inner1LayoutColorForBoard

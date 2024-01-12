@@ -18,6 +18,9 @@ import AppKit
        _ self_p1CanMove : Bool,                        
        _ self_mConnectorP2_location : CanariPoint?,    
        _ self_p2CanMove : Bool,                        
+       _ self_mAddedToSolderMask : Bool,               
+       _ prefs_frontSidePadColorForBoard : NSColor,    
+       _ prefs_backSidePadColorForBoard : NSColor,     
        _ prefs_frontSideLayoutColorForBoard : NSColor, 
        _ prefs_inner1LayoutColorForBoard : NSColor,    
        _ prefs_inner2LayoutColorForBoard : NSColor,    
@@ -34,9 +37,17 @@ import AppKit
         let color : NSColor
         switch self_mSide {
         case .front :
-          color = prefs_frontSideLayoutColorForBoard
+          if self_mAddedToSolderMask {
+            color = prefs_frontSidePadColorForBoard
+          }else{
+            color = prefs_frontSideLayoutColorForBoard
+          }
         case .back :
-          color = prefs_backSideLayoutColorForBoard
+          if self_mAddedToSolderMask {
+            color = prefs_backSidePadColorForBoard
+          }else{
+            color = prefs_backSideLayoutColorForBoard
+          }
         case .inner1 :
           color = prefs_inner1LayoutColorForBoard
         case .inner2 :

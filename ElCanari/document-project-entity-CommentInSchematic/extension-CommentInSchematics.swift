@@ -9,6 +9,11 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+let COMMENT_IN_SCHEMATIC_DRAG_KNOB     = 0
+let COMMENT_IN_SCHEMATIC_ROTATION_KNOB = 1
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EXTENSION CommentInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -18,8 +23,14 @@ extension CommentInSchematic {
   //  Cursor
   //····················································································································
 
-  func cursorForKnob_CommentInSchematic (knob _ : Int) -> NSCursor? {
-    return nil // Uses default cursor
+  func cursorForKnob_CommentInSchematic (knob inKnobIndex : Int) -> NSCursor? {
+    if inKnobIndex == COMMENT_IN_SCHEMATIC_DRAG_KNOB {
+      return NSCursor.upDownRightLeftCursor
+    }else if inKnobIndex == COMPONENT_PACKAGE_ROTATION_KNOB {
+      return NSCursor.rotationCursor
+    }else{
+      return nil  // Uses default cursor
+    }
   }
 
   //····················································································································
@@ -118,16 +129,23 @@ extension CommentInSchematic {
 
   //····················································································································
 
-  func move_CommentInSchematic (knob _ : Int,
+  func move_CommentInSchematic (knob inKnobIndex : Int,
                                 proposedDx inDx: Int,
                                 proposedDy inDy: Int,
                                 unalignedMouseLocationX _ : Int,
                                 unalignedMouseLocationY _ : Int,
-                                alignedMouseLocationX _ : Int,
-                                alignedMouseLocationY _ : Int,
+                                alignedMouseLocationX inAlignedMouseLocationX : Int,
+                                alignedMouseLocationY inAlignedMouseLocationY : Int,
                                 shift _ : Bool) {
-    self.mX += inDx
-    self.mY += inDy
+    if inKnobIndex == COMMENT_IN_SCHEMATIC_DRAG_KNOB {
+      self.mX += inDx
+      self.mY += inDy
+    }else if inKnobIndex == COMMENT_IN_SCHEMATIC_ROTATION_KNOB {
+      let absoluteCenter = CanariPoint (x: self.mX, y: self.mY).cocoaPoint
+      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).cocoaPoint
+      let newAngleInDegrees = angleInDegreesBetweenNSPoints (absoluteCenter, newRotationKnobLocation)
+      self.mRotation_property.setProp (degreesToCanariRotation (newAngleInDegrees))
+    }
   }
 
   //····················································································································

@@ -1042,57 +1042,74 @@ final class BoardTrack : BoardObject,
       if let unwSelf = self {
         let s0 = unwSelf.mConnectorP1_property.location_property.selection
         let s1 = unwSelf.mConnectorP2_property.location_property.selection
-        var s2 = unwSelf.displayFrontLayoutForBoard_property.selection
-        switch s2 {
-        case .single :
-          ()
-        case .empty, .multiple :
-          s2 = .single (true)
-        }
-        let s3 = preferences_frontSideLayoutColorForBoard_property.selection
-        var s4 = unwSelf.displayBackLayoutForBoard_property.selection
+        let s2 = unwSelf.mAddedToSolderMask_property.selection
+        let s3 = preferences_frontSidePadColorForBoard_property.selection
+        var s4 = unwSelf.displayFrontPadsForBoard_property.selection
         switch s4 {
         case .single :
           ()
         case .empty, .multiple :
           s4 = .single (true)
         }
-        let s5 = preferences_backSideLayoutColorForBoard_property.selection
-        var s6 = unwSelf.displayInner1LayoutForBoard_property.selection
+        let s5 = preferences_backSidePadColorForBoard_property.selection
+        var s6 = unwSelf.displayBackPadsForBoard_property.selection
         switch s6 {
         case .single :
           ()
         case .empty, .multiple :
           s6 = .single (true)
         }
-        let s7 = preferences_inner1LayoutColorForBoard_property.selection
-        var s8 = unwSelf.displayInner2LayoutForBoard_property.selection
-        switch s8 {
+        var s7 = unwSelf.displayFrontLayoutForBoard_property.selection
+        switch s7 {
         case .single :
           ()
         case .empty, .multiple :
-          s8 = .single (true)
+          s7 = .single (true)
         }
-        let s9 = preferences_inner2LayoutColorForBoard_property.selection
-        var s10 = unwSelf.displayInner3LayoutForBoard_property.selection
-        switch s10 {
+        let s8 = preferences_frontSideLayoutColorForBoard_property.selection
+        var s9 = unwSelf.displayBackLayoutForBoard_property.selection
+        switch s9 {
         case .single :
           ()
         case .empty, .multiple :
-          s10 = .single (true)
+          s9 = .single (true)
         }
-        let s11 = preferences_inner3LayoutColorForBoard_property.selection
-        var s12 = unwSelf.displayInner4LayoutForBoard_property.selection
-        switch s12 {
+        let s10 = preferences_backSideLayoutColorForBoard_property.selection
+        var s11 = unwSelf.displayInner1LayoutForBoard_property.selection
+        switch s11 {
         case .single :
           ()
         case .empty, .multiple :
-          s12 = .single (true)
+          s11 = .single (true)
         }
-        let s13 = preferences_inner4LayoutColorForBoard_property.selection
-        let s14 = unwSelf.actualTrackWidth_property.selection
-        let s15 = unwSelf.mSide_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15) {
+        let s12 = preferences_inner1LayoutColorForBoard_property.selection
+        var s13 = unwSelf.displayInner2LayoutForBoard_property.selection
+        switch s13 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s13 = .single (true)
+        }
+        let s14 = preferences_inner2LayoutColorForBoard_property.selection
+        var s15 = unwSelf.displayInner3LayoutForBoard_property.selection
+        switch s15 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s15 = .single (true)
+        }
+        let s16 = preferences_inner3LayoutColorForBoard_property.selection
+        var s17 = unwSelf.displayInner4LayoutForBoard_property.selection
+        switch s17 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s17 = .single (true)
+        }
+        let s18 = preferences_inner4LayoutColorForBoard_property.selection
+        let s19 = unwSelf.actualTrackWidth_property.selection
+        let s20 = unwSelf.mSide_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -1108,9 +1125,19 @@ final class BoardTrack : BoardObject,
               .single (let v12),
               .single (let v13),
               .single (let v14),
-              .single (let v15)) :
-          return .single (transient_BoardTrack_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15))
+              .single (let v15),
+              .single (let v16),
+              .single (let v17),
+              .single (let v18),
+              .single (let v19),
+              .single (let v20)) :
+          return .single (transient_BoardTrack_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20))
         case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -1136,6 +1163,11 @@ final class BoardTrack : BoardObject,
     }
     self.mConnectorP1_property.location_property.startsBeingObserved (by: self.objectDisplay_property)
     self.mConnectorP2_property.location_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mAddedToSolderMask_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_frontSidePadColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayFrontPadsForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_backSidePadColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.displayBackPadsForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
     self.displayFrontLayoutForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
     preferences_frontSideLayoutColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
     self.displayBackLayoutForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
@@ -1220,15 +1252,18 @@ final class BoardTrack : BoardObject,
         let s1 = unwSelf.p1CanMove_property.selection
         let s2 = unwSelf.mConnectorP2_property.location_property.selection
         let s3 = unwSelf.p2CanMove_property.selection
-        let s4 = preferences_frontSideLayoutColorForBoard_property.selection
-        let s5 = preferences_inner1LayoutColorForBoard_property.selection
-        let s6 = preferences_inner2LayoutColorForBoard_property.selection
-        let s7 = preferences_inner3LayoutColorForBoard_property.selection
-        let s8 = preferences_inner4LayoutColorForBoard_property.selection
-        let s9 = preferences_backSideLayoutColorForBoard_property.selection
-        let s10 = unwSelf.mSide_property.selection
-        let s11 = unwSelf.actualTrackWidth_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11) {
+        let s4 = unwSelf.mAddedToSolderMask_property.selection
+        let s5 = preferences_frontSidePadColorForBoard_property.selection
+        let s6 = preferences_backSidePadColorForBoard_property.selection
+        let s7 = preferences_frontSideLayoutColorForBoard_property.selection
+        let s8 = preferences_inner1LayoutColorForBoard_property.selection
+        let s9 = preferences_inner2LayoutColorForBoard_property.selection
+        let s10 = preferences_inner3LayoutColorForBoard_property.selection
+        let s11 = preferences_inner4LayoutColorForBoard_property.selection
+        let s12 = preferences_backSideLayoutColorForBoard_property.selection
+        let s13 = unwSelf.mSide_property.selection
+        let s14 = unwSelf.actualTrackWidth_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -1240,9 +1275,15 @@ final class BoardTrack : BoardObject,
               .single (let v8),
               .single (let v9),
               .single (let v10),
-              .single (let v11)) :
-          return .single (transient_BoardTrack_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
+              .single (let v11),
+              .single (let v12),
+              .single (let v13),
+              .single (let v14)) :
+          return .single (transient_BoardTrack_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14))
         case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -1266,6 +1307,9 @@ final class BoardTrack : BoardObject,
     self.p1CanMove_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mConnectorP2_property.location_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.p2CanMove_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mAddedToSolderMask_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_frontSidePadColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_backSidePadColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
     preferences_frontSideLayoutColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
     preferences_inner1LayoutColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
     preferences_inner2LayoutColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)

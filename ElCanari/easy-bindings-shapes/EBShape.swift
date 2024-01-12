@@ -525,7 +525,7 @@ fileprivate final class EBShapeObject {
       switch inKnobKind {
       case .circ :
         var bp = EBBezierPath (roundedRect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0), xRadius: 2.0, yRadius: 2.0)
-        bp.lineWidth = 0.5
+        bp.lineWidth = 0.1
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
         let e1 = EBShapeElement ([bp], .fill, inBackColor, inKnobIndex, .none)
@@ -535,7 +535,7 @@ fileprivate final class EBShapeObject {
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
       case .diamond :
         var bp = EBBezierPath (octogonInRect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0))
-        bp.lineWidth = 0.5
+        bp.lineWidth = 0.1
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
         let e1 = EBShapeElement ([bp], .fill, inBackColor, inKnobIndex, .none)
@@ -545,7 +545,7 @@ fileprivate final class EBShapeObject {
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
       case .rect :
         var bp = EBBezierPath (rect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0))
-        bp.lineWidth = 0.5
+        bp.lineWidth = 0.1
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
         let e1 = EBShapeElement ([bp], .fill, inBackColor, inKnobIndex, .none)
@@ -555,7 +555,7 @@ fileprivate final class EBShapeObject {
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
       case .transparentCircle :
         var bp = EBBezierPath (rect: filledBezierPath.bounds)
-        bp.lineWidth = 0.5
+        bp.lineWidth = 0.1
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
         let e1 = EBShapeElement ([bp], .fill, .clear, inKnobIndex, .none)

@@ -56,6 +56,9 @@ graphic handlingOpposite entity BoardTrack : BoardObject {
   override transient EBShape objectDisplay dependsFrom
     self.mConnectorP1.one.location,
     self.mConnectorP2.one.location,
+    self.mAddedToSolderMask,
+    prefs.frontSidePadColorForBoard, super.BoardObject.displayFrontPadsForBoard default yes,
+    prefs.backSidePadColorForBoard, super.BoardObject.displayBackPadsForBoard default yes,
     super.BoardObject.displayFrontLayoutForBoard default yes,
     prefs.frontSideLayoutColorForBoard,
     super.BoardObject.displayBackLayoutForBoard default yes,
@@ -74,6 +77,9 @@ graphic handlingOpposite entity BoardTrack : BoardObject {
   override transient EBShape selectionDisplay dependsFrom
     self.mConnectorP1.one.location, self.p1CanMove,
     self.mConnectorP2.one.location, self.p2CanMove,
+    self.mAddedToSolderMask,
+    prefs.frontSidePadColorForBoard,
+    prefs.backSidePadColorForBoard,
     prefs.frontSideLayoutColorForBoard,
     prefs.inner1LayoutColorForBoard,
     prefs.inner2LayoutColorForBoard,

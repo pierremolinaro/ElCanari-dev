@@ -19,25 +19,32 @@ import AppKit
        _ self_mSize : Double,                               
        _ self_mHorizontalAlignment : HorizontalAlignment,   
        _ self_mVerticalAlignment : VerticalAlignment,       
+       _ self_mRotation : Int,                              
+       _ self_mBold : Bool,                                 
        _ self_mX : Int,                                     
        _ self_mY : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        // Swift.print ("self_mSize \(self_mSize)")
         let s = CGFloat (self_mSize)
-        let font = NSFont (name: "LucidaGrande", size: s)!
+        let font = self_mBold ? NSFont.boldSystemFont (ofSize: s) : NSFont.systemFont (ofSize: s)
+//        let font = NSFont (name: "LucidaGrande", size: s)!
         let p = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
+        var af = AffineTransform ()
+        af.translate (x: p.x, y: p.y)
+        af.rotate (byDegrees: CGFloat (self_mRotation) / 1000.0)
         let textAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : font,
           NSAttributedString.Key.foregroundColor : self_mColor
         ]
-        return EBShape (
+        let nonRotatedShape = EBShape (
           text: (self_mComment.isEmpty) ? "Empty comment" : self_mComment,
-          p,
+          NSPoint (),
           textAttributes,
           self_mHorizontalAlignment.ebTextShapeHorizontalAlignment,
           self_mVerticalAlignment.ebTextShapeVerticalAlignment
         )
+        let rotatedShape = nonRotatedShape.transformed (by: af)
+        return rotatedShape
 //--- END OF USER ZONE 2
 }
 
