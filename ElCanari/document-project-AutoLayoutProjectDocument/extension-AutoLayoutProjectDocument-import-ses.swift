@@ -293,9 +293,7 @@ extension AutoLayoutProjectDocument {
     }
   //--- Write tracks
     for t in routedTracksArray {
-     let track = BoardTrack (self.undoManager)
-//      let p1 = self.findOrAddConnector (at: t.p1, t.net, t.side, t.width, inRoutedViaArray, &connectorArray, &addedObjectArray)
-//      let p2 = self.findOrAddConnector (at: t.p2, t.net, t.side, t.width, inRoutedViaArray, &connectorArray, &addedObjectArray)
+      let track = BoardTrack (self.undoManager)
       let p1 = self.findOrAddConnector (at: t.p1, t.side, inRoutedViaArray, &connectorArray, &addedObjectArray)
       let p2 = self.findOrAddConnector (at: t.p2, t.side, inRoutedViaArray, &connectorArray, &addedObjectArray)
       if p1 !== p2 {
@@ -355,12 +353,9 @@ fileprivate func enterSegments (_ inScanner : Scanner,
     ok = inScanner.scanInt (&currentX) && inScanner.scanInt (&currentY)
     var loop = ok
     while loop {
-    //  let idx = inScanner.scanLocation
       let idx = inScanner.currentIndex
-   //   loop = !inScanner.scanString (")", into: nil)
       loop = inScanner.scanString (")") == nil
       if loop {
-        // inScanner.scanLocation = idx
         inScanner.currentIndex = idx
         var x = 0
         var y = 0
