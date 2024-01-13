@@ -946,7 +946,6 @@ extension Array where Element == ProductRectangle {
                     dx inDx : Int,
                     dy inDy: Int,
                     horizontalMirror inHorizontalMirror : Bool,
-//                    minimumAperture inMinimumApertureMilTenth : Int,
                     boardWidth inBoardWidth : Int,
                     modelWidth inModelWidth : Int,
                     modelHeight inModelHeight : Int,

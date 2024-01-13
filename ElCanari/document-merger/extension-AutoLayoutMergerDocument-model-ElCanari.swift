@@ -139,6 +139,22 @@ extension AutoLayoutMergerDocument {
       }
       boardModel.frontTracksNoSilkScreen = frontTrackEntities
     }
+  //--- Back tracks, no silk screen
+    do{
+      var backTrackEntities = EBReferenceArray <SegmentEntity> ()
+      let backTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_BACK_TRACKS_WITH_NO_SILK_SCREEN_KEY, &errorArray)
+      for str in backTracks {
+        let track = SegmentEntity (self.undoManager)
+        let ints = array5int (fromString: str, &errorArray)
+        track.x1 = ints [0]
+        track.y1 = ints [1]
+        track.x2 = ints [2]
+        track.y2 = ints [3]
+        track.width = ints [4]
+        backTrackEntities.append (track)
+      }
+      boardModel.backTracksNoSilkScreen = backTrackEntities
+    }
   //--- Front tracks
     do{
       var frontTrackEntities = EBReferenceArray <SegmentEntity> ()
@@ -170,22 +186,6 @@ extension AutoLayoutMergerDocument {
         backTrackEntities.append (track)
       }
       boardModel.backTracks = backTrackEntities
-    }
-  //--- Back tracks, no silk screen
-    do{
-      var backTrackEntities = EBReferenceArray <SegmentEntity> ()
-      let backTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_BACK_TRACKS_WITH_NO_SILK_SCREEN_KEY, &errorArray)
-      for str in backTracks {
-        let track = SegmentEntity (self.undoManager)
-        let ints = array5int (fromString: str, &errorArray)
-        track.x1 = ints [0]
-        track.y1 = ints [1]
-        track.x2 = ints [2]
-        track.y2 = ints [3]
-        track.width = ints [4]
-        backTrackEntities.append (track)
-      }
-      boardModel.backTracksNoSilkScreen = backTrackEntities
     }
   //--- Vias
     do{
