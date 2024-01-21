@@ -33,6 +33,7 @@ let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Correction génération des QRCodes sous Sonoma"
 ]
 let CHANGES : [String] = [
   "Ajout de la rotation des commentaires dans le schéma",
