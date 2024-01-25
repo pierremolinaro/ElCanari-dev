@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor final class CanariChoiceMenu : NSMenu {
+final class CanariChoiceMenu : NSMenu {
 
   //····················································································································
 
@@ -53,7 +53,7 @@ import AppKit
   //  selectedIndex binding
   //····················································································································
 
-  fileprivate func updateOutletFromSelectedIndexController (_ inObject : EBEnumReadWriteObservableProtocol) {
+  @MainActor fileprivate func updateOutletFromSelectedIndexController (_ inObject : EBEnumReadWriteObservableProtocol) {
     if let v = inObject.rawValue () {
       self.enableItems (true)
       self.checkItemAtIndex (v)
@@ -68,7 +68,7 @@ import AppKit
 
   //····················································································································
 
-  final func bind_selectedIndex (_ object : EBEnumReadWriteObservableProtocol) {
+  @MainActor final func bind_selectedIndex (_ object : EBEnumReadWriteObservableProtocol) {
     self.mSelectedIndexController = Controller_CanariChoiceMenu_selectedIndex (object: object, outlet: self)
   }
 
@@ -87,7 +87,7 @@ import AppKit
 //   Controller_CanariChoiceMenu_selectedIndex
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariChoiceMenu_selectedIndex : EBObservablePropertyController {
+@MainActor final class Controller_CanariChoiceMenu_selectedIndex : EBObservablePropertyController {
 
   //····················································································································
 

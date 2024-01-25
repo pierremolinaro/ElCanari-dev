@@ -2222,14 +2222,18 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   
   stackView \BoardTextInspectorView vStack {
     StaticLabel (title: "Text Inspector", bold: yes, size: .small, alignment: .center)
+    TextField (minWidth: 150, size: .small) {
+      automaticallyAdjustHeight (maxWidth: 150)
+      $value #boardTextSelectionController.mText (sendContinously : yes)
+    }
     GridView2 {
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Text", bold: no, size: .small, alignment: .right) { expandableHeight () },
-        right: TextField (minWidth: 150, size: .small) {
-          automaticallyAdjustHeight (maxWidth: 150)
-          $value #boardTextSelectionController.mText (sendContinously : yes)
-        }
-      )
+//      addFirstBaseLineAligned (
+//        left: StaticLabel (title: "Text", bold: no, size: .small, alignment: .right) { expandableHeight () },
+//        right: TextField (minWidth: 150, size: .small) {
+//          automaticallyAdjustHeight (maxWidth: 150)
+//          $value #boardTextSelectionController.mText (sendContinously : yes)
+//        }
+//      )
       addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabels (left: "Origin", right:"X", bold: no, size: .small),

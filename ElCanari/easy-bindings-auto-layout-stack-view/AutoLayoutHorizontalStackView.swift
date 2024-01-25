@@ -132,12 +132,13 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
     if debugAutoLayout () {
       DEBUG_HORIZONTAL_SEPARATOR_FILL_COLOR.setFill ()
       var optionalLastView : NSView? = nil
+      let bounds = self.bounds
       for view in self.subviews {
         if !view.isHidden {
           if let lastView = optionalLastView {
             let left = lastView.frame.maxX
             let right = view.frame.minX
-            let r = NSRect (x: left, y: inDirtyRect.minY, width: right - left, height: inDirtyRect.size.height)
+            let r = NSRect (x: left, y: bounds.origin.y, width: right - left, height: bounds.size.height)
             NSBezierPath.fill (r)
           }
           optionalLastView = view

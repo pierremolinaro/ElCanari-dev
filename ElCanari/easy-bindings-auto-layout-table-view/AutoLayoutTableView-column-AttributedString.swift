@@ -103,7 +103,7 @@ fileprivate class InternalAttributedStringTableColumn : AutoLayoutTableColumn {
 
   //····················································································································
 
-  @objc private func setterAction (_ inSender : Any?) {
+  @MainActor @objc private func setterAction (_ inSender : Any?) {
     if let textField = inSender as? NSTextField {
       let rowIndex = textField.tag
       let newValue = textField.attributedStringValue

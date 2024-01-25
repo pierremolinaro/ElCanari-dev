@@ -12,7 +12,7 @@ import AppKit
 // AutoLayoutTableColumn
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor class AutoLayoutTableColumn : NSTableColumn {
+class AutoLayoutTableColumn : NSTableColumn {
 
   //····················································································································
 
@@ -51,7 +51,7 @@ import AppKit
 
   //····················································································································
 
-  func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? { // Abstract method
+  @MainActor func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? { // Abstract method
     return nil
   }
 

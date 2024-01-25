@@ -66,7 +66,7 @@ fileprivate final class InternalColorValueTableColumn : AutoLayoutTableColumn {
 
   //····················································································································
 
-  override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
+  @MainActor override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
     let view = AutoLayoutViewWithBackground ()
     let color = self.mValueGetterDelegate (inRowIndex)
     view.mBackGroundColor = color

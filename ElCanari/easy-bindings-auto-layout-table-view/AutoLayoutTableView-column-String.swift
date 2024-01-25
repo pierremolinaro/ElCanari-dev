@@ -104,7 +104,7 @@ fileprivate final class InternalStringValueTableColumn : AutoLayoutTableColumn {
 
   //····················································································································
 
-  @objc func setterAction (_ inSender : Any?) {
+  @MainActor @objc func setterAction (_ inSender : Any?) {
     if let textField = inSender as? NSTextField {
       let rowIndex = textField.tag
       let newValue = textField.stringValue

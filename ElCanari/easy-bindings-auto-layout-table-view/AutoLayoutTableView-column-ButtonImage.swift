@@ -103,7 +103,7 @@ fileprivate class InternalButtonImageTableColumn : AutoLayoutTableColumn {
 
   //····················································································································
 
-  @objc private func buttonAction (_ inSender : NSButton) {
+  @MainActor @objc private func buttonAction (_ inSender : NSButton) {
     let rowIndex = inSender.tag
     self.mActionDelegate (rowIndex)
   }

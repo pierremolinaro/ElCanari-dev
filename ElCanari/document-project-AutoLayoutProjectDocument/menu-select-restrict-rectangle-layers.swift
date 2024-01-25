@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor final class CanariSelectRestrictRectanglesMenu : NSMenu {
+final class CanariSelectRestrictRectanglesMenu : NSMenu {
 
   //····················································································································
 
@@ -69,7 +69,7 @@ import AppKit
   // menuItemAction
   //····················································································································
 
-  @objc private func menuItemAction (_ inSender : NSMenuItem) {
+  @MainActor @objc private func menuItemAction (_ inSender : NSMenuItem) {
     let value = self.mValue ^ (1 << inSender.tag)
     self.mLayersController?.updateModel (withValue: value)
   }
@@ -78,7 +78,7 @@ import AppKit
   //  $layers binding
   //····················································································································
 
-  private func updateOutlet (_ object : EBObservableProperty <Int>) {
+  @MainActor private func updateOutlet (_ object : EBObservableProperty <Int>) {
     switch object.selection {
     case .empty, .multiple :
       for item in self.items {
@@ -107,7 +107,7 @@ import AppKit
 
   //····················································································································
 
-  final func bind_layers (_ object : EBObservableMutableProperty <Int>) {
+  @MainActor final func bind_layers (_ object : EBObservableMutableProperty <Int>) {
     self.mLayersController = EBGenericReadWritePropertyController <Int> (
       observedObject: object,
       callBack: { [weak self] in self?.updateOutlet (object) }
@@ -116,7 +116,7 @@ import AppKit
 
   //····················································································································
 
-  final func unbind_layers () {
+  @MainActor final func unbind_layers () {
     self.mLayersController?.unregister ()
     self.mLayersController = nil
   }

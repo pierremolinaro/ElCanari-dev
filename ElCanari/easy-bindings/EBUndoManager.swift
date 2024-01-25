@@ -8,7 +8,7 @@ import AppKit
 // http://nshipster.com/nsundomanager/
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor final class EBUndoManager : UndoManager {
+final class EBUndoManager : UndoManager {
 
   //····················································································································
   //    init
@@ -29,7 +29,7 @@ import AppKit
   //    registerUndoWithTarget
   //····················································································································
 
-  override func registerUndo (withTarget target : Any, selector : Selector, object anObject : Any?) {
+  @MainActor override func registerUndo (withTarget target : Any, selector : Selector, object anObject : Any?) {
     super.registerUndo (withTarget: target, selector: selector, object: anObject)
     if logEvents () {
       appendToTransientEventLog ("registerUndoWithTarget (\(isUndoRegistrationEnabled), target \(target), selector \"\(selector)\", object \"\(String(describing: anObject))\"\n")
@@ -40,7 +40,7 @@ import AppKit
   //    beginUndoGrouping
   //····················································································································
 
-  override func beginUndoGrouping () {
+  @MainActor override func beginUndoGrouping () {
     if logEvents () {
       appendToTransientEventLog ("beginUndoGrouping\n")
     }
@@ -51,7 +51,7 @@ import AppKit
   //    endUndoGrouping
   //····················································································································
 
-  override func endUndoGrouping () {
+  @MainActor override func endUndoGrouping () {
     if logEvents () {
       appendToTransientEventLog ("endUndoGrouping\n")
     }
@@ -62,7 +62,7 @@ import AppKit
   //    disableUndoRegistration
   //····················································································································
 
-  override func disableUndoRegistration () {
+  @MainActor override func disableUndoRegistration () {
     if logEvents () {
       appendToTransientEventLog ("disableUndoRegistration\n")
     }
@@ -73,7 +73,7 @@ import AppKit
   //    enableUndoRegistration
   //····················································································································
 
-  override func enableUndoRegistration () {
+  @MainActor override func enableUndoRegistration () {
     if logEvents () {
       appendToTransientEventLog ("enableUndoRegistration\n")
     }

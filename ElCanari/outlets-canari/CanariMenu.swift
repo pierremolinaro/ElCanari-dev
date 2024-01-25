@@ -4,7 +4,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor final class CanariMenu : NSMenu { 
+final class CanariMenu : NSMenu {
 
   //····················································································································
 
@@ -23,7 +23,7 @@ import AppKit
   //  $populateSubmenus binding
   //····················································································································
 
-  @objc func revealInFinder (_ sender : NSMenuItem) {
+  @MainActor @objc func revealInFinder (_ sender : NSMenuItem) {
     let ws = NSWorkspace.shared
     let title = sender.title
     let ok = ws.open (URL (fileURLWithPath: title))
@@ -38,7 +38,7 @@ import AppKit
 
   //····················································································································
 
-  private func updateOutlet (_ object : EBObservableProperty <StringArray>) {
+  @MainActor private func updateOutlet (_ object : EBObservableProperty <StringArray>) {
     switch object.selection {
     case .empty, .multiple :
       self.removeAllItems ()
@@ -57,7 +57,7 @@ import AppKit
 
   //····················································································································
 
-  final func bind_populateSubmenus (_ object : EBObservableProperty <StringArray>) {
+  @MainActor final func bind_populateSubmenus (_ object : EBObservableProperty <StringArray>) {
     self.mValueController = EBObservablePropertyController (
       observedObjects: [object],
       callBack: { self.updateOutlet (object) }

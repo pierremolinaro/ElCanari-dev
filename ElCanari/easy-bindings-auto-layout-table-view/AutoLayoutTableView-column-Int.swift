@@ -113,7 +113,7 @@ fileprivate final class InternalIntValueTableColumn : AutoLayoutTableColumn {
 
   //····················································································································
 
-  @objc func setterAction (_ inSender : Any?) {
+  @MainActor @objc func setterAction (_ inSender : Any?) {
     if let textField = inSender as? NSTextField,
        let formatter = textField.formatter as? NumberFormatter,
        let outletValueNumber = formatter.number (from: textField.stringValue) {

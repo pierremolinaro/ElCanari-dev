@@ -182,14 +182,14 @@ class AutoLayoutVerticalStackView : AutoLayoutBase_NSStackView {
     super.draw (inDirtyRect)
     if debugAutoLayout () {
       DEBUG_VERTICAL_SEPARATOR_FILL_COLOR.setFill ()
+      let bounds = self.bounds
       var optionalLastView : NSView? = nil
       for view in self.subviews {
         if !view.isHidden {
           if let lastView = optionalLastView {
             let top = lastView.frame.minY
             let bottom = view.frame.maxY
-            let r = NSRect (x: inDirtyRect.minX, y: bottom, width: inDirtyRect.size.width, height: top - bottom)
-//            Swift.print ("r \(r)")
+            let r = NSRect (x: bounds.origin.x, y: bottom, width: bounds.size.width, height: top - bottom)
             NSBezierPath.fill (r)
           }
           optionalLastView = view

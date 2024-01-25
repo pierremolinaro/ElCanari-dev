@@ -79,7 +79,7 @@ fileprivate final class InternalImageIntValueTableColumn : AutoLayoutTableColumn
 
   //····················································································································
 
-  override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
+  @MainActor override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
     let value : (Int?, NSImage?) = self.mValueGetterDelegate (inRowIndex)
 
     let imageView = AutoLayoutStaticImageView (image: value.1)

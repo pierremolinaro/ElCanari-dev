@@ -104,7 +104,7 @@ fileprivate final class InternalStringValueOutlineViewTableColumn : AutoLayoutTa
 
   //····················································································································
 
-  @objc func ebAction (_ inSender : Any?) {
+  @MainActor @objc func ebAction (_ inSender : Any?) {
     if let textField = inSender as? NSTextField {
       let rowIndex = textField.tag
       let newValue = textField.stringValue

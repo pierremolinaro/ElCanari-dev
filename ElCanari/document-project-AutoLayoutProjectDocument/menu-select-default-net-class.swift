@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor final class CanariSelectDefaultNetClassMenu : NSMenu {
+final class CanariSelectDefaultNetClassMenu : NSMenu {
 
   //····················································································································
 
@@ -48,8 +48,8 @@ import AppKit
 
   //····················································································································
 
-  final func bind_netClasses (_ inSelectedNetClassName : EBObservableMutableProperty <String>,
-                              _ inNetClassNames : EBObservableProperty <StringArray>) -> Self {
+  @MainActor final func bind_netClasses (_ inSelectedNetClassName : EBObservableMutableProperty <String>,
+                                         _ inNetClassNames : EBObservableProperty <StringArray>) -> Self {
     self.mController = Controller_CanariDefaultNetClassMenu (inSelectedNetClassName, inNetClassNames, self)
     return self
   }
