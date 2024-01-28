@@ -17,7 +17,7 @@ class AutoLayoutTableColumn : NSTableColumn {
   //····················································································································
 
   let mContentAlignment : NSTextAlignment
-  let mSortDelegate : Optional < (_ inAscending : Bool) -> Void>
+  let mSortDelegate : Optional < (_ inAscending : Bool) -> Void >
 
   //····················································································································
   // INIT
