@@ -22,6 +22,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   fileprivate var mZoomToFitButton : AutoLayoutBase_NSButton? = nil
   fileprivate var mHelperTextField : NSTextField? = nil
   fileprivate var mFocusRing : EBFocusRingView? = nil
+  fileprivate let mTopHStack = AutoLayoutHorizontalStackView ().set (margins: FOCUS_RING_MARGIN)
 
   //····················································································································
 
@@ -30,24 +31,23 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   //---
     _ = self.set (spacing: 0)
   //---
-    let hStack = AutoLayoutHorizontalStackView ().set (margins: FOCUS_RING_MARGIN)
-    hStack.alignment = .firstBaseline
-    _ = self.appendView (hStack)
+    self.mTopHStack.alignment = .firstBaseline
+    _ = self.appendView (self.mTopHStack)
   //--- Build popup button
     let zoomPopUp = buildZoomPopUpButton (minZoom: inMinZoom, maxZoom: inMaxZoom)
-    _ = hStack.appendView (zoomPopUp)
+    _ = self.mTopHStack.appendView (zoomPopUp)
     self.mZoomPopUpButton = zoomPopUp
   //--- Build zoom to fit button
     let zoomToFitButton = buildZoomToFitButton ()
-    _ = hStack.appendView (zoomToFitButton)
+    _ = self.mTopHStack.appendView (zoomToFitButton)
     self.mZoomToFitButton = zoomToFitButton
   //--- Build helper text
     let helperTextField = AutoLayoutLabel (bold: false, size: .small).set (minWidth: 200)
     helperTextField.setContentCompressionResistancePriority (.defaultLow, for: .horizontal)
     helperTextField.lineBreakMode = .byTruncatingTail
-    _ = hStack.appendView (helperTextField)
+    _ = self.mTopHStack.appendView (helperTextField)
     self.mHelperTextField = helperTextField
-    _ = hStack.appendView (AutoLayoutFlexibleSpace ())
+    _ = self.mTopHStack.appendView (AutoLayoutFlexibleSpace ())
   //--- Build focus ring
     let focusRingView = EBFocusRingView ()
     _ = self.appendView (focusRingView)
@@ -71,6 +71,13 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  func prepend (toTopHStack inView : NSView) -> Self {
+     _ = self.mTopHStack.prependView (inView)
+    return self
   }
 
   //····················································································································

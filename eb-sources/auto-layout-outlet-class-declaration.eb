@@ -232,6 +232,7 @@ extern autolayout class GraphicView (minZoom : Int, maxZoom : Int) $graphicContr
   $backgroundImageOpacity transient Double
   $foregroundImageData transient Data
   $foregroundImageOpacity transient Double
+  func prepend (toTopHStack : view)
 }
 
 extern autolayout class DragSourceButton (tooltip: String) $enabled {
@@ -456,7 +457,7 @@ extern autolayout class CanariBoardRectangleView {
   $unit transient Int
 }
 
-extern autolayout class CanariBoardOperationPullDownButton {
+extern autolayout class CanariBoardOperationPullDownButton (size: EBControlSize) {
 }
 
 extern autolayout class CanariSelectionPopUpButton (size: EBControlSize) $hidden {

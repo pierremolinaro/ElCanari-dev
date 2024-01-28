@@ -1272,8 +1272,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     newView boardERCInspectorView = \boardERCInspectorView ()
     vStack set (width: 250) set (spacing: 0) {
       hStack set (spacing: 0) set (margins: 8) {
-        CanariBoardOperationPullDownButton [configurator boardOperationPullDownButtonConfigurator]
-        space
+//        CanariBoardOperationPullDownButton [configurator boardOperationPullDownButtonConfigurator]
+//        space
         DragSourceButtonWithMenus (tooltip: "Add Image; the layer is set by the contextual menu.") [configurator addBoardImageButton]
         space
         DragSourceButtonWithMenus (tooltip: "Add QR Code; the layer is set by the contextual menu.") [configurator addQRCodeButton]
@@ -1306,6 +1306,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     separator
     GraphicView (minZoom: 10, maxZoom: 20_000) [outlet mBoardView configurator boardView] {
+      prepend (toTopHStack: CanariBoardOperationPullDownButton (size: .small) [configurator boardOperationPullDownButtonConfigurator])
       $underObjectsDisplay root.borderOutlineBackground
       $overObjectsDisplay self.boardOutlineOverDisplay
       $horizontalFlip root.mBoardHorizontalFlip
@@ -1697,13 +1698,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   
   stackView \boardERCInspectorView vStack set (margins: 8) {
     StaticLabel (title: "ERC Checking", bold: yes, size: .small, alignment: .center)
-//    hStack {
-//      Button (title: "◀︎+", size: .regular) { $run prependNewBoardERCCheckingInspectorAction }
-//      space
-//      StaticLabel (title: "ERC Checking", bold: yes, size: .small, alignment: .center)
-//      space
-//      Button (title: "+▶︎", size: .regular) { $run appendNewBoardERCCheckingInspectorAction }
-//    }
     Checkbox (title: "Check Clearance\nbetween Pads of the same Net", size: .small) {
       set (width: 200)
       $value root.mCheckClearanceBetweenPadsOfSameNet
@@ -2227,13 +2221,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       $value #boardTextSelectionController.mText (sendContinously : yes)
     }
     GridView2 {
-//      addFirstBaseLineAligned (
-//        left: StaticLabel (title: "Text", bold: no, size: .small, alignment: .right) { expandableHeight () },
-//        right: TextField (minWidth: 150, size: .small) {
-//          automaticallyAdjustHeight (maxWidth: 150)
-//          $value #boardTextSelectionController.mText (sendContinously : yes)
-//        }
-//      )
       addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabels (left: "Origin", right:"X", bold: no, size: .small),

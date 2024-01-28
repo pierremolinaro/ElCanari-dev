@@ -14,8 +14,8 @@ final class AutoLayoutCanariBoardOperationPullDownButton : AutoLayoutBase_NSPopU
 
   //····················································································································
 
-  init () {
-    super.init (pullsDown: true, size: .regular)
+  init (size inSize : EBControlSize) {
+    super.init (pullsDown: true, size: inSize)
 
     self.addItem (withTitle: "")
     self.lastItem?.image = NSImage (named: NSImage.smartBadgeTemplateName)
