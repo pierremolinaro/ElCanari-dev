@@ -177,7 +177,9 @@ graphic entity PackageSegment : PackageObject {
      self.strokeBezierPath, prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
   ;
 
-  override transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2, super.PackageObject.knobSize ;
+  override transient EBShape selectionDisplay dependsFrom
+     prefs.selectionHiliteColor,
+     self.x1, self.y1, self.x2, self.y2, super.PackageObject.knobSize ;
 
   override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
@@ -218,6 +220,7 @@ graphic entity PackageBezier : PackageObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
     self.x1, self.y1, self.x2, self.y2,
     self.cpx1, self.cpy1, self.cpx2, self.cpy2,
     super.PackageObject.knobSize
@@ -254,6 +257,7 @@ graphic entity PackageOval : PackageObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+     prefs.selectionHiliteColor,
      self.x, self.y, self.width, self.height, super.PackageObject.knobSize
   ;
 
@@ -291,6 +295,7 @@ graphic entity PackageArc : PackageObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+     prefs.selectionHiliteColor,
      self.xCenter, self.yCenter, self.radius, self.startAngle, self.arcAngle,
      self.startTangent, self.endTangent, self.pathIsClosed,
      super.PackageObject.knobSize
@@ -335,6 +340,7 @@ graphic handlingOpposite entity PackagePad : PackageObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+     prefs.selectionHiliteColor,
      self.xCenter, self.yCenter, self.width, self.height, self.padShape
   ;
 
@@ -400,6 +406,7 @@ graphic handlingOpposite entity PackageSlavePad : PackageObject {
      prefs.backSidePadColor, prefs.displayPackageBackSidePads
   ;
   override transient EBShape selectionDisplay dependsFrom
+     prefs.selectionHiliteColor,
      self.xCenter, self.yCenter, self.width, self.height, self.padShape
   ;
 
@@ -441,6 +448,7 @@ graphic entity PackageGuide : PackageObject {
   override transient EBShape objectDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
   override transient EBShape selectionDisplay dependsFrom 
+    prefs.selectionHiliteColor,
     self.x1, self.y1, self.x2, self.y2,
     super.PackageObject.knobSize
   ;
@@ -484,6 +492,7 @@ graphic entity PackageDimension : PackageObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
     self.x1, self.y1, self.x2, self.y2,
     prefs.packageBackgroundColor,
     prefs.packageDimensionColor,
@@ -529,6 +538,7 @@ graphic entity PackageZone : PackageObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
      self.x, self.y, self.width, self.height,
      self.xName, self.yName, self.zoneName, prefs.padZoneFont,
      prefs.packageBackgroundColor,
@@ -575,6 +585,7 @@ graphic handlingOpposite entity PackageModelImageDoublePoint {
   ;
 
   transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
      self.mFirstX, self.mFirstY,
      self.mSecondDx, self.mSecondDy, self.mRoot.one.mModelPointsCircleRadius
   ;

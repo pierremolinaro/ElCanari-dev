@@ -1248,22 +1248,23 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.mConnectorP1_property.location_property.selection
-        let s1 = unwSelf.p1CanMove_property.selection
-        let s2 = unwSelf.mConnectorP2_property.location_property.selection
-        let s3 = unwSelf.p2CanMove_property.selection
-        let s4 = unwSelf.mAddedToSolderMask_property.selection
-        let s5 = preferences_frontSidePadColorForBoard_property.selection
-        let s6 = preferences_backSidePadColorForBoard_property.selection
-        let s7 = preferences_frontSideLayoutColorForBoard_property.selection
-        let s8 = preferences_inner1LayoutColorForBoard_property.selection
-        let s9 = preferences_inner2LayoutColorForBoard_property.selection
-        let s10 = preferences_inner3LayoutColorForBoard_property.selection
-        let s11 = preferences_inner4LayoutColorForBoard_property.selection
-        let s12 = preferences_backSideLayoutColorForBoard_property.selection
-        let s13 = unwSelf.mSide_property.selection
-        let s14 = unwSelf.actualTrackWidth_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14) {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.mConnectorP1_property.location_property.selection
+        let s2 = unwSelf.p1CanMove_property.selection
+        let s3 = unwSelf.mConnectorP2_property.location_property.selection
+        let s4 = unwSelf.p2CanMove_property.selection
+        let s5 = unwSelf.mAddedToSolderMask_property.selection
+        let s6 = preferences_frontSidePadColorForBoard_property.selection
+        let s7 = preferences_backSidePadColorForBoard_property.selection
+        let s8 = preferences_frontSideLayoutColorForBoard_property.selection
+        let s9 = preferences_inner1LayoutColorForBoard_property.selection
+        let s10 = preferences_inner2LayoutColorForBoard_property.selection
+        let s11 = preferences_inner3LayoutColorForBoard_property.selection
+        let s12 = preferences_inner4LayoutColorForBoard_property.selection
+        let s13 = preferences_backSideLayoutColorForBoard_property.selection
+        let s14 = unwSelf.mSide_property.selection
+        let s15 = unwSelf.actualTrackWidth_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -1278,9 +1279,11 @@ final class BoardTrack : BoardObject,
               .single (let v11),
               .single (let v12),
               .single (let v13),
-              .single (let v14)) :
-          return .single (transient_BoardTrack_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14))
+              .single (let v14),
+              .single (let v15)) :
+          return .single (transient_BoardTrack_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -1303,6 +1306,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mConnectorP1_property.location_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.p1CanMove_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mConnectorP2_property.location_property.startsBeingObserved (by: self.selectionDisplay_property)

@@ -98,6 +98,7 @@ graphic handlingOpposite entity BoardConnector : BoardObject {
   ;
   
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
     self.isVia,
     self.location
   ;

@@ -15,6 +15,7 @@ graphic handlingOpposite entity WireInSchematic : SchematicObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
     self.mP1.one.location,
     self.mP1.one.canMove,
     self.mP2.one.location,

@@ -41,6 +41,7 @@ graphic entity BoardRestrictRectangle : BoardObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
     self.mX, self.mY, self.mWidth, self.mHeight,
     prefs.hiliteWidthMultipliedByTen
   ;

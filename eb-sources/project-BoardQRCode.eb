@@ -38,6 +38,7 @@ graphic handlingOpposite entity BoardQRCode : BoardObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
     self.mCenterX, self.mCenterY, self.qrCodeDescriptor,
     self.mLayer, self.mRotation, self.mModuleSize,
     prefs.frontSideLegendColorForBoard,

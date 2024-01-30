@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardTrack_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,         
        _ self_mConnectorP1_location : CanariPoint?,    
        _ self_p1CanMove : Bool,                        
        _ self_mConnectorP2_location : CanariPoint?,    
@@ -63,7 +64,7 @@ import AppKit
         bp.lineJoinStyle = .round
         bp.move (to: p1)
         bp.line (to: p2)
-        shape.add (stroke: [bp], .cyan)
+        shape.add (stroke: [bp], prefs_selectionHiliteColor)
         bp.lineWidth = canariUnitToCocoa (self_actualTrackWidth)
         shape.add (stroke: [bp], color)
       //--- Knobs

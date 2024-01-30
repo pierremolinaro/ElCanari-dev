@@ -20,6 +20,7 @@ graphic handlingOpposite entity LabelInSchematic : SchematicObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
     self.mPoint.one.location,
     self.netName,
     prefs.pinNameFont,

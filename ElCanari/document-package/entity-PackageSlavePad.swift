@@ -102,12 +102,6 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol PackageSlavePad_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 @MainActor protocol PackageSlavePad_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
@@ -149,6 +143,12 @@ import AppKit
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol PackageSlavePad_selectionDisplay : AnyObject {
+  var selectionDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: PackageSlavePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -169,14 +169,14 @@ final class PackageSlavePad : PackageObject,
          PackageSlavePad_holeHeightUnit,
          PackageSlavePad_annularRingUnit,
          PackageSlavePad_objectDisplay,
-         PackageSlavePad_selectionDisplay,
          PackageSlavePad_issues,
          PackageSlavePad_padIsTraversing,
          PackageSlavePad_annularRing,
          PackageSlavePad_padNameWithZoneName,
          PackageSlavePad_masterPadNameWithZoneName,
          PackageSlavePad_padNameForDisplay,
-         PackageSlavePad_padNumberDisplay {
+         PackageSlavePad_padNumberDisplay,
+         PackageSlavePad_selectionDisplay {
 
   //····················································································································
   //   Atomic property: xCenter
@@ -568,39 +568,6 @@ final class PackageSlavePad : PackageObject,
     preferences_displayPackageFrontSidePads_property.startsBeingObserved (by: self.objectDisplay_property)
     preferences_backSidePadColor_property.startsBeingObserved (by: self.objectDisplay_property)
     preferences_displayPackageBackSidePads_property.startsBeingObserved (by: self.objectDisplay_property)
-  //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.xCenter_property.selection
-        let s1 = unwSelf.yCenter_property.selection
-        let s2 = unwSelf.width_property.selection
-        let s3 = unwSelf.height_property.selection
-        let s4 = unwSelf.padShape_property.selection
-        switch (s0, s1, s2, s3, s4) {
-        case (.single (let v0),
-              .single (let v1),
-              .single (let v2),
-              .single (let v3),
-              .single (let v4)) :
-          return .single (transient_PackageSlavePad_selectionDisplay (v0, v1, v2, v3, v4))
-        case (.multiple,
-              .multiple,
-              .multiple,
-              .multiple,
-              .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.xCenter_property.startsBeingObserved (by: self.selectionDisplay_property)
-    self.yCenter_property.startsBeingObserved (by: self.selectionDisplay_property)
-    self.width_property.startsBeingObserved (by: self.selectionDisplay_property)
-    self.height_property.startsBeingObserved (by: self.selectionDisplay_property)
-    self.padShape_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -768,6 +735,43 @@ final class PackageSlavePad : PackageObject,
     preferences_padNumberFont_property.startsBeingObserved (by: self.padNumberDisplay_property)
     preferences_padNumberColor_property.startsBeingObserved (by: self.padNumberDisplay_property)
     self.padNameForDisplay_property.startsBeingObserved (by: self.padNumberDisplay_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.xCenter_property.selection
+        let s2 = unwSelf.yCenter_property.selection
+        let s3 = unwSelf.width_property.selection
+        let s4 = unwSelf.height_property.selection
+        let s5 = unwSelf.padShape_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5)) :
+          return .single (transient_PackageSlavePad_selectionDisplay (v0, v1, v2, v3, v4, v5))
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.xCenter_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.yCenter_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.width_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.height_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.padShape_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.annularRingUnit_property.setSignatureObserver (observer: self)

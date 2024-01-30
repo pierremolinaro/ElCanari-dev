@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageOval_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,          
        _ self_x : Int,                                  
        _ self_y : Int,                                  
        _ self_width : Int,                              
@@ -44,7 +45,7 @@ import AppKit
     bp = EBBezierPath (ovalIn: r)
   }
   bp.lineWidth = 0.25
-  shape.add (stroke: [bp], NSColor.cyan)
+  shape.add (stroke: [bp], prefs_selectionHiliteColor)
   shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y), knobIndex: PACKAGE_OVAL_BOTTOM, .diamond, CGFloat (self_PackageObject_knobSize))
   shape.add (knobAt:  NSPoint (x: x, y: y + height / 2.0), knobIndex: PACKAGE_OVAL_LEFT, .diamond, CGFloat (self_PackageObject_knobSize))
   shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y + height), knobIndex: PACKAGE_OVAL_TOP, .diamond, CGFloat (self_PackageObject_knobSize))

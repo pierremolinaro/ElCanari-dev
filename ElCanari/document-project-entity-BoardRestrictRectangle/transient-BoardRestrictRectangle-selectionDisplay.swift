@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardRestrictRectangle_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,                     
        _ self_mX : Int,                                            
        _ self_mY : Int,                                            
        _ self_mWidth : Int,                                        
@@ -31,7 +32,7 @@ import AppKit
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
         var shape = EBShape ()
-        shape.add (stroke: [bp], .cyan)
+        shape.add (stroke: [bp], prefs_selectionHiliteColor)
       //--- Knobs
         shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y), knobIndex: BOARD_RESTRICT_RECT_BOTTOM, .diamond, 2.0)
         shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y + height), knobIndex: BOARD_RESTRICT_RECT_TOP, .diamond, 2.0)

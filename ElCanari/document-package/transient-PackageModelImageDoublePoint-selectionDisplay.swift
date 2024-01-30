@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageModelImageDoublePoint_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,                           
        _ self_mFirstX : Int,                                             
        _ self_mFirstY : Int,                                             
        _ self_mSecondDx : Int,                                           
@@ -34,7 +35,7 @@ import AppKit
   bp1.lineWidth = 1.0
   var bp2 = EBBezierPath (ovalIn: secondR)
   bp2.lineWidth = 1.0
-  shape.add (stroke: [bp1, bp2], .cyan)
+  shape.add (stroke: [bp1, bp2], prefs_selectionHiliteColor)
   shape.add (knobAt: NSPoint (x: firstX, y: firstY), knobIndex: MODEL_IMAGE_FIRST_POINT, .transparentCircle, firstPointRadiusInCocoaUnit * 2.0 + IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH)
   shape.add (knobAt: NSPoint (x: secondX, y: secondY), knobIndex: MODEL_IMAGE_SECOND_POINT, .transparentCircle, secondPointRadiusInCocoaUnit * 2.0 + IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH)
   return shape

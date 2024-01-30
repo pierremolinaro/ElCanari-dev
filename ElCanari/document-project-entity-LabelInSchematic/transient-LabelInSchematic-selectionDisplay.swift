@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_LabelInSchematic_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,               
        _ self_mPoint_location : CanariPoint?,                
        _ self_netName : String,                              
        _ prefs_pinNameFont : NSFont,                         
@@ -38,7 +39,7 @@ import AppKit
           af.translate (x: p.x, y: p.y)
           af.rotate (byDegrees: CGFloat (self_mOrientation.rawValue) * 90.0)
         //---
-          shape.add (stroke: [bp.transformed (by: af)], .cyan)
+          shape.add (stroke: [bp.transformed (by: af)], prefs_selectionHiliteColor)
           shape.add (knobAt:  p, knobIndex: LABEL_IN_SCHEMATICS_TRANSLATION_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
         //--- Net name
           let labelOrigin = af.transform (NSPoint (x: SCHEMATIC_LABEL_SIZE * 8.0, y: 0.0))

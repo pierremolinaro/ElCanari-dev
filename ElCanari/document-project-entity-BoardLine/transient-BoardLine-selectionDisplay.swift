@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardLine_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,        
        _ self_mX1 : Int,                              
        _ self_mY1 : Int,                              
        _ self_mX2 : Int,                              
@@ -29,7 +30,7 @@ import AppKit
       let p2 = CanariPoint (x: self_mX2, y: self_mY2).cocoaPoint
       bp.move (to: p1)
       bp.line (to: p2)
-      var shape = EBShape (stroke: [bp], .cyan)
+      var shape = EBShape (stroke: [bp], prefs_selectionHiliteColor)
     //--- Knobs
       shape.add (knobAt: p1, knobIndex: BOARD_LINE_P1, .diamond, 2.0)
       shape.add (knobAt: p2, knobIndex: BOARD_LINE_P2, .diamond, 2.0)

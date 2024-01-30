@@ -241,15 +241,16 @@ final class SymbolBezierCurve : SymbolObject {
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.x1_property.selection
-        let s1 = unwSelf.y1_property.selection
-        let s2 = unwSelf.x2_property.selection
-        let s3 = unwSelf.y2_property.selection
-        let s4 = unwSelf.cpx1_property.selection
-        let s5 = unwSelf.cpy1_property.selection
-        let s6 = unwSelf.cpx2_property.selection
-        let s7 = unwSelf.cpy2_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7) {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.x1_property.selection
+        let s2 = unwSelf.y1_property.selection
+        let s3 = unwSelf.x2_property.selection
+        let s4 = unwSelf.y2_property.selection
+        let s5 = unwSelf.cpx1_property.selection
+        let s6 = unwSelf.cpy1_property.selection
+        let s7 = unwSelf.cpx2_property.selection
+        let s8 = unwSelf.cpy2_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -257,9 +258,11 @@ final class SymbolBezierCurve : SymbolObject {
               .single (let v4),
               .single (let v5),
               .single (let v6),
-              .single (let v7)) :
-          return .single (transient_SymbolBezierCurve_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+              .single (let v7),
+              .single (let v8)) :
+          return .single (transient_SymbolBezierCurve_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -275,6 +278,7 @@ final class SymbolBezierCurve : SymbolObject {
         return .empty
       }
     }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.x1_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.y1_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.x2_property.startsBeingObserved (by: self.selectionDisplay_property)

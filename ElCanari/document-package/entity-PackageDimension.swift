@@ -443,20 +443,21 @@ final class PackageDimension : PackageObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.x1_property.selection
-        let s1 = unwSelf.y1_property.selection
-        let s2 = unwSelf.x2_property.selection
-        let s3 = unwSelf.y2_property.selection
-        let s4 = preferences_packageBackgroundColor_property.selection
-        let s5 = preferences_packageDimensionColor_property.selection
-        let s6 = unwSelf.drawDimensionBackground_property.selection
-        let s7 = unwSelf.xDimension_property.selection
-        let s8 = unwSelf.yDimension_property.selection
-        let s9 = unwSelf.distanceInCanariUnit_property.selection
-        let s10 = unwSelf.distanceUnit_property.selection
-        let s11 = preferences_dimensionFont_property.selection
-        let s12 = unwSelf.knobSize_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12) {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.x1_property.selection
+        let s2 = unwSelf.y1_property.selection
+        let s3 = unwSelf.x2_property.selection
+        let s4 = unwSelf.y2_property.selection
+        let s5 = preferences_packageBackgroundColor_property.selection
+        let s6 = preferences_packageDimensionColor_property.selection
+        let s7 = unwSelf.drawDimensionBackground_property.selection
+        let s8 = unwSelf.xDimension_property.selection
+        let s9 = unwSelf.yDimension_property.selection
+        let s10 = unwSelf.distanceInCanariUnit_property.selection
+        let s11 = unwSelf.distanceUnit_property.selection
+        let s12 = preferences_dimensionFont_property.selection
+        let s13 = unwSelf.knobSize_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -469,9 +470,11 @@ final class PackageDimension : PackageObject,
               .single (let v9),
               .single (let v10),
               .single (let v11),
-              .single (let v12)) :
-          return .single (transient_PackageDimension_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12))
+              .single (let v12),
+              .single (let v13)) :
+          return .single (transient_PackageDimension_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -492,6 +495,7 @@ final class PackageDimension : PackageObject,
         return .empty
       }
     }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.x1_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.y1_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.x2_property.startsBeingObserved (by: self.selectionDisplay_property)

@@ -42,14 +42,14 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol MergerBoardInstance_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
+@MainActor protocol MergerBoardInstance_objectDisplay : AnyObject {
+  var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol MergerBoardInstance_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
+@MainActor protocol MergerBoardInstance_selectionDisplay : AnyObject {
+  var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -63,8 +63,8 @@ final class MergerBoardInstance : EBGraphicManagedObject,
          MergerBoardInstance_instanceRect,
          MergerBoardInstance_modelName,
          MergerBoardInstance_boardLimitWidth,
-         MergerBoardInstance_selectionDisplay,
-         MergerBoardInstance_objectDisplay {
+         MergerBoardInstance_objectDisplay,
+         MergerBoardInstance_selectionDisplay {
 
   //····················································································································
   //   Atomic property: x
@@ -295,23 +295,6 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       }
     }
     self.myModel_property.modelLimitWidth_property.startsBeingObserved (by: self.boardLimitWidth_property)
-  //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.instanceRect_property.selection
-        switch (s0) {
-        case (.single (let v0)) :
-          return .single (transient_MergerBoardInstance_selectionDisplay (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.instanceRect_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -355,6 +338,27 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.remove (me) } }
     )
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.instanceRect_property.selection
+        switch (s0, s1) {
+        case (.single (let v0),
+              .single (let v1)) :
+          return .single (transient_MergerBoardInstance_selectionDisplay (v0, v1))
+        case (.multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.instanceRect_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

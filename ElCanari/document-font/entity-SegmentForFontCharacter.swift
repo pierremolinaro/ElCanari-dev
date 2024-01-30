@@ -30,14 +30,14 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol SegmentForFontCharacter_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
+@MainActor protocol SegmentForFontCharacter_objectDisplay : AnyObject {
+  var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol SegmentForFontCharacter_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
+@MainActor protocol SegmentForFontCharacter_selectionDisplay : AnyObject {
+  var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -49,8 +49,8 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
          SegmentForFontCharacter_y1,
          SegmentForFontCharacter_x2,
          SegmentForFontCharacter_y2,
-         SegmentForFontCharacter_selectionDisplay,
-         SegmentForFontCharacter_objectDisplay {
+         SegmentForFontCharacter_objectDisplay,
+         SegmentForFontCharacter_selectionDisplay {
 
   //····················································································································
   //   Atomic property: x1
@@ -114,35 +114,6 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
     self.x2_property = EBStoredProperty_Int (defaultValue: 9, undoManager: inUndoManager, key: "x2")
     self.y2_property = EBStoredProperty_Int (defaultValue: 8, undoManager: inUndoManager, key: "y2")
     super.init (inUndoManager)
-  //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.x1_property.selection
-        let s1 = unwSelf.y1_property.selection
-        let s2 = unwSelf.x2_property.selection
-        let s3 = unwSelf.y2_property.selection
-        switch (s0, s1, s2, s3) {
-        case (.single (let v0),
-              .single (let v1),
-              .single (let v2),
-              .single (let v3)) :
-          return .single (transient_SegmentForFontCharacter_selectionDisplay (v0, v1, v2, v3))
-        case (.multiple,
-              .multiple,
-              .multiple,
-              .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.x1_property.startsBeingObserved (by: self.selectionDisplay_property)
-    self.y1_property.startsBeingObserved (by: self.selectionDisplay_property)
-    self.x2_property.startsBeingObserved (by: self.selectionDisplay_property)
-    self.y2_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -172,6 +143,39 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
     self.y1_property.startsBeingObserved (by: self.objectDisplay_property)
     self.x2_property.startsBeingObserved (by: self.objectDisplay_property)
     self.y2_property.startsBeingObserved (by: self.objectDisplay_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.x1_property.selection
+        let s2 = unwSelf.y1_property.selection
+        let s3 = unwSelf.x2_property.selection
+        let s4 = unwSelf.y2_property.selection
+        switch (s0, s1, s2, s3, s4) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
+          return .single (transient_SegmentForFontCharacter_selectionDisplay (v0, v1, v2, v3, v4))
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.x1_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.y1_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.x2_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.y2_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.x1_property.setSignatureObserver (observer: self)

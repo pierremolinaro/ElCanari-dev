@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardQRCode_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,          
        _ self_mCenterX : Int,                           
        _ self_mCenterY : Int,                           
        _ self_qrCodeDescriptor : QRCodeDescriptor,      
@@ -44,7 +45,7 @@ import AppKit
         var shape = EBShape ()
       //--- Background
         shape.add (filled: [displayInfos.backgroundBP], (foreColor == .white) ? .lightGray : .white)
-        shape.add (stroke: [displayInfos.backgroundBP], .cyan)
+        shape.add (stroke: [displayInfos.backgroundBP], prefs_selectionHiliteColor)
       //--- QR Code
         shape.add (filled: [displayInfos.qrCodeBP], foreColor)
       //--- Rotation knob
@@ -56,7 +57,7 @@ import AppKit
           knobLine.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
           knobLine.lineCapStyle = .round
           knobLine.lineJoinStyle = .round
-          shape.add (stroke: [knobLine], .cyan)
+          shape.add (stroke: [knobLine], prefs_selectionHiliteColor)
           shape.add (knobAt:  displayInfos.rotationKnobLocation, knobIndex: BOARD_QRCODE_ROTATION_KNOB, .circ, 2.0)
         }
       //--- Knob

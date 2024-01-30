@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardText_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,        
        _ self_mX : Int,                               
        _ self_mY : Int,                               
        _ self_mText : String,                         
@@ -61,7 +62,7 @@ import AppKit
       //--- Background
         var shape = EBShape ()
         shape.add (filled: [frameBP], (textColor == .white) ? .lightGray : .white)
-        shape.add (stroke: [frameBP], .cyan)
+        shape.add (stroke: [frameBP], prefs_selectionHiliteColor)
         shape.add (stroke: [textBP], textColor)
       //--- Rotation knob
         if prefs_mShowTextRotationKnobInBoard {
@@ -71,7 +72,7 @@ import AppKit
           knobLine.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
           knobLine.lineCapStyle = .round
           knobLine.lineJoinStyle = .round
-          shape.add (stroke: [knobLine], .cyan)
+          shape.add (stroke: [knobLine], prefs_selectionHiliteColor)
           shape.add (knobAt:  rotationKnob, knobIndex: BOARD_TEXT_ROTATION_KNOB, .circ, 2.0)
         }
       //--- Knob

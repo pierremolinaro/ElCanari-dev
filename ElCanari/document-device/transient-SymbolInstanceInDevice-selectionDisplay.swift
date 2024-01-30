@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SymbolInstanceInDevice_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,                     
        _ self_mType_mStrokeBezierPath : NSBezierPath?,             
        _ self_mType_mFilledBezierPath : NSBezierPath?,             
        _ self_mType_pinNameShape : EBShape?,                       
@@ -64,7 +65,7 @@ import AppKit
         bp.move (to: NSPoint (x: r.minX, y: horizontalSeparatorY))
         bp.line (to: NSPoint (x: r.maxX, y: horizontalSeparatorY))
         bp.lineWidth = 0.5
-        shape.add (stroke: [bp], .cyan)
+        shape.add (stroke: [bp], prefs_selectionHiliteColor)
        }
      //---
        var at = AffineTransform ()

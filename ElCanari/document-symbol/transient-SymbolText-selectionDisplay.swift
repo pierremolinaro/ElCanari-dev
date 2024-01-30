@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SymbolText_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,         
        _ self_x : Int,                                 
        _ self_y : Int,                                 
        _ self_text : String,                           
@@ -29,7 +30,7 @@ import AppKit
     let textShape = EBShape (text: self_text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment, .center)
     var bp = EBBezierPath (rect: textShape.boundingBox)
     bp.lineWidth = 0.25
-    shape.add (stroke: [bp], NSColor.cyan)
+    shape.add (stroke: [bp], prefs_selectionHiliteColor)
     shape.add (knobAt:  origin, knobIndex: 0, .rect, 2.0)
     return shape
 //--- END OF USER ZONE 2

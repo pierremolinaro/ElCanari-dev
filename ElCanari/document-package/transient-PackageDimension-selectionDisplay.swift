@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageDimension_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,               
        _ self_x1 : Int,                                      
        _ self_y1 : Int,                                      
        _ self_x2 : Int,                                      
@@ -42,7 +43,7 @@ import AppKit
 //--- Text
   let dimensionText = intValueAndUnitStringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
   var shape = EBShape ()
-  shape.add (stroke: [bp], NSColor.cyan)
+  shape.add (stroke: [bp], prefs_selectionHiliteColor)
   let center = NSPoint.center (p1, p2)
   shape.add (knobAt: center, knobIndex: PACKAGE_DIMENSION_CENTER, .rect, CGFloat (self_PackageObject_knobSize))
   shape.add (knobAt: p1, knobIndex: PACKAGE_DIMENSION_ENDPOINT_1, .diamond, CGFloat (self_PackageObject_knobSize))

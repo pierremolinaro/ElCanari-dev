@@ -22,9 +22,9 @@ class ReadOnlyObject_SymbolInstanceInDevice : EBReadOnlyAbstractObjectProperty <
       oldValue.symbolQualifiedName_property.stopsBeingObserved (by: self.symbolQualifiedName_property) // Transient property
       oldValue.symbolTypeName_property.stopsBeingObserved (by: self.symbolTypeName_property) // Transient property
       oldValue.pinSymbolQualifiedNames_property.stopsBeingObserved (by: self.pinSymbolQualifiedNames_property) // Transient property
-      oldValue.selectionDisplay_property.stopsBeingObserved (by: self.selectionDisplay_property) // Transient property
       oldValue.unconnectedPins_property.stopsBeingObserved (by: self.unconnectedPins_property) // Transient property
       oldValue.objectDisplay_property.stopsBeingObserved (by: self.objectDisplay_property) // Transient property
+      oldValue.selectionDisplay_property.stopsBeingObserved (by: self.selectionDisplay_property) // Transient property
       if let relay = self.mObserversOf_mPinInstances { // to Many
         oldValue.mPinInstances_property.stopsBeingObserved (by: relay)
       }
@@ -37,9 +37,9 @@ class ReadOnlyObject_SymbolInstanceInDevice : EBReadOnlyAbstractObjectProperty <
       newValue.symbolQualifiedName_property.startsBeingObserved (by: self.symbolQualifiedName_property) // Transient property
       newValue.symbolTypeName_property.startsBeingObserved (by: self.symbolTypeName_property) // Transient property
       newValue.pinSymbolQualifiedNames_property.startsBeingObserved (by: self.pinSymbolQualifiedNames_property) // Transient property
-      newValue.selectionDisplay_property.startsBeingObserved (by: self.selectionDisplay_property) // Transient property
       newValue.unconnectedPins_property.startsBeingObserved (by: self.unconnectedPins_property) // Transient property
       newValue.objectDisplay_property.startsBeingObserved (by: self.objectDisplay_property) // Transient property
+      newValue.selectionDisplay_property.startsBeingObserved (by: self.selectionDisplay_property) // Transient property
       if let relay = self.mObserversOf_mPinInstances { // to Many
         newValue.mPinInstances_property.startsBeingObserved (by: relay)
       }
@@ -83,12 +83,6 @@ class ReadOnlyObject_SymbolInstanceInDevice : EBReadOnlyAbstractObjectProperty <
   final let pinSymbolQualifiedNames_property = EBTransientProperty <StringArray?> ()
 
   //····················································································································
-  //   Observers of 'selectionDisplay' transient property
-  //····················································································································
-
-  final let selectionDisplay_property = EBTransientProperty <EBShape?> ()
-
-  //····················································································································
   //   Observers of 'unconnectedPins' transient property
   //····················································································································
 
@@ -99,6 +93,12 @@ class ReadOnlyObject_SymbolInstanceInDevice : EBReadOnlyAbstractObjectProperty <
   //····················································································································
 
   final let objectDisplay_property = EBTransientProperty <EBShape?> ()
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  final let selectionDisplay_property = EBTransientProperty <EBShape?> ()
 
   //····················································································································
   //   Observable toMany property: mPinInstances
@@ -156,10 +156,6 @@ class ReadOnlyObject_SymbolInstanceInDevice : EBReadOnlyAbstractObjectProperty <
     self.pinSymbolQualifiedNames_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.pinSymbolQualifiedNames_property.optionalSelection ?? .single (nil)
     }
-  //--- Configure selectionDisplay transient property
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.selectionDisplay_property.optionalSelection ?? .single (nil)
-    }
   //--- Configure unconnectedPins transient property
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.unconnectedPins_property.optionalSelection ?? .single (nil)
@@ -167,6 +163,10 @@ class ReadOnlyObject_SymbolInstanceInDevice : EBReadOnlyAbstractObjectProperty <
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.objectDisplay_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure selectionDisplay transient property
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.selectionDisplay_property.optionalSelection ?? .single (nil)
     }
   }
 

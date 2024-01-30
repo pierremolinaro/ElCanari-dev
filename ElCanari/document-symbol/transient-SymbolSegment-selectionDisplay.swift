@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SymbolSegment_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,            
        _ self_x1 : Int,                                   
        _ self_y1 : Int,                                   
        _ self_x2 : Int,                                   
@@ -28,7 +29,7 @@ import AppKit
   bp.lineWidth = 0.25
   bp.lineCapStyle = .round
   var shape = EBShape ()
-  shape.add (stroke: [bp], NSColor.cyan)
+  shape.add (stroke: [bp], prefs_selectionHiliteColor)
   shape.add (knobAt:  p1, knobIndex: SYMBOL_SEGMENT_ENDPOINT_1, .diamond, 2.0)
   shape.add (knobAt:  p2, knobIndex: SYMBOL_SEGMENT_ENDPOINT_2, .diamond, 2.0)
   return shape

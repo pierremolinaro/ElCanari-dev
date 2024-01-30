@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_WireInSchematic_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,              
        _ self_mP1_location : CanariPoint?,                  
        _ self_mP1_canMove : Bool?,                          
        _ self_mP2_location : CanariPoint?,                  
@@ -30,7 +31,7 @@ import AppKit
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
         var shape = EBShape ()
-        shape.add (stroke: [bp], .cyan)
+        shape.add (stroke: [bp], prefs_selectionHiliteColor)
       //--- Knob at center ?
         if (self_mP1_canMove ?? false) && (self_mP2_canMove ?? false) {
           shape.add (knobAt: NSPoint.center (p1, p2), knobIndex: WIRE_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)

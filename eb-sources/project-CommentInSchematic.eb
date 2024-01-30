@@ -29,6 +29,7 @@ graphic entity CommentInSchematic : SchematicObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
     self.mComment,
     self.mColor,
     self.mSize,

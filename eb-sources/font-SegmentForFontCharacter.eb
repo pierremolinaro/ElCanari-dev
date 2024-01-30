@@ -8,7 +8,9 @@ graphic entity SegmentForFontCharacter {
   property @signature @generateDirectAccess Int y2 default 8 ;
 
 //--- Selection layer
-  transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+  transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
+    self.x1, self.y1, self.x2, self.y2 ;
 
 //--- Background
   transient EBShape objectDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;

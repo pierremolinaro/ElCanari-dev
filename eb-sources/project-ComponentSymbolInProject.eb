@@ -65,6 +65,7 @@ graphic handlingOpposite entity ComponentSymbolInProject : SchematicObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
     prefs.pinNameFont,
     prefs.schematicBackColor,
     self.mDisplayComponentNameOffsetX,

@@ -649,17 +649,18 @@ final class BorderCurve : EBGraphicManagedObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.mX_property.selection
-        let s1 = unwSelf.mY_property.selection
-        let s2 = unwSelf.mNext_property.mX_property.selection
-        let s3 = unwSelf.mNext_property.mY_property.selection
-        let s4 = unwSelf.mCPX1_property.selection
-        let s5 = unwSelf.mCPY1_property.selection
-        let s6 = unwSelf.mCPX2_property.selection
-        let s7 = unwSelf.mCPY2_property.selection
-        let s8 = unwSelf.mShape_property.selection
-        let s9 = unwSelf.mRoot_property.mBoardShape_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9) {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.mX_property.selection
+        let s2 = unwSelf.mY_property.selection
+        let s3 = unwSelf.mNext_property.mX_property.selection
+        let s4 = unwSelf.mNext_property.mY_property.selection
+        let s5 = unwSelf.mCPX1_property.selection
+        let s6 = unwSelf.mCPY1_property.selection
+        let s7 = unwSelf.mCPX2_property.selection
+        let s8 = unwSelf.mCPY2_property.selection
+        let s9 = unwSelf.mShape_property.selection
+        let s10 = unwSelf.mRoot_property.mBoardShape_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -669,9 +670,11 @@ final class BorderCurve : EBGraphicManagedObject,
               .single (let v6),
               .single (let v7),
               .single (let v8),
-              .single (let v9)) :
-          return .single (transient_BorderCurve_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
+              .single (let v9),
+              .single (let v10)) :
+          return .single (transient_BorderCurve_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -689,6 +692,7 @@ final class BorderCurve : EBGraphicManagedObject,
         return .empty
       }
     }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mX_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mY_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mNext_property.mX_property.startsBeingObserved (by: self.selectionDisplay_property)

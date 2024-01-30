@@ -33,9 +33,9 @@ graphic entity SymbolPin : SymbolObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+     prefs.selectionHiliteColor,
      self.xPin, self.yPin,
      self.xName, self.yName,
-//     self.nameHorizontalAlignment, self.numberHorizontalAlignment,
      self.xNumber, self.yNumber
   ;
 
@@ -69,6 +69,7 @@ graphic entity SymbolText : SymbolObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+     prefs.selectionHiliteColor,
      self.x, self.y, self.text, self.horizontalAlignment, prefs.pinNameFont
   ;
 
@@ -93,6 +94,7 @@ graphic entity SymbolSolidRect : SymbolObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+     prefs.selectionHiliteColor,
      self.x, self.y, self.width, self.height
   ;
 
@@ -117,6 +119,7 @@ graphic entity SymbolOval : SymbolObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+     prefs.selectionHiliteColor,
      self.x, self.y, self.width, self.height
   ;
 
@@ -140,6 +143,7 @@ graphic entity SymbolSolidOval : SymbolObject {
      prefs.symbolColor
   ;
   override transient EBShape selectionDisplay dependsFrom
+     prefs.selectionHiliteColor,
      self.x, self.y, self.width, self.height
   ;
 
@@ -171,6 +175,7 @@ graphic entity SymbolBezierCurve : SymbolObject {
      prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen
   ;
   override transient EBShape selectionDisplay dependsFrom
+     prefs.selectionHiliteColor,
     self.x1, self.y1, self.x2, self.y2,
     self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
@@ -196,7 +201,10 @@ graphic entity SymbolSegment : SymbolObject {
   override transient EBShape objectDisplay dependsFrom
      self.x1, self.y1, self.x2, self.y2, prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen
   ;
-  override transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+  override transient EBShape selectionDisplay dependsFrom
+     prefs.selectionHiliteColor,
+    self.x1, self.y1, self.x2, self.y2
+  ;
 
   override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }

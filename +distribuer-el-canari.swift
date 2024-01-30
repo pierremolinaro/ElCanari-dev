@@ -28,18 +28,14 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.7.11"
+let VERSION_CANARI = "1.7.12"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Correction génération des QRCodes sous Sonoma"
+  "Correction couleur de sélection"
 ]
 let CHANGES : [String] = [
-  "Ajout de la rotation des commentaires dans le schéma",
-  "Ajout de la mise en gras des commentaires dans le schéma",
-  "Amélioration de la sélection des pistes dans board",
-  "Ajout de la possibilité de placer une piste dans le masque de soudure"
 ]
 let NEWS : [String] = [
 ]

@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_NCInSchematic_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,            
        _ self_mPoint_location : CanariPoint?,             
        _ self_mOrientation : QuadrantRotation,            
        _ self_mPoint_symbolRotation : QuadrantRotation?,  
@@ -54,12 +55,12 @@ import AppKit
         line.lineWidth = 0.5
         line.lineCapStyle = .round
         var shape = EBShape ()
-        shape.add (stroke: [line], .cyan)
+        shape.add (stroke: [line], prefs_selectionHiliteColor)
       //--- Add background
         frameBP.lineWidth = 0.5
         shape.add (filled: [frameBP], .white)
       //--- Add frame
-        shape.add (stroke: [frameBP], .cyan)
+        shape.add (stroke: [frameBP], prefs_selectionHiliteColor)
       //--- Add Text
         shape.add (textShape)
       //---

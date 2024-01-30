@@ -366,21 +366,24 @@ final class SymbolPin : SymbolObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.xPin_property.selection
-        let s1 = unwSelf.yPin_property.selection
-        let s2 = unwSelf.xName_property.selection
-        let s3 = unwSelf.yName_property.selection
-        let s4 = unwSelf.xNumber_property.selection
-        let s5 = unwSelf.yNumber_property.selection
-        switch (s0, s1, s2, s3, s4, s5) {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.xPin_property.selection
+        let s2 = unwSelf.yPin_property.selection
+        let s3 = unwSelf.xName_property.selection
+        let s4 = unwSelf.yName_property.selection
+        let s5 = unwSelf.xNumber_property.selection
+        let s6 = unwSelf.yNumber_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
               .single (let v4),
-              .single (let v5)) :
-          return .single (transient_SymbolPin_selectionDisplay (v0, v1, v2, v3, v4, v5))
+              .single (let v5),
+              .single (let v6)) :
+          return .single (transient_SymbolPin_selectionDisplay (v0, v1, v2, v3, v4, v5, v6))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -394,6 +397,7 @@ final class SymbolPin : SymbolObject,
         return .empty
       }
     }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.xPin_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.yPin_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.xName_property.startsBeingObserved (by: self.selectionDisplay_property)

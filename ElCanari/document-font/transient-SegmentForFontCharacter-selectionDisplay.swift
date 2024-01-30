@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SegmentForFontCharacter_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,                      
        _ self_x1 : Int,                                             
        _ self_y1 : Int,                                             
        _ self_x2 : Int,                                             

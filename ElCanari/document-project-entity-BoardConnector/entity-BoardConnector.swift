@@ -989,13 +989,16 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.isVia_property.selection
-        let s1 = unwSelf.location_property.selection
-        switch (s0, s1) {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.isVia_property.selection
+        let s2 = unwSelf.location_property.selection
+        switch (s0, s1, s2) {
         case (.single (let v0),
-              .single (let v1)) :
-          return .single (transient_BoardConnector_selectionDisplay (v0, v1))
+              .single (let v1),
+              .single (let v2)) :
+          return .single (transient_BoardConnector_selectionDisplay (v0, v1, v2))
         case (.multiple,
+              .multiple,
               .multiple) :
           return .multiple
         default :
@@ -1005,6 +1008,7 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.isVia_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.location_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: signatureForERCChecking

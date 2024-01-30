@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BorderCurve_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,          
        _ self_mX : Int,                                 
        _ self_mY : Int,                                 
        _ self_mNext_mX : Int?,                          
@@ -54,7 +55,7 @@ import AppKit
             bp.move (to: p2)
             bp.line (to: cp2)
           }
-          shape.add (stroke: [bp], .cyan)
+          shape.add (stroke: [bp], prefs_selectionHiliteColor)
           shape.add (knobAt:  p1, knobIndex: BOARD_LIMIT_P1_KNOB, .diamond, BOARD_LIMITS_KNOB_SIZE)
           shape.add (knobAt:  p2, knobIndex: BOARD_LIMIT_P2_KNOB, .diamond, BOARD_LIMITS_KNOB_SIZE)
           if self_mShape == .bezier {

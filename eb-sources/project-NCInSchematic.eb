@@ -15,6 +15,7 @@ graphic handlingOpposite entity NCInSchematic : SchematicObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
     self.mPoint.one.location,
     self.mOrientation,
     self.mPoint.one.symbolRotation,

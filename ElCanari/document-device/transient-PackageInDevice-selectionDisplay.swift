@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageInDevice_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,              
        _ self_mMasterPads_padNumberDisplay : [MasterPadInDevice_padNumberDisplay],
        _ self_mRoot_mShowPackagePadNumbers : Bool?,         
        _ self_mRoot_mShowPackages : Bool?,                  
@@ -72,7 +73,7 @@ import AppKit
       bp.move (to: NSPoint (x: r.minX, y: horizontalSeparatorY))
       bp.line (to: NSPoint (x: r.maxX, y: horizontalSeparatorY))
       bp.lineWidth = 0.5
-      let shape = EBShape (stroke: [bp], .cyan)
+      let shape = EBShape (stroke: [bp], prefs_selectionHiliteColor)
       var transform = AffineTransform ()
       transform.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
       return shape.transformed (by: transform)

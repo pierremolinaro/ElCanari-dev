@@ -75,6 +75,7 @@ graphic handlingOpposite entity BoardTrack : BoardObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
     self.mConnectorP1.one.location, self.p1CanMove,
     self.mConnectorP2.one.location, self.p2CanMove,
     self.mAddedToSolderMask,

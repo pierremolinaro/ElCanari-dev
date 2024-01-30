@@ -40,6 +40,7 @@ graphic entity BoardLine : BoardObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
     self.mX1, self.mY1, self.mX2, self.mY2, // self.mWidth, self.mLayer,
     prefs.hiliteWidthMultipliedByTen
   ;

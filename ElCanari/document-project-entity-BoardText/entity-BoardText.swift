@@ -458,24 +458,25 @@ final class BoardText : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.mX_property.selection
-        let s1 = unwSelf.mY_property.selection
-        let s2 = unwSelf.mText_property.selection
-        let s3 = unwSelf.mFontSize_property.selection
-        let s4 = unwSelf.mFont_property.descriptor_property.selection
-        let s5 = unwSelf.mHorizontalAlignment_property.selection
-        let s6 = unwSelf.mVerticalAlignment_property.selection
-        let s7 = unwSelf.mLayer_property.selection
-        let s8 = unwSelf.mRotation_property.selection
-        let s9 = unwSelf.mWeight_property.selection
-        let s10 = unwSelf.mOblique_property.selection
-        let s11 = preferences_frontSideLegendColorForBoard_property.selection
-        let s12 = preferences_frontSideLayoutColorForBoard_property.selection
-        let s13 = preferences_backSideLayoutColorForBoard_property.selection
-        let s14 = preferences_backSideLegendColorForBoard_property.selection
-        let s15 = preferences_hiliteWidthMultipliedByTen_property.selection
-        let s16 = preferences_mShowTextRotationKnobInBoard_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16) {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.mX_property.selection
+        let s2 = unwSelf.mY_property.selection
+        let s3 = unwSelf.mText_property.selection
+        let s4 = unwSelf.mFontSize_property.selection
+        let s5 = unwSelf.mFont_property.descriptor_property.selection
+        let s6 = unwSelf.mHorizontalAlignment_property.selection
+        let s7 = unwSelf.mVerticalAlignment_property.selection
+        let s8 = unwSelf.mLayer_property.selection
+        let s9 = unwSelf.mRotation_property.selection
+        let s10 = unwSelf.mWeight_property.selection
+        let s11 = unwSelf.mOblique_property.selection
+        let s12 = preferences_frontSideLegendColorForBoard_property.selection
+        let s13 = preferences_frontSideLayoutColorForBoard_property.selection
+        let s14 = preferences_backSideLayoutColorForBoard_property.selection
+        let s15 = preferences_backSideLegendColorForBoard_property.selection
+        let s16 = preferences_hiliteWidthMultipliedByTen_property.selection
+        let s17 = preferences_mShowTextRotationKnobInBoard_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -492,9 +493,11 @@ final class BoardText : BoardObject,
               .single (let v13),
               .single (let v14),
               .single (let v15),
-              .single (let v16)) :
-          return .single (transient_BoardText_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16))
+              .single (let v16),
+              .single (let v17)) :
+          return .single (transient_BoardText_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -519,6 +522,7 @@ final class BoardText : BoardObject,
         return .empty
       }
     }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mX_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mY_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mText_property.startsBeingObserved (by: self.selectionDisplay_property)

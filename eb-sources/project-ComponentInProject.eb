@@ -87,6 +87,7 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
   transient ThreeStringArray pinPadAssignments dependsFrom self.mDevice.one.pinPadAssignments ;
  
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
     prefs.frontSideLegendColorForBoard,
     prefs.backSideLegendColorForBoard,
     self.mX, self.mY, self.mRotation, self.mSide, self.strokeBezierPath,

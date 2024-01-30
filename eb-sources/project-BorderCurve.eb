@@ -43,6 +43,7 @@ graphic handlingOpposite entity BorderCurve {
   transient Bool isLine dependsFrom self.mShape ;
 
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
     self.mX, self.mY, self.mNext.one.mX, self.mNext.one.mY,
     self.mCPX1, self.mCPY1, self.mCPX2, self.mCPY2,
     self.mShape,

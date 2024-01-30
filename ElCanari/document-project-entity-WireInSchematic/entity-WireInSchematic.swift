@@ -12,12 +12,6 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol WireInSchematic_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 @MainActor protocol WireInSchematic_netName : AnyObject {
   var netName : String? { get }
 }
@@ -41,16 +35,22 @@ import AppKit
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol WireInSchematic_selectionDisplay : AnyObject {
+  var selectionDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: WireInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class WireInSchematic : SchematicObject,
          WireInSchematic_objectDisplay,
-         WireInSchematic_selectionDisplay,
          WireInSchematic_netName,
          WireInSchematic_netClassName,
          WireInSchematic_hasNet,
-         WireInSchematic_wires {
+         WireInSchematic_wires,
+         WireInSchematic_selectionDisplay {
 
   //····················································································································
   //   To one property: mP1
@@ -211,35 +211,6 @@ final class WireInSchematic : SchematicObject,
     preferences_schematicBackColor_property.startsBeingObserved (by: self.objectDisplay_property)
     self.mP1_property.location_property.startsBeingObserved (by: self.objectDisplay_property)
     self.mP2_property.location_property.startsBeingObserved (by: self.objectDisplay_property)
-  //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.mP1_property.location_property.selection
-        let s1 = unwSelf.mP1_property.canMove_property.selection
-        let s2 = unwSelf.mP2_property.location_property.selection
-        let s3 = unwSelf.mP2_property.canMove_property.selection
-        switch (s0, s1, s2, s3) {
-        case (.single (let v0),
-              .single (let v1),
-              .single (let v2),
-              .single (let v3)) :
-          return .single (transient_WireInSchematic_selectionDisplay (v0, v1, v2, v3))
-        case (.multiple,
-              .multiple,
-              .multiple,
-              .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mP1_property.location_property.startsBeingObserved (by: self.selectionDisplay_property)
-    self.mP1_property.canMove_property.startsBeingObserved (by: self.selectionDisplay_property)
-    self.mP2_property.location_property.startsBeingObserved (by: self.selectionDisplay_property)
-    self.mP2_property.canMove_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -312,6 +283,39 @@ final class WireInSchematic : SchematicObject,
     }
     self.mP1_property.location_property.startsBeingObserved (by: self.wires_property)
     self.mP2_property.location_property.startsBeingObserved (by: self.wires_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.mP1_property.location_property.selection
+        let s2 = unwSelf.mP1_property.canMove_property.selection
+        let s3 = unwSelf.mP2_property.location_property.selection
+        let s4 = unwSelf.mP2_property.canMove_property.selection
+        switch (s0, s1, s2, s3, s4) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
+          return .single (transient_WireInSchematic_selectionDisplay (v0, v1, v2, v3, v4))
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mP1_property.location_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mP1_property.canMove_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mP2_property.location_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mP2_property.canMove_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

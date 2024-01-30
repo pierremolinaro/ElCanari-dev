@@ -452,19 +452,20 @@ final class PackageInDevice : EBGraphicManagedObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.mMasterPads_property.selection
-        let s1 = unwSelf.mRoot_property.mShowPackagePadNumbers_property.selection
-        let s2 = unwSelf.mRoot_property.mShowPackages_property.selection
-        let s3 = unwSelf.mRoot_property.mShowPackageFrontPads_property.selection
-        let s4 = unwSelf.mRoot_property.mShowPackageBackPads_property.selection
-        let s5 = unwSelf.mStrokeBezierPath_property.selection
-        let s6 = preferences_packageDrawingWidthMultipliedByTen_property.selection
-        let s7 = unwSelf.frontSidePadFilledBezierPathArray_property.selection
-        let s8 = unwSelf.backSidePadFilledBezierPathArray_property.selection
-        let s9 = unwSelf.mName_property.selection
-        let s10 = unwSelf.mX_property.selection
-        let s11 = unwSelf.mY_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11) {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.mMasterPads_property.selection
+        let s2 = unwSelf.mRoot_property.mShowPackagePadNumbers_property.selection
+        let s3 = unwSelf.mRoot_property.mShowPackages_property.selection
+        let s4 = unwSelf.mRoot_property.mShowPackageFrontPads_property.selection
+        let s5 = unwSelf.mRoot_property.mShowPackageBackPads_property.selection
+        let s6 = unwSelf.mStrokeBezierPath_property.selection
+        let s7 = preferences_packageDrawingWidthMultipliedByTen_property.selection
+        let s8 = unwSelf.frontSidePadFilledBezierPathArray_property.selection
+        let s9 = unwSelf.backSidePadFilledBezierPathArray_property.selection
+        let s10 = unwSelf.mName_property.selection
+        let s11 = unwSelf.mX_property.selection
+        let s12 = unwSelf.mY_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -476,9 +477,11 @@ final class PackageInDevice : EBGraphicManagedObject,
               .single (let v8),
               .single (let v9),
               .single (let v10),
-              .single (let v11)) :
-          return .single (transient_PackageInDevice_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
+              .single (let v11),
+              .single (let v12)) :
+          return .single (transient_PackageInDevice_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -498,6 +501,7 @@ final class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mMasterPads_property.toMany_padNumberDisplay_StartsBeingObserved (by: self.selectionDisplay_property)
     self.mRoot_property.mShowPackagePadNumbers_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mRoot_property.mShowPackages_property.startsBeingObserved (by: self.selectionDisplay_property)

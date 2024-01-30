@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SymbolPin_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,        
        _ self_xPin : Int,                             
        _ self_yPin : Int,                             
        _ self_xName : Int,                            
@@ -32,7 +33,7 @@ import AppKit
     bp.line (to: namePoint)
     bp.lineWidth = 0.25
     bp.lineCapStyle = .round
-    shape.add (stroke: [bp], NSColor.cyan)
+    shape.add (stroke: [bp], prefs_selectionHiliteColor)
   //--- Pin
     shape.add (knobAt:  pinPoint, knobIndex: SYMBOL_PIN_ENDPOINT, .rect, 2.0)
   //--- Name

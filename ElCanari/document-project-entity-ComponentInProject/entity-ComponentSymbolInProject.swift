@@ -657,16 +657,17 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = preferences_pinNameFont_property.selection
-        let s1 = preferences_schematicBackColor_property.selection
-        let s2 = unwSelf.mDisplayComponentNameOffsetX_property.selection
-        let s3 = unwSelf.mDisplayComponentNameOffsetY_property.selection
-        let s4 = unwSelf.mDisplayComponentValue_property.selection
-        let s5 = unwSelf.mDisplayComponentValueOffsetX_property.selection
-        let s6 = unwSelf.mDisplayComponentValueOffsetY_property.selection
-        let s7 = unwSelf.symbolInfo_property.selection
-        let s8 = unwSelf.mRotation_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8) {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = preferences_pinNameFont_property.selection
+        let s2 = preferences_schematicBackColor_property.selection
+        let s3 = unwSelf.mDisplayComponentNameOffsetX_property.selection
+        let s4 = unwSelf.mDisplayComponentNameOffsetY_property.selection
+        let s5 = unwSelf.mDisplayComponentValue_property.selection
+        let s6 = unwSelf.mDisplayComponentValueOffsetX_property.selection
+        let s7 = unwSelf.mDisplayComponentValueOffsetY_property.selection
+        let s8 = unwSelf.symbolInfo_property.selection
+        let s9 = unwSelf.mRotation_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -675,9 +676,11 @@ final class ComponentSymbolInProject : SchematicObject,
               .single (let v5),
               .single (let v6),
               .single (let v7),
-              .single (let v8)) :
-          return .single (transient_ComponentSymbolInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
+              .single (let v8),
+              .single (let v9)) :
+          return .single (transient_ComponentSymbolInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -694,6 +697,7 @@ final class ComponentSymbolInProject : SchematicObject,
         return .empty
       }
     }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
     preferences_pinNameFont_property.startsBeingObserved (by: self.selectionDisplay_property)
     preferences_schematicBackColor_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mDisplayComponentNameOffsetX_property.startsBeingObserved (by: self.selectionDisplay_property)

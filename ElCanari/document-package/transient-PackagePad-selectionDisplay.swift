@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackagePad_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,         
        _ self_xCenter : Int,                           
        _ self_yCenter : Int,                           
        _ self_width : Int,                             
@@ -31,7 +32,7 @@ import AppKit
     bp.lineWidth = 0.25
     bp.lineCapStyle = .round
     var shape = EBShape ()
-    shape.add (stroke: [bp], .cyan)
+    shape.add (stroke: [bp], prefs_selectionHiliteColor)
     return shape
 //--- END OF USER ZONE 2
 }

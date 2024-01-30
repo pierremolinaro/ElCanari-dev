@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_CommentInSchematic_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,                 
        _ self_mComment : String,                               
        _ self_mColor : NSColor,                                
        _ self_mSize : Double,                                  

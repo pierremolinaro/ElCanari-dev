@@ -187,17 +187,20 @@ final class LabelInSchematic : SchematicObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.mPoint_property.location_property.selection
-        let s1 = unwSelf.netName_property.selection
-        let s2 = preferences_pinNameFont_property.selection
-        let s3 = unwSelf.mOrientation_property.selection
-        switch (s0, s1, s2, s3) {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.mPoint_property.location_property.selection
+        let s2 = unwSelf.netName_property.selection
+        let s3 = preferences_pinNameFont_property.selection
+        let s4 = unwSelf.mOrientation_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
-              .single (let v3)) :
-          return .single (transient_LabelInSchematic_selectionDisplay (v0, v1, v2, v3))
+              .single (let v3),
+              .single (let v4)) :
+          return .single (transient_LabelInSchematic_selectionDisplay (v0, v1, v2, v3, v4))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple) :
@@ -209,6 +212,7 @@ final class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mPoint_property.location_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.netName_property.startsBeingObserved (by: self.selectionDisplay_property)
     preferences_pinNameFont_property.startsBeingObserved (by: self.selectionDisplay_property)

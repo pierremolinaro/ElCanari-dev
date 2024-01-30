@@ -89,16 +89,16 @@ import AppKit
   final let mWidth_property = EBComputedProperty_Int ()
 
   //····················································································································
-  //   Selection observable property: selectionDisplay
-  //····················································································································
-
-  final let selectionDisplay_property = EBTransientProperty <EBShape> ()
-
-  //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
   final let objectDisplay_property = EBTransientProperty <EBShape> ()
+
+  //····················································································································
+  //   Selection observable property: selectionDisplay
+  //····················································································································
+
+  final let selectionDisplay_property = EBTransientProperty <EBShape> ()
 
   //····················································································································
   //   Selected array (not observable)
@@ -127,8 +127,8 @@ import AppKit
     self.bind_property_mY2Unit ()
     self.bind_property_mLayer ()
     self.bind_property_mWidth ()
-    self.bind_property_selectionDisplay ()
     self.bind_property_objectDisplay ()
+    self.bind_property_selectionDisplay ()
   }
 
   //····················································································································
@@ -181,12 +181,12 @@ import AppKit
     self.mWidth_property.mReadModelFunction = nil 
     self.mWidth_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_mWidth_StopsBeingObserved (by: self.mWidth_property)
-  //--- selectionDisplay
-    self.selectionDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
+  //--- selectionDisplay
+    self.selectionDisplay_property.mReadModelFunction = nil 
+    self.selectedArray_property.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
   } */
 
   //····················································································································
@@ -752,9 +752,9 @@ import AppKit
   }
   //····················································································································
 
-  private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.toMany_selectionDisplay_StartsBeingObserved (by: self.selectionDisplay_property)
-    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_objectDisplay () {
+    self.selectedArray_property.toMany_objectDisplay_StartsBeingObserved (by: self.objectDisplay_property)
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty :
@@ -765,7 +765,7 @@ import AppKit
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property.selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -791,9 +791,9 @@ import AppKit
   }
   //····················································································································
 
-  private final func bind_property_objectDisplay () {
-    self.selectedArray_property.toMany_objectDisplay_StartsBeingObserved (by: self.objectDisplay_property)
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_selectionDisplay () {
+    self.selectedArray_property.toMany_selectionDisplay_StartsBeingObserved (by: self.selectionDisplay_property)
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty :
@@ -804,7 +804,7 @@ import AppKit
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property.selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :

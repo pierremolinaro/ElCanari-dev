@@ -469,17 +469,18 @@ final class BoardQRCode : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.mCenterX_property.selection
-        let s1 = unwSelf.mCenterY_property.selection
-        let s2 = unwSelf.qrCodeDescriptor_property.selection
-        let s3 = unwSelf.mLayer_property.selection
-        let s4 = unwSelf.mRotation_property.selection
-        let s5 = unwSelf.mModuleSize_property.selection
-        let s6 = preferences_frontSideLegendColorForBoard_property.selection
-        let s7 = preferences_backSideLegendColorForBoard_property.selection
-        let s8 = preferences_hiliteWidthMultipliedByTen_property.selection
-        let s9 = preferences_mShowTextRotationKnobInBoard_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9) {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.mCenterX_property.selection
+        let s2 = unwSelf.mCenterY_property.selection
+        let s3 = unwSelf.qrCodeDescriptor_property.selection
+        let s4 = unwSelf.mLayer_property.selection
+        let s5 = unwSelf.mRotation_property.selection
+        let s6 = unwSelf.mModuleSize_property.selection
+        let s7 = preferences_frontSideLegendColorForBoard_property.selection
+        let s8 = preferences_backSideLegendColorForBoard_property.selection
+        let s9 = preferences_hiliteWidthMultipliedByTen_property.selection
+        let s10 = preferences_mShowTextRotationKnobInBoard_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -489,9 +490,11 @@ final class BoardQRCode : BoardObject,
               .single (let v6),
               .single (let v7),
               .single (let v8),
-              .single (let v9)) :
-          return .single (transient_BoardQRCode_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
+              .single (let v9),
+              .single (let v10)) :
+          return .single (transient_BoardQRCode_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -509,6 +512,7 @@ final class BoardQRCode : BoardObject,
         return .empty
       }
     }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mCenterX_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mCenterY_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.qrCodeDescriptor_property.startsBeingObserved (by: self.selectionDisplay_property)

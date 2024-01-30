@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ComponentInProject_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,                 
        _ prefs_frontSideLegendColorForBoard : NSColor,         
        _ prefs_backSideLegendColorForBoard : NSColor,          
        _ self_mX : Int,                                        
@@ -57,7 +58,7 @@ import AppKit
         strokeBezierPath.lineWidth = lineWidth
         strokeBezierPath.lineCapStyle = .round
         strokeBezierPath.lineJoinStyle = .round
-        rotatedShape.add (stroke: [strokeBezierPath], .cyan)
+        rotatedShape.add (stroke: [strokeBezierPath], prefs_selectionHiliteColor)
       }
       do{
         var padNumberAffineTransform = AffineTransform ()
@@ -71,8 +72,8 @@ import AppKit
             side: self_mSide,
             padDisplayAttributes: nil,
             padNumberAF: padNumberAffineTransform,
-            frontPadColor: .cyan,
-            backPadColor: .cyan,
+            frontPadColor: prefs_selectionHiliteColor,
+            backPadColor: prefs_selectionHiliteColor,
             padNetDictionary: self_padNetDictionary
           )
         }
@@ -106,7 +107,7 @@ import AppKit
         bp.lineWidth = lineWidth
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
-        nonRotatedShape.add (stroke: [bp], .cyan)
+        nonRotatedShape.add (stroke: [bp], prefs_selectionHiliteColor)
         bp = frameBP
         bp.lineWidth = 0.5
         bp.lineCapStyle = .round
@@ -138,7 +139,7 @@ import AppKit
         bp.lineWidth = lineWidth
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
-        nonRotatedShape.add (stroke: [bp], .cyan)
+        nonRotatedShape.add (stroke: [bp], prefs_selectionHiliteColor)
         bp = frameBP
         bp.lineWidth = 0.5
         bp.lineCapStyle = .round

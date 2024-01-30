@@ -149,17 +149,20 @@ final class SymbolSolidOval : SymbolObject {
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.x_property.selection
-        let s1 = unwSelf.y_property.selection
-        let s2 = unwSelf.width_property.selection
-        let s3 = unwSelf.height_property.selection
-        switch (s0, s1, s2, s3) {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.x_property.selection
+        let s2 = unwSelf.y_property.selection
+        let s3 = unwSelf.width_property.selection
+        let s4 = unwSelf.height_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
-              .single (let v3)) :
-          return .single (transient_SymbolSolidOval_selectionDisplay (v0, v1, v2, v3))
+              .single (let v3),
+              .single (let v4)) :
+          return .single (transient_SymbolSolidOval_selectionDisplay (v0, v1, v2, v3, v4))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple) :
@@ -171,6 +174,7 @@ final class SymbolSolidOval : SymbolObject {
         return .empty
       }
     }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.x_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.y_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.width_property.startsBeingObserved (by: self.selectionDisplay_property)

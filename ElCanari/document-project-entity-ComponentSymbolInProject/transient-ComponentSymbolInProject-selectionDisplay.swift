@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ComponentSymbolInProject_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,                       
        _ prefs_pinNameFont : NSFont,                                 
        _ prefs_schematicBackColor : NSColor,                         
        _ self_mDisplayComponentNameOffsetX : Int,                    
@@ -30,7 +31,7 @@ import AppKit
         var strokeBezierPath = EBBezierPath ()
         strokeBezierPath.append (self_symbolInfo.strokeBezierPath)
         strokeBezierPath.lineWidth = SCHEMATIC_HILITE_WIDTH
-        shape.add (stroke: [strokeBezierPath], .cyan)
+        shape.add (stroke: [strokeBezierPath], prefs_selectionHiliteColor)
       //--- Line from center to component value
         let symbolCenter = self_symbolInfo.center.cocoaPoint
         let componentValueCenter = CanariPoint (
@@ -44,7 +45,7 @@ import AppKit
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
-          shape.add (stroke: [bp], .cyan)
+          shape.add (stroke: [bp], prefs_selectionHiliteColor)
         }
       //--- line from center to name
         let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY)
@@ -55,7 +56,7 @@ import AppKit
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
-          shape.add (stroke: [bp], .cyan)
+          shape.add (stroke: [bp], prefs_selectionHiliteColor)
         }
       //--- Component value knob
         if self_mDisplayComponentValue {
@@ -103,7 +104,7 @@ import AppKit
         bp.lineWidth = SCHEMATIC_HILITE_WIDTH
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
-        shape.add (stroke: [bp], .cyan)
+        shape.add (stroke: [bp], prefs_selectionHiliteColor)
         shape.add (
           knobAt: rotationKnobCenter,
           knobIndex: SYMBOL_IN_SCHEMATICS_ROTATION_KNOB,

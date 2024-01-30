@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageArc_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,         
        _ self_xCenter : Int,                           
        _ self_yCenter : Int,                           
        _ self_radius : Int,                            
@@ -43,7 +44,7 @@ import AppKit
     bp.lineWidth = 0.25
     bp.lineCapStyle = .round
     var shape = EBShape ()
-    shape.add (stroke: [bp], NSColor.cyan)
+    shape.add (stroke: [bp], prefs_selectionHiliteColor)
   //--- Add center knob
     shape.add (knobAt:  center, knobIndex: PACKAGE_ARC_CENTER, .rect, CGFloat (self_PackageObject_knobSize))
   //--- Add radius knob

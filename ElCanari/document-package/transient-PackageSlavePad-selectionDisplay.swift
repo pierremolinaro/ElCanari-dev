@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageSlavePad_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,              
        _ self_xCenter : Int,                                
        _ self_yCenter : Int,                                
        _ self_width : Int,                                  
@@ -43,7 +44,7 @@ import AppKit
     }
     bp.lineWidth = 0.25
     bp.lineCapStyle = .round
-    return EBShape (stroke: [bp], NSColor.cyan)
+    return EBShape (stroke: [bp], prefs_selectionHiliteColor)
 //--- END OF USER ZONE 2
 }
 

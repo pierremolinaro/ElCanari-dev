@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_MergerBoardInstance_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,                  
        _ self_instanceRect : CanariRect
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -21,11 +22,11 @@ import AppKit
       let r : NSRect = self_instanceRect.cocoaRect
 //      Swift.print ("R \(self_instanceRect.origin.x) \(self_instanceRect.origin.y) \(self_instanceRect.size.width) \(self_instanceRect.size.height)")
       var shapes = EBShape ()
-      shapes.add (filled: [EBBezierPath (rect: r)], NSColor.cyan.withAlphaComponent (0.15))
+      shapes.add (filled: [EBBezierPath (rect: r)], prefs_selectionHiliteColor.withAlphaComponent (0.15))
       var bp = EBBezierPath (rect: r.insetBy (dx: frameWidth / 2.0, dy: frameWidth / 2.0))
       bp.lineWidth = frameWidth
       bp.lineJoinStyle = .round
-      shapes.add (stroke: [bp], NSColor.cyan)
+      shapes.add (stroke: [bp], prefs_selectionHiliteColor)
       return shapes
 //--- END OF USER ZONE 2
 }

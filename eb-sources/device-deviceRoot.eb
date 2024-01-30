@@ -133,6 +133,7 @@ graphic handlingOpposite entity PackageInDevice {
   ;
 
   transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
      self.mMasterPads.all.padNumberDisplay,
      self.mRoot.one.mShowPackagePadNumbers,
      self.mRoot.one.mShowPackages,
@@ -291,6 +292,7 @@ graphic handlingOpposite entity SymbolInstanceInDevice {
   ;
 
   transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
      self.mType.one.mStrokeBezierPath,
      self.mType.one.mFilledBezierPath,
      self.mType.one.pinNameShape,

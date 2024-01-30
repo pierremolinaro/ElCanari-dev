@@ -35,6 +35,7 @@ graphic handlingOpposite entity BoardText : BoardObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
     self.mX, self.mY, self.mText, self.mFontSize,
     self.mFont.one.descriptor, self.mHorizontalAlignment, self.mVerticalAlignment,
     self.mLayer, self.mRotation, self.mWeight, self.mOblique,

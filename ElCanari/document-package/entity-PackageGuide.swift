@@ -237,19 +237,22 @@ final class PackageGuide : PackageObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.x1_property.selection
-        let s1 = unwSelf.y1_property.selection
-        let s2 = unwSelf.x2_property.selection
-        let s3 = unwSelf.y2_property.selection
-        let s4 = unwSelf.knobSize_property.selection
-        switch (s0, s1, s2, s3, s4) {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.x1_property.selection
+        let s2 = unwSelf.y1_property.selection
+        let s3 = unwSelf.x2_property.selection
+        let s4 = unwSelf.y2_property.selection
+        let s5 = unwSelf.knobSize_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
-              .single (let v4)) :
-          return .single (transient_PackageGuide_selectionDisplay (v0, v1, v2, v3, v4))
+              .single (let v4),
+              .single (let v5)) :
+          return .single (transient_PackageGuide_selectionDisplay (v0, v1, v2, v3, v4, v5))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -262,6 +265,7 @@ final class PackageGuide : PackageObject,
         return .empty
       }
     }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.x1_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.y1_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.x2_property.startsBeingObserved (by: self.selectionDisplay_property)

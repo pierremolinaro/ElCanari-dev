@@ -69,6 +69,7 @@ graphic handlingOpposite entity BoardImage : BoardObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
     self.mCenterX, self.mCenterY, self.boardImageCodeDescriptor,
     self.mLayer, self.mRotation, self.mPixelSize,
     prefs.frontSideLegendColorForBoard,

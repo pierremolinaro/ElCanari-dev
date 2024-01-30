@@ -23,7 +23,9 @@ graphic handlingOpposite entity MergerBoardInstance {
   transient Int boardLimitWidth dependsFrom self.myModel.one.modelLimitWidth ;
 
 //--- Selection layer
-  transient EBShape selectionDisplay dependsFrom self.instanceRect ;
+  transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
+    self.instanceRect ;
 
 //--- Background
   transient EBShape objectDisplay dependsFrom

@@ -14,6 +14,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardConnector_selectionDisplay (
+       _ prefs_selectionHiliteColor : NSColor,             
        _ self_isVia : Bool,                                
        _ self_location : CanariPoint
 ) -> EBShape {

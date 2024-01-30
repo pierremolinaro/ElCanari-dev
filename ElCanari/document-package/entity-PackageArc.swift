@@ -401,16 +401,17 @@ final class PackageArc : PackageObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.xCenter_property.selection
-        let s1 = unwSelf.yCenter_property.selection
-        let s2 = unwSelf.radius_property.selection
-        let s3 = unwSelf.startAngle_property.selection
-        let s4 = unwSelf.arcAngle_property.selection
-        let s5 = unwSelf.startTangent_property.selection
-        let s6 = unwSelf.endTangent_property.selection
-        let s7 = unwSelf.pathIsClosed_property.selection
-        let s8 = unwSelf.knobSize_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8) {
+        let s0 = preferences_selectionHiliteColor_property.selection
+        let s1 = unwSelf.xCenter_property.selection
+        let s2 = unwSelf.yCenter_property.selection
+        let s3 = unwSelf.radius_property.selection
+        let s4 = unwSelf.startAngle_property.selection
+        let s5 = unwSelf.arcAngle_property.selection
+        let s6 = unwSelf.startTangent_property.selection
+        let s7 = unwSelf.endTangent_property.selection
+        let s8 = unwSelf.pathIsClosed_property.selection
+        let s9 = unwSelf.knobSize_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -419,9 +420,11 @@ final class PackageArc : PackageObject,
               .single (let v5),
               .single (let v6),
               .single (let v7),
-              .single (let v8)) :
-          return .single (transient_PackageArc_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
+              .single (let v8),
+              .single (let v9)) :
+          return .single (transient_PackageArc_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -438,6 +441,7 @@ final class PackageArc : PackageObject,
         return .empty
       }
     }
+    preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.xCenter_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.yCenter_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.radius_property.startsBeingObserved (by: self.selectionDisplay_property)
