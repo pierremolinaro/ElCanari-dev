@@ -67,6 +67,14 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
   }
 
   //····················································································································
+
+//  override func viewDidChangeEffectiveAppearance () {
+//    super.viewDidChangeEffectiveAppearance ()
+////    Swift.print ("backgroundStyle \(self.cell?.backgroundStyle.rawValue)")
+//    Swift.print ("appearance \(NSApp.effectiveAppearance)")
+//  }
+
+  //····················································································································
   //  Drag type and object type name
   //····················································································································
 
