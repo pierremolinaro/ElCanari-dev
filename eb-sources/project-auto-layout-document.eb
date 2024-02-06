@@ -2306,7 +2306,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           expandableWidth ()
           $value #componentInBoardSelectionController.mValueIsVisibleInBoard
         }
-        Checkbox (title: "Draw Legend", size: .small) {
+        Checkbox (title: "Display Legend", size: .small) {
           expandableWidth ()
           $value #componentInBoardSelectionController.mDisplayLegend
         }

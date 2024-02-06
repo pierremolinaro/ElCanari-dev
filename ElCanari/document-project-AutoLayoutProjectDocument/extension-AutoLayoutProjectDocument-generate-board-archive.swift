@@ -4,11 +4,11 @@
 //
 //  Created by Pierre Molinaro on 01/08/2019.
 //
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 
 import AppKit
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
 
@@ -146,7 +146,7 @@ extension AutoLayoutProjectDocument {
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addBoardLimitPathToArchive (_ ioBoardArchive : inout [String : Any],
                                              _ inPath : EBLinePath,
@@ -164,7 +164,7 @@ fileprivate func addBoardLimitPathToArchive (_ ioBoardArchive : inout [String : 
    ioBoardArchive [ARCHIVE_INTERNAL_BOARDS_LIMITS_KEY] = stringArray  // DO NOT SORT
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addLinePathes (_ ioBoardArchive : inout [String : Any],
                                 _ inDictionary : [CGFloat : [EBLinePath]],
@@ -189,7 +189,7 @@ fileprivate func addLinePathes (_ ioBoardArchive : inout [String : Any],
    ioBoardArchive [inKey] = stringArray.sorted ()
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addOblongs (_ ioBoardArchive : inout [String : Any],
                              _ inOblongArray : [ProductOblong],
@@ -205,7 +205,7 @@ fileprivate func addOblongs (_ ioBoardArchive : inout [String : Any],
    ioBoardArchive [inKey] = stringArray.sorted ()
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addTracks (_ ioBoardArchive : inout [String : Any],
                             _ inTrackArray : [ProductOblong],
@@ -221,7 +221,7 @@ fileprivate func addTracks (_ ioBoardArchive : inout [String : Any],
    ioBoardArchive [inKey] = stringArray.sorted ()
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addCircles (_ ioBoardArchive : inout [String : Any],
                              _ inCircleArray : [ProductCircle],
@@ -236,7 +236,7 @@ fileprivate func addCircles (_ ioBoardArchive : inout [String : Any],
    ioBoardArchive [inKey] = stringArray.sorted ()
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addDrills (_ ioBoardArchive : inout [String : Any],
                             _ inDrillDictionary : [CGFloat : [(NSPoint, NSPoint)]],
@@ -253,7 +253,7 @@ fileprivate func addDrills (_ ioBoardArchive : inout [String : Any],
    ioBoardArchive [ARCHIVE_DRILLS_KEY] = stringArray.sorted ()
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func padDictionary (_ inCenter : CanariPoint,
                                 _ inPadSize : CanariSize,
@@ -278,7 +278,7 @@ fileprivate func padDictionary (_ inCenter : CanariPoint,
   return padDict
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addRectangles (_ ioBoardArchive : inout [String : Any],
                                 _ inRectArray : [ProductRectangle],
@@ -297,5 +297,5 @@ fileprivate func addRectangles (_ ioBoardArchive : inout [String : Any],
    ioBoardArchive [inKey] = stringArray.sorted ()
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 
