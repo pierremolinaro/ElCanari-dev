@@ -1455,31 +1455,45 @@ final class ComponentInProject : BoardObject,
         let s0 = preferences_selectionHiliteColor_property.selection
         let s1 = preferences_frontSideLegendColorForBoard_property.selection
         let s2 = preferences_backSideLegendColorForBoard_property.selection
-        let s3 = unwSelf.mX_property.selection
-        let s4 = unwSelf.mY_property.selection
-        let s5 = unwSelf.mRotation_property.selection
-        let s6 = unwSelf.mSide_property.selection
-        let s7 = unwSelf.strokeBezierPath_property.selection
-        let s8 = unwSelf.mDisplayLegend_property.selection
-        let s9 = unwSelf.mNameIsVisibleInBoard_property.selection
-        let s10 = unwSelf.mXName_property.selection
-        let s11 = unwSelf.mYName_property.selection
-        let s12 = unwSelf.mNameFont_property.descriptor_property.selection
-        let s13 = unwSelf.mNameFontSize_property.selection
-        let s14 = unwSelf.mNameRotation_property.selection
-        let s15 = unwSelf.componentName_property.selection
-        let s16 = unwSelf.packagePadDictionary_property.selection
-        let s17 = unwSelf.padNetDictionary_property.selection
-        let s18 = unwSelf.mValueIsVisibleInBoard_property.selection
-        let s19 = unwSelf.mXValue_property.selection
-        let s20 = unwSelf.mYValue_property.selection
-        let s21 = unwSelf.mValueFont_property.descriptor_property.selection
-        let s22 = unwSelf.mValueFontSize_property.selection
-        let s23 = unwSelf.mValueRotation_property.selection
-        let s24 = unwSelf.mComponentValue_property.selection
-        let s25 = preferences_hiliteWidthMultipliedByTen_property.selection
-        let s26 = preferences_mShowComponentRotationKnobInBoard_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26) {
+        var s3 = unwSelf.displayFrontLegendForBoard_property.selection
+        switch s3 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s3 = .single (true)
+        }
+        var s4 = unwSelf.displayBackLegendForBoard_property.selection
+        switch s4 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s4 = .single (true)
+        }
+        let s5 = unwSelf.mX_property.selection
+        let s6 = unwSelf.mY_property.selection
+        let s7 = unwSelf.mRotation_property.selection
+        let s8 = unwSelf.mSide_property.selection
+        let s9 = unwSelf.strokeBezierPath_property.selection
+        let s10 = unwSelf.mDisplayLegend_property.selection
+        let s11 = unwSelf.mNameIsVisibleInBoard_property.selection
+        let s12 = unwSelf.mXName_property.selection
+        let s13 = unwSelf.mYName_property.selection
+        let s14 = unwSelf.mNameFont_property.descriptor_property.selection
+        let s15 = unwSelf.mNameFontSize_property.selection
+        let s16 = unwSelf.mNameRotation_property.selection
+        let s17 = unwSelf.componentName_property.selection
+        let s18 = unwSelf.packagePadDictionary_property.selection
+        let s19 = unwSelf.padNetDictionary_property.selection
+        let s20 = unwSelf.mValueIsVisibleInBoard_property.selection
+        let s21 = unwSelf.mXValue_property.selection
+        let s22 = unwSelf.mYValue_property.selection
+        let s23 = unwSelf.mValueFont_property.descriptor_property.selection
+        let s24 = unwSelf.mValueFontSize_property.selection
+        let s25 = unwSelf.mValueRotation_property.selection
+        let s26 = unwSelf.mComponentValue_property.selection
+        let s27 = preferences_hiliteWidthMultipliedByTen_property.selection
+        let s28 = preferences_mShowComponentRotationKnobInBoard_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -1506,9 +1520,13 @@ final class ComponentInProject : BoardObject,
               .single (let v23),
               .single (let v24),
               .single (let v25),
-              .single (let v26)) :
-          return .single (transient_ComponentInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26))
+              .single (let v26),
+              .single (let v27),
+              .single (let v28)) :
+          return .single (transient_ComponentInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28))
         case (.multiple,
+              .multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -1546,6 +1564,8 @@ final class ComponentInProject : BoardObject,
     preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
     preferences_frontSideLegendColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
     preferences_backSideLegendColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.displayFrontLegendForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.displayBackLegendForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mX_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mY_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mRotation_property.startsBeingObserved (by: self.selectionDisplay_property)

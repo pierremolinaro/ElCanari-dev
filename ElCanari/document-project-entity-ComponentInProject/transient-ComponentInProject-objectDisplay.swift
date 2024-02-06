@@ -60,26 +60,29 @@ import AppKit
         }else{
           padDisplayAttributes = nil
         }
+      //--- Display Legend, component name, component value
+        let displayLegendNameValue : Bool
+        switch self_mSide {
+        case .front :
+          displayLegendNameValue = self_BoardObject_displayFrontLegendForBoard
+        case .back  :
+          displayLegendNameValue = self_BoardObject_displayBackLegendForBoard
+        }
+     //--- Legend
         var rotatedShape = EBShape ()
-      //--- Legend
-        if self_mDisplayLegend {
+        if displayLegendNameValue, self_mDisplayLegend {
           let color : NSColor
-          let display : Bool
           switch self_mSide {
           case .front :
             color = prefs_frontSideLegendColorForBoard
-            display = self_BoardObject_displayFrontLegendForBoard
           case .back  :
             color = prefs_backSideLegendColorForBoard
-            display = self_BoardObject_displayBackLegendForBoard
           }
-          if display {
-            var strokeBezierPath = self_strokeBezierPath
-            strokeBezierPath.lineWidth = CGFloat (self_BoardObject_packageDrawingWidthMultpliedByTenForBoard) / 10.0
-            strokeBezierPath.lineCapStyle = .round
-            strokeBezierPath.lineJoinStyle = .round
-            rotatedShape.add (stroke: [strokeBezierPath], color)
-          }
+          var strokeBezierPath = self_strokeBezierPath
+          strokeBezierPath.lineWidth = CGFloat (self_BoardObject_packageDrawingWidthMultpliedByTenForBoard) / 10.0
+          strokeBezierPath.lineCapStyle = .round
+          strokeBezierPath.lineJoinStyle = .round
+          rotatedShape.add (stroke: [strokeBezierPath], color)
         }
       //---
         let padRect = self_packagePadDictionary.padsRect
@@ -102,7 +105,7 @@ import AppKit
         }
       //--- Name
         var nonRotatedShape = EBShape ()
-        if self_mNameIsVisibleInBoard, let fontDescriptor = self_mNameFont_descriptor {
+        if displayLegendNameValue, self_mNameIsVisibleInBoard, let fontDescriptor = self_mNameFont_descriptor {
           let (textBP, _, _, _, _) = boardText_displayInfos (
             x: self_mXName + self_mX,
             y: self_mYName + self_mY,
@@ -122,7 +125,7 @@ import AppKit
           nonRotatedShape.add (stroke: [textBP], color)
         }
       //--- Value
-        if self_mValueIsVisibleInBoard, let fontDescriptor = self_mValueFont_descriptor {
+        if displayLegendNameValue, self_mValueIsVisibleInBoard, let fontDescriptor = self_mValueFont_descriptor {
           let (textBP, _, _, _, _) = boardText_displayInfos (
             x: self_mXValue + self_mX,
             y: self_mYValue + self_mY,

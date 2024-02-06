@@ -17,6 +17,8 @@ import AppKit
        _ prefs_selectionHiliteColor : NSColor,                 
        _ prefs_frontSideLegendColorForBoard : NSColor,         
        _ prefs_backSideLegendColorForBoard : NSColor,          
+       _ self_BoardObject_displayFrontLegendForBoard : Bool,   
+       _ self_BoardObject_displayBackLegendForBoard : Bool,    
        _ self_mX : Int,                                        
        _ self_mY : Int,                                        
        _ self_mRotation : Int,                                 
@@ -84,6 +86,14 @@ import AppKit
       if prefs_mShowComponentRotationKnobInBoard {
         rotatedKnobs.add (knobAt: rotationKnobLocation, knobIndex: COMPONENT_PACKAGE_ROTATION_KNOB, .circ, 2.0)
       }
+    //--- Display Legend, component name, component value
+      let displayLegendNameValue : Bool
+      switch self_mSide {
+      case .front :
+        displayLegendNameValue = self_BoardObject_displayFrontLegendForBoard
+      case .back  :
+        displayLegendNameValue = self_BoardObject_displayBackLegendForBoard
+      }
     //--- Name
       var nonRotatedShape = EBShape ()
       if self_mNameIsVisibleInBoard, let fontDescriptor = self_mNameFont_descriptor {
@@ -114,11 +124,13 @@ import AppKit
         bp.lineJoinStyle = .round
         nonRotatedShape.add (filled: [bp], .white, knobIndex: COMPONENT_PACKAGE_NAME_KNOB)
         nonRotatedShape.add (stroke: [bp], .black)
-        let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
-        nonRotatedShape.add (stroke: [textBP], color)
+        if displayLegendNameValue {
+          let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
+          nonRotatedShape.add (stroke: [textBP], color)
+        }
       }
     //--- Value
-      if self_mValueIsVisibleInBoard, let fontDescriptor = self_mValueFont_descriptor {
+      if displayLegendNameValue, self_mValueIsVisibleInBoard, let fontDescriptor = self_mValueFont_descriptor {
         let (textBP, frameBP, origin, _, _) = boardText_displayInfos (
           x: self_mXValue + self_mX,
           y: self_mYValue + self_mY,
@@ -146,8 +158,10 @@ import AppKit
         bp.lineJoinStyle = .round
         nonRotatedShape.add (filled: [bp], .white, knobIndex: COMPONENT_PACKAGE_VALUE_KNOB)
         nonRotatedShape.add (stroke: [bp], .black)
-        let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
-        nonRotatedShape.add (stroke: [textBP], color)
+        if displayLegendNameValue {
+          let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
+          nonRotatedShape.add (stroke: [textBP], color)
+        }
       }
     //---
       var af = AffineTransform ()

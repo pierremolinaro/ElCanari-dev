@@ -90,6 +90,8 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
     prefs.selectionHiliteColor,
     prefs.frontSideLegendColorForBoard,
     prefs.backSideLegendColorForBoard,
+    super.BoardObject.displayFrontLegendForBoard default yes,
+    super.BoardObject.displayBackLegendForBoard default yes,
     self.mX, self.mY, self.mRotation, self.mSide, self.strokeBezierPath,
     self.mDisplayLegend,
     self.mNameIsVisibleInBoard, self.mXName, self.mYName, self.mNameFont.one.descriptor, self.mNameFontSize,
