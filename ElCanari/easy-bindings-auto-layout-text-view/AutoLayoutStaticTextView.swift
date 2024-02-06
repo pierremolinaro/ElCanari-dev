@@ -40,6 +40,7 @@ final class AutoLayoutStaticTextView : NSScrollView {
     self.mTextView.maxSize = NSSize (width: MAX_SIZE, height: MAX_SIZE)
     self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: MAX_SIZE)
     self.mTextView.textContainer?.widthTracksTextView = true
+
     self.mTextView.setContentHuggingPriority (.defaultLow, for: .horizontal)
     self.mTextView.setContentHuggingPriority (.defaultLow, for: .vertical)
 
@@ -64,18 +65,10 @@ final class AutoLayoutStaticTextView : NSScrollView {
 
   //····················································································································
 
-//  final func set (drawsBackground inDrawsBackground : Bool) -> Self {
-//    self.mTextView.drawsBackground = inDrawsBackground
-//    return self
-//  }
-
-  //····················································································································
-
-//  final func setScroller (horizontal inHorizontal : Bool, vertical inVertical : Bool) -> Self {
-//    self.hasHorizontalScroller = inHorizontal
-//    self.hasVerticalScroller = inVertical
-//    return self
-//  }
+  final func set (text inString : String) -> Self {
+    appendMessageString (inString)
+    return self
+  }
 
   //····················································································································
 
@@ -90,8 +83,6 @@ final class AutoLayoutStaticTextView : NSScrollView {
     get { return self.mTextView.string }
     set { self.mTextView.string = newValue }
   }
-
-//  var textStorage : NSTextStorage? { self.mTextView.textStorage }
 
   //····················································································································
 

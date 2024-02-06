@@ -285,6 +285,10 @@ extern autolayout class TextView {
   $value property String
 }
 
+extern autolayout class StaticTextView (drawsBackground: Bool, horizontalScroller: Bool, verticalScroller: Bool) {
+  func set (text: String)
+}
+
 extern autolayout class TextObserverView $hidden {
   $observedValue transient String
   func setRedTextColor ()

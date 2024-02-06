@@ -1272,8 +1272,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     newView boardERCInspectorView = \boardERCInspectorView ()
     vStack set (width: 250) set (spacing: 0) {
       hStack set (spacing: 0) set (margins: 8) {
-//        CanariBoardOperationPullDownButton [configurator boardOperationPullDownButtonConfigurator]
-//        space
         DragSourceButtonWithMenus (tooltip: "Add Image; the layer is set by the contextual menu.") [configurator addBoardImageButton]
         space
         DragSourceButtonWithMenus (tooltip: "Add QR Code; the layer is set by the contextual menu.") [configurator addQRCodeButton]
@@ -1360,179 +1358,183 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       Button (title: "+▶︎", size: .regular) { $run appendNewBoardDisplayInspectorAction }
     }
     VerticalScrollView (content:
-      GridView2 {
-        add (
-          single: StaticLabel (title: "Grid and Flip", bold: yes, size: .small, alignment: .left)
-        )
-        addFirstBaseLineAligned (
-          left: StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .right),
-          right: CanariDimensionAndPopUp (size : .small)  { $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit }
-        )
-        addFirstBaseLineAligned (
-          left: StaticLabel (title: "Display", bold: no, size: .small, alignment: .right),
-          right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size : .small)  { $selectedIndex root.mBoardGridStyle }
-        )
-        addFirstBaseLineAligned (
-          left: StaticLabel (title: "Every", bold: no, size: .small, alignment: .right),
-          right: TaggedPopUpButton (size: .small) {
-            add (title: "1 Step",   withTag:  1)
-            add (title: "2 Steps",  withTag:  2)
-            add (title: "4 Steps",  withTag:  4)
-            add (title: "5 Steps",  withTag:  5)
-            add (title: "8 Steps",  withTag:  8)
-            add (title: "10 Steps", withTag: 10)
-            $selectedTag root.mBoardGridDisplayFactor
-          }
-        )
-        addFirstBaseLineAligned (
-          left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right),
-          right: Checkbox (title: "Horizontal", size : .small)  { $value root.mBoardHorizontalFlip }
-        )
-        addFirstBaseLineAligned (
-          left: space,
-          right: Checkbox (title: "Vertical", size : .small)  { $value root.mBoardVerticalFlip }
-        )
-        addFirstBaseLineAligned (
-          left: StaticLabel (title: "Cross Grid", bold: no, size: .small, alignment: .right),
-          right: ColorWell { expandableWidth ()  set (toolTip: "Stored in Preferences") $color prefs.crossColorGridForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: StaticLabel (title: "Line Grid", bold: no, size: .small, alignment: .right),
-          right: ColorWell { expandableWidth () set (toolTip: "Stored in Preferences") $color prefs.lineColorGridForBoard }
-        )
-        add (single: StaticLabel (title: "Rastnet", bold: yes, size: .small, alignment: .left) )
-        add (single: EnumPopUpButton (titles: enum RastnetDisplay.popupTitles, size: .small) { $selectedIndex root.mRastnetDisplay } )
-        add (
-          single: CanariSelectionPopUpButton (size: .small) {
-            $selectedNameInArray root.mRastnetDisplayedNetName, root.netNamesArray
-            $hidden !self.rastnetDisplayOneNet
-          }
-        )
-        add (
-          single: CanariSelectionPopUpButton (size: .small) {
-            $selectedNameInArray root.mRastnetDisplayedComponentName, root.placedComponentNameArray
-            $hidden !self.rastnetDisplayComponentNet
-          }
-        )
-        add (
-          single: StaticLabel (title: "Warning and Error Circle", bold: yes, size: .small, alignment: .center)
-        )
-        add (
-          single: LinearSlider (min: 0, max: 24, ticks: 13) { $doubleValue root.mErrorOrWarningIssueSize (sendContinously : yes) }
-        )
-        add (
-          single: StaticLabel (title: "Contextual Click Diameter", bold: yes, size: .small, alignment: .center)
-        )
-        add (
-          single: LinearSlider (min: 10, max: 200, ticks: 10) { $doubleValue root.mControlKeyHiliteDiameter (sendContinously : yes) }
-        )
-        add (single: StaticLabel (title: "Pad Number", bold: yes, size: .small, alignment: .left) )
-        add (single: FontButton (width: 125, size: .small) { $fontValue prefs.padNumberFontForBoard } )
-        add (single: StaticLabel (title: "Package Width", bold: yes, size: .small, alignment: .left) )
-        add (single: TaggedPopUpButton (size: .small) {
-            add (title: "0.5 Point",   withTag:  5)
-            add (title: "1.0 Point",  withTag:  10)
-            add (title: "1.5 Point",  withTag:  15)
-            add (title: "2.0 Point",  withTag:  20)
-            add (title: "2.5 Point",  withTag:  25)
-            $selectedTag root.packageDrawingWidthMultpliedByTenForBoard
-          }
-        )
-        add (single: StaticLabel (title: "Front side Display", bold: yes, size: .small, alignment: .left))
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColorForBoard } },
-          right: Checkbox (title: "Pads", size : .small)  { expandableHeight  () $value root.displayFrontPadsForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLegendColorForBoard } },
-          right: Checkbox (title: "Legend", size : .small)  { expandableHeight  () $value root.displayFrontLegendForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLayoutColorForBoard } },
-          right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayFrontLayoutForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideRestrictRectangleColorForBoard } },
-          right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayFrontRestrictRectangles }
-        )
-        add (single: StaticLabel (title: "Back Side Display", bold: yes, size: .small, alignment: .left))
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColorForBoard } },
-          right: Checkbox (title: "Pads", size : .small)  { expandableHeight  () $value root.displayBackPadsForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLegendColorForBoard } },
-          right: Checkbox (title: "Legend", size : .small)  { expandableHeight  () $value root.displayBackLegendForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLayoutColorForBoard } },
-          right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayBackLayoutForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideRestrictRectangleColorForBoard } },
-          right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayBackRestrictRectangles }
-        )
-        add (single: StaticLabel (title: "Inner 1 Layer Display", bold: yes, size: .small, alignment: .left))
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner1LayoutColorForBoard } },
-          right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner1LayoutForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner1SideRestrictRectangleColorForBoard } },
-          right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner1RestrictRectangles }
-        )
-        add (single: StaticLabel (title: "Inner 2 Layer Display", bold: yes, size: .small, alignment: .left))
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2LayoutColorForBoard } },
-          right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner2LayoutForBoard }
-        )
+      vStack {
+        GridView2 {
+          add (
+            single: StaticLabel (title: "Grid and Flip", bold: yes, size: .small, alignment: .left)
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .right),
+            right: CanariDimensionAndPopUp (size : .small)  { $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Display", bold: no, size: .small, alignment: .right),
+            right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size : .small)  { $selectedIndex root.mBoardGridStyle }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Every", bold: no, size: .small, alignment: .right),
+            right: TaggedPopUpButton (size: .small) {
+              add (title: "1 Step",   withTag:  1)
+              add (title: "2 Steps",  withTag:  2)
+              add (title: "4 Steps",  withTag:  4)
+              add (title: "5 Steps",  withTag:  5)
+              add (title: "8 Steps",  withTag:  8)
+              add (title: "10 Steps", withTag: 10)
+              $selectedTag root.mBoardGridDisplayFactor
+            }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right),
+            right: Checkbox (title: "Horizontal", size : .small)  { set (width: 125) $value root.mBoardHorizontalFlip}
+          )
+          addFirstBaseLineAligned (
+            left: space,
+            right: Checkbox (title: "Vertical", size : .small)  { $value root.mBoardVerticalFlip }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Cross Grid", bold: no, size: .small, alignment: .right),
+            right: ColorWell { expandableWidth ()  set (toolTip: "Stored in Preferences") $color prefs.crossColorGridForBoard }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Line Grid", bold: no, size: .small, alignment: .right),
+            right: ColorWell { expandableWidth () set (toolTip: "Stored in Preferences") $color prefs.lineColorGridForBoard }
+          )
+          add (single: StaticLabel (title: "Rastnet", bold: yes, size: .small, alignment: .left) )
+          add (single: EnumPopUpButton (titles: enum RastnetDisplay.popupTitles, size: .small) { $selectedIndex root.mRastnetDisplay } )
+          add (
+            single: CanariSelectionPopUpButton (size: .small) {
+              $selectedNameInArray root.mRastnetDisplayedNetName, root.netNamesArray
+              $hidden !self.rastnetDisplayOneNet
+            }
+          )
+          add (
+            single: CanariSelectionPopUpButton (size: .small) {
+              $selectedNameInArray root.mRastnetDisplayedComponentName, root.placedComponentNameArray
+              $hidden !self.rastnetDisplayComponentNet
+            }
+          )
+          add (
+            single: StaticLabel (title: "Warning and Error Circle", bold: yes, size: .small, alignment: .center)
+          )
+          add (
+            single: LinearSlider (min: 0, max: 24, ticks: 13) { $doubleValue root.mErrorOrWarningIssueSize (sendContinously : yes) }
+          )
+          add (
+            single: StaticLabel (title: "Contextual Click Diameter", bold: yes, size: .small, alignment: .center)
+          )
+          add (
+            single: LinearSlider (min: 10, max: 200, ticks: 10) { $doubleValue root.mControlKeyHiliteDiameter (sendContinously : yes) }
+          )
+          add (single: StaticLabel (title: "Pad Number", bold: yes, size: .small, alignment: .left) )
+          add (single: FontButton (width: 125, size: .small) { $fontValue prefs.padNumberFontForBoard } )
+          add (single: StaticLabel (title: "Package Width", bold: yes, size: .small, alignment: .left) )
+          add (single: TaggedPopUpButton (size: .small) {
+              add (title: "0.5 Point",   withTag:  5)
+              add (title: "1.0 Point",  withTag:  10)
+              add (title: "1.5 Point",  withTag:  15)
+              add (title: "2.0 Point",  withTag:  20)
+              add (title: "2.5 Point",  withTag:  25)
+              $selectedTag root.packageDrawingWidthMultpliedByTenForBoard
+            }
+          )
+        }
+        GridView2 {
+          add (single: StaticLabel (title: "Front side Display", bold: yes, size: .small, alignment: .left))
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColorForBoard } },
+            right: Checkbox (title: "Pads", size : .small)  { expandableHeight  () $value root.displayFrontPadsForBoard }
+          )
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLegendColorForBoard } },
+            right: Checkbox (title: "Component + Legend", size : .small)  { expandableHeight  () $value root.displayFrontLegendForBoard }
+          )
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLayoutColorForBoard } },
+            right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayFrontLayoutForBoard }
+          )
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideRestrictRectangleColorForBoard } },
+            right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayFrontRestrictRectangles }
+          )
+          add (single: StaticLabel (title: "Back Side Display", bold: yes, size: .small, alignment: .left))
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColorForBoard } },
+            right: Checkbox (title: "Pads", size : .small)  { expandableHeight  () $value root.displayBackPadsForBoard }
+          )
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLegendColorForBoard } },
+            right: Checkbox (title: "Component + Legend", size : .small)  { expandableHeight  () $value root.displayBackLegendForBoard }
+          )
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLayoutColorForBoard } },
+            right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayBackLayoutForBoard }
+          )
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideRestrictRectangleColorForBoard } },
+            right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayBackRestrictRectangles }
+          )
+          add (single: StaticLabel (title: "Inner 1 Layer Display", bold: yes, size: .small, alignment: .left))
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner1LayoutColorForBoard } },
+            right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner1LayoutForBoard }
+          )
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner1SideRestrictRectangleColorForBoard } },
+            right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner1RestrictRectangles }
+          )
+          add (single: StaticLabel (title: "Inner 2 Layer Display", bold: yes, size: .small, alignment: .left))
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2LayoutColorForBoard } },
+            right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner2LayoutForBoard }
+          )
+           addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2SideRestrictRectangleColorForBoard } },
+            right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner2RestrictRectangles }
+          )
+          add (single: StaticLabel (title: "Inner 3 Layer Display", bold: yes, size: .small, alignment: .left))
          addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2SideRestrictRectangleColorForBoard } },
-          right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner2RestrictRectangles }
-        )
-        add (single: StaticLabel (title: "Inner 3 Layer Display", bold: yes, size: .small, alignment: .left))
-       addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3LayoutColorForBoard } },
-          right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner3LayoutForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3SideRestrictRectangleColorForBoard } },
-          right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner3RestrictRectangles }
-        )
-        add (single: StaticLabel (title: "Inner 4 Layer Display", bold: yes, size: .small, alignment: .left))
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4LayoutColorForBoard } },
-          right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner4LayoutForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4SideRestrictRectangleColorForBoard } },
-          right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner4RestrictRectangles }
-        )
-        add (single: StaticLabel (title: "Other", bold: yes, size: .small, alignment: .left))
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColorForBoard } },
-          right: Checkbox (title: "Pad Numbers", size : .small)  { expandableHeight  () $value root.displayPadNumbersForBoard }
-        )
-        addCenterYAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardLimitsColorForBoard } },
-          right: StaticLabel (title: "Board Limits", bold: no, size : .small, alignment: .left)
-        )
-        addCenterYAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardClearanceColorForBoard } },
-          right: StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .left)
-        )
-        addCenterYAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardBackgroundColorForBoard } },
-          right: StaticLabel (title: "Background", bold: no, size : .small, alignment: .left)
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.errorBackgroundColorForBoard } },
-          right: Checkbox (title: "Error Background", size : .small)  { expandableHeight  () $value root.drawErrorBackgroundForBoard }
-        )
-        addFirstBaseLineAligned (
-          left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.warningBackgroundColorForBoard } },
-          right: Checkbox (title: "Warning Background", size : .small)  { expandableHeight  () $value prefs.drawWarningBackgroundForBoard }
-        )
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3LayoutColorForBoard } },
+            right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner3LayoutForBoard }
+          )
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3SideRestrictRectangleColorForBoard } },
+            right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner3RestrictRectangles }
+          )
+          add (single: StaticLabel (title: "Inner 4 Layer Display", bold: yes, size: .small, alignment: .left))
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4LayoutColorForBoard } },
+            right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner4LayoutForBoard }
+          )
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4SideRestrictRectangleColorForBoard } },
+            right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner4RestrictRectangles }
+          )
+          add (single: StaticLabel (title: "Other", bold: yes, size: .small, alignment: .left))
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColorForBoard } },
+            right: Checkbox (title: "Pad Numbers", size : .small)  { expandableHeight  () $value root.displayPadNumbersForBoard }
+          )
+          addCenterYAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardLimitsColorForBoard } },
+            right: StaticLabel (title: "Board Limits", bold: no, size : .small, alignment: .left)
+          )
+          addCenterYAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardClearanceColorForBoard } },
+            right: StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .left)
+          )
+          addCenterYAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardBackgroundColorForBoard } },
+            right: StaticLabel (title: "Background", bold: no, size : .small, alignment: .left)
+          )
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.errorBackgroundColorForBoard } },
+            right: Checkbox (title: "Error Background", size : .small)  { expandableHeight  () $value root.drawErrorBackgroundForBoard }
+          )
+          addFirstBaseLineAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.warningBackgroundColorForBoard } },
+            right: Checkbox (title: "Warning Background", size : .small)  { expandableHeight  () $value prefs.drawWarningBackgroundForBoard }
+          )
+        }
       }
     )
     space 
@@ -2294,17 +2296,27 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView \ComponentInBoardInspectorView vStack {
     StaticLabel (title: "Component Inspector", bold: yes, size: .small, alignment: .center)
-    Checkbox (title: "Display Name", size: .small) {
-      expandableWidth ()
-      $value #componentInBoardSelectionController.mNameIsVisibleInBoard
-    }
-    Checkbox (title: "Display Value", size: .small) {
-      expandableWidth ()
-      $value #componentInBoardSelectionController.mValueIsVisibleInBoard
-    }
-    Checkbox (title: "Draw Component Legend", size: .small) {
-      expandableWidth ()
-      $value #componentInBoardSelectionController.mDisplayLegend
+    hStack {
+      vStack {
+        Checkbox (title: "Display Name", size: .small) {
+          expandableWidth ()
+          $value #componentInBoardSelectionController.mNameIsVisibleInBoard
+        }
+        Checkbox (title: "Display Value", size: .small) {
+          expandableWidth ()
+          $value #componentInBoardSelectionController.mValueIsVisibleInBoard
+        }
+        Checkbox (title: "Draw Legend", size: .small) {
+          expandableWidth ()
+          $value #componentInBoardSelectionController.mDisplayLegend
+        }
+      }
+      StaticLabel (
+        title: "Name, value and legend are actually displayed if \"Component + Legend\" check box is checked (see 🔍 inspector).",
+        bold: no,
+        size: .mini,
+        alignment: .left
+      )
     }
     Checkbox (title: "Show Rotation Knob", size: .small) {
       expandableWidth ()
