@@ -435,6 +435,15 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     view schematicLateralBar
     separator
     GraphicView (minZoom: 50, maxZoom: 1_000) [outlet mSchematicsView configurator schematicView] {
+      prepend (toTopHStack:
+        PullDownButton (title: "", size: .small) [configurator schematicPullDownButtonConfigurator] {
+          add (item: menuItem "Select all Connected Elements"
+               $run selectAllConnectedElementsInSchematicsAction )
+          add (item: menuItem "Move Selected Elements to Sheet…"
+               $run moveSelectedToSheetInSchematicsAction )
+        }
+      )
+      prepend (toTopHStack: PopUpButton (size: .small) [configurator sheetPopUpButtonConfigurator2])
       $underObjectsDisplay root.schematicBackgroundDisplay
       $overObjectsDisplay root.schematicOverDisplay
       $tooltips root.schematicTooltips
@@ -467,13 +476,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     newView schematicsDisplayInspectorView = \schematicsDisplayInspectorView ()
     newView schematicsSheetInspectorView = \schematicsSheetInspectorView ()
     hStack set (spacing: 0) set (margins: 8) {
-      space
-      PullDownButton (title: "", size: .regular) [configurator schematicPullDownButtonConfigurator] {
-        add (item: menuItem "Select all Connected Elements"
-             $run selectAllConnectedElementsInSchematicsAction )
-        add (item: menuItem "Move Selected Elements to Sheet…"
-             $run moveSelectedToSheetInSchematicsAction )
-      }
+//      space
+//      PullDownButton (title: "", size: .regular) [configurator schematicPullDownButtonConfigurator] {
+//        add (item: menuItem "Select all Connected Elements"
+//             $run selectAllConnectedElementsInSchematicsAction )
+//        add (item: menuItem "Move Selected Elements to Sheet…"
+//             $run moveSelectedToSheetInSchematicsAction )
+//      }
       space
       DragSourceButtonWithMenus (tooltip: "Add Wire; hint: option click starts a new wire.") [configurator addWireInschematicsButton]
       space

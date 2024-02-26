@@ -3228,6 +3228,8 @@
 		CFEC042C2945E5770034D365 /* extension-PackageInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC042A2945E5770034D365 /* extension-PackageInDevice.swift */; };
 		CFEC042F2945EC910034D365 /* entity-DeviceRoot-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC042E2945EC910034D365 /* entity-DeviceRoot-extension.swift */; };
 		CFEC04302945EC920034D365 /* entity-DeviceRoot-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC042E2945EC910034D365 /* entity-DeviceRoot-extension.swift */; };
+		CFEC449A2B8D27C9005AAEF8 /* configurator-AutoLayoutProjectDocument-sheetPopUpButtonConfigurator2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC44992B8D27C9005AAEF8 /* configurator-AutoLayoutProjectDocument-sheetPopUpButtonConfigurator2.swift */; };
+		CFEC449B2B8D27C9005AAEF8 /* configurator-AutoLayoutProjectDocument-sheetPopUpButtonConfigurator2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC44992B8D27C9005AAEF8 /* configurator-AutoLayoutProjectDocument-sheetPopUpButtonConfigurator2.swift */; };
 		CFECF356294640FA0053F682 /* ProjectRoot-remove-unused-devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFECF355294640FA0053F682 /* ProjectRoot-remove-unused-devices.swift */; };
 		CFECF357294640FA0053F682 /* ProjectRoot-remove-unused-devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFECF355294640FA0053F682 /* ProjectRoot-remove-unused-devices.swift */; };
 		CFEDE5AF1B4677BA00036ACF /* entity-ArtworkRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDE5AD1B4677BA00036ACF /* entity-ArtworkRoot.swift */; };
@@ -5048,6 +5050,7 @@
 		CFEC04262945E4C80034D365 /* extension-SymbolInstanceInDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-SymbolInstanceInDevice.swift"; sourceTree = "<group>"; };
 		CFEC042A2945E5770034D365 /* extension-PackageInDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-PackageInDevice.swift"; sourceTree = "<group>"; };
 		CFEC042E2945EC910034D365 /* entity-DeviceRoot-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "entity-DeviceRoot-extension.swift"; sourceTree = "<group>"; };
+		CFEC44992B8D27C9005AAEF8 /* configurator-AutoLayoutProjectDocument-sheetPopUpButtonConfigurator2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-sheetPopUpButtonConfigurator2.swift"; sourceTree = "<group>"; };
 		CFECF355294640FA0053F682 /* ProjectRoot-remove-unused-devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectRoot-remove-unused-devices.swift"; sourceTree = "<group>"; };
 		CFEDE5AD1B4677BA00036ACF /* entity-ArtworkRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-ArtworkRoot.swift"; sourceTree = "<group>"; };
 		CFEDE5B11B4677C500036ACF /* EBDataScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBDataScanner.swift; sourceTree = "<group>"; };
@@ -5971,6 +5974,7 @@
 				CF3558D4279D6726000BFC9B /* configurator-AutoLayoutProjectDocument-selectedWireNetPopUpButtonConfigurator.swift */,
 				CF9C1C48279C97090018CCDB /* configurator-AutoLayoutProjectDocument-sheetOrientationSegmentedControlConfigurator.swift */,
 				CF9C1C2E279C6B2D0018CCDB /* configurator-AutoLayoutProjectDocument-sheetPopUpButtonConfigurator.swift */,
+				CFEC44992B8D27C9005AAEF8 /* configurator-AutoLayoutProjectDocument-sheetPopUpButtonConfigurator2.swift */,
 				CF9C1C4A279C9C320018CCDB /* configurator-AutoLayoutProjectDocument-sheetStepperConfigurator.swift */,
 				CF9C1C20279C57280018CCDB /* configurator-AutoLayoutProjectDocument-symbolDragSourceTableViewConfigurator.swift */,
 				CF54A0422770C52700D978D9 /* controller-array-AutoLayoutProjectDocument-boardCurveObjectsController.swift */,
@@ -8683,6 +8687,7 @@
 				CF49910D28D8C9430099F871 /* enum-RestrictRectangleLayer.swift in Sources */,
 				CF8A8A7A275A439D00825DF9 /* CharacterGerberCodeClass.swift in Sources */,
 				CFC829E1235CBA5900A51BD3 /* enum-RouteDirection.swift in Sources */,
+				CFEC449A2B8D27C9005AAEF8 /* configurator-AutoLayoutProjectDocument-sheetPopUpButtonConfigurator2.swift in Sources */,
 				CF9ABEA525C5CD0800AE2EA9 /* transient-PackageSlavePad-masterPadNameWithZoneName.swift in Sources */,
 				CF34A0AF2200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift in Sources */,
 				CF711C97275E155300280069 /* toone-BoardLine.swift in Sources */,
@@ -10678,6 +10683,7 @@
 				CFEB7AE7233A24570060A97A /* transient-BoardObject-errorOrWarningIssueSize.swift in Sources */,
 				CFB1F8B92940EDDA00C1E120 /* action-AutoLayoutProjectDocument-prependNewSchematicHotKeysInspectorAction.swift in Sources */,
 				CF6B32F921C91FA100E3B985 /* transient-PackageDimension-selectionDisplay.swift in Sources */,
+				CFEC449B2B8D27C9005AAEF8 /* configurator-AutoLayoutProjectDocument-sheetPopUpButtonConfigurator2.swift in Sources */,
 				CF83A4892AD2F9B10088B181 /* AutoLayoutHorizontalStackView-separator.swift in Sources */,
 				CF26AE1C2AD178870041763B /* extension-Date-EBPropertyProtocol.swift in Sources */,
 				CF89B5E629C4885600762595 /* action-AutoLayoutMergerDocument-stackAllDownAction.swift in Sources */,
