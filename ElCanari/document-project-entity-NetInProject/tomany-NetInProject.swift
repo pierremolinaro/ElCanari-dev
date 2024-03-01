@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProject> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <NetInProject>,                            
                                  addedSet inAddedSet : EBReferenceSet <NetInProject>) {
@@ -77,13 +77,13 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mNetName' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mNetName : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mNetName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -100,19 +100,19 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mNetName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mNetName?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mWarnsExactlyOneLabel' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mWarnsExactlyOneLabel : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mWarnsExactlyOneLabel_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -129,19 +129,19 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mWarnsExactlyOneLabel_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mWarnsExactlyOneLabel?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'netClassName' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_netClassName : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_netClassName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -158,19 +158,19 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_netClassName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_netClassName?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'netClassTrackWidth' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_netClassTrackWidth : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_netClassTrackWidth_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -187,19 +187,19 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_netClassTrackWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_netClassTrackWidth?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'netClassViaHoleDiameter' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_netClassViaHoleDiameter : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_netClassViaHoleDiameter_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -216,19 +216,19 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_netClassViaHoleDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_netClassViaHoleDiameter?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'netClassViaPadDiameter' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_netClassViaPadDiameter : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_netClassViaPadDiameter_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -245,19 +245,19 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_netClassViaPadDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_netClassViaPadDiameter?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'wireColor' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_wireColor : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_wireColor_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -274,19 +274,19 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_wireColor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_wireColor?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'netSchematicPointsInfo' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_netSchematicPointsInfo : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_netSchematicPointsInfo_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -303,19 +303,19 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_netSchematicPointsInfo_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_netSchematicPointsInfo?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'trackCount' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_trackCount : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_trackCount_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -332,13 +332,13 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_trackCount_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_trackCount?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -360,11 +360,11 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
 class ReadWriteArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
 
-  //····················································································································
+  //································································································
 
   func setProp (_ value :  EBReferenceArray <NetInProject>) { } // Abstract method
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -380,7 +380,7 @@ class ReadWriteArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
 
 class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
-  //····················································································································
+  //································································································
 
   init (usedForSignature inUsedForSignature : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
@@ -388,12 +388,12 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
     super.init ()
   }
 
-  //····················································································································
+  //································································································
   
   private final let mKey : String?
   final var key : String? { return self.mKey }
   
-  //····················································································································
+  //································································································
 
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
@@ -406,7 +406,7 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
     }
   }
 
-  //····················································································································
+  //································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
     var objectArray = EBReferenceArray <NetInProject> ()
@@ -417,7 +417,7 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
     self.setProp (objectArray)
   }
 
-  //····················································································································
+  //································································································
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, self.mInternalArrayValue.count > 0 {
@@ -429,7 +429,7 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
     }
   }
 
-  //····················································································································
+  //································································································
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, self.mInternalArrayValue.count > 0 {
@@ -439,32 +439,32 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
     }
   }
 
-  //····················································································································
+  //································································································
 
   func appendValueTo (data ioData : inout Data) {
     enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
   }
 
-  //····················································································································
+  //································································································
   //   Signature ?
-  //····················································································································
+  //································································································
 
   final private let mUsedForSignature : Bool
 
-  //····················································································································
+  //································································································
   //   Undo manager
-  //····················································································································
+  //································································································
 
   weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
   //   Opposite relationship management
-  //····················································································································
+  //································································································
 
   private final var mSetOppositeRelationship : Optional < (_ inManagedObject : NetInProject) -> Void > = nil
   private final var mResetOppositeRelationship : Optional < (_ inManagedObject : NetInProject) -> Void > = nil
 
-  //····················································································································
+  //································································································
 
   final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : NetInProject) -> Void,
                                                resetter inResetter : @escaping (_ inManagedObject : NetInProject) -> Void) {
@@ -472,9 +472,9 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
     self.mResetOppositeRelationship = inResetter
   }
 
-  //····················································································································
+  //································································································
   // Model will change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <NetInProject>) {
   //--- Register old value in undo manager
@@ -483,9 +483,9 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
 
-  //····················································································································
+  //································································································
   // Model did change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
   //--- Notify observers
@@ -494,9 +494,9 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
   // Update observers
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <NetInProject>,
                                  addedSet inAddedSet : EBReferenceSet <NetInProject>) {
@@ -517,19 +517,19 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 
-  //····················································································································
+  //································································································
 
   override final var selection : EBSelection < [NetInProject] > { return .single (self.mInternalArrayValue.values) }
 
-  //····················································································································
+  //································································································
 
   override func setProp (_ inValue : EBReferenceArray <NetInProject>) { self.mInternalArrayValue = inValue }
 
-  //····················································································································
+  //································································································
 
   final override var propval : EBReferenceArray <NetInProject> { return self.mInternalArrayValue }
 
-  //····················································································································
+  //································································································
 
   final func remove (_ object : NetInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
@@ -537,7 +537,7 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
     }
   }
 
-  //····················································································································
+  //································································································
 
   final func add (_ object : NetInProject) {
     if !self.internalSetValue.contains (object) {
@@ -545,17 +545,17 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
     }
   }
 
-  //····················································································································
+  //································································································
   //   signature
-  //····················································································································
+  //································································································
 
   private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
 
   private final var mSignatureCache : UInt32? = nil
 
-  //····················································································································
+  //································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
@@ -564,7 +564,7 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
     self.clearSignatureCache ()
  }
 
-  //····················································································································
+  //································································································
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
@@ -577,7 +577,7 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
     return computedSignature
   }
 
-  //····················································································································
+  //································································································
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
@@ -587,7 +587,7 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
     return crc
   }
 
-  //····················································································································
+  //································································································
 
   final func clearSignatureCache () {
     if self.mSignatureCache != nil {
@@ -596,7 +596,7 @@ class StoredArrayOf_NetInProject : ReadWriteArrayOf_NetInProject, EBSignatureObs
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

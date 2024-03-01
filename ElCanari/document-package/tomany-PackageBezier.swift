@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBezier> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageBezier>,                            
                                  addedSet inAddedSet : EBReferenceSet <PackageBezier>) {
@@ -143,13 +143,13 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'y1' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_y1 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_y1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -166,19 +166,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_y1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_y1?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'x2' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_x2 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_x2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -195,19 +195,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_x2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_x2?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'y2' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_y2 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_y2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -224,19 +224,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_y2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_y2?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'cpx1' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_cpx1 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_cpx1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -253,19 +253,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_cpx1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_cpx1?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'cpy1' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_cpy1 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_cpy1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -282,19 +282,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_cpy1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_cpy1?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'cpx2' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_cpx2 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_cpx2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -311,19 +311,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_cpx2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_cpx2?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'cpy2' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_cpy2 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_cpy2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -340,19 +340,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_cpy2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_cpy2?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'x1Unit' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_x1Unit : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_x1Unit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -369,19 +369,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_x1Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_x1Unit?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'y1Unit' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_y1Unit : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_y1Unit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -398,19 +398,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_y1Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_y1Unit?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'x2Unit' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_x2Unit : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_x2Unit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -427,19 +427,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_x2Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_x2Unit?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'y2Unit' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_y2Unit : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_y2Unit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -456,19 +456,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_y2Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_y2Unit?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'cpx1Unit' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_cpx1Unit : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_cpx1Unit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -485,19 +485,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_cpx1Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_cpx1Unit?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'cpy1Unit' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_cpy1Unit : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_cpy1Unit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -514,19 +514,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_cpy1Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_cpy1Unit?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'cpx2Unit' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_cpx2Unit : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_cpx2Unit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -543,19 +543,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_cpx2Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_cpx2Unit?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'cpy2Unit' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_cpy2Unit : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_cpy2Unit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -572,19 +572,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_cpy2Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_cpy2Unit?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'x1' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_x1 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_x1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -601,19 +601,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_x1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_x1?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'strokeBezierPath' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_strokeBezierPath : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_strokeBezierPath_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -630,19 +630,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_strokeBezierPath_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_strokeBezierPath?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'objectDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -659,19 +659,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'selectionDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -688,19 +688,19 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'issues' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_issues : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_issues_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -717,13 +717,13 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_issues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_issues?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -739,23 +739,23 @@ class ReadOnlyArrayOf_PackageBezier : EBReadOnlyAbstractArrayProperty <PackageBe
 
 final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : ReadOnlyArrayOf_PackageBezier {
 
-  //····················································································································
+  //································································································
   //   Data provider
-  //····················································································································
+  //································································································
 
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 //  private let mModelEvent = EBModelEvent ()
 
-  //····················································································································
+  //································································································
 
 /*  override init () {
     super.init ()
     self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
   } */
 
-  //····················································································································
+  //································································································
 
   func setDataProvider (_ inProvider : EBReadOnlyAbstractArrayProperty <SUPER>?) {
     if self.mDataProvider !== inProvider {
@@ -765,7 +765,7 @@ final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : Re
     }
   }
 
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
     if !self.mModelArrayShouldBeComputed {
@@ -779,7 +779,7 @@ final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : Re
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
 
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
@@ -811,7 +811,7 @@ final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : Re
     }
   }
 
-  //····················································································································
+  //································································································
 
   override var selection : EBSelection < [PackageBezier] > {
     self.computeModelArray ()
@@ -825,14 +825,14 @@ final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : Re
     }
   }
 
-  //····················································································································
+  //································································································
 
   override var propval : EBReferenceArray <PackageBezier> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
 
-  //····················································································································
+  //································································································
 
 }
 

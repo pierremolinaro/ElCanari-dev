@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEntity> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SegmentEntity>,                            
                                  addedSet inAddedSet : EBReferenceSet <SegmentEntity>) {
@@ -53,13 +53,13 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'y1' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_y1 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_y1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -76,19 +76,19 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_y1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_y1?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'x2' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_x2 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_x2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -105,19 +105,19 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_x2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_x2?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'y2' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_y2 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_y2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -134,19 +134,19 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_y2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_y2?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'width' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_width : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_width_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -163,19 +163,19 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_width_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_width?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'x1' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_x1 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_x1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -192,13 +192,13 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_x1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_x1?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -220,11 +220,11 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
 
 class ReadWriteArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 
-  //····················································································································
+  //································································································
 
   func setProp (_ value :  EBReferenceArray <SegmentEntity>) { } // Abstract method
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -240,7 +240,7 @@ class ReadWriteArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 
 class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
-  //····················································································································
+  //································································································
 
   init (usedForSignature inUsedForSignature : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
@@ -248,12 +248,12 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     super.init ()
   }
 
-  //····················································································································
+  //································································································
   
   private final let mKey : String?
   final var key : String? { return self.mKey }
   
-  //····················································································································
+  //································································································
 
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
@@ -266,7 +266,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     }
   }
 
-  //····················································································································
+  //································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
     var objectArray = EBReferenceArray <SegmentEntity> ()
@@ -277,7 +277,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     self.setProp (objectArray)
   }
 
-  //····················································································································
+  //································································································
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, self.mInternalArrayValue.count > 0 {
@@ -289,7 +289,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     }
   }
 
-  //····················································································································
+  //································································································
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, self.mInternalArrayValue.count > 0 {
@@ -299,27 +299,27 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     }
   }
 
-  //····················································································································
+  //································································································
 
   func appendValueTo (data ioData : inout Data) {
     enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
   }
 
-  //····················································································································
+  //································································································
   //   Signature ?
-  //····················································································································
+  //································································································
 
   final private let mUsedForSignature : Bool
 
-  //····················································································································
+  //································································································
   //   Undo manager
-  //····················································································································
+  //································································································
 
   weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
   // Model will change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <SegmentEntity>) {
   //--- Register old value in undo manager
@@ -328,9 +328,9 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
 
-  //····················································································································
+  //································································································
   // Model did change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
   //--- Notify observers
@@ -339,9 +339,9 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
   // Update observers
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SegmentEntity>,
                                  addedSet inAddedSet : EBReferenceSet <SegmentEntity>) {
@@ -360,19 +360,19 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 
-  //····················································································································
+  //································································································
 
   override final var selection : EBSelection < [SegmentEntity] > { return .single (self.mInternalArrayValue.values) }
 
-  //····················································································································
+  //································································································
 
   override func setProp (_ inValue : EBReferenceArray <SegmentEntity>) { self.mInternalArrayValue = inValue }
 
-  //····················································································································
+  //································································································
 
   final override var propval : EBReferenceArray <SegmentEntity> { return self.mInternalArrayValue }
 
-  //····················································································································
+  //································································································
 
   final func remove (_ object : SegmentEntity) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
@@ -380,7 +380,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     }
   }
 
-  //····················································································································
+  //································································································
 
   final func add (_ object : SegmentEntity) {
     if !self.internalSetValue.contains (object) {
@@ -388,17 +388,17 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     }
   }
 
-  //····················································································································
+  //································································································
   //   signature
-  //····················································································································
+  //································································································
 
   private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
 
   private final var mSignatureCache : UInt32? = nil
 
-  //····················································································································
+  //································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
@@ -407,7 +407,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     self.clearSignatureCache ()
  }
 
-  //····················································································································
+  //································································································
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
@@ -420,7 +420,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     return computedSignature
   }
 
-  //····················································································································
+  //································································································
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
@@ -430,7 +430,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     return crc
   }
 
-  //····················································································································
+  //································································································
 
   final func clearSignatureCache () {
     if self.mSignatureCache != nil {
@@ -439,7 +439,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

@@ -8,14 +8,14 @@ import AppKit
 
 extension EBGraphicView : NSDraggingSource {
 
-  //····················································································································
+  //································································································
 
   final func draggingSession (_ session: NSDraggingSession,
                               sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation {
     return .generic
   }
 
-  //····················································································································
+  //································································································
 
   final func ebStartDragging (with inEvent : NSEvent, dragType : NSPasteboard.PasteboardType) {
   //--- Find object under mouse
@@ -38,7 +38,7 @@ extension EBGraphicView : NSDraggingSource {
     }
   }
 
-  //····················································································································
+  //································································································
 
   final fileprivate func performStartDragging (draggedObjectSet : EBReferenceSet <EBGraphicManagedObject>,
                                                event inEvent : NSEvent,
@@ -95,7 +95,7 @@ extension EBGraphicView : NSDraggingSource {
     self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
   }
 
-  //····················································································································
+  //································································································
 
 }
 

@@ -18,7 +18,7 @@ fileprivate let DEFAULT_IMAGE_SIZE = 40
 
 struct BoardImageDescriptor : Hashable {
 
-  //····················································································································
+  //································································································
 
   struct BoardImageElementRectangle : Hashable {
     let x : Int
@@ -27,7 +27,7 @@ struct BoardImageDescriptor : Hashable {
     let height : Int
   }
 
-  //····················································································································
+  //································································································
 
   let blackRectangles : [BoardImageElementRectangle]
   let originalImageWidth : Int
@@ -35,7 +35,7 @@ struct BoardImageDescriptor : Hashable {
   let scaledImageWidth : Int
   let scaledImageHeight : Int
 
-  //····················································································································
+  //································································································
 
   init (imageData inImageData : Data,
         threshold inThreshold : Int,
@@ -100,7 +100,7 @@ struct BoardImageDescriptor : Hashable {
     self.blackRectangles = rectArray
   }
 
-  //····················································································································
+  //································································································
 
 }
 

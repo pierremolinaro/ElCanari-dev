@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //····················································································································
+  //································································································
 
   func generateProductFiles () {
     if self.fileURL != nil {
@@ -30,7 +30,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private func testERCandGenerateProductFiles () {
     if self.rootObject.mLastERCCheckingSignature == self.rootObject.signatureForERCChecking {
@@ -49,7 +49,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private func checkERCAndGenerate () {
      if self.rootObject.mLastERCCheckingIsSuccess {
@@ -67,7 +67,7 @@ extension AutoLayoutProjectDocument {
      }
   }
 
-  //····················································································································
+  //································································································
 
   private func performProductFilesGeneration () {
     self.mProductFileGenerationLogTextView?.clear ()
@@ -79,7 +79,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private func performProductFilesGeneration (atPath inDocumentFilePathWithoutExtension : String, _ inArtwork : ArtworkRoot) throws {
     let baseName = inDocumentFilePathWithoutExtension.lastPathComponent
@@ -114,7 +114,7 @@ extension AutoLayoutProjectDocument {
     try self.writeCSVFile (atPath: csvArchiveFilePath)
   }
 
-  //····················································································································
+  //································································································
 
   private func removeAndCreateDirectory (atPath inDirectoryPath : String) throws {
     let fm = FileManager ()
@@ -130,7 +130,7 @@ extension AutoLayoutProjectDocument {
     self.mProductFileGenerationLogTextView?.appendSuccessString (" ok.\n")
   }
 
-  //····················································································································
+  //································································································
 
 }
 

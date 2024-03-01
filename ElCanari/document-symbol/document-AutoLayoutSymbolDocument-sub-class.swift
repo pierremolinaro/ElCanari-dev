@@ -26,20 +26,20 @@ let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolina
 
 @objc(AutoLayoutSymbolDocumentSubClass) final class AutoLayoutSymbolDocumentSubClass : AutoLayoutSymbolDocument {
 
-  //····················································································································
+  //································································································
 
   override func metadataStatusForSaving () -> UInt8 {
     return UInt8 (self.metadataStatus!.rawValue)
   }
 
-  //····················································································································
+  //································································································
 
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
     metadataDictionary [PMSymbolVersion] = version
     metadataDictionary [PMSymbolComment] = self.rootObject.comments
   }
 
-  //····················································································································
+  //································································································
 
   override func readVersionFromMetadataDictionary (_ metadataDictionary : [String : Any]) -> Int {
     var result = 0
@@ -49,21 +49,21 @@ let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolina
     return result
   }
 
-  //····················································································································
+  //································································································
 
   override func windowDefaultSize () -> NSSize {
     return NSSize (width: 800, height: 600)
   }
 
-  //····················································································································
+  //································································································
 
   override final func defaultDraftName () -> String {
     return "untitled"
   }
 
-  //····················································································································
+  //································································································
   //    windowControllerDidLoadNib: customization of interface
-  //····················································································································
+  //································································································
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
@@ -73,21 +73,21 @@ let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolina
     }
   }
 
-  //····················································································································
+  //································································································
   //    Drag and drop destination
-  //····················································································································
+  //································································································
 
   override func draggingEntered (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> NSDragOperation {
     return .copy
   }
 
-  //····················································································································
+  //································································································
 
   override func prepareForDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
     return true
   }
 
-  //····················································································································
+  //································································································
 
   override func performDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
     var ok = false
@@ -119,7 +119,7 @@ let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolina
     return ok
   }
 
-  //····················································································································
+  //································································································
 
 }
 

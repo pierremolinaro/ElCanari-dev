@@ -8,11 +8,11 @@ import AppKit
 
 final class EBEnumGenericReadWritePropertyController <T : EBEnumProtocol> : EBObservablePropertyController where T : Equatable {
 
-  //····················································································································
+  //································································································
 
   private let mObject : EBEnumReadWriteProperty <T>
 
-  //····················································································································
+  //································································································
 
   init (observedObject inObject : EBEnumReadWriteProperty <T>,
         callBack inCallBack : @escaping () -> Void) {
@@ -20,13 +20,13 @@ final class EBEnumGenericReadWritePropertyController <T : EBEnumProtocol> : EBOb
     super.init (observedObjects : [inObject], callBack : inCallBack)
   }
 
-  //····················································································································
+  //································································································
 
   final func updateModel (withCandidateValue inValue : T) {
     self.mObject.setProp (inValue)
   }
 
-  //····················································································································
+  //································································································
 
 }
 

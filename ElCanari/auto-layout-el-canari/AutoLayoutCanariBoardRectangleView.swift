@@ -12,7 +12,7 @@ import AppKit
 
 final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
 
-  //····················································································································
+  //································································································
 
   private let mTopTextField = AutoLayoutLabel (bold: false, size: .small)
   private let mBottomTextField = AutoLayoutLabel (bold: false, size: .small)
@@ -20,7 +20,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
   private let mRightTextField = AutoLayoutLabel (bold: false, size: .small)
   private let mUnitPopUpButton = AutoLayoutCanariUnitPopUpButton (size: .small)
 
-  //····················································································································
+  //································································································
 
   override init () {
     super.init ()
@@ -62,13 +62,13 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
     self.addConstraints (constraints)
   }
 
-  //····················································································································
+  //································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
 
   final override var intrinsicContentSize : NSSize {
     var s = super.intrinsicContentSize
@@ -76,7 +76,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
     return s
   }
 
-  //····················································································································
+  //································································································
 
   override func draw (_ inDirtyRect : NSRect) {
     let w = self.mTopTextField.frame.height / 2.0
@@ -87,13 +87,13 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
     bp.stroke ()
   }
 
-  //····················································································································
+  //································································································
   //  $top binding
-  //····················································································································
+  //································································································
 
   private var mTopController : EBObservablePropertyController? = nil
 
-  //····················································································································
+  //································································································
 
   final func bind_top (_ inModel : EBObservableProperty <String>) -> Self {
     self.mTopController = EBObservablePropertyController (
@@ -103,7 +103,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
     return self
   }
 
-  //····················································································································
+  //································································································
 
   private func updateTop (from inModel : EBObservableProperty <String>) {
     switch inModel.selection {
@@ -116,13 +116,13 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
     }
   }
 
-  //····················································································································
+  //································································································
   //  $bottom binding
-  //····················································································································
+  //································································································
 
   private var mBottomController : EBObservablePropertyController? = nil
 
-  //····················································································································
+  //································································································
 
   final func bind_bottom (_ inModel : EBObservableProperty <String>) -> Self {
     self.mBottomController = EBObservablePropertyController (
@@ -132,7 +132,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
     return self
   }
 
-  //····················································································································
+  //································································································
 
   private func updateBottom (from inModel : EBObservableProperty <String>) {
     switch inModel.selection {
@@ -145,13 +145,13 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
     }
   }
 
-  //····················································································································
+  //································································································
   //  $left binding
-  //····················································································································
+  //································································································
 
   private var mLeftController : EBObservablePropertyController? = nil
 
-  //····················································································································
+  //································································································
 
   final func bind_left (_ inModel : EBObservableProperty <String>) -> Self {
     self.mLeftController = EBObservablePropertyController (
@@ -161,7 +161,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
     return self
   }
 
-  //····················································································································
+  //································································································
 
   private func updateLeft (from inModel : EBObservableProperty <String>) {
     switch inModel.selection {
@@ -174,13 +174,13 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
     }
   }
 
-  //····················································································································
+  //································································································
   //  $right binding
-  //····················································································································
+  //································································································
 
   private var mRightController : EBObservablePropertyController? = nil
 
-  //····················································································································
+  //································································································
 
   final func bind_right (_ inModel : EBObservableProperty <String>) -> Self {
     self.mRightController = EBObservablePropertyController (
@@ -190,7 +190,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
     return self
   }
 
-  //····················································································································
+  //································································································
 
   private func updateRight (from inModel : EBObservableProperty <String>) {
     switch inModel.selection {
@@ -203,16 +203,16 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
     }
   }
 
-  //····················································································································
+  //································································································
   //  $unit binding
-  //····················································································································
+  //································································································
 
   final func bind_unit (_ inModel : EBObservableMutableProperty <Int>) -> Self {
     _ = self.mUnitPopUpButton.bind_unit (inModel)
     return self
   }
 
-  //····················································································································
+  //································································································
 
 }
 

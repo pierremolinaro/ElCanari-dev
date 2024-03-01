@@ -56,7 +56,7 @@ fileprivate struct KicadNetClass {
   let drillDiameter : Int
   let netNames : [String]
 
-  //····················································································································
+  //································································································
 
   init (name inName : String,
         padDiameter inPadDiameter : Int,
@@ -68,7 +68,7 @@ fileprivate struct KicadNetClass {
     self.netNames = inNetNames
   }
 
-  //····················································································································
+  //································································································
 
   init () {
     self.name = "???"
@@ -77,7 +77,7 @@ fileprivate struct KicadNetClass {
     self.netNames = []
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -85,7 +85,7 @@ fileprivate struct KicadNetClass {
 
 extension AutoLayoutMergerDocument {
 
-  //····················································································································
+  //································································································
 
   func loadBoardModel_kicad (filePath inFilePath : String, windowForSheet inWindow : NSWindow) {
   //--- Load file, as plist
@@ -105,7 +105,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   func parseBoardModel_kicad (fromData inData : Data, named inName : String) -> BoardModel? {
     var result : BoardModel? = nil
@@ -150,7 +150,7 @@ extension AutoLayoutMergerDocument {
     return result
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func extractContents (_ inContentArray : [KicadItem],
                                     _ boardModel : BoardModel,
@@ -207,7 +207,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func collectDatas (_ inContentArray : [KicadItem],
                                  _ ioTemporaryBoardModel : inout TemporaryBoardModel,
@@ -250,7 +250,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func collectTracks (_ inKicadItem : KicadItem,
                                   _ ioTemporaryBoardModel : inout TemporaryBoardModel,
@@ -277,7 +277,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func collectNetNameArray (_ inContentArray : [KicadItem],
                                         _ ioNetNameArray : inout [String],
@@ -316,7 +316,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func collectVia (_ inKicadItem : KicadItem,
                                _ ioTemporaryBoardModel : inout TemporaryBoardModel,
@@ -344,7 +344,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func collectText (_ inKicadItem : KicadItem,
                                 _ ioTemporaryBoardModel : inout TemporaryBoardModel,
@@ -399,7 +399,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func collectModule (_ inKicadItem : KicadItem,
                                   _ ioTemporaryBoardModel : inout TemporaryBoardModel,
@@ -643,7 +643,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func collectBoardLimits (_ inContentArray : [KicadItem],
                                        _ ioLeft : inout Int,
@@ -700,7 +700,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

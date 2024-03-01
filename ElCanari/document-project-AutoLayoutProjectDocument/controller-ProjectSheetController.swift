@@ -14,9 +14,9 @@ import AppKit
 
 final class ProjectSheetController : EBOutletEvent {
 
-  //····················································································································
+  //································································································
   // Properties
-  //····················································································································
+  //································································································
 
   private var mSheetPopUpButtonArray = EBWeakReferenceArray <AutoLayoutPopUpButton> ()
   private var mMoveSheetUpButtonArray = EBWeakReferenceArray <AutoLayoutButton> ()
@@ -24,7 +24,7 @@ final class ProjectSheetController : EBOutletEvent {
   private var mStepperArray = EBWeakReferenceArray <AutoLayoutStepper> ()
   private weak var mDocument : AutoLayoutProjectDocument? = nil // SHOULD BE WEAK
 
-  //····················································································································
+  //································································································
 
   func register (document inDocument : AutoLayoutProjectDocument,
                  popup inPopUpButton : AutoLayoutPopUpButton) {
@@ -68,9 +68,9 @@ final class ProjectSheetController : EBOutletEvent {
     inButton.action = #selector (Self.moveDownAction (_:))
   }
 
-  //····················································································································
+  //································································································
   // MARK: -
-  //····················································································································
+  //································································································
 
   private func updatePopUpButtonAndSteppers () {
     let selectedSheet = self.mDocument?.rootObject.mSelectedSheet
@@ -118,7 +118,7 @@ final class ProjectSheetController : EBOutletEvent {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private func selectSheet (atIndex inIndex : Int) {
     if let rootObject = self.mDocument?.rootObject {
@@ -128,7 +128,7 @@ final class ProjectSheetController : EBOutletEvent {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private func configureMoveButtons (withIndex inIndex : Int, sheetCount inSheetCount : Int) {
     for button in self.mMoveSheetUpButtonArray.values {
@@ -147,13 +147,13 @@ final class ProjectSheetController : EBOutletEvent {
       }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func selectionDidChangeAction (_ inSender : NSMenuItem) {
     self.selectSheet (atIndex: inSender.tag)
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func stepperAction (_ inSender : AutoLayoutStepper) {
     if let rootObject = self.mDocument?.rootObject {
@@ -163,7 +163,7 @@ final class ProjectSheetController : EBOutletEvent {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func moveUpAction (_ inSender : AutoLayoutButton) {
     if let rootObject = self.mDocument?.rootObject {
@@ -178,7 +178,7 @@ final class ProjectSheetController : EBOutletEvent {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func moveDownAction (_ inSender : AutoLayoutButton) {
     if let rootObject = self.mDocument?.rootObject {
@@ -193,7 +193,7 @@ final class ProjectSheetController : EBOutletEvent {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

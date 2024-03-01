@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //····················································································································
+  //································································································
 
 //  override func importSESFromExtendedTabAction (_ sender : NSObject?) {
 //    let openPanel = NSOpenPanel ()
@@ -36,7 +36,7 @@ extension AutoLayoutProjectDocument {
 //    }
 //  }
 
-  //····················································································································
+  //································································································
 
   func handleSESFileContents (_ inFileContents : String) {
   //--- Build Panel
@@ -120,7 +120,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private func extractTracksAndVias (_ inNetComponents : [String],
                                      _ inResolution : Int,
@@ -211,7 +211,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private func findOrAddConnector (at inP : CanariPoint,
 //                                   _ inNet : NetInProject,
@@ -262,7 +262,7 @@ extension AutoLayoutProjectDocument {
     return newConnector
   }
 
-  //····················································································································
+  //································································································
 
   private func enterResults (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
                              _ inRoutedViaArray : [(BoardConnector, NetInProject)],
@@ -321,7 +321,7 @@ extension AutoLayoutProjectDocument {
     self.sortBoardObjectsFollowingBoardLayersAction (nil)
   }
 
-  //····················································································································
+  //································································································
 
 }
 

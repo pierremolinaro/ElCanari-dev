@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //····················································································································
+  //································································································
 
   func startWireCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) -> Bool {
      if let selectedSheet = self.rootObject.mSelectedSheet {
@@ -65,7 +65,7 @@ extension AutoLayoutProjectDocument {
     return self.mWireCreatedByOptionClick != nil
   }
 
-  //····················································································································
+  //································································································
 
   func continueWireCreationOnOptionMouseDragged (at inUnalignedMousePoint : NSPoint,
                                                  _ inModifierFlags : NSEvent.ModifierFlags) {
@@ -79,19 +79,19 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   func helperStringForWireCreation (_ _ : NSEvent.ModifierFlags) -> String {
     return "Dragging defines new wire; SHIFT constraints octolinear direction"
   }
 
-  //····················································································································
+  //································································································
 
   func abortWireCreationOnOptionMouseUp () {
     self.mWireCreatedByOptionClick = nil
   }
 
-  //····················································································································
+  //································································································
 
   func stopWireCreationOnOptionMouseUp (at _ : NSPoint) -> Bool {
      if let wire = self.mWireCreatedByOptionClick, let selectedSheet = self.rootObject.mSelectedSheet {
@@ -112,7 +112,7 @@ extension AutoLayoutProjectDocument {
      return true // Accepts wire creation
   }
 
-  //····················································································································
+  //································································································
 
 }
 

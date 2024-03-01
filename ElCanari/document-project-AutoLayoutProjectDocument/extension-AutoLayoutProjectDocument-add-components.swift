@@ -9,7 +9,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //····················································································································
+  //································································································
 
   func addComponentDialog () {
     var currentDeviceNames = Set <String> ()
@@ -24,7 +24,7 @@ extension AutoLayoutProjectDocument {
      )
   }
 
-  //····················································································································
+  //································································································
 
   func addComponent (_ inData : Data, _ inName : String) -> Bool {
   //--- Append device
@@ -33,7 +33,7 @@ extension AutoLayoutProjectDocument {
     return optionalAddedComponent != nil
   }
 
-  //····················································································································
+  //································································································
 
   func addComponent (fromEmbeddedLibraryDeviceName inDeviceName : String) {
   //--- find device
@@ -47,7 +47,7 @@ extension AutoLayoutProjectDocument {
     _ = self.addComponent (fromPossibleDevice: possibleDevice, prefix: nil)
   }
 
-  //····················································································································
+  //································································································
 
   func duplicate (component inComponent : ComponentInProject) -> ComponentInProject? {
     let optionalNewComponent = self.addComponent (fromPossibleDevice: inComponent.mDevice, prefix: inComponent.mNamePrefix)
@@ -74,7 +74,7 @@ extension AutoLayoutProjectDocument {
     return optionalNewComponent
   }
 
-  //····················································································································
+  //································································································
 
   func addComponent (fromPossibleDevice inPossibleDevice : DeviceInProject?,
                      prefix inPossiblePrefix : String?) -> ComponentInProject? {
@@ -118,7 +118,7 @@ extension AutoLayoutProjectDocument {
     return optionalNewComponent
   }
 
-  //····················································································································
+  //································································································
 
 }
 

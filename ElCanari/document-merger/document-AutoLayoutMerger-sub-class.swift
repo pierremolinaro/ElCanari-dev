@@ -20,7 +20,7 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
 
 @objc(AutoLayoutMergerDocumentSubClass) final class AutoLayoutMergerDocumentSubClass : AutoLayoutMergerDocument {
 
-  //····················································································································
+  //································································································
 
   override func ebBuildUserInterface () {
     super.ebBuildUserInterface ()
@@ -29,17 +29,17 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
     }
   }
 
-  //····················································································································
+  //································································································
   //    Properties for insert array of boards dialog
-  //····················································································································
+  //································································································
 
   let mInsertArrayOfBoardsXCount = EBStoredProperty <Int> (defaultValue: 1, undoManager: nil, key: nil)
   let mInsertArrayOfBoardsYCount = EBStoredProperty <Int> (defaultValue: 1, undoManager: nil, key: nil)
   let mInsertArrayOfBoardsOrientation = EBStoredProperty_QuadrantRotation (defaultValue: .rotation0, undoManager: nil, key: nil)
 
-  //····················································································································
+  //································································································
   //    Drag and drop destination
-  //····················································································································
+  //································································································
 
   override func prepareForDragOperation (_ inSender : NSDraggingInfo,
                                          _ inDestinationScrollView : NSScrollView) -> Bool {
@@ -49,7 +49,7 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
     return true
   }
 
-  //····················································································································
+  //································································································
 
   override func performDragOperation (_ inSender : NSDraggingInfo,
                                       _ inDestinationScrollView : NSScrollView) -> Bool {
@@ -86,9 +86,9 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
     return ok
   }
 
-  //····················································································································
+  //································································································
   // Providing the drag image, called by a source drag table view (CanariDragSourceTableView)
-  //····················································································································
+  //································································································
 
   override func image (forDragSource inSourceTableView : AutoLayoutCanariDragSourceTableView,
                        forDragRowIndex inDragRow : Int) -> (NSImage, NSPoint) {
@@ -137,7 +137,7 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
     return (resultImage, resultOffset)
   }
 
-  //····················································································································
+  //································································································
 
 }
 

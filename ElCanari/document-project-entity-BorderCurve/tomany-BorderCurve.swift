@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BorderCurve>,                            
                                  addedSet inAddedSet : EBReferenceSet <BorderCurve>) {
@@ -101,13 +101,13 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mX' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mX : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mX_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -124,19 +124,19 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mX?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mY' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mY : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mY_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -153,19 +153,19 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mY?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mCPX1' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mCPX1 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mCPX1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -182,19 +182,19 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mCPX1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mCPX1?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mCPY1' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mCPY1 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mCPY1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -211,19 +211,19 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mCPY1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mCPY1?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mCPX2' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mCPX2 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mCPX2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -240,19 +240,19 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mCPX2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mCPX2?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mCPY2' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mCPY2 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mCPY2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -269,19 +269,19 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mCPY2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mCPY2?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mShape' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mShape : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mShape_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -298,19 +298,19 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mShape_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mShape?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mNextX' proxy property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mNextX : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mNextX_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -327,19 +327,19 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mNextX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mNextX?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mNextY' proxy property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mNextY : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mNextY_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -356,19 +356,19 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mNextY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mNextY?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'p2Xvalue' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_p2Xvalue : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_p2Xvalue_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -385,19 +385,19 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_p2Xvalue_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_p2Xvalue?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'p2Yvalue' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_p2Yvalue : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_p2Yvalue_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -414,19 +414,19 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_p2Yvalue_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_p2Yvalue?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'descriptor' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_descriptor : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_descriptor_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -443,19 +443,19 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_descriptor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_descriptor?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'objectDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -472,19 +472,19 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'isLine' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_isLine : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_isLine_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -501,19 +501,19 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_isLine_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_isLine?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'selectionDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -530,13 +530,13 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -558,11 +558,11 @@ class ReadOnlyArrayOf_BorderCurve : EBReadOnlyAbstractArrayProperty <BorderCurve
 
 class ReadWriteArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
 
-  //····················································································································
+  //································································································
 
   func setProp (_ value :  EBReferenceArray <BorderCurve>) { } // Abstract method
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -578,7 +578,7 @@ class ReadWriteArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
 
 class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
-  //····················································································································
+  //································································································
 
   init (usedForSignature inUsedForSignature : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
@@ -586,12 +586,12 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
     super.init ()
   }
 
-  //····················································································································
+  //································································································
   
   private final let mKey : String?
   final var key : String? { return self.mKey }
   
-  //····················································································································
+  //································································································
 
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
@@ -604,7 +604,7 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
     }
   }
 
-  //····················································································································
+  //································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
     var objectArray = EBReferenceArray <BorderCurve> ()
@@ -615,7 +615,7 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
     self.setProp (objectArray)
   }
 
-  //····················································································································
+  //································································································
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, self.mInternalArrayValue.count > 0 {
@@ -627,7 +627,7 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
     }
   }
 
-  //····················································································································
+  //································································································
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, self.mInternalArrayValue.count > 0 {
@@ -637,32 +637,32 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
     }
   }
 
-  //····················································································································
+  //································································································
 
   func appendValueTo (data ioData : inout Data) {
     enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
   }
 
-  //····················································································································
+  //································································································
   //   Signature ?
-  //····················································································································
+  //································································································
 
   final private let mUsedForSignature : Bool
 
-  //····················································································································
+  //································································································
   //   Undo manager
-  //····················································································································
+  //································································································
 
   weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
   //   Opposite relationship management
-  //····················································································································
+  //································································································
 
   private final var mSetOppositeRelationship : Optional < (_ inManagedObject : BorderCurve) -> Void > = nil
   private final var mResetOppositeRelationship : Optional < (_ inManagedObject : BorderCurve) -> Void > = nil
 
-  //····················································································································
+  //································································································
 
   final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BorderCurve) -> Void,
                                                resetter inResetter : @escaping (_ inManagedObject : BorderCurve) -> Void) {
@@ -670,9 +670,9 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
     self.mResetOppositeRelationship = inResetter
   }
 
-  //····················································································································
+  //································································································
   // Model will change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <BorderCurve>) {
   //--- Register old value in undo manager
@@ -681,9 +681,9 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
 
-  //····················································································································
+  //································································································
   // Model did change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
   //--- Notify observers
@@ -692,9 +692,9 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
   // Update observers
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BorderCurve>,
                                  addedSet inAddedSet : EBReferenceSet <BorderCurve>) {
@@ -715,19 +715,19 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 
-  //····················································································································
+  //································································································
 
   override final var selection : EBSelection < [BorderCurve] > { return .single (self.mInternalArrayValue.values) }
 
-  //····················································································································
+  //································································································
 
   override func setProp (_ inValue : EBReferenceArray <BorderCurve>) { self.mInternalArrayValue = inValue }
 
-  //····················································································································
+  //································································································
 
   final override var propval : EBReferenceArray <BorderCurve> { return self.mInternalArrayValue }
 
-  //····················································································································
+  //································································································
 
   final func remove (_ object : BorderCurve) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
@@ -735,7 +735,7 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
     }
   }
 
-  //····················································································································
+  //································································································
 
   final func add (_ object : BorderCurve) {
     if !self.internalSetValue.contains (object) {
@@ -743,17 +743,17 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
     }
   }
 
-  //····················································································································
+  //································································································
   //   signature
-  //····················································································································
+  //································································································
 
   private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
 
   private final var mSignatureCache : UInt32? = nil
 
-  //····················································································································
+  //································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
@@ -762,7 +762,7 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
     self.clearSignatureCache ()
  }
 
-  //····················································································································
+  //································································································
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
@@ -775,7 +775,7 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
     return computedSignature
   }
 
-  //····················································································································
+  //································································································
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
@@ -785,7 +785,7 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
     return crc
   }
 
-  //····················································································································
+  //································································································
 
   final func clearSignatureCache () {
     if self.mSignatureCache != nil {
@@ -794,7 +794,7 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

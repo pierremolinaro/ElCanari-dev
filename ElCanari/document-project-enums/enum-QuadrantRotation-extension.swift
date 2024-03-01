@@ -12,7 +12,7 @@ import Foundation
 
 extension QuadrantRotation {
 
-  //····················································································································
+  //································································································
 
   func ebSymbolTextShapeHorizontalAlignment (alignment inAlignment : HorizontalAlignment, mirror inMirror : Bool) -> EBTextHorizontalAlignment {
     let horizontalAlignment : EBTextHorizontalAlignment
@@ -45,7 +45,7 @@ extension QuadrantRotation {
     return horizontalAlignment
   }
 
-  //····················································································································
+  //································································································
 
   func ebSymbolTextShapeVerticalAlignment (alignment _ : HorizontalAlignment, mirror inMirror : Bool) -> EBTextVerticalAlignment {
     let verticalAlignment : EBTextVerticalAlignment
@@ -62,7 +62,7 @@ extension QuadrantRotation {
     return verticalAlignment
   }
 
-  //····················································································································
+  //································································································
 
 }
 

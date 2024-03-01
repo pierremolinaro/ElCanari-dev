@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_SymbolText : EBReadOnlyAbstractArrayProperty <SymbolText> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolText>,                            
                                  addedSet inAddedSet : EBReferenceSet <SymbolText>) {
@@ -65,13 +65,13 @@ class ReadOnlyArrayOf_SymbolText : EBReadOnlyAbstractArrayProperty <SymbolText> 
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'y' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_y : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_y_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -88,19 +88,19 @@ class ReadOnlyArrayOf_SymbolText : EBReadOnlyAbstractArrayProperty <SymbolText> 
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_y_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_y?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'text' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_text : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_text_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -117,19 +117,19 @@ class ReadOnlyArrayOf_SymbolText : EBReadOnlyAbstractArrayProperty <SymbolText> 
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_text_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_text?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'horizontalAlignment' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_horizontalAlignment : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_horizontalAlignment_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -146,19 +146,19 @@ class ReadOnlyArrayOf_SymbolText : EBReadOnlyAbstractArrayProperty <SymbolText> 
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_horizontalAlignment_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_horizontalAlignment?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'x' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_x : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_x_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -175,19 +175,19 @@ class ReadOnlyArrayOf_SymbolText : EBReadOnlyAbstractArrayProperty <SymbolText> 
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_x_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_x?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'objectDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -204,19 +204,19 @@ class ReadOnlyArrayOf_SymbolText : EBReadOnlyAbstractArrayProperty <SymbolText> 
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'selectionDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -233,19 +233,19 @@ class ReadOnlyArrayOf_SymbolText : EBReadOnlyAbstractArrayProperty <SymbolText> 
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'issues' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_issues : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_issues_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -262,13 +262,13 @@ class ReadOnlyArrayOf_SymbolText : EBReadOnlyAbstractArrayProperty <SymbolText> 
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_issues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_issues?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -284,23 +284,23 @@ class ReadOnlyArrayOf_SymbolText : EBReadOnlyAbstractArrayProperty <SymbolText> 
 
 final class TransientArrayOfSuperOf_SymbolText <SUPER : EBManagedObject> : ReadOnlyArrayOf_SymbolText {
 
-  //····················································································································
+  //································································································
   //   Data provider
-  //····················································································································
+  //································································································
 
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 //  private let mModelEvent = EBModelEvent ()
 
-  //····················································································································
+  //································································································
 
 /*  override init () {
     super.init ()
     self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
   } */
 
-  //····················································································································
+  //································································································
 
   func setDataProvider (_ inProvider : EBReadOnlyAbstractArrayProperty <SUPER>?) {
     if self.mDataProvider !== inProvider {
@@ -310,7 +310,7 @@ final class TransientArrayOfSuperOf_SymbolText <SUPER : EBManagedObject> : ReadO
     }
   }
 
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
     if !self.mModelArrayShouldBeComputed {
@@ -324,7 +324,7 @@ final class TransientArrayOfSuperOf_SymbolText <SUPER : EBManagedObject> : ReadO
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
 
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
@@ -356,7 +356,7 @@ final class TransientArrayOfSuperOf_SymbolText <SUPER : EBManagedObject> : ReadO
     }
   }
 
-  //····················································································································
+  //································································································
 
   override var selection : EBSelection < [SymbolText] > {
     self.computeModelArray ()
@@ -370,14 +370,14 @@ final class TransientArrayOfSuperOf_SymbolText <SUPER : EBManagedObject> : ReadO
     }
   }
 
-  //····················································································································
+  //································································································
 
   override var propval : EBReferenceArray <SymbolText> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
 
-  //····················································································································
+  //································································································
 
 }
 

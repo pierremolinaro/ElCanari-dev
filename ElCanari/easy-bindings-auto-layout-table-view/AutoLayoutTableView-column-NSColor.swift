@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutTableView {
 
-  //····················································································································
+  //································································································
 
   func addColumn_NSColor (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSColor?,
                           valueSetterDelegate _ : Optional < (_ inRow : Int, _ inNewValue : NSColor) -> Void >,
@@ -34,7 +34,7 @@ extension AutoLayoutTableView {
     self.appendTableColumn (column)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -44,13 +44,13 @@ extension AutoLayoutTableView {
 
 fileprivate final class InternalColorValueTableColumn : AutoLayoutTableColumn {
 
-  //····················································································································
+  //································································································
 
   private let mValueGetterDelegate : (_ inRow : Int) -> NSColor?
 
-  //····················································································································
+  //································································································
   // INIT
-  //····················································································································
+  //································································································
 
   init (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSColor?) {
     self.mValueGetterDelegate = inGetterDelegate
@@ -58,13 +58,13 @@ fileprivate final class InternalColorValueTableColumn : AutoLayoutTableColumn {
     self.isEditable = false
   }
 
-  //····················································································································
+  //································································································
 
   required init (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
     let view = AutoLayoutViewWithBackground ()
@@ -73,7 +73,7 @@ fileprivate final class InternalColorValueTableColumn : AutoLayoutTableColumn {
     return view
   }
   
-  //····················································································································
+  //································································································
 
 }
 

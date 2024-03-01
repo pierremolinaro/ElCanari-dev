@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_BoardModelPad : EBReadOnlyAbstractArrayProperty <BoardModelPad> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardModelPad>,                            
                                  addedSet inAddedSet : EBReferenceSet <BoardModelPad>) {
@@ -59,13 +59,13 @@ class ReadOnlyArrayOf_BoardModelPad : EBReadOnlyAbstractArrayProperty <BoardMode
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'y' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_y : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_y_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -82,19 +82,19 @@ class ReadOnlyArrayOf_BoardModelPad : EBReadOnlyAbstractArrayProperty <BoardMode
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_y_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_y?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'width' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_width : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_width_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -111,19 +111,19 @@ class ReadOnlyArrayOf_BoardModelPad : EBReadOnlyAbstractArrayProperty <BoardMode
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_width_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_width?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'height' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_height : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_height_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -140,19 +140,19 @@ class ReadOnlyArrayOf_BoardModelPad : EBReadOnlyAbstractArrayProperty <BoardMode
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_height_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_height?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'shape' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_shape : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_shape_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -169,19 +169,19 @@ class ReadOnlyArrayOf_BoardModelPad : EBReadOnlyAbstractArrayProperty <BoardMode
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_shape_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_shape?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'rotation' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_rotation : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_rotation_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -198,19 +198,19 @@ class ReadOnlyArrayOf_BoardModelPad : EBReadOnlyAbstractArrayProperty <BoardMode
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_rotation_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_rotation?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'x' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_x : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_x_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -227,13 +227,13 @@ class ReadOnlyArrayOf_BoardModelPad : EBReadOnlyAbstractArrayProperty <BoardMode
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_x_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_x?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -255,11 +255,11 @@ class ReadOnlyArrayOf_BoardModelPad : EBReadOnlyAbstractArrayProperty <BoardMode
 
 class ReadWriteArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
 
-  //····················································································································
+  //································································································
 
   func setProp (_ value :  EBReferenceArray <BoardModelPad>) { } // Abstract method
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -275,7 +275,7 @@ class ReadWriteArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
 
 class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
-  //····················································································································
+  //································································································
 
   init (usedForSignature inUsedForSignature : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
@@ -283,12 +283,12 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     super.init ()
   }
 
-  //····················································································································
+  //································································································
   
   private final let mKey : String?
   final var key : String? { return self.mKey }
   
-  //····················································································································
+  //································································································
 
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
@@ -301,7 +301,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     }
   }
 
-  //····················································································································
+  //································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
     var objectArray = EBReferenceArray <BoardModelPad> ()
@@ -312,7 +312,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     self.setProp (objectArray)
   }
 
-  //····················································································································
+  //································································································
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, self.mInternalArrayValue.count > 0 {
@@ -324,7 +324,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     }
   }
 
-  //····················································································································
+  //································································································
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, self.mInternalArrayValue.count > 0 {
@@ -334,27 +334,27 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     }
   }
 
-  //····················································································································
+  //································································································
 
   func appendValueTo (data ioData : inout Data) {
     enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
   }
 
-  //····················································································································
+  //································································································
   //   Signature ?
-  //····················································································································
+  //································································································
 
   final private let mUsedForSignature : Bool
 
-  //····················································································································
+  //································································································
   //   Undo manager
-  //····················································································································
+  //································································································
 
   weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
   // Model will change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <BoardModelPad>) {
   //--- Register old value in undo manager
@@ -363,9 +363,9 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
 
-  //····················································································································
+  //································································································
   // Model did change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
   //--- Notify observers
@@ -374,9 +374,9 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
   // Update observers
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardModelPad>,
                                  addedSet inAddedSet : EBReferenceSet <BoardModelPad>) {
@@ -395,19 +395,19 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 
-  //····················································································································
+  //································································································
 
   override final var selection : EBSelection < [BoardModelPad] > { return .single (self.mInternalArrayValue.values) }
 
-  //····················································································································
+  //································································································
 
   override func setProp (_ inValue : EBReferenceArray <BoardModelPad>) { self.mInternalArrayValue = inValue }
 
-  //····················································································································
+  //································································································
 
   final override var propval : EBReferenceArray <BoardModelPad> { return self.mInternalArrayValue }
 
-  //····················································································································
+  //································································································
 
   final func remove (_ object : BoardModelPad) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
@@ -415,7 +415,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     }
   }
 
-  //····················································································································
+  //································································································
 
   final func add (_ object : BoardModelPad) {
     if !self.internalSetValue.contains (object) {
@@ -423,17 +423,17 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     }
   }
 
-  //····················································································································
+  //································································································
   //   signature
-  //····················································································································
+  //································································································
 
   private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
 
   private final var mSignatureCache : UInt32? = nil
 
-  //····················································································································
+  //································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
@@ -442,7 +442,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     self.clearSignatureCache ()
  }
 
-  //····················································································································
+  //································································································
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
@@ -455,7 +455,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     return computedSignature
   }
 
-  //····················································································································
+  //································································································
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
@@ -465,7 +465,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     return crc
   }
 
-  //····················································································································
+  //································································································
 
   final func clearSignatureCache () {
     if self.mSignatureCache != nil {
@@ -474,7 +474,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

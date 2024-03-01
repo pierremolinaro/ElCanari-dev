@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //····················································································································
+  //································································································
 
   func writeBoardArchiveFile (atPath inPath : String, _ inProductData : ProductData) throws {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
@@ -66,7 +66,7 @@ extension AutoLayoutProjectDocument {
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
   }
 
-  //····················································································································
+  //································································································
 
   private func addBoardLimits (_ ioBoardArchive : inout [String : Any], _ inProductData : ProductData) -> AffineTransform {
     let boardBoundBox = inProductData.boardBoundBox
@@ -84,7 +84,7 @@ extension AutoLayoutProjectDocument {
     return af
   }
 
-  //····················································································································
+  //································································································
 
   private func addPadsToArchive (_ ioBoardArchive : inout [String : Any], _ inAffineTransform : AffineTransform) {
     var frontPads = [[String : Any]] ()
@@ -142,7 +142,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

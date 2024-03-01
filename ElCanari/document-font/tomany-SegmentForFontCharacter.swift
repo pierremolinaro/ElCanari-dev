@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_SegmentForFontCharacter : EBReadOnlyAbstractArrayProperty <SegmentForFontCharacter> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SegmentForFontCharacter>,                            
                                  addedSet inAddedSet : EBReferenceSet <SegmentForFontCharacter>) {
@@ -59,13 +59,13 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : EBReadOnlyAbstractArrayProperty 
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'x1' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_x1 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_x1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -82,19 +82,19 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : EBReadOnlyAbstractArrayProperty 
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_x1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_x1?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'y1' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_y1 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_y1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -111,19 +111,19 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : EBReadOnlyAbstractArrayProperty 
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_y1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_y1?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'x2' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_x2 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_x2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -140,19 +140,19 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : EBReadOnlyAbstractArrayProperty 
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_x2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_x2?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'y2' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_y2 : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_y2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -169,19 +169,19 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : EBReadOnlyAbstractArrayProperty 
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_y2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_y2?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'objectDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -198,19 +198,19 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : EBReadOnlyAbstractArrayProperty 
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'selectionDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -227,13 +227,13 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : EBReadOnlyAbstractArrayProperty 
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -255,11 +255,11 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : EBReadOnlyAbstractArrayProperty 
 
 class ReadWriteArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontCharacter {
 
-  //····················································································································
+  //································································································
 
   func setProp (_ value :  EBReferenceArray <SegmentForFontCharacter>) { } // Abstract method
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -275,7 +275,7 @@ class ReadWriteArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
 
 class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCharacter, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
-  //····················································································································
+  //································································································
 
   init (usedForSignature inUsedForSignature : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
@@ -283,12 +283,12 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     super.init ()
   }
 
-  //····················································································································
+  //································································································
   
   private final let mKey : String?
   final var key : String? { return self.mKey }
   
-  //····················································································································
+  //································································································
 
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
@@ -301,7 +301,7 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     }
   }
 
-  //····················································································································
+  //································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
     var objectArray = EBReferenceArray <SegmentForFontCharacter> ()
@@ -312,7 +312,7 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     self.setProp (objectArray)
   }
 
-  //····················································································································
+  //································································································
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, self.mInternalArrayValue.count > 0 {
@@ -324,7 +324,7 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     }
   }
 
-  //····················································································································
+  //································································································
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, self.mInternalArrayValue.count > 0 {
@@ -334,27 +334,27 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     }
   }
 
-  //····················································································································
+  //································································································
 
   func appendValueTo (data ioData : inout Data) {
     enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
   }
 
-  //····················································································································
+  //································································································
   //   Signature ?
-  //····················································································································
+  //································································································
 
   final private let mUsedForSignature : Bool
 
-  //····················································································································
+  //································································································
   //   Undo manager
-  //····················································································································
+  //································································································
 
   weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
   // Model will change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <SegmentForFontCharacter>) {
   //--- Register old value in undo manager
@@ -363,9 +363,9 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
 
-  //····················································································································
+  //································································································
   // Model did change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
   //--- Notify observers
@@ -374,9 +374,9 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
   // Update observers
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SegmentForFontCharacter>,
                                  addedSet inAddedSet : EBReferenceSet <SegmentForFontCharacter>) {
@@ -395,19 +395,19 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 
-  //····················································································································
+  //································································································
 
   override final var selection : EBSelection < [SegmentForFontCharacter] > { return .single (self.mInternalArrayValue.values) }
 
-  //····················································································································
+  //································································································
 
   override func setProp (_ inValue : EBReferenceArray <SegmentForFontCharacter>) { self.mInternalArrayValue = inValue }
 
-  //····················································································································
+  //································································································
 
   final override var propval : EBReferenceArray <SegmentForFontCharacter> { return self.mInternalArrayValue }
 
-  //····················································································································
+  //································································································
 
   final func remove (_ object : SegmentForFontCharacter) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
@@ -415,7 +415,7 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     }
   }
 
-  //····················································································································
+  //································································································
 
   final func add (_ object : SegmentForFontCharacter) {
     if !self.internalSetValue.contains (object) {
@@ -423,17 +423,17 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     }
   }
 
-  //····················································································································
+  //································································································
   //   signature
-  //····················································································································
+  //································································································
 
   private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
 
   private final var mSignatureCache : UInt32? = nil
 
-  //····················································································································
+  //································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
@@ -442,7 +442,7 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     self.clearSignatureCache ()
  }
 
-  //····················································································································
+  //································································································
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
@@ -455,7 +455,7 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     return computedSignature
   }
 
-  //····················································································································
+  //································································································
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
@@ -465,7 +465,7 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     return crc
   }
 
-  //····················································································································
+  //································································································
 
   final func clearSignatureCache () {
     if self.mSignatureCache != nil {
@@ -474,7 +474,7 @@ class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCha
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

@@ -12,7 +12,7 @@ import AppKit
 
 final class AutoLayoutCanariDimensionUnitSetterPullDownButton : AutoLayoutBase_NSPopUpButton {
 
-  //····················································································································
+  //································································································
 
   init (size inSize : EBControlSize) {
     super.init (pullsDown: true,size: inSize)
@@ -32,17 +32,17 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : AutoLayoutBase_N
     self.add (title: "µm", withTag: 90)
   }
 
-  //····················································································································
+  //································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
 
   override var acceptsFirstResponder: Bool { return false }
 
-  //····················································································································
+  //································································································
 
   fileprivate func add (title inTitle : String, withTag inTag : Int) {
     self.addItem (withTitle: inTitle)
@@ -51,7 +51,7 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : AutoLayoutBase_N
     self.lastItem?.action = #selector (Self.menuItemAction (_:))
   }
 
-  //····················································································································
+  //································································································
 
   @objc func menuItemAction (_ inSender : NSMenuItem) {
     let newUnit = inSender.tag
@@ -60,13 +60,13 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : AutoLayoutBase_N
     }
   }
 
-  //····················································································································
+  //································································································
   //  $setterN bindings
-  //····················································································································
+  //································································································
 
   private var mObjects = [EBObservableMutableProperty <Int>] ()
 
-  //····················································································································
+  //································································································
 
   final func bind_setter4 (_ inObject1 : EBObservableMutableProperty <Int>,
                            _ inObject2 : EBObservableMutableProperty <Int>,
@@ -76,7 +76,7 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : AutoLayoutBase_N
     return self
   }
 
-  //····················································································································
+  //································································································
 
   final func bind_setter5 (_ inObject1 : EBObservableMutableProperty <Int>,
                            _ inObject2 : EBObservableMutableProperty <Int>,
@@ -87,7 +87,7 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : AutoLayoutBase_N
     return self
   }
 
-  //····················································································································
+  //································································································
 
   final func bind_setter6 (_ inObject1 : EBObservableMutableProperty <Int>,
                            _ inObject2 : EBObservableMutableProperty <Int>,
@@ -99,7 +99,7 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : AutoLayoutBase_N
     return self
   }
 
-  //····················································································································
+  //································································································
 
   final func bind_setter7 (_ inObject1 : EBObservableMutableProperty <Int>,
                            _ inObject2 : EBObservableMutableProperty <Int>,
@@ -112,7 +112,7 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : AutoLayoutBase_N
     return self
   }
 
-  //····················································································································
+  //································································································
 
   final func bind_setter8 (_ inObject1 : EBObservableMutableProperty <Int>,
                            _ inObject2 : EBObservableMutableProperty <Int>,
@@ -126,7 +126,7 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : AutoLayoutBase_N
     return self
   }
 
-  //····················································································································
+  //································································································
 
 }
 

@@ -18,7 +18,7 @@ final class CanariLibraryEntryDelegate : EBObserverProtocol {
   private weak var mObject : CanariLibraryEntry? // SHOULD BE WEAK
   private var mStream : FSEventStreamRef? = nil
 
-  //····················································································································
+  //································································································
 
   init (object inObject : CanariLibraryEntry) {
     self.mObject = inObject
@@ -26,13 +26,13 @@ final class CanariLibraryEntryDelegate : EBObserverProtocol {
     noteObjectAllocation (self)
   }
 
-  //····················································································································
+  //································································································
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //····················································································································
+  //································································································
 
   func observedObjectDidChange () {
     let possiblePath = self.mObject?.mPath
@@ -77,13 +77,13 @@ final class CanariLibraryEntryDelegate : EBObserverProtocol {
     }
   }
   
-  //····················································································································
+  //································································································
 
 //  fileprivate final func monitoredFileDidChange () {
 //    self.mObject?.mStatusImage_property.observedObjectDidChange ()
 //  }
   
-  //····················································································································
+  //································································································
 
   final func removeFileSystemMonitoring () {
     if let stream = self.mStream {
@@ -94,7 +94,7 @@ final class CanariLibraryEntryDelegate : EBObserverProtocol {
     }
   }
   
-  //····················································································································
+  //································································································
 
 }
 

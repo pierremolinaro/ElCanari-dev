@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //····················································································································
+  //································································································
 
   func writeGerberDrillFile (atPath inPath : String, _ inProductData : ProductData) throws {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
@@ -51,7 +51,7 @@ extension AutoLayoutProjectDocument {
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
   }
 
-  //····················································································································
+  //································································································
 
   func writeGerberProductFile (atPath inPath : String,
                                _ inDescriptor : ArtworkFileGenerationParameters,
@@ -192,7 +192,7 @@ extension AutoLayoutProjectDocument {
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -200,7 +200,7 @@ extension AutoLayoutProjectDocument {
 
 extension EBLinePath {
 
-  //····················································································································
+  //································································································
 
   func appendGerberCodeTo (_ ioStringArray : inout [String], _ inAffineTransform : AffineTransform) {
     let to = inAffineTransform.transform (self.origin)
@@ -218,7 +218,7 @@ extension EBLinePath {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -227,13 +227,13 @@ extension EBLinePath {
 
 extension Dictionary where Key == CGFloat, Value == [String] {
 
-  //····················································································································
+  //································································································
 
   mutating func append (_ inStringArray : [String], for inAperture : CGFloat) {
    self [inAperture] = self [inAperture, default: []] + inStringArray
   }
 
-  //····················································································································
+  //································································································
 
   mutating func append (_ inApertureDict : [CGFloat : [EBLinePath]], _ inAffineTransform : AffineTransform) {
     for (aperture, pathArray) in inApertureDict {
@@ -245,7 +245,7 @@ extension Dictionary where Key == CGFloat, Value == [String] {
     }
   }
 
-  //····················································································································
+  //································································································
 
   mutating func append (circles inCircles : [ProductCircle]?, _ inAffineTransform : AffineTransform) {
     if let circles = inCircles {
@@ -259,7 +259,7 @@ extension Dictionary where Key == CGFloat, Value == [String] {
     }
   }
 
-  //····················································································································
+  //································································································
 
   mutating func append (oblongs inLines : [ProductOblong]?, _ inAffineTransform : AffineTransform) {
     if let lines = inLines {
@@ -276,7 +276,7 @@ extension Dictionary where Key == CGFloat, Value == [String] {
     }
   }
 
-  //····················································································································
+  //································································································
 
   mutating func append (tracks inTracks : [ProductOblong]?, _ inAffineTransform : AffineTransform) {
     if let tracks = inTracks {
@@ -293,7 +293,7 @@ extension Dictionary where Key == CGFloat, Value == [String] {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -301,7 +301,7 @@ extension Dictionary where Key == CGFloat, Value == [String] {
 
 extension Array where Element == ProductPolygon {
 
-  //····················································································································
+  //································································································
 
   func transformed (by inAffineTransform : AffineTransform) -> [ProductPolygon] {
     var result = [ProductPolygon] ()
@@ -311,7 +311,7 @@ extension Array where Element == ProductPolygon {
     return result
   }
 
-  //····················································································································
+  //································································································
 
 }
 

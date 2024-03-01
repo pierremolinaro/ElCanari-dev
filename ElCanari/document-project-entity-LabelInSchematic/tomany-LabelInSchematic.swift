@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_LabelInSchematic : EBReadOnlyAbstractArrayProperty <LabelInSchematic> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <LabelInSchematic>,                            
                                  addedSet inAddedSet : EBReferenceSet <LabelInSchematic>) {
@@ -59,13 +59,13 @@ class ReadOnlyArrayOf_LabelInSchematic : EBReadOnlyAbstractArrayProperty <LabelI
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mOrientation' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mOrientation : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mOrientation_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -82,19 +82,19 @@ class ReadOnlyArrayOf_LabelInSchematic : EBReadOnlyAbstractArrayProperty <LabelI
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mOrientation_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mOrientation?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'location' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_location : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_location_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -111,19 +111,19 @@ class ReadOnlyArrayOf_LabelInSchematic : EBReadOnlyAbstractArrayProperty <LabelI
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_location_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_location?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'netName' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_netName : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_netName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -140,19 +140,19 @@ class ReadOnlyArrayOf_LabelInSchematic : EBReadOnlyAbstractArrayProperty <LabelI
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_netName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_netName?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'selectionDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -169,19 +169,19 @@ class ReadOnlyArrayOf_LabelInSchematic : EBReadOnlyAbstractArrayProperty <LabelI
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'netClassName' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_netClassName : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_netClassName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -198,19 +198,19 @@ class ReadOnlyArrayOf_LabelInSchematic : EBReadOnlyAbstractArrayProperty <LabelI
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_netClassName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_netClassName?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'objectDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -227,13 +227,13 @@ class ReadOnlyArrayOf_LabelInSchematic : EBReadOnlyAbstractArrayProperty <LabelI
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -249,23 +249,23 @@ class ReadOnlyArrayOf_LabelInSchematic : EBReadOnlyAbstractArrayProperty <LabelI
 
 final class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> : ReadOnlyArrayOf_LabelInSchematic {
 
-  //····················································································································
+  //································································································
   //   Data provider
-  //····················································································································
+  //································································································
 
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 //  private let mModelEvent = EBModelEvent ()
 
-  //····················································································································
+  //································································································
 
 /*  override init () {
     super.init ()
     self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
   } */
 
-  //····················································································································
+  //································································································
 
   func setDataProvider (_ inProvider : EBReadOnlyAbstractArrayProperty <SUPER>?) {
     if self.mDataProvider !== inProvider {
@@ -275,7 +275,7 @@ final class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> :
     }
   }
 
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
     if !self.mModelArrayShouldBeComputed {
@@ -289,7 +289,7 @@ final class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> :
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
 
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
@@ -321,7 +321,7 @@ final class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> :
     }
   }
 
-  //····················································································································
+  //································································································
 
   override var selection : EBSelection < [LabelInSchematic] > {
     self.computeModelArray ()
@@ -335,14 +335,14 @@ final class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> :
     }
   }
 
-  //····················································································································
+  //································································································
 
   override var propval : EBReferenceArray <LabelInSchematic> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -352,11 +352,11 @@ final class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> :
 
 class ReadWriteArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic {
 
-  //····················································································································
+  //································································································
 
   func setProp (_ value :  EBReferenceArray <LabelInSchematic>) { } // Abstract method
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -372,7 +372,7 @@ class ReadWriteArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic {
 
 class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
-  //····················································································································
+  //································································································
 
   init (usedForSignature inUsedForSignature : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
@@ -380,12 +380,12 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     super.init ()
   }
 
-  //····················································································································
+  //································································································
   
   private final let mKey : String?
   final var key : String? { return self.mKey }
   
-  //····················································································································
+  //································································································
 
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
@@ -398,7 +398,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     }
   }
 
-  //····················································································································
+  //································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
     var objectArray = EBReferenceArray <LabelInSchematic> ()
@@ -409,7 +409,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     self.setProp (objectArray)
   }
 
-  //····················································································································
+  //································································································
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, self.mInternalArrayValue.count > 0 {
@@ -421,7 +421,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     }
   }
 
-  //····················································································································
+  //································································································
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, self.mInternalArrayValue.count > 0 {
@@ -431,32 +431,32 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     }
   }
 
-  //····················································································································
+  //································································································
 
   func appendValueTo (data ioData : inout Data) {
     enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
   }
 
-  //····················································································································
+  //································································································
   //   Signature ?
-  //····················································································································
+  //································································································
 
   final private let mUsedForSignature : Bool
 
-  //····················································································································
+  //································································································
   //   Undo manager
-  //····················································································································
+  //································································································
 
   weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
   //   Opposite relationship management
-  //····················································································································
+  //································································································
 
   private final var mSetOppositeRelationship : Optional < (_ inManagedObject : LabelInSchematic) -> Void > = nil
   private final var mResetOppositeRelationship : Optional < (_ inManagedObject : LabelInSchematic) -> Void > = nil
 
-  //····················································································································
+  //································································································
 
   final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : LabelInSchematic) -> Void,
                                                resetter inResetter : @escaping (_ inManagedObject : LabelInSchematic) -> Void) {
@@ -464,9 +464,9 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     self.mResetOppositeRelationship = inResetter
   }
 
-  //····················································································································
+  //································································································
   // Model will change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <LabelInSchematic>) {
   //--- Register old value in undo manager
@@ -475,9 +475,9 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
 
-  //····················································································································
+  //································································································
   // Model did change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
   //--- Notify observers
@@ -486,9 +486,9 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
   // Update observers
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <LabelInSchematic>,
                                  addedSet inAddedSet : EBReferenceSet <LabelInSchematic>) {
@@ -509,19 +509,19 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 
-  //····················································································································
+  //································································································
 
   override final var selection : EBSelection < [LabelInSchematic] > { return .single (self.mInternalArrayValue.values) }
 
-  //····················································································································
+  //································································································
 
   override func setProp (_ inValue : EBReferenceArray <LabelInSchematic>) { self.mInternalArrayValue = inValue }
 
-  //····················································································································
+  //································································································
 
   final override var propval : EBReferenceArray <LabelInSchematic> { return self.mInternalArrayValue }
 
-  //····················································································································
+  //································································································
 
   final func remove (_ object : LabelInSchematic) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
@@ -529,7 +529,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     }
   }
 
-  //····················································································································
+  //································································································
 
   final func add (_ object : LabelInSchematic) {
     if !self.internalSetValue.contains (object) {
@@ -537,17 +537,17 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     }
   }
 
-  //····················································································································
+  //································································································
   //   signature
-  //····················································································································
+  //································································································
 
   private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
 
   private final var mSignatureCache : UInt32? = nil
 
-  //····················································································································
+  //································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
@@ -556,7 +556,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     self.clearSignatureCache ()
  }
 
-  //····················································································································
+  //································································································
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
@@ -569,7 +569,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     return computedSignature
   }
 
-  //····················································································································
+  //································································································
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
@@ -579,7 +579,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     return crc
   }
 
-  //····················································································································
+  //································································································
 
   final func clearSignatureCache () {
     if self.mSignatureCache != nil {
@@ -588,7 +588,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

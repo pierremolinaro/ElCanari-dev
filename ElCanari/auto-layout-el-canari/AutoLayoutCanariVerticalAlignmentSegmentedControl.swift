@@ -12,7 +12,7 @@ import AppKit
 
 final class AutoLayoutCanariVerticalAlignmentSegmentedControl : AutoLayoutBase_NSSegmentedControl {
 
-  //····················································································································
+  //································································································
 
   init (size inSize : EBControlSize) {
     super.init (equalWidth: true, size: inSize)
@@ -28,15 +28,15 @@ final class AutoLayoutCanariVerticalAlignmentSegmentedControl : AutoLayoutBase_N
     self.addSegment (withImageNamed: "alignmentTop")
   }
 
-  //····················································································································
+  //································································································
 
   required init?(coder inCoder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
   // ADD PAGE
-  //····················································································································
+  //································································································
 
   final func addSegment (withImageNamed inImageName : String) {
     let idx = self.segmentCount
@@ -50,22 +50,22 @@ final class AutoLayoutCanariVerticalAlignmentSegmentedControl : AutoLayoutBase_N
     }
   }
 
-  //····················································································································
+  //································································································
   // SELECTED TAB DID CHANGE
-  //····················································································································
+  //································································································
 
   @objc func selectedSegmentDidChange (_ inSender : Any?) {
     _ = self.mObject?.setFrom (rawValue: self.selectedSegment)
   }
 
-  //····················································································································
+  //································································································
   //  $alignment binding
-  //····················································································································
+  //································································································
 
   private var mAlignmentController : EBObservablePropertyController? = nil
   private var mObject : EBEnumReadWriteObservableProtocol? = nil
 
-  //····················································································································
+  //································································································
 
   final func bind_alignment (_ inObject : EBEnumReadWriteProperty <BoardTextVerticalAlignment>) -> Self {
     self.mObject = inObject
@@ -76,7 +76,7 @@ final class AutoLayoutCanariVerticalAlignmentSegmentedControl : AutoLayoutBase_N
     return self
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func update (from inObject : EBEnumReadWriteProperty <BoardTextVerticalAlignment>) {
     if let rawValue = inObject.rawValue () {
@@ -86,7 +86,7 @@ final class AutoLayoutCanariVerticalAlignmentSegmentedControl : AutoLayoutBase_N
   }
 
 
-  //····················································································································
+  //································································································
 
 }
 

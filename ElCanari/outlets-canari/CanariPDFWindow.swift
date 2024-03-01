@@ -20,12 +20,12 @@ fileprivate let SaveAsToolbarIdentifier = NSToolbarItem.Identifier ("SaveAs")
 
 final class CanariPDFWindow : CanariWindow, NSToolbarDelegate {
 
-  //····················································································································
+  //································································································
 
   private let mPDFView = PDFView (frame: .zero)
   private let mData : Data
 
-  //····················································································································
+  //································································································
 
   init (fileName inFileName : String, pdfData inPDFData : Data) {
     self.mData = inPDFData
@@ -52,9 +52,9 @@ final class CanariPDFWindow : CanariWindow, NSToolbarDelegate {
     self.toolbar = toolbar
   }
 
-  //····················································································································
+  //································································································
   //   TOOL BAR
-  //····················································································································
+  //································································································
 
   @MainActor func toolbar (_ toolbar : NSToolbar,
                 itemForItemIdentifier itemIdentifier : NSToolbarItem.Identifier,
@@ -99,7 +99,7 @@ final class CanariPDFWindow : CanariWindow, NSToolbarDelegate {
     return toolbarItem
   }
 
-  //····················································································································
+  //································································································
 
   func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
     return [
@@ -113,7 +113,7 @@ final class CanariPDFWindow : CanariWindow, NSToolbarDelegate {
     ]
   }
 
-  //····················································································································
+  //································································································
 
   func toolbarAllowedItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
     return [
@@ -126,7 +126,7 @@ final class CanariPDFWindow : CanariWindow, NSToolbarDelegate {
     ]
   }
 
-  //····················································································································
+  //································································································
 
   @objc func saveDocumentAs (_ inSender : Any?) {
     let savePanel = NSSavePanel ()
@@ -140,7 +140,7 @@ final class CanariPDFWindow : CanariWindow, NSToolbarDelegate {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

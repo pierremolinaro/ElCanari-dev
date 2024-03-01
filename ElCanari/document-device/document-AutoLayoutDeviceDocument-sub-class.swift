@@ -40,7 +40,7 @@ let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
     return UInt8 (self.metadataStatus?.rawValue ?? 0)
   }
 
-  //····················································································································
+  //································································································
 
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
   //--- Version
@@ -60,7 +60,7 @@ let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
     }
     metadataDictionary [DEVICE_SYMBOL_METADATA_DICTIONARY_KEY] = symbolDictionary  }
 
-  //····················································································································
+  //································································································
 
   override func readVersionFromMetadataDictionary (_ metadataDictionary : [String : Any]) -> Int {
     var result = 0
@@ -70,13 +70,13 @@ let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
     return result
   }
 
-  //····················································································································
+  //································································································
 
   override final func defaultDraftName () -> String {
     return "untitled"
   }
 
-  //····················································································································
+  //································································································
 
 }
 

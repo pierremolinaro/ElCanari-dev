@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <CommentInSchematic> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <CommentInSchematic>,                            
                                  addedSet inAddedSet : EBReferenceSet <CommentInSchematic>) {
@@ -89,13 +89,13 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mColor' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mColor : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mColor_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -112,19 +112,19 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mColor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mColor?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mSize' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mSize : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mSize_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -141,19 +141,19 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mSize_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSize?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mHorizontalAlignment' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mHorizontalAlignment : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mHorizontalAlignment_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -170,19 +170,19 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mHorizontalAlignment_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mHorizontalAlignment?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mVerticalAlignment' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mVerticalAlignment : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mVerticalAlignment_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -199,19 +199,19 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mVerticalAlignment_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mVerticalAlignment?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mRotation' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mRotation : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mRotation_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -228,19 +228,19 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mRotation_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mRotation?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mBold' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mBold : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mBold_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -257,19 +257,19 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mBold_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mBold?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mX' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mX : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mX_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -286,19 +286,19 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mX?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mY' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mY : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mY_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -315,19 +315,19 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mY?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mComment' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mComment : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mComment_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -344,19 +344,19 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mComment_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mComment?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'objectDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -373,19 +373,19 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'selectionDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -402,13 +402,13 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -424,23 +424,23 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
 final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject> : ReadOnlyArrayOf_CommentInSchematic {
 
-  //····················································································································
+  //································································································
   //   Data provider
-  //····················································································································
+  //································································································
 
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 //  private let mModelEvent = EBModelEvent ()
 
-  //····················································································································
+  //································································································
 
 /*  override init () {
     super.init ()
     self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
   } */
 
-  //····················································································································
+  //································································································
 
   func setDataProvider (_ inProvider : EBReadOnlyAbstractArrayProperty <SUPER>?) {
     if self.mDataProvider !== inProvider {
@@ -450,7 +450,7 @@ final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject>
     }
   }
 
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
     if !self.mModelArrayShouldBeComputed {
@@ -464,7 +464,7 @@ final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject>
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
 
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
@@ -496,7 +496,7 @@ final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject>
     }
   }
 
-  //····················································································································
+  //································································································
 
   override var selection : EBSelection < [CommentInSchematic] > {
     self.computeModelArray ()
@@ -510,14 +510,14 @@ final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject>
     }
   }
 
-  //····················································································································
+  //································································································
 
   override var propval : EBReferenceArray <CommentInSchematic> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
 
-  //····················································································································
+  //································································································
 
 }
 

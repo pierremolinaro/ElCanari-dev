@@ -8,12 +8,13 @@ import AppKit
 
 extension EBGraphicView {
 
-  //····················································································································
+  //································································································
 
   final override func mouseDown (with inEvent : NSEvent) {
     if let controller = self.mViewController {
       NSCursor.arrow.set ()
       let unalignedMouseDownLocationInView = self.convert (inEvent.locationInWindow, from: nil)
+      self.mUnalignedMouseDownLocationInView = unalignedMouseDownLocationInView
       if let mouseDownInterceptor = self.mMouseDownInterceptor, mouseDownInterceptor (unalignedMouseDownLocationInView) {
       }else{
         let modifierFlags = inEvent.modifierFlags
@@ -57,18 +58,19 @@ extension EBGraphicView {
     }
   }
 
-  //····················································································································
+  //································································································
 
   final override func mouseDragged (with inEvent : NSEvent) {
     super.mouseDragged (with: inEvent)
     let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
-    let locationOnGridInView = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mMouseGridInCanariUnit))
+    let locationOnGridInView : NSPoint = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mMouseGridInCanariUnit))
     self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
     self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation: unalignedLocationInView, inEvent.modifierFlags, self)
     self.setHelperTextField (self.mMouseDownBehaviour.helperString (unalignedLocationInView, inEvent.modifierFlags, self))
+    self.resizeWorkingArea (mouseDraggedUnalignedLocation: unalignedLocationInView)
   }
 
-    //····················································································································
+    //································································································
 
     final override func mouseUp (with inEvent : NSEvent) {
       super.mouseUp (with: inEvent)
@@ -79,12 +81,12 @@ extension EBGraphicView {
       self.mSelectionRectangle = nil
       self.mGuideBezierPath = nil
     //--- Set cursor
-      self.setCursor (forLocationInView: unalignedLocationInView)
+      self.setCursorOnMouseMovedOrMouseUp (forLocationInView: unalignedLocationInView)
     //--- Update frame and bounds
       self.setNeedsDisplayAndUpdateViewBounds ()
     }
 
-  //····················································································································
+  //································································································
 
   final func dragObject (possibleKnob inPossibleKnobIndex : Int?,
                          objectIndex : Int,
@@ -124,7 +126,7 @@ extension EBGraphicView {
     }
   }
 
-  //····················································································································
+  //································································································
 
   final fileprivate func dragSelection (_ proposedTranslation: CanariPoint) {
     var dx = proposedTranslation.x
@@ -144,9 +146,9 @@ extension EBGraphicView {
     }
   }
 
-  //····················································································································
+  //································································································
 
-  final func indexOfFrontObject (at inLocation : NSPoint) -> (Int?, Int?){
+  final func indexOfFrontObject (at inLocation : NSPoint) -> (Int?, Int?) {
     var possibleObjectIndex : Int? = nil
     var possibleKnobIndex : Int? = nil
     let selectedObjects = self.selectionShapes
@@ -176,7 +178,7 @@ extension EBGraphicView {
     return (possibleObjectIndex, possibleKnobIndex)
   }
 
-  //····················································································································
+  //································································································
 
   final func knobIndex (ofSelectedObjectIndex inObjectIndex : Int, at inLocation : NSPoint) -> Int? {
     let selectedObjects = self.selectionShapes
@@ -187,7 +189,7 @@ extension EBGraphicView {
     }
   }
 
-  //····················································································································
+  //································································································
 
   final func indexesOfObjects (intersecting inRect : NSRect) -> Set <Int> {
     var result = Set <Int> ()
@@ -201,7 +203,7 @@ extension EBGraphicView {
     return result
   }
 
-  //····················································································································
+  //································································································
 
   final override func flagsChanged (with inEvent : NSEvent) {
     let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
@@ -217,21 +219,32 @@ extension EBGraphicView {
     super.flagsChanged (with: inEvent)
   }
 
-  //····················································································································
+  //································································································
 
-  final func setCursor (forLocationInView inLocation : NSPoint) {
+  final func setCursorOnMouseMovedOrMouseUp (forLocationInView inLocation : NSPoint) {
     let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontObject (at: inLocation)
     if let objectIndex = possibleObjectIndex,
        let knobIndex = possibleKnobIndex,
        let object = self.mViewController?.graphicObjectArray [objectIndex],
        let newCursor = object.cursorForKnob (knob: knobIndex) {
          newCursor.set ()
+         self.mWorkingAreaCursorZone = .none
     }else{
-      NSCursor.arrow.set ()
+      let newWorkingAreaCursorZone = self.workingAreaZone (forLocationInView: inLocation)
+      if self.mWorkingAreaCursorZone != newWorkingAreaCursorZone {
+        self.setNeedsDisplay (self.rect (forZone: self.mWorkingAreaCursorZone))
+        self.setNeedsDisplay (self.rect (forZone: newWorkingAreaCursorZone))
+        self.mWorkingAreaCursorZone = newWorkingAreaCursorZone
+      }
+      if let cursor = self.workingAreaCursor (forZone: newWorkingAreaCursorZone) {
+        cursor.set ()
+      }else{
+        NSCursor.arrow.set ()
+      }
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

@@ -81,7 +81,7 @@ let DOWN_ARROW_STRING  = "\u{2193}"
 
 final class AutoLayoutButton : AutoLayoutBase_NSButton {
 
-  //····················································································································
+  //································································································
 
   private var mWidth : CGFloat? = nil
   private var mTemporaryWidthOnControlKey : CGFloat? = nil
@@ -89,49 +89,49 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
   private var mSavedTitle = ""
   private var mEventMonitor : Any? = nil // For tracking option key change
 
-  //····················································································································
+  //································································································
 
   final func set (width inWidth : Int) -> Self {
     self.mWidth = CGFloat (inWidth)
     return self
   }
 
-  //····················································································································
+  //································································································
 
 //  final func set (height inHeight : Int) -> Self {
 //    self.mHeight = CGFloat (inHeight)
 //    return self
 //  }
 
-  //····················································································································
+  //································································································
 
   func setTitleAsDownArrow () -> Self {
     self.title = DOWN_ARROW_STRING
     return self
   }
 
-  //····················································································································
+  //································································································
 
   func setTitleAsUpArrow () -> Self {
     self.title = UP_ARROW_STRING
     return self
   }
 
-  //····················································································································
+  //································································································
 
   func setTitleAsRightArrow () -> Self {
     self.title = RIGHT_ARROW_STRING
     return self
   }
 
-  //····················································································································
+  //································································································
 
   func setTitleAsLeftArrow () -> Self {
     self.title = LEFT_ARROW_STRING
     return self
   }
 
-  //····················································································································
+  //································································································
 
 //  final func setEscapeKeyAsKeyEquivalent () -> Self {
 //    self.keyEquivalent = "\u{1b}"
@@ -152,7 +152,7 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
 //    return self
 //  }
 
-  //····················································································································
+  //································································································
 
   final func setDeleteKeyAsKeyEquivalent () -> Self {
     self.keyEquivalent = "\u{7F}"
@@ -173,7 +173,7 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
     return self
   }
 
-  //····················································································································
+  //································································································
 
   final func set (commandKeyEquivalent inKeyEquivalent : String) -> Self {
     self.keyEquivalent = inKeyEquivalent
@@ -195,7 +195,7 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
     return self
   }
 
-  //····················································································································
+  //································································································
 
   final func set (shiftCommandKeyEquivalent inKeyEquivalent : String) -> Self {
     self.keyEquivalent = inKeyEquivalent
@@ -217,7 +217,7 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
     return self
   }
 
-  //····················································································································
+  //································································································
 
 //  final func set (optionCommandKeyEquivalent inKeyEquivalent : String) -> Self {
 //    self.keyEquivalent = inKeyEquivalent
@@ -239,7 +239,7 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
 //    return self
 //  }
 
-  //····················································································································
+  //································································································
 
   final func set (controlCommandKeyEquivalent inKeyEquivalent : String) -> Self {
     self.keyEquivalent = inKeyEquivalent
@@ -261,7 +261,7 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
     return self
   }
 
-  //····················································································································
+  //································································································
 
   override var intrinsicContentSize : NSSize {
     var s = super.intrinsicContentSize
@@ -277,7 +277,7 @@ final class AutoLayoutButton : AutoLayoutBase_NSButton {
     return s
   }
 
-  //····················································································································
+  //································································································
 
 }
 

@@ -14,11 +14,11 @@ import AppKit
 
 final class AutoLayoutDoubleObserverField : AutoLayoutBase_NSTextField {
 
-  //····················································································································
+  //································································································
 
   private let mNumberFormatter = NumberFormatter ()
 
-  //····················································································································
+  //································································································
 
   init (width inWidth : Int, bold inBold : Bool, size inSize : EBControlSize) {
     super.init (optionalWidth: inWidth, bold: inBold, size: inSize)
@@ -37,19 +37,19 @@ final class AutoLayoutDoubleObserverField : AutoLayoutBase_NSTextField {
     self.formatter = self.mNumberFormatter
   }
 
-  //····················································································································
+  //································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
   //MARK:  $value binding
-  //····················································································································
+  //································································································
 
   private var mValueController : EBObservablePropertyController? = nil
 
-  //····················································································································
+  //································································································
 
   final func bind_observedValue (_ inObject : EBObservableProperty <Double>) -> Self {
     self.mValueController = EBObservablePropertyController (
@@ -59,7 +59,7 @@ final class AutoLayoutDoubleObserverField : AutoLayoutBase_NSTextField {
     return self
   }
 
-  //····················································································································
+  //································································································
 
   private func update (from inObject : EBObservableProperty <Double>) {
     let selection = inObject.selection // TOUJOURS lire la sélection
@@ -82,7 +82,7 @@ final class AutoLayoutDoubleObserverField : AutoLayoutBase_NSTextField {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

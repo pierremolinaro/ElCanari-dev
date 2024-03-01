@@ -17,27 +17,27 @@ final class FontCharacterSelectView : NSView {
   private var mVerticalShift : CGFloat = 0.0
   private var mScrollTimer : Timer? = nil
 
-  //····················································································································
+  //································································································
 
   required init? (coder: NSCoder) {
     super.init (coder:coder)
     noteObjectAllocation (self)
   }
 
-  //····················································································································
+  //································································································
 
   override init (frame : NSRect) {
     super.init (frame: frame)
     noteObjectAllocation (self)
   }
 
-  //····················································································································
+  //································································································
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //····················································································································
+  //································································································
 
   override func removeFromSuperview() {
     super.removeFromSuperview ()
@@ -47,7 +47,7 @@ final class FontCharacterSelectView : NSView {
     }
   }
 
-  //····················································································································
+  //································································································
 
   override func removeFromSuperviewWithoutNeedingDisplay () {
     super.removeFromSuperviewWithoutNeedingDisplay ()
@@ -57,7 +57,7 @@ final class FontCharacterSelectView : NSView {
     }
   }
 
-  //····················································································································
+  //································································································
 
   func setDefinedCharacterSet (_ inSet : Set <Int>) {
     self.mDefinedCharacterSet = inSet
@@ -80,20 +80,20 @@ final class FontCharacterSelectView : NSView {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private func maximumVerticalShift () -> CGFloat {
     let nominalHeight = CGFloat (self.mDefinedLineArray.count + 1) * CHARACTER_HEIGHT + 2.0
     return self.frame.size.height - nominalHeight
   }
 
-  //····················································································································
+  //································································································
 
   func selectedCharacterCode () -> Int {
     return self.mSelectedCharacterCode
   }
 
-  //····················································································································
+  //································································································
   
   func setMouseDownSelectedCharacterCode (_ inCharacterCode : Int) {
     self.mMouseDownCharacterCode = inCharacterCode
@@ -105,7 +105,7 @@ final class FontCharacterSelectView : NSView {
     }
   }
 
-  //····················································································································
+  //································································································
   
   class func requiredSizeForCharacterSet (_ inSet : Set <Int>, _ currentWindow : NSWindow?) -> NSSize {
     var definedLineSet = Set <Int> ()
@@ -119,7 +119,7 @@ final class FontCharacterSelectView : NSView {
     return NSSize (width:16.0 * CHARACTER_WIDTH + 2.0 + LEFT_MARGIN, height: height)
   }
 
-  //····················································································································
+  //································································································
 
   func mouseDraggedAtScreenPoint (_ inEventLocationInScreenCoordinates : NSRect) {
     if let unwWindow = self.window {
@@ -146,7 +146,7 @@ final class FontCharacterSelectView : NSView {
     }
   }
 
-  //····················································································································
+  //································································································
 
   override func draw (_ inDirtyRect : NSRect) {
     let titleAttributes : [NSAttributedString.Key : AnyObject] = [
@@ -188,7 +188,7 @@ final class FontCharacterSelectView : NSView {
     }
   }
 
-  //····················································································································
+  //································································································
 
   func drawCharacters (forLineIndex inLineIndex : Int, _ inDirtyRect : NSRect) {
     var charRect = self.rectangleForCharacter (atLineIndex: inLineIndex, column: 0)
@@ -224,14 +224,14 @@ final class FontCharacterSelectView : NSView {
     }
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func originForRowTitle (_ inRow : Int) -> NSPoint {
     let p = NSPoint (x: 5.0, y: 1.0 + CGFloat (self.mDefinedLineArray.count - 1 - inRow) * CHARACTER_HEIGHT + self.mVerticalShift )
     return p
   }
 
-  //····················································································································
+  //································································································
 
   private func rectangleForColumnTitle (_ inCharacter : UInt) -> NSRect {
     let r = NSRect (
@@ -243,7 +243,7 @@ final class FontCharacterSelectView : NSView {
     return r
   }
 
-  //····················································································································
+  //································································································
 
   private func rectangleForCharacter (atLineIndex inLineIndex : Int, column inColumn : Int) -> NSRect {
     let r = NSRect (
@@ -255,7 +255,7 @@ final class FontCharacterSelectView : NSView {
     return r
   }
 
-  //····················································································································
+  //································································································
 
   private func rectangleForCharacter (pointCode inPointCode : Int) -> NSRect {
     let column = inPointCode % 16
@@ -269,7 +269,7 @@ final class FontCharacterSelectView : NSView {
     return r
   }
 
-  //····················································································································
+  //································································································
 
   @objc func timerScrollAction (_ : Timer) {
     if let myWindow = self.window {
@@ -293,7 +293,7 @@ final class FontCharacterSelectView : NSView {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

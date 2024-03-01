@@ -12,7 +12,7 @@ import AppKit
 
 final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : AutoLayoutBase_NSSegmentedControl {
 
-  //····················································································································
+  //································································································
 
   init (size inSize : EBControlSize) {
     super.init (equalWidth: true, size: inSize)
@@ -27,15 +27,15 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : AutoLayoutBase
     self.addSegment (withImageNamed: "alignmentRight")
   }
 
-  //····················································································································
+  //································································································
 
   required init?(coder inCoder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
   // ADD PAGE
-  //····················································································································
+  //································································································
 
   final func addSegment (withImageNamed inImageName : String) {
     let idx = self.segmentCount
@@ -49,22 +49,22 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : AutoLayoutBase
     }
   }
 
-  //····················································································································
+  //································································································
   // SELECTED TAB DID CHANGE
-  //····················································································································
+  //································································································
 
   @objc func selectedSegmentDidChange (_ inSender : Any?) {
     _ = self.mObject?.setFrom (rawValue: self.selectedSegment)
   }
 
-  //····················································································································
+  //································································································
   //  $alignment binding
-  //····················································································································
+  //································································································
 
   private var mAlignmentController : EBObservablePropertyController? = nil
   private var mObject : EBEnumReadWriteObservableProtocol? = nil
 
-  //····················································································································
+  //································································································
 
   final func bind_alignment (_ inObject : EBEnumReadWriteProperty <HorizontalAlignment>) -> Self {
     self.mObject = inObject
@@ -75,7 +75,7 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : AutoLayoutBase
     return self
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func update (from inObject : EBEnumReadWriteProperty <HorizontalAlignment>) {
     if let rawValue = inObject.rawValue () {
@@ -84,7 +84,7 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : AutoLayoutBase
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

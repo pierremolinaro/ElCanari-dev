@@ -23,7 +23,7 @@ let PAPER_GUTTER_HEIGHT_COCOA_UNIT : CGFloat =  13.0
 
 extension AutoLayoutProjectDocumentSubClass {
 
-  //····················································································································
+  //································································································
 
   @objc override func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
     let validate : Bool
@@ -35,7 +35,7 @@ extension AutoLayoutProjectDocumentSubClass {
     return validate
   }
 
-  //····················································································································
+  //································································································
 
   @objc override func printDocument (_ _ : Any?) {
     if self.rootObject.mSelectedPageIndex == 2 {
@@ -45,7 +45,7 @@ extension AutoLayoutProjectDocumentSubClass {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private func printSchematics () {
     if let schematicsView = self.mSchematicsView?.mGraphicView {
@@ -131,7 +131,7 @@ extension AutoLayoutProjectDocumentSubClass {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private func printBoard () {
     if let boardView = self.mBoardView?.mGraphicView {
@@ -189,7 +189,7 @@ extension AutoLayoutProjectDocumentSubClass {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func documentDidRunModalPrintOperation (_ _ : NSDocument,
                                                         success _ : Bool,
@@ -198,7 +198,7 @@ extension AutoLayoutProjectDocumentSubClass {
     DispatchQueue.main.async { self.mPrintOperation = nil }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

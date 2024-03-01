@@ -12,7 +12,7 @@ import AppKit
 
 extension SheetInProject {
 
-  //····················································································································
+  //································································································
 
   func removeFromWire (point inPoint : PointInSchematic) {
     if inPoint.mNC == nil, inPoint.mLabels.count == 0, (inPoint.mWiresP1s.count + inPoint.mWiresP2s.count) == 2 {
@@ -41,7 +41,7 @@ extension SheetInProject {
     }
   }
   
-  //····················································································································
+  //································································································
 
   func canConnectWithoutDialog (points inPoints : [PointInSchematic]) -> Bool {
     let wires = self.wiresStrictlyContaining (point: inPoints [0].location!)
@@ -60,7 +60,7 @@ extension SheetInProject {
     return (inPoints.count > 1) && (netSet.count < 2)
   }
 
-  //····················································································································
+  //································································································
 
   func tryToConnectWithoutDialog (points inPoints : [PointInSchematic],
          updateSchematicPointsAndNets inUpdateSchematicPointsAndNetsCallBack : @escaping ()
@@ -109,7 +109,7 @@ extension SheetInProject {
     }
   }
 
-  //····················································································································
+  //································································································
 
   func connect (points inPoints : [PointInSchematic],
                 window inWindow : NSWindow,
@@ -148,7 +148,7 @@ extension SheetInProject {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private func connectionWillMergeSeveralSubnets (points inPoints : [PointInSchematic],
                                                   _ netArray : [NetInProject],
@@ -195,7 +195,7 @@ extension SheetInProject {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private func handleAlertResponseForMergingNets (_ inResponse : NSApplication.ModalResponse,
                                                    _ inPoints : [PointInSchematic],
@@ -208,9 +208,9 @@ extension SheetInProject {
     }
   }
 
-  //····················································································································
+  //································································································
   //  Propagate and merge net
-  //····················································································································
+  //································································································
 
   private func propagateAndMerge (net inNet : NetInProject?,
                                   to inPoints : [PointInSchematic],
@@ -270,7 +270,7 @@ extension SheetInProject {
     inUpdateSchematicPointsAndNetsCallBack ()
   }
 
-  //····················································································································
+  //································································································
 
 }
 

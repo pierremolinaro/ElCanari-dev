@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //····················································································································
+  //································································································
 
   func populateContextualClickOnBoardLimits (_ inUnalignedMouseDownPoint : CanariPoint) -> NSMenu {
     let menu = NSMenu ()
@@ -29,9 +29,9 @@ extension AutoLayoutProjectDocument {
     return menu
   }
 
-  //····················································································································
+  //································································································
   // Remove Point From Wire
-  //····················································································································
+  //································································································
 
   private func curve (at inUnalignedMouseDownPoint : CanariPoint) -> BorderCurve? {
     let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
@@ -68,9 +68,9 @@ extension AutoLayoutProjectDocument {
     return nil
   }
 
-  //····················································································································
+  //································································································
   // Remove Point From Wire
-  //····················································································································
+  //································································································
 
   private func canRemovePointFromBoardLimits (_ inUnalignedMouseDownPoint : CanariPoint) -> BorderCurve? {
     if self.rootObject.mBorderCurves.count > 3, let curve = self.curve (at: inUnalignedMouseDownPoint) {
@@ -80,7 +80,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private func appendRemoveBoardLimitPoint (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint) {
     if let borderCurve = self.canRemovePointFromBoardLimits (inUnalignedMouseDownPoint) {
@@ -91,7 +91,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func removePointFromBorderAction (_ inSender : NSMenuItem) {
     if let (removedBorderCurve, unalignedMouseDownPoint) = inSender.representedObject as? (BorderCurve, CanariPoint) {
@@ -122,9 +122,9 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
   // Insert point into wire
-  //····················································································································
+  //································································································
 
   private func appendAddBoardLimitCurvePoint (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint) {
     if let curve = self.curve (at: inUnalignedMouseDownPoint) {
@@ -141,7 +141,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func addPointToBoardLimitAction (_ inSender : NSMenuItem) {
     if let (curve, unalignedMouseDownPoint) = inSender.representedObject as? (BorderCurve, CanariPoint) {
@@ -159,7 +159,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func splitCurveLimitAction (_ inSender : NSMenuItem) {
     if let curve = inSender.representedObject as? BorderCurve {
@@ -214,7 +214,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

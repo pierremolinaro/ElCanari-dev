@@ -13,7 +13,7 @@ import AppKit
 
 extension AutoLayoutMergerDocument {
 
-  //····················································································································
+  //································································································
 
   final func checkLayerConfigurationAndGenerateProductFiles () {
   //--- Layout layer configuration
@@ -67,7 +67,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private func generateProductFiles () {
     do{
@@ -116,7 +116,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func generateBoardArchive (atPath inFilePath : String) throws {
     var archiveDict = [String : Any] ()
@@ -448,7 +448,7 @@ extension AutoLayoutMergerDocument {
     try data.write(to: URL (fileURLWithPath: inFilePath), options: .atomic)
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func generatePDFfiles (atPath inFilePath : String) throws {
     if let cocoaBoardRect : NSRect = self.rootObject.boardRect?.cocoaRect {
@@ -759,7 +759,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func writePDFDrillFile (atPath inFilePath : String) throws {
     if let cocoaBoardRect : NSRect = self.rootObject.boardRect?.cocoaRect {
@@ -788,7 +788,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func generateGerberFiles (atPath inFilePath : String) throws {
     let boardWidth = self.rootObject.boardWidth!
@@ -1241,7 +1241,7 @@ extension AutoLayoutMergerDocument {
     self.mLogTextView?.appendSuccessString (" Ok\n")
   }
 
-  //····················································································································
+  //································································································
 
 }
 

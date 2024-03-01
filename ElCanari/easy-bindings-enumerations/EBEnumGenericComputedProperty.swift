@@ -10,13 +10,13 @@ import AppKit
 
 final class EBEnumGenericComputedProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteProperty <T> {
 
-  //····················································································································
+  //································································································
 
   var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
   var mWriteModelFunction : Optional < (T) -> Void > = nil
   private var mCachedValue : Optional < EBSelection <T> > = nil
 
-  //····················································································································
+  //································································································
 
   override func observedObjectDidChange () {
     if self.mCachedValue != nil {
@@ -30,7 +30,7 @@ final class EBEnumGenericComputedProperty <T : EBEnumPropertyProtocol> : EBEnumR
     }
   }
 
-  //····················································································································
+  //································································································
 
   override var selection : EBSelection <T> {
     if let cachedValue = self.mCachedValue {
@@ -46,13 +46,13 @@ final class EBEnumGenericComputedProperty <T : EBEnumPropertyProtocol> : EBEnumR
     }
   }
 
-  //····················································································································
+  //································································································
 
   override func setProp (_ inValue : T) {
     self.mWriteModelFunction? (inValue)
   }
 
-  //····················································································································
+  //································································································
 
 }
 

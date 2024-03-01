@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //····················································································································
+  //································································································
 
   func performAddBoardTrackDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let side = self.rootObject.mBoardSideForNewTrack
@@ -68,7 +68,7 @@ extension AutoLayoutProjectDocument {
     self.boardObjectsController.setSelection ([track])
   }
 
-  //····················································································································
+  //································································································
 
   func startTrackCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) -> Bool {
     let side = self.rootObject.mBoardSideForNewTrack
@@ -103,7 +103,7 @@ extension AutoLayoutProjectDocument {
     return true
   }
 
-  //····················································································································
+  //································································································
 
   func helperStringForTrackCreation (_ _ : NSEvent.ModifierFlags) -> String {
     let side = self.rootObject.mBoardSideForNewTrack
@@ -119,7 +119,7 @@ extension AutoLayoutProjectDocument {
     return s
   }
 
-  //····················································································································
+  //································································································
 
   func continueTrackCreationOnOptionMouseDragged (at inUnalignedMouseLocation : NSPoint,
                                                   _ _ : NSEvent.ModifierFlags) {
@@ -143,7 +143,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func updateHiliteDuringTrackCreation (_ inUnalignedMouseLocation : NSPoint) {
     var shape : EBShape? = nil
@@ -202,13 +202,13 @@ extension AutoLayoutProjectDocument {
     self.mBoardView?.mGraphicView.mOptionalFrontShape = shape
   }
 
-  //····················································································································
+  //································································································
 
   func abortTrackCreationOnOptionMouseUp () {
     self.mTrackCreatedByOptionClick = nil
   }
 
-  //····················································································································
+  //································································································
 
   func stopTrackCreationOnOptionMouseUp (at _ : NSPoint) -> Bool {
      var accepts = true
@@ -226,7 +226,7 @@ extension AutoLayoutProjectDocument {
      return accepts
   }
 
-  //····················································································································
+  //································································································
 
 }
 

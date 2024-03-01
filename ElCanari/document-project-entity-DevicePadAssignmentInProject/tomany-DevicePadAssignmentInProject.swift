@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_DevicePadAssignmentInProject : EBReadOnlyAbstractArrayProperty <DevicePadAssignmentInProject> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <DevicePadAssignmentInProject>,                            
                                  addedSet inAddedSet : EBReferenceSet <DevicePadAssignmentInProject>) {
@@ -41,13 +41,13 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : EBReadOnlyAbstractArrayProp
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mPadName' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mPadName : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mPadName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -64,19 +64,19 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : EBReadOnlyAbstractArrayProp
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mPadName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPadName?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'pinPadAssignment' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_pinPadAssignment : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_pinPadAssignment_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -93,19 +93,19 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : EBReadOnlyAbstractArrayProp
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_pinPadAssignment_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_pinPadAssignment?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'descriptor' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_descriptor : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_descriptor_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -122,13 +122,13 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : EBReadOnlyAbstractArrayProp
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_descriptor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_descriptor?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -150,11 +150,11 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : EBReadOnlyAbstractArrayProp
 
 class ReadWriteArrayOf_DevicePadAssignmentInProject : ReadOnlyArrayOf_DevicePadAssignmentInProject {
 
-  //····················································································································
+  //································································································
 
   func setProp (_ value :  EBReferenceArray <DevicePadAssignmentInProject>) { } // Abstract method
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -170,7 +170,7 @@ class ReadWriteArrayOf_DevicePadAssignmentInProject : ReadOnlyArrayOf_DevicePadA
 
 class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAssignmentInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
-  //····················································································································
+  //································································································
 
   init (usedForSignature inUsedForSignature : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
@@ -178,12 +178,12 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
     super.init ()
   }
 
-  //····················································································································
+  //································································································
   
   private final let mKey : String?
   final var key : String? { return self.mKey }
   
-  //····················································································································
+  //································································································
 
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
@@ -196,7 +196,7 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
     }
   }
 
-  //····················································································································
+  //································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
     var objectArray = EBReferenceArray <DevicePadAssignmentInProject> ()
@@ -207,7 +207,7 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
     self.setProp (objectArray)
   }
 
-  //····················································································································
+  //································································································
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, self.mInternalArrayValue.count > 0 {
@@ -219,7 +219,7 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
     }
   }
 
-  //····················································································································
+  //································································································
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, self.mInternalArrayValue.count > 0 {
@@ -229,27 +229,27 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
     }
   }
 
-  //····················································································································
+  //································································································
 
   func appendValueTo (data ioData : inout Data) {
     enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
   }
 
-  //····················································································································
+  //································································································
   //   Signature ?
-  //····················································································································
+  //································································································
 
   final private let mUsedForSignature : Bool
 
-  //····················································································································
+  //································································································
   //   Undo manager
-  //····················································································································
+  //································································································
 
   weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
   // Model will change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <DevicePadAssignmentInProject>) {
   //--- Register old value in undo manager
@@ -258,9 +258,9 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
 
-  //····················································································································
+  //································································································
   // Model did change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
   //--- Notify observers
@@ -269,9 +269,9 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
   // Update observers
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <DevicePadAssignmentInProject>,
                                  addedSet inAddedSet : EBReferenceSet <DevicePadAssignmentInProject>) {
@@ -290,19 +290,19 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 
-  //····················································································································
+  //································································································
 
   override final var selection : EBSelection < [DevicePadAssignmentInProject] > { return .single (self.mInternalArrayValue.values) }
 
-  //····················································································································
+  //································································································
 
   override func setProp (_ inValue : EBReferenceArray <DevicePadAssignmentInProject>) { self.mInternalArrayValue = inValue }
 
-  //····················································································································
+  //································································································
 
   final override var propval : EBReferenceArray <DevicePadAssignmentInProject> { return self.mInternalArrayValue }
 
-  //····················································································································
+  //································································································
 
   final func remove (_ object : DevicePadAssignmentInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
@@ -310,7 +310,7 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
     }
   }
 
-  //····················································································································
+  //································································································
 
   final func add (_ object : DevicePadAssignmentInProject) {
     if !self.internalSetValue.contains (object) {
@@ -318,17 +318,17 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
     }
   }
 
-  //····················································································································
+  //································································································
   //   signature
-  //····················································································································
+  //································································································
 
   private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
 
   private final var mSignatureCache : UInt32? = nil
 
-  //····················································································································
+  //································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
@@ -337,7 +337,7 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
     self.clearSignatureCache ()
  }
 
-  //····················································································································
+  //································································································
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
@@ -350,7 +350,7 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
     return computedSignature
   }
 
-  //····················································································································
+  //································································································
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
@@ -360,7 +360,7 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
     return crc
   }
 
-  //····················································································································
+  //································································································
 
   final func clearSignatureCache () {
     if self.mSignatureCache != nil {
@@ -369,7 +369,7 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

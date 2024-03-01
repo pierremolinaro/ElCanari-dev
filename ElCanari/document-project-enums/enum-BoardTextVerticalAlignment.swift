@@ -12,9 +12,9 @@ enum BoardTextVerticalAlignment : Int, EBEnumPropertyProtocol, Hashable {
   case center = 2
   case below = 3
 
-  //····················································································································
+  //································································································
   //  Enum generic bindings utility functions
-  //····················································································································
+  //································································································
 
   static func buildfromRawValue (rawValue : Int) -> BoardTextVerticalAlignment? {
     if let v = BoardTextVerticalAlignment (rawValue:rawValue) {
@@ -24,7 +24,7 @@ enum BoardTextVerticalAlignment : Int, EBEnumPropertyProtocol, Hashable {
     }
   }
 
-  //····················································································································
+  //································································································
 
   func enumfromRawValue (rawValue : Int) -> BoardTextVerticalAlignment {
     var result = self
@@ -35,21 +35,21 @@ enum BoardTextVerticalAlignment : Int, EBEnumPropertyProtocol, Hashable {
     return result
   }
 
-  //····················································································································
+  //································································································
   //  EBStoredPropertyProtocol
-  //····················································································································
+  //································································································
 
   func ebHashValue () -> UInt32 {
     return UInt32 (self.rawValue)
   }
 
-  //····················································································································
+  //································································································
 
   func convertToNSObject () -> NSObject {
     return NSNumber (value: self.rawValue)
   }
 
-  //····················································································································
+  //································································································
 
   static func convertFromNSObject (object : NSObject) -> BoardTextVerticalAlignment {
     var result = BoardTextVerticalAlignment.above
@@ -59,7 +59,7 @@ enum BoardTextVerticalAlignment : Int, EBEnumPropertyProtocol, Hashable {
     return result
   }
 
-  //····················································································································
+  //································································································
 
   static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> BoardTextVerticalAlignment? {
     if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = BoardTextVerticalAlignment (rawValue: rawValue) {
@@ -69,13 +69,13 @@ enum BoardTextVerticalAlignment : Int, EBEnumPropertyProtocol, Hashable {
     }
   }
 
-  //····················································································································
+  //································································································
 
   func appendPropertyValueTo (_ ioData : inout Data) {
     ioData.append (base62Encoded: self.rawValue)
   }
 
-  //····················································································································
+  //································································································
 
 }
 

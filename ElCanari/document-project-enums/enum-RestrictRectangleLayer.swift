@@ -11,9 +11,9 @@ enum RestrictRectangleLayer : Int, EBEnumPropertyProtocol, Hashable {
   case backSide = 1
   case bothSides = 2
 
-  //····················································································································
+  //································································································
   //  Enum generic bindings utility functions
-  //····················································································································
+  //································································································
 
   static func buildfromRawValue (rawValue : Int) -> RestrictRectangleLayer? {
     if let v = RestrictRectangleLayer (rawValue:rawValue) {
@@ -23,7 +23,7 @@ enum RestrictRectangleLayer : Int, EBEnumPropertyProtocol, Hashable {
     }
   }
 
-  //····················································································································
+  //································································································
 
   func enumfromRawValue (rawValue : Int) -> RestrictRectangleLayer {
     var result = self
@@ -34,21 +34,21 @@ enum RestrictRectangleLayer : Int, EBEnumPropertyProtocol, Hashable {
     return result
   }
 
-  //····················································································································
+  //································································································
   //  EBStoredPropertyProtocol
-  //····················································································································
+  //································································································
 
   func ebHashValue () -> UInt32 {
     return UInt32 (self.rawValue)
   }
 
-  //····················································································································
+  //································································································
 
   func convertToNSObject () -> NSObject {
     return NSNumber (value: self.rawValue)
   }
 
-  //····················································································································
+  //································································································
 
   static func convertFromNSObject (object : NSObject) -> RestrictRectangleLayer {
     var result = RestrictRectangleLayer.frontSide
@@ -58,7 +58,7 @@ enum RestrictRectangleLayer : Int, EBEnumPropertyProtocol, Hashable {
     return result
   }
 
-  //····················································································································
+  //································································································
 
   static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> RestrictRectangleLayer? {
     if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = RestrictRectangleLayer (rawValue: rawValue) {
@@ -68,13 +68,13 @@ enum RestrictRectangleLayer : Int, EBEnumPropertyProtocol, Hashable {
     }
   }
 
-  //····················································································································
+  //································································································
 
   func appendPropertyValueTo (_ ioData : inout Data) {
     ioData.append (base62Encoded: self.rawValue)
   }
 
-  //····················································································································
+  //································································································
 
 }
 

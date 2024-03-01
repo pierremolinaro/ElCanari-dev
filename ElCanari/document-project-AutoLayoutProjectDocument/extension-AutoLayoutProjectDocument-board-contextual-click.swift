@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //····················································································································
+  //································································································
 
   func populateContextualClickOnBoard (_ inUnalignedMouseDownPoint : CanariPoint) -> NSMenu {
     let menu = NSMenu ()
@@ -38,9 +38,9 @@ extension AutoLayoutProjectDocument {
     return menu
   }
 
-  //····················································································································
+  //································································································
   // Connect
-  //····················································································································
+  //································································································
 
   private func appendConnectInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint) {
     let connectorsFrontSide = self.rootObject.connectors (at: inUnalignedMouseDownPoint, trackSide: .front)
@@ -66,7 +66,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func connectInBoardAction (_ inMenuItem : NSMenuItem) {
     if let connectors = inMenuItem.representedObject as? [BoardConnector] {
@@ -74,7 +74,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   func tryToConnect (_ inConnectors : [BoardConnector]) {
     let nets = self.findAllNetsConnectedToPad (inConnectors)
@@ -99,7 +99,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private func performConnection (_ inRetainedConnector : BoardConnector, _ inOtherConnectors : [BoardConnector], _ inNet : NetInProject?) {
     for c in inOtherConnectors {
@@ -137,7 +137,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   func findAllNetsConnectedToPad (_ inConnectors : [BoardConnector]) -> EBReferenceSet <NetInProject> {
     var netNameSet = Set <String>  ()
@@ -174,9 +174,9 @@ extension AutoLayoutProjectDocument {
     return result
   }
 
-  //····················································································································
+  //································································································
   // Disconnect
-  //····················································································································
+  //································································································
 
   private func appendDisconnectInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint, _ inSide : TrackSide) {
     let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardGridStep)
@@ -208,7 +208,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func disconnectInBoardAction (_ inMenuItem : NSMenuItem) {
     if let (connectors, side) = inMenuItem.representedObject as? ([BoardConnector], TrackSide) {
@@ -241,9 +241,9 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
   //  Align Tracks
-  //····················································································································
+  //································································································
 
   private func appendAlignTracks (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint, _ inSide : TrackSide) {
     let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseDownPoint, trackSide: inSide)
@@ -303,7 +303,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func octolinearAlignmentAction (_ inMenuItem : NSMenuItem) {
     if let (connector, p0, p1) = inMenuItem.representedObject as? (BoardConnector, CanariPoint, CanariPoint) {
@@ -368,7 +368,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func rectilinearAlignmentAction (_ inMenuItem : NSMenuItem) {
     if let (connector, p0, p1) = inMenuItem.representedObject as? (BoardConnector, CanariPoint, CanariPoint) {
@@ -401,9 +401,9 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
   //  Merge Tracks
-  //····················································································································
+  //································································································
 
   private func mergeTracksInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint, _ inSide : TrackSide) {
     let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseDownPoint, trackSide: inSide)
@@ -420,7 +420,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func mergeTracksInBoardAction (_ inMenuItem : NSMenuItem) {
     if let (connector, side) = inMenuItem.representedObject as? (BoardConnector, TrackSide) {
@@ -459,9 +459,9 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
   //  Split Track
-  //····················································································································
+  //································································································
 
   private func splitTrackInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint, _ inSide : TrackSide) {
     let tracksUnderMouse = self.rootObject.tracks (at: inUnalignedMouseDownPoint, trackSide: inSide)
@@ -474,7 +474,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func splitTrackInBoardAction (_ inMenuItem : NSMenuItem) {
     if let (track, mouseLocation) = inMenuItem.representedObject as? (BoardTrack, CanariPoint),
@@ -509,7 +509,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

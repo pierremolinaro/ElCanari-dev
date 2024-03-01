@@ -28,7 +28,7 @@ let CANARI_UNITS_PER_CM    = CANARI_UNITS_PER_MM * 10
 let CANARI_UNITS_PER_M     = CANARI_UNITS_PER_MM * 1000
 let CANARI_UNITS_PER_INCH  = CANARI_UNITS_PER_MIL * 1000
 
-let PIXELS_PER_INCH = CANARI_UNITS_PER_INCH / CANARI_UNITS_PER_PIXEL // 72
+let PIXELS_PER_INCH = CANARI_UNITS_PER_INCH / CANARI_UNITS_PER_PIXEL
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 //  Display string

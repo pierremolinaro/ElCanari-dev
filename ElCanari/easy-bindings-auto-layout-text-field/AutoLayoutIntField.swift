@@ -12,11 +12,11 @@ import AppKit
 
 final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
 
-  //····················································································································
+  //································································································
 
   private let mNumberFormatter = NumberFormatter ()
 
-  //····················································································································
+  //································································································
 
   private var mInputIsValid = true {
     didSet {
@@ -27,7 +27,7 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
   }
 
 
-  //····················································································································
+  //································································································
 
   init (minWidth inWidth : Int, size inSize : EBControlSize) {
     super.init (optionalWidth: inWidth, bold: true, size: inSize)
@@ -47,7 +47,7 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
     self.formatter = self.mNumberFormatter
   }
 
-  //····················································································································
+  //································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
@@ -60,21 +60,21 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
     return self
   }
 
-  //····················································································································
+  //································································································
 
   final func set (max inMax : Int) -> Self {
     self.mNumberFormatter.maximum = NSNumber (value: inMax)
     return self
   }
 
-  //····················································································································
+  //································································································
 
   final func set (format inFormatString : String) -> Self {
     self.mNumberFormatter.format = inFormatString
     return self
   }
 
-  //····················································································································
+  //································································································
 
   override func textDidChange (_ inNotification : Notification) {
     super.textDidChange (inNotification)
@@ -88,7 +88,7 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
     }
   }
 
-  //····················································································································
+  //································································································
 
   override func draw (_ inDirtyRect : NSRect) {
     super.draw (inDirtyRect)
@@ -98,7 +98,7 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc fileprivate func valueDidChangeAction (_ _ : Any?) {
     if let formatter = self.formatter as? NumberFormatter, let outletValueNumber = formatter.number (from: self.stringValue) {
@@ -110,13 +110,13 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
     }
   }
 
-  //····················································································································
+  //································································································
   //MARK:  $value binding
-  //····················································································································
+  //································································································
 
   private var mValueController : EBGenericReadWritePropertyController <Int>? = nil
 
-  //····················································································································
+  //································································································
 
   final func bind_value (_ inObject : EBObservableMutableProperty <Int>, sendContinously : Bool) -> Self {
     self.isContinuous = sendContinously
@@ -127,7 +127,7 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
     return self
   }
 
-  //····················································································································
+  //································································································
 
   private func update (from inObject : EBObservableProperty <Int>) {
     let selection = inObject.selection // TOUJOURS lire la sélection
@@ -150,7 +150,7 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

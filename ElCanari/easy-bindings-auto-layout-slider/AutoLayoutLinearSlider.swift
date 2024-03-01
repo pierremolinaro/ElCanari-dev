@@ -16,7 +16,7 @@ import AppKit
 
 final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
 
-  //····················································································································
+  //································································································
 
   override init (min inMin : Int, max inMax : Int, ticks inMarkCount : Int) {
     super.init (min: inMin, max: inMax, ticks: inMarkCount)
@@ -26,20 +26,20 @@ final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
     self.sliderType = .linear
   }
 
-  //····················································································································
+  //································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
 
   func setAllowsTickMarkValuesOnly () -> Self {
     self.allowsTickMarkValuesOnly = true
     return self
   }
 
-  //····················································································································
+  //································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     self.mDoubleValueController?.updateModel (withValue: self.doubleValue)
@@ -49,9 +49,9 @@ final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
     return r
   }
 
-  //····················································································································
+  //································································································
   //  doubleValue binding
-  //····················································································································
+  //································································································
 
   fileprivate func updateDoubleValue (_ object : EBObservableProperty <Double>) {
     switch object.selection {
@@ -64,11 +64,11 @@ final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private var mDoubleValueController : EBGenericReadWritePropertyController <Double>? = nil
 
-  //····················································································································
+  //································································································
 
   final func bind_doubleValue (_ inObject : EBObservableMutableProperty <Double>, sendContinously : Bool) -> Self {
     self.mDoubleValueController = EBGenericReadWritePropertyController <Double> (
@@ -79,9 +79,9 @@ final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
     return self
   }
 
-  //····················································································································
+  //································································································
   //  intValue binding
-  //····················································································································
+  //································································································
 
   fileprivate func updateIntValue (_ object : EBObservableProperty <Int>) {
     switch object.selection {
@@ -94,11 +94,11 @@ final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private var mIntValueController : EBGenericReadWritePropertyController <Int>? = nil
 
-  //····················································································································
+  //································································································
 
   final func bind_intValue (_ inObject : EBObservableMutableProperty <Int>, sendContinously : Bool) -> Self {
     self.mIntValueController = EBGenericReadWritePropertyController <Int> (
@@ -109,7 +109,7 @@ final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
     return self
   }
 
-  //····················································································································
+  //································································································
 
 }
 

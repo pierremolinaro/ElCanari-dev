@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutTableView {
 
-  //····················································································································
+  //································································································
 
   final func addColumn_ButtonImage (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSImage?,
                                     valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : NSImage) -> Void >,
@@ -44,7 +44,7 @@ extension AutoLayoutTableView {
 //    }
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -54,14 +54,14 @@ extension AutoLayoutTableView {
 
 fileprivate class InternalButtonImageTableColumn : AutoLayoutTableColumn {
 
-  //····················································································································
+  //································································································
 
   private let mValueGetterDelegate : (_ inRow : Int) -> NSImage?
   private let mActionDelegate : (_ inRow : Int) -> Void
 
-  //····················································································································
+  //································································································
   // INIT
-  //····················································································································
+  //································································································
 
   init (sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
         contentAlignment inContentAlignment : TextAlignment,
@@ -73,13 +73,13 @@ fileprivate class InternalButtonImageTableColumn : AutoLayoutTableColumn {
     self.isEditable = false
   }
 
-  //····················································································································
+  //································································································
 
   required init (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
 
   override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
     if let image = self.mValueGetterDelegate (inRowIndex) {
@@ -101,14 +101,14 @@ fileprivate class InternalButtonImageTableColumn : AutoLayoutTableColumn {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor @objc private func buttonAction (_ inSender : NSButton) {
     let rowIndex = inSender.tag
     self.mActionDelegate (rowIndex)
   }
 
-  //····················································································································
+  //································································································
 
 }
 

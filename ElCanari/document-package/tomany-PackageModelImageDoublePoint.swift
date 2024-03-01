@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProperty <PackageModelImageDoublePoint> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageModelImageDoublePoint>,                            
                                  addedSet inAddedSet : EBReferenceSet <PackageModelImageDoublePoint>) {
@@ -71,13 +71,13 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mFirstX' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mFirstX : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mFirstX_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -94,19 +94,19 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mFirstX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mFirstX?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mFirstY' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mFirstY : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mFirstY_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -123,19 +123,19 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mFirstY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mFirstY?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mFirstColor' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mFirstColor : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mFirstColor_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -152,19 +152,19 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mFirstColor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mFirstColor?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mSecondDx' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mSecondDx : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mSecondDx_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -181,19 +181,19 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mSecondDx_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSecondDx?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mSecondDy' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mSecondDy : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mSecondDy_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -210,19 +210,19 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mSecondDy_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSecondDy?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mSecondColor' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mSecondColor : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mSecondColor_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -239,19 +239,19 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mSecondColor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSecondColor?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'objectDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -268,19 +268,19 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'selectionDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -297,13 +297,13 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -325,11 +325,11 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
 class ReadWriteArrayOf_PackageModelImageDoublePoint : ReadOnlyArrayOf_PackageModelImageDoublePoint {
 
-  //····················································································································
+  //································································································
 
   func setProp (_ value :  EBReferenceArray <PackageModelImageDoublePoint>) { } // Abstract method
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -345,7 +345,7 @@ class ReadWriteArrayOf_PackageModelImageDoublePoint : ReadOnlyArrayOf_PackageMod
 
 class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModelImageDoublePoint, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
-  //····················································································································
+  //································································································
 
   init (usedForSignature inUsedForSignature : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
@@ -353,12 +353,12 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
     super.init ()
   }
 
-  //····················································································································
+  //································································································
   
   private final let mKey : String?
   final var key : String? { return self.mKey }
   
-  //····················································································································
+  //································································································
 
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
@@ -371,7 +371,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
     }
   }
 
-  //····················································································································
+  //································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
     var objectArray = EBReferenceArray <PackageModelImageDoublePoint> ()
@@ -382,7 +382,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
     self.setProp (objectArray)
   }
 
-  //····················································································································
+  //································································································
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, self.mInternalArrayValue.count > 0 {
@@ -394,7 +394,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
     }
   }
 
-  //····················································································································
+  //································································································
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, self.mInternalArrayValue.count > 0 {
@@ -404,32 +404,32 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
     }
   }
 
-  //····················································································································
+  //································································································
 
   func appendValueTo (data ioData : inout Data) {
     enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
   }
 
-  //····················································································································
+  //································································································
   //   Signature ?
-  //····················································································································
+  //································································································
 
   final private let mUsedForSignature : Bool
 
-  //····················································································································
+  //································································································
   //   Undo manager
-  //····················································································································
+  //································································································
 
   weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
   //   Opposite relationship management
-  //····················································································································
+  //································································································
 
   private final var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageModelImageDoublePoint) -> Void > = nil
   private final var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageModelImageDoublePoint) -> Void > = nil
 
-  //····················································································································
+  //································································································
 
   final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageModelImageDoublePoint) -> Void,
                                                resetter inResetter : @escaping (_ inManagedObject : PackageModelImageDoublePoint) -> Void) {
@@ -437,9 +437,9 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
     self.mResetOppositeRelationship = inResetter
   }
 
-  //····················································································································
+  //································································································
   // Model will change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <PackageModelImageDoublePoint>) {
   //--- Register old value in undo manager
@@ -448,9 +448,9 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
 
-  //····················································································································
+  //································································································
   // Model did change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
   //--- Notify observers
@@ -459,9 +459,9 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
   // Update observers
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageModelImageDoublePoint>,
                                  addedSet inAddedSet : EBReferenceSet <PackageModelImageDoublePoint>) {
@@ -482,19 +482,19 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 
-  //····················································································································
+  //································································································
 
   override final var selection : EBSelection < [PackageModelImageDoublePoint] > { return .single (self.mInternalArrayValue.values) }
 
-  //····················································································································
+  //································································································
 
   override func setProp (_ inValue : EBReferenceArray <PackageModelImageDoublePoint>) { self.mInternalArrayValue = inValue }
 
-  //····················································································································
+  //································································································
 
   final override var propval : EBReferenceArray <PackageModelImageDoublePoint> { return self.mInternalArrayValue }
 
-  //····················································································································
+  //································································································
 
   final func remove (_ object : PackageModelImageDoublePoint) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
@@ -502,7 +502,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
     }
   }
 
-  //····················································································································
+  //································································································
 
   final func add (_ object : PackageModelImageDoublePoint) {
     if !self.internalSetValue.contains (object) {
@@ -510,17 +510,17 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
     }
   }
 
-  //····················································································································
+  //································································································
   //   signature
-  //····················································································································
+  //································································································
 
   private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
 
   private final var mSignatureCache : UInt32? = nil
 
-  //····················································································································
+  //································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
@@ -529,7 +529,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
     self.clearSignatureCache ()
  }
 
-  //····················································································································
+  //································································································
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
@@ -542,7 +542,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
     return computedSignature
   }
 
-  //····················································································································
+  //································································································
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
@@ -552,7 +552,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
     return crc
   }
 
-  //····················································································································
+  //································································································
 
   final func clearSignatureCache () {
     if self.mSignatureCache != nil {
@@ -561,7 +561,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

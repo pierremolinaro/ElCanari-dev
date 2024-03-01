@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <SymbolInstanceInDevice> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolInstanceInDevice>,                            
                                  addedSet inAddedSet : EBReferenceSet <SymbolInstanceInDevice>) {
@@ -77,13 +77,13 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mInstanceName' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mInstanceName : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mInstanceName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -100,19 +100,19 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mInstanceName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mInstanceName?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mX' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mX : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mX_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -129,19 +129,19 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mX?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mY' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mY : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mY_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -158,19 +158,19 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mY?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'symbolQualifiedName' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_symbolQualifiedName : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_symbolQualifiedName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -187,19 +187,19 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_symbolQualifiedName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_symbolQualifiedName?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'symbolTypeName' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_symbolTypeName : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_symbolTypeName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -216,19 +216,19 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_symbolTypeName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_symbolTypeName?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'pinSymbolQualifiedNames' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_pinSymbolQualifiedNames : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_pinSymbolQualifiedNames_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -245,19 +245,19 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_pinSymbolQualifiedNames_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_pinSymbolQualifiedNames?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'unconnectedPins' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_unconnectedPins : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_unconnectedPins_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -274,19 +274,19 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_unconnectedPins_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_unconnectedPins?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'objectDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -303,19 +303,19 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'selectionDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -332,13 +332,13 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -360,11 +360,11 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
 class ReadWriteArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInstanceInDevice {
 
-  //····················································································································
+  //································································································
 
   func setProp (_ value :  EBReferenceArray <SymbolInstanceInDevice>) { } // Abstract method
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -380,7 +380,7 @@ class ReadWriteArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInstanceIn
 
 class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDevice, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
-  //····················································································································
+  //································································································
 
   init (usedForSignature inUsedForSignature : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
@@ -388,12 +388,12 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
     super.init ()
   }
 
-  //····················································································································
+  //································································································
   
   private final let mKey : String?
   final var key : String? { return self.mKey }
   
-  //····················································································································
+  //································································································
 
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
@@ -406,7 +406,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
     }
   }
 
-  //····················································································································
+  //································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
     var objectArray = EBReferenceArray <SymbolInstanceInDevice> ()
@@ -417,7 +417,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
     self.setProp (objectArray)
   }
 
-  //····················································································································
+  //································································································
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, self.mInternalArrayValue.count > 0 {
@@ -429,7 +429,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
     }
   }
 
-  //····················································································································
+  //································································································
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, self.mInternalArrayValue.count > 0 {
@@ -439,32 +439,32 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
     }
   }
 
-  //····················································································································
+  //································································································
 
   func appendValueTo (data ioData : inout Data) {
     enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
   }
 
-  //····················································································································
+  //································································································
   //   Signature ?
-  //····················································································································
+  //································································································
 
   final private let mUsedForSignature : Bool
 
-  //····················································································································
+  //································································································
   //   Undo manager
-  //····················································································································
+  //································································································
 
   weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
   //   Opposite relationship management
-  //····················································································································
+  //································································································
 
   private final var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolInstanceInDevice) -> Void > = nil
   private final var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolInstanceInDevice) -> Void > = nil
 
-  //····················································································································
+  //································································································
 
   final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolInstanceInDevice) -> Void,
                                                resetter inResetter : @escaping (_ inManagedObject : SymbolInstanceInDevice) -> Void) {
@@ -472,9 +472,9 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
     self.mResetOppositeRelationship = inResetter
   }
 
-  //····················································································································
+  //································································································
   // Model will change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <SymbolInstanceInDevice>) {
   //--- Register old value in undo manager
@@ -483,9 +483,9 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
 
-  //····················································································································
+  //································································································
   // Model did change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
   //--- Notify observers
@@ -494,9 +494,9 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
   // Update observers
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolInstanceInDevice>,
                                  addedSet inAddedSet : EBReferenceSet <SymbolInstanceInDevice>) {
@@ -517,19 +517,19 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 
-  //····················································································································
+  //································································································
 
   override final var selection : EBSelection < [SymbolInstanceInDevice] > { return .single (self.mInternalArrayValue.values) }
 
-  //····················································································································
+  //································································································
 
   override func setProp (_ inValue : EBReferenceArray <SymbolInstanceInDevice>) { self.mInternalArrayValue = inValue }
 
-  //····················································································································
+  //································································································
 
   final override var propval : EBReferenceArray <SymbolInstanceInDevice> { return self.mInternalArrayValue }
 
-  //····················································································································
+  //································································································
 
   final func remove (_ object : SymbolInstanceInDevice) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
@@ -537,7 +537,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
     }
   }
 
-  //····················································································································
+  //································································································
 
   final func add (_ object : SymbolInstanceInDevice) {
     if !self.internalSetValue.contains (object) {
@@ -545,17 +545,17 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
     }
   }
 
-  //····················································································································
+  //································································································
   //   signature
-  //····················································································································
+  //································································································
 
   private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
 
   private final var mSignatureCache : UInt32? = nil
 
-  //····················································································································
+  //································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
@@ -564,7 +564,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
     self.clearSignatureCache ()
  }
 
-  //····················································································································
+  //································································································
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
@@ -577,7 +577,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
     return computedSignature
   }
 
-  //····················································································································
+  //································································································
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
@@ -587,7 +587,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
     return crc
   }
 
-  //····················································································································
+  //································································································
 
   final func clearSignatureCache () {
     if self.mSignatureCache != nil {
@@ -596,7 +596,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

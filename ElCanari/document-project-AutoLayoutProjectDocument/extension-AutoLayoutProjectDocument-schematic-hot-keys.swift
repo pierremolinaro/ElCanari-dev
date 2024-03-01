@@ -12,13 +12,13 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //····················································································································
+  //································································································
 
   fileprivate func color (forEnabledState inEnabled : Bool) -> NSColor {
     return inEnabled ? .black : .disabledControlTextColor
   }
 
-  //····················································································································
+  //································································································
 
 //  func mouseMovedOrFlagsChangedInSchematic (_ inUnalignedMouseLocation : NSPoint) {
 //    if let selectedSheet = self.rootObject.mSelectedSheet {
@@ -64,7 +64,7 @@ extension AutoLayoutProjectDocument {
 //    self.mBoardView?.mGraphicView.mOptionalFrontShape = nil
 //  }
 
-  //····················································································································
+  //································································································
 
 //  func mouseExitInSchematic () {
 //  //--- Connect
@@ -99,7 +99,7 @@ extension AutoLayoutProjectDocument {
 //    self.mShowHideSymbolValueSchematicHotKeyTextField?.textColor = .disabledControlTextColor
 //  }
 
-  //····················································································································
+  //································································································
 
   func keyDownInSchematic (_ inUnalignedMouseLocation : NSPoint, _ inKey : UnicodeScalar) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
@@ -189,7 +189,7 @@ extension AutoLayoutProjectDocument {
     self.mouseMovedOrFlagsChangedInSchematic (inUnalignedMouseLocation)
   }
 
-  //····················································································································
+  //································································································
 
   func mouseMovedOrFlagsChangedInSchematic (_ inUnalignedMouseLocation : NSPoint) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
@@ -262,7 +262,7 @@ extension AutoLayoutProjectDocument {
 //    }
   }
 
-  //····················································································································
+  //································································································
 
   func mouseExitInSchematic () {
   //--- Connect
@@ -321,7 +321,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

@@ -14,24 +14,24 @@ import AppKit
 
 final class CanariPopUpButtonControllerForNetClassFromSelectedWires : EBOutletEvent {
 
-  //····················································································································
+  //································································································
   // Models
-  //····················································································································
+  //································································································
 
   private var mArrayModel : ReadWriteArrayOf_NetClassInProject? = nil
   private var mSelection : SelectionController_AutoLayoutProjectDocument_wireInSchematicSelectionController? = nil
   private weak var mOutlet : NSPopUpButton? = nil
 
-  //····················································································································
+  //································································································
   //  INIT
-  //····················································································································
+  //································································································
 
   override init () {
     super.init ()
     self.mEventCallBack = { [weak self] in self?.modelDidChange () }
   }
 
-  //····················································································································
+  //································································································
 
   final func register (_ inArrayModel : ReadWriteArrayOf_NetClassInProject,
                        _ inSelection : SelectionController_AutoLayoutProjectDocument_wireInSchematicSelectionController,
@@ -44,7 +44,7 @@ final class CanariPopUpButtonControllerForNetClassFromSelectedWires : EBOutletEv
     self.modelDidChange ()
   }
 
-  //····················································································································
+  //································································································
 
   private func modelDidChange () {
     if let popup = self.mOutlet {
@@ -71,7 +71,7 @@ final class CanariPopUpButtonControllerForNetClassFromSelectedWires : EBOutletEv
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func setNetClassAction (_ inSender : NSMenuItem) {
     if let netClass = inSender.representedObject as? NetClassInProject,
@@ -84,7 +84,7 @@ final class CanariPopUpButtonControllerForNetClassFromSelectedWires : EBOutletEv
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

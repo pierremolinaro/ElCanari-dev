@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //····················································································································
+  //································································································
 
   func writePDFDrillFile (atPath inPath : String, _ inProductData : ProductData) throws {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
@@ -33,7 +33,7 @@ extension AutoLayoutProjectDocument {
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
   }
 
-  //····················································································································
+  //································································································
 
   func writePDFProductFile (atPath inPath : String,
                             _ inDescriptor : ArtworkFileGenerationParameters,
@@ -134,7 +134,7 @@ extension AutoLayoutProjectDocument {
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -142,7 +142,7 @@ extension AutoLayoutProjectDocument {
 
 @MainActor extension Array where Element == EBBezierPath {
 
-  //····················································································································
+  //································································································
 
   mutating func append (apertureDictionary inApertureDictionary : [CGFloat : [EBLinePath]],
                         transformedBy inAffineTransform : AffineTransform) {
@@ -158,7 +158,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   mutating func append (oblongs inLines : [ProductOblong]?,
                         transformedBy inAffineTransform : AffineTransform) {
@@ -175,7 +175,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   mutating func append (circles inCircles : [ProductCircle]?,
                         transformedBy inAffineTransform : AffineTransform) {
@@ -192,7 +192,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   mutating func append (polygons inPolygons : [ProductPolygon]?,
                         transformedBy inAffineTransform : AffineTransform) {
@@ -209,7 +209,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   mutating func append (rectangles inRectangles : [ProductRectangle],
                         transformedBy inAffineTransform : AffineTransform) {
@@ -224,7 +224,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

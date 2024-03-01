@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //····················································································································
+  //································································································
 
   func checkSchematicsAndBeforeAndLaunchFreeRouteur (_ inCallBack : @escaping () -> Void) {
      if !self.rootObject.schematicHasErrorOrWarning! {
@@ -30,7 +30,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func checkAllComponentsAreInBoard (_ inCallBack : @escaping () -> Void) {
     var unplacedComponentNames = [String] ()
@@ -58,7 +58,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

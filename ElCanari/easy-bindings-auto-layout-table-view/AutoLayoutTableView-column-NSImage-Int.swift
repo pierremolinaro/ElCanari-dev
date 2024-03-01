@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutTableView {
 
-  //····················································································································
+  //································································································
 
   func addColumn_NSImage_Int (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> (Int?, NSImage?),
                               sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
@@ -37,7 +37,7 @@ extension AutoLayoutTableView {
     self.appendTableColumn (column)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -47,14 +47,14 @@ extension AutoLayoutTableView {
 
 fileprivate final class InternalImageIntValueTableColumn : AutoLayoutTableColumn {
 
-  //····················································································································
+  //································································································
 
   private let mValueGetterDelegate : (_ inRow : Int) -> (Int?, NSImage?)
   private let mNumberFormatter = NumberFormatter ()
 
-  //····················································································································
+  //································································································
   // INIT
-  //····················································································································
+  //································································································
 
   init (sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
         contentAlignment inContentAlignment : TextAlignment,
@@ -71,13 +71,13 @@ fileprivate final class InternalImageIntValueTableColumn : AutoLayoutTableColumn
     self.mNumberFormatter.isLenient = true
   }
 
-  //····················································································································
+  //································································································
 
   required init (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
     let value : (Int?, NSImage?) = self.mValueGetterDelegate (inRowIndex)
@@ -108,7 +108,7 @@ fileprivate final class InternalImageIntValueTableColumn : AutoLayoutTableColumn
     return hStack
   }
 
-  //····················································································································
+  //································································································
 
 }
 

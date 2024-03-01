@@ -14,17 +14,17 @@ import AppKit
 
 class AutoLayoutBase_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDelegate {
 
-  //····················································································································
+  //································································································
 
   private final var mWidth : CGFloat?
 
-  //····················································································································
+  //································································································
   // https://www.generacodice.com/en/articolo/4221090/how-to-let-nstextfield-grow-with-the-text-in-auto-layout
-  //····················································································································
+  //································································································
 
   private final var mAutomaticallyAdjustHeight = false
 
-  //····················································································································
+  //································································································
 
   init (optionalWidth inOptionalWidth : Int?, bold inBold : Bool, size inSize : EBControlSize) {
     if let w = inOptionalWidth {
@@ -48,29 +48,29 @@ class AutoLayoutBase_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTe
     self.cell?.sendsActionOnEndEditing = true // Send an action when focus is lost
   }
 
-  //····················································································································
+  //································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //····················································································································
+  //································································································
   // NE PAS DÉFINIR acceptsFirstResponder, SINON UN CHAMP SANS SÉLECTION RESTE ACTIF
   //  final override var acceptsFirstResponder: Bool { return true }
-  //····················································································································
+  //································································································
 
   final func set (alignment inAlignment : TextAlignment) -> Self {
     self.alignment = inAlignment.cocoaAlignment
     return self
   }
 
-  //····················································································································
+  //································································································
 
   final func set (minWidth inWidth : Int) -> Self {
     let c = NSLayoutConstraint (
@@ -86,7 +86,7 @@ class AutoLayoutBase_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTe
     return self
   }
 
-  //····················································································································
+  //································································································
 
   final func automaticallyAdjustHeight (maxWidth inMaxWidth : Int) -> Self {
  //   self.usesSingleLineMode = false
@@ -98,18 +98,18 @@ class AutoLayoutBase_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTe
     return self
   }
 
-  //····················································································································
+  //································································································
 
   override func textDidChange (_ notification : Notification) {
     super.textDidChange (notification)
     self.invalidateIntrinsicContentSize ()
   }
 
-  //····················································································································
+  //································································································
   //  By Default, super.intrinsicContentSize.width is -1, meaning the text field is invisible
   //  So we need to define intrinsicContentSize.width explicitly
   //  super.intrinsicContentSize.height is valid (19.0 for small size, 22.0 for regular size, ...)-
-  //····················································································································
+  //································································································
 
   override var intrinsicContentSize : NSSize {
     var s = super.intrinsicContentSize
@@ -126,9 +126,9 @@ class AutoLayoutBase_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTe
     return s
   }
 
-  //····················································································································
+  //································································································
   //MARK:    NSTextFieldDelegate delegate function
-  //····················································································································
+  //································································································
 
   final func control (_ control : NSControl,
                       didFailToFormatString string : String,
@@ -136,9 +136,9 @@ class AutoLayoutBase_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTe
     return true
   }
 
-  //····················································································································
+  //································································································
   //MARK:   NSControlTextEditingDelegate
-  //····················································································································
+  //································································································
 
   final func control (_ control: NSControl,
                       textView: NSTextView,
@@ -153,34 +153,34 @@ class AutoLayoutBase_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTe
     }
   }
 
-  //····················································································································
+  //································································································
   //MARK:  $enabled binding
-  //····················································································································
+  //································································································
 
   private final var mEnabledBindingController : EnabledBindingController? = nil
   final var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
 
-  //····················································································································
+  //································································································
 
   final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
     self.mEnabledBindingController = EnabledBindingController (inExpression, self)
     return self
   }
 
-  //····················································································································
+  //································································································
   //MARK:  $hidden binding
-  //····················································································································
+  //································································································
 
   private final var mHiddenBindingController : HiddenBindingController? = nil
 
-  //····················································································································
+  //································································································
 
   final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
     self.mHiddenBindingController = HiddenBindingController (inExpression, self)
     return self
   }
 
-  //····················································································································
+  //································································································
 
 }
 

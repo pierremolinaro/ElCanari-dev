@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <CanariLibraryEntry> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <CanariLibraryEntry>,                            
                                  addedSet inAddedSet : EBReferenceSet <CanariLibraryEntry>) {
@@ -53,13 +53,13 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mPath' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mPath : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mPath_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -76,19 +76,19 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mPath_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPath?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mUses' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mUses : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mUses_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -105,19 +105,19 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mUses_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mUses?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mLibraryRepositoryURL' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mLibraryRepositoryURL : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mLibraryRepositoryURL_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -134,19 +134,19 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mLibraryRepositoryURL_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mLibraryRepositoryURL?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mUserAndPasswordTag' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mUserAndPasswordTag : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mUserAndPasswordTag_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -163,19 +163,19 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mUserAndPasswordTag_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mUserAndPasswordTag?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mStatusImage' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mStatusImage : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mStatusImage_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -192,13 +192,13 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mStatusImage_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mStatusImage?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -208,30 +208,30 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
 
 final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
-  //····················································································································
+  //································································································
   //   Sort
-  //····················································································································
+  //································································································
 
   private var mIsOrderedBefore : Optional < (_ left : CanariLibraryEntry, _ right : CanariLibraryEntry) -> Bool > = nil
   private var mSortObserver : EBModelNotifierEvent? = nil
 //  private let mModelEvent = EBModelEvent ()
 
-  //····················································································································
+  //································································································
 
 /*  override init () {
     super.init ()
     self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
   } */
 
-  //····················································································································
+  //································································································
   //   Data provider
-  //····················································································································
+  //································································································
 
   private weak var mDataProvider : ReadOnlyArrayOf_CanariLibraryEntry? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
-  //····················································································································
+  //································································································
 
   func setDataProvider (_ inProvider : ReadOnlyArrayOf_CanariLibraryEntry,
                         sortCallback inSortCallBack : Optional < (_ left : CanariLibraryEntry, _ right : CanariLibraryEntry) -> Bool >,
@@ -256,7 +256,7 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
     }
   }
 
-  //····················································································································
+  //································································································
 
 /*  func resetDataProvider () {
     if self.mDataProvider != nil {
@@ -267,7 +267,7 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
     }
   } */
 
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
     if !self.mModelArrayShouldBeComputed {
@@ -281,7 +281,7 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
 
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
@@ -311,7 +311,7 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
     }
   }
 
-  //····················································································································
+  //································································································
 
   override var selection : EBSelection < [CanariLibraryEntry] > {
     self.computeModelArray ()
@@ -325,14 +325,14 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
     }
   }
 
-  //····················································································································
+  //································································································
 
   override var propval : EBReferenceArray <CanariLibraryEntry> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -348,11 +348,11 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
 
 class ReadWriteArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
-  //····················································································································
+  //································································································
 
   func setProp (_ value :  EBReferenceArray <CanariLibraryEntry>) { } // Abstract method
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -368,7 +368,7 @@ class ReadWriteArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
 class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
-  //····················································································································
+  //································································································
 
   init (usedForSignature inUsedForSignature : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
@@ -376,12 +376,12 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     super.init ()
   }
 
-  //····················································································································
+  //································································································
   
   private final let mKey : String?
   final var key : String? { return self.mKey }
   
-  //····················································································································
+  //································································································
 
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
@@ -394,7 +394,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     }
   }
 
-  //····················································································································
+  //································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
     var objectArray = EBReferenceArray <CanariLibraryEntry> ()
@@ -405,7 +405,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     self.setProp (objectArray)
   }
 
-  //····················································································································
+  //································································································
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, self.mInternalArrayValue.count > 0 {
@@ -417,7 +417,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     }
   }
 
-  //····················································································································
+  //································································································
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, self.mInternalArrayValue.count > 0 {
@@ -427,27 +427,27 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     }
   }
 
-  //····················································································································
+  //································································································
 
   func appendValueTo (data ioData : inout Data) {
     enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
   }
 
-  //····················································································································
+  //································································································
   //   Signature ?
-  //····················································································································
+  //································································································
 
   final private let mUsedForSignature : Bool
 
-  //····················································································································
+  //································································································
   //   Undo manager
-  //····················································································································
+  //································································································
 
   weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
   // Model will change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <CanariLibraryEntry>) {
   //--- Register old value in undo manager
@@ -456,9 +456,9 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
 
-  //····················································································································
+  //································································································
   // Model did change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
   //--- Notify observers
@@ -467,9 +467,9 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
   // Update observers
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <CanariLibraryEntry>,
                                  addedSet inAddedSet : EBReferenceSet <CanariLibraryEntry>) {
@@ -488,19 +488,19 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 
-  //····················································································································
+  //································································································
 
   override final var selection : EBSelection < [CanariLibraryEntry] > { return .single (self.mInternalArrayValue.values) }
 
-  //····················································································································
+  //································································································
 
   override func setProp (_ inValue : EBReferenceArray <CanariLibraryEntry>) { self.mInternalArrayValue = inValue }
 
-  //····················································································································
+  //································································································
 
   final override var propval : EBReferenceArray <CanariLibraryEntry> { return self.mInternalArrayValue }
 
-  //····················································································································
+  //································································································
 
   final func remove (_ object : CanariLibraryEntry) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
@@ -508,7 +508,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     }
   }
 
-  //····················································································································
+  //································································································
 
   final func add (_ object : CanariLibraryEntry) {
     if !self.internalSetValue.contains (object) {
@@ -516,17 +516,17 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     }
   }
 
-  //····················································································································
+  //································································································
   //   signature
-  //····················································································································
+  //································································································
 
   private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
 
   private final var mSignatureCache : UInt32? = nil
 
-  //····················································································································
+  //································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
@@ -535,7 +535,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     self.clearSignatureCache ()
  }
 
-  //····················································································································
+  //································································································
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
@@ -548,7 +548,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     return computedSignature
   }
 
-  //····················································································································
+  //································································································
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
@@ -558,7 +558,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     return crc
   }
 
-  //····················································································································
+  //································································································
 
   final func clearSignatureCache () {
     if self.mSignatureCache != nil {
@@ -567,7 +567,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -577,12 +577,12 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
 
 final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryEntry {
 
-  //····················································································································
+  //································································································
 
   private let mPrefKey : String
   private let mObserverForWritingPreferences = EBOutletEvent ()
 
-  //····················································································································
+  //································································································
 
   init (prefKey inPrefKey : String) {
     self.mPrefKey = inPrefKey
@@ -603,7 +603,7 @@ final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryE
     self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
-  //····················································································································
+  //································································································
 
   private func writeInPreferences () {
     var dictionaryArray = [[String  : Any]] ()
@@ -616,7 +616,7 @@ final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryE
     UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
   }
 
-  //····················································································································
+  //································································································
 
 }
 

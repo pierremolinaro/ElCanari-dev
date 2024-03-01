@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //····················································································································
+  //································································································
 
   func mouseMovedOrFlagsChangedInBoard (_ inUnalignedMouseLocation : NSPoint) {
     var shape : EBShape? = nil
@@ -69,7 +69,7 @@ extension AutoLayoutProjectDocument {
     self.mBoardView?.mGraphicView.mOptionalFrontShape = shape
   }
 
-  //····················································································································
+  //································································································
 
 //  func findAllConnectorsConnectedTo (_ inConnector : BoardConnector,
 //                                     trackSide inTrackSide : TrackSide) -> EBReferenceArray <BoardConnector> {
@@ -93,7 +93,7 @@ extension AutoLayoutProjectDocument {
     return EBReferenceArray (Array (connectorSet.values))
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -101,7 +101,7 @@ extension AutoLayoutProjectDocument {
 
 extension BoardConnector {
 
-  //····················································································································
+  //································································································
 
   func netName () -> String? {
     if let name = self.netNameFromComponentPad, name != "—" {
@@ -113,7 +113,7 @@ extension BoardConnector {
     }
   }
 
-  //····················································································································
+  //································································································
 
   func buildBezierPathArrayForHilitingOnOptionFlag (trackSide inTrackSide : TrackSide,
                                                     controlKeyHiliteDiameter inDiameter : CGFloat,
@@ -148,7 +148,7 @@ extension BoardConnector {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 //——————————————————————————————————————————————————————————————————————————————————————————————————

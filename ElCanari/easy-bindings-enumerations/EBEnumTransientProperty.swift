@@ -10,12 +10,12 @@ import AppKit
 
 final class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> where T : Equatable {
 
-  //····················································································································
+  //································································································
 
   private var mValueCache : EBSelection <T>? = nil
   var mReadModelFunction : Optional <() -> EBSelection <T> > = nil
 
-  //····················································································································
+  //································································································
 
   override var selection : EBSelection <T> {
     if self.mValueCache == nil {
@@ -27,7 +27,7 @@ final class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumPropert
     return self.mValueCache!
   }
 
-  //····················································································································
+  //································································································
 
   override func observedObjectDidChange () {
     if self.mValueCache != nil {
@@ -41,7 +41,7 @@ final class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumPropert
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

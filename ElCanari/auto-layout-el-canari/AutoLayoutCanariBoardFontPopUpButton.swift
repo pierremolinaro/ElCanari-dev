@@ -12,21 +12,21 @@ import AppKit
 
 final class AutoLayoutCanariBoardFontPopUpButton : AutoLayoutBase_NSPopUpButton {
 
-  //····················································································································
+  //································································································
 
   init () {
     super.init (pullsDown: false, size: .small)
   }
 
-  //····················································································································
+  //································································································
 
   required init?(coder inCoder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
   // BUILD POPUP
-  //····················································································································
+  //································································································
 
   private func buildPopUpButton () {
     self.removeAllItems ()
@@ -38,14 +38,14 @@ final class AutoLayoutCanariBoardFontPopUpButton : AutoLayoutBase_NSPopUpButton 
     }
   }
 
-  //····················································································································
+  //································································································
   //  $currentFontName binding
-  //····················································································································
+  //································································································
 
   private var mCurrentFontNameController : EBObservablePropertyController? = nil
   private var mCurrentFontName : String? = nil
 
-  //····················································································································
+  //································································································
 
   final func bind_currentFontName (_ inObject : EBObservableProperty <String>) -> Self {
     self.mCurrentFontNameController = EBObservablePropertyController (
@@ -55,7 +55,7 @@ final class AutoLayoutCanariBoardFontPopUpButton : AutoLayoutBase_NSPopUpButton 
     return self
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func updateCurrentFontName (from inObject : EBObservableProperty <String>) {
     switch inObject.selection {
@@ -67,14 +67,14 @@ final class AutoLayoutCanariBoardFontPopUpButton : AutoLayoutBase_NSPopUpButton 
     self.buildPopUpButton ()
   }
 
-  //····················································································································
+  //································································································
   //  $currentFontName binding
-  //····················································································································
+  //································································································
 
   private var mFontNamesController : EBObservablePropertyController? = nil
   private var mFontNames = [String] ()
 
-  //····················································································································
+  //································································································
 
   final func bind_fontNames (_ inObject : EBObservableProperty <StringArray>) -> Self {
     self.mFontNamesController = EBObservablePropertyController (
@@ -84,7 +84,7 @@ final class AutoLayoutCanariBoardFontPopUpButton : AutoLayoutBase_NSPopUpButton 
     return self
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func updateFontNames (from inObject : EBObservableProperty <StringArray>) {
     switch inObject.selection {
@@ -96,7 +96,7 @@ final class AutoLayoutCanariBoardFontPopUpButton : AutoLayoutBase_NSPopUpButton 
     self.buildPopUpButton ()
   }
 
-  //····················································································································
+  //································································································
 
 }
 

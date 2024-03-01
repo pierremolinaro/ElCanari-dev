@@ -12,21 +12,21 @@ import AppKit
 
 final class AutoLayoutCanariSelectionPopUpButton : AutoLayoutBase_NSPopUpButton {
 
-  //····················································································································
+  //································································································
 
   init (size inSize : EBControlSize) {
     super.init (pullsDown: false, size: inSize)
   }
 
-  //····················································································································
+  //································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
   //  format binding
-  //····················································································································
+  //································································································
 
   fileprivate func updateOutlet (_ inOptionalSelectedName : EBObservableProperty <String>?,
                                  _ inOptionalNameArray : EBObservableProperty <StringArray>?) {
@@ -59,19 +59,19 @@ final class AutoLayoutCanariSelectionPopUpButton : AutoLayoutBase_NSPopUpButton 
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func nameSelectionAction (_ inSender : NSMenuItem) {
     self.mController?.updateModelAction (inSender)
   }
 
-  //····················································································································
+  //································································································
   //   $selectedNameInArray Binding
-  //····················································································································
+  //································································································
 
   private var mController : Controller_ElCanariSelectionPopUpButton_selectedNameInArray? = nil
 
-  //····················································································································
+  //································································································
 
   final func bind_selectedNameInArray (_ inSelectedName : EBObservableMutableProperty <String>, _ inNameArray : EBObservableProperty <StringArray>) -> Self {
     self.mController = Controller_ElCanariSelectionPopUpButton_selectedNameInArray (
@@ -83,7 +83,7 @@ final class AutoLayoutCanariSelectionPopUpButton : AutoLayoutBase_NSPopUpButton 
     return self
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -93,11 +93,11 @@ final class AutoLayoutCanariSelectionPopUpButton : AutoLayoutBase_NSPopUpButton 
 
 final class Controller_ElCanariSelectionPopUpButton_selectedNameInArray : EBObservablePropertyController {
 
-  //····················································································································
+  //································································································
 
   private weak var mSelectedName : EBObservableMutableProperty <String>?
 
-  //····················································································································
+  //································································································
 
   init (_ inSelectedName : EBObservableMutableProperty <String>,
         _ inNameArray : EBObservableProperty <StringArray>,
@@ -109,13 +109,13 @@ final class Controller_ElCanariSelectionPopUpButton_selectedNameInArray : EBObse
     inOutlet.action = #selector (Self.updateModelAction (_:))
   }
 
-  //····················································································································
+  //································································································
 
   @objc func updateModelAction (_ inSender : NSMenuItem) {
     self.mSelectedName?.setProp (inSender.title)
   }
 
-  //····················································································································
+  //································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————

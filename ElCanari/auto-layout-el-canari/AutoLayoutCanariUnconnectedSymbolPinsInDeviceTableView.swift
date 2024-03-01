@@ -12,12 +12,12 @@ import AppKit
 
 final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutVerticalStackView {
 
-  //····················································································································
+  //································································································
 
   private let mTableView = AutoLayoutTableView (size: .small, addControlButtons: false)
   private var mDataSource = UnconnectedSymbolPinsInDevice ()
 
-  //····················································································································
+  //································································································
 
   override init () {
     super.init ()
@@ -55,15 +55,15 @@ final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutV
     _ = self.appendView (self.mTableView)
   }
 
-  //····················································································································
+  //································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
   //  selectedSymbolPin
-  //····················································································································
+  //································································································
 
   var selectedSymbolPin : UnconnectedSymbolPinsInDevice.Element? {
     if self.mTableView.selectedRow >= 0 {
@@ -73,13 +73,13 @@ final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutV
     }
   }
 
-  //····················································································································
+  //································································································
   //  $unconnectedPins binding
-  //····················································································································
+  //································································································
 
   private var mController : EBObservablePropertyController? = nil
 
-  //····················································································································
+  //································································································
 
   final func bind_unconnectedPins (_ model : EBObservableProperty <UnconnectedSymbolPinsInDevice>) -> Self {
     self.mController = EBObservablePropertyController (
@@ -89,7 +89,7 @@ final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutV
     return self
   }
 
-  //····················································································································
+  //································································································
 
   func updateUnconnectedPinList (from inModel : EBObservableProperty <UnconnectedSymbolPinsInDevice>) {
     switch inModel.selection {
@@ -102,7 +102,7 @@ final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutV
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

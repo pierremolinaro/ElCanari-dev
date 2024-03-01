@@ -12,44 +12,44 @@ import AppKit
 
 extension ApplicationDelegate {
 
-  //····················································································································
+  //································································································
 
   @IBAction func showBatchWindow (_ inSender : Any?) {
     self.instanciatedBatchWindow ()
     self.mBatchWindow?.makeKeyAndOrderFront (inSender)
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor @objc func actionOpenAllDocumentsInDirectory (_ inSender : Any?) {
     self.actionOpenAllDocumentsInDirectory (ALL_ELCANARI_DOCUMENT_EXTENSIONS, "document", inSender)
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor @objc func actionOpenAllSymbolsInDirectory (_ inSender : Any?) {
     self.actionOpenAllDocumentsInDirectory ([ElCanariSymbol_EXTENSION], "symbol", inSender)
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor @objc func actionOpenAllPackagesInDirectory (_ inSender : Any?) {
     self.actionOpenAllDocumentsInDirectory ([ElCanariPackage_EXTENSION], "package", inSender)
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor @objc func actionOpenAllDevicesInDirectory (_ inSender : Any?) {
     self.actionOpenAllDocumentsInDirectory ([ElCanariDevice_EXTENSION], "device", inSender)
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor @objc func actionOpenAllFontsInDirectory (_ inSender : Any?) {
     self.actionOpenAllDocumentsInDirectory ([ElCanariFont_EXTENSION], "font", inSender)
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor private func actionOpenAllDocumentsInDirectory (_ inExtensions : Set <String>,
                                                              _ inTitle : String,
@@ -118,7 +118,7 @@ extension ApplicationDelegate {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor @objc func updateAllProjectsInDirectory (_ inSender : Any?) {
     self.instanciatedBatchWindow ()
@@ -177,7 +177,7 @@ extension ApplicationDelegate {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor @objc func updateAllDevicesInDirectory (_ inSender : Any?) {
     self.instanciatedBatchWindow ()
@@ -254,19 +254,19 @@ extension ApplicationDelegate {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor @objc func actionConvertToTextualFormatAllDocumentsInDirectory (_ inSender : AnyObject) {
     self.convertFiles (withExtensions: ALL_ELCANARI_DOCUMENT_EXTENSIONS, toFormat: .textual, sender: inSender)
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor @objc func actionConvertToBinaryFormatAllDocumentsInDirectory (_ inSender : AnyObject) {
     self.convertFiles (withExtensions: ALL_ELCANARI_DOCUMENT_EXTENSIONS, toFormat: .binary, sender: inSender)
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor private func convertFiles (withExtensions inExtensionSet : Set <String>,
                                         toFormat inFormat : EBManagedDocumentFileFormat,
@@ -322,7 +322,7 @@ extension ApplicationDelegate {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor func examineAndConvertDocuments (toFormat inFormat : EBManagedDocumentFileFormat) {
     self.instanciatedBatchWindow ()
@@ -364,7 +364,7 @@ extension ApplicationDelegate {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

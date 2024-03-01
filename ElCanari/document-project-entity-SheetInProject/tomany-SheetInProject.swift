@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInProject> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SheetInProject>,                            
                                  addedSet inAddedSet : EBReferenceSet <SheetInProject>) {
@@ -65,13 +65,13 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mSheetTitle' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mSheetTitle : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mSheetTitle_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -88,19 +88,19 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mSheetTitle_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSheetTitle?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'schematicIssues' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_schematicIssues : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_schematicIssues_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -117,19 +117,19 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_schematicIssues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_schematicIssues?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'issues' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_issues : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_issues_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -146,19 +146,19 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_issues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_issues?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'connectedPoints' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_connectedPoints : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_connectedPoints_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -175,19 +175,19 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_connectedPoints_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_connectedPoints?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'schematicConnexionWarnings' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_schematicConnexionWarnings : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_schematicConnexionWarnings_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -204,19 +204,19 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_schematicConnexionWarnings_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_schematicConnexionWarnings?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'schematicConnexionErrors' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_schematicConnexionErrors : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_schematicConnexionErrors_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -233,19 +233,19 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_schematicConnexionErrors_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_schematicConnexionErrors?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'sheetDescriptor' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_sheetDescriptor : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_sheetDescriptor_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -262,13 +262,13 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_sheetDescriptor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_sheetDescriptor?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -290,11 +290,11 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
 
 class ReadWriteArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
 
-  //····················································································································
+  //································································································
 
   func setProp (_ value :  EBReferenceArray <SheetInProject>) { } // Abstract method
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -310,7 +310,7 @@ class ReadWriteArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
 
 class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
-  //····················································································································
+  //································································································
 
   init (usedForSignature inUsedForSignature : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
@@ -318,12 +318,12 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
     super.init ()
   }
 
-  //····················································································································
+  //································································································
   
   private final let mKey : String?
   final var key : String? { return self.mKey }
   
-  //····················································································································
+  //································································································
 
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
@@ -336,7 +336,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
     }
   }
 
-  //····················································································································
+  //································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
     var objectArray = EBReferenceArray <SheetInProject> ()
@@ -347,7 +347,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
     self.setProp (objectArray)
   }
 
-  //····················································································································
+  //································································································
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, self.mInternalArrayValue.count > 0 {
@@ -359,7 +359,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
     }
   }
 
-  //····················································································································
+  //································································································
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, self.mInternalArrayValue.count > 0 {
@@ -369,32 +369,32 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
     }
   }
 
-  //····················································································································
+  //································································································
 
   func appendValueTo (data ioData : inout Data) {
     enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
   }
 
-  //····················································································································
+  //································································································
   //   Signature ?
-  //····················································································································
+  //································································································
 
   final private let mUsedForSignature : Bool
 
-  //····················································································································
+  //································································································
   //   Undo manager
-  //····················································································································
+  //································································································
 
   weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
   //   Opposite relationship management
-  //····················································································································
+  //································································································
 
   private final var mSetOppositeRelationship : Optional < (_ inManagedObject : SheetInProject) -> Void > = nil
   private final var mResetOppositeRelationship : Optional < (_ inManagedObject : SheetInProject) -> Void > = nil
 
-  //····················································································································
+  //································································································
 
   final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SheetInProject) -> Void,
                                                resetter inResetter : @escaping (_ inManagedObject : SheetInProject) -> Void) {
@@ -402,9 +402,9 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
     self.mResetOppositeRelationship = inResetter
   }
 
-  //····················································································································
+  //································································································
   // Model will change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <SheetInProject>) {
   //--- Register old value in undo manager
@@ -413,9 +413,9 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
 
-  //····················································································································
+  //································································································
   // Model did change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
   //--- Notify observers
@@ -424,9 +424,9 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
   // Update observers
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SheetInProject>,
                                  addedSet inAddedSet : EBReferenceSet <SheetInProject>) {
@@ -447,19 +447,19 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 
-  //····················································································································
+  //································································································
 
   override final var selection : EBSelection < [SheetInProject] > { return .single (self.mInternalArrayValue.values) }
 
-  //····················································································································
+  //································································································
 
   override func setProp (_ inValue : EBReferenceArray <SheetInProject>) { self.mInternalArrayValue = inValue }
 
-  //····················································································································
+  //································································································
 
   final override var propval : EBReferenceArray <SheetInProject> { return self.mInternalArrayValue }
 
-  //····················································································································
+  //································································································
 
   final func remove (_ object : SheetInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
@@ -467,7 +467,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
     }
   }
 
-  //····················································································································
+  //································································································
 
   final func add (_ object : SheetInProject) {
     if !self.internalSetValue.contains (object) {
@@ -475,17 +475,17 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
     }
   }
 
-  //····················································································································
+  //································································································
   //   signature
-  //····················································································································
+  //································································································
 
   private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
 
   private final var mSignatureCache : UInt32? = nil
 
-  //····················································································································
+  //································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
@@ -494,7 +494,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
     self.clearSignatureCache ()
  }
 
-  //····················································································································
+  //································································································
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
@@ -507,7 +507,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
     return computedSignature
   }
 
-  //····················································································································
+  //································································································
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
@@ -517,7 +517,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
     return crc
   }
 
-  //····················································································································
+  //································································································
 
   final func clearSignatureCache () {
     if self.mSignatureCache != nil {
@@ -526,7 +526,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

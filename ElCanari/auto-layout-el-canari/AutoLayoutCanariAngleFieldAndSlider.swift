@@ -14,12 +14,12 @@ import AppKit
 
 final class AutoLayoutCanariAngleFieldAndSlider : AutoLayoutHorizontalStackView {
 
-  //····················································································································
+  //································································································
 
   fileprivate let mAngleTextField : AutoLayoutCanariAngleField
   fileprivate let mAngleSlider :  AutoLayoutAngleCircularSlider
 
-  //····················································································································
+  //································································································
 
   init (fieldMinWidth inWidth : Int, size inSize : EBControlSize) {
     self.mAngleTextField = AutoLayoutCanariAngleField (minWidth: inWidth, size: inSize)
@@ -29,13 +29,13 @@ final class AutoLayoutCanariAngleFieldAndSlider : AutoLayoutHorizontalStackView 
     _ = self.appendView (self.mAngleSlider)
   }
 
-  //····················································································································
+  //································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
 
   final func bind_angle (_ inModel : EBObservableMutableProperty <Int>) -> Self {
     _ = self.mAngleTextField.bind_angle (inModel)
@@ -43,7 +43,7 @@ final class AutoLayoutCanariAngleFieldAndSlider : AutoLayoutHorizontalStackView 
     return self
   }
 
-  //····················································································································
+  //································································································
 
   final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
     _ = self.mAngleTextField.bind_enabled (inExpression)
@@ -51,7 +51,7 @@ final class AutoLayoutCanariAngleFieldAndSlider : AutoLayoutHorizontalStackView 
     return self
   }
 
-  //····················································································································
+  //································································································
 
 }
 

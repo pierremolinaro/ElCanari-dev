@@ -6,12 +6,12 @@ import AppKit
 
 final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedControl {
 
-  //····················································································································
+  //································································································
 
   private var mDocumentView : AutoLayoutBase_NSStackView
   private var mPages = [AutoLayoutBase_NSStackView] ()
 
-  //····················································································································
+  //································································································
 
   init (documentView inDocumentView : AutoLayoutBase_NSStackView,
         equalWidth inEqualWidth : Bool,
@@ -23,15 +23,15 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     self.action = #selector (Self.selectedSegmentDidChange (_:))
   }
 
-  //····················································································································
+  //································································································
 
   required init? (coder inCoder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
   // ADD PAGE
-  //····················································································································
+  //································································································
 
   final func addPage (title inTitle : String,
                       tooltip inTooltipString : String,
@@ -50,7 +50,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     return self
   }
 
-  //····················································································································
+  //································································································
 
   final func addPage (image inImageName : String,
                       title inTitle : String,
@@ -74,7 +74,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     return self
   }
 
-  //····················································································································
+  //································································································
 
   func setSelectedSegment (atIndex inIndex : Int) {
     if self.segmentCount > 0 {
@@ -89,9 +89,9 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     }
   }
 
-  //····················································································································
+  //································································································
   // SELECTED TAB DID CHANGE
-  //····················································································································
+  //································································································
 
   @objc func selectedSegmentDidChange (_ inSender : Any?) {
     let allSubViews = self.mDocumentView.subviews
@@ -104,13 +104,13 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     self.mSelectedSegmentController?.updateModel ()
   }
 
-  //····················································································································
+  //································································································
   //  $selectedPage binding
-  //····················································································································
+  //································································································
 
   private var mSelectedTabIndexController : EBGenericReadWritePropertyController <Int>? = nil
 
-  //····················································································································
+  //································································································
 
   final func bind_selectedPage (_ inObject : EBObservableMutableProperty <Int>) -> Self {
     self.mSelectedTabIndexController = EBGenericReadWritePropertyController <Int> (
@@ -120,7 +120,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     return self
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func update (from inObject : EBObservableMutableProperty <Int>) {
     switch inObject.selection {
@@ -133,13 +133,13 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     }
   }
 
-  //····················································································································
+  //································································································
   //  $segmentImage binding
-  //····················································································································
+  //································································································
 
   private var mSegmentImageController = [Int : EBObservablePropertyController] ()
 
-  //····················································································································
+  //································································································
 
   final func bind_segmentImage (_ inObject : EBObservableProperty <NSImage>, segmentIndex inSegmentIndex : Int) -> Self {
     self.mSegmentImageController [inSegmentIndex] = EBObservablePropertyController (
@@ -149,7 +149,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     return self
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func updateImage (from inObject : EBObservableProperty <NSImage>, segmentIndex inSegmentIndex : Int) {
     switch inObject.selection {
@@ -160,13 +160,13 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     }
   }
 
-  //····················································································································
+  //································································································
   //  $segmentTitle binding
-  //····················································································································
+  //································································································
 
   private var mSegmentTitleController = [Int : EBObservablePropertyController] ()
 
-  //····················································································································
+  //································································································
 
   final func bind_segmentTitle (_ inObject : EBObservableProperty <String>, segmentIndex inSegmentIndex : Int) -> Self {
     self.mSegmentTitleController [inSegmentIndex] = EBObservablePropertyController (
@@ -176,7 +176,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     return self
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func updateTitle (from inObject : EBObservableProperty <String>, segmentIndex inSegmentIndex : Int) {
     switch inObject.selection {
@@ -187,13 +187,13 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     }
   }
 
-  //····················································································································
+  //································································································
   //  $selectedSegment binding
-  //····················································································································
+  //································································································
 
   private var mSelectedSegmentController : Controller_AutoLayoutSegmentedControl_selectedSegment? = nil
 
-  //····················································································································
+  //································································································
 
   final func bind_selectedSegment (_ inObject : EBEnumReadWriteObservableProtocol) -> Self {
     self.mSelectedSegmentController = Controller_AutoLayoutSegmentedControl_selectedSegment (
@@ -203,13 +203,13 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     return self
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func updateSelectedSegment (_ inObject : EBEnumReadWriteObservableProtocol) {
     self.selectedSegment = inObject.rawValue () ?? 0
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -222,7 +222,7 @@ fileprivate final class Controller_AutoLayoutSegmentedControl_selectedSegment : 
   private let mObject : EBEnumReadWriteObservableProtocol
   private weak var mOutlet : AutoLayoutSegmentedControlWithPages? = nil
 
-  //····················································································································
+  //································································································
 
   init (object : EBEnumReadWriteObservableProtocol, outlet inOutlet : AutoLayoutSegmentedControlWithPages) {
     self.mObject = object
@@ -230,7 +230,7 @@ fileprivate final class Controller_AutoLayoutSegmentedControl_selectedSegment : 
     super.init (observedObjects: [object], callBack: { [weak inOutlet] in inOutlet?.updateSelectedSegment (object) })
   }
 
-  //····················································································································
+  //································································································
 
   func updateModel () {
     if let outlet = self.mOutlet {
@@ -238,7 +238,7 @@ fileprivate final class Controller_AutoLayoutSegmentedControl_selectedSegment : 
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

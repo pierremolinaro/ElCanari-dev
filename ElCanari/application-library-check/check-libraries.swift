@@ -117,25 +117,25 @@ import AppKit
 
 extension AutoLayoutVerticalStackView {
 
-  //····················································································································
+  //································································································
 
   func appendText (_ inString : String, bold inBold : Bool) {
     _ = self.appendView (AutoLayoutStaticLabel (title: inString, bold: inBold, size: .regular, alignment: .left).expandableWidth ())
   }
 
-  //····················································································································
+  //································································································
 
   func appendError (_ inString : String) {
     _ = self.appendView (AutoLayoutStaticLabel (title: inString, bold: true, size: .regular, alignment: .left).setRedTextColor ().expandableWidth())
   }
 
-  //····················································································································
+  //································································································
 
   func appendInfo (_ inString : String) {
     _ = self.appendView (AutoLayoutStaticLabel (title: inString, bold: false, size: .regular, alignment: .left).setTextColor (.systemBlue).expandableWidth())
   }
 
-  //····················································································································
+  //································································································
 
   func appendOpenDocumentButton (_ inDocumentPath : String) {
     let button = AutoLayoutButton (title: inDocumentPath, size: .regular).expandableWidth ()
@@ -151,7 +151,7 @@ extension AutoLayoutVerticalStackView {
     _ = self.appendView (button)
   }
 
-  //····················································································································
+  //································································································
 
 }
 

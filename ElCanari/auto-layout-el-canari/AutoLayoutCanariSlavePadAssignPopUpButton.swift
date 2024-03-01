@@ -14,7 +14,7 @@ import AppKit
 
 final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton {
 
-  //····················································································································
+  //································································································
 
   init () {
     super.init (frame: .zero, pullsDown: false)
@@ -26,31 +26,31 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton {
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
   }
 
-  //····················································································································
+  //································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //····················································································································
+  //································································································
   // MARK: -
-  //····················································································································
+  //································································································
 
   private weak var mDocument : AutoLayoutPackageDocument? = nil // Should be weak
 
-  //····················································································································
+  //································································································
 
   func register (document inDocument : AutoLayoutPackageDocument) {
     self.mDocument = inDocument
   }
 
-  //····················································································································
+  //································································································
 
   private func buildMenu () {
     self.enable (fromValueBinding: self.mDocument != nil, nil)
@@ -86,7 +86,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc func performAssignment (_ inSender : NSMenuItem) {
     let masterPad = self.mMasterPadArray [inSender.tag]
@@ -95,9 +95,9 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton {
     }
   }
 
-  //····················································································································
+  //································································································
   // SLAVE PAD INDEX binding
-  //····················································································································
+  //································································································
 
   private var mSlavePadIndexController : EBObservablePropertyController? = nil
   private var mSelectedSlavePadArray = [PackageSlavePad] ()
@@ -113,7 +113,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton {
     return self
   }
 
-  //····················································································································
+  //································································································
 
   private func update (fromMasterPadName inObject : EBObservableProperty <String>) {
     _ = inObject.selection
@@ -134,9 +134,9 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton {
     self.buildMenu ()
   }
 
-  //····················································································································
+  //································································································
   // MASTER PAD INDEX ARRAY binding
-  //····················································································································
+  //································································································
 
   private var mMasterPadIndexArrayIndexController : EBObservablePropertyController? = nil
   private var mMasterPadArray = [PackagePad] ()
@@ -151,7 +151,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton {
     return self
   }
 
-  //····················································································································
+  //································································································
 
   private func update (fromMasterPadIndexArray inObject : EBObservableProperty <IntArray>) {
     self.mMasterPadArray.removeAll ()
@@ -172,7 +172,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton {
     self.buildMenu ()
   }
 
-  //····················································································································
+  //································································································
 
 }
 

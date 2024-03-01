@@ -17,7 +17,7 @@ struct EBLinePath {
   let lines : [NSPoint]
   let closed : Bool
 
-  //····················································································································
+  //································································································
 
   func transformed (by inAffineTransform : AffineTransform) -> EBLinePath {
     let transformedOrigin = inAffineTransform.transform (self.origin)
@@ -28,7 +28,7 @@ struct EBLinePath {
     return EBLinePath (origin: transformedOrigin, lines: transformedLines, closed: self.closed)
   }
 
-  //····················································································································
+  //································································································
 
   func appendToBezierPath (_ ioBezierPath : inout EBBezierPath,
                            transformedBy inAffineTransform : AffineTransform) {
@@ -41,7 +41,7 @@ struct EBLinePath {
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

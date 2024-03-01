@@ -12,13 +12,13 @@ import AppKit
 
 final class CanariSelectDefaultNetClassMenu : NSMenu {
 
-  //····················································································································
+  //································································································
 
   private var mValue = 0
 
-  //····················································································································
+  //································································································
   // INIT
-  //····················································································································
+  //································································································
 
   init (size inSize : EBControlSize) {
     super.init (title: "")
@@ -30,23 +30,23 @@ final class CanariSelectDefaultNetClassMenu : NSMenu {
 
   }
 
-  //····················································································································
+  //································································································
 
   required init (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //····················································································································
+  //································································································
 
   private var mController : Controller_CanariDefaultNetClassMenu? = nil
 
-  //····················································································································
+  //································································································
 
   @MainActor final func bind_netClasses (_ inSelectedNetClassName : EBObservableMutableProperty <String>,
                                          _ inNetClassNames : EBObservableProperty <StringArray>) -> Self {
@@ -54,7 +54,7 @@ final class CanariSelectDefaultNetClassMenu : NSMenu {
     return self
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -67,7 +67,7 @@ fileprivate final class Controller_CanariDefaultNetClassMenu : EBObservablePrope
   private let mObject : EBObservableMutableProperty <String>
   private weak var mOutlet : CanariSelectDefaultNetClassMenu? = nil
 
-  //····················································································································
+  //································································································
 
   init (_ inSelectedNetClassName : EBObservableMutableProperty <String>,
         _ inNetClassNames : EBObservableProperty <StringArray>,
@@ -81,7 +81,7 @@ fileprivate final class Controller_CanariDefaultNetClassMenu : EBObservablePrope
     self.mEventCallBack = { [weak self] in self?.updateOutlet (inSelectedNetClassName, inNetClassNames) }
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func updateOutlet (_ inSelectedNetClassName : EBObservableMutableProperty <String>,
                                  _ inNetClassNames : EBObservableProperty <StringArray>) {
@@ -117,7 +117,7 @@ fileprivate final class Controller_CanariDefaultNetClassMenu : EBObservablePrope
     self.mObject.setProp (inSender.title)
   }
 
-  //····················································································································
+  //································································································
 
 }
 

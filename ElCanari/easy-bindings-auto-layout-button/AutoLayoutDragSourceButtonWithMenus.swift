@@ -12,11 +12,11 @@ import AppKit
 
 final class AutoLayoutDragSourceButtonWithMenus : AutoLayoutBase_NSView {
 
-  //····················································································································
+  //································································································
 
   private var mDragSourceButton : AutoLayoutDragSourceButton
 
-  //····················································································································
+  //································································································
 
   init (tooltip inToolTip : String) {
     self.mDragSourceButton = AutoLayoutDragSourceButton (tooltip: inToolTip)
@@ -32,13 +32,13 @@ final class AutoLayoutDragSourceButtonWithMenus : AutoLayoutBase_NSView {
     self.addConstraints (constraints)
   }
 
-  //····················································································································
+  //································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
 
   func register (draggedType : NSPasteboard.PasteboardType,
                  draggedObjectFactory : Optional < () -> (EBGraphicManagedObject, [String : Any], [EBManagedObject])? >,
@@ -50,7 +50,7 @@ final class AutoLayoutDragSourceButtonWithMenus : AutoLayoutBase_NSView {
     )
   }
 
-  //····················································································································
+  //································································································
 
   func register (draggedType : NSPasteboard.PasteboardType,
                  draggedObjectImage : Optional < () -> EBShape? >,
@@ -62,19 +62,19 @@ final class AutoLayoutDragSourceButtonWithMenus : AutoLayoutBase_NSView {
     )
   }
 
-  //····················································································································
+  //································································································
 
   func set (title inTitle : String, font inOptionalFont : NSFont?) {
     self.mDragSourceButton.set (title: inTitle, font: inOptionalFont)
   }
 
-  //····················································································································
+  //································································································
 
   func set (image inImage : NSImage?) {
     self.mDragSourceButton.set (image: inImage)
   }
 
-  //····················································································································
+  //································································································
 
   func set (leftContextualMenu inMenu : NSMenu) {
     let button = AutoLayoutMenuButton (menu: inMenu)
@@ -86,7 +86,7 @@ final class AutoLayoutDragSourceButtonWithMenus : AutoLayoutBase_NSView {
     self.addConstraints (constraints)
   }
 
-  //····················································································································
+  //································································································
 
   func set (rightContextualMenu inMenu : NSMenu) {
     let button = AutoLayoutMenuButton (menu: inMenu)
@@ -98,7 +98,7 @@ final class AutoLayoutDragSourceButtonWithMenus : AutoLayoutBase_NSView {
     self.addConstraints (constraints)
   }
 
-  //····················································································································
+  //································································································
 
 }
 

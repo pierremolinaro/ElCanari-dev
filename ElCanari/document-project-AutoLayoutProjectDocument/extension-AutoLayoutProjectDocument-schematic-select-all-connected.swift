@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //····················································································································
+  //································································································
 
   func selectAllConnectedElementsInSchematics () -> (EBReferenceSet <SchematicObject>, EBReferenceSet <PointInSchematic>) {
     var objectExploreSet = EBReferenceSet (self.schematicObjectsController.selectedArray.values)
@@ -69,7 +69,7 @@ extension AutoLayoutProjectDocument {
     return (objectSet, pointSet)
   }
 
-  //····················································································································
+  //································································································
 
 
 }

@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty <ComponentSymbolInProject> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ComponentSymbolInProject>,                            
                                  addedSet inAddedSet : EBReferenceSet <ComponentSymbolInProject>) {
@@ -131,13 +131,13 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mCenterX' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mCenterX : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mCenterX_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -154,19 +154,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mCenterX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mCenterX?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mCenterY' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mCenterY : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mCenterY_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -183,19 +183,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mCenterY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mCenterY?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mRotation' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mRotation : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mRotation_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -212,19 +212,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mRotation_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mRotation?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mMirror' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mMirror : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mMirror_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -241,19 +241,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mMirror_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mMirror?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mSymbolInstanceName' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mSymbolInstanceName : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mSymbolInstanceName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -270,19 +270,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mSymbolInstanceName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSymbolInstanceName?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mSymbolTypeName' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mSymbolTypeName : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mSymbolTypeName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -299,19 +299,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mSymbolTypeName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSymbolTypeName?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mDisplayComponentNameOffsetX' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mDisplayComponentNameOffsetX : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mDisplayComponentNameOffsetX_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -328,19 +328,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mDisplayComponentNameOffsetX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mDisplayComponentNameOffsetX?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mDisplayComponentNameOffsetY' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mDisplayComponentNameOffsetY : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mDisplayComponentNameOffsetY_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -357,19 +357,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mDisplayComponentNameOffsetY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mDisplayComponentNameOffsetY?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mDisplayComponentValue' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mDisplayComponentValue : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mDisplayComponentValue_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -386,19 +386,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mDisplayComponentValue_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mDisplayComponentValue?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mDisplayComponentValueOffsetX' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mDisplayComponentValueOffsetX : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mDisplayComponentValueOffsetX_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -415,19 +415,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mDisplayComponentValueOffsetX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mDisplayComponentValueOffsetX?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mDisplayComponentValueOffsetY' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mDisplayComponentValueOffsetY : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mDisplayComponentValueOffsetY_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -444,19 +444,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mDisplayComponentValueOffsetY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mDisplayComponentValueOffsetY?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'componentValueProxy' proxy property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_componentValueProxy : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_componentValueProxy_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -473,19 +473,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_componentValueProxy_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_componentValueProxy?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'componentName' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_componentName : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_componentName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -502,19 +502,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_componentName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_componentName?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'deviceName' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_deviceName : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_deviceName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -531,19 +531,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_deviceName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_deviceName?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'symbolInfo' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_symbolInfo : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_symbolInfo_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -560,19 +560,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_symbolInfo_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_symbolInfo?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'pinPadAssignments' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_pinPadAssignments : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_pinPadAssignments_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -589,19 +589,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_pinPadAssignments_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_pinPadAssignments?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'objectDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -618,19 +618,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'selectionDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -647,19 +647,19 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'symbolInSchematic' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_symbolInSchematic : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_symbolInSchematic_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -676,13 +676,13 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_symbolInSchematic_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_symbolInSchematic?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -698,23 +698,23 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : EBReadOnlyAbstractArrayProperty
 
 final class TransientArrayOfSuperOf_ComponentSymbolInProject <SUPER : EBManagedObject> : ReadOnlyArrayOf_ComponentSymbolInProject {
 
-  //····················································································································
+  //································································································
   //   Data provider
-  //····················································································································
+  //································································································
 
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 //  private let mModelEvent = EBModelEvent ()
 
-  //····················································································································
+  //································································································
 
 /*  override init () {
     super.init ()
     self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
   } */
 
-  //····················································································································
+  //································································································
 
   func setDataProvider (_ inProvider : EBReadOnlyAbstractArrayProperty <SUPER>?) {
     if self.mDataProvider !== inProvider {
@@ -724,7 +724,7 @@ final class TransientArrayOfSuperOf_ComponentSymbolInProject <SUPER : EBManagedO
     }
   }
 
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
     if !self.mModelArrayShouldBeComputed {
@@ -738,7 +738,7 @@ final class TransientArrayOfSuperOf_ComponentSymbolInProject <SUPER : EBManagedO
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
 
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
@@ -770,7 +770,7 @@ final class TransientArrayOfSuperOf_ComponentSymbolInProject <SUPER : EBManagedO
     }
   }
 
-  //····················································································································
+  //································································································
 
   override var selection : EBSelection < [ComponentSymbolInProject] > {
     self.computeModelArray ()
@@ -784,14 +784,14 @@ final class TransientArrayOfSuperOf_ComponentSymbolInProject <SUPER : EBManagedO
     }
   }
 
-  //····················································································································
+  //································································································
 
   override var propval : EBReferenceArray <ComponentSymbolInProject> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -801,11 +801,11 @@ final class TransientArrayOfSuperOf_ComponentSymbolInProject <SUPER : EBManagedO
 
 class ReadWriteArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbolInProject {
 
-  //····················································································································
+  //································································································
 
   func setProp (_ value :  EBReferenceArray <ComponentSymbolInProject>) { } // Abstract method
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -821,7 +821,7 @@ class ReadWriteArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
 
 class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
-  //····················································································································
+  //································································································
 
   init (usedForSignature inUsedForSignature : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
@@ -829,12 +829,12 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     super.init ()
   }
 
-  //····················································································································
+  //································································································
   
   private final let mKey : String?
   final var key : String? { return self.mKey }
   
-  //····················································································································
+  //································································································
 
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
@@ -847,7 +847,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     }
   }
 
-  //····················································································································
+  //································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
     var objectArray = EBReferenceArray <ComponentSymbolInProject> ()
@@ -858,7 +858,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     self.setProp (objectArray)
   }
 
-  //····················································································································
+  //································································································
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, self.mInternalArrayValue.count > 0 {
@@ -870,7 +870,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     }
   }
 
-  //····················································································································
+  //································································································
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, self.mInternalArrayValue.count > 0 {
@@ -880,32 +880,32 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     }
   }
 
-  //····················································································································
+  //································································································
 
   func appendValueTo (data ioData : inout Data) {
     enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
   }
 
-  //····················································································································
+  //································································································
   //   Signature ?
-  //····················································································································
+  //································································································
 
   final private let mUsedForSignature : Bool
 
-  //····················································································································
+  //································································································
   //   Undo manager
-  //····················································································································
+  //································································································
 
   weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
   //   Opposite relationship management
-  //····················································································································
+  //································································································
 
   private final var mSetOppositeRelationship : Optional < (_ inManagedObject : ComponentSymbolInProject) -> Void > = nil
   private final var mResetOppositeRelationship : Optional < (_ inManagedObject : ComponentSymbolInProject) -> Void > = nil
 
-  //····················································································································
+  //································································································
 
   final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ComponentSymbolInProject) -> Void,
                                                resetter inResetter : @escaping (_ inManagedObject : ComponentSymbolInProject) -> Void) {
@@ -913,9 +913,9 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     self.mResetOppositeRelationship = inResetter
   }
 
-  //····················································································································
+  //································································································
   // Model will change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <ComponentSymbolInProject>) {
   //--- Register old value in undo manager
@@ -924,9 +924,9 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
 
-  //····················································································································
+  //································································································
   // Model did change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
   //--- Notify observers
@@ -935,9 +935,9 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
   // Update observers
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ComponentSymbolInProject>,
                                  addedSet inAddedSet : EBReferenceSet <ComponentSymbolInProject>) {
@@ -958,19 +958,19 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 
-  //····················································································································
+  //································································································
 
   override final var selection : EBSelection < [ComponentSymbolInProject] > { return .single (self.mInternalArrayValue.values) }
 
-  //····················································································································
+  //································································································
 
   override func setProp (_ inValue : EBReferenceArray <ComponentSymbolInProject>) { self.mInternalArrayValue = inValue }
 
-  //····················································································································
+  //································································································
 
   final override var propval : EBReferenceArray <ComponentSymbolInProject> { return self.mInternalArrayValue }
 
-  //····················································································································
+  //································································································
 
   final func remove (_ object : ComponentSymbolInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
@@ -978,7 +978,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     }
   }
 
-  //····················································································································
+  //································································································
 
   final func add (_ object : ComponentSymbolInProject) {
     if !self.internalSetValue.contains (object) {
@@ -986,17 +986,17 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     }
   }
 
-  //····················································································································
+  //································································································
   //   signature
-  //····················································································································
+  //································································································
 
   private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
 
   private final var mSignatureCache : UInt32? = nil
 
-  //····················································································································
+  //································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
@@ -1005,7 +1005,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     self.clearSignatureCache ()
  }
 
-  //····················································································································
+  //································································································
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
@@ -1018,7 +1018,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     return computedSignature
   }
 
-  //····················································································································
+  //································································································
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
@@ -1028,7 +1028,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     return crc
   }
 
-  //····················································································································
+  //································································································
 
   final func clearSignatureCache () {
     if self.mSignatureCache != nil {
@@ -1037,7 +1037,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

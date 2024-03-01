@@ -8,9 +8,9 @@ import AppKit
 
 @MainActor final class LibraryUploadDialog {
 
-  //····················································································································
+  //································································································
   //  Properties
-  //····················································································································
+  //································································································
 
   let mLibraryUploadWindow : NSPanel
   let mSetLibraryRepositoryButton = AutoLayoutButton (title: "Repository…", size: .regular)
@@ -29,9 +29,9 @@ import AppKit
 
   let mLibraryRepositoryCloseButton : AutoLayoutSheetDefaultOkButton
 
-  //····················································································································
+  //································································································
   //  init
-  //····················································································································
+  //································································································
 
   init (title inTitle : String,
         userAndPassword inUserAndPassword : String,
@@ -84,20 +84,20 @@ import AppKit
     noteObjectAllocation (self)
   }
 
-  //····················································································································
+  //································································································
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //····················································································································
+  //································································································
 
   func runModal () {
     _ = NSApplication.shared.runModal (for: self.mLibraryUploadWindow)
     self.mLibraryUploadWindow.orderOut (nil)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -109,7 +109,7 @@ import AppKit
 
 extension CanariLibraryEntry {
 
-  //····················································································································
+  //································································································
 
   final func showUploadDialog () {
   //--- Setup dialog
@@ -141,14 +141,14 @@ extension CanariLibraryEntry {
     gLibraryUploadDialog = nil
   }
 
-  //····················································································································
+  //································································································
 
   private func updateLibraryRepositoryLoadCurrentReleaseButton () {
     let enable = (self.mLibraryRepositoryURL != "") && (self.mUserAndPasswordTag != "")
     gLibraryUploadDialog?.mLibraryRepositoryLoadCurrentReleaseButton.isEnabled = enable
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func showStatusAction (_ _ : Any?) {
     if let logTextView = gLibraryUploadDialog?.mLibraryRepositoryLogTextView {
@@ -156,7 +156,7 @@ extension CanariLibraryEntry {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func showDefineUserAndPasswordDialogAction (_ _ : Any?) {
     if let window = gLibraryUploadDialog?.mLibraryUploadWindow {
@@ -184,7 +184,7 @@ extension CanariLibraryEntry {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc private func showDefineRepositoryDialogAction (_ _ : Any?) {
     if let window = gLibraryUploadDialog?.mLibraryUploadWindow {
@@ -212,7 +212,7 @@ extension CanariLibraryEntry {
     }
   }
 
-  //····················································································································
+  //································································································
 
   @objc func repositorPerformCommitAction (_ _ : Any?) {
     if let logTextView = gLibraryUploadDialog?.mLibraryRepositoryLogTextView {
@@ -220,7 +220,7 @@ extension CanariLibraryEntry {
     }
   }
 
-  //····················································································································
+  //································································································
 
   func repositorPerformCommit (_ inLogTextView : AutoLayoutStaticTextView) {
     let (possibleCurrentCommit, operations) = status (inLogTextView)
@@ -374,14 +374,14 @@ extension CanariLibraryEntry {
     }
   }
 
-  //····················································································································
+  //································································································
 
   private func set (repositoryURL : String) {
     let title = (repositoryURL.isEmpty) ? "— undefined —" : repositoryURL
     gLibraryUploadDialog?.mLibraryRepositoryTextField.stringValue = title
   }
 
-  //····················································································································
+  //································································································
 
   private func set (userAndPassword : String) {
     let title : String
@@ -393,13 +393,13 @@ extension CanariLibraryEntry {
     gLibraryUploadDialog?.mUserAndPasswordTextField.stringValue = title
   }
 
-  //····················································································································
+  //································································································
 
   @objc func loadRepositorCurrentCommitAction (_ _ : Any?) {
     _ = self.loadRepositorCurrentCommit ()
   }
 
-  //····················································································································
+  //································································································
 
   func loadRepositorCurrentCommit () -> Int? {
     let response = readRemoteFile ("lastCommit.txt", url: self.mLibraryRepositoryURL, userPwd: self.mUserAndPasswordTag)
@@ -420,7 +420,7 @@ extension CanariLibraryEntry {
     return result
   }
 
-  //····················································································································
+  //································································································
 
 }
 

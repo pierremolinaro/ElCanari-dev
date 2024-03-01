@@ -11,9 +11,9 @@ enum TrackCreationDirection : Int, EBEnumPropertyProtocol, Hashable {
   case octolinear = 1
   case rectilinear = 2
 
-  //····················································································································
+  //································································································
   //  Enum generic bindings utility functions
-  //····················································································································
+  //································································································
 
   static func buildfromRawValue (rawValue : Int) -> TrackCreationDirection? {
     if let v = TrackCreationDirection (rawValue:rawValue) {
@@ -23,7 +23,7 @@ enum TrackCreationDirection : Int, EBEnumPropertyProtocol, Hashable {
     }
   }
 
-  //····················································································································
+  //································································································
 
   func enumfromRawValue (rawValue : Int) -> TrackCreationDirection {
     var result = self
@@ -34,21 +34,21 @@ enum TrackCreationDirection : Int, EBEnumPropertyProtocol, Hashable {
     return result
   }
 
-  //····················································································································
+  //································································································
   //  EBStoredPropertyProtocol
-  //····················································································································
+  //································································································
 
   func ebHashValue () -> UInt32 {
     return UInt32 (self.rawValue)
   }
 
-  //····················································································································
+  //································································································
 
   func convertToNSObject () -> NSObject {
     return NSNumber (value: self.rawValue)
   }
 
-  //····················································································································
+  //································································································
 
   static func convertFromNSObject (object : NSObject) -> TrackCreationDirection {
     var result = TrackCreationDirection.anyAngle
@@ -58,7 +58,7 @@ enum TrackCreationDirection : Int, EBEnumPropertyProtocol, Hashable {
     return result
   }
 
-  //····················································································································
+  //································································································
 
   static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> TrackCreationDirection? {
     if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = TrackCreationDirection (rawValue: rawValue) {
@@ -68,13 +68,13 @@ enum TrackCreationDirection : Int, EBEnumPropertyProtocol, Hashable {
     }
   }
 
-  //····················································································································
+  //································································································
 
   func appendPropertyValueTo (_ ioData : inout Data) {
     ioData.append (base62Encoded: self.rawValue)
   }
 
-  //····················································································································
+  //································································································
 
 }
 

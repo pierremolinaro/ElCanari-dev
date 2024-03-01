@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_NCInSchematic : EBReadOnlyAbstractArrayProperty <NCInSchematic> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <NCInSchematic>,                            
                                  addedSet inAddedSet : EBReferenceSet <NCInSchematic>) {
@@ -41,13 +41,13 @@ class ReadOnlyArrayOf_NCInSchematic : EBReadOnlyAbstractArrayProperty <NCInSchem
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'mOrientation' stored property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_mOrientation : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_mOrientation_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -64,19 +64,19 @@ class ReadOnlyArrayOf_NCInSchematic : EBReadOnlyAbstractArrayProperty <NCInSchem
     relay.startsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_mOrientation_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mOrientation?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'objectDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -93,19 +93,19 @@ class ReadOnlyArrayOf_NCInSchematic : EBReadOnlyAbstractArrayProperty <NCInSchem
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'selectionDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -122,13 +122,13 @@ class ReadOnlyArrayOf_NCInSchematic : EBReadOnlyAbstractArrayProperty <NCInSchem
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -144,23 +144,23 @@ class ReadOnlyArrayOf_NCInSchematic : EBReadOnlyAbstractArrayProperty <NCInSchem
 
 final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : ReadOnlyArrayOf_NCInSchematic {
 
-  //····················································································································
+  //································································································
   //   Data provider
-  //····················································································································
+  //································································································
 
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 //  private let mModelEvent = EBModelEvent ()
 
-  //····················································································································
+  //································································································
 
 /*  override init () {
     super.init ()
     self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
   } */
 
-  //····················································································································
+  //································································································
 
   func setDataProvider (_ inProvider : EBReadOnlyAbstractArrayProperty <SUPER>?) {
     if self.mDataProvider !== inProvider {
@@ -170,7 +170,7 @@ final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : Re
     }
   }
 
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
     if !self.mModelArrayShouldBeComputed {
@@ -184,7 +184,7 @@ final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : Re
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
 
   private final func computeModelArray () {
     if self.mModelArrayShouldBeComputed {
@@ -216,7 +216,7 @@ final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : Re
     }
   }
 
-  //····················································································································
+  //································································································
 
   override var selection : EBSelection < [NCInSchematic] > {
     self.computeModelArray ()
@@ -230,14 +230,14 @@ final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : Re
     }
   }
 
-  //····················································································································
+  //································································································
 
   override var propval : EBReferenceArray <NCInSchematic> {
     self.computeModelArray ()
     return self.mInternalArrayValue
   }
 
-  //····················································································································
+  //································································································
 
 }
 

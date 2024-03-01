@@ -16,7 +16,7 @@ import AppKit
 
 extension EBGraphicView {
 
-  //····················································································································
+  //································································································
 
   final func bind_tooltips (_ inModel : EBObservableProperty <GraphicViewTooltipArray>) {
     self.mTooltipsController = EBObservablePropertyController (
@@ -25,7 +25,7 @@ extension EBGraphicView {
     )
   }
 
-  //····················································································································
+  //································································································
 
   final private func updateTooltips (from inModel : EBObservableProperty <GraphicViewTooltipArray>) {
     self.removeAllToolTips ()
@@ -38,7 +38,7 @@ extension EBGraphicView {
     self.defineToolTips ()
   }
 
-  //····················································································································
+  //································································································
 
 }
 

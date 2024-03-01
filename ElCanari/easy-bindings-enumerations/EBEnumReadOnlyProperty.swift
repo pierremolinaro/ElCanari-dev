@@ -10,7 +10,7 @@ import AppKit
 
 class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBObservableProperty <T>, EBEnumReadObservableProtocol where T : Equatable {
 
-  //····················································································································
+  //································································································
 
   final func rawValue () -> Int? {
     switch self.selection {
@@ -21,7 +21,7 @@ class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBObservableProperty <T>, EB
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

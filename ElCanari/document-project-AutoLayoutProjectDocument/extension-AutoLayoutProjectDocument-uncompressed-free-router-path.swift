@@ -19,7 +19,7 @@ let RELEASE_FILE_PATH = FREEROUTING_DIR + "/release.txt"
 
 extension AutoLayoutProjectDocument {
 
-  //····················································································································
+  //································································································
 
   func installFreeRouter (_ inMainWindow : NSWindow) -> URL? {
     let fm = FileManager ()
@@ -91,7 +91,7 @@ extension AutoLayoutProjectDocument {
     return ok ? URL (fileURLWithPath: FREEROUTING_APPLICATION_PATH) : nil
   }
 
-  //····················································································································
+  //································································································
 
 //  func uncompressedFreeRouterURL () -> URL? {
 //    if let directory = self.mFreerouterTemporaryApplicationDirectory {
@@ -134,7 +134,7 @@ extension AutoLayoutProjectDocument {
 //    }
 //  }
 
-  //····················································································································
+  //································································································
 
 }
 

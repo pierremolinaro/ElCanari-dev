@@ -10,7 +10,7 @@ import AppKit
 
 class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject> {
 
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardObject>,                            
                                  addedSet inAddedSet : EBReferenceSet <BoardObject>) {
@@ -197,13 +197,13 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     }
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'isPlacedInBoard' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_isPlacedInBoard : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_isPlacedInBoard_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -220,19 +220,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_isPlacedInBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_isPlacedInBoard?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'issues' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_issues : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_issues_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -249,19 +249,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_issues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_issues?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'isVia' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_isVia : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_isVia_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -278,19 +278,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_isVia_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_isVia?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'trackLengthInCanariUnit' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_trackLengthInCanariUnit : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_trackLengthInCanariUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -307,19 +307,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_trackLengthInCanariUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_trackLengthInCanariUnit?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'signatureForERCChecking' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_signatureForERCChecking : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_signatureForERCChecking_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -336,19 +336,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_signatureForERCChecking_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_signatureForERCChecking?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'netNameAndPadLocation' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_netNameAndPadLocation : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_netNameAndPadLocation_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -365,19 +365,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_netNameAndPadLocation_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_netNameAndPadLocation?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'componentName' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_componentName : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_componentName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -394,19 +394,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_componentName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_componentName?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayFrontLegendForBoard' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayFrontLegendForBoard : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayFrontLegendForBoard_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -423,19 +423,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayFrontLegendForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayFrontLegendForBoard?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayBackLegendForBoard' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayBackLegendForBoard : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayBackLegendForBoard_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -452,19 +452,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayBackLegendForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayBackLegendForBoard?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayFrontLayoutForBoard' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayFrontLayoutForBoard : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayFrontLayoutForBoard_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -481,19 +481,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayFrontLayoutForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayFrontLayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayBackLayoutForBoard' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayBackLayoutForBoard : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayBackLayoutForBoard_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -510,19 +510,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayBackLayoutForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayBackLayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayInner1LayoutForBoard' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayInner1LayoutForBoard : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayInner1LayoutForBoard_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -539,19 +539,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayInner1LayoutForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayInner1LayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayInner2LayoutForBoard' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayInner2LayoutForBoard : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayInner2LayoutForBoard_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -568,19 +568,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayInner2LayoutForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayInner2LayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayInner3LayoutForBoard' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayInner3LayoutForBoard : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayInner3LayoutForBoard_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -597,19 +597,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayInner3LayoutForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayInner3LayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayInner4LayoutForBoard' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayInner4LayoutForBoard : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayInner4LayoutForBoard_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -626,19 +626,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayInner4LayoutForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayInner4LayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayFrontPadsForBoard' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayFrontPadsForBoard : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayFrontPadsForBoard_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -655,19 +655,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayFrontPadsForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayFrontPadsForBoard?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayBackPadsForBoard' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayBackPadsForBoard : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayBackPadsForBoard_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -684,19 +684,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayBackPadsForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayBackPadsForBoard?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayPadNumbersForBoard' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayPadNumbersForBoard : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayPadNumbersForBoard_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -713,19 +713,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayPadNumbersForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayPadNumbersForBoard?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayFrontRestrictRectangles' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayFrontRestrictRectangles : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayFrontRestrictRectangles_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -742,19 +742,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayFrontRestrictRectangles_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayFrontRestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayBackRestrictRectangles' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayBackRestrictRectangles : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayBackRestrictRectangles_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -771,19 +771,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayBackRestrictRectangles_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayBackRestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayInner1RestrictRectangles' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayInner1RestrictRectangles : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayInner1RestrictRectangles_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -800,19 +800,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayInner1RestrictRectangles_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayInner1RestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayInner2RestrictRectangles' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayInner2RestrictRectangles : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayInner2RestrictRectangles_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -829,19 +829,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayInner2RestrictRectangles_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayInner2RestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayInner3RestrictRectangles' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayInner3RestrictRectangles : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayInner3RestrictRectangles_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -858,19 +858,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayInner3RestrictRectangles_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayInner3RestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'displayInner4RestrictRectangles' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_displayInner4RestrictRectangles : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayInner4RestrictRectangles_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -887,19 +887,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_displayInner4RestrictRectangles_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_displayInner4RestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'packageDrawingWidthMultpliedByTenForBoard' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_packageDrawingWidthMultpliedByTenForBoard : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_packageDrawingWidthMultpliedByTenForBoard_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -916,19 +916,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_packageDrawingWidthMultpliedByTenForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packageDrawingWidthMultpliedByTenForBoard?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'selectionDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_selectionDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -945,19 +945,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'objectDisplay' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -974,19 +974,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'errorOrWarningIssueSize' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_errorOrWarningIssueSize : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_errorOrWarningIssueSize_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -1003,19 +1003,19 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_errorOrWarningIssueSize_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_errorOrWarningIssueSize?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
   //   Observers of 'trackSide' transient property
-  //····················································································································
+  //································································································
 
   private final var mObserversOf_trackSide : EBObservedObserver? = nil
 
-  //····················································································································
+  //································································································
 
   final func toMany_trackSide_StartsBeingObserved (by inObserver : EBObserverProtocol) {
     let relay : EBObservedObserver
@@ -1032,13 +1032,13 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
     relay.startsBeingObserved (by:  inObserver)
   }
 
-  //····················································································································
+  //································································································
 
   final func toMany_trackSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_trackSide?.stopsBeingObserved (by: inObserver)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -1060,11 +1060,11 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
 class ReadWriteArrayOf_BoardObject : ReadOnlyArrayOf_BoardObject {
 
-  //····················································································································
+  //································································································
 
   func setProp (_ value :  EBReferenceArray <BoardObject>) { } // Abstract method
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -1080,7 +1080,7 @@ class ReadWriteArrayOf_BoardObject : ReadOnlyArrayOf_BoardObject {
 
 class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
-  //····················································································································
+  //································································································
 
   init (usedForSignature inUsedForSignature : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
@@ -1088,12 +1088,12 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
     super.init ()
   }
 
-  //····················································································································
+  //································································································
   
   private final let mKey : String?
   final var key : String? { return self.mKey }
   
-  //····················································································································
+  //································································································
 
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
@@ -1106,7 +1106,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
     }
   }
 
-  //····················································································································
+  //································································································
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
     var objectArray = EBReferenceArray <BoardObject> ()
@@ -1117,7 +1117,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
     self.setProp (objectArray)
   }
 
-  //····················································································································
+  //································································································
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, self.mInternalArrayValue.count > 0 {
@@ -1129,7 +1129,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
     }
   }
 
-  //····················································································································
+  //································································································
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, self.mInternalArrayValue.count > 0 {
@@ -1139,32 +1139,32 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
     }
   }
 
-  //····················································································································
+  //································································································
 
   func appendValueTo (data ioData : inout Data) {
     enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
   }
 
-  //····················································································································
+  //································································································
   //   Signature ?
-  //····················································································································
+  //································································································
 
   final private let mUsedForSignature : Bool
 
-  //····················································································································
+  //································································································
   //   Undo manager
-  //····················································································································
+  //································································································
 
   weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
   //   Opposite relationship management
-  //····················································································································
+  //································································································
 
   private final var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardObject) -> Void > = nil
   private final var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardObject) -> Void > = nil
 
-  //····················································································································
+  //································································································
 
   final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardObject) -> Void,
                                                resetter inResetter : @escaping (_ inManagedObject : BoardObject) -> Void) {
@@ -1172,9 +1172,9 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
     self.mResetOppositeRelationship = inResetter
   }
 
-  //····················································································································
+  //································································································
   // Model will change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <BoardObject>) {
   //--- Register old value in undo manager
@@ -1183,9 +1183,9 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
 
-  //····················································································································
+  //································································································
   // Model did change
-  //····················································································································
+  //································································································
 
   override func notifyModelDidChange () {
   //--- Notify observers
@@ -1194,9 +1194,9 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
     super.notifyModelDidChange ()
   }
 
-  //····················································································································
+  //································································································
   // Update observers
-  //····················································································································
+  //································································································
 
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardObject>,
                                  addedSet inAddedSet : EBReferenceSet <BoardObject>) {
@@ -1217,19 +1217,19 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 
-  //····················································································································
+  //································································································
 
   override final var selection : EBSelection < [BoardObject] > { return .single (self.mInternalArrayValue.values) }
 
-  //····················································································································
+  //································································································
 
   override func setProp (_ inValue : EBReferenceArray <BoardObject>) { self.mInternalArrayValue = inValue }
 
-  //····················································································································
+  //································································································
 
   final override var propval : EBReferenceArray <BoardObject> { return self.mInternalArrayValue }
 
-  //····················································································································
+  //································································································
 
   final func remove (_ object : BoardObject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
@@ -1237,7 +1237,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
     }
   }
 
-  //····················································································································
+  //································································································
 
   final func add (_ object : BoardObject) {
     if !self.internalSetValue.contains (object) {
@@ -1245,17 +1245,17 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
     }
   }
 
-  //····················································································································
+  //································································································
   //   signature
-  //····················································································································
+  //································································································
 
   private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
-  //····················································································································
+  //································································································
 
   private final var mSignatureCache : UInt32? = nil
 
-  //····················································································································
+  //································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
@@ -1264,7 +1264,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
     self.clearSignatureCache ()
  }
 
-  //····················································································································
+  //································································································
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
@@ -1277,7 +1277,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
     return computedSignature
   }
 
-  //····················································································································
+  //································································································
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
@@ -1287,7 +1287,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
     return crc
   }
 
-  //····················································································································
+  //································································································
 
   final func clearSignatureCache () {
     if self.mSignatureCache != nil {
@@ -1296,7 +1296,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
     }
   }
 
-  //····················································································································
+  //································································································
 
 }
 

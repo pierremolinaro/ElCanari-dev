@@ -13,14 +13,14 @@ import AppKit
 
 extension AutoLayoutMergerDocument {
 
-  //····················································································································
+  //································································································
 
   private func registerBoardModelCallBack (_ inBoardModel : BoardModel) {
     self.rootObject.boardModels_property.add (inBoardModel)
     self.mBoardModelController.select (object: inBoardModel)
   }
 
-  //····················································································································
+  //································································································
 
   func loadBoardModel_ELCanariArchive (filePath inFilePath : String, windowForSheet inWindow : NSWindow) {
   //--- Load file, as plist
@@ -36,7 +36,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   func parseBoardModel_ELCanariArchive (fromData inData : Data,
                                         named inName : String,
@@ -58,7 +58,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func internal_check_ELCanariArchive_version (_ inBoardArchiveDict : [String : Any],
                                                            named inName : String,
@@ -80,7 +80,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //····················································································································
+  //································································································
 
   fileprivate func internal_parseBoardModel_ELCanariArchive (_ inBoardArchiveDict : [String : Any],
                                                              version inVersion : Int,
@@ -624,7 +624,7 @@ extension AutoLayoutMergerDocument {
 //    return errorArray.isEmpty ? boardModel : nil
   }
 
-  //····················································································································
+  //································································································
 
 }
 

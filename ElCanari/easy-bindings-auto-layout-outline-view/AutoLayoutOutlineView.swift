@@ -12,7 +12,7 @@ import AppKit
 
 class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSource, NSOutlineViewDelegate {
 
-  //····················································································································
+  //································································································
 
   private final let mScrollView = AutoLayoutScrollView ()
   private final let mOutlineView : InternalAutoLayoutOutlineView
@@ -23,7 +23,7 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
 
   private final var mTransmitSelectionChangeToDelegate = true
 
-  //····················································································································
+  //································································································
 
   init (size inSize : EBControlSize, addControlButtons inAddControlButtons : Bool) {
     self.mOutlineView = InternalAutoLayoutOutlineView (size: inSize)
@@ -67,15 +67,15 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
     }
   }
 
-  //····················································································································
+  //································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
   //  Configure table view
-  //····················································································································
+  //································································································
 
   final func configure (allowsEmptySelection inAllowsEmptySelection : Bool,
                         allowsMultipleSelection inAllowsMultipleSelection : Bool,
@@ -88,7 +88,7 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
     self.mDelegate = inDelegate
   }
 
-  //····················································································································
+  //································································································
 
   final func noHeaderView () -> Self {
     self.mOutlineView.headerView = nil
@@ -96,14 +96,14 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
     return self
   }
 
-  //····················································································································
+  //································································································
 
   final func setIntercellSpacing (horizontal inX : Int, vertical inY : Int) -> Self {
     self.mOutlineView.intercellSpacing = NSSize (width: inX, height: inY)
     return self
   }
 
-  //····················································································································
+  //································································································
 
   final func set (hasHorizontalGrid inFlag : Bool) -> Self {
     if inFlag {
@@ -114,44 +114,44 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
     return self
   }
   
-  //····················································································································
+  //································································································
 
   final func set (usesAlternatingRowBackgroundColors inFlag : Bool) -> Self {
     self.mOutlineView.usesAlternatingRowBackgroundColors = inFlag
     return self
   }
 
-  //····················································································································
+  //································································································
 
   @objc final func addEntryAction (_ _ : Any?) {
     self.mDelegate?.outlineViewDelegate_addEntry ()
   }
 
-  //····················································································································
+  //································································································
 
   @objc final func removeSelectedEntriesAction (_ _ : Any?) {
     self.mDelegate?.outlineViewDelegate_removeSelectedEntries ()
   }
 
-  //····················································································································
+  //································································································
 
   final var columnCount : Int {
     return self.mOutlineView.tableColumns.count
   }
 
-  //····················································································································
+  //································································································
 
   final var font : NSFont? {
     return self.mOutlineView.font
   }
 
-  //····················································································································
+  //································································································
 
   final var controlSize : NSControl.ControlSize {
     return self.mOutlineView.controlSize
   }
 
-  //····················································································································
+  //································································································
 
   final func appendTableColumn (_ inColumn : AutoLayoutTableColumn) {
   //--- Add Column
@@ -162,13 +162,13 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
     }
   }
 
-  //····················································································································
+  //································································································
 
   final func scrollRowToVisible (row inRow : Int) {
     self.mOutlineView.scrollRowToVisible (inRow)
   }
 
-  //····················································································································
+  //································································································
 
   final func sortAndReloadData () {
     // Swift.print ("AutoLayoutOutlineView reloads data")
@@ -217,13 +217,13 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
     }
   }
 
-  //····················································································································
+  //································································································
 
   final var selectedRow : Int { return self.mOutlineView.selectedRow }
 
-  //····················································································································
+  //································································································
   //   NSOutlineViewDataSource protocol
-  //····················································································································
+  //································································································
 
 //  @MainActor final func numberOfRows (in tableView: NSTableView) -> Int {
 //    return self.mRowCountCallBack? () ?? 0
@@ -235,21 +235,21 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
     return 0
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor final func outlineView (_ outlineView: NSOutlineView,
                                      numberOfChildrenOfItem item: Any?) -> Int {
     return 0
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor final func outlineView (_ outlineView: NSOutlineView,
                                      isItemExpandable item: Any) -> Bool {
     return false
   }
 
-  //····················································································································
+  //································································································
 
   @MainActor final func outlineView (_ outlineView: NSOutlineView,
                                      objectValueFor tableColumn: NSTableColumn?,
@@ -257,9 +257,9 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
     return nil
   }
 
-  //····················································································································
+  //································································································
   //   NSTableViewDelegate protocol
-  //····················································································································
+  //································································································
 
 //  @MainActor final func tableView (_ tableView : NSTableView,
 //                        viewFor inTableColumn : NSTableColumn?,
@@ -272,18 +272,18 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
 //    }
 //  }
 
-  //····················································································································
+  //································································································
   //    outlineView:sortDescriptorsDidChange: NSOutlineViewDataSource delegate
-  //····················································································································
+  //································································································
 
 //  final func outlineView (_ outlineView : NSOutlineView,
 //                          sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
 //    self.sortAndReloadData ()
 //  }
 
-  //····················································································································
+  //································································································
   //    T A B L E V I E W    D E L E G A T E : outlineViewSelectionDidChange:
-  //····················································································································
+  //································································································
 
   final func outlineViewSelectionDidChange (_ notification : Notification) {
     if mTransmitSelectionChangeToDelegate {
@@ -292,7 +292,7 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
     self.mRemoveButton?.enable (fromEnableBinding: !self.mOutlineView.selectedRowIndexes.isEmpty, self.mOutlineView.enabledBindingController)
   }
 
-  //····················································································································
+  //································································································
 
   final func set (draggedTypes inDraggedTypes : [NSPasteboard.PasteboardType],
             dragFilterCallBack inFilterCallBack : @escaping ([URL]) -> Bool,
@@ -300,7 +300,7 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
     self.mOutlineView.set (draggedTypes: inDraggedTypes, dragFilterCallBack: inFilterCallBack, dragConcludeCallBack: inCallBack)
   }
 
-  //····················································································································
+  //································································································
 
 }
 
@@ -310,14 +310,14 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
 
 fileprivate final class InternalAutoLayoutOutlineView : NSOutlineView {
 
-  //····················································································································
+  //································································································
 
   private var mDragConcludeCallBack : Optional < ([URL]) -> Void > = nil
   private var mDragFilterCallBack : Optional < ([URL]) -> Bool > = nil
 
-  //····················································································································
+  //································································································
   // INIT
-  //····················································································································
+  //································································································
 
   init (size inSize : EBControlSize) {
     super.init (frame: NSRect (x: 0, y: 0, width: 10, height: 10))
@@ -328,21 +328,21 @@ fileprivate final class InternalAutoLayoutOutlineView : NSOutlineView {
     self.controlSize = inSize.cocoaControlSize
   }
 
-  //····················································································································
+  //································································································
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //····················································································································
+  //································································································
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //····················································································································
+  //································································································
   // MARK: Drag
-  //····················································································································
+  //································································································
 
   func set (draggedTypes inDraggedTypes : [NSPasteboard.PasteboardType],
             dragFilterCallBack inFilterCallBack : @escaping ([URL]) -> Bool,
@@ -352,7 +352,7 @@ fileprivate final class InternalAutoLayoutOutlineView : NSOutlineView {
     self.mDragFilterCallBack = inFilterCallBack
   }
 
-  //····················································································································
+  //································································································
 
   override func draggingEntered (_ inSender : NSDraggingInfo) -> NSDragOperation {
     var dragOperation : NSDragOperation = []
@@ -363,30 +363,30 @@ fileprivate final class InternalAutoLayoutOutlineView : NSOutlineView {
     return dragOperation
   }
 
-  //····················································································································
+  //································································································
 
   override func draggingUpdated (_ inSender : NSDraggingInfo) -> NSDragOperation {
     return self.draggingEntered (inSender)
   }
 
-  //····················································································································
+  //································································································
 
   override func draggingExited (_ inSender : NSDraggingInfo?) {
   }
 
-  //····················································································································
+  //································································································
 
   override func prepareForDragOperation (_ inSender : NSDraggingInfo) -> Bool {
     return true
   }
 
-  //····················································································································
+  //································································································
 
   override func performDragOperation (_ inSender : NSDraggingInfo) -> Bool {
     return self.draggingEntered (inSender) == .copy
   }
 
-  //····················································································································
+  //································································································
 
   override func concludeDragOperation (_ inSender : NSDraggingInfo?) {
     if let array = inSender?.draggingPasteboard.readObjects (forClasses: [NSURL.self]) as? [URL] {
@@ -394,21 +394,21 @@ fileprivate final class InternalAutoLayoutOutlineView : NSOutlineView {
     }
   }
 
-  //····················································································································
+  //································································································
   //MARK:  $enabled binding
-  //····················································································································
+  //································································································
 
   private var mEnabledBindingController : EnabledBindingController? = nil
   var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
 
-  //····················································································································
+  //································································································
 
   func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
     self.mEnabledBindingController = EnabledBindingController (inExpression, self)
     return self
   }
 
-  //····················································································································
+  //································································································
 
 }
 

@@ -12,7 +12,7 @@ import AppKit
 
 extension SheetInProject {
 
-  //····················································································································
+  //································································································
 
   func addPointToWire (at inUnalignedLocation : CanariPoint) -> PointInSchematic? {
     var optionalNewPoint : PointInSchematic? = nil
@@ -23,7 +23,7 @@ extension SheetInProject {
     return optionalNewPoint
   }
 
-  //····················································································································
+  //································································································
 
   func addPoint (toWire inWire : WireInSchematic, at inUnalignedLocation : CanariPoint) -> PointInSchematic {
     let p1 = inWire.mP1!
@@ -53,7 +53,7 @@ extension SheetInProject {
     return newPoint
   }
 
-  //····················································································································
+  //································································································
 
 }
 
