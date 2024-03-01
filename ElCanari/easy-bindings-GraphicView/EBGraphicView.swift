@@ -94,14 +94,15 @@ final class EBGraphicView : NSView {
 
   //································································································
 
-  var mUnalignedMouseDownLocationInView = NSPoint ()
-  
-  var mWorkingArea = CanariRect (left: -CANARI_UNITS_PER_INCH / 2,
-                                 bottom: -CANARI_UNITS_PER_INCH / 2,
-                                 width: CANARI_UNITS_PER_INCH * 5,
-                                 height: CANARI_UNITS_PER_INCH * 5)
-
-  var mWorkingAreaCursorZone = WorkingAreaCursorZone.none
+  var mWorkingArea : WorkingArea? = WorkingArea ()
+//  var mUnalignedMouseDownLocationInView = NSPoint ()
+//  
+//  var mWorkingArea = CanariRect (left: -CANARI_UNITS_PER_INCH / 2,
+//                                 bottom: -CANARI_UNITS_PER_INCH / 2,
+//                                 width: CANARI_UNITS_PER_INCH * 5,
+//                                 height: CANARI_UNITS_PER_INCH * 5)
+//
+//  var mWorkingAreaCursorZone = WorkingAreaCursorZone.none
 
   //································································································
 

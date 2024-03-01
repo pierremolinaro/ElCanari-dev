@@ -14,7 +14,7 @@ extension EBGraphicView {
     if let controller = self.mViewController {
       NSCursor.arrow.set ()
       let unalignedMouseDownLocationInView = self.convert (inEvent.locationInWindow, from: nil)
-      self.mUnalignedMouseDownLocationInView = unalignedMouseDownLocationInView
+      self.mWorkingArea?.set (unalignedMouseDownLocation: unalignedMouseDownLocationInView)
       if let mouseDownInterceptor = self.mMouseDownInterceptor, mouseDownInterceptor (unalignedMouseDownLocationInView) {
       }else{
         let modifierFlags = inEvent.modifierFlags
@@ -67,7 +67,7 @@ extension EBGraphicView {
     self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
     self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation: unalignedLocationInView, inEvent.modifierFlags, self)
     self.setHelperTextField (self.mMouseDownBehaviour.helperString (unalignedLocationInView, inEvent.modifierFlags, self))
-    self.resizeWorkingArea (mouseDraggedUnalignedLocation: unalignedLocationInView)
+    self.mWorkingArea?.mouseDragged (mouseDraggedUnalignedLocation: unalignedLocationInView)
   }
 
     //································································································
@@ -228,19 +228,17 @@ extension EBGraphicView {
        let object = self.mViewController?.graphicObjectArray [objectIndex],
        let newCursor = object.cursorForKnob (knob: knobIndex) {
          newCursor.set ()
-         self.mWorkingAreaCursorZone = .none
-    }else{
-      let newWorkingAreaCursorZone = self.workingAreaZone (forLocationInView: inLocation)
-      if self.mWorkingAreaCursorZone != newWorkingAreaCursorZone {
-        self.setNeedsDisplay (self.rect (forZone: self.mWorkingAreaCursorZone))
-        self.setNeedsDisplay (self.rect (forZone: newWorkingAreaCursorZone))
-        self.mWorkingAreaCursorZone = newWorkingAreaCursorZone
-      }
-      if let cursor = self.workingAreaCursor (forZone: newWorkingAreaCursorZone) {
+         self.mWorkingArea?.resetCurrentZone (withView: self)
+    }else if self.indexOfFrontObject (at: inLocation).0 == nil {
+      self.mWorkingArea?.setZone (forLocationInView: inLocation, withView: self)
+      if let cursor = self.mWorkingArea?.workingAreaCursor () {
         cursor.set ()
       }else{
         NSCursor.arrow.set ()
       }
+    }else{
+      NSCursor.arrow.set ()
+      self.mWorkingArea?.resetCurrentZone (withView: self)
     }
   }
 

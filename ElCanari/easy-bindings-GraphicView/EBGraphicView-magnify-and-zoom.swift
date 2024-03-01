@@ -44,9 +44,10 @@ extension EBGraphicView {
       if visibleRect.maxY > newBounds.maxY {
         newBounds.size.height = visibleRect.maxY - newBounds.origin.y
       }
-      if !self.mWorkingArea.isEmpty {
-        newBounds = newBounds.union (self.mWorkingArea.cocoaRect.insetBy (dx: -1.0, dy: -1.0))
-      }
+      self.mWorkingArea?.union(withRect: &newBounds)
+//      if !self.mWorkingArea.isEmpty {
+//        newBounds = newBounds.union (self.mWorkingArea.cocoaRect.insetBy (dx: -1.0, dy: -1.0))
+//      }
       self.frame.size = newBounds.size
       self.bounds = newBounds
       let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))

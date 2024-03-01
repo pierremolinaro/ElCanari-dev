@@ -26,7 +26,7 @@ extension EBGraphicView {
       graphicContext?.restoreGraphicsState ()
     }
     self.drawGrid (inDirtyRect)
-    self.drawWorkingArea (inDirtyRect)
+    self.mWorkingArea?.drawWorkingArea (lineWidth: 1.0 / self.actualScale)
     self.mUnderObjectsDisplay.draw (inDirtyRect)
     for object in self.mObjectDisplayArray {
       object.draw (inDirtyRect)
@@ -54,7 +54,7 @@ extension EBGraphicView {
   //································································································
 
   final fileprivate func drawGrid (_ inDirtyRect : NSRect) {
-    let r = self.mWorkingArea.isEmpty ? inDirtyRect : self.mWorkingArea.cocoaRect
+    let r = self.mWorkingArea?.rect ?? inDirtyRect
 //    let r = inDirtyRect
     if !r.isEmpty {
       let gridWidth = 1.0 / self.actualScale
