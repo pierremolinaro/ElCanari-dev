@@ -28,16 +28,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.7.12"
+let VERSION_CANARI = "1.7.13"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Correction couleur de sélection"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
+  "Ajout d'une zone de travail dans l'onglet « Board » des projets"
 ]
 
 //--------------------------------------------------------------------------------------------------
