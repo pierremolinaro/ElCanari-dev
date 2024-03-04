@@ -655,6 +655,8 @@ import AppKit
 @MainActor let Preferences_backSidePadColorForBoard = "Preferences:backSidePadColorForBoard"
 @MainActor let Preferences_padNumberFontForBoard = "Preferences:padNumberFontForBoard"
 @MainActor let Preferences_padNumberColorForBoard = "Preferences:padNumberColorForBoard"
+@MainActor let Preferences_rastnetColorForBoard = "Preferences:rastnetColorForBoard"
+@MainActor let Preferences_workingAreaColorForBoard = "Preferences:workingAreaColorForBoard"
 @MainActor let Preferences_mShowComponentRotationKnobInBoard = "Preferences:mShowComponentRotationKnobInBoard"
 @MainActor let Preferences_mShowTextRotationKnobInBoard = "Preferences:mShowTextRotationKnobInBoard"
 @MainActor let Preferences_sampleString = "Preferences:sampleString"
@@ -1249,6 +1251,18 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 //································································································
 
 @MainActor let preferences_padNumberColorForBoard_property = EBPreferenceProperty <NSColor> (defaultValue: NSColor.red, prefKey: Preferences_padNumberColorForBoard)
+
+//································································································
+//   Atomic property: rastnetColorForBoard
+//································································································
+
+@MainActor let preferences_rastnetColorForBoard_property = EBPreferenceProperty <NSColor> (defaultValue: NSColor.yellow, prefKey: Preferences_rastnetColorForBoard)
+
+//································································································
+//   Atomic property: workingAreaColorForBoard
+//································································································
+
+@MainActor let preferences_workingAreaColorForBoard_property = EBPreferenceProperty <NSColor> (defaultValue: NSColor.blue, prefKey: Preferences_workingAreaColorForBoard)
 
 //································································································
 //   Atomic property: mShowComponentRotationKnobInBoard

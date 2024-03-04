@@ -739,6 +739,12 @@ final class ProjectRoot : EBManagedObject {
   final let mSchematicCustomHeightUnit_property : EBStoredProperty_Int
 
   //································································································
+  //   Atomic property: mWorkingAreaRectString
+  //································································································
+
+  final let mWorkingAreaRectString_property : EBStoredProperty_String
+
+  //································································································
   //   Atomic property: drawErrorBackgroundForBoard
   //································································································
 
@@ -2137,6 +2143,7 @@ final class ProjectRoot : EBManagedObject {
     self.mSchematicCustomWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mSchematicCustomWidthUnit")
     self.mSchematicCustomHeight_property = EBStoredProperty_Int (defaultValue: 27000000, undoManager: inUndoManager, key: "mSchematicCustomHeight")
     self.mSchematicCustomHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mSchematicCustomHeightUnit")
+    self.mWorkingAreaRectString_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mWorkingAreaRectString")
     self.drawErrorBackgroundForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "drawErrorBackgroundForBoard")
     self.displayFrontRestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "displayFrontRestrictRectangles")
     self.displayBackRestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "displayBackRestrictRectangles")

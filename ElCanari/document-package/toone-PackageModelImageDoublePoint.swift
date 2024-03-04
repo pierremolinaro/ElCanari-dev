@@ -136,7 +136,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : EBReadOnlyAbstractObjectProp
 
 final class StoredObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageModelImageDoublePoint, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

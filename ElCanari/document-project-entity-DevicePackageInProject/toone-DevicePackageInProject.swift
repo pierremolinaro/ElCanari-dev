@@ -108,7 +108,7 @@ class ReadOnlyObject_DevicePackageInProject : EBReadOnlyAbstractObjectProperty <
 
 final class StoredObject_DevicePackageInProject : ReadOnlyObject_DevicePackageInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

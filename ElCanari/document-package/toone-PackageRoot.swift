@@ -836,7 +836,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
 
 final class StoredObject_PackageRoot : ReadOnlyObject_PackageRoot, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

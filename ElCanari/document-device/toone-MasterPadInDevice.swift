@@ -216,7 +216,7 @@ class ReadOnlyObject_MasterPadInDevice : EBReadOnlyAbstractObjectProperty <Maste
 
 final class StoredObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

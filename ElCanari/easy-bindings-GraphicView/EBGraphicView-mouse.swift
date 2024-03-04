@@ -65,9 +65,12 @@ extension EBGraphicView {
     let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
     let locationOnGridInView : NSPoint = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mMouseGridInCanariUnit))
     self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
-    self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation: unalignedLocationInView, inEvent.modifierFlags, self)
-    self.setHelperTextField (self.mMouseDownBehaviour.helperString (unalignedLocationInView, inEvent.modifierFlags, self))
-    self.mWorkingArea?.mouseDragged (mouseDraggedUnalignedLocation: unalignedLocationInView)
+    var handled = false
+    self.mWorkingArea?.mouseDragged (mouseDraggedUnalignedLocation: unalignedLocationInView, handled: &handled, self)
+    if !handled {
+      self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation: unalignedLocationInView, inEvent.modifierFlags, self)
+      self.setHelperTextField (self.mMouseDownBehaviour.helperString (unalignedLocationInView, inEvent.modifierFlags, self))
+    }
   }
 
     //································································································

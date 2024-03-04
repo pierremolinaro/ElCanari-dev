@@ -420,7 +420,7 @@ class ReadOnlyObject_PackagePad : EBReadOnlyAbstractObjectProperty <PackagePad> 
 
 final class StoredObject_PackagePad : ReadOnlyObject_PackagePad, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

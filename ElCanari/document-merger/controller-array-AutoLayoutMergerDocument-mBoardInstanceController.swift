@@ -801,7 +801,7 @@ final class Controller_AutoLayoutMergerDocument_mBoardInstanceController : EBRea
   //································································································
   // SEND BACKWARD
    // MARK: -
- //····················································································································
+ //································································································
 
   var canSendBackward_property = EBTransientProperty <Bool> ()
 
@@ -893,7 +893,7 @@ final class Controller_AutoLayoutMergerDocument_mBoardInstanceController : EBRea
   }
 
 
- //····················································································································
+ //································································································
   // HORIZONTAL FLIP
   // MARK: -
   //································································································
@@ -953,7 +953,7 @@ final class Controller_AutoLayoutMergerDocument_mBoardInstanceController : EBRea
   var canRotate90_property = EBTransientProperty <Bool> ()
   private var mRotate90PointSet = Set <CanariPoint> ()
 
- //····················································································································
+ //································································································
 
   var canRotate90 : Bool {
     self.mRotate90PointSet.removeAll ()

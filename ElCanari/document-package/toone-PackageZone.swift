@@ -336,7 +336,7 @@ class ReadOnlyObject_PackageZone : EBReadOnlyAbstractObjectProperty <PackageZone
 
 final class StoredObject_PackageZone : ReadOnlyObject_PackageZone, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

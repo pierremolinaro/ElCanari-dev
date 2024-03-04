@@ -28,7 +28,8 @@ extension EBGraphicView {
 
   final func applyZoom () {
     if let scrollView = self.enclosingScrollView {
-      let box = self.contentsBoundingBox
+      var box = self.contentsBoundingBox
+      self.mWorkingArea?.union (withRect: &box)
       if self.mZoomPropertyCache == 0 {
         if !box.isEmpty {
           scrollView.magnify (toFit: box)
@@ -44,10 +45,6 @@ extension EBGraphicView {
       if visibleRect.maxY > newBounds.maxY {
         newBounds.size.height = visibleRect.maxY - newBounds.origin.y
       }
-      self.mWorkingArea?.union(withRect: &newBounds)
-//      if !self.mWorkingArea.isEmpty {
-//        newBounds = newBounds.union (self.mWorkingArea.cocoaRect.insetBy (dx: -1.0, dy: -1.0))
-//      }
       self.frame.size = newBounds.size
       self.bounds = newBounds
       let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
@@ -82,7 +79,6 @@ extension EBGraphicView {
 
   @objc final func didEndLiveMagnification (_ inNotification : Notification) {
     let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
-//    NSLog ("didEndLiveMagnification \(newZoom)")
     self.mZoomController?.updateModel (withValue: newZoom)
   }
 

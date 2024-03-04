@@ -223,6 +223,8 @@ extern autolayout class GraphicView (minZoom : Int, maxZoom : Int) $graphicContr
   $gridDisplayFactor transient Int
   $gridLineColor transient NSColor
   $gridCrossColor transient NSColor
+  $workingAreaColor transient NSColor
+  $workingAreaRectString property String
   $zoom property Int
   $horizontalFlip transient Bool
   $verticalFlip transient Bool

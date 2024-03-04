@@ -76,7 +76,7 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : EBReadOnlyAbstractObjectPropert
 
 final class StoredObject_DeviceSymbolTypeInProject : ReadOnlyObject_DeviceSymbolTypeInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

@@ -316,7 +316,7 @@ class ReadOnlyObject_PointInSchematic : EBReadOnlyAbstractObjectProperty <PointI
 
 final class StoredObject_PointInSchematic : ReadOnlyObject_PointInSchematic, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

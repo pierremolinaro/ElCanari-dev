@@ -60,6 +60,7 @@ extension EBGraphicView {
     self.setHelperTextField (DEFAULT_HELPER_TEXT)
     self.mMouseExitCallback? ()
     self.mOptionalFrontShape = nil
+    self.mWorkingArea?.resetCurrentZone (withView: self)
     NSCursor.arrow.set ()
     super.mouseExited (with: inEvent)
   }

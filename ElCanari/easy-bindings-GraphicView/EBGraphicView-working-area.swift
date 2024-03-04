@@ -27,7 +27,9 @@ private let SIZE : CGFloat = 5.0
 
   private var mAreaCursorZone = WorkingAreaCursorZone.none
 
-  private var mUnalignedMouseDownLocation = NSPoint ()
+  private var mCurrentMouseLocation = NSPoint ()
+
+  private var mColor = NSColor.black
 
   //································································································
 
@@ -41,8 +43,36 @@ private let SIZE : CGFloat = 5.0
 
   //································································································
 
+  mutating func set (color inColor : NSColor) {
+    self.mColor = inColor
+  }
+
+  //································································································
+
+  mutating func set (rectString inString : String, _ inView : NSView) {
+    let components = inString.components (separatedBy: ":")
+    if components.count == 4 {
+      let originX : Int? = Int (components [0])
+      let originY : Int? = Int (components [1])
+      let width   : Int? = Int (components [2])
+      let height  : Int? = Int (components [3])
+      if let x = originX, let y = originY, let w = width, let h = height {
+        self.mArea = CanariRect (left: x, bottom: y, width: w, height: h)
+        inView.needsDisplay = true
+      }
+    }
+  }
+
+  //································································································
+
+  func rectString () -> String {
+    return "\(self.mArea.origin.x):\(self.mArea.origin.y):\(self.mArea.size.width):\(self.mArea.size.height)"
+  }
+
+  //································································································
+
   mutating func set (unalignedMouseDownLocation inUnalignedMouseDownLocation : NSPoint) {
-    self.mUnalignedMouseDownLocation = inUnalignedMouseDownLocation
+    self.mCurrentMouseLocation = inUnalignedMouseDownLocation
   }
 
   //································································································
@@ -58,14 +88,18 @@ private let SIZE : CGFloat = 5.0
 
   func drawWorkingArea (lineWidth inLineWidth : CGFloat) {
     if !self.mArea.isEmpty {
-      let bp = NSBezierPath (rect: self.mArea.cocoaRect)
-      NSColor.blue.setStroke ()
-      bp.lineWidth = inLineWidth
+      var bp = NSBezierPath (rect: self.mArea.cocoaRect)
+      self.mColor.setStroke ()
+      bp.lineWidth = inLineWidth * 2.0
       bp.lineCapStyle = .round
       bp.stroke ()
-      let r = self.rect (forZone: self.mAreaCursorZone)
-      NSColor.blue.setFill ()
-      r.fill ()
+      let r = self.rect (forZone: self.mAreaCursorZone).insetBy (dx: inLineWidth, dy: inLineWidth)
+      bp = NSBezierPath (roundedRect: r, xRadius: SIZE * 0.5, yRadius: SIZE * 0.5)
+      let color = preferences_selectionHiliteColor_property.propval
+      color.setFill ()
+      bp.fill ()
+      bp.lineWidth = inLineWidth * 2.0
+      bp.stroke ()
     }
   }
 
@@ -76,7 +110,7 @@ private let SIZE : CGFloat = 5.0
     case .none : return nil
     case .top, .bottom : return NSCursor.resizeUpDown
     case .left, .right : return NSCursor.resizeLeftRight
-    case .topLeft, .bottomLeft, .topRight, .bottomRight : return NSCursor.upDownRightLeftCursor
+//    case .topLeft, .bottomLeft, .topRight, .bottomRight : return NSCursor.upDownRightLeftCursor
     }
   }
 
@@ -84,27 +118,33 @@ private let SIZE : CGFloat = 5.0
 
   mutating func setZone (forLocationInView inLocation : NSPoint, withView inView : NSView) {
     var zone = WorkingAreaCursorZone.none
-    if !self.mArea.isEmpty { // && (self.indexOfFrontObject (at: inLocation).0 == nil) {
+    if !self.mArea.isEmpty {
       let r = self.mArea.cocoaRect
       let outerR = r.insetBy (dx: -SIZE, dy: -SIZE)
       let innerR = r.insetBy (dx:  SIZE, dy:  SIZE)
       if outerR.contains (inLocation) && !innerR.contains (inLocation) {
         if inLocation.x < innerR.minX {
-          if inLocation.y < innerR.minY {
-            zone = .bottomLeft
-          }else if inLocation.y < innerR.maxY {
+          if (inLocation.y > innerR.minY) && (inLocation.y < innerR.maxY) {
             zone = .left
-          }else{
-            zone = .topLeft
           }
+//          if inLocation.y < innerR.minY {
+//            zone = .bottomLeft
+//          }else if inLocation.y < innerR.maxY {
+//            zone = .left
+//          }else{
+//            zone = .topLeft
+//          }
         }else if inLocation.x > innerR.maxX {
-          if inLocation.y < innerR.minY {
-            zone = .bottomRight
-          }else if inLocation.y < innerR.maxY {
+          if (inLocation.y > innerR.minY) && (inLocation.y < innerR.maxY) {
             zone = .right
-          }else{
-            zone = .topRight
           }
+//          if inLocation.y < innerR.minY {
+//            zone = .bottomRight
+//          }else if inLocation.y < innerR.maxY {
+//            zone = .right
+//          }else{
+//            zone = .topRight
+//          }
         }else if inLocation.y > innerR.minY {
           zone = .top
         }else{
@@ -135,49 +175,82 @@ private let SIZE : CGFloat = 5.0
       case .bottom : return NSRect (x: innerR.minX, y: outerR.minY, width: innerR.width, height: 2.0 * SIZE)
       case .left : return NSRect (x: outerR.minX, y: innerR.minY, width: 2.0 * SIZE, height: innerR.height)
       case .right : return NSRect (x: innerR.maxX, y: innerR.minY, width: 2.0 * SIZE, height: innerR.height)
-      case .topLeft : return NSRect (x: outerR.minX, y: innerR.maxY, width: 2.0 * SIZE, height: 2.0 * SIZE)
-      case .bottomLeft : return NSRect (x: outerR.minX, y: outerR.minY, width: 2.0 * SIZE, height: 2.0 * SIZE)
-      case .topRight : return NSRect (x: innerR.maxX, y: innerR.maxY, width: 2.0 * SIZE, height: 2.0 * SIZE)
-      case .bottomRight : return NSRect (x: innerR.maxX, y: outerR.minY, width: 2.0 * SIZE, height: 2.0 * SIZE)
+//      case .topLeft : return NSRect (x: outerR.minX, y: innerR.maxY, width: 2.0 * SIZE, height: 2.0 * SIZE)
+//      case .bottomLeft : return NSRect (x: outerR.minX, y: outerR.minY, width: 2.0 * SIZE, height: 2.0 * SIZE)
+//      case .topRight : return NSRect (x: innerR.maxX, y: innerR.maxY, width: 2.0 * SIZE, height: 2.0 * SIZE)
+//      case .bottomRight : return NSRect (x: innerR.maxX, y: outerR.minY, width: 2.0 * SIZE, height: 2.0 * SIZE)
       }
     }
   }
 
   //································································································
 
-  mutating func mouseDragged (mouseDraggedUnalignedLocation inUnalignedLocationInView : NSPoint) {
-    let dx = cocoaToCanariUnit (inUnalignedLocationInView.x - self.mUnalignedMouseDownLocation.x)
-    let dy = cocoaToCanariUnit (inUnalignedLocationInView.y - self.mUnalignedMouseDownLocation.y)
-    self.mUnalignedMouseDownLocation = inUnalignedLocationInView
+  mutating func mouseDragged (mouseDraggedUnalignedLocation inUnalignedLocationInView : NSPoint,
+                              handled ioHandled : inout Bool,
+                              _ inView : EBGraphicView) {
+    let dx = cocoaToCanariUnit (inUnalignedLocationInView.x - self.mCurrentMouseLocation.x)
+    let dy = cocoaToCanariUnit (inUnalignedLocationInView.y - self.mCurrentMouseLocation.y)
+    let oldRect = self.mArea.cocoaRect.insetBy (dx: -SIZE, dy: -SIZE)
+    let minimumSize = 2 * cocoaToCanariUnit (SIZE)
     switch self.mAreaCursorZone {
     case .none :
-      ()
+      ioHandled = false
     case .top :
-      self.mArea.size.height += dy
+      ioHandled = (self.mArea.size.height + dy) > minimumSize
+      if ioHandled {
+        self.mArea.size.height += dy
+      }
     case .bottom :
-      self.mArea.origin.y += dy
-      self.mArea.size.height -= dy
+      ioHandled = (self.mArea.size.height - dy) > minimumSize
+      if ioHandled {
+        self.mArea.origin.y += dy
+        self.mArea.size.height -= dy
+      }
     case .left :
-      self.mArea.origin.x += dx
-      self.mArea.size.width -= dx
+      ioHandled = (self.mArea.size.width - dx) > minimumSize
+      if ioHandled {
+        self.mArea.origin.x += dx
+        self.mArea.size.width -= dx
+      }
     case .right :
-      self.mArea.size.width += dx
-    case .topLeft :
-      self.mArea.size.height += dy
-      self.mArea.origin.x += dx
-      self.mArea.size.width -= dx
-    case .bottomLeft :
-      self.mArea.origin.y += dy
-      self.mArea.size.height -= dy
-      self.mArea.origin.x += dx
-      self.mArea.size.width -= dx
-    case .topRight :
-      self.mArea.size.width += dx
-      self.mArea.size.height += dy
-    case .bottomRight :
-      self.mArea.size.width += dx
-      self.mArea.origin.y += dy
-      self.mArea.size.height -= dy
+      ioHandled = (self.mArea.size.width + dx) > minimumSize
+      if ioHandled {
+        self.mArea.size.width += dx
+      }
+//    case .topLeft :
+//      ioHandled = ((self.mArea.size.width - dx) > minimumSize) && ((self.mArea.size.height + dy) > minimumSize)
+//      if ioHandled {
+//        self.mArea.size.height += dy
+//        self.mArea.origin.x += dx
+//        self.mArea.size.width -= dx
+//      }
+//    case .bottomLeft :
+//      ioHandled = ((self.mArea.size.width - dx) > minimumSize) && ((self.mArea.size.height - dy) > minimumSize)
+//      if ioHandled {
+//        self.mArea.origin.y += dy
+//        self.mArea.size.height -= dy
+//        self.mArea.origin.x += dx
+//        self.mArea.size.width -= dx
+//      }
+//    case .topRight :
+//      ioHandled = ((self.mArea.size.width + dx) > minimumSize) && ((self.mArea.size.height + dy) > minimumSize)
+//      if ioHandled {
+//        self.mArea.size.width += dx
+//        self.mArea.size.height += dy
+//      }
+//    case .bottomRight :
+//      ioHandled = ((self.mArea.size.width + dx) > minimumSize) && ((self.mArea.size.height - dy) > minimumSize)
+//      if ioHandled {
+//        self.mArea.size.width += dx
+//        self.mArea.origin.y += dy
+//        self.mArea.size.height -= dy
+//      }
+    }
+    if ioHandled {
+      self.mCurrentMouseLocation = inUnalignedLocationInView
+      let newRect = self.mArea.cocoaRect.insetBy (dx: -SIZE, dy: -SIZE)
+      inView.setNeedsDisplay (newRect.union (oldRect))
+      inView.mWorkingAreaRectStringController?.updateModel (withValue: self.rectString ())
     }
   }
 
@@ -189,10 +262,10 @@ private let SIZE : CGFloat = 5.0
     case bottom
     case left
     case right
-    case topLeft
-    case topRight
-    case bottomLeft
-    case bottomRight
+//    case topLeft
+//    case topRight
+//    case bottomLeft
+//    case bottomRight
   }
 
   //································································································

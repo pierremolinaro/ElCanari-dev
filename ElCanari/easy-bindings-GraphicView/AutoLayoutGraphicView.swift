@@ -288,6 +288,20 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //································································································
 
+  final func bind_workingAreaColor (_ inObject : EBObservableProperty <NSColor>) -> Self {
+    self.mGraphicView.bind_workingAreaColor (inObject)
+    return self
+  }
+
+  //································································································
+
+  final func bind_workingAreaRectString (_ inObject : EBObservableMutableProperty <String>) -> Self {
+    self.mGraphicView.bind_workingAreaRectString (inObject)
+    return self
+  }
+
+  //································································································
+
   final func bind_zoom (_ inObject : EBObservableMutableProperty <Int>) -> Self {
     self.mGraphicView.bind_zoom (inObject)
     return self

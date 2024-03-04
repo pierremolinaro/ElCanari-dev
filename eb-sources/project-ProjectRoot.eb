@@ -264,6 +264,8 @@ handlingOpposite entity ProjectRoot {
   property Int mSchematicCustomHeightUnit default 90_000 ; // mm
   property @generateDirectRead SchematicSheetOrientation mSchematicSheetOrientation default a4Horizontal ;
 
+  property String mWorkingAreaRectString default "" ;
+  
   transient StringArray deviceNames dependsFrom self.mDevices.all.mDeviceName ;
 
   transient StringArray allClassNames dependsFrom self.mNetClasses.all.mNetClassName ;

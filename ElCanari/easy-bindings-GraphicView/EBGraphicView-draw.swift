@@ -53,58 +53,55 @@ extension EBGraphicView {
 
   //································································································
 
-  final fileprivate func drawGrid (_ inDirtyRect : NSRect) {
-    let r = self.mWorkingArea?.rect ?? inDirtyRect
-//    let r = inDirtyRect
-    if !r.isEmpty {
-      let gridWidth = 1.0 / self.actualScale
-      let gridDisplayStep = canariUnitToCocoa (self.mGridStepInCanariUnit) * CGFloat (self.mGridDisplayFactor)
-      let startX = (r.origin.x / gridDisplayStep).rounded (.down) * gridDisplayStep
-      let endX = (r.maxX / gridDisplayStep).rounded (.down) * gridDisplayStep
-      let startY = (r.origin.y / gridDisplayStep).rounded (.down) * gridDisplayStep
-      let endY = (r.maxY / gridDisplayStep).rounded (.down) * gridDisplayStep
-      switch self.mGridStyle {
-      case .noGrid :
-        ()
-      case .cross :
-        let bp = NSBezierPath ()
-        bp.lineWidth = gridWidth
-        bp.lineCapStyle = .round
-        var x = startX
-        while x <= endX {
-          var y = startY
-          while y <= endY {
-            bp.move (to: NSPoint (x: x - 0.5, y: y))
-            bp.line (to: NSPoint (x: x + 0.5, y: y))
-            bp.move (to: NSPoint (x: x,       y: y + 0.5))
-            bp.line (to: NSPoint (x: x,       y: y - 0.5))
-            y += gridDisplayStep
-          }
-          x += gridDisplayStep
-        }
-        self.mGridCrossColor.setStroke ()
-        bp.stroke ()
-      case .line :
-        let bp = NSBezierPath ()
-        bp.lineWidth = gridWidth
-        bp.lineCapStyle = .round
-        var x = startX
-        while x < r.maxX {
-          let p1 = NSPoint (x: x, y: startY)
-          let p2 = NSPoint (x: x, y: endY)
-          bp.move (to: p1)
-          bp.line (to: p2)
-          x += gridDisplayStep
-        }
+  final fileprivate func drawGrid (_ inUnusedDirtyRect : NSRect) {
+    let r = self.mWorkingArea?.rect ?? self.bounds
+    let gridWidth = 1.0 / self.actualScale
+    let gridDisplayStep = canariUnitToCocoa (self.mGridStepInCanariUnit) * CGFloat (self.mGridDisplayFactor)
+    let startX = (r.origin.x / gridDisplayStep).rounded (.up) * gridDisplayStep
+    let endX = (r.maxX / gridDisplayStep).rounded (.down) * gridDisplayStep
+    let startY = (r.origin.y / gridDisplayStep).rounded (.up) * gridDisplayStep
+    let endY = (r.maxY / gridDisplayStep).rounded (.down) * gridDisplayStep
+    switch self.mGridStyle {
+    case .noGrid :
+      ()
+    case .cross :
+      let bp = NSBezierPath ()
+      bp.lineWidth = gridWidth
+      bp.lineCapStyle = .round
+      var x = startX
+      while x < endX {
         var y = startY
         while y < endY {
-          bp.move (to: NSPoint (x: startX, y: y))
-          bp.line (to: NSPoint (x: endX  , y: y))
+          bp.move (to: NSPoint (x: x - 0.5, y: y))
+          bp.line (to: NSPoint (x: x + 0.5, y: y))
+          bp.move (to: NSPoint (x: x,       y: y + 0.5))
+          bp.line (to: NSPoint (x: x,       y: y - 0.5))
           y += gridDisplayStep
         }
-        self.mGridLineColor.setStroke ()
-        bp.stroke ()
+        x += gridDisplayStep
       }
+      self.mGridCrossColor.setStroke ()
+      bp.stroke ()
+    case .line :
+      let bp = NSBezierPath ()
+      bp.lineWidth = gridWidth
+      bp.lineCapStyle = .round
+    //--- Vertical lines
+      var x = startX
+      while x < r.maxX {
+        bp.move (to: NSPoint (x: x, y: NSMinY (r)))
+        bp.line (to: NSPoint (x: x, y: NSMaxY (r)))
+        x += gridDisplayStep
+      }
+    //--- Horizontal lines
+      var y = startY
+      while y < endY {
+        bp.move (to: NSPoint (x: NSMinX (r), y: y))
+        bp.line (to: NSPoint (x: NSMaxX (r), y: y))
+        y += gridDisplayStep
+      }
+      self.mGridLineColor.setStroke ()
+      bp.stroke ()
     }
   }
 

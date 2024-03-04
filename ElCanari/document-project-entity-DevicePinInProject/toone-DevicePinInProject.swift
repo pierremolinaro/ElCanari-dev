@@ -208,7 +208,7 @@ class ReadOnlyObject_DevicePinInProject : EBReadOnlyAbstractObjectProperty <Devi
 
 final class StoredObject_DevicePinInProject : ReadOnlyObject_DevicePinInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

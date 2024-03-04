@@ -204,7 +204,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : EBReadOnlyAbstractObjectProperty <S
 
 final class StoredObject_SymbolPinTypeInDevice : ReadOnlyObject_SymbolPinTypeInDevice, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

@@ -288,7 +288,7 @@ class ReadOnlyObject_ArtworkRoot : EBReadOnlyAbstractObjectProperty <ArtworkRoot
 
 final class StoredObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

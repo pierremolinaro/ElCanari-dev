@@ -10,30 +10,29 @@ extension EBGraphicView {
 
   //································································································
 
-  final func bind_verticalFlip (_ model : EBObservableProperty <Bool>) {
-    self.mVerticalFlipController = EBObservablePropertyController (
-      observedObjects: [model],
-      callBack: { [weak self] in self?.updateVerticalFlip (from: model) }
+  final func bind_workingAreaColor (_ inModel : EBObservableProperty <NSColor>) {
+    self.mWorkingAreaColorController = EBObservablePropertyController (
+      observedObjects: [inModel],
+      callBack: { [weak self] in self?.updateWorkingAreaColor (from: inModel) }
     )
   }
 
   //································································································
 
-//  final func unbind_verticalFlip () {
-//    self.mVerticalFlipController?.unregister ()
-//    self.mVerticalFlipController = nil
+//  final func unbind_WorkingAreaColor () {
+//    self.mWorkingAreaColorController?.unregister ()
+//    self.mWorkingAreaColorController = nil
 //  }
 
   //································································································
 
-  final private func updateVerticalFlip (from model : EBObservableProperty <Bool>) {
+  final private func updateWorkingAreaColor (from model : EBObservableProperty <NSColor>) {
     switch model.selection {
-    case .empty :
-      self.setVerticalFlip (false)
+    case .empty, .multiple :
+      ()
     case .single (let v) :
-      self.setVerticalFlip (v)
-    case .multiple :
-      self.setVerticalFlip (false)
+      self.mWorkingArea?.set (color: v)
+      self.needsDisplay = true
     }
   }
 

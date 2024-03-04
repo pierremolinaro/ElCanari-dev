@@ -76,7 +76,7 @@ class ReadOnlyObject_NCInSchematic : EBReadOnlyAbstractObjectProperty <NCInSchem
 
 final class StoredObject_NCInSchematic : ReadOnlyObject_NCInSchematic, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

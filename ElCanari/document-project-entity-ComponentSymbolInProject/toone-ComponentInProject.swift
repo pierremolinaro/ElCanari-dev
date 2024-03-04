@@ -656,7 +656,7 @@ class ReadOnlyObject_ComponentInProject : EBReadOnlyAbstractObjectProperty <Comp
 
 final class StoredObject_ComponentInProject : ReadOnlyObject_ComponentInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

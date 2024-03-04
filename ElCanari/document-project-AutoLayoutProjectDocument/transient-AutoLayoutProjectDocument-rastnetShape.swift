@@ -68,6 +68,7 @@ import AppKit
        _ root_mRastnetDisplayedNetName : String,                  
        _ root_mRastnetDisplayedComponentName : String,            
        _ root_mBoardObjects_netNameAndPadLocation : [BoardObject_netNameAndPadLocation],
+       _ prefs_rastnetColorForBoard : NSColor,                    
        _ self_boardObjectsController_selectedArray_all_componentName : [BoardObject_componentName]
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -93,7 +94,7 @@ import AppKit
         for (_, locationArray) in dictionary {
           computeRasnet (locationArray, &bp)
         }
-        return EBShape (stroke: [bp], .yellow)
+        return EBShape (stroke: [bp], prefs_rastnetColorForBoard)
       case .oneNet :
         var locationArray = [CanariPoint] ()
         for optionalArray in root_mBoardObjects_netNameAndPadLocation {
@@ -110,7 +111,7 @@ import AppKit
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
         computeRasnet (locationArray, &bp)
-        return EBShape (stroke: [bp], .yellow)
+        return EBShape (stroke: [bp], prefs_rastnetColorForBoard)
       case .selectedComponents :
       //--- Build selected component name set
         var selectedComponentNameSet = Set <String> ()
@@ -150,7 +151,7 @@ import AppKit
         for (_, locationArray) in dictionary {
           computeRasnet (locationArray, &bp)
         }
-        return EBShape (stroke: [bp], .yellow)
+        return EBShape (stroke: [bp], prefs_rastnetColorForBoard)
       case .componentNets :
       //--- Build net set
          var netNameSet = Set <String> ()
@@ -183,7 +184,7 @@ import AppKit
         for (_, locationArray) in dictionary {
           computeRasnet (locationArray, &bp)
         }
-        return EBShape (stroke: [bp], .yellow)
+        return EBShape (stroke: [bp], prefs_rastnetColorForBoard)
       }
 //--- END OF USER ZONE 2
 }

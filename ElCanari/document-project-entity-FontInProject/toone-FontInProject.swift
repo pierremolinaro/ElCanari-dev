@@ -268,7 +268,7 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
 
 final class StoredObject_FontInProject : ReadOnlyObject_FontInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

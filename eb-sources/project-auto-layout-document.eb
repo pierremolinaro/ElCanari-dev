@@ -1114,6 +1114,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       $gridDisplayFactor root.mBoardLimitsGridDisplayFactor
       $gridLineColor prefs.lineColorGridForBoard
       $gridCrossColor prefs.crossColorGridForBoard
+      $workingAreaColor prefs.workingAreaColorForBoard
+      $workingAreaRectString root.mWorkingAreaRectString
       $zoom root.mBoardLimitsZoom
       $backColor prefs.boardBackgroundColorForBoard
       $mouseGrid root.mBoardLimitsGridStep
@@ -1259,12 +1261,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //----------------- Board Contents tab
 
   arrayController #boardObjectsController : root.mBoardObjects ;  
-  transient EBShape boardOutlineOverDisplay dependsFrom self.rastnetShape, root.boardIssues ;
+  transient EBShape boardOutlineOverDisplay dependsFrom
+    self.rastnetShape, root.boardIssues ;
   transient EBShape rastnetShape dependsFrom
     root.mRastnetDisplay,
     root.mRastnetDisplayedNetName,
     root.mRastnetDisplayedComponentName,
     root.mBoardObjects.all.netNameAndPadLocation,
+    prefs.rastnetColorForBoard,
     #boardObjectsController.selectedArray.all.componentName
   ;
   transient Int unplacedPackageCount dependsFrom root.unplacedPackages ;
@@ -1323,6 +1327,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       $gridDisplayFactor root.mBoardGridDisplayFactor
       $gridLineColor prefs.lineColorGridForBoard
       $gridCrossColor prefs.crossColorGridForBoard
+      $workingAreaColor prefs.workingAreaColorForBoard
+      $workingAreaRectString root.mWorkingAreaRectString
       $zoom root.mBoardZoom
       $backColor prefs.boardBackgroundColorForBoard
       $mouseGrid root.mBoardGridStep
@@ -1530,6 +1536,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           addCenterYAligned (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardClearanceColorForBoard } },
             right: StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .left)
+          )
+          addCenterYAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.rastnetColorForBoard } },
+            right: StaticLabel (title: "Rastnet", bold: no, size : .small, alignment: .left)
+          )
+          addCenterYAligned (
+            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.workingAreaColorForBoard } },
+            right: StaticLabel (title: "Working Area", bold: no, size : .small, alignment: .left)
           )
           addCenterYAligned (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardBackgroundColorForBoard } },

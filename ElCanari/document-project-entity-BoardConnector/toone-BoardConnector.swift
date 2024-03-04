@@ -452,7 +452,7 @@ class ReadOnlyObject_BoardConnector : EBReadOnlyAbstractObjectProperty <BoardCon
 
 final class StoredObject_BoardConnector : ReadOnlyObject_BoardConnector, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

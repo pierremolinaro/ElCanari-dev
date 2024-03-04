@@ -196,7 +196,7 @@ class ReadOnlyObject_BorderCurve : EBReadOnlyAbstractObjectProperty <BorderCurve
 
 final class StoredObject_BorderCurve : ReadOnlyObject_BorderCurve, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

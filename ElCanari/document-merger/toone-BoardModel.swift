@@ -1956,7 +1956,7 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
 
 final class StoredObject_BoardModel : ReadOnlyObject_BoardModel, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

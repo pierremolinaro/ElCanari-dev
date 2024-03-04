@@ -188,7 +188,7 @@ class ReadOnlyObject_SheetInProject : EBReadOnlyAbstractObjectProperty <SheetInP
 
 final class StoredObject_SheetInProject : ReadOnlyObject_SheetInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

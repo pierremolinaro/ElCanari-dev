@@ -328,9 +328,13 @@ prefs {
 //--- Back Side Pad Color
   property NSColor backSidePadColorForBoard default green;
 //--- Pad Number Font
-  property NSFont padNumberFontForBoard default 3 ; // toolTipsFontOfSize:3 ;
+  property NSFont padNumberFontForBoard default 3 ;
 //--- Pad Number Color
-  property NSColor padNumberColorForBoard default red;
+  property NSColor padNumberColorForBoard default red ;
+//--- Rastnet Color
+  property NSColor rastnetColorForBoard default yellow ;
+//--- Working Area Color
+  property NSColor workingAreaColorForBoard default blue ;
 //--- Show component rotation knob in board
   property Bool mShowComponentRotationKnobInBoard default yes ;
 //--- Show text rotation knob in board

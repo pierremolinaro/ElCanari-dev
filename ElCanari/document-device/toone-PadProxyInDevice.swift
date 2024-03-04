@@ -100,7 +100,7 @@ class ReadOnlyObject_PadProxyInDevice : EBReadOnlyAbstractObjectProperty <PadPro
 
 final class StoredObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

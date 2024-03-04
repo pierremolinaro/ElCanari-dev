@@ -396,7 +396,7 @@ class ReadOnlyObject_NetClassInProject : EBReadOnlyAbstractObjectProperty <NetCl
 
 final class StoredObject_NetClassInProject : ReadOnlyObject_NetClassInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

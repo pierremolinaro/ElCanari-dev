@@ -92,6 +92,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       oldValue.mSchematicCustomWidthUnit_property.stopsBeingObserved (by: self.mSchematicCustomWidthUnit_property) // Stored property
       oldValue.mSchematicCustomHeight_property.stopsBeingObserved (by: self.mSchematicCustomHeight_property) // Stored property
       oldValue.mSchematicCustomHeightUnit_property.stopsBeingObserved (by: self.mSchematicCustomHeightUnit_property) // Stored property
+      oldValue.mWorkingAreaRectString_property.stopsBeingObserved (by: self.mWorkingAreaRectString_property) // Stored property
       oldValue.drawErrorBackgroundForBoard_property.stopsBeingObserved (by: self.drawErrorBackgroundForBoard_property) // Stored property
       oldValue.displayFrontRestrictRectangles_property.stopsBeingObserved (by: self.displayFrontRestrictRectangles_property) // Stored property
       oldValue.displayBackRestrictRectangles_property.stopsBeingObserved (by: self.displayBackRestrictRectangles_property) // Stored property
@@ -276,6 +277,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       newValue.mSchematicCustomWidthUnit_property.startsBeingObserved (by: self.mSchematicCustomWidthUnit_property) // Stored property
       newValue.mSchematicCustomHeight_property.startsBeingObserved (by: self.mSchematicCustomHeight_property) // Stored property
       newValue.mSchematicCustomHeightUnit_property.startsBeingObserved (by: self.mSchematicCustomHeightUnit_property) // Stored property
+      newValue.mWorkingAreaRectString_property.startsBeingObserved (by: self.mWorkingAreaRectString_property) // Stored property
       newValue.drawErrorBackgroundForBoard_property.startsBeingObserved (by: self.drawErrorBackgroundForBoard_property) // Stored property
       newValue.displayFrontRestrictRectangles_property.startsBeingObserved (by: self.displayFrontRestrictRectangles_property) // Stored property
       newValue.displayBackRestrictRectangles_property.startsBeingObserved (by: self.displayBackRestrictRectangles_property) // Stored property
@@ -839,6 +841,12 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //································································································
 
   final let mSchematicCustomHeightUnit_property = EBTransientProperty <Int?> ()
+
+  //································································································
+  //   Observers of 'mWorkingAreaRectString' stored property
+  //································································································
+
+  final let mWorkingAreaRectString_property = EBTransientProperty <String?> ()
 
   //································································································
   //   Observers of 'drawErrorBackgroundForBoard' stored property
@@ -1836,6 +1844,10 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
     self.mSchematicCustomHeightUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mSchematicCustomHeightUnit_property.optionalSelection ?? .single (nil)
     }
+  //--- Configure mWorkingAreaRectString simple stored property
+    self.mWorkingAreaRectString_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mWorkingAreaRectString_property.optionalSelection ?? .single (nil)
+    }
   //--- Configure drawErrorBackgroundForBoard simple stored property
     self.drawErrorBackgroundForBoard_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.drawErrorBackgroundForBoard_property.optionalSelection ?? .single (nil)
@@ -2184,7 +2196,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
 
 final class StoredObject_ProjectRoot : ReadOnlyObject_ProjectRoot, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature

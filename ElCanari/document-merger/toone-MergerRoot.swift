@@ -440,7 +440,7 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
 
 final class StoredObject_MergerRoot : ReadOnlyObject_MergerRoot, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
 
- //····················································································································
+ //································································································
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
