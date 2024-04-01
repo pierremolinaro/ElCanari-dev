@@ -33,6 +33,7 @@ let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Projet : les fichiers Gerber produits sont clippés dans le rectangle de la carte"
 ]
 let CHANGES : [String] = [
 ]

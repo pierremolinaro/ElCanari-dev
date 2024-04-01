@@ -120,10 +120,8 @@ extension NSRect : Hashable {
       // Now we move outside point to intersection point to clip and get ready for next pass.
         if outcode == p1OutCode {
           p1 = p
-  //        outcode0 = ComputeOutCode(x0, y0);
         }else{
           p2 = p
-  //        outcode1 = ComputeOutCode(x1, y1);
         }
       }
     }

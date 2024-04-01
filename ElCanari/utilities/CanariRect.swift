@@ -328,9 +328,6 @@ struct CanariRect : Equatable, Hashable {
     if !r1.isEmpty {
       result.append (r1)
     }
-//    outR1.origin = origin ;
-//    outR1.size.width = min (size.width, (AWInt) (inRect.origin.x - origin.x)) ;
-//    outR1.size.height = min (size.height, (AWInt) (inRect.origin.y + inRect.size.height - origin.y)) ;
   //--- Compute R2
     let r2 = CanariRect (
       left: max (self.origin.x, inRect.origin.x),
@@ -341,10 +338,6 @@ struct CanariRect : Equatable, Hashable {
     if !r2.isEmpty {
       result.append (r2)
     }
-//    outR2.origin.x = max (origin.x, inRect.origin.x) ;
-//    outR2.origin.y = origin.y ;
-//    outR2.size.width = origin.x + size.width - outR2.origin.x ;
-//    outR2.size.height = min (size.height, (AWInt) (inRect.origin.y - origin.y)) ;
   //--- Compute R3
     let r3 = CanariRect (
       left: max (self.origin.x, inRect.origin.x + inRect.size.width),
@@ -355,10 +348,6 @@ struct CanariRect : Equatable, Hashable {
     if !r3.isEmpty {
       result.append (r3)
     }
-//    outR3.origin.x = max (origin.x, (AWInt) (inRect.origin.x + inRect.size.width)) ;
-//    outR3.origin.y = max (inRect.origin.y, origin.y) ;
-//    outR3.size.width = origin.x + size.width - outR3.origin.x ;
-//    outR3.size.height = origin.y + size.height - outR3.origin.y ;
   //--- Compute R4
     let r4 = CanariRect (
       left: origin.x,
@@ -369,10 +358,6 @@ struct CanariRect : Equatable, Hashable {
     if !r4.isEmpty {
       result.append (r4)
     }
-//    outR4.origin.x = origin.x ; // max (origin.x, inRect.origin.x) ;
-//    outR4.origin.y = max (origin.y, (AWInt) (inRect.origin.y + inRect.size.height)) ;
-//    outR4.size.width = min ((AWInt) (origin.x + size.width), (AWInt) (inRect.origin.x + inRect.size.width)) - outR4.origin.x ;
-//    outR4.size.height = origin.y + size.height - outR4.origin.y ;
   //---
     return result
   }

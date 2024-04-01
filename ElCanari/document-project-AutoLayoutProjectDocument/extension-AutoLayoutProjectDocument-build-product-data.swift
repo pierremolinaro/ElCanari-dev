@@ -19,21 +19,22 @@ extension AutoLayoutProjectDocument {
   //································································································
 
   func buildProductData () -> ProductData {
-    let (frontPackageLegend, backPackageLegend) = self.buildPackageLegend ()
-    let (frontComponentNames, backComponentNames) = self.buildComponentNamePathes ()
-    let (frontComponentValues, backComponentValues) = self.buildComponentValuePathes ()
-    let (legendFrontTexts, layoutFrontTexts, layoutBackTexts, legendBackTexts) = self.buildTextPathes ()
+    let cocoaBoardRect = self.rootObject.boardBoundBox!.cocoaRect
+    let (frontPackageLegend, backPackageLegend) = self.buildPackageLegend (cocoaBoardRect)
+    let (frontComponentNames, backComponentNames) = self.buildComponentNamePathes (cocoaBoardRect)
+    let (frontComponentValues, backComponentValues) = self.buildComponentValuePathes (cocoaBoardRect)
+    let (legendFrontTexts, layoutFrontTexts, layoutBackTexts, legendBackTexts) = self.buildTextPathes (cocoaBoardRect)
     let (legendFrontQRCodes, legendBackQRCodes) = self.buildQRCodePathes ()
     let (legendFrontImages, legendBackImages) = self.buildBoardImagesPathes ()
     let viaPads = self.buildViaPads ()
     let (tracks, frontTracksWithNoSilkScreen, backTracksWithNoSilkScreen) = self.buildTracks ()
-    let (frontLines, backLines) = self.buildLines ()
+    let (frontLines, backLines) = self.buildLines (cocoaBoardRect)
     let circularPads = self.buildCircularPads ()
     let oblongPads = self.buildOblongPads ()
     let polygonPads = self.buildPolygonPads ()
   //---
     return ProductData (
-      boardBoundBox: self.rootObject.boardBoundBox!.cocoaRect,
+      boardBoundBox: cocoaBoardRect,
       boardLimitPath: self.buildBoardLimitPath (),
       boardLimitWidth: canariUnitToCocoa (self.rootObject.mBoardLimitsWidth),
       holeDictionary: self.buildHoleDictionary (),
@@ -212,7 +213,7 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  private func buildPackageLegend () -> (PathApertureDictionary, PathApertureDictionary) {
+  private func buildPackageLegend (_ inCocoaBoardRect : NSRect) -> (PathApertureDictionary, PathApertureDictionary) {
     var frontPackageLegends = PathApertureDictionary () // Aperture, path
     var backPackageLegends = PathApertureDictionary () // Aperture, path
     let aperture = CGFloat (self.rootObject.packageDrawingWidthMultpliedByTenForBoard) / 10.0
@@ -223,8 +224,9 @@ extension AutoLayoutProjectDocument {
           let pathArray = strokeBezierPath.pointsByFlattening (withFlatness: 0.1)
           let af = component.packageToComponentAffineTransform ()
           var transformedPathArray = [EBLinePath] ()
-          for path in pathArray {
-            transformedPathArray.append (path.transformed (by: af))
+          for linePath in pathArray {
+            let transformedLinePath = linePath.transformed (by: af)
+            transformedPathArray += transformedLinePath.linePathClipped (by: inCocoaBoardRect)
           }
           switch component.mSide {
           case .back :
@@ -240,7 +242,7 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  private func buildComponentNamePathes () -> (PathApertureDictionary, PathApertureDictionary) {
+  private func buildComponentNamePathes (_ inCocoaBoardRect : NSRect) -> (PathApertureDictionary, PathApertureDictionary) {
     var frontComponentNames = PathApertureDictionary () // Aperture, path
     var backComponentNames = PathApertureDictionary () // Aperture, path
     for object in self.rootObject.mBoardObjects.values {
@@ -261,7 +263,7 @@ extension AutoLayoutProjectDocument {
             extraWidth: 0.0
           )
           let aperture = textBP.lineWidth
-          let pathArray = textBP.pointsByFlattening (withFlatness: 0.1)
+          let pathArray = textBP.pointsByFlattening (withFlatness: 0.1).linePathArrayClipped (by: inCocoaBoardRect)
           switch component.mSide {
           case .back :
             backComponentNames [aperture] = backComponentNames [aperture, default: []] + pathArray
@@ -276,7 +278,7 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  private func buildComponentValuePathes () -> (PathApertureDictionary, PathApertureDictionary) {
+  private func buildComponentValuePathes (_ inCocoaBoardRect : NSRect) -> (PathApertureDictionary, PathApertureDictionary) {
     var frontComponentValues = PathApertureDictionary () // Aperture, path
     var backComponentValues = PathApertureDictionary () // Aperture, path
     for object in self.rootObject.mBoardObjects.values {
@@ -297,7 +299,7 @@ extension AutoLayoutProjectDocument {
             extraWidth: 0.0
           )
           let aperture = textBP.lineWidth
-          let pathArray = textBP.pointsByFlattening (withFlatness: 0.1)
+          let pathArray = textBP.pointsByFlattening (withFlatness: 0.1).linePathArrayClipped (by: inCocoaBoardRect)
           switch component.mSide {
           case .back :
             backComponentValues [aperture] = backComponentValues [aperture, default: []] + pathArray
@@ -312,7 +314,7 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  private func buildTextPathes () -> (PathApertureDictionary, PathApertureDictionary, PathApertureDictionary, PathApertureDictionary) {
+  private func buildTextPathes (_ inCocoaBoardRect : NSRect) -> (PathApertureDictionary, PathApertureDictionary, PathApertureDictionary, PathApertureDictionary) {
     var legendFrontTexts = PathApertureDictionary () // Aperture, path
     var layoutFrontTexts = PathApertureDictionary () // Aperture, path
     var layoutBackTexts = PathApertureDictionary () // Aperture, path
@@ -334,7 +336,7 @@ extension AutoLayoutProjectDocument {
           extraWidth: 0.0
         )
         let aperture = textBP.lineWidth
-        let pathArray = textBP.pointsByFlattening (withFlatness: 0.1)
+        let pathArray = textBP.pointsByFlattening (withFlatness: 0.1).linePathArrayClipped (by: inCocoaBoardRect)
         switch text.mLayer {
         case .legendFront :
           legendFrontTexts [aperture] = legendFrontTexts [aperture, default: []] + pathArray
@@ -445,20 +447,22 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  private func buildLines () -> ([ProductOblong], [ProductOblong]) {
+  private func buildLines (_ inCocoaBoardRect : NSRect) -> ([ProductOblong], [ProductOblong]) {
     var frontLines = [ProductOblong] ()
     var backLines = [ProductOblong] ()
     for object in self.rootObject.mBoardObjects.values {
       if let line = object as? BoardLine {
         let p1 = CanariPoint (x: line.mX1, y: line.mY1).cocoaPoint
         let p2 = CanariPoint (x: line.mX2, y: line.mY2).cocoaPoint
-        let width = canariUnitToCocoa (line.mWidth)
-        let t = ProductOblong (p1: p1, p2: p2, width: width)
-        switch line.mLayer {
-        case .legendBack :
-          backLines.append (t)
-        case .legendFront :
-          frontLines.append (t)
+        if let (clippedP1, clippedP2) = inCocoaBoardRect.clippedSegment(p1: p1, p2: p2) {
+          let width = canariUnitToCocoa (line.mWidth)
+          let t = ProductOblong (p1: clippedP1, p2: clippedP2, width: width)
+          switch line.mLayer {
+          case .legendBack :
+            backLines.append (t)
+          case .legendFront :
+            frontLines.append (t)
+          }
         }
       }
     }
