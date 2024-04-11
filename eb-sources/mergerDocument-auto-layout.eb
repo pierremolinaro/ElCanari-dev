@@ -786,7 +786,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           expandableWidth ()
           $title self.documentFileShouldBeRenamedErrorMessage
         }
-        TextObserverView () {
+        TextObserverView (size: .small) {
           expandableWidth ()
           setNoBackground ()
           setNoVerticalScroller ()
@@ -851,7 +851,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
       )
       addCenterYAligned (
         left: vStack {StaticLabel (title: "Comment", bold: no, size: .regular, alignment: .right) space },
-        right: TextObserverView () { expandableWidth () $observedValue root.comments }
+        right: TextObserverView (size: .small) { expandableWidth () $observedValue root.comments }
       )
     }
   }
@@ -1043,7 +1043,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
   //············································································
 
   stackView \GenerationLogPage vStack {
-    TextObserverView () [outlet mLogTextView]
+    TextObserverView (size: .regular) [outlet mLogTextView]
   }
 
   //············································································

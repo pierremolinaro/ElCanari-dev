@@ -30,8 +30,11 @@ handlingOpposite entity ProjectRoot {
   property proxy String artworkTitle : mArtwork.title ;
   property proxy LayerConfiguration artworkLayerConfiguration : mArtwork.layerConfiguration ;
  
-//--- PDF Generation
+//--- Generation
   property @generateDirectRead NSColor mPDFBoardBackgroundColor default lightGray ;
+  property Bool mGenerateMergerArchive default yes ;
+  property Bool mGenerateBOM default yes ;
+  property Bool mGenerateGerberAndPDF default yes ;
   
 //--- ERC Status
   property @generateDirectRead Bool mCheckClearanceBetweenPadsOfSameNet default yes ;

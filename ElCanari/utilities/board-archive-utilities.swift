@@ -9,12 +9,14 @@
 import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
+// Version 4 : april 11, 2024
+//   - added line end style to lines
 // Version 3 : january 8, 2024
 //   - added ARCHIVE_FRONT_TRACKS_WITH_NO_SILK_SCREEN_KEY
 //   - added ARCHIVE_Back_TRACKS_WITH_NO_SILK_SCREEN_KEY
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-let MERGER_ARCHIVE_VERSION = 3
+let MERGER_ARCHIVE_VERSION = 4
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 

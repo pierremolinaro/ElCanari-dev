@@ -59,7 +59,8 @@ import AppKit
               y1: wireDescriptor.p1.y,
               x2: wireDescriptor.p2.x,
               y2: wireDescriptor.p2.y,
-              width: CANARI_UNITS_PER_PIXEL * prefs_symbolDrawingWidthMultipliedByTenForSchematic / 10
+              width: CANARI_UNITS_PER_PIXEL * prefs_symbolDrawingWidthMultipliedByTenForSchematic / 10,
+              endStyle: .round
             )
             for (point, _) in pointDictionary {
               if segment.strictlyContains (point: point) {

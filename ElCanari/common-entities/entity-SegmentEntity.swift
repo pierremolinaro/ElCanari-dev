@@ -30,6 +30,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol SegmentEntity_endStyle : AnyObject {
+  var endStyle : TrackEndStyle { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol SegmentEntity_x1 : AnyObject {
   var x1 : Int { get }
 }
@@ -43,6 +49,7 @@ final class SegmentEntity : EBManagedObject,
          SegmentEntity_x2,
          SegmentEntity_y2,
          SegmentEntity_width,
+         SegmentEntity_endStyle,
          SegmentEntity_x1 {
 
   //································································································
@@ -98,6 +105,19 @@ final class SegmentEntity : EBManagedObject,
   }
 
   //································································································
+  //   Atomic property: endStyle
+  //································································································
+
+  final let endStyle_property : EBStoredProperty_TrackEndStyle
+
+  //································································································
+
+  final var endStyle : TrackEndStyle {
+    get { return self.endStyle_property.propval }
+    set { self.endStyle_property.setProp (newValue) }
+  }
+
+  //································································································
   //   Atomic property: x1
   //································································································
 
@@ -119,6 +139,7 @@ final class SegmentEntity : EBManagedObject,
     self.x2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x2")
     self.y2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y2")
     self.width_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "width")
+    self.endStyle_property = EBStoredProperty_TrackEndStyle (defaultValue: TrackEndStyle.round, undoManager: inUndoManager, key: "endStyle")
     self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x1")
     super.init (inUndoManager)
   //--- Install undoers and opposite setter for relationships

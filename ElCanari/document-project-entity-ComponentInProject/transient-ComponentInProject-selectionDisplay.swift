@@ -26,7 +26,6 @@ import AppKit
        _ self_mRotation : Int,                                 
        _ self_mSide : ComponentSide,                           
        _ self_strokeBezierPath : EBBezierPath,                 
-       _ self_mRemovePadsFromSolderMasks : Bool,               
        _ self_mDisplayLegend : Bool,                           
        _ self_mNameIsVisibleInBoard : Bool,                    
        _ self_mXName : Int,                                    

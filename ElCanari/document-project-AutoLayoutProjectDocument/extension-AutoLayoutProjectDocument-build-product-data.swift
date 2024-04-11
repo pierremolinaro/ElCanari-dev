@@ -422,16 +422,16 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  private func buildTracks () -> ([TrackSide : [ProductOblong]], [ProductOblong], [ProductOblong]) {
-    var frontTracksWithNoSilkScreen = [ProductOblong] ()
-    var backTracksWithNoSilkScreen = [ProductOblong] ()
-    var tracks = [TrackSide : [ProductOblong]] ()
+  private func buildTracks () -> ([TrackSide : [ProductLine]], [ProductLine], [ProductLine]) {
+    var frontTracksWithNoSilkScreen = [ProductLine] ()
+    var backTracksWithNoSilkScreen = [ProductLine] ()
+    var tracks = [TrackSide : [ProductLine]] ()
     for object in self.rootObject.mBoardObjects.values {
       if let track = object as? BoardTrack {
         let p1 = track.mConnectorP1!.location!.cocoaPoint
         let p2 = track.mConnectorP2!.location!.cocoaPoint
         let width = canariUnitToCocoa (track.actualTrackWidth!)
-        let t = ProductOblong (p1: p1, p2: p2, width: width)
+        let t = ProductLine (p1: p1, p2: p2, width: width, endStyle: track.mEndStyle_property.cocoaValue)
         tracks [track.mSide] = tracks [track.mSide, default: []] + [t]
         if track.mAddedToSolderMask_property.propval {
           if track.mSide == .front {
@@ -447,16 +447,16 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  private func buildLines (_ inCocoaBoardRect : NSRect) -> ([ProductOblong], [ProductOblong]) {
-    var frontLines = [ProductOblong] ()
-    var backLines = [ProductOblong] ()
+  private func buildLines (_ inCocoaBoardRect : NSRect) -> ([ProductLine], [ProductLine]) {
+    var frontLines = [ProductLine] ()
+    var backLines = [ProductLine] ()
     for object in self.rootObject.mBoardObjects.values {
       if let line = object as? BoardLine {
         let p1 = CanariPoint (x: line.mX1, y: line.mY1).cocoaPoint
         let p2 = CanariPoint (x: line.mX2, y: line.mY2).cocoaPoint
         if let (clippedP1, clippedP2) = inCocoaBoardRect.clippedSegment(p1: p1, p2: p2) {
           let width = canariUnitToCocoa (line.mWidth)
-          let t = ProductOblong (p1: clippedP1, p2: clippedP2, width: width)
+          let t = ProductLine (p1: clippedP1, p2: clippedP2, width: width, endStyle: .round)
           switch line.mLayer {
           case .legendBack :
             backLines.append (t)
@@ -471,50 +471,47 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  fileprivate func buildCircularPads () -> [PadLayer : [CircularProductCircularPad]] {
-    var circularPads = [PadLayer : [CircularProductCircularPad]] ()
+  fileprivate func buildCircularPads () -> [PadLayer : [ProductCircle]] {
+    var circularPads = [PadLayer : [ProductCircle]] ()
     for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject {
-        let removeFromSolderMak = component.mRemovePadsFromSolderMasks
         let af = component.packageToComponentAffineTransform ()
         for (_, masterPad) in component.packagePadDictionary! {
           if let circle = productCircle (masterPad.center, masterPad.padSize, masterPad.shape, af) {
-            let productCircle = CircularProductCircularPad (productCircle: circle, removeFromSolderMask: removeFromSolderMak)
             switch masterPad.style {
             case .traversing :
-              circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [productCircle]
-              circularPads [.innerLayer] = circularPads [.innerLayer, default: []] + [productCircle]
-              circularPads [.backLayer] = circularPads [.backLayer, default: []] + [productCircle]
+              circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [circle]
+              circularPads [.innerLayer] = circularPads [.innerLayer, default: []] + [circle]
+              circularPads [.backLayer] = circularPads [.backLayer, default: []] + [circle]
             case .surface :
               switch component.mSide {
               case .back :
-                circularPads [.backLayer] = circularPads [.backLayer, default: []] + [productCircle]
+                circularPads [.backLayer] = circularPads [.backLayer, default: []] + [circle]
               case .front :
-                circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [productCircle]
+                circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [circle]
               }
             }
           }
           for slavePad in masterPad.slavePads {
             if let circle = productCircle (slavePad.center, slavePad.padSize, slavePad.shape, af) {
-              let productCircle = CircularProductCircularPad (productCircle: circle, removeFromSolderMask: removeFromSolderMak)
               switch slavePad.style {
               case .traversing :
-                circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [productCircle]
-                circularPads [.innerLayer] = circularPads [.innerLayer, default: []] + [productCircle]
-                circularPads [.backLayer] = circularPads [.backLayer, default: []] + [productCircle]
+                circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [circle]
+                circularPads [.innerLayer] = circularPads [.innerLayer, default: []] + [circle]
+                circularPads [.backLayer] = circularPads [.backLayer, default: []] + [circle]
               case .oppositeSide :
                 switch component.mSide {
                 case .front :
-                  circularPads [.backLayer] = circularPads [.backLayer, default: []] + [productCircle]
+                  circularPads [.backLayer] = circularPads [.backLayer, default: []] + [circle]
                 case .back :
-                  circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [productCircle]
+                  circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [circle]
                 }
               case .componentSide :
                 switch component.mSide {
                 case .back :
-                  circularPads [.backLayer] = circularPads [.backLayer, default: []] + [productCircle]
+                  circularPads [.backLayer] = circularPads [.backLayer, default: []] + [circle]
                 case .front :
-                  circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [productCircle]
+                  circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [circle]
                 }
               }
             }
@@ -527,8 +524,8 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  fileprivate func buildOblongPads () -> [PadLayer : [ProductOblong]] {
-    var oblongPads = [PadLayer : [ProductOblong]] ()
+  fileprivate func buildOblongPads () -> [PadLayer : [ProductLine]] {
+    var oblongPads = [PadLayer : [ProductLine]] ()
     for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject {
         let af = component.packageToComponentAffineTransform ()
@@ -697,7 +694,7 @@ fileprivate func buildPolygon (_ inCenter : CanariPoint,
 fileprivate func oblong (_ inCenter : CanariPoint,
                          _ inPadSize : CanariSize,
                          _ inShape : PadShape,
-                         _ inAffineTransform : AffineTransform) -> ProductOblong? {
+                         _ inAffineTransform : AffineTransform) -> ProductLine? {
   switch inShape {
   case .rect, .octo :
     return nil
@@ -708,12 +705,12 @@ fileprivate func oblong (_ inCenter : CanariPoint,
       let p1 = inAffineTransform.transform (NSPoint (x: p.x, y: p.y - (padSize.height - padSize.width) / 2.0))
       let p2 = inAffineTransform.transform (NSPoint (x: p.x, y: p.y + (padSize.height - padSize.width) / 2.0))
       let w = canariUnitToCocoa (inPadSize.width)
-      return ProductOblong (p1: p1, p2: p2, width: w)
+      return ProductLine (p1: p1, p2: p2, width: w, endStyle: .round)
     }else if inPadSize.width > inPadSize.height { // Horizontal oblong
       let p1 = inAffineTransform.transform (NSPoint (x: p.x - (padSize.width - padSize.height) / 2.0, y: p.y))
       let p2 = inAffineTransform.transform (NSPoint (x: p.x + (padSize.width - padSize.height) / 2.0, y: p.y))
       let w = canariUnitToCocoa (inPadSize.height)
-      return ProductOblong (p1: p1, p2: p2, width: w)
+      return ProductLine (p1: p1, p2: p2, width: w, endStyle: .round)
     }else{ // Circular
       return nil
     }
@@ -722,10 +719,55 @@ fileprivate func oblong (_ inCenter : CanariPoint,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct ProductOblong { // All in Cocoa Unit
+struct ProductLine { // All in Cocoa Unit
   let p1 : NSPoint
   let p2 : NSPoint
   let width : CGFloat
+  let endStyle : EndStyle
+
+  //------------------------------------------------------------------------------------------------
+
+  var lineCapStyle : NSBezierPath.LineCapStyle {
+    switch self.endStyle {
+    case .round : return .round
+    case .square : return .square
+    }
+  }
+
+  //------------------------------------------------------------------------------------------------
+
+  var endStyleIntValue : Int {
+    switch self.endStyle {
+    case .round : return 0
+    case .square : return 1
+    }
+  }
+
+  //------------------------------------------------------------------------------------------------
+
+  public enum EndStyle {
+    case round
+    case square
+  }
+
+  //------------------------------------------------------------------------------------------------
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension EBStoredProperty_TrackEndStyle {
+
+  //------------------------------------------------------------------------------------------------
+
+  var cocoaValue : ProductLine.EndStyle {
+    switch self.propval {
+    case .round : return .round
+    case .square : return .square
+    }
+  }
+
+  //------------------------------------------------------------------------------------------------
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1039,21 +1081,14 @@ struct ProductData { // All in Cocoa Unit
   let legendFrontImages : [ProductRectangle]
   let legendBackImages : [ProductRectangle]
   let viaPads : [ProductCircle]
-  let tracks : [TrackSide : [ProductOblong]]
-  let frontTracksWithNoSilkScreen : [ProductOblong]
-  let backTracksWithNoSilkScreen : [ProductOblong]
-  let frontLines : [ProductOblong]
-  let backLines : [ProductOblong]
-  let circularPads : [PadLayer : [CircularProductCircularPad]]
-  let oblongPads : [PadLayer : [ProductOblong]]
+  let tracks : [TrackSide : [ProductLine]]
+  let frontTracksWithNoSilkScreen : [ProductLine]
+  let backTracksWithNoSilkScreen : [ProductLine]
+  let frontLines : [ProductLine]
+  let backLines : [ProductLine]
+  let circularPads : [PadLayer : [ProductCircle]]
+  let oblongPads : [PadLayer : [ProductLine]]
   let polygonPads : [PadLayer : [ProductPolygon]]
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————
-
-struct CircularProductCircularPad {
-  public let productCircle : ProductCircle
-  public let removeFromSolderMask : Bool
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————

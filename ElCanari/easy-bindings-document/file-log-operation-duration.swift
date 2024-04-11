@@ -59,7 +59,7 @@ import AppKit
     defer: true
   )
 
-  private let mTextView = AutoLayoutTextObserverView ()
+  private let mTextView = AutoLayoutTextObserverView (size: .small)
   private var mOperationStartDate = Date ()
   private var mStepStartDate = Date ()
 

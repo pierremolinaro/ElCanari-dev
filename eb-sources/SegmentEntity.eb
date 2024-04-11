@@ -6,6 +6,7 @@ entity SegmentEntity {
   property @generateDirectAccess Int x2 default 0 ;
   property @generateDirectAccess Int y2 default 0 ;
   property @generateDirectAccess Int width default 0 ;
+  property @generateDirectAccess TrackEndStyle endStyle default round ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

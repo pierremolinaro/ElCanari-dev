@@ -186,7 +186,7 @@ import AppKit
     //··················································································································
 
     init () {
-      self.mTransientEventExplorerTextView = AutoLayoutTextObserverView ()
+      self.mTransientEventExplorerTextView = AutoLayoutTextObserverView (size: .small)
       self.mTransientEventExplorerWindow = NSWindow (
         contentRect: NSRect (x: 0.0, y: 0.0, width: 600.0, height: 400.0),
         styleMask: [.titled, .closable, .resizable, .miniaturizable],

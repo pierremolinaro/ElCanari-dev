@@ -29,7 +29,7 @@ import AppKit
     let y1 = self_drills_y1 [idx].y1
     let x2 = self_drills_x2 [idx].x2
     let y2 = self_drills_y2 [idx].y2
-    holeArray.append (CanariSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:holeDiameter))
+    holeArray.append (CanariSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:holeDiameter, endStyle: .round))
     idx += 1
   }
   return MergerSegmentArray (holeArray)

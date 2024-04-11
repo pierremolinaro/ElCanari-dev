@@ -29,7 +29,7 @@ import AppKit
     let x2 = self_backLegendTexts_x2 [idx].x2
     let y2 = self_backLegendTexts_y2 [idx].y2
     let width = self_backLegendTexts_width [idx].width
-    segmentArray.append (CanariSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:width))
+    segmentArray.append (CanariSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:width, endStyle: .round))
     idx += 1
   }
   return MergerSegmentArray (segmentArray)

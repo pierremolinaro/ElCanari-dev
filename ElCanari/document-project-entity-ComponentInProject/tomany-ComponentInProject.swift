@@ -35,9 +35,6 @@ class ReadOnlyArrayOf_ComponentInProject : EBReadOnlyAbstractArrayProperty <Comp
       if let relay = self.mObserversOf_mDisplayLegend { // Stored property
         managedObject.mDisplayLegend_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_mRemovePadsFromSolderMasks { // Stored property
-        managedObject.mRemovePadsFromSolderMasks_property.stopsBeingObserved (by: relay)
-      }
       if let relay = self.mObserversOf_mNameIsVisibleInBoard { // Stored property
         managedObject.mNameIsVisibleInBoard_property.stopsBeingObserved (by: relay)
       }
@@ -181,9 +178,6 @@ class ReadOnlyArrayOf_ComponentInProject : EBReadOnlyAbstractArrayProperty <Comp
       }
       if let relay = self.mObserversOf_mDisplayLegend { // Stored property
         managedObject.mDisplayLegend_property.startsBeingObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_mRemovePadsFromSolderMasks { // Stored property
-        managedObject.mRemovePadsFromSolderMasks_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mNameIsVisibleInBoard { // Stored property
         managedObject.mNameIsVisibleInBoard_property.startsBeingObserved (by: relay)
@@ -483,35 +477,6 @@ class ReadOnlyArrayOf_ComponentInProject : EBReadOnlyAbstractArrayProperty <Comp
 
   final func toMany_mDisplayLegend_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mDisplayLegend?.stopsBeingObserved (by: inObserver)
-  }
-
-  //································································································
-  //   Observers of 'mRemovePadsFromSolderMasks' stored property
-  //································································································
-
-  private final var mObserversOf_mRemovePadsFromSolderMasks : EBObservedObserver? = nil
-
-  //································································································
-
-  final func toMany_mRemovePadsFromSolderMasks_StartsBeingObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_mRemovePadsFromSolderMasks {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsBeingObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.mRemovePadsFromSolderMasks_property.startsBeingObserved (by: relay)
-      }
-      self.mObserversOf_mRemovePadsFromSolderMasks = relay
-    }
-    relay.startsBeingObserved (by: inObserver)
-  }
-
-  //································································································
-
-  final func toMany_mRemovePadsFromSolderMasks_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mRemovePadsFromSolderMasks?.stopsBeingObserved (by: inObserver)
   }
 
   //································································································

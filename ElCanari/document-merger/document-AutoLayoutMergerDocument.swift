@@ -635,7 +635,7 @@ import AppKit
           .expandableWidth ()
           .bind_title (self.documentFileShouldBeRenamedErrorMessage_property)
         _ = view_0_1.appendView (view_0_1_0)
-        let view_0_1_1 = AutoLayoutTextObserverView ()
+        let view_0_1_1 = AutoLayoutTextObserverView (size: .small)
           .expandableWidth ()
           .setNoBackground ()
           .setNoVerticalScroller ()
@@ -1043,7 +1043,7 @@ import AppKit
 
   final func GenerationLogPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutTextObserverView ()
+    let view_0 = AutoLayoutTextObserverView (size: .regular)
     self.mLogTextView = view_0 // Outlet
     _ = vStackView.appendView (view_0)
     return vStackView
@@ -2711,7 +2711,7 @@ import AppKit
   //································································································
 
   private final func computeImplicitView_101 () -> NSView {
-    let view = AutoLayoutTextObserverView ()
+    let view = AutoLayoutTextObserverView (size: .small)
       .expandableWidth ()
       .bind_observedValue (self.rootObject.comments_property)
     return view

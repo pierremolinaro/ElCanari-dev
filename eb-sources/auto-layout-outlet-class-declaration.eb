@@ -291,7 +291,7 @@ extern autolayout class StaticTextView (drawsBackground: Bool, horizontalScrolle
   func set (text: String)
 }
 
-extern autolayout class TextObserverView $hidden {
+extern autolayout class TextObserverView (size: EBControlSize) $hidden {
   $observedValue transient String
   func setRedTextColor ()
   func expandableWidth ()

@@ -463,7 +463,7 @@ import AppKit
     _ = vStackView.appendView (view_6)
     let view_7 = AutoLayoutStaticLabel (title: "Symbol Errors", bold: true, size: .small, alignment: .left)
     _ = vStackView.appendView (view_7)
-    let view_8 = AutoLayoutTextObserverView ()
+    let view_8 = AutoLayoutTextObserverView (size: .small)
       .expandableWidth ()
       .setRedTextColor ()
       .bind_observedValue (self.rootObject.inconsistentSymbolNameSetMessage_property)
@@ -912,7 +912,7 @@ import AppKit
           _ = view_1_0_0.appendView (view_1_0_0_1)
         }
         _ = view_1_0.appendView (view_1_0_0)
-        let view_1_0_1 = AutoLayoutTextObserverView ()
+        let view_1_0_1 = AutoLayoutTextObserverView (size: .small)
           .bind_observedValue (self.statusMessage_property)
         _ = view_1_0.appendView (view_1_0_1)
       }

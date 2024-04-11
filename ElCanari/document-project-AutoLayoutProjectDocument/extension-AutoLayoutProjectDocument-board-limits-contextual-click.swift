@@ -46,7 +46,8 @@ extension AutoLayoutProjectDocument {
             y1: p1.y,
             x2: p2.x,
             y2: p2.y,
-            width: 2 * (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance)
+            width: 2 * (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance),
+            endStyle: .round
           )
           if segment.strictlyContains (point: inUnalignedMouseDownPoint) {
             return borderCurve

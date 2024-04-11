@@ -1729,7 +1729,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     Button (title: "Design Rule Check", size: .small) { $run performERCCheckingAction }
     vStack set (spacing: 0) {
-      TextObserverView [outletArray mERCLogTextViewArray]
+      TextObserverView (size: .small) [outletArray mERCLogTextViewArray]
       divider
       CanariIssueTableView (hasHideIssueButton : yes) [
         outletArray mERCIssueTableViewArray configurator ercIssueTableViewConfigurator
@@ -2486,12 +2486,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           left: StaticLabel (title: "Side", bold: yes, size: .small, alignment: .left),
           right: EnumPopUpButton (titles: enum ComponentSide.popupTitles, size: .small) { $selectedIndex #componentInBoardSelectionController.mSide }
         )
-        addSeparator ()
-        add (single: Checkbox (title: "Remove Pads From Solder Masks", size: .small) {
-            expandableWidth ()
-            $value #componentInBoardSelectionController.mRemovePadsFromSolderMasks
-          }
-        )
       }
     )
   }
@@ -2522,10 +2516,15 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $run detachArtworkAction 
         }
         Label (bold: yes, size : .regular) { expandableWidth () set (alignment: .center) $title root.mArtworkName }
-        Button (title: "Generate Files", size : .regular) {
-          expandableWidth ()
-          $enabled !root.mArtwork.none & !self.documentIsUnnamed
-          $run generateProductFilesAction
+        hStack {
+          Button (title: "Generate Files", size : .regular) {
+            expandableWidth ()
+            $enabled !root.mArtwork.none & !self.documentIsUnnamed
+            $run generateProductFilesAction
+          }
+          Checkbox (title: "Merger Archive", size : .regular) { $value root.mGenerateMergerArchive }
+          Checkbox (title: "Gerber, PDF", size : .regular) { $value root.mGenerateGerberAndPDF }
+          Checkbox (title: "BOM", size : .regular) { $value root.mGenerateBOM }
         }
       }
       vStack {
@@ -2534,7 +2533,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           expandableWidth ()
           $title self.documentFileShouldBeRenamedErrorMessage
         }
-        TextObserverView () {
+        TextObserverView (size: .small) {
           expandableWidth ()
           setNoBackground ()
           setNoVerticalScroller ()
@@ -2593,7 +2592,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addCenterYAligned (
         left: vStack { StaticLabel (title: "Comment", bold: no, size: .regular, alignment: .center) space},
-        right: TextObserverView () { expandableWidth () $observedValue root.artworkComments }
+        right: TextObserverView (size: .small) { expandableWidth () $observedValue root.artworkComments }
       )
     }
   }
@@ -2788,7 +2787,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   //············································································
 
   stackView \GenerationLogPage vStack set (margins: 20) {
-    TextObserverView () [outlet mProductFileGenerationLogTextView]
+    TextObserverView (size: .regular) [outlet mProductFileGenerationLogTextView]
   }
 
   //············································································

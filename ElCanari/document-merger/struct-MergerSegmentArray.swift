@@ -39,7 +39,12 @@ struct MergerSegmentArray : Hashable {
        bp.move (to: NSPoint (x: canariUnitToCocoa (segment.x1), y: canariUnitToCocoa (segment.y1)))
        bp.line (to: NSPoint (x: canariUnitToCocoa (segment.x2), y: canariUnitToCocoa (segment.y2)))
        bp.lineWidth = canariUnitToCocoa (segment.width)
-       bp.lineCapStyle = .round
+      switch segment.endStyle {
+      case .round:
+        bp.lineCapStyle = .round
+      case .square:
+        bp.lineCapStyle = .square
+      }
        result.append (bp)
     }
     return result
@@ -80,7 +85,8 @@ struct MergerSegmentArray : Hashable {
         x2 += segment.y2
         y2 += inModelWidth - segment.x2
       }
-      let s = "\(x1) \(y1) \(x2) \(y2) \(segment.width)"
+      let endStyle = 0 // Round
+      let s = "\(x1) \(y1) \(x2) \(y2) \(segment.width) \(endStyle)"
       toArchiveArray.append (s)
     }
   }

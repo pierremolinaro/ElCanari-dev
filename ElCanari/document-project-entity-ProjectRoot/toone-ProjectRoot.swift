@@ -19,6 +19,9 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       oldValue.mArtworkName_property.stopsBeingObserved (by: self.mArtworkName_property) // Stored property
       oldValue.mArtworkVersion_property.stopsBeingObserved (by: self.mArtworkVersion_property) // Stored property
       oldValue.mPDFBoardBackgroundColor_property.stopsBeingObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
+      oldValue.mGenerateMergerArchive_property.stopsBeingObserved (by: self.mGenerateMergerArchive_property) // Stored property
+      oldValue.mGenerateBOM_property.stopsBeingObserved (by: self.mGenerateBOM_property) // Stored property
+      oldValue.mGenerateGerberAndPDF_property.stopsBeingObserved (by: self.mGenerateGerberAndPDF_property) // Stored property
       oldValue.mCheckClearanceBetweenPadsOfSameNet_property.stopsBeingObserved (by: self.mCheckClearanceBetweenPadsOfSameNet_property) // Stored property
       oldValue.mLastERCCheckingIsSuccess_property.stopsBeingObserved (by: self.mLastERCCheckingIsSuccess_property) // Stored property
       oldValue.mLastERCCheckingSignature_property.stopsBeingObserved (by: self.mLastERCCheckingSignature_property) // Stored property
@@ -204,6 +207,9 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       newValue.mArtworkName_property.startsBeingObserved (by: self.mArtworkName_property) // Stored property
       newValue.mArtworkVersion_property.startsBeingObserved (by: self.mArtworkVersion_property) // Stored property
       newValue.mPDFBoardBackgroundColor_property.startsBeingObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
+      newValue.mGenerateMergerArchive_property.startsBeingObserved (by: self.mGenerateMergerArchive_property) // Stored property
+      newValue.mGenerateBOM_property.startsBeingObserved (by: self.mGenerateBOM_property) // Stored property
+      newValue.mGenerateGerberAndPDF_property.startsBeingObserved (by: self.mGenerateGerberAndPDF_property) // Stored property
       newValue.mCheckClearanceBetweenPadsOfSameNet_property.startsBeingObserved (by: self.mCheckClearanceBetweenPadsOfSameNet_property) // Stored property
       newValue.mLastERCCheckingIsSuccess_property.startsBeingObserved (by: self.mLastERCCheckingIsSuccess_property) // Stored property
       newValue.mLastERCCheckingSignature_property.startsBeingObserved (by: self.mLastERCCheckingSignature_property) // Stored property
@@ -403,6 +409,24 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //································································································
 
   final let mPDFBoardBackgroundColor_property = EBTransientProperty <NSColor?> ()
+
+  //································································································
+  //   Observers of 'mGenerateMergerArchive' stored property
+  //································································································
+
+  final let mGenerateMergerArchive_property = EBTransientProperty <Bool?> ()
+
+  //································································································
+  //   Observers of 'mGenerateBOM' stored property
+  //································································································
+
+  final let mGenerateBOM_property = EBTransientProperty <Bool?> ()
+
+  //································································································
+  //   Observers of 'mGenerateGerberAndPDF' stored property
+  //································································································
+
+  final let mGenerateGerberAndPDF_property = EBTransientProperty <Bool?> ()
 
   //································································································
   //   Observers of 'mCheckClearanceBetweenPadsOfSameNet' stored property
@@ -1551,6 +1575,18 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //--- Configure mPDFBoardBackgroundColor simple stored property
     self.mPDFBoardBackgroundColor_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mPDFBoardBackgroundColor_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mGenerateMergerArchive simple stored property
+    self.mGenerateMergerArchive_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mGenerateMergerArchive_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mGenerateBOM simple stored property
+    self.mGenerateBOM_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mGenerateBOM_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mGenerateGerberAndPDF simple stored property
+    self.mGenerateGerberAndPDF_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mGenerateGerberAndPDF_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mCheckClearanceBetweenPadsOfSameNet simple stored property
     self.mCheckClearanceBetweenPadsOfSameNet_property.mReadModelFunction = { [weak self] in

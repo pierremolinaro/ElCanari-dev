@@ -22,7 +22,6 @@ import AppKit
        _ self_padNetDictionary : PadNetDictionary,          
        _ self_strokeBezierPath : EBBezierPath,              
        _ self_mDisplayLegend : Bool,                        
-       _ self_mRemovePadsFromSolderMasks : Bool,            
        _ prefs_frontSideLayoutColorForBoard : NSColor,      
        _ prefs_backSideLayoutColorForBoard : NSColor,       
        _ prefs_frontSideLegendColorForBoard : NSColor,      
@@ -97,15 +96,11 @@ import AppKit
         padNumberAffineTransform.rotate (byDegrees: -CGFloat (self_mRotation) / 1000.0)
         var frontPadColor : NSColor? = nil
         if self_BoardObject_displayFrontPadsForBoard {
-          frontPadColor = self_mRemovePadsFromSolderMasks
-            ? prefs_frontSideLayoutColorForBoard
-            : prefs_frontSidePadColorForBoard
+          frontPadColor = prefs_frontSidePadColorForBoard
         }
         var backPadColor : NSColor? = nil
         if self_BoardObject_displayBackPadsForBoard {
-          backPadColor = self_mRemovePadsFromSolderMasks
-            ? prefs_backSideLayoutColorForBoard
-            : prefs_backSidePadColorForBoard
+          backPadColor = prefs_backSidePadColorForBoard
         }
         for (_, padDescriptor) in self_packagePadDictionary {
           padDescriptor.accumulatePadBezierPathes (

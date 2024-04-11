@@ -113,7 +113,7 @@ extension AutoLayoutMergerDocument {
       let internalBoardsLimits = optionalStringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_INTERNAL_BOARDS_LIMITS_KEY, &errorArray)
       for str in internalBoardsLimits {
         let segment = SegmentEntity (self.undoManager)
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         segment.x1 = ints [0]
         segment.y1 = ints [1]
         segment.x2 = ints [2]
@@ -129,12 +129,20 @@ extension AutoLayoutMergerDocument {
       let frontTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_FRONT_TRACKS_WITH_NO_SILK_SCREEN_KEY, &errorArray)
       for str in frontTracks {
         let track = SegmentEntity (self.undoManager)
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array6int (fromString: str, #line, &errorArray)
         track.x1 = ints [0]
         track.y1 = ints [1]
         track.x2 = ints [2]
         track.y2 = ints [3]
         track.width = ints [4]
+        let endStyle = ints [5]
+        if endStyle == 0 {
+          track.endStyle = .round
+        }else if endStyle == 1 {
+          track.endStyle = .square
+        }else{
+          errorArray.append ("Invalid end style (line \(#line))")
+        }
         frontTrackEntities.append (track)
       }
       boardModel.frontTracksNoSilkScreen = frontTrackEntities
@@ -145,13 +153,21 @@ extension AutoLayoutMergerDocument {
       let backTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_BACK_TRACKS_WITH_NO_SILK_SCREEN_KEY, &errorArray)
       for str in backTracks {
         let track = SegmentEntity (self.undoManager)
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array6int (fromString: str, #line, &errorArray)
         track.x1 = ints [0]
         track.y1 = ints [1]
         track.x2 = ints [2]
         track.y2 = ints [3]
         track.width = ints [4]
-        backTrackEntities.append (track)
+        let endStyle = ints [5]
+        if endStyle == 0 {
+          track.endStyle = .round
+        }else if endStyle == 1 {
+          track.endStyle = .square
+        }else{
+          errorArray.append ("Invalid end style (line \(#line))")
+        }
+       backTrackEntities.append (track)
       }
       boardModel.backTracksNoSilkScreen = backTrackEntities
     }
@@ -161,12 +177,20 @@ extension AutoLayoutMergerDocument {
       let frontTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_FRONT_KEY, &errorArray)
       for str in frontTracks {
         let track = SegmentEntity (self.undoManager)
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array6int (fromString: str, #line, &errorArray)
         track.x1 = ints [0]
         track.y1 = ints [1]
         track.x2 = ints [2]
         track.y2 = ints [3]
         track.width = ints [4]
+        let endStyle = ints [5]
+        if endStyle == 0 {
+          track.endStyle = .round
+        }else if endStyle == 1 {
+          track.endStyle = .square
+        }else{
+          errorArray.append ("Invalid end style (line \(#line))")
+        }
         frontTrackEntities.append (track)
       }
       boardModel.frontTracks = frontTrackEntities
@@ -177,12 +201,20 @@ extension AutoLayoutMergerDocument {
       let backTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_BACK_KEY, &errorArray)
       for str in backTracks {
         let track = SegmentEntity (self.undoManager)
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array6int (fromString: str, #line, &errorArray)
         track.x1 = ints [0]
         track.y1 = ints [1]
         track.x2 = ints [2]
         track.y2 = ints [3]
         track.width = ints [4]
+        let endStyle = ints [5]
+        if endStyle == 0 {
+          track.endStyle = .round
+        }else if endStyle == 1 {
+          track.endStyle = .square
+        }else{
+          errorArray.append ("Invalid end style (line \(#line))")
+        }
         backTrackEntities.append (track)
       }
       boardModel.backTracks = backTrackEntities
@@ -193,7 +225,7 @@ extension AutoLayoutMergerDocument {
       let vias = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_VIAS_KEY, &errorArray)
       for str in vias {
         let via = BoardModelVia (self.undoManager)
-        let ints = array3int (fromString: str, &errorArray)
+        let ints = array3int (fromString: str, #line, &errorArray)
         via.x = ints [0]
         via.y = ints [1]
         via.padDiameter = ints [2]
@@ -206,7 +238,7 @@ extension AutoLayoutMergerDocument {
       var backLegendLinesEntities = EBReferenceArray <SegmentEntity> ()
       let backLegendLines = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_LINES_BACK_KEY, &errorArray)
       for str in backLegendLines {
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
           p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
@@ -224,7 +256,7 @@ extension AutoLayoutMergerDocument {
       var frontLegendLinesEntities = EBReferenceArray <SegmentEntity> ()
       let frontLegendLines = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_LINES_FRONT_KEY, &errorArray)
       for str in frontLegendLines {
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
           p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
@@ -243,7 +275,7 @@ extension AutoLayoutMergerDocument {
       let frontLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TEXTS_LAYOUT_FRONT_KEY, &errorArray)
       for str in frontLayoutTexts {
         let segment = SegmentEntity (self.undoManager)
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         segment.x1 = ints [0]
         segment.y1 = ints [1]
         segment.x2 = ints [2]
@@ -259,7 +291,7 @@ extension AutoLayoutMergerDocument {
       let backLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TEXTS_LAYOUT_BACK_KEY, &errorArray)
       for str in backLayoutTexts {
         let segment = SegmentEntity (self.undoManager)
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         segment.x1 = ints [0]
         segment.y1 = ints [1]
         segment.x2 = ints [2]
@@ -274,7 +306,7 @@ extension AutoLayoutMergerDocument {
       var backLegendTextEntities = EBReferenceArray <SegmentEntity> ()
       let backLegendTexts = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TEXTS_LEGEND_BACK_KEY, &errorArray)
       for str in backLegendTexts {
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
           p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
@@ -292,7 +324,7 @@ extension AutoLayoutMergerDocument {
       var frontLegendTextEntities = EBReferenceArray <SegmentEntity> ()
       let frontTexts = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TEXTS_LEGEND_FRONT_KEY, &errorArray)
       for str in frontTexts {
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
           p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
@@ -330,7 +362,7 @@ extension AutoLayoutMergerDocument {
       var backPackagesEntities = EBReferenceArray <SegmentEntity> ()
       let backPackages = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_PACKAGES_BACK_KEY, &errorArray)
       for str in backPackages {
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
           p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
@@ -348,7 +380,7 @@ extension AutoLayoutMergerDocument {
       var frontPackagesEntities = EBReferenceArray <SegmentEntity> ()
       let frontPackages = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_PACKAGES_FRONT_KEY, &errorArray)
       for str in frontPackages {
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
           p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
@@ -366,7 +398,7 @@ extension AutoLayoutMergerDocument {
       var backComponentNamesEntities = EBReferenceArray <SegmentEntity> ()
       let backComponentNames = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_COMPONENT_NAMES_BACK_KEY, &errorArray)
       for str in backComponentNames {
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
           p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
@@ -384,7 +416,7 @@ extension AutoLayoutMergerDocument {
       var frontComponentNamesEntities = EBReferenceArray <SegmentEntity> ()
       let frontComponentNames = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_COMPONENT_NAMES_FRONT_KEY, &errorArray)
       for str in frontComponentNames {
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
           p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
@@ -402,7 +434,7 @@ extension AutoLayoutMergerDocument {
       var frontComponentValuesEntities = EBReferenceArray <SegmentEntity> ()
       let frontComponentValues = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_COMPONENT_VALUES_FRONT_KEY, &errorArray)
       for str in frontComponentValues {
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
           p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y: canariUnitToMillimeter (ints [1])),
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y: canariUnitToMillimeter (ints [3])),
@@ -420,7 +452,7 @@ extension AutoLayoutMergerDocument {
       var backComponentValuesEntities = EBReferenceArray <SegmentEntity> ()
       let backComponentValues = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_COMPONENT_VALUES_BACK_KEY, &errorArray)
       for str in backComponentValues {
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
           p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y: canariUnitToMillimeter (ints [1])),
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y: canariUnitToMillimeter (ints [3])),
@@ -439,7 +471,7 @@ extension AutoLayoutMergerDocument {
       let drills = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_DRILLS_KEY, &errorArray)
       for str in drills {
         let segment = SegmentEntity (self.undoManager)
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         segment.x1 = ints [0]
         segment.y1 = ints [1]
         segment.x2 = ints [2]
@@ -545,7 +577,7 @@ extension AutoLayoutMergerDocument {
       let tracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_INNER1_KEY, &errorArray)
       for str in tracks {
         let track = SegmentEntity (self.undoManager)
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         track.x1 = ints [0]
         track.y1 = ints [1]
         track.x2 = ints [2]
@@ -561,7 +593,7 @@ extension AutoLayoutMergerDocument {
       let tracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_INNER2_KEY, &errorArray)
       for str in tracks {
         let track = SegmentEntity (self.undoManager)
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         track.x1 = ints [0]
         track.y1 = ints [1]
         track.x2 = ints [2]
@@ -577,7 +609,7 @@ extension AutoLayoutMergerDocument {
       let tracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_INNER3_KEY, &errorArray)
       for str in tracks {
         let track = SegmentEntity (self.undoManager)
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         track.x1 = ints [0]
         track.y1 = ints [1]
         track.x2 = ints [2]
@@ -593,7 +625,7 @@ extension AutoLayoutMergerDocument {
       let tracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_INNER4_KEY, &errorArray)
       for str in tracks {
         let track = SegmentEntity (self.undoManager)
-        let ints = array5int (fromString: str, &errorArray)
+        let ints = array5int (fromString: str, #line, &errorArray)
         track.x1 = ints [0]
         track.y1 = ints [1]
         track.x2 = ints [2]
@@ -745,18 +777,19 @@ fileprivate func optionalStringArray (fromDict inDictionary : [String : Any],
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func array3int (fromString inString : String,
+                            _ inErrorLine : Int,
                             _ errorArray : inout [String]) -> [Int] {
   let strArray : [String] = inString.components(separatedBy: " ")
   var result = [Int] () // Default result
   if strArray.count != 3 {
-    errorArray.append ("The string is not a three integer array.")
+    errorArray.append ("The string is not a three integer array (line \(inErrorLine)).")
   }else{
     for s in strArray {
       let possibleInt : Int? = Int (s)
       if let n = possibleInt {
         result.append (n)
       }else{
-        errorArray.append ("The string is not a four integer array.")
+        errorArray.append ("The string is not a three integer array (line \(inErrorLine)).")
       }
     }
   }
@@ -797,23 +830,51 @@ fileprivate func array3int (fromString inString : String,
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func array5int (fromString inString : String,
+                            _ inErrorLine : Int,
                             _ errorArray : inout [String]) -> [Int] {
   let strArray : [String] = inString.components(separatedBy: " ")
   var result = [Int] () // Default result
   if strArray.count != 5 {
-    errorArray.append ("The string is not a five integer array.")
+    errorArray.append ("The string is not a five integer array (line \(inErrorLine)).")
   }else{
     for s in strArray {
       let possibleInt : Int? = Int (s)
       if let n = possibleInt {
         result.append (n)
       }else{
-        errorArray.append ("The string is not a five integer array.")
+        errorArray.append ("The string is not a five integer array (line \(inErrorLine)).")
       }
     }
   }
 //--- If an error occurs, add fake int(s) to get a five element vector
   while result.count < 5 {
+    result.append (0)
+  }
+//---
+  return result
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func array6int (fromString inString : String,
+                            _ inErrorLine : Int,
+                            _ errorArray : inout [String]) -> [Int] {
+  let strArray : [String] = inString.components (separatedBy: " ")
+  var result = [Int] ()
+  if strArray.count != 6 {
+    errorArray.append ("The string is not a six integer array (line \(inErrorLine)).")
+  }else{
+    for s in strArray {
+      let possibleInt : Int? = Int (s)
+      if let n = possibleInt {
+        result.append (n)
+      }else{
+        errorArray.append ("The string is not a six integer array (line \(inErrorLine)).")
+      }
+    }
+  }
+//--- If an error occurs, add fake int(s) to get a six element vector
+  while result.count < 6 {
     result.append (0)
   }
 //---

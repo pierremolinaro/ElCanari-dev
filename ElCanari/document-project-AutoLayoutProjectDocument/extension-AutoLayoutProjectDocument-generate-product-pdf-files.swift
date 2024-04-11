@@ -94,7 +94,6 @@ extension AutoLayoutProjectDocument {
     }
     if inDescriptor.drawTracksTopSide {
       strokePathes.append (oblongs: inProductData.tracks [.front], transformedBy: af)
-      strokePathes.append (productCirclesOnTrackLayer: inProductData.circularPads [.frontLayer], transformedBy: af)
     }
     if inDescriptor.drawTracksInner1Layer && (inLayerConfiguration != .twoLayers) {
       strokePathes.append (oblongs: inProductData.tracks [.inner1], transformedBy: af)
@@ -113,18 +112,18 @@ extension AutoLayoutProjectDocument {
     }
     if inDescriptor.drawPadsTopSide {
       strokePathes.append (oblongs: inProductData.frontTracksWithNoSilkScreen, transformedBy: af)
-      strokePathes.append (productCirclesOnSolderMask: inProductData.circularPads [.frontLayer], transformedBy: af)
+      strokePathes.append (circles: inProductData.circularPads [.frontLayer], transformedBy: af)
       strokePathes.append (oblongs: inProductData.oblongPads [.frontLayer], transformedBy: af)
       filledPathes.append (polygons: inProductData.polygonPads [.frontLayer], transformedBy: af)
     }
     if inDescriptor.drawPadsBottomSide {
       strokePathes.append (oblongs: inProductData.backTracksWithNoSilkScreen, transformedBy: af)
-      strokePathes.append (productCirclesOnSolderMask: inProductData.circularPads [.backLayer], transformedBy: af)
+      strokePathes.append (circles: inProductData.circularPads [.backLayer], transformedBy: af)
       strokePathes.append (oblongs: inProductData.oblongPads [.backLayer], transformedBy: af)
       filledPathes.append (polygons: inProductData.polygonPads [.backLayer], transformedBy: af)
     }
     if inDescriptor.drawTraversingPads {
-      strokePathes.append (productCircles: inProductData.circularPads [.innerLayer], transformedBy: af)
+      strokePathes.append (circles: inProductData.circularPads [.innerLayer], transformedBy: af)
       strokePathes.append (oblongs: inProductData.oblongPads [.innerLayer], transformedBy: af)
       filledPathes.append (polygons: inProductData.polygonPads [.innerLayer], transformedBy: af)
     }
@@ -161,72 +160,17 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  mutating func append (oblongs inLines : [ProductOblong]?,
+  mutating func append (oblongs inLines : [ProductLine]?,
                         transformedBy inAffineTransform : AffineTransform) {
     if let lines = inLines {
       for segment in lines {
         var bp = EBBezierPath ()
         bp.lineWidth = segment.width
-        bp.lineCapStyle = .round
+        bp.lineCapStyle = segment.lineCapStyle
         bp.lineJoinStyle = .round
         bp.move (to: inAffineTransform.transform (segment.p1))
         bp.line (to: inAffineTransform.transform (segment.p2))
         self.append (bp)
-      }
-    }
-  }
-
-  //································································································
-
-  mutating func append (productCircles inCircles : [CircularProductCircularPad]?,
-                        transformedBy inAffineTransform : AffineTransform) {
-    if let circles = inCircles {
-      for circle in circles {
-        var bp = EBBezierPath ()
-        bp.lineWidth = circle.productCircle.diameter
-        bp.lineCapStyle = .round
-        bp.lineJoinStyle = .round
-        bp.move (to: inAffineTransform.transform (circle.productCircle.center))
-        bp.line (to: inAffineTransform.transform (circle.productCircle.center))
-        self.append (bp)
-      }
-    }
-  }
-
-  //································································································
-
-  mutating func append (productCirclesOnSolderMask inCircles : [CircularProductCircularPad]?,
-                        transformedBy inAffineTransform : AffineTransform) {
-    if let circles = inCircles {
-      for circle in circles {
-        if !circle.removeFromSolderMask {
-          var bp = EBBezierPath ()
-          bp.lineWidth = circle.productCircle.diameter
-          bp.lineCapStyle = .round
-          bp.lineJoinStyle = .round
-          bp.move (to: inAffineTransform.transform (circle.productCircle.center))
-          bp.line (to: inAffineTransform.transform (circle.productCircle.center))
-          self.append (bp)
-        }
-      }
-    }
-  }
-
-  //································································································
-
-  mutating func append (productCirclesOnTrackLayer inCircles : [CircularProductCircularPad]?,
-                        transformedBy inAffineTransform : AffineTransform) {
-    if let circles = inCircles {
-      for circle in circles {
-        if circle.removeFromSolderMask {
-          var bp = EBBezierPath ()
-          bp.lineWidth = circle.productCircle.diameter
-          bp.lineCapStyle = .round
-          bp.lineJoinStyle = .round
-          bp.move (to: inAffineTransform.transform (circle.productCircle.center))
-          bp.line (to: inAffineTransform.transform (circle.productCircle.center))
-          self.append (bp)
-        }
       }
     }
   }

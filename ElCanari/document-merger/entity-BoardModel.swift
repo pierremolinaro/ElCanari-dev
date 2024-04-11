@@ -3049,14 +3049,17 @@ final class BoardModel : EBManagedObject,
         let s2 = unwSelf.backTracksNoSilkScreen_property.selection
         let s3 = unwSelf.backTracksNoSilkScreen_property.selection
         let s4 = unwSelf.backTracksNoSilkScreen_property.selection
-        switch (s0, s1, s2, s3, s4) {
+        let s5 = unwSelf.backTracksNoSilkScreen_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
-              .single (let v4)) :
-          return .single (transient_BoardModel_backTrackSegmentsNoSilkScreen (v0, v1, v2, v3, v4))
+              .single (let v4),
+              .single (let v5)) :
+          return .single (transient_BoardModel_backTrackSegmentsNoSilkScreen (v0, v1, v2, v3, v4, v5))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -3074,6 +3077,7 @@ final class BoardModel : EBManagedObject,
     self.backTracksNoSilkScreen_property.toMany_x2_StartsBeingObserved (by: self.backTrackSegmentsNoSilkScreen_property)
     self.backTracksNoSilkScreen_property.toMany_y2_StartsBeingObserved (by: self.backTrackSegmentsNoSilkScreen_property)
     self.backTracksNoSilkScreen_property.toMany_width_StartsBeingObserved (by: self.backTrackSegmentsNoSilkScreen_property)
+    self.backTracksNoSilkScreen_property.toMany_endStyle_StartsBeingObserved (by: self.backTrackSegmentsNoSilkScreen_property)
   //--- Atomic property: backTracksNoSilkScreenBezierPaths
     self.backTracksNoSilkScreenBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3099,14 +3103,17 @@ final class BoardModel : EBManagedObject,
         let s2 = unwSelf.frontTracksNoSilkScreen_property.selection
         let s3 = unwSelf.frontTracksNoSilkScreen_property.selection
         let s4 = unwSelf.frontTracksNoSilkScreen_property.selection
-        switch (s0, s1, s2, s3, s4) {
+        let s5 = unwSelf.frontTracksNoSilkScreen_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
-              .single (let v4)) :
-          return .single (transient_BoardModel_frontTrackSegmentsNoSilkScreen (v0, v1, v2, v3, v4))
+              .single (let v4),
+              .single (let v5)) :
+          return .single (transient_BoardModel_frontTrackSegmentsNoSilkScreen (v0, v1, v2, v3, v4, v5))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -3124,6 +3131,7 @@ final class BoardModel : EBManagedObject,
     self.frontTracksNoSilkScreen_property.toMany_x2_StartsBeingObserved (by: self.frontTrackSegmentsNoSilkScreen_property)
     self.frontTracksNoSilkScreen_property.toMany_y2_StartsBeingObserved (by: self.frontTrackSegmentsNoSilkScreen_property)
     self.frontTracksNoSilkScreen_property.toMany_width_StartsBeingObserved (by: self.frontTrackSegmentsNoSilkScreen_property)
+    self.frontTracksNoSilkScreen_property.toMany_endStyle_StartsBeingObserved (by: self.frontTrackSegmentsNoSilkScreen_property)
   //--- Atomic property: frontTracksNoSilkScreenBezierPaths
     self.frontTracksNoSilkScreenBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3149,14 +3157,17 @@ final class BoardModel : EBManagedObject,
         let s2 = unwSelf.backTracks_property.selection
         let s3 = unwSelf.backTracks_property.selection
         let s4 = unwSelf.backTracks_property.selection
-        switch (s0, s1, s2, s3, s4) {
+        let s5 = unwSelf.backTracks_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
-              .single (let v4)) :
-          return .single (transient_BoardModel_backTrackSegments (v0, v1, v2, v3, v4))
+              .single (let v4),
+              .single (let v5)) :
+          return .single (transient_BoardModel_backTrackSegments (v0, v1, v2, v3, v4, v5))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -3174,6 +3185,7 @@ final class BoardModel : EBManagedObject,
     self.backTracks_property.toMany_x2_StartsBeingObserved (by: self.backTrackSegments_property)
     self.backTracks_property.toMany_y2_StartsBeingObserved (by: self.backTrackSegments_property)
     self.backTracks_property.toMany_width_StartsBeingObserved (by: self.backTrackSegments_property)
+    self.backTracks_property.toMany_endStyle_StartsBeingObserved (by: self.backTrackSegments_property)
   //--- Atomic property: backTracksBezierPaths
     self.backTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3199,14 +3211,17 @@ final class BoardModel : EBManagedObject,
         let s2 = unwSelf.frontTracks_property.selection
         let s3 = unwSelf.frontTracks_property.selection
         let s4 = unwSelf.frontTracks_property.selection
-        switch (s0, s1, s2, s3, s4) {
+        let s5 = unwSelf.frontTracks_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
-              .single (let v4)) :
-          return .single (transient_BoardModel_frontTrackSegments (v0, v1, v2, v3, v4))
+              .single (let v4),
+              .single (let v5)) :
+          return .single (transient_BoardModel_frontTrackSegments (v0, v1, v2, v3, v4, v5))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -3224,6 +3239,7 @@ final class BoardModel : EBManagedObject,
     self.frontTracks_property.toMany_x2_StartsBeingObserved (by: self.frontTrackSegments_property)
     self.frontTracks_property.toMany_y2_StartsBeingObserved (by: self.frontTrackSegments_property)
     self.frontTracks_property.toMany_width_StartsBeingObserved (by: self.frontTrackSegments_property)
+    self.frontTracks_property.toMany_endStyle_StartsBeingObserved (by: self.frontTrackSegments_property)
   //--- Atomic property: frontTracksBezierPaths
     self.frontTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3249,14 +3265,17 @@ final class BoardModel : EBManagedObject,
         let s2 = unwSelf.inner1Tracks_property.selection
         let s3 = unwSelf.inner1Tracks_property.selection
         let s4 = unwSelf.inner1Tracks_property.selection
-        switch (s0, s1, s2, s3, s4) {
+        let s5 = unwSelf.inner1Tracks_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
-              .single (let v4)) :
-          return .single (transient_BoardModel_inner1TracksSegments (v0, v1, v2, v3, v4))
+              .single (let v4),
+              .single (let v5)) :
+          return .single (transient_BoardModel_inner1TracksSegments (v0, v1, v2, v3, v4, v5))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -3274,6 +3293,7 @@ final class BoardModel : EBManagedObject,
     self.inner1Tracks_property.toMany_x2_StartsBeingObserved (by: self.inner1TracksSegments_property)
     self.inner1Tracks_property.toMany_y2_StartsBeingObserved (by: self.inner1TracksSegments_property)
     self.inner1Tracks_property.toMany_width_StartsBeingObserved (by: self.inner1TracksSegments_property)
+    self.inner1Tracks_property.toMany_endStyle_StartsBeingObserved (by: self.inner1TracksSegments_property)
   //--- Atomic property: inner1TracksBezierPaths
     self.inner1TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3299,14 +3319,17 @@ final class BoardModel : EBManagedObject,
         let s2 = unwSelf.inner2Tracks_property.selection
         let s3 = unwSelf.inner2Tracks_property.selection
         let s4 = unwSelf.inner2Tracks_property.selection
-        switch (s0, s1, s2, s3, s4) {
+        let s5 = unwSelf.inner2Tracks_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
-              .single (let v4)) :
-          return .single (transient_BoardModel_inner2TracksSegments (v0, v1, v2, v3, v4))
+              .single (let v4),
+              .single (let v5)) :
+          return .single (transient_BoardModel_inner2TracksSegments (v0, v1, v2, v3, v4, v5))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -3324,6 +3347,7 @@ final class BoardModel : EBManagedObject,
     self.inner2Tracks_property.toMany_x2_StartsBeingObserved (by: self.inner2TracksSegments_property)
     self.inner2Tracks_property.toMany_y2_StartsBeingObserved (by: self.inner2TracksSegments_property)
     self.inner2Tracks_property.toMany_width_StartsBeingObserved (by: self.inner2TracksSegments_property)
+    self.inner2Tracks_property.toMany_endStyle_StartsBeingObserved (by: self.inner2TracksSegments_property)
   //--- Atomic property: inner2TracksBezierPaths
     self.inner2TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3349,14 +3373,17 @@ final class BoardModel : EBManagedObject,
         let s2 = unwSelf.inner3Tracks_property.selection
         let s3 = unwSelf.inner3Tracks_property.selection
         let s4 = unwSelf.inner3Tracks_property.selection
-        switch (s0, s1, s2, s3, s4) {
+        let s5 = unwSelf.inner3Tracks_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
-              .single (let v4)) :
-          return .single (transient_BoardModel_inner3TracksSegments (v0, v1, v2, v3, v4))
+              .single (let v4),
+              .single (let v5)) :
+          return .single (transient_BoardModel_inner3TracksSegments (v0, v1, v2, v3, v4, v5))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -3374,6 +3401,7 @@ final class BoardModel : EBManagedObject,
     self.inner3Tracks_property.toMany_x2_StartsBeingObserved (by: self.inner3TracksSegments_property)
     self.inner3Tracks_property.toMany_y2_StartsBeingObserved (by: self.inner3TracksSegments_property)
     self.inner3Tracks_property.toMany_width_StartsBeingObserved (by: self.inner3TracksSegments_property)
+    self.inner3Tracks_property.toMany_endStyle_StartsBeingObserved (by: self.inner3TracksSegments_property)
   //--- Atomic property: inner3TracksBezierPaths
     self.inner3TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3399,14 +3427,17 @@ final class BoardModel : EBManagedObject,
         let s2 = unwSelf.inner4Tracks_property.selection
         let s3 = unwSelf.inner4Tracks_property.selection
         let s4 = unwSelf.inner4Tracks_property.selection
-        switch (s0, s1, s2, s3, s4) {
+        let s5 = unwSelf.inner4Tracks_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
-              .single (let v4)) :
-          return .single (transient_BoardModel_inner4TracksSegments (v0, v1, v2, v3, v4))
+              .single (let v4),
+              .single (let v5)) :
+          return .single (transient_BoardModel_inner4TracksSegments (v0, v1, v2, v3, v4, v5))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -3424,6 +3455,7 @@ final class BoardModel : EBManagedObject,
     self.inner4Tracks_property.toMany_x2_StartsBeingObserved (by: self.inner4TracksSegments_property)
     self.inner4Tracks_property.toMany_y2_StartsBeingObserved (by: self.inner4TracksSegments_property)
     self.inner4Tracks_property.toMany_width_StartsBeingObserved (by: self.inner4TracksSegments_property)
+    self.inner4Tracks_property.toMany_endStyle_StartsBeingObserved (by: self.inner4TracksSegments_property)
   //--- Atomic property: inner4TracksBezierPaths
     self.inner4TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

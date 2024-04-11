@@ -10,6 +10,55 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
+struct ApertureKey : Hashable, Comparable {
+
+  public let value : CGFloat
+  public let shape : Shape
+
+  //································································································
+
+  static func < (lhs: ApertureKey, rhs: ApertureKey) -> Bool {
+    return (lhs.value < rhs.value)
+      || ((lhs.value == rhs.value) && (lhs.shape < rhs.shape))
+  }
+
+  //································································································
+
+  init (circular inValue : CGFloat) {
+    self.value = inValue
+    self.shape = .circular
+  }
+
+  //································································································
+
+  init (square inValue : CGFloat) {
+    self.value = inValue
+    self.shape = .square
+  }
+
+  //································································································
+
+  var gerberAperture : String {
+    let a = String (format: "%.4f", cocoaToInch (self.value))
+    switch self.shape {
+    case .circular : return "C,\(a)"
+    case .square : return "R,\(a)X\(a)"
+    }
+  }
+
+  //································································································
+
+  enum Shape : Comparable {
+  case circular
+  case square
+  }
+
+  //································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————
+
 extension AutoLayoutProjectDocument {
 
   //································································································
@@ -68,43 +117,43 @@ extension AutoLayoutProjectDocument {
     }
     var s = "%FSLAX24Y24*%\n" // A = Absolute coordinates, 24 = all data are in 2.4 form
     s += "%MOIN*%\n" // length unit is inch
-    var apertureDictionary = [CGFloat : [String]] ()
+    var apertureDictionary = [ApertureKey : [String]] ()
     var polygons = [ProductPolygon] ()
     if inDescriptor.drawBoardLimits {
-      apertureDictionary.append ([inProductData.boardLimitWidth : [inProductData.boardLimitPath]], af)
+      apertureDictionary.appendCircular ([inProductData.boardLimitWidth : [inProductData.boardLimitPath]], af)
     }
     if inDescriptor.drawPackageLegendTopSide {
-      apertureDictionary.append (inProductData.frontPackageLegend, af)
+      apertureDictionary.appendCircular (inProductData.frontPackageLegend, af)
     }
     if inDescriptor.drawPackageLegendBottomSide {
-      apertureDictionary.append (inProductData.backPackageLegend, af)
+      apertureDictionary.appendCircular (inProductData.backPackageLegend, af)
     }
     if inDescriptor.drawComponentNamesTopSide {
-      apertureDictionary.append (inProductData.frontComponentNames, af)
+      apertureDictionary.appendCircular (inProductData.frontComponentNames, af)
     }
     if inDescriptor.drawComponentNamesBottomSide {
-      apertureDictionary.append (inProductData.backComponentNames, af)
+      apertureDictionary.appendCircular (inProductData.backComponentNames, af)
     }
     if inDescriptor.drawComponentValuesTopSide {
-      apertureDictionary.append (inProductData.frontComponentValues, af)
+      apertureDictionary.appendCircular (inProductData.frontComponentValues, af)
     }
     if inDescriptor.drawComponentValuesBottomSide {
-      apertureDictionary.append (inProductData.backComponentValues, af)
+      apertureDictionary.appendCircular (inProductData.backComponentValues, af)
     }
     if inDescriptor.drawTextsLegendTopSide {
-      apertureDictionary.append (inProductData.legendFrontTexts, af)
+      apertureDictionary.appendCircular (inProductData.legendFrontTexts, af)
       apertureDictionary.append (oblongs: inProductData.frontLines, af)
       polygons += inProductData.legendFrontQRCodes.polygons.transformed (by: af)
       polygons += inProductData.legendFrontImages.polygons.transformed (by: af)
     }
     if inDescriptor.drawTextsLayoutTopSide {
-      apertureDictionary.append (inProductData.layoutFrontTexts, af)
+      apertureDictionary.appendCircular (inProductData.layoutFrontTexts, af)
     }
     if inDescriptor.drawTextsLayoutBottomSide {
-      apertureDictionary.append (inProductData.layoutBackTexts, af)
+      apertureDictionary.appendCircular (inProductData.layoutBackTexts, af)
     }
     if inDescriptor.drawTextsLegendBottomSide {
-      apertureDictionary.append (inProductData.legendBackTexts, af)
+      apertureDictionary.appendCircular (inProductData.legendBackTexts, af)
       apertureDictionary.append (oblongs: inProductData.backLines, af)
       polygons += inProductData.legendBackQRCodes.polygons.transformed (by: af)
       polygons += inProductData.legendBackImages.polygons.transformed (by: af)
@@ -113,27 +162,25 @@ extension AutoLayoutProjectDocument {
       apertureDictionary.append (productCircles: inProductData.viaPads, af)
     }
     if inDescriptor.drawTracksTopSide {
-      apertureDictionary.append (tracks: inProductData.tracks [.front], af)
-      apertureDictionary.append (productCirclesOnTrackLayer: inProductData.circularPads [.frontLayer], af)
+      apertureDictionary.append (oblongs: inProductData.tracks [.front], af)
     }
     if inDescriptor.drawTracksInner1Layer && (inLayerConfiguration != .twoLayers) {
-      apertureDictionary.append (tracks: inProductData.tracks [.inner1], af)
+      apertureDictionary.append (oblongs: inProductData.tracks [.inner1], af)
     }
     if inDescriptor.drawTracksInner2Layer && (inLayerConfiguration != .twoLayers) {
-      apertureDictionary.append (tracks: inProductData.tracks [.inner2], af)
+      apertureDictionary.append (oblongs: inProductData.tracks [.inner2], af)
     }
     if inDescriptor.drawTracksInner3Layer && (inLayerConfiguration == .sixLayers) {
-      apertureDictionary.append (tracks: inProductData.tracks [.inner3], af)
+      apertureDictionary.append (oblongs: inProductData.tracks [.inner3], af)
     }
     if inDescriptor.drawTracksInner4Layer && (inLayerConfiguration == .sixLayers) {
-      apertureDictionary.append (tracks: inProductData.tracks [.inner4], af)
+      apertureDictionary.append (oblongs: inProductData.tracks [.inner4], af)
     }
     if inDescriptor.drawTracksBottomSide {
-      apertureDictionary.append (tracks: inProductData.tracks [.back], af)
+      apertureDictionary.append (oblongs: inProductData.tracks [.back], af)
     }
     if inDescriptor.drawPadsTopSide {
       apertureDictionary.append (oblongs: inProductData.frontTracksWithNoSilkScreen, af)
-      apertureDictionary.append (productCirclesOnSolderMask: inProductData.circularPads [.frontLayer], af)
       apertureDictionary.append (oblongs: inProductData.oblongPads [.frontLayer], af)
       if let pp = inProductData.polygonPads [.frontLayer] {
         polygons += pp.transformed (by: af)
@@ -141,7 +188,7 @@ extension AutoLayoutProjectDocument {
     }
     if inDescriptor.drawPadsBottomSide {
       apertureDictionary.append (oblongs: inProductData.backTracksWithNoSilkScreen, af)
-      apertureDictionary.append (productCirclesOnSolderMask: inProductData.circularPads [.backLayer], af)
+      apertureDictionary.append (productCircles: inProductData.circularPads [.backLayer], af)
       apertureDictionary.append (oblongs: inProductData.oblongPads [.backLayer], af)
       if let pp = inProductData.polygonPads [.backLayer] {
         polygons += pp.transformed (by: af)
@@ -158,7 +205,7 @@ extension AutoLayoutProjectDocument {
     let keys = apertureDictionary.keys.sorted ()
     var idx = 10
     for aperture in keys {
-      let apertureString = "C,\(String(format: "%.4f", cocoaToInch (aperture)))"
+      let apertureString = aperture.gerberAperture
       s += "%ADD\(idx)\(apertureString)*%\n"
       idx += 1
     }
@@ -226,76 +273,27 @@ extension EBLinePath {
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-extension Dictionary where Key == CGFloat, Value == [String] {
+extension Dictionary where Key == ApertureKey, Value == [String] {
 
   //································································································
 
-  mutating func append (_ inStringArray : [String], for inAperture : CGFloat) {
+  mutating func append (_ inStringArray : [String], for inAperture : ApertureKey) {
    self [inAperture] = self [inAperture, default: []] + inStringArray
   }
 
   //································································································
 
-  mutating func append (_ inApertureDict : [CGFloat : [EBLinePath]], _ inAffineTransform : AffineTransform) {
+  mutating func appendCircular (_ inApertureDict : [CGFloat : [EBLinePath]], _ inAffineTransform : AffineTransform) {
     for (aperture, pathArray) in inApertureDict {
       var drawings = [String] ()
       for path in pathArray {
         path.appendGerberCodeTo (&drawings, inAffineTransform)
       }
-      self.append (drawings, for: aperture)
+      self.append (drawings, for: ApertureKey (circular: aperture))
     }
   }
 
   //································································································
-
-  mutating func append (productCircles inCircles : [CircularProductCircularPad]?,
-                        _ inAffineTransform : AffineTransform) {
-    if let circles = inCircles {
-      for circle in circles {
-        let tc = inAffineTransform.transform (circle.productCircle.center)
-        let x = cocoaToMilTenth (tc.x)
-        let y = cocoaToMilTenth (tc.y)
-        let flash = ["X\(x)Y\(y)D03"]
-        self.append (flash, for: circle.productCircle.diameter)
-      }
-    }
-  }
-
-  //································································································
-
-  mutating func append (productCirclesOnTrackLayer inCircles : [CircularProductCircularPad]?,
-                        _ inAffineTransform : AffineTransform) {
-    if let circles = inCircles {
-      for circle in circles {
-        if circle.removeFromSolderMask {
-          let tc = inAffineTransform.transform (circle.productCircle.center)
-          let x = cocoaToMilTenth (tc.x)
-          let y = cocoaToMilTenth (tc.y)
-          let flash = ["X\(x)Y\(y)D03"]
-          self.append (flash, for: circle.productCircle.diameter)
-        }
-      }
-    }
-  }
-
-  //································································································
-
-  mutating func append (productCirclesOnSolderMask inCircles : [CircularProductCircularPad]?,
-                        _ inAffineTransform : AffineTransform) {
-    if let circles = inCircles {
-      for circle in circles {
-        if !circle.removeFromSolderMask {
-          let tc = inAffineTransform.transform (circle.productCircle.center)
-          let x = cocoaToMilTenth (tc.x)
-          let y = cocoaToMilTenth (tc.y)
-          let flash = ["X\(x)Y\(y)D03"]
-          self.append (flash, for: circle.productCircle.diameter)
-        }
-      }
-    }
-  }
-
- //································································································
 
   mutating func append (productCircles inCircles : [ProductCircle]?,
                         _ inAffineTransform : AffineTransform) {
@@ -305,14 +303,14 @@ extension Dictionary where Key == CGFloat, Value == [String] {
         let x = cocoaToMilTenth (tc.x)
         let y = cocoaToMilTenth (tc.y)
         let flash = ["X\(x)Y\(y)D03"]
-        self.append (flash, for: circle.diameter)
+        self.append (flash, for: ApertureKey (circular: circle.diameter))
       }
     }
   }
 
   //································································································
 
-  mutating func append (oblongs inLines : [ProductOblong]?, _ inAffineTransform : AffineTransform) {
+  mutating func append (oblongs inLines : [ProductLine]?, _ inAffineTransform : AffineTransform) {
     if let lines = inLines {
       for segment in lines {
         let p1 = inAffineTransform.transform (segment.p1)
@@ -322,27 +320,32 @@ extension Dictionary where Key == CGFloat, Value == [String] {
         let x2 = cocoaToMilTenth (p2.x)
         let y2 = cocoaToMilTenth (p2.y)
         let lines = ["X\(x1)Y\(y1)D02", "X\(x2)Y\(y2)D01"]
-        self.append (lines, for: segment.width)
+        switch segment.endStyle {
+        case .round :
+          self.append (lines, for: ApertureKey (circular: segment.width))
+        case .square :
+          self.append (lines, for: ApertureKey (square: segment.width))
+        }
       }
     }
   }
 
   //································································································
 
-  mutating func append (tracks inTracks : [ProductOblong]?, _ inAffineTransform : AffineTransform) {
-    if let tracks = inTracks {
-      for track in tracks {
-        let p1 = inAffineTransform.transform (track.p1)
-        let x1 = cocoaToMilTenth (p1.x)
-        let y1 = cocoaToMilTenth (p1.y)
-        let p2 = inAffineTransform.transform (track.p2)
-        let x2 = cocoaToMilTenth (p2.x)
-        let y2 = cocoaToMilTenth (p2.y)
-        let lines = ["X\(x1)Y\(y1)D02", "X\(x2)Y\(y2)D01"]
-        self.append (lines, for: track.width)
-      }
-    }
-  }
+//  mutating func append (tracks inTracks : [ProductLine]?, _ inAffineTransform : AffineTransform) {
+//    if let tracks = inTracks {
+//      for track in tracks {
+//        let p1 = inAffineTransform.transform (track.p1)
+//        let x1 = cocoaToMilTenth (p1.x)
+//        let y1 = cocoaToMilTenth (p1.y)
+//        let p2 = inAffineTransform.transform (track.p2)
+//        let x2 = cocoaToMilTenth (p2.x)
+//        let y2 = cocoaToMilTenth (p2.y)
+//        let lines = ["X\(x1)Y\(y1)D02", "X\(x2)Y\(y2)D01"]
+//        self.append (lines, for: track.width)
+//      }
+//    }
+//  }
 
   //································································································
 

@@ -49,6 +49,24 @@ final class ProjectRoot : EBManagedObject {
   }
 
   //································································································
+  //   Atomic property: mGenerateMergerArchive
+  //································································································
+
+  final let mGenerateMergerArchive_property : EBStoredProperty_Bool
+
+  //································································································
+  //   Atomic property: mGenerateBOM
+  //································································································
+
+  final let mGenerateBOM_property : EBStoredProperty_Bool
+
+  //································································································
+  //   Atomic property: mGenerateGerberAndPDF
+  //································································································
+
+  final let mGenerateGerberAndPDF_property : EBStoredProperty_Bool
+
+  //································································································
   //   Atomic property: mCheckClearanceBetweenPadsOfSameNet
   //································································································
 
@@ -2070,6 +2088,9 @@ final class ProjectRoot : EBManagedObject {
     self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mArtworkName")
     self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mArtworkVersion")
     self.mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, undoManager: inUndoManager, key: "mPDFBoardBackgroundColor")
+    self.mGenerateMergerArchive_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateMergerArchive")
+    self.mGenerateBOM_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateBOM")
+    self.mGenerateGerberAndPDF_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateGerberAndPDF")
     self.mCheckClearanceBetweenPadsOfSameNet_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mCheckClearanceBetweenPadsOfSameNet")
     self.mLastERCCheckingIsSuccess_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mLastERCCheckingIsSuccess")
     self.mLastERCCheckingSignature_property = EBStoredProperty_UInt32 (defaultValue: 1, undoManager: inUndoManager, key: "mLastERCCheckingSignature")

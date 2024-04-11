@@ -83,51 +83,62 @@ extension AutoLayoutProjectDocument {
 
   private func performProductFilesGeneration (atPath inDocumentFilePathWithoutExtension : String, _ inArtwork : ArtworkRoot) throws {
     let baseName = inDocumentFilePathWithoutExtension.lastPathComponent
-  //--- Build product data 
+    let generateGerberAndPDF = self.rootObject.mGenerateGerberAndPDF_property.propval
+  //--- Build product data
     let productData = self.buildProductData ()
   //--- Create gerber directory (first, delete existing dir)
     let gerberDirPath = inDocumentFilePathWithoutExtension + "-gerber"
     let generatedGerberFilePath = gerberDirPath + "/" + baseName + "."
-    try self.removeAndCreateDirectory (atPath: gerberDirPath)
+    try self.removeAndCreateDirectory (atPath: gerberDirPath, create: generateGerberAndPDF)
   //--- Write gerber files
-    try self.writeGerberDrillFile (atPath: generatedGerberFilePath + inArtwork.drillDataFileExtension, productData)
-    for productDescriptor in inArtwork.fileGenerationParameterArray.values {
-      try self.writeGerberProductFile (atPath: generatedGerberFilePath,
-                                       productDescriptor,
-                                       inArtwork.layerConfiguration,
-                                       productData)
+    if generateGerberAndPDF {
+      try self.writeGerberDrillFile (atPath: generatedGerberFilePath + inArtwork.drillDataFileExtension, productData)
+      for productDescriptor in inArtwork.fileGenerationParameterArray.values {
+        try self.writeGerberProductFile (atPath: generatedGerberFilePath,
+                                         productDescriptor,
+                                         inArtwork.layerConfiguration,
+                                         productData)
+      }
     }
   //--- Create PDF directory (first, delete existing dir)
     let pdfDirPath = inDocumentFilePathWithoutExtension + "-pdf"
     let generatedPDFFilePath = pdfDirPath + "/" + baseName + "."
-    try self.removeAndCreateDirectory (atPath: pdfDirPath)
+    try self.removeAndCreateDirectory (atPath: pdfDirPath, create: generateGerberAndPDF)
   //--- Write PDF files
-    try self.writePDFDrillFile (atPath: generatedPDFFilePath + inArtwork.drillDataFileExtension + ".pdf", productData)
-    for productDescriptor in inArtwork.fileGenerationParameterArray.values {
-      try self.writePDFProductFile (atPath: generatedPDFFilePath, productDescriptor, inArtwork.layerConfiguration, productData)
+    if generateGerberAndPDF {
+      try self.writePDFDrillFile (atPath: generatedPDFFilePath + inArtwork.drillDataFileExtension + ".pdf", productData)
+      for productDescriptor in inArtwork.fileGenerationParameterArray.values {
+        try self.writePDFProductFile (atPath: generatedPDFFilePath, productDescriptor, inArtwork.layerConfiguration, productData)
+      }
     }
   //--- Write board archive
-    let boardArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_MERGER_ARCHIVE
-    try self.writeBoardArchiveFile (atPath: boardArchiveFilePath, productData)
+    if self.rootObject.mGenerateMergerArchive_property.propval {
+      let boardArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_MERGER_ARCHIVE
+      try self.writeBoardArchiveFile (atPath: boardArchiveFilePath, productData)
+    }
   //--- Write CSV file
-    let csvArchiveFilePath = inDocumentFilePathWithoutExtension + ".csv"
-    try self.writeCSVFile (atPath: csvArchiveFilePath)
+    if self.rootObject.mGenerateBOM_property.propval {
+      let csvArchiveFilePath = inDocumentFilePathWithoutExtension + ".csv"
+      try self.writeCSVFile (atPath: csvArchiveFilePath)
+    }
   }
 
   //································································································
 
-  private func removeAndCreateDirectory (atPath inDirectoryPath : String) throws {
+  private func removeAndCreateDirectory (atPath inDirectoryPath : String,
+                                         create inCreate : Bool) throws {
     let fm = FileManager ()
-    self.mProductFileGenerationLogTextView?.appendMessageString ("Directory \(inDirectoryPath)\n")
     var isDir : ObjCBool = false
     if fm.fileExists (atPath: inDirectoryPath, isDirectory: &isDir) {
-      self.mProductFileGenerationLogTextView?.appendMessageString ("Remove recursively...")
+      self.mProductFileGenerationLogTextView?.appendMessageString ("Remove recursively \(inDirectoryPath)...")
       try fm.removeItem (atPath: inDirectoryPath) // Remove dir recursively
       self.mProductFileGenerationLogTextView?.appendSuccessString (" ok.\n")
     }
-    self.mProductFileGenerationLogTextView?.appendMessageString ("Creation...")
-    try fm.createDirectory (atPath: inDirectoryPath, withIntermediateDirectories: true, attributes: nil)
-    self.mProductFileGenerationLogTextView?.appendSuccessString (" ok.\n")
+    if inCreate {
+      self.mProductFileGenerationLogTextView?.appendMessageString ("Create \(inDirectoryPath)...")
+      try fm.createDirectory (atPath: inDirectoryPath, withIntermediateDirectories: true, attributes: nil)
+      self.mProductFileGenerationLogTextView?.appendSuccessString (" ok.\n")
+    }
   }
 
   //································································································

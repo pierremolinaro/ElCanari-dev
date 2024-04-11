@@ -171,7 +171,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
       $value #symbolInstanceSelection.mInstanceName  (sendContinously : yes)
     }
     StaticLabel (title: "Symbol Errors", bold: yes, size : .small, alignment: .left)
-    TextObserverView { expandableWidth () setRedTextColor () $observedValue root.inconsistentSymbolNameSetMessage }
+    TextObserverView (size: .small) { expandableWidth () setRedTextColor () $observedValue root.inconsistentSymbolNameSetMessage }
     space
   }    
 
@@ -571,7 +571,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
     vStack equalHeight () {
       hStack {
         vStack set (width: 84) { StaticLabel (title: "Status", bold: no, size : .small, alignment: .center) space }
-        TextObserverView { $observedValue self.statusMessage }
+        TextObserverView (size: .small) { $observedValue self.statusMessage }
       }
       hStack {
         vStack set (width: 84) { StaticLabel (title: "Comments", bold: no, size : .small, alignment: .center) space }

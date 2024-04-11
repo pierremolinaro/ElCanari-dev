@@ -15,11 +15,20 @@ final class AutoLayoutTextObserverView : NSScrollView {
   //································································································
 
   fileprivate let mTextView = AutoLayoutBase_NSTextView ()
+  private let mFontSize : CGFloat
 
   //································································································
 
-  init () {
-    super.init (frame: .zero) // NSRect (x: 0, y: 0, width: 100, height: 100))
+  init (size inSize : EBControlSize) {
+    switch inSize {
+    case .mini :
+      self.mFontSize = NSFont.smallSystemFontSize * 0.8
+   case .regular :
+      self.mFontSize = NSFont.smallSystemFontSize
+    case .small :
+      self.mFontSize = NSFont.systemFontSize
+   }
+    super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
@@ -190,7 +199,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
 
   func appendMessageString (_ inString : String) {
     let attributes : [NSAttributedString.Key : NSObject] = [
-      NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize),
+      NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: self.mFontSize),
       NSAttributedString.Key.foregroundColor : NSColor.black
     ]
     let str = NSAttributedString (string:inString, attributes:attributes)
@@ -201,7 +210,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
 
   func appendMessageString (_ inString : String, color : NSColor) {
     let attributes : [NSAttributedString.Key : NSObject] = [
-      NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize),
+      NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: self.mFontSize),
       NSAttributedString.Key.foregroundColor : color
     ]
     let str = NSAttributedString (string:inString, attributes: attributes)
@@ -211,7 +220,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
   //································································································
 
   func appendCodeString (_ inString : String, color : NSColor) {
-    let font = NSFont.userFixedPitchFont (ofSize: NSFont.smallSystemFontSize) ?? NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+    let font = NSFont.userFixedPitchFont (ofSize: self.mFontSize) ?? NSFont.boldSystemFont (ofSize: self.mFontSize)
     let attributes : [NSAttributedString.Key : NSObject] = [
       NSAttributedString.Key.font : font,
       NSAttributedString.Key.foregroundColor : color

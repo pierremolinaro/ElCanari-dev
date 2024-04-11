@@ -18,7 +18,8 @@ import AppKit
        _ self_frontTracks_y1 : [SegmentEntity_y1],       
        _ self_frontTracks_x2 : [SegmentEntity_x2],       
        _ self_frontTracks_y2 : [SegmentEntity_y2],       
-       _ self_frontTracks_width : [SegmentEntity_width]
+       _ self_frontTracks_width : [SegmentEntity_width], 
+       _ self_frontTracks_endStyle : [SegmentEntity_endStyle]
 ) -> MergerSegmentArray {
 //--- START OF USER ZONE 2
   var segmentArray = [CanariSegment] ()
@@ -29,7 +30,8 @@ import AppKit
     let x2 = self_frontTracks_x2 [idx].x2
     let y2 = self_frontTracks_y2 [idx].y2
     let width = self_frontTracks_width [idx].width
-    segmentArray.append (CanariSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:width))
+    let endStyle = self_frontTracks_endStyle [idx].endStyle
+    segmentArray.append (CanariSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:width, endStyle: endStyle))
     idx += 1
   }
   return MergerSegmentArray (segmentArray)

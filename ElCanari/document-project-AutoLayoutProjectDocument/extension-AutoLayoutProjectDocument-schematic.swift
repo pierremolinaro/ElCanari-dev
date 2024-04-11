@@ -39,7 +39,7 @@ extension AutoLayoutProjectDocument {
         .setTextColor (.red)
         .expandableWidth ()
       _ = rightColumn.appendView (title)
-      let text = AutoLayoutTextObserverView ().expandableWidth ()
+      let text = AutoLayoutTextObserverView (size: .small).expandableWidth ()
       _ = rightColumn.appendView (text)
       let okButton = AutoLayoutSheetDefaultOkButton (
         title: "Perform Undo to restore consistent state",

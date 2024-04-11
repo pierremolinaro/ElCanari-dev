@@ -59,12 +59,6 @@ import AppKit
   final let mDisplayLegend_property = EBComputedProperty_Bool ()
 
   //································································································
-  //   Selection observable property: mRemovePadsFromSolderMasks
-  //································································································
-
-  final let mRemovePadsFromSolderMasks_property = EBComputedProperty_Bool ()
-
-  //································································································
   //   Selection observable property: mNameIsVisibleInBoard
   //································································································
 
@@ -332,7 +326,6 @@ import AppKit
     self.bind_property_mRotation ()
     self.bind_property_mSide ()
     self.bind_property_mDisplayLegend ()
-    self.bind_property_mRemovePadsFromSolderMasks ()
     self.bind_property_mNameIsVisibleInBoard ()
     self.bind_property_mXName ()
     self.bind_property_mYName ()
@@ -405,10 +398,6 @@ import AppKit
     self.mDisplayLegend_property.mReadModelFunction = nil 
     self.mDisplayLegend_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_mDisplayLegend_StopsBeingObserved (by: self.mDisplayLegend_property)
-  //--- mRemovePadsFromSolderMasks
-    self.mRemovePadsFromSolderMasks_property.mReadModelFunction = nil 
-    self.mRemovePadsFromSolderMasks_property.mWriteModelFunction = nil 
-    self.selectedArray_property.toMany_mRemovePadsFromSolderMasks_StopsBeingObserved (by: self.mRemovePadsFromSolderMasks_property)
   //--- mNameIsVisibleInBoard
     self.mNameIsVisibleInBoard_property.mReadModelFunction = nil 
     self.mNameIsVisibleInBoard_property.mWriteModelFunction = nil 
@@ -851,57 +840,6 @@ import AppKit
         case .single (let v) :
           for object in v {
             object.mDisplayLegend_property.setProp (inValue)
-          }
-        }
-      }
-    }
-  }
-  //································································································
-
-  private final func bind_property_mRemovePadsFromSolderMasks () {
-    self.selectedArray_property.toMany_mRemovePadsFromSolderMasks_StartsBeingObserved (by: self.mRemovePadsFromSolderMasks_property)
-    self.mRemovePadsFromSolderMasks_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Bool> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.mRemovePadsFromSolderMasks_property.selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mRemovePadsFromSolderMasks_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.mRemovePadsFromSolderMasks_property.setProp (inValue)
           }
         }
       }

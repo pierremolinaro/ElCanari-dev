@@ -192,7 +192,7 @@ fileprivate func addLinePathes (_ ioBoardArchive : inout [String : Any],
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addOblongs (_ ioBoardArchive : inout [String : Any],
-                             _ inOblongArray : [ProductOblong],
+                             _ inOblongArray : [ProductLine],
                              _ inKey : String,
                              _ inAffineTransform : AffineTransform) {
    var stringArray = [String] ()
@@ -200,7 +200,7 @@ fileprivate func addOblongs (_ ioBoardArchive : inout [String : Any],
      let width = cocoaToCanariUnit (oblong.width)
      let p1 = inAffineTransform.transform (oblong.p1).canariPoint
      let p2 = inAffineTransform.transform (oblong.p2).canariPoint
-     stringArray.append ("\(p1.x) \(p1.y) \(p2.x) \(p2.y) \(width)")
+     stringArray.append ("\(p1.x) \(p1.y) \(p2.x) \(p2.y) \(width) \(oblong.endStyleIntValue)")
    }
    ioBoardArchive [inKey] = stringArray.sorted ()
 }
@@ -208,7 +208,7 @@ fileprivate func addOblongs (_ ioBoardArchive : inout [String : Any],
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addTracks (_ ioBoardArchive : inout [String : Any],
-                            _ inTrackArray : [ProductOblong],
+                            _ inTrackArray : [ProductLine],
                             _ inKey : String,
                             _ inAffineTransform : AffineTransform) {
    var stringArray = [String] ()
@@ -216,7 +216,7 @@ fileprivate func addTracks (_ ioBoardArchive : inout [String : Any],
      let width = cocoaToCanariUnit (track.width)
      let p1 = inAffineTransform.transform (track.p1).canariPoint
      let p2 = inAffineTransform.transform (track.p2).canariPoint
-     stringArray.append ("\(p1.x) \(p1.y) \(p2.x) \(p2.y) \(width)")
+     stringArray.append ("\(p1.x) \(p1.y) \(p2.x) \(p2.y) \(width) \(track.endStyleIntValue)")
    }
    ioBoardArchive [inKey] = stringArray.sorted ()
 }

@@ -22,6 +22,7 @@ struct CanariSegment : Hashable {
   let x2 : Int
   let y2 : Int
   let width : Int
+  let endStyle : TrackEndStyle
 
   //································································································
 

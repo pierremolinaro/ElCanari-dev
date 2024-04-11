@@ -29,6 +29,9 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
       if let relay = self.mObserversOf_width { // Stored property
         managedObject.width_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_endStyle { // Stored property
+        managedObject.endStyle_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_x1 { // Stored property
         managedObject.x1_property.stopsBeingObserved (by: relay)
       }
@@ -46,6 +49,9 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
       }
       if let relay = self.mObserversOf_width { // Stored property
         managedObject.width_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_endStyle { // Stored property
+        managedObject.endStyle_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_x1 { // Stored property
         managedObject.x1_property.startsBeingObserved (by: relay)
@@ -167,6 +173,35 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
 
   final func toMany_width_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_width?.stopsBeingObserved (by: inObserver)
+  }
+
+  //································································································
+  //   Observers of 'endStyle' stored property
+  //································································································
+
+  private final var mObserversOf_endStyle : EBObservedObserver? = nil
+
+  //································································································
+
+  final func toMany_endStyle_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_endStyle {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.endStyle_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_endStyle = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  //································································································
+
+  final func toMany_endStyle_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_endStyle?.stopsBeingObserved (by: inObserver)
   }
 
   //································································································
