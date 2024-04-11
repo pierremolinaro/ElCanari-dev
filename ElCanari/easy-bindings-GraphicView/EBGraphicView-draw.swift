@@ -57,10 +57,10 @@ extension EBGraphicView {
     let r = self.mWorkingArea?.rect ?? self.bounds
     let gridWidth = 1.0 / self.actualScale
     let gridDisplayStep = canariUnitToCocoa (self.mGridStepInCanariUnit) * CGFloat (self.mGridDisplayFactor)
-    let startX = (r.origin.x / gridDisplayStep).rounded (.up) * gridDisplayStep
-    let endX = (r.maxX / gridDisplayStep).rounded (.down) * gridDisplayStep
-    let startY = (r.origin.y / gridDisplayStep).rounded (.up) * gridDisplayStep
-    let endY = (r.maxY / gridDisplayStep).rounded (.down) * gridDisplayStep
+    let gridStartX = (r.origin.x / gridDisplayStep).rounded (.up) * gridDisplayStep
+//    let endX = (r.maxX / gridDisplayStep).rounded (.down) * gridDisplayStep
+    let gridStartY = (r.origin.y / gridDisplayStep).rounded (.up) * gridDisplayStep
+//    let endY = (r.maxY / gridDisplayStep).rounded (.down) * gridDisplayStep
     switch self.mGridStyle {
     case .noGrid :
       ()
@@ -68,10 +68,10 @@ extension EBGraphicView {
       let bp = NSBezierPath ()
       bp.lineWidth = gridWidth
       bp.lineCapStyle = .round
-      var x = startX
-      while x < endX {
-        var y = startY
-        while y < endY {
+      var x = gridStartX
+      while x <= r.maxX {
+        var y = gridStartY
+        while y <= r.maxY {
           bp.move (to: NSPoint (x: x - 0.5, y: y))
           bp.line (to: NSPoint (x: x + 0.5, y: y))
           bp.move (to: NSPoint (x: x,       y: y + 0.5))
@@ -87,15 +87,15 @@ extension EBGraphicView {
       bp.lineWidth = gridWidth
       bp.lineCapStyle = .round
     //--- Vertical lines
-      var x = startX
-      while x < r.maxX {
+      var x = gridStartX
+      while x <= r.maxX {
         bp.move (to: NSPoint (x: x, y: NSMinY (r)))
         bp.line (to: NSPoint (x: x, y: NSMaxY (r)))
         x += gridDisplayStep
       }
     //--- Horizontal lines
-      var y = startY
-      while y < endY {
+      var y = gridStartY
+      while y < r.maxY {
         bp.move (to: NSPoint (x: NSMinX (r), y: y))
         bp.line (to: NSPoint (x: NSMaxX (r), y: y))
         y += gridDisplayStep
