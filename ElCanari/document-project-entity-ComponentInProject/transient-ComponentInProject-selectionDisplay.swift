@@ -15,6 +15,8 @@ import AppKit
 
 @MainActor func transient_ComponentInProject_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,                 
+       _ prefs_frontSideLayoutColorForBoard : NSColor,         
+       _ prefs_backSideLayoutColorForBoard : NSColor,          
        _ prefs_frontSideLegendColorForBoard : NSColor,         
        _ prefs_backSideLegendColorForBoard : NSColor,          
        _ self_BoardObject_displayFrontLegendForBoard : Bool,   
@@ -24,6 +26,7 @@ import AppKit
        _ self_mRotation : Int,                                 
        _ self_mSide : ComponentSide,                           
        _ self_strokeBezierPath : EBBezierPath,                 
+       _ self_mRemovePadsFromSolderMasks : Bool,               
        _ self_mDisplayLegend : Bool,                           
        _ self_mNameIsVisibleInBoard : Bool,                    
        _ self_mXName : Int,                                    

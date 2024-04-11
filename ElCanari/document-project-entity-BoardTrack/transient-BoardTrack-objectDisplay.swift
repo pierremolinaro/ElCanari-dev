@@ -17,6 +17,7 @@ import AppKit
        _ self_mConnectorP1_location : CanariPoint?, 
        _ self_mConnectorP2_location : CanariPoint?, 
        _ self_mAddedToSolderMask : Bool,            
+       _ self_mEndStyle : TrackEndStyle,            
        _ prefs_frontSidePadColorForBoard : NSColor, 
        _ self_BoardObject_displayFrontPadsForBoard : Bool,
        _ prefs_backSidePadColorForBoard : NSColor,  
@@ -72,11 +73,15 @@ import AppKit
            color = prefs_inner4LayoutColorForBoard
          }
          if display {
-      //     let w = canariUnitToCocoa ((self_actualTrackWidth == 0) ? milsToCanariUnit (fromInt: 10) : self_actualTrackWidth)
            let w = canariUnitToCocoa (max (self_actualTrackWidth, milsToCanariUnit (fromInt: 10)))
            var bp = EBBezierPath ()
            bp.lineWidth = w
-           bp.lineCapStyle = .round
+           switch self_mEndStyle {
+           case .round :
+             bp.lineCapStyle = .round
+           case .square :
+             bp.lineCapStyle = .square
+           }
            bp.lineJoinStyle = .round
            bp.move (to: p1)
            bp.line (to: p2)

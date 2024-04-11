@@ -101,6 +101,12 @@ import AppKit
   final let mAddedToSolderMask_property = EBComputedProperty_Bool ()
 
   //································································································
+  //   Selection observable property: mEndStyle
+  //································································································
+
+  final let mEndStyle_property = EBComputedProperty_TrackEndStyle ()
+
+  //································································································
   //   Selection observable property: mDirectionLockOnKnobDragging
   //································································································
 
@@ -267,6 +273,7 @@ import AppKit
     self.bind_property_mManualLockP1 ()
     self.bind_property_mManualLockP2 ()
     self.bind_property_mAddedToSolderMask ()
+    self.bind_property_mEndStyle ()
     self.bind_property_mDirectionLockOnKnobDragging ()
     self.bind_property_actualTrackWidth ()
     self.bind_property_netName ()
@@ -350,6 +357,10 @@ import AppKit
     self.mAddedToSolderMask_property.mReadModelFunction = nil 
     self.mAddedToSolderMask_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_mAddedToSolderMask_StopsBeingObserved (by: self.mAddedToSolderMask_property)
+  //--- mEndStyle
+    self.mEndStyle_property.mReadModelFunction = nil 
+    self.mEndStyle_property.mWriteModelFunction = nil 
+    self.selectedArray_property.toMany_mEndStyle_StopsBeingObserved (by: self.mEndStyle_property)
   //--- mDirectionLockOnKnobDragging
     self.mDirectionLockOnKnobDragging_property.mReadModelFunction = nil 
     self.mDirectionLockOnKnobDragging_property.mWriteModelFunction = nil 
@@ -1085,6 +1096,57 @@ import AppKit
         case .single (let v) :
           for object in v {
             object.mAddedToSolderMask_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+  //································································································
+
+  private final func bind_property_mEndStyle () {
+    self.selectedArray_property.toMany_mEndStyle_StartsBeingObserved (by: self.mEndStyle_property)
+    self.mEndStyle_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <TrackEndStyle> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mEndStyle_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mEndStyle_property.mWriteModelFunction = { [weak self] (inValue : TrackEndStyle) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mEndStyle_property.setProp (inValue)
           }
         }
       }

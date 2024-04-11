@@ -20,6 +20,7 @@ import AppKit
        _ self_mConnectorP2_location : CanariPoint?,    
        _ self_p2CanMove : Bool,                        
        _ self_mAddedToSolderMask : Bool,               
+       _ self_mEndStyle : TrackEndStyle,               
        _ prefs_frontSidePadColorForBoard : NSColor,    
        _ prefs_backSidePadColorForBoard : NSColor,     
        _ prefs_frontSideLayoutColorForBoard : NSColor, 
@@ -60,7 +61,12 @@ import AppKit
         }
         var bp = EBBezierPath ()
         bp.lineWidth = canariUnitToCocoa (self_actualTrackWidth) + 1.0
-        bp.lineCapStyle = .round
+        switch self_mEndStyle {
+        case .round :
+          bp.lineCapStyle = .round
+        case .square :
+          bp.lineCapStyle = .square
+        }
         bp.lineJoinStyle = .round
         bp.move (to: p1)
         bp.line (to: p2)

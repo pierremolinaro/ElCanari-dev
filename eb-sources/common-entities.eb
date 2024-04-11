@@ -36,6 +36,17 @@ enum TrackCreationDirection {
 
 //——————————————————————————————————————————————————————————————————————————————
 
+enum TrackEndStyle {
+  round, square
+}
+
+func enum TrackEndStyle.popupTitles {
+  round : "Round" ;
+  square : "Square" ;
+}
+
+//——————————————————————————————————————————————————————————————————————————————
+
 enum MetadataStatus {
   unknown, ok, warning, error
 }

@@ -22,6 +22,7 @@ class ReadOnlyObject_ComponentInProject : EBReadOnlyAbstractObjectProperty <Comp
       oldValue.mRotation_property.stopsBeingObserved (by: self.mRotation_property) // Stored property
       oldValue.mSide_property.stopsBeingObserved (by: self.mSide_property) // Stored property
       oldValue.mDisplayLegend_property.stopsBeingObserved (by: self.mDisplayLegend_property) // Stored property
+      oldValue.mRemovePadsFromSolderMasks_property.stopsBeingObserved (by: self.mRemovePadsFromSolderMasks_property) // Stored property
       oldValue.mNameIsVisibleInBoard_property.stopsBeingObserved (by: self.mNameIsVisibleInBoard_property) // Stored property
       oldValue.mXName_property.stopsBeingObserved (by: self.mXName_property) // Stored property
       oldValue.mYName_property.stopsBeingObserved (by: self.mYName_property) // Stored property
@@ -77,6 +78,7 @@ class ReadOnlyObject_ComponentInProject : EBReadOnlyAbstractObjectProperty <Comp
       newValue.mRotation_property.startsBeingObserved (by: self.mRotation_property) // Stored property
       newValue.mSide_property.startsBeingObserved (by: self.mSide_property) // Stored property
       newValue.mDisplayLegend_property.startsBeingObserved (by: self.mDisplayLegend_property) // Stored property
+      newValue.mRemovePadsFromSolderMasks_property.startsBeingObserved (by: self.mRemovePadsFromSolderMasks_property) // Stored property
       newValue.mNameIsVisibleInBoard_property.startsBeingObserved (by: self.mNameIsVisibleInBoard_property) // Stored property
       newValue.mXName_property.startsBeingObserved (by: self.mXName_property) // Stored property
       newValue.mYName_property.startsBeingObserved (by: self.mYName_property) // Stored property
@@ -161,6 +163,12 @@ class ReadOnlyObject_ComponentInProject : EBReadOnlyAbstractObjectProperty <Comp
   //································································································
 
   final let mDisplayLegend_property = EBTransientProperty <Bool?> ()
+
+  //································································································
+  //   Observers of 'mRemovePadsFromSolderMasks' stored property
+  //································································································
+
+  final let mRemovePadsFromSolderMasks_property = EBTransientProperty <Bool?> ()
 
   //································································································
   //   Observers of 'mNameIsVisibleInBoard' stored property
@@ -483,6 +491,10 @@ class ReadOnlyObject_ComponentInProject : EBReadOnlyAbstractObjectProperty <Comp
   //--- Configure mDisplayLegend simple stored property
     self.mDisplayLegend_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mDisplayLegend_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mRemovePadsFromSolderMasks simple stored property
+    self.mRemovePadsFromSolderMasks_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mRemovePadsFromSolderMasks_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mNameIsVisibleInBoard simple stored property
     self.mNameIsVisibleInBoard_property.mReadModelFunction = { [weak self] in

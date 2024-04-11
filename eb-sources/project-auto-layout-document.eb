@@ -1801,6 +1801,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $value #boardTrackSelectionController.mAddedToSolderMask
         }
       )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "End Style", bold: no, size: .small, alignment: .left),
+        right: EnumPopUpButton (titles: enum TrackEndStyle.popupTitles, size: .small) {
+          $selectedIndex #boardTrackSelectionController.mEndStyle
+        }
+      )
       add (
         single: Checkbox (title: "Is Preserved by Auto Router", size : .small) { $value #boardTrackSelectionController.mIsPreservedByAutoRouter }
       )
@@ -2479,6 +2485,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Side", bold: yes, size: .small, alignment: .left),
           right: EnumPopUpButton (titles: enum ComponentSide.popupTitles, size: .small) { $selectedIndex #componentInBoardSelectionController.mSide }
+        )
+        addSeparator ()
+        add (single: Checkbox (title: "Remove Pads From Solder Masks", size: .small) {
+            expandableWidth ()
+            $value #componentInBoardSelectionController.mRemovePadsFromSolderMasks
+          }
         )
       }
     )

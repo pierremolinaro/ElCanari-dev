@@ -471,47 +471,50 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  fileprivate func buildCircularPads () -> [PadLayer : [ProductCircle]] {
-    var circularPads = [PadLayer : [ProductCircle]] ()
+  fileprivate func buildCircularPads () -> [PadLayer : [CircularProductCircularPad]] {
+    var circularPads = [PadLayer : [CircularProductCircularPad]] ()
     for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject {
+        let removeFromSolderMak = component.mRemovePadsFromSolderMasks
         let af = component.packageToComponentAffineTransform ()
         for (_, masterPad) in component.packagePadDictionary! {
           if let circle = productCircle (masterPad.center, masterPad.padSize, masterPad.shape, af) {
+            let productCircle = CircularProductCircularPad (productCircle: circle, removeFromSolderMask: removeFromSolderMak)
             switch masterPad.style {
             case .traversing :
-              circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [circle]
-              circularPads [.innerLayer] = circularPads [.innerLayer, default: []] + [circle]
-              circularPads [.backLayer] = circularPads [.backLayer, default: []] + [circle]
+              circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [productCircle]
+              circularPads [.innerLayer] = circularPads [.innerLayer, default: []] + [productCircle]
+              circularPads [.backLayer] = circularPads [.backLayer, default: []] + [productCircle]
             case .surface :
               switch component.mSide {
               case .back :
-                circularPads [.backLayer] = circularPads [.backLayer, default: []] + [circle]
+                circularPads [.backLayer] = circularPads [.backLayer, default: []] + [productCircle]
               case .front :
-                circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [circle]
+                circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [productCircle]
               }
             }
           }
           for slavePad in masterPad.slavePads {
             if let circle = productCircle (slavePad.center, slavePad.padSize, slavePad.shape, af) {
+              let productCircle = CircularProductCircularPad (productCircle: circle, removeFromSolderMask: removeFromSolderMak)
               switch slavePad.style {
               case .traversing :
-                circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [circle]
-                circularPads [.innerLayer] = circularPads [.innerLayer, default: []] + [circle]
-                circularPads [.backLayer] = circularPads [.backLayer, default: []] + [circle]
+                circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [productCircle]
+                circularPads [.innerLayer] = circularPads [.innerLayer, default: []] + [productCircle]
+                circularPads [.backLayer] = circularPads [.backLayer, default: []] + [productCircle]
               case .oppositeSide :
                 switch component.mSide {
                 case .front :
-                  circularPads [.backLayer] = circularPads [.backLayer, default: []] + [circle]
+                  circularPads [.backLayer] = circularPads [.backLayer, default: []] + [productCircle]
                 case .back :
-                  circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [circle]
+                  circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [productCircle]
                 }
               case .componentSide :
                 switch component.mSide {
                 case .back :
-                  circularPads [.backLayer] = circularPads [.backLayer, default: []] + [circle]
+                  circularPads [.backLayer] = circularPads [.backLayer, default: []] + [productCircle]
                 case .front :
-                  circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [circle]
+                  circularPads [.frontLayer] = circularPads [.frontLayer, default: []] + [productCircle]
                 }
               }
             }
@@ -1041,10 +1044,16 @@ struct ProductData { // All in Cocoa Unit
   let backTracksWithNoSilkScreen : [ProductOblong]
   let frontLines : [ProductOblong]
   let backLines : [ProductOblong]
-  let circularPads : [PadLayer : [ProductCircle]]
+  let circularPads : [PadLayer : [CircularProductCircularPad]]
   let oblongPads : [PadLayer : [ProductOblong]]
   let polygonPads : [PadLayer : [ProductPolygon]]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
+struct CircularProductCircularPad {
+  public let productCircle : ProductCircle
+  public let removeFromSolderMask : Bool
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————

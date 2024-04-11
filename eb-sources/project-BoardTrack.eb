@@ -50,6 +50,7 @@ graphic handlingOpposite entity BoardTrack : BoardObject {
   property Bool mManualLockP1 default no ;
   property Bool mManualLockP2 default no ;
   property Bool mAddedToSolderMask default no ;
+  property TrackEndStyle mEndStyle default round ;
   
   property TrackLockDirection mDirectionLockOnKnobDragging default unlocked ;
 
@@ -57,6 +58,7 @@ graphic handlingOpposite entity BoardTrack : BoardObject {
     self.mConnectorP1.one.location,
     self.mConnectorP2.one.location,
     self.mAddedToSolderMask,
+    self.mEndStyle,
     prefs.frontSidePadColorForBoard, super.BoardObject.displayFrontPadsForBoard default yes,
     prefs.backSidePadColorForBoard, super.BoardObject.displayBackPadsForBoard default yes,
     super.BoardObject.displayFrontLayoutForBoard default yes,
@@ -79,6 +81,7 @@ graphic handlingOpposite entity BoardTrack : BoardObject {
     self.mConnectorP1.one.location, self.p1CanMove,
     self.mConnectorP2.one.location, self.p2CanMove,
     self.mAddedToSolderMask,
+    self.mEndStyle,
     prefs.frontSidePadColorForBoard,
     prefs.backSidePadColorForBoard,
     prefs.frontSideLayoutColorForBoard,

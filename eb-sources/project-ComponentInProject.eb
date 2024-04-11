@@ -62,6 +62,9 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
     self.packagePadDictionary, self.padNetDictionary,
     self.strokeBezierPath,
     self.mDisplayLegend,
+    self.mRemovePadsFromSolderMasks,
+    prefs.frontSideLayoutColorForBoard,
+    prefs.backSideLayoutColorForBoard,
     prefs.frontSideLegendColorForBoard,
     prefs.backSideLegendColorForBoard,
     super.BoardObject.packageDrawingWidthMultpliedByTenForBoard default 10,
@@ -88,11 +91,14 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
  
   override transient EBShape selectionDisplay dependsFrom
     prefs.selectionHiliteColor,
+    prefs.frontSideLayoutColorForBoard,
+    prefs.backSideLayoutColorForBoard,
     prefs.frontSideLegendColorForBoard,
     prefs.backSideLegendColorForBoard,
     super.BoardObject.displayFrontLegendForBoard default yes,
     super.BoardObject.displayBackLegendForBoard default yes,
     self.mX, self.mY, self.mRotation, self.mSide, self.strokeBezierPath,
+    self.mRemovePadsFromSolderMasks,
     self.mDisplayLegend,
     self.mNameIsVisibleInBoard, self.mXName, self.mYName, self.mNameFont.one.descriptor, self.mNameFontSize,
     self.mNameRotation, self.componentName,
@@ -158,6 +164,8 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
   property @generateDirectAccess Int mValueRotation default 0 ; // 1000 -> 1°
 
   transient String componentValueFontName dependsFrom self.mValueFont.one.mFontName ;
+
+  property @generateDirectAccess Bool mRemovePadsFromSolderMasks default no ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

@@ -56,6 +56,9 @@ class ReadOnlyArrayOf_BoardTrack : EBReadOnlyAbstractArrayProperty <BoardTrack> 
       if let relay = self.mObserversOf_mAddedToSolderMask { // Stored property
         managedObject.mAddedToSolderMask_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mEndStyle { // Stored property
+        managedObject.mEndStyle_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_mDirectionLockOnKnobDragging { // Stored property
         managedObject.mDirectionLockOnKnobDragging_property.stopsBeingObserved (by: relay)
       }
@@ -166,6 +169,9 @@ class ReadOnlyArrayOf_BoardTrack : EBReadOnlyAbstractArrayProperty <BoardTrack> 
       }
       if let relay = self.mObserversOf_mAddedToSolderMask { // Stored property
         managedObject.mAddedToSolderMask_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mEndStyle { // Stored property
+        managedObject.mEndStyle_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mDirectionLockOnKnobDragging { // Stored property
         managedObject.mDirectionLockOnKnobDragging_property.startsBeingObserved (by: relay)
@@ -614,6 +620,35 @@ class ReadOnlyArrayOf_BoardTrack : EBReadOnlyAbstractArrayProperty <BoardTrack> 
 
   final func toMany_mAddedToSolderMask_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mAddedToSolderMask?.stopsBeingObserved (by: inObserver)
+  }
+
+  //································································································
+  //   Observers of 'mEndStyle' stored property
+  //································································································
+
+  private final var mObserversOf_mEndStyle : EBObservedObserver? = nil
+
+  //································································································
+
+  final func toMany_mEndStyle_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mEndStyle {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mEndStyle_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_mEndStyle = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  //································································································
+
+  final func toMany_mEndStyle_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_mEndStyle?.stopsBeingObserved (by: inObserver)
   }
 
   //································································································

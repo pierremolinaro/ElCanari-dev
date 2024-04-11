@@ -110,10 +110,11 @@ extension AutoLayoutProjectDocument {
       polygons += inProductData.legendBackImages.polygons.transformed (by: af)
     }
     if inDescriptor.drawVias {
-      apertureDictionary.append (circles: inProductData.viaPads, af)
+      apertureDictionary.append (productCircles: inProductData.viaPads, af)
     }
     if inDescriptor.drawTracksTopSide {
       apertureDictionary.append (tracks: inProductData.tracks [.front], af)
+      apertureDictionary.append (productCirclesOnTrackLayer: inProductData.circularPads [.frontLayer], af)
     }
     if inDescriptor.drawTracksInner1Layer && (inLayerConfiguration != .twoLayers) {
       apertureDictionary.append (tracks: inProductData.tracks [.inner1], af)
@@ -132,7 +133,7 @@ extension AutoLayoutProjectDocument {
     }
     if inDescriptor.drawPadsTopSide {
       apertureDictionary.append (oblongs: inProductData.frontTracksWithNoSilkScreen, af)
-      apertureDictionary.append (circles: inProductData.circularPads [.frontLayer], af)
+      apertureDictionary.append (productCirclesOnSolderMask: inProductData.circularPads [.frontLayer], af)
       apertureDictionary.append (oblongs: inProductData.oblongPads [.frontLayer], af)
       if let pp = inProductData.polygonPads [.frontLayer] {
         polygons += pp.transformed (by: af)
@@ -140,14 +141,14 @@ extension AutoLayoutProjectDocument {
     }
     if inDescriptor.drawPadsBottomSide {
       apertureDictionary.append (oblongs: inProductData.backTracksWithNoSilkScreen, af)
-      apertureDictionary.append (circles: inProductData.circularPads [.backLayer], af)
+      apertureDictionary.append (productCirclesOnSolderMask: inProductData.circularPads [.backLayer], af)
       apertureDictionary.append (oblongs: inProductData.oblongPads [.backLayer], af)
       if let pp = inProductData.polygonPads [.backLayer] {
         polygons += pp.transformed (by: af)
       }
     }
     if inDescriptor.drawTraversingPads {
-      apertureDictionary.append (circles: inProductData.circularPads [.innerLayer], af)
+      apertureDictionary.append (productCircles: inProductData.circularPads [.innerLayer], af)
       apertureDictionary.append (oblongs: inProductData.oblongPads [.innerLayer], af)
       if let pp = inProductData.polygonPads [.innerLayer] {
         polygons += pp.transformed (by: af)
@@ -247,7 +248,57 @@ extension Dictionary where Key == CGFloat, Value == [String] {
 
   //································································································
 
-  mutating func append (circles inCircles : [ProductCircle]?, _ inAffineTransform : AffineTransform) {
+  mutating func append (productCircles inCircles : [CircularProductCircularPad]?,
+                        _ inAffineTransform : AffineTransform) {
+    if let circles = inCircles {
+      for circle in circles {
+        let tc = inAffineTransform.transform (circle.productCircle.center)
+        let x = cocoaToMilTenth (tc.x)
+        let y = cocoaToMilTenth (tc.y)
+        let flash = ["X\(x)Y\(y)D03"]
+        self.append (flash, for: circle.productCircle.diameter)
+      }
+    }
+  }
+
+  //································································································
+
+  mutating func append (productCirclesOnTrackLayer inCircles : [CircularProductCircularPad]?,
+                        _ inAffineTransform : AffineTransform) {
+    if let circles = inCircles {
+      for circle in circles {
+        if circle.removeFromSolderMask {
+          let tc = inAffineTransform.transform (circle.productCircle.center)
+          let x = cocoaToMilTenth (tc.x)
+          let y = cocoaToMilTenth (tc.y)
+          let flash = ["X\(x)Y\(y)D03"]
+          self.append (flash, for: circle.productCircle.diameter)
+        }
+      }
+    }
+  }
+
+  //································································································
+
+  mutating func append (productCirclesOnSolderMask inCircles : [CircularProductCircularPad]?,
+                        _ inAffineTransform : AffineTransform) {
+    if let circles = inCircles {
+      for circle in circles {
+        if !circle.removeFromSolderMask {
+          let tc = inAffineTransform.transform (circle.productCircle.center)
+          let x = cocoaToMilTenth (tc.x)
+          let y = cocoaToMilTenth (tc.y)
+          let flash = ["X\(x)Y\(y)D03"]
+          self.append (flash, for: circle.productCircle.diameter)
+        }
+      }
+    }
+  }
+
+ //································································································
+
+  mutating func append (productCircles inCircles : [ProductCircle]?,
+                        _ inAffineTransform : AffineTransform) {
     if let circles = inCircles {
       for circle in circles {
         let tc = inAffineTransform.transform (circle.center)

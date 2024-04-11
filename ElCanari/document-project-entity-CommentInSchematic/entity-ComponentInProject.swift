@@ -42,6 +42,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol ComponentInProject_mRemovePadsFromSolderMasks : AnyObject {
+  var mRemovePadsFromSolderMasks : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol ComponentInProject_mNameIsVisibleInBoard : AnyObject {
   var mNameIsVisibleInBoard : Bool { get }
 }
@@ -291,6 +297,7 @@ final class ComponentInProject : BoardObject,
          ComponentInProject_mRotation,
          ComponentInProject_mSide,
          ComponentInProject_mDisplayLegend,
+         ComponentInProject_mRemovePadsFromSolderMasks,
          ComponentInProject_mNameIsVisibleInBoard,
          ComponentInProject_mXName,
          ComponentInProject_mYName,
@@ -434,6 +441,19 @@ final class ComponentInProject : BoardObject,
   final var mSymbols : EBReferenceArray <ComponentSymbolInProject> {
     get { return self.mSymbols_property.propval }
     set { self.mSymbols_property.setProp (newValue) }
+  }
+
+  //································································································
+  //   Atomic property: mRemovePadsFromSolderMasks
+  //································································································
+
+  final let mRemovePadsFromSolderMasks_property : EBStoredProperty_Bool
+
+  //································································································
+
+  final var mRemovePadsFromSolderMasks : Bool {
+    get { return self.mRemovePadsFromSolderMasks_property.propval }
+    set { self.mRemovePadsFromSolderMasks_property.setProp (newValue) }
   }
 
   //································································································
@@ -1024,6 +1044,7 @@ final class ComponentInProject : BoardObject,
     self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
     self.mSide_property = EBStoredProperty_ComponentSide (defaultValue: ComponentSide.front, undoManager: inUndoManager, key: "mSide")
     self.mDisplayLegend_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mDisplayLegend")
+    self.mRemovePadsFromSolderMasks_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mRemovePadsFromSolderMasks")
     self.mNameIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mNameIsVisibleInBoard")
     self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mXName")
     self.mYName_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "mYName")
@@ -1453,47 +1474,50 @@ final class ComponentInProject : BoardObject,
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = preferences_selectionHiliteColor_property.selection
-        let s1 = preferences_frontSideLegendColorForBoard_property.selection
-        let s2 = preferences_backSideLegendColorForBoard_property.selection
-        var s3 = unwSelf.displayFrontLegendForBoard_property.selection
-        switch s3 {
+        let s1 = preferences_frontSideLayoutColorForBoard_property.selection
+        let s2 = preferences_backSideLayoutColorForBoard_property.selection
+        let s3 = preferences_frontSideLegendColorForBoard_property.selection
+        let s4 = preferences_backSideLegendColorForBoard_property.selection
+        var s5 = unwSelf.displayFrontLegendForBoard_property.selection
+        switch s5 {
         case .single :
           ()
         case .empty, .multiple :
-          s3 = .single (true)
+          s5 = .single (true)
         }
-        var s4 = unwSelf.displayBackLegendForBoard_property.selection
-        switch s4 {
+        var s6 = unwSelf.displayBackLegendForBoard_property.selection
+        switch s6 {
         case .single :
           ()
         case .empty, .multiple :
-          s4 = .single (true)
+          s6 = .single (true)
         }
-        let s5 = unwSelf.mX_property.selection
-        let s6 = unwSelf.mY_property.selection
-        let s7 = unwSelf.mRotation_property.selection
-        let s8 = unwSelf.mSide_property.selection
-        let s9 = unwSelf.strokeBezierPath_property.selection
-        let s10 = unwSelf.mDisplayLegend_property.selection
-        let s11 = unwSelf.mNameIsVisibleInBoard_property.selection
-        let s12 = unwSelf.mXName_property.selection
-        let s13 = unwSelf.mYName_property.selection
-        let s14 = unwSelf.mNameFont_property.descriptor_property.selection
-        let s15 = unwSelf.mNameFontSize_property.selection
-        let s16 = unwSelf.mNameRotation_property.selection
-        let s17 = unwSelf.componentName_property.selection
-        let s18 = unwSelf.packagePadDictionary_property.selection
-        let s19 = unwSelf.padNetDictionary_property.selection
-        let s20 = unwSelf.mValueIsVisibleInBoard_property.selection
-        let s21 = unwSelf.mXValue_property.selection
-        let s22 = unwSelf.mYValue_property.selection
-        let s23 = unwSelf.mValueFont_property.descriptor_property.selection
-        let s24 = unwSelf.mValueFontSize_property.selection
-        let s25 = unwSelf.mValueRotation_property.selection
-        let s26 = unwSelf.mComponentValue_property.selection
-        let s27 = preferences_hiliteWidthMultipliedByTen_property.selection
-        let s28 = preferences_mShowComponentRotationKnobInBoard_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28) {
+        let s7 = unwSelf.mX_property.selection
+        let s8 = unwSelf.mY_property.selection
+        let s9 = unwSelf.mRotation_property.selection
+        let s10 = unwSelf.mSide_property.selection
+        let s11 = unwSelf.strokeBezierPath_property.selection
+        let s12 = unwSelf.mRemovePadsFromSolderMasks_property.selection
+        let s13 = unwSelf.mDisplayLegend_property.selection
+        let s14 = unwSelf.mNameIsVisibleInBoard_property.selection
+        let s15 = unwSelf.mXName_property.selection
+        let s16 = unwSelf.mYName_property.selection
+        let s17 = unwSelf.mNameFont_property.descriptor_property.selection
+        let s18 = unwSelf.mNameFontSize_property.selection
+        let s19 = unwSelf.mNameRotation_property.selection
+        let s20 = unwSelf.componentName_property.selection
+        let s21 = unwSelf.packagePadDictionary_property.selection
+        let s22 = unwSelf.padNetDictionary_property.selection
+        let s23 = unwSelf.mValueIsVisibleInBoard_property.selection
+        let s24 = unwSelf.mXValue_property.selection
+        let s25 = unwSelf.mYValue_property.selection
+        let s26 = unwSelf.mValueFont_property.descriptor_property.selection
+        let s27 = unwSelf.mValueFontSize_property.selection
+        let s28 = unwSelf.mValueRotation_property.selection
+        let s29 = unwSelf.mComponentValue_property.selection
+        let s30 = preferences_hiliteWidthMultipliedByTen_property.selection
+        let s31 = preferences_mShowComponentRotationKnobInBoard_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28, s29, s30, s31) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -1522,9 +1546,15 @@ final class ComponentInProject : BoardObject,
               .single (let v25),
               .single (let v26),
               .single (let v27),
-              .single (let v28)) :
-          return .single (transient_ComponentInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28))
+              .single (let v28),
+              .single (let v29),
+              .single (let v30),
+              .single (let v31)) :
+          return .single (transient_ComponentInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31))
         case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -1562,6 +1592,8 @@ final class ComponentInProject : BoardObject,
       }
     }
     preferences_selectionHiliteColor_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_frontSideLayoutColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
+    preferences_backSideLayoutColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
     preferences_frontSideLegendColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
     preferences_backSideLegendColorForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.displayFrontLegendForBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
@@ -1571,6 +1603,7 @@ final class ComponentInProject : BoardObject,
     self.mRotation_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mSide_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.strokeBezierPath_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mRemovePadsFromSolderMasks_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mDisplayLegend_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mNameIsVisibleInBoard_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mXName_property.startsBeingObserved (by: self.selectionDisplay_property)
@@ -1638,70 +1671,73 @@ final class ComponentInProject : BoardObject,
         let s5 = unwSelf.padNetDictionary_property.selection
         let s6 = unwSelf.strokeBezierPath_property.selection
         let s7 = unwSelf.mDisplayLegend_property.selection
-        let s8 = preferences_frontSideLegendColorForBoard_property.selection
-        let s9 = preferences_backSideLegendColorForBoard_property.selection
-        var s10 = unwSelf.packageDrawingWidthMultpliedByTenForBoard_property.selection
-        switch s10 {
+        let s8 = unwSelf.mRemovePadsFromSolderMasks_property.selection
+        let s9 = preferences_frontSideLayoutColorForBoard_property.selection
+        let s10 = preferences_backSideLayoutColorForBoard_property.selection
+        let s11 = preferences_frontSideLegendColorForBoard_property.selection
+        let s12 = preferences_backSideLegendColorForBoard_property.selection
+        var s13 = unwSelf.packageDrawingWidthMultpliedByTenForBoard_property.selection
+        switch s13 {
         case .single :
           ()
         case .empty, .multiple :
-          s10 = .single (10)
+          s13 = .single (10)
         }
-        let s11 = preferences_frontSidePadColorForBoard_property.selection
-        var s12 = unwSelf.displayFrontPadsForBoard_property.selection
-        switch s12 {
-        case .single :
-          ()
-        case .empty, .multiple :
-          s12 = .single (true)
-        }
-        let s13 = preferences_backSidePadColorForBoard_property.selection
-        var s14 = unwSelf.displayBackPadsForBoard_property.selection
-        switch s14 {
-        case .single :
-          ()
-        case .empty, .multiple :
-          s14 = .single (true)
-        }
-        var s15 = unwSelf.displayFrontLegendForBoard_property.selection
+        let s14 = preferences_frontSidePadColorForBoard_property.selection
+        var s15 = unwSelf.displayFrontPadsForBoard_property.selection
         switch s15 {
         case .single :
           ()
         case .empty, .multiple :
           s15 = .single (true)
         }
-        var s16 = unwSelf.displayBackLegendForBoard_property.selection
-        switch s16 {
+        let s16 = preferences_backSidePadColorForBoard_property.selection
+        var s17 = unwSelf.displayBackPadsForBoard_property.selection
+        switch s17 {
         case .single :
           ()
         case .empty, .multiple :
-          s16 = .single (true)
+          s17 = .single (true)
         }
-        let s17 = preferences_padNumberFontForBoard_property.selection
-        let s18 = preferences_padNumberColorForBoard_property.selection
-        var s19 = unwSelf.displayPadNumbersForBoard_property.selection
+        var s18 = unwSelf.displayFrontLegendForBoard_property.selection
+        switch s18 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s18 = .single (true)
+        }
+        var s19 = unwSelf.displayBackLegendForBoard_property.selection
         switch s19 {
         case .single :
           ()
         case .empty, .multiple :
           s19 = .single (true)
         }
-        let s20 = unwSelf.mNameIsVisibleInBoard_property.selection
-        let s21 = unwSelf.mXName_property.selection
-        let s22 = unwSelf.mYName_property.selection
-        let s23 = unwSelf.mNameFont_property.descriptor_property.selection
-        let s24 = unwSelf.mNameFontSize_property.selection
-        let s25 = unwSelf.mNameRotation_property.selection
-        let s26 = unwSelf.componentName_property.selection
-        let s27 = unwSelf.mValueIsVisibleInBoard_property.selection
-        let s28 = unwSelf.mXValue_property.selection
-        let s29 = unwSelf.mYValue_property.selection
-        let s30 = unwSelf.mValueFont_property.descriptor_property.selection
-        let s31 = unwSelf.mValueFontSize_property.selection
-        let s32 = unwSelf.mValueRotation_property.selection
-        let s33 = unwSelf.mComponentValue_property.selection
-        let s34 = unwSelf.mDevice_property.pinPadAssignments_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28, s29, s30, s31, s32, s33, s34) {
+        let s20 = preferences_padNumberFontForBoard_property.selection
+        let s21 = preferences_padNumberColorForBoard_property.selection
+        var s22 = unwSelf.displayPadNumbersForBoard_property.selection
+        switch s22 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s22 = .single (true)
+        }
+        let s23 = unwSelf.mNameIsVisibleInBoard_property.selection
+        let s24 = unwSelf.mXName_property.selection
+        let s25 = unwSelf.mYName_property.selection
+        let s26 = unwSelf.mNameFont_property.descriptor_property.selection
+        let s27 = unwSelf.mNameFontSize_property.selection
+        let s28 = unwSelf.mNameRotation_property.selection
+        let s29 = unwSelf.componentName_property.selection
+        let s30 = unwSelf.mValueIsVisibleInBoard_property.selection
+        let s31 = unwSelf.mXValue_property.selection
+        let s32 = unwSelf.mYValue_property.selection
+        let s33 = unwSelf.mValueFont_property.descriptor_property.selection
+        let s34 = unwSelf.mValueFontSize_property.selection
+        let s35 = unwSelf.mValueRotation_property.selection
+        let s36 = unwSelf.mComponentValue_property.selection
+        let s37 = unwSelf.mDevice_property.pinPadAssignments_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28, s29, s30, s31, s32, s33, s34, s35, s36, s37) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -1736,9 +1772,15 @@ final class ComponentInProject : BoardObject,
               .single (let v31),
               .single (let v32),
               .single (let v33),
-              .single (let v34)) :
-          return .single (transient_ComponentInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34))
+              .single (let v34),
+              .single (let v35),
+              .single (let v36),
+              .single (let v37)) :
+          return .single (transient_ComponentInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37))
         case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -1789,6 +1831,9 @@ final class ComponentInProject : BoardObject,
     self.padNetDictionary_property.startsBeingObserved (by: self.objectDisplay_property)
     self.strokeBezierPath_property.startsBeingObserved (by: self.objectDisplay_property)
     self.mDisplayLegend_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mRemovePadsFromSolderMasks_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_frontSideLayoutColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_backSideLayoutColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
     preferences_frontSideLegendColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
     preferences_backSideLegendColorForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
     self.packageDrawingWidthMultpliedByTenForBoard_property.startsBeingObserved (by: self.objectDisplay_property)
