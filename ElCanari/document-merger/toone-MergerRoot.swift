@@ -31,6 +31,8 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
       oldValue.boardLimitWidth_property.stopsBeingObserved (by: self.boardLimitWidth_property) // Stored property
       oldValue.boardLimitWidthUnit_property.stopsBeingObserved (by: self.boardLimitWidthUnit_property) // Stored property
       oldValue.mPDFBoardBackgroundColor_property.stopsBeingObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
+      oldValue.mGenerateMergerArchive_property.stopsBeingObserved (by: self.mGenerateMergerArchive_property) // Stored property
+      oldValue.mGenerateGerberAndPDF_property.stopsBeingObserved (by: self.mGenerateGerberAndPDF_property) // Stored property
       oldValue.mArtworkName_property.stopsBeingObserved (by: self.mArtworkName_property) // Stored property
       oldValue.mArtworkVersion_property.stopsBeingObserved (by: self.mArtworkVersion_property) // Stored property
       oldValue.modelNames_property.stopsBeingObserved (by: self.modelNames_property) // Transient property
@@ -68,6 +70,8 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
       newValue.boardLimitWidth_property.startsBeingObserved (by: self.boardLimitWidth_property) // Stored property
       newValue.boardLimitWidthUnit_property.startsBeingObserved (by: self.boardLimitWidthUnit_property) // Stored property
       newValue.mPDFBoardBackgroundColor_property.startsBeingObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
+      newValue.mGenerateMergerArchive_property.startsBeingObserved (by: self.mGenerateMergerArchive_property) // Stored property
+      newValue.mGenerateGerberAndPDF_property.startsBeingObserved (by: self.mGenerateGerberAndPDF_property) // Stored property
       newValue.mArtworkName_property.startsBeingObserved (by: self.mArtworkName_property) // Stored property
       newValue.mArtworkVersion_property.startsBeingObserved (by: self.mArtworkVersion_property) // Stored property
       newValue.modelNames_property.startsBeingObserved (by: self.modelNames_property) // Transient property
@@ -179,6 +183,18 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
   //································································································
 
   final let mPDFBoardBackgroundColor_property = EBTransientProperty <NSColor?> ()
+
+  //································································································
+  //   Observers of 'mGenerateMergerArchive' stored property
+  //································································································
+
+  final let mGenerateMergerArchive_property = EBTransientProperty <Bool?> ()
+
+  //································································································
+  //   Observers of 'mGenerateGerberAndPDF' stored property
+  //································································································
+
+  final let mGenerateGerberAndPDF_property = EBTransientProperty <Bool?> ()
 
   //································································································
   //   Observers of 'mArtworkName' stored property
@@ -375,6 +391,14 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
   //--- Configure mPDFBoardBackgroundColor simple stored property
     self.mPDFBoardBackgroundColor_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mPDFBoardBackgroundColor_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mGenerateMergerArchive simple stored property
+    self.mGenerateMergerArchive_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mGenerateMergerArchive_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mGenerateGerberAndPDF simple stored property
+    self.mGenerateGerberAndPDF_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mGenerateGerberAndPDF_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mArtworkName simple stored property
     self.mArtworkName_property.mReadModelFunction = { [weak self] in

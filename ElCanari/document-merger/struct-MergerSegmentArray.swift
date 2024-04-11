@@ -45,7 +45,7 @@ struct MergerSegmentArray : Hashable {
       case .square:
         bp.lineCapStyle = .square
       }
-       result.append (bp)
+      result.append (bp)
     }
     return result
   }
@@ -85,7 +85,11 @@ struct MergerSegmentArray : Hashable {
         x2 += segment.y2
         y2 += inModelWidth - segment.x2
       }
-      let endStyle = 0 // Round
+      let endStyle : Int
+      switch segment.endStyle {
+      case .round : endStyle = 0
+      case .square : endStyle = 1
+      }
       let s = "\(x1) \(y1) \(x2) \(y2) \(segment.width) \(endStyle)"
       toArchiveArray.append (s)
     }
@@ -137,7 +141,12 @@ struct MergerSegmentArray : Hashable {
       bp.move (to: NSPoint (x: x1f, y: y1f))
       bp.line (to: NSPoint (x: x2f, y: y2f))
       bp.lineWidth = width
-      bp.lineCapStyle = .round
+      switch segment.endStyle {
+      case .round :
+        bp.lineCapStyle = .round
+      case .square :
+        bp.lineCapStyle = .square
+      }
       ioBezierPaths.append (bp)
     }
   }
@@ -282,7 +291,14 @@ struct MergerSegmentArray : Hashable {
       let y1mt = canariUnitToMilTenth (y1)
       let x2mt = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - x2) : x2)
       let y2mt = canariUnitToMilTenth (y2)
-      let apertureString = "C,\(String(format: "%.4f", canariUnitToInch (segment.width)))"
+      let a = String (format: "%.4f", canariUnitToInch (segment.width))
+      let apertureString : String
+      switch segment.endStyle {
+      case .round :
+        apertureString = "C,\(a)"
+      case .square :
+        apertureString = "R,\(a)X\(a)"
+      }
       let moveTo = "X\(x1mt)Y\(y1mt)D02"
       let lineTo = "X\(x2mt)Y\(y2mt)D01"
       if let array = ioApertures [apertureString] {

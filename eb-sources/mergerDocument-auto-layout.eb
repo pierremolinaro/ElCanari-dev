@@ -774,10 +774,14 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           $run detachArtworkAction 
         }
         Label (bold: yes, size : .regular) { expandableWidth () set (alignment: .center) $title root.mArtworkName }
-        Button (title: "Generate Files", size : .regular) {
-          expandableWidth ()
-          $enabled !root.mArtwork.none & (root.boardInstances.count > 0) & !self.documentIsUnnamed
-          $run generateProductFilesAction
+        hStack {
+          Button (title: "Generate Files", size : .regular) {
+            expandableWidth ()
+            $enabled !root.mArtwork.none & (root.boardInstances.count > 0) & !self.documentIsUnnamed
+            $run generateProductFilesAction
+          }
+          Checkbox (title: "Merger Archive", size : .regular) { $value root.mGenerateMergerArchive }
+          Checkbox (title: "Gerber, PDF", size : .regular) { $value root.mGenerateGerberAndPDF }
         }
       }
       vStack {

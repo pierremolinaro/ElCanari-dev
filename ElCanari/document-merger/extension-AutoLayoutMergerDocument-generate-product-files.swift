@@ -77,33 +77,25 @@ extension AutoLayoutMergerDocument {
         self.mProductPageSegmentedControl?.setSelectedSegment (atIndex: 4)
         let baseName = f.lastPathComponent
         let productDirectory = f.deletingLastPathComponent
-        let fm = FileManager ()
       //--- Generate board archive
-        do{
+        if self.rootObject.mGenerateMergerArchive_property.propval {
           let boardArchivePath = productDirectory + "/" + baseName + "." + EL_CANARI_MERGER_ARCHIVE
-          self.mLogTextView?.appendMessageString("Generating \(boardArchivePath.lastPathComponent)…")
+          self.mLogTextView?.appendMessageString ("Generating \(boardArchivePath.lastPathComponent)…")
           try self.generateBoardArchive (atPath: boardArchivePath)
           self.mLogTextView?.appendSuccessString (" Ok\n")
         }
       //--- Gerber
-        do{
-          let gerberDirectory = productDirectory + "/" + baseName + "-gerber"
-          if !fm.fileExists (atPath: gerberDirectory) {
-            self.mLogTextView?.appendMessageString("Creating \(gerberDirectory) directory…")
-            try fm.createDirectory (atPath: gerberDirectory, withIntermediateDirectories: true, attributes: nil)
-            self.mLogTextView?.appendSuccessString (" Ok\n")
-          }
+        let generateGerberAndPDF = self.rootObject.mGenerateGerberAndPDF_property.propval
+        let gerberDirectory = productDirectory + "/" + baseName + "-gerber"
+        try self.removeAndCreateDirectory (atPath: gerberDirectory, create: generateGerberAndPDF)
+        if generateGerberAndPDF {
           let filePath = gerberDirectory + "/" + baseName
           try self.generateGerberFiles (atPath: filePath)
         }
       //--- PDF
-        do{
-          let pdfDirectory = productDirectory + "/" + baseName + "-pdf"
-          if !fm.fileExists (atPath: pdfDirectory) {
-            self.mLogTextView?.appendMessageString("Creating \(pdfDirectory) directory…")
-            try fm.createDirectory (atPath: pdfDirectory, withIntermediateDirectories: true, attributes: nil)
-            self.mLogTextView?.appendSuccessString (" Ok\n")
-          }
+        let pdfDirectory = productDirectory + "/" + baseName + "-pdf"
+        try self.removeAndCreateDirectory (atPath: pdfDirectory, create: generateGerberAndPDF)
+        if generateGerberAndPDF {
           let filePath = pdfDirectory + "/" + baseName
           try self.generatePDFfiles (atPath: filePath)
           try self.writePDFDrillFile (atPath: filePath)
@@ -113,6 +105,24 @@ extension AutoLayoutMergerDocument {
       }
     }catch let error {
       _ = self.windowForSheet?.presentError (error)
+    }
+  }
+
+  //································································································
+
+  private func removeAndCreateDirectory (atPath inDirectoryPath : String,
+                                         create inCreate : Bool) throws {
+    let fm = FileManager ()
+    var isDir : ObjCBool = false
+    if fm.fileExists (atPath: inDirectoryPath, isDirectory: &isDir) {
+      self.mLogTextView?.appendMessageString ("Remove recursively \(inDirectoryPath)...")
+      try fm.removeItem (atPath: inDirectoryPath) // Remove dir recursively
+      self.mLogTextView?.appendSuccessString (" ok.\n")
+    }
+    if inCreate {
+      self.mLogTextView?.appendMessageString ("Create \(inDirectoryPath)...")
+      try fm.createDirectory (atPath: inDirectoryPath, withIntermediateDirectories: true, attributes: nil)
+      self.mLogTextView?.appendSuccessString (" ok.\n")
     }
   }
 

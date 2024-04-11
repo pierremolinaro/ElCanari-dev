@@ -48,8 +48,10 @@ handlingOpposite entity MergerRoot {
   transient Int boardWidth dependsFrom self.boardRect ;
   transient Int boardHeight dependsFrom self.boardRect ;
 
-//--- PDF Generation
+//--- Generation
   property @generateDirectRead NSColor mPDFBoardBackgroundColor default lightGray ;
+  property Bool mGenerateMergerArchive default yes ;
+  property Bool mGenerateGerberAndPDF default yes ;
 
 //--- Artwork
   toOne ArtworkRoot mArtwork ;

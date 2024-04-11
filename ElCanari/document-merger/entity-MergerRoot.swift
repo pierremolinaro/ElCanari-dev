@@ -181,6 +181,18 @@ final class MergerRoot : EBManagedObject {
   }
 
   //································································································
+  //   Atomic property: mGenerateMergerArchive
+  //································································································
+
+  final let mGenerateMergerArchive_property : EBStoredProperty_Bool
+
+  //································································································
+  //   Atomic property: mGenerateGerberAndPDF
+  //································································································
+
+  final let mGenerateGerberAndPDF_property : EBStoredProperty_Bool
+
+  //································································································
   //   Atomic property: mArtworkName
   //································································································
 
@@ -581,6 +593,8 @@ final class MergerRoot : EBManagedObject {
     self.boardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "boardLimitWidth")
     self.boardLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "boardLimitWidthUnit")
     self.mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, undoManager: inUndoManager, key: "mPDFBoardBackgroundColor")
+    self.mGenerateMergerArchive_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateMergerArchive")
+    self.mGenerateGerberAndPDF_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateGerberAndPDF")
     self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mArtworkName")
     self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mArtworkVersion")
     super.init (inUndoManager)

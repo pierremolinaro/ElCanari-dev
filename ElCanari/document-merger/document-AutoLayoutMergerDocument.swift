@@ -618,13 +618,23 @@ import AppKit
           .set (alignment: .center)
           .bind_title (self.rootObject.mArtworkName_property)
         _ = view_0_0.appendView (view_0_0_2)
-        let view_0_0_3 = AutoLayoutButton (title: "Generate Files", size: .regular)
-          .expandableWidth ()
-          .bind_enabled (.boolcmp (.boolcmp (.not (.prop (self.rootObject.mArtwork_none)), .and, .intcmp (.prop (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0))), .and, .not (.prop (self.documentIsUnnamed_property))))
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutMergerDocument.generateProductFilesAction (_:))
-          )
+        let view_0_0_3 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_0_0_3_0 = AutoLayoutButton (title: "Generate Files", size: .regular)
+            .expandableWidth ()
+            .bind_enabled (.boolcmp (.boolcmp (.not (.prop (self.rootObject.mArtwork_none)), .and, .intcmp (.prop (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0))), .and, .not (.prop (self.documentIsUnnamed_property))))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutMergerDocument.generateProductFilesAction (_:))
+            )
+          _ = view_0_0_3.appendView (view_0_0_3_0)
+          let view_0_0_3_1 = AutoLayoutCheckbox (title: "Merger Archive", size: .regular)
+            .bind_value (self.rootObject.mGenerateMergerArchive_property)
+          _ = view_0_0_3.appendView (view_0_0_3_1)
+          let view_0_0_3_2 = AutoLayoutCheckbox (title: "Gerber, PDF", size: .regular)
+            .bind_value (self.rootObject.mGenerateGerberAndPDF_property)
+          _ = view_0_0_3.appendView (view_0_0_3_2)
+        }
         _ = view_0_0.appendView (view_0_0_3)
       }
       _ = view_0.appendView (view_0_0)

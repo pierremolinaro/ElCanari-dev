@@ -113,7 +113,7 @@ extension AutoLayoutMergerDocument {
       let internalBoardsLimits = optionalStringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_INTERNAL_BOARDS_LIMITS_KEY, &errorArray)
       for str in internalBoardsLimits {
         let segment = SegmentEntity (self.undoManager)
-        let ints = array5int (fromString: str, #line, &errorArray)
+        let ints = array6int (fromString: str, #line, &errorArray)
         segment.x1 = ints [0]
         segment.y1 = ints [1]
         segment.x2 = ints [2]
@@ -324,7 +324,7 @@ extension AutoLayoutMergerDocument {
       var frontLegendTextEntities = EBReferenceArray <SegmentEntity> ()
       let frontTexts = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TEXTS_LEGEND_FRONT_KEY, &errorArray)
       for str in frontTexts {
-        let ints = array5int (fromString: str, #line, &errorArray)
+        let ints = array6int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
           p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
@@ -471,7 +471,7 @@ extension AutoLayoutMergerDocument {
       let drills = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_DRILLS_KEY, &errorArray)
       for str in drills {
         let segment = SegmentEntity (self.undoManager)
-        let ints = array5int (fromString: str, #line, &errorArray)
+        let ints = array6int (fromString: str, #line, &errorArray)
         segment.x1 = ints [0]
         segment.y1 = ints [1]
         segment.x2 = ints [2]
@@ -861,19 +861,19 @@ fileprivate func array6int (fromString inString : String,
                             _ errorArray : inout [String]) -> [Int] {
   let strArray : [String] = inString.components (separatedBy: " ")
   var result = [Int] ()
-  if strArray.count != 6 {
-    errorArray.append ("The string is not a six integer array (line \(inErrorLine)).")
+  if (strArray.count != 5) && (strArray.count != 6) {
+    errorArray.append ("The string is not a five or six integer array (line \(inErrorLine)).")
   }else{
     for s in strArray {
       let possibleInt : Int? = Int (s)
       if let n = possibleInt {
         result.append (n)
       }else{
-        errorArray.append ("The string is not a six integer array (line \(inErrorLine)).")
+        errorArray.append ("The string is not a five or six integer array (line \(inErrorLine)).")
       }
     }
   }
-//--- If an error occurs, add fake int(s) to get a six element vector
+//--- If an error occurs, add zero to get a six element vector
   while result.count < 6 {
     result.append (0)
   }
