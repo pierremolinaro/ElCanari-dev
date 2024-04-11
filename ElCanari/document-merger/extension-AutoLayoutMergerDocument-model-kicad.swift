@@ -512,7 +512,7 @@ extension AutoLayoutMergerDocument {
           let dx = start.x - center.x
           let dy = start.y - center.y
           let radius = sqrt (dx * dx + dy * dy)
-          let startAngle = angleInDegreesBetweenNSPoints (center, start)
+          let startAngle = NSPoint.angleInDegrees (center, start)
           bp.appendArc (
             withCenter: center,
             radius: radius,

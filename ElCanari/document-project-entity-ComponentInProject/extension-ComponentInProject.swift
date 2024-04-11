@@ -143,7 +143,7 @@ extension ComponentInProject {
     }else if inKnobIndex == COMPONENT_PACKAGE_ROTATION_KNOB {
       let absoluteCenter = CanariPoint (x: self.mX, y: self.mY).cocoaPoint
       let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).cocoaPoint
-      let newAngleInDegrees = angleInDegreesBetweenNSPoints (absoluteCenter, newRotationKnobLocation)
+      let newAngleInDegrees = NSPoint.angleInDegrees (absoluteCenter, newRotationKnobLocation)
       self.mRotation = degreesToCanariRotation (newAngleInDegrees)
     }else if inKnobIndex == COMPONENT_PACKAGE_NAME_KNOB {
       self.mXName += inDx

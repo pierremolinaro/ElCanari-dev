@@ -136,7 +136,7 @@ extension BoardText {
         extraWidth: 0.0
       )
       let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).cocoaPoint
-      let newAngleInDegrees = angleInDegreesBetweenNSPoints (origin, newRotationKnobLocation)
+      let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
       self.mRotation = degreesToCanariRotation (newAngleInDegrees)
     }
   }
@@ -288,7 +288,7 @@ extension BoardText {
         let p2 = NSPoint (x: stringWidth + x2, y: y2)
         bp.move (to: p1)
         bp.line (to: p2)
-        oblongs.append (GeometricOblong (p1: p1, p2: p2, width: lineThickness))
+        oblongs.append (GeometricOblong (p1: p1, p2: p2, width: lineThickness, capStyle: .round))
       }
       stringWidth += CGFloat (characterDescriptor.advancement) * fontFactor
     }

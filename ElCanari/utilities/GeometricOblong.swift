@@ -18,24 +18,30 @@ struct GeometricOblong {
   let p1 : NSPoint
   let p2 : NSPoint
   let width : CGFloat
+  let capStyle : TrackEndStyle
 
   //································································································
   //   Contains point
   //································································································
 
   func contains (point p : NSPoint) -> Bool {
-  //--- p inside P1 circle
-    var inside = NSPoint.distance (self.p1, p) <= (self.width / 2.0)
-  //--- p inside P2 circle
-    if !inside {
-      inside = NSPoint.distance (self.p2, p) <= (self.width / 2.0)
+    switch self.capStyle {
+    case .round :
+    //--- p inside P1 circle
+      var inside = NSPoint.distance (self.p1, p) <= (self.width / 2.0)
+    //--- p inside P2 circle
+      if !inside {
+        inside = NSPoint.distance (self.p2, p) <= (self.width / 2.0)
+      }
+    //--- p inside rectangle
+      if !inside {
+        let r = GeometricRect (self.p1, self.p2, self.width)
+        inside = r.contains (point: p)
+      }
+      return inside
+    case .square :
+      return self.geometricRect.contains (point: p)
     }
-  //--- p inside rectangle
-    if !inside {
-      let r = GeometricRect (self.p1, self.p2, self.width)
-      inside = r.contains (point: p)
-    }
-    return inside
   }
 
   //································································································
@@ -45,19 +51,30 @@ struct GeometricOblong {
     bp.lineWidth = self.width
     bp.move (to: self.p1)
     bp.line (to: self.p2)
-    bp.lineCapStyle = .round
+    switch self.capStyle {
+    case .round :
+      bp.lineCapStyle = .round
+    case .square :
+      bp.lineCapStyle = .square
+    }
     return bp.pathByStroking
   }
 
   //································································································
 
   var bounds : NSRect {
-    let w = self.width / 2.0
-    let left   = min (self.p1.x, self.p2.x) - w
-    let right  = max (self.p1.x, self.p2.x) + w
-    let bottom = min (self.p1.y, self.p2.y) - w
-    let top    = max (self.p1.y, self.p2.y) + w
-    return NSRect (x: left, y: bottom, width: right - left, height: top - bottom)
+    switch self.capStyle {
+    case .round :
+      let w = self.width / 2.0
+      let left   = min (self.p1.x, self.p2.x) - w
+      let right  = max (self.p1.x, self.p2.x) + w
+      let bottom = min (self.p1.y, self.p2.y) - w
+      let top    = max (self.p1.y, self.p2.y) + w
+      return NSRect (x: left, y: bottom, width: right - left, height: top - bottom)
+    case .square :
+      let r = self.geometricRect
+      return r.bounds
+     }
    }
 
   //································································································
@@ -75,7 +92,17 @@ struct GeometricOblong {
   //································································································
 
   private var geometricRect : GeometricRect {
-    return GeometricRect (self.p1, self.p2, self.width)
+    switch self.capStyle {
+    case .round :
+      return GeometricRect (self.p1, self.p2, self.width)
+    case .square :
+      let center = NSPoint.center (self.p1, self.p2)
+      let angle = NSPoint.angleInRadian (self.p1, self.p2)
+      let segmentHalfLength = (NSPoint.distance (self.p1, self.p2) + self.width) / 2.0
+      let p1 = NSPoint (x: center.x + segmentHalfLength * cos (angle), y: center.y + segmentHalfLength * sin (angle))
+      let p2 = NSPoint (x: center.x - segmentHalfLength * cos (angle), y: center.y - segmentHalfLength * sin (angle))
+      return GeometricRect (p1, p2, self.width)
+    }
   }
 
   //································································································
@@ -141,7 +168,7 @@ struct GeometricOblong {
   //································································································
 
   func transformed (by inAffineTransfrom : AffineTransform) -> GeometricOblong {
-    return GeometricOblong (p1: inAffineTransfrom.transform (self.p1), p2: inAffineTransfrom.transform (self.p2), width: self.width)
+    return GeometricOblong (p1: inAffineTransfrom.transform (self.p1), p2: inAffineTransfrom.transform (self.p2), width: self.width, capStyle: self.capStyle)
   }
 
   //································································································

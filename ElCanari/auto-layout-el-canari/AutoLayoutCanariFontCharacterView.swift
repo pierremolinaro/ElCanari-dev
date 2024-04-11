@@ -1033,7 +1033,8 @@ extension FontCharacterSegment {
     let oblong = GeometricOblong (
       p1: NSPoint (x: xForX (self.x1), y: yForY (self.y1)),
       p2: NSPoint (x: xForX (self.x2), y: yForY (self.y2)),
-      width: PLACEMENT_GRID * 2.0
+      width: PLACEMENT_GRID * 2.0,
+      capStyle: .round
     )
     return oblong.contains (point: p)
   }
@@ -1044,7 +1045,8 @@ extension FontCharacterSegment {
     let oblong = GeometricOblong (
       p1: NSPoint (x: xForX (self.x1), y: yForY (self.y1)),
       p2: NSPoint (x: xForX (self.x2), y: yForY (self.y2)),
-      width: PLACEMENT_GRID * 2.0
+      width: PLACEMENT_GRID * 2.0,
+      capStyle: .round
     )
     return oblong.intersects (rect: r)
   }
