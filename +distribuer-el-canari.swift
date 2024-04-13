@@ -28,17 +28,17 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.7.13"
+let VERSION_CANARI = "1.7.15"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Projet : les fichiers Gerber produits sont clippés dans le rectangle de la carte"
 ]
 let CHANGES : [String] = [
+  "Version ElCanariArchive : #4"
 ]
 let NEWS : [String] = [
-  "Ajout d'une zone de travail dans l'onglet « Board » des projets"
+  "Sélection de la forme d'une piste dans un projet"
 ]
 
 //--------------------------------------------------------------------------------------------------
