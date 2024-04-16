@@ -4,7 +4,6 @@
 //
 //  Created by Pierre Molinaro on 30/06/2018.
 //
-//
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 import AppKit
@@ -169,6 +168,16 @@ extension AutoLayoutMergerDocument {
     newArray = inLoadedModel.internalBoardsLimits
     inLoadedModel.internalBoardsLimits = EBReferenceArray ()
     inModelToUpdate.internalBoardsLimits = newArray
+
+  //--- Legend Front Images
+    var rectArray : EBReferenceArray <RectangleEntity> = inLoadedModel.legendFrontImages
+    inLoadedModel.legendFrontImages = EBReferenceArray ()
+    inModelToUpdate.legendFrontImages = rectArray
+
+  //--- Legend Back Images
+    rectArray = inLoadedModel.legendBackImages
+    inLoadedModel.legendBackImages = EBReferenceArray ()
+    inModelToUpdate.legendBackImages = rectArray
 
   //--- QR Codes
     inModelToUpdate.legendFrontQRCodes = inLoadedModel.legendFrontQRCodes
