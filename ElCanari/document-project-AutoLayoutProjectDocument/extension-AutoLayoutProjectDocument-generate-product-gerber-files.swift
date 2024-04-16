@@ -181,6 +181,7 @@ extension AutoLayoutProjectDocument {
     }
     if inDescriptor.drawPadsTopSide {
       apertureDictionary.append (oblongs: inProductData.frontTracksWithNoSilkScreen, af)
+      apertureDictionary.append (productCircles: inProductData.circularPads [.frontLayer], af)
       apertureDictionary.append (oblongs: inProductData.oblongPads [.frontLayer], af)
       if let pp = inProductData.polygonPads [.frontLayer] {
         polygons += pp.transformed (by: af)

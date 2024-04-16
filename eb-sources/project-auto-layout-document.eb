@@ -2517,14 +2517,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
         Label (bold: yes, size : .regular) { expandableWidth () set (alignment: .center) $title root.mArtworkName }
         hStack {
+          Checkbox (title: "Merger Archive", size : .regular) { $value root.mGenerateMergerArchive }
+          Checkbox (title: "Gerber, PDF", size : .regular) { $value root.mGenerateGerberAndPDF }
+          Checkbox (title: "BOM", size : .regular) { $value root.mGenerateBOM }
           Button (title: "Generate Files", size : .regular) {
             expandableWidth ()
             $enabled !root.mArtwork.none & !self.documentIsUnnamed
             $run generateProductFilesAction
           }
-          Checkbox (title: "Merger Archive", size : .regular) { $value root.mGenerateMergerArchive }
-          Checkbox (title: "Gerber, PDF", size : .regular) { $value root.mGenerateGerberAndPDF }
-          Checkbox (title: "BOM", size : .regular) { $value root.mGenerateBOM }
         }
       }
       vStack {
