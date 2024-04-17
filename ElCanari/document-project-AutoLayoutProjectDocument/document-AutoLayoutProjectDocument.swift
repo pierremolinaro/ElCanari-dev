@@ -2150,15 +2150,15 @@ import AppKit
       .addFirstBaseLineAligned (left: self.computeImplicitView_217 (), right: self.computeImplicitView_218 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_219 (), right: self.computeImplicitView_220 ())
       .add (single: self.computeImplicitView_221 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_222 (), right: self.computeImplicitView_223 ())
-      .add (single: self.computeImplicitView_224 ())
+      .add (single: self.computeImplicitView_222 ())
       .addSeparator ()
-      .add (single: self.computeImplicitView_225 ())
+      .add (single: self.computeImplicitView_223 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_224 (), right: self.computeImplicitView_225 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_226 (), right: self.computeImplicitView_227 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_228 (), right: self.computeImplicitView_229 ())
       .addSeparator ()
-      .add (single: self.computeImplicitView_230 ())
+      .add (single: self.computeImplicitView_228 ())
       .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_229 (), right: self.computeImplicitView_230 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_231 (), right: self.computeImplicitView_232 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_233 (), right: self.computeImplicitView_234 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_235 (), right: self.computeImplicitView_236 ())
@@ -5673,7 +5673,8 @@ import AppKit
   //································································································
 
   private final func computeImplicitView_222 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "End Style", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutCheckbox (title: "Is Preserved by Auto Router", size: .small)
+      .bind_value (self.boardTrackSelectionController.mIsPreservedByAutoRouter_property)
     return view
   }
 
@@ -5682,26 +5683,6 @@ import AppKit
   //································································································
 
   private final func computeImplicitView_223 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: TrackEndStyle.popupTitles (), size: .small)
-      .bind_selectedIndex (self.boardTrackSelectionController.mEndStyle_property)
-    return view
-  }
-
-  //································································································
-  //    IMPLICIT VIEW 224
-  //································································································
-
-  private final func computeImplicitView_224 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Is Preserved by Auto Router", size: .small)
-      .bind_value (self.boardTrackSelectionController.mIsPreservedByAutoRouter_property)
-    return view
-  }
-
-  //································································································
-  //    IMPLICIT VIEW 225
-  //································································································
-
-  private final func computeImplicitView_225 () -> NSView {
     let view = AutoLayoutCanariTrackLockView ()
       .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
       .bind_manualLockP1 (self.boardTrackSelectionController.mManualLockP1_property)
@@ -5712,11 +5693,30 @@ import AppKit
   }
 
   //································································································
+  //    IMPLICIT VIEW 224
+  //································································································
+
+  private final func computeImplicitView_224 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "On Knob Dragging", bold: false, size: .small, alignment: .left)
+    return view
+  }
+
+  //································································································
+  //    IMPLICIT VIEW 225
+  //································································································
+
+  private final func computeImplicitView_225 () -> NSView {
+    let view = AutoLayoutEnumPopUpButton (titles: TrackLockDirection.popupTitles (), size: .small)
+      .bind_selectedIndex (self.boardTrackSelectionController.mDirectionLockOnKnobDragging_property)
+    return view
+  }
+
+  //································································································
   //    IMPLICIT VIEW 226
   //································································································
 
   private final func computeImplicitView_226 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "On Knob Dragging", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "Track Angle", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -5725,8 +5725,9 @@ import AppKit
   //································································································
 
   private final func computeImplicitView_227 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: TrackLockDirection.popupTitles (), size: .small)
-      .bind_selectedIndex (self.boardTrackSelectionController.mDirectionLockOnKnobDragging_property)
+    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+      .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
+      .bind_enabled (.prop (self.boardTrackSelectionController.trackCanRotate_property))
     return view
   }
 
@@ -5735,7 +5736,8 @@ import AppKit
   //································································································
 
   private final func computeImplicitView_228 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Track Angle", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
+      .bind_setter6 (self.boardTrackSelectionController.mP1XUnit_property, self.boardTrackSelectionController.mP1YUnit_property, self.boardTrackSelectionController.mP2XUnit_property, self.boardTrackSelectionController.mP2YUnit_property, self.boardTrackSelectionController.mDefaultTrackWidthUnit_property, self.boardTrackSelectionController.mCustomTrackWidthUnit_property)
     return view
   }
 
@@ -5744,9 +5746,7 @@ import AppKit
   //································································································
 
   private final func computeImplicitView_229 () -> NSView {
-    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
-      .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
-      .bind_enabled (.prop (self.boardTrackSelectionController.trackCanRotate_property))
+    let view = AutoLayoutStaticLabel (title: "Track Width", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -5755,8 +5755,8 @@ import AppKit
   //································································································
 
   private final func computeImplicitView_230 () -> NSView {
-    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
-      .bind_setter6 (self.boardTrackSelectionController.mP1XUnit_property, self.boardTrackSelectionController.mP1YUnit_property, self.boardTrackSelectionController.mP2XUnit_property, self.boardTrackSelectionController.mP2YUnit_property, self.boardTrackSelectionController.mDefaultTrackWidthUnit_property, self.boardTrackSelectionController.mCustomTrackWidthUnit_property)
+    let view = AutoLayoutCheckbox (title: "Use Custom", size: .small)
+      .bind_value (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)
     return view
   }
 
@@ -5765,7 +5765,8 @@ import AppKit
   //································································································
 
   private final func computeImplicitView_231 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Track Width", bold: false, size: .small, alignment: .left)
+    let view = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small, alignment: .left)
+      .bind_hidden (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property))
     return view
   }
 
@@ -5774,8 +5775,9 @@ import AppKit
   //································································································
 
   private final func computeImplicitView_232 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Use Custom", size: .small)
-      .bind_value (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardTrackSelectionController.netClassTrackWidth_property, self.boardTrackSelectionController.mDefaultTrackWidthUnit_property)
+      .bind_hidden (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property))
     return view
   }
 
@@ -5784,8 +5786,8 @@ import AppKit
   //································································································
 
   private final func computeImplicitView_233 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small, alignment: .center)
-      .bind_hidden (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property))
+    let view = AutoLayoutStaticLabel (title: "Custom Width", bold: false, size: .small, alignment: .left)
+      .bind_hidden (.not (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)))
     return view
   }
 
@@ -5794,9 +5796,9 @@ import AppKit
   //································································································
 
   private final func computeImplicitView_234 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardTrackSelectionController.netClassTrackWidth_property, self.boardTrackSelectionController.mDefaultTrackWidthUnit_property)
-      .bind_hidden (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property))
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.boardTrackSelectionController.mCustomTrackWidth_property, self.boardTrackSelectionController.mCustomTrackWidthUnit_property)
+      .bind_hidden (.not (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)))
     return view
   }
 
@@ -5805,8 +5807,7 @@ import AppKit
   //································································································
 
   private final func computeImplicitView_235 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Custom Width", bold: false, size: .small, alignment: .left)
-      .bind_hidden (.not (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)))
+    let view = AutoLayoutStaticLabel (title: "End Style", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -5815,9 +5816,8 @@ import AppKit
   //································································································
 
   private final func computeImplicitView_236 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.boardTrackSelectionController.mCustomTrackWidth_property, self.boardTrackSelectionController.mCustomTrackWidthUnit_property)
-      .bind_hidden (.not (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)))
+    let view = AutoLayoutEnumPopUpButton (titles: TrackEndStyle.popupTitles (), size: .small)
+      .bind_selectedIndex (self.boardTrackSelectionController.mEndStyle_property)
     return view
   }
 

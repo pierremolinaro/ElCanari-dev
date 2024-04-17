@@ -28,8 +28,6 @@ final class AutoLayoutCanariObservedDimensionAndPopUp : AutoLayoutHorizontalStac
 
     super.init ()
     _ = self.setFirstBaselineAlignment ().equalWidth ()
-//    self.alignment = .lastBaseline
-//    _ = self.equalWidth ()
     _ = self.appendView (self.mDimensionField)
     _ = self.appendView (self.mUnitPopUpButton)
   }
@@ -43,7 +41,7 @@ final class AutoLayoutCanariObservedDimensionAndPopUp : AutoLayoutHorizontalStac
   //································································································
 
   final func bind_dimensionAndUnit (_ inDimension : EBObservableProperty <Int>,
-                               _ inUnit : EBObservableMutableProperty <Int>) -> Self {
+                                    _ inUnit : EBObservableMutableProperty <Int>) -> Self {
     _ = self.mDimensionField.bind_dimensionAndUnit (inDimension, inUnit)
     _ = self.mUnitPopUpButton.bind_unit (inUnit)
     return self

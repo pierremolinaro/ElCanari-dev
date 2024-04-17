@@ -1801,12 +1801,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $value #boardTrackSelectionController.mAddedToSolderMask
         }
       )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "End Style", bold: no, size: .small, alignment: .left),
-        right: EnumPopUpButton (titles: enum TrackEndStyle.popupTitles, size: .small) {
-          $selectedIndex #boardTrackSelectionController.mEndStyle
-        }
-      )
       add (
         single: Checkbox (title: "Is Preserved by Auto Router", size : .small) { $value #boardTrackSelectionController.mIsPreservedByAutoRouter }
       )
@@ -1847,7 +1841,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         right: Checkbox (title: "Use Custom", size: .small) { $value #boardTrackSelectionController.mUsesCustomTrackWidth }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .center) { $hidden #boardTrackSelectionController.mUsesCustomTrackWidth } ,
+        left: StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .left) { $hidden #boardTrackSelectionController.mUsesCustomTrackWidth } ,
         right: CanariObservedDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTrackSelectionController.netClassTrackWidth, #boardTrackSelectionController.mDefaultTrackWidthUnit
           $hidden #boardTrackSelectionController.mUsesCustomTrackWidth
@@ -1858,6 +1852,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTrackSelectionController.mCustomTrackWidth, #boardTrackSelectionController.mCustomTrackWidthUnit
           $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "End Style", bold: no, size: .small, alignment: .left),
+        right: EnumPopUpButton (titles: enum TrackEndStyle.popupTitles, size: .small) {
+          $selectedIndex #boardTrackSelectionController.mEndStyle
         }
       )
       addSeparator ()
