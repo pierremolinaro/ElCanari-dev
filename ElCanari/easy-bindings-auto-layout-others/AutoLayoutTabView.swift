@@ -56,12 +56,13 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
                      image inImage : NSImage? = nil,
                      tooltip inTooltipString : String,
                      contentView inPageView : NSView) -> Self {
-    self.mSegmentedControl.segmentCount += 1
-    self.mSegmentedControl.setLabel (inTitle, forSegment: self.mSegmentedControl.segmentCount - 1)
-    self.mSegmentedControl.setImage (inImage, forSegment: self.mSegmentedControl.segmentCount - 1)
-    self.mSegmentedControl.setToolTip (inTooltipString, forSegment: self.mSegmentedControl.segmentCount - 1)
+    let n = self.mSegmentedControl.segmentCount
+    self.mSegmentedControl.segmentCount = n + 1
+    self.mSegmentedControl.setLabel (inTitle, forSegment: n)
+    self.mSegmentedControl.setImage (inImage, forSegment: n)
+    self.mSegmentedControl.setToolTip (inTooltipString, forSegment: n)
     self.mPages.append (inPageView)
-    if self.mPages.count == 1 {
+    if n == 0 {
       self.selectTab (atIndex: 0)
     }
     return self

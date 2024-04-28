@@ -155,7 +155,7 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class AutoLayoutInternalDroppableImageView : NSImageView {
+fileprivate final class AutoLayoutInternalDroppableImageView : AutoLayoutBase_ImageView {
 
   //································································································
 
@@ -165,10 +165,8 @@ fileprivate final class AutoLayoutInternalDroppableImageView : NSImageView {
 
   //································································································
 
-   init () {
-    super.init (frame: .zero)
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+  override init () {
+    super.init ()
 
     self.imageScaling = .scaleProportionallyUpOrDown
     self.imageFrameStyle = .grayBezel
@@ -197,12 +195,6 @@ fileprivate final class AutoLayoutInternalDroppableImageView : NSImageView {
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //································································································

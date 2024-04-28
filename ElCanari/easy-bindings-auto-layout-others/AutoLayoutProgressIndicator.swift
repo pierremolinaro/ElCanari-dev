@@ -10,14 +10,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutProgressIndicator : NSProgressIndicator {
+final class AutoLayoutProgressIndicator : AutoLayoutBase_ProgressIndicator {
 
   //································································································
 
-  init () {
-    super.init (frame: .zero)
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+  override init () {
+    super.init ()
 
     self.isIndeterminate = false
   }
@@ -26,12 +24,6 @@ final class AutoLayoutProgressIndicator : NSProgressIndicator {
 
   required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //································································································

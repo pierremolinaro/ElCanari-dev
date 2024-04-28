@@ -10,16 +10,14 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutWindowContentView : NSView {
+final class AutoLayoutWindowContentView : AutoLayoutBase_NSView {
 
   //································································································
   // INIT
   //································································································
 
   init (view inView : NSView) {
-    super.init (frame: .zero)
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    super.init ()
 
     self.setContentHuggingPriority (.defaultLow, for: .horizontal)
     self.setContentHuggingPriority (.defaultLow, for: .vertical)
@@ -48,12 +46,6 @@ final class AutoLayoutWindowContentView : NSView {
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //································································································

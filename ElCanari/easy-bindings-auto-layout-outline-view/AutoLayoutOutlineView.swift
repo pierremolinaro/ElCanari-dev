@@ -14,7 +14,7 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
 
   //································································································
 
-  private final let mScrollView = AutoLayoutScrollView ()
+  private final let mScrollView = AutoLayoutBase_ScrollView ()
   private final let mOutlineView : InternalAutoLayoutOutlineView
   private final var mAddButton : AutoLayoutButton? = nil
   private final var mRemoveButton : AutoLayoutButton? = nil

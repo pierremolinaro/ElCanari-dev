@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutScrollView : NSScrollView {
+final class AutoLayoutBase_ScrollView : NSScrollView {
 
   //································································································
 

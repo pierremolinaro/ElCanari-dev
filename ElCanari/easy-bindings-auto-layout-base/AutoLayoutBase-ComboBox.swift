@@ -1,25 +1,25 @@
 //
-//  AutoLayoutDatePicker.swift
+//  AutoLayoutBase-ComboBox.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 11/12/2021.
+//  Created by Pierre Molinaro on 28/04/2024.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
+//   AutoLayoutBase_ComboBox
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutDatePicker : NSDatePicker {
+class AutoLayoutBase_ComboBox : NSComboBox, NSComboBoxDelegate {
 
   //································································································
 
-  init (size inSize : EBControlSize) {
+  init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
-
-    self.controlSize = inSize.cocoaControlSize
   }
 
   //································································································
@@ -39,3 +39,4 @@ final class AutoLayoutDatePicker : NSDatePicker {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
+

@@ -1,36 +1,30 @@
 //
-//  AutoLayoutWarningImageView.swift
+//  AutoLayoutDatePicker.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 14/12/2021.
+//  Created by Pierre Molinaro on 11/12/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutWarningImageView
-//——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutWarningImageView : NSImageView {
+final class AutoLayoutBase_DatePicker : NSDatePicker {
 
   //································································································
 
-  init () {
+  init (size inSize : EBControlSize) {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.image = NSImage (named: warningStatusImageName)
-    self.imageScaling = .scaleProportionallyUpOrDown
-    self.imageFrameStyle = .none
-
-    self.frame.size = self.intrinsicContentSize
+    self.controlSize = inSize.cocoaControlSize
   }
 
   //································································································
 
-  required init? (coder : NSCoder) {
+  required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
@@ -38,19 +32,6 @@ final class AutoLayoutWarningImageView : NSImageView {
 
   deinit {
     noteObjectDeallocation (self)
-  }
-
-  //································································································
-  //  $hidden binding
-  //································································································
-
-  private var mHiddenBindingController : HiddenBindingController? = nil
-
-  //································································································
-
-  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
-    return self
   }
 
   //································································································
