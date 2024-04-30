@@ -1796,7 +1796,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       add (
-        single: Checkbox (title: "Add Track to Solder Mask (as Pad)", size : .small) {
+        single: Checkbox (title: "Expose Copper (as Pad)", size : .small) {
           $enabled #boardTrackSelectionController.trackIsOnFrontOrBackLayer
           $value #boardTrackSelectionController.mAddedToSolderMask
         }

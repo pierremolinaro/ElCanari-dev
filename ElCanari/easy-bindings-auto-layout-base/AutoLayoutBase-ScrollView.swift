@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutBase_ScrollView : NSScrollView {
+class AutoLayoutBase_ScrollView : NSScrollView {
 
   //································································································
 
@@ -18,9 +18,6 @@ final class AutoLayoutBase_ScrollView : NSScrollView {
     super.init (frame: NSRect (x: 0, y: 0, width: 10, height: 10))
     self.translatesAutoresizingMaskIntoConstraints = false
     noteObjectAllocation (self)
-
-    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
-    self.setContentHuggingPriority (.defaultLow, for: .vertical)
   }
 
   //································································································
@@ -33,12 +30,6 @@ final class AutoLayoutBase_ScrollView : NSScrollView {
 
   deinit {
     noteObjectDeallocation (self)
-  }
-
-  //································································································
-
-  override var intrinsicContentSize : NSSize {
-    return NSSize (width: 100, height: 100)
   }
 
   //································································································

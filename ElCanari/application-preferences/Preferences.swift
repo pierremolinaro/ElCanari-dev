@@ -132,7 +132,7 @@ import AppKit
       _ = view_3.appendView (view_3_2)
     }
     _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutWebView (url: "https://pierremolinaro.github.io/ElCanari-distribution/release-notes.html")
+    let view_4 = AutoLayoutBase_WebView (url: "https://pierremolinaro.github.io/ElCanari-distribution/release-notes.html")
       .set (minHeight: 500)
     _ = vStackView.appendView (view_4)
     return vStackView

@@ -2545,8 +2545,8 @@
 		CFB7D8F22683A732007B9D3B /* transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB7D8ED2683A732007B9D3B /* transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueString.swift */; };
 		CFB80EA127A1AB9A0084F73F /* configurator-Preferences-sparkleLastCheckTimeTextFieldConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB80EA027A1AB9A0084F73F /* configurator-Preferences-sparkleLastCheckTimeTextFieldConfigurator.swift */; };
 		CFB80EA227A1AB9A0084F73F /* configurator-Preferences-sparkleLastCheckTimeTextFieldConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB80EA027A1AB9A0084F73F /* configurator-Preferences-sparkleLastCheckTimeTextFieldConfigurator.swift */; };
-		CFB80EA527A1B1470084F73F /* AutoLayoutWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB80EA427A1B1470084F73F /* AutoLayoutWebView.swift */; };
-		CFB80EA627A1B1470084F73F /* AutoLayoutWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB80EA427A1B1470084F73F /* AutoLayoutWebView.swift */; };
+		CFB80EA527A1B1470084F73F /* AutoLayoutBase-WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB80EA427A1B1470084F73F /* AutoLayoutBase-WebView.swift */; };
+		CFB80EA627A1B1470084F73F /* AutoLayoutBase-WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB80EA427A1B1470084F73F /* AutoLayoutBase-WebView.swift */; };
 		CFB82C0C276B89BE00BAD56E /* AutoLayoutTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB82C0B276B89BE00BAD56E /* AutoLayoutTableView.swift */; };
 		CFB82C0D276B89BE00BAD56E /* AutoLayoutTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB82C0B276B89BE00BAD56E /* AutoLayoutTableView.swift */; };
 		CFB82C10276B89E400BAD56E /* AutoLayoutTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB82C0F276B89E400BAD56E /* AutoLayoutTableViewDelegate.swift */; };
@@ -4705,7 +4705,7 @@
 		CFB7D8EC2683A731007B9D3B /* transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueImage.swift"; sourceTree = "<group>"; };
 		CFB7D8ED2683A732007B9D3B /* transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueString.swift"; sourceTree = "<group>"; };
 		CFB80EA027A1AB9A0084F73F /* configurator-Preferences-sparkleLastCheckTimeTextFieldConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-Preferences-sparkleLastCheckTimeTextFieldConfigurator.swift"; sourceTree = "<group>"; };
-		CFB80EA427A1B1470084F73F /* AutoLayoutWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutWebView.swift; sourceTree = "<group>"; };
+		CFB80EA427A1B1470084F73F /* AutoLayoutBase-WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoLayoutBase-WebView.swift"; sourceTree = "<group>"; };
 		CFB82B1C276B71CD00BAD56E /* configurator-AutoLayoutProjectDocument-selectedNetVerticalScrollViewConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-selectedNetVerticalScrollViewConfigurator.swift"; sourceTree = "<group>"; };
 		CFB82C0B276B89BE00BAD56E /* AutoLayoutTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutTableView.swift; sourceTree = "<group>"; };
 		CFB82C0F276B89E400BAD56E /* AutoLayoutTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutTableViewDelegate.swift; sourceTree = "<group>"; };
@@ -6329,6 +6329,7 @@
 				CF54A04C2771047C00D978D9 /* AutoLayoutBase-NSView.swift */,
 				CFC579352BDEE88C005CA3F0 /* AutoLayoutBase-ProgressIndicator.swift */,
 				CF2285DF2766812B00804193 /* AutoLayoutBase-ScrollView.swift */,
+				CFB80EA427A1B1470084F73F /* AutoLayoutBase-WebView.swift */,
 				CF9C603125CAB4FA00A00D5C /* AutoLayoutFlexibleSpace.swift */,
 				CFDB1CB625CED02A0098C56C /* AutoLayoutGridView2.swift */,
 				CF625CB325D033BD00072462 /* AutoLayoutMenuItemDescriptor.swift */,
@@ -6336,7 +6337,6 @@
 				CF670EDA2679293F0057FCDE /* AutoLayoutOneStringArrayTableView.swift */,
 				CF071E77275B7B4F00FF2772 /* AutoLayoutVerticalScrollView.swift */,
 				CF617FA2275E7D34008F0C32 /* AutoLayoutViewByPrefixingAppIcon.swift */,
-				CFB80EA427A1B1470084F73F /* AutoLayoutWebView.swift */,
 				CF4990F828D8C9420099F871 /* enum-EBControlSize-extension.swift */,
 				CF4990EE28D8C9400099F871 /* enum-EBControlSize.swift */,
 				CF4990F428D8C9410099F871 /* enum-TextAlignment-extension.swift */,
@@ -8245,7 +8245,7 @@
 				CF2B9CE221C2A8D100EE5683 /* entity-PackageRoot.swift in Sources */,
 				CF3494D929EB2EE2006AB1EB /* toone-RectangleEntity.swift in Sources */,
 				CF59C44929BE36AB004CA404 /* property-TwoStringArray.swift in Sources */,
-				CFB80EA527A1B1470084F73F /* AutoLayoutWebView.swift in Sources */,
+				CFB80EA527A1B1470084F73F /* AutoLayoutBase-WebView.swift in Sources */,
 				CF4EA9FE26F671C500F01746 /* transient-NetClassInProject-allowTracksOnInner3LayerString.swift in Sources */,
 				CF784E53275E3581001BC885 /* ProjectRoot-customized-tracks.swift in Sources */,
 				CF711E10275E1C8D00280069 /* extension-PackageGuide.swift in Sources */,
@@ -9919,7 +9919,7 @@
 				CFEB7B51233A25EC0060A97A /* transient-ComponentInProject-componentPadDictionary.swift in Sources */,
 				CF2285E12766812B00804193 /* AutoLayoutBase-ScrollView.swift in Sources */,
 				CF171D8B26FB999B00A1BCB2 /* EBReferenceArray.swift in Sources */,
-				CFB80EA627A1B1470084F73F /* AutoLayoutWebView.swift in Sources */,
+				CFB80EA627A1B1470084F73F /* AutoLayoutBase-WebView.swift in Sources */,
 				CFC6325922F706A1001AE938 /* transient-ArtworkRoot-signatureForERCChecking.swift in Sources */,
 				CF3558EE279D9F3B000BFC9B /* extension-AutoLayoutProjectDocument-schematic-hot-keys.swift in Sources */,
 				CF49EEC5275A499500481930 /* document-AutoLayoutFont-sub-class.swift in Sources */,

@@ -13,16 +13,16 @@ import AppKit
 // https://github.com/mattiasjahnke/NSStackView-Scroll
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutVerticalScrollView : NSScrollView {
+class AutoLayoutVerticalScrollView : AutoLayoutBase_ScrollView {
 
   //································································································
   //   INIT
   //································································································
 
   init (content inDocumentView : NSView) {
-    super.init (frame: .zero)
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    super.init ()
+//    noteObjectAllocation (self)
+//    self.translatesAutoresizingMaskIntoConstraints = false
 
     self.contentView = MyFlippedClipView () // So is aligned to top (instead of bottom)
     self.drawsBackground = false
@@ -54,9 +54,9 @@ class AutoLayoutVerticalScrollView : NSScrollView {
 
   //································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
 
   //································································································
 

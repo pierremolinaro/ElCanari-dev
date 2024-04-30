@@ -1,5 +1,5 @@
 //
-//  AutoLayoutWebView.swift
+//  AutoLayoutBase_WebView.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 26/01/2022.
@@ -10,10 +10,10 @@ import AppKit
 import WebKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutWebView
+//   AutoLayoutBase_WebView
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutWebView : WKWebView, WKUIDelegate {
+final class AutoLayoutBase_WebView : WKWebView, WKUIDelegate {
 
   //································································································
 
