@@ -4,7 +4,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField {
+final class AutoLayoutCanariAngleField : ALB_NSTextField {
 
   //································································································
   // Properties
@@ -28,7 +28,7 @@ final class AutoLayoutCanariAngleField : AutoLayoutBase_NSTextField {
   //································································································
 
   init (minWidth inWidth : Int, size inSize : EBControlSize) {
-    super.init (optionalWidth: inWidth, bold: true, size: inSize)
+    super.init (optionalWidth: inWidth, bold: true, size: inSize.cocoaControlSize)
 
     self.delegate = self
     self.target = self

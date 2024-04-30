@@ -4,14 +4,14 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutStaticLabel : AutoLayoutBase_NSTextField {
+final class AutoLayoutStaticLabel : ALB_NSTextField {
 
   //································································································
   // INIT
   //································································································
 
   init (title inTitle : String, bold inBold : Bool, size inSize : EBControlSize, alignment inAlignment : TextAlignment) {
-    super.init (optionalWidth: nil, bold: inBold, size: inSize)
+    super.init (optionalWidth: nil, bold: inBold, size: inSize.cocoaControlSize)
 
     self.stringValue = inTitle
     self.isBezeled = false

@@ -4,7 +4,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutLabel : AutoLayoutBase_NSTextField {
+final class AutoLayoutLabel : ALB_NSTextField {
 
   //································································································
 
@@ -17,7 +17,7 @@ final class AutoLayoutLabel : AutoLayoutBase_NSTextField {
   init (bold inBold : Bool, size inSize : EBControlSize) {
     self.mBold = inBold
 
-    super.init (optionalWidth: nil, bold: inBold, size: inSize)
+    super.init (optionalWidth: nil, bold: inBold, size: inSize.cocoaControlSize)
 
     self.isBezeled = false
     self.isBordered = false

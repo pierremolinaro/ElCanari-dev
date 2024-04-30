@@ -10,12 +10,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariSelectionPopUpButton : AutoLayoutBase_NSPopUpButton {
+final class AutoLayoutCanariSelectionPopUpButton : ALB_NSPopUpButton {
 
   //································································································
 
   init (size inSize : EBControlSize) {
-    super.init (pullsDown: false, size: inSize)
+    super.init (pullsDown: false, size: inSize.cocoaControlSize)
   }
 
   //································································································

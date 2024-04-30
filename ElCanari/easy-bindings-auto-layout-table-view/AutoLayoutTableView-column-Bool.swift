@@ -77,7 +77,7 @@ fileprivate final class InternalBoolValueTableColumn : AutoLayoutTableColumn {
   //································································································
 
   @MainActor override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
-    let checkbox = AutoLayoutBase_NSButton (title: "", size: .small)
+    let checkbox = ALB_NSButton (title: "", size: .small)
     checkbox.setContentHuggingPriority (.defaultLow, for: .horizontal)
     checkbox.setContentHuggingPriority (.defaultLow, for: .vertical)
     checkbox.setButtonType (.switch)

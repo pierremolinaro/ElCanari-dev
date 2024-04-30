@@ -4,20 +4,20 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedControl {
+final class AutoLayoutSegmentedControlWithPages : ALB_NSSegmentedControl {
 
   //································································································
 
-  private var mDocumentView : AutoLayoutBase_NSStackView
-  private var mPages = [AutoLayoutBase_NSStackView] ()
+  private var mDocumentView : ALB_NSStackView
+  private var mPages = [ALB_NSStackView] ()
 
   //································································································
 
-  init (documentView inDocumentView : AutoLayoutBase_NSStackView,
+  init (documentView inDocumentView : ALB_NSStackView,
         equalWidth inEqualWidth : Bool,
         size inSize : EBControlSize) {
     self.mDocumentView = inDocumentView
-    super.init (equalWidth: inEqualWidth, size: inSize)
+    super.init (equalWidth: inEqualWidth, size: inSize.cocoaControlSize)
 
     self.target = self
     self.action = #selector (Self.selectedSegmentDidChange (_:))
@@ -35,7 +35,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
 
   final func addPage (title inTitle : String,
                       tooltip inTooltipString : String,
-                      pageView inPageView : AutoLayoutBase_NSStackView) -> Self {
+                      pageView inPageView : ALB_NSStackView) -> Self {
     self.segmentCount += 1
     self.setLabel (inTitle, forSegment: self.segmentCount - 1)
     self.setToolTip (inTooltipString, forSegment: self.segmentCount - 1)
@@ -55,7 +55,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
   final func addPage (image inImageName : String,
                       title inTitle : String,
                       tooltip inTooltipString : String,
-                      pageView inPageView : AutoLayoutBase_NSStackView) -> Self {
+                      pageView inPageView : ALB_NSStackView) -> Self {
     let n = self.segmentCount
     self.segmentCount += 1
     self.setImage (NSImage (named: inImageName), forSegment: n)

@@ -12,12 +12,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCheckbox : AutoLayoutBase_NSButton {
+final class AutoLayoutCheckbox : ALB_NSButton {
 
   //································································································
 
-  override init (title inTitle : String, size inSize : EBControlSize) {
-    super.init (title: inTitle, size: inSize)
+  init (title inTitle : String, size inSize : EBControlSize) {
+    super.init (title: inTitle, size: inSize.cocoaControlSize)
 
     self.setButtonType (.switch)
     self.title = inTitle

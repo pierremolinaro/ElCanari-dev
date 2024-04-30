@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
+final class AutoLayoutCanariBoardRectangleView : ALB_NSView {
 
   //································································································
 

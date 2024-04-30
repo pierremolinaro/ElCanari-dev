@@ -11,7 +11,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutFontButton : AutoLayoutBase_NSButton {
+final class AutoLayoutFontButton : ALB_NSButton {
 
   //································································································
 
@@ -22,7 +22,7 @@ final class AutoLayoutFontButton : AutoLayoutBase_NSButton {
 
   init (width inWidth : Int, size inSize : EBControlSize) {
     self.mWidth = CGFloat (inWidth)
-    super.init (title: "", size: inSize)
+    super.init (title: "", size: inSize.cocoaControlSize)
   }
 
   //································································································

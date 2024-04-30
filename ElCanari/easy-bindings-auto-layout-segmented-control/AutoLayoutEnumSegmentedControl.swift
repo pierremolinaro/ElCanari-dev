@@ -10,12 +10,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutEnumSegmentedControl : AutoLayoutBase_NSSegmentedControl {
+final class AutoLayoutEnumSegmentedControl : ALB_NSSegmentedControl {
 
   //································································································
 
   init (titles inTitles : [String], equalWidth inEqualWidth : Bool, size inSize : EBControlSize) {
-    super.init (equalWidth: inEqualWidth, size: inSize)
+    super.init (equalWidth: inEqualWidth, size: inSize.cocoaControlSize)
     self.segmentCount = inTitles.count
     var idx = 0
     for title in inTitles {

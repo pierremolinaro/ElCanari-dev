@@ -10,12 +10,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutEnumPopUpButton : AutoLayoutBase_NSPopUpButton {
+final class AutoLayoutEnumPopUpButton : ALB_NSPopUpButton {
 
   //································································································
 
   init (titles inTitles : [String], size inSize : EBControlSize) {
-    super.init (pullsDown: false, size: inSize)
+    super.init (pullsDown: false, size: inSize.cocoaControlSize)
     for title in inTitles {
       self.addItem (withTitle: title)
     }

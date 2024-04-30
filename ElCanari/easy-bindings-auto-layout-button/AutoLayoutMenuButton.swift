@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutMenuButton : AutoLayoutBase_NSView {
+final class AutoLayoutMenuButton : ALB_NSView {
 
   //································································································
 

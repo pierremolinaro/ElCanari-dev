@@ -10,12 +10,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariVerticalAlignmentSegmentedControl : AutoLayoutBase_NSSegmentedControl {
+final class AutoLayoutCanariVerticalAlignmentSegmentedControl : ALB_NSSegmentedControl {
 
   //································································································
 
   init (size inSize : EBControlSize) {
-    super.init (equalWidth: true, size: inSize)
+    super.init (equalWidth: true, size: inSize.cocoaControlSize)
 
     self.segmentDistribution = .fillEqually
 

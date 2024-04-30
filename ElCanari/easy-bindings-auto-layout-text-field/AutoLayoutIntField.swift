@@ -10,7 +10,7 @@ import AppKit
 //   AutoLayoutIntField
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
+final class AutoLayoutIntField : ALB_NSTextField {
 
   //································································································
 
@@ -30,7 +30,7 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
   //································································································
 
   init (minWidth inWidth : Int, size inSize : EBControlSize) {
-    super.init (optionalWidth: inWidth, bold: true, size: inSize)
+    super.init (optionalWidth: inWidth, bold: true, size: inSize.cocoaControlSize)
 
   //--- Delegate
     self.delegate = self

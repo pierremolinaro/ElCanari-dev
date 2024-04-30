@@ -10,12 +10,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutPullDownButton : AutoLayoutBase_NSPopUpButton {
+final class AutoLayoutPullDownButton : ALB_NSPopUpButton {
 
   //································································································
 
   init (title inTitle : String, size inSize : EBControlSize) {
-    super.init (pullsDown: true, size: inSize)
+    super.init (pullsDown: true, size: inSize.cocoaControlSize)
 
     self.addItem (withTitle: inTitle)
   }

@@ -79,7 +79,7 @@ let DOWN_ARROW_STRING  = "\u{2193}"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutButton : AutoLayoutBase_NSButton {
+final class AutoLayoutButton : ALB_NSButton {
 
   //································································································
 

@@ -10,14 +10,14 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutDateLabel : AutoLayoutBase_NSTextField {
+final class AutoLayoutDateLabel : ALB_NSTextField {
 
   //································································································
   // INIT
   //································································································
 
   init (bold inBold : Bool, size inSize : EBControlSize) {
-    super.init (optionalWidth: nil, bold: inBold, size: inSize)
+    super.init (optionalWidth: nil, bold: inBold, size: inSize.cocoaControlSize)
 
     let formatter = DateFormatter ()
     formatter.dateStyle = .long

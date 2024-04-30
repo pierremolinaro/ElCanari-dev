@@ -325,7 +325,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class SelectedNetButton : AutoLayoutBase_NSButton {
+fileprivate class SelectedNetButton : ALB_NSButton {
 
   private let mSheetIndex : Int
   private let mRowIndex : Int

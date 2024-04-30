@@ -10,7 +10,7 @@ import AppKit
 //   AutoLayoutCanariDimensionField
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField {
+final class AutoLayoutCanariDimensionField : ALB_NSTextField {
 
   //································································································
 
@@ -25,7 +25,7 @@ final class AutoLayoutCanariDimensionField : AutoLayoutBase_NSTextField {
   //································································································
 
   init (size inSize : EBControlSize) {
-    super.init (optionalWidth: 72, bold: true, size: inSize)
+    super.init (optionalWidth: 72, bold: true, size: inSize.cocoaControlSize)
   //--- Target
     self.target = self
     self.action = #selector (Self.valueDidChangeAction (_:))

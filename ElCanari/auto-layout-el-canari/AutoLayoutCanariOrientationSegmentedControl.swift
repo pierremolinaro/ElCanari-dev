@@ -10,12 +10,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariOrientationSegmentedControl : AutoLayoutBase_NSSegmentedControl {
+final class AutoLayoutCanariOrientationSegmentedControl : ALB_NSSegmentedControl {
 
   //································································································
 
   init (size inSize : EBControlSize) {
-    super.init (equalWidth: true, size: inSize)
+    super.init (equalWidth: true, size: inSize.cocoaControlSize)
 
     self.segmentCount = 4
     self.setLabel ("0°",   forSegment: 0)

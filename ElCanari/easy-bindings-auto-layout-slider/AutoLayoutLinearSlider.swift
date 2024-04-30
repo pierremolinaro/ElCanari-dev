@@ -14,7 +14,7 @@ import AppKit
 //   AutoLayoutLinearSlider
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutLinearSlider : AutoLayoutBase_NSSlider {
+final class AutoLayoutLinearSlider : ALB_NSSlider {
 
   //································································································
 

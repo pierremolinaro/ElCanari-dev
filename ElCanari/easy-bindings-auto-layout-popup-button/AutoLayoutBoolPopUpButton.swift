@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutBoolPopUpButton : AutoLayoutBase_NSPopUpButton {
+final class AutoLayoutBoolPopUpButton : ALB_NSPopUpButton {
 
   //································································································
 

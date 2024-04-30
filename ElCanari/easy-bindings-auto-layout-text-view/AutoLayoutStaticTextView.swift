@@ -14,7 +14,7 @@ final class AutoLayoutStaticTextView : NSScrollView {
 
   //································································································
 
-  fileprivate let mTextView = AutoLayoutBase_NSTextView ()
+  fileprivate let mTextView = ALB_NSTextView ()
 
   //································································································
 

@@ -2,7 +2,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariFontCharacterSelectButton : AutoLayoutBase_NSButton {
+final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton {
   private var mCharacterSelectionPopover : NSPopover? = nil
   private var mSelectionView : FontCharacterSelectView? = nil
   private var mDefinedCharacterSet = Set <Int> ()

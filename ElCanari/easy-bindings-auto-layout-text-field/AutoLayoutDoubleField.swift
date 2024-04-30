@@ -10,7 +10,7 @@ import AppKit
 //   AutoLayoutDoubleField
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
+final class AutoLayoutDoubleField : ALB_NSTextField {
 
   //································································································
 
@@ -29,7 +29,7 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
   //································································································
 
   init (width inWidth : Int, size inSize : EBControlSize) {
-    super.init (optionalWidth: inWidth, bold: true, size: inSize)
+    super.init (optionalWidth: inWidth, bold: true, size: inSize.cocoaControlSize)
   //--- Number formatter
     self.mNumberFormatter.formatterBehavior = .behavior10_4
     self.mNumberFormatter.numberStyle = .decimal

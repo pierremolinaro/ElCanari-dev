@@ -30,7 +30,7 @@ extension AutoLayoutProjectDocument {
       _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Move Selected Element to Sheet", bold: true, size: .regular, alignment: .center))
       _ = layoutView.appendFlexibleSpace ()
     //--- Populate pop up button
-      let popUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
+      let popUpButton = ALB_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
       _ = layoutView.appendView (popUpButton)
       _ = layoutView.appendFlexibleSpace ()
       var idx = 0

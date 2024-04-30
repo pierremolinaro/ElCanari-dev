@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariPreferredDirectionSegmentedControl : AutoLayoutBase_NSSegmentedControl {
+final class AutoLayoutCanariPreferredDirectionSegmentedControl : ALB_NSSegmentedControl {
 
   //································································································
 

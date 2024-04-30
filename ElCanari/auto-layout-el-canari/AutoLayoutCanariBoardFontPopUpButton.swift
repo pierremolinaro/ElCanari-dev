@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariBoardFontPopUpButton : AutoLayoutBase_NSPopUpButton {
+final class AutoLayoutCanariBoardFontPopUpButton : ALB_NSPopUpButton {
 
   //································································································
 

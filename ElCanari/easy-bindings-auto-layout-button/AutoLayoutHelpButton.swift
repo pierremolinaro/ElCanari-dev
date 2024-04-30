@@ -10,12 +10,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutHelpButton : AutoLayoutBase_NSButton {
+final class AutoLayoutHelpButton : ALB_NSButton {
 
   //································································································
 
   init (size inSize : EBControlSize) {
-    super.init (title: "", size: inSize)
+    super.init (title: "", size: inSize.cocoaControlSize)
 
     self.bezelStyle = .helpButton
   }
