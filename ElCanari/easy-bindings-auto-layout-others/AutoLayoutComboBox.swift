@@ -12,7 +12,7 @@ import AppKit
 //   AutoLayoutComboBox
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutComboBox : AutoLayoutBase_ComboBox {
+final class AutoLayoutComboBox : ALB_NSComboBox {
 
   //································································································
 

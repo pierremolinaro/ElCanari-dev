@@ -10,18 +10,18 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutTabView : AutoLayoutBase_NSView {
+final class AutoLayoutTabView : ALB_NSView {
 
   //································································································
 
   private var mDocumentView = MyTabDocumentView ()
   private var mPages = [NSView] ()
-  private var mSegmentedControl : AutoLayoutBase_NSSegmentedControl
+  private var mSegmentedControl : ALB_NSSegmentedControl
 
   //································································································
 
   init (size inSize : EBControlSize) {
-    self.mSegmentedControl = AutoLayoutBase_NSSegmentedControl (equalWidth: false, size: inSize)
+    self.mSegmentedControl = ALB_NSSegmentedControl (equalWidth: false, size: inSize.cocoaControlSize)
     super.init ()
 
     self.addSubview (self.mDocumentView)
@@ -160,7 +160,7 @@ final class AutoLayoutTabView : AutoLayoutBase_NSView {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class MyTabDocumentView : AutoLayoutBase_NSView {
+fileprivate final class MyTabDocumentView : ALB_NSView {
 
   //································································································
 

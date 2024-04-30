@@ -155,7 +155,7 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class AutoLayoutInternalDroppableImageView : AutoLayoutBase_ImageView {
+fileprivate final class AutoLayoutInternalDroppableImageView : ALB_NSImageView {
 
   //································································································
 

@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutWindowContentView : AutoLayoutBase_NSView {
+final class AutoLayoutWindowContentView : ALB_NSView {
 
   //································································································
   // INIT

@@ -1,5 +1,5 @@
 //
-//  AutoLayoutBase-NSButton.swift
+//  ALB_NSButton.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 20/06/2021.
@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBase_NSButton : NSButton {
+class ALB_NSButton : NSButton {
 
   //································································································
 
@@ -18,13 +18,13 @@ class AutoLayoutBase_NSButton : NSButton {
 
   //································································································
 
-  init (title inTitle : String, size inSize : EBControlSize) {
+  init (title inTitle : String, size inSize : NSControl.ControlSize) {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
     self.title = inTitle
-    self.controlSize = inSize.cocoaControlSize
+    self.controlSize = inSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.bezelStyle = .rounded
 

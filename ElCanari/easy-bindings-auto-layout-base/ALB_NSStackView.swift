@@ -4,198 +4,190 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutVerticalStackView : AutoLayoutBase_NSStackView {
+class ALB_NSStackView : NSStackView {
 
   //································································································
   //   INIT
   //································································································
 
-  init () {
-    super.init (orientation: .vertical)
-    self.alignment = .width
+  init (orientation inOrientation : NSUserInterfaceLayoutOrientation) {
+    super.init (frame: .zero)
+    noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.setHuggingPriority (.required, for: .horizontal)
-//    self.setHuggingPriority (.defaultHigh, for: .vertical)
+    self.orientation = inOrientation
+    self.distribution = .fill
   }
 
   //································································································
 
-  required init? (coder inCoder : NSCoder) {
+  required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
   //································································································
-  //   Facilities
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
   //································································································
 
-  final func appendViewPreceededByFlexibleSpace (_ inView : NSView) -> Self {
-    let hStack = AutoLayoutHorizontalStackView ()
-      .appendFlexibleSpace ()
-      .appendView (inView)
-    self.addView (hStack, in: .leading)
+  final func prependView (_ inView : NSView) -> Self {
+    self.insertView (inView, at: 0, in: .leading)
     return self
   }
 
   //································································································
 
-  final func appendViewFollowedByFlexibleSpace (_ inView : NSView) -> Self {
-    let hStack = AutoLayoutHorizontalStackView ()
-    _ = hStack.appendView (inView)
-    _ = hStack.appendFlexibleSpace ()
-    self.addView (hStack, in: .leading)
+  final func appendView (_ inView : NSView) -> Self {
+    self.addView (inView, in: .leading)
     return self
   }
 
   //································································································
 
-  final func appendViewSurroundedByFlexibleSpaces (_ inView : NSView) -> Self {
-    let hStack = AutoLayoutHorizontalStackView ()
-    _ = hStack.appendFlexibleSpace ()
-    _ = hStack.appendView (inView)
-    _ = hStack.appendFlexibleSpace ()
-    self.addView (hStack, in: .leading)
+  final func appendFlexibleSpace () -> Self {
+    self.addView (AutoLayoutFlexibleSpace (), in: .leading)
     return self
   }
 
   //································································································
-  // Flipped
-  // https://stackoverflow.com/questions/4697583/setting-nsscrollview-contents-to-top-left-instead-of-bottom-left-when-document-s
+  //   DRAW
   //································································································
 
-  final override var isFlipped : Bool { true }
-
-  //································································································
-  // SET WIDTH
-  //································································································
-
-  private var mWidth : CGFloat? = nil
-  private var mHeight : CGFloat? = nil
-
-  //································································································
-
-  final func set (width inWidth : Int) -> Self {
-    self.mWidth = CGFloat (inWidth)
-    let c = NSLayoutConstraint (
-      item: self,
-      attribute: .width,
-      relatedBy: .equal,
-      toItem: nil,
-      attribute: .notAnAttribute,
-      multiplier: 1.0,
-      constant: CGFloat (inWidth)
-    )
-    self.addConstraint (c)
-    return self
+  override func draw (_ inDirtyRect : NSRect) {
+    if debugAutoLayout () {
+      var r = self.bounds
+      r.origin.x += self.edgeInsets.left
+      r.origin.y += self.edgeInsets.bottom
+      r.size.width -= self.edgeInsets.left + self.edgeInsets.right
+      r.size.height -= self.edgeInsets.top + self.edgeInsets.bottom
+      var bp = NSBezierPath (rect: r)
+      bp.lineWidth = 1.0
+      bp.lineJoinStyle = .round
+      DEBUG_STROKE_COLOR.setStroke ()
+      let array : [CGFloat] = [1.0, 1.0]
+      bp.setLineDash (array, count: array.count, phase: 0.0)
+      bp.stroke ()
+      bp = NSBezierPath (rect: self.bounds)
+      bp.lineWidth = 1.0
+      bp.lineJoinStyle = .round
+      bp.stroke ()
+    }
+    super.draw (inDirtyRect)
   }
-
+  
+  //································································································
+  //  MARGINS
   //································································································
 
-  final func set (minimumWidth inWidth : Int) -> Self {
-    self.mWidth = CGFloat (inWidth)
-    let c = NSLayoutConstraint (
-      item: self,
-      attribute: .width,
-      relatedBy: .greaterThanOrEqual,
-      toItem: nil,
-      attribute: .notAnAttribute,
-      multiplier: 1.0,
-      constant: CGFloat (inWidth)
-    )
-    self.addConstraint (c)
+  final func set (spacing inValue : Int) -> Self {
+    let v = CGFloat (inValue)
+    self.spacing = v
     return self
   }
 
   //································································································
 
-//  final func set (height inHeight : Int) -> Self {
-//    self.mHeight = CGFloat (inHeight)
-//    self.needsUpdateConstraints = true
+  final func set (margins inValue : Int) -> Self {
+    let v = CGFloat (inValue)
+    self.edgeInsets.left   = v
+    self.edgeInsets.top    = v
+    self.edgeInsets.right  = v
+    self.edgeInsets.bottom = v
+    return self
+  }
+
+  //································································································
+
+  final func set (topMargin inValue : Int) -> Self {
+    self.edgeInsets.top = CGFloat (inValue)
+    return self
+  }
+
+  //································································································
+
+  final func set (bottomMargin inValue : Int) -> Self {
+    self.edgeInsets.bottom = CGFloat (inValue)
+    return self
+  }
+
+  //································································································
+
+  final func set (leftMargin inValue : Int) -> Self {
+    self.edgeInsets.left = CGFloat (inValue)
+    return self
+  }
+
+  //································································································
+
+  final func set (rightMargin inValue : Int) -> Self {
+    self.edgeInsets.right = CGFloat (inValue)
+    return self
+  }
+
+  //································································································
+
+//  final func setSpacing (_ inValue : Int) -> Self {
+//    self.spacing = CGFloat (inValue)
 //    return self
 //  }
 
   //································································································
-  //   equalHeight
-  //································································································
 
-  final func equalHeight () -> Self {
-    self.distribution = .fillEqually
-    return self
-  }
-
-  //································································································
-  //   minWidth
-  //································································································
-
-  final func set (minWidth inMinWidth : Int) -> Self {
-    let c = NSLayoutConstraint (
-      item: self,
-      attribute: .width,
-      relatedBy: .greaterThanOrEqual,
-      toItem: nil,
-      attribute: .notAnAttribute,
-      multiplier: 1.0,
-      constant: CGFloat (inMinWidth)
-    )
-    self.addConstraint (c)
-    return self
-  }
+//  final func flexibleSpace () -> Self {
+//    _ = self.appendView (AutoLayoutFlexibleSpace ())
+//    return self
+//  }
 
   //································································································
 
-  override var intrinsicContentSize : NSSize {
-    var s = super.intrinsicContentSize
-    if let w = self.mWidth {
-      s.width = w
-    }
-    if let h = self.mHeight {
-      s.height = h
-    }
-    return s
-  }
+//  final func add (item inView : NSView) -> Self {
+//    _ = self.appendView (inView)
+//    return self
+//  }
 
   //································································································
 
-  private var mConstraints = [NSLayoutConstraint] ()
-
-  override func updateConstraints () {
-    self.removeConstraints (self.mConstraints)
-    self.mConstraints.removeAll ()
-    var spaceViewArray = [AutoLayoutFlexibleSpace] ()
-    for view in self.subviews {
-      if let spaceView = view as? AutoLayoutFlexibleSpace {
-        spaceViewArray.append (spaceView)
-      }
-    }
-    if let oneSpaceView = spaceViewArray.popLast () {
-      for spaceView in spaceViewArray {
-        let c = NSLayoutConstraint (item: oneSpaceView, attribute: .height, relatedBy: .equal, toItem: spaceView, attribute: .height, multiplier: 1.0, constant: 0.0)
-        self.mConstraints.append (c)
-      }
-      self.addConstraints (self.mConstraints)
-    }
-    super.updateConstraints ()
-  }
-
-  //································································································
-
-  override func draw (_ inDirtyRect : NSRect) {
-    super.draw (inDirtyRect)
-    if debugAutoLayout () {
-      DEBUG_VERTICAL_SEPARATOR_FILL_COLOR.setFill ()
-      let bounds = self.bounds
-      var optionalLastView : NSView? = nil
+  override final func observeValue (forKeyPath inKeyPath : String?,
+                                    of inObject :  Any?,
+                                    change inChange : [NSKeyValueChangeKey : Any]?,
+                                    context inContext : UnsafeMutableRawPointer?) {
+    if inKeyPath == "hidden" {
+      var allAreHidden = true
       for view in self.subviews {
-        if !view.isHidden {
-          if let lastView = optionalLastView {
-            let top = lastView.frame.minY
-            let bottom = view.frame.maxY
-            let r = NSRect (x: bounds.origin.x, y: bottom, width: bounds.size.width, height: top - bottom)
-            NSBezierPath.fill (r)
-          }
-          optionalLastView = view
+        if !view.isHidden && !(view is AutoLayoutFlexibleSpace) {
+          allAreHidden = false
         }
       }
+      if self.isHidden != allAreHidden {
+        self.isHidden = allAreHidden
+      }
     }
+    super.observeValue (forKeyPath: inKeyPath, of: inObject, change: inChange, context: inContext)
+  }
+
+  //································································································
+
+  override func updateConstraints () {
+    super.updateConstraints ()
+    if let windowContentView = self.window?.contentView as? AutoLayoutWindowContentView {
+      windowContentView.triggerNextKeyViewSettingComputation ()
+    }
+  }
+
+  //································································································
+  //  $hidden binding
+  //································································································
+
+  private final var mHiddenBindingController : HiddenBindingController? = nil
+
+  //································································································
+
+  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
+    return self
   }
 
   //································································································

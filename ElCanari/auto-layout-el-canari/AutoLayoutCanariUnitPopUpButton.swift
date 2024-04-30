@@ -10,12 +10,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariUnitPopUpButton : AutoLayoutBase_NSPopUpButton {
+final class AutoLayoutCanariUnitPopUpButton : ALB_NSPopUpButton {
 
   //································································································
 
   init (size inSize : EBControlSize) {
-    super.init (pullsDown: false, size: inSize)
+    super.init (pullsDown: false, size: inSize.cocoaControlSize)
 
     self.addItem (forUnit: CANARI_UNITS_PER_MIL)
     self.addItem (forUnit: CANARI_UNITS_PER_INCH)

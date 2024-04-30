@@ -1,55 +1,40 @@
-//
-//  AutoLayoutBase-NSStepper.swift
-//  ElCanari
-//
-//  Created by Pierre Molinaro on 30/12/2021.
-//
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
+//   AutoLayoutFlexibleSpace
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBase_NSStepper : NSStepper {
+final class AutoLayoutFlexibleSpace : ALB_NSView {
 
   //································································································
 
-  init () {
-    super.init (frame: .zero)
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-
-    self.setContentCompressionResistancePriority (.required, for: .vertical)
-    self.setContentHuggingPriority (.required, for: .vertical)
-    self.setContentCompressionResistancePriority (.required, for: .horizontal)
-    self.setContentHuggingPriority (.required, for: .horizontal)
+  override init () {
+    super.init ()
+    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    self.setContentHuggingPriority (.defaultLow, for: .vertical)
   }
 
   //································································································
 
-  required init? (coder inCoder : NSCoder) {
+  required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
   //································································································
 
-  deinit {
-    noteObjectDeallocation (self)
+  override func draw (_ inDirtyRect : NSRect) {
+    if debugAutoLayout () {
+      DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
+      NSBezierPath.fill (self.bounds)
+      let bp = NSBezierPath (rect: self.bounds)
+      bp.lineWidth = 1.0
+      bp.lineJoinStyle = .round
+      DEBUG_STROKE_COLOR.setStroke ()
+      bp.stroke ()
+    }
   }
-
-  //································································································
-  //  $enabled binding
-  //································································································
-
-  private final var mEnabledBindingController : EnabledBindingController? = nil
-  final var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
-
-  //································································································
-
-//  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-//    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
-//    return self
-//  }
 
   //································································································
 

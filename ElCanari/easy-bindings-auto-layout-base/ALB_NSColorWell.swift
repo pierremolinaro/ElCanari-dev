@@ -1,18 +1,16 @@
 //
-//  AutoLayoutBase-NSView.swift
+//  ALB_NSColorWell.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 20/12/2021.
+//  Created by Pierre Molinaro on 28/04/2024.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutBase_NSView
-//——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBase_NSView : NSView {
+class ALB_NSColorWell : NSColorWell {
 
   //································································································
 
@@ -20,11 +18,14 @@ class AutoLayoutBase_NSView : NSView {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
+    self.setContentCompressionResistancePriority (.required, for: .horizontal)
+    self.setContentCompressionResistancePriority (.required, for: .vertical)
   }
 
   //································································································
 
-  required init? (coder inCoder : NSCoder) {
+  required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 

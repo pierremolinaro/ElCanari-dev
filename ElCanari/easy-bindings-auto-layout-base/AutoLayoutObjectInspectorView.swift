@@ -13,7 +13,7 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
   private let mDefaultInspectorView = AutoLayoutVerticalStackView ()
   private let mDefaultLabel = AutoLayoutStaticLabel (title: "", bold: true, size: .small, alignment: .center)
   private var mGraphicController : EBGraphicViewControllerProtocol? = nil
-  private var mInspectors = [(EBManagedObject.Type, AutoLayoutBase_NSStackView)] ()
+  private var mInspectors = [(EBManagedObject.Type, ALB_NSStackView)] ()
   private let mObserver = EBOutletEvent ()
 
   //································································································
@@ -49,7 +49,7 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
   //································································································
 
   final func addObjectInspector (forEntity inEntity : EBManagedObject.Type,
-                                 inspectorView inInspectorView : AutoLayoutBase_NSStackView) -> Self {
+                                 inspectorView inInspectorView : ALB_NSStackView) -> Self {
     self.mInspectors.append ((inEntity, inInspectorView))
     return self
   }
@@ -71,7 +71,7 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
       self.removeView (view) // Do not use view.removeFromSuperview ()
     }
     if let selectedObjectSet = self.mGraphicController?.selectedGraphicObjectSet {
-      var selectedObjectsInspectorViewSet = Set <AutoLayoutBase_NSStackView> ()
+      var selectedObjectsInspectorViewSet = Set <ALB_NSStackView> ()
       var someSelectedObjectsHasNoInspector = false
       for selectedObject in selectedObjectSet.values {
         var objectHasInspector = false

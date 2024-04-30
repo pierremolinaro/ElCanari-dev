@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariSampleFontStringView : AutoLayoutBase_NSView {
+final class AutoLayoutCanariSampleFontStringView : ALB_NSView {
 
   //································································································
 

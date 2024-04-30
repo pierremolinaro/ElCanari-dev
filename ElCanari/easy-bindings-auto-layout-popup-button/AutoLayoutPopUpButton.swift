@@ -10,12 +10,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutPopUpButton : AutoLayoutBase_NSPopUpButton {
+final class AutoLayoutPopUpButton : ALB_NSPopUpButton {
 
   //································································································
 
   init (size inSize : EBControlSize) {
-    super.init (pullsDown: false, size: inSize)
+    super.init (pullsDown: false, size: inSize.cocoaControlSize)
   }
 
   //································································································

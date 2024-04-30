@@ -1,6 +1,6 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 //
-//  AutoLayoutBase-NSTextView.swift
+//  ALB_NSTextView.swift
 //
 //  Created by Pierre Molinaro on 28/02/2021.
 //
@@ -10,20 +10,11 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 // https://stackoverflow.com/questions/11237622/using-autolayout-with-expanding-nstextviews
+// https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/TextSystemArchitecture/ArchitectureOverview.html#//apple_ref/doc/uid/TP40009459-CH7-CJBJHGAG
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutBase_NSTextView : NSTextView {
+final class ALB_NSTextView : NSTextView {
 
-  //································································································
-
-  final var mTextDidChangeCallBack : Optional < () -> Void > = nil
-
-  //--- REQUIRED!!! Declaring theses properties ensures they are retained (required for ElCapitan)
-  private final let mTextStorage = NSTextStorage () // Subclassing NSTextStorage requires defining string, …
-  private final let mLayoutManager = EmbeddedLayoutManager ()
-
-  //································································································
-  // https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/TextSystemArchitecture/ArchitectureOverview.html#//apple_ref/doc/uid/TP40009459-CH7-CJBJHGAG
   //································································································
 
   init () {
@@ -35,6 +26,14 @@ final class AutoLayoutBase_NSTextView : NSTextView {
     noteObjectAllocation (self)
  //   self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
   }
+
+  //································································································
+
+  final var mTextDidChangeCallBack : Optional < () -> Void > = nil
+
+  //--- REQUIRED!!! Declaring theses properties ensures they are retained (required for ElCapitan)
+  private final let mTextStorage = NSTextStorage () // Subclassing NSTextStorage requires defining string, …
+  private final let mLayoutManager = EmbeddedLayoutManager ()
 
   //································································································
 

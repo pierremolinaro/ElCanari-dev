@@ -52,7 +52,7 @@ extension AutoLayoutMergerDocumentSubClass {
   @objc private func insertArrayOfModelsInBoardAction (_ inSender : NSMenuItem) {
     if let mouseDownLocationInView = inSender.representedObject as? CanariPoint {
     //--- Build model popup button
-      let modelPopUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .small)
+      let modelPopUpButton = ALB_NSPopUpButton (pullsDown: false, size: .small)
       for model in self.mBoardModelController.objects.values {
         modelPopUpButton.addItem (withTitle: model.name)
         let lastItem = modelPopUpButton.lastItem

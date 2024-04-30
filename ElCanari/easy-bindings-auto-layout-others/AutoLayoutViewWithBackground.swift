@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutViewWithBackground : AutoLayoutBase_NSView {
+final class AutoLayoutViewWithBackground : ALB_NSView {
 
   //································································································
 

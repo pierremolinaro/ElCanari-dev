@@ -14,7 +14,7 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
 
   //································································································
 
-  private final let mScrollView = AutoLayoutBase_ScrollView ()
+  private final let mScrollView = ALB_NSScrollView ()
   private final let mOutlineView : InternalAutoLayoutOutlineView
   private final var mAddButton : AutoLayoutButton? = nil
   private final var mRemoveButton : AutoLayoutButton? = nil
@@ -54,11 +54,11 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
     _ = self.appendView (self.mScrollView)
     if inAddControlButtons {
       let hStack = AutoLayoutHorizontalStackView ()
-      let addButton = AutoLayoutButton (title: "+", size: inSize)
+      let addButton = AutoLayoutButton (title: "+", size: inSize.cocoaControlSize)
         .bind_run (target: self, selector: #selector (Self.addEntryAction (_:)))
       self.mAddButton = addButton
       _ = hStack.appendView (addButton)
-      let removeButton = AutoLayoutButton (title: "-", size: inSize)
+      let removeButton = AutoLayoutButton (title: "-", size: inSize.cocoaControlSize)
         .bind_run (target: self, selector: #selector (Self.removeSelectedEntriesAction (_:)))
       self.mRemoveButton = removeButton
       _ = hStack.appendView (removeButton)

@@ -18,8 +18,8 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   let mGraphicView = EBGraphicView ()
   var mScrollView : EBScrollView? = nil
-  fileprivate var mZoomPopUpButton : AutoLayoutBase_NSPopUpButton? = nil
-  fileprivate var mZoomToFitButton : AutoLayoutBase_NSButton? = nil
+  fileprivate var mZoomPopUpButton : ALB_NSPopUpButton? = nil
+  fileprivate var mZoomToFitButton : ALB_NSButton? = nil
   fileprivate var mHelperTextField : NSTextField? = nil
   fileprivate var mFocusRing : EBFocusRingView? = nil
   fileprivate let mTopHStack = AutoLayoutHorizontalStackView ().set (margins: FOCUS_RING_MARGIN)
@@ -100,8 +100,8 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //································································································
 
-  fileprivate func buildZoomToFitButton () -> AutoLayoutBase_NSButton {
-    let button = AutoLayoutBase_NSButton (title: "Zoom to Fit", size: .small)
+  fileprivate func buildZoomToFitButton () -> ALB_NSButton {
+    let button = ALB_NSButton (title: "Zoom to Fit", size: .small)
     button.target = self
     button.action = #selector (Self.setZoomToFitButton (_:))
     return button
@@ -109,8 +109,8 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //································································································
 
-  fileprivate func buildZoomPopUpButton (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) -> AutoLayoutBase_NSPopUpButton {
-    let zoomPopUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: true, size: .small).set (width: 75)
+  fileprivate func buildZoomPopUpButton (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) -> ALB_NSPopUpButton {
+    let zoomPopUpButton = ALB_NSPopUpButton (pullsDown: true, size: .small).set (width: 75)
     zoomPopUpButton.menu?.addItem (
       withTitle:"\(Int (self.mGraphicView.actualScale * 100.0)) %",
       action:nil,
@@ -149,7 +149,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
  //····················································································································
 
   final fileprivate func addPopupButtonItemForZoom (_ inZoom : Int,
-                                                    _ inPopUp : AutoLayoutBase_NSPopUpButton,
+                                                    _ inPopUp : ALB_NSPopUpButton,
                                                     minZoom inMinZoom : Int,
                                                     maxZoom inMaxZoom : Int) {
     if (inZoom >= inMinZoom) && (inZoom <= inMaxZoom) {

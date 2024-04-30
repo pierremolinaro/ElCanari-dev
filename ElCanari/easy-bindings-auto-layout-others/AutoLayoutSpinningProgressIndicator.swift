@@ -4,7 +4,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutSpinningProgressIndicator : AutoLayoutBase_ProgressIndicator {
+final class AutoLayoutSpinningProgressIndicator : ALB_NSProgressIndicator {
 
   //································································································
 

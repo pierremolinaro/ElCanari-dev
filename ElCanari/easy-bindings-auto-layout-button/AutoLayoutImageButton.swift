@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutImageButton : AutoLayoutBase_NSButton {
+final class AutoLayoutImageButton : ALB_NSButton {
 
   //································································································
 

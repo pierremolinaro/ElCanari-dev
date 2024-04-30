@@ -4,7 +4,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
+class AutoLayoutHorizontalStackView : ALB_NSStackView {
 
   //································································································
   //   INIT

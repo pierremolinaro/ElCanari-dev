@@ -1,26 +1,28 @@
+//
+//  ALB_NSScrollView.swift
+//  ElCanari
+//
+//  Created by Pierre Molinaro on 12/12/2021.
+//
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutFlexibleSpace
-//——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutFlexibleSpace : NSView {
+class ALB_NSScrollView : NSScrollView {
 
   //································································································
 
   init () {
-    super.init (frame: .zero)
-    noteObjectAllocation (self)
+    super.init (frame: NSRect (x: 0, y: 0, width: 10, height: 10))
     self.translatesAutoresizingMaskIntoConstraints = false
-    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
-    self.setContentHuggingPriority (.defaultLow, for: .vertical)
+    noteObjectAllocation (self)
   }
 
   //································································································
 
-  required init? (coder: NSCoder) {
+  required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
@@ -28,20 +30,6 @@ final class AutoLayoutFlexibleSpace : NSView {
 
   deinit {
     noteObjectDeallocation (self)
-  }
-
-  //································································································
-
-  override func draw (_ inDirtyRect : NSRect) {
-    if debugAutoLayout () {
-      DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
-      NSBezierPath.fill (self.bounds)
-      let bp = NSBezierPath (rect: self.bounds)
-      bp.lineWidth = 1.0
-      bp.lineJoinStyle = .round
-      DEBUG_STROKE_COLOR.setStroke ()
-      bp.stroke ()
-    }
   }
 
   //································································································

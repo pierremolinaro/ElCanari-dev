@@ -190,7 +190,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Merge Subnet into an Existing Net", bold: true, size: .regular, alignment: .center))
       _ = layoutView.appendFlexibleSpace ()
     //---
-      let popUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
+      let popUpButton = ALB_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
       var nets = [NetInProject] ()
       for netClass in self.rootObject.mNetClasses.values {
         for net in netClass.mNets.values {
@@ -248,7 +248,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
     //---
       _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Select Net Class", bold: true, size: .regular, alignment: .center))
     //---
-      let popUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
+      let popUpButton = ALB_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
       _ = layoutView.appendFlexibleSpace ()
       _ = layoutView.appendView (popUpButton)
       _ = layoutView.appendFlexibleSpace ()

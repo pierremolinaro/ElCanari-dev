@@ -12,7 +12,7 @@ import AppKit
 //   AutoLayoutCanariBoardComponentPackagePopUpButton
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariBoardComponentPackagePopUpButton : AutoLayoutBase_NSPopUpButton {
+final class AutoLayoutCanariBoardComponentPackagePopUpButton : ALB_NSPopUpButton {
 
   //································································································
 

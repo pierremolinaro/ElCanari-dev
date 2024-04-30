@@ -14,7 +14,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
 
   //································································································
 
-  fileprivate let mTextView = AutoLayoutBase_NSTextView ()
+  fileprivate let mTextView = ALB_NSTextView ()
   private let mFontSize : CGFloat
 
   //································································································

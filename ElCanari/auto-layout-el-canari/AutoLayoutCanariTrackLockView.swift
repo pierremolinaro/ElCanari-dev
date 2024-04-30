@@ -16,7 +16,7 @@ fileprivate let TEXT_OFFSET : CGFloat = 3.0
 //   AutoLayoutCanariTrackLockView
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
+final class AutoLayoutCanariTrackLockView : ALB_NSView {
 
   //································································································
 

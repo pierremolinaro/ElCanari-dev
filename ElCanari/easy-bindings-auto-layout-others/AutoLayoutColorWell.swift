@@ -12,7 +12,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutColorWell : AutoLayoutBase_ColorWell {
+final class AutoLayoutColorWell : ALB_NSColorWell {
 
   //································································································
 

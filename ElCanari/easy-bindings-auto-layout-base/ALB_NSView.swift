@@ -1,23 +1,25 @@
 //
-//  AutoLayoutScrollView.swift
+//  ALB_NSView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 12/12/2021.
+//  Created by Pierre Molinaro on 20/12/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
+//   ALB_NSView
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBase_ScrollView : NSScrollView {
+class ALB_NSView : NSView {
 
   //································································································
 
   init () {
-    super.init (frame: NSRect (x: 0, y: 0, width: 10, height: 10))
-    self.translatesAutoresizingMaskIntoConstraints = false
+    super.init (frame: .zero)
     noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
   }
 
   //································································································

@@ -12,7 +12,7 @@ import AppKit
 // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSource {
+final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
 
   //································································································
 

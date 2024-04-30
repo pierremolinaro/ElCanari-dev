@@ -13,7 +13,7 @@ import AppKit
 // https://github.com/mattiasjahnke/NSStackView-Scroll
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutVerticalScrollView : AutoLayoutBase_ScrollView {
+class AutoLayoutVerticalScrollView : ALB_NSScrollView {
 
   //································································································
   //   INIT

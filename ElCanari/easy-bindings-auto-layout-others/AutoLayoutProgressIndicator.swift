@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutProgressIndicator : AutoLayoutBase_ProgressIndicator {
+final class AutoLayoutProgressIndicator : ALB_NSProgressIndicator {
 
   //································································································
 

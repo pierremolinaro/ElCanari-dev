@@ -67,7 +67,7 @@ private let parallelDownloadCount = 3
     self.mTableView = AutoLayoutTableView (size: .small, addControlButtons: false).expandableWidth ()
     _ = mainView.appendView (self.mTableView)
   //--- Last line
-    let lastLine = AutoLayoutHorizontalStackView () //.expandableWidth ()
+    let lastLine = AutoLayoutHorizontalStackView ()
     self.mProgressIndicator = AutoLayoutProgressIndicator ().expandableWidth ()
     self.mProgressIndicator.minValue = 0.0
     self.mProgressIndicator.maxValue = inProgressMaxValue

@@ -12,7 +12,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutStepper : AutoLayoutBase_NSStepper {
+final class AutoLayoutStepper : ALB_NSStepper {
 
   //································································································
 

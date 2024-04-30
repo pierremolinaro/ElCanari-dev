@@ -1,5 +1,5 @@
 //
-//  AutoLayoutBase-ProgressIndicator.swift
+//  ALB_NSComboBox.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 28/04/2024.
@@ -9,8 +9,10 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
+//   ALB_NSComboBox
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBase_ProgressIndicator : NSProgressIndicator {
+class ALB_NSComboBox : NSComboBox, NSComboBoxDelegate {
 
   //································································································
 
@@ -22,7 +24,7 @@ class AutoLayoutBase_ProgressIndicator : NSProgressIndicator {
 
   //································································································
 
-  required init? (coder : NSCoder) {
+  required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
@@ -37,3 +39,4 @@ class AutoLayoutBase_ProgressIndicator : NSProgressIndicator {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
+

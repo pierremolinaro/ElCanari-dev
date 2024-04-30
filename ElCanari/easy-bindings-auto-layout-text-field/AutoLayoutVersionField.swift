@@ -4,12 +4,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutVersionField : AutoLayoutBase_NSTextField {
+final class AutoLayoutVersionField : ALB_NSTextField {
 
   //································································································
 
   init (size inSize : EBControlSize) {
-    super.init (optionalWidth: nil, bold: false, size: inSize)
+    super.init (optionalWidth: nil, bold: false, size: inSize.cocoaControlSize)
 
     self.isEditable = false
     self.isEnabled = true

@@ -12,12 +12,12 @@ import AppKit
 //   AutoLayoutCanariObservedDimensionField
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariObservedDimensionField : AutoLayoutBase_NSTextField {
+final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField {
 
   //································································································
 
   init (size inSize : EBControlSize) {
-    super.init (optionalWidth: nil, bold: true, size: inSize)
+    super.init (optionalWidth: nil, bold: true, size: inSize.cocoaControlSize)
 
 //    self.controlSize = inSize.cocoaControlSize
 //    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))

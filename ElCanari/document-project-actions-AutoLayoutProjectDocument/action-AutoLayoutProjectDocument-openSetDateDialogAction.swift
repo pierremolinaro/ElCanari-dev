@@ -26,7 +26,7 @@ extension AutoLayoutProjectDocument {
       _ = layoutView.appendView (AutoLayoutStaticLabel (title: "Set Date and Time", bold: true, size: .regular, alignment: .center))
       _ = layoutView.appendFlexibleSpace ()
     //---
-      let datePicker = AutoLayoutBase_DatePicker (size: .regular)
+      let datePicker = ALB_NSDatePicker (size: .regular)
       datePicker.datePickerStyle = .clockAndCalendar
       datePicker.datePickerElements = [.yearMonthDay, .hourMinute]
       datePicker.dateValue = self.rootObject.mSchematicDate

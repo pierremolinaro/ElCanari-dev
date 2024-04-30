@@ -12,7 +12,7 @@ import AppKit
 //   AutoLayoutWarningImageView
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutWarningImageView : AutoLayoutBase_ImageView {
+final class AutoLayoutWarningImageView : ALB_NSImageView {
 
   //································································································
 

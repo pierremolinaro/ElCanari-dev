@@ -10,12 +10,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariBoardOperationPullDownButton : AutoLayoutBase_NSPopUpButton {
+final class AutoLayoutCanariBoardOperationPullDownButton : ALB_NSPopUpButton {
 
   //································································································
 
   init (size inSize : EBControlSize) {
-    super.init (pullsDown: true, size: inSize)
+    super.init (pullsDown: true, size: inSize.cocoaControlSize)
 
     self.addItem (withTitle: "")
     self.lastItem?.image = NSImage (named: NSImage.smartBadgeTemplateName)

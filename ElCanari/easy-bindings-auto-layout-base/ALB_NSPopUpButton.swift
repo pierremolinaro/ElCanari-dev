@@ -1,5 +1,5 @@
 //
-//  AutoLayoutBase-NSPopUpButton.swift
+//  ALB_NSPopUpButton.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 20/06/2021.
@@ -9,12 +9,14 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
+//   ALB_NSPopUpButton
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBase_NSPopUpButton : NSPopUpButton {
+class ALB_NSPopUpButton : NSPopUpButton {
 
   //································································································
 
-  init (pullsDown inPullsDown : Bool, size inSize : EBControlSize) {
+  init (pullsDown inPullsDown : Bool, size inSize : NSControl.ControlSize) {
     super.init (frame: .zero, pullsDown: inPullsDown)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -24,7 +26,7 @@ class AutoLayoutBase_NSPopUpButton : NSPopUpButton {
       cell.arrowPosition = .arrowAtBottom
     }
 
-    self.controlSize = inSize.cocoaControlSize
+    self.controlSize = inSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.bezelStyle = .rounded
 

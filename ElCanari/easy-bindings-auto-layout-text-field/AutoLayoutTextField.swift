@@ -12,7 +12,7 @@ import AppKit
 //   AutoLayoutTextField
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutTextField : AutoLayoutBase_NSTextField {
+final class AutoLayoutTextField : ALB_NSTextField {
 
   //································································································
   //  User information
@@ -23,7 +23,7 @@ final class AutoLayoutTextField : AutoLayoutBase_NSTextField {
   //································································································
 
   init (minWidth inWidth : Int, size inSize : EBControlSize) {
-    super.init (optionalWidth: inWidth, bold: true, size: inSize)
+    super.init (optionalWidth: inWidth, bold: true, size: inSize.cocoaControlSize)
 
     self.setContentCompressionResistancePriority (.required, for: .vertical)
 

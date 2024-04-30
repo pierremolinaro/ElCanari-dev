@@ -13,7 +13,7 @@ import AppKit
 //   AutoLayoutApplicationImage
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutApplicationImage : AutoLayoutBase_ImageView {
+final class AutoLayoutApplicationImage : ALB_NSImageView {
 
   //································································································
 

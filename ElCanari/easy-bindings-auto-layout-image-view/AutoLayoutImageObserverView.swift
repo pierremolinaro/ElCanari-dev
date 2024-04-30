@@ -13,7 +13,7 @@ import AppKit
 //   AutoLayoutImageObserverView
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutImageObserverView : AutoLayoutBase_ImageView {
+final class AutoLayoutImageObserverView : ALB_NSImageView {
 
   //································································································
 

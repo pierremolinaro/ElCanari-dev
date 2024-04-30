@@ -10,12 +10,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariDimensionUnitSetterPullDownButton : AutoLayoutBase_NSPopUpButton {
+final class AutoLayoutCanariDimensionUnitSetterPullDownButton : ALB_NSPopUpButton {
 
   //································································································
 
   init (size inSize : EBControlSize) {
-    super.init (pullsDown: true,size: inSize)
+    super.init (pullsDown: true, size: inSize.cocoaControlSize)
 
     self.bezelStyle = .rounded
     if let cell = self.cell as? NSPopUpButtonCell {

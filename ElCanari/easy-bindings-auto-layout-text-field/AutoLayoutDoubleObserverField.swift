@@ -12,7 +12,7 @@ import AppKit
 //   AutoLayoutDoubleObserverField
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutDoubleObserverField : AutoLayoutBase_NSTextField {
+final class AutoLayoutDoubleObserverField : ALB_NSTextField {
 
   //································································································
 
@@ -21,7 +21,7 @@ final class AutoLayoutDoubleObserverField : AutoLayoutBase_NSTextField {
   //································································································
 
   init (width inWidth : Int, bold inBold : Bool, size inSize : EBControlSize) {
-    super.init (optionalWidth: inWidth, bold: inBold, size: inSize)
+    super.init (optionalWidth: inWidth, bold: inBold, size: inSize.cocoaControlSize)
 
     self.isBezeled = false
     self.isBordered = false

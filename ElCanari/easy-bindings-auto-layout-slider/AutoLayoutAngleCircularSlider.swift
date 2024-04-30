@@ -18,7 +18,7 @@ import AppKit
 //                  2700 -> knob at left
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutAngleCircularSlider : AutoLayoutBase_NSSlider {
+final class AutoLayoutAngleCircularSlider : ALB_NSSlider {
 
   //································································································
 

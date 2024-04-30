@@ -18,7 +18,7 @@ private let BADGE_WIDTH : CGFloat = 16.0
 //   AutoLayoutStatusBadgeView
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutStatusBadgeView : AutoLayoutBase_NSView {
+final class AutoLayoutStatusBadgeView : ALB_NSView {
 
   //································································································
 

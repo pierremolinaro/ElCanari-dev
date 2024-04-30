@@ -1,5 +1,5 @@
 //
-//  AutoLayoutBase-NSTextField.swift
+//  ALB_NSTextField.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 20/12/2021.
@@ -9,10 +9,10 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutBase_NSTextField
+//   ALB_NSTextField
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBase_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDelegate {
+class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDelegate {
 
   //································································································
 
@@ -26,7 +26,7 @@ class AutoLayoutBase_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTe
 
   //································································································
 
-  init (optionalWidth inOptionalWidth : Int?, bold inBold : Bool, size inSize : EBControlSize) {
+  init (optionalWidth inOptionalWidth : Int?, bold inBold : Bool, size inSize : NSControl.ControlSize) {
     if let w = inOptionalWidth {
       self.mWidth = CGFloat (w)
     }else{
@@ -40,7 +40,7 @@ class AutoLayoutBase_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTe
 
     self.delegate = self
 
-    self.controlSize = inSize.cocoaControlSize
+    self.controlSize = inSize
     let size = NSFont.systemFontSize (for: self.controlSize)
     self.font = inBold ? NSFont.boldSystemFont (ofSize:size) : NSFont.systemFont (ofSize: size)
     self.alignment = .center
