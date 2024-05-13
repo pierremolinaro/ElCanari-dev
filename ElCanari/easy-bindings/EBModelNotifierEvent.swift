@@ -8,7 +8,7 @@ import AppKit
 //    EBModelNotifierEvent
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor final class EBModelNotifierEvent : EBObserverProtocol {
+final class EBModelNotifierEvent : EBObserverProtocol {
 
   //································································································
   //   Properties

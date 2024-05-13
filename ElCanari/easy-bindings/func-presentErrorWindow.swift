@@ -5,29 +5,17 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor fileprivate var gErrorWindows : [NSWindow] = []
+@MainActor fileprivate var gOrigin = NSPoint (x: 20.0, y: 20.0)
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————
 //   presentErrorWindow
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func presentErrorWindow (_ file : String,
                                     _ line : Int,
                                     _ errorMessage : String) {
-//  if Thread.isMainThread {
-    presentErrorWindowInMainThread (file, line, errorMessage)
-//  }else{
-//    DispatchQueue.main.async { presentErrorWindowInMainThread (file, line, errorMessage) }
-//  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor fileprivate var gErrorWindows : [NSWindow] = []
-@MainActor fileprivate var gOrigin = NSPoint (x: 20.0, y: 20.0)
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor fileprivate func presentErrorWindowInMainThread (_ file : String,
-                                                            _ line : Int,
-                                                            _ errorMessage : String) {
   NSSound.beep ()
   var message = "File: \(file)\n"
   message += "Line: \(line)\n"

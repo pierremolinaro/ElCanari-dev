@@ -25,7 +25,6 @@ import AppKit
 //--- Set savingIndex for each object
   var idx = 0
   for object in reachableObjectArray {
-//    Swift.print ("IDX \(idx) for \(object.className)")
     object.setSavingIndex (idx)
     idx += 1
   }

@@ -45,12 +45,6 @@ struct EBBezierPath : Hashable {
 
   //································································································
 
-//  var cgPath : CGPath {
-//    return self.mPath.cgPath
-//  }
-
-  //································································································
-
   init () {
     self.mPath = NSBezierPath ()
   }
@@ -152,12 +146,6 @@ struct EBBezierPath : Hashable {
   nonisolated static func == (lhs : EBBezierPath, rhs : EBBezierPath) -> Bool {
     return ObjectIdentifier (lhs.mPath) == ObjectIdentifier (rhs.mPath)
   }
-
-  //································································································
-
-//  static func < (lhs : EBBezierPath, rhs : EBBezierPath) -> Bool {
-//    return ObjectIdentifier (lhs.mPath) < ObjectIdentifier (rhs.mPath)
-//  }
 
   //································································································
 
@@ -452,7 +440,6 @@ struct EBBezierPath : Hashable {
     withUnsafeMutablePointer (to: &path.mPath) {
       cgPath.apply (info: $0, function: pathByStrokingCallback)
     }
-//    cgPath.apply (info: &path.mPath, function: pathByStrokingCallback)
     return path
   }
 
