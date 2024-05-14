@@ -12,7 +12,7 @@ import AppKit
 //   MergerViaShapeArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor struct MergerViaShapeArray : Hashable {
+struct MergerViaShapeArray : Hashable {
 
   //································································································
 

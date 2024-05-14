@@ -26,7 +26,7 @@ struct RawObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor class EBManagedObject : EBSignatureObserverProtocol {
+class EBManagedObject : EBSignatureObserverProtocol {
 
   //································································································
 

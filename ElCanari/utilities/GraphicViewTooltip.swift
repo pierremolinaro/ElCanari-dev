@@ -16,7 +16,7 @@ typealias GraphicViewTooltipArray = [GraphicViewTooltip]
 //   Tooltip
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor class GraphicViewTooltip : NSObject, NSViewToolTipOwner {
+class GraphicViewTooltip : NSObject, NSViewToolTipOwner {
 
   //································································································
   //   Properties

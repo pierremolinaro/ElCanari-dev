@@ -6,7 +6,7 @@ import AppKit
 //   EBObservedObserver
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor class EBObservedObserver : EBObservedObject, EBObserverProtocol {
+class EBObservedObserver : EBObservedObject, EBObserverProtocol {
 
   //································································································
 
