@@ -38,7 +38,7 @@ let CHANGES : [String] = [
   "Version ElCanariArchive : #4"
 ]
 let NEWS : [String] = [
-  "Sélection de la forme d'une piste dans un projet"
+  "Sélection de la forme d'une piste dans un projet : extrémité circulaire ou droit"
 ]
 
 //--------------------------------------------------------------------------------------------------
