@@ -27,35 +27,6 @@ struct CanariRect : Equatable, Hashable {
 
   //································································································
 
-//  init (origin inOrigin : CanariPoint, size inSize : CanariSize) {
-//    self.origin = inOrigin
-//    self.size = inSize
-//  }
-
-  //································································································
-
-//  init (p1 inP1 : CanariPoint, p2 inP2 : CanariPoint) {
-//    let minX = min (inP1.x, inP2.x)
-//    let maxX = max (inP1.x, inP2.x)
-//    let minY = min (inP1.y, inP2.y)
-//    let maxY = max (inP1.y, inP2.y)
-//    self.origin = CanariPoint (x: minX, y: minY)
-//    self.size = CanariSize (width: maxX - minX, height: maxY - minY)
-//  }
-
-  //································································································
-
-//  init (p1 inP1 : CanariPoint, p2 inP2 : CanariPoint, p3 inP3 : CanariPoint, p4 inP4 : CanariPoint) {
-//    let minX = min (inP1.x, inP2.x, inP3.x, inP4.x)
-//    let maxX = max (inP1.x, inP2.x, inP3.x, inP4.x)
-//    let minY = min (inP1.y, inP2.y, inP3.y, inP4.y)
-//    let maxY = max (inP1.y, inP2.y, inP3.y, inP4.y)
-//    self.origin = CanariPoint (x: minX, y: minY)
-//    self.size = CanariSize (width: maxX - minX, height: maxY - minY)
-//  }
-
-  //································································································
-
   init (points inPoints : [CanariPoint]) {
     if inPoints.count == 0 {
       self.origin = CanariPoint ()
@@ -163,17 +134,6 @@ struct CanariRect : Equatable, Hashable {
       height: canariUnitToCocoa (self.size.height)
     )
   }
-
-  //································································································
-
-//  var millimeterRect : NSRect {
-//    return NSRect (
-//      x: canariUnitToMillimeter (self.origin.x),
-//      y: canariUnitToMillimeter (self.origin.y),
-//      width: canariUnitToMillimeter (self.size.width),
-//      height: canariUnitToMillimeter (self.size.height)
-//    )
-//  }
 
   //································································································
   //   Union

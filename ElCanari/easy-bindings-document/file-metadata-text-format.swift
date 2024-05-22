@@ -42,11 +42,11 @@ func getTextFileMetadata (forFileHandle inFileHandle : FileHandle) -> EBFileMeta
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension FileHandle {
+fileprivate extension FileHandle {
 
   //································································································
 
-  fileprivate func readBase62IntAndLineFeed () -> Int {
+  func readBase62IntAndLineFeed () -> Int {
     var sign = 1
     var c = self.readByte ()
     if c == ASCII.minus.rawValue {
@@ -77,7 +77,7 @@ extension FileHandle {
 
   //································································································
 
-  fileprivate func readLine () -> Data {
+  func readLine () -> Data {
     var data = Data ()
     var loop = true
     while loop {

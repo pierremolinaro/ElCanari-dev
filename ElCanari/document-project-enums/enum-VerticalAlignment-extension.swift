@@ -10,16 +10,16 @@ extension VerticalAlignment {
 
   //································································································
 
-  var ebTextShapeVerticalAlignment : EBTextVerticalAlignment {
+  var ebTextShapeVerticalAlignment : EBBezierPath.TextVerticalAlignment {
     switch self {
       case .above :
-        return EBTextVerticalAlignment.above
+        return .above
       case .center :
-        return EBTextVerticalAlignment.center
+        return .center
       case .base :
-        return EBTextVerticalAlignment.baseline
+        return .baseline
       case .below :
-        return EBTextVerticalAlignment.below
+        return .below
     }
   }
 

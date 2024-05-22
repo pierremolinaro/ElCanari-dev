@@ -544,7 +544,7 @@ final class EBGraphicView : NSView {
   //································································································
 
   var mIssueBezierPathes = [EBBezierPath] ()
-  var mIssueKind : CanariIssueKind = .error // Any value, not used if mIssueBezierPathes is empty
+  var mIssueKind : CanariIssue.Kind = .error // Any value, not used if mIssueBezierPathes is empty
 
   //································································································
   // MARK: -

@@ -9,39 +9,10 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBTextShape alignments
-//——————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum EBTextHorizontalAlignment {
-  case onTheRight
-  case center
-  case onTheLeft
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum EBTextVerticalAlignment {
-  case above
-  case center
-  case baseline
-  case below
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————
 // EBBezierPath
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct EBBezierPath : Hashable {
-
-  //································································································
-
-  private var mPath : NSBezierPath
-
-  //································································································
-
-  var nsBezierPath : NSBezierPath {
-    return self.mPath.copy () as! NSBezierPath
-  }
 
   //································································································
 
@@ -84,8 +55,8 @@ struct EBBezierPath : Hashable {
 
   init (withString inString : String,
         at inOrigin : NSPoint,
-        _ inHorizontalAlignment : EBTextHorizontalAlignment,
-        _ inVerticalAlignment : EBTextVerticalAlignment,
+        _ inHorizontalAlignment : EBBezierPath.TextHorizontalAlignment,
+        _ inVerticalAlignment : EBBezierPath.TextVerticalAlignment,
         withAttributes inTextAttributes : [NSAttributedString.Key : Any]) {
     self.mPath = NSBezierPath ()
     if inString != "" {
@@ -139,6 +110,16 @@ struct EBBezierPath : Hashable {
       af.translate (x: deltaX, y: deltaY)
       self.mPath.transform (using: af)
     }
+  }
+
+  //································································································
+
+  private var mPath : NSBezierPath
+
+  //································································································
+
+  var nsBezierPath : NSBezierPath {
+    return self.mPath.copy () as! NSBezierPath
   }
 
   //································································································
@@ -606,6 +587,23 @@ struct EBBezierPath : Hashable {
       result.append (path)
     }
     return result
+  }
+
+  //································································································
+
+  enum TextHorizontalAlignment {
+    case onTheRight
+    case center
+    case onTheLeft
+  }
+
+  //································································································
+
+  enum TextVerticalAlignment {
+    case above
+    case center
+    case baseline
+    case below
   }
 
   //································································································

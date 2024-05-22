@@ -30,7 +30,7 @@ class EBManagedObject : EBSignatureObserverProtocol {
 
   //································································································
 
-  final var className : String { return String (describing: type (of: self)) } // Required when inherits from EBSwiftBaseObject
+  final var className : String { return String (describing: type (of: self)) }
 
   //································································································
 

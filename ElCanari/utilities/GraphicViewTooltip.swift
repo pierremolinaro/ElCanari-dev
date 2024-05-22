@@ -16,19 +16,19 @@ typealias GraphicViewTooltipArray = [GraphicViewTooltip]
 //   Tooltip
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class GraphicViewTooltip : NSObject, NSViewToolTipOwner {
+final class GraphicViewTooltip : NSObject, NSViewToolTipOwner {
 
   //································································································
   //   Properties
   //································································································
 
-  let kind : CanariIssueKind
+  let kind : CanariIssue.Kind
   let message : String
   let rect : NSRect
 
   //································································································
 
-  init (kind inKind : CanariIssueKind, message inMessage : String, rect inRect : NSRect) {
+  init (kind inKind : CanariIssue.Kind, message inMessage : String, rect inRect : NSRect) {
     self.kind = inKind
     self.message = inMessage
     self.rect = inRect

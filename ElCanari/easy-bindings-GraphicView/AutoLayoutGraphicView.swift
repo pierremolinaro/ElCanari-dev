@@ -337,7 +337,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //································································································
 
-  final func setIssue (_ inBezierPathes : [EBBezierPath], _ issueKind : CanariIssueKind) {
+  final func setIssue (_ inBezierPathes : [EBBezierPath], _ issueKind : CanariIssue.Kind) {
     self.mGraphicView.setIssue (inBezierPathes, issueKind)
   }
 

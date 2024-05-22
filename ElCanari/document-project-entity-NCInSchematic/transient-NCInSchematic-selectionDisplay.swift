@@ -23,8 +23,8 @@ import AppKit
 //--- START OF USER ZONE 2
         var point = self_mPoint_location!.cocoaPoint
         let ncRotation = self_mOrientation + (self_mPoint_symbolRotation ?? .rotation0)
-        let horizontalAlignment : EBTextHorizontalAlignment
-        let verticalAlignment : EBTextVerticalAlignment
+        let horizontalAlignment : EBBezierPath.TextHorizontalAlignment
+        let verticalAlignment : EBBezierPath.TextVerticalAlignment
         switch ncRotation {
         case .rotation0 :
           point.x += NC_DISTANCE_IN_COCOA_UNIT

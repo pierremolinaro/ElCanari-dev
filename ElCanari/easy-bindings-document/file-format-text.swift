@@ -13,12 +13,9 @@ import AppKit
     ioDataScanner.acceptRequired (byte: ASCII.lineFeed.rawValue)
   //--- Read Status
     let metadataStatus = UInt8 (ioDataScanner.parseBase62EncodedInt ())
-   // Swift.print ("metadataStatus \(metadataStatus)")
   //--- Read metadata dictionary
     let metadataDictionary : [String : Any] = try ioDataScanner.parseJSON ()
-   // Swift.print ("metadataDictionary \(metadataDictionary)")
   //--- Read classes
-//    Swift.print ("Read classes")
     var classDefinition = [(String, [String])] ()
     while ioDataScanner.testAccept (byte: ASCII.dollar.rawValue) {
       let className = try ioDataScanner.parseString ()
@@ -34,12 +31,10 @@ import AppKit
           propertyNameArray.append (propertyName)
         }
       }
-//      Swift.print ("  - \(classDefinition.count) : \(className), \(propertyNameArray.count) properties")
       classDefinition.append ((className, propertyNameArray))
     }
     appendDocumentFileOperationInfo ("read \(classDefinition.count) classes done")
   //--- Read objects
-//    Swift.print ("Read objects")
     var rawObjectArray = [RawObject] ()
     let scannerData = ioDataScanner.data
     while !ioDataScanner.eof (), ioDataScanner.testAccept (byte: ASCII.at.rawValue) {

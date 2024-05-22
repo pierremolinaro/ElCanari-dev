@@ -256,10 +256,10 @@ extension AutoLayoutMergerDocument {
       var frontLegendLinesEntities = EBReferenceArray <SegmentEntity> ()
       let frontLegendLines = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_LINES_FRONT_KEY, &errorArray)
       for str in frontLegendLines {
-        let ints = array5int (fromString: str, #line, &errorArray)
+        let ints = array6int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
-          p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
-          p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+          p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y: canariUnitToMillimeter (ints [1])),
+          p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y: canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
           self.undoManager

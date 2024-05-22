@@ -58,7 +58,6 @@ struct QRCodeDescriptor : Hashable {
          let ciImage = barcodeCreationFilter.outputImage {
       //--- Build bit map
         let ciImageRep = NSCIImageRep (ciImage: ciImage)
-    //    Swift.print ("bitsPerPixel \(bitMapImageRep.bitsPerPixel) samplesPerPixel \(bitMapImageRep.samplesPerPixel) numberOfPlanes \(bitMapImageRep.numberOfPlanes)")
         self.imageWidth  = ciImageRep.pixelsWide + (inFramed ? 2 : 0) + QR_CODE_MARGIN * 2
         self.imageHeight = ciImageRep.pixelsHigh + (inFramed ? 2 : 0) + QR_CODE_MARGIN * 2
       //--- Build bit map representation

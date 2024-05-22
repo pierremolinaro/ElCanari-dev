@@ -68,8 +68,8 @@ struct EBShape : Hashable {
   init (text inString: String,
         _ inOrigin : NSPoint,
         _ inTextAttributes : [NSAttributedString.Key : Any],
-        _ inHorizontalAlignment : EBTextHorizontalAlignment,
-        _ inVerticalAlignment : EBTextVerticalAlignment) {
+        _ inHorizontalAlignment : EBBezierPath.TextHorizontalAlignment,
+        _ inVerticalAlignment : EBBezierPath.TextVerticalAlignment) {
     self.mSharedObject = EBShapeObject ()
     self.mSharedObject?.add (text: inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment)
   }
@@ -81,8 +81,8 @@ struct EBShape : Hashable {
         _ inFont : NSFont,
         foreColor inForeColor : NSColor,
         backColor inBackColor : NSColor,
-        _ inHorizontalAlignment : EBTextHorizontalAlignment,
-        _ inVerticalAlignment : EBTextVerticalAlignment,
+        _ inHorizontalAlignment : EBBezierPath.TextHorizontalAlignment,
+        _ inVerticalAlignment : EBBezierPath.TextVerticalAlignment,
         _ inKnobKind : EBKnobKind,
         knobIndex inKnobIndex : Int) {
     self.mSharedObject = EBShapeObject ()
@@ -145,8 +145,8 @@ struct EBShape : Hashable {
   mutating func add (text inString : String,
                      _ inOrigin : NSPoint,
                      _ inTextAttributes : [NSAttributedString.Key : Any],
-                     _ inHorizontalAlignment : EBTextHorizontalAlignment,
-                     _ inVerticalAlignment : EBTextVerticalAlignment) {
+                     _ inHorizontalAlignment : EBBezierPath.TextHorizontalAlignment,
+                     _ inVerticalAlignment : EBBezierPath.TextVerticalAlignment) {
     if self.mSharedObject == nil {
       self.mSharedObject = EBShapeObject ()
     }else if !isKnownUniquelyReferenced (&self.mSharedObject) {
@@ -162,8 +162,8 @@ struct EBShape : Hashable {
                      _ inFont : NSFont,
                      foreColor inForeColor : NSColor,
                      backColor inBackColor : NSColor,
-                     _ inHorizontalAlignment : EBTextHorizontalAlignment,
-                     _ inVerticalAlignment : EBTextVerticalAlignment,
+                     _ inHorizontalAlignment : EBBezierPath.TextHorizontalAlignment,
+                     _ inVerticalAlignment : EBBezierPath.TextVerticalAlignment,
                     _ inKnobKind : EBKnobKind,
                     knobIndex inKnobIndex : Int) {
     if self.mSharedObject == nil {
@@ -458,8 +458,8 @@ fileprivate final class EBShapeObject {
   func add (text inString: String,
             _ inOrigin : NSPoint,
             _ inTextAttributes : [NSAttributedString.Key : Any],
-            _ inHorizontalAlignment : EBTextHorizontalAlignment,
-            _ inVerticalAlignment : EBTextVerticalAlignment) {
+            _ inHorizontalAlignment : EBBezierPath.TextHorizontalAlignment,
+            _ inVerticalAlignment : EBBezierPath.TextVerticalAlignment) {
     if inString != "" {
     //--- Forecolor
       let textColor : NSColor
@@ -504,8 +504,8 @@ fileprivate final class EBShapeObject {
             _ inFont : NSFont,
             foreColor inForeColor : NSColor,
             backColor inBackColor : NSColor,
-            _ inHorizontalAlignment : EBTextHorizontalAlignment,
-            _ inVerticalAlignment : EBTextVerticalAlignment,
+            _ inHorizontalAlignment : EBBezierPath.TextHorizontalAlignment,
+            _ inVerticalAlignment : EBBezierPath.TextVerticalAlignment,
             _ inKnobKind : EBKnobKind,
             knobIndex inKnobIndex : Int) {
     let string = (inString.isEmpty) ? " " : inString

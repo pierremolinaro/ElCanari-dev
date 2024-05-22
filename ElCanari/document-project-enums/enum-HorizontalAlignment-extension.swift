@@ -6,14 +6,14 @@ extension HorizontalAlignment {
 
   //································································································
 
-  var ebTextShapeHorizontalAlignment : EBTextHorizontalAlignment {
+  var ebTextShapeHorizontalAlignment : EBBezierPath.TextHorizontalAlignment {
     switch self {
       case .onTheRight :
-        return EBTextHorizontalAlignment.onTheRight
+        return .onTheRight
       case .center :
-        return EBTextHorizontalAlignment.center
+        return .center
       case .onTheLeft :
-        return EBTextHorizontalAlignment.onTheLeft
+        return .onTheLeft
     }
   }
 

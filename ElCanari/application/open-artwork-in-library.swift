@@ -133,7 +133,6 @@ import AppKit
                 currentSelectionFound = true
               }
             }
-            // Swift.print ("  Entry \(entry.mPartName) -> \(testedName) : \(testedName.contains (filter))")
           }
           if !currentSelectionFound {
             uwSelf.mSelectedEntry = nil

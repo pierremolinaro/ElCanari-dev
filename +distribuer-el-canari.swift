@@ -28,17 +28,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.7.15"
+let VERSION_CANARI = "1.7.16"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Correction bug importation archive dans Merger"
 ]
 let CHANGES : [String] = [
-  "Version ElCanariArchive : #4"
 ]
 let NEWS : [String] = [
-  "Sélection de la forme d'une piste dans un projet : extrémité circulaire ou droit"
 ]
 
 //--------------------------------------------------------------------------------------------------
@@ -205,8 +204,6 @@ do{
 //-------------------- Construction package
   let packageFile = PRODUCT_NAME + "-" + VERSION_CANARI + ".pkg"
   runCommand ("/usr/bin/productbuild", ["--component-compression", "auto", "--component", "build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app", "/Applications", packageFile])
-  // runCommand ("/usr/sbin/pkgutil", ["--check-signature", packageFile])
-  // /usr/bin/productsign --sign  /Users/pierremolinaro/Desktop/ElCanari-1.6.4.pkg /Users/pierremolinaro/Desktop/ElCanari-1.6.4-sign.pkg
   runCommand ("/bin/cp", [packageFile, DISTRIBUTION_DIR])
 //-------------------- Créer l'archive de Cocoa canari
   let nomArchive = PRODUCT_NAME + "-" + VERSION_CANARI

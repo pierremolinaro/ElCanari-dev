@@ -38,13 +38,10 @@ struct GeometricCircle {
   //--- We translate P1, P2, C (center of circle) so that P1 is at (0, 0)
     let p2x = inP2.x - inP1.x
     let p2y = inP2.y - inP1.y
-//    Swift.print (" -> p2 [\(p2x), \(p2y)]")
     let Cx = self.center.x - inP1.x
     let Cy = self.center.y - inP1.y
-//    Swift.print (" -> C [\(Cx), \(Cy)]")
   //--- Then we compute the relative abscisse µ of P, the projection of C on P1P2
     let µ = (p2x * Cx + p2y * Cy) / (p2x * p2x + p2y * p2y)
-//    Swift.print (" -> µ \(µ)")
     if µ < 0.0 { // Outside
       return NSPoint.distance (self.center, inP1) <= self.radius
     }else if µ > 1.0 { // Outside
@@ -53,7 +50,6 @@ struct GeometricCircle {
       let dx = µ * p2x - Cx
       let dy = µ * p2y - Cy
       let d = (dx * dx + dy * dy).squareRoot ()
-//      Swift.print (" -> d \(d), radius \(self.radius)")
       return d <= self.radius
     }
   }
@@ -70,12 +66,6 @@ struct GeometricCircle {
     let s = NSSize (width: self.radius * 2.0, height: self.radius * 2.0)
     return NSRect (center: self.center, size: s)
   }
-
-  //································································································
-
-//  func transformed (by inAffineTransform : AffineTransform) -> GeometricCircle {
-//    return GeometricCircle (center: inAffineTransform.transform (self.center), radius: self.radius)
-//  }
 
   //································································································
 

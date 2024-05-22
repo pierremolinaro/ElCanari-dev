@@ -14,8 +14,8 @@ extension QuadrantRotation {
 
   //································································································
 
-  func ebSymbolTextShapeHorizontalAlignment (alignment inAlignment : HorizontalAlignment, mirror inMirror : Bool) -> EBTextHorizontalAlignment {
-    let horizontalAlignment : EBTextHorizontalAlignment
+  func ebSymbolTextShapeHorizontalAlignment (alignment inAlignment : HorizontalAlignment, mirror inMirror : Bool) -> EBBezierPath.TextHorizontalAlignment {
+    let horizontalAlignment : EBBezierPath.TextHorizontalAlignment
     switch inAlignment {
     case .onTheRight :
       switch self {
@@ -47,8 +47,8 @@ extension QuadrantRotation {
 
   //································································································
 
-  func ebSymbolTextShapeVerticalAlignment (alignment _ : HorizontalAlignment, mirror inMirror : Bool) -> EBTextVerticalAlignment {
-    let verticalAlignment : EBTextVerticalAlignment
+  func ebSymbolTextShapeVerticalAlignment (alignment _ : HorizontalAlignment, mirror inMirror : Bool) -> EBBezierPath.TextVerticalAlignment {
+    let verticalAlignment : EBBezierPath.TextVerticalAlignment
     switch self {
     case .rotation0 :
       verticalAlignment = .center

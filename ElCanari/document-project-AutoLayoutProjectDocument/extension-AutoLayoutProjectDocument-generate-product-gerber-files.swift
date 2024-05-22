@@ -236,7 +236,7 @@ extension AutoLayoutProjectDocument {
     }
   //--- Write file
     s += "M02*\n"
-    let data : Data? = s.data (using: .ascii, allowLossyConversion:false)
+    let data : Data? = s.data (using: .ascii, allowLossyConversion: false)
     try data?.write (to: URL (fileURLWithPath: path), options: .atomic)
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
   }

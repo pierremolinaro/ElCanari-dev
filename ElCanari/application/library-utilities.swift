@@ -44,12 +44,6 @@ func partNameIsValid (_ inPartName : String) -> Bool {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-//func temporaryDownloadDirectory () -> String {
-//  return NSTemporaryDirectory () + "/ElCanariTemporaries"
-//}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————
-
 @MainActor func userLibraryPath () -> String {
   let a = NSSearchPathForDirectoriesInDomains (
     FileManager.SearchPathDirectory.applicationSupportDirectory,
@@ -98,51 +92,6 @@ func artworkLibraryPathForPath (_ inLibraryPath : String) -> String {
 func fontLibraryPathForPath (_ inLibraryPath : String) -> String {
   return inLibraryPath + "/fonts"
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————
-
-//func createLibraryAtPath (_ inPath : String) throws {
-//  let fm = FileManager ()
-////--- Library directory
-//  if !fm.fileExists (atPath: inPath) {
-//    try fm.createDirectory (atPath: inPath, withIntermediateDirectories:true, attributes:nil)
-//  }
-////--- Symbol directory
-//  do{
-//    let dir = symbolLibraryPathForPath (inPath)
-//    if !fm.fileExists (atPath: dir) {
-//      try fm.createDirectory (atPath: dir, withIntermediateDirectories:true, attributes:nil)
-//    }
-//  }
-////--- Package directory
-//  do{
-//    let dir = packageLibraryPathForPath (inPath)
-//    if !fm.fileExists (atPath: dir) {
-//      try fm.createDirectory (atPath: dir, withIntermediateDirectories:true, attributes:nil)
-//    }
-//  }
-////--- Device directory
-//  do{
-//    let dir = deviceLibraryPathForPath (inPath)
-//    if !fm.fileExists (atPath: dir) {
-//      try fm.createDirectory (atPath: dir, withIntermediateDirectories:true, attributes:nil)
-//    }
-//  }
-////--- Artwork directory
-//  do{
-//    let dir = artworkLibraryPathForPath (inPath)
-//    if !fm.fileExists (atPath: dir) {
-//      try fm.createDirectory (atPath: dir, withIntermediateDirectories:true, attributes:nil)
-//    }
-//  }
-////--- Font directory
-//  do{
-//    let dir = fontLibraryPathForPath (inPath)
-//    if !fm.fileExists (atPath: dir) {
-//      try fm.createDirectory (atPath: dir, withIntermediateDirectories:true, attributes:nil)
-//    }
-//  }
-//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 

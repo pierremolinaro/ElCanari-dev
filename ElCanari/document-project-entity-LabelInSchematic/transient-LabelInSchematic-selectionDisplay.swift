@@ -43,8 +43,8 @@ import AppKit
           shape.add (knobAt:  p, knobIndex: LABEL_IN_SCHEMATICS_TRANSLATION_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
         //--- Net name
           let labelOrigin = af.transform (NSPoint (x: SCHEMATIC_LABEL_SIZE * 8.0, y: 0.0))
-          let horizontalAlignment : EBTextHorizontalAlignment
-          let verticalAlignment : EBTextVerticalAlignment
+          let horizontalAlignment : EBBezierPath.TextHorizontalAlignment
+          let verticalAlignment : EBBezierPath.TextVerticalAlignment
           switch self_mOrientation {
           case .rotation0 :
             horizontalAlignment = .onTheRight

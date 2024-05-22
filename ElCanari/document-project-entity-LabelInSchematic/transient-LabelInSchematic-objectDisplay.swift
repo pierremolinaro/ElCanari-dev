@@ -49,8 +49,8 @@ import AppKit
             NSAttributedString.Key.font : prefs_pinNameFont,
             NSAttributedString.Key.foregroundColor : prefs_schematicFrameColor
           ]
-          let horizontalAlignment : EBTextHorizontalAlignment
-          let verticalAlignment : EBTextVerticalAlignment
+          let horizontalAlignment : EBBezierPath.TextHorizontalAlignment
+          let verticalAlignment : EBBezierPath.TextVerticalAlignment
           switch self_mOrientation {
           case .rotation0 :
             horizontalAlignment = .onTheRight
