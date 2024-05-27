@@ -21,7 +21,7 @@ import AppKit
        _ self_mP2_canMove : Bool?
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let p1 = (self_mP1_location ?? CanariPoint ()).cocoaPoint
+        let p1 = (self_mP1_location ?? .zero).cocoaPoint
         let p2 = (self_mP2_location ?? CanariPoint (x: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)).cocoaPoint
       //--- Hilite wire
         var bp = EBBezierPath ()

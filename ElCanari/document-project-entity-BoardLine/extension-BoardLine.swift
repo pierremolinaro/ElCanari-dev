@@ -89,7 +89,7 @@ extension BoardLine {
     }else if inKnobIndex == BOARD_LINE_P2 {
       return inProposedAlignedTranslation
     }else{
-      return CanariPoint (x: 0, y: 0)
+      return .zero
     }
   }
 

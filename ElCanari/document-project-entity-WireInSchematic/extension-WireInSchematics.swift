@@ -156,18 +156,18 @@ extension WireInSchematic {
       return CanariPoint (x: inProposedAlignedTranslation.x, y: inProposedAlignedTranslation.y)
     }else if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil, let other = self.mP2 {
       if ((point.mX + inProposedAlignedTranslation.x) == other.mX) && ((point.mY + inProposedAlignedTranslation.y) == other.mY) {
-        return CanariPoint (x: 0, y: 0)
+        return .zero
       }else{
         return inProposedAlignedTranslation
       }
     }else if inKnobIndex == WIRE_P2_KNOB, let point = self.mP2, point.mSymbol == nil, let other = self.mP1 {
       if ((point.mX + inProposedAlignedTranslation.x) == other.mX) && ((point.mY + inProposedAlignedTranslation.y) == other.mY) {
-        return CanariPoint (x: 0, y: 0)
+        return .zero
       }else{
         return inProposedAlignedTranslation
       }
     }else{
-      return CanariPoint (x: 0, y: 0)
+      return .zero
     }
   }
 

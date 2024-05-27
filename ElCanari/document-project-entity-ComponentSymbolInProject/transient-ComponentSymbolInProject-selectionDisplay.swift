@@ -48,7 +48,10 @@ import AppKit
           shape.add (stroke: [bp], prefs_selectionHiliteColor)
         }
       //--- line from center to name
-        let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY)
+        let componentNameCenter = CanariPoint (
+          x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX,
+          y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY
+        )
         do{
           var bp = EBBezierPath ()
           bp.move (to: symbolCenter)

@@ -146,7 +146,7 @@ import AppKit
           return ComponentSymbolInfo (
             filledBezierPath: NSBezierPath (),
             strokeBezierPath: NSBezierPath (),
-            center: CanariPoint (),
+            center: .zero,
             pins: [],
             componentName: self_componentName,
             componentValue: ""

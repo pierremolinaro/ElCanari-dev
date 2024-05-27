@@ -138,7 +138,7 @@ extension BorderCurve {
         let dx = max (inProposedAlignedTranslation.x, -self.mX)
         let dy = max (inProposedAlignedTranslation.y, -self.mY)
         if ((self.mX + dx) == next.mX) && ((self.mY + dy) == next.mY) {
-          return CanariPoint (x: 0, y: 0)
+          return .zero
         }else{
           return CanariPoint (x: dx, y: dy)
         }
@@ -146,7 +146,7 @@ extension BorderCurve {
         let dx = max (inProposedAlignedTranslation.x, -next.mX)
         let dy = max (inProposedAlignedTranslation.y, -next.mY)
         if ((next.mX + dx) == self.mX) && ((next.mY + dy) == self.mY) {
-          return CanariPoint (x: 0, y: 0)
+          return .zero
         }else{
           return CanariPoint (x: dx, y: dy)
         }
@@ -155,10 +155,10 @@ extension BorderCurve {
       }else if inKnobIndex == BOARD_LIMIT_CP2_KNOB {
         return inProposedAlignedTranslation
       }else{
-        return CanariPoint (x: 0, y: 0)
+        return .zero
       }
     }else{
-      return CanariPoint (x: 0, y: 0)
+      return .zero
     }
   }
 

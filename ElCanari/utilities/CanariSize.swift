@@ -20,16 +20,13 @@ struct CanariSize : Equatable, Hashable {
   //   init
   //································································································
 
-  init () {
-    width = 0
-    height = 0
-  }
+  static var zero : CanariSize { CanariSize (width: 0, height: 0) }
 
   //································································································
 
   init (width inWidth : Int, height inHeight : Int) {
-    width = inWidth
-    height = inHeight
+    self.width = inWidth
+    self.height = inHeight
   }
 
   //································································································

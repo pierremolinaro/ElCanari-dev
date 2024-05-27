@@ -88,7 +88,7 @@ extension BoardQRCode {
     }else if inKnobIndex == BOARD_QRCODE_ROTATION_KNOB {
       return inProposedAlignedTranslation
     }else{
-      return CanariPoint (x: 0, y: 0)
+      return .zero
     }
   }
 

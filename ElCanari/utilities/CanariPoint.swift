@@ -41,10 +41,7 @@ struct CanariPoint : Equatable, Hashable {
   //   init
   //································································································
 
-  init () {
-    self.x = 0
-    self.y = 0
-  }
+  static var zero : CanariPoint { CanariPoint (x: 0, y: 0) }
 
   //································································································
 
@@ -79,9 +76,9 @@ struct CanariPoint : Equatable, Hashable {
   //   millimeter Point
   //································································································
 
-//  var millimeterPoint : NSPoint {
-//    return NSPoint (x: canariUnitToMillimeter (self.x), y: canariUnitToMillimeter (self.y))
-//  }
+  var millimeterPoint : NSPoint {
+    return NSPoint (x: canariUnitToMillimeter (self.x), y: canariUnitToMillimeter (self.y))
+  }
 
   //································································································
   //   mil thenth Point

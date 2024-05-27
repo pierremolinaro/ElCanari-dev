@@ -66,7 +66,10 @@ import AppKit
             NSAttributedString.Key.foregroundColor : prefs_componentValueColorForSchematic
           ]
           let value = (self_symbolInfo.componentValue != "") ? self_symbolInfo.componentValue : "No value"
-          let componentValueCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentValueOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentValueOffsetY)
+          let componentValueCenter = CanariPoint (
+            x: self_symbolInfo.center.x + self_mDisplayComponentValueOffsetX,
+            y: self_symbolInfo.center.y + self_mDisplayComponentValueOffsetY
+          )
           let componentValueShape = EBShape (
             text: value,
             componentValueCenter.cocoaPoint,

@@ -44,61 +44,6 @@ extension SymbolBezierCurve {
     return CanariPoint (x: inDx, y: inDy)
   }
 
-
-//  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-//    var acceptedX = inDx
-//    do{
-//      let newX = self.x1 + acceptedX
-//      if newX < 0 {
-//        acceptedX = -self.x1
-//      }
-//    }
-//    do{
-//      let newX = self.cpx1 + acceptedX
-//      if newX < 0 {
-//        acceptedX = -self.cpx1
-//      }
-//    }
-//    do{
-//      let newX = self.x2 + acceptedX
-//      if newX < 0 {
-//        acceptedX = -self.x2
-//      }
-//    }
-//    do{
-//      let newX = self.cpx2 + acceptedX
-//      if newX < 0 {
-//        acceptedX = -self.cpx2
-//      }
-//    }
-//    var acceptedY = inDy
-//    do{
-//      let newY = self.y1 + acceptedY
-//      if newY < 0 {
-//        acceptedY = -self.y1
-//      }
-//    }
-//    do{
-//      let newY = self.cpy1 + acceptedY
-//      if newY < 0 {
-//        acceptedY = -self.cpy1
-//      }
-//    }
-//    do{
-//      let newY = self.y2 + acceptedY
-//      if newY < 0 {
-//        acceptedY = -self.y2
-//      }
-//    }
-//    do{
-//      let newY = self.cpy2 + acceptedY
-//      if newY < 0 {
-//        acceptedY = -self.cpy2
-//      }
-//    }
-//    return CanariPoint (x: acceptedX, y: acceptedY)
-//  }
-
   //································································································
 
   func acceptToTranslate_SymbolBezierCurve (xBy _ : Int, yBy _ : Int) -> Bool {

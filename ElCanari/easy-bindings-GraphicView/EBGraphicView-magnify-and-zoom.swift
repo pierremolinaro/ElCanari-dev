@@ -63,7 +63,6 @@ extension EBGraphicView {
   //································································································
 
   final func addEndLiveMagnificationObserver () {
- //   NSLog ("addEndLiveMagnificationObserver \(self.enclosingScrollView)")
     if let scrollView = self.enclosingScrollView {
       let nc = NotificationCenter.default
       nc.addObserver (

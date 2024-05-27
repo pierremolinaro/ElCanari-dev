@@ -123,7 +123,7 @@ extension ComponentInProject {
     }else if inKnobIndex == COMPONENT_PACKAGE_VALUE_KNOB {
       return inProposedAlignedTranslation
     }else{
-      return CanariPoint (x: 0, y: 0)
+      return .zero
     }
   }
 

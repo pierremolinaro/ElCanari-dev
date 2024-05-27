@@ -20,17 +20,21 @@ struct CanariRect : Equatable, Hashable {
   //   init
   //································································································
 
-  init () {
-    self.origin = CanariPoint ()
-    self.size = CanariSize ()
+  static var zero : CanariRect { CanariRect (origin: .zero, size: .zero) }
+
+  //································································································
+
+  init (origin inOrigin : CanariPoint, size inSize : CanariSize) {
+    self.origin = inOrigin
+    self.size = inSize
   }
 
   //································································································
 
   init (points inPoints : [CanariPoint]) {
     if inPoints.count == 0 {
-      self.origin = CanariPoint ()
-      self.size = CanariSize ()
+      self.origin = .zero
+      self.size = .zero
     }else{
       var xMin = Int.max
       var yMin = Int.max
@@ -62,8 +66,8 @@ struct CanariRect : Equatable, Hashable {
       self.origin = CanariPoint (x: inLeft, y: inBottom)
       self.size = CanariSize (width: inWidth, height: inHeight)
     }else{
-      self.origin = CanariPoint ()
-      self.size = CanariSize ()
+      self.origin = .zero
+      self.size = .zero
     }
   }
 
@@ -162,7 +166,7 @@ struct CanariRect : Equatable, Hashable {
   func intersection (_ inOtherRect : CanariRect) -> CanariRect {
     let result : CanariRect
     if self.isEmpty || inOtherRect.isEmpty {
-      result = CanariRect () // Empty Rect
+      result = .zero // Empty Rect
     }else{
       let left   = max (self.left, inOtherRect.left)
       let bottom = max (self.bottom, inOtherRect.bottom)
@@ -180,7 +184,7 @@ struct CanariRect : Equatable, Hashable {
   func insetBy (dx inDx : Int, dy inDy : Int) -> CanariRect {
     let result : CanariRect
     if self.isEmpty {
-      result = CanariRect () // Empty Rect
+      result = .zero // Empty Rect
     }else{
       let right = self.left + inDx
       let bottom = self.bottom + inDy

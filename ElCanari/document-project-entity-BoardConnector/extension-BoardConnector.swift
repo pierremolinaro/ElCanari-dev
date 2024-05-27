@@ -116,7 +116,7 @@ extension BoardConnector {
     if (inKnobIndex == BOARD_CONNECTOR_KNOB) && !(self.connectedToComponent ?? true) {
       return inProposedAlignedTranslation
     }else{
-      return CanariPoint (x: 0, y: 0)
+      return .zero
     }
   }
 

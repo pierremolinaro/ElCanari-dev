@@ -23,7 +23,7 @@ import AppKit
 ) -> CanariRect {
 //--- START OF USER ZONE 2
     if self_automaticBoardSize {
-      var r = CanariRect () // Empty rect
+      var r = CanariRect.zero // Empty rect
       var idx = 0
       while idx < self_boardInstances_instanceRect.count {
         if let rect = self_boardInstances_instanceRect [idx].instanceRect,
@@ -33,12 +33,6 @@ import AppKit
         }
         idx += 1
       }
-//      return CanariRect (
-//        left: self_boardLimitWidth / 2,
-//        bottom: self_boardLimitWidth / 2,
-//        width: r.right - self_boardLimitWidth,
-//        height: r.top  - self_boardLimitWidth
-//      )
       return CanariRect (
         left: 0,
         bottom: 0,
@@ -46,12 +40,6 @@ import AppKit
         height: r.maxY
       )
     }else{
-//      return CanariRect (
-//        left: self_boardLimitWidth / 2,
-//        bottom: self_boardLimitWidth / 2,
-//        width: self_boardManualWidth - self_boardLimitWidth,
-//        height: self_boardManualHeight - self_boardLimitWidth
-//      )
       return CanariRect (
         left: 0,
         bottom: 0,

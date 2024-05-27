@@ -242,10 +242,16 @@ extension ComponentSymbolInProject {
       }
     }
     if self.mDisplayComponentValue {
-      let p = CanariPoint (x: self.mCenterX + self.mDisplayComponentValueOffsetX, y: self.mCenterY + self.mDisplayComponentValueOffsetY)
+      let p = CanariPoint (
+        x: self.mCenterX + self.mDisplayComponentValueOffsetX,
+        y: self.mCenterY + self.mDisplayComponentValueOffsetY
+      )
       result.insert (p)
     }
-    let p = CanariPoint (x: self.mCenterX + self.mDisplayComponentNameOffsetX, y: self.mCenterY + self.mDisplayComponentNameOffsetY)
+    let p = CanariPoint (
+      x: self.mCenterX + self.mDisplayComponentNameOffsetX,
+      y: self.mCenterY + self.mDisplayComponentNameOffsetY
+    )
     result.insert (p)
     return result
   }

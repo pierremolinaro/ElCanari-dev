@@ -33,6 +33,16 @@ extension AutoLayoutProjectDocument {
     let oblongPads = self.buildOblongPads ()
     let polygonPads = self.buildPolygonPads ()
   //---
+    let productRepresentation = ProductRepresentation (
+      boardBox: self.rootObject.boardBoundBox!,
+      shape: self.rootObject.mBoardShape,
+      borderCurves: self.rootObject.mBorderCurves,
+      boardLimitWidth: self.rootObject.mBoardLimitsWidth,
+      boardClearance: self.rootObject.mBoardClearance,
+      rectangularBoardWidth: self.rootObject.mRectangularBoardWidth,
+      rectangularBoardHeight: self.rootObject.mRectangularBoardHeight
+    )
+  //---
     return ProductData (
       boardBoundBox: cocoaBoardRect,
       boardLimitPath: self.buildBoardLimitPath (),

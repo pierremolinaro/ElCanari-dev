@@ -55,7 +55,7 @@ import AppKit
             let boundBox = NSRect (x: minX, y: minY, width: maxX - minX, height: maxY - minY)
             return boundBox.canariRect
           }else{
-            return CanariRect ()
+            return .zero
           }
         case .rectangular :
           let d = self_mBoardClearance + self_mBoardLimitsWidth

@@ -97,7 +97,7 @@ extension BoardImage {
     }else if inKnobIndex == BOARD_IMAGE_ROTATION_KNOB {
       return inProposedAlignedTranslation
     }else{
-      return CanariPoint (x: 0, y: 0)
+      return .zero
     }
   }
 
