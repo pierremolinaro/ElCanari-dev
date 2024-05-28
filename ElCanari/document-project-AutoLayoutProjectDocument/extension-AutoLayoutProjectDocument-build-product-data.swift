@@ -33,16 +33,6 @@ extension AutoLayoutProjectDocument {
     let oblongPads = self.buildOblongPads ()
     let polygonPads = self.buildPolygonPads ()
   //---
-    let productRepresentation = ProductRepresentation (
-      boardBox: self.rootObject.boardBoundBox!,
-      shape: self.rootObject.mBoardShape,
-      borderCurves: self.rootObject.mBorderCurves,
-      boardLimitWidth: self.rootObject.mBoardLimitsWidth,
-      boardClearance: self.rootObject.mBoardClearance,
-      rectangularBoardWidth: self.rootObject.mRectangularBoardWidth,
-      rectangularBoardHeight: self.rootObject.mRectangularBoardHeight
-    )
-  //---
     return ProductData (
       boardBoundBox: cocoaBoardRect,
       boardLimitPath: self.buildBoardLimitPath (),
@@ -154,7 +144,7 @@ extension AutoLayoutProjectDocument {
       retainedBP.line (to : NSPoint (x: width, y: 0.0))
       retainedBP.close ()
     }
-    return retainedBP.pointsByFlattening (withFlatness: 0.1) [0]
+    return retainedBP.linePathesByFlattening (withFlatness: 0.1) [0]
   }
 
   //································································································
@@ -231,7 +221,7 @@ extension AutoLayoutProjectDocument {
       if let component = object as? ComponentInProject, component.mDisplayLegend {
         let strokeBezierPath = component.strokeBezierPath!
         if !strokeBezierPath.isEmpty {
-          let pathArray = strokeBezierPath.pointsByFlattening (withFlatness: 0.1)
+          let pathArray = strokeBezierPath.linePathesByFlattening (withFlatness: 0.1)
           let af = component.packageToComponentAffineTransform ()
           var transformedPathArray = [EBLinePath] ()
           for linePath in pathArray {
@@ -273,7 +263,7 @@ extension AutoLayoutProjectDocument {
             extraWidth: 0.0
           )
           let aperture = textBP.lineWidth
-          let pathArray = textBP.pointsByFlattening (withFlatness: 0.1).linePathArrayClipped (by: inCocoaBoardRect)
+          let pathArray = textBP.linePathesByFlattening (withFlatness: 0.1).linePathArrayClipped (by: inCocoaBoardRect)
           switch component.mSide {
           case .back :
             backComponentNames [aperture] = backComponentNames [aperture, default: []] + pathArray
@@ -309,7 +299,7 @@ extension AutoLayoutProjectDocument {
             extraWidth: 0.0
           )
           let aperture = textBP.lineWidth
-          let pathArray = textBP.pointsByFlattening (withFlatness: 0.1).linePathArrayClipped (by: inCocoaBoardRect)
+          let pathArray = textBP.linePathesByFlattening (withFlatness: 0.1).linePathArrayClipped (by: inCocoaBoardRect)
           switch component.mSide {
           case .back :
             backComponentValues [aperture] = backComponentValues [aperture, default: []] + pathArray
@@ -346,7 +336,7 @@ extension AutoLayoutProjectDocument {
           extraWidth: 0.0
         )
         let aperture = textBP.lineWidth
-        let pathArray = textBP.pointsByFlattening (withFlatness: 0.1).linePathArrayClipped (by: inCocoaBoardRect)
+        let pathArray = textBP.linePathesByFlattening (withFlatness: 0.1).linePathArrayClipped (by: inCocoaBoardRect)
         switch text.mLayer {
         case .legendFront :
           legendFrontTexts [aperture] = legendFrontTexts [aperture, default: []] + pathArray

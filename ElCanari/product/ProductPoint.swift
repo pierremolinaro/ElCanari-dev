@@ -10,7 +10,7 @@ import Foundation
 
 //--------------------------------------------------------------------------------------------------
 
-struct ProductPoint : Codable {
+struct ProductPoint : Codable, Equatable {
 
   //································································································
   //  Properties
@@ -32,9 +32,24 @@ struct ProductPoint : Codable {
 
   //································································································
 
+  init (x inX : Double, _ inXUnit : ProductLength.Unit,
+        y inY : Double, _ inYUnit : ProductLength.Unit) {
+    self.x = ProductLength (inX, inXUnit)
+    self.y = ProductLength (inY, inYUnit)
+  }
+
+  //································································································
+
   init (canariPoint inCanariPoint : CanariPoint) {
     self.x = ProductLength (valueInCanariUnit: inCanariPoint.x)
     self.y = ProductLength (valueInCanariUnit: inCanariPoint.y)
+  }
+
+  //································································································
+
+  init (fromCocoaPoint inPoint : NSPoint) {
+    self.x = ProductLength (inPoint.x, .px)
+    self.y = ProductLength (inPoint.y, .px)
   }
 
   //································································································

@@ -544,7 +544,7 @@ struct EBBezierPath : Hashable {
 
   //································································································
 
-  func pointsByFlattening (withFlatness inFlatness : CGFloat) -> [EBLinePath] { // Array of pathes
+  func linePathesByFlattening (withFlatness inFlatness : CGFloat) -> [EBLinePath] { // Array of pathes
     let savedDefaultFlatness = NSBezierPath.defaultFlatness
     NSBezierPath.defaultFlatness = inFlatness
     let flattenedBP = self.mPath.flattened
@@ -585,6 +585,33 @@ struct EBBezierPath : Hashable {
     if let startPoint = optionalStartPoint, linePoints.count > 0 {
       let path = EBLinePath (origin: startPoint, lines: linePoints, closed: false)
       result.append (path)
+    }
+    return result
+  }
+
+  //································································································
+
+  func productSegments (withFlatness inFlatness : CGFloat,
+                        transformedBy inAffineTransform : AffineTransform,
+                        clippedBy inClipRect : NSRect) -> [ProductSegment] {
+    let pathArray = self.linePathesByFlattening (withFlatness: inFlatness)
+    var transformedLinePathArray = [EBLinePath] ()
+    for linePath in pathArray {
+      let transformedLinePath = linePath.transformed (by: inAffineTransform)
+      transformedLinePathArray += transformedLinePath.linePathClipped (by: inClipRect)
+    }
+    var result = [ProductSegment] ()
+    for linePath in transformedLinePathArray {
+      let firstPoint = ProductPoint (fromCocoaPoint: linePath.origin)
+      var currentPoint = firstPoint
+      for p in linePath.lines {
+        let pp = ProductPoint (fromCocoaPoint: p)
+        result.append (ProductSegment (p1: currentPoint, p2: pp))
+        currentPoint = pp
+      }
+      if linePath.closed {
+        result.append (ProductSegment (p1: currentPoint, p2: firstPoint))
+      }
     }
     return result
   }

@@ -79,7 +79,7 @@ extension AutoLayoutMergerDocument {
         let productDirectory = f.deletingLastPathComponent
       //--- Generate board archive
         if self.rootObject.mGenerateMergerArchive_property.propval {
-          let boardArchivePath = productDirectory + "/" + baseName + "." + EL_CANARI_MERGER_ARCHIVE
+          let boardArchivePath = productDirectory + "/" + baseName + "." + EL_CANARI_LEGACY_MERGER_ARCHIVE
           self.mLogTextView?.appendMessageString ("Generating \(boardArchivePath.lastPathComponent)…")
           try self.generateBoardArchive (atPath: boardArchivePath)
           self.mLogTextView?.appendSuccessString (" Ok\n")

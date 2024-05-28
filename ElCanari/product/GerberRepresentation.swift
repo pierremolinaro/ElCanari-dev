@@ -1,8 +1,8 @@
 //
-//  ProductLength.swift
+//  GerberRepresentation.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 25/05/2024.
+//  Created by Pierre Molinaro on 28/05/2024.
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -10,96 +10,100 @@ import Foundation
 
 //--------------------------------------------------------------------------------------------------
 
-struct ProductLength : Codable, Hashable, Comparable {
+struct GerberRepresentation {
 
   //································································································
-  //  Property
+  //  Properties
   //································································································
 
-  let valueInCanariUnit : Int
+  private var mOblongs = [Oblong] ()
 
   //································································································
-  //  Initializer
+  //  Init
   //································································································
 
-  static var zero : ProductLength { ProductLength (valueInCanariUnit: 0) }
-
-  //································································································
-
-  init (valueInCanariUnit inValue : Int) {
-    self.valueInCanariUnit = inValue
+  init () {
   }
 
   //································································································
+  //  Populate
+  //································································································
 
-  init (_ inValue : Double, _ inUnit : Unit) {
-    self.valueInCanariUnit = Int (inValue * inUnit.canariUnits)
+  mutating func addOblong (p1 inP1 : ProductPoint,
+                           p2 inP2 : ProductPoint,
+                           width inWidth : ProductLength) {
+    if inP1 != inP2 {
+      let oblong = Oblong (p1: inP1, p2: inP2, width: inWidth)
+      self.mOblongs.append (oblong)
+    }
   }
 
   //································································································
-  //  Comparable protocol
+  //  Gerber string
   //································································································
 
-  static func < (lhs: ProductLength, rhs: ProductLength) -> Bool {
-    return lhs.valueInCanariUnit < rhs.valueInCanariUnit
+  func gerberString (unit inUnit : GerberRepresentation.Unit) -> String {
+    var s = "%FSLAX24Y24*%\n"
+    s += "%MOIN*%\n"
+  //--- Aperture inventory
+    var apertureDictionary = Set <ProductLength> ()
+    for oblong in self.mOblongs {
+      apertureDictionary.insert (oblong.width)
+    }
+    let apertureArray = Array (apertureDictionary).sorted ()
+  //--- Write aperture declarations
+    var idx = 10
+    for aperture in apertureArray {
+      let apertureString = "C,\(String (format: "%.4f", aperture.value (in: .inch)))"
+      s += "%ADD\(idx)\(apertureString)*%\n"
+      idx += 1
+    }
+  //--- Write aperture lines
+    idx = 10
+    for aperture in apertureArray {
+      s += "D\(idx)*\n"
+      s += "G01*\n" // Linear interpolation
+      var currentPoint : ProductPoint? = nil
+      for oblong in self.mOblongs {
+        if oblong.width == aperture {
+          if let p = currentPoint, p == oblong.p1 {
+          }else{
+            s += "X\(gerber (oblong.p1.x, inUnit))Y\(gerber (oblong.p1.y, inUnit))D02*\n" // Move to p1
+          }
+          s += "X\(gerber (oblong.p2.x, inUnit))Y\(gerber (oblong.p2.y, inUnit))D01*\n" // Line to p2
+          currentPoint = oblong.p2
+        }
+      }
+      idx += 1
+    }
+  //--- End
+    s += "M02*\n"
+    return s
   }
 
   //································································································
-  //  Codable protocol
-  //································································································
-
-  func encode (to encoder : any Encoder) throws {
-    try valueInCanariUnit.encode (to: encoder)
-  }
-
-  //································································································
-  //  Decodable protocol
-  //································································································
-
-  init (from encoder : any Decoder) throws {
-    self.valueInCanariUnit = try Int (from: encoder)
-  }
-
-  //································································································
-
-  func value (in inUnit : ProductLength.Unit) -> Double {
-    return Double (self.valueInCanariUnit) / inUnit.canariUnits
-  }
-
-  //································································································
-  //   Enumeration
+  //   Enumerations
   //································································································
 
   enum Unit {
+    case milTenth
     case mm
-    case cm
-    case inch
-    case mil
-    case µm
-    case px // Cocoa point, Cocoa Pixel, 1/72 inch
+  }
 
-    var canariUnits : Double {
-      switch self {
-        case .mm   : return Double (CANARI_UNITS_PER_MM)
-        case .cm   : return Double (CANARI_UNITS_PER_CM)
-        case .inch : return Double (CANARI_UNITS_PER_INCH)
-        case .mil  : return Double (CANARI_UNITS_PER_MIL)
-        case .µm  : return Double (CANARI_UNITS_PER_µM)
-        case .px  : return Double (CANARI_UNITS_PER_PIXEL)
-      }
-    }
+  //································································································
+  //   Struct
+  //································································································
 
-    var unitString : String {
-      switch self {
-        case .mm   : return "mm"
-        case .cm   : return "cm"
-        case .inch : return "inch"
-        case .mil  : return "mil"
-        case .µm  : return "µm"
-        case .px  : return "px"
-      }
-    }
+  struct Oblong {
+    let p1 : ProductPoint
+    let p2 : ProductPoint
+    let width : ProductLength
+  }
 
+  //································································································
+
+  func gerber (_ inValue : ProductLength, _ inUnit : GerberRepresentation.Unit) -> String {
+    return String (Int (inValue.value (in: .mil) * 10.0))
   }
 
   //································································································

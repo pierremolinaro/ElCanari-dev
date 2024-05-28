@@ -228,7 +228,7 @@ extension AutoLayoutProjectDocument {
         descriptor = curveDictionary [descriptor.p2]!
         loop = p != descriptor.p1
       }
-      return clearanceBP.pointsByFlattening (withFlatness: 0.1) [0]
+      return clearanceBP.linePathesByFlattening (withFlatness: 0.1) [0]
     case .rectangular :
       let d = self.rootObject.mBoardClearance + self.rootObject.mBoardLimitsWidth
       let r = CanariRect (
@@ -237,7 +237,7 @@ extension AutoLayoutProjectDocument {
         width: self.rootObject.mRectangularBoardWidth - 2 * d,
         height: self.rootObject.mRectangularBoardHeight - 2 * d
       )
-      return EBBezierPath (rect: inConverter.dsnRectFromCanariRect (r)).pointsByFlattening (withFlatness: 0.1) [0]
+      return EBBezierPath (rect: inConverter.dsnRectFromCanariRect (r)).linePathesByFlattening (withFlatness: 0.1) [0]
     }
   }
 

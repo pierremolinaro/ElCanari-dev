@@ -10,7 +10,9 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-let EL_CANARI_MERGER_ARCHIVE = "ElCanariMergerArchive"
+let EL_CANARI_LEGACY_MERGER_ARCHIVE = "ElCanariMergerArchive"
+
+let EL_CANARI_MERGER_ARCHIVE = "ElCanariBoardArchive"
 
 let KICAD_PCB = "kicad_pcb"
 

@@ -86,6 +86,7 @@ extension AutoLayoutProjectDocument {
     let generateGerberAndPDF = self.rootObject.mGenerateGerberAndPDF_property.propval
   //--- Build product data
     let productData = self.buildProductData ()
+    let productRepresentation = ProductRepresentation (projectRoot: self.rootObject)
   //--- Create gerber directory (first, delete existing dir)
     let gerberDirPath = inDocumentFilePathWithoutExtension + "-gerber"
     let generatedGerberFilePath = gerberDirPath + "/" + baseName + "."
@@ -97,7 +98,8 @@ extension AutoLayoutProjectDocument {
         try self.writeGerberProductFile (atPath: generatedGerberFilePath,
                                          productDescriptor,
                                          inArtwork.layerConfiguration,
-                                         productData)
+                                         productData,
+                                         productRepresentation)
       }
     }
   //--- Create PDF directory (first, delete existing dir)
@@ -113,8 +115,13 @@ extension AutoLayoutProjectDocument {
     }
   //--- Write board archive
     if self.rootObject.mGenerateMergerArchive_property.propval {
+      let boardLegacyArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_LEGACY_MERGER_ARCHIVE
+      try self.writeBoardArchiveFile (atPath: boardLegacyArchiveFilePath, productData)
       let boardArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_MERGER_ARCHIVE
-      try self.writeBoardArchiveFile (atPath: boardArchiveFilePath, productData)
+      self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(boardArchiveFilePath.lastPathComponent)…")
+      let jsonData : Data = try productRepresentation.jsonData ()
+      try jsonData.write (to: URL (fileURLWithPath: boardArchiveFilePath))
+      self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
     }
   //--- Write CSV file
     if self.rootObject.mGenerateBOM_property.propval {
