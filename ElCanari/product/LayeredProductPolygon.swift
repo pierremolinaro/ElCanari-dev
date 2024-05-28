@@ -1,8 +1,8 @@
 //
-//  ProductRect.swift
+//  LayeredProductPolygon.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 27/05/2024.
+//  Created by Pierre Molinaro on 28/05/2024.
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -10,41 +10,32 @@ import Foundation
 
 //--------------------------------------------------------------------------------------------------
 
-struct ProductRect : Codable {
+struct LayeredProductPolygon : Codable {
 
   //································································································
   //  Properties
   //································································································
 
-  let left : ProductLength
-  let bottom : ProductLength
-  let width : ProductLength
-  let height : ProductLength
+  let x : ProductLength // First Point X
+  let y : ProductLength // First Point Y
+  let points : [ProductPoint]
+  let layers : ProductLayerSet
 
   //································································································
 
-  static var zero : ProductRect { ProductRect (origin: .zero, size: .zero) }
-
-  //································································································
-
-  init (origin inOrigin : ProductPoint, size inSize : ProductSize) {
-    self.left = inOrigin.x
-    self.bottom = inOrigin.y
-    self.width = inSize.width
-    self.height = inSize.height
+  init (origin inOrigin : ProductPoint,
+        points inPoints : [ProductPoint],
+        layers inLayers : ProductLayerSet) {
+    self.x = inOrigin.x
+    self.y = inOrigin.y
+    self.points = inPoints
+    self.layers = inLayers
   }
 
   //································································································
 
-  init (canariRect inCanariRect : CanariRect) {
-    let origin = ProductPoint (canariPoint: inCanariRect.origin)
-    self.left = origin.x
-    self.bottom = origin.y
-    let size = ProductSize (canariSize: inCanariRect.size)
-    self.width = size.width
-    self.height = size.height
-  }
-
+  var origin : ProductPoint { ProductPoint (x: self.x, y: self.y) }
+  
   //································································································
 
 }

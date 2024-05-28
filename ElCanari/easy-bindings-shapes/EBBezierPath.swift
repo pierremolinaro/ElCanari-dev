@@ -602,10 +602,10 @@ struct EBBezierPath : Hashable {
     }
     var result = [ProductSegment] ()
     for linePath in transformedLinePathArray {
-      let firstPoint = ProductPoint (fromCocoaPoint: linePath.origin)
+      let firstPoint = ProductPoint (cocoaPoint: linePath.origin)
       var currentPoint = firstPoint
       for p in linePath.lines {
-        let pp = ProductPoint (fromCocoaPoint: p)
+        let pp = ProductPoint (cocoaPoint: p)
         result.append (ProductSegment (p1: currentPoint, p2: pp))
         currentPoint = pp
       }

@@ -109,10 +109,10 @@ extension AutoLayoutProjectDocument {
                                _ inProductRepresentation : ProductRepresentation) throws {
     let path = inPath + inDescriptor.fileExtension
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(path.lastPathComponent)…")
-    var items = ProductItemSet ()
-    if inDescriptor.horizontalMirror {
-      items.insert (.horizontalMirror)
-    }
+    var items = ProductLayerSet ()
+//    if inDescriptor.horizontalMirror {
+//      items.insert (.horizontalMirror)
+//    }
     if inDescriptor.drawBoardLimits {
       items.insert (.drawBoardLimits)
     }
@@ -137,9 +137,9 @@ extension AutoLayoutProjectDocument {
     if inDescriptor.drawPackageLegendBottomSide {
       items.insert (.drawPackageLegendBottomSide)
     }
-    if inDescriptor.drawPadHolesInPDF {
-      items.insert (.drawPadHolesInPDF)
-    }
+//    if inDescriptor.drawPadHolesInPDF {
+//      items.insert (.drawPadHolesInPDF)
+//    }
     if inDescriptor.drawPadsTopSide {
       items.insert (.drawPadsTopSide)
     }

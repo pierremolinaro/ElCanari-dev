@@ -47,7 +47,7 @@ struct ProductPoint : Codable, Equatable {
 
   //································································································
 
-  init (fromCocoaPoint inPoint : NSPoint) {
+  init (cocoaPoint inPoint : NSPoint) {
     self.x = ProductLength (inPoint.x, .px)
     self.y = ProductLength (inPoint.y, .px)
   }

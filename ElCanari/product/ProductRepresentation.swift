@@ -18,8 +18,9 @@ struct ProductRepresentation : Codable {
 
   private var boardBox : ProductRect
   private var boardLimitWidth : ProductLength
-  private var boardLimitPath : [ProductPoint]
-  private var layeredOblongs = [LayeredProductOblong] ()
+  private var oblongs = [LayeredProductOblong] ()
+  private var circles = [LayeredProductCircle] ()
+  private var polygons = [LayeredProductPolygon] ()
 
   //································································································
   //  Init
@@ -29,23 +30,33 @@ struct ProductRepresentation : Codable {
     self.boardBox = ProductRect (canariRect: inProjectRoot.boardBoundBox!)
     self.boardLimitWidth = ProductLength (valueInCanariUnit: inProjectRoot.mBoardLimitsWidth)
   //--- Board limit path
-    self.boardLimitPath = inProjectRoot.buildBoardLimitPath ()
-  //--- Package Legend
+    do{
+      var points = inProjectRoot.buildBoardLimitPath ()
+      let firstPoint = points [0]
+      var currentPoint = firstPoint
+      points.removeFirst ()
+      for p in points {
+        let oblong = LayeredProductOblong (p1: currentPoint, p2: p, width: self.boardLimitWidth, layers: .drawBoardLimits)
+        self.oblongs.append (oblong)
+        currentPoint = p
+      }
+      let oblong = LayeredProductOblong (p1: currentPoint, p2: firstPoint, width: self.boardLimitWidth, layers: .drawBoardLimits)
+      self.oblongs.append (oblong)
+    }
+  //--- Populate
     self.appendPackageLegends (projectRoot: inProjectRoot)
+    self.appendComponentNamePathes (projectRoot: inProjectRoot)
+    self.appendComponentValuePathes (projectRoot: inProjectRoot)
+    self.appendTextPathes (projectRoot: inProjectRoot)
+    self.appendLegendLines (projectRoot: inProjectRoot)
+    self.appendVias (projectRoot: inProjectRoot)
+    self.appendPads (projectRoot: inProjectRoot)
+    self.appendQRCodePathes (projectRoot: inProjectRoot)
+    self.appendBoardImagesPathes (projectRoot: inProjectRoot)
+    self.appendTracks (projectRoot: inProjectRoot)
   }
 
-//    let (frontPackageLegend, backPackageLegend) = self.buildPackageLegend (cocoaBoardRect)
-//    let (frontComponentNames, backComponentNames) = self.buildComponentNamePathes (cocoaBoardRect)
-//    let (frontComponentValues, backComponentValues) = self.buildComponentValuePathes (cocoaBoardRect)
-//    let (legendFrontTexts, layoutFrontTexts, layoutBackTexts, legendBackTexts) = self.buildTextPathes (cocoaBoardRect)
-//    let (legendFrontQRCodes, legendBackQRCodes) = self.buildQRCodePathes ()
-//    let (legendFrontImages, legendBackImages) = self.buildBoardImagesPathes ()
-//    let viaPads = self.buildViaPads ()
 //    let (tracks, frontTracksWithNoSilkScreen, backTracksWithNoSilkScreen) = self.buildTracks ()
-//    let (frontLines, backLines) = self.buildLines (cocoaBoardRect)
-//    let circularPads = self.buildCircularPads ()
-//    let oblongPads = self.buildOblongPads ()
-//    let polygonPads = self.buildPolygonPads ()
 
   //································································································
   //  Decoding from JSON
@@ -75,28 +86,46 @@ struct ProductRepresentation : Codable {
   //  Get Gerber representation
   //································································································
 
-  func gerber (items inItemSet : ProductItemSet) -> GerberRepresentation {
+  func gerber (items inItemSet : ProductLayerSet) -> GerberRepresentation {
     var gerber = GerberRepresentation ()
-  //--- Board limits ?
-    if inItemSet.contains (.drawBoardLimits) {
-      var points = self.boardLimitPath
-      var currentPoint = points.first!
-      let firstPoint = currentPoint
-      points.removeFirst ()
-      for p in points {
-        gerber.addOblong (p1: currentPoint, p2: p, width: self.boardLimitWidth)
-        currentPoint = p
-      }
-      gerber.addOblong (p1: currentPoint, p2: firstPoint, width: self.boardLimitWidth)
-    }
   //--- Add oblongs
-    for oblong in self.layeredOblongs {
+    for oblong in self.oblongs {
       if inItemSet.contains (oblong.layers) {
         gerber.addOblong (p1: oblong.p1, p2: oblong.p2, width: oblong.width)
       }
     }
+  //--- Add circles
+    for circle in self.circles {
+      if inItemSet.contains (circle.layers) {
+        gerber.addCircle (center: circle.center, diameter: circle.d)
+      }
+    }
+  //--- Add polygons
+    for polygon in self.polygons {
+      if inItemSet.contains (polygon.layers) {
+        gerber.addPolygon (origin: polygon.origin, points: polygon.points)
+      }
+    }
   //---
     return gerber
+  }
+
+  //································································································
+
+  @MainActor private mutating func append (flattenedStrokeBezierPath inBezierPath : EBBezierPath,
+                                           transformedBy inAT : AffineTransform,
+                                           clippedBy inClipRect : NSRect,
+                                           width inWidth : ProductLength,
+                                           layers inLayerSet : ProductLayerSet) {
+    let segmentArray = inBezierPath.productSegments (
+      withFlatness: 0.1,
+      transformedBy: inAT,
+      clippedBy: inClipRect
+    )
+    for segment in segmentArray {
+      let oblong = LayeredProductOblong (p1: segment.p1, p2: segment.p2, width: inWidth, layers: inLayerSet)
+      self.oblongs.append (oblong)
+    }
   }
 
   //································································································
@@ -109,22 +138,484 @@ struct ProductRepresentation : Codable {
         let strokeBezierPath = component.strokeBezierPath!
         if !strokeBezierPath.isEmpty {
           let af = component.packageToComponentAffineTransform ()
-          let segmentArray = strokeBezierPath.productSegments (
-            withFlatness: 0.1,
-            transformedBy: af,
-            clippedBy: cocoaBoardRect
-          )
-          let layer : ProductItemSet
+          let layer : ProductLayerSet
           switch component.mSide {
           case .back :
             layer = .drawPackageLegendBottomSide
           case .front :
             layer = .drawPackageLegendTopSide
           }
-          for segment in segmentArray {
-            let oblong = LayeredProductOblong (p1: segment.p1, p2: segment.p2, width: width, layers: layer)
-            self.layeredOblongs.append (oblong)
+          self.append (
+            flattenedStrokeBezierPath: strokeBezierPath,
+            transformedBy: af,
+            clippedBy: cocoaBoardRect,
+            width: width,
+            layers: layer
+          )
+        }
+      }
+    }
+  }
+
+  //································································································
+
+  @MainActor private mutating func appendComponentNamePathes (projectRoot inProjectRoot : ProjectRoot) {
+    let cocoaBoardRect = inProjectRoot.boardBoundBox!.cocoaRect
+    for object in inProjectRoot.mBoardObjects.values {
+      if let component = object as? ComponentInProject {
+        if component.mNameIsVisibleInBoard, let fontDescriptor = component.mNameFont?.descriptor {
+          let (textBP, _, _, _, _) = boardText_displayInfos (
+            x: component.mXName + component.mX,
+            y: component.mYName + component.mY,
+            string: component.componentName!,
+            fontSize: component.mNameFontSize,
+            fontDescriptor,
+            horizontalAlignment: .center,
+            verticalAlignment: .center,
+            frontSide: component.mSide == .front,
+            rotation: component.mNameRotation,
+            weight: 1.0,
+            oblique: false,
+            extraWidth: 0.0
+          )
+          let width = ProductLength (textBP.lineWidth, .px)
+          let layer : ProductLayerSet
+          switch component.mSide {
+          case .back :
+            layer = .drawComponentNamesBottomSide
+          case .front :
+            layer = .drawComponentNamesTopSide
           }
+          self.append (
+            flattenedStrokeBezierPath: textBP,
+            transformedBy: AffineTransform (),
+            clippedBy: cocoaBoardRect,
+            width: width,
+            layers: layer
+          )
+        }
+      }
+    }
+  }
+
+  //································································································
+
+  @MainActor private mutating func appendComponentValuePathes (projectRoot inProjectRoot : ProjectRoot) {
+    let cocoaBoardRect = inProjectRoot.boardBoundBox!.cocoaRect
+    for object in inProjectRoot.mBoardObjects.values {
+      if let component = object as? ComponentInProject {
+        if component.mValueIsVisibleInBoard, let fontDescriptor = component.mValueFont?.descriptor {
+          let (textBP, _, _, _, _) = boardText_displayInfos (
+            x: component.mXValue + component.mX,
+            y: component.mYValue + component.mY,
+            string: component.mComponentValue,
+            fontSize: component.mValueFontSize,
+            fontDescriptor,
+            horizontalAlignment: .center,
+            verticalAlignment: .center,
+            frontSide: component.mSide == .front,
+            rotation: component.mValueRotation,
+            weight: 1.0,
+            oblique: false,
+            extraWidth: 0.0
+          )
+          let width = ProductLength (textBP.lineWidth, .px)
+          let layer : ProductLayerSet
+          switch component.mSide {
+          case .back :
+            layer = .drawComponentValuesBottomSide
+          case .front :
+            layer = .drawComponentValuesTopSide
+          }
+          self.append (
+            flattenedStrokeBezierPath: textBP,
+            transformedBy: AffineTransform (),
+            clippedBy: cocoaBoardRect,
+            width: width,
+            layers: layer
+          )
+        }
+      }
+    }
+  }
+
+  //································································································
+
+  @MainActor private mutating func appendTextPathes (projectRoot inProjectRoot : ProjectRoot) {
+    let cocoaBoardRect = inProjectRoot.boardBoundBox!.cocoaRect
+    for object in inProjectRoot.mBoardObjects.values {
+      if let text = object as? BoardText {
+        let (textBP, _, _, _, _) = boardText_displayInfos (
+          x: text.mX,
+          y: text.mY,
+          string: text.mText,
+          fontSize: text.mFontSize,
+          text.mFont!.descriptor!,
+          horizontalAlignment: text.mHorizontalAlignment,
+          verticalAlignment: text.mVerticalAlignment,
+          frontSide: (text.mLayer == .layoutFront) || (text.mLayer == .legendFront),
+          rotation: text.mRotation,
+          weight: text.mWeight,
+          oblique: text.mOblique,
+          extraWidth: 0.0
+        )
+        let width = ProductLength (textBP.lineWidth, .px)
+        let layer : ProductLayerSet
+        switch text.mLayer {
+        case .legendFront :
+          layer = .drawTextsLegendTopSide
+        case .layoutFront :
+          layer = .drawTextsLayoutTopSide
+        case .legendBack :
+          layer = .drawTextsLegendBottomSide
+        case .layoutBack :
+          layer = .drawTextsLayoutBottomSide
+        }
+        self.append (
+          flattenedStrokeBezierPath: textBP,
+          transformedBy: AffineTransform (),
+          clippedBy: cocoaBoardRect,
+          width: width,
+          layers: layer
+        )
+      }
+    }
+  }
+
+  //································································································
+
+  @MainActor private mutating func appendLegendLines (projectRoot inProjectRoot : ProjectRoot) {
+    let cocoaBoardRect = inProjectRoot.boardBoundBox!.cocoaRect
+    for object in inProjectRoot.mBoardObjects.values {
+      if let line = object as? BoardLine {
+        let p1 = CanariPoint (x: line.mX1, y: line.mY1).cocoaPoint
+        let p2 = CanariPoint (x: line.mX2, y: line.mY2).cocoaPoint
+        if let (clippedP1, clippedP2) = cocoaBoardRect.clippedSegment(p1: p1, p2: p2) {
+          let width = ProductLength (valueInCanariUnit: line.mWidth)
+          let layer : ProductLayerSet
+          switch line.mLayer {
+          case .legendFront :
+            layer = .drawTextsLegendTopSide
+          case .legendBack :
+            layer = .drawTextsLegendBottomSide
+          }
+          let oblong = LayeredProductOblong (
+            p1: ProductPoint (cocoaPoint: clippedP1),
+            p2: ProductPoint (cocoaPoint: clippedP2),
+            width: width,
+            layers: layer
+          )
+          self.oblongs.append (oblong)
+        }
+      }
+    }
+  }
+
+  //································································································
+
+  @MainActor private mutating func appendVias (projectRoot inProjectRoot : ProjectRoot) {
+    for object in inProjectRoot.mBoardObjects.values {
+      if let via = object as? BoardConnector, let isVia = via.isVia, isVia {
+        let center = ProductPoint (canariPoint: via.location!)
+        let padDiameter = ProductLength (valueInCanariUnit: via.actualPadDiameter!)
+        let holeDiameter = ProductLength (valueInCanariUnit: via.actualHoleDiameter!)
+        let pad = LayeredProductCircle (
+          center: center,
+          diameter: padDiameter,
+          layers: [.drawPadsBottomSide, .drawPadsTopSide]
+        )
+        self.circles.append (pad)
+        let hole = LayeredProductCircle (
+          center: center,
+          diameter: holeDiameter,
+          layers: .drawPadHoles
+        )
+        self.circles.append (hole)
+      }
+    }
+  }
+
+  //································································································
+
+  @MainActor private mutating func appendPads (projectRoot inProjectRoot : ProjectRoot) {
+    for object in inProjectRoot.mBoardObjects.values {
+      if let component = object as? ComponentInProject {
+        let af = component.packageToComponentAffineTransform ()
+        for (_, masterPad) in component.packagePadDictionary! {
+        //--- Handle master pad
+          let layers = masterPad.style.layers (component.mSide)
+          self.appendPad (
+            center: masterPad.center,
+            size: masterPad.padSize,
+            shape: masterPad.shape,
+            transformedBy: af,
+            layers: layers
+          )
+        //--- Handle slave pads
+          for slavePad in masterPad.slavePads {
+            let layers = slavePad.style.layers (component.mSide)
+            self.appendPad (
+              center: slavePad.center,
+              size: slavePad.padSize,
+              shape: slavePad.shape,
+              transformedBy: af,
+              layers: layers
+            )
+          }
+        }
+      }
+    }
+  }
+
+  //································································································
+
+  @MainActor private mutating func appendPad (center inCenter : CanariPoint,
+                                              size inPadSize : CanariSize,
+                                              shape inShape : PadShape,
+                                              transformedBy inAT : AffineTransform,
+                                              layers inLayers : ProductLayerSet) {
+    switch inShape {
+    case .round :
+      self.appendRoundPad (
+        center: inCenter,
+        size: inPadSize,
+        transformedBy: inAT,
+        layers: inLayers
+      )
+    case .rect :
+      self.appendRectPad (
+        center: inCenter,
+        size: inPadSize,
+        transformedBy: inAT,
+        layers: inLayers
+      )
+    case .octo :
+      self.appendOctoPad (
+        center: inCenter,
+        size: inPadSize,
+        transformedBy: inAT,
+        layers: inLayers
+      )
+    }
+  }
+
+  //································································································
+
+  @MainActor private mutating func appendRoundPad (center inCenter : CanariPoint,
+                                                   size inPadSize : CanariSize,
+                                                   transformedBy inAT : AffineTransform,
+                                                   layers inLayers : ProductLayerSet) {
+    let p = inCenter.cocoaPoint
+    let padSize = inPadSize.cocoaSize
+    if inPadSize.width < inPadSize.height { // Vertical oblong
+      let p1 = inAT.transform (NSPoint (x: p.x, y: p.y - (padSize.height - padSize.width) / 2.0))
+      let p2 = inAT.transform (NSPoint (x: p.x, y: p.y + (padSize.height - padSize.width) / 2.0))
+      let oblong = LayeredProductOblong (
+        p1: ProductPoint (cocoaPoint: p1),
+        p2: ProductPoint (cocoaPoint: p2),
+        width: ProductLength (valueInCanariUnit: inPadSize.width),
+        layers: inLayers
+      )
+      self.oblongs.append (oblong)
+    }else if inPadSize.width > inPadSize.height { // Horizontal oblong
+      let p1 = inAT.transform (NSPoint (x: p.x - (padSize.width - padSize.height) / 2.0, y: p.y))
+      let p2 = inAT.transform (NSPoint (x: p.x + (padSize.width - padSize.height) / 2.0, y: p.y))
+      let oblong = LayeredProductOblong (
+        p1: ProductPoint (cocoaPoint: p1),
+        p2: ProductPoint (cocoaPoint: p2),
+        width: ProductLength (valueInCanariUnit: inPadSize.height),
+        layers: inLayers
+      )
+      self.oblongs.append (oblong)
+    }else{ // Circular
+      let center = ProductPoint (cocoaPoint: inAT.transform (inCenter.cocoaPoint))
+      let padDiameter = ProductLength (valueInCanariUnit: inPadSize.width)
+      let pad = LayeredProductCircle (
+        center: center,
+        diameter: padDiameter,
+        layers: inLayers
+      )
+      self.circles.append (pad)
+    }
+  }
+
+  //································································································
+
+  @MainActor private mutating func appendRectPad (center inCenter : CanariPoint,
+                                                  size inPadSize : CanariSize,
+                                                  transformedBy inAT : AffineTransform,
+                                                  layers inLayers : ProductLayerSet) {
+    let p = inCenter.cocoaPoint
+    let padSize = inPadSize.cocoaSize
+    let w = padSize.width / 2.0
+    let h = padSize.height / 2.0
+    let p0 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w, y: p.y + h)))
+    let p1 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w, y: p.y + h)))
+    let p2 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w, y: p.y - h)))
+    let p3 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w, y: p.y - h)))
+    let polygon = LayeredProductPolygon (
+      origin: p0,
+      points: [p1, p2, p3],
+      layers: inLayers
+    )
+    self.polygons.append (polygon)
+  }
+
+  //································································································
+
+  @MainActor private mutating func appendOctoPad (center inCenter : CanariPoint,
+                                                  size inPadSize : CanariSize,
+                                                  transformedBy inAT : AffineTransform,
+                                                  layers inLayers : ProductLayerSet) {
+    let padSize = inPadSize.cocoaSize
+    let w : CGFloat = padSize.width / 2.0
+    let h : CGFloat = padSize.height / 2.0
+    let p = inCenter.cocoaPoint
+    let lg : CGFloat = min (w, h) / (1.0 + 1.0 / sqrt (2.0))
+    let p0 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w - lg, y: p.y + h)))
+    let p1 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w,      y: p.y + h - lg)))
+    let p2 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w,      y: p.y - h + lg)))
+    let p3 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w - lg, y: p.y - h)))
+    let p4 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w + lg, y: p.y - h)))
+    let p5 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w,      y: p.y - h + lg)))
+    let p6 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w,      y: p.y + h - lg)))
+    let p7 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w + lg, y: p.y + h)))
+    let polygon = LayeredProductPolygon (
+      origin: p0,
+      points: [p1, p2, p3, p4, p5, p6, p7],
+      layers: inLayers
+    )
+    self.polygons.append (polygon)
+  }
+
+  //································································································
+
+  @MainActor private mutating func appendQRCodePathes (projectRoot inProjectRoot : ProjectRoot) {
+    for object in inProjectRoot.mBoardObjects.values {
+      if let qrCode = object as? BoardQRCode, let descriptor = qrCode.qrCodeDescriptor {
+        let displayInfos = boardQRCode_displayInfos (
+          centerX: qrCode.mCenterX,
+          centerY: qrCode.mCenterY,
+          descriptor,
+          frontSide: qrCode.mLayer == .legendFront,
+          moduleSizeInCanariUnit: qrCode.mModuleSize,
+          rotation: qrCode.mRotation
+        )
+        let layer : ProductLayerSet
+        switch qrCode.mLayer {
+        case .legendFront :
+          layer = .drawPackageLegendTopSide
+        case .legendBack :
+          layer = .drawPackageLegendBottomSide
+        }
+        let rectangles = displayInfos.productRectangles
+        for r in rectangles {
+          let p0 = ProductPoint (cocoaPoint: r.p0)
+          let p1 = ProductPoint (cocoaPoint: r.p1)
+          let p2 = ProductPoint (cocoaPoint: r.p2)
+          let p3 = ProductPoint (cocoaPoint: r.p3)
+          let polygon = LayeredProductPolygon (origin: p0, points: [p1, p2, p3], layers: layer)
+          self.polygons.append (polygon)
+        }
+      }
+    }
+  }
+
+  //································································································
+
+  @MainActor private mutating func appendBoardImagesPathes (projectRoot inProjectRoot : ProjectRoot) {
+    for object in inProjectRoot.mBoardObjects.values {
+      if let boardImage = object as? BoardImage, let descriptor = boardImage.boardImageCodeDescriptor {
+        let displayInfos = boardImage_displayInfos (
+          centerX: boardImage.mCenterX,
+          centerY: boardImage.mCenterY,
+          descriptor,
+          frontSide: boardImage.mLayer == .legendFront,
+          pixelSizeInCanariUnit: boardImage.mPixelSize,
+          rotation: boardImage.mRotation
+        )
+        let layer : ProductLayerSet
+        switch boardImage.mLayer {
+        case .legendFront :
+          layer = .drawPackageLegendTopSide
+        case .legendBack :
+          layer = .drawPackageLegendBottomSide
+        }
+        let rectangles = displayInfos.productRectangles
+        for r in rectangles {
+          let p0 = ProductPoint (cocoaPoint: r.p0)
+          let p1 = ProductPoint (cocoaPoint: r.p1)
+          let p2 = ProductPoint (cocoaPoint: r.p2)
+          let p3 = ProductPoint (cocoaPoint: r.p3)
+          let polygon = LayeredProductPolygon (origin: p0, points: [p1, p2, p3], layers: layer)
+          self.polygons.append (polygon)
+        }
+      }
+    }
+  }
+
+  //································································································
+
+  @MainActor private mutating func appendTracks (projectRoot inProjectRoot : ProjectRoot) {
+    for object in inProjectRoot.mBoardObjects.values {
+      if let track = object as? BoardTrack {
+        let width = ProductLength (valueInCanariUnit: track.actualTrackWidth!)
+        let layer : ProductLayerSet
+        switch track.mSide {
+        case .front :
+          if track.mAddedToSolderMask_property.propval {
+            layer = .drawPadsTopSide
+          }else{
+            layer = .drawTracksTopSide
+          }
+        case .back :
+          if track.mAddedToSolderMask_property.propval {
+            layer = .drawPadsBottomSide
+          }else{
+            layer = .drawTracksBottomSide
+          }
+        case .inner1 :
+          layer = .drawTracksInner1Layer
+        case .inner2 :
+          layer = .drawTracksInner2Layer
+        case .inner3 :
+          layer = .drawTracksInner3Layer
+        case .inner4 :
+          layer = .drawTracksInner4Layer
+        }
+        switch track.mEndStyle_property.propval {
+        case .round :
+          let p1 = ProductPoint (canariPoint: track.mConnectorP1!.location!)
+          let p2 = ProductPoint (canariPoint: track.mConnectorP2!.location!)
+          let t = LayeredProductOblong (p1: p1, p2: p2, width: width, layers: layer)
+          self.oblongs.append (t)
+        case .square :
+          let pA = track.mConnectorP1!.location!
+          let pB = track.mConnectorP2!.location!
+          let w = NSPoint.distance (pA.cocoaPoint, pB.cocoaPoint)
+          let h = canariUnitToCocoa (track.actualTrackWidth!)
+          let angleInRadian = CanariPoint.angleInRadian (pA, pB)
+          var t = Turtle (p: pA.cocoaPoint, angleInRadian: angleInRadian)
+          t.rotate270 ()
+          t.forward (h / 2.0)
+          t.rotate270 ()
+          t.forward (w / 2.0)
+          t.rotate180 ()
+          let p0 = ProductPoint (cocoaPoint: t.location)
+          t.forward (w + h)
+          let p1 = ProductPoint (cocoaPoint: t.location)
+          t.rotate90 ()
+          t.forward (h)
+          let p2 = ProductPoint (cocoaPoint: t.location)
+          t.rotate90 ()
+          t.forward (w + h)
+          let p3 = ProductPoint (cocoaPoint: t.location)
+          let polygon = LayeredProductPolygon (
+            origin: p0,
+            points: [p1, p2, p3],
+            layers: layer
+          )
+          self.polygons.append (polygon)
         }
       }
     }
@@ -199,3 +690,59 @@ fileprivate extension ProjectRoot {
 }
 
 //--------------------------------------------------------------------------------------------------
+
+fileprivate extension PadStyle {
+
+  //································································································
+
+  func layers (_ inComponentSide : ComponentSide) -> ProductLayerSet {
+    switch self {
+    case .traversing :
+      return [.drawPadsBottomSide, .drawPadsTopSide]
+    case .surface :
+      switch inComponentSide {
+      case .back :
+        return .drawPadsBottomSide
+      case .front :
+        return .drawPadsTopSide
+      }
+    }
+  }
+
+  //································································································
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+fileprivate extension SlavePadStyle {
+
+  //································································································
+
+  func layers (_ inComponentSide : ComponentSide) -> ProductLayerSet {
+    switch self {
+    case .traversing :
+      return [.drawPadsBottomSide, .drawPadsTopSide]
+    case .componentSide :
+      switch inComponentSide {
+      case .back :
+        return .drawPadsBottomSide
+      case .front :
+        return .drawPadsTopSide
+      }
+    case .oppositeSide :
+      switch inComponentSide {
+      case .front :
+        return .drawPadsBottomSide
+      case .back :
+        return .drawPadsTopSide
+      }
+    }
+  }
+
+  //································································································
+
+}
+
+//--------------------------------------------------------------------------------------------------
+

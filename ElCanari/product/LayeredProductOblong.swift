@@ -21,14 +21,14 @@ struct LayeredProductOblong : Codable {
   let p2x : ProductLength
   let p2y : ProductLength
   let width : ProductLength
-  let layers : ProductItemSet
+  let layers : ProductLayerSet
 
   //································································································
 
   init (p1 inP1 : ProductPoint,
         p2 inP2 : ProductPoint,
         width inWidth : ProductLength,
-        layers inLayers : ProductItemSet) {
+        layers inLayers : ProductLayerSet) {
     self.p1x = inP1.x
     self.p1y = inP1.y
     self.p2x = inP2.x

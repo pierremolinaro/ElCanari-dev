@@ -818,7 +818,7 @@ struct ProductRectangle : Hashable { // All in Cocoa Unit
 
   //································································································
 
-  var polygon : ProductPolygon  { ProductPolygon (origin: self.p0, points: [self.p1, self.p2, self.p3]) }
+  var polygon : ProductPolygon { ProductPolygon (origin: self.p0, points: [self.p1, self.p2, self.p3]) }
 
   //································································································
 

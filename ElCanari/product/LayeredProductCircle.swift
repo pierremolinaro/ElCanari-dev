@@ -1,8 +1,8 @@
 //
-//  ProductRect.swift
+//  LayeredProductCircle.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 27/05/2024.
+//  Created by Pierre Molinaro on 28/05/2024.
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -10,41 +10,32 @@ import Foundation
 
 //--------------------------------------------------------------------------------------------------
 
-struct ProductRect : Codable {
+struct LayeredProductCircle : Codable {
 
   //································································································
   //  Properties
   //································································································
 
-  let left : ProductLength
-  let bottom : ProductLength
-  let width : ProductLength
-  let height : ProductLength
+  let x : ProductLength // Center X
+  let y : ProductLength // Center Y
+  let d : ProductLength // Diameter
+  let layers : ProductLayerSet
 
   //································································································
 
-  static var zero : ProductRect { ProductRect (origin: .zero, size: .zero) }
-
-  //································································································
-
-  init (origin inOrigin : ProductPoint, size inSize : ProductSize) {
-    self.left = inOrigin.x
-    self.bottom = inOrigin.y
-    self.width = inSize.width
-    self.height = inSize.height
+  init (center inCenter : ProductPoint,
+        diameter inDiameter : ProductLength,
+        layers inLayers : ProductLayerSet) {
+    self.x = inCenter.x
+    self.y = inCenter.y
+    self.d = inDiameter
+    self.layers = inLayers
   }
 
   //································································································
 
-  init (canariRect inCanariRect : CanariRect) {
-    let origin = ProductPoint (canariPoint: inCanariRect.origin)
-    self.left = origin.x
-    self.bottom = origin.y
-    let size = ProductSize (canariSize: inCanariRect.size)
-    self.width = size.width
-    self.height = size.height
-  }
-
+  var center : ProductPoint { ProductPoint (x: self.x, y: self.y) }
+  
   //································································································
 
 }

@@ -16,14 +16,9 @@ struct GerberRepresentation {
   //  Properties
   //································································································
 
-  private var mOblongs = [Oblong] ()
-
-  //································································································
-  //  Init
-  //································································································
-
-  init () {
-  }
+  private var mOblongs = [Self.Oblong] ()
+  private var mFilledCircles = [Self.Circle] ()
+  private var mFilledPolygons = [Self.Polygon] ()
 
   //································································································
   //  Populate
@@ -39,6 +34,22 @@ struct GerberRepresentation {
   }
 
   //································································································
+
+  mutating func addCircle (center inCenter : ProductPoint,
+                           diameter inDiameter : ProductLength) {
+    let circle = Self.Circle (center: inCenter, diameter: inDiameter)
+    self.mFilledCircles.append (circle)
+  }
+
+  //································································································
+
+  mutating func addPolygon (origin inOrigin : ProductPoint,
+                            points inPoints : [ProductPoint]) {
+    let polygon = Self.Polygon (origin: inOrigin, points: inPoints)
+    self.mFilledPolygons.append (polygon)
+  }
+
+  //································································································
   //  Gerber string
   //································································································
 
@@ -49,6 +60,9 @@ struct GerberRepresentation {
     var apertureDictionary = Set <ProductLength> ()
     for oblong in self.mOblongs {
       apertureDictionary.insert (oblong.width)
+    }
+    for circle in self.mFilledCircles {
+      apertureDictionary.insert (circle.diameter)
     }
     let apertureArray = Array (apertureDictionary).sorted ()
   //--- Write aperture declarations
@@ -62,6 +76,7 @@ struct GerberRepresentation {
     idx = 10
     for aperture in apertureArray {
       s += "D\(idx)*\n"
+   //--- Oblongs
       s += "G01*\n" // Linear interpolation
       var currentPoint : ProductPoint? = nil
       for oblong in self.mOblongs {
@@ -74,7 +89,24 @@ struct GerberRepresentation {
           currentPoint = oblong.p2
         }
       }
+    //--- Circles
+      for circle in self.mFilledCircles {
+        if circle.diameter == aperture {
+          s += "X\(gerber (circle.center.x, inUnit))Y\(gerber (circle.center.y, inUnit))D03*\n" // Flash
+        }
+      }
+    //---
       idx += 1
+    }
+  //--- Fill polygons
+    for polygon in self.mFilledPolygons {
+      s += "G36*\n" // Start Region
+      s += "X\(gerber (polygon.origin.x, inUnit))Y\(gerber (polygon.origin.y, inUnit))D02*\n" // Move
+      s += "D01*\n" // Linear interpolation
+      for p in polygon.points {
+        s += "X\(gerber (p.x, inUnit))Y\(gerber (p.y, inUnit))D01*\n" // Line
+      }
+      s += "G37*\n" // End Region
     }
   //--- End
     s += "M02*\n"
@@ -91,13 +123,27 @@ struct GerberRepresentation {
   }
 
   //································································································
-  //   Struct
+  //   Structs
   //································································································
 
   struct Oblong {
     let p1 : ProductPoint
     let p2 : ProductPoint
     let width : ProductLength
+  }
+
+  //································································································
+
+  struct Circle {
+    let center : ProductPoint
+    let diameter : ProductLength
+  }
+
+  //································································································
+
+  struct Polygon {
+    let origin : ProductPoint
+    let points : [ProductPoint]
   }
 
   //································································································
