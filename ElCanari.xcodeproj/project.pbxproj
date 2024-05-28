@@ -85,8 +85,6 @@
 		CF07781723521CB800F56EAB /* EBSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07781123521CB800F56EAB /* EBSelection.swift */; };
 		CF07781A23521CB800F56EAB /* PropertyKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07781323521CB800F56EAB /* PropertyKind.swift */; };
 		CF07781B23521CB800F56EAB /* PropertyKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07781323521CB800F56EAB /* PropertyKind.swift */; };
-		CF09A3D02BFF363800E2F469 /* codable-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF09A3CF2BFF363800E2F469 /* codable-utilities.swift */; };
-		CF09A3D12BFF363800E2F469 /* codable-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF09A3CF2BFF363800E2F469 /* codable-utilities.swift */; };
 		CF09A3D32BFF373A00E2F469 /* ProductRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF09A3D22BFF373A00E2F469 /* ProductRepresentation.swift */; };
 		CF09A3D42BFF373A00E2F469 /* ProductRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF09A3D22BFF373A00E2F469 /* ProductRepresentation.swift */; };
 		CF0B7B77250270540080642D /* file-metadata-text-format.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B7B76250270540080642D /* file-metadata-text-format.swift */; };
@@ -1214,6 +1212,10 @@
 		CF54BDAE2C063718003C00FE /* LayeredProductPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54BDAC2C063718003C00FE /* LayeredProductPolygon.swift */; };
 		CF54BDB02C06507C003C00FE /* Turtle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54BDAF2C06507C003C00FE /* Turtle.swift */; };
 		CF54BDB12C06507C003C00FE /* Turtle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54BDAF2C06507C003C00FE /* Turtle.swift */; };
+		CF54BDB32C065707003C00FE /* ProductRepresentation-gerber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54BDB22C065707003C00FE /* ProductRepresentation-gerber.swift */; };
+		CF54BDB42C065707003C00FE /* ProductRepresentation-gerber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54BDB22C065707003C00FE /* ProductRepresentation-gerber.swift */; };
+		CF54BDB62C066870003C00FE /* ProductRepresentation-pdf.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54BDB52C066870003C00FE /* ProductRepresentation-pdf.swift */; };
+		CF54BDB72C066870003C00FE /* ProductRepresentation-pdf.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54BDB52C066870003C00FE /* ProductRepresentation-pdf.swift */; };
 		CF56027727933B0400479AB6 /* AutoLayout+NSView+expandableHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF56027627933B0400479AB6 /* AutoLayout+NSView+expandableHeight.swift */; };
 		CF56027827933B0400479AB6 /* AutoLayout+NSView+expandableHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF56027627933B0400479AB6 /* AutoLayout+NSView+expandableHeight.swift */; };
 		CF56027B27935C4900479AB6 /* selectionController-AutoLayoutProjectDocument-boardTextSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF56027A27935C4900479AB6 /* selectionController-AutoLayoutProjectDocument-boardTextSelectionController.swift */; };
@@ -3986,6 +3988,8 @@
 		CF54A050277104F400D978D9 /* AutoLayoutCanariBoardRectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariBoardRectangleView.swift; sourceTree = "<group>"; };
 		CF54BDAC2C063718003C00FE /* LayeredProductPolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayeredProductPolygon.swift; sourceTree = "<group>"; };
 		CF54BDAF2C06507C003C00FE /* Turtle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Turtle.swift; sourceTree = "<group>"; };
+		CF54BDB22C065707003C00FE /* ProductRepresentation-gerber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductRepresentation-gerber.swift"; sourceTree = "<group>"; };
+		CF54BDB52C066870003C00FE /* ProductRepresentation-pdf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductRepresentation-pdf.swift"; sourceTree = "<group>"; };
 		CF56026A2792FEE400479AB6 /* selectionController-AutoLayoutProjectDocument-boardTrackSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-AutoLayoutProjectDocument-boardTrackSelectionController.swift"; sourceTree = "<group>"; };
 		CF56026C2793158300479AB6 /* AutoLayoutCanariTrackLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariTrackLockView.swift; sourceTree = "<group>"; };
 		CF56026E279324C600479AB6 /* selectionController-AutoLayoutProjectDocument-boardConnectorSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-AutoLayoutProjectDocument-boardConnectorSelectionController.swift"; sourceTree = "<group>"; };
@@ -5303,6 +5307,8 @@
 				CF7CC90F2C01E78A008560CB /* ProductLength.swift */,
 				CFD8D4952C04812F008212F9 /* ProductPoint.swift */,
 				CFD8D49B2C04819B008212F9 /* ProductRect.swift */,
+				CF54BDB22C065707003C00FE /* ProductRepresentation-gerber.swift */,
+				CF54BDB52C066870003C00FE /* ProductRepresentation-pdf.swift */,
 				CF09A3D22BFF373A00E2F469 /* ProductRepresentation.swift */,
 				CF32758D2C05F61F009EB45A /* ProductSegment.swift */,
 				CFD8D4982C048172008212F9 /* ProductSize.swift */,
@@ -7986,6 +7992,7 @@
 				CFEB7B88233A26330060A97A /* transient-DeviceInProject-symbolAndTypesNames.swift in Sources */,
 				CFFEC1CD280483A900E5E8DD /* tomany-PackageSegment.swift in Sources */,
 				CF4B39B721D3F1C5001217C6 /* transient-PackageSlavePad-annularRing.swift in Sources */,
+				CF54BDB32C065707003C00FE /* ProductRepresentation-gerber.swift in Sources */,
 				CF3559C2279D9F3D000BFC9B /* extension-AutoLayoutProjectDocument-generate-board-archive.swift in Sources */,
 				CFFEC1C62804832E00E5E8DD /* tomany-ForbiddenPadNumber.swift in Sources */,
 				CF22F285275A73EE009C6FAC /* toone-BoardModel.swift in Sources */,
@@ -8774,7 +8781,6 @@
 				CF5A9FEE2B4C6A80004362FE /* transient-BoardModel-frontTracksNoSilkScreenBezierPaths.swift in Sources */,
 				CF59C45529BE36AB004CA404 /* property-UnconnectedSymbolPinsInDevice.swift in Sources */,
 				CF355A03279D9F3E000BFC9B /* controller-table-view-AutoLayoutProjectDocument-mDataController.swift in Sources */,
-				CF09A3D02BFF363800E2F469 /* codable-utilities.swift in Sources */,
 				CFB7D8EE2683A732007B9D3B /* transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueImage.swift in Sources */,
 				CF61915E26F7739B003B75FF /* NSImage-extension.swift in Sources */,
 				CFB4C0D72794674800C509A9 /* AutoLayoutSearchField.swift in Sources */,
@@ -9113,6 +9119,7 @@
 				CFD1EA9D274EE23B000AED8E /* tomany-FontRoot.swift in Sources */,
 				CFB7D8502683A61C007B9D3B /* selectionController-AutoLayoutPackageDocument-mPackageArcSelectionController.swift in Sources */,
 				CFEB7B0F233A24BF0060A97A /* transient-BoardTrack-selectionDisplay.swift in Sources */,
+				CF54BDB62C066870003C00FE /* ProductRepresentation-pdf.swift in Sources */,
 				CFDD6D6A26A1B0F20050CB78 /* AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView.swift in Sources */,
 				CFF79DE92846174000C7BEE3 /* transient-BoardObject-displayFrontRestrictRectangles.swift in Sources */,
 				CF42D12C275CF1A600B83712 /* action-AutoLayoutMergerDocument-generateProductFilesAction.swift in Sources */,
@@ -9923,6 +9930,7 @@
 				CFDD6D4A26A1B0F20050CB78 /* AutoLayoutCanariSlavePadAssignPopUpButton.swift in Sources */,
 				CFC8547B21E91817006ADB6C /* transient-DeviceRoot-issues.swift in Sources */,
 				CFA430CB229AED07000AA8C8 /* toone-CanariLibraryEntry.swift in Sources */,
+				CF54BDB72C066870003C00FE /* ProductRepresentation-pdf.swift in Sources */,
 				CFD1EAB0274EE23B000AED8E /* transient-FontRoot-sampleStringBezierPathAscent.swift in Sources */,
 				CFA42FEC229AEB68000AA8C8 /* tomany-PackageOval.swift in Sources */,
 				CF7FC47E29EDB2870045DD14 /* toone-BoardImage.swift in Sources */,
@@ -10492,6 +10500,7 @@
 				CF49910E28D8C9430099F871 /* enum-RestrictRectangleLayer.swift in Sources */,
 				CF59C3E429BE36AB004CA404 /* property-MasterPadDescriptor.swift in Sources */,
 				CF8A8A7B275A439D00825DF9 /* CharacterGerberCodeClass.swift in Sources */,
+				CF54BDB42C065707003C00FE /* ProductRepresentation-gerber.swift in Sources */,
 				CF9ABEA625C5CD0800AE2EA9 /* transient-PackageSlavePad-masterPadNameWithZoneName.swift in Sources */,
 				CF711C98275E155300280069 /* toone-BoardLine.swift in Sources */,
 				CF62188027A1A57B00D02368 /* configurator-Preferences-updateCheckIntervalPopUpButtonConfigurator.swift in Sources */,
@@ -10747,7 +10756,6 @@
 				CFC9D25F27906E0600371ACF /* AutoLayoutTableView-column-Bool.swift in Sources */,
 				CFEB7B85233A26330060A97A /* transient-DeviceInProject-deviceSymbolDictionary.swift in Sources */,
 				CF59C45329BE36AB004CA404 /* property-PinPadAssignmentInProject.swift in Sources */,
-				CF09A3D12BFF363800E2F469 /* codable-utilities.swift in Sources */,
 				CF5123FF222A8FD800FA4364 /* transient-PackageInDevice-objectDisplay.swift in Sources */,
 				CF841C4F275BB8F60000EA26 /* AutoLayoutCanariDragSourceTableView.swift in Sources */,
 				CF22F20B275A73EE009C6FAC /* transient-BoardModel-backLegendLinesSegments.swift in Sources */,

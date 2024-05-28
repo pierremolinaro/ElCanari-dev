@@ -16,11 +16,11 @@ struct ProductRepresentation : Codable {
   //  Properties
   //································································································
 
-  private var boardBox : ProductRect
-  private var boardLimitWidth : ProductLength
-  private var oblongs = [LayeredProductOblong] ()
-  private var circles = [LayeredProductCircle] ()
-  private var polygons = [LayeredProductPolygon] ()
+  private(set) var boardBox : ProductRect
+  private(set) var boardLimitWidth : ProductLength
+  private(set) var oblongs = [LayeredProductOblong] ()
+  private(set) var circles = [LayeredProductCircle] ()
+  private(set) var polygons = [LayeredProductPolygon] ()
 
   //································································································
   //  Init
@@ -36,11 +36,11 @@ struct ProductRepresentation : Codable {
       var currentPoint = firstPoint
       points.removeFirst ()
       for p in points {
-        let oblong = LayeredProductOblong (p1: currentPoint, p2: p, width: self.boardLimitWidth, layers: .drawBoardLimits)
+        let oblong = LayeredProductOblong (p1: currentPoint, p2: p, width: self.boardLimitWidth, layers: .boardLimits)
         self.oblongs.append (oblong)
         currentPoint = p
       }
-      let oblong = LayeredProductOblong (p1: currentPoint, p2: firstPoint, width: self.boardLimitWidth, layers: .drawBoardLimits)
+      let oblong = LayeredProductOblong (p1: currentPoint, p2: firstPoint, width: self.boardLimitWidth, layers: .boardLimits)
       self.oblongs.append (oblong)
     }
   //--- Populate
@@ -52,18 +52,16 @@ struct ProductRepresentation : Codable {
     self.appendVias (projectRoot: inProjectRoot)
     self.appendPads (projectRoot: inProjectRoot)
     self.appendQRCodePathes (projectRoot: inProjectRoot)
-    self.appendBoardImagesPathes (projectRoot: inProjectRoot)
+    self.appendImagesPathes (projectRoot: inProjectRoot)
     self.appendTracks (projectRoot: inProjectRoot)
   }
-
-//    let (tracks, frontTracksWithNoSilkScreen, backTracksWithNoSilkScreen) = self.buildTracks ()
 
   //································································································
   //  Decoding from JSON
   //································································································
 
   init? (fromJSONData inData : Data) {
-    let decoder = JSONDecoder()
+    let decoder = JSONDecoder ()
     if let product = try? decoder.decode (Self.self, from: inData) {
       self = product
     }else{
@@ -80,34 +78,6 @@ struct ProductRepresentation : Codable {
     encoder.outputFormatting = [.sortedKeys, .prettyPrinted]
     let data = try encoder.encode (self)
     return data
-  }
-
-  //································································································
-  //  Get Gerber representation
-  //································································································
-
-  func gerber (items inItemSet : ProductLayerSet) -> GerberRepresentation {
-    var gerber = GerberRepresentation ()
-  //--- Add oblongs
-    for oblong in self.oblongs {
-      if inItemSet.contains (oblong.layers) {
-        gerber.addOblong (p1: oblong.p1, p2: oblong.p2, width: oblong.width)
-      }
-    }
-  //--- Add circles
-    for circle in self.circles {
-      if inItemSet.contains (circle.layers) {
-        gerber.addCircle (center: circle.center, diameter: circle.d)
-      }
-    }
-  //--- Add polygons
-    for polygon in self.polygons {
-      if inItemSet.contains (polygon.layers) {
-        gerber.addPolygon (origin: polygon.origin, points: polygon.points)
-      }
-    }
-  //---
-    return gerber
   }
 
   //································································································
@@ -141,9 +111,9 @@ struct ProductRepresentation : Codable {
           let layer : ProductLayerSet
           switch component.mSide {
           case .back :
-            layer = .drawPackageLegendBottomSide
+            layer = .packageLegendBottomSide
           case .front :
-            layer = .drawPackageLegendTopSide
+            layer = .packageLegendTopSide
           }
           self.append (
             flattenedStrokeBezierPath: strokeBezierPath,
@@ -182,9 +152,9 @@ struct ProductRepresentation : Codable {
           let layer : ProductLayerSet
           switch component.mSide {
           case .back :
-            layer = .drawComponentNamesBottomSide
+            layer = .componentNamesBottomSide
           case .front :
-            layer = .drawComponentNamesTopSide
+            layer = .componentNamesTopSide
           }
           self.append (
             flattenedStrokeBezierPath: textBP,
@@ -223,9 +193,9 @@ struct ProductRepresentation : Codable {
           let layer : ProductLayerSet
           switch component.mSide {
           case .back :
-            layer = .drawComponentValuesBottomSide
+            layer = .componentValuesBottomSide
           case .front :
-            layer = .drawComponentValuesTopSide
+            layer = .componentValuesTopSide
           }
           self.append (
             flattenedStrokeBezierPath: textBP,
@@ -263,13 +233,13 @@ struct ProductRepresentation : Codable {
         let layer : ProductLayerSet
         switch text.mLayer {
         case .legendFront :
-          layer = .drawTextsLegendTopSide
+          layer = .textsLegendTopSide
         case .layoutFront :
-          layer = .drawTextsLayoutTopSide
+          layer = .textsLayoutTopSide
         case .legendBack :
-          layer = .drawTextsLegendBottomSide
+          layer = .textsLegendBottomSide
         case .layoutBack :
-          layer = .drawTextsLayoutBottomSide
+          layer = .textsLayoutBottomSide
         }
         self.append (
           flattenedStrokeBezierPath: textBP,
@@ -295,9 +265,9 @@ struct ProductRepresentation : Codable {
           let layer : ProductLayerSet
           switch line.mLayer {
           case .legendFront :
-            layer = .drawTextsLegendTopSide
+            layer = .textsLegendTopSide
           case .legendBack :
-            layer = .drawTextsLegendBottomSide
+            layer = .textsLegendBottomSide
           }
           let oblong = LayeredProductOblong (
             p1: ProductPoint (cocoaPoint: clippedP1),
@@ -322,13 +292,13 @@ struct ProductRepresentation : Codable {
         let pad = LayeredProductCircle (
           center: center,
           diameter: padDiameter,
-          layers: [.drawPadsBottomSide, .drawPadsTopSide]
+          layers: [.padsBottomSide, .padsTopSide]
         )
         self.circles.append (pad)
         let hole = LayeredProductCircle (
           center: center,
           diameter: holeDiameter,
-          layers: .drawPadHoles
+          layers: .padHoles
         )
         self.circles.append (hole)
       }
@@ -346,21 +316,27 @@ struct ProductRepresentation : Codable {
           let layers = masterPad.style.layers (component.mSide)
           self.appendPad (
             center: masterPad.center,
-            size: masterPad.padSize,
+            padSize: masterPad.padSize,
             shape: masterPad.shape,
             transformedBy: af,
             layers: layers
           )
+          if masterPad.style == .traversing {
+            self.appendPadHole (center: masterPad.center, holeSize: masterPad.holeSize, transformedBy: af)
+          }
         //--- Handle slave pads
           for slavePad in masterPad.slavePads {
             let layers = slavePad.style.layers (component.mSide)
             self.appendPad (
               center: slavePad.center,
-              size: slavePad.padSize,
+              padSize: slavePad.padSize,
               shape: slavePad.shape,
               transformedBy: af,
               layers: layers
             )
+            if slavePad.style == .traversing {
+              self.appendPadHole (center: slavePad.center, holeSize: slavePad.holeSize, transformedBy: af)
+            }
           }
         }
       }
@@ -370,7 +346,7 @@ struct ProductRepresentation : Codable {
   //································································································
 
   @MainActor private mutating func appendPad (center inCenter : CanariPoint,
-                                              size inPadSize : CanariSize,
+                                              padSize inPadSize : CanariSize,
                                               shape inShape : PadShape,
                                               transformedBy inAT : AffineTransform,
                                               layers inLayers : ProductLayerSet) {
@@ -378,21 +354,21 @@ struct ProductRepresentation : Codable {
     case .round :
       self.appendRoundPad (
         center: inCenter,
-        size: inPadSize,
+        padSize: inPadSize,
         transformedBy: inAT,
         layers: inLayers
       )
     case .rect :
       self.appendRectPad (
         center: inCenter,
-        size: inPadSize,
+        padSize: inPadSize,
         transformedBy: inAT,
         layers: inLayers
       )
     case .octo :
       self.appendOctoPad (
         center: inCenter,
-        size: inPadSize,
+        padSize: inPadSize,
         transformedBy: inAT,
         layers: inLayers
       )
@@ -402,7 +378,7 @@ struct ProductRepresentation : Codable {
   //································································································
 
   @MainActor private mutating func appendRoundPad (center inCenter : CanariPoint,
-                                                   size inPadSize : CanariSize,
+                                                   padSize inPadSize : CanariSize,
                                                    transformedBy inAT : AffineTransform,
                                                    layers inLayers : ProductLayerSet) {
     let p = inCenter.cocoaPoint
@@ -442,7 +418,7 @@ struct ProductRepresentation : Codable {
   //································································································
 
   @MainActor private mutating func appendRectPad (center inCenter : CanariPoint,
-                                                  size inPadSize : CanariSize,
+                                                  padSize inPadSize : CanariSize,
                                                   transformedBy inAT : AffineTransform,
                                                   layers inLayers : ProductLayerSet) {
     let p = inCenter.cocoaPoint
@@ -464,7 +440,7 @@ struct ProductRepresentation : Codable {
   //································································································
 
   @MainActor private mutating func appendOctoPad (center inCenter : CanariPoint,
-                                                  size inPadSize : CanariSize,
+                                                  padSize inPadSize : CanariSize,
                                                   transformedBy inAT : AffineTransform,
                                                   layers inLayers : ProductLayerSet) {
     let padSize = inPadSize.cocoaSize
@@ -490,6 +466,45 @@ struct ProductRepresentation : Codable {
 
   //································································································
 
+  @MainActor private mutating func appendPadHole (center inCenter : CanariPoint,
+                                                  holeSize inHoleSize : CanariSize,
+                                                  transformedBy inAT : AffineTransform) {
+    let p = inCenter.cocoaPoint
+    let holeSize = inHoleSize.cocoaSize
+    if inHoleSize.width < inHoleSize.height { // Vertical oblong
+      let p1 = inAT.transform (NSPoint (x: p.x, y: p.y - (holeSize.height - holeSize.width) / 2.0))
+      let p2 = inAT.transform (NSPoint (x: p.x, y: p.y + (holeSize.height - holeSize.width) / 2.0))
+      let oblong = LayeredProductOblong (
+        p1: ProductPoint (cocoaPoint: p1),
+        p2: ProductPoint (cocoaPoint: p2),
+        width: ProductLength (valueInCanariUnit: inHoleSize.width),
+        layers: .padHoles
+      )
+      self.oblongs.append (oblong)
+    }else if inHoleSize.width > inHoleSize.height { // Horizontal oblong
+      let p1 = inAT.transform (NSPoint (x: p.x - (holeSize.width - holeSize.height) / 2.0, y: p.y))
+      let p2 = inAT.transform (NSPoint (x: p.x + (holeSize.width - holeSize.height) / 2.0, y: p.y))
+      let oblong = LayeredProductOblong (
+        p1: ProductPoint (cocoaPoint: p1),
+        p2: ProductPoint (cocoaPoint: p2),
+        width: ProductLength (valueInCanariUnit: inHoleSize.height),
+        layers: .padHoles
+      )
+      self.oblongs.append (oblong)
+    }else{ // Circular
+      let center = ProductPoint (cocoaPoint: inAT.transform (inCenter.cocoaPoint))
+      let padDiameter = ProductLength (valueInCanariUnit: inHoleSize.width)
+      let pad = LayeredProductCircle (
+        center: center,
+        diameter: padDiameter,
+        layers: .padHoles
+      )
+      self.circles.append (pad)
+    }
+  }
+
+  //································································································
+
   @MainActor private mutating func appendQRCodePathes (projectRoot inProjectRoot : ProjectRoot) {
     for object in inProjectRoot.mBoardObjects.values {
       if let qrCode = object as? BoardQRCode, let descriptor = qrCode.qrCodeDescriptor {
@@ -504,9 +519,9 @@ struct ProductRepresentation : Codable {
         let layer : ProductLayerSet
         switch qrCode.mLayer {
         case .legendFront :
-          layer = .drawPackageLegendTopSide
+          layer = .packageLegendTopSide
         case .legendBack :
-          layer = .drawPackageLegendBottomSide
+          layer = .packageLegendBottomSide
         }
         let rectangles = displayInfos.productRectangles
         for r in rectangles {
@@ -523,7 +538,7 @@ struct ProductRepresentation : Codable {
 
   //································································································
 
-  @MainActor private mutating func appendBoardImagesPathes (projectRoot inProjectRoot : ProjectRoot) {
+  @MainActor private mutating func appendImagesPathes (projectRoot inProjectRoot : ProjectRoot) {
     for object in inProjectRoot.mBoardObjects.values {
       if let boardImage = object as? BoardImage, let descriptor = boardImage.boardImageCodeDescriptor {
         let displayInfos = boardImage_displayInfos (
@@ -537,9 +552,9 @@ struct ProductRepresentation : Codable {
         let layer : ProductLayerSet
         switch boardImage.mLayer {
         case .legendFront :
-          layer = .drawPackageLegendTopSide
+          layer = .packageLegendTopSide
         case .legendBack :
-          layer = .drawPackageLegendBottomSide
+          layer = .packageLegendBottomSide
         }
         let rectangles = displayInfos.productRectangles
         for r in rectangles {
@@ -564,24 +579,24 @@ struct ProductRepresentation : Codable {
         switch track.mSide {
         case .front :
           if track.mAddedToSolderMask_property.propval {
-            layer = .drawPadsTopSide
+            layer = .padsTopSide
           }else{
-            layer = .drawTracksTopSide
+            layer = .tracksTopSide
           }
         case .back :
           if track.mAddedToSolderMask_property.propval {
-            layer = .drawPadsBottomSide
+            layer = .padsBottomSide
           }else{
-            layer = .drawTracksBottomSide
+            layer = .tracksBottomSide
           }
         case .inner1 :
-          layer = .drawTracksInner1Layer
+          layer = .tracksInner1Layer
         case .inner2 :
-          layer = .drawTracksInner2Layer
+          layer = .tracksInner2Layer
         case .inner3 :
-          layer = .drawTracksInner3Layer
+          layer = .tracksInner3Layer
         case .inner4 :
-          layer = .drawTracksInner4Layer
+          layer = .tracksInner4Layer
         }
         switch track.mEndStyle_property.propval {
         case .round :
@@ -698,13 +713,13 @@ fileprivate extension PadStyle {
   func layers (_ inComponentSide : ComponentSide) -> ProductLayerSet {
     switch self {
     case .traversing :
-      return [.drawPadsBottomSide, .drawPadsTopSide]
+      return [.padsBottomSide, .padsTopSide]
     case .surface :
       switch inComponentSide {
       case .back :
-        return .drawPadsBottomSide
+        return .padsBottomSide
       case .front :
-        return .drawPadsTopSide
+        return .padsTopSide
       }
     }
   }
@@ -722,20 +737,20 @@ fileprivate extension SlavePadStyle {
   func layers (_ inComponentSide : ComponentSide) -> ProductLayerSet {
     switch self {
     case .traversing :
-      return [.drawPadsBottomSide, .drawPadsTopSide]
+      return [.padsBottomSide, .padsTopSide]
     case .componentSide :
       switch inComponentSide {
       case .back :
-        return .drawPadsBottomSide
+        return .padsBottomSide
       case .front :
-        return .drawPadsTopSide
+        return .padsTopSide
       }
     case .oppositeSide :
       switch inComponentSide {
       case .front :
-        return .drawPadsBottomSide
+        return .padsBottomSide
       case .back :
-        return .drawPadsTopSide
+        return .padsTopSide
       }
     }
   }

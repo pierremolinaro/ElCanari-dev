@@ -57,14 +57,14 @@ struct GerberRepresentation {
     var s = "%FSLAX24Y24*%\n"
     s += "%MOIN*%\n"
   //--- Aperture inventory
-    var apertureDictionary = Set <ProductLength> ()
+    var apertureSet = Set <ProductLength> ()
     for oblong in self.mOblongs {
-      apertureDictionary.insert (oblong.width)
+      apertureSet.insert (oblong.width)
     }
     for circle in self.mFilledCircles {
-      apertureDictionary.insert (circle.diameter)
+      apertureSet.insert (circle.diameter)
     }
-    let apertureArray = Array (apertureDictionary).sorted ()
+    let apertureArray = Array (apertureSet).sorted ()
   //--- Write aperture declarations
     var idx = 10
     for aperture in apertureArray {
@@ -110,6 +110,55 @@ struct GerberRepresentation {
     }
   //--- End
     s += "M02*\n"
+    return s
+  }
+
+  //································································································
+  //  Gerber Drill string
+  //································································································
+
+  func gerberDrillString (unit inUnit : GerberRepresentation.Unit) -> String {
+    var s = "M48\n"
+    s += "INCH\n"
+  //--- Aperture inventory
+    var apertureSet = Set <ProductLength> ()
+    for oblong in self.mOblongs {
+      apertureSet.insert (oblong.width)
+    }
+    for circle in self.mFilledCircles {
+      apertureSet.insert (circle.diameter)
+    }
+    let apertureArray = Array (apertureSet).sorted ()
+ //--- Write hole diameters
+    var idx = 0
+    for aperture in apertureArray {
+      idx += 1
+      s += "T\(idx)C\(String (format: "%.4f", aperture.value (in: .inch)))\n"
+    }
+ //--- Write holes
+    s += "%\n"
+    s += "G05\n"
+    s += "M72\n"
+    idx = 0
+    for diameter in apertureArray {
+      idx += 1
+      s += "T\(idx)\n"
+      for circle in self.mFilledCircles {
+        if circle.diameter == diameter {
+          s += "X\(String(format: "%.4f", circle.center.x.value (in: .inch)))Y\(String(format: "%.4f", circle.center.y.value (in: .inch)))\n"
+        }
+      }
+      for oblong in self.mOblongs {
+        if oblong.width == diameter {
+          s += "X\(String(format: "%.4f", oblong.p1.x.value (in: .inch)))Y\(String(format: "%.4f", oblong.p1.y.value (in: .inch)))\n"
+          s += "G85X\(String(format: "%.4f", oblong.p2.x.value (in: .inch)))Y\(String(format: "%.4f", oblong.p2.y.value (in: .inch)))\n"
+        }
+      }
+    }
+ //--- End of file
+    s += "T0\n"
+    s += "M30\n" // End code
+ //---
     return s
   }
 

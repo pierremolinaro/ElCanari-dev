@@ -14,23 +14,30 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  func writePDFDrillFile (atPath inPath : String, _ inProductData : ProductData) throws {
+  func writePDFDrillFile (atPath inPath : String,
+                          _ inProductRepresentation : ProductRepresentation,
+                          _ inProductData : ProductData) throws {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
-    var pathes = [EBBezierPath] ()
-    for (holeDiameter, segmentList) in inProductData.holeDictionary {
-      var bp = EBBezierPath ()
-      bp.lineWidth = holeDiameter
-      bp.lineCapStyle = .round
-      for segment in segmentList {
-        bp.move (to: segment.0)
-        bp.line (to: segment.1)
-      }
-      pathes.append (bp)
-    }
-    let shape = EBShape (stroke: pathes, .black)
-    let data = buildPDFimageData (frame: inProductData.boardBoundBox, shape: shape, backgroundColor: self.rootObject.mPDFBoardBackgroundColor)
-    try data.write (to: URL (fileURLWithPath: inPath))
+    let pdfData = inProductRepresentation.pdf (items: .padHoles)
+    try pdfData.write (to: URL (fileURLWithPath: inPath))
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
+
+
+//    var pathes = [EBBezierPath] ()
+//    for (holeDiameter, segmentList) in inProductData.holeDictionary {
+//      var bp = EBBezierPath ()
+//      bp.lineWidth = holeDiameter
+//      bp.lineCapStyle = .round
+//      for segment in segmentList {
+//        bp.move (to: segment.0)
+//        bp.line (to: segment.1)
+//      }
+//      pathes.append (bp)
+//    }
+//    let shape = EBShape (stroke: pathes, .black)
+//    let data = buildPDFimageData (frame: inProductData.boardBoundBox, shape: shape, backgroundColor: self.rootObject.mPDFBoardBackgroundColor)
+//    try data.write (to: URL (fileURLWithPath: inPath))
+//    self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
   }
 
   //································································································
@@ -38,100 +45,174 @@ extension AutoLayoutProjectDocument {
   func writePDFProductFile (atPath inPath : String,
                             _ inDescriptor : ArtworkFileGenerationParameters,
                             _ inLayerConfiguration : LayerConfiguration,
+                            _ inProductRepresentation : ProductRepresentation,
                             _ inProductData : ProductData) throws {
     let path = inPath + inDescriptor.fileExtension + ".pdf"
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(path.lastPathComponent)…")
-    var af = AffineTransform ()
-    if inDescriptor.horizontalMirror {
-      let t = inProductData.boardBoundBox.origin.x + inProductData.boardBoundBox.size.width / 2.0
-      af.translate (x: t, y: 0.0)
-      af.scale (x: -1.0, y: 1.0)
-      af.translate (x: -t, y: 0.0)
-    }
-    var strokePathes = [EBBezierPath] ()
-    var filledPathes = [EBBezierPath] ()
+
+    var items = ProductLayerSet ()
     if inDescriptor.drawBoardLimits {
-      strokePathes.append (apertureDictionary: [inProductData.boardLimitWidth : [inProductData.boardLimitPath]], transformedBy: af)
+      items.insert (.boardLimits)
     }
-    if inDescriptor.drawPackageLegendTopSide {
-      strokePathes.append (apertureDictionary: inProductData.frontPackageLegend, transformedBy: af)
-    }
-    if inDescriptor.drawPackageLegendBottomSide {
-      strokePathes.append (apertureDictionary: inProductData.backPackageLegend, transformedBy: af)
+    if inDescriptor.drawInternalBoardLimits {
+      items.insert (.internalBoardLimits)
     }
     if inDescriptor.drawComponentNamesTopSide {
-      strokePathes.append (apertureDictionary: inProductData.frontComponentNames, transformedBy: af)
+      items.insert (.componentNamesTopSide)
     }
     if inDescriptor.drawComponentNamesBottomSide {
-      strokePathes.append (apertureDictionary: inProductData.backComponentNames, transformedBy: af)
+      items.insert (.componentNamesBottomSide)
     }
     if inDescriptor.drawComponentValuesTopSide {
-      strokePathes.append (apertureDictionary: inProductData.frontComponentValues, transformedBy: af)
+      items.insert (.componentValuesTopSide)
     }
     if inDescriptor.drawComponentValuesBottomSide {
-      strokePathes.append (apertureDictionary: inProductData.backComponentValues, transformedBy: af)
+      items.insert (.componentValuesBottomSide)
     }
-    if inDescriptor.drawTextsLegendTopSide {
-      strokePathes.append (apertureDictionary: inProductData.legendFrontTexts, transformedBy: af)
-      strokePathes.append (oblongs: inProductData.frontLines, transformedBy: af)
-      filledPathes.append (rectangles: inProductData.legendFrontQRCodes, transformedBy: af)
-      filledPathes.append (rectangles: inProductData.legendFrontImages, transformedBy: af)
+    if inDescriptor.drawPackageLegendTopSide {
+      items.insert (.packageLegendTopSide)
     }
-    if inDescriptor.drawTextsLayoutTopSide {
-      strokePathes.append (apertureDictionary: inProductData.layoutFrontTexts, transformedBy: af)
+    if inDescriptor.drawPackageLegendBottomSide {
+      items.insert (.packageLegendBottomSide)
     }
-    if inDescriptor.drawTextsLayoutBottomSide {
-      strokePathes.append (apertureDictionary: inProductData.layoutBackTexts, transformedBy: af)
-    }
-    if inDescriptor.drawTextsLegendBottomSide {
-      strokePathes.append (apertureDictionary: inProductData.legendBackTexts, transformedBy: af)
-      strokePathes.append (oblongs: inProductData.backLines, transformedBy: af)
-      filledPathes.append (rectangles: inProductData.legendBackQRCodes, transformedBy: af)
-      filledPathes.append (rectangles: inProductData.legendBackImages, transformedBy: af)
-    }
-    if inDescriptor.drawVias {
-      strokePathes.append (circles: inProductData.viaPads, transformedBy: af)
-    }
-    if inDescriptor.drawTracksTopSide {
-      strokePathes.append (oblongs: inProductData.tracks [.front], transformedBy: af)
-    }
-    if inDescriptor.drawTracksInner1Layer && (inLayerConfiguration != .twoLayers) {
-      strokePathes.append (oblongs: inProductData.tracks [.inner1], transformedBy: af)
-    }
-    if inDescriptor.drawTracksInner2Layer && (inLayerConfiguration != .twoLayers) {
-      strokePathes.append (oblongs: inProductData.tracks [.inner2], transformedBy: af)
-    }
-    if inDescriptor.drawTracksInner3Layer && (inLayerConfiguration == .sixLayers) {
-      strokePathes.append (oblongs: inProductData.tracks [.inner3], transformedBy: af)
-    }
-    if inDescriptor.drawTracksInner4Layer && (inLayerConfiguration == .sixLayers) {
-      strokePathes.append (oblongs: inProductData.tracks [.inner4], transformedBy: af)
-    }
-    if inDescriptor.drawTracksBottomSide {
-      strokePathes.append (oblongs: inProductData.tracks [.back], transformedBy: af)
-    }
+//    if inDescriptor.drawPadHolesInPDF {
+//      items.insert (.drawPadHolesInPDF)
+//    }
     if inDescriptor.drawPadsTopSide {
-      strokePathes.append (oblongs: inProductData.frontTracksWithNoSilkScreen, transformedBy: af)
-      strokePathes.append (circles: inProductData.circularPads [.frontLayer], transformedBy: af)
-      strokePathes.append (oblongs: inProductData.oblongPads [.frontLayer], transformedBy: af)
-      filledPathes.append (polygons: inProductData.polygonPads [.frontLayer], transformedBy: af)
+      items.insert (.padsTopSide)
     }
     if inDescriptor.drawPadsBottomSide {
-      strokePathes.append (oblongs: inProductData.backTracksWithNoSilkScreen, transformedBy: af)
-      strokePathes.append (circles: inProductData.circularPads [.backLayer], transformedBy: af)
-      strokePathes.append (oblongs: inProductData.oblongPads [.backLayer], transformedBy: af)
-      filledPathes.append (polygons: inProductData.polygonPads [.backLayer], transformedBy: af)
+      items.insert (.padsBottomSide)
+    }
+    if inDescriptor.drawTextsLayoutTopSide {
+      items.insert (.textsLayoutTopSide)
+    }
+    if inDescriptor.drawTextsLayoutBottomSide {
+      items.insert (.textsLayoutBottomSide)
+    }
+    if inDescriptor.drawTextsLegendBottomSide {
+      items.insert (.textsLegendBottomSide)
+    }
+    if inDescriptor.drawTracksTopSide {
+      items.insert (.tracksTopSide)
+    }
+    if inDescriptor.drawTracksInner1Layer {
+      items.insert (.tracksInner1Layer)
+    }
+    if inDescriptor.drawTracksInner2Layer {
+      items.insert (.tracksInner2Layer)
+    }
+    if inDescriptor.drawTracksInner3Layer {
+      items.insert (.tracksInner3Layer)
+    }
+    if inDescriptor.drawTracksInner4Layer {
+      items.insert (.tracksInner4Layer)
+    }
+    if inDescriptor.drawTracksBottomSide {
+      items.insert (.tracksBottomSide)
     }
     if inDescriptor.drawTraversingPads {
-      strokePathes.append (circles: inProductData.circularPads [.innerLayer], transformedBy: af)
-      strokePathes.append (oblongs: inProductData.oblongPads [.innerLayer], transformedBy: af)
-      filledPathes.append (polygons: inProductData.polygonPads [.innerLayer], transformedBy: af)
+      items.insert (.traversingPads)
     }
-    var shape = EBShape (stroke: strokePathes, .black)
-    shape.add (filled: filledPathes, .black)
-    let data = buildPDFimageData (frame: inProductData.boardBoundBox, shape: shape, backgroundColor: self.rootObject.mPDFBoardBackgroundColor)
-    try data.write (to: URL (fileURLWithPath: path))
+    if inDescriptor.drawVias {
+      items.insert (.vias)
+    }
+    let pdfData = inProductRepresentation.pdf (items: items)
+    try pdfData.write (to: URL (fileURLWithPath: path))
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
+
+
+//    var af = AffineTransform ()
+//    if inDescriptor.horizontalMirror {
+//      let t = inProductData.boardBoundBox.origin.x + inProductData.boardBoundBox.size.width / 2.0
+//      af.translate (x: t, y: 0.0)
+//      af.scale (x: -1.0, y: 1.0)
+//      af.translate (x: -t, y: 0.0)
+//    }
+//    var strokePathes = [EBBezierPath] ()
+//    var filledPathes = [EBBezierPath] ()
+//    if inDescriptor.drawBoardLimits {
+//      strokePathes.append (apertureDictionary: [inProductData.boardLimitWidth : [inProductData.boardLimitPath]], transformedBy: af)
+//    }
+//    if inDescriptor.drawPackageLegendTopSide {
+//      strokePathes.append (apertureDictionary: inProductData.frontPackageLegend, transformedBy: af)
+//    }
+//    if inDescriptor.drawPackageLegendBottomSide {
+//      strokePathes.append (apertureDictionary: inProductData.backPackageLegend, transformedBy: af)
+//    }
+//    if inDescriptor.drawComponentNamesTopSide {
+//      strokePathes.append (apertureDictionary: inProductData.frontComponentNames, transformedBy: af)
+//    }
+//    if inDescriptor.drawComponentNamesBottomSide {
+//      strokePathes.append (apertureDictionary: inProductData.backComponentNames, transformedBy: af)
+//    }
+//    if inDescriptor.drawComponentValuesTopSide {
+//      strokePathes.append (apertureDictionary: inProductData.frontComponentValues, transformedBy: af)
+//    }
+//    if inDescriptor.drawComponentValuesBottomSide {
+//      strokePathes.append (apertureDictionary: inProductData.backComponentValues, transformedBy: af)
+//    }
+//    if inDescriptor.drawTextsLegendTopSide {
+//      strokePathes.append (apertureDictionary: inProductData.legendFrontTexts, transformedBy: af)
+//      strokePathes.append (oblongs: inProductData.frontLines, transformedBy: af)
+//      filledPathes.append (rectangles: inProductData.legendFrontQRCodes, transformedBy: af)
+//      filledPathes.append (rectangles: inProductData.legendFrontImages, transformedBy: af)
+//    }
+//    if inDescriptor.drawTextsLayoutTopSide {
+//      strokePathes.append (apertureDictionary: inProductData.layoutFrontTexts, transformedBy: af)
+//    }
+//    if inDescriptor.drawTextsLayoutBottomSide {
+//      strokePathes.append (apertureDictionary: inProductData.layoutBackTexts, transformedBy: af)
+//    }
+//    if inDescriptor.drawTextsLegendBottomSide {
+//      strokePathes.append (apertureDictionary: inProductData.legendBackTexts, transformedBy: af)
+//      strokePathes.append (oblongs: inProductData.backLines, transformedBy: af)
+//      filledPathes.append (rectangles: inProductData.legendBackQRCodes, transformedBy: af)
+//      filledPathes.append (rectangles: inProductData.legendBackImages, transformedBy: af)
+//    }
+//    if inDescriptor.drawVias {
+//      strokePathes.append (circles: inProductData.viaPads, transformedBy: af)
+//    }
+//    if inDescriptor.drawTracksTopSide {
+//      strokePathes.append (oblongs: inProductData.tracks [.front], transformedBy: af)
+//    }
+//    if inDescriptor.drawTracksInner1Layer && (inLayerConfiguration != .twoLayers) {
+//      strokePathes.append (oblongs: inProductData.tracks [.inner1], transformedBy: af)
+//    }
+//    if inDescriptor.drawTracksInner2Layer && (inLayerConfiguration != .twoLayers) {
+//      strokePathes.append (oblongs: inProductData.tracks [.inner2], transformedBy: af)
+//    }
+//    if inDescriptor.drawTracksInner3Layer && (inLayerConfiguration == .sixLayers) {
+//      strokePathes.append (oblongs: inProductData.tracks [.inner3], transformedBy: af)
+//    }
+//    if inDescriptor.drawTracksInner4Layer && (inLayerConfiguration == .sixLayers) {
+//      strokePathes.append (oblongs: inProductData.tracks [.inner4], transformedBy: af)
+//    }
+//    if inDescriptor.drawTracksBottomSide {
+//      strokePathes.append (oblongs: inProductData.tracks [.back], transformedBy: af)
+//    }
+//    if inDescriptor.drawPadsTopSide {
+//      strokePathes.append (oblongs: inProductData.frontTracksWithNoSilkScreen, transformedBy: af)
+//      strokePathes.append (circles: inProductData.circularPads [.frontLayer], transformedBy: af)
+//      strokePathes.append (oblongs: inProductData.oblongPads [.frontLayer], transformedBy: af)
+//      filledPathes.append (polygons: inProductData.polygonPads [.frontLayer], transformedBy: af)
+//    }
+//    if inDescriptor.drawPadsBottomSide {
+//      strokePathes.append (oblongs: inProductData.backTracksWithNoSilkScreen, transformedBy: af)
+//      strokePathes.append (circles: inProductData.circularPads [.backLayer], transformedBy: af)
+//      strokePathes.append (oblongs: inProductData.oblongPads [.backLayer], transformedBy: af)
+//      filledPathes.append (polygons: inProductData.polygonPads [.backLayer], transformedBy: af)
+//    }
+//    if inDescriptor.drawTraversingPads {
+//      strokePathes.append (circles: inProductData.circularPads [.innerLayer], transformedBy: af)
+//      strokePathes.append (oblongs: inProductData.oblongPads [.innerLayer], transformedBy: af)
+//      filledPathes.append (polygons: inProductData.polygonPads [.innerLayer], transformedBy: af)
+//    }
+//    var shape = EBShape (stroke: strokePathes, .black)
+//    shape.add (filled: filledPathes, .black)
+//    let data = buildPDFimageData (frame: inProductData.boardBoundBox, shape: shape, backgroundColor: self.rootObject.mPDFBoardBackgroundColor)
+//    try data.write (to: URL (fileURLWithPath: path))
+//    self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
   }
 
   //································································································

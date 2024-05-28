@@ -63,41 +63,50 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  func writeGerberDrillFile (atPath inPath : String, _ inProductData : ProductData) throws {
+  func writeGerberDrillFile (atPath inPath : String,
+                             _ inProductRepresentation : ProductRepresentation,
+                             _ inProductData : ProductData) throws {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
-    var s = "M48\n"
-    s += "INCH\n"
-    let keys = inProductData.holeDictionary.keys.sorted ()
- //--- Write hole diameters
-    var idx = 0
-    for diameter in keys {
-      idx += 1
-      s += "T\(idx)C\(String(format: "%.4f", cocoaToInch (diameter)))\n"
-    }
- //--- Write holes
-    s += "%\n"
-    s += "G05\n"
-    s += "M72\n"
-    idx = 0
-    for diameter in keys {
-      idx += 1
-      s += "T\(idx)\n"
-      for (p1, p2) in inProductData.holeDictionary [diameter]! {
-        if (p1.x == p2.x) && (p1.y == p2.y) { // Circular
-          s += "X\(String(format: "%.4f", cocoaToInch (p1.x)))Y\(String(format: "%.4f", cocoaToInch (p1.y)))\n"
-        }else{ // oblong
-          s += "X\(String(format: "%.4f", cocoaToInch (p1.x)))Y\(String(format: "%.4f", cocoaToInch (p1.y)))"
-          s += "G85X\(String(format: "%.4f", cocoaToInch (p2.x)))Y\(String(format: "%.4f", cocoaToInch (p2.y)))\n"
-        }
-      }
-    }
- //--- End of file
-    s += "T0\n"
-    s += "M30\n" // End code
- //--- Write file
-    let data : Data? = s.data (using: .ascii, allowLossyConversion:false)
-    try data?.write (to: URL (fileURLWithPath: inPath), options: .atomic)
+    let gerber : GerberRepresentation = inProductRepresentation.gerber (items: [.padHoles])
+    let gerberData : Data? = gerber.gerberDrillString (unit: .milTenth).data (using: .ascii, allowLossyConversion: false)
+    try gerberData?.write (to: URL (fileURLWithPath: inPath), options: .atomic)
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
+
+
+
+//    var s = "M48\n"
+//    s += "INCH\n"
+//    let keys = inProductData.holeDictionary.keys.sorted ()
+// //--- Write hole diameters
+//    var idx = 0
+//    for diameter in keys {
+//      idx += 1
+//      s += "T\(idx)C\(String(format: "%.4f", cocoaToInch (diameter)))\n"
+//    }
+// //--- Write holes
+//    s += "%\n"
+//    s += "G05\n"
+//    s += "M72\n"
+//    idx = 0
+//    for diameter in keys {
+//      idx += 1
+//      s += "T\(idx)\n"
+//      for (p1, p2) in inProductData.holeDictionary [diameter]! {
+//        if (p1.x == p2.x) && (p1.y == p2.y) { // Circular
+//          s += "X\(String(format: "%.4f", cocoaToInch (p1.x)))Y\(String(format: "%.4f", cocoaToInch (p1.y)))\n"
+//        }else{ // oblong
+//          s += "X\(String(format: "%.4f", cocoaToInch (p1.x)))Y\(String(format: "%.4f", cocoaToInch (p1.y)))"
+//          s += "G85X\(String(format: "%.4f", cocoaToInch (p2.x)))Y\(String(format: "%.4f", cocoaToInch (p2.y)))\n"
+//        }
+//      }
+//    }
+// //--- End of file
+//    s += "T0\n"
+//    s += "M30\n" // End code
+// //--- Write file
+//    let data : Data? = s.data (using: .ascii, allowLossyConversion:false)
+//    try data?.write (to: URL (fileURLWithPath: inPath), options: .atomic)
+//    self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
   }
 
   //································································································
@@ -114,70 +123,70 @@ extension AutoLayoutProjectDocument {
 //      items.insert (.horizontalMirror)
 //    }
     if inDescriptor.drawBoardLimits {
-      items.insert (.drawBoardLimits)
+      items.insert (.boardLimits)
     }
     if inDescriptor.drawInternalBoardLimits {
-      items.insert (.drawInternalBoardLimits)
+      items.insert (.internalBoardLimits)
     }
     if inDescriptor.drawComponentNamesTopSide {
-      items.insert (.drawComponentNamesTopSide)
+      items.insert (.componentNamesTopSide)
     }
     if inDescriptor.drawComponentNamesBottomSide {
-      items.insert (.drawComponentNamesBottomSide)
+      items.insert (.componentNamesBottomSide)
     }
     if inDescriptor.drawComponentValuesTopSide {
-      items.insert (.drawComponentValuesTopSide)
+      items.insert (.componentValuesTopSide)
     }
     if inDescriptor.drawComponentValuesBottomSide {
-      items.insert (.drawComponentValuesBottomSide)
+      items.insert (.componentValuesBottomSide)
     }
     if inDescriptor.drawPackageLegendTopSide {
-      items.insert (.drawPackageLegendTopSide)
+      items.insert (.packageLegendTopSide)
     }
     if inDescriptor.drawPackageLegendBottomSide {
-      items.insert (.drawPackageLegendBottomSide)
+      items.insert (.packageLegendBottomSide)
     }
 //    if inDescriptor.drawPadHolesInPDF {
 //      items.insert (.drawPadHolesInPDF)
 //    }
     if inDescriptor.drawPadsTopSide {
-      items.insert (.drawPadsTopSide)
+      items.insert (.padsTopSide)
     }
     if inDescriptor.drawPadsBottomSide {
-      items.insert (.drawPadsBottomSide)
+      items.insert (.padsBottomSide)
     }
     if inDescriptor.drawTextsLayoutTopSide {
-      items.insert (.drawTextsLayoutTopSide)
+      items.insert (.textsLayoutTopSide)
     }
     if inDescriptor.drawTextsLayoutBottomSide {
-      items.insert (.drawTextsLayoutBottomSide)
+      items.insert (.textsLayoutBottomSide)
     }
     if inDescriptor.drawTextsLegendBottomSide {
-      items.insert (.drawTextsLegendBottomSide)
+      items.insert (.textsLegendBottomSide)
     }
     if inDescriptor.drawTracksTopSide {
-      items.insert (.drawTracksTopSide)
+      items.insert (.tracksTopSide)
     }
     if inDescriptor.drawTracksInner1Layer {
-      items.insert (.drawTracksInner1Layer)
+      items.insert (.tracksInner1Layer)
     }
     if inDescriptor.drawTracksInner2Layer {
-      items.insert (.drawTracksInner2Layer)
+      items.insert (.tracksInner2Layer)
     }
     if inDescriptor.drawTracksInner3Layer {
-      items.insert (.drawTracksInner3Layer)
+      items.insert (.tracksInner3Layer)
     }
     if inDescriptor.drawTracksInner4Layer {
-      items.insert (.drawTracksInner4Layer)
+      items.insert (.tracksInner4Layer)
     }
     if inDescriptor.drawTracksBottomSide {
-      items.insert (.drawTracksBottomSide)
+      items.insert (.tracksBottomSide)
     }
     if inDescriptor.drawTraversingPads {
-      items.insert (.drawTraversingPads)
+      items.insert (.traversingPads)
     }
     if inDescriptor.drawVias {
-      items.insert (.drawVias)
+      items.insert (.vias)
     }
 
     let gerber : GerberRepresentation = inProductRepresentation.gerber (items: items)

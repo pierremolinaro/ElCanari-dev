@@ -93,7 +93,7 @@ extension AutoLayoutProjectDocument {
     try self.removeAndCreateDirectory (atPath: gerberDirPath, create: generateGerberAndPDF)
   //--- Write gerber files
     if generateGerberAndPDF {
-      try self.writeGerberDrillFile (atPath: generatedGerberFilePath + inArtwork.drillDataFileExtension, productData)
+      try self.writeGerberDrillFile (atPath: generatedGerberFilePath + inArtwork.drillDataFileExtension, productRepresentation, productData)
       for productDescriptor in inArtwork.fileGenerationParameterArray.values {
         try self.writeGerberProductFile (atPath: generatedGerberFilePath,
                                          productDescriptor,
@@ -108,9 +108,9 @@ extension AutoLayoutProjectDocument {
     try self.removeAndCreateDirectory (atPath: pdfDirPath, create: generateGerberAndPDF)
   //--- Write PDF files
     if generateGerberAndPDF {
-      try self.writePDFDrillFile (atPath: generatedPDFFilePath + inArtwork.drillDataFileExtension + ".pdf", productData)
+      try self.writePDFDrillFile (atPath: generatedPDFFilePath + inArtwork.drillDataFileExtension + ".pdf", productRepresentation, productData)
       for productDescriptor in inArtwork.fileGenerationParameterArray.values {
-        try self.writePDFProductFile (atPath: generatedPDFFilePath, productDescriptor, inArtwork.layerConfiguration, productData)
+        try self.writePDFProductFile (atPath: generatedPDFFilePath, productDescriptor, inArtwork.layerConfiguration, productRepresentation, productData)
       }
     }
   //--- Write board archive
