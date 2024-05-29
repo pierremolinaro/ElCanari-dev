@@ -2466,6 +2466,9 @@ import AppKit
           _ = view_0_0_3.appendView (view_0_0_3_3)
         }
         _ = view_0_0.appendView (view_0_0_3)
+        let view_0_0_4 = AutoLayoutCheckbox (title: "Uses New Product Generation", size: .regular)
+          .bind_value (self.rootObject.mUsesNewProductGeneration_property)
+        _ = view_0_0.appendView (view_0_0_4)
       }
       _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()
@@ -2511,10 +2514,10 @@ import AppKit
       .bind_hidden (.prop (self.rootObject.mArtwork_none))
     do{
       let view_2_0 = AutoLayoutTabView (size: .regular)
+        .addTab (title: "Gerber and PDF Settings", tooltip: "", contentView: pdfSettingsPage)
         .addTab (title: "Artwork Description", tooltip: "", contentView: artworkDescriptionPage)
         .addTab (title: "Artwork Minima", tooltip: "", contentView: artworkMinimaPage)
         .addTab (title: "Artwork Data", tooltip: "", contentView: artworkDataPage)
-        .addTab (title: "PDF Settings", tooltip: "", contentView: pdfSettingsPage)
         .addTab (title: "Generation Log", tooltip: "", contentView: generationLogPage)
       self.mProductPageSegmentedControl = view_2_0 // Outlet
       _ = view_2.appendView (view_2_0)
@@ -2842,26 +2845,50 @@ import AppKit
   //    VIEW PDFSettingsPage
   //································································································
 
-  final func PDFSettingsPage () -> AutoLayoutVerticalStackView {
-    let vStackView = AutoLayoutVerticalStackView ()
+  final func PDFSettingsPage () -> AutoLayoutHorizontalStackView {
+    let hStackView = AutoLayoutHorizontalStackView ()
       .set (margins: 20)
-    let view_0 = AutoLayoutHorizontalStackView ()
-      .setFirstBaselineAlignment ()
+    let view_0 = AutoLayoutVerticalStackView ()
     do{
-      let view_0_0 = AutoLayoutFlexibleSpace ()
+      let view_0_0 = AutoLayoutStaticLabel (title: "Gerber Settings", bold: true, size: .regular, alignment: .left)
       _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutColorWell ()
-        .bind_color (self.rootObject.mPDFBoardBackgroundColor_property)
+      let view_0_1 = AutoLayoutVerticalStackView ()
+        .set (leftMargin: 12)
+      do{
+        let view_0_1_0 = AutoLayoutEnumPopUpButton (titles: GerberUnit.popupTitles (), size: .regular)
+          .bind_selectedIndex (self.rootObject.mGerberProductUnit_property)
+        _ = view_0_1.appendView (view_0_1_0)
+      }
       _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutStaticLabel (title: "Board Background Color", bold: false, size: .regular, alignment: .center)
+      let view_0_2 = AutoLayoutStaticLabel (title: "PDF Settings", bold: true, size: .regular, alignment: .left)
       _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutFlexibleSpace ()
+      let view_0_3 = AutoLayoutVerticalStackView ()
+        .set (leftMargin: 12)
+      do{
+        let view_0_3_0 = AutoLayoutHorizontalStackView ()
+          .setFirstBaselineAlignment ()
+        do{
+          let view_0_3_0_0 = AutoLayoutColorWell ()
+            .bind_color (self.rootObject.mPDFBoardBackgroundColor_property)
+          _ = view_0_3_0.appendView (view_0_3_0_0)
+          let view_0_3_0_1 = AutoLayoutStaticLabel (title: "Board Background Color", bold: false, size: .regular, alignment: .center)
+          _ = view_0_3_0.appendView (view_0_3_0_1)
+          let view_0_3_0_2 = AutoLayoutFlexibleSpace ()
+          _ = view_0_3_0.appendView (view_0_3_0_2)
+        }
+        _ = view_0_3.appendView (view_0_3_0)
+        let view_0_3_1 = AutoLayoutEnumPopUpButton (titles: PDFProductGrid.popupTitles (), size: .regular)
+          .bind_selectedIndex (self.rootObject.mPDFProductGrid_property)
+        _ = view_0_3.appendView (view_0_3_1)
+      }
       _ = view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutFlexibleSpace ()
+      _ = view_0.appendView (view_0_4)
     }
-    _ = vStackView.appendView (view_0)
+    _ = hStackView.appendView (view_0)
     let view_1 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_1)
-    return vStackView
+    _ = hStackView.appendView (view_1)
+    return hStackView
   }
 
   //································································································

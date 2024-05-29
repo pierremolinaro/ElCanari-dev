@@ -22,6 +22,9 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       oldValue.mGenerateMergerArchive_property.stopsBeingObserved (by: self.mGenerateMergerArchive_property) // Stored property
       oldValue.mGenerateBOM_property.stopsBeingObserved (by: self.mGenerateBOM_property) // Stored property
       oldValue.mGenerateGerberAndPDF_property.stopsBeingObserved (by: self.mGenerateGerberAndPDF_property) // Stored property
+      oldValue.mPDFProductGrid_property.stopsBeingObserved (by: self.mPDFProductGrid_property) // Stored property
+      oldValue.mUsesNewProductGeneration_property.stopsBeingObserved (by: self.mUsesNewProductGeneration_property) // Stored property
+      oldValue.mGerberProductUnit_property.stopsBeingObserved (by: self.mGerberProductUnit_property) // Stored property
       oldValue.mCheckClearanceBetweenPadsOfSameNet_property.stopsBeingObserved (by: self.mCheckClearanceBetweenPadsOfSameNet_property) // Stored property
       oldValue.mLastERCCheckingIsSuccess_property.stopsBeingObserved (by: self.mLastERCCheckingIsSuccess_property) // Stored property
       oldValue.mLastERCCheckingSignature_property.stopsBeingObserved (by: self.mLastERCCheckingSignature_property) // Stored property
@@ -210,6 +213,9 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       newValue.mGenerateMergerArchive_property.startsBeingObserved (by: self.mGenerateMergerArchive_property) // Stored property
       newValue.mGenerateBOM_property.startsBeingObserved (by: self.mGenerateBOM_property) // Stored property
       newValue.mGenerateGerberAndPDF_property.startsBeingObserved (by: self.mGenerateGerberAndPDF_property) // Stored property
+      newValue.mPDFProductGrid_property.startsBeingObserved (by: self.mPDFProductGrid_property) // Stored property
+      newValue.mUsesNewProductGeneration_property.startsBeingObserved (by: self.mUsesNewProductGeneration_property) // Stored property
+      newValue.mGerberProductUnit_property.startsBeingObserved (by: self.mGerberProductUnit_property) // Stored property
       newValue.mCheckClearanceBetweenPadsOfSameNet_property.startsBeingObserved (by: self.mCheckClearanceBetweenPadsOfSameNet_property) // Stored property
       newValue.mLastERCCheckingIsSuccess_property.startsBeingObserved (by: self.mLastERCCheckingIsSuccess_property) // Stored property
       newValue.mLastERCCheckingSignature_property.startsBeingObserved (by: self.mLastERCCheckingSignature_property) // Stored property
@@ -427,6 +433,24 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //································································································
 
   final let mGenerateGerberAndPDF_property = EBTransientProperty <Bool?> ()
+
+  //································································································
+  //   Observers of 'mPDFProductGrid' stored property
+  //································································································
+
+  final let mPDFProductGrid_property = EBTransientProperty <PDFProductGrid?> ()
+
+  //································································································
+  //   Observers of 'mUsesNewProductGeneration' stored property
+  //································································································
+
+  final let mUsesNewProductGeneration_property = EBTransientProperty <Bool?> ()
+
+  //································································································
+  //   Observers of 'mGerberProductUnit' stored property
+  //································································································
+
+  final let mGerberProductUnit_property = EBTransientProperty <GerberUnit?> ()
 
   //································································································
   //   Observers of 'mCheckClearanceBetweenPadsOfSameNet' stored property
@@ -1587,6 +1611,18 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //--- Configure mGenerateGerberAndPDF simple stored property
     self.mGenerateGerberAndPDF_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mGenerateGerberAndPDF_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mPDFProductGrid simple stored property
+    self.mPDFProductGrid_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mPDFProductGrid_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mUsesNewProductGeneration simple stored property
+    self.mUsesNewProductGeneration_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mUsesNewProductGeneration_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mGerberProductUnit simple stored property
+    self.mGerberProductUnit_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mGerberProductUnit_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mCheckClearanceBetweenPadsOfSameNet simple stored property
     self.mCheckClearanceBetweenPadsOfSameNet_property.mReadModelFunction = { [weak self] in

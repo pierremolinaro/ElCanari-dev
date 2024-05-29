@@ -115,13 +115,16 @@ extension AutoLayoutProjectDocument {
     }
   //--- Write board archive
     if self.rootObject.mGenerateMergerArchive_property.propval {
-      let boardLegacyArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_LEGACY_MERGER_ARCHIVE
-      try self.writeBoardArchiveFile (atPath: boardLegacyArchiveFilePath, productData)
-      let boardArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_MERGER_ARCHIVE
-      self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(boardArchiveFilePath.lastPathComponent)…")
-      let jsonData : Data = try productRepresentation.jsonData ()
-      try jsonData.write (to: URL (fileURLWithPath: boardArchiveFilePath))
-      self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
+      if self.rootObject.mUsesNewProductGeneration {
+        let boardArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_MERGER_ARCHIVE
+        self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(boardArchiveFilePath.lastPathComponent)…")
+        let jsonData : Data = try productRepresentation.jsonData ()
+        try jsonData.write (to: URL (fileURLWithPath: boardArchiveFilePath))
+        self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
+      }else{
+        let boardLegacyArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_LEGACY_MERGER_ARCHIVE
+        try self.writeBoardArchiveFile (atPath: boardLegacyArchiveFilePath, productData)
+      }
     }
   //--- Write CSV file
     if self.rootObject.mGenerateBOM_property.propval {

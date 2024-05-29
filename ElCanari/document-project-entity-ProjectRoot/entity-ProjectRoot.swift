@@ -67,6 +67,36 @@ final class ProjectRoot : EBManagedObject {
   final let mGenerateGerberAndPDF_property : EBStoredProperty_Bool
 
   //································································································
+  //   Atomic property: mPDFProductGrid
+  //································································································
+
+  final let mPDFProductGrid_property : EBStoredProperty_PDFProductGrid
+
+  //································································································
+  //   Atomic property: mUsesNewProductGeneration
+  //································································································
+
+  final let mUsesNewProductGeneration_property : EBStoredProperty_Bool
+
+  //································································································
+
+  final var mUsesNewProductGeneration : Bool {
+    get { return self.mUsesNewProductGeneration_property.propval }
+  }
+
+  //································································································
+  //   Atomic property: mGerberProductUnit
+  //································································································
+
+  final let mGerberProductUnit_property : EBStoredProperty_GerberUnit
+
+  //································································································
+
+  final var mGerberProductUnit : GerberUnit {
+    get { return self.mGerberProductUnit_property.propval }
+  }
+
+  //································································································
   //   Atomic property: mCheckClearanceBetweenPadsOfSameNet
   //································································································
 
@@ -2091,6 +2121,9 @@ final class ProjectRoot : EBManagedObject {
     self.mGenerateMergerArchive_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateMergerArchive")
     self.mGenerateBOM_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateBOM")
     self.mGenerateGerberAndPDF_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateGerberAndPDF")
+    self.mPDFProductGrid_property = EBStoredProperty_PDFProductGrid (defaultValue: PDFProductGrid.noGrid, undoManager: inUndoManager, key: "mPDFProductGrid")
+    self.mUsesNewProductGeneration_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mUsesNewProductGeneration")
+    self.mGerberProductUnit_property = EBStoredProperty_GerberUnit (defaultValue: GerberUnit.metric, undoManager: inUndoManager, key: "mGerberProductUnit")
     self.mCheckClearanceBetweenPadsOfSameNet_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mCheckClearanceBetweenPadsOfSameNet")
     self.mLastERCCheckingIsSuccess_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mLastERCCheckingIsSuccess")
     self.mLastERCCheckingSignature_property = EBStoredProperty_UInt32 (defaultValue: 1, undoManager: inUndoManager, key: "mLastERCCheckingSignature")

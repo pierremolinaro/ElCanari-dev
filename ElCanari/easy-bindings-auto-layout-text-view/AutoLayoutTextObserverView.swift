@@ -23,11 +23,11 @@ final class AutoLayoutTextObserverView : NSScrollView {
     switch inSize {
     case .mini :
       self.mFontSize = NSFont.smallSystemFontSize * 0.8
-   case .regular :
-      self.mFontSize = NSFont.smallSystemFontSize
     case .small :
+      self.mFontSize = NSFont.smallSystemFontSize
+    case .regular :
       self.mFontSize = NSFont.systemFontSize
-   }
+    }
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false

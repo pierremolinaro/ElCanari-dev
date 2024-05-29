@@ -2515,7 +2515,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $hidden root.mArtwork.none
           $run detachArtworkAction 
         }
-        Label (bold: yes, size : .regular) { expandableWidth () set (alignment: .center) $title root.mArtworkName }
+        Label (bold: yes, size : .regular) {
+          expandableWidth () set (alignment: .center) $title root.mArtworkName
+        }
         hStack {
           Checkbox (title: "Merger Archive", size : .regular) { $value root.mGenerateMergerArchive }
           Checkbox (title: "Gerber, PDF", size : .regular) { $value root.mGenerateGerberAndPDF }
@@ -2525,6 +2527,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             $enabled !root.mArtwork.none & !self.documentIsUnnamed
             $run generateProductFilesAction
           }
+        }
+        Checkbox (title: "Uses New Product Generation", size: .regular) {
+          $value root.mUsesNewProductGeneration
         }
       }
       vStack {
@@ -2550,10 +2555,10 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     vStack $hidden root.mArtwork.none {
       TabView (size : .regular) [outlet mProductPageSegmentedControl] { 
+        addTab (title: "Gerber and PDF Settings", tooltip: "", contentView: view pdfSettingsPage)
         addTab (title: "Artwork Description", tooltip: "", contentView: view artworkDescriptionPage)
         addTab (title: "Artwork Minima", tooltip: "", contentView: view artworkMinimaPage)
         addTab (title: "Artwork Data", tooltip: "", contentView: view artworkDataPage)
-        addTab (title: "PDF Settings", tooltip: "", contentView: view pdfSettingsPage)
         addTab (title: "Generation Log", tooltip: "", contentView: view generationLogPage)
       }
     }
@@ -2774,11 +2779,25 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   //············································································
 
-  stackView \PDFSettingsPage vStack set (margins: 20) {
-    hStack setFirstBaselineAlignment () {
-      space
-      ColorWell { $color root.mPDFBoardBackgroundColor }
-      StaticLabel (title: "Board Background Color", bold: no, size: .regular, alignment: .center)
+  stackView \PDFSettingsPage hStack set (margins: 20) {
+    vStack {
+      StaticLabel (title: "Gerber Settings", bold: yes, size: .regular, alignment: .left)
+      vStack set (leftMargin: 12) {
+        EnumPopUpButton (titles: enum GerberUnit.popupTitles, size: .regular) {
+          $selectedIndex root.mGerberProductUnit
+        }
+      }
+      StaticLabel (title: "PDF Settings", bold: yes, size: .regular, alignment: .left)
+      vStack set (leftMargin: 12) {
+        hStack setFirstBaselineAlignment () {
+          ColorWell { $color root.mPDFBoardBackgroundColor }
+          StaticLabel (title: "Board Background Color", bold: no, size: .regular, alignment: .center)
+          space
+        }
+        EnumPopUpButton (titles: enum PDFProductGrid.popupTitles, size: .regular) {
+          $selectedIndex root.mPDFProductGrid
+        }
+      }
       space
     }
     space

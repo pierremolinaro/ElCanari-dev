@@ -13,7 +13,7 @@ import WebKit
 //   AutoLayoutBase_WebView
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutBase_WebView : WKWebView, WKUIDelegate {
+final class AutoLayoutWebView : WKWebView, WKUIDelegate {
 
   //································································································
 

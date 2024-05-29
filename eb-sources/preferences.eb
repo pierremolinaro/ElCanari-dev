@@ -95,7 +95,6 @@ prefs {
           left: space,
           right: Checkbox (title: "Show Debug Menu", size: .regular) { $value prefs.showDebugMenu }
         )
-    //    addSeparator ()
         add (single:
           StaticLabel (title: "FreeRouting Application Directory", bold: yes, size: .regular, alignment: .left)
         )

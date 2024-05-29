@@ -16,24 +16,33 @@ extension ProductRepresentation {
   //  Get Gerber representation
   //································································································
 
-  func gerber (items inItemSet : ProductLayerSet) -> GerberRepresentation {
+  func gerber (items inItemSet : ProductLayerSet,
+               mirror inMirror : ProductHorizontalMirror,
+               unit inUnit : GerberUnit) -> GerberRepresentation {
     var gerber = GerberRepresentation ()
   //--- Add oblongs
     for oblong in self.oblongs {
-      if inItemSet.contains (oblong.layers) {
-        gerber.addOblong (p1: oblong.p1, p2: oblong.p2, width: oblong.width)
+      if !inItemSet.intersection (oblong.layers).isEmpty {
+        gerber.addOblong (
+          p1: inMirror.mirrored (oblong.p1),
+          p2: inMirror.mirrored (oblong.p2),
+          width: oblong.width
+        )
       }
     }
   //--- Add circles
     for circle in self.circles {
-      if inItemSet.contains (circle.layers) {
-        gerber.addCircle (center: circle.center, diameter: circle.d)
+      if !inItemSet.intersection (circle.layers).isEmpty {
+        gerber.addCircle (center: inMirror.mirrored (circle.center), diameter: circle.d)
       }
     }
   //--- Add polygons
     for polygon in self.polygons {
-      if inItemSet.contains (polygon.layers) {
-        gerber.addPolygon (origin: polygon.origin, points: polygon.points)
+      if !inItemSet.intersection (polygon.layers).isEmpty {
+        gerber.addPolygon (
+          origin: inMirror.mirrored (polygon.origin),
+          points: inMirror.mirrored (polygon.points)
+        )
       }
     }
   //---
