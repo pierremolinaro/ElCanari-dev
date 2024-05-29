@@ -102,7 +102,7 @@ struct ProductRepresentation : Codable {
 
   @MainActor private mutating func appendPackageLegends (projectRoot inProjectRoot : ProjectRoot) {
     let cocoaBoardRect = inProjectRoot.boardBoundBox!.cocoaRect
-    let width = ProductLength (Double (inProjectRoot.packageDrawingWidthMultpliedByTenForBoard) / 10.0, .px)
+    let width = ProductLength (Double (inProjectRoot.packageDrawingWidthMultpliedByTenForBoard) / 10.0, .cocoa)
     for object in inProjectRoot.mBoardObjects.values {
       if let component = object as? ComponentInProject, component.mDisplayLegend {
         let strokeBezierPath = component.strokeBezierPath!
@@ -148,7 +148,7 @@ struct ProductRepresentation : Codable {
             oblique: false,
             extraWidth: 0.0
           )
-          let width = ProductLength (textBP.lineWidth, .px)
+          let width = ProductLength (textBP.lineWidth, .cocoa)
           let layer : ProductLayerSet
           switch component.mSide {
           case .back :
@@ -189,7 +189,7 @@ struct ProductRepresentation : Codable {
             oblique: false,
             extraWidth: 0.0
           )
-          let width = ProductLength (textBP.lineWidth, .px)
+          let width = ProductLength (textBP.lineWidth, .cocoa)
           let layer : ProductLayerSet
           switch component.mSide {
           case .back :
@@ -229,7 +229,7 @@ struct ProductRepresentation : Codable {
           oblique: text.mOblique,
           extraWidth: 0.0
         )
-        let width = ProductLength (textBP.lineWidth, .px)
+        let width = ProductLength (textBP.lineWidth, .cocoa)
         let layer : ProductLayerSet
         switch text.mLayer {
         case .legendFront :

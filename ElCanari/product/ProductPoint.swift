@@ -48,13 +48,13 @@ struct ProductPoint : Codable, Equatable {
   //································································································
 
   init (cocoaPoint inPoint : NSPoint) {
-    self.x = ProductLength (inPoint.x, .px)
-    self.y = ProductLength (inPoint.y, .px)
+    self.x = ProductLength (inPoint.x, .cocoa)
+    self.y = ProductLength (inPoint.y, .cocoa)
   }
 
   //································································································
 
-  var cocoaPoint : NSPoint { NSPoint (x: self.x.value (in: .px), y: self.y.value (in: .px)) }
+  var cocoaPoint : NSPoint { NSPoint (x: self.x.value (in: .cocoa), y: self.y.value (in: .cocoa)) }
 
   //································································································
 

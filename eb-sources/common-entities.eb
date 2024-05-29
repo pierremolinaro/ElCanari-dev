@@ -298,7 +298,7 @@ enum GerberUnit {
 
 func enum GerberUnit.popupTitles {
   metric : "Metric (mm)" ;
-  imperial : "Imperial (1/1000 inch)" ;
+  imperial : "Imperial (inch)" ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

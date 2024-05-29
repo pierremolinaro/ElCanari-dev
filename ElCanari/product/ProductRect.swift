@@ -49,10 +49,10 @@ struct ProductRect : Codable {
 
   var cocoaRect : NSRect {
     NSRect (
-      x: self.left.value (in: .px),
-      y: self.bottom.value (in: .px),
-      width: self.width.value (in: .px),
-      height: self.height.value (in: .px)
+      x: self.left.value (in: .cocoa),
+      y: self.bottom.value (in: .cocoa),
+      width: self.width.value (in: .cocoa),
+      height: self.height.value (in: .cocoa)
     )
   }
 

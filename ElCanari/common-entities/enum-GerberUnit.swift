@@ -15,7 +15,7 @@ enum GerberUnit : Int, EBEnumPropertyProtocol, Hashable {
   //································································································
 
   static func popupTitles () -> [String] {
-    return ["Metric (mm)", "Imperial (1/1000 inch)"]
+    return ["Metric (mm)", "Imperial (inch)"]
   }
 
   //································································································

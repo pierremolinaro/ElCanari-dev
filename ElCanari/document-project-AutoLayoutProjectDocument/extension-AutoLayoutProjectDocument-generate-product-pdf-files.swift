@@ -39,7 +39,12 @@ extension AutoLayoutProjectDocument {
         pathes.append (bp)
       }
       let shape = EBShape (stroke: pathes, .black)
-      let data = buildPDFimageData (frame: inProductData.boardBoundBox, shape: shape, backgroundColor: self.rootObject.mPDFBoardBackgroundColor)
+      let data = buildPDFimageData (
+        frame: inProductData.boardBoundBox,
+        shape: shape,
+        grid: self.rootObject.mPDFProductGrid_property.propval,
+        backgroundColor: self.rootObject.mPDFBoardBackgroundColor
+      )
       try data.write (to: URL (fileURLWithPath: inPath))
     }
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
@@ -218,7 +223,12 @@ extension AutoLayoutProjectDocument {
       }
       var shape = EBShape (stroke: strokePathes, .black)
       shape.add (filled: filledPathes, .black)
-      let data = buildPDFimageData (frame: inProductData.boardBoundBox, shape: shape, backgroundColor: self.rootObject.mPDFBoardBackgroundColor)
+      let data = buildPDFimageData (
+        frame: inProductData.boardBoundBox,
+        shape: shape,
+        grid: self.rootObject.mPDFProductGrid_property.propval,
+        backgroundColor: self.rootObject.mPDFBoardBackgroundColor
+      )
       try data.write (to: URL (fileURLWithPath: path))
     }
     self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")

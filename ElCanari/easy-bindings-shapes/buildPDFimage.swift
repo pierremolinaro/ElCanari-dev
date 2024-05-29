@@ -10,13 +10,22 @@ import AppKit
 
 @MainActor func buildPDFimageData (frame inFrame : NSRect,
                                    shape inShape : EBShape,
+                                   grid inGrid : PDFProductGrid = .noGrid,
                                    backgroundColor inBackColor : NSColor? = nil) -> Data {
   let origin = inFrame.origin
   var tr = AffineTransform ()
   tr.translate (x: -origin.x, y: -origin.y)
-  let view = EBOffscreenView (frame: NSRect (origin: NSPoint (), size: inFrame.size))
-  view.setBackColor (inBackColor)
-  view.setShape (inShape.transformed (by: tr))
+  let view = OffscreenView (
+    frame: NSRect (origin: NSPoint (), size: inFrame.size),
+    strokeBezierPathes: [],
+    filledBezierPathes: [],
+    shape: inShape.transformed (by: tr),
+    backColor: inBackColor,
+    grid: inGrid
+  )
+//  let view = EBOffscreenView (frame: NSRect (origin: NSPoint (), size: inFrame.size), grid: inGrid)
+//  view.setBackColor (inBackColor)
+//  view.setShape (inShape.transformed (by: tr))
   let data = view.dataWithPDF (inside: view.bounds)
   return data
 }
@@ -28,73 +37,9 @@ import AppKit
 @MainActor func buildPDFimage (frame inFrame : NSRect,
                                shape inShape : EBShape,
                                backgroundColor inBackColor : NSColor? = nil) -> NSImage {
-  let image = NSImage (data: buildPDFimageData (frame: inFrame, shape: inShape, backgroundColor: inBackColor))
+  let pdfData = buildPDFimageData (frame: inFrame, shape: inShape, backgroundColor: inBackColor)
+  let image = NSImage (data: pdfData)
   return image ?? NSImage ()
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBOffscreenView
-//——————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate final class EBOffscreenView : NSView {
-
-  private var mShape = EBShape ()
-  private var mBackColor : NSColor? = nil
-
-  //································································································
-
-  override var isFlipped : Bool  { return false }
-
-  //································································································
-
-  override init (frame inFrameRect : NSRect) {
-    super.init (frame: inFrameRect)
-    noteObjectAllocation (self)
-  }
-
-  //································································································
-
-  required init? (coder inCoder : NSCoder) {
-    super.init (coder: inCoder)
-    noteObjectAllocation (self)
-  }
-
-  //································································································
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //································································································
-  //  Set paths
-  //································································································
-
-  func setShape (_ inShape : EBShape) {
-    self.mShape = inShape
-  }
-
-  //································································································
-  //  Set back color
-  //································································································
-
-  func setBackColor (_ inColor : NSColor?) {
-    self.mBackColor = inColor
-  }
-
-  //································································································
-  //  Draw Rect
-  //································································································
-
-  override func draw (_ inDirtyRect : NSRect) {
-    if let backColor = self.mBackColor {
-      backColor.setFill ()
-      NSBezierPath.fill (self.bounds)
-    }
-    self.mShape.draw (inDirtyRect)
-  }
-
-  //································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————

@@ -70,10 +70,10 @@ extension AutoLayoutProjectDocument {
     if self.rootObject.mUsesNewProductGeneration {
       let gerber : GerberRepresentation = inProductRepresentation.gerber (
         items: [.padHoles],
-        mirror: .noMirror,
-        unit: self.rootObject.mGerberProductUnit
+        mirror: .noMirror
       )
-      let gerberData : Data? = gerber.gerberDrillString (unit: .milTenth).data (using: .ascii, allowLossyConversion: false)
+      let gerberString = gerber.gerberString (unit: self.rootObject.mGerberProductUnit)
+      let gerberData : Data? = gerberString.data (using: .ascii, allowLossyConversion: false)
       try gerberData?.write (to: URL (fileURLWithPath: inPath), options: .atomic)
     }else{
       var s = "M48\n"
@@ -191,10 +191,10 @@ extension AutoLayoutProjectDocument {
         : .noMirror
       let gerber : GerberRepresentation = inProductRepresentation.gerber (
         items: items,
-        mirror: mirror,
-        unit: self.rootObject.mGerberProductUnit
+        mirror: mirror
       )
-      let gerberData : Data? = gerber.gerberString (unit: .milTenth).data (using: .ascii, allowLossyConversion: false)
+      let gerberString = gerber.gerberString (unit: self.rootObject.mGerberProductUnit)
+      let gerberData : Data? = gerberString.data (using: .ascii, allowLossyConversion: false)
       try gerberData?.write (to: URL (fileURLWithPath: path), options: .atomic)
     }else{
       var af = AffineTransform ()

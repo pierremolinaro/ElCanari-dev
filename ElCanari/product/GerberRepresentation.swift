@@ -10,6 +10,11 @@ import Foundation
 
 //--------------------------------------------------------------------------------------------------
 
+fileprivate let IMPERIAL_DIGIT_COUNT = 4
+fileprivate let METRIC_DIGIT_COUNT = 6
+
+//--------------------------------------------------------------------------------------------------
+
 struct GerberRepresentation {
 
   //································································································
@@ -53,9 +58,7 @@ struct GerberRepresentation {
   //  Gerber string
   //································································································
 
-  func gerberString (unit inUnit : GerberRepresentation.Unit) -> String {
-    var s = "%FSLAX24Y24*%\n"
-    s += "%MOIN*%\n"
+  func gerberString (unit inUnit : GerberUnit) -> String {
   //--- Aperture inventory
     var apertureSet = Set <ProductLength> ()
     for oblong in self.mOblongs {
@@ -65,10 +68,20 @@ struct GerberRepresentation {
       apertureSet.insert (circle.diameter)
     }
     let apertureArray = Array (apertureSet).sorted ()
+  //--- Write header
+    var s : String
+    switch inUnit {
+    case .imperial :
+      s = "%FSLAX2\(IMPERIAL_DIGIT_COUNT)Y2\(IMPERIAL_DIGIT_COUNT)*%\n"
+      s += "%MOIN*%\n" // Unit is inch
+    case .metric :
+      s = "%FSLAX2\(METRIC_DIGIT_COUNT)Y2\(METRIC_DIGIT_COUNT)*%\n"
+      s += "%MOMM*%\n" // Unit is mm
+    }
   //--- Write aperture declarations
     var idx = 10
     for aperture in apertureArray {
-      let apertureString = "C,\(String (format: "%.4f", aperture.value (in: .inch)))"
+      let apertureString = "C," + aperture.apertureLengthString (inUnit)
       s += "%ADD\(idx)\(apertureString)*%\n"
       idx += 1
     }
@@ -83,16 +96,16 @@ struct GerberRepresentation {
         if oblong.width == aperture {
           if let p = currentPoint, p == oblong.p1 {
           }else{
-            s += "X\(gerber (oblong.p1.x, inUnit))Y\(gerber (oblong.p1.y, inUnit))D02*\n" // Move to p1
+            s += oblong.p1.gerberPointString (inUnit) + "D02*\n" // Move to p1
           }
-          s += "X\(gerber (oblong.p2.x, inUnit))Y\(gerber (oblong.p2.y, inUnit))D01*\n" // Line to p2
+          s += oblong.p2.gerberPointString (inUnit) + "D01*\n" // Line to p2
           currentPoint = oblong.p2
         }
       }
     //--- Circles
       for circle in self.mFilledCircles {
         if circle.diameter == aperture {
-          s += "X\(gerber (circle.center.x, inUnit))Y\(gerber (circle.center.y, inUnit))D03*\n" // Flash
+          s += circle.center.gerberPointString (inUnit) + "D03*\n" // Flash
         }
       }
     //---
@@ -101,10 +114,10 @@ struct GerberRepresentation {
   //--- Fill polygons
     for polygon in self.mFilledPolygons {
       s += "G36*\n" // Start Region
-      s += "X\(gerber (polygon.origin.x, inUnit))Y\(gerber (polygon.origin.y, inUnit))D02*\n" // Move
+      s += polygon.origin.gerberPointString (inUnit) + "D02*\n" // Move
       s += "D01*\n" // Linear interpolation
       for p in polygon.points {
-        s += "X\(gerber (p.x, inUnit))Y\(gerber (p.y, inUnit))D01*\n" // Line
+        s += p.gerberPointString (inUnit) + "D01*\n" // Line
       }
       s += "G37*\n" // End Region
     }
@@ -114,62 +127,58 @@ struct GerberRepresentation {
   }
 
   //································································································
-  //  Gerber Drill string
+  //  Excellon Drill string
   //································································································
 
-  func gerberDrillString (unit inUnit : GerberRepresentation.Unit) -> String {
-    var s = "M48\n"
-    s += "INCH\n"
-  //--- Aperture inventory
-    var apertureSet = Set <ProductLength> ()
-    for oblong in self.mOblongs {
-      apertureSet.insert (oblong.width)
-    }
-    for circle in self.mFilledCircles {
-      apertureSet.insert (circle.diameter)
-    }
-    let apertureArray = Array (apertureSet).sorted ()
- //--- Write hole diameters
-    var idx = 0
-    for aperture in apertureArray {
-      idx += 1
-      s += "T\(idx)C\(String (format: "%.4f", aperture.value (in: .inch)))\n"
-    }
- //--- Write holes
-    s += "%\n"
-    s += "G05\n"
-    s += "M72\n"
-    idx = 0
-    for diameter in apertureArray {
-      idx += 1
-      s += "T\(idx)\n"
-      for circle in self.mFilledCircles {
-        if circle.diameter == diameter {
-          s += "X\(String(format: "%.4f", circle.center.x.value (in: .inch)))Y\(String(format: "%.4f", circle.center.y.value (in: .inch)))\n"
-        }
-      }
-      for oblong in self.mOblongs {
-        if oblong.width == diameter {
-          s += "X\(String(format: "%.4f", oblong.p1.x.value (in: .inch)))Y\(String(format: "%.4f", oblong.p1.y.value (in: .inch)))\n"
-          s += "G85X\(String(format: "%.4f", oblong.p2.x.value (in: .inch)))Y\(String(format: "%.4f", oblong.p2.y.value (in: .inch)))\n"
-        }
-      }
-    }
- //--- End of file
-    s += "T0\n"
-    s += "M30\n" // End code
- //---
-    return s
-  }
-
-  //································································································
-  //   Enumerations
-  //································································································
-
-  enum Unit {
-    case milTenth
-    case mm
-  }
+//  func excellonDrillString (unit inUnit : GerberUnit) -> String {
+//    var s = "M48\n"
+//    switch inUnit {
+//    case .imperial :
+//      s += "INCH\n" // Unit is inch
+//    case .metric :
+//      s += "INCH\n" // Unit is mm
+//    }
+//  //--- Aperture inventory
+//    var apertureSet = Set <ProductLength> ()
+//    for oblong in self.mOblongs {
+//      apertureSet.insert (oblong.width)
+//    }
+//    for circle in self.mFilledCircles {
+//      apertureSet.insert (circle.diameter)
+//    }
+//    let apertureArray = Array (apertureSet).sorted ()
+// //--- Write hole diameters
+//    var idx = 0
+//    for aperture in apertureArray {
+//      idx += 1
+//      s += "T\(idx)C" + aperture.apertureLengthString (inUnit) + "\n"
+//    }
+// //--- Write holes
+//    s += "%\n"
+//    s += "G05\n"
+//    s += "M72\n"
+//    idx = 0
+//    for diameter in apertureArray {
+//      idx += 1
+//      s += "T\(idx)\n"
+//      for circle in self.mFilledCircles {
+//        if circle.diameter == diameter {
+//          s += circle.center.aperturePointString (inUnit) + "\n"
+//        }
+//      }
+//      for oblong in self.mOblongs {
+//        if oblong.width == diameter {
+//          s += oblong.p1.aperturePointString (inUnit) + "\n"
+//          s += "G85" + oblong.p1.aperturePointString (inUnit) + "\n"
+//        }
+//      }
+//    }
+// //--- End of file
+//    s += "T0\n"
+//    s += "M30\n" // End code
+// //---
+//    return s
+//  }
 
   //································································································
   //   Structs
@@ -197,9 +206,53 @@ struct GerberRepresentation {
 
   //································································································
 
-  func gerber (_ inValue : ProductLength, _ inUnit : GerberRepresentation.Unit) -> String {
-    return String (Int (inValue.value (in: .mil) * 10.0))
+}
+
+//--------------------------------------------------------------------------------------------------
+
+fileprivate extension ProductLength {
+
+  //································································································
+
+  func gerberLengthString (_ inUnit : GerberUnit) -> String {
+    switch inUnit {
+    case .imperial :
+      return String (Int (self.value (in: .inch) * pow (10.0, Double (IMPERIAL_DIGIT_COUNT))))
+    case .metric :
+      return String (Int (self.value (in: .mm) * pow (10.0, Double (METRIC_DIGIT_COUNT))))
+    }
   }
+
+  //································································································
+
+  func apertureLengthString (_ inUnit : GerberUnit) -> String {
+    switch inUnit {
+    case .imperial :
+      return String (format: "%.4f", self.value (in: .inch))
+    case .metric :
+      return String (format: "%.6f", self.value (in: .mm))
+    }
+  }
+
+  //································································································
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+fileprivate extension ProductPoint {
+
+  //································································································
+
+  func gerberPointString (_ inUnit : GerberUnit) -> String {
+    return "X\(self.x.gerberLengthString (inUnit))Y\(self.y.gerberLengthString (inUnit))"
+  }
+
+  //································································································
+
+//  func aperturePointString (_ inUnit : GerberUnit) -> String {
+//    return "X\(self.x.apertureLengthString (inUnit))Y\(self.y.apertureLengthString (inUnit))"
+//  }
 
   //································································································
 
