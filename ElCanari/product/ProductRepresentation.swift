@@ -17,14 +17,17 @@ struct ProductRepresentation : Codable {
   //································································································
 
   private(set) var boardWidth : ProductLength
+  private(set) var boardWidthUnit : Int // Canari Unit
   private(set) var boardHeight : ProductLength
+  private(set) var boardHeightUnit : Int // Canari Unit
   private(set) var boardLimitWidth : ProductLength
+  private(set) var boardLimitWidthUnit : Int // Canari Unit
   private(set) var roundSegments = [LayeredProductSegment] ()
   private(set) var squareSegments = [LayeredProductSegment] ()
   private(set) var circles = [LayeredProductCircle] ()
   private(set) var rectangles = [LayeredProductRectangle] ()
+  private(set) var roundRectangles = [LayeredProductRectangle] ()
   private(set) var octogons = [LayeredProductOctogon] ()
-  private(set) var polygons = [LayeredProductPolygon] ()
   private(set) var artworkName = ""
 
   //································································································
@@ -34,8 +37,11 @@ struct ProductRepresentation : Codable {
   @MainActor init (projectRoot inProjectRoot : ProjectRoot) {
     let boardBoundBox = inProjectRoot.boardBoundBox!
     self.boardWidth = ProductLength (valueInCanariUnit: boardBoundBox.width)
+    self.boardWidthUnit = inProjectRoot.mRectangularBoardWidthUnit_property.propval
+    self.boardHeightUnit = inProjectRoot.mRectangularBoardHeightUnit_property.propval
     self.boardHeight = ProductLength (valueInCanariUnit: boardBoundBox.height)
     self.boardLimitWidth = ProductLength (valueInCanariUnit: inProjectRoot.mBoardLimitsWidth)
+    self.boardLimitWidthUnit = inProjectRoot.mBoardLimitsWidthUnit
     self.artworkName = inProjectRoot.mArtworkName
   //--- Board limit path
     do{
@@ -123,9 +129,9 @@ struct ProductRepresentation : Codable {
           let layer : ProductLayerSet
           switch component.mSide {
           case .back :
-            layer = .packageLegendBottomSide
+            layer = .backSidePackageLegend
           case .front :
-            layer = .packageLegendTopSide
+            layer = .frontSidePackageLegend
           }
           self.append (
             flattenedStrokeBezierPath: strokeBezierPath,
@@ -164,9 +170,9 @@ struct ProductRepresentation : Codable {
           let layer : ProductLayerSet
           switch component.mSide {
           case .back :
-            layer = .componentNamesBottomSide
+            layer = .backSideComponentName
           case .front :
-            layer = .componentNamesTopSide
+            layer = .frontSideComponentName
           }
           self.append (
             flattenedStrokeBezierPath: textBP,
@@ -205,9 +211,9 @@ struct ProductRepresentation : Codable {
           let layer : ProductLayerSet
           switch component.mSide {
           case .back :
-            layer = .componentValuesBottomSide
+            layer = .backSideComponentValue
           case .front :
-            layer = .componentValuesTopSide
+            layer = .frontSideComponentValue
           }
           self.append (
             flattenedStrokeBezierPath: textBP,
@@ -245,13 +251,13 @@ struct ProductRepresentation : Codable {
         let layer : ProductLayerSet
         switch text.mLayer {
         case .legendFront :
-          layer = .textsLegendTopSide
+          layer = .frontSideLegendText
         case .layoutFront :
-          layer = .textsLayoutTopSide
+          layer = .frontSideLayoutText
         case .legendBack :
-          layer = .textsLegendBottomSide
+          layer = .backSideLegendText
         case .layoutBack :
-          layer = .textsLayoutBottomSide
+          layer = .backSideLayoutText
         }
         self.append (
           flattenedStrokeBezierPath: textBP,
@@ -277,9 +283,9 @@ struct ProductRepresentation : Codable {
           let layer : ProductLayerSet
           switch line.mLayer {
           case .legendFront :
-            layer = .textsLegendTopSide
+            layer = .frontSideLegendLine
           case .legendBack :
-            layer = .textsLegendBottomSide
+            layer = .backSideLegendLine
           }
           let oblong = LayeredProductSegment (
             p1: ProductPoint (cocoaPoint: clippedP1),
@@ -304,13 +310,13 @@ struct ProductRepresentation : Codable {
         let pad = LayeredProductCircle (
           center: center,
           diameter: padDiameter,
-          layers: [.padsBottomSide, .padsTopSide]
+          layers: .viaPad
         )
         self.circles.append (pad)
         let hole = LayeredProductCircle (
           center: center,
           diameter: holeDiameter,
-          layers: .padHoles
+          layers: .hole
         )
         self.circles.append (hole)
       }
@@ -393,30 +399,8 @@ struct ProductRepresentation : Codable {
                                                    padSize inPadSize : CanariSize,
                                                    transformedBy inAT : AffineTransform,
                                                    layers inLayers : ProductLayerSet) {
-    let p = inCenter.cocoaPoint
-    let padSize = inPadSize.cocoaSize
-    if inPadSize.width < inPadSize.height { // Vertical oblong
-      let p1 = inAT.transform (NSPoint (x: p.x, y: p.y - (padSize.height - padSize.width) / 2.0))
-      let p2 = inAT.transform (NSPoint (x: p.x, y: p.y + (padSize.height - padSize.width) / 2.0))
-      let oblong = LayeredProductSegment (
-        p1: ProductPoint (cocoaPoint: p1),
-        p2: ProductPoint (cocoaPoint: p2),
-        width: ProductLength (valueInCanariUnit: inPadSize.width),
-        layers: inLayers
-      )
-      self.roundSegments.append (oblong)
-    }else if inPadSize.width > inPadSize.height { // Horizontal oblong
-      let p1 = inAT.transform (NSPoint (x: p.x - (padSize.width - padSize.height) / 2.0, y: p.y))
-      let p2 = inAT.transform (NSPoint (x: p.x + (padSize.width - padSize.height) / 2.0, y: p.y))
-      let oblong = LayeredProductSegment (
-        p1: ProductPoint (cocoaPoint: p1),
-        p2: ProductPoint (cocoaPoint: p2),
-        width: ProductLength (valueInCanariUnit: inPadSize.height),
-        layers: inLayers
-      )
-      self.roundSegments.append (oblong)
-    }else{ // Circular
-      let center = ProductPoint (cocoaPoint: inAT.transform (inCenter.cocoaPoint))
+    let center = ProductPoint (cocoaPoint: inAT.transform (inCenter.cocoaPoint))
+    if inPadSize.width == inPadSize.height { // circular
       let padDiameter = ProductLength (valueInCanariUnit: inPadSize.width)
       let pad = LayeredProductCircle (
         center: center,
@@ -424,6 +408,16 @@ struct ProductRepresentation : Codable {
         layers: inLayers
       )
       self.circles.append (pad)
+    }else{ // Oblong
+      let r = LayeredProductRectangle (
+        xCenter: center.x,
+        yCenter: center.y,
+        width: ProductLength (valueInCanariUnit: inPadSize.width),
+        height: ProductLength (valueInCanariUnit: inPadSize.height),
+        angleDegrees: inAT.angleInDegrees,
+        layers: inLayers
+      )
+      self.roundRectangles.append (r)
     }
   }
 
@@ -433,20 +427,20 @@ struct ProductRepresentation : Codable {
                                                   padSize inPadSize : CanariSize,
                                                   transformedBy inAT : AffineTransform,
                                                   layers inLayers : ProductLayerSet) {
-    let p = inCenter.cocoaPoint
-    let padSize = inPadSize.cocoaSize
-    let w = padSize.width / 2.0
-    let h = padSize.height / 2.0
-    let p0 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w, y: p.y + h)))
-    let p1 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w, y: p.y + h)))
-    let p2 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w, y: p.y - h)))
-    let p3 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w, y: p.y - h)))
-    let polygon = LayeredProductPolygon (
-      origin: p0,
-      points: [p1, p2, p3],
+    let center = ProductPoint (cocoaPoint: inAT.transform (inCenter.cocoaPoint))
+    let size = ProductSize (canariSize: inPadSize)
+    let p1 = inAT.transform (NSPoint ())
+    let p2 = inAT.transform (NSPoint (x: 1, y: 0))
+    let angle = NSPoint.angleInDegrees (p1, p2)
+    let r = LayeredProductRectangle (
+      xCenter: center.x,
+      yCenter: center.y,
+      width: size.width,
+      height: size.height,
+      angleDegrees: angle,
       layers: inLayers
     )
-    self.polygons.append (polygon)
+    self.rectangles.append (r)
   }
 
   //································································································
@@ -455,25 +449,41 @@ struct ProductRepresentation : Codable {
                                                   padSize inPadSize : CanariSize,
                                                   transformedBy inAT : AffineTransform,
                                                   layers inLayers : ProductLayerSet) {
-    let padSize = inPadSize.cocoaSize
-    let w : CGFloat = padSize.width / 2.0
-    let h : CGFloat = padSize.height / 2.0
-    let p = inCenter.cocoaPoint
-    let lg : CGFloat = min (w, h) / (1.0 + 1.0 / sqrt (2.0))
-    let p0 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w - lg, y: p.y + h)))
-    let p1 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w,      y: p.y + h - lg)))
-    let p2 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w,      y: p.y - h + lg)))
-    let p3 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w - lg, y: p.y - h)))
-    let p4 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w + lg, y: p.y - h)))
-    let p5 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w,      y: p.y - h + lg)))
-    let p6 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w,      y: p.y + h - lg)))
-    let p7 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w + lg, y: p.y + h)))
-    let polygon = LayeredProductPolygon (
-      origin: p0,
-      points: [p1, p2, p3, p4, p5, p6, p7],
+    let center = ProductPoint (cocoaPoint: inAT.transform (inCenter.cocoaPoint))
+    let size = ProductSize (canariSize: inPadSize)
+    let p1 = inAT.transform (NSPoint ())
+    let p2 = inAT.transform (NSPoint (x: 1, y: 0))
+    let angle = NSPoint.angleInDegrees (p1, p2)
+    let r = LayeredProductOctogon (
+      x: center.x,
+      y: center.y,
+      width: size.width,
+      height: size.height,
+      angle: angle,
       layers: inLayers
     )
-    self.polygons.append (polygon)
+    self.octogons.append (r)
+
+
+//    let padSize = inPadSize.cocoaSize
+//    let w : CGFloat = padSize.width / 2.0
+//    let h : CGFloat = padSize.height / 2.0
+//    let p = inCenter.cocoaPoint
+//    let lg : CGFloat = min (w, h) / (1.0 + 1.0 / sqrt (2.0))
+//    let p0 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w - lg, y: p.y + h)))
+//    let p1 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w,      y: p.y + h - lg)))
+//    let p2 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w,      y: p.y - h + lg)))
+//    let p3 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w - lg, y: p.y - h)))
+//    let p4 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w + lg, y: p.y - h)))
+//    let p5 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w,      y: p.y - h + lg)))
+//    let p6 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w,      y: p.y + h - lg)))
+//    let p7 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w + lg, y: p.y + h)))
+//    let polygon = LayeredProductPolygon (
+//      origin: p0,
+//      points: [p1, p2, p3, p4, p5, p6, p7],
+//      layers: inLayers
+//    )
+//    self.polygons.append (polygon)
   }
 
   //································································································
@@ -490,7 +500,7 @@ struct ProductRepresentation : Codable {
         p1: ProductPoint (cocoaPoint: p1),
         p2: ProductPoint (cocoaPoint: p2),
         width: ProductLength (valueInCanariUnit: inHoleSize.width),
-        layers: .padHoles
+        layers: .hole
       )
       self.roundSegments.append (oblong)
     }else if inHoleSize.width > inHoleSize.height { // Horizontal oblong
@@ -500,7 +510,7 @@ struct ProductRepresentation : Codable {
         p1: ProductPoint (cocoaPoint: p1),
         p2: ProductPoint (cocoaPoint: p2),
         width: ProductLength (valueInCanariUnit: inHoleSize.height),
-        layers: .padHoles
+        layers: .hole
       )
       self.roundSegments.append (oblong)
     }else{ // Circular
@@ -509,7 +519,7 @@ struct ProductRepresentation : Codable {
       let pad = LayeredProductCircle (
         center: center,
         diameter: padDiameter,
-        layers: .padHoles
+        layers: .hole
       )
       self.circles.append (pad)
     }
@@ -531,18 +541,23 @@ struct ProductRepresentation : Codable {
         let layer : ProductLayerSet
         switch qrCode.mLayer {
         case .legendFront :
-          layer = .packageLegendTopSide
+          layer = .frontSideQRCode
         case .legendBack :
-          layer = .packageLegendBottomSide
+          layer = .backSideQRCode
         }
-        let rectangles = displayInfos.productRectangles
-        for r in rectangles {
-          let p0 = ProductPoint (cocoaPoint: r.p0)
-          let p1 = ProductPoint (cocoaPoint: r.p1)
-          let p2 = ProductPoint (cocoaPoint: r.p2)
-          let p3 = ProductPoint (cocoaPoint: r.p3)
-          let polygon = LayeredProductPolygon (origin: p0, points: [p1, p2, p3], layers: layer)
-          self.polygons.append (polygon)
+        let rotationInDegrees = CGFloat (qrCode.mRotation) / 1000.0
+        for r in displayInfos.nonRotatedRectangles {
+          let center = ProductPoint (cocoaPoint: r.center)
+          let size = ProductSize (cocoaSize: r.size)
+          let pr = LayeredProductRectangle (
+            xCenter: center.x,
+            yCenter: center.y,
+            width: size.width,
+            height: size.height,
+            angleDegrees: rotationInDegrees,
+            layers: layer
+          )
+          self.rectangles.append (pr)
         }
       }
     }
@@ -564,18 +579,23 @@ struct ProductRepresentation : Codable {
         let layer : ProductLayerSet
         switch boardImage.mLayer {
         case .legendFront :
-          layer = .packageLegendTopSide
+          layer = .frontSideImage
         case .legendBack :
-          layer = .packageLegendBottomSide
+          layer = .backSideImage
         }
-        let rectangles = displayInfos.productRectangles
-        for r in rectangles {
-          let p0 = ProductPoint (cocoaPoint: r.p0)
-          let p1 = ProductPoint (cocoaPoint: r.p1)
-          let p2 = ProductPoint (cocoaPoint: r.p2)
-          let p3 = ProductPoint (cocoaPoint: r.p3)
-          let polygon = LayeredProductPolygon (origin: p0, points: [p1, p2, p3], layers: layer)
-          self.polygons.append (polygon)
+        let rotationInDegrees = CGFloat (boardImage.mRotation) / 1000.0
+        for r in displayInfos.nonRotatedRectangles {
+          let center = ProductPoint (cocoaPoint: r.center)
+          let size = ProductSize (cocoaSize: r.size)
+          let pr = LayeredProductRectangle (
+            xCenter: center.x,
+            yCenter: center.y,
+            width: size.width,
+            height: size.height,
+            angleDegrees: rotationInDegrees,
+            layers: layer
+          )
+          self.rectangles.append (pr)
         }
       }
     }
@@ -591,24 +611,24 @@ struct ProductRepresentation : Codable {
         switch track.mSide {
         case .front :
           if track.mAddedToSolderMask_property.propval {
-            layer = .padsTopSide
+            layer = .frontSideExposedTrack
           }else{
-            layer = .tracksTopSide
+            layer = .frontSideTrack
           }
         case .back :
           if track.mAddedToSolderMask_property.propval {
-            layer = .padsBottomSide
+            layer = .backSideExposedTrack
           }else{
-            layer = .tracksBottomSide
+            layer = .backSideTrack
           }
         case .inner1 :
-          layer = .tracksInner1Layer
+          layer = .inner1Track
         case .inner2 :
-          layer = .tracksInner2Layer
+          layer = .inner2Track
         case .inner3 :
-          layer = .tracksInner3Layer
+          layer = .inner3Track
         case .inner4 :
-          layer = .tracksInner4Layer
+          layer = .inner4Track
         }
         switch track.mEndStyle_property.propval {
         case .round :
@@ -617,32 +637,10 @@ struct ProductRepresentation : Codable {
           let t = LayeredProductSegment (p1: p1, p2: p2, width: width, layers: layer)
           self.roundSegments.append (t)
         case .square :
-          let pA = track.mConnectorP1!.location!
-          let pB = track.mConnectorP2!.location!
-          let w = NSPoint.distance (pA.cocoaPoint, pB.cocoaPoint)
-          let h = canariUnitToCocoa (track.actualTrackWidth!)
-          let angleInRadian = CanariPoint.angleInRadian (pA, pB)
-          var t = Turtle (p: pA.cocoaPoint, angleInRadian: angleInRadian)
-          t.rotate270 ()
-          t.forward (h / 2.0)
-          t.rotate270 ()
-          t.forward (w / 2.0)
-          t.rotate180 ()
-          let p0 = ProductPoint (cocoaPoint: t.location)
-          t.forward (w + h)
-          let p1 = ProductPoint (cocoaPoint: t.location)
-          t.rotate90 ()
-          t.forward (h)
-          let p2 = ProductPoint (cocoaPoint: t.location)
-          t.rotate90 ()
-          t.forward (w + h)
-          let p3 = ProductPoint (cocoaPoint: t.location)
-          let polygon = LayeredProductPolygon (
-            origin: p0,
-            points: [p1, p2, p3],
-            layers: layer
-          )
-          self.polygons.append (polygon)
+          let p1 = ProductPoint (canariPoint: track.mConnectorP1!.location!)
+          let p2 = ProductPoint (canariPoint: track.mConnectorP2!.location!)
+          let t = LayeredProductSegment (p1: p1, p2: p2, width: width, layers: layer)
+          self.squareSegments.append (t)
         }
       }
     }
@@ -658,6 +656,139 @@ struct ProductRepresentation : Codable {
       }
     }
     return result
+  }
+
+  //································································································
+
+//  func rectangles (forLayers inLayers : ProductLayerSet) -> [LayeredProductRectangle] {
+//    var result = [LayeredProductRectangle] ()
+//    for rect in self.rectangles {
+//      if !rect.layers.intersection (inLayers).isEmpty {
+//        result.append (rect)
+//      }
+//    }
+//    return result
+//  }
+
+  //································································································
+
+  func circles (forLayers inLayers : ProductLayerSet) -> [LayeredProductCircle] {
+    var result = [LayeredProductCircle] ()
+    for circle in self.circles {
+      if !circle.layers.intersection (inLayers).isEmpty {
+        result.append (circle)
+      }
+    }
+    return result
+  }
+
+  //································································································
+
+  @MainActor func segmentEntities (_ inUndoManager : UndoManager?,
+                        forLayers inLayers : ProductLayerSet) -> EBReferenceArray <SegmentEntity> {
+    var result = EBReferenceArray <SegmentEntity> ()
+    for roundedSegment in self.roundSegments {
+      if !roundedSegment.layers.intersection (inLayers).isEmpty {
+        let segment = SegmentEntity (inUndoManager, roundedSegment, endStyle: .round)
+        result.append (segment)
+      }
+    }
+    for squareSegment in self.squareSegments {
+      if !squareSegment.layers.intersection (inLayers).isEmpty {
+        let segment = SegmentEntity (inUndoManager, squareSegment, endStyle: .square)
+        result.append (segment)
+      }
+    }
+    return result
+  }
+
+  //································································································
+
+  @MainActor func rectangleEntities (_ inUndoManager : UndoManager?,
+                        forLayers inLayers : ProductLayerSet) -> EBReferenceArray <RectangleEntity> {
+    var result = EBReferenceArray <RectangleEntity> ()
+    for rect in self.rectangles {
+      if !rect.layers.intersection (inLayers).isEmpty {
+        let (origin, points) = rect.gerberPolygon ()
+        let r = RectangleEntity (inUndoManager)
+        r.p0x = origin.x.valueInCanariUnit
+        r.p0y = origin.y.valueInCanariUnit
+        r.p1x = points [0].x.valueInCanariUnit
+        r.p1y = points [0].y.valueInCanariUnit
+        r.p2x = points [1].x.valueInCanariUnit
+        r.p2y = points [1].y.valueInCanariUnit
+        r.p3x = points [2].x.valueInCanariUnit
+        r.p3y = points [2].y.valueInCanariUnit
+        result.append (r)
+      }
+    }
+    return result
+  }
+
+  //································································································
+
+  @MainActor func pads (_ inUndoManager : UndoManager?,
+                        forLayers inLayers : ProductLayerSet) -> EBReferenceArray <BoardModelPad> {
+    var padEntities = EBReferenceArray <BoardModelPad> ()
+    for circle in self.circles {
+      if !circle.layers.intersection (inLayers).isEmpty {
+        let pad = BoardModelPad (inUndoManager)
+        pad.x = circle.x.valueInCanariUnit
+        pad.y = circle.y.valueInCanariUnit
+        pad.width = circle.d.valueInCanariUnit
+        pad.height = circle.d.valueInCanariUnit
+        pad.rotation = 0
+        pad.shape = .round
+        padEntities.append (pad)
+      }
+    }
+//    for roundSegment in self.roundSegments {
+//      if !circle.layers.intersection (inLayers).isEmpty {
+//        let pad = BoardModelPad (inUndoManager)
+//        pad.x = circle.x.valueInCanariUnit
+//        pad.y = circle.y.valueInCanariUnit
+//        pad.width = circle.d.valueInCanariUnit
+//        pad.height = circle.d.valueInCanariUnit
+//        pad.rotation = 0
+//        pad.shape = .round
+//        padEntities.append (pad)
+//      }
+//    }
+    for rect in self.rectangles {
+      if !rect.layers.intersection (inLayers).isEmpty {
+        let pad = BoardModelPad (inUndoManager)
+        pad.x = rect.xCenter.valueInCanariUnit
+        pad.y = rect.yCenter.valueInCanariUnit
+        pad.width = rect.width.valueInCanariUnit
+        pad.height = rect.height.valueInCanariUnit
+        pad.rotation = Int (rect.angleDegrees * 1000.0)
+        pad.shape = .rect
+        padEntities.append (pad)
+      }
+    }
+    return padEntities
+  }
+
+  //································································································
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+fileprivate extension SegmentEntity {
+
+  //································································································
+
+  convenience init (_ inUndoManager : UndoManager?,
+                    _ inProductSegment : LayeredProductSegment,
+                    endStyle inEndStyle : TrackEndStyle) {
+    self.init (inUndoManager)
+    self.x1 = inProductSegment.p1.x.valueInCanariUnit
+    self.y1 = inProductSegment.p1.y.valueInCanariUnit
+    self.x2 = inProductSegment.p2.x.valueInCanariUnit
+    self.y2 = inProductSegment.p2.y.valueInCanariUnit
+    self.width = inProductSegment.width.valueInCanariUnit
+    self.endStyle = .round
   }
 
   //································································································
@@ -737,13 +868,13 @@ fileprivate extension PadStyle {
   func layers (_ inComponentSide : ComponentSide) -> ProductLayerSet {
     switch self {
     case .traversing :
-      return [.padsBottomSide, .padsTopSide]
+      return [.frontSideComponentPad, .backSideComponentPad, .innerComponentPad]
     case .surface :
       switch inComponentSide {
       case .back :
-        return .padsBottomSide
+        return .backSideComponentPad
       case .front :
-        return .padsTopSide
+        return .frontSideComponentPad
       }
     }
   }
@@ -761,20 +892,20 @@ fileprivate extension SlavePadStyle {
   func layers (_ inComponentSide : ComponentSide) -> ProductLayerSet {
     switch self {
     case .traversing :
-      return [.padsBottomSide, .padsTopSide]
+      return [.frontSideComponentPad, .backSideComponentPad, .innerComponentPad]
     case .componentSide :
       switch inComponentSide {
       case .back :
-        return .padsBottomSide
+        return .backSideComponentPad
       case .front :
-        return .padsTopSide
+        return .frontSideComponentPad
       }
     case .oppositeSide :
       switch inComponentSide {
       case .front :
-        return .padsBottomSide
+        return .backSideComponentPad
       case .back :
-        return .padsTopSide
+        return .frontSideComponentPad
       }
     }
   }

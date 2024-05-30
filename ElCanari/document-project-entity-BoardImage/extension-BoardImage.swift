@@ -214,6 +214,7 @@ struct BoardImageDisplayInfos {
   let backgroundBP : EBBezierPath
   let imageBP : EBBezierPath
   let productRectangles : [ProductRectangle]
+  let nonRotatedRectangles : [NSRect]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
@@ -244,6 +245,7 @@ struct BoardImageDisplayInfos {
 //--- Board image
   var filledBP = EBBezierPath ()
   var productRectangles = [ProductRectangle] ()
+  var nonRotatedRectangles = [NSRect] ()
 //  Swift.print ("rect \(inBoardImageDescriptor.blackRectangles.count)")
   for rect in inBoardImageDescriptor.blackRectangles {
     let x = CGFloat (rect.x) * pixelSize - width / 2.0
@@ -252,6 +254,9 @@ struct BoardImageDisplayInfos {
     let h = CGFloat (rect.height) * pixelSize
     let r = NSRect (x: x, y: y, width: w, height: h)
     filledBP.appendRect (r)
+    let center = tr.transform (NSPoint (x: x + w / 2.0, y: y + h / 2.0))
+    let size = NSSize (width: w, height: h)
+    nonRotatedRectangles.append (NSRect (center: center, size: size))
     let p0 = tr.transform (NSPoint (x: x,     y: y))
     let p1 = tr.transform (NSPoint (x: x + w, y: y))
     let p2 = tr.transform (NSPoint (x: x + w, y: y + h))
@@ -269,7 +274,8 @@ struct BoardImageDisplayInfos {
     rotationKnobLocation: rotationKnobLocation,
     backgroundBP: backgroundBP,
     imageBP: imageBP,
-    productRectangles: productRectangles
+    productRectangles: productRectangles,
+    nonRotatedRectangles: nonRotatedRectangles
   )
 }
 

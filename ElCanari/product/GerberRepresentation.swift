@@ -21,7 +21,7 @@ struct GerberRepresentation {
   //  Properties
   //································································································
 
-  private var mOblongs = [Self.Oblong] ()
+  private var mRoundSegments = [Self.Oblong] ()
   private var mFilledCircles = [Self.Circle] ()
   private var mFilledPolygons = [Self.Polygon] ()
 
@@ -29,12 +29,12 @@ struct GerberRepresentation {
   //  Populate
   //································································································
 
-  mutating func addOblong (p1 inP1 : ProductPoint,
-                           p2 inP2 : ProductPoint,
-                           width inWidth : ProductLength) {
+  mutating func addRoundSegment (p1 inP1 : ProductPoint,
+                                 p2 inP2 : ProductPoint,
+                                 width inWidth : ProductLength) {
     if inP1 != inP2 {
       let oblong = Oblong (p1: inP1, p2: inP2, width: inWidth)
-      self.mOblongs.append (oblong)
+      self.mRoundSegments.append (oblong)
     }
   }
 
@@ -61,7 +61,7 @@ struct GerberRepresentation {
   func gerberString (unit inUnit : GerberUnit) -> String {
   //--- Aperture inventory
     var apertureSet = Set <ProductLength> ()
-    for oblong in self.mOblongs {
+    for oblong in self.mRoundSegments {
       apertureSet.insert (oblong.width)
     }
     for circle in self.mFilledCircles {
@@ -92,7 +92,7 @@ struct GerberRepresentation {
    //--- Oblongs
       s += "G01*\n" // Linear interpolation
       var currentPoint : ProductPoint? = nil
-      for oblong in self.mOblongs {
+      for oblong in self.mRoundSegments {
         if oblong.width == aperture {
           if let p = currentPoint, p == oblong.p1 {
           }else{

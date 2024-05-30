@@ -16,16 +16,16 @@ struct LayeredProductRectangle : Codable {
   //  Properties
   //································································································
 
-  let x : ProductLength // Center
-  let y : ProductLength // Center
+  let xCenter : ProductLength // Center
+  let yCenter : ProductLength // Center
   let width : ProductLength
   let height : ProductLength
-  let angle : Double // Degrees
+  let angleDegrees : Double // Degrees
   let layers : ProductLayerSet
 
   //································································································
 
-//  init (p1 inP1 : ProductPoint,
+//  init (x inX : ProductPoint,
 //        p2 inP2 : ProductPoint,
 //        width inWidth : ProductLength,
 //        layers inLayers : ProductLayerSet) {
@@ -39,9 +39,31 @@ struct LayeredProductRectangle : Codable {
 
   //································································································
 
-//  var p1 : ProductPoint { ProductPoint (x: self.p1x, y: self.p1y) }
-//
-//  var p2 : ProductPoint { ProductPoint (x: self.p2x, y: self.p2y) }
+   var center : ProductPoint { ProductPoint (x: self.xCenter, y: self.yCenter) }
+
+  //································································································
+
+  func gerberPolygon () -> (ProductPoint, [ProductPoint]) {
+    let w = self.width.value (in: .cocoa)
+    let h = self.height.value (in: .cocoa)
+    let angleRadian = self.angleDegrees * .pi / 180.0
+    var t = Turtle (p: self.center.cocoaPoint, angleInRadian: angleRadian)
+    t.rotate270 ()
+    t.forward (h / 2.0)
+    t.rotate270 ()
+    t.forward (w / 2.0)
+    let bottomLeft = ProductPoint (cocoaPoint: t.location)
+    t.rotate180 ()
+    t.forward (w)
+    let bottomRight = ProductPoint (cocoaPoint: t.location)
+    t.rotate90 ()
+    t.forward (h)
+    let topRight = ProductPoint (cocoaPoint: t.location)
+    t.rotate90 ()
+    t.forward (w)
+    let topLeft = ProductPoint (cocoaPoint: t.location)
+    return (bottomLeft, [bottomRight, topRight, topLeft])
+  }
 
   //································································································
 

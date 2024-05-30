@@ -278,7 +278,8 @@ extension ComponentInProject {
     let center = packagePadDictionary.padsRect.center.cocoaPoint
     var af = AffineTransform ()
     af.translate (x: canariUnitToCocoa (self.mX), y: canariUnitToCocoa (self.mY))
-    af.rotate (byDegrees: CGFloat (self.mRotation) / 1000.0)
+    let angleDegrees = Double (self.mRotation) / 1000.0
+    af.rotate (byDegrees: angleDegrees)
     if self.mSide == .back {
       af.scale (x: -1.0, y: 1.0)
     }

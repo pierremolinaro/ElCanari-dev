@@ -20,7 +20,7 @@ extension AutoLayoutProjectDocument {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
     if self.rootObject.mUsesNewProductGeneration {
       let pdfData = inProductRepresentation.pdf (
-        items: .padHoles,
+        items: .hole,
         mirror: .noMirror,
         backColor: self.rootObject.mPDFBoardBackgroundColor,
         grid: self.rootObject.mPDFProductGrid_property.propval
@@ -68,61 +68,61 @@ extension AutoLayoutProjectDocument {
         items.insert (.internalBoardLimits)
       }
       if inDescriptor.drawComponentNamesTopSide {
-        items.insert (.componentNamesTopSide)
+        items.insert (.frontSideComponentName)
       }
       if inDescriptor.drawComponentNamesBottomSide {
-        items.insert (.componentNamesBottomSide)
+        items.insert (.backSideComponentName)
       }
       if inDescriptor.drawComponentValuesTopSide {
-        items.insert (.componentValuesTopSide)
+        items.insert (.frontSideComponentValue)
       }
       if inDescriptor.drawComponentValuesBottomSide {
-        items.insert (.componentValuesBottomSide)
+        items.insert (.backSideComponentValue)
       }
       if inDescriptor.drawPackageLegendTopSide {
-        items.insert (.packageLegendTopSide)
+        items.insert ([.frontSidePackageLegend, .frontSideLegendLine])
       }
       if inDescriptor.drawPackageLegendBottomSide {
-        items.insert (.packageLegendBottomSide)
+        items.insert ([.backSidePackageLegend, .backSideLegendLine])
       }
       if inDescriptor.drawPadsTopSide {
-        items.insert (.padsTopSide)
+        items.insert (.frontSideComponentPad)
       }
       if inDescriptor.drawPadsBottomSide {
-        items.insert (.padsBottomSide)
+        items.insert (.backSideComponentPad)
       }
       if inDescriptor.drawTextsLayoutTopSide {
-        items.insert (.textsLayoutTopSide)
+        items.insert (.frontSideLayoutText)
       }
       if inDescriptor.drawTextsLayoutBottomSide {
-        items.insert (.textsLayoutBottomSide)
+        items.insert (.backSideLayoutText)
       }
       if inDescriptor.drawTextsLegendBottomSide {
-        items.insert (.textsLegendBottomSide)
+        items.insert (.backSideLegendText)
       }
       if inDescriptor.drawTracksTopSide {
-        items.insert (.tracksTopSide)
+        items.insert (.frontSideTrack)
       }
       if inDescriptor.drawTracksInner1Layer {
-        items.insert (.tracksInner1Layer)
+        items.insert (.inner1Track)
       }
       if inDescriptor.drawTracksInner2Layer {
-        items.insert (.tracksInner2Layer)
+        items.insert (.inner2Track)
       }
       if inDescriptor.drawTracksInner3Layer {
-        items.insert (.tracksInner3Layer)
+        items.insert (.inner3Track)
       }
       if inDescriptor.drawTracksInner4Layer {
-        items.insert (.tracksInner4Layer)
+        items.insert (.inner4Track)
       }
       if inDescriptor.drawTracksBottomSide {
-        items.insert (.tracksBottomSide)
+        items.insert (.backSideTrack)
       }
       if inDescriptor.drawTraversingPads {
-        items.insert (.traversingPads)
+        items.insert (.innerComponentPad)
       }
       if inDescriptor.drawVias {
-        items.insert (.vias)
+        items.insert (.viaPad)
       }
       let mirror : ProductHorizontalMirror = inDescriptor.horizontalMirror
         ? .mirror (boardWidth: self.rootObject.boardBoundBox!.size.width)

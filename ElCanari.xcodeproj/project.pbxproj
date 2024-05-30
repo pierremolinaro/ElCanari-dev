@@ -1210,8 +1210,6 @@
 		CF54A04D2771047C00D978D9 /* ALB_NSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54A04C2771047C00D978D9 /* ALB_NSView.swift */; };
 		CF54A04E2771047C00D978D9 /* ALB_NSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54A04C2771047C00D978D9 /* ALB_NSView.swift */; };
 		CF54A052277104F400D978D9 /* AutoLayoutCanariBoardRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54A050277104F400D978D9 /* AutoLayoutCanariBoardRectangleView.swift */; };
-		CF54BDAD2C063718003C00FE /* LayeredProductPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54BDAC2C063718003C00FE /* LayeredProductPolygon.swift */; };
-		CF54BDAE2C063718003C00FE /* LayeredProductPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54BDAC2C063718003C00FE /* LayeredProductPolygon.swift */; };
 		CF54BDB02C06507C003C00FE /* Turtle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54BDAF2C06507C003C00FE /* Turtle.swift */; };
 		CF54BDB12C06507C003C00FE /* Turtle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54BDAF2C06507C003C00FE /* Turtle.swift */; };
 		CF54BDB32C065707003C00FE /* ProductRepresentation-gerber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54BDB22C065707003C00FE /* ProductRepresentation-gerber.swift */; };
@@ -3287,6 +3285,9 @@
 		CFED86532C08589700E6FDF8 /* LayeredProductRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED86512C08589700E6FDF8 /* LayeredProductRectangle.swift */; };
 		CFED86552C08592200E6FDF8 /* LayeredProductOctogon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED86542C08592200E6FDF8 /* LayeredProductOctogon.swift */; };
 		CFED86562C08592200E6FDF8 /* LayeredProductOctogon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED86542C08592200E6FDF8 /* LayeredProductOctogon.swift */; };
+		CFED86592C08AED600E6FDF8 /* LayeredProductComponentPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED86572C08AED600E6FDF8 /* LayeredProductComponentPad.swift */; };
+		CFED865E2C08BAC800E6FDF8 /* extension-AffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED865D2C08BAC800E6FDF8 /* extension-AffineTransform.swift */; };
+		CFED865F2C08BAC800E6FDF8 /* extension-AffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED865D2C08BAC800E6FDF8 /* extension-AffineTransform.swift */; };
 		CFEDE5AF1B4677BA00036ACF /* entity-ArtworkRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDE5AD1B4677BA00036ACF /* entity-ArtworkRoot.swift */; };
 		CFEDE5B61B4677C500036ACF /* EBDataScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDE5B11B4677C500036ACF /* EBDataScanner.swift */; };
 		CFEDE5B81B4677C500036ACF /* EBManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDE5B31B4677C500036ACF /* EBManagedObject.swift */; };
@@ -3999,7 +4000,6 @@
 		CF54A0442770C95F00D978D9 /* selectionController-AutoLayoutProjectDocument-boardCurveSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-AutoLayoutProjectDocument-boardCurveSelectionController.swift"; sourceTree = "<group>"; };
 		CF54A04C2771047C00D978D9 /* ALB_NSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALB_NSView.swift; sourceTree = "<group>"; };
 		CF54A050277104F400D978D9 /* AutoLayoutCanariBoardRectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariBoardRectangleView.swift; sourceTree = "<group>"; };
-		CF54BDAC2C063718003C00FE /* LayeredProductPolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayeredProductPolygon.swift; sourceTree = "<group>"; };
 		CF54BDAF2C06507C003C00FE /* Turtle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Turtle.swift; sourceTree = "<group>"; };
 		CF54BDB22C065707003C00FE /* ProductRepresentation-gerber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductRepresentation-gerber.swift"; sourceTree = "<group>"; };
 		CF54BDB52C066870003C00FE /* ProductRepresentation-pdf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductRepresentation-pdf.swift"; sourceTree = "<group>"; };
@@ -5138,6 +5138,8 @@
 		CFECF355294640FA0053F682 /* ProjectRoot-remove-unused-devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectRoot-remove-unused-devices.swift"; sourceTree = "<group>"; };
 		CFED86512C08589700E6FDF8 /* LayeredProductRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayeredProductRectangle.swift; sourceTree = "<group>"; };
 		CFED86542C08592200E6FDF8 /* LayeredProductOctogon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayeredProductOctogon.swift; sourceTree = "<group>"; };
+		CFED86572C08AED600E6FDF8 /* LayeredProductComponentPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayeredProductComponentPad.swift; sourceTree = "<group>"; };
+		CFED865D2C08BAC800E6FDF8 /* extension-AffineTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-AffineTransform.swift"; sourceTree = "<group>"; };
 		CFEDE5AD1B4677BA00036ACF /* entity-ArtworkRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-ArtworkRoot.swift"; sourceTree = "<group>"; };
 		CFEDE5B11B4677C500036ACF /* EBDataScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBDataScanner.swift; sourceTree = "<group>"; };
 		CFEDE5B31B4677C500036ACF /* EBManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBManagedObject.swift; sourceTree = "<group>"; };
@@ -5319,8 +5321,8 @@
 				CF09A3CF2BFF363800E2F469 /* codable-utilities.swift */,
 				CFF598C12C05D2BB004DA1E6 /* GerberRepresentation.swift */,
 				CF3275962C06182E009EB45A /* LayeredProductCircle.swift */,
+				CFED86572C08AED600E6FDF8 /* LayeredProductComponentPad.swift */,
 				CFED86542C08592200E6FDF8 /* LayeredProductOctogon.swift */,
-				CF54BDAC2C063718003C00FE /* LayeredProductPolygon.swift */,
 				CFED86512C08589700E6FDF8 /* LayeredProductRectangle.swift */,
 				CF3275932C05FDA0009EB45A /* LayeredProductSegment.swift */,
 				CF7FE12E2C075634000DE396 /* ProductHorizontalMirror.swift */,
@@ -5793,6 +5795,7 @@
 				CF4915C02AC8AE3B0028D6C5 /* extension-NSSize.swift */,
 				CF35A54521A825BC00A0E500 /* extension-String.swift */,
 				CFCA22262AC9A1C900A435DF /* StringArray.swift */,
+				CFED865D2C08BAC800E6FDF8 /* extension-AffineTransform.swift */,
 			);
 			name = "Swift Extensions";
 			path = "ElCanari/swift-extensions";
@@ -8010,6 +8013,7 @@
 				CF22F186275A73EC009C6FAC /* transient-BoardModel-boardLimitsBezierPaths.swift in Sources */,
 				CF39CCED268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-saveDocAction.swift in Sources */,
 				CF59C41F29BE36AB004CA404 /* property-SchematicSheetDescriptor.swift in Sources */,
+				CFED865E2C08BAC800E6FDF8 /* extension-AffineTransform.swift in Sources */,
 				CFB1F9662940EDDC00C1E120 /* action-AutoLayoutProjectDocument-setComponentNameFontAction.swift in Sources */,
 				CFB7D85F2683A61C007B9D3B /* transient-AutoLayoutPackageDocument-addSlavePadButtonImage.swift in Sources */,
 				CFEAAD5522317AB700F69A12 /* transient-SymbolSolidRect-filledBezierPath.swift in Sources */,
@@ -8208,7 +8212,6 @@
 				CFFEC1E0280483F000E5E8DD /* toone-SymbolText.swift in Sources */,
 				CFEB7BDB233A27EF0060A97A /* transient-NCInSchematic-selectionDisplay.swift in Sources */,
 				CF13CDB92A0667A500870156 /* transient-SheetInProject-schematicIssues.swift in Sources */,
-				CF54BDAD2C063718003C00FE /* LayeredProductPolygon.swift in Sources */,
 				CFC579452BDEEAAF005CA3F0 /* AutoLayoutViewWithBackground.swift in Sources */,
 				CF4EA9E226F6517800F01746 /* transient-ProjectRoot-inner1LayerTrackCountString.swift in Sources */,
 				CF78DE95222D65CA00E89DCA /* transient-SlavePadInDevice-frontSideFilledBezierPath.swift in Sources */,
@@ -9768,6 +9771,7 @@
 				CFEB7A96233A23270060A97A /* transient-BoardConnector-selectionDisplay.swift in Sources */,
 				CF193CB429C33A8A003FE5A5 /* action-AutoLayoutMergerDocument-explodeSelectionAction.swift in Sources */,
 				CF35592A279D9F3B000BFC9B /* configurator-AutoLayoutProjectDocument-sheetOrientationSegmentedControlConfigurator.swift in Sources */,
+				CFED865F2C08BAC800E6FDF8 /* extension-AffineTransform.swift in Sources */,
 				CFEB7C2D233A284A0060A97A /* transient-PointInSchematic-status.swift in Sources */,
 				CFA42F92229AEACF000AA8C8 /* tomany-SymbolTypeInDevice.swift in Sources */,
 				CFD8D4902C0480B0008212F9 /* CanariSize.swift in Sources */,
@@ -10226,7 +10230,6 @@
 				CF22F1A5275A73ED009C6FAC /* transient-BoardModel-frontPackagesSegments.swift in Sources */,
 				CF42D142275CF1A900B83712 /* configurator-AutoLayoutMergerDocument-boardPageSegmentedControl.swift in Sources */,
 				CFC1326026FB4EBB0027AC93 /* EBReferenceSet.swift in Sources */,
-				CF54BDAE2C063718003C00FE /* LayeredProductPolygon.swift in Sources */,
 				CF3494A929EAB36F006AB1EB /* transient-BoardQRCode-qrCodeDescriptor.swift in Sources */,
 				CFB1F95E2940EDDC00C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithRouterDocument.swift in Sources */,
 				CF3494F129EB395E006AB1EB /* enum-BoardQRCodeLayer.swift in Sources */,
@@ -10773,6 +10776,7 @@
 				CFB7D87E2683A61C007B9D3B /* action-AutoLayoutPackageDocument-loadModelImageFromPasteboardAction.swift in Sources */,
 				CFB4C0BD2794674800C509A9 /* AutoLayoutIntField.swift in Sources */,
 				CF355A3B279D9F8C000BFC9B /* AutoLayoutCanariBoardComponentPackagePopUpButton.swift in Sources */,
+				CFED86592C08AED600E6FDF8 /* LayeredProductComponentPad.swift in Sources */,
 				CFF79DE42846174000C7BEE3 /* transient-BoardObject-displayInner2RestrictRectangles.swift in Sources */,
 				CFC579082BDEDB02005CA3F0 /* ALB_NSStepper.swift in Sources */,
 				CFCCB35522B7C1D400301DF2 /* enum-BoardTextVerticalAlignment.swift in Sources */,

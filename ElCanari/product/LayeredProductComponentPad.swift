@@ -1,8 +1,8 @@
 //
-//  LayeredProductPolygon.swift
+//  LayeredProductComponentPad.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 28/05/2024.
+//  Created by Pierre Molinaro on 30/05/2024.
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -10,34 +10,57 @@ import Foundation
 
 //--------------------------------------------------------------------------------------------------
 
-struct LayeredProductPolygon : Codable {
+struct LayeredProductComponentPad : Codable {
 
   //································································································
   //  Properties
   //································································································
 
-  let x : ProductLength // First Point X
-  let y : ProductLength // First Point Y
-  let points : [ProductPoint]
+  let x : ProductLength // Center X
+  let y : ProductLength // Center Y
+  let width : ProductLength
+  let height : ProductLength
+  let angleDegrees : Double
+  let shape : PadShape
   let layers : ProductLayerSet
 
   //································································································
 
-  init (origin inOrigin : ProductPoint,
-        points inPoints : [ProductPoint],
-        layers inLayers : ProductLayerSet) {
-    self.x = inOrigin.x
-    self.y = inOrigin.y
-    self.points = inPoints
-    self.layers = inLayers
-  }
-
-  //································································································
-
-  var origin : ProductPoint { ProductPoint (x: self.x, y: self.y) }
+//  func polygon () -> (ProductPoint, [ProductPoint]) {
+//
+//
+//  }
   
+      //    switch inShape {
+//    case .round :
+//      self.appendRoundPad (
+//        center: inCenter,
+//        padSize: inPadSize,
+//        transformedBy: inAT,
+//        layers: inLayers
+//      )
+//    case .rect :
+//      self.appendRectPad (
+//        center: inCenter,
+//        padSize: inPadSize,
+//        transformedBy: inAT,
+//        layers: inLayers
+//      )
+//    case .octo :
+//      self.appendOctoPad (
+//        center: inCenter,
+//        padSize: inPadSize,
+//        transformedBy: inAT,
+//        layers: inLayers
+//      )
+//    }
+
   //································································································
 
 }
+
+//--------------------------------------------------------------------------------------------------
+
+extension PadShape : Codable { }
 
 //--------------------------------------------------------------------------------------------------

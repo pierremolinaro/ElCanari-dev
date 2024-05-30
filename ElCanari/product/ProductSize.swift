@@ -39,6 +39,19 @@ struct ProductSize : Codable {
 
   //································································································
 
+  init (cocoaSize inSize : NSSize) {
+    self.width = ProductLength (inSize.width, .cocoa)
+    self.height = ProductLength (inSize.height, .cocoa)
+  }
+
+  //································································································
+
+  var cocoaSize : NSSize {
+    NSSize (width: self.width.value (in: .cocoa), height: self.height.value (in: .cocoa))
+  }
+
+  //································································································
+
 }
 
 //--------------------------------------------------------------------------------------------------

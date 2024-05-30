@@ -45,6 +45,28 @@ struct LayeredProductOctogon : Codable {
 
   //································································································
 
+  func productPolygon () -> (ProductPoint, [ProductPoint]) {
+    let padSize = ProductSize (width: self.width, height: self.height).cocoaSize
+    let w : CGFloat = padSize.width / 2.0
+    let h : CGFloat = padSize.height / 2.0
+    let p = ProductPoint (x: self.x, y: self.y).cocoaPoint
+    let lg : CGFloat = min (w, h) / (1.0 + 1.0 / sqrt (2.0))
+    var af = AffineTransform ()
+    af.rotate (byDegrees: self.angle)
+    af.translate (x: p.x, y: p.y)
+    let p0 = ProductPoint (cocoaPoint: af.transform (NSPoint (x:  w - lg, y:  h)))
+    let p1 = ProductPoint (cocoaPoint: af.transform (NSPoint (x:  w,      y:  h - lg)))
+    let p2 = ProductPoint (cocoaPoint: af.transform (NSPoint (x:  w,      y: -h + lg)))
+    let p3 = ProductPoint (cocoaPoint: af.transform (NSPoint (x:  w - lg, y: -h)))
+    let p4 = ProductPoint (cocoaPoint: af.transform (NSPoint (x: -w + lg, y: -h)))
+    let p5 = ProductPoint (cocoaPoint: af.transform (NSPoint (x: -w,      y: -h + lg)))
+    let p6 = ProductPoint (cocoaPoint: af.transform (NSPoint (x: -w,      y:  h - lg)))
+    let p7 = ProductPoint (cocoaPoint: af.transform (NSPoint (x: -w + lg, y:  h)))
+    return (p0, [p1, p2, p3, p4, p5, p6, p7])
+  }
+
+  //································································································
+
 }
 
 //--------------------------------------------------------------------------------------------------
