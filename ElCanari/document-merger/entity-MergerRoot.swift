@@ -193,6 +193,36 @@ final class MergerRoot : EBManagedObject {
   final let mGenerateGerberAndPDF_property : EBStoredProperty_Bool
 
   //································································································
+  //   Atomic property: mPDFProductGrid
+  //································································································
+
+  final let mPDFProductGrid_property : EBStoredProperty_PDFProductGrid
+
+  //································································································
+  //   Atomic property: mUsesNewProductGeneration
+  //································································································
+
+  final let mUsesNewProductGeneration_property : EBStoredProperty_Bool
+
+  //································································································
+
+  final var mUsesNewProductGeneration : Bool {
+    get { return self.mUsesNewProductGeneration_property.propval }
+  }
+
+  //································································································
+  //   Atomic property: mGerberProductUnit
+  //································································································
+
+  final let mGerberProductUnit_property : EBStoredProperty_GerberUnit
+
+  //································································································
+
+  final var mGerberProductUnit : GerberUnit {
+    get { return self.mGerberProductUnit_property.propval }
+  }
+
+  //································································································
   //   Atomic property: mArtworkName
   //································································································
 
@@ -595,6 +625,9 @@ final class MergerRoot : EBManagedObject {
     self.mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, undoManager: inUndoManager, key: "mPDFBoardBackgroundColor")
     self.mGenerateMergerArchive_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateMergerArchive")
     self.mGenerateGerberAndPDF_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateGerberAndPDF")
+    self.mPDFProductGrid_property = EBStoredProperty_PDFProductGrid (defaultValue: PDFProductGrid.noGrid, undoManager: inUndoManager, key: "mPDFProductGrid")
+    self.mUsesNewProductGeneration_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mUsesNewProductGeneration")
+    self.mGerberProductUnit_property = EBStoredProperty_GerberUnit (defaultValue: GerberUnit.metric, undoManager: inUndoManager, key: "mGerberProductUnit")
     self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mArtworkName")
     self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mArtworkVersion")
     super.init (inUndoManager)

@@ -783,6 +783,9 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
             $run generateProductFilesAction
           }
         }
+        Checkbox (title: "Uses New Product Generation", size: .regular) {
+          $value root.mUsesNewProductGeneration
+        }
       }
       vStack {
         Label (bold: yes, size: .regular) {
@@ -810,10 +813,10 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         space
         SegmentedControlWithPages (documentView: view productMasterView, equalWidth: yes, size : .regular)
           [outlet mProductPageSegmentedControl] {
+          addPage (title: "Gerber and PDF Settings", tooltip: "", pageView: view pdfSettingsPage)
           addPage (title: "Artwork Description", tooltip: "", pageView: view artworkDescriptionPage)
           addPage (title: "Artwork Minima", tooltip: "", pageView: view artworkMinimaPage)
           addPage (title: "Artwork Data", tooltip: "", pageView: view artworkDataPage)
-          addPage (title: "PDF Settings", tooltip: "", pageView: view pdfSettingsPage)
           addPage (title: "Generation Log", tooltip: "", pageView: view generationLogPage)
         }
         space
@@ -1034,11 +1037,25 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
 
   //············································································
 
-  stackView \PDFSettingsPage vStack set (margins: 20) {
-    hStack setFirstBaselineAlignment () {
-      space
-      ColorWell { $color root.mPDFBoardBackgroundColor }
-      StaticLabel (title: "Board Background Color", bold: no, size: .regular, alignment: .center)
+  stackView \PDFSettingsPage hStack set (margins: 20) {
+    vStack {
+      StaticLabel (title: "Gerber Settings", bold: yes, size: .regular, alignment: .left)
+      vStack set (leftMargin: 12) {
+        EnumPopUpButton (titles: enum GerberUnit.popupTitles, size: .regular) {
+          $selectedIndex root.mGerberProductUnit
+        }
+      }
+      StaticLabel (title: "PDF Settings", bold: yes, size: .regular, alignment: .left)
+      vStack set (leftMargin: 12) {
+        hStack setFirstBaselineAlignment () {
+          ColorWell { $color root.mPDFBoardBackgroundColor }
+          StaticLabel (title: "Board Background Color", bold: no, size: .regular, alignment: .center)
+          space
+        }
+        EnumPopUpButton (titles: enum PDFProductGrid.popupTitles, size: .regular) {
+          $selectedIndex root.mPDFProductGrid
+        }
+      }
       space
     }
     space

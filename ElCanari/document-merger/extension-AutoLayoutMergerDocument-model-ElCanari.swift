@@ -21,6 +21,8 @@ extension AutoLayoutMergerDocument {
   }
 
   //································································································
+  // Load from JSON archive
+  //································································································
 
   func loadBoardModel_ELCanariArchive (filePath inFilePath : String, windowForSheet inWindow : NSWindow) {
   //--- Load file, as plist
@@ -41,6 +43,608 @@ extension AutoLayoutMergerDocument {
   func parseBoardModel_ELCanariArchive (fromData inData : Data,
                                         named inName : String,
                                         callBack inCallBack : @escaping (BoardModel) -> Void) {
+    if let product = ProductRepresentation (fromJSONData: inData) {
+      self.internal_check_ELCanariArchive_version (product, named: inName, callBack: inCallBack)
+    }else{
+      let alert = NSAlert ()
+      alert.messageText = "Cannot Analyse JSON contents"
+      alert.beginSheetModal (for: self.windowForSheet!)
+    }
+  }
+
+  //································································································
+
+  fileprivate func internal_check_ELCanariArchive_version (_ inProduct : ProductRepresentation,
+                                                           named inName : String,
+                                                           callBack inCallBack : @escaping (BoardModel) -> Void) {
+    let boardModel = BoardModel (self.undoManager)
+  //--- Populate board model from dictionary (accumulate error messages in errorArray variable)
+    boardModel.modelVersion = MERGER_ARCHIVE_VERSION
+    boardModel.ignoreModelVersionError = false
+    boardModel.name = inName
+    boardModel.modelWidth = inProduct.boardBox.width.valueInCanariUnit
+    boardModel.modelHeight = inProduct.boardBox.height.valueInCanariUnit
+    boardModel.modelLimitWidth = inProduct.boardLimitWidth.valueInCanariUnit
+    boardModel.artworkName = inProduct.artworkName
+//    var errorArray = [String] ()
+//    boardModel.ignoreModelVersionError = inIgnoreVersionError
+//    boardModel.modelWidthUnit = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_WIDTH_UNIT_KEY, &errorArray)
+//    boardModel.modelHeightUnit = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_HEIGHT_UNIT_KEY, &errorArray)
+//    boardModel.modelLimitWidthUnit = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_LINE_WIDTH_UNIT_KEY, &errorArray)
+//    let boardRect_mm = NSRect (
+//      x: 0.0,
+//      y: 0.0,
+//      width: canariUnitToMillimeter (boardModel.modelWidth),
+//      height: canariUnitToMillimeter (boardModel.modelHeight)
+//    )
+  //--- Internal board limits
+    do{
+      let internalBoardsLimits = inProduct.oblongs (forLayers: .boardLimits)
+      var internalBoardsLimitsEntities = EBReferenceArray <SegmentEntity> ()
+      for oblong in internalBoardsLimits {
+        let segment = SegmentEntity (self.undoManager)
+        segment.x1 = oblong.p1.x.valueInCanariUnit
+        segment.y1 = oblong.p1.y.valueInCanariUnit
+        segment.x2 = oblong.p2.x.valueInCanariUnit
+        segment.y2 = oblong.p2.y.valueInCanariUnit
+        segment.width = oblong.width.valueInCanariUnit
+        internalBoardsLimitsEntities.append (segment)
+      }
+      boardModel.internalBoardsLimits = internalBoardsLimitsEntities
+    }
+  //--- Front tracks, no silkscreen
+//    do{
+//      var frontTrackEntities = EBReferenceArray <SegmentEntity> ()
+//      let frontTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_FRONT_TRACKS_WITH_NO_SILK_SCREEN_KEY, &errorArray)
+//      for str in frontTracks {
+//        let track = SegmentEntity (self.undoManager)
+//        let ints = array6int (fromString: str, #line, &errorArray)
+//        track.x1 = ints [0]
+//        track.y1 = ints [1]
+//        track.x2 = ints [2]
+//        track.y2 = ints [3]
+//        track.width = ints [4]
+//        let endStyle = ints [5]
+//        if endStyle == 0 {
+//          track.endStyle = .round
+//        }else if endStyle == 1 {
+//          track.endStyle = .square
+//        }else{
+//          errorArray.append ("Invalid end style (line \(#line))")
+//        }
+//        frontTrackEntities.append (track)
+//      }
+//      boardModel.frontTracksNoSilkScreen = frontTrackEntities
+//    }
+//  //--- Back tracks, no silk screen
+//    do{
+//      var backTrackEntities = EBReferenceArray <SegmentEntity> ()
+//      let backTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_BACK_TRACKS_WITH_NO_SILK_SCREEN_KEY, &errorArray)
+//      for str in backTracks {
+//        let track = SegmentEntity (self.undoManager)
+//        let ints = array6int (fromString: str, #line, &errorArray)
+//        track.x1 = ints [0]
+//        track.y1 = ints [1]
+//        track.x2 = ints [2]
+//        track.y2 = ints [3]
+//        track.width = ints [4]
+//        let endStyle = ints [5]
+//        if endStyle == 0 {
+//          track.endStyle = .round
+//        }else if endStyle == 1 {
+//          track.endStyle = .square
+//        }else{
+//          errorArray.append ("Invalid end style (line \(#line))")
+//        }
+//       backTrackEntities.append (track)
+//      }
+//      boardModel.backTracksNoSilkScreen = backTrackEntities
+//    }
+//  //--- Front tracks
+//    do{
+//      var frontTrackEntities = EBReferenceArray <SegmentEntity> ()
+//      let frontTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_FRONT_KEY, &errorArray)
+//      for str in frontTracks {
+//        let track = SegmentEntity (self.undoManager)
+//        let ints = array6int (fromString: str, #line, &errorArray)
+//        track.x1 = ints [0]
+//        track.y1 = ints [1]
+//        track.x2 = ints [2]
+//        track.y2 = ints [3]
+//        track.width = ints [4]
+//        let endStyle = ints [5]
+//        if endStyle == 0 {
+//          track.endStyle = .round
+//        }else if endStyle == 1 {
+//          track.endStyle = .square
+//        }else{
+//          errorArray.append ("Invalid end style (line \(#line))")
+//        }
+//        frontTrackEntities.append (track)
+//      }
+//      boardModel.frontTracks = frontTrackEntities
+//    }
+//  //--- Back tracks
+//    do{
+//      var backTrackEntities = EBReferenceArray <SegmentEntity> ()
+//      let backTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_BACK_KEY, &errorArray)
+//      for str in backTracks {
+//        let track = SegmentEntity (self.undoManager)
+//        let ints = array6int (fromString: str, #line, &errorArray)
+//        track.x1 = ints [0]
+//        track.y1 = ints [1]
+//        track.x2 = ints [2]
+//        track.y2 = ints [3]
+//        track.width = ints [4]
+//        let endStyle = ints [5]
+//        if endStyle == 0 {
+//          track.endStyle = .round
+//        }else if endStyle == 1 {
+//          track.endStyle = .square
+//        }else{
+//          errorArray.append ("Invalid end style (line \(#line))")
+//        }
+//        backTrackEntities.append (track)
+//      }
+//      boardModel.backTracks = backTrackEntities
+//    }
+//  //--- Vias
+//    do{
+//      var viaEntities = EBReferenceArray <BoardModelVia> ()
+//      let vias = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_VIAS_KEY, &errorArray)
+//      for str in vias {
+//        let via = BoardModelVia (self.undoManager)
+//        let ints = array3int (fromString: str, #line, &errorArray)
+//        via.x = ints [0]
+//        via.y = ints [1]
+//        via.padDiameter = ints [2]
+//        viaEntities.append (via)
+//      }
+//      boardModel.vias = viaEntities
+//    }
+//  //--- Back Legend texts
+//    do{
+//      var backLegendLinesEntities = EBReferenceArray <SegmentEntity> ()
+//      let backLegendLines = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_LINES_BACK_KEY, &errorArray)
+//      for str in backLegendLines {
+//        let ints = array5int (fromString: str, #line, &errorArray)
+//        if let segment = clippedSegmentEntity (
+//          p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+//          p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+//          width_mm: canariUnitToMillimeter (ints [4]),
+//          clipRect_mm: boardRect_mm,
+//          self.undoManager
+//        ) {
+//          backLegendLinesEntities.append (segment)
+//        }
+//      }
+//      boardModel.backLegendLines = backLegendLinesEntities
+//    }
+//  //--- Front Legend texts
+//    do{
+//      var frontLegendLinesEntities = EBReferenceArray <SegmentEntity> ()
+//      let frontLegendLines = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_LINES_FRONT_KEY, &errorArray)
+//      for str in frontLegendLines {
+//        let ints = array6int (fromString: str, #line, &errorArray)
+//        if let segment = clippedSegmentEntity (
+//          p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y: canariUnitToMillimeter (ints [1])),
+//          p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y: canariUnitToMillimeter (ints [3])),
+//          width_mm: canariUnitToMillimeter (ints [4]),
+//          clipRect_mm: boardRect_mm,
+//          self.undoManager
+//        ) {
+//          frontLegendLinesEntities.append (segment)
+//        }
+//      }
+//      boardModel.frontLegendLines = frontLegendLinesEntities
+//    }
+//  //--- Front Layout texts
+//    do{
+//      var frontLayoutTextEntities = EBReferenceArray <SegmentEntity> ()
+//      let frontLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TEXTS_LAYOUT_FRONT_KEY, &errorArray)
+//      for str in frontLayoutTexts {
+//        let segment = SegmentEntity (self.undoManager)
+//        let ints = array5int (fromString: str, #line, &errorArray)
+//        segment.x1 = ints [0]
+//        segment.y1 = ints [1]
+//        segment.x2 = ints [2]
+//        segment.y2 = ints [3]
+//        segment.width = ints [4]
+//        frontLayoutTextEntities.append (segment)
+//      }
+//      boardModel.frontLayoutTexts = frontLayoutTextEntities
+//    }
+//  //--- Back Layout texts
+//    do{
+//      var backLayoutTextEntities = EBReferenceArray <SegmentEntity> ()
+//      let backLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TEXTS_LAYOUT_BACK_KEY, &errorArray)
+//      for str in backLayoutTexts {
+//        let segment = SegmentEntity (self.undoManager)
+//        let ints = array5int (fromString: str, #line, &errorArray)
+//        segment.x1 = ints [0]
+//        segment.y1 = ints [1]
+//        segment.x2 = ints [2]
+//        segment.y2 = ints [3]
+//        segment.width = ints [4]
+//        backLayoutTextEntities.append (segment)
+//      }
+//      boardModel.backLayoutTexts = backLayoutTextEntities
+//    }
+//  //--- Back Legend texts
+//    do{
+//      var backLegendTextEntities = EBReferenceArray <SegmentEntity> ()
+//      let backLegendTexts = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TEXTS_LEGEND_BACK_KEY, &errorArray)
+//      for str in backLegendTexts {
+//        let ints = array5int (fromString: str, #line, &errorArray)
+//        if let segment = clippedSegmentEntity (
+//          p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+//          p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+//          width_mm: canariUnitToMillimeter (ints [4]),
+//          clipRect_mm: boardRect_mm,
+//          self.undoManager
+//        ) {
+//          backLegendTextEntities.append (segment)
+//        }
+//      }
+//      boardModel.backLegendTexts = backLegendTextEntities
+//    }
+//  //--- Front Legend texts
+//    do{
+//      var frontLegendTextEntities = EBReferenceArray <SegmentEntity> ()
+//      let frontTexts = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TEXTS_LEGEND_FRONT_KEY, &errorArray)
+//      for str in frontTexts {
+//        let ints = array6int (fromString: str, #line, &errorArray)
+//        if let segment = clippedSegmentEntity (
+//          p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+//          p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+//          width_mm: canariUnitToMillimeter (ints [4]),
+//          clipRect_mm: boardRect_mm,
+//          self.undoManager
+//        ) {
+//          frontLegendTextEntities.append (segment)
+//        }
+//      }
+//      boardModel.frontLegendTexts = frontLegendTextEntities
+//    }
+//  //--- Legend Front Images
+//    do{
+//      let rectArray = optionalRectArray (fromDict: inBoardArchiveDict, key: ARCHIVE_IMAGES_LEGEND_FRONT_KEY, self.undoManager, &errorArray)
+//      boardModel.legendFrontImages = EBReferenceArray (rectArray)
+//    }
+//  //--- Legend Back Images
+//    do{
+//      let rectArray = optionalRectArray (fromDict: inBoardArchiveDict, key: ARCHIVE_IMAGES_LEGEND_BACK_KEY, self.undoManager, &errorArray)
+//      boardModel.legendBackImages = EBReferenceArray (rectArray)
+//    }
+//  //--- Legend Front QR Codes
+//    do{
+//      let rectArray = optionalRectArray (fromDict: inBoardArchiveDict, key: ARCHIVE_QRCODES_LEGEND_FRONT_KEY, self.undoManager, &errorArray)
+//      boardModel.legendFrontQRCodes = EBReferenceArray (rectArray)
+//    }
+//  //--- Legend Back QR Codes
+//    do{
+//      let rectArray = optionalRectArray (fromDict: inBoardArchiveDict, key: ARCHIVE_QRCODES_LEGEND_BACK_KEY, self.undoManager, &errorArray)
+//      boardModel.legendBackQRCodes = EBReferenceArray (rectArray)
+//    }
+//  //--- Back packages
+//    do{
+//      var backPackagesEntities = EBReferenceArray <SegmentEntity> ()
+//      let backPackages = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_PACKAGES_BACK_KEY, &errorArray)
+//      for str in backPackages {
+//        let ints = array5int (fromString: str, #line, &errorArray)
+//        if let segment = clippedSegmentEntity (
+//          p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+//          p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+//          width_mm: canariUnitToMillimeter (ints [4]),
+//          clipRect_mm: boardRect_mm,
+//          self.undoManager
+//        ) {
+//          backPackagesEntities.append (segment)
+//        }
+//      }
+//      boardModel.backPackages = backPackagesEntities
+//    }
+//  //--- Front packages
+//    do{
+//      var frontPackagesEntities = EBReferenceArray <SegmentEntity> ()
+//      let frontPackages = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_PACKAGES_FRONT_KEY, &errorArray)
+//      for str in frontPackages {
+//        let ints = array5int (fromString: str, #line, &errorArray)
+//        if let segment = clippedSegmentEntity (
+//          p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+//          p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+//          width_mm: canariUnitToMillimeter (ints [4]),
+//          clipRect_mm: boardRect_mm,
+//          self.undoManager
+//        ) {
+//          frontPackagesEntities.append (segment)
+//        }
+//      }
+//      boardModel.frontPackages = frontPackagesEntities
+//    }
+//  //--- Back component names
+//    do{
+//      var backComponentNamesEntities = EBReferenceArray <SegmentEntity> ()
+//      let backComponentNames = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_COMPONENT_NAMES_BACK_KEY, &errorArray)
+//      for str in backComponentNames {
+//        let ints = array5int (fromString: str, #line, &errorArray)
+//        if let segment = clippedSegmentEntity (
+//          p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+//          p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+//          width_mm: canariUnitToMillimeter (ints [4]),
+//          clipRect_mm: boardRect_mm,
+//          self.undoManager
+//        ) {
+//          backComponentNamesEntities.append (segment)
+//        }
+//      }
+//      boardModel.backComponentNames = backComponentNamesEntities
+//    }
+//  //--- Front component names
+//    do{
+//      var frontComponentNamesEntities = EBReferenceArray <SegmentEntity> ()
+//      let frontComponentNames = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_COMPONENT_NAMES_FRONT_KEY, &errorArray)
+//      for str in frontComponentNames {
+//        let ints = array5int (fromString: str, #line, &errorArray)
+//        if let segment = clippedSegmentEntity (
+//          p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+//          p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+//          width_mm: canariUnitToMillimeter (ints [4]),
+//          clipRect_mm: boardRect_mm,
+//          self.undoManager
+//        ) {
+//          frontComponentNamesEntities.append (segment)
+//        }
+//      }
+//      boardModel.frontComponentNames = frontComponentNamesEntities
+//    }
+//  //--- Front component values
+//    do{
+//      var frontComponentValuesEntities = EBReferenceArray <SegmentEntity> ()
+//      let frontComponentValues = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_COMPONENT_VALUES_FRONT_KEY, &errorArray)
+//      for str in frontComponentValues {
+//        let ints = array5int (fromString: str, #line, &errorArray)
+//        if let segment = clippedSegmentEntity (
+//          p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y: canariUnitToMillimeter (ints [1])),
+//          p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y: canariUnitToMillimeter (ints [3])),
+//          width_mm: canariUnitToMillimeter (ints [4]),
+//          clipRect_mm: boardRect_mm,
+//          self.undoManager
+//        ) {
+//          frontComponentValuesEntities.append (segment)
+//        }
+//      }
+//      boardModel.frontComponentValues = frontComponentValuesEntities
+//    }
+//  //--- Back component values
+//    do{
+//      var backComponentValuesEntities = EBReferenceArray <SegmentEntity> ()
+//      let backComponentValues = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_COMPONENT_VALUES_BACK_KEY, &errorArray)
+//      for str in backComponentValues {
+//        let ints = array5int (fromString: str, #line, &errorArray)
+//        if let segment = clippedSegmentEntity (
+//          p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y: canariUnitToMillimeter (ints [1])),
+//          p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y: canariUnitToMillimeter (ints [3])),
+//          width_mm: canariUnitToMillimeter (ints [4]),
+//          clipRect_mm: boardRect_mm,
+//          self.undoManager
+//        ) {
+//          backComponentValuesEntities.append (segment)
+//        }
+//      }
+//      boardModel.backComponentValues = backComponentValuesEntities
+//    }
+//  //--- Drills
+//    do{
+//      var drillEntities = EBReferenceArray <SegmentEntity> ()
+//      let drills = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_DRILLS_KEY, &errorArray)
+//      for str in drills {
+//        let segment = SegmentEntity (self.undoManager)
+//        let ints = array6int (fromString: str, #line, &errorArray)
+//        segment.x1 = ints [0]
+//        segment.y1 = ints [1]
+//        segment.x2 = ints [2]
+//        segment.y2 = ints [3]
+//        segment.width = ints [4]
+//        drillEntities.append (segment)
+//      }
+//      boardModel.drills = drillEntities
+//    }
+//  //--- Front pads
+//    do{
+//      var backPadEntities = EBReferenceArray <BoardModelPad> ()
+//      let backPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: ARCHIVE_PADS_BACK_KEY, &errorArray)
+//      for padDict in backPadDictArray {
+//        let pad = BoardModelPad (self.undoManager)
+//        pad.x = int (fromDict: padDict, key: "X", &errorArray)
+//        pad.y = int (fromDict: padDict, key: "Y", &errorArray)
+//        pad.width = int (fromDict: padDict, key: "WIDTH", &errorArray)
+//        pad.height = int (fromDict: padDict, key: "HEIGHT", &errorArray)
+//        pad.rotation = int (fromDict: padDict, key: "ROTATION", &errorArray)
+//        let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
+//        if shapeString == "RECT" {
+//          pad.shape = .rect
+//        }else if shapeString == "ROUND" {
+//          pad.shape = .round
+//        }else if shapeString == "OCTO" {
+//          pad.shape = .octo
+//        }else{
+//          errorArray.append ("Invalid pad shape \"\(shapeString)\".")
+//        }
+//        backPadEntities.append (pad)
+//      }
+//      boardModel.backPads = backPadEntities
+//    }
+//  //--- Front pads
+//    do{
+//      var frontPadEntities = EBReferenceArray <BoardModelPad> ()
+//      let frontPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: ARCHIVE_PADS_FRONT_KEY, &errorArray)
+//      for padDict in frontPadDictArray {
+//        let pad = BoardModelPad (self.undoManager)
+//        pad.x = int (fromDict: padDict, key: "X", &errorArray)
+//        pad.y = int (fromDict: padDict, key: "Y", &errorArray)
+//        pad.width = int (fromDict: padDict, key: "WIDTH", &errorArray)
+//        pad.height = int (fromDict: padDict, key: "HEIGHT", &errorArray)
+//        pad.rotation = int (fromDict: padDict, key: "ROTATION", &errorArray)
+//        let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
+//        if shapeString == "RECT" {
+//          pad.shape = .rect
+//        }else if shapeString == "ROUND" {
+//          pad.shape = .round
+//        }else if shapeString == "OCTO" {
+//          pad.shape = .octo
+//        }else{
+//          errorArray.append ("Invalid pad shape \"\(shapeString)\".")
+//        }
+//        frontPadEntities.append (pad)
+//      }
+//      boardModel.frontPads = frontPadEntities
+//    }
+//  //--- Import internal layers ?
+//    let hasInner1 = inBoardArchiveDict [ARCHIVE_TRACKS_INNER1_KEY] != nil
+//    let hasInner2 = inBoardArchiveDict [ARCHIVE_TRACKS_INNER2_KEY] != nil
+//    let hasInner3 = inBoardArchiveDict [ARCHIVE_TRACKS_INNER3_KEY] != nil
+//    let hasInner4 = inBoardArchiveDict [ARCHIVE_TRACKS_INNER4_KEY] != nil
+//    let hasTraversingPads = inBoardArchiveDict [ARCHIVE_PADS_TRAVERSING_KEY] != nil
+//    if !hasInner1 && !hasInner2 && !hasInner3 && !hasInner4 && !hasTraversingPads {
+//      boardModel.layerConfiguration = .twoLayers
+//    }else if hasInner1 && hasInner2 && !hasInner3 && !hasInner4 && hasTraversingPads {
+//      boardModel.layerConfiguration = .fourLayers
+//    }else if hasInner1 && hasInner2 && hasInner3 && hasInner4 && hasTraversingPads {
+//      boardModel.layerConfiguration = .sixLayers
+//    }else{
+//      errorArray.append ("inner layers configuration (\(hasInner1), \(hasInner2), \(hasInner3), \(hasInner4), \(hasTraversingPads)).")
+//    }
+//  //--- Import traversing pads
+//    if hasTraversingPads {
+//      var traversingPadEntities = EBReferenceArray <BoardModelPad> ()
+//      let traversingPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: ARCHIVE_PADS_TRAVERSING_KEY, &errorArray)
+//      for padDict in traversingPadDictArray {
+//        let pad = BoardModelPad (self.undoManager)
+//        pad.x = int (fromDict: padDict, key: "X", &errorArray)
+//        pad.y = int (fromDict: padDict, key: "Y", &errorArray)
+//        pad.width = int (fromDict: padDict, key: "WIDTH", &errorArray)
+//        pad.height = int (fromDict: padDict, key: "HEIGHT", &errorArray)
+//        pad.rotation = int (fromDict: padDict, key: "ROTATION", &errorArray)
+//        let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
+//        if shapeString == "RECT" {
+//          pad.shape = .rect
+//        }else if shapeString == "ROUND" {
+//          pad.shape = .round
+//        }else if shapeString == "OCTO" {
+//          pad.shape = .octo
+//        }else{
+//          errorArray.append ("Invalid pad shape \"\(shapeString)\".")
+//        }
+//        traversingPadEntities.append (pad)
+//      }
+//      boardModel.traversingPads = traversingPadEntities
+//    }
+//  //--- Inner 1 tracks
+//    if hasInner1 {
+//      var trackEntities = EBReferenceArray <SegmentEntity> ()
+//      let tracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_INNER1_KEY, &errorArray)
+//      for str in tracks {
+//        let track = SegmentEntity (self.undoManager)
+//        let ints = array5int (fromString: str, #line, &errorArray)
+//        track.x1 = ints [0]
+//        track.y1 = ints [1]
+//        track.x2 = ints [2]
+//        track.y2 = ints [3]
+//        track.width = ints [4]
+//        trackEntities.append (track)
+//      }
+//      boardModel.inner1Tracks = trackEntities
+//    }
+//  //--- Inner 2 tracks
+//    if hasInner2 {
+//      var trackEntities = EBReferenceArray <SegmentEntity> ()
+//      let tracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_INNER2_KEY, &errorArray)
+//      for str in tracks {
+//        let track = SegmentEntity (self.undoManager)
+//        let ints = array5int (fromString: str, #line, &errorArray)
+//        track.x1 = ints [0]
+//        track.y1 = ints [1]
+//        track.x2 = ints [2]
+//        track.y2 = ints [3]
+//        track.width = ints [4]
+//        trackEntities.append (track)
+//      }
+//      boardModel.inner2Tracks = trackEntities
+//    }
+//  //--- Inner 3 tracks
+//    if hasInner3 {
+//      var trackEntities = EBReferenceArray <SegmentEntity> ()
+//      let tracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_INNER3_KEY, &errorArray)
+//      for str in tracks {
+//        let track = SegmentEntity (self.undoManager)
+//        let ints = array5int (fromString: str, #line, &errorArray)
+//        track.x1 = ints [0]
+//        track.y1 = ints [1]
+//        track.x2 = ints [2]
+//        track.y2 = ints [3]
+//        track.width = ints [4]
+//        trackEntities.append (track)
+//      }
+//      boardModel.inner3Tracks = trackEntities
+//    }
+//  //--- Inner 4 tracks
+//    if hasInner4 {
+//      var trackEntities = EBReferenceArray <SegmentEntity> ()
+//      let tracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_TRACKS_INNER4_KEY, &errorArray)
+//      for str in tracks {
+//        let track = SegmentEntity (self.undoManager)
+//        let ints = array5int (fromString: str, #line, &errorArray)
+//        track.x1 = ints [0]
+//        track.y1 = ints [1]
+//        track.x2 = ints [2]
+//        track.y2 = ints [3]
+//        track.width = ints [4]
+//        trackEntities.append (track)
+//      }
+//      boardModel.inner4Tracks = trackEntities
+//    }
+//  //--- Dictionary import ok ?
+//    if !errorArray.isEmpty { // Error
+//      var s = ""
+//      for anError in errorArray {
+//        if s != "" {
+//          s += "\n"
+//        }
+//        s += anError
+//      }
+//      let alert = NSAlert ()
+//      alert.messageText = "Cannot Analyze file contents"
+//      alert.informativeText = s
+//      alert.beginSheetModal (for: self.windowForSheet!)
+//    }
+  //--- Return
+    inCallBack (boardModel)
+  }
+
+  //································································································
+  // Load from legacy property list archive
+  //································································································
+
+  func loadBoardModelLegacy_ELCanariArchive (filePath inFilePath : String, windowForSheet inWindow : NSWindow) {
+  //--- Load file, as plist
+    let optionalFileData : Data? = FileManager ().contents (atPath: inFilePath)
+    if let fileData = optionalFileData {
+      let s = inFilePath.lastPathComponent.deletingPathExtension
+      self.parseBoardModelLegacy_ELCanariArchive (fromData: fileData, named : s, callBack: { self.registerBoardModelCallBack ($0) } )
+    }else{ // Cannot read file
+      let alert = NSAlert ()
+      alert.messageText = "Cannot read file"
+      alert.informativeText = "The file \(inFilePath) cannot be read."
+      alert.beginSheetModal (for: inWindow)
+    }
+  }
+
+  //································································································
+
+  func parseBoardModelLegacy_ELCanariArchive (fromData inData : Data,
+                                        named inName : String,
+                                        callBack inCallBack : @escaping (BoardModel) -> Void) {
     do{
       let optionalBoardArchiveDictionary = try PropertyListSerialization.propertyList (
         from: inData,
@@ -48,7 +652,7 @@ extension AutoLayoutMergerDocument {
         format: nil
       )
       if let boardArchiveDict = optionalBoardArchiveDictionary as? [String : Any] {
-        self.internal_check_ELCanariArchive_version (boardArchiveDict, named: inName, callBack: inCallBack)
+        self.internalCheckLegacy_ELCanariArchive_version (boardArchiveDict, named: inName, callBack: inCallBack)
       }
     }catch let error {
       let alert = NSAlert ()
@@ -60,7 +664,7 @@ extension AutoLayoutMergerDocument {
 
   //································································································
 
-  fileprivate func internal_check_ELCanariArchive_version (_ inBoardArchiveDict : [String : Any],
+  fileprivate func internalCheckLegacy_ELCanariArchive_version (_ inBoardArchiveDict : [String : Any],
                                                            named inName : String,
                                                            callBack inCallBack : @escaping (BoardModel) -> Void) {
     let version : Int = (inBoardArchiveDict [ARCHIVE_VERSION_KEY] as? Int) ?? 0
@@ -72,17 +676,17 @@ extension AutoLayoutMergerDocument {
       alert.informativeText = "Merger requires archive version #\(MERGER_ARCHIVE_VERSION) ; update your archive by generating the production files again."
       alert.beginSheetModal (for: self.windowForSheet!) { (inResponse : NSApplication.ModalResponse) in
         if inResponse == .alertFirstButtonReturn {
-          self.internal_parseBoardModel_ELCanariArchive (inBoardArchiveDict, version: version, ignoreVersionError: true, named: inName, callBack: inCallBack)
+          self.internal_parseBoardModelLegacy_ELCanariArchive (inBoardArchiveDict, version: version, ignoreVersionError: true, named: inName, callBack: inCallBack)
         }
       }
     }else{
-      self.internal_parseBoardModel_ELCanariArchive (inBoardArchiveDict, version: version, ignoreVersionError: false, named: inName, callBack: inCallBack)
+      self.internal_parseBoardModelLegacy_ELCanariArchive (inBoardArchiveDict, version: version, ignoreVersionError: false, named: inName, callBack: inCallBack)
     }
   }
 
   //································································································
 
-  fileprivate func internal_parseBoardModel_ELCanariArchive (_ inBoardArchiveDict : [String : Any],
+  fileprivate func internal_parseBoardModelLegacy_ELCanariArchive (_ inBoardArchiveDict : [String : Any],
                                                              version inVersion : Int,
                                                              ignoreVersionError inIgnoreVersionError : Bool,
                                                              named inName : String,
@@ -106,7 +710,6 @@ extension AutoLayoutMergerDocument {
       width: canariUnitToMillimeter (boardModel.modelWidth),
       height: canariUnitToMillimeter (boardModel.modelHeight)
     )
-//    Swift.print ("\(canariUnitToMillimeter (boardModel.modelWidth)) \(canariUnitToMillimeter (boardModel.modelHeight))")
   //--- Internal boards limits
     do{
       var internalBoardsLimitsEntities = EBReferenceArray <SegmentEntity> ()
@@ -653,27 +1256,11 @@ extension AutoLayoutMergerDocument {
     if errorArray.isEmpty {
       inCallBack (boardModel)
     }
-//    return errorArray.isEmpty ? boardModel : nil
   }
 
   //································································································
 
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————
-
-//fileprivate func double (fromDict inDictionary : [String : Any], key inKey : String, _ errorArray : inout [String]) -> Double {
-//  let object : Any? = inDictionary [inKey]
-//  var result = 0.0 // Default result
-//  if object == nil {
-//    errorArray.append ("No \"\(inKey)\" key.")
-//  }else if let number = object as? NSNumber {
-//    result = number.doubleValue
-//  }else{
-//    errorArray.append ("The \"\(inKey)\" key value is not a double.")
-//  }
-//  return result
-//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -691,21 +1278,6 @@ fileprivate func int (fromDict inDictionary : [String : Any],
   }
   return result
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————
-
-//fileprivate func intOrZero (fromDict inDictionary : [String : Any],
-//                            key inKey : String,
-//                            _ errorArray : inout [String]) -> Int {
-//  let object : Any? = inDictionary [inKey]
-//  var result = 0 // Default result
-//  if let number = object as? NSNumber {
-//    result = number.intValue
-//  }else if object != nil {
-//    errorArray.append ("The \"\(inKey)\" key value is not an integer.")
-//  }
-//  return result
-//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -800,32 +1372,6 @@ fileprivate func array3int (fromString inString : String,
 //---
   return result
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————
-
-//fileprivate func array4int (fromString inString : String,
-//                             _ errorArray : inout [String]) -> [Int] {
-//  let strArray : [String] = inString.components(separatedBy: " ")
-//  var result = [Int] () // Default result
-//  if strArray.count != 4 {
-//    errorArray.append ("The string is not a four integer array.")
-//  }else{
-//    for s in strArray {
-//      let possibleInt : Int? = Int (s)
-//      if let n = possibleInt {
-//        result.append (n)
-//      }else{
-//        errorArray.append ("The string is not a four integer array.")
-//      }
-//    }
-//  }
-////--- If an error occurs, add fake int to get a four element vector
-//  while result.count < 4 {
-//    result.append (0)
-//  }
-////---
-//  return result
-//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 

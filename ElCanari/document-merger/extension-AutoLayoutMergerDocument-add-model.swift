@@ -28,7 +28,11 @@ extension AutoLayoutMergerDocument {
       openPanel.canChooseFiles = true
       openPanel.canChooseDirectories = false
       openPanel.allowsMultipleSelection = false
-      openPanel.allowedFileTypes = [EL_CANARI_LEGACY_MERGER_ARCHIVE, KICAD_PCB]
+      openPanel.allowedFileTypes = [
+        EL_CANARI_LEGACY_MERGER_ARCHIVE,
+        EL_CANARI_MERGER_ARCHIVE,
+        KICAD_PCB
+      ]
     //--- MANDATORY! This object is set to NSOpenPanel delegate that DOES NOT retain it
       gPanel = OpenPanelDelegateForFilteringBoardModels (boardModelNames)
       openPanel.delegate = gPanel
@@ -38,6 +42,8 @@ extension AutoLayoutMergerDocument {
           if let url = openPanel.url, url.isFileURL {
             let filePath = url.path
             if filePath.pathExtension == EL_CANARI_LEGACY_MERGER_ARCHIVE {
+              self.loadBoardModelLegacy_ELCanariArchive (filePath : filePath, windowForSheet: window)
+            }else if filePath.pathExtension == EL_CANARI_MERGER_ARCHIVE {
               self.loadBoardModel_ELCanariArchive (filePath : filePath, windowForSheet: window)
             }else if filePath.pathExtension == KICAD_PCB {
               self.loadBoardModel_kicad (filePath : filePath, windowForSheet: window)

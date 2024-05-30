@@ -21,6 +21,7 @@ struct ProductRepresentation : Codable {
   private(set) var oblongs = [LayeredProductOblong] ()
   private(set) var circles = [LayeredProductCircle] ()
   private(set) var polygons = [LayeredProductPolygon] ()
+  private(set) var artworkName = ""
 
   //································································································
   //  Init
@@ -29,6 +30,7 @@ struct ProductRepresentation : Codable {
   @MainActor init (projectRoot inProjectRoot : ProjectRoot) {
     self.boardBox = ProductRect (canariRect: inProjectRoot.boardBoundBox!)
     self.boardLimitWidth = ProductLength (valueInCanariUnit: inProjectRoot.mBoardLimitsWidth)
+    self.artworkName = inProjectRoot.mArtworkName
   //--- Board limit path
     do{
       var points = inProjectRoot.buildBoardLimitPath ()
@@ -73,9 +75,13 @@ struct ProductRepresentation : Codable {
   //  Encoding to JSON
   //································································································
 
-  func jsonData () throws -> Data {
+  func jsonData (prettyPrinted inPrettyPrinted : Bool) throws -> Data {
     let encoder = JSONEncoder ()
-    encoder.outputFormatting = [.sortedKeys, .prettyPrinted]
+    if inPrettyPrinted {
+      encoder.outputFormatting = [.sortedKeys, .prettyPrinted]
+    }else{
+      encoder.outputFormatting = .sortedKeys
+    }
     let data = try encoder.encode (self)
     return data
   }
@@ -634,6 +640,18 @@ struct ProductRepresentation : Codable {
         }
       }
     }
+  }
+
+  //································································································
+
+  func oblongs (forLayers inLayers : ProductLayerSet) -> [LayeredProductOblong] {
+    var result = [LayeredProductOblong] ()
+    for oblong in self.oblongs {
+      if !oblong.layers.intersection (inLayers).isEmpty {
+        result.append (oblong)
+      }
+    }
+    return result
   }
 
   //································································································

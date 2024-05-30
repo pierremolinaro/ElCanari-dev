@@ -118,7 +118,7 @@ extension AutoLayoutProjectDocument {
       if self.rootObject.mUsesNewProductGeneration {
         let boardArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_MERGER_ARCHIVE
         self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(boardArchiveFilePath.lastPathComponent)…")
-        let jsonData : Data = try productRepresentation.jsonData ()
+        let jsonData : Data = try productRepresentation.jsonData (prettyPrinted: true)
         try jsonData.write (to: URL (fileURLWithPath: boardArchiveFilePath))
         self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
       }else{
