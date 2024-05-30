@@ -3351,6 +3351,7 @@
 		CFF79DF62846177400C7BEE3 /* transient-BoardObject-displayBackRestrictRectangles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF79DEE2846177400C7BEE3 /* transient-BoardObject-displayBackRestrictRectangles.swift */; };
 		CFF79DF928461CA900C7BEE3 /* transient-BoardObject-packageDrawingWidthMultpliedByTenForBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF79DF828461CA900C7BEE3 /* transient-BoardObject-packageDrawingWidthMultpliedByTenForBoard.swift */; };
 		CFF79DFA28461CA900C7BEE3 /* transient-BoardObject-packageDrawingWidthMultpliedByTenForBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF79DF828461CA900C7BEE3 /* transient-BoardObject-packageDrawingWidthMultpliedByTenForBoard.swift */; };
+		CFF7E7EE2C08F2A2000E671B /* LayeredProductComponentPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED86572C08AED600E6FDF8 /* LayeredProductComponentPad.swift */; };
 		CFF83D4521ADAA310084BDA9 /* utilities-symbol-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF83D4121ADAA300084BDA9 /* utilities-symbol-issues.swift */; };
 		CFF83D4621ADAA310084BDA9 /* utilities-symbol-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF83D4121ADAA300084BDA9 /* utilities-symbol-issues.swift */; };
 		CFF85809295C8E5600444543 /* EBDocumentStorablePropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF85808295C8E5600444543 /* EBDocumentStorablePropertyProtocol.swift */; };
@@ -9255,6 +9256,7 @@
 				CFA42F9B229AEACF000AA8C8 /* tomany-SlavePadInDevice.swift in Sources */,
 				CF5B06FA213EC3C9005D6B37 /* entity-SegmentEntity.swift in Sources */,
 				CFEB7B9B233A26D00060A97A /* transient-DevicePadAssignmentInProject-pinPadAssignment.swift in Sources */,
+				CFF7E7EE2C08F2A2000E671B /* LayeredProductComponentPad.swift in Sources */,
 				CF86406F29D04EA00004A295 /* transient-ProjectRoot-hasSchematicIssue.swift in Sources */,
 				CFEAAD5E22317DBB00F69A12 /* transient-SymbolBezierCurve-strokeBezierPath.swift in Sources */,
 				CFB82C18276B8C5800BAD56E /* AutoLayoutTableView-column.swift in Sources */,

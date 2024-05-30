@@ -26,8 +26,8 @@ struct ProductRepresentation : Codable {
   private(set) var squareSegments = [LayeredProductSegment] ()
   private(set) var circles = [LayeredProductCircle] ()
   private(set) var rectangles = [LayeredProductRectangle] ()
-  private(set) var roundRectangles = [LayeredProductRectangle] ()
   private(set) var octogons = [LayeredProductOctogon] ()
+  private(set) var componentPads = [LayeredProductComponentPad] ()
   private(set) var artworkName = ""
 
   //································································································
@@ -368,125 +368,20 @@ struct ProductRepresentation : Codable {
                                               shape inShape : PadShape,
                                               transformedBy inAT : AffineTransform,
                                               layers inLayers : ProductLayerSet) {
-    switch inShape {
-    case .round :
-      self.appendRoundPad (
-        center: inCenter,
-        padSize: inPadSize,
-        transformedBy: inAT,
-        layers: inLayers
-      )
-    case .rect :
-      self.appendRectPad (
-        center: inCenter,
-        padSize: inPadSize,
-        transformedBy: inAT,
-        layers: inLayers
-      )
-    case .octo :
-      self.appendOctoPad (
-        center: inCenter,
-        padSize: inPadSize,
-        transformedBy: inAT,
-        layers: inLayers
-      )
-    }
-  }
-
-  //································································································
-
-  @MainActor private mutating func appendRoundPad (center inCenter : CanariPoint,
-                                                   padSize inPadSize : CanariSize,
-                                                   transformedBy inAT : AffineTransform,
-                                                   layers inLayers : ProductLayerSet) {
-    let center = ProductPoint (cocoaPoint: inAT.transform (inCenter.cocoaPoint))
-    if inPadSize.width == inPadSize.height { // circular
-      let padDiameter = ProductLength (valueInCanariUnit: inPadSize.width)
-      let pad = LayeredProductCircle (
-        center: center,
-        diameter: padDiameter,
-        layers: inLayers
-      )
-      self.circles.append (pad)
-    }else{ // Oblong
-      let r = LayeredProductRectangle (
-        xCenter: center.x,
-        yCenter: center.y,
-        width: ProductLength (valueInCanariUnit: inPadSize.width),
-        height: ProductLength (valueInCanariUnit: inPadSize.height),
-        angleDegrees: inAT.angleInDegrees,
-        layers: inLayers
-      )
-      self.roundRectangles.append (r)
-    }
-  }
-
-  //································································································
-
-  @MainActor private mutating func appendRectPad (center inCenter : CanariPoint,
-                                                  padSize inPadSize : CanariSize,
-                                                  transformedBy inAT : AffineTransform,
-                                                  layers inLayers : ProductLayerSet) {
-    let center = ProductPoint (cocoaPoint: inAT.transform (inCenter.cocoaPoint))
-    let size = ProductSize (canariSize: inPadSize)
-    let p1 = inAT.transform (NSPoint ())
-    let p2 = inAT.transform (NSPoint (x: 1, y: 0))
-    let angle = NSPoint.angleInDegrees (p1, p2)
-    let r = LayeredProductRectangle (
+    let center = ProductPoint (canariPoint: inCenter)
+    let p = LayeredProductComponentPad (
       xCenter: center.x,
       yCenter: center.y,
-      width: size.width,
-      height: size.height,
-      angleDegrees: angle,
+      width: ProductLength (valueInCanariUnit: inPadSize.width),
+      height: ProductLength (valueInCanariUnit: inPadSize.height),
+      af: inAT,
+      shape: inShape,
       layers: inLayers
     )
-    self.rectangles.append (r)
+    self.componentPads.append (p)
   }
 
-  //································································································
-
-  @MainActor private mutating func appendOctoPad (center inCenter : CanariPoint,
-                                                  padSize inPadSize : CanariSize,
-                                                  transformedBy inAT : AffineTransform,
-                                                  layers inLayers : ProductLayerSet) {
-    let center = ProductPoint (cocoaPoint: inAT.transform (inCenter.cocoaPoint))
-    let size = ProductSize (canariSize: inPadSize)
-    let p1 = inAT.transform (NSPoint ())
-    let p2 = inAT.transform (NSPoint (x: 1, y: 0))
-    let angle = NSPoint.angleInDegrees (p1, p2)
-    let r = LayeredProductOctogon (
-      x: center.x,
-      y: center.y,
-      width: size.width,
-      height: size.height,
-      angle: angle,
-      layers: inLayers
-    )
-    self.octogons.append (r)
-
-
-//    let padSize = inPadSize.cocoaSize
-//    let w : CGFloat = padSize.width / 2.0
-//    let h : CGFloat = padSize.height / 2.0
-//    let p = inCenter.cocoaPoint
-//    let lg : CGFloat = min (w, h) / (1.0 + 1.0 / sqrt (2.0))
-//    let p0 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w - lg, y: p.y + h)))
-//    let p1 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w,      y: p.y + h - lg)))
-//    let p2 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w,      y: p.y - h + lg)))
-//    let p3 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x + w - lg, y: p.y - h)))
-//    let p4 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w + lg, y: p.y - h)))
-//    let p5 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w,      y: p.y - h + lg)))
-//    let p6 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w,      y: p.y + h - lg)))
-//    let p7 = ProductPoint (cocoaPoint: inAT.transform (NSPoint (x: p.x - w + lg, y: p.y + h)))
-//    let polygon = LayeredProductPolygon (
-//      origin: p0,
-//      points: [p1, p2, p3, p4, p5, p6, p7],
-//      layers: inLayers
-//    )
-//    self.polygons.append (polygon)
-  }
-
-  //································································································
+   //································································································
 
   @MainActor private mutating func appendPadHole (center inCenter : CanariPoint,
                                                   holeSize inHoleSize : CanariSize,

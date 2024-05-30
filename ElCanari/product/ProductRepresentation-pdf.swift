@@ -43,39 +43,14 @@ extension ProductRepresentation {
         filledBezierPathes.append (bp)
       }
     }
-  //--- Add round rectangles
-    for rect in self.roundRectangles {
-      if !inItemSet.intersection (rect.layers).isEmpty {
-        let center = inMirror.mirrored (rect.center).cocoaPoint
-        let width = rect.width.value (in: .cocoa)
-        let height = rect.height.value (in: .cocoa)
-        if width > height {
-          var af = AffineTransform ()
-          af.translate (x: -center.x, y: -center.y)
-          af.rotate (byDegrees: rect.angleDegrees)
-          let p1 = af.transform (NSPoint (x: -(width - height) / 2.0, y: 0.0))
-          let p2 = af.transform (NSPoint (x:  (width - height) / 2.0, y: 0.0))
-          let bp = NSBezierPath ()
-          bp.move (to: p1)
-          bp.line (to: p2)
-          bp.lineWidth = height
-          bp.lineCapStyle = .round
+  //--- Add pads
+    for pad in self.componentPads {
+      if !inItemSet.intersection (pad.layers).isEmpty {
+        let (strokeBP, filledBp) = pad.bezierPathes ()
+        if let bp = strokeBP {
           strokeBezierPathes.append (bp)
-        }else if width < height {
-          var af = AffineTransform ()
-          af.translate (x: -center.x, y: -center.y)
-          af.rotate (byDegrees: rect.angleDegrees)
-          let p1 = af.transform (NSPoint (x: 0.0, y: -(height - width) / 2.0))
-          let p2 = af.transform (NSPoint (x: 0.0, y:  (height - width) / 2.0))
-          let bp = NSBezierPath ()
-          bp.move (to: p1)
-          bp.line (to: p2)
-          bp.lineWidth = width
-          bp.lineCapStyle = .round
-          strokeBezierPathes.append (bp)
-        }else{
-          let r = NSRect (center: center, size: NSSize (width: width, height: height))
-          let bp = NSBezierPath (ovalIn: r)
+        }
+        if let bp = filledBp {
           filledBezierPathes.append (bp)
         }
       }

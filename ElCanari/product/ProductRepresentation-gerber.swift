@@ -49,6 +49,12 @@ extension ProductRepresentation {
         )
       }
     }
+  //--- Add pads
+    for pad in self.componentPads {
+      if !inItemSet.intersection (pad.layers).isEmpty {
+        pad.addGerberFor (&gerber, mirror: inMirror)
+      }
+    }
   //--- Add octogons
     for octogon in self.octogons {
       if !inItemSet.intersection (octogon.layers).isEmpty {
@@ -57,18 +63,6 @@ extension ProductRepresentation {
           origin: inMirror.mirrored (origin),
           points: inMirror.mirrored (points)
         )
-      }
-    }
-  //--- Add round rectangles
-    for rect in self.roundRectangles {
-      if !inItemSet.intersection (rect.layers).isEmpty {
-        let center = inMirror.mirrored (rect.center).cocoaPoint
-        let width = rect.width.value (in: .cocoa)
-        let height = rect.height.value (in: .cocoa)
-        let r = NSRect (center: center, size: NSSize (width: width, height: height))
-        let radius = min (width, height) / 2.0
-        let bp = NSBezierPath (roundedRect: r, xRadius: radius, yRadius: radius)
-//        filledBezierPathes.append (bp)
       }
     }
   //--- Add circles
