@@ -3283,8 +3283,6 @@
 		CFECF357294640FA0053F682 /* ProjectRoot-remove-unused-devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFECF355294640FA0053F682 /* ProjectRoot-remove-unused-devices.swift */; };
 		CFED86522C08589700E6FDF8 /* LayeredProductRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED86512C08589700E6FDF8 /* LayeredProductRectangle.swift */; };
 		CFED86532C08589700E6FDF8 /* LayeredProductRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED86512C08589700E6FDF8 /* LayeredProductRectangle.swift */; };
-		CFED86552C08592200E6FDF8 /* LayeredProductOctogon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED86542C08592200E6FDF8 /* LayeredProductOctogon.swift */; };
-		CFED86562C08592200E6FDF8 /* LayeredProductOctogon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED86542C08592200E6FDF8 /* LayeredProductOctogon.swift */; };
 		CFED86592C08AED600E6FDF8 /* LayeredProductComponentPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED86572C08AED600E6FDF8 /* LayeredProductComponentPad.swift */; };
 		CFED865E2C08BAC800E6FDF8 /* extension-AffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED865D2C08BAC800E6FDF8 /* extension-AffineTransform.swift */; };
 		CFED865F2C08BAC800E6FDF8 /* extension-AffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED865D2C08BAC800E6FDF8 /* extension-AffineTransform.swift */; };
@@ -5138,7 +5136,6 @@
 		CFEC44992B8D27C9005AAEF8 /* configurator-AutoLayoutProjectDocument-sheetPopUpButtonConfigurator2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-sheetPopUpButtonConfigurator2.swift"; sourceTree = "<group>"; };
 		CFECF355294640FA0053F682 /* ProjectRoot-remove-unused-devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectRoot-remove-unused-devices.swift"; sourceTree = "<group>"; };
 		CFED86512C08589700E6FDF8 /* LayeredProductRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayeredProductRectangle.swift; sourceTree = "<group>"; };
-		CFED86542C08592200E6FDF8 /* LayeredProductOctogon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayeredProductOctogon.swift; sourceTree = "<group>"; };
 		CFED86572C08AED600E6FDF8 /* LayeredProductComponentPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayeredProductComponentPad.swift; sourceTree = "<group>"; };
 		CFED865D2C08BAC800E6FDF8 /* extension-AffineTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-AffineTransform.swift"; sourceTree = "<group>"; };
 		CFEDE5AD1B4677BA00036ACF /* entity-ArtworkRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-ArtworkRoot.swift"; sourceTree = "<group>"; };
@@ -5323,7 +5320,6 @@
 				CFF598C12C05D2BB004DA1E6 /* GerberRepresentation.swift */,
 				CF3275962C06182E009EB45A /* LayeredProductCircle.swift */,
 				CFED86572C08AED600E6FDF8 /* LayeredProductComponentPad.swift */,
-				CFED86542C08592200E6FDF8 /* LayeredProductOctogon.swift */,
 				CFED86512C08589700E6FDF8 /* LayeredProductRectangle.swift */,
 				CF3275932C05FDA0009EB45A /* LayeredProductSegment.swift */,
 				CF7FE12E2C075634000DE396 /* ProductHorizontalMirror.swift */,
@@ -9058,7 +9054,6 @@
 				CF22F25E275A73EE009C6FAC /* transient-BoardModel-backLegendTextsSegments.swift in Sources */,
 				CFD1EA91274EE23B000AED8E /* toone-SegmentForFontCharacter.swift in Sources */,
 				CFB7D74626839B90007B9D3B /* linker-AutoLayoutSymbolDocument-issueTableViewToGraphicView.swift in Sources */,
-				CFED86552C08592200E6FDF8 /* LayeredProductOctogon.swift in Sources */,
 				CFEB7CAF233A28860060A97A /* transient-ProjectRoot-deviceNames.swift in Sources */,
 				CF4B39D021D41501001217C6 /* transient-PackageRoot-freePadNumbering.swift in Sources */,
 				CF78DE8B222D609200E89DCA /* transient-MasterPadInDevice-padNumberDisplay.swift in Sources */,
@@ -9654,7 +9649,6 @@
 				CF67AB8B23E9B08B0099DE60 /* toone-ForbiddenPadNumber.swift in Sources */,
 				CFF79DC3284614A900C7BEE3 /* transient-BoardObject-displayBackLayoutForBoard.swift in Sources */,
 				CFDE5DA329EED1AB005A5EC6 /* transient-BoardImage-boardScaledImageWidth.swift in Sources */,
-				CFED86562C08592200E6FDF8 /* LayeredProductOctogon.swift in Sources */,
 				CF22F1DE275A73ED009C6FAC /* struct-MergerPadArray.swift in Sources */,
 				CF22F247275A73EE009C6FAC /* transient-BoardModel-viaShapes.swift in Sources */,
 				CF3DAD2A2AD096CA003830F4 /* EBObserverProtocol.swift in Sources */,

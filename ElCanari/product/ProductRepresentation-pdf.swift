@@ -68,12 +68,6 @@ extension ProductRepresentation {
         polygons.append (rect.gerberPolygon ())
       }
     }
-  //--- Add octogons
-    for octogon in self.octogons {
-      if !inItemSet.intersection (octogon.layers).isEmpty {
-        polygons.append (octogon.productPolygon ())
-      }
-    }
   //--- Handle polygons
     for (origin, points) in polygons {
       let bp = NSBezierPath ()

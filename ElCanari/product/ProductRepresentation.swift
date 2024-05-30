@@ -26,7 +26,6 @@ struct ProductRepresentation : Codable {
   private(set) var squareSegments = [LayeredProductSegment] ()
   private(set) var circles = [LayeredProductCircle] ()
   private(set) var rectangles = [LayeredProductRectangle] ()
-  private(set) var octogons = [LayeredProductOctogon] ()
   private(set) var componentPads = [LayeredProductComponentPad] ()
   private(set) var artworkName = ""
 

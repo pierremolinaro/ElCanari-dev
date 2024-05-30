@@ -55,16 +55,6 @@ extension ProductRepresentation {
         pad.addGerberFor (&gerber, mirror: inMirror)
       }
     }
-  //--- Add octogons
-    for octogon in self.octogons {
-      if !inItemSet.intersection (octogon.layers).isEmpty {
-        let (origin, points) = octogon.productPolygon ()
-        gerber.addPolygon (
-          origin: inMirror.mirrored (origin),
-          points: inMirror.mirrored (points)
-        )
-      }
-    }
   //--- Add circles
     for circle in self.circles {
       if !inItemSet.intersection (circle.layers).isEmpty {
