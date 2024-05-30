@@ -19,8 +19,8 @@ extension ProductRepresentation {
   func gerber (items inItemSet : ProductLayerSet,
                mirror inMirror : ProductHorizontalMirror) -> GerberRepresentation {
     var gerber = GerberRepresentation ()
-  //--- Add oblongs
-    for oblong in self.oblongs {
+  //--- Add round segments
+    for oblong in self.roundSegments {
       if !inItemSet.intersection (oblong.layers).isEmpty {
         gerber.addOblong (
           p1: inMirror.mirrored (oblong.p1),

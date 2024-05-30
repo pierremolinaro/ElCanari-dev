@@ -16,10 +16,14 @@ struct ProductRepresentation : Codable {
   //  Properties
   //································································································
 
-  private(set) var boardBox : ProductRect
+  private(set) var boardWidth : ProductLength
+  private(set) var boardHeight : ProductLength
   private(set) var boardLimitWidth : ProductLength
-  private(set) var oblongs = [LayeredProductOblong] ()
+  private(set) var roundSegments = [LayeredProductSegment] ()
+  private(set) var squareSegments = [LayeredProductSegment] ()
   private(set) var circles = [LayeredProductCircle] ()
+  private(set) var rectangles = [LayeredProductRectangle] ()
+  private(set) var octogons = [LayeredProductOctogon] ()
   private(set) var polygons = [LayeredProductPolygon] ()
   private(set) var artworkName = ""
 
@@ -28,7 +32,9 @@ struct ProductRepresentation : Codable {
   //································································································
 
   @MainActor init (projectRoot inProjectRoot : ProjectRoot) {
-    self.boardBox = ProductRect (canariRect: inProjectRoot.boardBoundBox!)
+    let boardBoundBox = inProjectRoot.boardBoundBox!
+    self.boardWidth = ProductLength (valueInCanariUnit: boardBoundBox.width)
+    self.boardHeight = ProductLength (valueInCanariUnit: boardBoundBox.height)
     self.boardLimitWidth = ProductLength (valueInCanariUnit: inProjectRoot.mBoardLimitsWidth)
     self.artworkName = inProjectRoot.mArtworkName
   //--- Board limit path
@@ -38,12 +44,12 @@ struct ProductRepresentation : Codable {
       var currentPoint = firstPoint
       points.removeFirst ()
       for p in points {
-        let oblong = LayeredProductOblong (p1: currentPoint, p2: p, width: self.boardLimitWidth, layers: .boardLimits)
-        self.oblongs.append (oblong)
+        let oblong = LayeredProductSegment (p1: currentPoint, p2: p, width: self.boardLimitWidth, layers: .boardLimits)
+        self.roundSegments.append (oblong)
         currentPoint = p
       }
-      let oblong = LayeredProductOblong (p1: currentPoint, p2: firstPoint, width: self.boardLimitWidth, layers: .boardLimits)
-      self.oblongs.append (oblong)
+      let oblong = LayeredProductSegment (p1: currentPoint, p2: firstPoint, width: self.boardLimitWidth, layers: .boardLimits)
+      self.roundSegments.append (oblong)
     }
   //--- Populate
     self.appendPackageLegends (projectRoot: inProjectRoot)
@@ -99,8 +105,8 @@ struct ProductRepresentation : Codable {
       clippedBy: inClipRect
     )
     for segment in segmentArray {
-      let oblong = LayeredProductOblong (p1: segment.p1, p2: segment.p2, width: inWidth, layers: inLayerSet)
-      self.oblongs.append (oblong)
+      let oblong = LayeredProductSegment (p1: segment.p1, p2: segment.p2, width: inWidth, layers: inLayerSet)
+      self.roundSegments.append (oblong)
     }
   }
 
@@ -275,13 +281,13 @@ struct ProductRepresentation : Codable {
           case .legendBack :
             layer = .textsLegendBottomSide
           }
-          let oblong = LayeredProductOblong (
+          let oblong = LayeredProductSegment (
             p1: ProductPoint (cocoaPoint: clippedP1),
             p2: ProductPoint (cocoaPoint: clippedP2),
             width: width,
             layers: layer
           )
-          self.oblongs.append (oblong)
+          self.roundSegments.append (oblong)
         }
       }
     }
@@ -392,23 +398,23 @@ struct ProductRepresentation : Codable {
     if inPadSize.width < inPadSize.height { // Vertical oblong
       let p1 = inAT.transform (NSPoint (x: p.x, y: p.y - (padSize.height - padSize.width) / 2.0))
       let p2 = inAT.transform (NSPoint (x: p.x, y: p.y + (padSize.height - padSize.width) / 2.0))
-      let oblong = LayeredProductOblong (
+      let oblong = LayeredProductSegment (
         p1: ProductPoint (cocoaPoint: p1),
         p2: ProductPoint (cocoaPoint: p2),
         width: ProductLength (valueInCanariUnit: inPadSize.width),
         layers: inLayers
       )
-      self.oblongs.append (oblong)
+      self.roundSegments.append (oblong)
     }else if inPadSize.width > inPadSize.height { // Horizontal oblong
       let p1 = inAT.transform (NSPoint (x: p.x - (padSize.width - padSize.height) / 2.0, y: p.y))
       let p2 = inAT.transform (NSPoint (x: p.x + (padSize.width - padSize.height) / 2.0, y: p.y))
-      let oblong = LayeredProductOblong (
+      let oblong = LayeredProductSegment (
         p1: ProductPoint (cocoaPoint: p1),
         p2: ProductPoint (cocoaPoint: p2),
         width: ProductLength (valueInCanariUnit: inPadSize.height),
         layers: inLayers
       )
-      self.oblongs.append (oblong)
+      self.roundSegments.append (oblong)
     }else{ // Circular
       let center = ProductPoint (cocoaPoint: inAT.transform (inCenter.cocoaPoint))
       let padDiameter = ProductLength (valueInCanariUnit: inPadSize.width)
@@ -480,23 +486,23 @@ struct ProductRepresentation : Codable {
     if inHoleSize.width < inHoleSize.height { // Vertical oblong
       let p1 = inAT.transform (NSPoint (x: p.x, y: p.y - (holeSize.height - holeSize.width) / 2.0))
       let p2 = inAT.transform (NSPoint (x: p.x, y: p.y + (holeSize.height - holeSize.width) / 2.0))
-      let oblong = LayeredProductOblong (
+      let oblong = LayeredProductSegment (
         p1: ProductPoint (cocoaPoint: p1),
         p2: ProductPoint (cocoaPoint: p2),
         width: ProductLength (valueInCanariUnit: inHoleSize.width),
         layers: .padHoles
       )
-      self.oblongs.append (oblong)
+      self.roundSegments.append (oblong)
     }else if inHoleSize.width > inHoleSize.height { // Horizontal oblong
       let p1 = inAT.transform (NSPoint (x: p.x - (holeSize.width - holeSize.height) / 2.0, y: p.y))
       let p2 = inAT.transform (NSPoint (x: p.x + (holeSize.width - holeSize.height) / 2.0, y: p.y))
-      let oblong = LayeredProductOblong (
+      let oblong = LayeredProductSegment (
         p1: ProductPoint (cocoaPoint: p1),
         p2: ProductPoint (cocoaPoint: p2),
         width: ProductLength (valueInCanariUnit: inHoleSize.height),
         layers: .padHoles
       )
-      self.oblongs.append (oblong)
+      self.roundSegments.append (oblong)
     }else{ // Circular
       let center = ProductPoint (cocoaPoint: inAT.transform (inCenter.cocoaPoint))
       let padDiameter = ProductLength (valueInCanariUnit: inHoleSize.width)
@@ -608,8 +614,8 @@ struct ProductRepresentation : Codable {
         case .round :
           let p1 = ProductPoint (canariPoint: track.mConnectorP1!.location!)
           let p2 = ProductPoint (canariPoint: track.mConnectorP2!.location!)
-          let t = LayeredProductOblong (p1: p1, p2: p2, width: width, layers: layer)
-          self.oblongs.append (t)
+          let t = LayeredProductSegment (p1: p1, p2: p2, width: width, layers: layer)
+          self.roundSegments.append (t)
         case .square :
           let pA = track.mConnectorP1!.location!
           let pB = track.mConnectorP2!.location!
@@ -644,9 +650,9 @@ struct ProductRepresentation : Codable {
 
   //································································································
 
-  func oblongs (forLayers inLayers : ProductLayerSet) -> [LayeredProductOblong] {
-    var result = [LayeredProductOblong] ()
-    for oblong in self.oblongs {
+  func roundSegments (forLayers inLayers : ProductLayerSet) -> [LayeredProductSegment] {
+    var result = [LayeredProductSegment] ()
+    for oblong in self.roundSegments {
       if !oblong.layers.intersection (inLayers).isEmpty {
         result.append (oblong)
       }

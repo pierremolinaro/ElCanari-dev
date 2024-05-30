@@ -62,8 +62,8 @@ extension AutoLayoutMergerDocument {
     boardModel.modelVersion = MERGER_ARCHIVE_VERSION
     boardModel.ignoreModelVersionError = false
     boardModel.name = inName
-    boardModel.modelWidth = inProduct.boardBox.width.valueInCanariUnit
-    boardModel.modelHeight = inProduct.boardBox.height.valueInCanariUnit
+    boardModel.modelWidth = inProduct.boardWidth.valueInCanariUnit
+    boardModel.modelHeight = inProduct.boardHeight.valueInCanariUnit
     boardModel.modelLimitWidth = inProduct.boardLimitWidth.valueInCanariUnit
     boardModel.artworkName = inProduct.artworkName
 //    var errorArray = [String] ()
@@ -79,7 +79,7 @@ extension AutoLayoutMergerDocument {
 //    )
   //--- Internal board limits
     do{
-      let internalBoardsLimits = inProduct.oblongs (forLayers: .boardLimits)
+      let internalBoardsLimits = inProduct.roundSegments (forLayers: .boardLimits)
       var internalBoardsLimitsEntities = EBReferenceArray <SegmentEntity> ()
       for oblong in internalBoardsLimits {
         let segment = SegmentEntity (self.undoManager)

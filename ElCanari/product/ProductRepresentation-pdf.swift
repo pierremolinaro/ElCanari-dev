@@ -20,9 +20,9 @@ extension ProductRepresentation {
                        mirror inMirror : ProductHorizontalMirror,
                        backColor inBackColor : NSColor,
                        grid inGrid : PDFProductGrid) -> Data {
-  //--- Add oblongs
+  //--- Add round segments
     var strokeBezierPathes = [NSBezierPath] ()
-    for oblong in self.oblongs {
+    for oblong in self.roundSegments {
       if !inItemSet.intersection (oblong.layers).isEmpty {
         let bp = NSBezierPath ()
         bp.move (to: inMirror.mirrored (oblong.p1).cocoaPoint)
@@ -56,8 +56,12 @@ extension ProductRepresentation {
       }
     }
   //---
+    let size = NSSize (
+      width: self.boardWidth.value (in: .cocoa),
+      height: self.boardHeight.value (in: .cocoa)
+    )
     let view = OffscreenView (
-      frame: self.boardBox.cocoaRect,
+      frame: NSRect (origin: NSPoint (), size: size),
       strokeBezierPathes: strokeBezierPathes,
       filledBezierPathes: filledBezierPathes,
       shape: nil,
