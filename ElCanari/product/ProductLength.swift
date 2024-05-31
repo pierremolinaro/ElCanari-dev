@@ -89,17 +89,6 @@ struct ProductLength : Codable, Hashable, Comparable {
       }
     }
 
-//    var unitString : String {
-//      switch self {
-//        case .mm   : return "mm"
-//        case .cm   : return "cm"
-//        case .inch : return "inch"
-//        case .mil  : return "mil"
-//        case .µm  : return "µm"
-//        case .cocoa  : return "px"
-//      }
-//    }
-
   }
 
   //································································································

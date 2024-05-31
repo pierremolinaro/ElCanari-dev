@@ -115,10 +115,10 @@ struct GerberRepresentation {
     for polygon in self.mFilledPolygons {
       s += "G36*\n" // Start Region
       s += polygon.origin.gerberPointString (inUnit) + "D02*\n" // Move
-      s += "D01*\n" // Linear interpolation
       for p in polygon.points {
         s += p.gerberPointString (inUnit) + "D01*\n" // Line
       }
+      s += polygon.origin.gerberPointString (inUnit) + "D01*\n" // Line, for closing path
       s += "G37*\n" // End Region
     }
   //--- End
@@ -250,9 +250,9 @@ fileprivate extension ProductPoint {
 
   //································································································
 
-//  func aperturePointString (_ inUnit : GerberUnit) -> String {
-//    return "X\(self.x.apertureLengthString (inUnit))Y\(self.y.apertureLengthString (inUnit))"
-//  }
+  func aperturePointString (_ inUnit : GerberUnit) -> String {
+    return "X\(self.x.apertureLengthString (inUnit))Y\(self.y.apertureLengthString (inUnit))"
+  }
 
   //································································································
 

@@ -66,6 +66,103 @@ extension ProductRepresentation {
   }
 
   //································································································
+  //  Get Excellon Drill String
+  //     https://www.artwork.com/gerber/drl2laser/excellon/index.htm
+  //································································································
+
+  func excellonDrillString (unit inUnit : GerberUnit) -> String {
+    var s = "M48\n" // indicates the start of the header, should always be the first line in the header
+    switch inUnit {
+    case .imperial :
+      s += "INCH\n"
+    case .metric :
+      s += "METRIC\n"
+    }
+ //--- Make inventory of apertures
+    var apertureSet = Set <ProductLength> ()
+    for circle in self.circles {
+      if circle.layers.contains (.hole) {
+        apertureSet.insert (circle.d)
+      }
+    }
+    for segment in self.roundSegments {
+      if segment.layers.contains (.hole) {
+        apertureSet.insert (segment.width)
+      }
+    }
+    let apertureArray = Array (apertureSet).sorted ()
+ //--- Write apertures
+    var idx = 0
+    for aperture in apertureArray {
+      idx += 1
+      s += "T" + "\(idx)C" + aperture.excellonLengthString (inUnit) + "\n"
+    }
+ //--- Write holes
+    s += "M95\n" // End of the header. Data that follows will be drill and/or route commands.
+    s += "G05\n" // Drill Mode
+    switch inUnit {
+    case .imperial :
+      s += "M72\n" // Inch Measuring Mode
+    case .metric :
+      s += "M71\n" // Metric Measuring Mode
+    }
+    idx = 0
+    for aperture in apertureArray {
+      idx += 1
+      s += "T\(idx)\n" // Tool selection
+      for circle in self.circles {
+        if circle.layers.contains (.hole) && (circle.d == aperture) {
+          s += circle.center.excellonPointString (inUnit) + "\n"
+        }
+      }
+      for segment in self.roundSegments {
+        if segment.layers.contains (.hole) && (segment.width == aperture) {
+          s += segment.p1.excellonPointString (inUnit) + "\n"
+          s += "G85\n" // Slot: drill until next point
+          s += segment.p2.excellonPointString (inUnit) + "\n"
+        }
+      }
+    }
+  //--- End of file
+    s += "M30\n" // End code
+  //---
+    return s
+  }
+
+  //································································································
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+fileprivate extension ProductLength {
+
+  //································································································
+
+  func excellonLengthString (_ inUnit : GerberUnit) -> String {
+    switch inUnit {
+    case .imperial :
+      return String (format: "%.4f", self.value (in: .inch))
+    case .metric :
+      return String (format: "%.6f", self.value (in: .mm))
+    }
+  }
+
+  //································································································
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+fileprivate extension ProductPoint {
+
+  //································································································
+
+  func excellonPointString (_ inUnit : GerberUnit) -> String {
+    return "X\(self.x.excellonLengthString (inUnit))Y\(self.y.excellonLengthString (inUnit))"
+  }
+
+  //································································································
 
 }
 

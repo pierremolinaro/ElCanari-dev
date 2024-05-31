@@ -64,17 +64,18 @@ extension AutoLayoutProjectDocument {
   //································································································
 
   func writeGerberDrillFile (atPath inPath : String,
-                             _ inProductRepresentation : ProductRepresentation,
+                             _ inProduct : ProductRepresentation,
                              _ inProductData : ProductData) throws {
     self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(inPath.lastPathComponent)…")
     if self.rootObject.mUsesNewProductGeneration {
-      let gerber : GerberRepresentation = inProductRepresentation.gerber (
-        items: [.hole],
-        mirror: .noMirror
-      )
-      let gerberString = gerber.gerberString (unit: self.rootObject.mGerberProductUnit)
-      let gerberData : Data? = gerberString.data (using: .ascii, allowLossyConversion: false)
-      try gerberData?.write (to: URL (fileURLWithPath: inPath), options: .atomic)
+//      let gerber : GerberRepresentation = inProduct.gerber (
+//        items: .hole,
+//        mirror: .noMirror
+//      )
+//      let drillString = gerber.gerberString (unit: self.rootObject.mGerberProductUnit)
+      let drillString = inProduct.excellonDrillString (unit: self.rootObject.mGerberProductUnit)
+      let drillData : Data? = drillString.data (using: .ascii, allowLossyConversion: false)
+      try drillData?.write (to: URL (fileURLWithPath: inPath), options: .atomic)
     }else{
       var s = "M48\n"
       s += "INCH\n"

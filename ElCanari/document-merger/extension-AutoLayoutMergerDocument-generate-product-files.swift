@@ -905,13 +905,14 @@ extension AutoLayoutMergerDocument {
   //------------------------------------- Generate hole file
     let filePath = inFilePath + "." + (self.rootObject.mArtwork?.drillDataFileExtension ?? "??")
     self.mLogTextView?.appendMessage ("Generating \(filePath.lastPathComponent)…")
-    let gerberRepresentation = inProduct.gerber (
-      items: .hole,
-      mirror: .noMirror
-    )
-    let gerberString = gerberRepresentation.gerberString (unit: self.rootObject.mGerberProductUnit)
-    let gerberData : Data? = gerberString.data (using: .ascii, allowLossyConversion: false)
-    try gerberData?.write (to: URL (fileURLWithPath: filePath), options: .atomic)
+//    let gerberRepresentation = inProduct.gerber (
+//      items: .hole,
+//      mirror: .noMirror
+//    )
+//    let drillString = gerberRepresentation.gerberString (unit: self.rootObject.mGerberProductUnit)
+    let drillString = inProduct.excellonDrillString (unit: self.rootObject.mGerberProductUnit)
+    let drillData : Data? = drillString.data (using: .ascii, allowLossyConversion: false)
+    try drillData?.write (to: URL (fileURLWithPath: filePath), options: .atomic)
     self.mLogTextView?.appendSuccess (" Ok\n")
   }
 
