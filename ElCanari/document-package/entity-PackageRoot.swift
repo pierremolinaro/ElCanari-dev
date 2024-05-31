@@ -182,6 +182,25 @@ final class PackageRoot : EBManagedObject {
   final let mModelImageSecondPointYUnit_property : EBStoredProperty_Int
 
   //································································································
+  //   Atomic property: mModelImageData
+  //································································································
+
+  final let mModelImageData_property : EBStoredProperty_Data
+
+  //································································································
+
+  final func reset_mModelImageData_toDefaultValue () {
+    self.mModelImageData_property.setProp (Data ())
+  }
+
+  //································································································
+
+  final var mModelImageData : Data {
+    get { return self.mModelImageData_property.propval }
+    set { self.mModelImageData_property.setProp (newValue) }
+  }
+
+  //································································································
   //   Atomic property: mModelImageFirstPointXOnLock
   //································································································
 
@@ -443,25 +462,6 @@ final class PackageRoot : EBManagedObject {
   }
 
   //································································································
-  //   Atomic property: mModelImageData
-  //································································································
-
-  final let mModelImageData_property : EBStoredProperty_Data
-
-  //································································································
-
-  final func reset_mModelImageData_toDefaultValue () {
-    self.mModelImageData_property.setProp (Data ())
-  }
-
-  //································································································
-
-  final var mModelImageData : Data {
-    get { return self.mModelImageData_property.propval }
-    set { self.mModelImageData_property.setProp (newValue) }
-  }
-
-  //································································································
   //   Atomic proxy property: mModelImageFirstPointX
   //································································································
 
@@ -598,6 +598,30 @@ final class PackageRoot : EBManagedObject {
   }
 
   //································································································
+  //   Transient property: modelImageSizeString
+  //································································································
+
+  final let modelImageSizeString_property = EBTransientProperty <String> ()
+
+  //································································································
+
+  final var modelImageSizeString : String? {
+    return self.modelImageSizeString_property.optionalValue
+  }
+
+  //································································································
+  //   Transient property: hasModelImage
+  //································································································
+
+  final let hasModelImage_property = EBTransientProperty <Bool> ()
+
+  //································································································
+
+  final var hasModelImage : Bool? {
+    return self.hasModelImage_property.optionalValue
+  }
+
+  //································································································
   //   Transient property: lockImageView
   //································································································
 
@@ -662,30 +686,6 @@ final class PackageRoot : EBManagedObject {
   }
 
   //································································································
-  //   Transient property: modelImageSizeString
-  //································································································
-
-  final let modelImageSizeString_property = EBTransientProperty <String> ()
-
-  //································································································
-
-  final var modelImageSizeString : String? {
-    return self.modelImageSizeString_property.optionalValue
-  }
-
-  //································································································
-  //   Transient property: hasModelImage
-  //································································································
-
-  final let hasModelImage_property = EBTransientProperty <Bool> ()
-
-  //································································································
-
-  final var hasModelImage : Bool? {
-    return self.hasModelImage_property.optionalValue
-  }
-
-  //································································································
   //   Transient property: masterPadObjectIndexArray
   //································································································
 
@@ -737,6 +737,7 @@ final class PackageRoot : EBManagedObject {
     self.mModelImagePageYPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mModelImagePageYPlacardUnit")
     self.mModelImageSecondPointXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mModelImageSecondPointXUnit")
     self.mModelImageSecondPointYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mModelImageSecondPointYUnit")
+    self.mModelImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mModelImageData")
     self.mModelImageFirstPointXOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mModelImageFirstPointXOnLock")
     self.mModelImageFirstPointYOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mModelImageFirstPointYOnLock")
     self.mModelImagePointsDxOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mModelImagePointsDxOnLock")
@@ -754,7 +755,6 @@ final class PackageRoot : EBManagedObject {
     self.counterClockNumberingStartAngle_property = EBStoredProperty_Int (defaultValue: 90, undoManager: inUndoManager, key: "counterClockNumberingStartAngle")
     self.xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "xPlacardUnit")
     self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "yPlacardUnit")
-    self.mModelImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mModelImageData")
     super.init (inUndoManager)
     self.mModelImageDoublePoint_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -965,6 +965,40 @@ final class PackageRoot : EBManagedObject {
     }
     self.mModelImageFirstPointY_property.startsBeingObserved (by: self.secondPointY_property)
     self.mModelImageSecondPointDy_property.startsBeingObserved (by: self.secondPointY_property)
+  //--- Atomic property: modelImageSizeString
+    self.modelImageSizeString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mModelImageData_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_PackageRoot_modelImageSizeString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mModelImageData_property.startsBeingObserved (by: self.modelImageSizeString_property)
+  //--- Atomic property: hasModelImage
+    self.hasModelImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mModelImageData_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_PackageRoot_hasModelImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mModelImageData_property.startsBeingObserved (by: self.hasModelImage_property)
   //--- Atomic property: lockImageView
     self.lockImageView_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1030,40 +1064,6 @@ final class PackageRoot : EBManagedObject {
     }
     self.packageObjects_property.toMany_objectDisplay_StartsBeingObserved (by: self.backgroundImagePageBackgroundDisplay_property)
     self.mModelImageData_property.startsBeingObserved (by: self.backgroundImagePageBackgroundDisplay_property)
-  //--- Atomic property: modelImageSizeString
-    self.modelImageSizeString_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.mModelImageData_property.selection
-        switch (s0) {
-        case (.single (let v0)) :
-          return .single (transient_PackageRoot_modelImageSizeString (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mModelImageData_property.startsBeingObserved (by: self.modelImageSizeString_property)
-  //--- Atomic property: hasModelImage
-    self.hasModelImage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.mModelImageData_property.selection
-        switch (s0) {
-        case (.single (let v0)) :
-          return .single (transient_PackageRoot_hasModelImage (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mModelImageData_property.startsBeingObserved (by: self.hasModelImage_property)
   //--- Atomic property: masterPadObjectIndexArray
     self.masterPadObjectIndexArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

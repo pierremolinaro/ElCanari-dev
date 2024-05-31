@@ -53,6 +53,9 @@ class ReadOnlyArrayOf_BoardModel : EBReadOnlyAbstractArrayProperty <BoardModel> 
       if let relay = self.mObserversOf_artworkName { // Stored property
         managedObject.artworkName_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_modelData { // Stored property
+        managedObject.modelData_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_errorArchiveVersionMessage { // Transient property
         managedObject.errorArchiveVersionMessage_property.stopsBeingObserved (by: relay)
       }
@@ -286,6 +289,9 @@ class ReadOnlyArrayOf_BoardModel : EBReadOnlyAbstractArrayProperty <BoardModel> 
       }
       if let relay = self.mObserversOf_artworkName { // Stored property
         managedObject.artworkName_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_modelData { // Stored property
+        managedObject.modelData_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_errorArchiveVersionMessage { // Transient property
         managedObject.errorArchiveVersionMessage_property.startsBeingObserved (by: relay)
@@ -831,6 +837,35 @@ class ReadOnlyArrayOf_BoardModel : EBReadOnlyAbstractArrayProperty <BoardModel> 
 
   final func toMany_artworkName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_artworkName?.stopsBeingObserved (by: inObserver)
+  }
+
+  //································································································
+  //   Observers of 'modelData' stored property
+  //································································································
+
+  private final var mObserversOf_modelData : EBObservedObserver? = nil
+
+  //································································································
+
+  final func toMany_modelData_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_modelData {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.modelData_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_modelData = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  //································································································
+
+  final func toMany_modelData_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_modelData?.stopsBeingObserved (by: inObserver)
   }
 
   //································································································

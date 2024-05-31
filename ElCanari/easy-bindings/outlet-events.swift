@@ -44,13 +44,13 @@ class EBOutletEvent : EBObserverProtocol {
   func observedObjectDidChange () {
     if logEvents () {
       if gPendingOutletEvents.count == 0 {
-        appendMessageString ("Post events\n")
+        appendMessage ("Post events\n")
       }
       let str = "  #\(self.objectIndex) " + String (describing: type (of: self)) + "\n"
       if !self.mEventIsPosted {
-        appendMessageString (str)
+        appendMessage (str)
       }else{ // Event already posted
-        appendMessageString (str, color: NSColor.brown)
+        appendMessage (str, color: NSColor.brown)
       }
     }
     if !self.mEventIsPosted {
@@ -85,7 +85,7 @@ class EBOutletEvent : EBObserverProtocol {
   if gPendingOutletEvents.count > 0 {
     #if BUILD_OBJECT_EXPLORER
       if logEvents () {
-        appendMessageString ("Flush outlet events\n", color: .blue)
+        appendMessage ("Flush outlet events\n", color: .blue)
       }
     #endif
     while gPendingOutletEvents.count > 0 {
@@ -98,7 +98,7 @@ class EBOutletEvent : EBObserverProtocol {
         #if BUILD_OBJECT_EXPLORER
           if logEvents () {
             let message = "  #\(event.objectIndex) " + String (describing: type (of: event)) + "\n"
-            appendMessageString (message, color: .blue)
+            appendMessage (message, color: .blue)
           }
         #endif
         event.sendUpdateEvent ()
@@ -106,13 +106,13 @@ class EBOutletEvent : EBObserverProtocol {
       #if BUILD_OBJECT_EXPLORER
         if gPendingOutletEvents.count > 0 && logEvents () {
           let message = "\(gPendingOutletEvents.count) outlet event(s) posted during flush\n"
-          appendMessageString (message, color: .red)
+          appendMessage (message, color: .red)
         }
       #endif
     }
     #if BUILD_OBJECT_EXPLORER
       if logEvents () {
-        appendMessageString ("--------------------------------------\n", color: NSColor.blue)
+        appendMessage ("--------------------------------------\n", color: NSColor.blue)
       }
     #endif
   }
@@ -138,7 +138,7 @@ class EBOutletEvent : EBObserverProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func appendMessageString (_ inMessage : String) {
+@MainActor func appendMessage (_ inMessage : String) {
   #if BUILD_OBJECT_EXPLORER
     gTransientExplorer.appendMessage (inMessage, .black)
   #endif
@@ -146,7 +146,7 @@ class EBOutletEvent : EBObserverProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func appendMessageString (_ inMessage : String, color inColor : NSColor) {
+@MainActor func appendMessage (_ inMessage : String, color inColor : NSColor) {
   #if BUILD_OBJECT_EXPLORER
     gTransientExplorer.appendMessage (inMessage, inColor)
   #endif
@@ -219,7 +219,7 @@ class EBOutletEvent : EBObserverProtocol {
 
     func appendMessage (_ inMessage : String, _ inColor : NSColor) {
       if logEvents () {
-        self.mTransientEventExplorerTextView.appendMessageString (inMessage, color: inColor)
+        self.mTransientEventExplorerTextView.appendMessage (inMessage, color: inColor)
       }
     }
 

@@ -78,6 +78,12 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol BoardModel_modelData : AnyObject {
+  var modelData : Data { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol BoardModel_errorArchiveVersionMessage : AnyObject {
   var errorArchiveVersionMessage : String? { get }
 }
@@ -483,6 +489,7 @@ final class BoardModel : EBManagedObject,
          BoardModel_modelLimitWidth,
          BoardModel_modelLimitWidthUnit,
          BoardModel_artworkName,
+         BoardModel_modelData,
          BoardModel_errorArchiveVersionMessage,
          BoardModel_errorArchiveLabelSize,
          BoardModel_errorArchiveLabelColor,
@@ -1092,6 +1099,19 @@ final class BoardModel : EBManagedObject,
   final var artworkName : String {
     get { return self.artworkName_property.propval }
     set { self.artworkName_property.setProp (newValue) }
+  }
+
+  //································································································
+  //   Atomic property: modelData
+  //································································································
+
+  final let modelData_property : EBStoredProperty_Data
+
+  //································································································
+
+  final var modelData : Data {
+    get { return self.modelData_property.propval }
+    set { self.modelData_property.setProp (newValue) }
   }
 
   //································································································
@@ -1897,6 +1917,7 @@ final class BoardModel : EBManagedObject,
     self.modelLimitWidth_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelLimitWidth")
     self.modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelLimitWidthUnit")
     self.artworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "artworkName")
+    self.modelData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "modelData")
     super.init (inUndoManager)
   //--- To many property: legendFrontImages (no option)
     self.legendFrontImages_property.undoManager = inUndoManager

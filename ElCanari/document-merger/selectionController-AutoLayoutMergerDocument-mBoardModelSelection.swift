@@ -519,6 +519,12 @@ import AppKit
   //································································································
 
   //································································································
+  //   Selection observable property: modelData
+  //································································································
+
+  var modelData_property = EBComputedProperty_Data ()
+
+  //································································································
   //   Selection observable property: modelHeight
   //································································································
 
@@ -682,6 +688,7 @@ import AppKit
     self.bind_property_internalBoardsLimitsSegments (model: model)
     self.bind_property_layerConfiguration (model: model)
     self.bind_property_layerConfigurationString (model: model)
+    self.bind_property_modelData (model: model)
     self.bind_property_modelHeight (model: model)
     self.bind_property_modelHeightUnit (model: model)
     self.bind_property_modelLimitWidth (model: model)
@@ -897,6 +904,10 @@ import AppKit
   //--- layerConfigurationString
     self.layerConfigurationString_property.mReadModelFunction = nil 
     self.mModel?.toMany_layerConfigurationString_StopsBeingObserved (by: self.layerConfigurationString_property)
+  //--- modelData
+    self.modelData_property.mReadModelFunction = nil 
+    self.modelData_property.mWriteModelFunction = nil 
+    self.mModel?.toMany_modelData_StopsBeingObserved (by: self.modelData_property)
   //--- modelHeight
     self.modelHeight_property.mReadModelFunction = nil 
     self.modelHeight_property.mWriteModelFunction = nil 
@@ -3541,6 +3552,58 @@ import AppKit
         }
       }else{
         return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_modelData (model : ReadOnlyArrayOf_BoardModel) {
+    model.toMany_modelData_StartsBeingObserved (by: self.modelData_property)
+    self.modelData_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Data> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.modelData_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.modelData_property.mWriteModelFunction = { [weak self] (inValue : Data) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.modelData_property.setProp (inValue)
+          }
+        }
       }
     }
   }

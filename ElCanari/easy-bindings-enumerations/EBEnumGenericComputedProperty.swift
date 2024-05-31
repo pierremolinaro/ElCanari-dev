@@ -22,11 +22,11 @@ final class EBEnumGenericComputedProperty <T : EBEnumPropertyProtocol> : EBEnumR
     if self.mCachedValue != nil {
       self.mCachedValue = nil
       if logEvents () {
-        appendMessageString ("Proxy #\(self.objectIndex) propagation\n")
+        appendMessage ("Proxy #\(self.objectIndex) propagation\n")
       }
       super.observedObjectDidChange ()
     }else if logEvents () {
-      appendMessageString ("Proxy #\(self.objectIndex) nil\n")
+      appendMessage ("Proxy #\(self.objectIndex) nil\n")
     }
   }
 

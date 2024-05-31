@@ -8,6 +8,7 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 import AppKit
+import Compression
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -77,12 +78,24 @@ extension AutoLayoutMergerDocument {
         self.mProductPageSegmentedControl?.setSelectedSegment (atIndex: 4)
         let baseName = f.lastPathComponent
         let productDirectory = f.deletingLastPathComponent
+        let product = self.generateProductRepresentation ()
       //--- Generate board archive
         if self.rootObject.mGenerateMergerArchive_property.propval {
-          let boardArchivePath = productDirectory + "/" + baseName + "." + EL_CANARI_LEGACY_MERGER_ARCHIVE
-          self.mLogTextView?.appendMessageString ("Generating \(boardArchivePath.lastPathComponent)…")
-          try self.generateBoardArchive (atPath: boardArchivePath)
-          self.mLogTextView?.appendSuccessString (" Ok\n")
+          if self.rootObject.mUsesNewProductGeneration {
+            let boardArchivePath = productDirectory + "/" + baseName + "." + EL_CANARI_MERGER_ARCHIVE
+            self.mLogTextView?.appendMessage ("Generating \(boardArchivePath.lastPathComponent)…")
+            let data = product.encodedJSONCompressedData (
+              prettyPrinted: true,
+              using: COMPRESSION_LZMA
+            )
+            try data.write(to: URL (fileURLWithPath: boardArchivePath), options: .atomic)
+            self.mLogTextView?.appendSuccess (" Ok\n")
+          }else{
+            let boardArchivePath = productDirectory + "/" + baseName + "." + EL_CANARI_LEGACY_MERGER_ARCHIVE
+            self.mLogTextView?.appendMessage ("Generating \(boardArchivePath.lastPathComponent)…")
+            try self.generateBoardArchive (atPath: boardArchivePath)
+            self.mLogTextView?.appendSuccess (" Ok\n")
+          }
         }
       //--- Gerber
         let generateGerberAndPDF = self.rootObject.mGenerateGerberAndPDF_property.propval
@@ -90,18 +103,27 @@ extension AutoLayoutMergerDocument {
         try self.removeAndCreateDirectory (atPath: gerberDirectory, create: generateGerberAndPDF)
         if generateGerberAndPDF {
           let filePath = gerberDirectory + "/" + baseName
-          try self.generateGerberFiles (atPath: filePath)
+          if self.rootObject.mUsesNewProductGeneration {
+            try self.generateGerberFiles (product, atPath: filePath)
+          }else{
+            try self.generateLegacyGerberFiles (atPath: filePath)
+          }
         }
       //--- PDF
         let pdfDirectory = productDirectory + "/" + baseName + "-pdf"
         try self.removeAndCreateDirectory (atPath: pdfDirectory, create: generateGerberAndPDF)
         if generateGerberAndPDF {
           let filePath = pdfDirectory + "/" + baseName
-          try self.generatePDFfiles (atPath: filePath)
-          try self.writePDFDrillFile (atPath: filePath)
+          if self.rootObject.mUsesNewProductGeneration {
+            try self.generatePDFfiles (product, atPath: filePath)
+            try self.writePDFDrillFile (product, atPath: filePath)
+          }else{
+            try self.generatePDFLegacyFiles (atPath: filePath)
+            try self.writePDFLegacyDrillFile (atPath: filePath)
+          }
         }
       //--- Done !
-        self.mLogTextView?.appendMessageString ("Done.")
+        self.mLogTextView?.appendMessage ("Done.")
       }
     }catch let error {
       _ = self.windowForSheet?.presentError (error)
@@ -115,15 +137,41 @@ extension AutoLayoutMergerDocument {
     let fm = FileManager ()
     var isDir : ObjCBool = false
     if fm.fileExists (atPath: inDirectoryPath, isDirectory: &isDir) {
-      self.mLogTextView?.appendMessageString ("Remove recursively \(inDirectoryPath)...")
+      self.mLogTextView?.appendMessage ("Remove recursively \(inDirectoryPath)...")
       try fm.removeItem (atPath: inDirectoryPath) // Remove dir recursively
-      self.mLogTextView?.appendSuccessString (" ok.\n")
+      self.mLogTextView?.appendSuccess (" ok.\n")
     }
     if inCreate {
-      self.mLogTextView?.appendMessageString ("Create \(inDirectoryPath)...")
+      self.mLogTextView?.appendMessage ("Create \(inDirectoryPath)...")
       try fm.createDirectory (atPath: inDirectoryPath, withIntermediateDirectories: true, attributes: nil)
-      self.mLogTextView?.appendSuccessString (" ok.\n")
+      self.mLogTextView?.appendSuccess (" ok.\n")
     }
+  }
+
+  //································································································
+
+  func generateProductRepresentation () -> ProductRepresentation {
+    var product = ProductRepresentation (
+      boardWidth : ProductLength (valueInCanariUnit: self.rootObject.boardWidth!),
+      boardWidthUnit : self.rootObject.boardWidthUnit, // Canari Unit
+      boardHeight : ProductLength (valueInCanariUnit: self.rootObject.boardHeight!),
+      boardHeightUnit: self.rootObject.boardHeightUnit, // Canari Unit
+      boardLimitWidth: ProductLength (valueInCanariUnit: self.rootObject.boardLimitWidth),
+      boardLimitWidthUnit: self.rootObject.boardLimitWidthUnit, // Canari Unit
+      artworkName: self.rootObject.mArtworkName
+    )
+    for element in self.rootObject.boardInstances.values {
+      let boardModel : BoardModel = element.myModel!
+      let compressedJSONData = boardModel.modelData
+      let modelProduct = ProductRepresentation (
+        fromJSONCompressedData: compressedJSONData,
+        using: COMPRESSION_LZMA
+      )!
+      let x = ProductLength (valueInCanariUnit: element.x)
+      let y = ProductLength (valueInCanariUnit: element.y)
+      product.add (modelProduct, x: x, y: y, quadrantRotation: element.instanceRotation)
+    }
+    return product
   }
 
   //································································································
@@ -460,19 +508,40 @@ extension AutoLayoutMergerDocument {
 
   //································································································
 
-  fileprivate func generatePDFfiles (atPath inFilePath : String) throws {
+  fileprivate func generatePDFfiles (_ inProduct : ProductRepresentation,
+                                     atPath inFilePath : String) throws {
+    for descriptor in self.rootObject.mArtwork?.fileGenerationParameterArray.values ?? [] {
+      let filePath = inFilePath + "." + descriptor.fileExtension + ".pdf"
+      self.mLogTextView?.appendMessage ("Generating \(filePath.lastPathComponent)…")
+      let mirror : ProductHorizontalMirror = descriptor.horizontalMirror
+        ? .mirror (boardWidth: self.rootObject.boardWidth!)
+        : .noMirror
+      let pdfData = inProduct.pdf (
+        items: descriptor.layerItems,
+        mirror: mirror,
+        backColor: self.rootObject.mPDFBoardBackgroundColor,
+        grid: self.rootObject.mPDFProductGrid_property.propval
+      )
+      try pdfData.write (to: URL (fileURLWithPath: filePath), options: .atomic)
+      self.mLogTextView?.appendSuccess (" Ok\n")
+    }
+  }
+
+  //································································································
+
+  fileprivate func generatePDFLegacyFiles (atPath inFilePath : String) throws {
     if let cocoaBoardRect : NSRect = self.rootObject.boardRect?.cocoaRect {
       let layerConfiguration = self.rootObject.mArtwork!.layerConfiguration
       let boardWidth = self.rootObject.boardWidth ?? 0
-      for product in self.rootObject.mArtwork_property.propval?.fileGenerationParameterArray_property.propval.values ?? [] {
+      for product in self.rootObject.mArtwork?.fileGenerationParameterArray.values ?? [] {
         let horizontalMirror = product.horizontalMirror
         let filePath = inFilePath + "." + product.fileExtension + ".pdf"
-        self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
+        self.mLogTextView?.appendMessage ("Generating \(filePath.lastPathComponent)…")
         var strokeBezierPaths = [EBBezierPath] ()
         var filledBezierPaths = [EBBezierPath] ()
         if product.drawInternalBoardLimits {
           for board in self.rootObject.boardInstances_property.propval.values {
-            let lineWidth : CGFloat = canariUnitToCocoa (board.myModel_property.propval!.modelLimitWidth)
+            let lineWidth : CGFloat = canariUnitToCocoa (board.myModel!.modelLimitWidth)
             let r : NSRect = board.instanceRect!.cocoaRect.insetBy (dx: lineWidth / 2.0, dy: lineWidth / 2.0)
             var bp = EBBezierPath (rect:r)
             bp.lineWidth = lineWidth
@@ -764,18 +833,35 @@ extension AutoLayoutMergerDocument {
         shape.add (stroke: drillBezierPaths, .white)
         let pdfData = buildPDFimageData (frame: cocoaBoardRect, shape: shape, backgroundColor: self.rootObject.mPDFBoardBackgroundColor)
         try pdfData.write (to: URL (fileURLWithPath: filePath), options: .atomic)
-        self.mLogTextView?.appendSuccessString (" Ok\n")
+        self.mLogTextView?.appendSuccess (" Ok\n")
       }
     }
   }
 
   //································································································
 
-  fileprivate func writePDFDrillFile (atPath inFilePath : String) throws {
+  fileprivate func writePDFDrillFile (_ inProduct : ProductRepresentation,
+                                      atPath inFilePath : String) throws {
+    let drillDataFileExtension = self.rootObject.mArtwork?.drillDataFileExtension ?? "??"
+    let filePath = inFilePath + "." + drillDataFileExtension + ".pdf"
+    self.mLogTextView?.appendMessage ("Generating \(filePath.lastPathComponent)…")
+    let pdfData = inProduct.pdf (
+      items: .hole,
+      mirror: .noMirror,
+      backColor: self.rootObject.mPDFBoardBackgroundColor,
+      grid: self.rootObject.mPDFProductGrid_property.propval
+    )
+    try pdfData.write (to: URL (fileURLWithPath: filePath), options: .atomic)
+    self.mLogTextView?.appendSuccess (" Ok\n")
+  }
+
+  //································································································
+
+  fileprivate func writePDFLegacyDrillFile (atPath inFilePath : String) throws {
     if let cocoaBoardRect : NSRect = self.rootObject.boardRect?.cocoaRect {
-      let drillDataFileExtension = self.rootObject.mArtwork_property.propval?.drillDataFileExtension ?? "??"
+      let drillDataFileExtension = self.rootObject.mArtwork?.drillDataFileExtension ?? "??"
       let filePath = inFilePath + "." + drillDataFileExtension + ".pdf"
-      self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
+      self.mLogTextView?.appendMessage ("Generating \(filePath.lastPathComponent)…")
       var drillBezierPaths = [EBBezierPath] ()
       for board in self.rootObject.boardInstances_property.propval.values {
         let myModel : BoardModel? = board.myModel_property.propval
@@ -794,19 +880,50 @@ extension AutoLayoutMergerDocument {
       let shape = EBShape (stroke: drillBezierPaths, .black)
       let data = buildPDFimageData (frame: cocoaBoardRect, shape: shape, backgroundColor: self.rootObject.mPDFBoardBackgroundColor)
       try data.write (to: URL (fileURLWithPath: filePath))
-      self.mLogTextView?.appendSuccessString (" Ok\n")
+      self.mLogTextView?.appendSuccess (" Ok\n")
     }
   }
 
   //································································································
 
-  fileprivate func generateGerberFiles (atPath inFilePath : String) throws {
+  fileprivate func generateGerberFiles (_ inProduct : ProductRepresentation, atPath inFilePath : String) throws {
+    for descriptor in self.rootObject.mArtwork?.fileGenerationParameterArray.values ?? [] {
+      let filePath = inFilePath + "." + descriptor.fileExtension
+      self.mLogTextView?.appendMessage ("Generating \(filePath.lastPathComponent)…")
+      let mirror : ProductHorizontalMirror = descriptor.horizontalMirror
+        ? .mirror (boardWidth: self.rootObject.boardWidth!)
+        : .noMirror
+      let gerberRepresentation = inProduct.gerber (
+        items: descriptor.layerItems,
+        mirror: mirror
+      )
+      let gerberString = gerberRepresentation.gerberString (unit: self.rootObject.mGerberProductUnit)
+      let gerberData : Data? = gerberString.data (using: .ascii, allowLossyConversion: false)
+      try gerberData?.write (to: URL (fileURLWithPath: filePath), options: .atomic)
+      self.mLogTextView?.appendSuccess (" Ok\n")
+    }
+  //------------------------------------- Generate hole file
+    let filePath = inFilePath + "." + (self.rootObject.mArtwork?.drillDataFileExtension ?? "??")
+    self.mLogTextView?.appendMessage ("Generating \(filePath.lastPathComponent)…")
+    let gerberRepresentation = inProduct.gerber (
+      items: .hole,
+      mirror: .noMirror
+    )
+    let gerberString = gerberRepresentation.gerberString (unit: self.rootObject.mGerberProductUnit)
+    let gerberData : Data? = gerberString.data (using: .ascii, allowLossyConversion: false)
+    try gerberData?.write (to: URL (fileURLWithPath: filePath), options: .atomic)
+    self.mLogTextView?.appendSuccess (" Ok\n")
+  }
+
+  //································································································
+
+  fileprivate func generateLegacyGerberFiles (atPath inFilePath : String) throws {
     let boardWidth = self.rootObject.boardWidth!
     let layerConfiguration = self.rootObject.mArtwork!.layerConfiguration
-    for product in self.rootObject.mArtwork_property.propval?.fileGenerationParameterArray_property.propval.values ?? [] {
+    for product in self.rootObject.mArtwork?.fileGenerationParameterArray.values ?? [] {
       let horizontalMirror = product.horizontalMirror
       let filePath = inFilePath + "." + product.fileExtension
-      self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
+      self.mLogTextView?.appendMessage ("Generating \(filePath.lastPathComponent)…")
       var s = "%FSLAX24Y24*%\n" // A = Absolute coordinates, 24 = all data are in 2.4 form
       s += "%MOIN*%\n" // length unit is inch
       var apertureDictionary = [String : [String]] ()
@@ -1200,11 +1317,11 @@ extension AutoLayoutMergerDocument {
       s += "M02*\n"
       let data : Data? = s.data (using: .ascii, allowLossyConversion:false)
       try data?.write (to: URL (fileURLWithPath: filePath), options: .atomic)
-      self.mLogTextView?.appendSuccessString (" Ok\n")
+      self.mLogTextView?.appendSuccess (" Ok\n")
     }
 //------------------------------------- Generate hole file
-    let filePath = inFilePath + "." + (self.rootObject.mArtwork_property.propval?.drillDataFileExtension ?? "??")
-    self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
+    let filePath = inFilePath + "." + (self.rootObject.mArtwork?.drillDataFileExtension ?? "??")
+    self.mLogTextView?.appendMessage ("Generating \(filePath.lastPathComponent)…")
     var s = "M48\n"
     s += "INCH\n"
  //--- Array of hole diameters
@@ -1248,7 +1365,7 @@ extension AutoLayoutMergerDocument {
  //--- Write file
     let data : Data? = s.data (using: .ascii, allowLossyConversion:false)
     try data?.write (to: URL (fileURLWithPath: filePath), options: .atomic)
-    self.mLogTextView?.appendSuccessString (" Ok\n")
+    self.mLogTextView?.appendSuccess (" Ok\n")
   }
 
   //································································································

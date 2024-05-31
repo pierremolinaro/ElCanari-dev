@@ -24,7 +24,7 @@ extension AutoLayoutMergerDocument {
       openPanel.canChooseFiles = true
       openPanel.canChooseDirectories = false
       openPanel.allowsMultipleSelection = false
-      openPanel.allowedFileTypes = [EL_CANARI_LEGACY_MERGER_ARCHIVE, KICAD_PCB]
+      openPanel.allowedFileTypes = [EL_CANARI_LEGACY_MERGER_ARCHIVE, EL_CANARI_MERGER_ARCHIVE, KICAD_PCB]
     // MANDATORY! This object is set to NSOpenPanel delegate that DOES NOT retain it
       gPanel = OpenPanelDelegateForUpdatingBoardModels (boardModelName) // MANDATORY! This object is set to NSOpenPanel delegate that DOES NOT retain it
       openPanel.delegate = gPanel
@@ -37,7 +37,9 @@ extension AutoLayoutMergerDocument {
           if let fileData = optionalFileData {
             let s = filePath.lastPathComponent.deletingPathExtension
             if filePath.pathExtension == EL_CANARI_LEGACY_MERGER_ARCHIVE {
-              self.parseBoardModel_ELCanariArchive (fromData: fileData, named: s, callBack: { self.performUpdateModel (updatedBoardModel, with: $0) })
+              self.parseBoardModelLegacy_ELCanariArchive (fromData: fileData, named: s, callBack: { self.performUpdateModel (updatedBoardModel, with: $0) })
+            }else if filePath.pathExtension == EL_CANARI_MERGER_ARCHIVE {
+              self.parseBoardModelELCanariBoardArchive (fromData: fileData, named: s, callBack: { self.performUpdateModel (updatedBoardModel, with: $0) })
             }else if filePath.pathExtension == KICAD_PCB {
               let possibleBoardModel = self.parseBoardModel_kicad (fromData: fileData, named: s)
               if let newTemporaryBoardModel = possibleBoardModel {
@@ -58,6 +60,7 @@ extension AutoLayoutMergerDocument {
   //································································································
 
   private func performUpdateModel (_ inModelToUpdate : BoardModel, with inLoadedModel : BoardModel) {
+    inModelToUpdate.modelData = inLoadedModel.modelData
     inModelToUpdate.artworkName = inLoadedModel.artworkName
     inModelToUpdate.modelWidth = inLoadedModel.modelWidth
     inModelToUpdate.modelHeight = inLoadedModel.modelHeight

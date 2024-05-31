@@ -17,7 +17,7 @@ extension AutoLayoutProjectDocument {
   func writePDFDrillFile (atPath inPath : String,
                           _ inProductRepresentation : ProductRepresentation,
                           _ inProductData : ProductData) throws {
-    self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
+    self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(inPath.lastPathComponent)…")
     if self.rootObject.mUsesNewProductGeneration {
       let pdfData = inProductRepresentation.pdf (
         items: .hole,
@@ -47,7 +47,7 @@ extension AutoLayoutProjectDocument {
       )
       try data.write (to: URL (fileURLWithPath: inPath))
     }
-    self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
+    self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
   }
 
   //································································································
@@ -58,77 +58,13 @@ extension AutoLayoutProjectDocument {
                             _ inProductRepresentation : ProductRepresentation,
                             _ inProductData : ProductData) throws {
     let path = inPath + inDescriptor.fileExtension + ".pdf"
-    self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(path.lastPathComponent)…")
+    self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(path.lastPathComponent)…")
     if self.rootObject.mUsesNewProductGeneration {
-      var items = ProductLayerSet ()
-      if inDescriptor.drawBoardLimits {
-        items.insert (.boardLimits)
-      }
-      if inDescriptor.drawInternalBoardLimits {
-        items.insert (.internalBoardLimits)
-      }
-      if inDescriptor.drawComponentNamesTopSide {
-        items.insert (.frontSideComponentName)
-      }
-      if inDescriptor.drawComponentNamesBottomSide {
-        items.insert (.backSideComponentName)
-      }
-      if inDescriptor.drawComponentValuesTopSide {
-        items.insert (.frontSideComponentValue)
-      }
-      if inDescriptor.drawComponentValuesBottomSide {
-        items.insert (.backSideComponentValue)
-      }
-      if inDescriptor.drawPackageLegendTopSide {
-        items.insert ([.frontSidePackageLegend, .frontSideLegendLine])
-      }
-      if inDescriptor.drawPackageLegendBottomSide {
-        items.insert ([.backSidePackageLegend, .backSideLegendLine])
-      }
-      if inDescriptor.drawPadsTopSide {
-        items.insert (.frontSideComponentPad)
-      }
-      if inDescriptor.drawPadsBottomSide {
-        items.insert (.backSideComponentPad)
-      }
-      if inDescriptor.drawTextsLayoutTopSide {
-        items.insert (.frontSideLayoutText)
-      }
-      if inDescriptor.drawTextsLayoutBottomSide {
-        items.insert (.backSideLayoutText)
-      }
-      if inDescriptor.drawTextsLegendBottomSide {
-        items.insert (.backSideLegendText)
-      }
-      if inDescriptor.drawTracksTopSide {
-        items.insert (.frontSideTrack)
-      }
-      if inDescriptor.drawTracksInner1Layer {
-        items.insert (.inner1Track)
-      }
-      if inDescriptor.drawTracksInner2Layer {
-        items.insert (.inner2Track)
-      }
-      if inDescriptor.drawTracksInner3Layer {
-        items.insert (.inner3Track)
-      }
-      if inDescriptor.drawTracksInner4Layer {
-        items.insert (.inner4Track)
-      }
-      if inDescriptor.drawTracksBottomSide {
-        items.insert (.backSideTrack)
-      }
-      if inDescriptor.drawTraversingPads {
-        items.insert (.innerComponentPad)
-      }
-      if inDescriptor.drawVias {
-        items.insert (.viaPad)
-      }
       let mirror : ProductHorizontalMirror = inDescriptor.horizontalMirror
         ? .mirror (boardWidth: self.rootObject.boardBoundBox!.size.width)
         : .noMirror
       let pdfData = inProductRepresentation.pdf (
-        items: items,
+        items: inDescriptor.layerItems,
         mirror: mirror,
         backColor: self.rootObject.mPDFBoardBackgroundColor,
         grid: self.rootObject.mPDFProductGrid_property.propval
@@ -231,7 +167,7 @@ extension AutoLayoutProjectDocument {
       )
       try data.write (to: URL (fileURLWithPath: path))
     }
-    self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
+    self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
   }
 
   //································································································

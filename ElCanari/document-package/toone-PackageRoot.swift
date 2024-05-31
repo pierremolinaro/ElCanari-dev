@@ -39,6 +39,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
       oldValue.mModelImagePageYPlacardUnit_property.stopsBeingObserved (by: self.mModelImagePageYPlacardUnit_property) // Stored property
       oldValue.mModelImageSecondPointXUnit_property.stopsBeingObserved (by: self.mModelImageSecondPointXUnit_property) // Stored property
       oldValue.mModelImageSecondPointYUnit_property.stopsBeingObserved (by: self.mModelImageSecondPointYUnit_property) // Stored property
+      oldValue.mModelImageData_property.stopsBeingObserved (by: self.mModelImageData_property) // Stored property
       oldValue.mModelImageFirstPointXOnLock_property.stopsBeingObserved (by: self.mModelImageFirstPointXOnLock_property) // Stored property
       oldValue.mModelImageFirstPointYOnLock_property.stopsBeingObserved (by: self.mModelImageFirstPointYOnLock_property) // Stored property
       oldValue.mModelImagePointsDxOnLock_property.stopsBeingObserved (by: self.mModelImagePointsDxOnLock_property) // Stored property
@@ -56,17 +57,16 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
       oldValue.counterClockNumberingStartAngle_property.stopsBeingObserved (by: self.counterClockNumberingStartAngle_property) // Stored property
       oldValue.xPlacardUnit_property.stopsBeingObserved (by: self.xPlacardUnit_property) // Stored property
       oldValue.yPlacardUnit_property.stopsBeingObserved (by: self.yPlacardUnit_property) // Stored property
-      oldValue.mModelImageData_property.stopsBeingObserved (by: self.mModelImageData_property) // Stored property
       oldValue.freePadNumbering_property.stopsBeingObserved (by: self.freePadNumbering_property) // Transient property
       oldValue.counterClockNumbering_property.stopsBeingObserved (by: self.counterClockNumbering_property) // Transient property
       oldValue.gridStepMultipliedByDisplayFactor_property.stopsBeingObserved (by: self.gridStepMultipliedByDisplayFactor_property) // Transient property
       oldValue.secondPointX_property.stopsBeingObserved (by: self.secondPointX_property) // Transient property
       oldValue.secondPointY_property.stopsBeingObserved (by: self.secondPointY_property) // Transient property
+      oldValue.modelImageSizeString_property.stopsBeingObserved (by: self.modelImageSizeString_property) // Transient property
+      oldValue.hasModelImage_property.stopsBeingObserved (by: self.hasModelImage_property) // Transient property
       oldValue.lockImageView_property.stopsBeingObserved (by: self.lockImageView_property) // Transient property
       oldValue.padNumberDisplay_property.stopsBeingObserved (by: self.padNumberDisplay_property) // Transient property
       oldValue.backgroundImagePageBackgroundDisplay_property.stopsBeingObserved (by: self.backgroundImagePageBackgroundDisplay_property) // Transient property
-      oldValue.modelImageSizeString_property.stopsBeingObserved (by: self.modelImageSizeString_property) // Transient property
-      oldValue.hasModelImage_property.stopsBeingObserved (by: self.hasModelImage_property) // Transient property
       oldValue.masterPadObjectIndexArray_property.stopsBeingObserved (by: self.masterPadObjectIndexArray_property) // Transient property
       oldValue.issues_property.stopsBeingObserved (by: self.issues_property) // Transient property
       if let relay = self.mObserversOf_mModelImageObjects { // to Many
@@ -110,6 +110,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
       newValue.mModelImagePageYPlacardUnit_property.startsBeingObserved (by: self.mModelImagePageYPlacardUnit_property) // Stored property
       newValue.mModelImageSecondPointXUnit_property.startsBeingObserved (by: self.mModelImageSecondPointXUnit_property) // Stored property
       newValue.mModelImageSecondPointYUnit_property.startsBeingObserved (by: self.mModelImageSecondPointYUnit_property) // Stored property
+      newValue.mModelImageData_property.startsBeingObserved (by: self.mModelImageData_property) // Stored property
       newValue.mModelImageFirstPointXOnLock_property.startsBeingObserved (by: self.mModelImageFirstPointXOnLock_property) // Stored property
       newValue.mModelImageFirstPointYOnLock_property.startsBeingObserved (by: self.mModelImageFirstPointYOnLock_property) // Stored property
       newValue.mModelImagePointsDxOnLock_property.startsBeingObserved (by: self.mModelImagePointsDxOnLock_property) // Stored property
@@ -127,17 +128,16 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
       newValue.counterClockNumberingStartAngle_property.startsBeingObserved (by: self.counterClockNumberingStartAngle_property) // Stored property
       newValue.xPlacardUnit_property.startsBeingObserved (by: self.xPlacardUnit_property) // Stored property
       newValue.yPlacardUnit_property.startsBeingObserved (by: self.yPlacardUnit_property) // Stored property
-      newValue.mModelImageData_property.startsBeingObserved (by: self.mModelImageData_property) // Stored property
       newValue.freePadNumbering_property.startsBeingObserved (by: self.freePadNumbering_property) // Transient property
       newValue.counterClockNumbering_property.startsBeingObserved (by: self.counterClockNumbering_property) // Transient property
       newValue.gridStepMultipliedByDisplayFactor_property.startsBeingObserved (by: self.gridStepMultipliedByDisplayFactor_property) // Transient property
       newValue.secondPointX_property.startsBeingObserved (by: self.secondPointX_property) // Transient property
       newValue.secondPointY_property.startsBeingObserved (by: self.secondPointY_property) // Transient property
+      newValue.modelImageSizeString_property.startsBeingObserved (by: self.modelImageSizeString_property) // Transient property
+      newValue.hasModelImage_property.startsBeingObserved (by: self.hasModelImage_property) // Transient property
       newValue.lockImageView_property.startsBeingObserved (by: self.lockImageView_property) // Transient property
       newValue.padNumberDisplay_property.startsBeingObserved (by: self.padNumberDisplay_property) // Transient property
       newValue.backgroundImagePageBackgroundDisplay_property.startsBeingObserved (by: self.backgroundImagePageBackgroundDisplay_property) // Transient property
-      newValue.modelImageSizeString_property.startsBeingObserved (by: self.modelImageSizeString_property) // Transient property
-      newValue.hasModelImage_property.startsBeingObserved (by: self.hasModelImage_property) // Transient property
       newValue.masterPadObjectIndexArray_property.startsBeingObserved (by: self.masterPadObjectIndexArray_property) // Transient property
       newValue.issues_property.startsBeingObserved (by: self.issues_property) // Transient property
       if let relay = self.mObserversOf_mModelImageObjects { // to Many
@@ -297,6 +297,12 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
   final let mModelImageSecondPointYUnit_property = EBTransientProperty <Int?> ()
 
   //································································································
+  //   Observers of 'mModelImageData' stored property
+  //································································································
+
+  final let mModelImageData_property = EBTransientProperty <Data?> ()
+
+  //································································································
   //   Observers of 'mModelImageFirstPointXOnLock' stored property
   //································································································
 
@@ -399,12 +405,6 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
   final let yPlacardUnit_property = EBTransientProperty <Int?> ()
 
   //································································································
-  //   Observers of 'mModelImageData' stored property
-  //································································································
-
-  final let mModelImageData_property = EBTransientProperty <Data?> ()
-
-  //································································································
   //   Observers of 'freePadNumbering' transient property
   //································································································
 
@@ -435,6 +435,18 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
   final let secondPointY_property = EBTransientProperty <Int?> ()
 
   //································································································
+  //   Observers of 'modelImageSizeString' transient property
+  //································································································
+
+  final let modelImageSizeString_property = EBTransientProperty <String?> ()
+
+  //································································································
+  //   Observers of 'hasModelImage' transient property
+  //································································································
+
+  final let hasModelImage_property = EBTransientProperty <Bool?> ()
+
+  //································································································
   //   Observers of 'lockImageView' transient property
   //································································································
 
@@ -451,18 +463,6 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
   //································································································
 
   final let backgroundImagePageBackgroundDisplay_property = EBTransientProperty <EBShape?> ()
-
-  //································································································
-  //   Observers of 'modelImageSizeString' transient property
-  //································································································
-
-  final let modelImageSizeString_property = EBTransientProperty <String?> ()
-
-  //································································································
-  //   Observers of 'hasModelImage' transient property
-  //································································································
-
-  final let hasModelImage_property = EBTransientProperty <Bool?> ()
 
   //································································································
   //   Observers of 'masterPadObjectIndexArray' transient property
@@ -704,6 +704,10 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
     self.mModelImageSecondPointYUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mModelImageSecondPointYUnit_property.optionalSelection ?? .single (nil)
     }
+  //--- Configure mModelImageData simple stored property
+    self.mModelImageData_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mModelImageData_property.optionalSelection ?? .single (nil)
+    }
   //--- Configure mModelImageFirstPointXOnLock simple stored property
     self.mModelImageFirstPointXOnLock_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mModelImageFirstPointXOnLock_property.optionalSelection ?? .single (nil)
@@ -772,10 +776,6 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
     self.yPlacardUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.yPlacardUnit_property.optionalSelection ?? .single (nil)
     }
-  //--- Configure mModelImageData simple stored property
-    self.mModelImageData_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.mModelImageData_property.optionalSelection ?? .single (nil)
-    }
   //--- Configure freePadNumbering transient property
     self.freePadNumbering_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.freePadNumbering_property.optionalSelection ?? .single (nil)
@@ -796,6 +796,14 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
     self.secondPointY_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.secondPointY_property.optionalSelection ?? .single (nil)
     }
+  //--- Configure modelImageSizeString transient property
+    self.modelImageSizeString_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.modelImageSizeString_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure hasModelImage transient property
+    self.hasModelImage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.hasModelImage_property.optionalSelection ?? .single (nil)
+    }
   //--- Configure lockImageView transient property
     self.lockImageView_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.lockImageView_property.optionalSelection ?? .single (nil)
@@ -807,14 +815,6 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
   //--- Configure backgroundImagePageBackgroundDisplay transient property
     self.backgroundImagePageBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backgroundImagePageBackgroundDisplay_property.optionalSelection ?? .single (nil)
-    }
-  //--- Configure modelImageSizeString transient property
-    self.modelImageSizeString_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.modelImageSizeString_property.optionalSelection ?? .single (nil)
-    }
-  //--- Configure hasModelImage transient property
-    self.hasModelImage_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.hasModelImage_property.optionalSelection ?? .single (nil)
     }
   //--- Configure masterPadObjectIndexArray transient property
     self.masterPadObjectIndexArray_property.mReadModelFunction = { [weak self] in

@@ -44,7 +44,7 @@ extension AutoLayoutProjectDocument {
   //································································································
 
   func writeCSVFile (atPath inPath : String) throws {
-    self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
+    self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(inPath.lastPathComponent)…")
   //--- Iterate on components
     var dictionary = [CSVKey : [String]] ()
     for component in self.rootObject.mComponents.values {
@@ -74,7 +74,7 @@ extension AutoLayoutProjectDocument {
   //--- Write file
     if let data = csvContent.data (using: .utf8) {
       try data.write (to: URL (fileURLWithPath: inPath))
-      self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
+      self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
     }
   }
 

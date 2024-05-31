@@ -197,7 +197,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
 
   //································································································
 
-  func appendMessageString (_ inString : String) {
+  func appendMessage (_ inString : String) {
     let attributes : [NSAttributedString.Key : NSObject] = [
       NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: self.mFontSize),
       NSAttributedString.Key.foregroundColor : NSColor.black
@@ -208,7 +208,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
 
   //································································································
 
-  func appendMessageString (_ inString : String, color : NSColor) {
+  func appendMessage (_ inString : String, color : NSColor) {
     let attributes : [NSAttributedString.Key : NSObject] = [
       NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: self.mFontSize),
       NSAttributedString.Key.foregroundColor : color
@@ -231,20 +231,20 @@ final class AutoLayoutTextObserverView : NSScrollView {
 
   //································································································
 
-  func appendErrorString (_ inString : String) {
-    self.appendMessageString (inString, color: NSColor.red)
+  func appendError (_ inString : String) {
+    self.appendMessage (inString, color: NSColor.red)
   }
 
   //································································································
 
-  func appendWarningString (_ inString : String) {
-    self.appendMessageString (inString, color: NSColor.orange)
+  func appendWarning (_ inString : String) {
+    self.appendMessage (inString, color: NSColor.orange)
   }
 
   //································································································
 
-  func appendSuccessString (_ inString : String) {
-    self.appendMessageString (inString, color: NSColor.blue)
+  func appendSuccess (_ inString : String) {
+    self.appendMessage (inString, color: NSColor.blue)
   }
 
   //································································································

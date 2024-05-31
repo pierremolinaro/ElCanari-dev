@@ -35,7 +35,7 @@ final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteP
       if self.mValue != oldValue {
         self.mUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
         if logEvents () {
-          appendMessageString ("Property #\(self.objectIndex) did change value to \(self.mValue)\n")
+          appendMessage ("Property #\(self.objectIndex) did change value to \(self.mValue)\n")
         }
         self.observedObjectDidChange ()
         self.clearSignatureCache ()

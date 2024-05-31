@@ -25,20 +25,6 @@ struct LayeredProductRectangle : Codable {
 
   //································································································
 
-//  init (x inX : ProductPoint,
-//        p2 inP2 : ProductPoint,
-//        width inWidth : ProductLength,
-//        layers inLayers : ProductLayerSet) {
-//    self.p1x = inP1.x
-//    self.p1y = inP1.y
-//    self.p2x = inP2.x
-//    self.p2y = inP2.y
-//    self.width = inWidth
-//    self.layers = inLayers
-//  }
-
-  //································································································
-
    var center : ProductPoint { ProductPoint (x: self.xCenter, y: self.yCenter) }
 
   //································································································

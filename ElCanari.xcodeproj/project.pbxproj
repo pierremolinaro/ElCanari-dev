@@ -2625,6 +2625,8 @@
 		CFC2685023524D18007C47F6 /* alignmentCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2684E23524D18007C47F6 /* alignmentCenter.png */; };
 		CFC2685723524EB7007C47F6 /* alignmentRight.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2685523524EB7007C47F6 /* alignmentRight.png */; };
 		CFC2685823524EB7007C47F6 /* alignmentLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2685623524EB7007C47F6 /* alignmentLeft.png */; };
+		CFC36FBF2C0A263E00B3D8DF /* extension-ArtworkFileGenerationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC36FBE2C0A263E00B3D8DF /* extension-ArtworkFileGenerationParameters.swift */; };
+		CFC36FC02C0A263E00B3D8DF /* extension-ArtworkFileGenerationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC36FBE2C0A263E00B3D8DF /* extension-ArtworkFileGenerationParameters.swift */; };
 		CFC3EDBB1DE0C10900445A35 /* GeometricOblong.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC3EDBA1DE0C10900445A35 /* GeometricOblong.swift */; };
 		CFC4C51C2A39C43000599EA3 /* transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC4C51B2A39C43000599EA3 /* transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift */; };
 		CFC4C51D2A39C43000599EA3 /* transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC4C51B2A39C43000599EA3 /* transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift */; };
@@ -4794,6 +4796,7 @@
 		CFC2684E23524D18007C47F6 /* alignmentCenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alignmentCenter.png; sourceTree = "<group>"; };
 		CFC2685523524EB7007C47F6 /* alignmentRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alignmentRight.png; sourceTree = "<group>"; };
 		CFC2685623524EB7007C47F6 /* alignmentLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alignmentLeft.png; sourceTree = "<group>"; };
+		CFC36FBE2C0A263E00B3D8DF /* extension-ArtworkFileGenerationParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-ArtworkFileGenerationParameters.swift"; sourceTree = "<group>"; };
 		CFC3EDBA1DE0C10900445A35 /* GeometricOblong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometricOblong.swift; sourceTree = "<group>"; };
 		CFC4C51B2A39C43000599EA3 /* transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutPackageDocument-segmentedControlPackageIssueImage.swift"; sourceTree = "<group>"; };
 		CFC4E0FB2391622E00AE5CCD /* transient-ProjectRoot-sheetGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectRoot-sheetGeometry.swift"; sourceTree = "<group>"; };
@@ -5274,7 +5277,7 @@
 				CF747FC81B3C41BB00140C49 /* Frameworks */,
 				CF8B9D282AD1842B002169DC /* Managed Object Factory */,
 				CF61FA911B3EBF21000E0257 /* Outlets Canari */,
-				CF09A3CE2BFF35FD00E2F469 /* Product */,
+				CF09A3CE2BFF35FD00E2F469 /* Product Generation */,
 				CF747FB01B3C3D8D00140C49 /* Products */,
 				CFEB7A84233A22FC0060A97A /* project — entity — BoardConnector */,
 				CF7FC47929EDB2590045DD14 /* project — entity — BoardImage */,
@@ -5316,7 +5319,7 @@
 			);
 			sourceTree = "<group>";
 		};
-		CF09A3CE2BFF35FD00E2F469 /* Product */ = {
+		CF09A3CE2BFF35FD00E2F469 /* Product Generation */ = {
 			isa = PBXGroup;
 			children = (
 				CF09A3CF2BFF363800E2F469 /* codable-utilities.swift */,
@@ -5336,7 +5339,7 @@
 				CF32758D2C05F61F009EB45A /* ProductSegment.swift */,
 				CFD8D4982C048172008212F9 /* ProductSize.swift */,
 			);
-			name = Product;
+			name = "Product Generation";
 			path = ElCanari/product;
 			sourceTree = "<group>";
 		};
@@ -5845,6 +5848,7 @@
 				CF5B06FB213EC703005D6B37 /* CanariSegment.swift */,
 				CFD8D48C2C0480B0008212F9 /* CanariSize.swift */,
 				CF379163269C97F000FA083F /* check-el-canari-file-path.swift */,
+				CFCDA84E2C09D6E3005424E8 /* compression.swift */,
 				CF880FEE1DDB85F400954D4E /* GeometricCircle.swift */,
 				CFC3EDBA1DE0C10900445A35 /* GeometricOblong.swift */,
 				CF92E1F41DDB1C9E0019691C /* GeometricRect.swift */,
@@ -5858,7 +5862,6 @@
 				CF571D96295DCCBA0063E7AB /* ThreeStrings.swift */,
 				CF54BDAF2C06507C003C00FE /* Turtle.swift */,
 				CF571D92295DCC8B0063E7AB /* TwoStrings.swift */,
-				CFCDA84E2C09D6E3005424E8 /* compression.swift */,
 			);
 			name = utilities;
 			path = ElCanari/utilities;
@@ -6459,6 +6462,7 @@
 				CFF858862687C200001B868C /* document-AutoLayoutArtworkDocument.swift */,
 				CFAA74181B46955400327BAE /* entity-ArtworkFileGenerationParameters.swift */,
 				CFEDE5AD1B4677BA00036ACF /* entity-ArtworkRoot.swift */,
+				CFC36FBE2C0A263E00B3D8DF /* extension-ArtworkFileGenerationParameters.swift */,
 				CFF8588B2687C201001B868C /* selectionController-AutoLayoutArtworkDocument-mDataSelection.swift */,
 				CFA42F59229AEAAF000AA8C8 /* tomany-ArtworkFileGenerationParameters.swift */,
 				CFA42F58229AEAAF000AA8C8 /* tomany-ArtworkRoot.swift */,
@@ -9190,6 +9194,7 @@
 				CF00843B21C41B8D003627E9 /* transient-PackageBezier-issues.swift in Sources */,
 				CFB4C0E32794677200C509A9 /* AutoLayoutRTFTextView.swift in Sources */,
 				CFEB7CD5233A28860060A97A /* transient-ProjectRoot-viaCountString.swift in Sources */,
+				CFC36FBF2C0A263E00B3D8DF /* extension-ArtworkFileGenerationParameters.swift in Sources */,
 				CF355A11279D9F3E000BFC9B /* extension-AutoLayoutProjectDocument-change-component-package.swift in Sources */,
 				CFB82C14276B8A4F00BAD56E /* AutoLayoutTableView-column-String.swift in Sources */,
 				CF711C94275E155300280069 /* tomany-BoardLine.swift in Sources */,
@@ -10294,6 +10299,7 @@
 				CFEB7BB8233A27940060A97A /* transient-DeviceSymbolInstanceInProject-strokeBezierPath.swift in Sources */,
 				CF711D28275E1AAB00280069 /* entity-DeviceMasterPadInProject.swift in Sources */,
 				CF711E0B275E1C8D00280069 /* extension-PackageDimension.swift in Sources */,
+				CFC36FC02C0A263E00B3D8DF /* extension-ArtworkFileGenerationParameters.swift in Sources */,
 				CF3DD5F9250236A400163A12 /* file-metadata-get.swift in Sources */,
 				CFB8DDBB27A6DE030097DF9A /* AutoLayoutDateLabel.swift in Sources */,
 				CF2B24842B4C551E00F2624F /* transient-BoardModel-backTrackSegmentsNoSilkScreen.swift in Sources */,

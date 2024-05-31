@@ -23,12 +23,32 @@ struct ProductRepresentation : Codable {
   private(set) var boardHeightUnit : Int // Canari Unit
   private(set) var boardLimitWidth : ProductLength
   private(set) var boardLimitWidthUnit : Int // Canari Unit
+  private(set) var artworkName = ""
   private(set) var roundSegments = [LayeredProductSegment] ()
   private(set) var squareSegments = [LayeredProductSegment] ()
   private(set) var circles = [LayeredProductCircle] ()
   private(set) var rectangles = [LayeredProductRectangle] ()
   private(set) var componentPads = [LayeredProductComponentPad] ()
-  private(set) var artworkName = ""
+
+  //································································································
+  //  Init
+  //································································································
+
+  @MainActor init (boardWidth inBoardWidth : ProductLength,
+                   boardWidthUnit inBoardWidthUnit : Int, // Canari Unit
+                   boardHeight inBoardHeight : ProductLength,
+                   boardHeightUnit inBoardHeightUnit : Int, // Canari Unit
+                   boardLimitWidth inBoardLimitWidth : ProductLength,
+                   boardLimitWidthUnit inBoardLimitWidthUnit : Int, // Canari Unit
+                   artworkName inArtworkName : String) {
+    self.boardWidth = inBoardWidth
+    self.boardWidthUnit = inBoardWidthUnit
+    self.boardHeight = inBoardHeight
+    self.boardHeightUnit = inBoardHeightUnit
+    self.boardLimitWidth = inBoardLimitWidth
+    self.boardLimitWidthUnit = inBoardLimitWidthUnit
+    self.artworkName = inArtworkName
+  }
 
   //································································································
   //  Init
@@ -70,6 +90,86 @@ struct ProductRepresentation : Codable {
     self.appendTracks (projectRoot: inProjectRoot)
   }
 
+  //································································································
+  //  Insert a product (used by merger)
+  //································································································
+
+  mutating func add (_ inProduct : ProductRepresentation,
+                     x inX : ProductLength,
+                     y inY : ProductLength,
+                     quadrantRotation inRotation : QuadrantRotation) {
+    var modelAffineTransform = AffineTransform ()
+    let width = inProduct.boardWidth.value (in: .cocoa)
+    let height = inProduct.boardHeight.value (in: .cocoa)
+    switch inRotation {
+    case .rotation0, .rotation180 :
+      modelAffineTransform.translate (x: width / 2.0, y: height / 2.0)
+    case .rotation90, .rotation270 :
+      modelAffineTransform.translate (x: height / 2.0, y: width / 2.0)
+    }
+    modelAffineTransform.translate (x: inX.value (in: .cocoa), y: inY.value (in: .cocoa))
+    let angleInDegrees = Double (inRotation.rawValue * 90)
+    modelAffineTransform.rotate (byDegrees: angleInDegrees)
+    modelAffineTransform.translate (x: -width / 2.0, y: -height / 2.0)
+    for circle in inProduct.circles {
+      let center = ProductPoint (cocoaPoint: modelAffineTransform.transform (ProductPoint (x: circle.x, y: circle.y).cocoaPoint))
+      let newCircle = LayeredProductCircle (
+        center: center,
+        diameter: circle.d,
+        layers: circle.layers
+      )
+      self.circles.append (newCircle)
+    }
+    for segment in inProduct.roundSegments {
+      let p1 = ProductPoint (cocoaPoint: modelAffineTransform.transform (ProductPoint (x: segment.x1, y: segment.y1).cocoaPoint))
+      let p2 = ProductPoint (cocoaPoint: modelAffineTransform.transform (ProductPoint (x: segment.x2, y: segment.y2).cocoaPoint))
+      let s = LayeredProductSegment (
+        p1: p1,
+        p2: p2,
+        width: segment.width,
+        layers: segment.layers
+      )
+      self.roundSegments.append (s)
+    }
+    for segment in inProduct.squareSegments {
+      let p1 = ProductPoint (cocoaPoint: modelAffineTransform.transform (ProductPoint (x: segment.x1, y: segment.y1).cocoaPoint))
+      let p2 = ProductPoint (cocoaPoint: modelAffineTransform.transform (ProductPoint (x: segment.x2, y: segment.y2).cocoaPoint))
+      let s = LayeredProductSegment (
+        p1: p1,
+        p2: p2,
+        width: segment.width,
+        layers: segment.layers
+      )
+      self.squareSegments.append (s)
+    }
+    for r in inProduct.rectangles {
+      let center = ProductPoint (cocoaPoint: modelAffineTransform.transform (ProductPoint (x: r.xCenter, y: r.yCenter).cocoaPoint))
+      let s = LayeredProductRectangle (
+        xCenter: center.x,
+        yCenter: center.y,
+        width: r.width,
+        height: r.height,
+        angleDegrees: r.angleDegrees + angleInDegrees,
+        layers: r.layers
+      )
+      self.rectangles.append (s)
+    }
+    for pad in inProduct.componentPads {
+      var padAffineTransform = pad.af
+      padAffineTransform.append (modelAffineTransform)
+      let s = LayeredProductComponentPad (
+        xCenter: pad.xCenter,
+        yCenter: pad.yCenter,
+        width: pad.width,
+        height: pad.height,
+        af: padAffineTransform,
+        shape: pad.shape,
+        layers: pad.layers
+      )
+      self.componentPads.append (s)
+    }
+  }
+  
   //································································································
   //  Decoding
   //································································································
@@ -114,8 +214,8 @@ struct ProductRepresentation : Codable {
   //································································································
 
   func encodedJSONCompressedData (prettyPrinted inPrettyPrinted : Bool,
-                                  using inAlgorithm : compression_algorithm) throws -> Data {
-    let jsonData = try encodedJSONData (prettyPrinted: inPrettyPrinted)
+                                  using inAlgorithm : compression_algorithm) -> Data {
+    let jsonData = try! encodedJSONData (prettyPrinted: inPrettyPrinted)
     let compressedJSONData = compressedData (jsonData, using: inAlgorithm)
     return compressedJSONData
   }

@@ -15,7 +15,7 @@ extension AutoLayoutProjectDocument {
   //································································································
 
   func writeBoardArchiveFile (atPath inPath : String, _ inProductData : ProductData) throws {
-    self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
+    self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(inPath.lastPathComponent)…")
     var boardArchive = [String : Any] ()
   //--- Add artwork name
     boardArchive [ARCHIVE_ARTWORK_KEY] = self.rootObject.mArtworkName
@@ -63,7 +63,7 @@ extension AutoLayoutProjectDocument {
   //--- Write file
     let data = try PropertyListSerialization.data (fromPropertyList: boardArchive, format: .xml, options: 0)
     try data.write (to: URL (fileURLWithPath: inPath))
-    self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
+    self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
   }
 
   //································································································

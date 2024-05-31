@@ -66,7 +66,7 @@ extension AutoLayoutProjectDocument {
   func writeGerberDrillFile (atPath inPath : String,
                              _ inProductRepresentation : ProductRepresentation,
                              _ inProductData : ProductData) throws {
-    self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(inPath.lastPathComponent)…")
+    self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(inPath.lastPathComponent)…")
     if self.rootObject.mUsesNewProductGeneration {
       let gerber : GerberRepresentation = inProductRepresentation.gerber (
         items: [.hole],
@@ -109,7 +109,7 @@ extension AutoLayoutProjectDocument {
       let data : Data? = s.data (using: .ascii, allowLossyConversion:false)
       try data?.write (to: URL (fileURLWithPath: inPath), options: .atomic)
     }
-    self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
+    self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
   }
 
   //································································································
@@ -120,77 +120,13 @@ extension AutoLayoutProjectDocument {
                                _ inProductData : ProductData,
                                _ inProductRepresentation : ProductRepresentation) throws {
     let path = inPath + inDescriptor.fileExtension
-    self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(path.lastPathComponent)…")
+    self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(path.lastPathComponent)…")
     if self.rootObject.mUsesNewProductGeneration {
-      var items = ProductLayerSet ()
-      if inDescriptor.drawBoardLimits {
-        items.insert (.boardLimits)
-      }
-      if inDescriptor.drawInternalBoardLimits {
-        items.insert (.internalBoardLimits)
-      }
-      if inDescriptor.drawComponentNamesTopSide {
-        items.insert (.frontSideComponentName)
-      }
-      if inDescriptor.drawComponentNamesBottomSide {
-        items.insert (.backSideComponentName)
-      }
-      if inDescriptor.drawComponentValuesTopSide {
-        items.insert (.frontSideComponentValue)
-      }
-      if inDescriptor.drawComponentValuesBottomSide {
-        items.insert (.backSideComponentValue)
-      }
-      if inDescriptor.drawPackageLegendTopSide {
-        items.insert ([.frontSidePackageLegend, .frontSideLegendLine])
-      }
-      if inDescriptor.drawPackageLegendBottomSide {
-        items.insert ([.backSidePackageLegend, .backSideLegendLine])
-      }
-      if inDescriptor.drawPadsTopSide {
-        items.insert (.frontSideComponentPad)
-      }
-      if inDescriptor.drawPadsBottomSide {
-        items.insert (.backSideComponentPad)
-      }
-      if inDescriptor.drawTextsLayoutTopSide {
-        items.insert (.frontSideLayoutText)
-      }
-      if inDescriptor.drawTextsLayoutBottomSide {
-        items.insert (.backSideLayoutText)
-      }
-      if inDescriptor.drawTextsLegendBottomSide {
-        items.insert (.backSideLegendText)
-      }
-      if inDescriptor.drawTracksTopSide {
-        items.insert (.frontSideTrack)
-      }
-      if inDescriptor.drawTracksInner1Layer {
-        items.insert (.inner1Track)
-      }
-      if inDescriptor.drawTracksInner2Layer {
-        items.insert (.inner2Track)
-      }
-      if inDescriptor.drawTracksInner3Layer {
-        items.insert (.inner3Track)
-      }
-      if inDescriptor.drawTracksInner4Layer {
-        items.insert (.inner4Track)
-      }
-      if inDescriptor.drawTracksBottomSide {
-        items.insert (.backSideTrack)
-      }
-      if inDescriptor.drawTraversingPads {
-        items.insert (.innerComponentPad)
-      }
-      if inDescriptor.drawVias {
-        items.insert (.viaPad)
-      }
       let mirror : ProductHorizontalMirror = inDescriptor.horizontalMirror
         ? .mirror (boardWidth: self.rootObject.boardBoundBox!.size.width)
         : .noMirror
       let gerber : GerberRepresentation = inProductRepresentation.gerber (
-        items: items,
+        items: inDescriptor.layerItems,
         mirror: mirror
       )
       let gerberString = gerber.gerberString (unit: self.rootObject.mGerberProductUnit)
@@ -328,7 +264,7 @@ extension AutoLayoutProjectDocument {
       let data : Data? = s.data (using: .ascii, allowLossyConversion: false)
       try data?.write (to: URL (fileURLWithPath: path), options: .atomic)
     }
-    self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
+    self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
   }
 
   //································································································

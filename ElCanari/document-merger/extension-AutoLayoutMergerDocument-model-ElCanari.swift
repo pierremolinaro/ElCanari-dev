@@ -25,12 +25,12 @@ extension AutoLayoutMergerDocument {
   // Load from JSON archive
   //································································································
 
-  func loadBoardModel_ELCanariArchive (filePath inFilePath : String, windowForSheet inWindow : NSWindow) {
+  func loadBoardModelELCanariBoardArchive (filePath inFilePath : String, windowForSheet inWindow : NSWindow) {
   //--- Load file, as plist
     let optionalFileData : Data? = FileManager ().contents (atPath: inFilePath)
     if let fileData = optionalFileData {
       let s = inFilePath.lastPathComponent.deletingPathExtension
-      self.parseBoardModel_ELCanariArchive (fromData: fileData, named : s, callBack: { self.registerBoardModelCallBack ($0) } )
+      self.parseBoardModelELCanariBoardArchive (fromData: fileData, named : s, callBack: { self.registerBoardModelCallBack ($0) } )
     }else{ // Cannot read file
       let alert = NSAlert ()
       alert.messageText = "Cannot read file"
@@ -41,11 +41,11 @@ extension AutoLayoutMergerDocument {
 
   //································································································
 
-  func parseBoardModel_ELCanariArchive (fromData inData : Data,
-                                        named inName : String,
-                                        callBack inCallBack : @escaping (BoardModel) -> Void) {
+  func parseBoardModelELCanariBoardArchive (fromData inData : Data,
+                                            named inName : String,
+                                            callBack inCallBack : @escaping (BoardModel) -> Void) {
     if let product = ProductRepresentation (fromJSONCompressedData: inData, using: COMPRESSION_LZMA) {
-      self.internal_check_ELCanariArchive_version (product, named: inName, callBack: inCallBack)
+      self.internalLoadELCanariBoardArchive (product, named: inName, callBack: inCallBack)
     }else{
       let alert = NSAlert ()
       alert.messageText = "Cannot Analyse JSON contents"
@@ -55,14 +55,16 @@ extension AutoLayoutMergerDocument {
 
   //································································································
 
-  fileprivate func internal_check_ELCanariArchive_version (_ inProduct : ProductRepresentation,
-                                                           named inName : String,
-                                                           callBack inCallBack : @escaping (BoardModel) -> Void) {
+  fileprivate func internalLoadELCanariBoardArchive (_ inProduct : ProductRepresentation,
+                                                     named inName : String,
+                                                     callBack inCallBack : @escaping (BoardModel) -> Void) {
     let boardModel = BoardModel (self.undoManager)
   //--- Populate board model from dictionary (accumulate error messages in errorArray variable)
     boardModel.modelVersion = MERGER_ARCHIVE_VERSION
     boardModel.ignoreModelVersionError = false
     boardModel.name = inName
+    boardModel.modelData = inProduct.encodedJSONCompressedData (prettyPrinted: true, using: COMPRESSION_LZMA)
+    // Swift.print ("\(boardModel.modelData.count) bytes")
     boardModel.artworkName = inProduct.artworkName
     boardModel.modelWidth = inProduct.boardWidth.valueInCanariUnit
     boardModel.modelHeight = inProduct.boardHeight.valueInCanariUnit

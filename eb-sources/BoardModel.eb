@@ -7,6 +7,7 @@ handlingOpposite entity BoardModel {
   property @generateDirectAccess Int modelWidthUnit default 0 ;
   property @generateDirectAccess Int modelHeight default 0 ;
   property @generateDirectAccess Int modelHeightUnit default 0 ;
+  property @generateDirectAccess Data modelData default empty ;
 
   property Int zoom default 0 ; // 0 means "fit to window"
 

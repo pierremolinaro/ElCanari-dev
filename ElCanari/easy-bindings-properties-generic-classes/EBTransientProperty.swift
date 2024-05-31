@@ -37,11 +37,11 @@ class EBTransientProperty <T : Equatable> : EBObservableProperty <T> {
     if self.mValueCache != nil {
       self.mValueCache = nil
       if logEvents () {
-        appendMessageString ("Transient #\(self.objectIndex) propagation\n")
+        appendMessage ("Transient #\(self.objectIndex) propagation\n")
       }
       super.observedObjectDidChange ()
     }else if logEvents () {
-      appendMessageString ("Transient #\(self.objectIndex) nil\n")
+      appendMessage ("Transient #\(self.objectIndex) nil\n")
     }
   }
 

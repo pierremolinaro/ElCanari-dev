@@ -118,13 +118,13 @@ extension AutoLayoutProjectDocument {
     if self.rootObject.mGenerateMergerArchive_property.propval {
       if self.rootObject.mUsesNewProductGeneration {
         let boardArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_MERGER_ARCHIVE
-        self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(boardArchiveFilePath.lastPathComponent)…")
-        let jsonData : Data = try productRepresentation.encodedJSONCompressedData (
+        self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(boardArchiveFilePath.lastPathComponent)…")
+        let jsonData : Data = productRepresentation.encodedJSONCompressedData (
           prettyPrinted: true,
           using: COMPRESSION_LZMA
         )
         try jsonData.write (to: URL (fileURLWithPath: boardArchiveFilePath))
-        self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
+        self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
       }else{
         let boardLegacyArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_LEGACY_MERGER_ARCHIVE
         try self.writeBoardArchiveFile (atPath: boardLegacyArchiveFilePath, productData)
@@ -144,14 +144,14 @@ extension AutoLayoutProjectDocument {
     let fm = FileManager ()
     var isDir : ObjCBool = false
     if fm.fileExists (atPath: inDirectoryPath, isDirectory: &isDir) {
-      self.mProductFileGenerationLogTextView?.appendMessageString ("Remove recursively \(inDirectoryPath)...")
+      self.mProductFileGenerationLogTextView?.appendMessage ("Remove recursively \(inDirectoryPath)...")
       try fm.removeItem (atPath: inDirectoryPath) // Remove dir recursively
-      self.mProductFileGenerationLogTextView?.appendSuccessString (" ok.\n")
+      self.mProductFileGenerationLogTextView?.appendSuccess (" ok.\n")
     }
     if inCreate {
-      self.mProductFileGenerationLogTextView?.appendMessageString ("Create \(inDirectoryPath)...")
+      self.mProductFileGenerationLogTextView?.appendMessage ("Create \(inDirectoryPath)...")
       try fm.createDirectory (atPath: inDirectoryPath, withIntermediateDirectories: true, attributes: nil)
-      self.mProductFileGenerationLogTextView?.appendSuccessString (" ok.\n")
+      self.mProductFileGenerationLogTextView?.appendSuccess (" ok.\n")
     }
   }
 

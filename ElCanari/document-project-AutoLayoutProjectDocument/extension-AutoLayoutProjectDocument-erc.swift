@@ -82,7 +82,7 @@ extension AutoLayoutProjectDocument {
 
   fileprivate func checkVersusArtwork (_ ioIssues : inout [CanariIssue]) {
     if let artwork = self.rootObject.mArtwork {
-      self.mERCLogTextViewArray.appendMessageString ("Check artwork… ")
+      self.mERCLogTextViewArray.appendMessage ("Check artwork… ")
       var errorCount = 0
     //--- Layer configuration
       if artwork.layerConfiguration != self.rootObject.mLayerConfiguration {
@@ -103,18 +103,18 @@ extension AutoLayoutProjectDocument {
         errorCount += 1
       }
       if errorCount == 0 {
-        self.mERCLogTextViewArray.appendSuccessString ("ok\n")
+        self.mERCLogTextViewArray.appendSuccess ("ok\n")
       }else if errorCount == 1 {
-        self.mERCLogTextViewArray.appendErrorString ("1 error\n")
+        self.mERCLogTextViewArray.appendError ("1 error\n")
       }else{
-        self.mERCLogTextViewArray.appendErrorString ("\(errorCount) errors\n")
+        self.mERCLogTextViewArray.appendError ("\(errorCount) errors\n")
       }
     //--- Board OAR and PHD of vias
       self.checkViasOARAndPHD (&ioIssues, OAR: artwork.minValueForOARinEBUnit, PHD: artwork.minValueForPHDinEBUnit, artworkClearance: artwork.minPPTPTTTW)
     //--- Board OAR and PHD of pads
       self.checkPadsOARAndPHD (&ioIssues, OAR: artwork.minValueForOARinEBUnit, PHD: artwork.minValueForPHDinEBUnit, artworkClearance: artwork.minPPTPTTTW)
     }else{
-      self.mERCLogTextViewArray.appendWarningString ("No checking: artwork is not set.\n")
+      self.mERCLogTextViewArray.appendWarning ("No checking: artwork is not set.\n")
       let issue = CanariIssue (kind: .warning, message: "No checking: artwork is not set.", pathes: [])
       ioIssues.append (issue)
     }
@@ -124,7 +124,7 @@ extension AutoLayoutProjectDocument {
 
   private func checkTracksLayer (_ ioIssues : inout [CanariIssue],
                                  artworkClearance inArtworkClearance : Int) {
-    self.mERCLogTextViewArray.appendMessageString ("Check tracks layer… ")
+    self.mERCLogTextViewArray.appendMessage ("Check tracks layer… ")
     var errorCount = 0
     let layerConfiguration = self.rootObject.mLayerConfiguration
     for object in self.rootObject.mBoardObjects.values {
@@ -212,11 +212,11 @@ extension AutoLayoutProjectDocument {
     }
   //---
     if errorCount == 0 {
-      self.mERCLogTextViewArray.appendSuccessString ("ok\n")
+      self.mERCLogTextViewArray.appendSuccess ("ok\n")
     }else if errorCount == 1 {
-      self.mERCLogTextViewArray.appendErrorString ("1 error\n")
+      self.mERCLogTextViewArray.appendError ("1 error\n")
     }else{
-      self.mERCLogTextViewArray.appendErrorString ("\(errorCount) errors\n")
+      self.mERCLogTextViewArray.appendError ("\(errorCount) errors\n")
     }
   }
 
@@ -226,7 +226,7 @@ extension AutoLayoutProjectDocument {
                                        OAR inOAR : Int,
                                        PHD inPHD : Int,
                                        artworkClearance inArtworkClearance : Int) {
-    self.mERCLogTextViewArray.appendMessageString ("Check vias OAR and PHD… ")
+    self.mERCLogTextViewArray.appendMessage ("Check vias OAR and PHD… ")
     var errorCount = 0
     for object in self.rootObject.mBoardObjects.values {
       if let connector = object as? BoardConnector, let isVia = connector.isVia, isVia {
@@ -253,11 +253,11 @@ extension AutoLayoutProjectDocument {
       }
     }
     if errorCount == 0 {
-      self.mERCLogTextViewArray.appendSuccessString ("ok\n")
+      self.mERCLogTextViewArray.appendSuccess ("ok\n")
     }else if errorCount == 1 {
-      self.mERCLogTextViewArray.appendErrorString ("1 error\n")
+      self.mERCLogTextViewArray.appendError ("1 error\n")
     }else{
-      self.mERCLogTextViewArray.appendErrorString ("\(errorCount) errors\n")
+      self.mERCLogTextViewArray.appendError ("\(errorCount) errors\n")
     }
   }
 
@@ -267,7 +267,7 @@ extension AutoLayoutProjectDocument {
                                        OAR inOAR : Int,
                                        PHD inPHD : Int,
                                        artworkClearance inArtworkClearance : Int) {
-    self.mERCLogTextViewArray.appendMessageString ("Check pads OAR and PHD… ")
+    self.mERCLogTextViewArray.appendMessage ("Check pads OAR and PHD… ")
     var errorCount = 0
     for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject {
@@ -341,11 +341,11 @@ extension AutoLayoutProjectDocument {
       }
     }
     if errorCount == 0 {
-      self.mERCLogTextViewArray.appendSuccessString ("ok\n")
+      self.mERCLogTextViewArray.appendSuccess ("ok\n")
     }else if errorCount == 1 {
-      self.mERCLogTextViewArray.appendErrorString ("1 error\n")
+      self.mERCLogTextViewArray.appendError ("1 error\n")
     }else{
-      self.mERCLogTextViewArray.appendErrorString ("\(errorCount) errors\n")
+      self.mERCLogTextViewArray.appendError ("\(errorCount) errors\n")
     }
   }
 
@@ -474,7 +474,7 @@ extension AutoLayoutProjectDocument {
       }
     }
   //--- Check insulation
-    self.mERCLogTextViewArray.appendMessageString ("Pad insulation… ")
+    self.mERCLogTextViewArray.appendMessage ("Pad insulation… ")
     var padsArrayDictionary = [TrackSide : [(String, [PadGeometryForERC])]] ()
     for (key, pads) in ioPadNetDictionary {
       padsArrayDictionary [key.side] = padsArrayDictionary [key.side, default: []] + [(key.netName, pads)]
@@ -497,11 +497,11 @@ extension AutoLayoutProjectDocument {
       }
     }
     if collisionCount == 0 {
-      self.mERCLogTextViewArray.appendSuccessString ("ok\n")
+      self.mERCLogTextViewArray.appendSuccess ("ok\n")
     }else if collisionCount == 1 {
-      self.mERCLogTextViewArray.appendErrorString ("1 error\n")
+      self.mERCLogTextViewArray.appendError ("1 error\n")
     }else{
-      self.mERCLogTextViewArray.appendErrorString ("\(collisionCount) errors\n")
+      self.mERCLogTextViewArray.appendError ("\(collisionCount) errors\n")
     }
   }
 
@@ -550,7 +550,7 @@ extension AutoLayoutProjectDocument {
   private func checkPadConnectivity (_ ioIssues : inout [CanariIssue],
                                      _ ioNetConnectorsDictionary : inout [String : [(BoardConnector, EBBezierPath)]],
                                      artworkClearance inArtworkClearance : Int) {
-    self.mERCLogTextViewArray.appendMessageString ("Pad connection… ")
+    self.mERCLogTextViewArray.appendMessage ("Pad connection… ")
     var connectionErrorCount = 0
     for component in self.rootObject.mComponents.values {
       if component.mRoot != nil { // Placed on board
@@ -582,11 +582,11 @@ extension AutoLayoutProjectDocument {
       }
     }
     if connectionErrorCount == 0 {
-      self.mERCLogTextViewArray.appendSuccessString ("ok\n")
+      self.mERCLogTextViewArray.appendSuccess ("ok\n")
     }else if connectionErrorCount == 1 {
-      self.mERCLogTextViewArray.appendErrorString ("1 error\n")
+      self.mERCLogTextViewArray.appendError ("1 error\n")
     }else{
-      self.mERCLogTextViewArray.appendErrorString ("\(connectionErrorCount) errors\n")
+      self.mERCLogTextViewArray.appendError ("\(connectionErrorCount) errors\n")
     }
   }
 
@@ -702,7 +702,7 @@ extension AutoLayoutProjectDocument {
 
   private func checkNetConnectivity (_ ioIssues : inout [CanariIssue],
                                      _ inNetConnectorsDictionary : [String : [(BoardConnector, EBBezierPath)]]) {
-    self.mERCLogTextViewArray.appendMessageString ("Net connection… ")
+    self.mERCLogTextViewArray.appendMessage ("Net connection… ")
     var connectivityErrorCount = 0
     for (netName, padConnectors) in inNetConnectorsDictionary {
       var connectorExploreArray = [padConnectors [0].0]
@@ -740,11 +740,11 @@ extension AutoLayoutProjectDocument {
       }
     }
     if connectivityErrorCount == 0 {
-      self.mERCLogTextViewArray.appendSuccessString ("ok\n")
+      self.mERCLogTextViewArray.appendSuccess ("ok\n")
     }else if connectivityErrorCount == 1 {
-      self.mERCLogTextViewArray.appendErrorString ("1 error\n")
+      self.mERCLogTextViewArray.appendError ("1 error\n")
     }else{
-      self.mERCLogTextViewArray.appendErrorString ("\(connectivityErrorCount) errors\n")
+      self.mERCLogTextViewArray.appendError ("\(connectivityErrorCount) errors\n")
     }
   }
 
@@ -856,7 +856,7 @@ extension AutoLayoutProjectDocument {
 
   private func checkViaViaInsulation (_ ioIssues : inout [CanariIssue],
                                       _ inViaDictionary : [String : [GeometricCircle]]) {
-    self.mERCLogTextViewArray.appendMessageString ("Via vs via… ")
+    self.mERCLogTextViewArray.appendMessage ("Via vs via… ")
     var insulationErrorCount = 0
     var allVias = [GeometricCircle] ()
     for (_, vias) in inViaDictionary {
@@ -876,11 +876,11 @@ extension AutoLayoutProjectDocument {
       }
     }
     if insulationErrorCount == 0 {
-      self.mERCLogTextViewArray.appendSuccessString ("ok\n")
+      self.mERCLogTextViewArray.appendSuccess ("ok\n")
     }else if insulationErrorCount == 1 {
-      self.mERCLogTextViewArray.appendErrorString ("1 error\n")
+      self.mERCLogTextViewArray.appendError ("1 error\n")
     }else{
-      self.mERCLogTextViewArray.appendErrorString ("\(insulationErrorCount) errors\n")
+      self.mERCLogTextViewArray.appendError ("\(insulationErrorCount) errors\n")
     }
   }
 
@@ -890,7 +890,7 @@ extension AutoLayoutProjectDocument {
                                           _ inSide : String,
                                           _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?) {
     if let layout = inLayout, layout.count > 1 {
-      self.mERCLogTextViewArray.appendMessageString (inSide.capitalizingFirstLetter () + " track vs track… ")
+      self.mERCLogTextViewArray.appendMessage (inSide.capitalizingFirstLetter () + " track vs track… ")
       var insulationErrorCount = 0
       for idx in 1 ..< layout.count {
         let trackArrayX = layout [idx].0
@@ -908,11 +908,11 @@ extension AutoLayoutProjectDocument {
         }
       }
       if insulationErrorCount == 0 {
-        self.mERCLogTextViewArray.appendSuccessString ("ok\n")
+        self.mERCLogTextViewArray.appendSuccess ("ok\n")
       }else if insulationErrorCount == 1 {
-        self.mERCLogTextViewArray.appendErrorString ("1 error\n")
+        self.mERCLogTextViewArray.appendError ("1 error\n")
       }else{
-        self.mERCLogTextViewArray.appendErrorString ("\(insulationErrorCount) errors\n")
+        self.mERCLogTextViewArray.appendError ("\(insulationErrorCount) errors\n")
       }
     }
   }
@@ -923,7 +923,7 @@ extension AutoLayoutProjectDocument {
                                         _ inSide : String,
                                         _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?) {
     if let layout = inLayout, layout.count > 1 {
-      self.mERCLogTextViewArray.appendMessageString (inSide.capitalizingFirstLetter () + " track vs pad… ")
+      self.mERCLogTextViewArray.appendMessage (inSide.capitalizingFirstLetter () + " track vs pad… ")
       var insulationErrorCount = 0
       for idx in 0 ..< layout.count {
         let trackArrayX = layout [idx].0
@@ -943,11 +943,11 @@ extension AutoLayoutProjectDocument {
         }
       }
       if insulationErrorCount == 0 {
-        self.mERCLogTextViewArray.appendSuccessString ("ok\n")
+        self.mERCLogTextViewArray.appendSuccess ("ok\n")
       }else if insulationErrorCount == 1 {
-        self.mERCLogTextViewArray.appendErrorString ("1 error\n")
+        self.mERCLogTextViewArray.appendError ("1 error\n")
       }else{
-        self.mERCLogTextViewArray.appendErrorString ("\(insulationErrorCount) errors\n")
+        self.mERCLogTextViewArray.appendError ("\(insulationErrorCount) errors\n")
       }
     }
   }
@@ -958,7 +958,7 @@ extension AutoLayoutProjectDocument {
                                       _ inSide : String,
                                       _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?) {
     if let layout = inLayout, layout.count > 1 {
-      self.mERCLogTextViewArray.appendMessageString (inSide.capitalizingFirstLetter () + " pad vs via… ")
+      self.mERCLogTextViewArray.appendMessage (inSide.capitalizingFirstLetter () + " pad vs via… ")
       var insulationErrorCount = 0
       for idx in 1 ..< layout.count {
         let padArrayX = layout [idx].1
@@ -976,11 +976,11 @@ extension AutoLayoutProjectDocument {
         }
       }
       if insulationErrorCount == 0 {
-        self.mERCLogTextViewArray.appendSuccessString ("ok\n")
+        self.mERCLogTextViewArray.appendSuccess ("ok\n")
       }else if insulationErrorCount == 1 {
-        self.mERCLogTextViewArray.appendErrorString ("1 error\n")
+        self.mERCLogTextViewArray.appendError ("1 error\n")
       }else{
-        self.mERCLogTextViewArray.appendErrorString ("\(insulationErrorCount) errors\n")
+        self.mERCLogTextViewArray.appendError ("\(insulationErrorCount) errors\n")
       }
     }
   }
@@ -991,7 +991,7 @@ extension AutoLayoutProjectDocument {
                                         _ inSide : String,
                                         _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?) {
     if let layout = inLayout, layout.count > 1 {
-      self.mERCLogTextViewArray.appendMessageString (inSide.capitalizingFirstLetter () + " track vs via… ")
+      self.mERCLogTextViewArray.appendMessage (inSide.capitalizingFirstLetter () + " track vs via… ")
       var insulationErrorCount = 0
       for idx in 1 ..< layout.count {
         let trackArrayX = layout [idx].0
@@ -1009,11 +1009,11 @@ extension AutoLayoutProjectDocument {
         }
       }
       if insulationErrorCount == 0 {
-        self.mERCLogTextViewArray.appendSuccessString ("ok\n")
+        self.mERCLogTextViewArray.appendSuccess ("ok\n")
       }else if insulationErrorCount == 1 {
-        self.mERCLogTextViewArray.appendErrorString ("1 error\n")
+        self.mERCLogTextViewArray.appendError ("1 error\n")
       }else{
-        self.mERCLogTextViewArray.appendErrorString ("\(insulationErrorCount) errors\n")
+        self.mERCLogTextViewArray.appendError ("\(insulationErrorCount) errors\n")
       }
     }
   }
@@ -1025,7 +1025,7 @@ extension AutoLayoutProjectDocument {
                                                  _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?,
                                                  _ inRestrictRectangles : [GeometricRect]?) {
     if let layout = inLayout, let restrictRectangles = inRestrictRectangles {
-      self.mERCLogTextViewArray.appendMessageString (inSide.capitalizingFirstLetter () + " track vs restrict rect… ")
+      self.mERCLogTextViewArray.appendMessage (inSide.capitalizingFirstLetter () + " track vs restrict rect… ")
       var insulationErrorCount = 0
       for (tracks, _, _) in layout {
         for track in tracks {
@@ -1039,11 +1039,11 @@ extension AutoLayoutProjectDocument {
         }
       }
       if insulationErrorCount == 0 {
-        self.mERCLogTextViewArray.appendSuccessString ("ok\n")
+        self.mERCLogTextViewArray.appendSuccess ("ok\n")
       }else if insulationErrorCount == 1 {
-        self.mERCLogTextViewArray.appendErrorString ("1 error\n")
+        self.mERCLogTextViewArray.appendError ("1 error\n")
       }else{
-        self.mERCLogTextViewArray.appendErrorString ("\(insulationErrorCount) errors\n")
+        self.mERCLogTextViewArray.appendError ("\(insulationErrorCount) errors\n")
       }
     }
   }
@@ -1055,7 +1055,7 @@ extension AutoLayoutProjectDocument {
                                                _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?,
                                                _ inRestrictRectangles : [GeometricRect]?) {
     if let layout = inLayout, let restrictRectangles = inRestrictRectangles {
-      self.mERCLogTextViewArray.appendMessageString (inSide.capitalizingFirstLetter () + " pad vs restrict rect… ")
+      self.mERCLogTextViewArray.appendMessage (inSide.capitalizingFirstLetter () + " pad vs restrict rect… ")
       var insulationErrorCount = 0
       for (_, pads, _) in layout {
         for pad in pads {
@@ -1069,11 +1069,11 @@ extension AutoLayoutProjectDocument {
         }
       }
       if insulationErrorCount == 0 {
-        self.mERCLogTextViewArray.appendSuccessString ("ok\n")
+        self.mERCLogTextViewArray.appendSuccess ("ok\n")
       }else if insulationErrorCount == 1 {
-        self.mERCLogTextViewArray.appendErrorString ("1 error\n")
+        self.mERCLogTextViewArray.appendError ("1 error\n")
       }else{
-        self.mERCLogTextViewArray.appendErrorString ("\(insulationErrorCount) errors\n")
+        self.mERCLogTextViewArray.appendError ("\(insulationErrorCount) errors\n")
       }
     }
   }
@@ -1085,7 +1085,7 @@ extension AutoLayoutProjectDocument {
                                                _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?,
                                                _ inRestrictRectangles : [GeometricRect]?) {
     if let layout = inLayout, let restrictRectangles = inRestrictRectangles {
-      self.mERCLogTextViewArray.appendMessageString (inSide.capitalizingFirstLetter () + " restrict rect vs via… ")
+      self.mERCLogTextViewArray.appendMessage (inSide.capitalizingFirstLetter () + " restrict rect vs via… ")
       var insulationErrorCount = 0
       for (_, _, vias) in layout {
         for via in vias {
@@ -1099,11 +1099,11 @@ extension AutoLayoutProjectDocument {
         }
       }
       if insulationErrorCount == 0 {
-        self.mERCLogTextViewArray.appendSuccessString ("ok\n")
+        self.mERCLogTextViewArray.appendSuccess ("ok\n")
       }else if insulationErrorCount == 1 {
-        self.mERCLogTextViewArray.appendErrorString ("1 error\n")
+        self.mERCLogTextViewArray.appendError ("1 error\n")
       }else{
-        self.mERCLogTextViewArray.appendErrorString ("\(insulationErrorCount) errors\n")
+        self.mERCLogTextViewArray.appendError ("\(insulationErrorCount) errors\n")
       }
     }
   }
@@ -1126,33 +1126,33 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  func appendMessageString (_ inString : String) {
+  func appendMessage (_ inString : String) {
     for outlet in self.values {
-      outlet.appendMessageString (inString)
+      outlet.appendMessage (inString)
     }
   }
 
   //································································································
 
-  func appendSuccessString (_ inString : String) {
+  func appendSuccess (_ inString : String) {
     for outlet in self.values {
-      outlet.appendSuccessString (inString)
+      outlet.appendSuccess (inString)
     }
   }
 
   //································································································
 
-  func appendErrorString (_ inString : String) {
+  func appendError (_ inString : String) {
     for outlet in self.values {
-      outlet.appendErrorString (inString)
+      outlet.appendError (inString)
     }
   }
 
   //································································································
 
-  func appendWarningString (_ inString : String) {
+  func appendWarning (_ inString : String) {
     for outlet in self.values {
-      outlet.appendWarningString (inString)
+      outlet.appendWarning (inString)
     }
   }
 

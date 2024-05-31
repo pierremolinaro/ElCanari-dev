@@ -44,7 +44,7 @@ extension AutoLayoutMergerDocument {
             if filePath.pathExtension == EL_CANARI_LEGACY_MERGER_ARCHIVE {
               self.loadBoardModelLegacy_ELCanariArchive (filePath : filePath, windowForSheet: window)
             }else if filePath.pathExtension == EL_CANARI_MERGER_ARCHIVE {
-              self.loadBoardModel_ELCanariArchive (filePath : filePath, windowForSheet: window)
+              self.loadBoardModelELCanariBoardArchive (filePath : filePath, windowForSheet: window)
             }else if filePath.pathExtension == KICAD_PCB {
               self.loadBoardModel_kicad (filePath : filePath, windowForSheet: window)
             }
