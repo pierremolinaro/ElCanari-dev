@@ -2730,6 +2730,8 @@
 		CFCD46C32A0573E200DC1D63 /* property-CanariWireArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD46C12A0573E100DC1D63 /* property-CanariWireArray.swift */; };
 		CFCD46C62A0573F800DC1D63 /* transient-WireInSchematic-wires.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD46C52A0573F800DC1D63 /* transient-WireInSchematic-wires.swift */; };
 		CFCD46C72A0573F800DC1D63 /* transient-WireInSchematic-wires.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD46C52A0573F800DC1D63 /* transient-WireInSchematic-wires.swift */; };
+		CFCDA84F2C09D6E3005424E8 /* compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDA84E2C09D6E3005424E8 /* compression.swift */; };
+		CFCDA8502C09D6E3005424E8 /* compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDA84E2C09D6E3005424E8 /* compression.swift */; };
 		CFCE57B22343CEC900D96E40 /* transient-ProjectRoot-allClassNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCE57B12343CEC900D96E40 /* transient-ProjectRoot-allClassNames.swift */; };
 		CFCE57B32343CEC900D96E40 /* transient-ProjectRoot-allClassNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCE57B12343CEC900D96E40 /* transient-ProjectRoot-allClassNames.swift */; };
 		CFCEE4722233BE6F00C397CE /* entity-PadProxyInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCEE4712233BE6F00C397CE /* entity-PadProxyInDevice.swift */; };
@@ -4847,6 +4849,7 @@
 		CFCD3AD521FCD09000DE503C /* phase3-readLibraryDescriptionFileContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "phase3-readLibraryDescriptionFileContents.swift"; sourceTree = "<group>"; };
 		CFCD46C12A0573E100DC1D63 /* property-CanariWireArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "property-CanariWireArray.swift"; sourceTree = "<group>"; };
 		CFCD46C52A0573F800DC1D63 /* transient-WireInSchematic-wires.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-WireInSchematic-wires.swift"; sourceTree = "<group>"; };
+		CFCDA84E2C09D6E3005424E8 /* compression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = compression.swift; sourceTree = "<group>"; };
 		CFCE57B12343CEC900D96E40 /* transient-ProjectRoot-allClassNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectRoot-allClassNames.swift"; sourceTree = "<group>"; };
 		CFCEE4712233BE6F00C397CE /* entity-PadProxyInDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-PadProxyInDevice.swift"; sourceTree = "<group>"; };
 		CFCEE4772233C75500C397CE /* transient-DeviceRoot-unconnectedPads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceRoot-unconnectedPads.swift"; sourceTree = "<group>"; };
@@ -5855,6 +5858,7 @@
 				CF571D96295DCCBA0063E7AB /* ThreeStrings.swift */,
 				CF54BDAF2C06507C003C00FE /* Turtle.swift */,
 				CF571D92295DCC8B0063E7AB /* TwoStrings.swift */,
+				CFCDA84E2C09D6E3005424E8 /* compression.swift */,
 			);
 			name = utilities;
 			path = ElCanari/utilities;
@@ -8214,6 +8218,7 @@
 				CF78DE95222D65CA00E89DCA /* transient-SlavePadInDevice-frontSideFilledBezierPath.swift in Sources */,
 				CF42D130275CF1A600B83712 /* linker-AutoLayoutMergerDocument-issueTableViewToGraphicView.swift in Sources */,
 				CFB1F90F2940EDDB00C1E120 /* action-AutoLayoutProjectDocument-renameComponentFromSelectedSymbolAction.swift in Sources */,
+				CFCDA84F2C09D6E3005424E8 /* compression.swift in Sources */,
 				CF4B39DC21D50695001217C6 /* transient-PackagePad-slavePadCount.swift in Sources */,
 				CF86B54D29CF63A600E543BB /* transient-ProjectRoot-schematicWarningCount.swift in Sources */,
 				CFB4C04E279465E700C509A9 /* AutoLayoutHelpButton.swift in Sources */,
@@ -10998,6 +11003,7 @@
 				CF59C43B29BE36AB004CA404 /* property-DefinedCharactersInDevice.swift in Sources */,
 				CF5C4D8B219F04D600EAC52A /* entity-ArtworkFileGenerationParameters.swift in Sources */,
 				CF22F1ED275A73ED009C6FAC /* transient-BoardModel-frontPadArray.swift in Sources */,
+				CFCDA8502C09D6E3005424E8 /* compression.swift in Sources */,
 				CFEB7B87233A26330060A97A /* transient-DeviceInProject-canExport.swift in Sources */,
 				CF8BE74C235112CC00F95B3A /* func-presentErrorWindow.swift in Sources */,
 				CFE6A6F827AAFF0000AD6782 /* extension-AutoLayoutProjectDocument-schematic-option-click.swift in Sources */,

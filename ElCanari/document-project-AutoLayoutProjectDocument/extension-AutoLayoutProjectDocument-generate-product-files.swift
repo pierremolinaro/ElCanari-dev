@@ -7,6 +7,7 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 import AppKit
+import Compression
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -118,7 +119,10 @@ extension AutoLayoutProjectDocument {
       if self.rootObject.mUsesNewProductGeneration {
         let boardArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_MERGER_ARCHIVE
         self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(boardArchiveFilePath.lastPathComponent)…")
-        let jsonData : Data = try productRepresentation.jsonData (prettyPrinted: true)
+        let jsonData : Data = try productRepresentation.encodedJSONCompressedData (
+          prettyPrinted: true,
+          using: COMPRESSION_LZMA
+        )
         try jsonData.write (to: URL (fileURLWithPath: boardArchiveFilePath))
         self.mProductFileGenerationLogTextView?.appendSuccessString (" Ok\n")
       }else{

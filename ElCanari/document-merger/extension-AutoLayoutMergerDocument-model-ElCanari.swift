@@ -8,6 +8,7 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 import AppKit
+import Compression
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -43,7 +44,7 @@ extension AutoLayoutMergerDocument {
   func parseBoardModel_ELCanariArchive (fromData inData : Data,
                                         named inName : String,
                                         callBack inCallBack : @escaping (BoardModel) -> Void) {
-    if let product = ProductRepresentation (fromJSONData: inData) {
+    if let product = ProductRepresentation (fromJSONCompressedData: inData, using: COMPRESSION_LZMA) {
       self.internal_check_ELCanariArchive_version (product, named: inName, callBack: inCallBack)
     }else{
       let alert = NSAlert ()
@@ -148,7 +149,7 @@ extension AutoLayoutMergerDocument {
     }
   //--- Back pads
     boardModel.backPads = inProduct.pads (self.undoManager, forLayers: .backSideComponentPad)
-//  //--- Front pads
+  //--- Front pads
     boardModel.frontPads = inProduct.pads (self.undoManager, forLayers: .frontSideComponentPad)
 //  //--- Import internal layers ?
 //    let hasInner1 = inBoardArchiveDict [ARCHIVE_TRACKS_INNER1_KEY] != nil

@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import Compression
 
 //--------------------------------------------------------------------------------------------------
 
@@ -70,10 +71,10 @@ struct ProductRepresentation : Codable {
   }
 
   //································································································
-  //  Decoding from JSON
+  //  Decoding
   //································································································
 
-  init? (fromJSONData inData : Data) {
+  init? (fromJSONData2 inData : Data) {
     let decoder = JSONDecoder ()
     if let product = try? decoder.decode (Self.self, from: inData) {
       self = product
@@ -83,10 +84,23 @@ struct ProductRepresentation : Codable {
   }
 
   //································································································
-  //  Encoding to JSON
+
+  init? (fromJSONCompressedData inData : Data,
+         using inAlgorithm : compression_algorithm) {
+    let uncompressedData = uncompressedData (inData, using: inAlgorithm, initialExpansionFactor: 24)
+    let decoder = JSONDecoder ()
+    if let product = try? decoder.decode (Self.self, from: uncompressedData) {
+      self = product
+    }else{
+      return nil
+    }
+  }
+
+  //································································································
+  //  Encoding
   //································································································
 
-  func jsonData (prettyPrinted inPrettyPrinted : Bool) throws -> Data {
+  func encodedJSONData (prettyPrinted inPrettyPrinted : Bool) throws -> Data {
     let encoder = JSONEncoder ()
     if inPrettyPrinted {
       encoder.outputFormatting = [.sortedKeys, .prettyPrinted]
@@ -95,6 +109,15 @@ struct ProductRepresentation : Codable {
     }
     let data = try encoder.encode (self)
     return data
+  }
+
+  //································································································
+
+  func encodedJSONCompressedData (prettyPrinted inPrettyPrinted : Bool,
+                                  using inAlgorithm : compression_algorithm) throws -> Data {
+    let jsonData = try encodedJSONData (prettyPrinted: inPrettyPrinted)
+    let compressedJSONData = compressedData (jsonData, using: inAlgorithm)
+    return compressedJSONData
   }
 
   //································································································
@@ -624,39 +647,17 @@ struct ProductRepresentation : Codable {
   @MainActor func pads (_ inUndoManager : UndoManager?,
                         forLayers inLayers : ProductLayerSet) -> EBReferenceArray <BoardModelPad> {
     var padEntities = EBReferenceArray <BoardModelPad> ()
-    for circle in self.circles {
-      if !circle.layers.intersection (inLayers).isEmpty {
+    for componentPad in self.componentPads {
+      if !componentPad.layers.intersection (inLayers).isEmpty {
         let pad = BoardModelPad (inUndoManager)
-        pad.x = circle.x.valueInCanariUnit
-        pad.y = circle.y.valueInCanariUnit
-        pad.width = circle.d.valueInCanariUnit
-        pad.height = circle.d.valueInCanariUnit
-        pad.rotation = 0
-        pad.shape = .round
-        padEntities.append (pad)
-      }
-    }
-//    for roundSegment in self.roundSegments {
-//      if !circle.layers.intersection (inLayers).isEmpty {
-//        let pad = BoardModelPad (inUndoManager)
-//        pad.x = circle.x.valueInCanariUnit
-//        pad.y = circle.y.valueInCanariUnit
-//        pad.width = circle.d.valueInCanariUnit
-//        pad.height = circle.d.valueInCanariUnit
-//        pad.rotation = 0
-//        pad.shape = .round
-//        padEntities.append (pad)
-//      }
-//    }
-    for rect in self.rectangles {
-      if !rect.layers.intersection (inLayers).isEmpty {
-        let pad = BoardModelPad (inUndoManager)
-        pad.x = rect.xCenter.valueInCanariUnit
-        pad.y = rect.yCenter.valueInCanariUnit
-        pad.width = rect.width.valueInCanariUnit
-        pad.height = rect.height.valueInCanariUnit
-        pad.rotation = Int (rect.angleDegrees * 1000.0)
-        pad.shape = .rect
+        let relativeCenter = ProductPoint (x: componentPad.xCenter, y: componentPad.yCenter).cocoaPoint
+        let absoluteCenter = ProductPoint (cocoaPoint: componentPad.af.transform (relativeCenter))
+        pad.x = absoluteCenter.x.valueInCanariUnit
+        pad.y = absoluteCenter.y.valueInCanariUnit
+        pad.width = componentPad.width.valueInCanariUnit
+        pad.height = componentPad.height.valueInCanariUnit
+        pad.rotation = Int (componentPad.af.angleInDegrees * 1000.0)
+        pad.shape = componentPad.shape
         padEntities.append (pad)
       }
     }
@@ -809,4 +810,3 @@ fileprivate extension SlavePadStyle {
 }
 
 //--------------------------------------------------------------------------------------------------
-
