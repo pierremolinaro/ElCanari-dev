@@ -25,11 +25,7 @@ struct LayeredProductRectangle : Codable {
 
   //································································································
 
-   var center : ProductPoint { ProductPoint (x: self.xCenter, y: self.yCenter) }
-
-  //································································································
-
-  func gerberPolygon () -> (ProductPoint, [ProductPoint]) {
+  func polygon () -> (ProductPoint, [ProductPoint]) {
     let w = self.width.value (in: .cocoa) / 2.0
     let h = self.height.value (in: .cocoa) / 2.0
     let x = self.xCenter.value (in: .cocoa)
@@ -38,22 +34,6 @@ struct LayeredProductRectangle : Codable {
     let bottomRight = ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: x + w, y: y - h)))
     let topRight    = ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: x + w, y: y + h)))
     let topLeft     = ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: x - w, y: y + h)))
-//    let angleRadian = self.angleDegrees * .pi / 180.0
-//    var t = Turtle (p: self.center.cocoaPoint, angleInRadian: angleRadian)
-//    t.rotate270 ()
-//    t.forward (h / 2.0)
-//    t.rotate270 ()
-//    t.forward (w / 2.0)
-//    let bottomLeft = ProductPoint (cocoaPoint: t.location)
-//    t.rotate180 ()
-//    t.forward (w)
-//    let bottomRight = ProductPoint (cocoaPoint: t.location)
-//    t.rotate90 ()
-//    t.forward (h)
-//    let topRight = ProductPoint (cocoaPoint: t.location)
-//    t.rotate90 ()
-//    t.forward (w)
-//    let topLeft = ProductPoint (cocoaPoint: t.location)
     return (bottomLeft, [bottomRight, topRight, topLeft])
   }
 

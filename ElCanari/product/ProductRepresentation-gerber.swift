@@ -42,7 +42,7 @@ extension ProductRepresentation {
   //--- Add rectangles
     for rect in self.rectangles {
       if !inItemSet.intersection (rect.layers).isEmpty {
-        let (origin, points) = rect.gerberPolygon ()
+        let (origin, points) = rect.polygon ()
         gerber.addPolygon (
           origin: inMirror.mirrored (origin),
           points: inMirror.mirrored (points)
@@ -118,7 +118,7 @@ extension ProductRepresentation {
       for segment in self.roundSegments {
         if segment.layers.contains (.hole) && (segment.width == aperture) {
           s += segment.p1.excellonPointString (inUnit) + "\n"
-          s += "G85\n" // Slot: drill until next point
+          s += "G85" // Slot: drill until next point (NO CARRIAGE RETURN)
           s += segment.p2.excellonPointString (inUnit) + "\n"
         }
       }

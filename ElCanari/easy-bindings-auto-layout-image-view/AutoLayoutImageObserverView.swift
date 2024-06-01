@@ -21,6 +21,19 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
 
   //································································································
 
+  override init () {
+    self.mControlSize = nil
+    super.init ()
+
+    self.imageScaling = .scaleProportionallyUpOrDown
+    self.imageFrameStyle = .none
+
+    self.setContentCompressionResistancePriority (.defaultHigh, for: .horizontal)
+    self.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
+  }
+
+  //································································································
+
   init (size inControlSize : EBControlSize) {
     self.mControlSize = inControlSize
     super.init ()
@@ -46,8 +59,6 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
       case .mini : s = 15.0 // ???
       case .small : s = 17.0
       case .regular : s =  24.0
-//      case .large : s =  28.0 // ???
-//      @unknown default: s =  28.0
       }
       return NSSize (width: s, height: s)
     }else{

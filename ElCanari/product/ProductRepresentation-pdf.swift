@@ -65,7 +65,7 @@ extension ProductRepresentation {
   //--- Add rectangles
     for rect in self.rectangles {
       if !inItemSet.intersection (rect.layers).isEmpty {
-        polygons.append (rect.gerberPolygon ())
+        polygons.append (rect.polygon ())
       }
     }
   //--- Handle polygons

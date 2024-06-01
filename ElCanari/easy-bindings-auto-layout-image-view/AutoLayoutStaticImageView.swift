@@ -24,6 +24,8 @@ final class AutoLayoutStaticImageView : ALB_NSImageView {
     self.imageFrameStyle = .none
 
     self.frame.size = self.intrinsicContentSize
+    self.setContentCompressionResistancePriority (.defaultHigh, for: .horizontal)
+    self.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
   }
 
   //································································································

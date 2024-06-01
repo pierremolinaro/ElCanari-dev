@@ -227,7 +227,6 @@ struct BoardImageDisplayInfos {
                                          pixelSizeInCanariUnit inPixelSize : Int,
                                          rotation inRotation : Int) -> BoardImageDisplayInfos {
   let pixelSize = canariUnitToCocoa (inPixelSize)
-  // Swift.print ("pixelSize \(pixelSize)")
   let width = CGFloat (inBoardImageDescriptor.scaledImageWidth) * pixelSize
   let height = CGFloat (inBoardImageDescriptor.scaledImageHeight) * pixelSize
   let qrRect = NSRect (center: .zero, size: NSSize (width: width, height: height))
@@ -247,7 +246,6 @@ struct BoardImageDisplayInfos {
   var filledBP = EBBezierPath ()
   var productRectangles = [ProductRectangle] ()
   var nonRotatedRectangles = [NSRect] ()
-//  Swift.print ("rect \(inBoardImageDescriptor.blackRectangles.count)")
   for rect in inBoardImageDescriptor.blackRectangles {
     let x = CGFloat (rect.x) * pixelSize - width / 2.0
     let y = CGFloat (rect.y) * pixelSize - height / 2.0

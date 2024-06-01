@@ -714,7 +714,7 @@ struct ProductRepresentation : Codable {
     var result = EBReferenceArray <RectangleEntity> ()
     for rect in self.rectangles {
       if !rect.layers.intersection (inLayers).isEmpty {
-        let (origin, points) = rect.gerberPolygon ()
+        let (origin, points) = rect.polygon ()
         let r = RectangleEntity (inUndoManager)
         r.p0x = origin.x.valueInCanariUnit
         r.p0y = origin.y.valueInCanariUnit
