@@ -144,12 +144,14 @@ struct ProductRepresentation : Codable {
     }
     for r in inProduct.rectangles {
       let center = ProductPoint (cocoaPoint: modelAffineTransform.transform (ProductPoint (x: r.xCenter, y: r.yCenter).cocoaPoint))
+      var af = modelAffineTransform
+      af.append (r.af)
       let s = LayeredProductRectangle (
         xCenter: center.x,
         yCenter: center.y,
         width: r.width,
         height: r.height,
-        angleDegrees: r.angleDegrees + angleInDegrees,
+        af: af,
         layers: r.layers
       )
       self.rectangles.append (s)
@@ -562,7 +564,6 @@ struct ProductRepresentation : Codable {
         case .legendBack :
           layer = .backSideQRCode
         }
-        let rotationInDegrees = CGFloat (qrCode.mRotation) / 1000.0
         for r in displayInfos.nonRotatedRectangles {
           let center = ProductPoint (cocoaPoint: r.center)
           let size = ProductSize (cocoaSize: r.size)
@@ -571,7 +572,7 @@ struct ProductRepresentation : Codable {
             yCenter: center.y,
             width: size.width,
             height: size.height,
-            angleDegrees: rotationInDegrees,
+            af: displayInfos.affineTransform,
             layers: layer
           )
           self.rectangles.append (pr)
@@ -600,7 +601,6 @@ struct ProductRepresentation : Codable {
         case .legendBack :
           layer = .backSideImage
         }
-        let rotationInDegrees = CGFloat (boardImage.mRotation) / 1000.0
         for r in displayInfos.nonRotatedRectangles {
           let center = ProductPoint (cocoaPoint: r.center)
           let size = ProductSize (cocoaSize: r.size)
@@ -609,7 +609,7 @@ struct ProductRepresentation : Codable {
             yCenter: center.y,
             width: size.width,
             height: size.height,
-            angleDegrees: rotationInDegrees,
+            af: displayInfos.affineTransform,
             layers: layer
           )
           self.rectangles.append (pr)
@@ -674,18 +674,6 @@ struct ProductRepresentation : Codable {
     }
     return result
   }
-
-  //································································································
-
-//  func rectangles (forLayers inLayers : ProductLayerSet) -> [LayeredProductRectangle] {
-//    var result = [LayeredProductRectangle] ()
-//    for rect in self.rectangles {
-//      if !rect.layers.intersection (inLayers).isEmpty {
-//        result.append (rect)
-//      }
-//    }
-//    return result
-//  }
 
   //································································································
 
