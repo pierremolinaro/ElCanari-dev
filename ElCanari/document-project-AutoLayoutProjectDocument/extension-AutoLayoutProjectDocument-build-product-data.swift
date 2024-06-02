@@ -97,7 +97,7 @@ extension AutoLayoutProjectDocument {
       bp.lineJoinStyle = .round
       bp.lineCapStyle = .round
       bp.lineWidth = canariUnitToCocoa (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance * 2)
-      let strokeBP = bp.pathByStroking
+      let strokeBP = bp.pathToFillByStroking
       // Swift.print ("BezierPath BEGIN")
       var closedPathCount = 0
       let retainedClosedPath = 2

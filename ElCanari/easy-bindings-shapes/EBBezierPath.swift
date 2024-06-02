@@ -23,32 +23,33 @@ struct EBBezierPath : Hashable {
   //································································································
 
   init (rect inRect : NSRect) {
-    self.mPath = NSBezierPath ()
-    self.mPath.appendRect (inRect)
+    self.mPath = NSBezierPath (rect: inRect)
+//    self.mPath.appendRect (inRect)
   }
 
   //································································································
 
   init (ovalIn inRect : NSRect) {
-    self.mPath = NSBezierPath ()
-    self.mPath.appendOval (in: inRect)
+    self.mPath = NSBezierPath (ovalIn: inRect)
+//    self.mPath.appendOval (in: inRect)
   }
 
   //································································································
 
-  init (roundedRect rect : NSRect, xRadius : CGFloat, yRadius : CGFloat) {
-    self.mPath = NSBezierPath ()
-    self.mPath.appendRoundedRect (rect, xRadius: xRadius, yRadius: yRadius)
+  init (roundedRect rect : NSRect, xRadius inXRadius : CGFloat, yRadius inYRadius : CGFloat) {
+    self.mPath = NSBezierPath (roundedRect: rect, xRadius: inXRadius, yRadius: inYRadius)
+//    self.mPath.appendRoundedRect (rect, xRadius: xRadius, yRadius: yRadius)
   }
 
   //································································································
 
   init (_ inBezierPath : NSBezierPath) {
-    self.mPath = NSBezierPath ()
-    self.mPath.append (inBezierPath)
-    self.mPath.lineWidth = inBezierPath.lineWidth
-    self.mPath.lineCapStyle = inBezierPath.lineCapStyle
-    self.mPath.lineJoinStyle = inBezierPath.lineJoinStyle
+    self.mPath = inBezierPath.copy () as! NSBezierPath
+//    self.mPath = NSBezierPath ()
+//    self.mPath.append (inBezierPath)
+//    self.mPath.lineWidth = inBezierPath.lineWidth
+//    self.mPath.lineCapStyle = inBezierPath.lineCapStyle
+//    self.mPath.lineJoinStyle = inBezierPath.lineJoinStyle
   }
 
   //································································································
@@ -393,7 +394,7 @@ struct EBBezierPath : Hashable {
 
   //································································································
 
-  var pathByStroking : EBBezierPath {
+  var pathToFillByStroking : EBBezierPath {
     let lineCap : CGLineCap
     switch self.lineCapStyle {
     case .butt : lineCap = .butt

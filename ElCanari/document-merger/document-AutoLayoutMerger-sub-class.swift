@@ -29,6 +29,18 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
     self.mComposedBoardGraphicView?.mScrollView?.registerContextualMenuBuilder { [weak self] (inMouseDownLocation : CanariPoint) in
       return self?.buildInsertModelInBoardMenuBuilder (inMouseDownLocation) ?? NSMenu ()
     }
+  //--- Update models for detecting legacy models (without JSON description)
+    var modelsToUpdate = [BoardModel] ()
+    for model in self.rootObject.boardModels.values {
+      if model.modelData.count == 0 {
+        modelsToUpdate.append (model)
+      }
+    }
+    if modelsToUpdate.count > 0 {
+      DispatchQueue.main.async {
+        self.updateLegacyModel (legacyBoardModels: modelsToUpdate)
+      }
+    }
   }
 
   //································································································

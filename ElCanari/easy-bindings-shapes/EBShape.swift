@@ -394,7 +394,7 @@ fileprivate final class EBShapeObject {
     for path in inStrokePathes {
       if !path.isEmpty {
         if path.lineWidth > 0.0 {
-          filledBezierPathes.append (path.pathByStroking)
+          filledBezierPathes.append (path.pathToFillByStroking)
         }else{
           strokeBezierPathes.append (path)
         }
@@ -530,7 +530,7 @@ fileprivate final class EBShapeObject {
         bp.lineCapStyle = .round
         let e1 = EBShapeElement ([bp], .fill, inBackColor, inKnobIndex, .none)
         self.mElements.append (e1)
-        let e2 = EBShapeElement ([bp.pathByStroking], .fill, .cyan, inKnobIndex, .none)
+        let e2 = EBShapeElement ([bp.pathToFillByStroking], .fill, .cyan, inKnobIndex, .none)
         self.mElements.append (e2)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
       case .diamond :
@@ -540,7 +540,7 @@ fileprivate final class EBShapeObject {
         bp.lineCapStyle = .round
         let e1 = EBShapeElement ([bp], .fill, inBackColor, inKnobIndex, .none)
         self.mElements.append (e1)
-        let e2 = EBShapeElement ([bp.pathByStroking], .fill, .cyan, inKnobIndex, .none)
+        let e2 = EBShapeElement ([bp.pathToFillByStroking], .fill, .cyan, inKnobIndex, .none)
         self.mElements.append (e2)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
       case .rect :
@@ -550,7 +550,7 @@ fileprivate final class EBShapeObject {
         bp.lineCapStyle = .round
         let e1 = EBShapeElement ([bp], .fill, inBackColor, inKnobIndex, .none)
         self.mElements.append (e1)
-        let e2 = EBShapeElement ([bp.pathByStroking], .fill, .cyan, inKnobIndex, .none)
+        let e2 = EBShapeElement ([bp.pathToFillByStroking], .fill, .cyan, inKnobIndex, .none)
         self.mElements.append (e2)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
       case .transparentCircle :
@@ -910,7 +910,7 @@ fileprivate final class EBShapeElement {
   func transformed (by inAffineTransform : AffineTransform) -> EBShapeElement {
     var paths = [EBBezierPath] ()
     for path in self.mPathes {
-      paths.append (path.transformed(by: inAffineTransform))
+      paths.append (path.transformed (by: inAffineTransform))
     }
     let clipRule : EBClipRule
     switch self.mClipRule {

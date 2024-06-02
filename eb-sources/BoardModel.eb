@@ -290,7 +290,7 @@ handlingOpposite entity BoardModel {
 
   transient BezierPathArray frontTracksBezierPaths dependsFrom self.frontTrackSegments ;
 
-//--- Inner1 packages
+//--- Inner1 tracks
   toMany @generateDirectAccess SegmentEntity inner1Tracks ;
 
   transient MergerSegmentArray inner1TracksSegments dependsFrom
@@ -302,7 +302,7 @@ handlingOpposite entity BoardModel {
 
   transient BezierPathArray inner1TracksBezierPaths dependsFrom self.inner1TracksSegments ;
 
-//--- Inner2 packages
+//--- Inner2 tracks
   toMany @generateDirectAccess SegmentEntity inner2Tracks ;
 
   transient MergerSegmentArray inner2TracksSegments dependsFrom
@@ -314,7 +314,7 @@ handlingOpposite entity BoardModel {
 
   transient BezierPathArray inner2TracksBezierPaths dependsFrom self.inner2TracksSegments ;
 
-//--- Inner3 packages
+//--- Inner3 tracks
   toMany @generateDirectAccess SegmentEntity inner3Tracks ;
 
   transient MergerSegmentArray inner3TracksSegments dependsFrom
@@ -326,7 +326,7 @@ handlingOpposite entity BoardModel {
 
   transient BezierPathArray inner3TracksBezierPaths dependsFrom self.inner3TracksSegments ;
 
-//--- Inner4 packages
+//--- Inner4 tracks
   toMany @generateDirectAccess SegmentEntity inner4Tracks ;
 
   transient MergerSegmentArray inner4TracksSegments dependsFrom

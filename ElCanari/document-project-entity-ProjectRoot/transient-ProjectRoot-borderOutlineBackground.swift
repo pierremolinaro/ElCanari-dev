@@ -66,11 +66,11 @@ import AppKit
       //---
         var outlineFrame = bp
         outlineFrame.lineWidth = 2.0 * canariUnitToCocoa (self_mBoardLimitsWidth + self_mBoardClearance)
-        shape.add (filled: [outlineFrame.pathByStroking], prefs_boardLimitsColorForBoard, clip: .outside (bp))
+        shape.add (filled: [outlineFrame.pathToFillByStroking], prefs_boardLimitsColorForBoard, clip: .outside (bp))
       //---
         var clearanceFrame = bp
         clearanceFrame.lineWidth = 2.0 * canariUnitToCocoa (self_mBoardClearance)
-        shape.add (filled: [clearanceFrame.pathByStroking], prefs_boardClearanceColorForBoard, clip: .outside (bp))
+        shape.add (filled: [clearanceFrame.pathToFillByStroking], prefs_boardClearanceColorForBoard, clip: .outside (bp))
         return shape
 //--- END OF USER ZONE 2
 }

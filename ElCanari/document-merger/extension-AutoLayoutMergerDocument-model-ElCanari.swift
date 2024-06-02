@@ -55,16 +55,15 @@ extension AutoLayoutMergerDocument {
 
   //································································································
 
-  fileprivate func internalLoadELCanariBoardArchive (_ inProduct : ProductRepresentation,
-                                                     named inName : String,
-                                                     callBack inCallBack : @escaping (BoardModel) -> Void) {
+  func internalLoadELCanariBoardArchive (_ inProduct : ProductRepresentation,
+                                         named inName : String,
+                                         callBack inCallBack : @escaping (BoardModel) -> Void) {
     let boardModel = BoardModel (self.undoManager)
   //--- Populate board model from dictionary (accumulate error messages in errorArray variable)
     boardModel.modelVersion = MERGER_ARCHIVE_VERSION
     boardModel.ignoreModelVersionError = false
     boardModel.name = inName
     boardModel.modelData = inProduct.encodedJSONCompressedData (prettyPrinted: true, using: COMPRESSION_LZMA)
-    // Swift.print ("\(boardModel.modelData.count) bytes")
     boardModel.artworkName = inProduct.artworkName
     boardModel.modelWidth = inProduct.boardWidth.valueInCanariUnit
     boardModel.modelHeight = inProduct.boardHeight.valueInCanariUnit

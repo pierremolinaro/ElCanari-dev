@@ -35,10 +35,10 @@ struct MergerSegmentArray : Hashable {
   func bezierPathArray () -> BezierPathArray {
     var result = BezierPathArray ()
     for segment in self.segmentArray {
-       var bp = EBBezierPath ()
-       bp.move (to: NSPoint (x: canariUnitToCocoa (segment.x1), y: canariUnitToCocoa (segment.y1)))
-       bp.line (to: NSPoint (x: canariUnitToCocoa (segment.x2), y: canariUnitToCocoa (segment.y2)))
-       bp.lineWidth = canariUnitToCocoa (segment.width)
+      var bp = EBBezierPath ()
+      bp.move (to: NSPoint (x: canariUnitToCocoa (segment.x1), y: canariUnitToCocoa (segment.y1)))
+      bp.line (to: NSPoint (x: canariUnitToCocoa (segment.x2), y: canariUnitToCocoa (segment.y2)))
+      bp.lineWidth = canariUnitToCocoa (segment.width)
       switch segment.endStyle {
       case .round:
         bp.lineCapStyle = .round

@@ -3,7 +3,6 @@
 //
 //  Created by Pierre Molinaro on 21/06/2018.
 //
-//
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 import AppKit
@@ -325,7 +324,8 @@ extension AutoLayoutMergerDocument {
     if let x = inKicadItem.getFloat (["via", "at"], 0, &ioErrorArray, #line),
        let y = inKicadItem.getFloat (["via", "at"], 1, &ioErrorArray, #line),
        let diameter = inKicadItem.getFloat (["via", "size"], 0, &ioErrorArray, #line),
-       let netIndex = inKicadItem.getInt (["via", "net"], 0, &ioErrorArray, #line) {
+       let netIndex = inKicadItem.getInt (["via", "net"], 0, &ioErrorArray, #line),
+       netIndex >= 0, netIndex < inNetArray.count {
     //--- Add via
       let via = BoardModelVia (self.undoManager)
       via.x = millimeterToCanariUnit (x - ioTemporaryBoardModel.mLeftMM)

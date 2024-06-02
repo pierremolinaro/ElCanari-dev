@@ -34,13 +34,13 @@ struct ProductRepresentation : Codable {
   //  Init
   //································································································
 
-  @MainActor init (boardWidth inBoardWidth : ProductLength,
-                   boardWidthUnit inBoardWidthUnit : Int, // Canari Unit
-                   boardHeight inBoardHeight : ProductLength,
-                   boardHeightUnit inBoardHeightUnit : Int, // Canari Unit
-                   boardLimitWidth inBoardLimitWidth : ProductLength,
-                   boardLimitWidthUnit inBoardLimitWidthUnit : Int, // Canari Unit
-                   artworkName inArtworkName : String) {
+  init (boardWidth inBoardWidth : ProductLength,
+        boardWidthUnit inBoardWidthUnit : Int, // Canari Unit
+        boardHeight inBoardHeight : ProductLength,
+        boardHeightUnit inBoardHeightUnit : Int, // Canari Unit
+        boardLimitWidth inBoardLimitWidth : ProductLength,
+        boardLimitWidthUnit inBoardLimitWidthUnit : Int, // Canari Unit
+        artworkName inArtworkName : String) {
     self.boardWidth = inBoardWidth
     self.boardWidthUnit = inBoardWidthUnit
     self.boardHeight = inBoardHeight
@@ -48,6 +48,38 @@ struct ProductRepresentation : Codable {
     self.boardLimitWidth = inBoardLimitWidth
     self.boardLimitWidthUnit = inBoardLimitWidthUnit
     self.artworkName = inArtworkName
+  }
+
+  //································································································
+  //  Populate
+  //································································································
+
+  mutating func append (circle inCircle : LayeredProductCircle) {
+    self.circles.append (inCircle)
+  }
+
+  //································································································
+
+  mutating func append (pad inPad : LayeredProductComponentPad) {
+    self.componentPads.append (inPad)
+  }
+
+  //································································································
+
+  mutating func append (roundSegment inSegment : LayeredProductSegment) {
+    self.roundSegments.append (inSegment)
+  }
+
+  //································································································
+
+  mutating func append (squareSegment inSegment : LayeredProductSegment) {
+    self.squareSegments.append (inSegment)
+  }
+
+  //································································································
+
+  mutating func append (rectangle inRect : LayeredProductRectangle) {
+    self.rectangles.append (inRect)
   }
 
   //································································································
@@ -692,16 +724,16 @@ struct ProductRepresentation : Codable {
   @MainActor func segmentEntities (_ inUndoManager : UndoManager?,
                         forLayers inLayers : ProductLayerSet) -> EBReferenceArray <SegmentEntity> {
     var result = EBReferenceArray <SegmentEntity> ()
-    for roundedSegment in self.roundSegments {
-      if !roundedSegment.layers.intersection (inLayers).isEmpty {
-        let segment = SegmentEntity (inUndoManager, roundedSegment, endStyle: .round)
-        result.append (segment)
+    for segment in self.roundSegments {
+      if !segment.layers.intersection (inLayers).isEmpty {
+       let s = SegmentEntity (inUndoManager, segment, endStyle: .round)
+        result.append (s)
       }
     }
-    for squareSegment in self.squareSegments {
-      if !squareSegment.layers.intersection (inLayers).isEmpty {
-        let segment = SegmentEntity (inUndoManager, squareSegment, endStyle: .square)
-        result.append (segment)
+    for segment in self.squareSegments {
+      if !segment.layers.intersection (inLayers).isEmpty {
+        let s = SegmentEntity (inUndoManager, segment, endStyle: .square)
+        result.append (s)
       }
     }
     return result
@@ -771,7 +803,7 @@ fileprivate extension SegmentEntity {
     self.x2 = inProductSegment.p2.x.valueInCanariUnit
     self.y2 = inProductSegment.p2.y.valueInCanariUnit
     self.width = inProductSegment.width.valueInCanariUnit
-    self.endStyle = .round
+    self.endStyle = inEndStyle
   }
 
   //································································································

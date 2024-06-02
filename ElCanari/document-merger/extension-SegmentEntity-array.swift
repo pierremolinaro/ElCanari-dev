@@ -156,7 +156,12 @@ import Foundation
       bp.move (to: NSPoint (x: x1f, y: y1f))
       bp.line (to: NSPoint (x: x2f, y: y2f))
       bp.lineWidth = width
-      bp.lineCapStyle = .round
+      switch segment.endStyle {
+      case .round :
+        bp.lineCapStyle = .round
+      case .square :
+        bp.lineCapStyle = .square
+      }
       ioBezierPaths.append (bp)
     }
   }

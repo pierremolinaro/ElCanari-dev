@@ -59,7 +59,7 @@ extension AutoLayoutMergerDocument {
 
   //································································································
 
-  private func performUpdateModel (_ inModelToUpdate : BoardModel, with inLoadedModel : BoardModel) {
+  func performUpdateModel (_ inModelToUpdate : BoardModel, with inLoadedModel : BoardModel) {
     inModelToUpdate.modelData = inLoadedModel.modelData
     inModelToUpdate.artworkName = inLoadedModel.artworkName
     inModelToUpdate.modelWidth = inLoadedModel.modelWidth

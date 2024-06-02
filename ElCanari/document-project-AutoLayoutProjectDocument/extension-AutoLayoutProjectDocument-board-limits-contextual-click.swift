@@ -59,7 +59,7 @@ extension AutoLayoutProjectDocument {
           bp.move (to: p1.cocoaPoint)
           bp.curve (to: p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
           bp.lineWidth = 2.0 * canariUnitToCocoa (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance)
-          bp = bp.pathByStroking
+          bp = bp.pathToFillByStroking
           if bp.contains (inUnalignedMouseDownPoint.cocoaPoint) {
             return borderCurve
           }

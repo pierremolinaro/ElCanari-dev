@@ -39,7 +39,6 @@ func uncompressedData (_ inCompressedData : Data,
   var expansionFactor = inFactor
   var uncompressedData = Data ()
   var loop = true
-  // Swift.print ("uncompressedData: \(inCompressedData.count) bytes")
   while loop {
     let destinationBufferSize = sourceBuffer.count * expansionFactor
     let destinationBuffer = UnsafeMutablePointer <UInt8>.allocate (capacity: destinationBufferSize)

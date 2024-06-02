@@ -57,7 +57,7 @@ struct GeometricOblong {
     case .square :
       bp.lineCapStyle = .square
     }
-    return bp.pathByStroking
+    return bp.pathToFillByStroking
   }
 
   //································································································
