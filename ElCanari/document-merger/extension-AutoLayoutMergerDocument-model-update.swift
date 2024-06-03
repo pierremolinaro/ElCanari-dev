@@ -37,7 +37,7 @@ extension AutoLayoutMergerDocument {
           if let fileData = optionalFileData {
             let s = filePath.lastPathComponent.deletingPathExtension
             if filePath.pathExtension == EL_CANARI_LEGACY_MERGER_ARCHIVE {
-              self.parseBoardModelLegacy_ELCanariArchive (fromData: fileData, named: s, callBack: { self.performUpdateModel (updatedBoardModel, with: $0) })
+              self.parseBoardModelLegacyELCanariArchive (fromData: fileData, named: s, callBack: { self.performUpdateModel (updatedBoardModel, with: $0) })
             }else if filePath.pathExtension == EL_CANARI_MERGER_ARCHIVE {
               self.parseBoardModelELCanariBoardArchive (fromData: fileData, named: s, callBack: { self.performUpdateModel (updatedBoardModel, with: $0) })
             }else if filePath.pathExtension == KICAD_PCB {

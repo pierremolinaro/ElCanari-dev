@@ -57,21 +57,11 @@ extension AutoLayoutMergerDocument {
       boardHeightUnit: inLegacyBoardModel.modelHeightUnit, // Canari Unit
       boardLimitWidth : boardLimitWidth,
       boardLimitWidthUnit: inLegacyBoardModel.modelLimitWidthUnit, // Canari Unit
-      artworkName: inLegacyBoardModel.artworkName
+      artworkName: inLegacyBoardModel.artworkName,
+      layerConfiguration: inLegacyBoardModel.layerConfiguration
     )
-  //--- Board limits
-    let boardRect = CanariRect (
-      origin: .zero,
-      size: CanariSize (width: inLegacyBoardModel.modelWidth, height: inLegacyBoardModel.modelHeight)
-    )
-    let p0 = ProductPoint (canariPoint: boardRect.bottomLeft)
-    let p1 = ProductPoint (canariPoint: boardRect.bottomRight)
-    let p2 = ProductPoint (canariPoint: boardRect.topRight)
-    let p3 = ProductPoint (canariPoint: boardRect.topLeft)
-    product.append (roundSegment: LayeredProductSegment (p1: p0, p2: p1, width: boardLimitWidth, layers: .internalBoardLimits))
-    product.append (roundSegment: LayeredProductSegment (p1: p1, p2: p2, width: boardLimitWidth, layers: .internalBoardLimits))
-    product.append (roundSegment: LayeredProductSegment (p1: p2, p2: p3, width: boardLimitWidth, layers: .internalBoardLimits))
-    product.append (roundSegment: LayeredProductSegment (p1: p3, p2: p0, width: boardLimitWidth, layers: .internalBoardLimits))
+  //--- Internal board limits
+    self.appendSegments (from: inLegacyBoardModel.internalBoardsLimits, layer: .internalBoardLimits, to: &product)
   //--- Texts
     self.appendSegments (from: inLegacyBoardModel.frontLegendTexts, layer: .frontSideLegendText, to: &product)
     self.appendSegments (from: inLegacyBoardModel.backLegendTexts, layer: .backSideLegendText, to: &product)

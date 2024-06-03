@@ -374,7 +374,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
        sortkey allowTracksOnInner1LayerString
     column allowTracksOnInner2LayerString (title: "Inner 2 Tracks", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
        sortkey allowTracksOnInner3LayerString
-    column allowTracksOnInner1LayerString (title: "Inner 3 Tracks", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
+    column allowTracksOnInner3LayerString (title: "Inner 3 Tracks", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
        sortkey allowTracksOnInner3LayerString
     column allowTracksOnInner4LayerString (title: "Inner 4 Tracks", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
        sortkey allowTracksOnInner4LayerString

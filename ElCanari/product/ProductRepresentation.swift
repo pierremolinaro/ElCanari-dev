@@ -11,6 +11,10 @@ import Compression
 
 //--------------------------------------------------------------------------------------------------
 
+extension LayerConfiguration : Codable {}
+
+//--------------------------------------------------------------------------------------------------
+
 struct ProductRepresentation : Codable {
 
   //································································································
@@ -29,6 +33,7 @@ struct ProductRepresentation : Codable {
   private(set) var circles = [LayeredProductCircle] ()
   private(set) var rectangles = [LayeredProductRectangle] ()
   private(set) var componentPads = [LayeredProductComponentPad] ()
+  private(set) var layerConfiguration : LayerConfiguration
 
   //································································································
   //  Init
@@ -40,7 +45,8 @@ struct ProductRepresentation : Codable {
         boardHeightUnit inBoardHeightUnit : Int, // Canari Unit
         boardLimitWidth inBoardLimitWidth : ProductLength,
         boardLimitWidthUnit inBoardLimitWidthUnit : Int, // Canari Unit
-        artworkName inArtworkName : String) {
+        artworkName inArtworkName : String,
+        layerConfiguration inLayerConfiguration : LayerConfiguration) {
     self.boardWidth = inBoardWidth
     self.boardWidthUnit = inBoardWidthUnit
     self.boardHeight = inBoardHeight
@@ -48,6 +54,7 @@ struct ProductRepresentation : Codable {
     self.boardLimitWidth = inBoardLimitWidth
     self.boardLimitWidthUnit = inBoardLimitWidthUnit
     self.artworkName = inArtworkName
+    self.layerConfiguration = inLayerConfiguration
   }
 
   //································································································
@@ -95,6 +102,7 @@ struct ProductRepresentation : Codable {
     self.boardLimitWidth = ProductLength (valueInCanariUnit: inProjectRoot.mBoardLimitsWidth)
     self.boardLimitWidthUnit = inProjectRoot.mBoardLimitsWidthUnit
     self.artworkName = inProjectRoot.mArtworkName
+    self.layerConfiguration = inProjectRoot.mLayerConfiguration
   //--- Board limit path
     do{
       var points = inProjectRoot.buildBoardLimitPath ()

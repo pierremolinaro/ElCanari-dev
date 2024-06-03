@@ -159,7 +159,8 @@ extension AutoLayoutMergerDocument {
       boardHeightUnit: self.rootObject.boardHeightUnit, // Canari Unit
       boardLimitWidth: boardLimitWidth,
       boardLimitWidthUnit: self.rootObject.boardLimitWidthUnit, // Canari Unit
-      artworkName: self.rootObject.mArtworkName
+      artworkName: self.rootObject.mArtworkName,
+      layerConfiguration: self.rootObject.mArtwork!.layerConfiguration
     )
   //--- Add Board limits
     let boardRect = CanariRect (

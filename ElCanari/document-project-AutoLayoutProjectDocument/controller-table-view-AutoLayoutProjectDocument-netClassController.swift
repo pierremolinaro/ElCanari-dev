@@ -177,9 +177,8 @@ final class Controller_AutoLayoutProjectDocument_netClassController : NSObject, 
   //--- Observe 'allowTracksOnInner2LayerString' column
     self.sortedArray_property.toMany_allowTracksOnInner2LayerString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
      self.sortedArray_property.toMany_allowTracksOnInner3LayerString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
-  //--- Observe 'allowTracksOnInner1LayerString' column
-    self.sortedArray_property.toMany_allowTracksOnInner1LayerString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
-     self.sortedArray_property.toMany_allowTracksOnInner3LayerString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
+  //--- Observe 'allowTracksOnInner3LayerString' column
+    self.sortedArray_property.toMany_allowTracksOnInner3LayerString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'allowTracksOnInner4LayerString' column
     self.sortedArray_property.toMany_allowTracksOnInner4LayerString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'netUsage' column
@@ -329,9 +328,9 @@ final class Controller_AutoLayoutProjectDocument_netClassController : NSObject, 
       headerAlignment: .left,
       contentAlignment: .left
     )
-  //--- Configure 'allowTracksOnInner1LayerString' column
+  //--- Configure 'allowTracksOnInner3LayerString' column
     inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].allowTracksOnInner1LayerString },
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].allowTracksOnInner3LayerString },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
         self?.mSortDescriptorArray.append ({ (_ left : NetClassInProject, _ right : NetClassInProject) in return compare_String_properties (left.allowTracksOnInner3LayerString_property, ascending, right.allowTracksOnInner3LayerString_property) })
