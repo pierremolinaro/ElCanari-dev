@@ -215,7 +215,7 @@ struct QRCodeDisplayInfos {
   let backgroundBP : EBBezierPath
   let qrCodeBP : EBBezierPath
   let productRectangles : [ProductRectangle]
-  let transformedRectangles : [(NSSize, AffineTransform)]
+  let transformedRectangles : [AffineTransform]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
@@ -245,7 +245,7 @@ struct QRCodeDisplayInfos {
 //--- QR code
   var filledBP = EBBezierPath ()
   var productRectangles = [ProductRectangle] ()
-  var transformedRectangles = [(NSSize, AffineTransform)] ()
+  var transformedRectangles = [AffineTransform] ()
   for rect in inQRCodeDescriptor.blackRectangles {
     let x = CGFloat (rect.x) * moduleSize - width / 2.0
     let y = CGFloat (rect.y) * moduleSize - height / 2.0
@@ -258,11 +258,12 @@ struct QRCodeDisplayInfos {
     let p2 = af.transform (NSPoint (x: x + w, y: y + h))
     let p3 = af.transform (NSPoint (x: x,     y: y + h))
     productRectangles.append (ProductRectangle (p0: p0, p1: p1, p2: p2, p3: p3))
-    let size = NSSize (width: w, height: h)
+//    let size = NSSize (width: w, height: h)
   //---
     var rectAF = af
     rectAF.translate (x: x + w / 2.0, y: y + h / 2.0)
-    transformedRectangles.append ((size, rectAF))
+    rectAF.scale (x: w, y: h)
+    transformedRectangles.append (rectAF)
   }
   let qrCodeBP = filledBP.transformed (by: af)
 //--- Rotation knob

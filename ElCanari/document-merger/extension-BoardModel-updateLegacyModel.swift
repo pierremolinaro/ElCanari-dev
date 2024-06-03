@@ -127,9 +127,10 @@ extension AutoLayoutMergerDocument {
       var af = AffineTransform ()
       af.translate (x: canariUnitToCocoa (centerX), y: canariUnitToCocoa (centerY))
       af.rotate (byDegrees: angleInDegrees)
+      af.scale (x: width, y: height)
       let s = LayeredProductRectangle (
-        width: ProductLength (width, .cocoa),
-        height: ProductLength (height, .cocoa),
+//        width: ProductLength (width, .cocoa), // §§
+//        height: ProductLength (height, .cocoa),
         af: af,
         layers: inLayer
       )

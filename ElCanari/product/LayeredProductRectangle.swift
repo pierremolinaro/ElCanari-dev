@@ -19,16 +19,16 @@ struct LayeredProductRectangle : Codable {
   //  Properties
   //································································································
 
-  let width : ProductLength
-  let height : ProductLength
+//  let width : ProductLength
+//  let height : ProductLength
   let af : AffineTransform
   let layers : ProductLayerSet
 
   //································································································
 
   func polygon () -> (ProductPoint, [ProductPoint]) {
-    let w = self.width.value (in: .cocoa) / 2.0
-    let h = self.height.value (in: .cocoa) / 2.0
+    let w = 0.5 // self.width.value (in: .cocoa) / 2.0
+    let h = 0.5 // self.height.value (in: .cocoa) / 2.0
     let bottomLeft  = ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: -w, y: -h)))
     let bottomRight = ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +w, y: -h)))
     let topRight    = ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +w, y: +h)))
