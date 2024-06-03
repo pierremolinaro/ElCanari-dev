@@ -182,6 +182,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
     if let ts = self.mTextView.layoutManager?.textStorage {
       let str = NSAttributedString (string: "", attributes: nil)
       ts.setAttributedString (str)
+      RunLoop.current.run (until: Date ())
     }
   }
 
@@ -192,6 +193,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
       ts.append (inAttributedString)
       let endOfText = NSRange (location: ts.length, length: 0)
       self.mTextView.scrollRangeToVisible (endOfText)
+      RunLoop.current.run (until: Date ())
     }
   }
 
@@ -208,22 +210,22 @@ final class AutoLayoutTextObserverView : NSScrollView {
 
   //································································································
 
-  func appendMessage (_ inString : String, color : NSColor) {
+  func appendMessage (_ inString : String, color inColor : NSColor) {
     let attributes : [NSAttributedString.Key : NSObject] = [
       NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: self.mFontSize),
-      NSAttributedString.Key.foregroundColor : color
+      NSAttributedString.Key.foregroundColor : inColor
     ]
-    let str = NSAttributedString (string:inString, attributes: attributes)
+    let str = NSAttributedString (string: inString, attributes: attributes)
     self.appendAttributedString (str)
   }
 
   //································································································
 
-  func appendCodeString (_ inString : String, color : NSColor) {
+  func appendCodeString (_ inString : String, color inColor : NSColor) {
     let font = NSFont.userFixedPitchFont (ofSize: self.mFontSize) ?? NSFont.boldSystemFont (ofSize: self.mFontSize)
     let attributes : [NSAttributedString.Key : NSObject] = [
       NSAttributedString.Key.font : font,
-      NSAttributedString.Key.foregroundColor : color
+      NSAttributedString.Key.foregroundColor : inColor
     ]
     let str = NSAttributedString (string:inString, attributes: attributes)
     self.appendAttributedString (str)
@@ -232,19 +234,19 @@ final class AutoLayoutTextObserverView : NSScrollView {
   //································································································
 
   func appendError (_ inString : String) {
-    self.appendMessage (inString, color: NSColor.red)
+    self.appendMessage (inString, color: .red)
   }
 
   //································································································
 
   func appendWarning (_ inString : String) {
-    self.appendMessage (inString, color: NSColor.orange)
+    self.appendMessage (inString, color: .orange)
   }
 
   //································································································
 
   func appendSuccess (_ inString : String) {
-    self.appendMessage (inString, color: NSColor.blue)
+    self.appendMessage (inString, color: .blue)
   }
 
   //································································································

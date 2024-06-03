@@ -98,7 +98,6 @@ extension AutoLayoutProjectDocument {
       bp.lineCapStyle = .round
       bp.lineWidth = canariUnitToCocoa (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance * 2)
       let strokeBP = bp.pathToFillByStroking
-      // Swift.print ("BezierPath BEGIN")
       var closedPathCount = 0
       let retainedClosedPath = 2
       var points = [NSPoint] (repeating: .zero, count: 3)
@@ -134,7 +133,6 @@ extension AutoLayoutProjectDocument {
           ()
         }
       }
-      //Swift.print ("BezierPath END")
     case .rectangular :
       let width = canariUnitToCocoa (self.rootObject.mRectangularBoardWidth)
       let height = canariUnitToCocoa (self.rootObject.mRectangularBoardHeight)

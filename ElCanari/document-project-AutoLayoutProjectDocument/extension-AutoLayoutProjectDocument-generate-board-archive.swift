@@ -79,8 +79,6 @@ extension AutoLayoutProjectDocument {
   //--- Transformation for translating origin to (0, 0)
     var af = AffineTransform ()
     af.translate (x: -boardBoundBox.origin.x, y: -boardBoundBox.origin.y)
-  //--- Write board frame
-  //---
     return af
   }
 

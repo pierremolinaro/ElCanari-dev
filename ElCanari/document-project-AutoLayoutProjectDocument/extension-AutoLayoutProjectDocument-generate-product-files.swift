@@ -73,6 +73,7 @@ extension AutoLayoutProjectDocument {
   private func performProductFilesGeneration () {
     self.mProductFileGenerationLogTextView?.clear ()
     self.mProductPageSegmentedControl?.selectTab (atIndex: 4)
+    RunLoop.current.run (until: Date ())
     do{
       try self.performProductFilesGeneration (atPath: self.fileURL!.path.deletingPathExtension, self.rootObject.mArtwork!)
     }catch let error {
@@ -173,16 +174,26 @@ extension AutoLayoutProjectDocument {
   func populateProductRepresentation (to ioProduct : inout ProductRepresentation) {
   //--- Board limit path
     do{
-      var points = self.rootObject.buildBoardLimitPath ()
+      var points = self.buildBoardLimitFlattenedPath ()
       let firstPoint = points [0]
       var currentPoint = firstPoint
       points.removeFirst ()
       for p in points {
-        let oblong = LayeredProductSegment (p1: currentPoint, p2: p, width: ioProduct.boardLimitWidth, layers: .boardLimits)
+        let oblong = LayeredProductSegment (
+          p1: currentPoint,
+          p2: p,
+          width: ioProduct.boardLimitWidth,
+          layers: .boardLimits
+        )
         ioProduct.append (roundSegment: oblong)
         currentPoint = p
       }
-      let oblong = LayeredProductSegment (p1: currentPoint, p2: firstPoint, width: ioProduct.boardLimitWidth, layers: .boardLimits)
+      let oblong = LayeredProductSegment (
+        p1: currentPoint,
+        p2: firstPoint,
+        width: ioProduct.boardLimitWidth,
+        layers: .boardLimits
+      )
       ioProduct.append (roundSegment: oblong)
     }
   //--- Populate
@@ -627,60 +638,78 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-}
-
-//--------------------------------------------------------------------------------------------------
-
-fileprivate extension ProjectRoot {
-
-  //································································································
-
-  func buildBoardLimitPath () -> [ProductPoint] {
+  fileprivate func buildBoardLimitFlattenedPath () -> [ProductPoint] {
     var result = [ProductPoint] ()
-    switch self.mBoardShape {
+    switch self.rootObject.mBoardShape {
     case .bezierPathes :
       var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
-      for curve in self.mBorderCurves.values {
+      for curve in self.rootObject.mBorderCurves.values {
         let descriptor = curve.descriptor!
         curveDictionary [descriptor.p1] = descriptor
       }
-      var descriptor = self.mBorderCurves [0].descriptor!
-      let firstPoint = descriptor.p1
-      var currentPoint = firstPoint
-      result.append (ProductPoint (canariPoint: firstPoint))
+      var descriptor = self.rootObject.mBorderCurves [0].descriptor!
+      let p = descriptor.p1
+      var bp = EBBezierPath ()
+      bp.move (to: p.cocoaPoint)
       var loop = true
       while loop {
         switch descriptor.shape {
         case .line :
-          result.append (ProductPoint (canariPoint: descriptor.p2))
+          bp.line (to: descriptor.p2.cocoaPoint)
         case .bezier :
           let cp1 = descriptor.cp1.cocoaPoint
           let cp2 = descriptor.cp2.cocoaPoint
-          let bp = NSBezierPath ()
-          bp.move (to: currentPoint.cocoaPoint)
           bp.curve (to: descriptor.p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
-          bp.flatness = 0.1
-          let flattenedBezierPath = bp.flattened
-          var points = [NSPoint] (repeating: .zero, count: 3)
-          for i in 0 ..< flattenedBezierPath.elementCount {
-            let type = flattenedBezierPath.element (at: i, associatedPoints: &points)
-            switch type {
-            case .moveTo, .cubicCurveTo, .closePath, .quadraticCurveTo:
-              ()
-            case .lineTo: ()
-               result.append (ProductPoint (canariPoint: points[0].canariPoint))
-            @unknown default:
-              ()
-            }
-          }
         }
-        currentPoint = descriptor.p2
         descriptor = curveDictionary [descriptor.p2]!
-        loop = firstPoint != descriptor.p1
+        loop = p != descriptor.p1
+      }
+      bp.close ()
+    //---
+      bp.lineJoinStyle = .round
+      bp.lineCapStyle = .round
+      bp.lineWidth = canariUnitToCocoa ((self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance) * 2)
+      let strokeBP = bp.pathToFillByStroking
+      var closedPathCount = 0
+      let retainedClosedPath = 2
+      var retainedBP = EBBezierPath ()
+      var points = [NSPoint] (repeating: .zero, count: 3)
+      for i in 0 ..< strokeBP.nsBezierPath.elementCount {
+        let type = strokeBP.nsBezierPath.element (at: i, associatedPoints: &points)
+        switch type {
+        case .moveTo:
+          closedPathCount += 1
+          if closedPathCount == retainedClosedPath {
+            retainedBP.move (to: points[0])
+          }
+        case .lineTo:
+          if closedPathCount == retainedClosedPath {
+            retainedBP.line (to: points[0])
+          }
+        case .curveTo:
+          if closedPathCount == retainedClosedPath {
+            retainedBP.curve (to: points[2], controlPoint1: points[0], controlPoint2: points[1])
+          }
+        case .closePath:
+          if closedPathCount == retainedClosedPath {
+            retainedBP.close ()
+          }
+        case .cubicCurveTo:
+          ()
+        case .quadraticCurveTo:
+          ()
+        @unknown default :
+          ()
+        }
+      }
+      let linePath = retainedBP.linePathesByFlattening (withFlatness: 0.1) [0]
+      result.append (ProductPoint (cocoaPoint: linePath.origin))
+      for p in linePath.lines {
+        result.append (ProductPoint (cocoaPoint: p))
       }
     case .rectangular :
-      let width = ProductLength (valueInCanariUnit: self.mRectangularBoardWidth)
-      let height = ProductLength (valueInCanariUnit: self.mRectangularBoardHeight)
+      let width = ProductLength (valueInCanariUnit: self.rootObject.mRectangularBoardWidth)
+      let height = ProductLength (valueInCanariUnit: self.rootObject.mRectangularBoardHeight)
       result.append (.zero) // Bottom left
       result.append (ProductPoint (x: .zero, y: height)) // Top left
       result.append (ProductPoint (x: width, y: height)) // Top right
@@ -688,6 +717,62 @@ fileprivate extension ProjectRoot {
     }
     return result
   }
+
+  //································································································
+
+//  fileprivate func buildBoardLimitFlattenedPath () -> [ProductPoint] {
+//    var result = [ProductPoint] ()
+//    switch self.rootObject.mBoardShape {
+//    case .bezierPathes :
+//      var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
+//      for curve in self.rootObject.mBorderCurves.values {
+//        let descriptor = curve.descriptor!
+//        curveDictionary [descriptor.p1] = descriptor
+//      }
+//      var descriptor = self.rootObject.mBorderCurves [0].descriptor!
+//      let firstPoint = descriptor.p1
+//      var currentPoint = firstPoint
+//      result.append (ProductPoint (canariPoint: firstPoint))
+//      var loop = true
+//      while loop {
+//        switch descriptor.shape {
+//        case .line :
+//          result.append (ProductPoint (canariPoint: descriptor.p2))
+//        case .bezier :
+//          let cp1 = descriptor.cp1.cocoaPoint
+//          let cp2 = descriptor.cp2.cocoaPoint
+//          let bp = NSBezierPath ()
+//          bp.move (to: currentPoint.cocoaPoint)
+//          bp.curve (to: descriptor.p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
+//          bp.flatness = 0.1
+//          let flattenedBezierPath = bp.flattened
+//          var points = [NSPoint] (repeating: .zero, count: 3)
+//          for i in 0 ..< flattenedBezierPath.elementCount {
+//            let type = flattenedBezierPath.element (at: i, associatedPoints: &points)
+//            switch type {
+//            case .moveTo, .cubicCurveTo, .closePath, .quadraticCurveTo:
+//              ()
+//            case .lineTo: ()
+//               result.append (ProductPoint (canariPoint: points[0].canariPoint))
+//            @unknown default:
+//              ()
+//            }
+//          }
+//        }
+//        currentPoint = descriptor.p2
+//        descriptor = curveDictionary [descriptor.p2]!
+//        loop = firstPoint != descriptor.p1
+//      }
+//    case .rectangular :
+//      let width = ProductLength (valueInCanariUnit: self.rootObject.mRectangularBoardWidth)
+//      let height = ProductLength (valueInCanariUnit: self.rootObject.mRectangularBoardHeight)
+//      result.append (.zero) // Bottom left
+//      result.append (ProductPoint (x: .zero, y: height)) // Top left
+//      result.append (ProductPoint (x: width, y: height)) // Top right
+//      result.append (ProductPoint (x: width, y: .zero)) // Bottom right
+//    }
+//    return result
+//  }
 
   //································································································
 
