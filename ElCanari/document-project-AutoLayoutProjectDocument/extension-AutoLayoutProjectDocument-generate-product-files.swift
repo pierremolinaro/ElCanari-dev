@@ -538,15 +538,15 @@ extension AutoLayoutProjectDocument {
         case .legendBack :
           layer = .backSideQRCode
         }
-        for r in displayInfos.nonRotatedRectangles {
-          let center = ProductPoint (cocoaPoint: r.center)
-          let size = ProductSize (cocoaSize: r.size)
+        for (cocoaSize, af) in displayInfos.transformedRectangles {
+//          let center = ProductPoint (cocoaPoint: r.center)
+          let size = ProductSize (cocoaSize: cocoaSize)
           let pr = LayeredProductRectangle (
-            xCenter: center.x,
-            yCenter: center.y,
+//            xCenter: center.x,
+//            yCenter: center.y,
             width: size.width,
             height: size.height,
-            af: displayInfos.affineTransform,
+            af: af,
             layers: layer
           )
           ioProduct.append (rectangle: pr)
@@ -575,15 +575,12 @@ extension AutoLayoutProjectDocument {
         case .legendBack :
           layer = .backSideImage
         }
-        for r in displayInfos.nonRotatedRectangles {
-          let center = ProductPoint (cocoaPoint: r.center)
-          let size = ProductSize (cocoaSize: r.size)
+        for (cocoaSize, af) in displayInfos.transformedRectangles {
+          let size = ProductSize (cocoaSize: cocoaSize)
           let pr = LayeredProductRectangle (
-            xCenter: center.x,
-            yCenter: center.y,
             width: size.width,
             height: size.height,
-            af: displayInfos.affineTransform,
+            af: af,
             layers: layer
           )
           ioProduct.append (rectangle: pr)

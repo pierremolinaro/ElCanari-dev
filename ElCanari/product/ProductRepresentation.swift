@@ -160,12 +160,9 @@ struct ProductRepresentation : Codable {
       self.squareSegments.append (s)
     }
     for r in inProduct.rectangles {
-      let center = ProductPoint (cocoaPoint: modelAffineTransform.transform (ProductPoint (x: r.xCenter, y: r.yCenter).cocoaPoint))
       var af = modelAffineTransform
       af.append (r.af)
       let s = LayeredProductRectangle (
-        xCenter: center.x,
-        yCenter: center.y,
         width: r.width,
         height: r.height,
         af: af,
