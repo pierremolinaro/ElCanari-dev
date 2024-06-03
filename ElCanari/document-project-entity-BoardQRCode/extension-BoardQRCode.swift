@@ -216,7 +216,6 @@ struct QRCodeDisplayInfos {
   let qrCodeBP : EBBezierPath
   let productRectangles : [ProductRectangle]
   let transformedRectangles : [(NSSize, AffineTransform)]
-  let affineTransform : AffineTransform
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
@@ -261,8 +260,7 @@ struct QRCodeDisplayInfos {
     productRectangles.append (ProductRectangle (p0: p0, p1: p1, p2: p2, p3: p3))
     let size = NSSize (width: w, height: h)
   //---
-    var rectAF = AffineTransform()
-    rectAF.append (af)
+    var rectAF = af
     rectAF.translate (x: x + w / 2.0, y: y + h / 2.0)
     transformedRectangles.append ((size, rectAF))
   }
@@ -278,8 +276,7 @@ struct QRCodeDisplayInfos {
     backgroundBP: backgroundBP,
     qrCodeBP: qrCodeBP,
     productRectangles: productRectangles,
-    transformedRectangles: transformedRectangles,
-    affineTransform: af
+    transformedRectangles: transformedRectangles
   )
 }
 

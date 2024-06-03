@@ -9,6 +9,9 @@
 import Foundation
 
 //--------------------------------------------------------------------------------------------------
+// Par convention, un rectangle est en fait un rectangle centré sur l'origine.
+// C'est la transformation affine « af » qui définit sa position
+//--------------------------------------------------------------------------------------------------
 
 struct LayeredProductRectangle : Codable {
 
@@ -16,8 +19,6 @@ struct LayeredProductRectangle : Codable {
   //  Properties
   //································································································
 
-//  let xCenter : ProductLength
-//  let yCenter : ProductLength
   let width : ProductLength
   let height : ProductLength
   let af : AffineTransform

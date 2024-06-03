@@ -215,7 +215,6 @@ struct BoardImageDisplayInfos {
   let imageBP : EBBezierPath
   let productRectangles : [ProductRectangle]
   let transformedRectangles : [(NSSize, AffineTransform)]
-  let affineTransform : AffineTransform
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
@@ -245,7 +244,6 @@ struct BoardImageDisplayInfos {
 //--- Board image
   var filledBP = EBBezierPath ()
   var productRectangles = [ProductRectangle] ()
-//  var nonRotatedRectangles = [NSRect] ()
   var transformedRectangles = [(NSSize, AffineTransform)] ()
   for rect in inBoardImageDescriptor.blackRectangles {
     let x = CGFloat (rect.x) * pixelSize - width / 2.0
@@ -255,15 +253,13 @@ struct BoardImageDisplayInfos {
     let r = NSRect (x: x, y: y, width: w, height: h)
     filledBP.appendRect (r)
     let size = NSSize (width: w, height: h)
-//    nonRotatedRectangles.append (NSRect (center: NSPoint (x: x + w / 2.0, y: y + h / 2.0), size: size))
     let p0 = af.transform (NSPoint (x: x,     y: y))
     let p1 = af.transform (NSPoint (x: x + w, y: y))
     let p2 = af.transform (NSPoint (x: x + w, y: y + h))
     let p3 = af.transform (NSPoint (x: x,     y: y + h))
     productRectangles.append (ProductRectangle (p0: p0, p1: p1, p2: p2, p3: p3))
   //---
-    var rectAF = AffineTransform()
-    rectAF.append (af)
+    var rectAF = af
     rectAF.translate (x: x + w / 2.0, y: y + h / 2.0)
     transformedRectangles.append ((size, rectAF))
   }
@@ -279,8 +275,7 @@ struct BoardImageDisplayInfos {
     backgroundBP: backgroundBP,
     imageBP: imageBP,
     productRectangles: productRectangles,
-    transformedRectangles: transformedRectangles,
-    affineTransform: af
+    transformedRectangles: transformedRectangles
   )
 }
 
