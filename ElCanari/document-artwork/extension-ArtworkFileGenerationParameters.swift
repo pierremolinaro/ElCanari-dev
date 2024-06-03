@@ -53,7 +53,10 @@ extension ArtworkFileGenerationParameters {
       items.insert (.backSideLayoutText)
     }
     if self.drawTextsLegendBottomSide {
-      items.insert (.backSideLegendText)
+      items.insert ([.backSideLegendText, .backSideImage, .backSideQRCode])
+    }
+    if self.drawTextsLegendTopSide {
+      items.insert ([.frontSideLegendText, .frontSideImage, .frontSideQRCode])
     }
     if self.drawTracksTopSide {
       items.insert (.frontSideTrack)

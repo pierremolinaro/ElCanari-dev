@@ -259,9 +259,8 @@ struct QRCodeDisplayInfos {
     let p2 = af.transform (NSPoint (x: x + w, y: y + h))
     let p3 = af.transform (NSPoint (x: x,     y: y + h))
     productRectangles.append (ProductRectangle (p0: p0, p1: p1, p2: p2, p3: p3))
-    let center = af.transform (NSPoint (x: x + w / 2.0, y: y + h / 2.0))
     let size = NSSize (width: w, height: h)
-    nonRotatedRectangles.append (NSRect (center: center, size: size))
+    nonRotatedRectangles.append (NSRect (center: NSPoint (x: x + w / 2.0, y: y + h / 2.0), size: size))
   }
   let qrCodeBP = filledBP.transformed (by: af)
 //--- Rotation knob

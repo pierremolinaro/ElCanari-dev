@@ -253,9 +253,8 @@ struct BoardImageDisplayInfos {
     let h = CGFloat (rect.height) * pixelSize
     let r = NSRect (x: x, y: y, width: w, height: h)
     filledBP.appendRect (r)
-    let center = af.transform (NSPoint (x: x + w / 2.0, y: y + h / 2.0))
     let size = NSSize (width: w, height: h)
-    nonRotatedRectangles.append (NSRect (center: center, size: size))
+    nonRotatedRectangles.append (NSRect (center: NSPoint (x: x + w / 2.0, y: y + h / 2.0), size: size))
     let p0 = af.transform (NSPoint (x: x,     y: y))
     let p1 = af.transform (NSPoint (x: x + w, y: y))
     let p2 = af.transform (NSPoint (x: x + w, y: y + h))

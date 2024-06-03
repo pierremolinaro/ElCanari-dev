@@ -83,7 +83,8 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  private func performProductFilesGeneration (atPath inDocumentFilePathWithoutExtension : String, _ inArtwork : ArtworkRoot) throws {
+  private func performProductFilesGeneration (atPath inDocumentFilePathWithoutExtension : String,
+                                              _ inArtwork : ArtworkRoot) throws {
     let baseName = inDocumentFilePathWithoutExtension.lastPathComponent
     let generateGerberAndPDF = self.rootObject.mGenerateGerberAndPDF_property.propval
   //--- Build product data
