@@ -162,12 +162,7 @@ struct ProductRepresentation : Codable {
     for r in inProduct.rectangles {
       var af = modelAffineTransform
       af.append (r.af)
-      let s = LayeredProductRectangle (
-//        width: r.width, // §§
-//        height: r.height,
-        af: af,
-        layers: r.layers
-      )
+      let s = LayeredProductRectangle (af: af, layers: r.layers)
       self.rectangles.append (s)
     }
     for pad in inProduct.componentPads {

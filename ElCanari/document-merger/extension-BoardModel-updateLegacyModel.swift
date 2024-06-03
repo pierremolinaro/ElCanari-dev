@@ -128,12 +128,7 @@ extension AutoLayoutMergerDocument {
       af.translate (x: canariUnitToCocoa (centerX), y: canariUnitToCocoa (centerY))
       af.rotate (byDegrees: angleInDegrees)
       af.scale (x: width, y: height)
-      let s = LayeredProductRectangle (
-//        width: ProductLength (width, .cocoa), // §§
-//        height: ProductLength (height, .cocoa),
-        af: af,
-        layers: inLayer
-      )
+      let s = LayeredProductRectangle (af: af, layers: inLayer)
       ioProduct.append (rectangle: s)
     }
   }

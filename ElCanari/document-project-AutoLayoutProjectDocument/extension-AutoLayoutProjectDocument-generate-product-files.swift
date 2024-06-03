@@ -539,13 +539,7 @@ extension AutoLayoutProjectDocument {
           layer = .backSideQRCode
         }
         for affineTransform in displayInfos.transformedRectangles {
-//          let size = ProductSize (cocoaSize: cocoaSize)
-          let pr = LayeredProductRectangle (
-//            width: size.width, // §§
-//            height: size.height,
-            af: affineTransform,
-            layers: layer
-          )
+          let pr = LayeredProductRectangle (af: affineTransform, layers: layer)
           ioProduct.append (rectangle: pr)
         }
       }
@@ -573,13 +567,7 @@ extension AutoLayoutProjectDocument {
           layer = .backSideImage
         }
         for affineTransform in displayInfos.transformedRectangles {
-//          let size = ProductSize (cocoaSize: cocoaSize)
-          let pr = LayeredProductRectangle (
-//            width: size.width, // §
-//            height: size.height,
-            af: affineTransform,
-            layers: layer
-          )
+          let pr = LayeredProductRectangle (af: affineTransform, layers: layer)
           ioProduct.append (rectangle: pr)
         }
       }
