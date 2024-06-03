@@ -151,15 +151,30 @@ extension AutoLayoutMergerDocument {
   //································································································
 
   func generateProductRepresentation () -> ProductRepresentation {
+    let boardLimitWidth = ProductLength  (valueInCanariUnit: self.rootObject.boardLimitWidth)
     var product = ProductRepresentation (
       boardWidth : ProductLength (valueInCanariUnit: self.rootObject.boardWidth!),
       boardWidthUnit : self.rootObject.boardWidthUnit, // Canari Unit
       boardHeight : ProductLength (valueInCanariUnit: self.rootObject.boardHeight!),
       boardHeightUnit: self.rootObject.boardHeightUnit, // Canari Unit
-      boardLimitWidth: ProductLength (valueInCanariUnit: self.rootObject.boardLimitWidth),
+      boardLimitWidth: boardLimitWidth,
       boardLimitWidthUnit: self.rootObject.boardLimitWidthUnit, // Canari Unit
       artworkName: self.rootObject.mArtworkName
     )
+  //--- Add Board limits
+    let boardRect = CanariRect (
+      origin: .zero,
+      size: CanariSize (width: self.rootObject.boardWidth!, height: self.rootObject.boardHeight!)
+    )
+    let p0 = ProductPoint (canariPoint: boardRect.bottomLeft)
+    let p1 = ProductPoint (canariPoint: boardRect.bottomRight)
+    let p2 = ProductPoint (canariPoint: boardRect.topRight)
+    let p3 = ProductPoint (canariPoint: boardRect.topLeft)
+    product.append (roundSegment: LayeredProductSegment (p1: p0, p2: p1, width: boardLimitWidth, layers: .boardLimits))
+    product.append (roundSegment: LayeredProductSegment (p1: p1, p2: p2, width: boardLimitWidth, layers: .boardLimits))
+    product.append (roundSegment: LayeredProductSegment (p1: p2, p2: p3, width: boardLimitWidth, layers: .boardLimits))
+    product.append (roundSegment: LayeredProductSegment (p1: p3, p2: p0, width: boardLimitWidth, layers: .boardLimits))
+  //--- board instances
     for element in self.rootObject.boardInstances.values {
       let boardModel : BoardModel = element.myModel!
       let compressedJSONData = boardModel.modelData

@@ -49,15 +49,29 @@ extension AutoLayoutMergerDocument {
   //································································································
 
   fileprivate func internalUpdateLegacyModel (legacyBoardModel inLegacyBoardModel : BoardModel) {
+    let boardLimitWidth = ProductLength  (valueInCanariUnit: inLegacyBoardModel.modelLimitWidth)
     var product = ProductRepresentation (
       boardWidth : ProductLength (valueInCanariUnit: inLegacyBoardModel.modelWidth),
       boardWidthUnit: inLegacyBoardModel.modelWidthUnit, // Canari Unit
       boardHeight: ProductLength  (valueInCanariUnit: inLegacyBoardModel.modelHeight),
       boardHeightUnit: inLegacyBoardModel.modelHeightUnit, // Canari Unit
-      boardLimitWidth : ProductLength  (valueInCanariUnit: inLegacyBoardModel.modelLimitWidth),
+      boardLimitWidth : boardLimitWidth,
       boardLimitWidthUnit: inLegacyBoardModel.modelLimitWidthUnit, // Canari Unit
       artworkName: inLegacyBoardModel.artworkName
     )
+  //--- Board limits
+    let boardRect = CanariRect (
+      origin: .zero,
+      size: CanariSize (width: inLegacyBoardModel.modelWidth, height: inLegacyBoardModel.modelHeight)
+    )
+    let p0 = ProductPoint (canariPoint: boardRect.bottomLeft)
+    let p1 = ProductPoint (canariPoint: boardRect.bottomRight)
+    let p2 = ProductPoint (canariPoint: boardRect.topRight)
+    let p3 = ProductPoint (canariPoint: boardRect.topLeft)
+    product.append (roundSegment: LayeredProductSegment (p1: p0, p2: p1, width: boardLimitWidth, layers: .internalBoardLimits))
+    product.append (roundSegment: LayeredProductSegment (p1: p1, p2: p2, width: boardLimitWidth, layers: .internalBoardLimits))
+    product.append (roundSegment: LayeredProductSegment (p1: p2, p2: p3, width: boardLimitWidth, layers: .internalBoardLimits))
+    product.append (roundSegment: LayeredProductSegment (p1: p3, p2: p0, width: boardLimitWidth, layers: .internalBoardLimits))
   //--- Texts
     self.appendSegments (from: inLegacyBoardModel.frontLegendTexts, layer: .frontSideLegendText, to: &product)
     self.appendSegments (from: inLegacyBoardModel.backLegendTexts, layer: .backSideLegendText, to: &product)
@@ -142,17 +156,28 @@ extension AutoLayoutMergerDocument {
                                    layer inLayer : ProductLayerSet,
                                    to ioProduct : inout ProductRepresentation) {
     for segment in inArray.values {
-      let s = LayeredProductSegment (
-        p1: ProductPoint (canariPoint: CanariPoint (x: segment.x1, y: segment.y1)),
-        p2: ProductPoint (canariPoint: CanariPoint (x: segment.x2, y: segment.y2)),
-        width: ProductLength (valueInCanariUnit: segment.width),
-        layers: inLayer
-      )
-      switch segment.endStyle {
-      case .round :
-        ioProduct.append (roundSegment: s)
-      case .square :
-        ioProduct.append (squareSegment: s)
+      let p1 = ProductPoint (canariPoint: CanariPoint (x: segment.x1, y: segment.y1))
+      let p2 = ProductPoint (canariPoint: CanariPoint (x: segment.x2, y: segment.y2))
+      if p1 == p2 {
+        let s = LayeredProductCircle (
+          center: p1,
+          diameter: ProductLength (valueInCanariUnit: segment.width),
+          layers: inLayer
+        )
+        ioProduct.append (circle: s)
+      }else{
+        let s = LayeredProductSegment (
+          p1: p1,
+          p2: p2,
+          width: ProductLength (valueInCanariUnit: segment.width),
+          layers: inLayer
+        )
+        switch segment.endStyle {
+        case .round :
+          ioProduct.append (roundSegment: s)
+        case .square :
+          ioProduct.append (squareSegment: s)
+        }
       }
     }
   }

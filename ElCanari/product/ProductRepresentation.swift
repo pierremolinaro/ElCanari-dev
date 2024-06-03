@@ -724,6 +724,18 @@ struct ProductRepresentation : Codable {
   @MainActor func segmentEntities (_ inUndoManager : UndoManager?,
                         forLayers inLayers : ProductLayerSet) -> EBReferenceArray <SegmentEntity> {
     var result = EBReferenceArray <SegmentEntity> ()
+    for circle in self.circles {
+      if !circle.layers.intersection (inLayers).isEmpty {
+        let s = SegmentEntity (inUndoManager)
+        s.x1 = circle.x.valueInCanariUnit
+        s.y1 = circle.y.valueInCanariUnit
+        s.x2 = circle.x.valueInCanariUnit
+        s.y2 = circle.y.valueInCanariUnit
+        s.width = circle.d.valueInCanariUnit
+        s.endStyle = .round
+        result.append (s)
+      }
+    }
     for segment in self.roundSegments {
       if !segment.layers.intersection (inLayers).isEmpty {
        let s = SegmentEntity (inUndoManager, segment, endStyle: .round)
