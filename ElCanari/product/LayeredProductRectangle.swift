@@ -9,8 +9,8 @@
 import Foundation
 
 //--------------------------------------------------------------------------------------------------
-// Par convention, un rectangle est en fait un rectangle centré sur l'origine.
-// C'est la transformation affine « af » qui définit sa position
+// Un rectangle est défini par une transformation affine ; celle-ci représente la transformation du
+// carré de côté 1 centré sur l'origine pour aboutir au rectangle
 //--------------------------------------------------------------------------------------------------
 
 struct LayeredProductRectangle : Codable {
@@ -19,16 +19,14 @@ struct LayeredProductRectangle : Codable {
   //  Properties
   //································································································
 
-//  let width : ProductLength
-//  let height : ProductLength
   let af : AffineTransform
   let layers : ProductLayerSet
 
   //································································································
 
   func polygon () -> (ProductPoint, [ProductPoint]) {
-    let w = 0.5 // self.width.value (in: .cocoa) / 2.0
-    let h = 0.5 // self.height.value (in: .cocoa) / 2.0
+    let w = 0.5 // Moitié de la largeur
+    let h = 0.5 // Moitié de la hauteur
     let bottomLeft  = ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: -w, y: -h)))
     let bottomRight = ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +w, y: -h)))
     let topRight    = ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +w, y: +h)))
