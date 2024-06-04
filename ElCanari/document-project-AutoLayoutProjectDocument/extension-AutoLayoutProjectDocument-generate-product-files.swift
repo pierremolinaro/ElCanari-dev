@@ -465,13 +465,13 @@ extension AutoLayoutProjectDocument {
                           transformedBy inAT : AffineTransform,
                           layers inLayers : ProductLayerSet,
                           to ioProduct : inout ProductRepresentation) {
-    let center = ProductPoint (canariPoint: inCenter)
+    let center = inCenter.cocoaPoint
+    var af = inAT
+    af.translate (x: center.x, y: center.y)
     let p = LayeredProductComponentPad (
-      xCenter: center.x,
-      yCenter: center.y,
       width: ProductLength (valueInCanariUnit: inPadSize.width),
       height: ProductLength (valueInCanariUnit: inPadSize.height),
-      af: inAT,
+      af: af,
       shape: inShape,
       layers: inLayers
     )

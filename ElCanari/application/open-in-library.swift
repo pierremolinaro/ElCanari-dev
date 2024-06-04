@@ -21,7 +21,7 @@ import AppKit
 //  private final let mOutlineView = AutoLayoutOutlineView (size: .regular, addControlButtons: false)
   private final let mStatusTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular, alignment: .left)
   private final let mFullPathTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular, alignment: .left)
-  private final var mPartImage = AutoLayoutImageObserverView ()
+  private final var mPartImage = AutoLayoutImageObserverView (width: 400)
   private final let mNoSelectedPartTextField = AutoLayoutStaticLabel (title: "", bold: true, size: .regular, alignment: .center)
   private final let mNoSelectedPartView = AutoLayoutVerticalStackView ()
   private final let mSearchField = AutoLayoutSearchField (width: 300, size: .regular)

@@ -18,24 +18,41 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
   //································································································
 
   private let mControlSize : EBControlSize?
+  private let mWidth : CGFloat?
 
   //································································································
 
-  override init () {
+//  override init () {
+//    self.mControlSize = nil
+//    self.mWidth = nil
+//    super.init ()
+//
+//    self.imageScaling = .scaleProportionallyUpOrDown
+//    self.imageFrameStyle = .none
+//
+////    self.setContentCompressionResistancePriority (.defaultHigh, for: .horizontal)
+////    self.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
+//  }
+
+  //································································································
+
+  init (width inWidth : CGFloat) {
     self.mControlSize = nil
+    self.mWidth = inWidth
     super.init ()
 
     self.imageScaling = .scaleProportionallyUpOrDown
     self.imageFrameStyle = .none
 
-    self.setContentCompressionResistancePriority (.defaultHigh, for: .horizontal)
-    self.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
+//    self.setContentCompressionResistancePriority (.defaultHigh, for: .horizontal)
+//    self.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
   }
 
   //································································································
 
   init (size inControlSize : EBControlSize) {
     self.mControlSize = inControlSize
+    self.mWidth = nil
     super.init ()
 
     self.imageScaling = .scaleProportionallyUpOrDown
@@ -61,7 +78,9 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
       case .regular : s =  24.0
       }
       return NSSize (width: s, height: s)
-    }else{
+   }else if let width = self.mWidth {
+      return NSSize (width: width, height: NSView.noIntrinsicMetric)
+   }else{
       return super.intrinsicContentSize
     }
   }

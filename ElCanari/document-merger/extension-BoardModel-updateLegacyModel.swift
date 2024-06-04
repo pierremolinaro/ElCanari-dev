@@ -221,10 +221,11 @@ extension AutoLayoutMergerDocument {
       var af = AffineTransform ()
       af.translate (x: canariUnitToCocoa (pad.x), y: canariUnitToCocoa (pad.y))
       af.rotate (byDegrees: angleDegrees)
-      af.translate (x: -canariUnitToCocoa (pad.x), y: -canariUnitToCocoa (pad.y))
+//      af.translate (x: -canariUnitToCocoa (pad.x), y: -canariUnitToCocoa (pad.y))
+//      af.translate (x: -canariUnitToCocoa (pad.x), y: -canariUnitToCocoa (pad.y))
       let s = LayeredProductComponentPad (
-        xCenter: center.x,
-        yCenter: center.y,
+//        xCenter: center.x,
+//        yCenter: center.y,
         width: width,
         height: height,
         af: af,
