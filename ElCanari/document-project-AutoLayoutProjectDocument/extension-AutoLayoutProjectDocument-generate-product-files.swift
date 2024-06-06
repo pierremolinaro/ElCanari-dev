@@ -651,7 +651,7 @@ extension AutoLayoutProjectDocument {
     //---
       bp.lineJoinStyle = .round
       bp.lineCapStyle = .round
-      bp.lineWidth = canariUnitToCocoa ((self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance) * 2)
+      bp.lineWidth = canariUnitToCocoa (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance * 2)
       let strokeBP = bp.pathToFillByStroking
       var closedPathCount = 0
       let retainedClosedPath = 2
@@ -691,12 +691,13 @@ extension AutoLayoutProjectDocument {
         result.append (ProductPoint (cocoaPoint: p))
       }
     case .rectangular :
-      let width = ProductLength (valueInCanariUnit: self.rootObject.mRectangularBoardWidth)
-      let height = ProductLength (valueInCanariUnit: self.rootObject.mRectangularBoardHeight)
-      result.append (.zero) // Bottom left
-      result.append (ProductPoint (x: .zero, y: height)) // Top left
-      result.append (ProductPoint (x: width, y: height)) // Top right
-      result.append (ProductPoint (x: width, y: .zero)) // Bottom right
+      let halfBorderLineWidth = ProductLength (valueInCanariUnit: self.rootObject.mBoardLimitsWidth / 2)
+      let boardWidth = ProductLength (valueInCanariUnit: self.rootObject.mRectangularBoardWidth)
+      let boardHeight = ProductLength (valueInCanariUnit: self.rootObject.mRectangularBoardHeight)
+      result.append (ProductPoint (x: halfBorderLineWidth, y: halfBorderLineWidth)) // Bottom left
+      result.append (ProductPoint (x: halfBorderLineWidth, y: boardHeight - halfBorderLineWidth)) // Top left
+      result.append (ProductPoint (x: boardWidth - halfBorderLineWidth, y: boardHeight - halfBorderLineWidth)) // Top right
+      result.append (ProductPoint (x: boardWidth - halfBorderLineWidth, y: halfBorderLineWidth)) // Bottom right
     }
     return result
   }

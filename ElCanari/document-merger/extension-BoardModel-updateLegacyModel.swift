@@ -214,18 +214,13 @@ extension AutoLayoutMergerDocument {
                                layer inLayer : ProductLayerSet,
                                to ioProduct : inout ProductRepresentation) {
     for pad in inArray.values {
-      let center = ProductPoint (canariPoint: CanariPoint (x: pad.x, y: pad.y))
       let width = ProductLength (valueInCanariUnit: pad.width)
       let height = ProductLength (valueInCanariUnit: pad.height)
       let angleDegrees = Double (pad.rotation) / 1000.0
       var af = AffineTransform ()
       af.translate (x: canariUnitToCocoa (pad.x), y: canariUnitToCocoa (pad.y))
       af.rotate (byDegrees: angleDegrees)
-//      af.translate (x: -canariUnitToCocoa (pad.x), y: -canariUnitToCocoa (pad.y))
-//      af.translate (x: -canariUnitToCocoa (pad.x), y: -canariUnitToCocoa (pad.y))
       let s = LayeredProductComponentPad (
-//        xCenter: center.x,
-//        yCenter: center.y,
         width: width,
         height: height,
         af: af,

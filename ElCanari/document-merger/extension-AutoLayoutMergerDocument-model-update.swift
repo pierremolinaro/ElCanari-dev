@@ -67,6 +67,7 @@ extension AutoLayoutMergerDocument {
     inModelToUpdate.modelLimitWidth = inLoadedModel.modelLimitWidth
     inModelToUpdate.modelVersion = inLoadedModel.modelVersion
     inModelToUpdate.ignoreModelVersionError = inLoadedModel.ignoreModelVersionError
+    inModelToUpdate.layerConfiguration = inLoadedModel.layerConfiguration
 
     var newArray = inLoadedModel.backPackages
     inLoadedModel.backPackages = EBReferenceArray ()

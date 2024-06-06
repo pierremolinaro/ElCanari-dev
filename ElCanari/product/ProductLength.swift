@@ -9,6 +9,64 @@
 import Foundation
 
 //--------------------------------------------------------------------------------------------------
+//  Operators
+//--------------------------------------------------------------------------------------------------
+
+func + (_ inLeft : ProductLength, _ inRight : ProductLength) -> ProductLength {
+  return ProductLength ([inLeft, inRight])
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func += (_ ioLeft : inout ProductLength, _ inRight : ProductLength) {
+  let a = ProductLength ([ioLeft, inRight])
+  ioLeft = a
+}
+
+//--------------------------------------------------------------------------------------------------
+
+prefix func - (_ inOperand : ProductLength) -> ProductLength {
+  return inOperand.multipliedBy (-1.0)
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func - (_ inLeft : ProductLength, _ inRight : ProductLength) -> ProductLength {
+  return ProductLength ([inLeft, -inRight])
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func -= (_ ioLeft : inout ProductLength, _ inRight : ProductLength) {
+  let a = ProductLength ([ioLeft, -inRight])
+  ioLeft = a
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func * (_ inLeft : Double, _ inRight : ProductLength) -> ProductLength {
+  return ProductLength (inRight, multipliedBy: inLeft)
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func * (_ inLeft : ProductLength, _ inRight : Double) -> ProductLength {
+  return ProductLength (inLeft, multipliedBy: inRight)
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func / (_ inLeft : ProductLength, _ inRight : ProductLength) -> Double {
+  return inLeft.value (in: .mm) / inRight.value (in: .mm)
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func / (_ inLeft : ProductLength, _ inRight : Double) -> ProductLength {
+  return ProductLength (valueInCanariUnit: Int (Double (inLeft.valueInCanariUnit) / inRight))
+}
+
+//--------------------------------------------------------------------------------------------------
 
 struct ProductLength : Codable, Hashable, Comparable {
 
@@ -26,6 +84,16 @@ struct ProductLength : Codable, Hashable, Comparable {
 
   //································································································
 
+  init (_ inValueArray : [ProductLength]) {
+    var v = 0
+    for element in inValueArray {
+      v += element.valueInCanariUnit
+    }
+    self.valueInCanariUnit = v
+  }
+
+  //································································································
+
   init (valueInCanariUnit inValue : Int) {
     self.valueInCanariUnit = inValue
   }
@@ -35,6 +103,19 @@ struct ProductLength : Codable, Hashable, Comparable {
   init (_ inValue : Double, _ inUnit : Unit) {
     self.valueInCanariUnit = Int (inValue * inUnit.canariUnits)
   }
+
+  //································································································
+
+  init (_ inValue : ProductLength, multipliedBy inOperand : Double) {
+    self.valueInCanariUnit = Int (Double (inValue.valueInCanariUnit) * inOperand)
+  }
+
+  //································································································
+
+  func multipliedBy (_ inValue : Double) -> ProductLength {
+    return ProductLength (self, multipliedBy: inValue)
+  }
+
 
   //································································································
   //  Comparable protocol

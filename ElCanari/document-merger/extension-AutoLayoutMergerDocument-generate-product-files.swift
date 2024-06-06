@@ -166,7 +166,7 @@ extension AutoLayoutMergerDocument {
     let boardRect = CanariRect (
       origin: .zero,
       size: CanariSize (width: self.rootObject.boardWidth!, height: self.rootObject.boardHeight!)
-    )
+    ).insetBy (dx: self.rootObject.boardLimitWidth / 2, dy: self.rootObject.boardLimitWidth / 2)
     let p0 = ProductPoint (canariPoint: boardRect.bottomLeft)
     let p1 = ProductPoint (canariPoint: boardRect.bottomRight)
     let p2 = ProductPoint (canariPoint: boardRect.topRight)
