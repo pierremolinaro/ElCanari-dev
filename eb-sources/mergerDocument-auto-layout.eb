@@ -896,6 +896,16 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           GridView2 {
             set (leftMargin: 20)
             addFirstBaseLineAligned (
+              left: Checkbox (title: "Front Side Images", size : .small) {
+                set (enabled: no)
+                $value #mDataSelection.drawImagesTopSide
+              },
+              right: Checkbox (title: "Front Side QRCodes", size : .small) {
+                set (enabled: no)
+                $value #mDataSelection.drawQRCodesTopSide
+              }
+            )
+            addFirstBaseLineAligned (
               left: Checkbox (title: "Legend Front Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendTopSide },
               right: Checkbox (title: "Layout Front Side Texts", size : .small) { $value #mDataSelection.drawTextsLayoutTopSide }
             )
@@ -940,10 +950,20 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           }
           space
         }
-        StaticLabel (title: "Back Side Elements", bold: yes, size : .small, alignment: .center)
+        StaticLabel (title: "Back Side Elements", bold: yes, size : .small, alignment: .left)
         hStack {
           GridView2 {
             set (leftMargin: 20)
+            addFirstBaseLineAligned (
+              left: Checkbox (title: "Back Side Images", size : .small) {
+                set (enabled: no)
+                $value #mDataSelection.drawImagesBottomSide
+              },
+              right: Checkbox (title: "Back Side QRCodes", size : .small) {
+                set (enabled: no)
+                $value #mDataSelection.drawQRCodesBottomSide
+              }
+            )
             addFirstBaseLineAligned (
               left: Checkbox (title: "Legend Back Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendBottomSide },
               right: Checkbox (title: "Layout Back Side Texts", size : .small) { $value #mDataSelection.drawTextsLayoutBottomSide }
@@ -965,12 +985,19 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           Checkbox (title: "Board Limits", size : .small) { $value #mDataSelection.drawBoardLimits }
           space
         }
-        hStack set (leftMargin: 20) setFirstBaselineAlignment () {
-          Checkbox (title: "Pad Holes in PDF file, with diameter", size : .small) { $value #mDataSelection.drawPadHolesInPDF }
-          CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF $enabled #mDataSelection.drawPadHolesInPDF }
-          space
-        }
-        StaticLabel (title: "Option", bold: yes, size : .small, alignment: .center)
+//        hStack set (leftMargin: 20) setFirstBaselineAlignment () {
+//          Checkbox (title: "Pad Holes in PDF file, with diameter", size : .small) {
+//            $value #mDataSelection.drawPadHolesInPDF
+//          }
+//          CanariDimensionAndPopUp (size : .small) {
+//            $dimensionAndUnit
+//              #mDataSelection.padHoleDiameterInPDF,
+//              #mDataSelection.measurementUnitForPadHoleInPDF
+//            $enabled #mDataSelection.drawPadHolesInPDF
+//          }
+//          space
+//        }
+        StaticLabel (title: "Option", bold: yes, size : .small, alignment: .left)
         hStack set (leftMargin: 20) { Checkbox (title: "Horizontal Mirror", size : .small) { $value #mDataSelection.horizontalMirror } space }
         space
       }

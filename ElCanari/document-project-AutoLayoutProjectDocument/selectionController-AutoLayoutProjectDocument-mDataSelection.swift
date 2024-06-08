@@ -53,6 +53,18 @@ import AppKit
   var drawComponentValuesTopSide_property = EBComputedProperty_Bool ()
 
   //································································································
+  //   Selection observable property: drawImagesBottomSide
+  //································································································
+
+  var drawImagesBottomSide_property = EBComputedProperty_Bool ()
+
+  //································································································
+  //   Selection observable property: drawImagesTopSide
+  //································································································
+
+  var drawImagesTopSide_property = EBComputedProperty_Bool ()
+
+  //································································································
   //   Selection observable property: drawInternalBoardLimits
   //································································································
 
@@ -71,12 +83,6 @@ import AppKit
   var drawPackageLegendTopSide_property = EBComputedProperty_Bool ()
 
   //································································································
-  //   Selection observable property: drawPadHolesInPDF
-  //································································································
-
-  var drawPadHolesInPDF_property = EBComputedProperty_Bool ()
-
-  //································································································
   //   Selection observable property: drawPadsBottomSide
   //································································································
 
@@ -87,6 +93,18 @@ import AppKit
   //································································································
 
   var drawPadsTopSide_property = EBComputedProperty_Bool ()
+
+  //································································································
+  //   Selection observable property: drawQRCodesBottomSide
+  //································································································
+
+  var drawQRCodesBottomSide_property = EBComputedProperty_Bool ()
+
+  //································································································
+  //   Selection observable property: drawQRCodesTopSide
+  //································································································
+
+  var drawQRCodesTopSide_property = EBComputedProperty_Bool ()
 
   //································································································
   //   Selection observable property: drawTextsLayoutBottomSide
@@ -189,22 +207,10 @@ import AppKit
   //································································································
 
   //································································································
-  //   Selection observable property: measurementUnitForPadHoleInPDF
-  //································································································
-
-  var measurementUnitForPadHoleInPDF_property = EBComputedProperty_Int ()
-
-  //································································································
   //   Selection observable property: name
   //································································································
 
   var name_property = EBComputedProperty_String ()
-
-  //································································································
-  //   Selection observable property: padHoleDiameterInPDF
-  //································································································
-
-  var padHoleDiameterInPDF_property = EBComputedProperty_Int ()
 
   //································································································
   //   Selection observable property: parameterStatusImage
@@ -227,12 +233,15 @@ import AppKit
     self.bind_property_drawComponentNamesTopSide (model: model)
     self.bind_property_drawComponentValuesBottomSide (model: model)
     self.bind_property_drawComponentValuesTopSide (model: model)
+    self.bind_property_drawImagesBottomSide (model: model)
+    self.bind_property_drawImagesTopSide (model: model)
     self.bind_property_drawInternalBoardLimits (model: model)
     self.bind_property_drawPackageLegendBottomSide (model: model)
     self.bind_property_drawPackageLegendTopSide (model: model)
-    self.bind_property_drawPadHolesInPDF (model: model)
     self.bind_property_drawPadsBottomSide (model: model)
     self.bind_property_drawPadsTopSide (model: model)
+    self.bind_property_drawQRCodesBottomSide (model: model)
+    self.bind_property_drawQRCodesTopSide (model: model)
     self.bind_property_drawTextsLayoutBottomSide (model: model)
     self.bind_property_drawTextsLayoutTopSide (model: model)
     self.bind_property_drawTextsLegendBottomSide (model: model)
@@ -249,9 +258,7 @@ import AppKit
     self.bind_property_fileExtension (model: model)
     self.bind_property_hasNoData (model: model)
     self.bind_property_horizontalMirror (model: model)
-    self.bind_property_measurementUnitForPadHoleInPDF (model: model)
     self.bind_property_name (model: model)
-    self.bind_property_padHoleDiameterInPDF (model: model)
     self.bind_property_parameterStatusImage (model: model)
   }
 
@@ -280,6 +287,14 @@ import AppKit
     self.drawComponentValuesTopSide_property.mReadModelFunction = nil 
     self.drawComponentValuesTopSide_property.mWriteModelFunction = nil 
     self.mModel?.toMany_drawComponentValuesTopSide_StopsBeingObserved (by: self.drawComponentValuesTopSide_property)
+  //--- drawImagesBottomSide
+    self.drawImagesBottomSide_property.mReadModelFunction = nil 
+    self.drawImagesBottomSide_property.mWriteModelFunction = nil 
+    self.mModel?.toMany_drawImagesBottomSide_StopsBeingObserved (by: self.drawImagesBottomSide_property)
+  //--- drawImagesTopSide
+    self.drawImagesTopSide_property.mReadModelFunction = nil 
+    self.drawImagesTopSide_property.mWriteModelFunction = nil 
+    self.mModel?.toMany_drawImagesTopSide_StopsBeingObserved (by: self.drawImagesTopSide_property)
   //--- drawInternalBoardLimits
     self.drawInternalBoardLimits_property.mReadModelFunction = nil 
     self.drawInternalBoardLimits_property.mWriteModelFunction = nil 
@@ -292,10 +307,6 @@ import AppKit
     self.drawPackageLegendTopSide_property.mReadModelFunction = nil 
     self.drawPackageLegendTopSide_property.mWriteModelFunction = nil 
     self.mModel?.toMany_drawPackageLegendTopSide_StopsBeingObserved (by: self.drawPackageLegendTopSide_property)
-  //--- drawPadHolesInPDF
-    self.drawPadHolesInPDF_property.mReadModelFunction = nil 
-    self.drawPadHolesInPDF_property.mWriteModelFunction = nil 
-    self.mModel?.toMany_drawPadHolesInPDF_StopsBeingObserved (by: self.drawPadHolesInPDF_property)
   //--- drawPadsBottomSide
     self.drawPadsBottomSide_property.mReadModelFunction = nil 
     self.drawPadsBottomSide_property.mWriteModelFunction = nil 
@@ -304,6 +315,14 @@ import AppKit
     self.drawPadsTopSide_property.mReadModelFunction = nil 
     self.drawPadsTopSide_property.mWriteModelFunction = nil 
     self.mModel?.toMany_drawPadsTopSide_StopsBeingObserved (by: self.drawPadsTopSide_property)
+  //--- drawQRCodesBottomSide
+    self.drawQRCodesBottomSide_property.mReadModelFunction = nil 
+    self.drawQRCodesBottomSide_property.mWriteModelFunction = nil 
+    self.mModel?.toMany_drawQRCodesBottomSide_StopsBeingObserved (by: self.drawQRCodesBottomSide_property)
+  //--- drawQRCodesTopSide
+    self.drawQRCodesTopSide_property.mReadModelFunction = nil 
+    self.drawQRCodesTopSide_property.mWriteModelFunction = nil 
+    self.mModel?.toMany_drawQRCodesTopSide_StopsBeingObserved (by: self.drawQRCodesTopSide_property)
   //--- drawTextsLayoutBottomSide
     self.drawTextsLayoutBottomSide_property.mReadModelFunction = nil 
     self.drawTextsLayoutBottomSide_property.mWriteModelFunction = nil 
@@ -366,18 +385,10 @@ import AppKit
     self.horizontalMirror_property.mReadModelFunction = nil 
     self.horizontalMirror_property.mWriteModelFunction = nil 
     self.mModel?.toMany_horizontalMirror_StopsBeingObserved (by: self.horizontalMirror_property)
-  //--- measurementUnitForPadHoleInPDF
-    self.measurementUnitForPadHoleInPDF_property.mReadModelFunction = nil 
-    self.measurementUnitForPadHoleInPDF_property.mWriteModelFunction = nil 
-    self.mModel?.toMany_measurementUnitForPadHoleInPDF_StopsBeingObserved (by: self.measurementUnitForPadHoleInPDF_property)
   //--- name
     self.name_property.mReadModelFunction = nil 
     self.name_property.mWriteModelFunction = nil 
     self.mModel?.toMany_name_StopsBeingObserved (by: self.name_property)
-  //--- padHoleDiameterInPDF
-    self.padHoleDiameterInPDF_property.mReadModelFunction = nil 
-    self.padHoleDiameterInPDF_property.mWriteModelFunction = nil 
-    self.mModel?.toMany_padHoleDiameterInPDF_StopsBeingObserved (by: self.padHoleDiameterInPDF_property)
   //--- parameterStatusImage
     self.parameterStatusImage_property.mReadModelFunction = nil 
     self.mModel?.toMany_parameterStatusImage_StopsBeingObserved (by: self.parameterStatusImage_property)
@@ -647,6 +658,110 @@ import AppKit
 
   //···················································································································*
 
+  private final func bind_property_drawImagesBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
+    model.toMany_drawImagesBottomSide_StartsBeingObserved (by: self.drawImagesBottomSide_property)
+    self.drawImagesBottomSide_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.drawImagesBottomSide_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.drawImagesBottomSide_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.drawImagesBottomSide_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_drawImagesTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
+    model.toMany_drawImagesTopSide_StartsBeingObserved (by: self.drawImagesTopSide_property)
+    self.drawImagesTopSide_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.drawImagesTopSide_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.drawImagesTopSide_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.drawImagesTopSide_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_drawInternalBoardLimits (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawInternalBoardLimits_StartsBeingObserved (by: self.drawInternalBoardLimits_property)
     self.drawInternalBoardLimits_property.mReadModelFunction = { [weak self] in
@@ -803,58 +918,6 @@ import AppKit
 
   //···················································································································*
 
-  private final func bind_property_drawPadHolesInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_drawPadHolesInPDF_StartsBeingObserved (by: self.drawPadHolesInPDF_property)
-    self.drawPadHolesInPDF_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Bool> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.drawPadHolesInPDF_property.selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.drawPadHolesInPDF_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.drawPadHolesInPDF_property.setProp (inValue)
-          }
-        }
-      }
-    }
-  }
-
-  //···················································································································*
-
   private final func bind_property_drawPadsBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawPadsBottomSide_StartsBeingObserved (by: self.drawPadsBottomSide_property)
     self.drawPadsBottomSide_property.mReadModelFunction = { [weak self] in
@@ -951,6 +1014,110 @@ import AppKit
         case .single (let v) :
           for object in v {
             object.drawPadsTopSide_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_drawQRCodesBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
+    model.toMany_drawQRCodesBottomSide_StartsBeingObserved (by: self.drawQRCodesBottomSide_property)
+    self.drawQRCodesBottomSide_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.drawQRCodesBottomSide_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.drawQRCodesBottomSide_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.drawQRCodesBottomSide_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_drawQRCodesTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
+    model.toMany_drawQRCodesTopSide_StartsBeingObserved (by: self.drawQRCodesTopSide_property)
+    self.drawQRCodesTopSide_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.drawQRCodesTopSide_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.drawQRCodesTopSide_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.drawQRCodesTopSide_property.setProp (inValue)
           }
         }
       }
@@ -1767,58 +1934,6 @@ import AppKit
 
   //···················································································································*
 
-  private final func bind_property_measurementUnitForPadHoleInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_measurementUnitForPadHoleInPDF_StartsBeingObserved (by: self.measurementUnitForPadHoleInPDF_property)
-    self.measurementUnitForPadHoleInPDF_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.measurementUnitForPadHoleInPDF_property.selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.measurementUnitForPadHoleInPDF_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.measurementUnitForPadHoleInPDF_property.setProp (inValue)
-          }
-        }
-      }
-    }
-  }
-
-  //···················································································································*
-
   private final func bind_property_name (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_name_StartsBeingObserved (by: self.name_property)
     self.name_property.mReadModelFunction = { [weak self] in
@@ -1863,58 +1978,6 @@ import AppKit
         case .single (let v) :
           for object in v {
             object.name_property.setProp (inValue)
-          }
-        }
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_padHoleDiameterInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.toMany_padHoleDiameterInPDF_StartsBeingObserved (by: self.padHoleDiameterInPDF_property)
-    self.padHoleDiameterInPDF_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.padHoleDiameterInPDF_property.selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.padHoleDiameterInPDF_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.padHoleDiameterInPDF_property.setProp (inValue)
           }
         }
       }

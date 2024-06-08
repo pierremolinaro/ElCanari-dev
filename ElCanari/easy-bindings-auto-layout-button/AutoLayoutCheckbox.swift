@@ -34,6 +34,7 @@ final class AutoLayoutCheckbox : ALB_NSButton {
   //································································································
 
   private var mWidth : CGFloat? = nil
+  private var mMaintainDisabled = false
 
   //································································································
 
@@ -61,6 +62,14 @@ final class AutoLayoutCheckbox : ALB_NSButton {
 
   //································································································
 
+  func set (enabled inEnabled : Bool) -> Self {
+    self.isEnabled = inEnabled
+    self.mMaintainDisabled = !inEnabled
+    return self
+  }
+
+  //································································································
+
   override var intrinsicContentSize : NSSize {
     var s = super.intrinsicContentSize
     if let w = self.mWidth {
@@ -81,19 +90,21 @@ final class AutoLayoutCheckbox : ALB_NSButton {
   //································································································
 
   fileprivate func updateValue (from inObject : EBObservableProperty <Bool>) {
+    let enableCheckbox : Bool
     switch inObject.selection {
     case .empty :
       self.state = NSControl.StateValue.off
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      enableCheckbox = false
     case .multiple :
       self.allowsMixedState = true
       self.state = NSControl.StateValue.mixed
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      enableCheckbox = false
     case .single (let v) :
       self.allowsMixedState = false
       self.state = v ? NSControl.StateValue.on : NSControl.StateValue.off
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      enableCheckbox = true
     }
+    self.enable (fromValueBinding: enableCheckbox && !mMaintainDisabled, self.enabledBindingController)
   }
 
   //································································································

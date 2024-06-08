@@ -23,7 +23,6 @@ import AppKit
        _ self_drawComponentValuesBottomSide : Bool,                  
        _ self_drawPackageLegendTopSide : Bool,                       
        _ self_drawPackageLegendBottomSide : Bool,                    
-       _ self_drawPadHolesInPDF : Bool,                              
        _ self_drawPadsTopSide : Bool,                                
        _ self_drawPadsBottomSide : Bool,                             
        _ self_drawTextsLayoutTopSide : Bool,                         
@@ -37,7 +36,11 @@ import AppKit
        _ self_drawTracksInner4Layer : Bool,                          
        _ self_drawTracksBottomSide : Bool,                           
        _ self_drawTraversingPads : Bool,                             
-       _ self_drawVias : Bool
+       _ self_drawVias : Bool,                                       
+       _ self_drawImagesTopSide : Bool,                              
+       _ self_drawImagesBottomSide : Bool,                           
+       _ self_drawQRCodesTopSide : Bool,                             
+       _ self_drawQRCodesBottomSide : Bool
 ) -> Bool {
 //--- START OF USER ZONE 2
         var hasNoData = true
@@ -64,7 +67,7 @@ import AppKit
           !self_drawComponentValuesBottomSide &&
           !self_drawPackageLegendTopSide &&
           !self_drawPackageLegendBottomSide &&
-          !self_drawPadHolesInPDF &&
+//          !self_drawPadHolesInPDF &&
           !self_drawPadsTopSide &&
           !self_drawPadsBottomSide &&
           !self_drawTextsLayoutTopSide &&
@@ -73,7 +76,11 @@ import AppKit
           !self_drawTextsLegendBottomSide &&
           !self_drawTracksTopSide &&
           !self_drawTracksBottomSide &&
-          !self_drawVias
+          !self_drawVias &&
+          !self_drawImagesTopSide &&
+          !self_drawImagesBottomSide &&
+          !self_drawQRCodesBottomSide &&
+          !self_drawQRCodesTopSide
 //--- END OF USER ZONE 2
 }
 

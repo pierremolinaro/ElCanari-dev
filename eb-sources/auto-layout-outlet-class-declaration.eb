@@ -166,6 +166,7 @@ extern autolayout class Checkbox (title: String, size: EBControlSize) $enabled $
   func expandableHeight ()
   func set (width: Int)
   func set (toolTip : String)
+  func set (enabled : Bool)
   func set (enabled : Bool, checked : Bool)
   $value property Bool
 }

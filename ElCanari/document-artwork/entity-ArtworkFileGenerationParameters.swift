@@ -54,12 +54,6 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor protocol ArtworkFileGenerationParameters_drawPadHolesInPDF : AnyObject {
-  var drawPadHolesInPDF : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————
-
 @MainActor protocol ArtworkFileGenerationParameters_drawPadsTopSide : AnyObject {
   var drawPadsTopSide : Bool { get }
 }
@@ -138,6 +132,30 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor protocol ArtworkFileGenerationParameters_drawImagesTopSide : AnyObject {
+  var drawImagesTopSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol ArtworkFileGenerationParameters_drawImagesBottomSide : AnyObject {
+  var drawImagesBottomSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol ArtworkFileGenerationParameters_drawQRCodesTopSide : AnyObject {
+  var drawQRCodesTopSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol ArtworkFileGenerationParameters_drawQRCodesBottomSide : AnyObject {
+  var drawQRCodesBottomSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor protocol ArtworkFileGenerationParameters_drawVias : AnyObject {
   var drawVias : Bool { get }
 }
@@ -158,18 +176,6 @@ import AppKit
 
 @MainActor protocol ArtworkFileGenerationParameters_name : AnyObject {
   var name : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkFileGenerationParameters_measurementUnitForPadHoleInPDF : AnyObject {
-  var measurementUnitForPadHoleInPDF : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol ArtworkFileGenerationParameters_padHoleDiameterInPDF : AnyObject {
-  var padHoleDiameterInPDF : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
@@ -203,7 +209,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
          ArtworkFileGenerationParameters_drawComponentValuesBottomSide,
          ArtworkFileGenerationParameters_drawPackageLegendTopSide,
          ArtworkFileGenerationParameters_drawPackageLegendBottomSide,
-         ArtworkFileGenerationParameters_drawPadHolesInPDF,
          ArtworkFileGenerationParameters_drawPadsTopSide,
          ArtworkFileGenerationParameters_drawPadsBottomSide,
          ArtworkFileGenerationParameters_drawTextsLayoutTopSide,
@@ -217,12 +222,14 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
          ArtworkFileGenerationParameters_drawTracksInner4Layer,
          ArtworkFileGenerationParameters_drawTracksBottomSide,
          ArtworkFileGenerationParameters_drawTraversingPads,
+         ArtworkFileGenerationParameters_drawImagesTopSide,
+         ArtworkFileGenerationParameters_drawImagesBottomSide,
+         ArtworkFileGenerationParameters_drawQRCodesTopSide,
+         ArtworkFileGenerationParameters_drawQRCodesBottomSide,
          ArtworkFileGenerationParameters_drawVias,
          ArtworkFileGenerationParameters_fileExtension,
          ArtworkFileGenerationParameters_horizontalMirror,
          ArtworkFileGenerationParameters_name,
-         ArtworkFileGenerationParameters_measurementUnitForPadHoleInPDF,
-         ArtworkFileGenerationParameters_padHoleDiameterInPDF,
          ArtworkFileGenerationParameters_hasNoData,
          ArtworkFileGenerationParameters_parameterStatusImage,
          ArtworkFileGenerationParameters_emptyFileExtensionImage {
@@ -321,18 +328,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   final var drawPackageLegendBottomSide : Bool {
     get { return self.drawPackageLegendBottomSide_property.propval }
-  }
-
-  //································································································
-  //   Atomic property: drawPadHolesInPDF
-  //································································································
-
-  final let drawPadHolesInPDF_property : EBStoredProperty_Bool
-
-  //································································································
-
-  final var drawPadHolesInPDF : Bool {
-    get { return self.drawPadHolesInPDF_property.propval }
   }
 
   //································································································
@@ -492,6 +487,54 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   }
 
   //································································································
+  //   Atomic property: drawImagesTopSide
+  //································································································
+
+  final let drawImagesTopSide_property : EBStoredProperty_Bool
+
+  //································································································
+
+  final var drawImagesTopSide : Bool {
+    get { return self.drawImagesTopSide_property.propval }
+  }
+
+  //································································································
+  //   Atomic property: drawImagesBottomSide
+  //································································································
+
+  final let drawImagesBottomSide_property : EBStoredProperty_Bool
+
+  //································································································
+
+  final var drawImagesBottomSide : Bool {
+    get { return self.drawImagesBottomSide_property.propval }
+  }
+
+  //································································································
+  //   Atomic property: drawQRCodesTopSide
+  //································································································
+
+  final let drawQRCodesTopSide_property : EBStoredProperty_Bool
+
+  //································································································
+
+  final var drawQRCodesTopSide : Bool {
+    get { return self.drawQRCodesTopSide_property.propval }
+  }
+
+  //································································································
+  //   Atomic property: drawQRCodesBottomSide
+  //································································································
+
+  final let drawQRCodesBottomSide_property : EBStoredProperty_Bool
+
+  //································································································
+
+  final var drawQRCodesBottomSide : Bool {
+    get { return self.drawQRCodesBottomSide_property.propval }
+  }
+
+  //································································································
   //   Atomic property: drawVias
   //································································································
 
@@ -538,30 +581,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   final var name : String {
     get { return self.name_property.propval }
     set { self.name_property.setProp (newValue) }
-  }
-
-  //································································································
-  //   Atomic property: measurementUnitForPadHoleInPDF
-  //································································································
-
-  final let measurementUnitForPadHoleInPDF_property : EBStoredProperty_Int
-
-  //································································································
-
-  final var measurementUnitForPadHoleInPDF : Int {
-    get { return self.measurementUnitForPadHoleInPDF_property.propval }
-  }
-
-  //································································································
-  //   Atomic property: padHoleDiameterInPDF
-  //································································································
-
-  final let padHoleDiameterInPDF_property : EBStoredProperty_Int
-
-  //································································································
-
-  final var padHoleDiameterInPDF : Int {
-    get { return self.padHoleDiameterInPDF_property.propval }
   }
 
   //································································································
@@ -641,7 +660,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawComponentValuesBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawComponentValuesBottomSide")
     self.drawPackageLegendTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawPackageLegendTopSide")
     self.drawPackageLegendBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawPackageLegendBottomSide")
-    self.drawPadHolesInPDF_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawPadHolesInPDF")
     self.drawPadsTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawPadsTopSide")
     self.drawPadsBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawPadsBottomSide")
     self.drawTextsLayoutTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawTextsLayoutTopSide")
@@ -655,12 +673,14 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawTracksInner4Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawTracksInner4Layer")
     self.drawTracksBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawTracksBottomSide")
     self.drawTraversingPads_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawTraversingPads")
+    self.drawImagesTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawImagesTopSide")
+    self.drawImagesBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawImagesBottomSide")
+    self.drawQRCodesTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawQRCodesTopSide")
+    self.drawQRCodesBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawQRCodesBottomSide")
     self.drawVias_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawVias")
     self.fileExtension_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "fileExtension")
     self.horizontalMirror_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "horizontalMirror")
     self.name_property = EBStoredProperty_String (defaultValue: "Unnamed", undoManager: inUndoManager, key: "name")
-    self.measurementUnitForPadHoleInPDF_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "measurementUnitForPadHoleInPDF")
-    self.padHoleDiameterInPDF_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "padHoleDiameterInPDF")
     super.init (inUndoManager)
     self.mArtwork_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -688,22 +708,25 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
         let s6 = unwSelf.drawComponentValuesBottomSide_property.selection
         let s7 = unwSelf.drawPackageLegendTopSide_property.selection
         let s8 = unwSelf.drawPackageLegendBottomSide_property.selection
-        let s9 = unwSelf.drawPadHolesInPDF_property.selection
-        let s10 = unwSelf.drawPadsTopSide_property.selection
-        let s11 = unwSelf.drawPadsBottomSide_property.selection
-        let s12 = unwSelf.drawTextsLayoutTopSide_property.selection
-        let s13 = unwSelf.drawTextsLayoutBottomSide_property.selection
-        let s14 = unwSelf.drawTextsLegendTopSide_property.selection
-        let s15 = unwSelf.drawTextsLegendBottomSide_property.selection
-        let s16 = unwSelf.drawTracksTopSide_property.selection
-        let s17 = unwSelf.drawTracksInner1Layer_property.selection
-        let s18 = unwSelf.drawTracksInner2Layer_property.selection
-        let s19 = unwSelf.drawTracksInner3Layer_property.selection
-        let s20 = unwSelf.drawTracksInner4Layer_property.selection
-        let s21 = unwSelf.drawTracksBottomSide_property.selection
-        let s22 = unwSelf.drawTraversingPads_property.selection
-        let s23 = unwSelf.drawVias_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23) {
+        let s9 = unwSelf.drawPadsTopSide_property.selection
+        let s10 = unwSelf.drawPadsBottomSide_property.selection
+        let s11 = unwSelf.drawTextsLayoutTopSide_property.selection
+        let s12 = unwSelf.drawTextsLayoutBottomSide_property.selection
+        let s13 = unwSelf.drawTextsLegendTopSide_property.selection
+        let s14 = unwSelf.drawTextsLegendBottomSide_property.selection
+        let s15 = unwSelf.drawTracksTopSide_property.selection
+        let s16 = unwSelf.drawTracksInner1Layer_property.selection
+        let s17 = unwSelf.drawTracksInner2Layer_property.selection
+        let s18 = unwSelf.drawTracksInner3Layer_property.selection
+        let s19 = unwSelf.drawTracksInner4Layer_property.selection
+        let s20 = unwSelf.drawTracksBottomSide_property.selection
+        let s21 = unwSelf.drawTraversingPads_property.selection
+        let s22 = unwSelf.drawVias_property.selection
+        let s23 = unwSelf.drawImagesTopSide_property.selection
+        let s24 = unwSelf.drawImagesBottomSide_property.selection
+        let s25 = unwSelf.drawQRCodesTopSide_property.selection
+        let s26 = unwSelf.drawQRCodesBottomSide_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -727,9 +750,15 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
               .single (let v20),
               .single (let v21),
               .single (let v22),
-              .single (let v23)) :
-          return .single (transient_ArtworkFileGenerationParameters_hasNoData (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23))
+              .single (let v23),
+              .single (let v24),
+              .single (let v25),
+              .single (let v26)) :
+          return .single (transient_ArtworkFileGenerationParameters_hasNoData (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26))
         case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -770,7 +799,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawComponentValuesBottomSide_property.startsBeingObserved (by: self.hasNoData_property)
     self.drawPackageLegendTopSide_property.startsBeingObserved (by: self.hasNoData_property)
     self.drawPackageLegendBottomSide_property.startsBeingObserved (by: self.hasNoData_property)
-    self.drawPadHolesInPDF_property.startsBeingObserved (by: self.hasNoData_property)
     self.drawPadsTopSide_property.startsBeingObserved (by: self.hasNoData_property)
     self.drawPadsBottomSide_property.startsBeingObserved (by: self.hasNoData_property)
     self.drawTextsLayoutTopSide_property.startsBeingObserved (by: self.hasNoData_property)
@@ -785,6 +813,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawTracksBottomSide_property.startsBeingObserved (by: self.hasNoData_property)
     self.drawTraversingPads_property.startsBeingObserved (by: self.hasNoData_property)
     self.drawVias_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawImagesTopSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawImagesBottomSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawQRCodesTopSide_property.startsBeingObserved (by: self.hasNoData_property)
+    self.drawQRCodesBottomSide_property.startsBeingObserved (by: self.hasNoData_property)
   //--- Atomic property: parameterStatusImage
     self.parameterStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -834,12 +866,15 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawComponentNamesTopSide_property.setSignatureObserver (observer: self)
     self.drawComponentValuesBottomSide_property.setSignatureObserver (observer: self)
     self.drawComponentValuesTopSide_property.setSignatureObserver (observer: self)
+    self.drawImagesBottomSide_property.setSignatureObserver (observer: self)
+    self.drawImagesTopSide_property.setSignatureObserver (observer: self)
     self.drawInternalBoardLimits_property.setSignatureObserver (observer: self)
     self.drawPackageLegendBottomSide_property.setSignatureObserver (observer: self)
     self.drawPackageLegendTopSide_property.setSignatureObserver (observer: self)
-    self.drawPadHolesInPDF_property.setSignatureObserver (observer: self)
     self.drawPadsBottomSide_property.setSignatureObserver (observer: self)
     self.drawPadsTopSide_property.setSignatureObserver (observer: self)
+    self.drawQRCodesBottomSide_property.setSignatureObserver (observer: self)
+    self.drawQRCodesTopSide_property.setSignatureObserver (observer: self)
     self.drawTextsLayoutBottomSide_property.setSignatureObserver (observer: self)
     self.drawTextsLayoutTopSide_property.setSignatureObserver (observer: self)
     self.drawTextsLegendBottomSide_property.setSignatureObserver (observer: self)
@@ -854,9 +889,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawVias_property.setSignatureObserver (observer: self)
     self.fileExtension_property.setSignatureObserver (observer: self)
     self.horizontalMirror_property.setSignatureObserver (observer: self)
-    self.measurementUnitForPadHoleInPDF_property.setSignatureObserver (observer: self)
     self.name_property.setSignatureObserver (observer: self)
-    self.padHoleDiameterInPDF_property.setSignatureObserver (observer: self)
   //--- Extern delegates
    }
   
@@ -876,12 +909,15 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     crc.accumulate (u32: self.drawComponentNamesTopSide_property.signature ())
     crc.accumulate (u32: self.drawComponentValuesBottomSide_property.signature ())
     crc.accumulate (u32: self.drawComponentValuesTopSide_property.signature ())
+    crc.accumulate (u32: self.drawImagesBottomSide_property.signature ())
+    crc.accumulate (u32: self.drawImagesTopSide_property.signature ())
     crc.accumulate (u32: self.drawInternalBoardLimits_property.signature ())
     crc.accumulate (u32: self.drawPackageLegendBottomSide_property.signature ())
     crc.accumulate (u32: self.drawPackageLegendTopSide_property.signature ())
-    crc.accumulate (u32: self.drawPadHolesInPDF_property.signature ())
     crc.accumulate (u32: self.drawPadsBottomSide_property.signature ())
     crc.accumulate (u32: self.drawPadsTopSide_property.signature ())
+    crc.accumulate (u32: self.drawQRCodesBottomSide_property.signature ())
+    crc.accumulate (u32: self.drawQRCodesTopSide_property.signature ())
     crc.accumulate (u32: self.drawTextsLayoutBottomSide_property.signature ())
     crc.accumulate (u32: self.drawTextsLayoutTopSide_property.signature ())
     crc.accumulate (u32: self.drawTextsLegendBottomSide_property.signature ())
@@ -896,9 +932,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     crc.accumulate (u32: self.drawVias_property.signature ())
     crc.accumulate (u32: self.fileExtension_property.signature ())
     crc.accumulate (u32: self.horizontalMirror_property.signature ())
-    crc.accumulate (u32: self.measurementUnitForPadHoleInPDF_property.signature ())
     crc.accumulate (u32: self.name_property.signature ())
-    crc.accumulate (u32: self.padHoleDiameterInPDF_property.signature ())
     return crc
   }
 

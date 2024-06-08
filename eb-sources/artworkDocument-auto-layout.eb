@@ -196,13 +196,25 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
          StaticLabel (title: "Empty Data File", bold: yes, size : .small, alignment: .center) { setOrangeTextColor () $hidden !#mDataSelection.hasNoData}
        }
         space
-        StaticLabel (title: "Front Side Elements", bold: yes, size : .small, alignment: .center)
+        StaticLabel (title: "Front Side Elements", bold: yes, size : .small, alignment: .left)
         hStack {
           GridView2 {
             set (leftMargin: 20)
             addFirstBaseLineAligned (
-              left: Checkbox (title: "Legend Front Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendTopSide },
-              right: Checkbox (title: "Layout Front Side Texts", size : .small) { $value #mDataSelection.drawTextsLayoutTopSide }
+              left: Checkbox (title: "Front Side Images", size : .small) {
+                $value #mDataSelection.drawImagesTopSide
+              },
+              right: Checkbox (title: "Front Side QRCodes", size : .small) {
+                $value #mDataSelection.drawQRCodesTopSide
+              }
+            )
+            addFirstBaseLineAligned (
+              left: Checkbox (title: "Legend Front Side Texts", size : .small) {
+                $value #mDataSelection.drawTextsLegendTopSide
+              },
+              right: Checkbox (title: "Layout Front Side Texts", size : .small) {
+                $value #mDataSelection.drawTextsLayoutTopSide
+              }
             )
             addFirstBaseLineAligned (
               left: Checkbox (title: "Front Side Tracks", size : .small) { $value #mDataSelection.drawTracksTopSide },
@@ -211,8 +223,18 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
           }
           space
         }
-        hStack set (leftMargin: 20) { Checkbox (title: "Front Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesTopSide } space }
-        hStack set (leftMargin: 20) { Checkbox (title: "Front Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesTopSide } space }
+        hStack set (leftMargin: 20) {
+          Checkbox (title: "Front Side Component Names", size : .small) {
+            $value #mDataSelection.drawComponentNamesTopSide
+          }
+          space
+        }
+        hStack set (leftMargin: 20) {
+          Checkbox (title: "Front Side Component Values", size : .small) {
+            $value #mDataSelection.drawComponentValuesTopSide
+          }
+          space
+        }
         hStack set (leftMargin: 20) { Checkbox (title: "Front Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendTopSide } space }
         StaticLabel (title: "Inner Elements", bold: yes, size : .small, alignment: .left)
         hStack {
@@ -245,13 +267,25 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
           }
           space
         }
-        StaticLabel (title: "Back Side Elements", bold: yes, size : .small, alignment: .center)
+        StaticLabel (title: "Back Side Elements", bold: yes, size : .small, alignment: .left)
         hStack {
           GridView2 {
             set (leftMargin: 20)
             addFirstBaseLineAligned (
-              left: Checkbox (title: "Legend Back Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendBottomSide },
-              right: Checkbox (title: "Layout Back Side Texts", size : .small) { $value #mDataSelection.drawTextsLayoutBottomSide }
+              left: Checkbox (title: "Back Side Images", size : .small) {
+                $value #mDataSelection.drawImagesBottomSide
+              },
+              right: Checkbox (title: "Back Side QRCodes", size : .small) {
+                $value #mDataSelection.drawQRCodesBottomSide
+              }
+            )
+            addFirstBaseLineAligned (
+              left: Checkbox (title: "Legend Back Side Texts", size : .small) {
+                $value #mDataSelection.drawTextsLegendBottomSide
+              },
+              right: Checkbox (title: "Layout Back Side Texts", size : .small) {
+                $value #mDataSelection.drawTextsLayoutBottomSide
+              }
             )
             addFirstBaseLineAligned (
               left: Checkbox (title: "Back Side Tracks", size : .small) { $value #mDataSelection.drawTracksBottomSide },
@@ -263,7 +297,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
         hStack set (leftMargin: 20) { Checkbox (title: "Back Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesBottomSide } space }
         hStack set (leftMargin: 20) { Checkbox (title: "Back Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesBottomSide } space }
         hStack set (leftMargin: 20) { Checkbox (title: "Back Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendBottomSide } space }
-        StaticLabel (title: "Other Elements", bold: yes, size : .small, alignment: .center)
+        StaticLabel (title: "Other Elements", bold: yes, size : .small, alignment: .left)
         hStack set (leftMargin: 20) {
           Checkbox (title: "Vias", size : .small) { $value #mDataSelection.drawVias }
           space
@@ -271,13 +305,18 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
           space
           Checkbox (title: "Board Limits", size : .small) { $value #mDataSelection.drawBoardLimits }
         }
-        hStack set (leftMargin: 20) setFirstBaselineAlignment () {
-          Checkbox (title: "Pad Holes in PDF file, with diameter", size : .small) { $value #mDataSelection.drawPadHolesInPDF }
+//        hStack set (leftMargin: 20) setFirstBaselineAlignment () {
+//          Checkbox (title: "Pad Holes in PDF file, with diameter", size : .small) { $value #mDataSelection.drawPadHolesInPDF }
+//          space
+//          CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF $enabled #mDataSelection.drawPadHolesInPDF }
+//        }
+        StaticLabel (title: "Option", bold: yes, size : .small, alignment: .left)
+        hStack set (leftMargin: 20) {
+          Checkbox (title: "Horizontal Mirror", size : .small) {
+            $value #mDataSelection.horizontalMirror
+          }
           space
-          CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF $enabled #mDataSelection.drawPadHolesInPDF }
         }
-        StaticLabel (title: "Option", bold: yes, size : .small, alignment: .center)
-        hStack set (leftMargin: 20) { Checkbox (title: "Horizontal Mirror", size : .small) { $value #mDataSelection.horizontalMirror } space }
         space
       }
     }
@@ -339,7 +378,6 @@ handlingOpposite entity ArtworkFileGenerationParameters {
   property @signature Bool drawComponentValuesBottomSide default no ;
   property @signature Bool drawPackageLegendTopSide default no ;
   property @signature Bool drawPackageLegendBottomSide default no ;
-  property @signature Bool drawPadHolesInPDF default no ;
   property @signature Bool drawPadsTopSide default no ;
   property @signature Bool drawPadsBottomSide default no ;
   property @signature Bool drawTextsLayoutTopSide default no ;
@@ -353,12 +391,17 @@ handlingOpposite entity ArtworkFileGenerationParameters {
   property @signature Bool drawTracksInner4Layer default no ;
   property @signature Bool drawTracksBottomSide default no ;
   property @signature Bool drawTraversingPads default no ;
+  property @signature Bool drawImagesTopSide default no ;
+  property @signature Bool drawImagesBottomSide default no ;
+  property @signature Bool drawQRCodesTopSide default no ;
+  property @signature Bool drawQRCodesBottomSide default no ;
   property @signature Bool drawVias default no ;
   property @signature String fileExtension default "" ;
   property @signature Bool horizontalMirror default no ;
   property @signature @generateDirectAccess String name default "Unnamed" ;
-  property @signature Int measurementUnitForPadHoleInPDF default 90_000 ; // mm
-  property @signature Int padHoleDiameterInPDF default 90_000 ; // 1 mm
+//  property @signature Bool drawPadHolesInPDF default no ;
+//  property @signature Int measurementUnitForPadHoleInPDF default 90_000 ; // mm
+//  property @signature Int padHoleDiameterInPDF default 90_000 ; // 1 mm
   
   transient Bool hasNoData dependsFrom
     self.mArtwork.one.layerConfiguration,
@@ -370,7 +413,7 @@ handlingOpposite entity ArtworkFileGenerationParameters {
     self.drawComponentValuesBottomSide,
     self.drawPackageLegendTopSide,
     self.drawPackageLegendBottomSide,
-    self.drawPadHolesInPDF,
+//    self.drawPadHolesInPDF,
     self.drawPadsTopSide,
     self.drawPadsBottomSide,
     self.drawTextsLayoutTopSide,
@@ -384,7 +427,11 @@ handlingOpposite entity ArtworkFileGenerationParameters {
     self.drawTracksInner4Layer,
     self.drawTracksBottomSide,
     self.drawTraversingPads,
-    self.drawVias
+    self.drawVias,
+    self.drawImagesTopSide,
+    self.drawImagesBottomSide,
+    self.drawQRCodesTopSide,
+    self.drawQRCodesBottomSide
   ;
   
   transient NSImage parameterStatusImage dependsFrom self.name, self.fileExtension, self.hasNoData ;

@@ -822,31 +822,31 @@ extension AutoLayoutMergerDocument {
               modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
-        var drillBezierPaths = [EBBezierPath] ()
-        if product.drawPadHolesInPDF {
-          let pdfHoleDiameter : CGFloat = canariUnitToCocoa (product.padHoleDiameterInPDF)
-          for board in self.rootObject.boardInstances_property.propval.values {
-            let myModel : BoardModel? = board.myModel_property.propval
-            let modelWidth  : Int = myModel?.modelWidth  ?? 0
-            let modelHeight : Int = myModel?.modelHeight ?? 0
-            let instanceRotation = board.instanceRotation
-            if product.drawVias {
-              myModel?.drillSegments?.addDrillForPDF (
-                toStrokeBezierPaths: &drillBezierPaths,
-                dx: board.x,
-                dy: board.y,
-                horizontalMirror: horizontalMirror,
-                pdfDrillDiameter: pdfHoleDiameter,
-                boardWidth: boardWidth,
-                modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation
-              )
-            }
-          }
-        }
+//        var drillBezierPaths = [EBBezierPath] () // §§
+//        if product.drawPadHolesInPDF {
+//          let pdfHoleDiameter : CGFloat = canariUnitToCocoa (product.padHoleDiameterInPDF)
+//          for board in self.rootObject.boardInstances_property.propval.values {
+//            let myModel : BoardModel? = board.myModel_property.propval
+//            let modelWidth  : Int = myModel?.modelWidth  ?? 0
+//            let modelHeight : Int = myModel?.modelHeight ?? 0
+//            let instanceRotation = board.instanceRotation
+//            if product.drawVias {
+//              myModel?.drillSegments?.addDrillForPDF (
+//                toStrokeBezierPaths: &drillBezierPaths,
+//                dx: board.x,
+//                dy: board.y,
+//                horizontalMirror: horizontalMirror,
+//                pdfDrillDiameter: pdfHoleDiameter,
+//                boardWidth: boardWidth,
+//                modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation
+//              )
+//            }
+//          }
+//        }
         var shape = EBShape ()
         shape.add (stroke: strokeBezierPaths, .black)
         shape.add (filled: filledBezierPaths, .black)
-        shape.add (stroke: drillBezierPaths, .white)
+//        shape.add (stroke: drillBezierPaths, .white) // §
         let pdfData = buildPDFimageData (frame: cocoaBoardRect, shape: shape, backgroundColor: self.rootObject.mPDFBoardBackgroundColor)
         try pdfData.write (to: URL (fileURLWithPath: filePath), options: .atomic)
         self.mLogTextView?.appendSuccess (" Ok\n")

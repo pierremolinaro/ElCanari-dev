@@ -41,9 +41,6 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
       if let relay = self.mObserversOf_drawPackageLegendBottomSide { // Stored property
         managedObject.drawPackageLegendBottomSide_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_drawPadHolesInPDF { // Stored property
-        managedObject.drawPadHolesInPDF_property.stopsBeingObserved (by: relay)
-      }
       if let relay = self.mObserversOf_drawPadsTopSide { // Stored property
         managedObject.drawPadsTopSide_property.stopsBeingObserved (by: relay)
       }
@@ -83,6 +80,18 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
       if let relay = self.mObserversOf_drawTraversingPads { // Stored property
         managedObject.drawTraversingPads_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_drawImagesTopSide { // Stored property
+        managedObject.drawImagesTopSide_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_drawImagesBottomSide { // Stored property
+        managedObject.drawImagesBottomSide_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_drawQRCodesTopSide { // Stored property
+        managedObject.drawQRCodesTopSide_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_drawQRCodesBottomSide { // Stored property
+        managedObject.drawQRCodesBottomSide_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_drawVias { // Stored property
         managedObject.drawVias_property.stopsBeingObserved (by: relay)
       }
@@ -94,12 +103,6 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
       }
       if let relay = self.mObserversOf_name { // Stored property
         managedObject.name_property.stopsBeingObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_measurementUnitForPadHoleInPDF { // Stored property
-        managedObject.measurementUnitForPadHoleInPDF_property.stopsBeingObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_padHoleDiameterInPDF { // Stored property
-        managedObject.padHoleDiameterInPDF_property.stopsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_hasNoData { // Transient property
         managedObject.hasNoData_property.stopsBeingObserved (by: relay)
@@ -136,9 +139,6 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
       }
       if let relay = self.mObserversOf_drawPackageLegendBottomSide { // Stored property
         managedObject.drawPackageLegendBottomSide_property.startsBeingObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_drawPadHolesInPDF { // Stored property
-        managedObject.drawPadHolesInPDF_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_drawPadsTopSide { // Stored property
         managedObject.drawPadsTopSide_property.startsBeingObserved (by: relay)
@@ -179,6 +179,18 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
       if let relay = self.mObserversOf_drawTraversingPads { // Stored property
         managedObject.drawTraversingPads_property.startsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_drawImagesTopSide { // Stored property
+        managedObject.drawImagesTopSide_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_drawImagesBottomSide { // Stored property
+        managedObject.drawImagesBottomSide_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_drawQRCodesTopSide { // Stored property
+        managedObject.drawQRCodesTopSide_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_drawQRCodesBottomSide { // Stored property
+        managedObject.drawQRCodesBottomSide_property.startsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_drawVias { // Stored property
         managedObject.drawVias_property.startsBeingObserved (by: relay)
       }
@@ -190,12 +202,6 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
       }
       if let relay = self.mObserversOf_name { // Stored property
         managedObject.name_property.startsBeingObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_measurementUnitForPadHoleInPDF { // Stored property
-        managedObject.measurementUnitForPadHoleInPDF_property.startsBeingObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_padHoleDiameterInPDF { // Stored property
-        managedObject.padHoleDiameterInPDF_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_hasNoData { // Transient property
         managedObject.hasNoData_property.startsBeingObserved (by: relay)
@@ -439,35 +445,6 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   final func toMany_drawPackageLegendBottomSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_drawPackageLegendBottomSide?.stopsBeingObserved (by: inObserver)
-  }
-
-  //································································································
-  //   Observers of 'drawPadHolesInPDF' stored property
-  //································································································
-
-  private final var mObserversOf_drawPadHolesInPDF : EBObservedObserver? = nil
-
-  //································································································
-
-  final func toMany_drawPadHolesInPDF_StartsBeingObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_drawPadHolesInPDF {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsBeingObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.drawPadHolesInPDF_property.startsBeingObserved (by: relay)
-      }
-      self.mObserversOf_drawPadHolesInPDF = relay
-    }
-    relay.startsBeingObserved (by: inObserver)
-  }
-
-  //································································································
-
-  final func toMany_drawPadHolesInPDF_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_drawPadHolesInPDF?.stopsBeingObserved (by: inObserver)
   }
 
   //································································································
@@ -848,6 +825,122 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
   }
 
   //································································································
+  //   Observers of 'drawImagesTopSide' stored property
+  //································································································
+
+  private final var mObserversOf_drawImagesTopSide : EBObservedObserver? = nil
+
+  //································································································
+
+  final func toMany_drawImagesTopSide_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_drawImagesTopSide {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.drawImagesTopSide_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_drawImagesTopSide = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  //································································································
+
+  final func toMany_drawImagesTopSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_drawImagesTopSide?.stopsBeingObserved (by: inObserver)
+  }
+
+  //································································································
+  //   Observers of 'drawImagesBottomSide' stored property
+  //································································································
+
+  private final var mObserversOf_drawImagesBottomSide : EBObservedObserver? = nil
+
+  //································································································
+
+  final func toMany_drawImagesBottomSide_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_drawImagesBottomSide {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.drawImagesBottomSide_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_drawImagesBottomSide = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  //································································································
+
+  final func toMany_drawImagesBottomSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_drawImagesBottomSide?.stopsBeingObserved (by: inObserver)
+  }
+
+  //································································································
+  //   Observers of 'drawQRCodesTopSide' stored property
+  //································································································
+
+  private final var mObserversOf_drawQRCodesTopSide : EBObservedObserver? = nil
+
+  //································································································
+
+  final func toMany_drawQRCodesTopSide_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_drawQRCodesTopSide {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.drawQRCodesTopSide_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_drawQRCodesTopSide = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  //································································································
+
+  final func toMany_drawQRCodesTopSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_drawQRCodesTopSide?.stopsBeingObserved (by: inObserver)
+  }
+
+  //································································································
+  //   Observers of 'drawQRCodesBottomSide' stored property
+  //································································································
+
+  private final var mObserversOf_drawQRCodesBottomSide : EBObservedObserver? = nil
+
+  //································································································
+
+  final func toMany_drawQRCodesBottomSide_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_drawQRCodesBottomSide {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.drawQRCodesBottomSide_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_drawQRCodesBottomSide = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  //································································································
+
+  final func toMany_drawQRCodesBottomSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.mObserversOf_drawQRCodesBottomSide?.stopsBeingObserved (by: inObserver)
+  }
+
+  //································································································
   //   Observers of 'drawVias' stored property
   //································································································
 
@@ -961,64 +1054,6 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   final func toMany_name_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_name?.stopsBeingObserved (by: inObserver)
-  }
-
-  //································································································
-  //   Observers of 'measurementUnitForPadHoleInPDF' stored property
-  //································································································
-
-  private final var mObserversOf_measurementUnitForPadHoleInPDF : EBObservedObserver? = nil
-
-  //································································································
-
-  final func toMany_measurementUnitForPadHoleInPDF_StartsBeingObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_measurementUnitForPadHoleInPDF {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsBeingObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.measurementUnitForPadHoleInPDF_property.startsBeingObserved (by: relay)
-      }
-      self.mObserversOf_measurementUnitForPadHoleInPDF = relay
-    }
-    relay.startsBeingObserved (by: inObserver)
-  }
-
-  //································································································
-
-  final func toMany_measurementUnitForPadHoleInPDF_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_measurementUnitForPadHoleInPDF?.stopsBeingObserved (by: inObserver)
-  }
-
-  //································································································
-  //   Observers of 'padHoleDiameterInPDF' stored property
-  //································································································
-
-  private final var mObserversOf_padHoleDiameterInPDF : EBObservedObserver? = nil
-
-  //································································································
-
-  final func toMany_padHoleDiameterInPDF_StartsBeingObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_padHoleDiameterInPDF {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsBeingObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.padHoleDiameterInPDF_property.startsBeingObserved (by: relay)
-      }
-      self.mObserversOf_padHoleDiameterInPDF = relay
-    }
-    relay.startsBeingObserved (by: inObserver)
-  }
-
-  //································································································
-
-  final func toMany_padHoleDiameterInPDF_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_padHoleDiameterInPDF?.stopsBeingObserved (by: inObserver)
   }
 
   //································································································
