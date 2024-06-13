@@ -43,7 +43,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       oldValue.mRouteOrigin_property.stopsBeingObserved (by: self.mRouteOrigin_property) // Stored property
       oldValue.mAutorouterInterfaceMode_property.stopsBeingObserved (by: self.mAutorouterInterfaceMode_property) // Stored property
       oldValue.mExportExistingTracksAndVias_property.stopsBeingObserved (by: self.mExportExistingTracksAndVias_property) // Stored property
-      oldValue.mExportExistingTracksAndVias2_property.stopsBeingObserved (by: self.mExportExistingTracksAndVias2_property) // Stored property
+      oldValue.mAllowViaAtSMD_property.stopsBeingObserved (by: self.mAllowViaAtSMD_property) // Stored property
       oldValue.mTrackLengthUnit_property.stopsBeingObserved (by: self.mTrackLengthUnit_property) // Stored property
       oldValue.mLayoutClearance_property.stopsBeingObserved (by: self.mLayoutClearance_property) // Stored property
       oldValue.mLayoutClearanceUnit_property.stopsBeingObserved (by: self.mLayoutClearanceUnit_property) // Stored property
@@ -234,7 +234,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       newValue.mRouteOrigin_property.startsBeingObserved (by: self.mRouteOrigin_property) // Stored property
       newValue.mAutorouterInterfaceMode_property.startsBeingObserved (by: self.mAutorouterInterfaceMode_property) // Stored property
       newValue.mExportExistingTracksAndVias_property.startsBeingObserved (by: self.mExportExistingTracksAndVias_property) // Stored property
-      newValue.mExportExistingTracksAndVias2_property.startsBeingObserved (by: self.mExportExistingTracksAndVias2_property) // Stored property
+      newValue.mAllowViaAtSMD_property.startsBeingObserved (by: self.mAllowViaAtSMD_property) // Stored property
       newValue.mTrackLengthUnit_property.startsBeingObserved (by: self.mTrackLengthUnit_property) // Stored property
       newValue.mLayoutClearance_property.startsBeingObserved (by: self.mLayoutClearance_property) // Stored property
       newValue.mLayoutClearanceUnit_property.startsBeingObserved (by: self.mLayoutClearanceUnit_property) // Stored property
@@ -561,10 +561,10 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   final let mExportExistingTracksAndVias_property = EBTransientProperty <Bool?> ()
 
   //································································································
-  //   Observers of 'mExportExistingTracksAndVias2' stored property
+  //   Observers of 'mAllowViaAtSMD' stored property
   //································································································
 
-  final let mExportExistingTracksAndVias2_property = EBTransientProperty <Bool?> ()
+  final let mAllowViaAtSMD_property = EBTransientProperty <Bool?> ()
 
   //································································································
   //   Observers of 'mTrackLengthUnit' stored property
@@ -1696,9 +1696,9 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
     self.mExportExistingTracksAndVias_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mExportExistingTracksAndVias_property.optionalSelection ?? .single (nil)
     }
-  //--- Configure mExportExistingTracksAndVias2 simple stored property
-    self.mExportExistingTracksAndVias2_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.mExportExistingTracksAndVias2_property.optionalSelection ?? .single (nil)
+  //--- Configure mAllowViaAtSMD simple stored property
+    self.mAllowViaAtSMD_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mAllowViaAtSMD_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mTrackLengthUnit simple stored property
     self.mTrackLengthUnit_property.mReadModelFunction = { [weak self] in

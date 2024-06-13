@@ -5279,45 +5279,42 @@ import AppKit
     let view = AutoLayoutVerticalStackView ()
       .set (margins: 12)
     do{
-      let view_0 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_0_0 = AutoLayoutFlexibleSpace ()
-        _ = view_0.appendView (view_0_0)
-        let view_0_1 = AutoLayoutCheckbox (title: "Export Tracks and Vias", size: .small)
-          .bind_value (self.rootObject.mExportExistingTracksAndVias_property)
-        _ = view_0.appendView (view_0_1)
-        let view_0_2 = AutoLayoutFlexibleSpace ()
-        _ = view_0.appendView (view_0_2)
-      }
+      let view_0 = AutoLayoutCheckbox (title: "Export Tracks and Vias", size: .small)
+        .expandableWidth ()
+        .bind_value (self.rootObject.mExportExistingTracksAndVias_property)
       _ = view.appendView (view_0)
-      let view_1 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_1_0 = AutoLayoutFlexibleSpace ()
-        _ = view_1.appendView (view_1_0)
-        let view_1_1 = AutoLayoutImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48)
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutProjectDocument.launchFreeRouterWithRouterDocument (_:))
-          )
-        _ = view_1.appendView (view_1_1)
-        let view_1_2 = AutoLayoutFlexibleSpace ()
-        _ = view_1.appendView (view_1_2)
-      }
+      let view_1 = AutoLayoutCheckbox (title: "Allow Vias at SMD", size: .small)
+        .expandableWidth ()
+        .bind_value (self.rootObject.mAllowViaAtSMD_property)
       _ = view.appendView (view_1)
       let view_2 = AutoLayoutHorizontalStackView ()
       do{
         let view_2_0 = AutoLayoutFlexibleSpace ()
         _ = view_2.appendView (view_2_0)
-        let view_2_1 = AutoLayoutButton (title: "Import SES File", size: .small)
+        let view_2_1 = AutoLayoutImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48)
           .bind_run (
             target: self,
-            selector: #selector (AutoLayoutProjectDocument.importSESFromBasicTabAction (_:))
+            selector: #selector (AutoLayoutProjectDocument.launchFreeRouterWithRouterDocument (_:))
           )
         _ = view_2.appendView (view_2_1)
         let view_2_2 = AutoLayoutFlexibleSpace ()
         _ = view_2.appendView (view_2_2)
       }
       _ = view.appendView (view_2)
+      let view_3 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_3_0 = AutoLayoutFlexibleSpace ()
+        _ = view_3.appendView (view_3_0)
+        let view_3_1 = AutoLayoutButton (title: "Import SES File", size: .small)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.importSESFromBasicTabAction (_:))
+          )
+        _ = view_3.appendView (view_3_1)
+        let view_3_2 = AutoLayoutFlexibleSpace ()
+        _ = view_3.appendView (view_3_2)
+      }
+      _ = view.appendView (view_3)
     }
     return view
   }
@@ -5330,39 +5327,22 @@ import AppKit
     let view = AutoLayoutVerticalStackView ()
       .set (margins: 12)
     do{
-      let view_0 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_0_0 = AutoLayoutFlexibleSpace ()
-        _ = view_0.appendView (view_0_0)
-        let view_0_1 = AutoLayoutCheckbox (title: "Export Tracks and Vias", size: .small)
-          .bind_value (self.rootObject.mExportExistingTracksAndVias2_property)
-        _ = view_0.appendView (view_0_1)
-        let view_0_2 = AutoLayoutFlexibleSpace ()
-        _ = view_0.appendView (view_0_2)
-      }
+      let view_0 = AutoLayoutCheckbox (title: "Export Tracks and Vias", size: .small)
+        .expandableWidth ()
+        .bind_value (self.rootObject.mExportExistingTracksAndVias_property)
       _ = view.appendView (view_0)
-      let view_1 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_1_0 = AutoLayoutFlexibleSpace ()
-        _ = view_1.appendView (view_1_0)
-        let view_1_1 = AutoLayoutButton (title: "Export DSN File…", size: .small)
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutProjectDocument.exportDSNFileAction (_:))
-          )
-        _ = view_1.appendView (view_1_1)
-        let view_1_2 = AutoLayoutFlexibleSpace ()
-        _ = view_1.appendView (view_1_2)
-      }
+      let view_1 = AutoLayoutCheckbox (title: "Allow Vias at SMD", size: .small)
+        .expandableWidth ()
+        .bind_value (self.rootObject.mAllowViaAtSMD_property)
       _ = view.appendView (view_1)
       let view_2 = AutoLayoutHorizontalStackView ()
       do{
         let view_2_0 = AutoLayoutFlexibleSpace ()
         _ = view_2.appendView (view_2_0)
-        let view_2_1 = AutoLayoutImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48)
+        let view_2_1 = AutoLayoutButton (title: "Export DSN File…", size: .small)
           .bind_run (
             target: self,
-            selector: #selector (AutoLayoutProjectDocument.launchFreeRouterWithoutAnyDocument (_:))
+            selector: #selector (AutoLayoutProjectDocument.exportDSNFileAction (_:))
           )
         _ = view_2.appendView (view_2_1)
         let view_2_2 = AutoLayoutFlexibleSpace ()
@@ -5373,16 +5353,30 @@ import AppKit
       do{
         let view_3_0 = AutoLayoutFlexibleSpace ()
         _ = view_3.appendView (view_3_0)
-        let view_3_1 = AutoLayoutButton (title: "Import SES File…", size: .small)
+        let view_3_1 = AutoLayoutImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48)
           .bind_run (
             target: self,
-            selector: #selector (AutoLayoutProjectDocument.importSESFromExtendedTabAction (_:))
+            selector: #selector (AutoLayoutProjectDocument.launchFreeRouterWithoutAnyDocument (_:))
           )
         _ = view_3.appendView (view_3_1)
         let view_3_2 = AutoLayoutFlexibleSpace ()
         _ = view_3.appendView (view_3_2)
       }
       _ = view.appendView (view_3)
+      let view_4 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_4_0 = AutoLayoutFlexibleSpace ()
+        _ = view_4.appendView (view_4_0)
+        let view_4_1 = AutoLayoutButton (title: "Import SES File…", size: .small)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.importSESFromExtendedTabAction (_:))
+          )
+        _ = view_4.appendView (view_4_1)
+        let view_4_2 = AutoLayoutFlexibleSpace ()
+        _ = view_4.appendView (view_4_2)
+      }
+      _ = view.appendView (view_4)
     }
     return view
   }

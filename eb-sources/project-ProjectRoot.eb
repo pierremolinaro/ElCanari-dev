@@ -92,7 +92,7 @@ handlingOpposite entity ProjectRoot {
 
   property Int mAutorouterInterfaceMode default 0 ;
   property @generateDirectRead Bool mExportExistingTracksAndVias default no ;
-  property @generateDirectRead Bool mExportExistingTracksAndVias2 default no ;
+  property @generateDirectRead Bool mAllowViaAtSMD default no ;
   
   property Int mTrackLengthUnit default 90_000_000 ; // meter
   

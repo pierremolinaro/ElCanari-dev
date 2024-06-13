@@ -304,15 +304,15 @@ final class ProjectRoot : EBManagedObject {
   }
 
   //································································································
-  //   Atomic property: mExportExistingTracksAndVias2
+  //   Atomic property: mAllowViaAtSMD
   //································································································
 
-  final let mExportExistingTracksAndVias2_property : EBStoredProperty_Bool
+  final let mAllowViaAtSMD_property : EBStoredProperty_Bool
 
   //································································································
 
-  final var mExportExistingTracksAndVias2 : Bool {
-    get { return self.mExportExistingTracksAndVias2_property.propval }
+  final var mAllowViaAtSMD : Bool {
+    get { return self.mAllowViaAtSMD_property.propval }
   }
 
   //································································································
@@ -2142,7 +2142,7 @@ final class ProjectRoot : EBManagedObject {
     self.mRouteOrigin_property = EBStoredProperty_RouteOrigin (defaultValue: RouteOrigin.center, undoManager: inUndoManager, key: "mRouteOrigin")
     self.mAutorouterInterfaceMode_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mAutorouterInterfaceMode")
     self.mExportExistingTracksAndVias_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mExportExistingTracksAndVias")
-    self.mExportExistingTracksAndVias2_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mExportExistingTracksAndVias2")
+    self.mAllowViaAtSMD_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mAllowViaAtSMD")
     self.mTrackLengthUnit_property = EBStoredProperty_Int (defaultValue: 90000000, undoManager: inUndoManager, key: "mTrackLengthUnit")
     self.mLayoutClearance_property = EBStoredProperty_Int (defaultValue: 22860, undoManager: inUndoManager, key: "mLayoutClearance")
     self.mLayoutClearanceUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mLayoutClearanceUnit")

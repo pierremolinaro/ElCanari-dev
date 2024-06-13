@@ -1614,10 +1614,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           TabView (size: .small) {
             addTab (title: "Basic", tooltip: "Autorouter Basic Configuration", contentView :
               vStack set (margins: 12) {
-                hStack {
-                  space
-                  Checkbox (title: "Export Tracks and Vias", size: .small) { $value root.mExportExistingTracksAndVias }
-                  space
+                Checkbox (title: "Export Tracks and Vias", size: .small) {
+                  expandableWidth () $value root.mExportExistingTracksAndVias
+                }
+                Checkbox (title: "Allow Vias at SMD", size: .small) {
+                  expandableWidth () $value root.mAllowViaAtSMD
                 }
                 hStack {
                   space
@@ -1635,10 +1636,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             )
             addTab (title: "Advanced", tooltip: "Autorouter Advanced Configuration", contentView :
               vStack set (margins: 12) {
-                hStack {
-                  space
-                  Checkbox (title: "Export Tracks and Vias", size: .small) { $value root.mExportExistingTracksAndVias2 }
-                  space
+                Checkbox (title: "Export Tracks and Vias", size: .small) {
+                  expandableWidth () $value root.mExportExistingTracksAndVias
+                }
+                Checkbox (title: "Allow Vias at SMD", size: .small) {
+                  expandableWidth () $value root.mAllowViaAtSMD
                 }
                 hStack {
                   space

@@ -279,7 +279,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
           case .error :
             optionalImage = NSImage.statusError
           }
-          _ = vStack.appendHorizontalSeparator ()
+          vStack.appendHorizontalSeparator ()
           do{
             let hStack = AutoLayoutHorizontalStackView ()
               .appendView (AutoLayoutStaticLabel (title: "Subnet", bold: true, size: .small, alignment: .left).notExpandableWidth ())

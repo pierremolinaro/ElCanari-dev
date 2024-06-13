@@ -638,7 +638,6 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
 struct PadLocationAndSide : Hashable {
   let location : NSPoint
   let side : ConnectorSide
-//  let bp : EBBezierPath
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————

@@ -419,8 +419,13 @@ struct EBBezierPath : Hashable {
     )
     var path = EBBezierPath ()
     // https://forums.swift.org/t/handling-the-new-forming-unsaferawpointer-warning/65523/4
+//    public typealias CGPathApplierFunction = @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CGPathElement>) -> Void
+    let callBack : @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CGPathElement>) -> Void = {
+      pathByStrokingCallback ($0, $1)
+    }
     withUnsafeMutablePointer (to: &path.mPath) {
-      cgPath.apply (info: $0, function: pathByStrokingCallback)
+   //   cgPath.apply (info: $0, function: pathByStrokingCallback)
+      cgPath.apply (info: $0, function: callBack)
     }
     return path
   }

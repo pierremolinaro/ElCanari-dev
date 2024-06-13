@@ -51,7 +51,7 @@ extension AutoLayoutProjectDocument {
       if inResponse == .OK, let url = savePanel.url {
         ud.set (savePanel.directoryURL, forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY)
         do{
-          let exportTracks = hasTrack && self.rootObject.mExportExistingTracksAndVias2
+          let exportTracks = hasTrack && self.rootObject.mExportExistingTracksAndVias
           let s = self.dsnContents (exportTracks)
           try s.write (to: url, atomically: true, encoding: .utf8)
         }catch (let error) {
@@ -166,12 +166,12 @@ extension AutoLayoutProjectDocument {
     s += "  (resolution \(converter.unitString) \(converter.resolution))\n"
     s += "  (unit \(converter.unitString))\n"
     s += "  (structure\n"
-//    addBoardBoundary (&s, boardBoundBox, signalPolygonVertices, converter)
     addBoardBoundary (&s, signalPolygonVertices)
     autorouteSettings (&s, self.rootObject.mAutoRouterPreferredDirections, layerConfiguration)
     addSnapAngle (&s, self.rootObject.mAutorouterSnapAngle)
     addViaClasses (&s, netClasses)
-    s += "    (control (via_at_smd off))\n"
+    let via_at_smd = self.rootObject.mAllowViaAtSMD
+    s += "    (control (via_at_smd \(via_at_smd ? "on" : "off")))\n"
     addDefaultRule (&s, maxWidthInDSNUnit: maxTrackWithInDSNUnit, clearanceInDSNUnit: clearanceInDSNUnit)
     addRestrictRectangles (&s, restrictRectangles, converter)
     s += "  )\n"
