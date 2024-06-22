@@ -74,13 +74,17 @@ struct ProductRepresentation : Codable {
   //································································································
 
   mutating func append (roundSegment inSegment : LayeredProductSegment) {
-    self.roundSegments.append (inSegment)
+    if (inSegment.x1 != inSegment.x2) || (inSegment.y1 != inSegment.y2) {
+      self.roundSegments.append (inSegment)
+    }
   }
 
   //································································································
 
   mutating func append (squareSegment inSegment : LayeredProductSegment) {
-    self.squareSegments.append (inSegment)
+    if (inSegment.x1 != inSegment.x2) || (inSegment.y1 != inSegment.y2) {
+      self.squareSegments.append (inSegment)
+    }
   }
 
   //································································································

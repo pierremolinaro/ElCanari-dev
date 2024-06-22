@@ -14,30 +14,6 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-//  override func importSESFromExtendedTabAction (_ sender : NSObject?) {
-//    let openPanel = NSOpenPanel ()
-//  //--- Default directory
-//    let savedDirectoryURL = openPanel.directoryURL
-//    let ud = UserDefaults.standard
-//    if let url = ud.url (forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY) {
-//      openPanel.directoryURL = url
-//    }
-//    openPanel.allowsMultipleSelection = false
-//    openPanel.canChooseDirectories = false
-//    openPanel.canChooseFiles = true
-//    openPanel.allowedFileTypes = ["ses"]
-//    openPanel.beginSheetModal (for: self.windowForSheet!) { (inReturnCode) in
-//      openPanel.orderOut (nil)
-//      if inReturnCode == .OK, let s = try? String (contentsOf: openPanel.urls [0]) {
-//        ud.set (openPanel.directoryURL, forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY)
-//        self.handleSESFileContents (s)
-//      }
-//      openPanel.directoryURL = savedDirectoryURL
-//    }
-//  }
-
-  //································································································
-
   func handleSESFileContents (_ inFileContents : String) {
   //--- Build Panel
     let panel = NSPanel (
@@ -72,6 +48,7 @@ extension AutoLayoutProjectDocument {
     importSESProgressIndicator.doubleValue = 0.0
     importSESProgressIndicator.maxValue = 3.0
     self.windowForSheet?.beginSheet (panel)
+    _ = RunLoop.main.run (mode: .default, before: Date ())
   //---
     var errorMessage = ""
   //---
@@ -158,14 +135,12 @@ extension AutoLayoutProjectDocument {
           let scanner = Scanner (string: netDescription)
           var ok = scanner.scanString ("(path") != nil
           if ok {
-       //     let startScanLocation = scanner.scanLocation
             let startScanIndex = scanner.currentIndex
             let layerNames = [FRONT_SIDE_LAYOUT, BACK_SIDE_LAYOUT, INNER1_LAYOUT, INNER2_LAYOUT, INNER3_LAYOUT, INNER4_LAYOUT]
             var idx = 0
             var found = false
             while !found && (idx < layerNames.count) {
               scanner.currentIndex = startScanIndex
-        //      scanner.scanLocation = startScanLocation
               found = scanner.scanString (layerNames [idx]) != nil
               if found {
                 let layer : [TrackSide] = [.front, .back, .inner1, .inner2, .inner3, .inner4]
@@ -180,33 +155,43 @@ extension AutoLayoutProjectDocument {
           }
         }
       //--- Extracts vias
-        var viaComponents = netDescription.components (separatedBy: "(via viaForClass")
-        viaComponents.removeFirst () // First component is not a valid via
-        for viaDescription in viaComponents {
-          let scanner = Scanner (string: viaDescription)
-          let stopSet = CharacterSet (charactersIn: " ")
-  //        if scanner.scanUpToCharacters (from: stopSet, into: nil),
-          if scanner.scanUpToCharacters (from: stopSet) != nil,
-             let x = scanner.scanDouble (),
-             let y = scanner.scanDouble () {
-            if let netClass = net.mNetClass {
-              let via = BoardConnector (self.undoManager)
-              via.mX = Int (x * Double (inResolution))
-              via.mY = Int (y * Double (inResolution))
-              via.mUsesCustomHoleDiameter = true
-              via.mCustomHoleDiameter = netClass.mViaHoleDiameter
-              via.mUsesCustomPadDiameter = true
-              via.mCustomPadDiameter = netClass.mViaPadDiameter
-              ioRoutedVias.append ((via, net))
-            }else{
-              ioErrorMessage += "\n  - cannot find a net class for '\(netName)' net"
-            }
-          }else{
-            ioErrorMessage += "\n  - invalid via description"
-          }
-        }
+        self.extractsVias (netDescription, inResolution, net, &ioRoutedVias, &ioErrorMessage)
       }else{
         ioErrorMessage += "\n  - cannot solve \"\(netName)\" net name"
+      }
+    }
+  //  Swift.print ("\(ioRoutedVias.count) vias")
+  }
+
+  //································································································
+
+  private func extractsVias (_ netDescription : String,
+                             _ inResolution : Int,
+                             _ inNet : NetInProject,
+                             _ ioRoutedVias : inout [(BoardConnector, NetInProject)],
+                             _ ioErrorMessage : inout String) {
+    var viaComponents = netDescription.components (separatedBy: "(via viaForClass")
+    viaComponents.removeFirst () // First component is not a valid via
+    for viaDescription in viaComponents {
+      let scanner = Scanner (string: viaDescription)
+      let stopSet = CharacterSet (charactersIn: " ")
+      if scanner.scanUpToCharacters (from: stopSet) != nil,
+         let x = scanner.scanDouble (),
+         let y = scanner.scanDouble () {
+        if let netClass = inNet.mNetClass {
+          let via = BoardConnector (self.undoManager)
+          via.mX = Int (x * Double (inResolution))
+          via.mY = Int (y * Double (inResolution))
+          via.mUsesCustomHoleDiameter = true
+          via.mCustomHoleDiameter = netClass.mViaHoleDiameter
+          via.mUsesCustomPadDiameter = true
+          via.mCustomPadDiameter = netClass.mViaPadDiameter
+          ioRoutedVias.append ((via, inNet))
+        }else{
+          ioErrorMessage += "\n  - cannot find a net class for '\(inNet.mNetName)' net"
+        }
+      }else{
+        ioErrorMessage += "\n  - invalid via description"
       }
     }
   }
@@ -214,9 +199,7 @@ extension AutoLayoutProjectDocument {
   //································································································
 
   private func findOrAddConnector (at inP : CanariPoint,
-//                                   _ inNet : NetInProject,
                                    _ inSide : TrackSide,
-//                                   _ inTrackWidthInCanariUnit : Int,
                                    _ inViaArray : [(BoardConnector, NetInProject)],
                                    _ ioConnectorArray : inout [BoardConnector],
                                    _ ioAddedObjectArray : inout [BoardObject]) -> BoardConnector {
@@ -228,6 +211,7 @@ extension AutoLayoutProjectDocument {
       let dSquare = dx * dx + dy * dy
       let found = dSquare <= squareOfDistance
       if found {
+        // Swift.print ("Via at \(canariUnitToMillimeter (p.x)), \(canariUnitToMillimeter (p.y))")
         return via
       }
     }
@@ -235,13 +219,13 @@ extension AutoLayoutProjectDocument {
       let side = connector.side!
       let ok : Bool
       switch side {
-      case .back  : ok = inSide == .back
-      case .front : ok = inSide == .front
+      case .back   : ok = inSide == .back
+      case .front  : ok = inSide == .front
       case .inner1 : ok = inSide == .inner1
       case .inner2 : ok = inSide == .inner2
       case .inner3 : ok = inSide == .inner3
       case .inner4 : ok = inSide == .inner4
-      case .traversing  : ok = true
+      case .traversing : ok = true
       }
       if ok {
         let p = connector.location!
@@ -277,10 +261,38 @@ extension AutoLayoutProjectDocument {
     importSESTextField.stringValue = "Add Tracks and Vias…"
     importSESProgressIndicator.doubleValue += 1.0
     _ = RunLoop.main.run (mode: .default, before: Date ())
-  //---
+  //----------------- Add Connectors to added object array
     var addedObjectArray = [BoardObject] ()
-    for (connector, _) in inRoutedViaArray {
-      addedObjectArray.append (connector)
+    for (viaConnector, _) in inRoutedViaArray {
+      addedObjectArray.append (viaConnector)
+    }
+  //----------------- If via at SMD is allowed, attach via to SMD pad
+    if self.rootObject.mAllowViaAtSMD {
+      for (viaConnector, _) in inRoutedViaArray {
+         let viaLocation = viaConnector.location!
+         for object in self.rootObject.mBoardObjects.values {
+           if let connector = object as? BoardConnector,
+              let connectorLocation = connector.location,
+              let connectorSide = connector.side,
+              (connectorSide == .front) || (connectorSide == .back) {
+             let squareOfDistance = 90.0 * 90.0 * 16.0 // Distance: 4 µm
+             let dx = Double (connectorLocation.x - viaLocation.x)
+             let dy = Double (connectorLocation.y - viaLocation.y)
+             let dSquare = dx * dx + dy * dy
+             let found = dSquare <= squareOfDistance
+             if found {
+               let track = BoardTrack (self.undoManager)
+               track.mSide = (connectorSide == .front) ? .front : .back
+               track.mConnectorP1 = viaConnector
+               track.mConnectorP2 = connector
+               track.mNet = connector.connectedTracksNet ()
+               track.mUsesCustomTrackWidth = true
+               track.mCustomTrackWidth = viaConnector.actualPadDiameter!
+               track.mIsPreservedByAutoRouter = false
+             }
+           }
+         }
+      }
     }
   //--- Divide tracks for handling tees and crosses
     let routedTracksArray = handleTeesAndCrossesFromRoutedTracks (inRoutedTracksArray, inRoutedViaArray)

@@ -1617,7 +1617,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
                 Checkbox (title: "Export Tracks and Vias", size: .small) {
                   expandableWidth () $value root.mExportExistingTracksAndVias
                 }
-                Checkbox (title: "Allow Vias at SMD", size: .small) {
+                Checkbox (title: "Allow Via at SMD", size: .small) {
                   expandableWidth () $value root.mAllowViaAtSMD
                 }
                 hStack {
@@ -1639,7 +1639,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
                 Checkbox (title: "Export Tracks and Vias", size: .small) {
                   expandableWidth () $value root.mExportExistingTracksAndVias
                 }
-                Checkbox (title: "Allow Vias at SMD", size: .small) {
+                Checkbox (title: "Allow Via at SMD", size: .small) {
                   expandableWidth () $value root.mAllowViaAtSMD
                 }
                 hStack {

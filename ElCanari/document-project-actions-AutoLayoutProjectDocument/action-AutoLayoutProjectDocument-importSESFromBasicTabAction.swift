@@ -14,7 +14,7 @@ extension AutoLayoutProjectDocument {
   @objc func importSESFromBasicTabAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     if let freerouterTemporaryBaseFilePath = self.mFreerouterTemporaryDocumentDirectory {
-      self.importGuiDefaultFile (fileBasePath: freerouterTemporaryBaseFilePath)
+      self.importGuiDefaultFileThenSESFile (fileBasePath: freerouterTemporaryBaseFilePath)
     }else{
       let alert = NSAlert ()
       alert.messageText = "Cannot import SES file"

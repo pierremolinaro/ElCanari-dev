@@ -14,7 +14,7 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  func importGuiDefaultFile (fileBasePath inFileBasePath : String) {
+  func importGuiDefaultFileThenSESFile (fileBasePath inFileBasePath : String) {
     let filePath = inFileBasePath + "gui_defaults.par"
     if let fileContents = try? String (contentsOf: URL (fileURLWithPath: filePath), encoding: .utf8), preferences_mFreeRouterGuiDefaultFileContents_property.propval != fileContents {
       let alert = NSAlert ()

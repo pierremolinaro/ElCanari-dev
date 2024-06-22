@@ -28,14 +28,14 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.7.16"
+let VERSION_CANARI = "1.7.17"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Correction bug importation archive dans Merger"
 ]
 let CHANGES : [String] = [
+  "Re-écriture du code de génération Gerber, PDF, archive, pour les projets et les mergers"
 ]
 let NEWS : [String] = [
 ]

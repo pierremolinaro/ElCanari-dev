@@ -30,6 +30,8 @@ let CANARI_UNITS_PER_INCH  = CANARI_UNITS_PER_MIL * 1000
 
 let PIXELS_PER_INCH = CANARI_UNITS_PER_INCH / CANARI_UNITS_PER_PIXEL
 
+let PIXELS_PER_MM = CANARI_UNITS_PER_MM / CANARI_UNITS_PER_PIXEL
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 //  Display string
 //——————————————————————————————————————————————————————————————————————————————————————————————————
@@ -106,6 +108,12 @@ func cocoaToCanariUnit (_ inValue : CGFloat) -> Int {
 
 func cocoaToInch (_ inValue : CGFloat) -> CGFloat {
   return inValue / CGFloat (PIXELS_PER_INCH)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————
+
+func cocoaToMillimeters (_ inValue : CGFloat) -> CGFloat {
+  return inValue / CGFloat (PIXELS_PER_MM)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
