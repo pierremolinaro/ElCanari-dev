@@ -63,19 +63,14 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  func writeGerberDrillFile (atPath inPath : String,
+  func writeGerberDrillFile (atURL inURL : URL,
                              _ inProduct : ProductRepresentation,
                              _ inProductData : ProductData) throws {
-    self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(inPath.lastPathComponent)…")
+    self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(inURL.lastPathComponent)…")
     if self.rootObject.mUsesNewProductGeneration {
-//      let gerber : GerberRepresentation = inProduct.gerber (
-//        items: .hole,
-//        mirror: .noMirror
-//      )
-//      let drillString = gerber.gerberString (unit: self.rootObject.mGerberProductUnit)
       let drillString = inProduct.excellonDrillString (unit: self.rootObject.mGerberProductUnit)
       let drillData : Data? = drillString.data (using: .ascii, allowLossyConversion: false)
-      try drillData?.write (to: URL (fileURLWithPath: inPath), options: .atomic)
+      try drillData?.write (to: inURL, options: .atomic)
     }else{
       var s = "M48\n"
       s += "INCH\n"
@@ -108,20 +103,20 @@ extension AutoLayoutProjectDocument {
       s += "M30\n" // End code
    //--- Write file
       let data : Data? = s.data (using: .ascii, allowLossyConversion:false)
-      try data?.write (to: URL (fileURLWithPath: inPath), options: .atomic)
+      try data?.write (to: inURL, options: .atomic)
     }
     self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
   }
 
   //································································································
 
-  func writeGerberProductFile (atPath inPath : String,
+  func writeGerberProductFile (atURL inURL : URL,
                                _ inDescriptor : ArtworkFileGenerationParameters,
                                _ inLayerConfiguration : LayerConfiguration,
                                _ inProductData : ProductData,
                                _ inProductRepresentation : ProductRepresentation) throws {
-    let path = inPath + inDescriptor.fileExtension
-    self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(path.lastPathComponent)…")
+    let url = inURL.appendingPathExtension (inDescriptor.fileExtension)
+    self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(url.lastPathComponent)…")
     if self.rootObject.mUsesNewProductGeneration {
       let mirror : ProductHorizontalMirror = inDescriptor.horizontalMirror
         ? .mirror (boardWidth: self.rootObject.boardBoundBox!.size.width)
@@ -132,7 +127,7 @@ extension AutoLayoutProjectDocument {
       )
       let gerberString = gerber.gerberString (unit: self.rootObject.mGerberProductUnit)
       let gerberData : Data? = gerberString.data (using: .ascii, allowLossyConversion: false)
-      try gerberData?.write (to: URL (fileURLWithPath: path), options: .atomic)
+      try gerberData?.write (to: url, options: .atomic)
     }else{
       var af = AffineTransform ()
       if inDescriptor.horizontalMirror {
@@ -263,7 +258,7 @@ extension AutoLayoutProjectDocument {
     //--- Write file
       s += "M02*\n"
       let data : Data? = s.data (using: .ascii, allowLossyConversion: false)
-      try data?.write (to: URL (fileURLWithPath: path), options: .atomic)
+      try data?.write (to: url, options: .atomic)
     }
     self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
   }

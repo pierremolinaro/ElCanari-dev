@@ -102,30 +102,38 @@ extension AutoLayoutProjectDocument {
     )
     self.populateProductRepresentation (to: &productRepresentation)
   //--- Create gerber directory (first, delete existing dir)
-    let gerberDirPath = inDocumentFilePathWithoutExtension + "-gerber"
-    let generatedGerberFilePath = gerberDirPath + "/" + baseName + "."
-    try self.removeAndCreateDirectory (atPath: gerberDirPath, create: generateGerberAndPDF)
+    let gerberDirURL = URL (fileURLWithPath: NSTemporaryDirectory ())
+              .appendingPathComponent (NSUUID().uuidString)
+              .appendingPathComponent (baseName + "-gerber")
+    let generatedGerberFileURL = gerberDirURL.appendingPathComponent (baseName)
+    try self.removeAndCreateDirectory (atURL: gerberDirURL, create: generateGerberAndPDF)
   //--- Write gerber files
     if generateGerberAndPDF {
-      try self.writeGerberDrillFile (atPath: generatedGerberFilePath + inArtwork.drillDataFileExtension, productRepresentation, productData)
+      try self.writeGerberDrillFile (atURL: generatedGerberFileURL.appendingPathExtension (inArtwork.drillDataFileExtension),
+                                     productRepresentation, productData)
       for productDescriptor in inArtwork.fileGenerationParameterArray.values {
-        try self.writeGerberProductFile (atPath: generatedGerberFilePath,
-                                         productDescriptor,
-                                         inArtwork.layerConfiguration,
-                                         productData,
-                                         productRepresentation)
+        try self.writeGerberProductFile (
+          atURL: generatedGerberFileURL,
+          productDescriptor,
+          inArtwork.layerConfiguration,
+          productData,
+          productRepresentation
+        )
       }
+    //--- Write ZIP archive
+      try self.writeZipArchiveFile (at: inDocumentFilePathWithoutExtension, gerberDirURL: gerberDirURL)
     }
   //--- Create PDF directory (first, delete existing dir)
     let pdfDirPath = inDocumentFilePathWithoutExtension + "-pdf"
     let generatedPDFFilePath = pdfDirPath + "/" + baseName + "."
-    try self.removeAndCreateDirectory (atPath: pdfDirPath, create: generateGerberAndPDF)
+    try self.removeAndCreateDirectory (atURL: URL (fileURLWithPath: pdfDirPath), create: generateGerberAndPDF)
   //--- Write PDF files
     if generateGerberAndPDF {
       try self.writePDFDrillFile (atPath: generatedPDFFilePath + inArtwork.drillDataFileExtension + ".pdf", productRepresentation, productData)
       for productDescriptor in inArtwork.fileGenerationParameterArray.values {
         try self.writePDFProductFile (atPath: generatedPDFFilePath, productDescriptor, inArtwork.layerConfiguration, productRepresentation, productData)
       }
+
     }
   //--- Write board archive
     if self.rootObject.mGenerateMergerArchive_property.propval {
@@ -152,18 +160,46 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-  private func removeAndCreateDirectory (atPath inDirectoryPath : String,
+  private func writeZipArchiveFile (at inDocumentFilePathWithoutExtension : String,
+                                    gerberDirURL inGerberDirURL : URL) throws {
+    let targetArchiveURL = URL (fileURLWithPath: inDocumentFilePathWithoutExtension + "-gerber.zip")
+    let coord = NSFileCoordinator ()
+    var myError1 : NSError? = nil
+    var myError2 : NSError? = nil
+  // coordinateReadingItemAtURL is invoked synchronously, but the passed in zippedURL is only valid
+  // for the duration of the block, so it needs to be copied out
+    coord.coordinate (readingItemAt: inGerberDirURL,
+                      options: NSFileCoordinator.ReadingOptions.forUploading,
+                      error: &myError1) { (inZippedURL : URL) -> Void in
+      do{
+        let fm = FileManager ()
+        try fm.copyItem (at: inZippedURL, to: targetArchiveURL)
+      }catch let error {
+        myError2 = error as NSError
+      }
+    }
+    if let error = myError1 {
+      throw error
+    }else if let error = myError2 {
+      throw error
+    }
+  }
+
+  //································································································
+
+  private func removeAndCreateDirectory (atURL inDirectoryURL : URL,
                                          create inCreate : Bool) throws {
     let fm = FileManager ()
     var isDir : ObjCBool = false
-    if fm.fileExists (atPath: inDirectoryPath, isDirectory: &isDir) {
-      self.mProductFileGenerationLogTextView?.appendMessage ("Remove recursively \(inDirectoryPath)...")
-      try fm.removeItem (atPath: inDirectoryPath) // Remove dir recursively
+    let directoryPath = inDirectoryURL.path
+    if fm.fileExists (atPath: directoryPath, isDirectory: &isDir) {
+      self.mProductFileGenerationLogTextView?.appendMessage ("Remove recursively \(directoryPath)...")
+      try fm.removeItem (atPath: directoryPath) // Remove dir recursively
       self.mProductFileGenerationLogTextView?.appendSuccess (" ok.\n")
     }
     if inCreate {
-      self.mProductFileGenerationLogTextView?.appendMessage ("Create \(inDirectoryPath)...")
-      try fm.createDirectory (atPath: inDirectoryPath, withIntermediateDirectories: true, attributes: nil)
+      self.mProductFileGenerationLogTextView?.appendMessage ("Create \(directoryPath)...")
+      try fm.createDirectory (atPath: directoryPath, withIntermediateDirectories: true, attributes: nil)
       self.mProductFileGenerationLogTextView?.appendSuccess (" ok.\n")
     }
   }

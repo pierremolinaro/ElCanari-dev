@@ -160,7 +160,6 @@ extension AutoLayoutProjectDocument {
         ioErrorMessage += "\n  - cannot solve \"\(netName)\" net name"
       }
     }
-  //  Swift.print ("\(ioRoutedVias.count) vias")
   }
 
   //································································································

@@ -35,7 +35,8 @@ let NOTES : [String] = [
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
-  "Re-écriture du code de génération Gerber, PDF, archive, pour les projets et les mergers"
+  "Re-écriture du code de génération Gerber, PDF, archive, pour les projets et les mergers",
+  "Les fichiers Gerber sont produits sous la forme d'un fichier zippé"
 ]
 let NEWS : [String] = [
 ]

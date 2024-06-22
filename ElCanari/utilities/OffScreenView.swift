@@ -143,6 +143,7 @@ final class OffscreenView : NSView {
 
   private func drawHorizontalMarks (_ inGridSizeInCocoaPoints : Double) {
     let attributes : [NSAttributedString.Key : Any] = [
+      .foregroundColor : NSColor.brown,
       .font : NSFont.systemFont (ofSize: 7.0)
     ]
     var x = 5.0 * inGridSizeInCocoaPoints
@@ -160,6 +161,7 @@ final class OffscreenView : NSView {
 
   private func drawVerticalMarks (_ inGridSizeInCocoaPoints : Double) {
     let attributes : [NSAttributedString.Key : Any] = [
+      .foregroundColor : NSColor.brown,
       .font : NSFont.systemFont (ofSize: 7.0)
     ]
     var y = 5.0 * inGridSizeInCocoaPoints
