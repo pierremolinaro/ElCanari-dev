@@ -1622,9 +1622,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
                 Checkbox (title: "Export Tracks and Vias", size: .small) {
                   expandableWidth () $value root.mExportExistingTracksAndVias
                 }
-//                Checkbox (title: "Allow Via at SMD", size: .small) {
-//                  expandableWidth () $value root.mAllowViaAtSMD
-//                }
                 hStack {
                   space
                   ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48) {
@@ -1644,9 +1641,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
                 Checkbox (title: "Export Tracks and Vias", size: .small) {
                   expandableWidth () $value root.mExportExistingTracksAndVias
                 }
-//                Checkbox (title: "Allow Via at SMD", size: .small) {
-//                  expandableWidth () $value root.mAllowViaAtSMD
-//                }
                 hStack {
                   space
                   Button (title: "Export DSN File…", size: .small) { $run exportDSNFileAction }

@@ -31,6 +31,8 @@ final class AutoLayoutTextObserverView : NSScrollView {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+//    self.setContentCompressionResistancePriority (.defaultLow, for: .vertical)
+//    self.mTextView.setContentCompressionResistancePriority (.dragThatCannotResizeWindow, for: .vertical)
 
     self.mTextView.isEditable = false
     self.mTextView.isSelectable = true
@@ -41,9 +43,9 @@ final class AutoLayoutTextObserverView : NSScrollView {
     self.mTextView.allowsImageEditing = false
 
     let MAX_SIZE : CGFloat = CGFloat.greatestFiniteMagnitude
-    self.mTextView.minSize = NSSize (width: 0.0, height: contentSize.height)
+    self.mTextView.minSize = NSSize (width: 0.0, height: 100.0) //self.contentSize.height)
     self.mTextView.maxSize = NSSize (width: MAX_SIZE, height: MAX_SIZE)
-    self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: MAX_SIZE)
+    self.mTextView.textContainer?.containerSize = NSSize (width: self.contentSize.width, height: MAX_SIZE)
     self.mTextView.textContainer?.widthTracksTextView = true
 
     self.drawsBackground = false
