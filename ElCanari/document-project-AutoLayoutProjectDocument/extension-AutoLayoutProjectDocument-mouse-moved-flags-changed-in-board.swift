@@ -42,13 +42,14 @@ extension AutoLayoutProjectDocument {
               shape = EBShape ()
             }
             shape?.add (filled: bpArray, NSColor.white)
-//            ioHelperString = "Option: start a new track"
           }
         }
       }
     }
   //--- Control key ?
-    if NSEvent.modifierFlags.contains (.control), !NSEvent.modifierFlags.contains (.shift), d > 0.0, let boardView = self.mBoardView?.mGraphicView {
+    if NSEvent.modifierFlags.contains (.control),
+          !NSEvent.modifierFlags.contains (.shift), d > 0.0,
+          let boardView = self.mBoardView?.mGraphicView {
       if boardView.frame.contains (inUnalignedMouseLocation) {
         let r = NSRect (
           x: inUnalignedMouseLocation.x - d / 2.0,
@@ -71,8 +72,6 @@ extension AutoLayoutProjectDocument {
 
   //································································································
 
-//  func findAllConnectorsConnectedTo (_ inConnector : BoardConnector,
-//                                     trackSide inTrackSide : TrackSide) -> EBReferenceArray <BoardConnector> {
   func findAllConnectorsConnectedTo (_ inConnector : BoardConnector) -> EBReferenceArray <BoardConnector> {
     var connectorSet = EBReferenceSet (inConnector)
     var exploreArray = [inConnector]

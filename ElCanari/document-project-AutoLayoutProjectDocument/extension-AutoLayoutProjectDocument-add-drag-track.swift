@@ -150,34 +150,32 @@ extension AutoLayoutProjectDocument {
     let newTrackSide : TrackSide = self.rootObject.mBoardSideForNewTrack
     let d = milsToCocoaUnit (CGFloat (self.rootObject.mControlKeyHiliteDiameter))
   //--- Hilite connectors
-    if let connector1 = self.mTrackCreatedByOptionClick?.mConnectorP1 {
-      if let netName = connector1.netName () {
-      //--- Exclude connectors connected to connector 1
-        var excludedConnectors = self.findAllConnectorsConnectedTo (connector1)
-      //--- Exclude connectors at mouse location
-        let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseLocation.canariPoint, trackSide: newTrackSide)
-        for c in connectorsUnderMouse {
-          excludedConnectors.append (objects: self.findAllConnectorsConnectedTo (c))
+    if let connector1 = self.mTrackCreatedByOptionClick?.mConnectorP1, let netName = connector1.netName () {
+    //--- Exclude connectors connected to connector 1
+      var excludedConnectors = self.findAllConnectorsConnectedTo (connector1)
+    //--- Exclude connectors at mouse location
+      let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseLocation.canariPoint, trackSide: newTrackSide)
+      for c in connectorsUnderMouse {
+        excludedConnectors.append (objects: self.findAllConnectorsConnectedTo (c))
+      }
+    //--- Build shape
+      var bpArray = [EBBezierPath] ()
+      for object in self.rootObject.mBoardObjects.values {
+        if let connector = object as? BoardConnector,
+              !excludedConnectors.contains (connector),
+              connector.netNameFromComponentPad == netName {
+          connector.buildBezierPathArrayForHilitingOnOptionFlag (
+            trackSide: newTrackSide,
+            controlKeyHiliteDiameter: d,
+            bezierPathArray: &bpArray
+          )
         }
-      //--- Build shape
-        var bpArray = [EBBezierPath] ()
-        for object in self.rootObject.mBoardObjects.values {
-          if let connector = object as? BoardConnector,
-                !excludedConnectors.contains (connector),
-                connector.netNameFromComponentPad == netName {
-            connector.buildBezierPathArrayForHilitingOnOptionFlag (
-              trackSide: newTrackSide,
-              controlKeyHiliteDiameter: d,
-              bezierPathArray: &bpArray
-            )
-          }
+      }
+      if bpArray.count > 0 {
+        if shape == nil {
+          shape = EBShape ()
         }
-        if bpArray.count > 0 {
-          if shape == nil {
-            shape = EBShape ()
-          }
-          shape?.add (filled: bpArray, NSColor.white)
-        }
+        shape?.add (filled: bpArray, NSColor.white)
       }
     }
   //--- Control key ?

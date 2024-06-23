@@ -58,9 +58,7 @@ extension EBGraphicView {
     let gridWidth = 1.0 / self.actualScale
     let gridDisplayStep = canariUnitToCocoa (self.mGridStepInCanariUnit) * CGFloat (self.mGridDisplayFactor)
     let gridStartX = (r.origin.x / gridDisplayStep).rounded (.up) * gridDisplayStep
-//    let endX = (r.maxX / gridDisplayStep).rounded (.down) * gridDisplayStep
     let gridStartY = (r.origin.y / gridDisplayStep).rounded (.up) * gridDisplayStep
-//    let endY = (r.maxY / gridDisplayStep).rounded (.down) * gridDisplayStep
     switch self.mGridStyle {
     case .noGrid :
       ()
@@ -127,40 +125,6 @@ extension EBGraphicView {
         bp.lineJoinStyle = .round
         bp.stroke ()
       }
-//      switch self.mIssueKind {
-//      case .error :
-//        // NSColor.red.withAlphaComponent (0.5).setFill ()
-//        NSColor.red.setFill ()
-//        for bp in self.mIssueBezierPathes {
-//          bp.fill ()
-//        }
-//        let box = self.mIssueBezierPathes.boundingBox
-//        if !box.isEmpty {
-//          let bp = NSBezierPath (roundedRect: box.insetBy(dx: -4.0, dy: -4.0), xRadius: 4.0, yRadius: 4.0)
-//          bp.lineWidth = 2.0
-//          bp.lineJoinStyle = .round
-//          NSColor.red.setStroke ()
-//          bp.stroke ()
-//        }
-//        if self.mDrawFrameIssue {
-//          NSColor.red.setStroke ()
-//          for bp in self.mIssueBezierPathes {
-//            bp.stroke ()
-//          }
-//        }
-//      case .warning :
-//        //NSColor.orange.withAlphaComponent (0.5).setFill ()
-//        NSColor.orange.setFill ()
-//        for bp in self.mIssueBezierPathes {
-//          bp.fill ()
-//        }
-//        if self.mDrawFrameIssue {
-//          NSColor.orange.setStroke ()
-//          for bp in self.mIssueBezierPathes {
-//            bp.stroke ()
-//          }
-//        }
-//      }
     }
   }
 
