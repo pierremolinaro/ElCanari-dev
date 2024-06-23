@@ -73,11 +73,11 @@ extension AutoLayoutMergerDocument {
   private func generateProductFiles () {
     do{
     //--- Create product directory
-      if let f = self.fileURL?.path.deletingPathExtension {
+      if let documentFilePathWithoutExtension = self.fileURL?.path.deletingPathExtension {
         self.mLogTextView?.clear ()
         self.mProductPageSegmentedControl?.setSelectedSegment (atIndex: 4)
-        let baseName = f.lastPathComponent
-        let productDirectory = f.deletingLastPathComponent
+        let baseName = documentFilePathWithoutExtension.lastPathComponent
+        let productDirectory = documentFilePathWithoutExtension.deletingLastPathComponent
         let product = self.generateProductRepresentation ()
       //--- Generate board archive
         if self.rootObject.mGenerateMergerArchive_property.propval {
@@ -98,20 +98,25 @@ extension AutoLayoutMergerDocument {
           }
         }
       //--- Gerber
+        let gerberDirURL = URL (fileURLWithPath: NSTemporaryDirectory ())
+                  .appendingPathComponent (NSUUID().uuidString)
+                  .appendingPathComponent (baseName + "-gerber")
         let generateGerberAndPDF = self.rootObject.mGenerateGerberAndPDF_property.propval
-        let gerberDirectory = productDirectory + "/" + baseName + "-gerber"
-        try self.removeAndCreateDirectory (atPath: gerberDirectory, create: generateGerberAndPDF)
+        let targetArchiveURL = URL (fileURLWithPath: documentFilePathWithoutExtension + "-gerber.zip")
+        try self.removeAndCreateDirectory (atURL: gerberDirURL, create: generateGerberAndPDF)
         if generateGerberAndPDF {
-          let filePath = gerberDirectory + "/" + baseName
+          let fileURL = gerberDirURL.appendingPathComponent (baseName)
           if self.rootObject.mUsesNewProductGeneration {
-            try self.generateGerberFiles (product, atPath: filePath)
+            try self.generateGerberFiles (product, atURL: fileURL)
           }else{
-            try self.generateLegacyGerberFiles (atPath: filePath)
+            try self.generateLegacyGerberFiles (atPath: fileURL.path)
           }
         }
+      //--- Write ZIP archive
+        try writeZipArchiveFile (at: targetArchiveURL, fromDirectoryURL: gerberDirURL)
       //--- PDF
         let pdfDirectory = productDirectory + "/" + baseName + "-pdf"
-        try self.removeAndCreateDirectory (atPath: pdfDirectory, create: generateGerberAndPDF)
+        try self.removeAndCreateDirectory (atURL: URL (fileURLWithPath: pdfDirectory), create: generateGerberAndPDF)
         if generateGerberAndPDF {
           let filePath = pdfDirectory + "/" + baseName
           if self.rootObject.mUsesNewProductGeneration {
@@ -132,25 +137,26 @@ extension AutoLayoutMergerDocument {
 
   //································································································
 
-  private func removeAndCreateDirectory (atPath inDirectoryPath : String,
+  private func removeAndCreateDirectory (atURL inDirectoryURL : URL,
                                          create inCreate : Bool) throws {
     let fm = FileManager ()
     var isDir : ObjCBool = false
-    if fm.fileExists (atPath: inDirectoryPath, isDirectory: &isDir) {
-      self.mLogTextView?.appendMessage ("Remove recursively \(inDirectoryPath)...")
-      try fm.removeItem (atPath: inDirectoryPath) // Remove dir recursively
+    let directoryPath = inDirectoryURL.path
+    if fm.fileExists (atPath: directoryPath, isDirectory: &isDir) {
+      self.mLogTextView?.appendMessage ("Remove recursively \(directoryPath)...")
+      try fm.removeItem (atPath: directoryPath) // Remove dir recursively
       self.mLogTextView?.appendSuccess (" ok.\n")
     }
     if inCreate {
-      self.mLogTextView?.appendMessage ("Create \(inDirectoryPath)...")
-      try fm.createDirectory (atPath: inDirectoryPath, withIntermediateDirectories: true, attributes: nil)
+      self.mLogTextView?.appendMessage ("Create \(directoryPath)...")
+      try fm.createDirectory (atPath: directoryPath, withIntermediateDirectories: true, attributes: nil)
       self.mLogTextView?.appendSuccess (" ok.\n")
     }
   }
 
   //································································································
 
-  func generateProductRepresentation () -> ProductRepresentation {
+  private func generateProductRepresentation () -> ProductRepresentation {
     let boardLimitWidth = ProductLength  (valueInCanariUnit: self.rootObject.boardLimitWidth)
     var product = ProductRepresentation (
       boardWidth : ProductLength (valueInCanariUnit: self.rootObject.boardWidth!),
@@ -902,10 +908,10 @@ extension AutoLayoutMergerDocument {
 
   //································································································
 
-  fileprivate func generateGerberFiles (_ inProduct : ProductRepresentation, atPath inFilePath : String) throws {
+  fileprivate func generateGerberFiles (_ inProduct : ProductRepresentation, atURL inFileURL : URL) throws {
     for descriptor in self.rootObject.mArtwork?.fileGenerationParameterArray.values ?? [] {
-      let filePath = inFilePath + "." + descriptor.fileExtension
-      self.mLogTextView?.appendMessage ("Generating \(filePath.lastPathComponent)…")
+      let fileURL = inFileURL.appendingPathExtension (descriptor.fileExtension)
+      self.mLogTextView?.appendMessage ("Generating \(fileURL.lastPathComponent)…")
       let mirror : ProductHorizontalMirror = descriptor.horizontalMirror
         ? .mirror (boardWidth: self.rootObject.boardWidth!)
         : .noMirror
@@ -915,20 +921,15 @@ extension AutoLayoutMergerDocument {
       )
       let gerberString = gerberRepresentation.gerberString (unit: self.rootObject.mGerberProductUnit)
       let gerberData : Data? = gerberString.data (using: .ascii, allowLossyConversion: false)
-      try gerberData?.write (to: URL (fileURLWithPath: filePath), options: .atomic)
+      try gerberData?.write (to: fileURL, options: .atomic)
       self.mLogTextView?.appendSuccess (" Ok\n")
     }
   //------------------------------------- Generate hole file
-    let filePath = inFilePath + "." + (self.rootObject.mArtwork?.drillDataFileExtension ?? "??")
-    self.mLogTextView?.appendMessage ("Generating \(filePath.lastPathComponent)…")
-//    let gerberRepresentation = inProduct.gerber (
-//      items: .hole,
-//      mirror: .noMirror
-//    )
-//    let drillString = gerberRepresentation.gerberString (unit: self.rootObject.mGerberProductUnit)
+    let fileURL = inFileURL.appendingPathExtension (self.rootObject.mArtwork?.drillDataFileExtension ?? "??")
+    self.mLogTextView?.appendMessage ("Generating \(fileURL.lastPathComponent)…")
     let drillString = inProduct.excellonDrillString (unit: self.rootObject.mGerberProductUnit)
     let drillData : Data? = drillString.data (using: .ascii, allowLossyConversion: false)
-    try drillData?.write (to: URL (fileURLWithPath: filePath), options: .atomic)
+    try drillData?.write (to: fileURL, options: .atomic)
     self.mLogTextView?.appendSuccess (" Ok\n")
   }
 

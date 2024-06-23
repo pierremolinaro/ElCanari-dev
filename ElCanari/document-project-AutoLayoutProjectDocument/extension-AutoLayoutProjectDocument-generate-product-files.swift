@@ -106,6 +106,7 @@ extension AutoLayoutProjectDocument {
               .appendingPathComponent (NSUUID().uuidString)
               .appendingPathComponent (baseName + "-gerber")
     let generatedGerberFileURL = gerberDirURL.appendingPathComponent (baseName)
+    let targetArchiveURL = URL (fileURLWithPath: inDocumentFilePathWithoutExtension + "-gerber.zip")
     try self.removeAndCreateDirectory (atURL: gerberDirURL, create: generateGerberAndPDF)
   //--- Write gerber files
     if generateGerberAndPDF {
@@ -121,7 +122,7 @@ extension AutoLayoutProjectDocument {
         )
       }
     //--- Write ZIP archive
-      try self.writeZipArchiveFile (at: inDocumentFilePathWithoutExtension, gerberDirURL: gerberDirURL)
+      try writeZipArchiveFile (at: targetArchiveURL, fromDirectoryURL: gerberDirURL)
     }
   //--- Create PDF directory (first, delete existing dir)
     let pdfDirPath = inDocumentFilePathWithoutExtension + "-pdf"
@@ -155,33 +156,6 @@ extension AutoLayoutProjectDocument {
     if self.rootObject.mGenerateBOM_property.propval {
       let csvArchiveFilePath = inDocumentFilePathWithoutExtension + ".csv"
       try self.writeCSVFile (atPath: csvArchiveFilePath)
-    }
-  }
-
-  //································································································
-
-  private func writeZipArchiveFile (at inDocumentFilePathWithoutExtension : String,
-                                    gerberDirURL inGerberDirURL : URL) throws {
-    let targetArchiveURL = URL (fileURLWithPath: inDocumentFilePathWithoutExtension + "-gerber.zip")
-    let coord = NSFileCoordinator ()
-    var myError1 : NSError? = nil
-    var myError2 : NSError? = nil
-  // coordinateReadingItemAtURL is invoked synchronously, but the passed in zippedURL is only valid
-  // for the duration of the block, so it needs to be copied out
-    coord.coordinate (readingItemAt: inGerberDirURL,
-                      options: NSFileCoordinator.ReadingOptions.forUploading,
-                      error: &myError1) { (inZippedURL : URL) -> Void in
-      do{
-        let fm = FileManager ()
-        try fm.copyItem (at: inZippedURL, to: targetArchiveURL)
-      }catch let error {
-        myError2 = error as NSError
-      }
-    }
-    if let error = myError1 {
-      throw error
-    }else if let error = myError2 {
-      throw error
     }
   }
 
