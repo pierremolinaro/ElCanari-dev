@@ -61,23 +61,23 @@ struct EBReferenceSet <T : AnyObject> {
 
   //································································································
 
-  func intersection (_ inOtherSet : EBReferenceSet <T>) -> EBReferenceSet <T> {
-    var result = EBReferenceSet <T> ()
-    if self.mDictionary.count < inOtherSet.mDictionary.count {
-      for value in self.mDictionary.values {
-        if inOtherSet.contains (value) {
-          result.insert (value)
-        }
-      }
-    }else{
-      for value in inOtherSet.mDictionary.values {
-        if self.contains (value) {
-          result.insert (value)
-        }
-      }
-    }
-    return result
-  }
+//  func intersection (_ inOtherSet : EBReferenceSet <T>) -> EBReferenceSet <T> {
+//    var result = EBReferenceSet <T> ()
+//    if self.mDictionary.count < inOtherSet.mDictionary.count {
+//      for value in self.mDictionary.values {
+//        if inOtherSet.contains (value) {
+//          result.insert (value)
+//        }
+//      }
+//    }else{
+//      for value in inOtherSet.mDictionary.values {
+//        if self.contains (value) {
+//          result.insert (value)
+//        }
+//      }
+//    }
+//    return result
+//  }
 
   //································································································
 

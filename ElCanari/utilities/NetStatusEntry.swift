@@ -46,7 +46,6 @@ struct NetPinInSchematics : Hashable {
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct NetLabelInSchematics : Hashable {
-  let labelName : String
   let sheetIndex : Int
   let locationInSheet : CanariPoint
   let location : SchematicSheetGeometry.PointLocationInfo // For example D1, H4, …

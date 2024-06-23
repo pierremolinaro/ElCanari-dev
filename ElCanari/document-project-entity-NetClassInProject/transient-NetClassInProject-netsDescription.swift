@@ -79,13 +79,11 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
         labelArray.append (labelInfo)
         let info = SchematicSheetGeometry.PointLocationInfo (row: p.row, column: p.column, string: p.locationString)
         let netLabel = NetLabelInSchematics (
-          labelName: labelInfo.string,
           sheetIndex: p.sheet,
           locationInSheet: p.locationInSheet,
           location: info
         )
         labelDescriptionArray.append (netLabel)
-//        pointArray.append (p.locationInSheet)
       }
     }
     netLabelCount += labelArray.count

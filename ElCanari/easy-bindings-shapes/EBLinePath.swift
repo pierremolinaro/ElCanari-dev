@@ -30,19 +30,6 @@ struct EBLinePath {
 
   //································································································
 
-  func appendToBezierPath (_ ioBezierPath : inout EBBezierPath,
-                           transformedBy inAffineTransform : AffineTransform) {
-    ioBezierPath.move (to: inAffineTransform.transform (self.origin))
-    for p in self.lines {
-      ioBezierPath.line (to: inAffineTransform.transform (p))
-    }
-    if self.closed {
-      ioBezierPath.close ()
-    }
-  }
-
-  //································································································
-
   func linePathClipped (by inRect : NSRect) -> [EBLinePath] {
     var segments = [(NSPoint, NSPoint)] ()
     var p1 = self.origin

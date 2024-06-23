@@ -12,19 +12,6 @@ import Foundation
 //  Operators
 //--------------------------------------------------------------------------------------------------
 
-func + (_ inLeft : ProductLength, _ inRight : ProductLength) -> ProductLength {
-  return ProductLength ([inLeft, inRight])
-}
-
-//--------------------------------------------------------------------------------------------------
-
-func += (_ ioLeft : inout ProductLength, _ inRight : ProductLength) {
-  let a = ProductLength ([ioLeft, inRight])
-  ioLeft = a
-}
-
-//--------------------------------------------------------------------------------------------------
-
 prefix func - (_ inOperand : ProductLength) -> ProductLength {
   return inOperand.multipliedBy (-1.0)
 }
@@ -33,37 +20,6 @@ prefix func - (_ inOperand : ProductLength) -> ProductLength {
 
 func - (_ inLeft : ProductLength, _ inRight : ProductLength) -> ProductLength {
   return ProductLength ([inLeft, -inRight])
-}
-
-//--------------------------------------------------------------------------------------------------
-
-func -= (_ ioLeft : inout ProductLength, _ inRight : ProductLength) {
-  let a = ProductLength ([ioLeft, -inRight])
-  ioLeft = a
-}
-
-//--------------------------------------------------------------------------------------------------
-
-func * (_ inLeft : Double, _ inRight : ProductLength) -> ProductLength {
-  return ProductLength (inRight, multipliedBy: inLeft)
-}
-
-//--------------------------------------------------------------------------------------------------
-
-func * (_ inLeft : ProductLength, _ inRight : Double) -> ProductLength {
-  return ProductLength (inLeft, multipliedBy: inRight)
-}
-
-//--------------------------------------------------------------------------------------------------
-
-func / (_ inLeft : ProductLength, _ inRight : ProductLength) -> Double {
-  return inLeft.value (in: .mm) / inRight.value (in: .mm)
-}
-
-//--------------------------------------------------------------------------------------------------
-
-func / (_ inLeft : ProductLength, _ inRight : Double) -> ProductLength {
-  return ProductLength (valueInCanariUnit: Int (Double (inLeft.valueInCanariUnit) / inRight))
 }
 
 //--------------------------------------------------------------------------------------------------

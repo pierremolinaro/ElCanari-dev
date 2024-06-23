@@ -172,10 +172,7 @@ struct ProductRepresentation : Codable {
     for pad in inProduct.componentPads {
       var padAffineTransform = pad.af
       padAffineTransform.append (modelAffineTransform)
-//      padAffineTransform.translate(x: canariUnitToCocoa (pad.xCenter), y: canariUnitToCocoa (pad.yCenter))
       let s = LayeredProductComponentPad (
-//        xCenter: pad.xCenter,
-//        yCenter: pad.yCenter,
         width: pad.width,
         height: pad.height,
         af: padAffineTransform,
@@ -188,17 +185,6 @@ struct ProductRepresentation : Codable {
   
   //································································································
   //  Decoding
-  //································································································
-
-  init? (fromJSONData2 inData : Data) {
-    let decoder = JSONDecoder ()
-    if let product = try? decoder.decode (Self.self, from: inData) {
-      self = product
-    }else{
-      return nil
-    }
-  }
-
   //································································································
 
   init? (fromJSONCompressedData inData : Data,

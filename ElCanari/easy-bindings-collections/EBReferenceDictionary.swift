@@ -49,18 +49,18 @@ struct EBReferenceDictionary <KEY : AnyObject, VALUE> {
 
   //································································································
 
-  @MainActor func contains (_ inKey : KEY) -> Bool {
-    let address = ObjectIdentifier (inKey)
-    return self.mDictionary [address] != nil
-  }
+//  @MainActor func contains (_ inKey : KEY) -> Bool {
+//    let address = ObjectIdentifier (inKey)
+//    return self.mDictionary [address] != nil
+//  }
 
   //································································································
 
-  var isEmpty : Bool { return self.mDictionary.isEmpty }
+//  var isEmpty : Bool { return self.mDictionary.isEmpty }
 
   //································································································
 
-  var count : Int { return self.mDictionary.count }
+//  var count : Int { return self.mDictionary.count }
 
   //································································································
 
