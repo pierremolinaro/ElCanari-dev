@@ -73,18 +73,6 @@ final class ProjectRoot : EBManagedObject {
   final let mPDFProductGrid_property : EBStoredProperty_PDFProductGrid
 
   //································································································
-  //   Atomic property: mUsesNewProductGeneration
-  //································································································
-
-  final let mUsesNewProductGeneration_property : EBStoredProperty_Bool
-
-  //································································································
-
-  final var mUsesNewProductGeneration : Bool {
-    get { return self.mUsesNewProductGeneration_property.propval }
-  }
-
-  //································································································
   //   Atomic property: mGerberProductUnit
   //································································································
 
@@ -2122,7 +2110,6 @@ final class ProjectRoot : EBManagedObject {
     self.mGenerateBOM_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateBOM")
     self.mGenerateGerberAndPDF_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateGerberAndPDF")
     self.mPDFProductGrid_property = EBStoredProperty_PDFProductGrid (defaultValue: PDFProductGrid.noGrid, undoManager: inUndoManager, key: "mPDFProductGrid")
-    self.mUsesNewProductGeneration_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mUsesNewProductGeneration")
     self.mGerberProductUnit_property = EBStoredProperty_GerberUnit (defaultValue: GerberUnit.metric, undoManager: inUndoManager, key: "mGerberProductUnit")
     self.mCheckClearanceBetweenPadsOfSameNet_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mCheckClearanceBetweenPadsOfSameNet")
     self.mLastERCCheckingIsSuccess_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mLastERCCheckingIsSuccess")

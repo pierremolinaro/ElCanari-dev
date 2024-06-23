@@ -134,23 +134,17 @@ extension AutoLayoutProjectDocument {
       for productDescriptor in inArtwork.fileGenerationParameterArray.values {
         try self.writePDFProductFile (atPath: generatedPDFFilePath, productDescriptor, inArtwork.layerConfiguration, productRepresentation, productData)
       }
-
     }
   //--- Write board archive
     if self.rootObject.mGenerateMergerArchive_property.propval {
-      if self.rootObject.mUsesNewProductGeneration {
-        let boardArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_MERGER_ARCHIVE
-        self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(boardArchiveFilePath.lastPathComponent)…")
-        let jsonData : Data = productRepresentation.encodedJSONCompressedData (
-          prettyPrinted: true,
-          using: COMPRESSION_LZMA
-        )
-        try jsonData.write (to: URL (fileURLWithPath: boardArchiveFilePath))
-        self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
-      }else{
-        let boardLegacyArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_LEGACY_MERGER_ARCHIVE
-        try self.writeBoardArchiveFile (atPath: boardLegacyArchiveFilePath, productData)
-      }
+      let boardArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_MERGER_ARCHIVE
+      self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(boardArchiveFilePath.lastPathComponent)…")
+      let jsonData : Data = productRepresentation.encodedJSONCompressedData (
+        prettyPrinted: true,
+        using: COMPRESSION_LZMA
+      )
+      try jsonData.write (to: URL (fileURLWithPath: boardArchiveFilePath))
+      self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
     }
   //--- Write CSV file
     if self.rootObject.mGenerateBOM_property.propval {
@@ -711,62 +705,6 @@ extension AutoLayoutProjectDocument {
     }
     return result
   }
-
-  //································································································
-
-//  fileprivate func buildBoardLimitFlattenedPath () -> [ProductPoint] {
-//    var result = [ProductPoint] ()
-//    switch self.rootObject.mBoardShape {
-//    case .bezierPathes :
-//      var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
-//      for curve in self.rootObject.mBorderCurves.values {
-//        let descriptor = curve.descriptor!
-//        curveDictionary [descriptor.p1] = descriptor
-//      }
-//      var descriptor = self.rootObject.mBorderCurves [0].descriptor!
-//      let firstPoint = descriptor.p1
-//      var currentPoint = firstPoint
-//      result.append (ProductPoint (canariPoint: firstPoint))
-//      var loop = true
-//      while loop {
-//        switch descriptor.shape {
-//        case .line :
-//          result.append (ProductPoint (canariPoint: descriptor.p2))
-//        case .bezier :
-//          let cp1 = descriptor.cp1.cocoaPoint
-//          let cp2 = descriptor.cp2.cocoaPoint
-//          let bp = NSBezierPath ()
-//          bp.move (to: currentPoint.cocoaPoint)
-//          bp.curve (to: descriptor.p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
-//          bp.flatness = 0.1
-//          let flattenedBezierPath = bp.flattened
-//          var points = [NSPoint] (repeating: .zero, count: 3)
-//          for i in 0 ..< flattenedBezierPath.elementCount {
-//            let type = flattenedBezierPath.element (at: i, associatedPoints: &points)
-//            switch type {
-//            case .moveTo, .cubicCurveTo, .closePath, .quadraticCurveTo:
-//              ()
-//            case .lineTo: ()
-//               result.append (ProductPoint (canariPoint: points[0].canariPoint))
-//            @unknown default:
-//              ()
-//            }
-//          }
-//        }
-//        currentPoint = descriptor.p2
-//        descriptor = curveDictionary [descriptor.p2]!
-//        loop = firstPoint != descriptor.p1
-//      }
-//    case .rectangular :
-//      let width = ProductLength (valueInCanariUnit: self.rootObject.mRectangularBoardWidth)
-//      let height = ProductLength (valueInCanariUnit: self.rootObject.mRectangularBoardHeight)
-//      result.append (.zero) // Bottom left
-//      result.append (ProductPoint (x: .zero, y: height)) // Top left
-//      result.append (ProductPoint (x: width, y: height)) // Top right
-//      result.append (ProductPoint (x: width, y: .zero)) // Bottom right
-//    }
-//    return result
-//  }
 
   //································································································
 

@@ -2529,9 +2529,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             $run generateProductFilesAction
           }
         }
-        Checkbox (title: "Uses New Product Generation", size: .regular) {
-          $value root.mUsesNewProductGeneration
-        }
       }
       vStack {
         Label (bold: yes, size: .regular) {

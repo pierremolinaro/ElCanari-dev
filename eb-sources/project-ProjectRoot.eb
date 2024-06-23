@@ -36,7 +36,6 @@ handlingOpposite entity ProjectRoot {
   property Bool mGenerateBOM default yes ;
   property Bool mGenerateGerberAndPDF default yes ;
   property PDFProductGrid mPDFProductGrid default noGrid ;
-  property @generateDirectRead Bool mUsesNewProductGeneration default yes ;
   property @generateDirectRead GerberUnit mGerberProductUnit default metric ;
 
   

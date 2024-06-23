@@ -12,7 +12,6 @@ import Foundation
 
 func writeZipArchiveFile (at inTargetZipURL : URL,
                           fromDirectoryURL inSourceDirectoryURL : URL) throws {
-  Swift.print ("inTargetZipURL \(inTargetZipURL)")
   let coord = NSFileCoordinator ()
   var myError1 : NSError? = nil
   var myError2 : NSError? = nil
