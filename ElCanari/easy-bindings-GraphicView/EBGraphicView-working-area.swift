@@ -56,7 +56,6 @@ import AppKit
       let height  : Int? = Int (components [3])
       if let x = originX, let y = originY, let w = width, let h = height {
         self.mArea = CanariRect (left: x, bottom: y, width: w, height: h)
-//        self.mViewScale = inView.actualScale
         inView.needsDisplay = true
       }
     }
