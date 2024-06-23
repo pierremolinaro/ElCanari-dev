@@ -783,9 +783,6 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
             $run generateProductFilesAction
           }
         }
-        Checkbox (title: "Uses New Product Generation", size: .regular) {
-          $value root.mUsesNewProductGeneration
-        }
       }
       vStack {
         Label (bold: yes, size: .regular) {

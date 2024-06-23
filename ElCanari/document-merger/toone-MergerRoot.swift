@@ -34,7 +34,6 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
       oldValue.mGenerateMergerArchive_property.stopsBeingObserved (by: self.mGenerateMergerArchive_property) // Stored property
       oldValue.mGenerateGerberAndPDF_property.stopsBeingObserved (by: self.mGenerateGerberAndPDF_property) // Stored property
       oldValue.mPDFProductGrid_property.stopsBeingObserved (by: self.mPDFProductGrid_property) // Stored property
-      oldValue.mUsesNewProductGeneration_property.stopsBeingObserved (by: self.mUsesNewProductGeneration_property) // Stored property
       oldValue.mGerberProductUnit_property.stopsBeingObserved (by: self.mGerberProductUnit_property) // Stored property
       oldValue.mArtworkName_property.stopsBeingObserved (by: self.mArtworkName_property) // Stored property
       oldValue.mArtworkVersion_property.stopsBeingObserved (by: self.mArtworkVersion_property) // Stored property
@@ -76,7 +75,6 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
       newValue.mGenerateMergerArchive_property.startsBeingObserved (by: self.mGenerateMergerArchive_property) // Stored property
       newValue.mGenerateGerberAndPDF_property.startsBeingObserved (by: self.mGenerateGerberAndPDF_property) // Stored property
       newValue.mPDFProductGrid_property.startsBeingObserved (by: self.mPDFProductGrid_property) // Stored property
-      newValue.mUsesNewProductGeneration_property.startsBeingObserved (by: self.mUsesNewProductGeneration_property) // Stored property
       newValue.mGerberProductUnit_property.startsBeingObserved (by: self.mGerberProductUnit_property) // Stored property
       newValue.mArtworkName_property.startsBeingObserved (by: self.mArtworkName_property) // Stored property
       newValue.mArtworkVersion_property.startsBeingObserved (by: self.mArtworkVersion_property) // Stored property
@@ -207,12 +205,6 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
   //································································································
 
   final let mPDFProductGrid_property = EBTransientProperty <PDFProductGrid?> ()
-
-  //································································································
-  //   Observers of 'mUsesNewProductGeneration' stored property
-  //································································································
-
-  final let mUsesNewProductGeneration_property = EBTransientProperty <Bool?> ()
 
   //································································································
   //   Observers of 'mGerberProductUnit' stored property
@@ -427,10 +419,6 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
   //--- Configure mPDFProductGrid simple stored property
     self.mPDFProductGrid_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mPDFProductGrid_property.optionalSelection ?? .single (nil)
-    }
-  //--- Configure mUsesNewProductGeneration simple stored property
-    self.mUsesNewProductGeneration_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.mUsesNewProductGeneration_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mGerberProductUnit simple stored property
     self.mGerberProductUnit_property.mReadModelFunction = { [weak self] in

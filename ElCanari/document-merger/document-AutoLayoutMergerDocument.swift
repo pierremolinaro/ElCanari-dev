@@ -636,9 +636,6 @@ import AppKit
           _ = view_0_0_3.appendView (view_0_0_3_2)
         }
         _ = view_0_0.appendView (view_0_0_3)
-        let view_0_0_4 = AutoLayoutCheckbox (title: "Uses New Product Generation", size: .regular)
-          .bind_value (self.rootObject.mUsesNewProductGeneration_property)
-        _ = view_0_0.appendView (view_0_0_4)
       }
       _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()

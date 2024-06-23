@@ -28,15 +28,15 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.7.17"
+let VERSION_CANARI = "1.7.18"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
-  "Re-écriture du code de génération Gerber, PDF, archive, pour les projets et les mergers",
-  "Les fichiers Gerber sont produits sous la forme d'un fichier zippé"
+  "Les fichiers Gerber sont produits sous la forme d'un fichier zippé pour les projets et les mergers",
+  "La génération du fichier zippé Gerber écrase silencieusement le précédent"
 ]
 let NEWS : [String] = [
 ]
