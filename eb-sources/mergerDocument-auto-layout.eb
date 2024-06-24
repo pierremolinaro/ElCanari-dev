@@ -476,7 +476,6 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         expandableWidth ()
         addPage (title: "", tooltip: "Model Description", pageView: view boardSettingsPage)
         addPage (title: "", tooltip: "Issue Inspector", pageView: view boardIssuesPage)
-//        $segmentImage self.boardLimitWidthStatusImage (segmentIndex : 0)
         $segmentImage self.statusImage (segmentIndex : 1)
         $segmentTitle self.boardDispositionStatusTitle (segmentIndex : 1)
       }

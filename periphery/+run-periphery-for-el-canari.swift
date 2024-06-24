@@ -47,6 +47,7 @@ let options = [
   "--retain-objc-accessible",
   "--retain-assign-only-property-types",
   "EBObservablePropertyController,HiddenBindingController,EBOutletEvent,Any?",
+  "--relative-results",
   "--project", "ElCanari.xcodeproj",
   "--schemes", "ElCanari-Debug",
   "--targets", "ElCanari-Debug"
