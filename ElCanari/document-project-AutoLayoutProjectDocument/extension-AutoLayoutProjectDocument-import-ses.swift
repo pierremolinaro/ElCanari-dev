@@ -10,6 +10,10 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
+fileprivate let SQUARE_OF_CAPTURE_DISTANCE = 90.0 * 90.0 * 25.4 * 25.4 // Distance: 25.4 µm = 1 mil
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————
+
 extension AutoLayoutProjectDocument {
 
   //································································································
@@ -202,15 +206,13 @@ extension AutoLayoutProjectDocument {
                                    _ inViaArray : [(BoardConnector, NetInProject)],
                                    _ ioConnectorArray : inout [BoardConnector],
                                    _ ioAddedObjectArray : inout [BoardObject]) -> BoardConnector {
-    let squareOfDistance = 90.0 * 90.0 * 16.0 // Distance: 4 µm
     for (via, _) in inViaArray {
       let p = via.location!
       let dx = Double (inP.x - p.x)
       let dy = Double (inP.y - p.y)
       let dSquare = dx * dx + dy * dy
-      let found = dSquare <= squareOfDistance
+      let found = dSquare <= SQUARE_OF_CAPTURE_DISTANCE
       if found {
-        // Swift.print ("Via at \(canariUnitToMillimeter (p.x)), \(canariUnitToMillimeter (p.y))")
         return via
       }
     }
@@ -231,7 +233,7 @@ extension AutoLayoutProjectDocument {
         let dx = Double (inP.x - p.x)
         let dy = Double (inP.y - p.y)
         let dSquare = dx * dx + dy * dy
-        let found = dSquare <= squareOfDistance
+        let found = dSquare <= SQUARE_OF_CAPTURE_DISTANCE
         if found {
           return connector
         }
@@ -265,41 +267,40 @@ extension AutoLayoutProjectDocument {
     for (viaConnector, _) in inRoutedViaArray {
       addedObjectArray.append (viaConnector)
     }
-  //----------------- If via at SMD is allowed, attach via to SMD pad
-    if self.rootObject.mAllowViaAtSMD {
-      for (viaConnector, _) in inRoutedViaArray {
-         let viaLocation = viaConnector.location!
-         for object in self.rootObject.mBoardObjects.values {
-           if let connector = object as? BoardConnector,
-              let connectorLocation = connector.location,
-              let connectorSide = connector.side,
-              (connectorSide == .front) || (connectorSide == .back) {
-             let squareOfDistance = 90.0 * 90.0 * 16.0 // Distance: 4 µm
-             let dx = Double (connectorLocation.x - viaLocation.x)
-             let dy = Double (connectorLocation.y - viaLocation.y)
-             let dSquare = dx * dx + dy * dy
-             let found = dSquare <= squareOfDistance
-             if found {
-               let track = BoardTrack (self.undoManager)
-               track.mSide = (connectorSide == .front) ? .front : .back
-               track.mConnectorP1 = viaConnector
-               track.mConnectorP2 = connector
-               track.mNet = connector.connectedTracksNet ()
-               track.mUsesCustomTrackWidth = true
-               track.mCustomTrackWidth = viaConnector.actualPadDiameter!
-               track.mIsPreservedByAutoRouter = false
-             }
-           }
-         }
-      }
-    }
+//  //----------------- If via at SMD is allowed, attach via to SMD pad
+//    if self.rootObject.mAllowViaAtSMD {
+//      for (viaConnector, _) in inRoutedViaArray {
+//         let viaLocation = viaConnector.location!
+//         for object in self.rootObject.mBoardObjects.values {
+//           if let connector = object as? BoardConnector,
+//              let connectorLocation = connector.location,
+//              let connectorSide = connector.side,
+//              (connectorSide == .front) || (connectorSide == .back) {
+//             let dx = Double (connectorLocation.x - viaLocation.x)
+//             let dy = Double (connectorLocation.y - viaLocation.y)
+//             let dSquare = dx * dx + dy * dy
+//             let found = dSquare <= SQUARE_OF_CAPTURE_DISTANCE
+//             if found {
+//               let track = BoardTrack (self.undoManager)
+//               track.mSide = (connectorSide == .front) ? .front : .back
+//               track.mConnectorP2 = viaConnector
+//               track.mConnectorP1 = connector
+//               track.mNet = connector.connectedTracksNet ()
+//               track.mUsesCustomTrackWidth = true
+//               track.mCustomTrackWidth = viaConnector.actualPadDiameter!
+//               track.mIsPreservedByAutoRouter = false
+//             }
+//           }
+//         }
+//      }
+//    }
   //--- Divide tracks for handling tees and crosses
     let routedTracksArray = handleTeesAndCrossesFromRoutedTracks (inRoutedTracksArray, inRoutedViaArray)
   //--- Build connectors attached to pad
     var connectorArray = [BoardConnector] ()
     for object in self.rootObject.mBoardObjects.values {
-      if let connector = object as? BoardConnector {
-        connectorArray.append (connector)
+      if let componentConnector = object as? BoardConnector, let connected = componentConnector.connectedToComponent, connected {
+        connectorArray.append (componentConnector)
       }
     }
   //--- Write tracks
@@ -316,6 +317,45 @@ extension AutoLayoutProjectDocument {
         track.mCustomTrackWidth = t.width
         track.mIsPreservedByAutoRouter = t.preservedByRouter
         addedObjectArray.append (track)
+      }
+    }
+  //----------------- If via at SMD is allowed, attach via to SMD pad
+    if self.rootObject.mAllowViaAtSMD {
+      for (viaConnector, viaNet) in inRoutedViaArray {
+         let viaLocation = viaConnector.location!
+         for object in self.rootObject.mBoardObjects.values {
+           if let componentConnector = object as? BoardConnector,
+              let componentConnectorLocation = componentConnector.location,
+              let connected = componentConnector.connectedToComponent, connected,
+              let componentConnectorSide = componentConnector.side,
+              (componentConnectorSide == .front) || (componentConnectorSide == .back) {
+             let dx = Double (componentConnectorLocation.x - viaLocation.x)
+             let dy = Double (componentConnectorLocation.y - viaLocation.y)
+             let dSquare = dx * dx + dy * dy
+             let found = dSquare <= SQUARE_OF_CAPTURE_DISTANCE
+             if found {
+               let track = BoardTrack (self.undoManager)
+               track.mSide = (componentConnectorSide == .front) ? .front : .back
+               track.mConnectorP1 = viaConnector
+               track.mConnectorP2 = componentConnector
+//               Swift.print ("viaConnector \(ObjectIdentifier (viaConnector)) componentConnector \(ObjectIdentifier (componentConnector))")
+               track.mNet = viaNet // componentConnector.connectedTracksNet ()
+//               if viaNet.mNetName != componentConnector.connectedTracksNet ()?.mNetName {
+//                 Swift.print ("viaNet.mNetName \(viaNet.mNetName) componentConnector.connectedTracksNet ()?.mNetName \(componentConnector.connectedTracksNet ()?.mNetName)")
+//               }
+               track.mUsesCustomTrackWidth = true
+               track.mCustomTrackWidth = viaConnector.actualPadDiameter!
+               track.mIsPreservedByAutoRouter = false
+//               let viaConnectorOk = (viaConnector.mTracksP1.count + viaConnector.mTracksP2.count + (viaConnector.connectedToComponent! ? 1 : 0)) >= 2
+//               let componentConnectorOk = (componentConnector.mTracksP1.count + componentConnector.mTracksP2.count + (componentConnector.connectedToComponent! ? 1 : 0)) >= 2
+//               if !viaConnectorOk || !componentConnectorOk {
+//                 Swift.print ("viaConnector \(viaConnector.mTracksP1.count) \(viaConnector.mTracksP2.count) \(viaConnector.connectedToComponent)")
+//                 Swift.print ("componentConnector \(componentConnector.mTracksP1.count) \(componentConnector.mTracksP2.count) \(componentConnector.connectedToComponent)")
+//               }
+               addedObjectArray.append (track)
+             }
+           }
+         }
       }
     }
   //--- Add objects

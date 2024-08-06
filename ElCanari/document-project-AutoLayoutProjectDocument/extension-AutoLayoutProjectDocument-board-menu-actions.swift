@@ -23,27 +23,22 @@ extension AutoLayoutProjectDocument {
   //································································································
 
   func removeAllViasAndTracks () {
-  //--- Remove all tracks
-    var conservedObjects = EBReferenceArray <BoardObject> ()
+  //--- Remove all tracks, and connectors not linked to a component
     for object in self.rootObject.mBoardObjects.values {
       if let track = object as? BoardTrack {
         let optionalNet = track.mNet
-        track.mConnectorP1 = nil
-        track.mConnectorP2 = nil
-        track.mNet = nil
+        track.mConnectorP1 = nil // Disconnect connector
+        track.mConnectorP2 = nil // Disconnect connector
+        track.mNet = nil // Disconnect net
         if let net = optionalNet, net.mPoints.count == 0, net.mTracks.count == 0 {
           net.mNetClass = nil // Remove net
         }
-      }else{
-        conservedObjects.append (object)
-      }
-    }
-    self.rootObject.mBoardObjects = conservedObjects
-  //--- Remove all vias
-    for object in self.rootObject.mBoardObjects.values {
-      if let via = object as? BoardConnector {
-        if (via.mComponent == nil) && ((via.mTracksP1.count + via.mTracksP2.count) == 0) {
-          via.mRoot = nil
+        track.mRoot = nil // Remove from root object
+      }else if let connector = object as? BoardConnector {
+        connector.mTracksP1 = EBReferenceArray () // Disconnect tracks
+        connector.mTracksP2 = EBReferenceArray () // Disconnect tracks
+        if connector.mComponent == nil {
+          connector.mRoot = nil  // Remove from root object
         }
       }
     }
@@ -101,9 +96,9 @@ extension AutoLayoutProjectDocument {
     array.append (objects: inner2Tracks)
     array.append (objects: inner1Tracks)
     array.append (objects: frontTracks)
+    array.append (objects: connectors)
     array.append (objects: frontComponents)
     array.append (objects: restrictRectangles)
-    array.append (objects: connectors)
     array.append (objects: others)
     self.rootObject.mBoardObjects = array
   }
