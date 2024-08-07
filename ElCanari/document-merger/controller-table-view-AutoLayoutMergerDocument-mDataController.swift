@@ -133,7 +133,7 @@ final class Controller_AutoLayoutMergerDocument_mDataController : NSObject, Auto
   //    sorted array observer
   //································································································
 
-  private var mSortedArrayValuesObserver = EBOutletEvent ()
+  @MainActor private var mSortedArrayValuesObserver = EBOutletEvent ()
 
   //································································································
 

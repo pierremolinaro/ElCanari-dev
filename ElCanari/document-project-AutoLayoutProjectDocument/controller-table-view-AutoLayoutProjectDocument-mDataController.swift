@@ -8,7 +8,7 @@ import AppKit
 //    Auto Layout Table View Controller AutoLayoutProjectDocument mDataController
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor final class Controller_AutoLayoutProjectDocument_mDataController : NSObject, AutoLayoutTableViewDelegate {
+final class Controller_AutoLayoutProjectDocument_mDataController : NSObject, AutoLayoutTableViewDelegate {
 
   //································································································
   //    Constant properties
@@ -133,7 +133,7 @@ import AppKit
   //    sorted array observer
   //································································································
 
-  private var mSortedArrayValuesObserver = EBOutletEvent ()
+  @MainActor private var mSortedArrayValuesObserver = EBOutletEvent ()
 
   //································································································
 

@@ -151,7 +151,7 @@ final class Controller_AutoLayoutProjectDocument_netClassController : NSObject, 
   //    sorted array observer
   //································································································
 
-  private var mSortedArrayValuesObserver = EBOutletEvent ()
+  @MainActor private var mSortedArrayValuesObserver = EBOutletEvent ()
 
   //································································································
 

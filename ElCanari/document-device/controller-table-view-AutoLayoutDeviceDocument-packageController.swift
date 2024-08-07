@@ -137,7 +137,7 @@ final class Controller_AutoLayoutDeviceDocument_packageController : NSObject, Au
   //    sorted array observer
   //································································································
 
-  private var mSortedArrayValuesObserver = EBOutletEvent ()
+  @MainActor private var mSortedArrayValuesObserver = EBOutletEvent ()
 
   //································································································
 

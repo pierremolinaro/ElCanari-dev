@@ -143,7 +143,7 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : NSObjec
   //    sorted array observer
   //································································································
 
-  private var mSortedArrayValuesObserver = EBOutletEvent ()
+  @MainActor private var mSortedArrayValuesObserver = EBOutletEvent ()
 
   //································································································
 

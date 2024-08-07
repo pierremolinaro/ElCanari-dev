@@ -119,7 +119,7 @@ final class Controller_Preferences_userLibraryArrayController : NSObject, AutoLa
   //    sorted array observer
   //································································································
 
-  private var mSortedArrayValuesObserver = EBOutletEvent ()
+  @MainActor private var mSortedArrayValuesObserver = EBOutletEvent ()
 
   //································································································
 

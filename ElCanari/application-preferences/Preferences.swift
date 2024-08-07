@@ -424,8 +424,8 @@ import AppKit
   override init () {
     super.init ()
     DispatchQueue.main.async {
-    g_Preferences = self
-  //--- Read from preferences
+      g_Preferences = self
+    //--- Read from preferences
   //--- To many property: additionnalLibraryArray (no option)
     preferences_additionnalLibraryArray_property.undoManager = self.undoManager
   //--- Array controller property: userLibraryArrayController
@@ -535,13 +535,7 @@ import AppKit
     preferences_usesUserLibrary_property.startsBeingObserved (by: preferences_mValueRevealInFinder_symbols_property)
     preferences_additionnalLibraryArray_property.toMany_mUses_StartsBeingObserved (by: preferences_mValueRevealInFinder_symbols_property)
     preferences_additionnalLibraryArray_property.toMany_mPath_StartsBeingObserved (by: preferences_mValueRevealInFinder_symbols_property)
-  //--- Notify application will terminate
-    /* NotificationCenter.default.addObserver (self,
-      selector:#selector(Preferences.applicationWillTerminateAction(_:)),
-      name:NSApplication.willTerminateNotification,
-      object:nil
-    ) */
-  //--- Extern functions
+    //--- Extern functions
     }
   }
 

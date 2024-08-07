@@ -8,7 +8,7 @@ import AppKit
 //    Auto Layout Table View Controller AutoLayoutMergerDocument mBoardModelController
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor final class Controller_AutoLayoutMergerDocument_mBoardModelController : NSObject, AutoLayoutTableViewDelegate {
+final class Controller_AutoLayoutMergerDocument_mBoardModelController : NSObject, AutoLayoutTableViewDelegate {
 
   //································································································
   //    Constant properties
@@ -28,7 +28,7 @@ import AppKit
   //   Sorted Array
   //································································································
 
-  let sortedArray_property : TransientArrayOf_BoardModel
+  let sortedArray_property = TransientArrayOf_BoardModel ()
 
   //································································································
 
@@ -119,12 +119,11 @@ import AppKit
   //    sorted array observer
   //································································································
 
-  private var mSortedArrayValuesObserver = EBOutletEvent ()
+  @MainActor private var mSortedArrayValuesObserver = EBOutletEvent ()
 
   //································································································
 
   @MainActor override init () {
-    self.sortedArray_property = TransientArrayOf_BoardModel ()
     super.init ()
     self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'name' column

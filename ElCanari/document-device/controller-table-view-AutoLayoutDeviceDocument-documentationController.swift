@@ -135,7 +135,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : NSObje
   //    sorted array observer
   //································································································
 
-  private var mSortedArrayValuesObserver = EBOutletEvent ()
+  @MainActor private var mSortedArrayValuesObserver = EBOutletEvent ()
 
   //································································································
 

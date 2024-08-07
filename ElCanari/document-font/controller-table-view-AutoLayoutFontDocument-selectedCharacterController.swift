@@ -119,7 +119,7 @@ final class Controller_AutoLayoutFontDocument_selectedCharacterController : NSOb
   //    sorted array observer
   //································································································
 
-  private var mSortedArrayValuesObserver = EBOutletEvent ()
+  @MainActor private var mSortedArrayValuesObserver = EBOutletEvent ()
 
   //································································································
 
