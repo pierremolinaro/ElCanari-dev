@@ -10,11 +10,11 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariBoardRectangleView : ALB_NSView {
+@MainActor final class AutoLayoutCanariBoardRectangleView : ALB_NSView {
 
   //································································································
 
-  private let mTopTextField = AutoLayoutLabel (bold: false, size: .small)
+  private let mTopTextField : AutoLayoutLabel // = AutoLayoutLabel (bold: false, size: .small)
   private let mBottomTextField = AutoLayoutLabel (bold: false, size: .small)
   private let mLeftTextField = AutoLayoutLabel (bold: false, size: .small)
   private let mRightTextField = AutoLayoutLabel (bold: false, size: .small)
@@ -22,7 +22,8 @@ final class AutoLayoutCanariBoardRectangleView : ALB_NSView {
 
   //································································································
 
-  override init () {
+  @MainActor override init () {
+    self.mTopTextField = AutoLayoutLabel (bold: false, size: .small)
     super.init ()
 
     self.setContentHuggingPriority (.defaultLow, for: .horizontal)

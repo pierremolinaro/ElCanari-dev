@@ -258,7 +258,7 @@ fileprivate struct EBAllocationItemDisplay {
   //    init
   //································································································
 
-   override init () {
+   @MainActor override init () {
      super.init ()
    //--- Bindings
      _ = self.mAllocationStatsWindowVisibleAtLaunchCheckbox.bind_value (self.mAllocationStatsWindowVisibleAtLaunch)

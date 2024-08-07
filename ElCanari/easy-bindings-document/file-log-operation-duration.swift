@@ -67,7 +67,7 @@ import AppKit
   //  Init
   //································································································
 
-  override init () {
+  @MainActor override init () {
     super.init ()
   //--- Configure Window
     self.mWindow.title = "Document Operation Duration"

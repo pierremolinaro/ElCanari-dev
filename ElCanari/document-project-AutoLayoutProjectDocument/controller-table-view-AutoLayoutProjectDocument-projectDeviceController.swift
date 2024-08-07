@@ -143,7 +143,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
 
   //································································································
 
-  override init () {
+  @MainActor override init () {
     super.init ()
     self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mDeviceName' column

@@ -17,7 +17,7 @@ fileprivate let COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValue: "My
 // NOTE: AutoLayoutOneStringArrayTableView is view based
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutOneStringArrayTableView : NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
+@MainActor final class AutoLayoutOneStringArrayTableView : NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
 
   //································································································
 
@@ -25,7 +25,7 @@ final class AutoLayoutOneStringArrayTableView : NSScrollView, NSTableViewDataSou
 
   //································································································
 
-  init () {
+  @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
 //    self.translatesAutoresizingMaskIntoConstraints = false

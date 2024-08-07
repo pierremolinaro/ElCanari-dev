@@ -8,7 +8,7 @@ import AppKit
 //    Auto Layout Table View Controller AutoLayoutProjectDocument mDataController
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutProjectDocument_mDataController : NSObject, AutoLayoutTableViewDelegate {
+@MainActor final class Controller_AutoLayoutProjectDocument_mDataController : NSObject, AutoLayoutTableViewDelegate {
 
   //································································································
   //    Constant properties
@@ -137,7 +137,7 @@ final class Controller_AutoLayoutProjectDocument_mDataController : NSObject, Aut
 
   //································································································
 
-  override init () {
+  @MainActor override init () {
     super.init ()
     self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'name' column

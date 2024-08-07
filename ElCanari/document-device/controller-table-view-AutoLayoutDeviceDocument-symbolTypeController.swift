@@ -139,11 +139,11 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : NSObject,
   //    sorted array observer
   //································································································
 
-  private var mSortedArrayValuesObserver = EBOutletEvent ()
+  @MainActor private var mSortedArrayValuesObserver = EBOutletEvent ()
 
   //································································································
 
-  override init () {
+  @MainActor override init () {
     super.init ()
     self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'versionString' column

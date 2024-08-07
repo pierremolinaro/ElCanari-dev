@@ -147,7 +147,7 @@ final class Controller_AutoLayoutProjectDocument_componentController : NSObject,
 
   //································································································
 
-  override init () {
+  @MainActor override init () {
     super.init ()
     self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'componentName' column

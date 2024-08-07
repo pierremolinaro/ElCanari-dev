@@ -137,7 +137,7 @@ final class Controller_AutoLayoutMergerDocument_mDataController : NSObject, Auto
 
   //································································································
 
-  override init () {
+  @MainActor override init () {
     super.init ()
     self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'name' column

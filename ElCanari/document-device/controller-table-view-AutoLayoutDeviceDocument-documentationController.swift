@@ -139,7 +139,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : NSObje
 
   //································································································
 
-  override init () {
+  @MainActor override init () {
     super.init ()
     self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mFileName' column

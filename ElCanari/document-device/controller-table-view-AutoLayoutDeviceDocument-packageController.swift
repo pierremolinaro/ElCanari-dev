@@ -141,7 +141,7 @@ final class Controller_AutoLayoutDeviceDocument_packageController : NSObject, Au
 
   //································································································
 
-  override init () {
+  @MainActor override init () {
     super.init ()
     self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'versionString' column

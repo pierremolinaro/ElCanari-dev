@@ -91,7 +91,9 @@ extension ApplicationDelegate {
             alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
               if response == .alertFirstButtonReturn {
                 let message = "Opening \(retainedFiles.count) \(inTitle)\((retainedFiles.count > 1) ? "s" : "")\n"
-                self.mMaintenanceLogTextView?.appendMessageString (message)
+                let maintenanceLogTextView = self.mMaintenanceLogTextView
+                let maintenanceLogTextField = self.mMaintenanceLogTextField
+                maintenanceLogTextView?.appendMessageString (message)
                 var count = 0
                 for fullPath in retainedFiles {
                   dc.openDocument (
@@ -104,9 +106,9 @@ extension ApplicationDelegate {
                       let message = (count > 1)
                         ? "\(count) \(inTitle)s have been opened"
                         : "\(count) \(inTitle) has been opened"
-                      self.mMaintenanceLogTextField?.stringValue = message
+                      maintenanceLogTextField?.stringValue = message
                     }else{
-                      self.mMaintenanceLogTextView?.appendErrorString ("Cannot open \(fullPath)")
+                      maintenanceLogTextView?.appendErrorString ("Cannot open \(fullPath)")
                     }
                   }
                 }
@@ -225,8 +227,6 @@ extension ApplicationDelegate {
                     display: true // animating,
                   ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
                     if let deviceDocument = document as? AutoLayoutDeviceDocument {
-//                        deviceDocument.resetSymbolsVersion ()
-//                        deviceDocument.resetPackagesVersion ()
                       var okMessages = [String] ()
                       var errorMessages = [String] ()
                       deviceDocument.performSymbolsUpdate (&okMessages, &errorMessages)
@@ -234,7 +234,7 @@ extension ApplicationDelegate {
                       deviceDocument.save (nil)
                       deviceDocument.close ()
                       if errorMessages.count == 0 {
-                        self.mCount += 1
+                        DispatchQueue.main.async { self.mCount += 1 }
                         let message = (self.mCount > 1)
                           ? "\(self.mCount) devices have been updated."
                           : "1 device has been updated."

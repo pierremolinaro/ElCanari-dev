@@ -123,7 +123,7 @@ final class Controller_AutoLayoutFontDocument_selectedCharacterController : NSOb
 
   //································································································
 
-  override init () {
+  @MainActor override init () {
     super.init ()
     self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //---

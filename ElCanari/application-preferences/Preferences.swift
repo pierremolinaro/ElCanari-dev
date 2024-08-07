@@ -423,7 +423,8 @@ import AppKit
 
   override init () {
     super.init ()
-    g_Preferences = self ;
+    DispatchQueue.main.async {
+    g_Preferences = self
   //--- Read from preferences
   //--- To many property: additionnalLibraryArray (no option)
     preferences_additionnalLibraryArray_property.undoManager = self.undoManager
@@ -541,6 +542,7 @@ import AppKit
       object:nil
     ) */
   //--- Extern functions
+    }
   }
 
   //································································································
@@ -548,22 +550,24 @@ import AppKit
   //································································································
 
   override func awakeFromNib () {
-    checkOutletConnection (self.mMenuRevealInFinder_artworks, "mMenuRevealInFinder_artworks", CanariMenu.self, #file, #line)
-    checkOutletConnection (self.mMenuRevealInFinder_devices, "mMenuRevealInFinder_devices", CanariMenu.self, #file, #line)
-    checkOutletConnection (self.mMenuRevealInFinder_fonts, "mMenuRevealInFinder_fonts", CanariMenu.self, #file, #line)
-    checkOutletConnection (self.mMenuRevealInFinder_packages, "mMenuRevealInFinder_packages", CanariMenu.self, #file, #line)
-    checkOutletConnection (self.mMenuRevealInFinder_symbols, "mMenuRevealInFinder_symbols", CanariMenu.self, #file, #line)
-  //--------------------------- Install bindings
-    mMenuRevealInFinder_symbols?.bind_populateSubmenus (preferences_mValueRevealInFinder_symbols_property)
-    mMenuRevealInFinder_packages?.bind_populateSubmenus (preferences_mValueRevealInFinder_packages_property)
-    mMenuRevealInFinder_devices?.bind_populateSubmenus (preferences_mValueRevealInFinder_devices_property)
-    mMenuRevealInFinder_fonts?.bind_populateSubmenus (preferences_mValueRevealInFinder_fonts_property)
-    mMenuRevealInFinder_artworks?.bind_populateSubmenus (preferences_mValueRevealInFinder_artworks_property)
-  //--------------------------- Install multiple bindings
-  //--------------------------- Array controller
-  //--------------------------- Set targets / actions
-  //--------------------------- Extern functions
-    self.setupForLibrary ()
+    DispatchQueue.main.async {
+      checkOutletConnection (self.mMenuRevealInFinder_artworks, "mMenuRevealInFinder_artworks", CanariMenu.self, #file, #line)
+      checkOutletConnection (self.mMenuRevealInFinder_devices, "mMenuRevealInFinder_devices", CanariMenu.self, #file, #line)
+      checkOutletConnection (self.mMenuRevealInFinder_fonts, "mMenuRevealInFinder_fonts", CanariMenu.self, #file, #line)
+      checkOutletConnection (self.mMenuRevealInFinder_packages, "mMenuRevealInFinder_packages", CanariMenu.self, #file, #line)
+      checkOutletConnection (self.mMenuRevealInFinder_symbols, "mMenuRevealInFinder_symbols", CanariMenu.self, #file, #line)
+    //--------------------------- Install bindings
+      self.mMenuRevealInFinder_symbols?.bind_populateSubmenus (preferences_mValueRevealInFinder_symbols_property)
+      self.mMenuRevealInFinder_packages?.bind_populateSubmenus (preferences_mValueRevealInFinder_packages_property)
+      self.mMenuRevealInFinder_devices?.bind_populateSubmenus (preferences_mValueRevealInFinder_devices_property)
+      self.mMenuRevealInFinder_fonts?.bind_populateSubmenus (preferences_mValueRevealInFinder_fonts_property)
+      self.mMenuRevealInFinder_artworks?.bind_populateSubmenus (preferences_mValueRevealInFinder_artworks_property)
+    //--------------------------- Install multiple bindings
+    //--------------------------- Array controller
+    //--------------------------- Set targets / actions
+    //--------------------------- Extern functions
+      self.setupForLibrary ()
+    }
   }
 
   //································································································

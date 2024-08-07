@@ -13,7 +13,7 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
 //  EBAutoLayoutManagedDocument
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBAutoLayoutManagedDocument : NSDocument {
+@MainActor class EBAutoLayoutManagedDocument : NSDocument {
 
   //································································································
 
@@ -32,7 +32,7 @@ class EBAutoLayoutManagedDocument : NSDocument {
   //    init
   //································································································
 
-  override init () {
+  @MainActor override init () {
     self.mRootObject = EBManagedObject (nil) // Temporary object
     super.init ()
     noteObjectAllocation (self)

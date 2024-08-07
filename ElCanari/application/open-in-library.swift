@@ -42,7 +42,7 @@ import AppKit
 
   //································································································
 
-  override init () {
+  @MainActor override init () {
   //--- Dialog
     self.mDialog = NSPanel (
       contentRect: NSRect (x: 0, y: 0, width: 700, height: 600),

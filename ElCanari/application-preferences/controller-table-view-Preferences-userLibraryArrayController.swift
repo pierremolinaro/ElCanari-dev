@@ -123,7 +123,7 @@ final class Controller_Preferences_userLibraryArrayController : NSObject, AutoLa
 
   //································································································
 
-  override init () {
+  @MainActor override init () {
     super.init ()
     self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mPath' column
