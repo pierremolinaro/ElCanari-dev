@@ -18,7 +18,7 @@ extension AutoLayoutProjectDocument {
 //--- START OF USER ZONE 2
     inOutlet.register (
       draggedType: kDragAndDropWire,
-      draggedObjectFactory: { // [weak self] in
+      draggedObjectFactory: {
         let wire = WireInSchematic (nil)
         let p1 = PointInSchematic (nil)
         wire.mP1 = p1
@@ -26,7 +26,7 @@ extension AutoLayoutProjectDocument {
         p2.mX = WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP
         p2.mY = WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP
         wire.mP2 = p2
-        return (wire, [String : Any] (), [p1, p2])
+        return AutoLayoutDragSourceButton.DraggedObjectFactoryDescriptor (wire, retainedObjectArray: [p1, p2])
       },
       scaleProvider: self.schematicObjectsController
     )

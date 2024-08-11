@@ -18,7 +18,9 @@ extension AutoLayoutSymbolDocument {
 //--- START OF USER ZONE 2
     inOutlet.register (
       draggedType: symbolPasteboardType,
-      draggedObjectFactory: { return (SymbolSolidOval (nil), [String : Any] (), []) },
+      draggedObjectFactory: {
+        return AutoLayoutDragSourceButton.DraggedObjectFactoryDescriptor (SymbolSolidOval (nil))
+      },
       scaleProvider: self.mSymbolObjectsController
     )
 

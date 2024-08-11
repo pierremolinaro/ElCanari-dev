@@ -18,7 +18,9 @@ extension AutoLayoutPackageDocument {
 //--- START OF USER ZONE 2
     inOutlet.register (
       draggedType: packagePasteboardType,
-      draggedObjectFactory: { return (PackageArc (nil), [String : Any] (), []) },
+      draggedObjectFactory: {
+         return AutoLayoutDragSourceButton.DraggedObjectFactoryDescriptor (PackageArc (nil))
+      },
       scaleProvider: self.mPackageObjectsController
     )
 //--- END OF USER ZONE 2

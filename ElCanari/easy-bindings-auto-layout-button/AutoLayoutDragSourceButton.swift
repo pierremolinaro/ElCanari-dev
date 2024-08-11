@@ -16,6 +16,22 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
 
   //································································································
 
+  public struct DraggedObjectFactoryDescriptor {
+    let graphicObject : EBGraphicManagedObject
+    let optionDictionary : [String : Any]
+    let retainedObjectArray : [EBManagedObject]
+
+    init (_ inGraphicObject : EBGraphicManagedObject,
+          optionDictionary inOptionDictionary : [String : Any] = [:],
+          retainedObjectArray inRetainedObjectArray : [EBManagedObject] = []) {
+      self.graphicObject = inGraphicObject
+      self.optionDictionary = inOptionDictionary
+      self.retainedObjectArray = inRetainedObjectArray
+    }
+  }
+
+  //································································································
+
   init (tooltip inToolTip : String) {
     super.init (title: "", size: .regular)
 
@@ -67,26 +83,18 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
   }
 
   //································································································
-
-//  override func viewDidChangeEffectiveAppearance () {
-//    super.viewDidChangeEffectiveAppearance ()
-////    Swift.print ("backgroundStyle \(self.cell?.backgroundStyle.rawValue)")
-//    Swift.print ("appearance \(NSApp.effectiveAppearance)")
-//  }
-
-  //································································································
   //  Drag type and object type name
   //································································································
 
   private var mDragType : NSPasteboard.PasteboardType? = nil
-  private var mDraggedObjectFactory : Optional < () -> (EBGraphicManagedObject, [String : Any], [EBManagedObject])? > = nil
+  private var mDraggedObjectFactory : Optional < () -> DraggedObjectFactoryDescriptor? > = nil
   private var mDraggedObjectImage : Optional < () -> EBShape? > = nil
   private weak var mScaleProvider : EBGraphicViewControllerProtocol? = nil // Should de WEAK
 
   //································································································
 
   func register (draggedType : NSPasteboard.PasteboardType,
-                 draggedObjectFactory : Optional < () -> (EBGraphicManagedObject, [String : Any], [EBManagedObject])? >,
+                 draggedObjectFactory : Optional < () -> DraggedObjectFactoryDescriptor? >,
                  scaleProvider : EBGraphicViewControllerProtocol) {
     self.mDragType = draggedType
     self.mDraggedObjectFactory = draggedObjectFactory
@@ -153,7 +161,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
       let pasteboardItem = NSPasteboardItem ()
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
     //--- Get dragged object
-      if let (temporaryObject, additionalDict, _) = self.mDraggedObjectFactory? () {
+      if let draggedObject = self.mDraggedObjectFactory? () {
         var transform = AffineTransform ()
         if let scaleProvider = self.mScaleProvider, scaleProvider.boundViews().count == 1 {
           let view = scaleProvider.boundViews() [0]
@@ -162,7 +170,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
           let verticalFlip   : CGFloat = view.verticalFlip   ? -1.0 : 1.0
           transform.scale (x: scale * horizontalFlip, y: scale * verticalFlip)
         }
-        let displayShape = temporaryObject.objectDisplay!.transformed (by: transform)
+        let displayShape = draggedObject.graphicObject.objectDisplay!.transformed (by: transform)
         let rect : NSRect = displayShape.boundingBox
         if rect.isEmpty {
           let alert = NSAlert ()
@@ -178,10 +186,10 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
           r.origin.y += mouseDownLocation.y
         //--- Associated data
           var dict = [String : Any] ()
-          temporaryObject.savePropertiesAndRelationshipsIntoDictionary (&dict)
+          draggedObject.graphicObject.savePropertiesAndRelationshipsIntoDictionary (&dict)
           let dataDictionary : [String : Any] = [
             OBJECT_DICTIONARY_KEY : [dict],
-            OBJECT_ADDITIONAL_DICTIONARY_KEY : [additionalDict],
+            OBJECT_ADDITIONAL_DICTIONARY_KEY : [draggedObject.optionDictionary],
             X_KEY : 0,
             Y_KEY : 0
           ]

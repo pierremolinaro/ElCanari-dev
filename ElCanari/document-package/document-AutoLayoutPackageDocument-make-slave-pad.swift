@@ -14,7 +14,7 @@ extension AutoLayoutPackageDocument {
 
   //································································································
 
-  func makeSlavePad () -> (PackageSlavePad, [String : Any], [EBManagedObject]) {
+  func makeSlavePad () -> AutoLayoutDragSourceButton.DraggedObjectFactoryDescriptor {
      var additionalDictionary = [String : Any] ()
      for object in self.mPackageObjectsController.selectedArray.values {
        if let masterPad = object as? PackagePad {
@@ -28,7 +28,7 @@ extension AutoLayoutPackageDocument {
          }
        }
      }
-    return (PackageSlavePad (nil), additionalDictionary, [])
+    return AutoLayoutDragSourceButton.DraggedObjectFactoryDescriptor (PackageSlavePad (nil), optionDictionary: additionalDictionary)
   }
 
   //································································································

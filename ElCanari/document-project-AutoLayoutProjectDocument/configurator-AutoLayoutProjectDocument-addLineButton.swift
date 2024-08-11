@@ -18,7 +18,9 @@ extension AutoLayoutProjectDocument {
 //--- START OF USER ZONE 2
     inOutlet.register (
       draggedType: kDragAndDropBoardLine,
-      draggedObjectFactory: { return (BoardLine (nil), [String : Any] (), []) },
+      draggedObjectFactory: {
+        return AutoLayoutDragSourceButton.DraggedObjectFactoryDescriptor (BoardLine (nil))
+      },
       scaleProvider: self.boardObjectsController
     )
     inOutlet.set (image: NSImage (named: "line-in-symbol"))

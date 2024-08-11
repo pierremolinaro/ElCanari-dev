@@ -18,7 +18,9 @@ extension AutoLayoutSymbolDocument {
 //--- START OF USER ZONE 2
     inOutlet.register (
       draggedType: symbolPasteboardType,
-      draggedObjectFactory: { return (SymbolBezierCurve (nil), [String : Any] (), []) },
+      draggedObjectFactory: {
+        return AutoLayoutDragSourceButton.DraggedObjectFactoryDescriptor (SymbolBezierCurve (nil))
+      },
       scaleProvider: self.mSymbolObjectsController
     )
 //--- END OF USER ZONE 2
