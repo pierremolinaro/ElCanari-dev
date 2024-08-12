@@ -4,7 +4,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariAngleField : ALB_NSTextField {
+final class AutoLayoutCanariAngleField : ALB_NSTextField_enabled_hidden_bindings {
 
   //································································································
   // Properties

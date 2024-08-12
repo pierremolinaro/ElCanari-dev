@@ -11,7 +11,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutFontButton : ALB_NSButton {
+final class AutoLayoutFontButton : ALB_NSButton_enabled_hidden_bindings {
 
   //································································································
 

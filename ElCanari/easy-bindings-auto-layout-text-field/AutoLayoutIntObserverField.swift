@@ -12,7 +12,7 @@ import AppKit
 //   AutoLayoutIntObserverField
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutIntObserverField : ALB_NSTextField {
+final class AutoLayoutIntObserverField : ALB_NSTextField_enabled_hidden_bindings {
 
   //································································································
 

@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariAddSymbolInstancePullDownButton : ALB_NSPopUpButton {
+final class AutoLayoutCanariAddSymbolInstancePullDownButton : ALB_NSPopUpButton_enabled_hidden_bindings {
 
   //································································································
 

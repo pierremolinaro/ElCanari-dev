@@ -10,7 +10,7 @@ import AppKit
 //   AutoLayoutDoubleField
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutDoubleField : ALB_NSTextField {
+final class AutoLayoutDoubleField : ALB_NSTextField_enabled_hidden_bindings {
 
   //································································································
 

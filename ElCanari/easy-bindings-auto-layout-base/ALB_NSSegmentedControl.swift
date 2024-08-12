@@ -46,20 +46,6 @@ class ALB_NSSegmentedControl : NSSegmentedControl {
   }
 
   //································································································
-  //  $enabled binding
-  //································································································
-
-  private final var mEnabledBindingController : EnabledBindingController? = nil
-  final var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
-
-  //································································································
-
-  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
-    return self
-  }
-
-  //································································································
 
 }
 

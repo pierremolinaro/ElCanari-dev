@@ -12,7 +12,7 @@ import AppKit
 //   AutoLayoutCanariPadRenumberPullDownButton
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariPadRenumberPullDownButton : ALB_NSPopUpButton {
+final class AutoLayoutCanariPadRenumberPullDownButton : ALB_NSPopUpButton_enabled_hidden_bindings {
 
    //································································································
 

@@ -12,7 +12,7 @@ import AppKit
 //   AutoLayoutTextField
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutTextField : ALB_NSTextField {
+final class AutoLayoutTextField : ALB_NSTextField_enabled_hidden_bindings {
 
   //································································································
   //  User information

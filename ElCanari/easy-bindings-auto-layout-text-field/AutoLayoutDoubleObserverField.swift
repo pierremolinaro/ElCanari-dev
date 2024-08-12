@@ -12,7 +12,7 @@ import AppKit
 //   AutoLayoutDoubleObserverField
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutDoubleObserverField : ALB_NSTextField {
+final class AutoLayoutDoubleObserverField : ALB_NSTextField_enabled_hidden_bindings {
 
   //································································································
 

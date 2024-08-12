@@ -10,7 +10,7 @@ import AppKit
 //   AutoLayoutIntField
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutIntField : ALB_NSTextField {
+final class AutoLayoutIntField : ALB_NSTextField_enabled_hidden_bindings {
 
   //································································································
 

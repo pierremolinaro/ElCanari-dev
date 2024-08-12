@@ -4,7 +4,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutTaggedPopUpButton : ALB_NSPopUpButton {
+final class AutoLayoutTaggedPopUpButton : ALB_NSPopUpButton_enabled_hidden_bindings {
 
   //································································································
 

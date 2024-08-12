@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariPreferredDirectionSegmentedControl : ALB_NSSegmentedControl {
+final class AutoLayoutCanariPreferredDirectionSegmentedControl : ALB_NSSegmentedControl_enabled_binding {
 
   //································································································
 
@@ -18,8 +18,8 @@ final class AutoLayoutCanariPreferredDirectionSegmentedControl : ALB_NSSegmented
     super.init (equalWidth: true, size: .small)
 
     self.segmentCount = 4
-    self.setLabel ("➡︎",   forSegment: 0)
-    self.setLabel ("⬆︎",  forSegment: 1)
+    self.setLabel ("➡︎",  forSegment: 0)
+    self.setLabel ("⬆︎", forSegment: 1)
     self.setLabel ("⬅︎", forSegment: 2)
     self.setLabel ("⬇︎", forSegment: 3)
   }

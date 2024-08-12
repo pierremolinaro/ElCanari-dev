@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutEnumSegmentedControl : ALB_NSSegmentedControl {
+final class AutoLayoutEnumSegmentedControl : ALB_NSSegmentedControl_enabled_binding {
 
   //································································································
 
@@ -40,18 +40,6 @@ final class AutoLayoutEnumSegmentedControl : ALB_NSSegmentedControl {
       self.enable (fromValueBinding: false, self.enabledBindingController)
     }
   }
-
-  //································································································
-
-//  func updateIndex (fromInteger inObject : EBObservableMutableProperty <Int>) {
-//    switch inObject.selection {
-//    case .single (let v) :
-//      self.enable (fromValueBinding: true, self.enabledBindingController)
-//      self.setSelectedSegment (atIndex: v)
-//    case .empty, .multiple :
-//      self.enable (fromValueBinding: false, self.enabledBindingController)
-//    }
-//  }
 
   //································································································
 

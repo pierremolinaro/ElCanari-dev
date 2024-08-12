@@ -1,63 +1,39 @@
 //
-//  AutoLayoutBoolPopUpButton.swift
-//  ElCanari-Debug-temporary
+//  ALB_NSPopUpButton_enabled_hidden_bindings.swift
+//  ElCanari
 //
-//  Created by Pierre Molinaro on 16/01/2022.
+//  Created by Pierre Molinaro on 12/08/2024.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————
-
-import AppKit
-
+//   ALB_NSPopUpButton
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutBoolPopUpButton : ALB_NSPopUpButton_enabled_hidden_bindings {
+class ALB_NSPopUpButton_enabled_hidden_bindings : ALB_NSPopUpButton {
+
+  //································································································
+  //  $enabled binding
+  //································································································
+
+  private final var mEnabledBindingController : EnabledBindingController? = nil
+  final var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
 
   //································································································
 
-  init (title0 inTitle0 : String, title1 inTitle1 : String) {
-    super.init (pullsDown: false, size: .small)
-    self.addItem (withTitle: inTitle0)
-    self.addItem (withTitle: inTitle1)
+  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
+    return self
   }
 
   //································································································
+  //  $hidden binding
+  //································································································
 
-  required init? (coder inCoder : NSCoder) {
-    fatalError ("init(coder:) has not been implemented")
-  }
+  private final var mHiddenBindingController : HiddenBindingController? = nil
 
   //································································································
 
-  func updateIndex (_ inObject : EBObservableProperty <Bool>) {
-    switch inObject.selection {
-    case .empty, .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
-    case .single (let v) :
-      self.selectItem (at: v ? 1 : 0)
-      self.enable (fromValueBinding: true, self.enabledBindingController)
-    }
-  }
-
-  //································································································
-
-  override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    self.mValueController?.updateModel (withValue: self.indexOfSelectedItem > 0)
-    return super.sendAction (action, to: to)
-  }
-
-  //································································································
-  //  $value binding
-  //································································································
-
-  private var mValueController : EBGenericReadWritePropertyController <Bool>? = nil
-
-  //································································································
-
-  final func bind_value (_ inObject : EBObservableMutableProperty <Bool>) -> Self {
-    self.mValueController = EBGenericReadWritePropertyController <Bool> (
-      observedObject: inObject,
-      callBack: { [weak self] in self?.updateIndex (inObject) }
-    )
+  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
     return self
   }
 

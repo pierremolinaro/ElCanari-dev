@@ -12,7 +12,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCheckbox : ALB_NSButton {
+final class AutoLayoutCheckbox : ALB_NSButton_enabled_hidden_bindings {
 
   //································································································
 

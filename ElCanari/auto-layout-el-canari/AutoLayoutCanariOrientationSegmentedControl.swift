@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariOrientationSegmentedControl : ALB_NSSegmentedControl {
+final class AutoLayoutCanariOrientationSegmentedControl : ALB_NSSegmentedControl_enabled_binding {
 
   //································································································
 

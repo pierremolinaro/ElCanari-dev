@@ -132,6 +132,16 @@
 		CF1646D52703AFBB001EC0A8 /* extension-PackageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1646D32703AFBB001EC0A8 /* extension-PackageObject.swift */; };
 		CF1646DC2703B182001EC0A8 /* extension-SymbolRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1646DB2703B182001EC0A8 /* extension-SymbolRoot.swift */; };
 		CF1646DD2703B182001EC0A8 /* extension-SymbolRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1646DB2703B182001EC0A8 /* extension-SymbolRoot.swift */; };
+		CF16487E2C69F7AB00CF6E7C /* ALB_NSButton_enabled_hidden_bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF16487D2C69F7AB00CF6E7C /* ALB_NSButton_enabled_hidden_bindings.swift */; };
+		CF16487F2C69F7AB00CF6E7C /* ALB_NSButton_enabled_hidden_bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF16487D2C69F7AB00CF6E7C /* ALB_NSButton_enabled_hidden_bindings.swift */; };
+		CF1648812C69F9D300CF6E7C /* ALB_NSPopUpButton_enabled_hidden_bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1648802C69F9D300CF6E7C /* ALB_NSPopUpButton_enabled_hidden_bindings.swift */; };
+		CF1648822C69F9D300CF6E7C /* ALB_NSPopUpButton_enabled_hidden_bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1648802C69F9D300CF6E7C /* ALB_NSPopUpButton_enabled_hidden_bindings.swift */; };
+		CF1648842C69FB6C00CF6E7C /* ALB_NSSegmentedControl_enabled_binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1648832C69FB6C00CF6E7C /* ALB_NSSegmentedControl_enabled_binding.swift */; };
+		CF1648852C69FB6C00CF6E7C /* ALB_NSSegmentedControl_enabled_binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1648832C69FB6C00CF6E7C /* ALB_NSSegmentedControl_enabled_binding.swift */; };
+		CF1648872C69FC6D00CF6E7C /* ALB_NSSlider_enabled_hidden_bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1648862C69FC6D00CF6E7C /* ALB_NSSlider_enabled_hidden_bindings.swift */; };
+		CF1648882C69FC6D00CF6E7C /* ALB_NSSlider_enabled_hidden_bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1648862C69FC6D00CF6E7C /* ALB_NSSlider_enabled_hidden_bindings.swift */; };
+		CF16488A2C6A065600CF6E7C /* ALB_NSTextField_enabled_hidden_bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1648892C6A065600CF6E7C /* ALB_NSTextField_enabled_hidden_bindings.swift */; };
+		CF16488B2C6A065600CF6E7C /* ALB_NSTextField_enabled_hidden_bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1648892C6A065600CF6E7C /* ALB_NSTextField_enabled_hidden_bindings.swift */; };
 		CF17028628158D6700819B0F /* menu-select-default-net-class.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17028528158D6700819B0F /* menu-select-default-net-class.swift */; };
 		CF17028728158D6700819B0F /* menu-select-default-net-class.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17028528158D6700819B0F /* menu-select-default-net-class.swift */; };
 		CF171D8A26FB999B00A1BCB2 /* EBReferenceArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF171D8926FB999A00A1BCB2 /* EBReferenceArray.swift */; };
@@ -3560,6 +3570,11 @@
 		CF14418F27554E6C006C3E1F /* AutoLayoutCanariFontCharacterGerberCodeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariFontCharacterGerberCodeTableView.swift; sourceTree = "<group>"; };
 		CF1646D32703AFBB001EC0A8 /* extension-PackageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-PackageObject.swift"; sourceTree = "<group>"; };
 		CF1646DB2703B182001EC0A8 /* extension-SymbolRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-SymbolRoot.swift"; sourceTree = "<group>"; };
+		CF16487D2C69F7AB00CF6E7C /* ALB_NSButton_enabled_hidden_bindings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALB_NSButton_enabled_hidden_bindings.swift; sourceTree = "<group>"; };
+		CF1648802C69F9D300CF6E7C /* ALB_NSPopUpButton_enabled_hidden_bindings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALB_NSPopUpButton_enabled_hidden_bindings.swift; sourceTree = "<group>"; };
+		CF1648832C69FB6C00CF6E7C /* ALB_NSSegmentedControl_enabled_binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALB_NSSegmentedControl_enabled_binding.swift; sourceTree = "<group>"; };
+		CF1648862C69FC6D00CF6E7C /* ALB_NSSlider_enabled_hidden_bindings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALB_NSSlider_enabled_hidden_bindings.swift; sourceTree = "<group>"; };
+		CF1648892C6A065600CF6E7C /* ALB_NSTextField_enabled_hidden_bindings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALB_NSTextField_enabled_hidden_bindings.swift; sourceTree = "<group>"; };
 		CF17028528158D6700819B0F /* menu-select-default-net-class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "menu-select-default-net-class.swift"; sourceTree = "<group>"; };
 		CF171D8926FB999A00A1BCB2 /* EBReferenceArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBReferenceArray.swift; sourceTree = "<group>"; };
 		CF182099277249BE00068AD6 /* AutoLayoutCanariBoardOperationPullDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariBoardOperationPullDownButton.swift; sourceTree = "<group>"; };
@@ -6619,6 +6634,11 @@
 				CFB4C038279465E700C509A9 /* AutoLayoutMenuButton.swift */,
 				CFB4C036279465E700C509A9 /* AutoLayoutSheetCancelButton.swift */,
 				CFB4C02E279465E500C509A9 /* AutoLayoutSheetDefaultOkButton.swift */,
+				CF16487D2C69F7AB00CF6E7C /* ALB_NSButton_enabled_hidden_bindings.swift */,
+				CF1648802C69F9D300CF6E7C /* ALB_NSPopUpButton_enabled_hidden_bindings.swift */,
+				CF1648832C69FB6C00CF6E7C /* ALB_NSSegmentedControl_enabled_binding.swift */,
+				CF1648862C69FC6D00CF6E7C /* ALB_NSSlider_enabled_hidden_bindings.swift */,
+				CF1648892C6A065600CF6E7C /* ALB_NSTextField_enabled_hidden_bindings.swift */,
 			);
 			name = "EB — Auto Layout — Button";
 			path = "ElCanari/easy-bindings-auto-layout-button";
@@ -7895,6 +7915,7 @@
 				CFEB7ADD233A23950060A97A /* transient-BoardLine-objectDisplay.swift in Sources */,
 				CFA1AA1A22326C890023928C /* transient-SymbolPinTypeInDevice-nameShape.swift in Sources */,
 				CFEB7AB1233A23270060A97A /* transient-BoardConnector-viaDefaultHoleDiameter.swift in Sources */,
+				CF16487E2C69F7AB00CF6E7C /* ALB_NSButton_enabled_hidden_bindings.swift in Sources */,
 				CF62176D27A19E4E00D02368 /* transient-Preferences-mValueRevealInFinder_packages.swift in Sources */,
 				CF85859021C5124300082CE3 /* transient-PackageArc-selectionDisplay.swift in Sources */,
 				CF39CCC9268CC0B4004971F9 /* selectionController-AutoLayoutDeviceDocument-symbolInstanceSelection.swift in Sources */,
@@ -7995,12 +8016,14 @@
 				CF1ABEA72AC8880600CC7895 /* AutoLayoutGraphicView.swift in Sources */,
 				CFB4C0632794662800C509A9 /* AutoLayoutEnumPopUpButton.swift in Sources */,
 				CF711FEE275E1EA300280069 /* extension-SheetInProject-add-label.swift in Sources */,
+				CF1648842C69FB6C00CF6E7C /* ALB_NSSegmentedControl_enabled_binding.swift in Sources */,
 				CF22F1C8275A73ED009C6FAC /* transient-MergerBoardInstance-objectDisplay.swift in Sources */,
 				CFB1F92D2940EDDC00C1E120 /* action-AutoLayoutProjectDocument-renameWireNetWithNewAutomaticNameAction.swift in Sources */,
 				CFB4C0872794668300C509A9 /* AutoLayoutLinearSlider.swift in Sources */,
 				CFB7D8D42683A61D007B9D3B /* action-AutoLayoutPackageDocument-setDimensionTextOriginAtMidXAction.swift in Sources */,
 				CF1441882755257D006C3E1F /* view-FontCharacterSelectView.swift in Sources */,
 				CFA42F7D229AEACF000AA8C8 /* toone-MasterPadInDevice.swift in Sources */,
+				CF16488A2C6A065600CF6E7C /* ALB_NSTextField_enabled_hidden_bindings.swift in Sources */,
 				CF39CD14268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-editSelectedPackages.swift in Sources */,
 				CF711E36275E1CC600280069 /* extension-SymbolSolidRect.swift in Sources */,
 				CFA42F5B229AEAAF000AA8C8 /* toone-ArtworkFileGenerationParameters.swift in Sources */,
@@ -9301,6 +9324,7 @@
 				CFEB7C95233A28860060A97A /* transient-ProjectRoot-trackLengthString.swift in Sources */,
 				CF711D88275E1B1C00280069 /* extension-NCInSchematic.swift in Sources */,
 				CF85859421C5124300082CE3 /* transient-PackageArc-objectDisplay.swift in Sources */,
+				CF1648872C69FC6D00CF6E7C /* ALB_NSSlider_enabled_hidden_bindings.swift in Sources */,
 				CFEDE5BA1B4677C500036ACF /* EBUndoManager.swift in Sources */,
 				CFD04D9B27A8438900BD769F /* action-Preferences-revealInFinderLibraryFolderAction.swift in Sources */,
 				CFAA74191B46955400327BAE /* entity-ArtworkFileGenerationParameters.swift in Sources */,
@@ -9410,6 +9434,7 @@
 				CF22F1B3275A73ED009C6FAC /* transient-MergerRoot-boardOutlineRectDisplay.swift in Sources */,
 				CFA80DD125C04F1400966D91 /* transient-BoardTrack-p1CanMove.swift in Sources */,
 				CFEB7B3C233A25EC0060A97A /* transient-ComponentInProject-componentName.swift in Sources */,
+				CF1648812C69F9D300CF6E7C /* ALB_NSPopUpButton_enabled_hidden_bindings.swift in Sources */,
 				CFEB7BD9233A27EF0060A97A /* transient-NCInSchematic-objectDisplay.swift in Sources */,
 				CFEB7B13233A24BF0060A97A /* transient-BoardTrack-netClassName.swift in Sources */,
 				CFEB7ACC233A235F0060A97A /* transient-BorderCurve-selectionDisplay.swift in Sources */,
@@ -9666,6 +9691,7 @@
 				CF711DD7275E1B7E00280069 /* tomany-SheetInProject.swift in Sources */,
 				CF7F41F421CAF45400C4C529 /* transient-PackageSegment-lengthInCanariUnit.swift in Sources */,
 				CFB1F97D2940EEF700C1E120 /* action-AutoLayoutProjectDocument-updateFontAction.swift in Sources */,
+				CF1648822C69F9D300CF6E7C /* ALB_NSPopUpButton_enabled_hidden_bindings.swift in Sources */,
 				CF26AE162AD178870041763B /* extension-NSColor-EBPropertyProtocol.swift in Sources */,
 				CF49914A28D8C9430099F871 /* enum-PadShape.swift in Sources */,
 				CF22F1FC275A73ED009C6FAC /* transient-BoardModel-internalBoardsLimitsBezierPaths.swift in Sources */,
@@ -9684,6 +9710,7 @@
 				CFF8588D2687C201001B868C /* document-AutoLayoutArtworkDocument-sub-class.swift in Sources */,
 				CFB1F8EC2940EDDB00C1E120 /* action-AutoLayoutProjectDocument-resetFontVersionAction.swift in Sources */,
 				CF36A34E275A8D3A004C52E1 /* extension-BoardModel-boardLimitsSegments.swift in Sources */,
+				CF16488B2C6A065600CF6E7C /* ALB_NSTextField_enabled_hidden_bindings.swift in Sources */,
 				CFFF883129BE364C007A12DE /* property-CanariPointArray.swift in Sources */,
 				CFB7D89F2683A61C007B9D3B /* configurator-AutoLayoutPackageDocument-addPackageSegment.swift in Sources */,
 				CFEB7AA0233A23270060A97A /* transient-BoardConnector-connectedToComponent.swift in Sources */,
@@ -9697,6 +9724,7 @@
 				CF30CDEA21C5709800CFE9CC /* entity-PackagePad.swift in Sources */,
 				CF1ABEA82AC8880600CC7895 /* AutoLayoutGraphicView.swift in Sources */,
 				CFEB7BA3233A26F20060A97A /* transient-DevicePinInProject-pinQualifiedName.swift in Sources */,
+				CF1648852C69FB6C00CF6E7C /* ALB_NSSegmentedControl_enabled_binding.swift in Sources */,
 				CF315512275CC90700ED1FA8 /* transient-MergerRoot-hasSixLayers.swift in Sources */,
 				CF59C43529BE36AB004CA404 /* property-String.swift in Sources */,
 				CF22F1C9275A73ED009C6FAC /* transient-MergerBoardInstance-objectDisplay.swift in Sources */,
@@ -10245,6 +10273,7 @@
 				CFEB7BFF233A282D0060A97A /* transient-NetInProject-netClassName.swift in Sources */,
 				CFDDD4DC21BB1529007D2F14 /* EBGraphicViewControllerProtocol.swift in Sources */,
 				CF22F1AB275A73ED009C6FAC /* transient-MergerRoot-layoutLayerWarningMessage.swift in Sources */,
+				CF16487F2C69F7AB00CF6E7C /* ALB_NSButton_enabled_hidden_bindings.swift in Sources */,
 				CFFF883429BE364C007A12DE /* property-CharacterSegmentList.swift in Sources */,
 				CF59C40529BE36AB004CA404 /* property-StringTagArray.swift in Sources */,
 				CFEB7B53233A25EC0060A97A /* transient-ComponentInProject-strokeBezierPath.swift in Sources */,
@@ -10383,6 +10412,7 @@
 				CF39CCA9268CC0B3004971F9 /* action-AutoLayoutDeviceDocument-resetSelectedPackageVersion.swift in Sources */,
 				CFB7D8572683A61C007B9D3B /* document-AutoLayoutPackageDocument-build-model-points.swift in Sources */,
 				CF711DF7275E1C2400280069 /* tomany-DeviceSymbolTypeInProject.swift in Sources */,
+				CF1648882C69FC6D00CF6E7C /* ALB_NSSlider_enabled_hidden_bindings.swift in Sources */,
 				CF3E658B21BECB7A0041FA2A /* EBGraphicView-issue.swift in Sources */,
 				CF7FE12A2C074CCE000DE396 /* enum-PDFProductGrid.swift in Sources */,
 				CFEB7CC4233A28860060A97A /* transient-ProjectRoot-ercStatusMessage.swift in Sources */,

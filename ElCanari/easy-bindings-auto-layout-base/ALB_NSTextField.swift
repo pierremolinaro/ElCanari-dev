@@ -89,7 +89,6 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
   //································································································
 
   final func automaticallyAdjustHeight (maxWidth inMaxWidth : Int) -> Self {
- //   self.usesSingleLineMode = false
     self.mAutomaticallyAdjustHeight = true
     self.preferredMaxLayoutWidth = CGFloat (inMaxWidth)
     self.cell?.wraps = true
@@ -151,33 +150,6 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
     }else{
       return false
     }
-  }
-
-  //································································································
-  //MARK:  $enabled binding
-  //································································································
-
-  private final var mEnabledBindingController : EnabledBindingController? = nil
-  final var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
-
-  //································································································
-
-  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
-    return self
-  }
-
-  //································································································
-  //MARK:  $hidden binding
-  //································································································
-
-  private final var mHiddenBindingController : HiddenBindingController? = nil
-
-  //································································································
-
-  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
-    return self
   }
 
   //································································································

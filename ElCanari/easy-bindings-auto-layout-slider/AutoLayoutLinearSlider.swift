@@ -14,7 +14,7 @@ import AppKit
 //   AutoLayoutLinearSlider
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutLinearSlider : ALB_NSSlider {
+final class AutoLayoutLinearSlider : ALB_NSSlider_enabled_hidden_bindings {
 
   //································································································
 

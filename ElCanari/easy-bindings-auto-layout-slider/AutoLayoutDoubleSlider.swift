@@ -8,7 +8,7 @@ import AppKit
 //   AutoLayoutDoubleSlider
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutDoubleSlider : ALB_NSSlider {
+final class AutoLayoutDoubleSlider : ALB_NSSlider_enabled_hidden_bindings {
 
   //································································································
 

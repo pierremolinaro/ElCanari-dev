@@ -4,7 +4,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutVersionField : ALB_NSTextField {
+final class AutoLayoutVersionField : ALB_NSTextField_enabled_hidden_bindings {
 
   //································································································
 

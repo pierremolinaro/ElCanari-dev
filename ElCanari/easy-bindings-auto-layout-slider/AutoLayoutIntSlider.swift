@@ -8,7 +8,7 @@ import AppKit
 //   AutoLayoutIntSlider
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutIntSlider : ALB_NSSlider {
+final class AutoLayoutIntSlider : ALB_NSSlider_enabled_hidden_bindings {
 
   //································································································
 

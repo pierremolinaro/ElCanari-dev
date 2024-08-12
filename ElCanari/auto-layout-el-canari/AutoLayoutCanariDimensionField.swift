@@ -10,7 +10,7 @@ import AppKit
 //   AutoLayoutCanariDimensionField
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariDimensionField : ALB_NSTextField {
+final class AutoLayoutCanariDimensionField : ALB_NSTextField_enabled_hidden_bindings {
 
   //································································································
 
