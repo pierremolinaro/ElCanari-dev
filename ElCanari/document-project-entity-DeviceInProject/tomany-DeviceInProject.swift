@@ -646,7 +646,7 @@ class ReadWriteArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
 //    Stored Array: DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
 
   //································································································
 
@@ -747,6 +747,11 @@ class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EBSignat
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <DeviceInProject>) {
   //--- Register old value in undo manager
     self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+//    self.undoManager?.registerUndo < EBReferenceArray <DeviceInProject> > (withTarget: self) {
+//      DispatchQueue.main.async {
+//        $0.mInternalArrayValue = inOldValue
+//      }
+//    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

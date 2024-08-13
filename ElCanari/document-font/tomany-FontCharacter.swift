@@ -471,7 +471,7 @@ class ReadWriteArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 //    Stored Array: FontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
 
   //································································································
 
@@ -557,6 +557,11 @@ class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureO
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <FontCharacter>) {
   //--- Register old value in undo manager
     self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+//    self.undoManager?.registerUndo < EBReferenceArray <FontCharacter> > (withTarget: self) {
+//      DispatchQueue.main.async {
+//        $0.mInternalArrayValue = inOldValue
+//      }
+//    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

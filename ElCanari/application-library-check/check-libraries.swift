@@ -25,7 +25,7 @@ import AppKit
 //---------- Check library button
   let button = AutoLayoutButton (title: "Check Library", size: .regular)
     .expandableWidth ()
-  button.setClosureAction {
+  _ = button.setClosureAction {
     checkLibrary (windowForSheet: inLogWindow, logWindow: inLogWindow)
   }
 //---------- Tab View
@@ -141,7 +141,7 @@ extension AutoLayoutVerticalStackView {
     let button = AutoLayoutButton (title: inDocumentPath, size: .regular).expandableWidth ()
     let fm = FileManager ()
     if fm.fileExists (atPath: inDocumentPath) {
-      button.setClosureAction {
+      _ = button.setClosureAction {
         let ws = NSWorkspace.shared
         ws.open (URL (fileURLWithPath: inDocumentPath))
       }

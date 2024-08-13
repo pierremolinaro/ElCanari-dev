@@ -98,7 +98,7 @@ class ReadWriteArrayOf_ForbiddenPadNumber : ReadOnlyArrayOf_ForbiddenPadNumber {
 //    Stored Array: ForbiddenPadNumber
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
 
   //································································································
 
@@ -184,6 +184,11 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <ForbiddenPadNumber>) {
   //--- Register old value in undo manager
     self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+//    self.undoManager?.registerUndo < EBReferenceArray <ForbiddenPadNumber> > (withTarget: self) {
+//      DispatchQueue.main.async {
+//        $0.mInternalArrayValue = inOldValue
+//      }
+//    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

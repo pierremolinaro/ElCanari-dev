@@ -237,7 +237,7 @@ final class ProxyArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackage
 //    Stored Array: DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
 
   //································································································
 
@@ -323,6 +323,11 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <DevicePackageInProject>) {
   //--- Register old value in undo manager
     self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+//    self.undoManager?.registerUndo < EBReferenceArray <DevicePackageInProject> > (withTarget: self) {
+//      DispatchQueue.main.async {
+//        $0.mInternalArrayValue = inOldValue
+//      }
+//    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

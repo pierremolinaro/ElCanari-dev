@@ -15,8 +15,10 @@ extension ApplicationDelegate {
   //································································································
 
   override func awakeFromNib () {
-    self.mCheckNowForUpdateMenuItem?.target = self
-    self.mCheckNowForUpdateMenuItem?.action = #selector (Self.checkForUpdatesAction (_:))
+    DispatchQueue.main.async {
+      self.mCheckNowForUpdateMenuItem?.target = self
+      self.mCheckNowForUpdateMenuItem?.action = #selector (Self.checkForUpdatesAction (_:))
+    }
   }
 
   //································································································

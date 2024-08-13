@@ -27,7 +27,7 @@ extension AutoLayoutVerticalStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-    init () {
+    @MainActor init () {
       let s = NSSize (width: 10, height: 0) // Zero height means horizontal separator
       super.init (frame: NSRect (origin: NSPoint (), size: s))
       noteObjectAllocation (self)

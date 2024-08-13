@@ -343,7 +343,7 @@ class ReadWriteArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
 //    Stored Array: MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
 
   //································································································
 
@@ -444,6 +444,11 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <MergerBoardInstance>) {
   //--- Register old value in undo manager
     self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+//    self.undoManager?.registerUndo < EBReferenceArray <MergerBoardInstance> > (withTarget: self) {
+//      DispatchQueue.main.async {
+//        $0.mInternalArrayValue = inOldValue
+//      }
+//    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

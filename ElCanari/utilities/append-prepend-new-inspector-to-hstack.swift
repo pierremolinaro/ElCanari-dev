@@ -25,7 +25,7 @@ import AppKit
     .appendView (header)
     .appendView (inInspector)
   _ = inBaseHorizontalStack.appendView (verticalSeparator).appendView (vStack)
-  closeButton.setClosureAction { [weak inBaseHorizontalStack, weak vStack] in
+  _ = closeButton.setClosureAction { [weak inBaseHorizontalStack, weak vStack] in
     if let s = vStack {
       inBaseHorizontalStack?.removeView (s)
     }
@@ -50,7 +50,7 @@ import AppKit
     .appendView (header)
     .appendView (inInspector)
   _ = inBaseHorizontalStack.prependView (verticalSeparator).prependView (vStack)
-  closeButton.setClosureAction { [weak inBaseHorizontalStack, weak vStack] in
+  _ = closeButton.setClosureAction { [weak inBaseHorizontalStack, weak vStack] in
     if let s = vStack {
       inBaseHorizontalStack?.removeView (s)
     }

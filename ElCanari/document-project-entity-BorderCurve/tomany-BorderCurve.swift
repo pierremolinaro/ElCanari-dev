@@ -576,7 +576,7 @@ class ReadWriteArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
 //    Stored Array: BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
 
   //································································································
 
@@ -677,6 +677,11 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <BorderCurve>) {
   //--- Register old value in undo manager
     self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+//    self.undoManager?.registerUndo < EBReferenceArray <BorderCurve> > (withTarget: self) {
+//      DispatchQueue.main.async {
+//        $0.mInternalArrayValue = inOldValue
+//      }
+//    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

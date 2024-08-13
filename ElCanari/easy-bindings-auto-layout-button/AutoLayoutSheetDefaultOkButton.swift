@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutSheetDefaultOkButton : NSButton {
+final class AutoLayoutSheetDefaultOkButton : ALB_NSButton {
 
   //································································································
 
@@ -21,9 +21,9 @@ final class AutoLayoutSheetDefaultOkButton : NSButton {
   init (title inTitle : String,
         size inSize : EBControlSize,
         sheet inPanel : NSPanel) {
-    super.init (frame: .zero)
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    super.init (title: inTitle, size: inSize.cocoaControlSize)
+//    noteObjectAllocation (self)
+//    self.translatesAutoresizingMaskIntoConstraints = false
 
     self.setButtonType (.momentaryPushIn)
     self.bezelStyle = .rounded
@@ -33,8 +33,6 @@ final class AutoLayoutSheetDefaultOkButton : NSButton {
     if let buttonCell = self.cell as? NSButtonCell {
       DispatchQueue.main.async { inPanel.defaultButtonCell = buttonCell }
     }
-//    self.keyEquivalent = "\u{0D}"
-//    self.keyEquivalentModifierMask = .control
 
     _ = self.setDismissAction ()
 
@@ -54,9 +52,9 @@ final class AutoLayoutSheetDefaultOkButton : NSButton {
 
   //································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
 
   //································································································
 

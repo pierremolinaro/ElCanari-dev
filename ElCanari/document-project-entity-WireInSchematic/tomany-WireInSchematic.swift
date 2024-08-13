@@ -370,7 +370,7 @@ class ReadWriteArrayOf_WireInSchematic : ReadOnlyArrayOf_WireInSchematic {
 //    Stored Array: WireInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
 
   //································································································
 
@@ -471,6 +471,11 @@ class StoredArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic, EBSignat
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <WireInSchematic>) {
   //--- Register old value in undo manager
     self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+//    self.undoManager?.registerUndo < EBReferenceArray <WireInSchematic> > (withTarget: self) {
+//      DispatchQueue.main.async {
+//        $0.mInternalArrayValue = inOldValue
+//      }
+//    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

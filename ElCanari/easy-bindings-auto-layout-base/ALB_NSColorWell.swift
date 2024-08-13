@@ -14,7 +14,7 @@ class ALB_NSColorWell : NSColorWell {
 
   //································································································
 
-  init () {
+  @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false

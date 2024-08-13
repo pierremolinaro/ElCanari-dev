@@ -47,7 +47,11 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   //  init
   //································································································
 
-  @MainActor override init () {
+  override init () {
+    self.mOpenSymbolInLibrary = OpenSymbolInLibrary ()
+    self.mOpenPackageInLibrary = OpenPackageInLibrary ()
+    self.mOpenDeviceInLibrary = OpenDeviceInLibrary ()
+    self.mOpenFontInLibrary = OpenFontInLibrary ()
     super.init ()
     DispatchQueue.main.async {
 //      Self.mShared = self
@@ -164,10 +168,10 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   @IBOutlet var mOpenDeviceInLibraryMenuItem : NSMenuItem? = nil
   @IBOutlet var mOpenFontInLibraryMenuItem : NSMenuItem? = nil
 
-  @MainActor let mOpenSymbolInLibrary = OpenSymbolInLibrary ()
-  @MainActor let mOpenPackageInLibrary = OpenPackageInLibrary ()
-  @MainActor let mOpenDeviceInLibrary = OpenDeviceInLibrary ()
-  @MainActor let mOpenFontInLibrary = OpenFontInLibrary ()
+  let mOpenSymbolInLibrary : OpenSymbolInLibrary
+  let mOpenPackageInLibrary : OpenPackageInLibrary
+  let mOpenDeviceInLibrary : OpenDeviceInLibrary
+  let mOpenFontInLibrary : OpenFontInLibrary
 
   //································································································
   //  DO NOT OPEN A NEW DOCUMENT ON LAUNCH

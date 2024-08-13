@@ -26,7 +26,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
 
   //································································································
 
-  init () {
+  @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
 //    self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT

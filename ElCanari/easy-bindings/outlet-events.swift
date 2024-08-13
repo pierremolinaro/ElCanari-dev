@@ -198,7 +198,7 @@ class EBOutletEvent : EBObserverProtocol {
       let mainVStack = AutoLayoutVerticalStackView ().set (topMargin: 8)
       let hStack = AutoLayoutHorizontalStackView ()
       let clearTransientEventLogButton = AutoLayoutButton (title: "Clear Transient Event Log", size: .regular)
-      clearTransientEventLogButton.setClosureAction ({ self.mTransientEventExplorerTextView.string = "" })
+      _ = clearTransientEventLogButton.setClosureAction ({ self.mTransientEventExplorerTextView.string = "" })
       _ = hStack.appendView (clearTransientEventLogButton)
                 .appendFlexibleSpace ()
                 .set (leftMargin: 8)

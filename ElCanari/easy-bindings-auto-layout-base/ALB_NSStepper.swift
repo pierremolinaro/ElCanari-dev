@@ -14,7 +14,7 @@ class ALB_NSStepper : NSStepper {
 
   //································································································
 
-  init () {
+  @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false

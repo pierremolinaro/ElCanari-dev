@@ -413,7 +413,7 @@ class ReadWriteArrayOf_DeviceMasterPadInProject : ReadOnlyArrayOf_DeviceMasterPa
 //    Stored Array: DeviceMasterPadInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMasterPadInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMasterPadInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
 
   //································································································
 
@@ -499,6 +499,11 @@ class StoredArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMasterPadI
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <DeviceMasterPadInProject>) {
   //--- Register old value in undo manager
     self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+//    self.undoManager?.registerUndo < EBReferenceArray <DeviceMasterPadInProject> > (withTarget: self) {
+//      DispatchQueue.main.async {
+//        $0.mInternalArrayValue = inOldValue
+//      }
+//    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

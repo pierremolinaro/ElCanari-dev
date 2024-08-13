@@ -1175,7 +1175,7 @@ class ReadWriteArrayOf_BoardConnector : ReadOnlyArrayOf_BoardConnector {
 //    Stored Array: BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
 
   //································································································
 
@@ -1276,6 +1276,11 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <BoardConnector>) {
   //--- Register old value in undo manager
     self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+//    self.undoManager?.registerUndo < EBReferenceArray <BoardConnector> > (withTarget: self) {
+//      DispatchQueue.main.async {
+//        $0.mInternalArrayValue = inOldValue
+//      }
+//    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

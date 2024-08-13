@@ -1175,7 +1175,7 @@ class ReadWriteArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
 //    Stored Array: PackagePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
 
   //································································································
 
@@ -1276,6 +1276,11 @@ class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserve
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <PackagePad>) {
   //--- Register old value in undo manager
     self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+//    self.undoManager?.registerUndo < EBReferenceArray <PackagePad> > (withTarget: self) {
+//      DispatchQueue.main.async {
+//        $0.mInternalArrayValue = inOldValue
+//      }
+//    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

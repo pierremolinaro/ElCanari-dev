@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
+@MainActor class OpenInLibrary : AutoLayoutTableViewDelegate, Sendable {
 
   //································································································
 
@@ -42,7 +42,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
 
   //································································································
 
-  @MainActor override init () {
+  init () {
   //--- Dialog
     self.mDialog = NSPanel (
       contentRect: NSRect (x: 0, y: 0, width: 700, height: 600),
@@ -94,9 +94,10 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
   //--- Set content view
     self.mDialog.contentView = mainView
   //---
-    super.init ()
+//    super.init ()
   //---
-    _ = self.mSearchField.bind_run (target: self, selector: #selector (Self.searchFieldAction (_:)))
+//    _ = self.mSearchField.bind_run (target: self, selector: #selector (Self.searchFieldAction (_:)))
+    _ = self.mSearchField.setClosureAction { [weak self] in self?.searchFieldAction (nil) }
   //--- Configure table view
     self.mTableView.configure (
       allowsEmptySelection: false,
@@ -223,7 +224,8 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
   //--- Configure
     self.mDialog.title = inTitle
     self.configureWith (alreadyLoadedDocuments: [])
-    _ = self.mOpenButton.bind_run (target: self, selector: #selector (Self.stopModalAndOpenDocumentAction (_:)))
+    // _ = self.mOpenButton.bind_run (target: self, selector: #selector (Self.stopModalAndOpenDocumentAction (_:)))
+    _ = self.mOpenButton.setClosureAction { [weak self] in self?.stopModalAndOpenDocumentAction () }
   //--- Dialog
     _ = NSApplication.shared.runModal (for: self.mDialog)
   }
@@ -239,7 +241,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
 
   //································································································
 
-  @objc private func stopModalAndOpenDocumentAction (_ _ : Any?) {
+  @objc private func stopModalAndOpenDocumentAction () {
     NSApplication.shared.stopModal ()
     self.mDialog.orderOut (nil)
     let selectedRow = self.mTableView.selectedRow

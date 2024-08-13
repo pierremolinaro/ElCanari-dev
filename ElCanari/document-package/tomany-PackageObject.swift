@@ -203,7 +203,7 @@ class ReadWriteArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
 //    Stored Array: PackageObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
 
   //································································································
 
@@ -304,6 +304,11 @@ class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSignatureO
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <PackageObject>) {
   //--- Register old value in undo manager
     self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+//    self.undoManager?.registerUndo < EBReferenceArray <PackageObject> > (withTarget: self) {
+//      DispatchQueue.main.async {
+//        $0.mInternalArrayValue = inOldValue
+//      }
+//    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

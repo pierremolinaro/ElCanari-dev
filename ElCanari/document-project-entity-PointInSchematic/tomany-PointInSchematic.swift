@@ -588,7 +588,7 @@ class ReadWriteArrayOf_PointInSchematic : ReadOnlyArrayOf_PointInSchematic {
 //    Stored Array: PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
 
   //································································································
 
@@ -689,6 +689,11 @@ class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSign
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <PointInSchematic>) {
   //--- Register old value in undo manager
     self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+//    self.undoManager?.registerUndo < EBReferenceArray <PointInSchematic> > (withTarget: self) {
+//      DispatchQueue.main.async {
+//        $0.mInternalArrayValue = inOldValue
+//      }
+//    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

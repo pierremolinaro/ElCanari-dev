@@ -1933,7 +1933,7 @@ class ReadWriteArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
 //    Stored Array: ComponentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
 
   //································································································
 
@@ -2034,6 +2034,11 @@ class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EB
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <ComponentInProject>) {
   //--- Register old value in undo manager
     self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+//    self.undoManager?.registerUndo < EBReferenceArray <ComponentInProject> > (withTarget: self) {
+//      DispatchQueue.main.async {
+//        $0.mInternalArrayValue = inOldValue
+//      }
+//    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

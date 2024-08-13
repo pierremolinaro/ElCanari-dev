@@ -685,7 +685,7 @@ class ReadWriteArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
 //    Stored Array: SymbolPin
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol {
+class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
 
   //································································································
 
@@ -771,6 +771,11 @@ class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverP
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <SymbolPin>) {
   //--- Register old value in undo manager
     self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+//    self.undoManager?.registerUndo < EBReferenceArray <SymbolPin> > (withTarget: self) {
+//      DispatchQueue.main.async {
+//        $0.mInternalArrayValue = inOldValue
+//      }
+//    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

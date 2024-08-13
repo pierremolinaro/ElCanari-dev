@@ -239,7 +239,7 @@ fileprivate final class EmbeddedAutoLayoutScrollView : NSScrollView {
 
   //································································································
 
-  init () {
+  @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
   }
@@ -266,7 +266,7 @@ fileprivate final class EmbeddedAutoLayoutTableView : NSTableView {
 
   //································································································
 
-  init () {
+  @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
   }
