@@ -157,7 +157,7 @@ final class AutoLayoutCanariFontCharacterGerberCodeTableView : AutoLayoutVertica
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class PrivateTableView : NSTableView {
+@MainActor fileprivate final class PrivateTableView : NSTableView {
 
   //································································································
 

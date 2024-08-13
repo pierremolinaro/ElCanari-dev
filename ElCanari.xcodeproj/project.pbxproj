@@ -6624,6 +6624,7 @@
 		CFB4C02D279465B000C509A9 /* EB — Auto Layout — Button */ = {
 			isa = PBXGroup;
 			children = (
+				CF16487D2C69F7AB00CF6E7C /* ALB_NSButton_enabled_hidden_bindings.swift */,
 				CFB4C031279465E600C509A9 /* AutoLayoutButton.swift */,
 				CFB4C030279465E600C509A9 /* AutoLayoutCheckbox.swift */,
 				CFB4C037279465E700C509A9 /* AutoLayoutDragSourceButton.swift */,
@@ -6634,11 +6635,6 @@
 				CFB4C038279465E700C509A9 /* AutoLayoutMenuButton.swift */,
 				CFB4C036279465E700C509A9 /* AutoLayoutSheetCancelButton.swift */,
 				CFB4C02E279465E500C509A9 /* AutoLayoutSheetDefaultOkButton.swift */,
-				CF16487D2C69F7AB00CF6E7C /* ALB_NSButton_enabled_hidden_bindings.swift */,
-				CF1648802C69F9D300CF6E7C /* ALB_NSPopUpButton_enabled_hidden_bindings.swift */,
-				CF1648832C69FB6C00CF6E7C /* ALB_NSSegmentedControl_enabled_binding.swift */,
-				CF1648862C69FC6D00CF6E7C /* ALB_NSSlider_enabled_hidden_bindings.swift */,
-				CF1648892C6A065600CF6E7C /* ALB_NSTextField_enabled_hidden_bindings.swift */,
 			);
 			name = "EB — Auto Layout — Button";
 			path = "ElCanari/easy-bindings-auto-layout-button";
@@ -6647,6 +6643,7 @@
 		CFB4C05A279465FE00C509A9 /* EB — Auto Layout — PopUpButton */ = {
 			isa = PBXGroup;
 			children = (
+				CF1648802C69F9D300CF6E7C /* ALB_NSPopUpButton_enabled_hidden_bindings.swift */,
 				CFB4C05E2794662800C509A9 /* AutoLayoutBoolPopUpButton.swift */,
 				CFB4C05C2794662800C509A9 /* AutoLayoutEnumPopUpButton.swift */,
 				CF9C1C2A279C6A3E0018CCDB /* AutoLayoutPopUpButton.swift */,
@@ -6660,6 +6657,7 @@
 		CFB4C06F2794663000C509A9 /* EB — Auto Layout — SegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
+				CF1648832C69FB6C00CF6E7C /* ALB_NSSegmentedControl_enabled_binding.swift */,
 				CFB4C0712794665500C509A9 /* AutoLayoutSegmentedControlWithPages.swift */,
 				CF9C1C40279C83FD0018CCDB /* AutoLayoutEnumSegmentedControl.swift */,
 			);
@@ -6670,6 +6668,7 @@
 		CFB4C0782794666100C509A9 /* EB — Auto Layout — Slider */ = {
 			isa = PBXGroup;
 			children = (
+				CF1648862C69FC6D00CF6E7C /* ALB_NSSlider_enabled_hidden_bindings.swift */,
 				CFB4C0792794668200C509A9 /* AutoLayoutAngleCircularSlider.swift */,
 				CFB4C07A2794668200C509A9 /* AutoLayoutDoubleSlider.swift */,
 				CFB4C07B2794668200C509A9 /* AutoLayoutIntSlider.swift */,
@@ -6697,6 +6696,7 @@
 		CFB4C0B02794672700C509A9 /* EB — Auto Layout — TextField */ = {
 			isa = PBXGroup;
 			children = (
+				CF1648892C6A065600CF6E7C /* ALB_NSTextField_enabled_hidden_bindings.swift */,
 				CFB8DDB927A6DE030097DF9A /* AutoLayoutDateLabel.swift */,
 				CFB4C0B42794674700C509A9 /* AutoLayoutDoubleField.swift */,
 				CFDAB49F28D0C3FC0037A3B1 /* AutoLayoutDoubleObserverField.swift */,

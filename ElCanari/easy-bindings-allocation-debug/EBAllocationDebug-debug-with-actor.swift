@@ -193,7 +193,7 @@ fileprivate struct EBAllocationItemDisplay {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor final class EBAllocationDebug : NSObject {
+@MainActor final class EBAllocationDebug {
 
   //································································································
   //   Properties
@@ -258,16 +258,19 @@ fileprivate struct EBAllocationItemDisplay {
   //    init
   //································································································
 
-   @MainActor override init () {
-     super.init ()
+//   @MainActor override init () {
+//     super.init ()
+   init () {
    //--- Bindings
      _ = self.mAllocationStatsWindowVisibleAtLaunchCheckbox.bind_value (self.mAllocationStatsWindowVisibleAtLaunch)
      _ = self.mEnableAllocationDebugCheckbox.bind_value (self.mEnableAllocationDebug)
      _ = self.mTotalAllocatedLabel.bind_observedValue (self.mTotalAllocated)
      _ = self.mCurrentlyAllocatedLabel.bind_observedValue (self.mCurrentlyAllocated)
-     _ = self.mPerformSnapShotButton.bind_run (target: self, selector: #selector (Self.performSnapShotAction (_:)))
+     _ = self.mPerformSnapShotButton.setClosureAction { [weak self] in self?.performSnapShotAction () }
+//     _ = self.mPerformSnapShotButton.bind_run (target: self, selector: #selector (Self.performSnapShotAction (_:)))
      _ = self.mFilterPopUpButton.bind_selectedTag (self.mAllocationStatsDisplayFilterIndex)
-       .bind_run (target: self, selector: #selector (Self.allocationStatsDisplayFilterIndexDidChange (_:)))
+       .setClosureAction { [weak self] in self?.allocationStatsDisplayFilterIndexDidChange () }
+//       .bind_run (target: self, selector: #selector (Self.allocationStatsDisplayFilterIndexDidChange (_:)))
   //--- Configure table view
     self.mStatsTableView.configure (
       allowsEmptySelection: false,
@@ -426,7 +429,7 @@ fileprivate struct EBAllocationItemDisplay {
 
   //································································································
 
-  @objc private func allocationStatsDisplayFilterIndexDidChange (_ _ : AnyObject) {
+  private func allocationStatsDisplayFilterIndexDidChange () {
     self.triggerRefreshDisplay ()
   }
 
@@ -440,7 +443,7 @@ fileprivate struct EBAllocationItemDisplay {
   //    performSnapShotAction:
   //································································································
 
-  @objc private func performSnapShotAction (_ : AnyObject) {
+  private func performSnapShotAction () {
     self.mSnapShotDictionary = self.mLiveObjectCountByClass
     self.triggerRefreshDisplay ()
   }

@@ -37,7 +37,11 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-@main final class ApplicationDelegate : NSObject, NSApplicationDelegate, NSMenuItemValidation {
+@MainActor @main final class ApplicationDelegate : NSObject, NSApplicationDelegate, NSMenuItemValidation, Sendable {
+
+  //································································································
+
+//  static var mShared : ApplicationDelegate? = nil
 
   //································································································
   //  init
@@ -45,7 +49,10 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
 
   @MainActor override init () {
     super.init ()
-    gApplicationDelegate = self
+    DispatchQueue.main.async {
+//      Self.mShared = self
+      gApplicationDelegate = self
+    }
   }
 
   //································································································
@@ -167,7 +174,6 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   //································································································
 
   nonisolated func applicationShouldOpenUntitledFile (_ inApplication : NSApplication) -> Bool {
-    // NSLog (@"%s", __PRETTY_FUNCTION__) ;
     return false
   }
 

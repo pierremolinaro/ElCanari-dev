@@ -14,10 +14,6 @@ class ALB_NSButton : NSButton {
 
   //································································································
 
-  final private var mClosureAction : Optional < () -> Void > = nil
-
-  //································································································
-
   init (title inTitle : String, size inSize : NSControl.ControlSize) {
     super.init (frame: .zero)
     noteObjectAllocation (self)
@@ -51,10 +47,15 @@ class ALB_NSButton : NSButton {
   //  Closure action
   //································································································
 
-  final func setClosureAction (_ inClosureAction : @escaping () -> Void) {
+  final private var mClosureAction : Optional < () -> Void > = nil
+
+  //································································································
+
+  final func setClosureAction (_ inClosureAction : @escaping () -> Void) -> Self {
     self.mClosureAction = inClosureAction
     self.target = self
     self.action = #selector (Self.runClosureAction (_:))
+    return self
   }
 
   //································································································
